@@ -13,9 +13,13 @@ class CreateTeamResponseBody(DaraModel):
         request_id: str = None,
         team: main_models.E2BTeam = None,
     ):
+        # The error code.
         self.code = code
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # The Team information.
         self.team = team
 
     def validate(self):

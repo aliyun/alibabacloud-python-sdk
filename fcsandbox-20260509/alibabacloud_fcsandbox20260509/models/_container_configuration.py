@@ -4,13 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteQuotaRequest(DaraModel):
+class ContainerConfiguration(DaraModel):
     def __init__(
         self,
-        tag_value: str = None,
+        image: str = None,
     ):
-        # Team ID
-        self.tag_value = tag_value
+        self.image = image
 
     def validate(self):
         pass
@@ -20,15 +19,15 @@ class DeleteQuotaRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.tag_value is not None:
-            result['tagValue'] = self.tag_value
+        if self.image is not None:
+            result['image'] = self.image
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('tagValue') is not None:
-            self.tag_value = m.get('tagValue')
+        if m.get('image') is not None:
+            self.image = m.get('image')
 
         return self
 

@@ -1,3 +1,11 @@
+2026-08-12 Version: 1.3.0
+- Support API CreateVolume.
+- Support API DeleteVolume.
+- Support API GetVolume.
+- Support API ListVolumes.
+- Support API UpdateVolume.
+
+
 2026-07-10 Version: 1.2.0
 - Support API UpdateApiKey.
 

@@ -2,24 +2,25 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from alibabacloud_fcsandbox20260509 import models as main_models
 from darabonba.model import DaraModel
 
-class DeleteApiKeyResponseBody(DaraModel):
+class UpdateVolumeResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
+        volume: main_models.E2BVolume = None,
     ):
-        # The error code.
         self.code = code
-        # The response message.
         self.message = message
-        # The request ID.
         self.request_id = request_id
+        self.volume = volume
 
     def validate(self):
-        pass
+        if self.volume:
+            self.volume.validate()
 
     def to_map(self):
         result = dict()
@@ -35,6 +36,9 @@ class DeleteApiKeyResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
+        if self.volume is not None:
+            result['volume'] = self.volume.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +51,10 @@ class DeleteApiKeyResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('volume') is not None:
+            temp_model = main_models.E2BVolume()
+            self.volume = temp_model.from_map(m.get('volume'))
 
         return self
 

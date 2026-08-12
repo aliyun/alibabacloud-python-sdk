@@ -10,19 +10,29 @@ class E2BTeam(DaraModel):
         allow_update_team_name: bool = None,
         created_time: str = None,
         description: str = None,
+        plan: str = None,
         resource_group_id: str = None,
         status: str = None,
         team_id: str = None,
         team_name: str = None,
         user_id: str = None,
     ):
+        # Indicates whether the team name can be modified.
         self.allow_update_team_name = allow_update_team_name
+        # The time when the team was created.
         self.created_time = created_time
+        # The description.
         self.description = description
+        self.plan = plan
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The status of the team.
         self.status = status
+        # The unique identifier of the team.
         self.team_id = team_id
+        # The name of the team.
         self.team_name = team_name
+        # The UID of the creator.
         self.user_id = user_id
 
     def validate(self):
@@ -41,6 +51,9 @@ class E2BTeam(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.plan is not None:
+            result['plan'] = self.plan
 
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
@@ -69,6 +82,9 @@ class E2BTeam(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('plan') is not None:
+            self.plan = m.get('plan')
 
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')

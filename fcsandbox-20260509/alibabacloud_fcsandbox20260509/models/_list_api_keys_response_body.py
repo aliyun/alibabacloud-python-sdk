@@ -18,12 +18,19 @@ class ListApiKeysResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The list of API keys.
         self.api_keys = api_keys
+        # The error code.
         self.code = code
+        # The response message.
         self.message = message
+        # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
+        # The number of API keys displayed per page.
         self.page_size = page_size
+        # Id of the request
         self.request_id = request_id
+        # The total number of records.
         self.total = total
 
     def validate(self):

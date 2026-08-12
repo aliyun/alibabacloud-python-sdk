@@ -10,6 +10,7 @@ class CreateApiKeyRequest(DaraModel):
         self,
         body: main_models.CreateApiKeyInput = None,
     ):
+        # The template base structure.
         self.body = body
 
     def validate(self):

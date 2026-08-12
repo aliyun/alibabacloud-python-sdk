@@ -13,9 +13,13 @@ class DescribeQuotaResponseBody(DaraModel):
         quota: main_models.Quota = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The response message.
         self.message = message
+        # The Quota configuration information.
         self.quota = quota
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

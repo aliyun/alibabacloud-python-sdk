@@ -9,12 +9,18 @@ class ListTeamsRequest(DaraModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        plan: str = None,
         resource_group_id: str = None,
         team_name: str = None,
     ):
+        # The page number, starting from 1.
         self.page_number = page_number
+        # The number of teams displayed per page.
         self.page_size = page_size
+        self.plan = plan
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The team name.
         self.team_name = team_name
 
     def validate(self):
@@ -31,6 +37,9 @@ class ListTeamsRequest(DaraModel):
         if self.page_size is not None:
             result['pageSize'] = self.page_size
 
+        if self.plan is not None:
+            result['plan'] = self.plan
+
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
 
@@ -46,6 +55,9 @@ class ListTeamsRequest(DaraModel):
 
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+
+        if m.get('plan') is not None:
+            self.plan = m.get('plan')
 
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')

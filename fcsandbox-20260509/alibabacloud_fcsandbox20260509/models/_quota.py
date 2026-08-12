@@ -11,8 +11,11 @@ class Quota(DaraModel):
         memory_gb: int = None,
         tag_value: str = None,
     ):
+        # The vCPU quota limit. Unit: cores.
         self.cpu_cores = cpu_cores
+        # The memory quota limit. Unit: GB.
         self.memory_gb = memory_gb
+        # Team ID
         self.tag_value = tag_value
 
     def validate(self):

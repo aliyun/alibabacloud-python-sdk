@@ -4,33 +4,24 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListApiKeysRequest(DaraModel):
+class ListVolumesRequest(DaraModel):
     def __init__(
         self,
-        api_key_name: str = None,
-        page_number: int = None,
-        page_size: int = None,
+        max_results: int = None,
+        next_token: str = None,
         resource_group_id: str = None,
         status: str = None,
         team_id: str = None,
         user_id: str = None,
+        volume_name: str = None,
     ):
-        # The API key name.
-        self.api_key_name = api_key_name
-        # The current page number.
-        self.page_number = page_number
-        # The number of teams to display per page.
-        self.page_size = page_size
-        # The resource group ID.
+        self.max_results = max_results
+        self.next_token = next_token
         self.resource_group_id = resource_group_id
-        # The status. Valid values:
-        # - active
-        # - inactive
         self.status = status
-        # The unique identifier of the team.
         self.team_id = team_id
-        # The UID of the creator.
         self.user_id = user_id
+        self.volume_name = volume_name
 
     def validate(self):
         pass
@@ -40,14 +31,11 @@ class ListApiKeysRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.api_key_name is not None:
-            result['apiKeyName'] = self.api_key_name
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
 
-        if self.page_number is not None:
-            result['pageNumber'] = self.page_number
-
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
 
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
@@ -61,18 +49,18 @@ class ListApiKeysRequest(DaraModel):
         if self.user_id is not None:
             result['userID'] = self.user_id
 
+        if self.volume_name is not None:
+            result['volumeName'] = self.volume_name
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('apiKeyName') is not None:
-            self.api_key_name = m.get('apiKeyName')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
 
-        if m.get('pageNumber') is not None:
-            self.page_number = m.get('pageNumber')
-
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
 
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')
@@ -85,6 +73,9 @@ class ListApiKeysRequest(DaraModel):
 
         if m.get('userID') is not None:
             self.user_id = m.get('userID')
+
+        if m.get('volumeName') is not None:
+            self.volume_name = m.get('volumeName')
 
         return self
 

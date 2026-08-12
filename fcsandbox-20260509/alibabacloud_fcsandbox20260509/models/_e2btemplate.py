@@ -12,6 +12,7 @@ class E2BTemplate(DaraModel):
         self,
         build_status: str = None,
         category: str = None,
+        container_configuration: main_models.ContainerConfiguration = None,
         cpu_count: int = None,
         created_at: str = None,
         log_configuration: main_models.LogConfiguration = None,
@@ -24,12 +25,14 @@ class E2BTemplate(DaraModel):
         tags: List[main_models.E2BTemplateTag] = None,
         team_id: str = None,
         team_name: str = None,
+        team_plan: str = None,
         template_id: str = None,
         updated_at: str = None,
         user_id: str = None,
     ):
         self.build_status = build_status
         self.category = category
+        self.container_configuration = container_configuration
         self.cpu_count = cpu_count
         self.created_at = created_at
         self.log_configuration = log_configuration
@@ -42,11 +45,14 @@ class E2BTemplate(DaraModel):
         self.tags = tags
         self.team_id = team_id
         self.team_name = team_name
+        self.team_plan = team_plan
         self.template_id = template_id
         self.updated_at = updated_at
         self.user_id = user_id
 
     def validate(self):
+        if self.container_configuration:
+            self.container_configuration.validate()
         if self.log_configuration:
             self.log_configuration.validate()
         if self.network_configuration:
@@ -66,6 +72,9 @@ class E2BTemplate(DaraModel):
 
         if self.category is not None:
             result['category'] = self.category
+
+        if self.container_configuration is not None:
+            result['containerConfiguration'] = self.container_configuration.to_map()
 
         if self.cpu_count is not None:
             result['cpuCount'] = self.cpu_count
@@ -105,6 +114,9 @@ class E2BTemplate(DaraModel):
         if self.team_name is not None:
             result['teamName'] = self.team_name
 
+        if self.team_plan is not None:
+            result['teamPlan'] = self.team_plan
+
         if self.template_id is not None:
             result['templateID'] = self.template_id
 
@@ -123,6 +135,10 @@ class E2BTemplate(DaraModel):
 
         if m.get('category') is not None:
             self.category = m.get('category')
+
+        if m.get('containerConfiguration') is not None:
+            temp_model = main_models.ContainerConfiguration()
+            self.container_configuration = temp_model.from_map(m.get('containerConfiguration'))
 
         if m.get('cpuCount') is not None:
             self.cpu_count = m.get('cpuCount')
@@ -164,6 +180,9 @@ class E2BTemplate(DaraModel):
 
         if m.get('teamName') is not None:
             self.team_name = m.get('teamName')
+
+        if m.get('teamPlan') is not None:
+            self.team_plan = m.get('teamPlan')
 
         if m.get('templateID') is not None:
             self.template_id = m.get('templateID')

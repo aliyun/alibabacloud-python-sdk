@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_fcsandbox20260509 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateApiKeyInput(DaraModel):
@@ -9,14 +12,28 @@ class CreateApiKeyInput(DaraModel):
         self,
         api_key_name: str = None,
         expire_time: str = None,
+        ip_blacklist: List[main_models.IPConfig] = None,
+        ip_whitelist: List[main_models.IPConfig] = None,
         team_id: str = None,
     ):
+        # The API key name.
         self.api_key_name = api_key_name
+        # The expiration time.
         self.expire_time = expire_time
+        self.ip_blacklist = ip_blacklist
+        self.ip_whitelist = ip_whitelist
+        # The unique identifier of the team.
         self.team_id = team_id
 
     def validate(self):
-        pass
+        if self.ip_blacklist:
+            for v1 in self.ip_blacklist:
+                 if v1:
+                    v1.validate()
+        if self.ip_whitelist:
+            for v1 in self.ip_whitelist:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -28,6 +45,16 @@ class CreateApiKeyInput(DaraModel):
 
         if self.expire_time is not None:
             result['expireTime'] = self.expire_time
+
+        result['ipBlacklist'] = []
+        if self.ip_blacklist is not None:
+            for k1 in self.ip_blacklist:
+                result['ipBlacklist'].append(k1.to_map() if k1 else None)
+
+        result['ipWhitelist'] = []
+        if self.ip_whitelist is not None:
+            for k1 in self.ip_whitelist:
+                result['ipWhitelist'].append(k1.to_map() if k1 else None)
 
         if self.team_id is not None:
             result['teamID'] = self.team_id
@@ -41,6 +68,18 @@ class CreateApiKeyInput(DaraModel):
 
         if m.get('expireTime') is not None:
             self.expire_time = m.get('expireTime')
+
+        self.ip_blacklist = []
+        if m.get('ipBlacklist') is not None:
+            for k1 in m.get('ipBlacklist'):
+                temp_model = main_models.IPConfig()
+                self.ip_blacklist.append(temp_model.from_map(k1))
+
+        self.ip_whitelist = []
+        if m.get('ipWhitelist') is not None:
+            for k1 in m.get('ipWhitelist'):
+                temp_model = main_models.IPConfig()
+                self.ip_whitelist.append(temp_model.from_map(k1))
 
         if m.get('teamID') is not None:
             self.team_id = m.get('teamID')

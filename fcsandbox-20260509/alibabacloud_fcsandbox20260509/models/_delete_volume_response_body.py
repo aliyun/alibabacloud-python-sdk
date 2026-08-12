@@ -4,18 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteApiKeyResponseBody(DaraModel):
+class DeleteVolumeResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
     ):
-        # The error code.
         self.code = code
-        # The response message.
         self.message = message
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -5,12 +5,12 @@ from __future__ import annotations
 from alibabacloud_fcsandbox20260509 import models as main_models
 from darabonba.model import DaraModel
 
-class UpdateQuotaRequest(DaraModel):
+class CreateVolumeRequest(DaraModel):
     def __init__(
         self,
-        body: main_models.Quota = None,
+        body: main_models.CreateVolumeInput = None,
     ):
-        # The Quota configuration information.
+        # The form parameters.
         self.body = body
 
     def validate(self):
@@ -30,7 +30,7 @@ class UpdateQuotaRequest(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('body') is not None:
-            temp_model = main_models.Quota()
+            temp_model = main_models.CreateVolumeInput()
             self.body = temp_model.from_map(m.get('body'))
 
         return self

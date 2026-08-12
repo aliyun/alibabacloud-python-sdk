@@ -10,6 +10,7 @@ class CreateTeamRequest(DaraModel):
         self,
         body: main_models.CreateTeamInput = None,
     ):
+        # The request struct.
         self.body = body
 
     def validate(self):

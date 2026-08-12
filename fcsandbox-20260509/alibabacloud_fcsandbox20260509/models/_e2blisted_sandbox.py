@@ -20,6 +20,7 @@ class E2BListedSandbox(DaraModel):
         state: str = None,
         team_id: str = None,
         team_name: str = None,
+        team_plan: str = None,
         template_id: str = None,
         template_name: str = None,
         user_id: str = None,
@@ -35,6 +36,7 @@ class E2BListedSandbox(DaraModel):
         self.state = state
         self.team_id = team_id
         self.team_name = team_name
+        self.team_plan = team_plan
         self.template_id = template_id
         self.template_name = template_name
         self.user_id = user_id
@@ -79,6 +81,9 @@ class E2BListedSandbox(DaraModel):
 
         if self.team_name is not None:
             result['teamName'] = self.team_name
+
+        if self.team_plan is not None:
+            result['teamPlan'] = self.team_plan
 
         if self.template_id is not None:
             result['templateID'] = self.template_id
@@ -125,6 +130,9 @@ class E2BListedSandbox(DaraModel):
 
         if m.get('teamName') is not None:
             self.team_name = m.get('teamName')
+
+        if m.get('teamPlan') is not None:
+            self.team_plan = m.get('teamPlan')
 
         if m.get('templateID') is not None:
             self.template_id = m.get('templateID')

@@ -17,11 +17,16 @@ class ListQuotaResponseBody(DaraModel):
         quotas: List[main_models.Quota] = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
         self.max_results = max_results
+        # The response message.
         self.message = message
+        # The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token obtained from the previous response.
         self.next_token = next_token
+        # The list of quota configurations.
         self.quotas = quotas
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

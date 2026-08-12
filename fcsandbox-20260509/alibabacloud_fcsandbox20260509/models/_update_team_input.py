@@ -8,11 +8,16 @@ class UpdateTeamInput(DaraModel):
     def __init__(
         self,
         description: str = None,
+        plan: str = None,
         resource_group_id: str = None,
         team_name: str = None,
     ):
+        # The description.
         self.description = description
+        self.plan = plan
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The team name.
         self.team_name = team_name
 
     def validate(self):
@@ -26,6 +31,9 @@ class UpdateTeamInput(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.plan is not None:
+            result['plan'] = self.plan
+
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
 
@@ -38,6 +46,9 @@ class UpdateTeamInput(DaraModel):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('plan') is not None:
+            self.plan = m.get('plan')
 
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')

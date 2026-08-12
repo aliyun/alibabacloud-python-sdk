@@ -10,7 +10,9 @@ class ListQuotaRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token obtained from the previous response.
         self.next_token = next_token
 
     def validate(self):

@@ -18,12 +18,19 @@ class ListTeamsResponseBody(DaraModel):
         teams: List[main_models.E2BTeam] = None,
         total: int = None,
     ):
+        # The error code.
         self.code = code
+        # The response message.
         self.message = message
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
         self.page_size = page_size
+        # Id of the request
         self.request_id = request_id
+        # The list of teams.
         self.teams = teams
+        # The total number of entries.
         self.total = total
 
     def validate(self):
