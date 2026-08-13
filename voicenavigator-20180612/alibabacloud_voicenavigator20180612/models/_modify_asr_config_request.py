@@ -27,7 +27,7 @@ class ModifyAsrConfigRequest(DaraModel):
         # The dataset ID.
         self.asr_customization_id = asr_customization_id
         self.asr_overrides = asr_overrides
-        # The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+        # The hotword ID. View the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
         self.asr_vocabulary_id = asr_vocabulary_id
         # The policy level. Valid values:
         # 
@@ -35,6 +35,7 @@ class ModifyAsrConfigRequest(DaraModel):
         # - 1: tenant.
         # - 2: instance.
         self.config_level = config_level
+        # The TTS engine.
         self.engine = engine
         # The entity ID corresponding to config_level.
         self.entry_id = entry_id

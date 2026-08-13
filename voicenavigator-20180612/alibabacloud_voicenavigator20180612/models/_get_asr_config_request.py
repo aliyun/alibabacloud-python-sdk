@@ -11,10 +11,9 @@ class GetAsrConfigRequest(DaraModel):
         entry_id: str = None,
     ):
         # The policy level. Valid values:
-        # 
-        # - 0: system
-        # - 1: tenant
-        # - 2: instance
+        # - 0: system.
+        # - 1: tenant.
+        # - 2: instance.
         self.config_level = config_level
         # The entity ID corresponding to config_level.
         self.entry_id = entry_id

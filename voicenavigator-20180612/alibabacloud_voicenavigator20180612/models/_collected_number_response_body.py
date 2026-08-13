@@ -13,15 +13,15 @@ class CollectedNumberResponseBody(DaraModel):
         request_id: str = None,
         text_response: str = None,
     ):
-        # Specifies the next action to perform.
+        # The action.
         self.action = action
-        # The parameters for the action.
+        # The action parameters.
         self.action_params = action_params
-        # Indicates whether the IVR playback can be interrupted.
+        # Indicates whether the IVR announcement can be interrupted.
         self.interruptible = interruptible
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The text to play back to the user.
+        # The announcement text.
         self.text_response = text_response
 
     def validate(self):

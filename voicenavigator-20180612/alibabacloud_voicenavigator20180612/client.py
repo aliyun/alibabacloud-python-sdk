@@ -22,8 +22,8 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-shanghai': 'voicenavigator.cn-shanghai.aliyuncs.com',
-            'cn-hangzhou': 'voicenavigator.cn-hangzhou.aliyuncs.com'
+            'cn-hangzhou': 'voicenavigator.cn-hangzhou.aliyuncs.com',
+            'cn-shanghai': 'voicenavigator.cn-shanghai.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('voicenavigator', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1364,7 +1364,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DescribeTTSConfigResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_owner_id):
+            query['InstanceOwnerId'] = request.instance_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1373,7 +1377,7 @@ class Client(OpenApiClient):
             version = '2018-06-12',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -1390,7 +1394,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DescribeTTSConfigResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_owner_id):
+            query['InstanceOwnerId'] = request.instance_owner_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1399,7 +1407,7 @@ class Client(OpenApiClient):
             version = '2018-06-12',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -2797,6 +2805,8 @@ class Client(OpenApiClient):
             query['AliCustomizedVoice'] = request.ali_customized_voice
         if not DaraCore.is_null(request.app_key):
             query['AppKey'] = request.app_key
+        if not DaraCore.is_null(request.background_music_name):
+            query['BackgroundMusicName'] = request.background_music_name
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
         if not DaraCore.is_null(request.engine_xunfei):
@@ -2847,6 +2857,8 @@ class Client(OpenApiClient):
             query['AliCustomizedVoice'] = request.ali_customized_voice
         if not DaraCore.is_null(request.app_key):
             query['AppKey'] = request.app_key
+        if not DaraCore.is_null(request.background_music_name):
+            query['BackgroundMusicName'] = request.background_music_name
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
         if not DaraCore.is_null(request.engine_xunfei):

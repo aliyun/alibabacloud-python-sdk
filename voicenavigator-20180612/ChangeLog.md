@@ -1,3 +1,8 @@
+2026-08-13 Version: 2.0.4
+- Update API DescribeTTSConfig: add response parameters Body.BackgroundMusicName.
+- Update API ModifyTTSConfig: add request parameters BackgroundMusicName.
+
+
 2026-07-13 Version: 2.0.3
 - Update API ExportConversationDetails: add request parameters AbTestId.
 - Update API ListConversations: add request parameters AbTestId.

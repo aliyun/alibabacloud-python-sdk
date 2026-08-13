@@ -227,7 +227,7 @@ class ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles(DaraModel)
     ):
         # The file ID.
         self.file_id = file_id
-        # The completion progress of the download task.
+        # The download task completion progress.
         self.progress = progress
         # The status.
         self.status = status

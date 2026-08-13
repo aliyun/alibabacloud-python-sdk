@@ -9,6 +9,7 @@ class DescribeTTSConfigResponseBody(DaraModel):
         self,
         ali_customized_voice: str = None,
         app_key: str = None,
+        background_music_name: str = None,
         engine: str = None,
         engine_xunfei: str = None,
         ext_params: str = None,
@@ -20,10 +21,11 @@ class DescribeTTSConfigResponseBody(DaraModel):
         voice: str = None,
         volume: int = None,
     ):
-        # The custom voice ID.
+        # The personalized custom voice ID.
         self.ali_customized_voice = ali_customized_voice
         # The AppKey of the third-party voice configuration.
         self.app_key = app_key
+        self.background_music_name = background_music_name
         # The TTS engine.
         self.engine = engine
         # The iFLYTEK engine parameters.
@@ -37,7 +39,7 @@ class DescribeTTSConfigResponseBody(DaraModel):
         self.request_id = request_id
         # The speech rate.
         self.speech_rate = speech_rate
-        # The TTS error correction dictionary.
+        # The TTS correction dictionary.
         self.tts_overrides = tts_overrides
         # The voice.
         self.voice = voice
@@ -57,6 +59,9 @@ class DescribeTTSConfigResponseBody(DaraModel):
 
         if self.app_key is not None:
             result['AppKey'] = self.app_key
+
+        if self.background_music_name is not None:
+            result['BackgroundMusicName'] = self.background_music_name
 
         if self.engine is not None:
             result['Engine'] = self.engine
@@ -97,6 +102,9 @@ class DescribeTTSConfigResponseBody(DaraModel):
 
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+
+        if m.get('BackgroundMusicName') is not None:
+            self.background_music_name = m.get('BackgroundMusicName')
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
