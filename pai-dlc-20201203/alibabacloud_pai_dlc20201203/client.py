@@ -66,24 +66,24 @@ class Client(OpenApiClient):
             'eu-west-1-oxs': 'pai-dlc.aliyuncs.com',
             'me-east-1': 'pai-dlc.aliyuncs.com',
             'rus-west-1-pop': 'pai-dlc.aliyuncs.com',
-            'us-west-1': 'pai-dlc.us-west-1.aliyuncs.com',
-            'us-southeast-1': 'pai-dlc.us-southeast-1.aliyuncs.com',
-            'us-east-1': 'pai-dlc.us-east-1.aliyuncs.com',
-            'eu-central-1': 'pai-dlc.eu-central-1.aliyuncs.com',
             'cn-wulanchabu': 'pai-dlc.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'pai-dlc.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'pai-dlc.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-beijing': 'pai-dlc.cn-beijing.aliyuncs.com',
             'cn-shanghai': 'pai-dlc.cn-shanghai.aliyuncs.com',
             'cn-hongkong': 'pai-dlc.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'pai-dlc.cn-hangzhou.aliyuncs.com',
+            'cn-shenzhen': 'pai-dlc.cn-shenzhen.aliyuncs.com',
+            'ap-northeast-1': 'pai-dlc.ap-northeast-1.aliyuncs.com',
             'cn-guangzhou': 'pai-dlc.cn-guangzhou.aliyuncs.com',
-            'cn-beijing': 'pai-dlc.cn-beijing.aliyuncs.com',
-            'ap-southeast-8': 'pai-dlc.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'pai-dlc.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-5': 'pai-dlc.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'pai-dlc.ap-southeast-3.aliyuncs.com',
             'ap-southeast-1': 'pai-dlc.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'pai-dlc.ap-northeast-1.aliyuncs.com'
+            'ap-southeast-3': 'pai-dlc.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'pai-dlc.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-7': 'pai-dlc.ap-southeast-7.aliyuncs.com',
+            'cn-hangzhou': 'pai-dlc.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-8': 'pai-dlc.ap-southeast-8.aliyuncs.com',
+            'us-east-1': 'pai-dlc.us-east-1.aliyuncs.com',
+            'us-southeast-1': 'pai-dlc.us-southeast-1.aliyuncs.com',
+            'us-west-1': 'pai-dlc.us-west-1.aliyuncs.com',
+            'eu-central-1': 'pai-dlc.eu-central-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'pai-dlc.cn-shanghai-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('pai-dlc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -3759,6 +3759,194 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.stop_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: main_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            body['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/tags',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: main_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            body['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/tags',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.tag_resources_with_options(request, headers, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.tag_resources_with_options_async(request, headers, runtime)
+
+    def untag_resources_with_options(
+        self,
+        tmp_req: main_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.UntagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_id):
+            request.resource_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_id, 'ResourceId', 'json')
+        if not DaraCore.is_null(tmp_req.tag_key):
+            request.tag_key_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_key, 'TagKey', 'json')
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['All'] = request.all
+        if not DaraCore.is_null(request.resource_id_shrink):
+            query['ResourceId'] = request.resource_id_shrink
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key_shrink):
+            query['TagKey'] = request.tag_key_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/tags',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        tmp_req: main_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.UntagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_id):
+            request.resource_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_id, 'ResourceId', 'json')
+        if not DaraCore.is_null(tmp_req.tag_key):
+            request.tag_key_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_key, 'TagKey', 'json')
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['All'] = request.all
+        if not DaraCore.is_null(request.resource_id_shrink):
+            query['ResourceId'] = request.resource_id_shrink
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key_shrink):
+            query['TagKey'] = request.tag_key_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/tags',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.untag_resources_with_options(request, headers, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_job_with_options(
         self,

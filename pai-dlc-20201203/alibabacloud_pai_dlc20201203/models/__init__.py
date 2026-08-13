@@ -186,6 +186,13 @@ from ._stop_ray_history_server_response import StopRayHistoryServerResponse
 from ._stop_tensorboard_request import StopTensorboardRequest
 from ._stop_tensorboard_response_body import StopTensorboardResponseBody
 from ._stop_tensorboard_response import StopTensorboardResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_shrink_request import UntagResourcesShrinkRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
 from ._update_job_request import UpdateJobRequest
 from ._update_job_response_body import UpdateJobResponseBody
 from ._update_job_response import UpdateJobResponse
@@ -218,6 +225,7 @@ from ._get_job_template_response_body import GetJobTemplateResponseBodyVersions
 from ._list_job_templates_response_body import ListJobTemplatesResponseBodyJobTemplates
 from ._list_ray_history_servers_response_body import ListRayHistoryServersResponseBodyRayHistoryServers
 from ._list_signals_response_body import ListSignalsResponseBodySignals
+from ._tag_resources_request import TagResourcesRequestTag
 
 __all__ = [
     AIMasterMessage,
@@ -404,6 +412,13 @@ __all__ = [
     StopTensorboardRequest,
     StopTensorboardResponseBody,
     StopTensorboardResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesShrinkRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
     UpdateJobRequest,
     UpdateJobResponseBody,
     UpdateJobResponse,
@@ -435,5 +450,6 @@ __all__ = [
     GetJobTemplateResponseBodyVersions,
     ListJobTemplatesResponseBodyJobTemplates,
     ListRayHistoryServersResponseBodyRayHistoryServers,
-    ListSignalsResponseBodySignals
+    ListSignalsResponseBodySignals,
+    TagResourcesRequestTag
 ]

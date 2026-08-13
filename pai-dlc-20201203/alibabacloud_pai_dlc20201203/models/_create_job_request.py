@@ -38,8 +38,6 @@ class CreateJobRequest(DaraModel):
         workspace_id: str = None,
     ):
         # The visibility of the job. Valid values:
-        # - PUBLIC: visible to all members in this workspace.
-        # - PRIVATE: visible only to you and administrators in this workspace.
         self.accessibility = accessibility
         # The code source used by this job. Before the job nodes start, DLC automatically downloads the code configured in the code source and mounts it to a local directory in the container.
         self.code_source = code_source
@@ -48,57 +46,37 @@ class CreateJobRequest(DaraModel):
         self.custom_envs = custom_envs
         # The list of data sources used by the job.
         self.data_sources = data_sources
-        # This parameter is not supported. Ignore this parameter.
+        # This parameter is not currently supported. Ignore this parameter.
         self.debugger_config_content = debugger_config_content
         self.description = description
-        # The name of the job. The naming conventions are as follows:
-        # - The name cannot exceed 256 characters in length.
-        # - The name can contain digits, letters, underscores (_), periods (.), and hyphens (-).
+        # The name of the job. The naming format is as follows:
         # 
         # This parameter is required.
         self.display_name = display_name
-        # This parameter is not supported. Ignore this parameter.
+        # This parameter is not currently supported. Ignore this parameter.
         self.elastic_spec = elastic_spec
         # The environment variable configuration.
         self.envs = envs
-        # The maximum running time of the job. Unit: minutes.
+        # The maximum running duration of the job, in minutes.
         self.job_max_running_time_minutes = job_max_running_time_minutes
-        # **JobSpecs** describes various configurations for job runtime, such as image address, startup command, node resource declarations, and replica count.
-        # 
-        # A DLC job consists of different types of nodes. Nodes of the same type share identical configurations, which is called a JobSpec. **JobSpecs** describes the configurations of all node types and is an array of JobSpec objects.
+        # **JobSpecs** describes various configurations for job runtime, such as image address, startup command, node resource declarations, and number of replicas.
         # 
         # This parameter is required.
         self.job_specs = job_specs
-        # The job type. This parameter is case-sensitive. Valid values:
-        # - TFJob
-        # - PyTorchJob
-        # - MPIJob
-        # - XGBoostJob
-        # - OneFlowJob
-        # - ElasticBatchJob
-        # - SlurmJob
-        # - RayJob
-        # - DataJuicerJob
+        # The job type. This parameter is case-sensitive. Currently supported job types:
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The additional configuration for this node. You can use this parameter to adjust the behavior of mounted data sources. For example, if the node has an OSS-type data source mounted, you can set this parameter to `fs.oss.download.thread.concurrency=4,fs.oss.download.queue.size=16` to overwrite the default JindoFS parameter settings.
+        # The additional configuration for this node. You can use this parameter to adjust certain behaviors of mounted data sources. For example, if the node has an OSS-type data source mounted, you can set this parameter to `fs.oss.download.thread.concurrency=4,fs.oss.download.queue.size=16` to overwrite the default JindoFS parameter settings.
         self.options = options
-        # The priority of the job. This is an optional parameter. Default value: 1. Valid values: 1 to 9.
-        # 
-        # - 1: the lowest priority.
-        # - 9: the highest priority.
+        # The priority of the job. This is an optional parameter. The default value is 1. Valid values: 1 to 9. Specifically:
         self.priority = priority
         # The resource group ID. This is an optional parameter.
-        # - If the value is empty, the job is submitted to the public resource group.
-        # - If the current workspace has a resource quota attached, you can specify the corresponding resource quota ID. For details about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
         self.scheduling_strategy = scheduling_strategy
         # The additional parameter settings for the job.
         self.settings = settings
-        # The success policy for distributed multi-node jobs. Currently, only TensorFlow multi-node jobs support this parameter.
-        # - ChiefWorker: the entire job is considered successful as long as the Chief pod finishes successfully.
-        # - AllWorkers (default): the entire job is considered successful only when all Workers finish successfully.
+        # The success policy for distributed multi-node jobs. Currently only TensorFlow multi-node jobs support this parameter.
         self.success_policy = success_policy
         # The job template ID.
         self.template_id = template_id
@@ -337,19 +315,13 @@ class CreateJobRequestUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The default routing. Valid values:
-        # - eth0: uses the default network interface controller (NIC) to access external networks through the public gateway.
-        # - eth1: uses the user elastic network interfaces (ENIs) to access external networks through the private gateway. For the configuration method, see [Configure a DSW instance to access the Internet through a dedicated public gateway](https://help.aliyun.com/document_detail/2525343.html).
+        # The default route. Valid values:
         self.default_route = default_route
         # The extended CIDR blocks.
-        # - If the vSwitch ID is empty, this parameter is optional. The system automatically retrieves all CIDR blocks under the VPC.
-        # - If the vSwitch ID is specified, this parameter is required. Specify all CIDR blocks under the VPC.
         self.extended_cidrs = extended_cidrs
         # The ID of the user security group.
         self.security_group_id = security_group_id
         # The ID of the user vSwitch. This is an optional parameter.
-        # - If the value is empty, the system automatically selects an appropriate vSwitch based on inventory availability.
-        # - You can also specify a vSwitch ID.
         self.switch_id = switch_id
         # The ID of the user VPC.
         self.vpc_id = vpc_id
@@ -412,14 +384,14 @@ class CreateJobRequestDataSources(DaraModel):
         uri: str = None,
     ):
         self.access_point_id = access_point_id
-        # The ID of the data source. <props="china">For information about how to obtain the data source ID, see [ListDatasets](https://help.aliyun.com/document_detail/457222.html).
+        # The ID of the data source. <props="china">For information about how to view the data source ID, see [ListDatasets](https://help.aliyun.com/document_detail/457222.html).
         self.data_source_id = data_source_id
         self.data_source_version = data_source_version
         self.enable_cache = enable_cache
         self.mount_access = mount_access
         # The mount path for this job. This is an optional parameter. By default, the mount path configured in the data source is used.
         self.mount_path = mount_path
-        # Custom dataset mount properties. Currently, only OSS is supported.
+        # Custom dataset mount properties. Currently only OSS is supported.
         self.options = options
         self.role_chain = role_chain
         # The data source path.

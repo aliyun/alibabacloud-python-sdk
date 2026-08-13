@@ -77,11 +77,11 @@ class GetJobResponseBody(DaraModel):
         self.duration = duration
         # The elastic job parameters.
         self.elastic_spec = elastic_spec
-        # Specifies whether the debugger task is enabled.
+        # Specifies whether the debugger job is enabled.
         self.enabled_debugger = enabled_debugger
         # The environment variable configuration.
         self.envs = envs
-        # The job creation time (UTC).
+        # The time when the job was created (UTC).
         self.gmt_create_time = gmt_create_time
         # The time when the job failed (UTC).
         self.gmt_failed_time = gmt_failed_time
@@ -107,9 +107,9 @@ class GetJobResponseBody(DaraModel):
         self.pods = pods
         # The priority of the job. Valid values: 1 to 9.
         self.priority = priority
-        # The status detail code, which is a classification of the sub-status under the current status (Status).
+        # The status detail code, which categorizes the sub-status under the current status (Status).
         self.reason_code = reason_code
-        # The detailed description of the status detail.
+        # The detailed description of the status.
         self.reason_message = reason_message
         # The request ID, used for diagnostics and troubleshooting.
         self.request_id = request_id
@@ -121,7 +121,7 @@ class GetJobResponseBody(DaraModel):
         self.resource_type = resource_type
         # The job restart records.
         self.restart_record = restart_record
-        # The used retry count and maximum retry count for the job.
+        # The number of restarts used and the maximum number of restarts for the job.
         self.restart_times = restart_times
         self.role_system_envs = role_system_envs
         self.scheduling_strategy = scheduling_strategy
@@ -131,7 +131,7 @@ class GetJobResponseBody(DaraModel):
         self.status = status
         # The status history.
         self.status_history = status_history
-        # The job substatus, such as preemption retry status.
+        # The job sub-status, such as preemption retry status.
         self.sub_status = sub_status
         # The tenant ID.
         self.tenant_id = tenant_id
@@ -837,7 +837,7 @@ class GetJobResponseBodyPods(DaraModel):
         self.gmt_finish_time = gmt_finish_time
         # The pod start time (UTC).
         self.gmt_start_time = gmt_start_time
-        # The history pods.
+        # The historical pods.
         self.history_pods = history_pods
         # The network IP address of the pod.
         self.ip = ip
@@ -853,9 +853,9 @@ class GetJobResponseBodyPods(DaraModel):
         self.resource_type = resource_type
         # The pod status. Valid values:
         self.status = status
-        # The pod substatus, such as preemption status. Valid values:
+        # The pod sub-status, such as preemption status. Valid values:
         self.sub_status = sub_status
-        # The pod type, which corresponds to a JobSpec in JobSpecs of CreateJob.
+        # The pod type, which corresponds to a JobSpec in the JobSpecs parameter of CreateJob.
         self.type = type
         self.supported_profiling_types = supported_profiling_types
 
@@ -1020,7 +1020,7 @@ class GetJobResponseBodyPodsHistoryPods(DaraModel):
         self.resource_type = resource_type
         # The pod status.
         self.status = status
-        # The pod substatus, such as preemption status. Valid values:
+        # The pod sub-status, such as preemption status. Valid values:
         self.sub_status = sub_status
         # The pod type.
         self.type = type
@@ -1141,7 +1141,7 @@ class GetJobResponseBodyDataSources(DaraModel):
     ):
         # The data source ID.
         self.data_source_id = data_source_id
-        # The local mount path. This is an optional parameter. The default value is empty, which indicates that the mount path in the data source is used.
+        # The local mount path. This is an optional parameter. If left empty, the mount path specified in the data source is used.
         self.mount_path = mount_path
         # The data source path.
         self.uri = uri

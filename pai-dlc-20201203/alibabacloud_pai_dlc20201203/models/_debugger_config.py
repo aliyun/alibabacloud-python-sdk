@@ -14,11 +14,17 @@ class DebuggerConfig(DaraModel):
         gmt_create_time: str = None,
         gmt_modify_time: str = None,
     ):
+        # The configuration item details in JSON format.
         self.content = content
+        # The system-generated unique ID of the debug config.
         self.debugger_config_id = debugger_config_id
+        # The description of the configuration item.
         self.description = description
+        # The name of the template configuration item.
         self.display_name = display_name
+        # The creation time in UTC.
         self.gmt_create_time = gmt_create_time
+        # The modification time in UTC.
         self.gmt_modify_time = gmt_modify_time
 
     def validate(self):

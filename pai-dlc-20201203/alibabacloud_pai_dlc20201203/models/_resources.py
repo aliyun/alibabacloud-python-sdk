@@ -11,8 +11,11 @@ class Resources(DaraModel):
         gpu: str = None,
         memory: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The number of GPU cards.
         self.gpu = gpu
+        # The memory size.
         self.memory = memory
 
     def validate(self):

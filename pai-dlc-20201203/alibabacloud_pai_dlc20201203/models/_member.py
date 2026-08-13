@@ -10,7 +10,9 @@ class Member(DaraModel):
         member_id: str = None,
         member_type: str = None,
     ):
+        # The member ID.
         self.member_id = member_id
+        # The member role.
         self.member_type = member_type
 
     def validate(self):

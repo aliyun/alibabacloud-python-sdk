@@ -4,15 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateJobResponseBody(DaraModel):
+class TagResourcesResponseBody(DaraModel):
     def __init__(
         self,
-        job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the job created by this call.
-        self.job_id = job_id
-        # The ID of the request, which is used for diagnostics and troubleshooting.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -23,9 +20,6 @@ class CreateJobResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -33,9 +27,6 @@ class CreateJobResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 

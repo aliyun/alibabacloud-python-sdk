@@ -24,21 +24,37 @@ class SmartCache(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
+        # The number of cache workers.
         self.cache_worker_num = cache_worker_num
+        # The cache size per cache worker. Unit: GB.
         self.cache_worker_size = cache_worker_size
+        # The SmartCache description.
         self.description = description
+        # The SmartCache name.
         self.display_name = display_name
+        # The running duration.
         self.duration = duration
+        # OSS Endpoint
         self.endpoint = endpoint
+        # The Alibaba Cloud NAS file system ID.
         self.file_system_id = file_system_id
+        # The creation time in UTC.
         self.gmt_create_time = gmt_create_time
+        # The modification time in UTC.
         self.gmt_modify_time = gmt_modify_time
+        # The local mount directory of the data source.
         self.mount_path = mount_path
+        # The optional hyperparameters.
         self.options = options
+        # The OSS data source path.
         self.path = path
+        # SmartCacheId
         self.smart_cache_id = smart_cache_id
+        # The running status.
         self.status = status
+        # The mounted data type.
         self.type = type
+        # The creator ID.
         self.user_id = user_id
 
     def validate(self):
