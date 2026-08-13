@@ -17,9 +17,9 @@ class ListBranchesRequest(DaraModel):
         sort_by: str = None,
         sort_order: str = None,
     ):
-        # The maximum number of records to return in this request.
+        # The maximum number of records to return in this query.
         self.max_results = max_results
-        # The cursor for the paged query. You do not need to specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response for paging.
+        # The cursor for paging query. You do not need to specify this parameter for the first query. For subsequent queries, use the NextToken value returned in the previous response.
         self.next_token = next_token
         # The page number. The value must be greater than 0. Default value: 1.
         self.page_number = page_number
@@ -33,13 +33,13 @@ class ListBranchesRequest(DaraModel):
         # 
         # Default value: 20.
         self.page_size = page_size
-        # The parent branch ID. This parameter specifies the parent branch for a new branch or a query filter.
+        # The parent branch ID. Specifies the parent branch for a new branch or as a query filter condition.
         self.parent_branch_id = parent_branch_id
         # The region ID. This parameter is required when you create a primary branch. When you create a sub-branch, the region is inherited from the primary branch by default.
         self.region_id = region_id
-        # The search keyword. Fuzzy search by branch ID or branch name is supported.
+        # The search keyword. Supports fuzzy search by branch ID or branch name.
         self.search = search
-        # The field by which to sort the results.
+        # The sort field.
         # 
         # Valid values:
         # - BranchName: sorts by branch name.
@@ -48,7 +48,7 @@ class ListBranchesRequest(DaraModel):
         # 
         # Default value: CreateTime.
         self.sort_by = sort_by
-        # The sort order.
+        # The sort direction.
         # 
         # Valid values:
         # - Asc: ascending order.

@@ -33,33 +33,66 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-beijing': 'gpdb.aliyuncs.com',
             'cn-hangzhou': 'gpdb.aliyuncs.com',
-            'cn-shanghai': 'gpdb.aliyuncs.com',
-            'cn-shenzhen': 'gpdb.aliyuncs.com',
-            'cn-hongkong': 'gpdb.aliyuncs.com',
-            'ap-southeast-1': 'gpdb.aliyuncs.com',
-            'us-west-1': 'gpdb.aliyuncs.com',
-            'us-east-1': 'gpdb.aliyuncs.com',
             'cn-hangzhou-finance': 'gpdb.aliyuncs.com',
-            'cn-shanghai-finance-1': 'gpdb.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'gpdb.aliyuncs.com',
-            'cn-qingdao': 'gpdb.aliyuncs.com',
-            'cn-north-2-gov-1': 'gpdb.aliyuncs.com',
+            'ap-northeast-2-pop': 'gpdb.aliyuncs.com',
+            'ap-south-1': 'gpdb.aliyuncs.com',
+            'ap-southeast-2': 'gpdb.aliyuncs.com',
+            'cn-beijing-finance-1': 'gpdb.aliyuncs.com',
+            'cn-beijing-finance-pop': 'gpdb.aliyuncs.com',
+            'cn-beijing-gov-1': 'gpdb.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'gpdb.aliyuncs.com',
+            'cn-edge-1': 'gpdb.aliyuncs.com',
+            'cn-fujian': 'gpdb.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'gpdb.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'gpdb.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'gpdb.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'gpdb.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'gpdb.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'gpdb.aliyuncs.com',
+            'cn-hangzhou-test-306': 'gpdb.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'gpdb.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'gpdb.aliyuncs.com',
+            'cn-qingdao-nebula': 'gpdb.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'gpdb.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'gpdb.aliyuncs.com',
+            'cn-shanghai-inner': 'gpdb.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'gpdb.aliyuncs.com',
+            'cn-shenzhen-inner': 'gpdb.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'gpdb.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'gpdb.aliyuncs.com',
+            'cn-wuhan': 'gpdb.aliyuncs.com',
+            'cn-yushanfang': 'gpdb.aliyuncs.com',
+            'cn-zhangbei': 'gpdb.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'gpdb.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'gpdb.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'gpdb.aliyuncs.com',
+            'eu-west-1-oxs': 'gpdb.aliyuncs.com',
+            'rus-west-1-pop': 'gpdb.aliyuncs.com',
+            'cn-wulanchabu': 'gpdb.cn-wulanchabu.aliyuncs.com',
+            'cn-beijing': 'gpdb.cn-beijing.aliyuncs.com',
+            'cn-qingdao': 'gpdb.cn-qingdao.aliyuncs.com',
+            'cn-shanghai': 'gpdb.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'gpdb.cn-hongkong.aliyuncs.com',
+            'cn-zhangjiakou': 'gpdb.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'gpdb.cn-shenzhen.aliyuncs.com',
+            'ap-northeast-2': 'gpdb.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'gpdb.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'gpdb.cn-chengdu.aliyuncs.com',
+            'ap-southeast-1': 'gpdb.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'gpdb.ap-southeast-3.aliyuncs.com',
+            'cn-huhehaote': 'gpdb.cn-huhehaote.aliyuncs.com',
+            'ap-southeast-5': 'gpdb.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-7': 'gpdb.ap-southeast-7.aliyuncs.com',
+            'us-east-1': 'gpdb.us-east-1.aliyuncs.com',
+            'eu-west-1': 'gpdb.eu-west-1.aliyuncs.com',
+            'us-west-1': 'gpdb.us-west-1.aliyuncs.com',
+            'eu-central-1': 'gpdb.eu-central-1.aliyuncs.com',
             'me-east-1': 'gpdb.me-east-1.aliyuncs.com',
             'me-central-1': 'gpdb.me-central-1.aliyuncs.com',
-            'eu-west-1': 'gpdb.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'gpdb.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'gpdb.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'gpdb.cn-wulanchabu.aliyuncs.com',
-            'cn-huhehaote': 'gpdb.cn-huhehaote.aliyuncs.com',
-            'cn-chengdu': 'gpdb.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'gpdb.cn-beijing-finance-1.aliyuncs.com',
-            'ap-southeast-7': 'gpdb.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-5': 'gpdb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'gpdb.ap-southeast-3.aliyuncs.com',
-            'ap-northeast-2': 'gpdb.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'gpdb.ap-northeast-1.aliyuncs.com'
+            'cn-shenzhen-finance-1': 'gpdb.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'gpdb.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-north-2-gov-1': 'gpdb.cn-north-2-gov-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('gpdb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -4725,6 +4758,8 @@ class Client(OpenApiClient):
             query['DiskPerformanceLevel'] = request.disk_performance_level
         if not DaraCore.is_null(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.lightweight):
+            query['Lightweight'] = request.lightweight
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -4785,6 +4820,8 @@ class Client(OpenApiClient):
             query['DiskPerformanceLevel'] = request.disk_performance_level
         if not DaraCore.is_null(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.lightweight):
+            query['Lightweight'] = request.lightweight
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):

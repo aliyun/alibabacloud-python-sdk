@@ -15,6 +15,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         client_token: str = None,
         disk_performance_level: str = None,
         engine_version: str = None,
+        lightweight: bool = None,
         pay_type: str = None,
         period: str = None,
         project_name: str = None,
@@ -58,6 +59,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         # - PG15: PostgreSQL 15.
         # - PG17: PostgreSQL 17, which supports the data sandbox feature.
         self.engine_version = engine_version
+        self.lightweight = lightweight
         # The billing method. If this parameter is not specified, the default value Free is used.
         # 
         # Valid values:
@@ -137,6 +139,9 @@ class CreateSupabaseProjectRequest(DaraModel):
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
 
+        if self.lightweight is not None:
+            result['Lightweight'] = self.lightweight
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -193,6 +198,9 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+
+        if m.get('Lightweight') is not None:
+            self.lightweight = m.get('Lightweight')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')

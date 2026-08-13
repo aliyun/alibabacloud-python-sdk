@@ -19,9 +19,9 @@ class ListBranchesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.branches = branches
-        # The maximum number of records to return in this request.
+        # The maximum number of records to return in this query.
         self.max_results = max_results
-        # The cursor for the paged query. You do not need to specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response for paging.
+        # The cursor for paging query. You do not need to specify this parameter for the first query. For subsequent queries, use the NextToken value returned in the previous response.
         self.next_token = next_token
         # The page number. The value must be greater than 0. Default value: 1.
         self.page_number = page_number
@@ -37,7 +37,7 @@ class ListBranchesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of branches that match the query criteria.
+        # The total number of branches that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -150,6 +150,7 @@ class ListBranchesResponseBodyBranchesBranch(DaraModel):
         project_id: str = None,
         protected: bool = None,
         service_type: str = None,
+        spb_project_id: str = None,
         status: str = None,
         tags: main_models.ListBranchesResponseBodyBranchesBranchTags = None,
     ):
@@ -167,6 +168,7 @@ class ListBranchesResponseBodyBranchesBranch(DaraModel):
         self.project_id = project_id
         self.protected = protected
         self.service_type = service_type
+        self.spb_project_id = spb_project_id
         self.status = status
         self.tags = tags
 
@@ -221,6 +223,9 @@ class ListBranchesResponseBodyBranchesBranch(DaraModel):
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
 
+        if self.spb_project_id is not None:
+            result['SpbProjectId'] = self.spb_project_id
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -272,6 +277,9 @@ class ListBranchesResponseBodyBranchesBranch(DaraModel):
 
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+
+        if m.get('SpbProjectId') is not None:
+            self.spb_project_id = m.get('SpbProjectId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

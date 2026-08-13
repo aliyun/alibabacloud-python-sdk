@@ -64,6 +64,7 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         project_id: str = None,
         protected: bool = None,
         service_type: str = None,
+        spb_project_id: str = None,
         status: str = None,
         tags: List[main_models.DescribeBranchResponseBodyBranchTags] = None,
     ):
@@ -77,7 +78,7 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         self.create_time = create_time
         # The branch description.
         self.description = description
-        # The time when the branch automatically expires and is deleted, in ISO 8601 UTC format.
+        # The time when the branch expires and is automatically deleted, in ISO 8601 UTC format.
         self.expires_at = expires_at
         # The initialization source of the branch.
         # 
@@ -85,9 +86,9 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         # - ParentData: Copies the schema and data from the parent branch. This is the default value.
         # - SchemaOnly: Copies only the schema structure.
         self.init_source = init_source
-        # Indicates whether the branch is the default branch.
+        # Indicates whether this is the default branch.
         self.is_default = is_default
-        # The parent branch ID, which specifies the parent branch for a new branch or a query condition.
+        # The parent branch ID, which specifies the parent branch of a new branch or a query condition.
         self.parent_branch_id = parent_branch_id
         # The parent branch name. This value is empty or displayed as - for the primary branch.
         self.parent_branch_name = parent_branch_name
@@ -95,11 +96,11 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         self.parent_lsn = parent_lsn
         # The data synchronization point in time selected from the parent branch when this branch was created, in ISO 8601 UTC format.
         # 
-        # Note:
+        # Description:
         # - For child branches, this value indicates the point in time of the parent branch selected during creation.
         # - If no parent branch exists, the value 1970-01-01T00:00:00.000Z is returned.
         self.parent_timestamp = parent_timestamp
-        # The Supabase project ID associated with the primary branch.
+        # The Supabase project ID that corresponds to the primary branch.
         self.project_id = project_id
         # Indicates whether branch protection is enabled. A value of true indicates that branch protection is enabled. A value of false indicates that branch protection is disabled.
         self.protected = protected
@@ -109,9 +110,11 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         # - Supabase: Supabase service.
         # - Memory: Memory service.
         self.service_type = service_type
+        # The Supabase project ID that corresponds to the current branch.
+        self.spb_project_id = spb_project_id
         # The branch status.
         self.status = status
-        # The branch tag list.
+        # The list of branch tags.
         self.tags = tags
 
     def validate(self):
@@ -170,6 +173,9 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
 
+        if self.spb_project_id is not None:
+            result['SpbProjectId'] = self.spb_project_id
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -226,6 +232,9 @@ class DescribeBranchResponseBodyBranch(DaraModel):
 
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+
+        if m.get('SpbProjectId') is not None:
+            self.spb_project_id = m.get('SpbProjectId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

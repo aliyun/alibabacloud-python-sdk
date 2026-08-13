@@ -1,3 +1,8 @@
+2026-08-13 Version: 5.10.2
+- Update API CreateSupabaseProject: add request parameters Lightweight.
+- Update API GetSupabaseProject: add response parameters Body.Lightweight.
+
+
 2026-08-04 Version: 5.10.0
 - Support API CheckSaasServiceVersion.
 - Support API GetApiEndpoints.

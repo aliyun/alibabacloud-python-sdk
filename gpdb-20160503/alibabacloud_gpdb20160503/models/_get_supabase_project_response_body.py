@@ -17,6 +17,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
         engine_version: str = None,
         eni: str = None,
         instance_version: str = None,
+        lightweight: str = None,
         pay_type: str = None,
         private_connect_url: str = None,
         project_description: str = None,
@@ -63,6 +64,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
         self.eni = eni
         # The current instance version.
         self.instance_version = instance_version
+        self.lightweight = lightweight
         # The billing method. Valid values:
         # 
         # - `POSTPAY`: pay-as-you-go
@@ -154,6 +156,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
         if self.instance_version is not None:
             result['InstanceVersion'] = self.instance_version
 
+        if self.lightweight is not None:
+            result['Lightweight'] = self.lightweight
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -235,6 +240,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
 
         if m.get('InstanceVersion') is not None:
             self.instance_version = m.get('InstanceVersion')
+
+        if m.get('Lightweight') is not None:
+            self.lightweight = m.get('Lightweight')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
