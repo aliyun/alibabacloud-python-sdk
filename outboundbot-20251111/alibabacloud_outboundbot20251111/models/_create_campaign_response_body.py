@@ -6,7 +6,7 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class UpdateScriptVersionResponseBody(DaraModel):
+class CreateCampaignResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
@@ -17,19 +17,19 @@ class UpdateScriptVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code.
+        # The status code of the operation.
         self.code = code
-        # The scenario version ID.
+        # The returned data, which is the task ID.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The message returned by the operation.
         self.message = message
-        # The list of variable values in the error message.
+        # The variable values in the error message.
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

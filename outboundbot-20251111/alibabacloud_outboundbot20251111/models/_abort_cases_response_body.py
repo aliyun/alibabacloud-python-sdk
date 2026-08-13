@@ -6,11 +6,11 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class UpdateScriptVersionResponseBody(DaraModel):
+class AbortCasesResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: str = None,
+        data: bool = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
@@ -19,17 +19,17 @@ class UpdateScriptVersionResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The scenario version ID.
+        # The returned data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The message returned by the operation.
         self.message = message
-        # The list of variable values in the error message.
+        # The variable values in the error message.
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

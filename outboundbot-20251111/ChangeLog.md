@@ -1,3 +1,15 @@
+2026-08-13 Version: 1.4.0
+- Support API AbortCampaign.
+- Support API AbortCases.
+- Support API AppendCases.
+- Support API CreateCampaign.
+- Support API GetCampaign.
+- Support API ListCampaigns.
+- Support API PauseCampaign.
+- Support API ResumeCampaign.
+- Support API SubmitCampaign.
+
+
 2026-08-11 Version: 1.3.0
 - Support API UpdateScriptVersion.
 

@@ -6,30 +6,27 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class UpdateScriptVersionResponseBody(DaraModel):
+class AppendCasesResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: str = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code.
+        # The response code.
         self.code = code
-        # The scenario version ID.
-        self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The message returned by the operation.
         self.message = message
-        # The list of variable values in the error message.
+        # The variable values in the error message.
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -42,9 +39,6 @@ class UpdateScriptVersionResponseBody(DaraModel):
             result = _map
         if self.code is not None:
             result['Code'] = self.code
-
-        if self.data is not None:
-            result['Data'] = self.data
 
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
@@ -67,9 +61,6 @@ class UpdateScriptVersionResponseBody(DaraModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
 
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')

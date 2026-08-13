@@ -2,6 +2,21 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._abort_campaign_request import AbortCampaignRequest
+from ._abort_campaign_response_body import AbortCampaignResponseBody
+from ._abort_campaign_response import AbortCampaignResponse
+from ._abort_cases_request import AbortCasesRequest
+from ._abort_cases_shrink_request import AbortCasesShrinkRequest
+from ._abort_cases_response_body import AbortCasesResponseBody
+from ._abort_cases_response import AbortCasesResponse
+from ._append_cases_request import AppendCasesRequest
+from ._append_cases_shrink_request import AppendCasesShrinkRequest
+from ._append_cases_response_body import AppendCasesResponseBody
+from ._append_cases_response import AppendCasesResponse
+from ._create_campaign_request import CreateCampaignRequest
+from ._create_campaign_shrink_request import CreateCampaignShrinkRequest
+from ._create_campaign_response_body import CreateCampaignResponseBody
+from ._create_campaign_response import CreateCampaignResponse
 from ._create_clone_voice_request import CreateCloneVoiceRequest
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBody
 from ._create_clone_voice_response import CreateCloneVoiceResponse
@@ -49,6 +64,9 @@ from ._delete_voice_access_profile_response import DeleteVoiceAccessProfileRespo
 from ._disable_subscription_request import DisableSubscriptionRequest
 from ._disable_subscription_response_body import DisableSubscriptionResponseBody
 from ._disable_subscription_response import DisableSubscriptionResponse
+from ._get_campaign_request import GetCampaignRequest
+from ._get_campaign_response_body import GetCampaignResponseBody
+from ._get_campaign_response import GetCampaignResponse
 from ._get_instance_request import GetInstanceRequest
 from ._get_instance_response_body import GetInstanceResponseBody
 from ._get_instance_response import GetInstanceResponse
@@ -58,6 +76,9 @@ from ._get_script_profile_template_response import GetScriptProfileTemplateRespo
 from ._get_subscription_request import GetSubscriptionRequest
 from ._get_subscription_response_body import GetSubscriptionResponseBody
 from ._get_subscription_response import GetSubscriptionResponse
+from ._list_campaigns_request import ListCampaignsRequest
+from ._list_campaigns_response_body import ListCampaignsResponseBody
+from ._list_campaigns_response import ListCampaignsResponse
 from ._list_clone_voice_models_request import ListCloneVoiceModelsRequest
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBody
 from ._list_clone_voice_models_response import ListCloneVoiceModelsResponse
@@ -95,9 +116,18 @@ from ._list_system_configs_response import ListSystemConfigsResponse
 from ._list_voice_access_profiles_request import ListVoiceAccessProfilesRequest
 from ._list_voice_access_profiles_response_body import ListVoiceAccessProfilesResponseBody
 from ._list_voice_access_profiles_response import ListVoiceAccessProfilesResponse
+from ._pause_campaign_request import PauseCampaignRequest
+from ._pause_campaign_response_body import PauseCampaignResponseBody
+from ._pause_campaign_response import PauseCampaignResponse
 from ._publish_script_request import PublishScriptRequest
 from ._publish_script_response_body import PublishScriptResponseBody
 from ._publish_script_response import PublishScriptResponse
+from ._resume_campaign_request import ResumeCampaignRequest
+from ._resume_campaign_response_body import ResumeCampaignResponseBody
+from ._resume_campaign_response import ResumeCampaignResponse
+from ._submit_campaign_request import SubmitCampaignRequest
+from ._submit_campaign_response_body import SubmitCampaignResponseBody
+from ._submit_campaign_response import SubmitCampaignResponse
 from ._update_clone_voice_request import UpdateCloneVoiceRequest
 from ._update_clone_voice_response_body import UpdateCloneVoiceResponseBody
 from ._update_clone_voice_response import UpdateCloneVoiceResponse
@@ -127,6 +157,8 @@ from ._update_voice_access_profile_request import UpdateVoiceAccessProfileReques
 from ._update_voice_access_profile_shrink_request import UpdateVoiceAccessProfileShrinkRequest
 from ._update_voice_access_profile_response_body import UpdateVoiceAccessProfileResponseBody
 from ._update_voice_access_profile_response import UpdateVoiceAccessProfileResponse
+from ._append_cases_request import AppendCasesRequestCases
+from ._create_campaign_request import CreateCampaignRequestCases
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
 from ._create_flash_sms_access_profile_request import CreateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles
 from ._create_flash_sms_access_profile_request import CreateFlashSmsAccessProfileRequestAccessProfile
@@ -150,10 +182,13 @@ from ._create_script_version_request import CreateScriptVersionRequestTranscribe
 from ._create_script_version_request import CreateScriptVersionRequestTranscriberConfigNlsAccessProfile
 from ._create_script_version_request import CreateScriptVersionRequestTranscriberConfig
 from ._create_voice_access_profile_request import CreateVoiceAccessProfileRequestProfile
+from ._get_campaign_response_body import GetCampaignResponseBodyData
 from ._get_instance_response_body import GetInstanceResponseBodyData
 from ._get_script_profile_template_response_body import GetScriptProfileTemplateResponseBodyData
 from ._get_subscription_response_body import GetSubscriptionResponseBodyDataEventList
 from ._get_subscription_response_body import GetSubscriptionResponseBodyData
+from ._list_campaigns_response_body import ListCampaignsResponseBodyDataList
+from ._list_campaigns_response_body import ListCampaignsResponseBodyData
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyDataCloneVoiceModels
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyData
 from ._list_clone_voices_response_body import ListCloneVoicesResponseBodyDataCloneVoices
@@ -199,6 +234,21 @@ from ._update_system_configs_request import UpdateSystemConfigsRequestConfigs
 from ._update_voice_access_profile_request import UpdateVoiceAccessProfileRequestProfile
 
 __all__ = [
+    AbortCampaignRequest,
+    AbortCampaignResponseBody,
+    AbortCampaignResponse,
+    AbortCasesRequest,
+    AbortCasesShrinkRequest,
+    AbortCasesResponseBody,
+    AbortCasesResponse,
+    AppendCasesRequest,
+    AppendCasesShrinkRequest,
+    AppendCasesResponseBody,
+    AppendCasesResponse,
+    CreateCampaignRequest,
+    CreateCampaignShrinkRequest,
+    CreateCampaignResponseBody,
+    CreateCampaignResponse,
     CreateCloneVoiceRequest,
     CreateCloneVoiceResponseBody,
     CreateCloneVoiceResponse,
@@ -246,6 +296,9 @@ __all__ = [
     DisableSubscriptionRequest,
     DisableSubscriptionResponseBody,
     DisableSubscriptionResponse,
+    GetCampaignRequest,
+    GetCampaignResponseBody,
+    GetCampaignResponse,
     GetInstanceRequest,
     GetInstanceResponseBody,
     GetInstanceResponse,
@@ -255,6 +308,9 @@ __all__ = [
     GetSubscriptionRequest,
     GetSubscriptionResponseBody,
     GetSubscriptionResponse,
+    ListCampaignsRequest,
+    ListCampaignsResponseBody,
+    ListCampaignsResponse,
     ListCloneVoiceModelsRequest,
     ListCloneVoiceModelsResponseBody,
     ListCloneVoiceModelsResponse,
@@ -292,9 +348,18 @@ __all__ = [
     ListVoiceAccessProfilesRequest,
     ListVoiceAccessProfilesResponseBody,
     ListVoiceAccessProfilesResponse,
+    PauseCampaignRequest,
+    PauseCampaignResponseBody,
+    PauseCampaignResponse,
     PublishScriptRequest,
     PublishScriptResponseBody,
     PublishScriptResponse,
+    ResumeCampaignRequest,
+    ResumeCampaignResponseBody,
+    ResumeCampaignResponse,
+    SubmitCampaignRequest,
+    SubmitCampaignResponseBody,
+    SubmitCampaignResponse,
     UpdateCloneVoiceRequest,
     UpdateCloneVoiceResponseBody,
     UpdateCloneVoiceResponse,
@@ -324,6 +389,8 @@ __all__ = [
     UpdateVoiceAccessProfileShrinkRequest,
     UpdateVoiceAccessProfileResponseBody,
     UpdateVoiceAccessProfileResponse,
+    AppendCasesRequestCases,
+    CreateCampaignRequestCases,
     CreateCloneVoiceResponseBodyData,
     CreateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles,
     CreateFlashSmsAccessProfileRequestAccessProfile,
@@ -347,10 +414,13 @@ __all__ = [
     CreateScriptVersionRequestTranscriberConfigNlsAccessProfile,
     CreateScriptVersionRequestTranscriberConfig,
     CreateVoiceAccessProfileRequestProfile,
+    GetCampaignResponseBodyData,
     GetInstanceResponseBodyData,
     GetScriptProfileTemplateResponseBodyData,
     GetSubscriptionResponseBodyDataEventList,
     GetSubscriptionResponseBodyData,
+    ListCampaignsResponseBodyDataList,
+    ListCampaignsResponseBodyData,
     ListCloneVoiceModelsResponseBodyDataCloneVoiceModels,
     ListCloneVoiceModelsResponseBodyData,
     ListCloneVoicesResponseBodyDataCloneVoices,

@@ -6,30 +6,30 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class UpdateScriptVersionResponseBody(DaraModel):
+class PauseCampaignResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: str = None,
+        data: bool = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code.
+        # The result code.
         self.code = code
-        # The scenario version ID.
+        # Indicates whether the operation was successful.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The list of variable values in the error message.
+        # The list of error message parameters.
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

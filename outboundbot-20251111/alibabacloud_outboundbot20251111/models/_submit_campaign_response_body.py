@@ -6,30 +6,30 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class UpdateScriptVersionResponseBody(DaraModel):
+class SubmitCampaignResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: str = None,
+        data: bool = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code.
+        # 结果码
         self.code = code
-        # The scenario version ID.
+        # 操作是否成功
         self.data = data
-        # The HTTP status code.
+        # HTTP状态码
         self.http_status_code = http_status_code
-        # The error message.
+        # 错误信息
         self.message = message
-        # The list of variable values in the error message.
+        # 错误信息参数列表
         self.params = params
-        # The request ID.
+        # 请求ID
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # 请求是否成功
         self.success = success
 
     def validate(self):

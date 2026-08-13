@@ -16,21 +16,21 @@ class UpdateScriptVersionShrinkRequest(DaraModel):
         transcriber_config_shrink: str = None,
         version_id: str = None,
     ):
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
-        # 交互配置
+        # The interaction configuration.
         self.interaction_config_shrink = interaction_config_shrink
-        # 草稿版本的标签配置（JSON字符串）
+        # The label configurations.
         self.label_configs_shrink = label_configs_shrink
-        # 场景ID
+        # The scenario ID.
         self.script_id = script_id
-        # 话术配置
+        # The dialogue capability configuration.
         self.script_profile_shrink = script_profile_shrink
-        # 语音合成配置
+        # The TTS configuration.
         self.synthesizer_config_shrink = synthesizer_config_shrink
-        # 语音识别配置
+        # The ASR configuration.
         self.transcriber_config_shrink = transcriber_config_shrink
-        # 版本ID
+        # The version ID.
         self.version_id = version_id
 
     def validate(self):

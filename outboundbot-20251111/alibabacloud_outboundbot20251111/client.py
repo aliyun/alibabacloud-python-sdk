@@ -43,6 +43,414 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def abort_campaign_with_options(
+        self,
+        request: main_models.AbortCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AbortCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AbortCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AbortCampaignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def abort_campaign_with_options_async(
+        self,
+        request: main_models.AbortCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AbortCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AbortCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AbortCampaignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def abort_campaign(
+        self,
+        request: main_models.AbortCampaignRequest,
+    ) -> main_models.AbortCampaignResponse:
+        runtime = RuntimeOptions()
+        return self.abort_campaign_with_options(request, runtime)
+
+    async def abort_campaign_async(
+        self,
+        request: main_models.AbortCampaignRequest,
+    ) -> main_models.AbortCampaignResponse:
+        runtime = RuntimeOptions()
+        return await self.abort_campaign_with_options_async(request, runtime)
+
+    def abort_cases_with_options(
+        self,
+        tmp_req: main_models.AbortCasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AbortCasesResponse:
+        tmp_req.validate()
+        request = main_models.AbortCasesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.phone_numbers):
+            request.phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.phone_numbers_shrink):
+            query['PhoneNumbers'] = request.phone_numbers_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AbortCases',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AbortCasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def abort_cases_with_options_async(
+        self,
+        tmp_req: main_models.AbortCasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AbortCasesResponse:
+        tmp_req.validate()
+        request = main_models.AbortCasesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.phone_numbers):
+            request.phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.phone_numbers_shrink):
+            query['PhoneNumbers'] = request.phone_numbers_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AbortCases',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AbortCasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def abort_cases(
+        self,
+        request: main_models.AbortCasesRequest,
+    ) -> main_models.AbortCasesResponse:
+        runtime = RuntimeOptions()
+        return self.abort_cases_with_options(request, runtime)
+
+    async def abort_cases_async(
+        self,
+        request: main_models.AbortCasesRequest,
+    ) -> main_models.AbortCasesResponse:
+        runtime = RuntimeOptions()
+        return await self.abort_cases_with_options_async(request, runtime)
+
+    def append_cases_with_options(
+        self,
+        tmp_req: main_models.AppendCasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AppendCasesResponse:
+        tmp_req.validate()
+        request = main_models.AppendCasesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cases):
+            request.cases_shrink = Utils.array_to_string_with_specified_style(tmp_req.cases, 'Cases', 'json')
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.cases_shrink):
+            body['Cases'] = request.cases_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AppendCases',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AppendCasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def append_cases_with_options_async(
+        self,
+        tmp_req: main_models.AppendCasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AppendCasesResponse:
+        tmp_req.validate()
+        request = main_models.AppendCasesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cases):
+            request.cases_shrink = Utils.array_to_string_with_specified_style(tmp_req.cases, 'Cases', 'json')
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.cases_shrink):
+            body['Cases'] = request.cases_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AppendCases',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AppendCasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def append_cases(
+        self,
+        request: main_models.AppendCasesRequest,
+    ) -> main_models.AppendCasesResponse:
+        runtime = RuntimeOptions()
+        return self.append_cases_with_options(request, runtime)
+
+    async def append_cases_async(
+        self,
+        request: main_models.AppendCasesRequest,
+    ) -> main_models.AppendCasesResponse:
+        runtime = RuntimeOptions()
+        return await self.append_cases_with_options_async(request, runtime)
+
+    def create_campaign_with_options(
+        self,
+        tmp_req: main_models.CreateCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCampaignResponse:
+        tmp_req.validate()
+        request = main_models.CreateCampaignShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cases):
+            request.cases_shrink = Utils.array_to_string_with_specified_style(tmp_req.cases, 'Cases', 'json')
+        if not DaraCore.is_null(tmp_req.numbers):
+            request.numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.numbers, 'Numbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.attempt_order):
+            query['AttemptOrder'] = request.attempt_order
+        if not DaraCore.is_null(request.callable_time):
+            query['CallableTime'] = request.callable_time
+        if not DaraCore.is_null(request.case_file_key):
+            query['CaseFileKey'] = request.case_file_key
+        if not DaraCore.is_null(request.dialing_timeout_seconds):
+            query['DialingTimeoutSeconds'] = request.dialing_timeout_seconds
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.fixed_quota):
+            query['FixedQuota'] = request.fixed_quota
+        if not DaraCore.is_null(request.flash_sms_parameters):
+            query['FlashSmsParameters'] = request.flash_sms_parameters
+        if not DaraCore.is_null(request.holiday_restricted):
+            query['HolidayRestricted'] = request.holiday_restricted
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_attempt_count):
+            query['MaxAttemptCount'] = request.max_attempt_count
+        if not DaraCore.is_null(request.min_attempt_interval):
+            query['MinAttemptInterval'] = request.min_attempt_interval
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.numbers_shrink):
+            query['Numbers'] = request.numbers_shrink
+        if not DaraCore.is_null(request.redial_restrictions):
+            query['RedialRestrictions'] = request.redial_restrictions
+        if not DaraCore.is_null(request.run_until_end_time):
+            query['RunUntilEndTime'] = request.run_until_end_time
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.weight):
+            query['Weight'] = request.weight
+        body = {}
+        if not DaraCore.is_null(request.cases_shrink):
+            body['Cases'] = request.cases_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCampaignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_campaign_with_options_async(
+        self,
+        tmp_req: main_models.CreateCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCampaignResponse:
+        tmp_req.validate()
+        request = main_models.CreateCampaignShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cases):
+            request.cases_shrink = Utils.array_to_string_with_specified_style(tmp_req.cases, 'Cases', 'json')
+        if not DaraCore.is_null(tmp_req.numbers):
+            request.numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.numbers, 'Numbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.attempt_order):
+            query['AttemptOrder'] = request.attempt_order
+        if not DaraCore.is_null(request.callable_time):
+            query['CallableTime'] = request.callable_time
+        if not DaraCore.is_null(request.case_file_key):
+            query['CaseFileKey'] = request.case_file_key
+        if not DaraCore.is_null(request.dialing_timeout_seconds):
+            query['DialingTimeoutSeconds'] = request.dialing_timeout_seconds
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.fixed_quota):
+            query['FixedQuota'] = request.fixed_quota
+        if not DaraCore.is_null(request.flash_sms_parameters):
+            query['FlashSmsParameters'] = request.flash_sms_parameters
+        if not DaraCore.is_null(request.holiday_restricted):
+            query['HolidayRestricted'] = request.holiday_restricted
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_attempt_count):
+            query['MaxAttemptCount'] = request.max_attempt_count
+        if not DaraCore.is_null(request.min_attempt_interval):
+            query['MinAttemptInterval'] = request.min_attempt_interval
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.numbers_shrink):
+            query['Numbers'] = request.numbers_shrink
+        if not DaraCore.is_null(request.redial_restrictions):
+            query['RedialRestrictions'] = request.redial_restrictions
+        if not DaraCore.is_null(request.run_until_end_time):
+            query['RunUntilEndTime'] = request.run_until_end_time
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.weight):
+            query['Weight'] = request.weight
+        body = {}
+        if not DaraCore.is_null(request.cases_shrink):
+            body['Cases'] = request.cases_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCampaignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_campaign(
+        self,
+        request: main_models.CreateCampaignRequest,
+    ) -> main_models.CreateCampaignResponse:
+        runtime = RuntimeOptions()
+        return self.create_campaign_with_options(request, runtime)
+
+    async def create_campaign_async(
+        self,
+        request: main_models.CreateCampaignRequest,
+    ) -> main_models.CreateCampaignResponse:
+        runtime = RuntimeOptions()
+        return await self.create_campaign_with_options_async(request, runtime)
+
     def create_clone_voice_with_options(
         self,
         request: main_models.CreateCloneVoiceRequest,
@@ -1183,6 +1591,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_subscription_with_options_async(request, runtime)
 
+    def get_campaign_with_options(
+        self,
+        request: main_models.GetCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCampaignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_campaign_with_options_async(
+        self,
+        request: main_models.GetCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCampaignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_campaign(
+        self,
+        request: main_models.GetCampaignRequest,
+    ) -> main_models.GetCampaignResponse:
+        runtime = RuntimeOptions()
+        return self.get_campaign_with_options(request, runtime)
+
+    async def get_campaign_async(
+        self,
+        request: main_models.GetCampaignRequest,
+    ) -> main_models.GetCampaignResponse:
+        runtime = RuntimeOptions()
+        return await self.get_campaign_with_options_async(request, runtime)
+
     def get_instance_with_options(
         self,
         request: main_models.GetInstanceRequest,
@@ -1396,6 +1878,108 @@ class Client(OpenApiClient):
     ) -> main_models.GetSubscriptionResponse:
         runtime = RuntimeOptions()
         return await self.get_subscription_with_options_async(request, runtime)
+
+    def list_campaigns_with_options(
+        self,
+        request: main_models.ListCampaignsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCampaignsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.actual_start_time_from):
+            query['ActualStartTimeFrom'] = request.actual_start_time_from
+        if not DaraCore.is_null(request.actual_start_time_to):
+            query['ActualStartTimeTo'] = request.actual_start_time_to
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.planned_start_time_from):
+            query['PlannedStartTimeFrom'] = request.planned_start_time_from
+        if not DaraCore.is_null(request.planned_start_time_to):
+            query['PlannedStartTimeTo'] = request.planned_start_time_to
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCampaigns',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCampaignsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_campaigns_with_options_async(
+        self,
+        request: main_models.ListCampaignsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCampaignsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.actual_start_time_from):
+            query['ActualStartTimeFrom'] = request.actual_start_time_from
+        if not DaraCore.is_null(request.actual_start_time_to):
+            query['ActualStartTimeTo'] = request.actual_start_time_to
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.planned_start_time_from):
+            query['PlannedStartTimeFrom'] = request.planned_start_time_from
+        if not DaraCore.is_null(request.planned_start_time_to):
+            query['PlannedStartTimeTo'] = request.planned_start_time_to
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCampaigns',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCampaignsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_campaigns(
+        self,
+        request: main_models.ListCampaignsRequest,
+    ) -> main_models.ListCampaignsResponse:
+        runtime = RuntimeOptions()
+        return self.list_campaigns_with_options(request, runtime)
+
+    async def list_campaigns_async(
+        self,
+        request: main_models.ListCampaignsRequest,
+    ) -> main_models.ListCampaignsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_campaigns_with_options_async(request, runtime)
 
     def list_clone_voice_models_with_options(
         self,
@@ -2345,6 +2929,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_voice_access_profiles_with_options_async(request, runtime)
 
+    def pause_campaign_with_options(
+        self,
+        request: main_models.PauseCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseCampaignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_campaign_with_options_async(
+        self,
+        request: main_models.PauseCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseCampaignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_campaign(
+        self,
+        request: main_models.PauseCampaignRequest,
+    ) -> main_models.PauseCampaignResponse:
+        runtime = RuntimeOptions()
+        return self.pause_campaign_with_options(request, runtime)
+
+    async def pause_campaign_async(
+        self,
+        request: main_models.PauseCampaignRequest,
+    ) -> main_models.PauseCampaignResponse:
+        runtime = RuntimeOptions()
+        return await self.pause_campaign_with_options_async(request, runtime)
+
     def publish_script_with_options(
         self,
         request: main_models.PublishScriptRequest,
@@ -2422,6 +3080,154 @@ class Client(OpenApiClient):
     ) -> main_models.PublishScriptResponse:
         runtime = RuntimeOptions()
         return await self.publish_script_with_options_async(request, runtime)
+
+    def resume_campaign_with_options(
+        self,
+        request: main_models.ResumeCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeCampaignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_campaign_with_options_async(
+        self,
+        request: main_models.ResumeCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeCampaignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_campaign(
+        self,
+        request: main_models.ResumeCampaignRequest,
+    ) -> main_models.ResumeCampaignResponse:
+        runtime = RuntimeOptions()
+        return self.resume_campaign_with_options(request, runtime)
+
+    async def resume_campaign_async(
+        self,
+        request: main_models.ResumeCampaignRequest,
+    ) -> main_models.ResumeCampaignResponse:
+        runtime = RuntimeOptions()
+        return await self.resume_campaign_with_options_async(request, runtime)
+
+    def submit_campaign_with_options(
+        self,
+        request: main_models.SubmitCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitCampaignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_campaign_with_options_async(
+        self,
+        request: main_models.SubmitCampaignRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitCampaignResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitCampaign',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitCampaignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_campaign(
+        self,
+        request: main_models.SubmitCampaignRequest,
+    ) -> main_models.SubmitCampaignResponse:
+        runtime = RuntimeOptions()
+        return self.submit_campaign_with_options(request, runtime)
+
+    async def submit_campaign_async(
+        self,
+        request: main_models.SubmitCampaignRequest,
+    ) -> main_models.SubmitCampaignResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_campaign_with_options_async(request, runtime)
 
     def update_clone_voice_with_options(
         self,
