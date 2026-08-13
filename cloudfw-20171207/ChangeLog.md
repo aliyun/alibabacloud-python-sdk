@@ -26,6 +26,34 @@
 - Update API ModifyControlPolicy: add response parameters Body.DryRun.
 
 
+2026-08-13 Version: 9.4.2
+- Update API AddControlPolicy: add request parameters ClientToken.
+- Update API AddControlPolicy: add request parameters DryRun.
+- Update API CreateSecurityProxy: add request parameters FirewallServiceMode.
+- Update API CreateSecurityProxy: add request parameters FirewallServiceZones.
+- Update API CreateTrFirewallV2: add request parameters FirewallAttachmentZone.
+- Update API CreateTrFirewallV2: add request parameters FirewallServiceMode.
+- Update API CreateTrFirewallV2: add request parameters FirewallServiceZones.
+- Update API CreateTrFirewallV2: add request parameters TrAttachmentZones.
+- Update API CreateVpcFirewallCenConfigure: add request parameters FirewallVSwitchZoneId.
+- Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.FirewallServiceMode.
+- Update API DescribeNatFirewallList: add response parameters Body.NatFirewallList.$.FirewallServiceZones.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.FirewallAttachmentZone.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.FirewallServiceMode.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.FirewallServiceZones.
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.TrAttachmentZones.
+- Update API DescribeVpcFirewallCenDetail: add response parameters Body.FirewallVpc.FirewallServiceMode.
+- Update API DescribeVpcFirewallCenDetail: add response parameters Body.FirewallVpc.FirewallServiceZones.
+- Update API DescribeVpcFirewallCenDetail: add response parameters Body.LocalVpc.EniList.$.EniZoneId.
+- Update API DescribeVpcFirewallZone: add response parameters Body.FirewallServiceMode.
+- Update API ModifyAddressBook: add request parameters ClientToken.
+- Update API ModifyAddressBook: add request parameters DryRun.
+- Update API ModifyAddressBook: add response parameters Body.DryRun.
+- Update API ModifyControlPolicy: add request parameters ClientToken.
+- Update API ModifyControlPolicy: add request parameters DryRun.
+- Update API ModifyControlPolicy: add response parameters Body.DryRun.
+
+
 2026-07-22 Version: 9.4.1
 - Generated python 2017-12-07 for Cloudfw.
 
