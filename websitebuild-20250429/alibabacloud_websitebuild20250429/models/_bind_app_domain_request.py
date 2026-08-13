@@ -9,6 +9,7 @@ class BindAppDomainRequest(DaraModel):
         self,
         biz_id: str = None,
         domain_name: str = None,
+        domain_type: str = None,
         extend: str = None,
         operate_type: str = None,
     ):
@@ -16,9 +17,16 @@ class BindAppDomainRequest(DaraModel):
         self.biz_id = biz_id
         # The domain name.
         self.domain_name = domain_name
+        # The domain management type. Valid values:
+        # 
+        # - CUSTOM
+        # - PLATFORM_PREFIX
+        # 
+        # Default value: CUSTOM.
+        self.domain_type = domain_type
         # The extended information (OverwriteExistingRecord).
         self.extend = extend
-        # The operation type for domain name binding.
+        # The operation type for domain binding.
         self.operate_type = operate_type
 
     def validate(self):
@@ -35,6 +43,9 @@ class BindAppDomainRequest(DaraModel):
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
 
+        if self.domain_type is not None:
+            result['DomainType'] = self.domain_type
+
         if self.extend is not None:
             result['Extend'] = self.extend
 
@@ -50,6 +61,9 @@ class BindAppDomainRequest(DaraModel):
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('DomainType') is not None:
+            self.domain_type = m.get('DomainType')
 
         if m.get('Extend') is not None:
             self.extend = m.get('Extend')

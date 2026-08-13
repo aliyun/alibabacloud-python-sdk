@@ -33,7 +33,7 @@ class ListAppPublishHistoryRequest(DaraModel):
         self.next_token = next_token
         # The page number.
         self.page_num = page_num
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         self.publish_env = publish_env
         # The sort method.

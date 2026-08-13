@@ -24,7 +24,7 @@ class ListAppPublishHistoryResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -235,17 +235,21 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         can_quick_revert: str = None,
         commit_hash: str = None,
         current_step: str = None,
+        current_step_code: str = None,
         deploy_channel: str = None,
         description: str = None,
         error_step: str = None,
+        error_step_code: str = None,
         is_finish: bool = None,
         is_success: bool = None,
         msg: str = None,
         order_type: str = None,
+        order_type_code: str = None,
         percent: int = None,
         publish_number: str = None,
         publish_order_id: int = None,
         publish_time: str = None,
+        step_codes: List[str] = None,
         steps: List[str] = None,
         subchannel: str = None,
     ):
@@ -254,15 +258,17 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         self.commit_hash = commit_hash
         # The current step number.
         self.current_step = current_step
+        self.current_step_code = current_step_code
         # The deployment channel.
         self.deploy_channel = deploy_channel
         # The application description.
         self.description = description
         # The publish process.
         self.error_step = error_step
+        self.error_step_code = error_step_code
         # Indicates whether the task is complete.
         self.is_finish = is_finish
-        # Indicates whether the resource allocation of the business unit is successful.
+        # Indicates whether the resource allocation of the business unit is successful. Valid values:
         # - true: The allocation is successful.
         # - false: The allocation failed.
         self.is_success = is_success
@@ -270,6 +276,7 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         self.msg = msg
         # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
+        self.order_type_code = order_type_code
         # The transcoding progress.
         self.percent = percent
         # The publish number.
@@ -280,7 +287,8 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.publish_time = publish_time
-        # The component-specific configurations.
+        self.step_codes = step_codes
+        # The specific component configurations.
         self.steps = steps
         self.subchannel = subchannel
 
@@ -301,6 +309,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         if self.current_step is not None:
             result['CurrentStep'] = self.current_step
 
+        if self.current_step_code is not None:
+            result['CurrentStepCode'] = self.current_step_code
+
         if self.deploy_channel is not None:
             result['DeployChannel'] = self.deploy_channel
 
@@ -309,6 +320,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
 
         if self.error_step is not None:
             result['ErrorStep'] = self.error_step
+
+        if self.error_step_code is not None:
+            result['ErrorStepCode'] = self.error_step_code
 
         if self.is_finish is not None:
             result['IsFinish'] = self.is_finish
@@ -322,6 +336,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         if self.order_type is not None:
             result['OrderType'] = self.order_type
 
+        if self.order_type_code is not None:
+            result['OrderTypeCode'] = self.order_type_code
+
         if self.percent is not None:
             result['Percent'] = self.percent
 
@@ -333,6 +350,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
 
         if self.publish_time is not None:
             result['PublishTime'] = self.publish_time
+
+        if self.step_codes is not None:
+            result['StepCodes'] = self.step_codes
 
         if self.steps is not None:
             result['Steps'] = self.steps
@@ -353,6 +373,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         if m.get('CurrentStep') is not None:
             self.current_step = m.get('CurrentStep')
 
+        if m.get('CurrentStepCode') is not None:
+            self.current_step_code = m.get('CurrentStepCode')
+
         if m.get('DeployChannel') is not None:
             self.deploy_channel = m.get('DeployChannel')
 
@@ -361,6 +384,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
 
         if m.get('ErrorStep') is not None:
             self.error_step = m.get('ErrorStep')
+
+        if m.get('ErrorStepCode') is not None:
+            self.error_step_code = m.get('ErrorStepCode')
 
         if m.get('IsFinish') is not None:
             self.is_finish = m.get('IsFinish')
@@ -374,6 +400,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         if m.get('OrderType') is not None:
             self.order_type = m.get('OrderType')
 
+        if m.get('OrderTypeCode') is not None:
+            self.order_type_code = m.get('OrderTypeCode')
+
         if m.get('Percent') is not None:
             self.percent = m.get('Percent')
 
@@ -385,6 +414,9 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
 
         if m.get('PublishTime') is not None:
             self.publish_time = m.get('PublishTime')
+
+        if m.get('StepCodes') is not None:
+            self.step_codes = m.get('StepCodes')
 
         if m.get('Steps') is not None:
             self.steps = m.get('Steps')

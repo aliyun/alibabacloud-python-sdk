@@ -1,3 +1,11 @@
+2026-08-13 Version: 2.37.2
+- Update API BindAppDomain: add request parameters DomainType.
+- Update API ListAppInstanceDomains: add request parameters DomainType.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.DeployType.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.DomainType.
+- Update API ReconnectAppChat: add request parameters LatestMessageCreateTime.
+
+
 2026-08-07 Version: 2.37.0
 - Support API QueryInspirationBalanceForPartner.
 

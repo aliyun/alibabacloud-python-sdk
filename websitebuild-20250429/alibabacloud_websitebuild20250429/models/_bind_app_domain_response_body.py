@@ -30,26 +30,26 @@ class BindAppDomainResponseBody(DaraModel):
         self.app_name = app_name
         # The error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response element.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the **DtsJobId** request parameter is invalid.
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The error parameters.
         self.error_args = error_args
         # The data table module. Valid values:
         # 
-        # - ABTest: experiment data table
+        # - ABTest: experiment data table.
         # 
-        # - ExperimentTool: experiment tool table
+        # - ExperimentTool: experiment tool table.
         # 
-        # - DataDiagnosis: data modeling diagnostics
+        # - DataDiagnosis: data diagnostics.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # The error code.
+        # The root error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -140,6 +140,7 @@ class BindAppDomainResponseBodyModule(DaraModel):
         dns_conflict: main_models.BindAppDomainResponseBodyModuleDnsConflict = None,
         success: bool = None,
     ):
+        # The DNS conflict information. This parameter is returned when a conflict is detected during synchronous verification.
         self.dns_conflict = dns_conflict
         # Indicates whether the request is successful.
         self.success = success
@@ -180,9 +181,13 @@ class BindAppDomainResponseBodyModuleDnsConflict(DaraModel):
         message: str = None,
         records: List[main_models.BindAppDomainResponseBodyModuleDnsConflictRecords] = None,
     ):
+        # Indicates whether automatic override is supported. The value is true for the current Alibaba Cloud account and false for other accounts.
         self.can_auto_resolve = can_auto_resolve
+        # Indicates whether a conflict exists.
         self.has_conflict = has_conflict
+        # The user-facing prompt message. Different guidance messages are generated based on the scenario.
         self.message = message
+        # The list of conflicting DNS records (reusing the existing AppDomainDnsRecordDTO).
         self.records = records
 
     def validate(self):
@@ -239,9 +244,12 @@ class BindAppDomainResponseBodyModuleDnsConflictRecords(DaraModel):
         status: str = None,
         value: str = None,
     ):
+        # The host record.
         self.host = host
+        # The record type.
         self.record_type = record_type
         self.status = status
+        # The record value.
         self.value = value
 
     def validate(self):

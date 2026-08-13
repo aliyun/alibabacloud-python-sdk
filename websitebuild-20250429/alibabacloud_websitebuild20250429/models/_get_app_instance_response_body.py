@@ -30,7 +30,7 @@ class GetAppInstanceResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** parameter.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** parameter.
         # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters returned.

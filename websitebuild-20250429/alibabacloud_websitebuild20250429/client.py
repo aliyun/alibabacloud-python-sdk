@@ -384,6 +384,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.domain_type):
+            query['DomainType'] = request.domain_type
         if not DaraCore.is_null(request.extend):
             query['Extend'] = request.extend
         if not DaraCore.is_null(request.operate_type):
@@ -418,6 +420,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.domain_type):
+            query['DomainType'] = request.domain_type
         if not DaraCore.is_null(request.extend):
             query['Extend'] = request.extend
         if not DaraCore.is_null(request.operate_type):
@@ -7464,6 +7468,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.domain_keyword):
             query['DomainKeyword'] = request.domain_keyword
+        if not DaraCore.is_null(request.domain_type):
+            query['DomainType'] = request.domain_type
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -7506,6 +7512,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.domain_keyword):
             query['DomainKeyword'] = request.domain_keyword
+        if not DaraCore.is_null(request.domain_type):
+            query['DomainType'] = request.domain_type
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -11894,6 +11902,8 @@ class Client(OpenApiClient):
             body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.last_event_id):
             body['LastEventId'] = request.last_event_id
+        if not DaraCore.is_null(request.latest_message_create_time):
+            body['LatestMessageCreateTime'] = request.latest_message_create_time
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -11935,6 +11945,8 @@ class Client(OpenApiClient):
             body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.last_event_id):
             body['LastEventId'] = request.last_event_id
+        if not DaraCore.is_null(request.latest_message_create_time):
+            body['LatestMessageCreateTime'] = request.latest_message_create_time
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -11976,6 +11988,8 @@ class Client(OpenApiClient):
             body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.last_event_id):
             body['LastEventId'] = request.last_event_id
+        if not DaraCore.is_null(request.latest_message_create_time):
+            body['LatestMessageCreateTime'] = request.latest_message_create_time
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -12008,6 +12022,8 @@ class Client(OpenApiClient):
             body['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.last_event_id):
             body['LastEventId'] = request.last_event_id
+        if not DaraCore.is_null(request.latest_message_create_time):
+            body['LatestMessageCreateTime'] = request.latest_message_create_time
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )

@@ -24,26 +24,24 @@ class ListAppInstanceDomainsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message. It is used to replace the `%s` variable in the **ErrMessage** response parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** that you specify is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters returned.
         self.error_args = error_args
-        # The maximum number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The maximum number of entries returned per query.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token for the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -51,7 +49,7 @@ class ListAppInstanceDomainsResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -163,7 +161,7 @@ class ListAppInstanceDomainsResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request results.
+        # The request result.
         self.data = data
         # The decision weight.
         self.next = next
@@ -173,9 +171,9 @@ class ListAppInstanceDomainsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to pagination limits, the server processes a maximum of 1000 recent records per query. If the results exceed 1000 entries, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # Indicates whether the result set exceeds the server-side limit. The server processes up to 1000 records for the current query regardless of pagination settings. If the results exceed 1000 records, **ResultLimit** is **true** and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # The total number of entries.
+        # The total number of records.
         self.total_item_num = total_item_num
         # The total number of pages.
         self.total_page_num = total_page_num
@@ -273,23 +271,25 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         resolution: main_models.ListAppInstanceDomainsResponseBodyModuleNextResolution = None,
         verification: main_models.ListAppInstanceDomainsResponseBodyModuleNextVerification = None,
     ):
-        # The domain name SSL certificate information.
+        # The domain SSL certificate information.
         self.certificate = certificate
         # The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
+        # The DNS conflict information. This field has a value when resolveStatus is DNS_CONFLICT.
         self.dns_conflict = dns_conflict
         # The domain name.
         self.domain_name = domain_name
+        # The domain migration information. This field is returned when a region switch occurs.
         self.migration = migration
         # The overall binding status.
         self.overall_status = overall_status
-        # The domain name ownership information.
+        # The domain ownership information.
         self.ownership = ownership
-        # The domain name qualification information.
+        # The domain qualification information.
         self.qualification = qualification
-        # The domain name resolution information.
+        # The domain resolution information.
         self.resolution = resolution
-        # The domain name verification information.
+        # The domain verification information.
         self.verification = verification
 
     def validate(self):
@@ -400,6 +400,7 @@ class ListAppInstanceDomainsResponseBodyModuleNextVerification(DaraModel):
         self.error_msg = error_msg
         # The ownership verification status.
         self.verification_status = verification_status
+        # The verification status code.
         self.verification_status_code = verification_status_code
 
     def validate(self):
@@ -499,7 +500,7 @@ class ListAppInstanceDomainsResponseBodyModuleNextResolution(DaraModel):
         self.dns_record = dns_record
         # The error message.
         self.error_msg = error_msg
-        # The domain name resolution status.
+        # The domain resolution status.
         self.resolution_status = resolution_status
 
     def validate(self):
@@ -639,6 +640,7 @@ class ListAppInstanceDomainsResponseBodyModuleNextOwnership(DaraModel):
         self.account = account
         # The registrar type. Valid values: ALIYUN and OTHER.
         self.provider = provider
+        # The primary domain name.
         self.root_domain = root_domain
 
     def validate(self):
@@ -679,7 +681,9 @@ class ListAppInstanceDomainsResponseBodyModuleNextMigration(DaraModel):
         migration_status: str = None,
         previous_domain: Any = None,
     ):
+        # The migration status. Valid values: NOT_STARTED, IN_PROGRESS, and COMPLETED.
         self.migration_status = migration_status
+        # The complete domain status before migration. The structure is consistent with the current domain DTO, so the frontend can directly reuse the rendering logic.
         self.previous_domain = previous_domain
 
     def validate(self):
@@ -716,9 +720,13 @@ class ListAppInstanceDomainsResponseBodyModuleNextDnsConflict(DaraModel):
         message: str = None,
         records: List[main_models.ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords] = None,
     ):
+        # Indicates whether automatic override is supported. A value of true indicates the domain is under the current Alibaba Cloud account. A value of false indicates otherwise.
         self.can_auto_resolve = can_auto_resolve
+        # Indicates whether a conflict exists.
         self.has_conflict = has_conflict
+        # The user-facing prompt message. Different guidance text is generated based on the scenario.
         self.message = message
+        # The list of conflicting DNS records. This reuses the existing AppDomainDnsRecordDTO structure.
         self.records = records
 
     def validate(self):
@@ -774,8 +782,11 @@ class ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords(DaraModel):
         record_type: str = None,
         value: str = None,
     ):
+        # The host record.
         self.host = host
+        # The record type.
         self.record_type = record_type
+        # The record value.
         self.value = value
 
     def validate(self):
@@ -818,13 +829,13 @@ class ListAppInstanceDomainsResponseBodyModuleNextCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # The name of the certificate.
+        # The certificate name.
         self.certificate_name = certificate_name
-        # The status of the certificate.
+        # The certificate status.
         self.certificate_status = certificate_status
-        # The type of the certificate.
+        # The certificate type.
         self.certificate_type = certificate_type
-        # The expiration date of the certificate.
+        # The certificate expiration date.
         self.end_time = end_time
 
     def validate(self):
@@ -870,8 +881,10 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         self,
         certificate: main_models.ListAppInstanceDomainsResponseBodyModuleDataCertificate = None,
         create_time: str = None,
+        deploy_type: str = None,
         dns_conflict: main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflict = None,
         domain_name: str = None,
+        domain_type: str = None,
         migration: main_models.ListAppInstanceDomainsResponseBodyModuleDataMigration = None,
         overall_status: str = None,
         ownership: main_models.ListAppInstanceDomainsResponseBodyModuleDataOwnership = None,
@@ -879,23 +892,29 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         resolution: main_models.ListAppInstanceDomainsResponseBodyModuleDataResolution = None,
         verification: main_models.ListAppInstanceDomainsResponseBodyModuleDataVerification = None,
     ):
-        # The domain name SSL certificate information.
+        # The domain SSL certificate information.
         self.certificate = certificate
         # The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
+        # The network deployment type. Valid values: CDN, INDEP_DEPLOY, and ESA_SAAS.
+        self.deploy_type = deploy_type
+        # The DNS conflict information. This field has a value when resolveStatus is DNS_CONFLICT.
         self.dns_conflict = dns_conflict
         # The domain name.
         self.domain_name = domain_name
+        # The domain management type. Valid values: CUSTOM and PLATFORM_PREFIX.
+        self.domain_type = domain_type
+        # The domain migration information. This field is returned when a region switch occurs.
         self.migration = migration
         # The overall binding status.
         self.overall_status = overall_status
-        # The domain name ownership information.
+        # The domain ownership information.
         self.ownership = ownership
-        # The domain name qualification information.
+        # The domain qualification information.
         self.qualification = qualification
-        # The domain name resolution information.
+        # The domain resolution information.
         self.resolution = resolution
-        # The domain name verification information.
+        # The domain verification information.
         self.verification = verification
 
     def validate(self):
@@ -925,11 +944,17 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+
         if self.dns_conflict is not None:
             result['DnsConflict'] = self.dns_conflict.to_map()
 
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+
+        if self.domain_type is not None:
+            result['DomainType'] = self.domain_type
 
         if self.migration is not None:
             result['Migration'] = self.migration.to_map()
@@ -960,12 +985,18 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+
         if m.get('DnsConflict') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflict()
             self.dns_conflict = temp_model.from_map(m.get('DnsConflict'))
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('DomainType') is not None:
+            self.domain_type = m.get('DomainType')
 
         if m.get('Migration') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataMigration()
@@ -1106,7 +1137,7 @@ class ListAppInstanceDomainsResponseBodyModuleDataResolution(DaraModel):
         self.dns_record = dns_record
         # The error message.
         self.error_msg = error_msg
-        # The domain name resolution status.
+        # The domain resolution status.
         self.resolution_status = resolution_status
 
     def validate(self):
@@ -1246,7 +1277,7 @@ class ListAppInstanceDomainsResponseBodyModuleDataOwnership(DaraModel):
         self.account = account
         # The registrar type. Valid values: ALIYUN and OTHER.
         self.provider = provider
-        # The root domain name corresponding to the domain name.
+        # The root domain name that corresponds to the domain name.
         self.root_domain = root_domain
 
     def validate(self):
@@ -1287,7 +1318,9 @@ class ListAppInstanceDomainsResponseBodyModuleDataMigration(DaraModel):
         migration_status: str = None,
         previous_domain: Any = None,
     ):
+        # The migration status. Valid values: NOT_STARTED, IN_PROGRESS, and COMPLETED.
         self.migration_status = migration_status
+        # The complete domain status before migration. The structure is consistent with the current domain DTO, so the frontend can directly reuse the rendering logic.
         self.previous_domain = previous_domain
 
     def validate(self):
@@ -1324,9 +1357,13 @@ class ListAppInstanceDomainsResponseBodyModuleDataDnsConflict(DaraModel):
         message: str = None,
         records: List[main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords] = None,
     ):
+        # Indicates whether automatic override is supported. A value of true indicates the domain is under the current Alibaba Cloud account. A value of false indicates otherwise.
         self.can_auto_resolve = can_auto_resolve
+        # Indicates whether a conflict exists.
         self.has_conflict = has_conflict
+        # The user-facing prompt message. Different guidance text is generated based on the scenario.
         self.message = message
+        # The list of conflicting DNS records. This reuses the existing AppDomainDnsRecordDTO structure.
         self.records = records
 
     def validate(self):
@@ -1383,9 +1420,12 @@ class ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords(DaraModel):
         status: str = None,
         value: str = None,
     ):
+        # The host record.
         self.host = host
+        # The record type.
         self.record_type = record_type
         self.status = status
+        # The record value.
         self.value = value
 
     def validate(self):
@@ -1434,13 +1474,13 @@ class ListAppInstanceDomainsResponseBodyModuleDataCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # The name of the certificate.
+        # The certificate name.
         self.certificate_name = certificate_name
-        # The status of the certificate.
+        # The certificate status.
         self.certificate_status = certificate_status
-        # The type of the certificate.
+        # The certificate type.
         self.certificate_type = certificate_type
-        # The expiration date of the certificate.
+        # The certificate expiration date.
         self.end_time = end_time
 
     def validate(self):

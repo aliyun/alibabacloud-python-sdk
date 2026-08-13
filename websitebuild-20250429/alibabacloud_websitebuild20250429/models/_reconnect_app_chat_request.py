@@ -10,13 +10,15 @@ class ReconnectAppChatRequest(DaraModel):
         chat_id: str = None,
         conversation_id: str = None,
         last_event_id: int = None,
+        latest_message_create_time: str = None,
     ):
         # The chat record ID.
         self.chat_id = chat_id
         # The session ID.
         self.conversation_id = conversation_id
-        # The ID of the last event.
+        # The last event ID.
         self.last_event_id = last_event_id
+        self.latest_message_create_time = latest_message_create_time
 
     def validate(self):
         pass
@@ -35,6 +37,9 @@ class ReconnectAppChatRequest(DaraModel):
         if self.last_event_id is not None:
             result['LastEventId'] = self.last_event_id
 
+        if self.latest_message_create_time is not None:
+            result['LatestMessageCreateTime'] = self.latest_message_create_time
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +52,9 @@ class ReconnectAppChatRequest(DaraModel):
 
         if m.get('LastEventId') is not None:
             self.last_event_id = m.get('LastEventId')
+
+        if m.get('LatestMessageCreateTime') is not None:
+            self.latest_message_create_time = m.get('LatestMessageCreateTime')
 
         return self
 

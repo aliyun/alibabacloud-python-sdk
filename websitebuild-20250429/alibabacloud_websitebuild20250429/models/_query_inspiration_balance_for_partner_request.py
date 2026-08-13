@@ -10,7 +10,9 @@ class QueryInspirationBalanceForPartnerRequest(DaraModel):
         belong_id: str = None,
         belong_id_type: str = None,
     ):
+        # The owner ID, which can be a website ID or an Alibaba Cloud account ID.
         self.belong_id = belong_id
+        # The type of the owner ID. Valid values: siteId and uid.
         self.belong_id_type = belong_id_type
 
     def validate(self):

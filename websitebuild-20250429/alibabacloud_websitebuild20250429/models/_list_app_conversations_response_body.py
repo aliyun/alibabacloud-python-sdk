@@ -28,7 +28,7 @@ class ListAppConversationsResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The application name. Queries the application with this name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -36,13 +36,13 @@ class ListAppConversationsResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # The maximum number of entries to return per query.
+        # The number of results returned per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token for the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -155,13 +155,13 @@ class ListAppConversationsResponseBodyModule(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The request result.
+        # The request results.
         self.data = data
         # The page number. Default value: 1.
         self.page_num = page_num
         # The page size.
         self.page_size = page_size
-        # The resource count that matches the conditional filter criteria.
+        # The resource count that matches the conditional filter.
         self.total_count = total_count
 
     def validate(self):
@@ -247,7 +247,7 @@ class ListAppConversationsResponseBodyModuleData(DaraModel):
         self.section_id = section_id
         # The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
-        # The current viewpoint, which is equivalent to the news title.
+        # The current viewpoint, equivalent to the news title.
         self.title = title
         # The user ID.
         self.user_id = user_id

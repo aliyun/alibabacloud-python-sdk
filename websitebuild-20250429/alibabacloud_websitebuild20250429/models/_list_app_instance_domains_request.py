@@ -9,6 +9,7 @@ class ListAppInstanceDomainsRequest(DaraModel):
         self,
         biz_id: str = None,
         domain_keyword: str = None,
+        domain_type: str = None,
         max_results: int = None,
         next_token: str = None,
         order_column: str = None,
@@ -18,16 +19,23 @@ class ListAppInstanceDomainsRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
+        # The domain name keyword. This parameter is optional and used for fuzzy match.
         self.domain_keyword = domain_keyword
-        # The maximum number of entries per query.
+        # The domain management type. Valid values:
+        # - CUSTOM
+        # - PLATFORM_PREFIX
         # 
-        # Valid values: 10 to 100. Default value: 20.
+        # Default value: CUSTOM.
+        self.domain_type = domain_type
+        # The maximum number of entries returned per query.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token for the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
         # The field used for sorting.
         self.order_column = order_column
-        # The sort type. Valid values: ASC and DESC.
+        # The sort type. Valid values:
+        # - ASC
+        # - DESC
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num
@@ -47,6 +55,9 @@ class ListAppInstanceDomainsRequest(DaraModel):
 
         if self.domain_keyword is not None:
             result['DomainKeyword'] = self.domain_keyword
+
+        if self.domain_type is not None:
+            result['DomainType'] = self.domain_type
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
@@ -75,6 +86,9 @@ class ListAppInstanceDomainsRequest(DaraModel):
 
         if m.get('DomainKeyword') is not None:
             self.domain_keyword = m.get('DomainKeyword')
+
+        if m.get('DomainType') is not None:
+            self.domain_type = m.get('DomainType')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

@@ -23,6 +23,7 @@ class AppInstanceProfile(DaraModel):
         pay_time: str = None,
         preview_url: str = None,
         seo_site: str = None,
+        share_render_watermark: str = None,
         site_version: str = None,
         site_version_text: str = None,
         source: str = None,
@@ -31,7 +32,7 @@ class AppInstanceProfile(DaraModel):
     ):
         # The application type code.
         self.application_type = application_type
-        # The text description of the application type.
+        # The application type text description.
         self.application_type_text = application_type_text
         # The business ID.
         self.biz_id = biz_id
@@ -56,13 +57,14 @@ class AppInstanceProfile(DaraModel):
         self.preview_url = preview_url
         # The SEO site information.
         self.seo_site = seo_site
+        self.share_render_watermark = share_render_watermark
         # The site version code.
         self.site_version = site_version
-        # The text description of the site version.
+        # The site version text description.
         self.site_version_text = site_version_text
         # The source information.
         self.source = source
-        # The ETag of the template.
+        # The template ETag identifier.
         self.template_etag = template_etag
         # The template ID.
         self.template_id = template_id
@@ -122,6 +124,9 @@ class AppInstanceProfile(DaraModel):
 
         if self.seo_site is not None:
             result['SeoSite'] = self.seo_site
+
+        if self.share_render_watermark is not None:
+            result['ShareRenderWatermark'] = self.share_render_watermark
 
         if self.site_version is not None:
             result['SiteVersion'] = self.site_version
@@ -189,6 +194,9 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('SeoSite') is not None:
             self.seo_site = m.get('SeoSite')
+
+        if m.get('ShareRenderWatermark') is not None:
+            self.share_render_watermark = m.get('ShareRenderWatermark')
 
         if m.get('SiteVersion') is not None:
             self.site_version = m.get('SiteVersion')

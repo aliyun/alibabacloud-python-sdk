@@ -22,16 +22,27 @@ class QueryInspirationBalanceForPartnerResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The response data.
         self.module = module
+        # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The error message.
         self.root_error_msg = root_error_msg
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -126,11 +137,17 @@ class QueryInspirationBalanceForPartnerResponseBodyModule(DaraModel):
         total_used: int = None,
         total_used_str: str = None,
     ):
+        # The remaining amount, calculated as totalQuota minus totalUsed.
         self.remaining = remaining
+        # The remaining amount as a precise value. This field is of the String type and supports decimal display.
         self.remaining_str = remaining_str
+        # The total quota, which is the sum of initQuota for all valid accounts.
         self.total_quota = total_quota
+        # The total quota as a precise value. This field is of the String type and supports decimal display.
         self.total_quota_str = total_quota_str
+        # The total consumed amount, which is the sum of used for all valid accounts.
         self.total_used = total_used
+        # The total consumed amount as a precise value. This field is of the String type and supports decimal display.
         self.total_used_str = total_used_str
 
     def validate(self):
