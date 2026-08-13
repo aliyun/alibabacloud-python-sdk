@@ -16,17 +16,15 @@ class ListEntitiesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code of the request.
+        # The request status code.
         self.code = code
-        # The response data.
+        # The request return value.
         self.data = data
-        # The response message.
+        # The request return message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # - true: successful.
-        # - false: failed.
         self.success = success
 
     def validate(self):
@@ -156,7 +154,7 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         self.agent_analysis_reason = agent_analysis_reason
         # The confidence level of the entity as determined by the agent.
         self.agent_confidence = agent_confidence
-        # The disposal method recommended by the agent.
+        # The recommended disposal method from the agent.
         self.agent_disposal_method = agent_disposal_method
         # The UUID of the playbook recommended by the agent for disposal.
         self.agent_disposal_playbook_uuid = agent_disposal_playbook_uuid
@@ -171,27 +169,18 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         self.alert_uuid = alert_uuid
         # The Alibaba Cloud account ID.
         self.aliuid = aliuid
-        # The code of the cloud service provider from which the entity originates. Valid values:
-        # - aliyun: Alibaba Cloud
-        # - qcloud: Tencent Cloud
+        # The cloud code of the entity source. Valid values:
+        # - aliyun: Alibaba Cloud.
+        # - qcloud: Tencent Cloud.
         # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
         # The logical ID of the entity.
         self.entity_id = entity_id
-        # The display information of the entity in JSON format.
+        # The entity display information in JSON format.
         self.entity_info = entity_info
         # The entity name.
         self.entity_name = entity_name
         # The entity type. Valid values:
-        # - ip: IP address
-        # - domain: domain name
-        # - url: URL
-        # - process: process
-        # - file: file
-        # - host: host
-        # - cloud_account: cloud account
-        # - container: container
-        # - bucket: Object Storage Service (OSS) bucket.
         self.entity_type = entity_type
         # The entity UUID.
         self.entity_uuid = entity_uuid
@@ -206,20 +195,16 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         # The incident UUID. You can obtain this value from the incident list operation.
         self.incident_uuid = incident_uuid
         # Indicates whether the entity is an asset. Valid values:
-        # + 0: No.
-        # + 1: Yes.
         self.is_asset = is_asset
-        # Indicates whether the entity is malicious. Valid values:
-        # + 0: No.
-        # + 1: Yes.
+        # Specifies whether the entity is malicious. Valid values:
         self.is_malware = is_malware
         # The malware type of the entity.
         self.malware_type = malware_type
         # The linked account ID associated with the entity.
         self.sub_user_id = sub_user_id
-        # The entity tags. The value is a JSON array string:
+        # The entity tags. The value is a JSON array string in the following format:
         # 
-        # `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`.
+        # `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`
         self.tags = tags
 
     def validate(self):
@@ -452,11 +437,11 @@ class ListEntitiesResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the current page.
+        # The current page number of the list.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of records returned per page.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

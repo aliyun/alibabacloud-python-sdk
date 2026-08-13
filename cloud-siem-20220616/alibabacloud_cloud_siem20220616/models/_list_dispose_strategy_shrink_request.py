@@ -2,11 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class ListDisposeStrategyRequest(DaraModel):
+class ListDisposeStrategyShrinkRequest(DaraModel):
     def __init__(
         self,
         alert_uuid: str = None,
@@ -15,7 +13,7 @@ class ListDisposeStrategyRequest(DaraModel):
         end_time: int = None,
         entity_identity: str = None,
         entity_type: str = None,
-        entity_uuid_list: List[str] = None,
+        entity_uuid_list_shrink: str = None,
         group_by: str = None,
         group_key: str = None,
         incident_uuid: str = None,
@@ -52,7 +50,7 @@ class ListDisposeStrategyRequest(DaraModel):
         self.entity_identity = entity_identity
         # The entity type. Valid values:
         self.entity_type = entity_type
-        self.entity_uuid_list = entity_uuid_list
+        self.entity_uuid_list_shrink = entity_uuid_list_shrink
         self.group_by = group_by
         self.group_key = group_key
         # The event ID.
@@ -125,8 +123,8 @@ class ListDisposeStrategyRequest(DaraModel):
         if self.entity_type is not None:
             result['EntityType'] = self.entity_type
 
-        if self.entity_uuid_list is not None:
-            result['EntityUuidList'] = self.entity_uuid_list
+        if self.entity_uuid_list_shrink is not None:
+            result['EntityUuidList'] = self.entity_uuid_list_shrink
 
         if self.group_by is not None:
             result['GroupBy'] = self.group_by
@@ -211,7 +209,7 @@ class ListDisposeStrategyRequest(DaraModel):
             self.entity_type = m.get('EntityType')
 
         if m.get('EntityUuidList') is not None:
-            self.entity_uuid_list = m.get('EntityUuidList')
+            self.entity_uuid_list_shrink = m.get('EntityUuidList')
 
         if m.get('GroupBy') is not None:
             self.group_by = m.get('GroupBy')

@@ -3024,6 +3024,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DescribeDisposeAndPlaybookResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.available_only):
+            query['AvailableOnly'] = request.available_only
+        if not DaraCore.is_null(request.entity_uuid_list):
+            query['EntityUuidList'] = request.entity_uuid_list
         body = {}
         if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
@@ -3042,6 +3047,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.role_type):
             body['RoleType'] = request.role_type
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3066,6 +3072,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DescribeDisposeAndPlaybookResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.available_only):
+            query['AvailableOnly'] = request.available_only
+        if not DaraCore.is_null(request.entity_uuid_list):
+            query['EntityUuidList'] = request.entity_uuid_list
         body = {}
         if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
@@ -3084,6 +3095,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.role_type):
             body['RoleType'] = request.role_type
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4761,6 +4773,8 @@ class Client(OpenApiClient):
             body['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.entity_uuid):
             body['EntityUuid'] = request.entity_uuid
+        if not DaraCore.is_null(request.entity_uuids):
+            body['EntityUuids'] = request.entity_uuids
         if not DaraCore.is_null(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not DaraCore.is_null(request.is_asset):
@@ -4811,6 +4825,8 @@ class Client(OpenApiClient):
             body['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.entity_uuid):
             body['EntityUuid'] = request.entity_uuid
+        if not DaraCore.is_null(request.entity_uuids):
+            body['EntityUuids'] = request.entity_uuids
         if not DaraCore.is_null(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not DaraCore.is_null(request.is_asset):
@@ -6070,11 +6086,22 @@ class Client(OpenApiClient):
 
     def list_dispose_strategy_with_options(
         self,
-        request: main_models.ListDisposeStrategyRequest,
+        tmp_req: main_models.ListDisposeStrategyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ListDisposeStrategyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListDisposeStrategyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entity_uuid_list):
+            request.entity_uuid_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.entity_uuid_list, 'EntityUuidList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         body = {}
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
         if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.effective_status):
@@ -6085,6 +6112,12 @@ class Client(OpenApiClient):
             body['EntityIdentity'] = request.entity_identity
         if not DaraCore.is_null(request.entity_type):
             body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.entity_uuid_list_shrink):
+            body['EntityUuidList'] = request.entity_uuid_list_shrink
+        if not DaraCore.is_null(request.group_by):
+            body['GroupBy'] = request.group_by
+        if not DaraCore.is_null(request.group_key):
+            body['GroupKey'] = request.group_key
         if not DaraCore.is_null(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not DaraCore.is_null(request.order):
@@ -6099,8 +6132,12 @@ class Client(OpenApiClient):
             body['PlaybookTypes'] = request.playbook_types
         if not DaraCore.is_null(request.playbook_uuid):
             body['PlaybookUuid'] = request.playbook_uuid
+        if not DaraCore.is_null(request.query_mode):
+            body['QueryMode'] = request.query_mode
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_rule_id):
+            body['ResponseRuleId'] = request.response_rule_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
         if not DaraCore.is_null(request.role_type):
@@ -6111,7 +6148,10 @@ class Client(OpenApiClient):
             body['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_id):
+            body['StrategyId'] = request.strategy_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6132,11 +6172,22 @@ class Client(OpenApiClient):
 
     async def list_dispose_strategy_with_options_async(
         self,
-        request: main_models.ListDisposeStrategyRequest,
+        tmp_req: main_models.ListDisposeStrategyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ListDisposeStrategyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListDisposeStrategyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entity_uuid_list):
+            request.entity_uuid_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.entity_uuid_list, 'EntityUuidList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
         body = {}
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
         if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.effective_status):
@@ -6147,6 +6198,12 @@ class Client(OpenApiClient):
             body['EntityIdentity'] = request.entity_identity
         if not DaraCore.is_null(request.entity_type):
             body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.entity_uuid_list_shrink):
+            body['EntityUuidList'] = request.entity_uuid_list_shrink
+        if not DaraCore.is_null(request.group_by):
+            body['GroupBy'] = request.group_by
+        if not DaraCore.is_null(request.group_key):
+            body['GroupKey'] = request.group_key
         if not DaraCore.is_null(request.incident_uuid):
             body['IncidentUuid'] = request.incident_uuid
         if not DaraCore.is_null(request.order):
@@ -6161,8 +6218,12 @@ class Client(OpenApiClient):
             body['PlaybookTypes'] = request.playbook_types
         if not DaraCore.is_null(request.playbook_uuid):
             body['PlaybookUuid'] = request.playbook_uuid
+        if not DaraCore.is_null(request.query_mode):
+            body['QueryMode'] = request.query_mode
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_rule_id):
+            body['ResponseRuleId'] = request.response_rule_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
         if not DaraCore.is_null(request.role_type):
@@ -6173,7 +6234,10 @@ class Client(OpenApiClient):
             body['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_id):
+            body['StrategyId'] = request.strategy_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(

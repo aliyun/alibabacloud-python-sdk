@@ -25,8 +25,6 @@ class DescribeDisposeAndPlaybookResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # - true: Successful.
-        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -78,9 +76,11 @@ class DescribeDisposeAndPlaybookResponseBody(DaraModel):
 class DescribeDisposeAndPlaybookResponseBodyData(DaraModel):
     def __init__(
         self,
+        available: bool = None,
         page_info: main_models.DescribeDisposeAndPlaybookResponseBodyDataPageInfo = None,
         response_data: List[main_models.DescribeDisposeAndPlaybookResponseBodyDataResponseData] = None,
     ):
+        self.available = available
         # The pagination information.
         self.page_info = page_info
         # The detailed data.
@@ -99,6 +99,9 @@ class DescribeDisposeAndPlaybookResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.available is not None:
+            result['Available'] = self.available
+
         if self.page_info is not None:
             result['PageInfo'] = self.page_info.to_map()
 
@@ -111,6 +114,9 @@ class DescribeDisposeAndPlaybookResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Available') is not None:
+            self.available = m.get('Available')
+
         if m.get('PageInfo') is not None:
             temp_model = main_models.DescribeDisposeAndPlaybookResponseBodyDataPageInfo()
             self.page_info = temp_model.from_map(m.get('PageInfo'))
@@ -131,6 +137,7 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseData(DaraModel):
         entity_id: int = None,
         entity_info: Dict[str, Any] = None,
         entity_type: str = None,
+        entity_uuid: str = None,
         opcode_map: Dict[str, str] = None,
         opcode_set: List[str] = None,
         playbook_list: List[main_models.DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList] = None,
@@ -152,13 +159,14 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseData(DaraModel):
         # - file: file
         # - host: host
         self.entity_type = entity_type
+        self.entity_uuid = entity_uuid
         # The key-value pairs of opcode and oplevel.
         self.opcode_map = opcode_map
         # The recommended playbook opcodes for entity disposition.
         self.opcode_set = opcode_set
         # The list of playbooks that can dispose of the entity.
         self.playbook_list = playbook_list
-        # The disposition scope. The list of user IDs that can perform the disposition.
+        # The disposition scope, which is the list of user IDs that can perform the disposition.
         self.scope = scope
 
     def validate(self):
@@ -186,6 +194,9 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseData(DaraModel):
 
         if self.entity_type is not None:
             result['EntityType'] = self.entity_type
+
+        if self.entity_uuid is not None:
+            result['EntityUuid'] = self.entity_uuid
 
         if self.opcode_map is not None:
             result['OpcodeMap'] = self.opcode_map
@@ -219,6 +230,9 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseData(DaraModel):
 
         if m.get('EntityType') is not None:
             self.entity_type = m.get('EntityType')
+
+        if m.get('EntityUuid') is not None:
+            self.entity_uuid = m.get('EntityUuid')
 
         if m.get('OpcodeMap') is not None:
             self.opcode_map = m.get('OpcodeMap')
@@ -254,10 +268,7 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList(DaraMod
         uuid: str = None,
         waf_playbook: bool = None,
     ):
-        # Indicates whether the playbook is available. Valid values:
-        # 
-        # - 1: Available.
-        # - 0: Unavailable.
+        # Indicates whether the playbook is available.
         self.available = available
         # The playbook description.
         self.description = description
@@ -269,26 +280,21 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList(DaraMod
         self.name = name
         # The playbook opcode, which corresponds to the recommended playbook opcode for entity disposition.
         self.op_code = op_code
-        # Indicates whether the playbook is selected by default for one-click event disposition. Valid values:
-        # 
-        # - 2: Selected. 
-        # - 1: Displayed but not selected.
+        # Specifies whether the playbook is selected by default for one-click incident disposition. Valid values:
         self.op_level = op_level
-        # The parameter list and corresponding parameter properties of the playbook.
+        # The parameter list of the playbook and the corresponding parameter properties.
         self.param_config = param_config
         # The opcode configuration.
         self.task_config = task_config
-        # The code that indicates why the playbook is unavailable. Valid values:
+        # The code that indicates why the playbook is unavailable.
         # 
-        # - PARAM_INVALID: The input parameters are invalid. 
+        # Valid values:
+        # - PARAM_INVALID: The input parameters are invalid.
         # - NO_INGESTION: The corresponding product is not connected.
         self.un_available_code = un_available_code
         # The playbook UUID, which is the unique identifier of the playbook.
         self.uuid = uuid
-        # Indicates whether this is a WAF playbook. Valid values:
-        # 
-        # - true: Yes.
-        # - false: No.
+        # Indicates whether the playbook is a WAF playbook. Valid values:
         self.waf_playbook = waf_playbook
 
     def validate(self):

@@ -12,6 +12,7 @@ class GetEntitiyStatRequest(DaraModel):
         entity_name: str = None,
         entity_type: str = None,
         entity_uuid: str = None,
+        entity_uuids: str = None,
         incident_uuid: str = None,
         is_asset: str = None,
         is_malware_entity: str = None,
@@ -30,6 +31,7 @@ class GetEntitiyStatRequest(DaraModel):
         self.entity_type = entity_type
         # The asset ID associated with the incident.
         self.entity_uuid = entity_uuid
+        self.entity_uuids = entity_uuids
         # The incident ID.
         # 
         # This parameter is required.
@@ -43,8 +45,8 @@ class GetEntitiyStatRequest(DaraModel):
         self.is_malware_entity = is_malware_entity
         # The region where the threat detection and response data management center resides. Select the management center based on the region of your assets. Valid values:
         # 
-        # - cn-hangzhou: the asset belongs to the Chinese mainland or Hong Kong (China).
-        # - ap-southeast-1: the asset belongs to a region outside the Chinese mainland.
+        # - cn-hangzhou: The assets belong to the Chinese mainland or Hong Kong (China).
+        # - ap-southeast-1: The assets belong to regions outside China.
         self.region_id = region_id
         # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
@@ -80,6 +82,9 @@ class GetEntitiyStatRequest(DaraModel):
 
         if self.entity_uuid is not None:
             result['EntityUuid'] = self.entity_uuid
+
+        if self.entity_uuids is not None:
+            result['EntityUuids'] = self.entity_uuids
 
         if self.incident_uuid is not None:
             result['IncidentUuid'] = self.incident_uuid
@@ -120,6 +125,9 @@ class GetEntitiyStatRequest(DaraModel):
 
         if m.get('EntityUuid') is not None:
             self.entity_uuid = m.get('EntityUuid')
+
+        if m.get('EntityUuids') is not None:
+            self.entity_uuids = m.get('EntityUuids')
 
         if m.get('IncidentUuid') is not None:
             self.incident_uuid = m.get('IncidentUuid')

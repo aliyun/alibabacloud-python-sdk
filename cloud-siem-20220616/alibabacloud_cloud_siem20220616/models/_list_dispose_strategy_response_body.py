@@ -16,19 +16,15 @@ class ListDisposeStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # HTTP status code.
+        # The request status code.
         self.code = code
-        # Response data.
+        # The request return value.
         self.data = data
-        # Response message.
+        # The request return message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether the request was successful. Valid values:
         self.success = success
 
     def validate(self):
@@ -80,15 +76,21 @@ class ListDisposeStrategyResponseBody(DaraModel):
 class ListDisposeStrategyResponseBodyData(DaraModel):
     def __init__(
         self,
+        groups: List[main_models.ListDisposeStrategyResponseBodyDataGroups] = None,
         page_info: main_models.ListDisposeStrategyResponseBodyDataPageInfo = None,
         response_data: List[main_models.ListDisposeStrategyResponseBodyDataResponseData] = None,
     ):
-        # Paging information.
+        self.groups = groups
+        # The pagination information.
         self.page_info = page_info
-        # Detailed data.
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
+        if self.groups:
+            for v1 in self.groups:
+                 if v1:
+                    v1.validate()
         if self.page_info:
             self.page_info.validate()
         if self.response_data:
@@ -101,6 +103,11 @@ class ListDisposeStrategyResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['Groups'] = []
+        if self.groups is not None:
+            for k1 in self.groups:
+                result['Groups'].append(k1.to_map() if k1 else None)
+
         if self.page_info is not None:
             result['PageInfo'] = self.page_info.to_map()
 
@@ -113,6 +120,12 @@ class ListDisposeStrategyResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k1 in m.get('Groups'):
+                temp_model = main_models.ListDisposeStrategyResponseBodyDataGroups()
+                self.groups.append(temp_model.from_map(k1))
+
         if m.get('PageInfo') is not None:
             temp_model = main_models.ListDisposeStrategyResponseBodyDataPageInfo()
             self.page_info = temp_model.from_map(m.get('PageInfo'))
@@ -128,12 +141,14 @@ class ListDisposeStrategyResponseBodyData(DaraModel):
 class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
     def __init__(
         self,
+        alert_name: str = None,
         alert_uuid: str = None,
         aliuid: int = None,
         effective_status: int = None,
         entity: List[Any] = None,
         entity_id: int = None,
         entity_type: str = None,
+        error_code: str = None,
         error_message: str = None,
         finish_time: str = None,
         gmt_create: str = None,
@@ -151,77 +166,56 @@ class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
         task_param: str = None,
         task_url: str = None,
     ):
-        # Alert UUID.
+        self.alert_name = alert_name
+        # The alert UUID.
         self.alert_uuid = alert_uuid
-        # SIEM root account ID associated with the strategy.
+        # The SIEM primary account ID associated with the policy.
         self.aliuid = aliuid
-        # Strategy status. Valid values:
-        # 
-        # - 0: disabled
-        # 
-        # - 1: enabled
+        # The policy status. Valid values:
         self.effective_status = effective_status
-        # Entity details in JSON array format.
+        # The entity details in JSON array format.
         self.entity = entity
-        # Entity ID.
+        # The entity ID.
         self.entity_id = entity_id
-        # Entity type. Valid values:
-        # 
-        # - ip
-        # 
-        # - process
-        # 
-        # - file
+        # The entity type. Valid values:
         self.entity_type = entity_type
-        # Summary of task failure.
+        self.error_code = error_code
+        # The failure summary of the task.
         self.error_message = error_message
-        # Task completion time.
+        # The finish time of the task.
         self.finish_time = finish_time
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Last modified time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Strategy ID.
+        # The policy ID.
         self.id = id
-        # Event name.
+        # The incident name.
         self.incident_name = incident_name
-        # Global unique UUID of the event.
+        # The globally unique UUID of the incident.
         self.incident_uuid = incident_uuid
-        # Unique name of the playbook.
+        # The unique identifier name of the playbook.
         self.playbook_name = playbook_name
-        # Playbook type. Valid values:
-        # 
-        # - system: manual disposal
-        # 
+        # The playbook type. Valid values:
+        # - system: manual handling
         # - custom: event-triggered playbook
-        # 
         # - custom_alert: alert-triggered playbook
-        # 
         # - soar-manual: manually run playbook
-        # 
         # - soar-mdr: MDR-run playbook
         self.playbook_type = playbook_type
-        # UUID of the playbook.
+        # The playbook UUID.
         self.playbook_uuid = playbook_uuid
-        # Disposal scope.
+        # The disposition scope.
         self.scope = scope
-        # ID of the security orchestration and automated response disposal strategy.
+        # The SOAR response policy ID.
         self.sophon_task_id = sophon_task_id
-        # Playbook invocation status. Valid values:
-        # 
-        # - 200: succeeded
-        # 
-        # - 10: deleted
-        # 
-        # - 5: failed
-        # 
-        # - 0: initial state
+        # The playbook invocation status. Valid values:
         self.status = status
-        # The Alibaba Cloud account ID associated with the configuration policy.
+        # The Alibaba Cloud account ID that configured the policy.
         self.sub_aliuid = sub_aliuid
-        # Parameters used to trigger the playbook, in JSON format.
+        # The playbook trigger parameters in JSON format.
         self.task_param = task_param
-        # Playbook URL.
+        # The playbook URL.
         self.task_url = task_url
 
     def validate(self):
@@ -232,6 +226,9 @@ class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.alert_name is not None:
+            result['AlertName'] = self.alert_name
+
         if self.alert_uuid is not None:
             result['AlertUuid'] = self.alert_uuid
 
@@ -249,6 +246,9 @@ class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
 
         if self.entity_type is not None:
             result['EntityType'] = self.entity_type
+
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
 
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
@@ -302,6 +302,9 @@ class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlertName') is not None:
+            self.alert_name = m.get('AlertName')
+
         if m.get('AlertUuid') is not None:
             self.alert_uuid = m.get('AlertUuid')
 
@@ -319,6 +322,9 @@ class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
 
         if m.get('EntityType') is not None:
             self.entity_type = m.get('EntityType')
+
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
 
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
@@ -377,11 +383,11 @@ class ListDisposeStrategyResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Current page number.
+        # The current page number of the list.
         self.current_page = current_page
-        # Number of entries returned per page.
+        # The number of records returned per page.
         self.page_size = page_size
-        # Total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -413,6 +419,150 @@ class ListDisposeStrategyResponseBodyDataPageInfo(DaraModel):
 
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+
+        return self
+
+class ListDisposeStrategyResponseBodyDataGroups(DaraModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        first_occurrence_time: int = None,
+        group_by: str = None,
+        group_key: str = None,
+        group_meta: main_models.ListDisposeStrategyResponseBodyDataGroupsGroupMeta = None,
+        group_name: str = None,
+        group_title: str = None,
+        last_occurrence_time: int = None,
+        latest_modified_time: int = None,
+        running_count: int = None,
+        success_count: int = None,
+        total_count: int = None,
+    ):
+        self.failed_count = failed_count
+        self.first_occurrence_time = first_occurrence_time
+        self.group_by = group_by
+        self.group_key = group_key
+        self.group_meta = group_meta
+        self.group_name = group_name
+        self.group_title = group_title
+        self.last_occurrence_time = last_occurrence_time
+        self.latest_modified_time = latest_modified_time
+        self.running_count = running_count
+        self.success_count = success_count
+        self.total_count = total_count
+
+    def validate(self):
+        if self.group_meta:
+            self.group_meta.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+
+        if self.first_occurrence_time is not None:
+            result['FirstOccurrenceTime'] = self.first_occurrence_time
+
+        if self.group_by is not None:
+            result['GroupBy'] = self.group_by
+
+        if self.group_key is not None:
+            result['GroupKey'] = self.group_key
+
+        if self.group_meta is not None:
+            result['GroupMeta'] = self.group_meta.to_map()
+
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+
+        if self.group_title is not None:
+            result['GroupTitle'] = self.group_title
+
+        if self.last_occurrence_time is not None:
+            result['LastOccurrenceTime'] = self.last_occurrence_time
+
+        if self.latest_modified_time is not None:
+            result['LatestModifiedTime'] = self.latest_modified_time
+
+        if self.running_count is not None:
+            result['RunningCount'] = self.running_count
+
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+
+        if m.get('FirstOccurrenceTime') is not None:
+            self.first_occurrence_time = m.get('FirstOccurrenceTime')
+
+        if m.get('GroupBy') is not None:
+            self.group_by = m.get('GroupBy')
+
+        if m.get('GroupKey') is not None:
+            self.group_key = m.get('GroupKey')
+
+        if m.get('GroupMeta') is not None:
+            temp_model = main_models.ListDisposeStrategyResponseBodyDataGroupsGroupMeta()
+            self.group_meta = temp_model.from_map(m.get('GroupMeta'))
+
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+
+        if m.get('GroupTitle') is not None:
+            self.group_title = m.get('GroupTitle')
+
+        if m.get('LastOccurrenceTime') is not None:
+            self.last_occurrence_time = m.get('LastOccurrenceTime')
+
+        if m.get('LatestModifiedTime') is not None:
+            self.latest_modified_time = m.get('LatestModifiedTime')
+
+        if m.get('RunningCount') is not None:
+            self.running_count = m.get('RunningCount')
+
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+
+        return self
+
+class ListDisposeStrategyResponseBodyDataGroupsGroupMeta(DaraModel):
+    def __init__(
+        self,
+        group_info: Any = None,
+    ):
+        self.group_info = group_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.group_info is not None:
+            result['GroupInfo'] = self.group_info
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupInfo') is not None:
+            self.group_info = m.get('GroupInfo')
 
         return self
 

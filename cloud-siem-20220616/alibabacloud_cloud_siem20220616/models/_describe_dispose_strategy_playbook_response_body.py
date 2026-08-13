@@ -16,19 +16,17 @@ class DescribeDisposeStrategyPlaybookResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the request.
+        # The request status code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -89,7 +87,7 @@ class DescribeDisposeStrategyPlaybookResponseBodyData(DaraModel):
         playbook_name: str = None,
         playbook_uuid: str = None,
     ):
-        # The unique name of the playbook.
+        # The unique identifier name of the playbook.
         self.playbook_name = playbook_name
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid

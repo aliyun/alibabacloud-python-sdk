@@ -16,7 +16,7 @@ class GetEntitiyStatResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the request.
+        # The HTTP status code.
         self.code = code
         # The response data.
         self.data = data
@@ -26,8 +26,8 @@ class GetEntitiyStatResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - true: successful.
-        # - false: failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -85,16 +85,20 @@ class GetEntitiyStatResponseBody(DaraModel):
 class GetEntitiyStatResponseBodyData(DaraModel):
     def __init__(
         self,
+        alert_num: int = None,
         entity_num: int = None,
         entity_type: str = None,
         entity_uuid: str = None,
+        incident_num: int = None,
     ):
+        self.alert_num = alert_num
         # The number of entities.
         self.entity_num = entity_num
         # The entity type.
         self.entity_type = entity_type
         # The entity UUID.
         self.entity_uuid = entity_uuid
+        self.incident_num = incident_num
 
     def validate(self):
         pass
@@ -104,6 +108,9 @@ class GetEntitiyStatResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.alert_num is not None:
+            result['AlertNum'] = self.alert_num
+
         if self.entity_num is not None:
             result['EntityNum'] = self.entity_num
 
@@ -113,10 +120,16 @@ class GetEntitiyStatResponseBodyData(DaraModel):
         if self.entity_uuid is not None:
             result['EntityUuid'] = self.entity_uuid
 
+        if self.incident_num is not None:
+            result['IncidentNum'] = self.incident_num
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlertNum') is not None:
+            self.alert_num = m.get('AlertNum')
+
         if m.get('EntityNum') is not None:
             self.entity_num = m.get('EntityNum')
 
@@ -125,6 +138,9 @@ class GetEntitiyStatResponseBodyData(DaraModel):
 
         if m.get('EntityUuid') is not None:
             self.entity_uuid = m.get('EntityUuid')
+
+        if m.get('IncidentNum') is not None:
+            self.incident_num = m.get('IncidentNum')
 
         return self
 

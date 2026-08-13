@@ -1,3 +1,11 @@
+2026-08-13 Version: 6.2.4
+- Update API DescribeDisposeAndPlaybook: add request parameters AvailableOnly.
+- Update API DescribeDisposeAndPlaybook: add request parameters EntityUuidList.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.Available.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.EntityUuid.
+- Update API ListDisposeStrategy: add response parameters Body.Data.ResponseData.$.ErrorCode.
+
+
 2026-07-13 Version: 6.2.0
 - Support API GetDataStorage.
 - Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.PlaybookList.$.DisposeStatus.

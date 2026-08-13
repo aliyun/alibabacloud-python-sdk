@@ -208,6 +208,7 @@ from ._list_delivery_request import ListDeliveryRequest
 from ._list_delivery_response_body import ListDeliveryResponseBody
 from ._list_delivery_response import ListDeliveryResponse
 from ._list_dispose_strategy_request import ListDisposeStrategyRequest
+from ._list_dispose_strategy_shrink_request import ListDisposeStrategyShrinkRequest
 from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBody
 from ._list_dispose_strategy_response import ListDisposeStrategyResponse
 from ._list_entities_request import ListEntitiesRequest
@@ -380,6 +381,8 @@ from ._list_delivery_response_body import ListDeliveryResponseBodyDataProductLis
 from ._list_delivery_response_body import ListDeliveryResponseBodyDataProductListLogList
 from ._list_delivery_response_body import ListDeliveryResponseBodyDataProductList
 from ._list_delivery_response_body import ListDeliveryResponseBodyData
+from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBodyDataGroupsGroupMeta
+from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBodyDataGroups
 from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBodyDataPageInfo
 from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBodyDataResponseData
 from ._list_dispose_strategy_response_body import ListDisposeStrategyResponseBodyData
@@ -603,6 +606,7 @@ __all__ = [
     ListDeliveryResponseBody,
     ListDeliveryResponse,
     ListDisposeStrategyRequest,
+    ListDisposeStrategyShrinkRequest,
     ListDisposeStrategyResponseBody,
     ListDisposeStrategyResponse,
     ListEntitiesRequest,
@@ -775,6 +779,8 @@ __all__ = [
     ListDeliveryResponseBodyDataProductListLogList,
     ListDeliveryResponseBodyDataProductList,
     ListDeliveryResponseBodyData,
+    ListDisposeStrategyResponseBodyDataGroupsGroupMeta,
+    ListDisposeStrategyResponseBodyDataGroups,
     ListDisposeStrategyResponseBodyDataPageInfo,
     ListDisposeStrategyResponseBodyDataResponseData,
     ListDisposeStrategyResponseBodyData,
