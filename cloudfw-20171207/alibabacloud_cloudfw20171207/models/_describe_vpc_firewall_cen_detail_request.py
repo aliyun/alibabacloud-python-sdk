@@ -17,11 +17,11 @@ class DescribeVpcFirewallCenDetailRequest(DaraModel):
         # 
         # - **en**: English.
         self.lang = lang
-        # The ID of the VPC instance for which the VPC firewall is created.
+        # The VPC instance ID used to create a VPC firewall.
         self.network_instance_id = network_instance_id
-        # The instance ID of the VPC firewall.
+        # The instance ID of the virtual private cloud (VPC) firewall.
         # 
-        # > You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance IDs of VPC firewalls.
+        # > You can invoke the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance ID of the VPC firewall.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

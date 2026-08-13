@@ -10,11 +10,13 @@ class DescribeAccessInstanceRegionListRequest(DaraModel):
         access_instance_status: str = None,
         access_instance_type: str = None,
     ):
-        # The status of the synchronization node. Used to filter by status.
-        self.access_instance_status = access_instance_status
-        # The type of the synchronization node. Valid values:
+        # The sync node status. Used to filter by status.
         # 
-        # - **PrivateDns**: Private DNS. This is the default value if this parameter is not specified.
+        # > Currently, only the "created" status is supported for filtering. Passing other values (such as "ready") causes the request to fail.
+        self.access_instance_status = access_instance_status
+        # The sync node type. Valid values:
+        # 
+        # - **PrivateDns**: Private DNS (default value if not specified).
         # 
         # - **AckClusterConnector**: ACK cluster connector.
         self.access_instance_type = access_instance_type

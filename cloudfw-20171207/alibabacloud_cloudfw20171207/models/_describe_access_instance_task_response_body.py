@@ -23,13 +23,13 @@ class DescribeAccessInstanceTaskResponseBody(DaraModel):
         self.is_found = is_found
         # The request ID.
         self.request_id = request_id
-        # The time when the task was completed.
+        # The task completion time.
         self.task_finish_timestamp = task_finish_timestamp
         # The task ID.
         self.task_id = task_id
         # The task name.
         self.task_name = task_name
-        # The time when the task was created.
+        # The task creation time.
         self.task_start_timestamp = task_start_timestamp
         # The task status.
         self.task_status = task_status

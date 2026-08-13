@@ -15,19 +15,19 @@ class ModifyDefaultIPSConfigRequest(DaraModel):
         rule_class: int = None,
         run_mode: int = None,
     ):
-        # The switch for basic policies. Valid values:
+        # Specifies whether to enable Basic Policies. Valid values:
         # 
         # - **1**: Enable.
         # 
-        # - **0**: Disable.
+        # - **0**: shutdown.
         self.basic_rules = basic_rules
-        # The switch for threat intelligence. Valid values:
+        # Specifies whether to enable threat intelligence. Valid values:
         # 
         # - **1**: Enable.
         # 
         # - **0**: Disable.
         self.cti_rules = cti_rules
-        # The language of the request and response. Valid values:
+        # The language type of the request and response. Valid values:
         # 
         # - **zh** (default): Chinese.
         # 
@@ -35,13 +35,13 @@ class ModifyDefaultIPSConfigRequest(DaraModel):
         self.lang = lang
         # The daily traffic limit for sensitive data detection.
         self.max_sdl = max_sdl
-        # The switch for virtual patching. Valid values:
+        # Specifies whether to enable virtual patches. Valid values:
         # 
         # - **1**: Enable.
         # 
         # - **0**: Disable.
         self.patch_rules = patch_rules
-        # The IPS rule group. Valid values:
+        # The IPS rules group. Valid values:
         # 
         # - **1**: Loose rule group.
         # 
@@ -49,11 +49,11 @@ class ModifyDefaultIPSConfigRequest(DaraModel):
         # 
         # - **3**: Strict rule group.
         self.rule_class = rule_class
-        # The mode of the IPS. Valid values:
+        # The IPS defense mode. Valid values:
         # 
         # - **1**: Block Mode.
         # 
-        # - **0**: Monitor Mode.
+        # - **0**: monitor mode.
         # 
         # This parameter is required.
         self.run_mode = run_mode

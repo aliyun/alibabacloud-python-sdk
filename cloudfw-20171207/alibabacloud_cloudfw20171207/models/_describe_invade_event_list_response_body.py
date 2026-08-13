@@ -17,17 +17,17 @@ class DescribeInvadeEventListResponseBody(DaraModel):
         page_info: main_models.DescribeInvadeEventListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The list of breach detection events.
+        # The list of compromise awareness events.
         self.event_list = event_list
-        # The percentage of high-risk events.
+        # The percentage of high-risk level events.
         self.high_level_percent = high_level_percent
-        # The percentage of low-risk events.
+        # The percentage of low-risk level events.
         self.low_level_percent = low_level_percent
-        # The percentage of medium-risk events.
+        # The percentage of medium-risk level events.
         self.middle_level_percent = middle_level_percent
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -98,11 +98,11 @@ class DescribeInvadeEventListResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The total number of breach detection events.
+        # The total number of compromise awareness events.
         self.total_count = total_count
 
     def validate(self):
@@ -162,94 +162,32 @@ class DescribeInvadeEventListResponseBodyEventList(DaraModel):
         # The name of the affected asset.
         self.assets_instance_name = assets_instance_name
         # The type of the affected asset. Valid values:
-        # 
-        # - **BastionHostIP**: the egress IP address of a bastion host.
-        # 
-        # - **BastionHostIngressIP**: the ingress IP address of a bastion host.
-        # 
-        # - **EcsEIP**: the EIP of an ECS instance.
-        # 
-        # - **EcsPublicIP**: the public IP address of an ECS instance.
-        # 
-        # - **EIP**: an EIP.
-        # 
-        # - **EniEIP**: the EIP of an ENI.
-        # 
-        # - **NatEIP**: the EIP of a NAT gateway.
-        # 
-        # - **SlbEIP**: the EIP of a CLB instance.
-        # 
-        # - **SlbPublicIP**: the public IP address of a CLB instance.
-        # 
-        # - **NatPublicIP**: the public IP address of a NAT gateway.
-        # 
-        # - **HAVIP**: an HAVIP.
         self.assets_type = assets_type
-        # The ID of the breach detection event.
+        # The ID of the compromise awareness event.
         self.event_key = event_key
-        # The name of the breach detection event.
+        # The name of the compromise awareness event.
         self.event_name = event_name
-        # The source of the breach detection event. Valid values:
-        # 
-        # - **IPS**: an intrusion prevention system event.
-        # 
-        # - **offline**: an offline event.
+        # The source of the compromise awareness event. Valid values:
         self.event_src = event_src
-        # The UUID of the breach detection event.
+        # The UUID of the compromise awareness event.
         self.event_uuid = event_uuid
-        # The time when the breach detection event first occurred. This value is a UNIX timestamp. Unit: seconds.
+        # The time when the compromise awareness event first occurred. The value is a UNIX timestamp in seconds.
         self.first_time = first_time
-        # Indicates whether the breach detection event is ignored. Valid values:
-        # 
-        # - **true**: The event is ignored.
-        # 
-        # - **false**: The event is not ignored.
+        # Indicates whether the compromise awareness event is ignored. Valid values:
         self.is_ignore = is_ignore
-        # The time when the breach detection event last occurred. This value is a UNIX timestamp. Unit: seconds.
+        # The time when the compromise awareness event last occurred. The value is a UNIX timestamp in seconds.
         self.last_time = last_time
-        # The UID of the member.
+        # The UID of the member accounts.
         self.member_uid = member_uid
         # The private IP address of the affected asset.
         self.private_ip = private_ip
-        # The handling status of the breach detection event. Valid values:
-        # 
-        # - **0**: pending
-        # 
-        # - **20**: handled
+        # The processing status of the compromise awareness event. Valid values:
         self.process_status = process_status
         # The public IP address of the affected asset.
         self.public_ip = public_ip
         # The type of the affected asset. Valid values:
-        # 
-        # - **BastionHostIP**: the egress IP address of a bastion host.
-        # 
-        # - **BastionHostIngressIP**: the ingress IP address of a bastion host.
-        # 
-        # - **EcsEIP**: the EIP of an ECS instance.
-        # 
-        # - **EcsPublicIP**: the public IP address of an ECS instance.
-        # 
-        # - **EIP**: an EIP.
-        # 
-        # - **EniEIP**: the EIP of an ENI.
-        # 
-        # - **NatEIP**: the EIP of a NAT gateway.
-        # 
-        # - **SlbEIP**: the EIP of a CLB instance.
-        # 
-        # - **SlbPublicIP**: the public IP address of a CLB instance.
-        # 
-        # - **NatPublicIP**: the public IP address of a NAT gateway.
-        # 
-        # - **HAVIP**: an HAVIP.
         self.public_ip_type = public_ip_type
-        # The risk level. Valid values:
-        # 
-        # - **1**: low
-        # 
-        # - **2**: medium
-        # 
-        # - **3**: high
+        # The risk assessment level. Valid values:
         self.risk_level = risk_level
 
     def validate(self):

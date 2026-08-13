@@ -139,7 +139,7 @@ class DescribeFirewallTaskResponseBodyTaskSteps(DaraModel):
         self.step_name = step_name
         # The progress of the task step.
         self.step_progress = step_progress
-        # The status of the task step. Valid values:
+        # The task step status. Valid values:
         # 
         # - **init** 
         # 

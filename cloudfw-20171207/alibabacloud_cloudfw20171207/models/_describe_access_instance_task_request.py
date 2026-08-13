@@ -13,7 +13,7 @@ class DescribeAccessInstanceTaskRequest(DaraModel):
         region_no: str = None,
         task_id: str = None,
     ):
-        # The synchronization node ID. You must specify at least one of TaskId and AccessInstanceId. If neither is specified, the API returns a 400 error.
+        # The synchronization node ID. You must specify at least one of AccessInstanceId and TaskId. If both are empty, the error MissingParameter.TaskIdOrAccessInstanceId (-200550) is returned.
         self.access_instance_id = access_instance_id
         # The synchronization node type.
         self.access_instance_type = access_instance_type
@@ -21,7 +21,7 @@ class DescribeAccessInstanceTaskRequest(DaraModel):
         self.lang = lang
         # The region ID.
         self.region_no = region_no
-        # The task ID. You must specify at least one of TaskId and AccessInstanceId. If neither is specified, the API returns a 400 error.
+        # The task ID. You must specify at least one of TaskId and AccessInstanceId. If both are empty, the error MissingParameter.TaskIdOrAccessInstanceId (-200550, TaskId and AccessInstanceId cannot be empty at the same time. Provide at least one.) is returned.
         self.task_id = task_id
 
     def validate(self):

@@ -14,7 +14,7 @@ class DescribeAssetRiskListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the assets.
+        # The asset details returned.
         self.asset_list = asset_list
         # The request ID.
         self.request_id = request_id
@@ -69,17 +69,17 @@ class DescribeAssetRiskListResponseBodyAssetList(DaraModel):
         reason: str = None,
         risk_level: str = None,
     ):
-        # The IP address of the server.
+        # The server IP address.
         self.ip = ip
-        # The IP version of the asset protected by Cloud Firewall.
+        # The IP address version of the assets protected by Cloud Firewall.
         # 
         # Valid values:
         # 
-        # - **4**: IPv4
+        # - **4**: IPv4 address.
         # 
-        # - **6**: IPv6
+        # - **6**: IPv6 address.
         self.ip_version = ip_version
-        # The reason for the risk.
+        # The risk reason.
         self.reason = reason
         # The risk level. Valid values:
         # - **low**: low risk

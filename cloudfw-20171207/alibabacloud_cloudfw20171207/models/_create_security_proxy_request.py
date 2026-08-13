@@ -10,6 +10,8 @@ from darabonba.model import DaraModel
 class CreateSecurityProxyRequest(DaraModel):
     def __init__(
         self,
+        firewall_service_mode: str = None,
+        firewall_service_zones: List[str] = None,
         firewall_switch: str = None,
         fw_vswitch_zone_id: str = None,
         lang: str = None,
@@ -23,9 +25,16 @@ class CreateSecurityProxyRequest(DaraModel):
         vswitch_cidr: str = None,
         vswitch_id: str = None,
     ):
+        # The deployment mode of the firewall service. Valid values:
+        # 
+        # - PrimaryStandby: active/standby mode
+        # - MultiPrimary: active-active mode
+        self.firewall_service_mode = firewall_service_mode
+        # The list of zone IDs used by the firewall service.
+        self.firewall_service_zones = firewall_service_zones
         # The security protection switch. Valid values:
-        # - **open**: Enabled.
-        # - **close**: Disabled.
+        # - **open**: enabled
+        # - **close**: disabled
         self.firewall_switch = firewall_switch
         # The zone of the firewall vSwitch.
         self.fw_vswitch_zone_id = fw_vswitch_zone_id
@@ -62,8 +71,8 @@ class CreateSecurityProxyRequest(DaraModel):
         # This parameter is required.
         self.vpc_id = vpc_id
         # Specifies whether to use the automatic vSwitch mode. Valid values:
-        # - **true**: Automatic mode.
-        # - **false**: Manual mode.
+        # - **true**: automatic mode
+        # - **false**: manual mode
         # > The default value of VswitchAuto is true. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
         self.vswitch_auto = vswitch_auto
         # The CIDR block of the vSwitch. This parameter is required when the vSwitch is in automatic mode.
@@ -82,6 +91,12 @@ class CreateSecurityProxyRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.firewall_service_mode is not None:
+            result['FirewallServiceMode'] = self.firewall_service_mode
+
+        if self.firewall_service_zones is not None:
+            result['FirewallServiceZones'] = self.firewall_service_zones
+
         if self.firewall_switch is not None:
             result['FirewallSwitch'] = self.firewall_switch
 
@@ -124,6 +139,12 @@ class CreateSecurityProxyRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FirewallServiceMode') is not None:
+            self.firewall_service_mode = m.get('FirewallServiceMode')
+
+        if m.get('FirewallServiceZones') is not None:
+            self.firewall_service_zones = m.get('FirewallServiceZones')
+
         if m.get('FirewallSwitch') is not None:
             self.firewall_switch = m.get('FirewallSwitch')
 

@@ -11,14 +11,18 @@ class DescribeFirewallTrafficTrendRequest(DaraModel):
         lang: str = None,
         start_time: int = None,
     ):
-        # The end time of the query. The value is a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, the API returns ErrorTimeError(400). The value must be a UNIX timestamp in seconds, and EndTime must be later than StartTime.
+        # The end time of the query. Specify a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, ErrorTimeError (400) is returned.
+        # 
+        # > The query interval (EndTime − StartTime) cannot exceed 90 days. If the interval exceeds 90 days, ErrorTimeError is returned. If the value is later than the current time, it is silently adjusted to the current time.
         self.end_time = end_time
         # The language of the response message.
         # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The start time of the query. The value is a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, the API returns ErrorTimeError(400). The value must be a UNIX timestamp in seconds, and StartTime must be earlier than EndTime.
+        # The start time of the query. Specify a UNIX timestamp in seconds. This parameter is required. If this parameter is not specified, ErrorTimeError (400) is returned.
+        # 
+        # > The query interval (EndTime − StartTime) cannot exceed 90 days. If the interval exceeds 90 days, ErrorTimeError is returned. If the value is later than the current time, it is silently adjusted to the current time. If StartTime is later than EndTime, no error is returned, but the response contains empty data.
         self.start_time = start_time
 
     def validate(self):

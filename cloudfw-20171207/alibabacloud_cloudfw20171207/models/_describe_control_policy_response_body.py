@@ -16,15 +16,15 @@ class DescribeControlPolicyResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page displayed in a paging query.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The maximum number of entries per page displayed in a paging query.
         self.page_size = page_size
         # The information about the access control policies.
         self.policys = policys
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of access control policies.
+        # The total number of the access control policies.
         self.total_count = total_count
 
     def validate(self):
@@ -120,229 +120,79 @@ class DescribeControlPolicyResponseBodyPolicys(DaraModel):
         spread_cnt: int = None,
         start_time: int = None,
     ):
-        # The action that Cloud Firewall performs on the traffic. Valid values:
-        # 
-        # - **accept**: Allow
-        # 
-        # - **drop**: Deny
-        # 
-        # - **log**: Monitor
+        # The action that Cloud Firewall performs on the traffic in the access control policy. Valid values:
         self.acl_action = acl_action
         # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
-        # The application ID for the traffic in the access control policy.
+        # The application ID of the traffic in the access control policy.
         self.application_id = application_id
-        # The application type supported by the access control policy. Use \\`ApplicationNameList\\` instead. Valid values:
-        # 
-        # - **FTP**
-        # 
-        # - **HTTP**
-        # 
-        # - **HTTPS**
-        # 
-        # - **Memcache**
-        # 
-        # - **MongoDB**
-        # 
-        # - **MQTT**
-        # 
-        # - **MySQL**
-        # 
-        # - **RDP**
-        # 
-        # - **Redis**
-        # 
-        # - **SMTP**
-        # 
-        # - **SMTPS**
-        # 
-        # - **SSH**
-        # 
-        # - **SSL**
-        # 
-        # - **VNC**
-        # 
-        # - **ANY** (all application types)
+        # The application type supported by the access control policy. We recommend that you use ApplicationNameList. Valid values:
         self.application_name = application_name
         # The list of application names.
         self.application_name_list = application_name_list
-        # The time when the policy was created. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the policy was created. The value is a UNIX timestamp in seconds, which is the number of seconds that have elapsed since January 1, 1970 (UTC).
         self.create_time = create_time
         # The description of the access control policy.
         self.description = description
-        # The destination port for the traffic in the access control policy.
+        # The destination port of the traffic in the access control policy.
         self.dest_port = dest_port
-        # The name of the destination port address book for the traffic in the access control policy.
+        # The name of the destination port address book in the access control policy.
         self.dest_port_group = dest_port_group
         # The list of ports in the destination port address book.
         self.dest_port_group_ports = dest_port_group_ports
-        # The destination port type for the traffic in the access control policy. Valid values:
-        # 
-        # - **port**: port
-        # 
-        # - **group**: port address book
+        # The type of the destination port in the access control policy. Valid values:
         self.dest_port_type = dest_port_type
-        # The destination address in the access control policy. The value of this parameter varies based on the value of the \\`DestinationType\\` parameter. Valid values:
-        # 
-        # - If **DestinationType** is **net**, the destination address is a CIDR block. Example: 192.0.XX.XX/24.
-        # 
-        # - If **DestinationType** is **domain**, the destination address is a domain name. Example: aliyuncs.com.
-        # 
-        # - If **DestinationType** is **group**, the destination address is the name of an address book. Example: db_group.
-        # 
-        # - If **DestinationType** is **location**, the destination address is a region name. For more information about region codes, see AddControlPolicy. Example: ["BJ11", "ZB"].
+        # The destination address in the access control policy. The value varies depending on the DestinationType (destination type). Valid values:
         self.destination = destination
         # The list of CIDR blocks in the destination address book of the access control policy.
         self.destination_group_cidrs = destination_group_cidrs
         # The type of the destination address book in the access control policy. Valid values:
-        # 
-        # - **ip**: An IP address book that contains one or more CIDR blocks.
-        # 
-        # - **tag**: An ECS tag-based address book that contains the IP addresses of the ECS instances with one or more tags.
-        # 
-        # - **domain**: A domain name address book that contains one or more domain names.
-        # 
-        # - **threat**: A threat intelligence address book that contains one or more malicious IP addresses or domain names.
-        # 
-        # - **backsrc**: An origin URL address book that contains the origin URLs of one or more Anti-DDoS or WAF instances.
         self.destination_group_type = destination_group_type
-        # The destination address type in the access control policy. Valid values:
-        # 
-        # - **net**: destination CIDR block
-        # 
-        # - **group**: destination address book
-        # 
-        # - **domain**: destination domain name
-        # 
-        # - **location**: destination region
+        # The type of the destination address in the access control policy. Valid values:
         self.destination_type = destination_type
         # The traffic direction of the access control policy. Valid values:
-        # 
-        # - **in**: inbound traffic
-        # 
-        # - **out**: outbound traffic
         self.direction = direction
-        # The result of the DNS resolution.
+        # The DNS resolution result.
         self.dns_result = dns_result
-        # The timestamp of the DNS resolution. The value is a UNIX timestamp. Unit: seconds.
+        # The timestamp of the DNS resolution. The value is a UNIX timestamp in seconds.
         self.dns_result_time = dns_result_time
         # The domain name resolution method of the access control policy. Valid values:
-        # 
-        # - **FQDN**: FQDN-based
-        # 
-        # - **DNS**: DNS-based dynamic resolution
-        # 
-        # - **FQDN_AND_DNS**: FQDN- and DNS-based dynamic resolution
         self.domain_resolve_type = domain_resolve_type
-        # The end time of the policy validity period for the access control policy. The value is a UNIX timestamp. The time must be on the hour or half-hour, and at least 30 minutes later than the start time.
-        # 
-        # > If \\`RepeatType\\` is \\`Permanent\\`, \\`EndTime\\` is empty. If \\`RepeatType\\` is \\`None\\`, \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, this parameter is required.
+        # The end time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or half hour and must be at least 30 minutes later than the start time.
         self.end_time = end_time
-        # The timestamp of the last hit. The value is a UNIX timestamp. Unit: seconds.
+        # The most recent time of hits. The value is in the format of a UNIX timestamp in seconds.
         self.hit_last_time = hit_last_time
         # The number of hits for the access control policy.
         self.hit_times = hit_times
-        # The IP version supported. Valid values:
-        # 
-        # - **4**: IPv4 address
-        # 
-        # - **6**: IPv6 address
+        # The supported IP address version. Valid values:
         self.ip_version = ip_version
-        # The time when the policy was last modified. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the policy was last modified. The value is a UNIX timestamp in seconds, which is the number of seconds that have elapsed since January 1, 1970 (UTC).
         self.modify_time = modify_time
         # The priority of the access control policy.
-        # 
-        # The priority value starts from 1 and increases sequentially. A smaller value indicates a higher priority.
         self.order = order
-        # The protocol type of the traffic in the access control policy. Valid values:
-        # 
-        # - **ANY**
-        # 
-        # - **TCP**
-        # 
-        # - **UDP**
-        # 
-        # - **ICMP**
+        # The security protocol type of the traffic in the access control policy. Valid values:
         self.proto = proto
-        # The status of the access control policy. The policy is enabled by default after it is created. Valid values:
-        # 
-        # - **true**: The access control policy is enabled.
-        # 
-        # - **false**: The access control policy is disabled.
+        # The enabled status of the access control policy. The policy is enabled by default after creation. Valid values:
         self.release = release
-        # The collection of recurring dates for the policy validity period of the access control policy.
-        # 
-        # - If \\`RepeatType\\` is \\`Permanent\\`, \\`None\\`, or \\`Daily\\`, \\`RepeatDays\\` is an empty collection.
-        #   Example: []
-        # 
-        # - If \\`RepeatType\\` is \\`Weekly\\`, \\`RepeatDays\\` cannot be empty.
-        #   Example: [0, 6]
-        # 
-        # > If \\`RepeatType\\` is set to \\`Weekly\\`, \\`RepeatDays\\` cannot contain duplicate values.
-        # 
-        # - If \\`RepeatType\\` is \\`Monthly\\`, \\`RepeatDays\\` cannot be empty.
-        #   Example: [1, 31]
-        # 
-        # > If \\`RepeatType\\` is set to \\`Monthly\\`, \\`RepeatDays\\` cannot contain duplicate values.
+        # The collection of recurrence days for the policy validity period of the access control policy.
         self.repeat_days = repeat_days
-        # The recurring end time for the policy validity period of the access control policy. Example: \\`23:30\\`. The time must be on the hour or half-hour, and at least 30 minutes later than the recurring start time.
-        # 
-        # > If \\`RepeatType\\` is \\`Permanent\\` or \\`None\\`, \\`RepeatEndTime\\` is empty. If \\`RepeatType\\` is \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, this parameter is required.
-        # > The time is in the HH:mm format (24-hour). Examples: \\`08:00\\` and \\`23:30\\`.
+        # The recurrence end time of the policy validity period for the access control policy. Example: 23:30. The value must be on the hour or half hour and must be at least 30 minutes later than the recurrence start time.
         self.repeat_end_time = repeat_end_time
-        # The recurring start time for the policy validity period of the access control policy. Example: \\`08:00\\`. The time must be on the hour or half-hour, and at least 30 minutes earlier than the recurring end time.
-        # 
-        # > If \\`RepeatType\\` is \\`Permanent\\` or \\`None\\`, \\`RepeatStartTime\\` is empty. If \\`RepeatType\\` is \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, this parameter is required.
-        # > The time is in the HH:mm format (24-hour). Examples: \\`08:00\\` and \\`23:30\\`.
+        # The recurrence start time of the policy validity period for the access control policy. Example: 08:00. The value must be on the hour or half hour and must be at least 30 minutes earlier than the recurrence end time.
         self.repeat_start_time = repeat_start_time
-        # The recurrence type for the policy validity period of the access control policy. Valid values:
-        # 
-        # - **Permanent** (default): Always
-        # 
-        # - **None**: One-time
-        # 
-        # - **Daily**: Daily
-        # 
-        # - **Weekly**: Weekly
-        # 
-        # - **Monthly**: Monthly
+        # The recurrence type of the policy validity period for the access control policy. Valid values:
         self.repeat_type = repeat_type
         # The source address in the access control policy. Valid values:
-        # 
-        # - If **SourceType** is `net`, the source address is a CIDR block. Example: 192.0.XX.XX/24.
-        # 
-        # - If **SourceType** is `group`, the source address is the name of a source address book. Example: db_group.
-        # 
-        # - If **SourceType** is `location`, the source address is a region. For more information about region codes, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"].
         self.source = source
         # The list of CIDR blocks in the source address book of the access control policy.
         self.source_group_cidrs = source_group_cidrs
         # The type of the source address book in the access control policy. Valid values:
-        # 
-        # - **ip**: An IP address book that contains one or more CIDR blocks.
-        # 
-        # - **tag**: An ECS tag-based address book that contains the IP addresses of the ECS instances with one or more tags.
-        # 
-        # - **domain**: A domain name address book that contains one or more domain names.
-        # 
-        # - **threat**: A threat intelligence address book that contains one or more malicious IP addresses or domain names.
-        # 
-        # - **backsrc**: An origin URL address book that contains the origin URLs of one or more Anti-DDoS or WAF instances.
         self.source_group_type = source_group_type
-        # The source address type in the access control policy. Valid values:
-        # 
-        # - **net**: source CIDR block
-        # 
-        # - **group**: source address book
-        # 
-        # - **location**: source region
+        # The type of the source address in the access control policy. Valid values:
         self.source_type = source_type
-        # The number of specification entries that the access control policy consumes. This is the sum of entries consumed by each policy.
-        # The number of entries for a single policy is calculated as: Number of source addresses (CIDR blocks or regions) × Number of destination addresses (CIDR blocks, regions, or domain names) × Number of port ranges × Number of applications.
+        # The number of quota units consumed by the access control policy, which is the cumulative number of quota units consumed by each policy.
         self.spread_cnt = spread_cnt
-        # The start time of the policy validity period for the access control policy. The value is a UNIX timestamp. The time must be on the hour or half-hour, and at least 30 minutes earlier than the end time.
-        # 
-        # > If \\`RepeatType\\` is \\`Permanent\\`, \\`StartTime\\` is empty. If \\`RepeatType\\` is \\`None\\`, \\`Daily\\`, \\`Weekly\\`, or \\`Monthly\\`, this parameter is required.
+        # The start time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or half hour and must be at least 30 minutes earlier than the end time.
         self.start_time = start_time
 
     def validate(self):

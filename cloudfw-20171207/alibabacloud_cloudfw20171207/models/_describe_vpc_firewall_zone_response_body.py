@@ -10,10 +10,16 @@ from darabonba.model import DaraModel
 class DescribeVpcFirewallZoneResponseBody(DaraModel):
     def __init__(
         self,
+        firewall_service_mode: str = None,
         request_id: str = None,
         zone_list: List[List[main_models.DescribeVpcFirewallZoneResponseBodyZoneList]] = None,
     ):
-        # The ID of the request.
+        # The deployment mode of the virtual private cloud (VPC) firewall service. Valid values:
+        # 
+        # - **PrimaryStandby**: active/standby mode.
+        # - **MultiPrimary**: active-active mode.
+        self.firewall_service_mode = firewall_service_mode
+        # The request ID.
         self.request_id = request_id
         # The list of zones.
         self.zone_list = zone_list
@@ -30,6 +36,9 @@ class DescribeVpcFirewallZoneResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.firewall_service_mode is not None:
+            result['FirewallServiceMode'] = self.firewall_service_mode
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -45,6 +54,9 @@ class DescribeVpcFirewallZoneResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FirewallServiceMode') is not None:
+            self.firewall_service_mode = m.get('FirewallServiceMode')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
@@ -67,7 +79,7 @@ class DescribeVpcFirewallZoneResponseBodyZoneList(DaraModel):
     ):
         # The zone ID.
         self.zone_id = zone_id
-        # The name of the zone.
+        # The zone name.
         self.local_name = local_name
 
     def validate(self):

@@ -14,7 +14,7 @@ class DescribeVpcFirewallPrecheckDetailResponseBody(DaraModel):
         precheck_detail: main_models.DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail = None,
         request_id: str = None,
     ):
-        # Indicates whether a task exists.
+        # Indicates whether the task exists.
         self.is_found = is_found
         # The precheck details.
         self.precheck_detail = precheck_detail

@@ -14,11 +14,11 @@ class DescribeVpcFirewallControlPolicyResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The VPC firewall access control policies.
+        # The information about the access control policies of the virtual private cloud (VPC) firewall.
         self.policys = policys
         # The request ID.
         self.request_id = request_id
-        # The total number of VPC firewall access control policies.
+        # The total number of access control policies for the virtual private cloud (VPC) firewall.
         self.total_count = total_count
 
     def validate(self):
@@ -99,181 +99,73 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(DaraModel):
         spread_cnt: int = None,
         start_time: int = None,
     ):
-        # The action to perform on traffic that matches the access control policy. Valid values:
-        # 
-        # - **accept**: allows the traffic.
-        # 
-        # - **drop**: denies the traffic.
-        # 
-        # - **log**: logs the traffic.
+        # The action (settings) that Cloud Firewall performs on the traffic in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
         self.acl_action = acl_action
-        # The unique identifier of the access control policy.
+        # The unique identity ID of the access control policy of the virtual private cloud (VPC) firewall.
         self.acl_uuid = acl_uuid
-        # The ID of the application.
+        # The ID of the application with traffic settings in the access control policy of the virtual private cloud (VPC) firewall.
         self.application_id = application_id
-        # The application type. We recommend that you use `ApplicationNameList` instead. Valid values:
-        # 
-        # - **HTTP**
-        # 
-        # - **HTTPS**
-        # 
-        # - **MySQL**
-        # 
-        # - **SMTP**
-        # 
-        # - **SMTPS**
-        # 
-        # - **RDP**
-        # 
-        # - **VNC**
-        # 
-        # - **SSH**
-        # 
-        # - **Redis**
-        # 
-        # - **MQTT**
-        # 
-        # - **MongoDB**
-        # 
-        # - **Memcache**
-        # 
-        # - **SSL**
-        # 
-        # - **ANY** (all application types)
+        # The application type supported by the access control policy of the virtual private cloud (VPC) firewall. Use ApplicationNameList instead. Valid values:
         self.application_name = application_name
         # The list of application names.
         self.application_name_list = application_name_list
-        # The UNIX timestamp, in seconds, of when the policy was created.
+        # The time when the policy was created. The value is a UNIX timestamp in seconds.
         self.create_time = create_time
-        # The policy description.
+        # The description of the access control policy of the virtual private cloud (VPC) firewall.
         self.description = description
-        # The destination port.
+        # The destination port of the traffic in the access control policy of the virtual private cloud (VPC) firewall.
         self.dest_port = dest_port
-        # The name of the destination port address book.
+        # The name of the destination port address book for the traffic in the access control policy of the virtual private cloud (VPC) firewall.
         self.dest_port_group = dest_port_group
-        # The ports in the destination port address book.
+        # The details of the destination port address book in the access control policy of the virtual private cloud (VPC) firewall.
         self.dest_port_group_ports = dest_port_group_ports
-        # The type of the destination port. Valid values:
-        # 
-        # - **port**: a single port
-        # 
-        # - **group**: a port address book
+        # The destination port type for the traffic in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
         self.dest_port_type = dest_port_type
-        # The destination address for the access control policy. The value depends on `DestinationType`.
-        # 
-        # - If `DestinationType` is `net`, the value is a destination CIDR block.
-        # 
-        # - If `DestinationType` is `domain`, the value is a destination domain name.
-        # 
-        # - If `DestinationType` is `group`, the value is the name of a destination address book.
+        # The destination address in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
         self.destination = destination
-        # The CIDR blocks in the destination address book.
+        # The CIDR block information in the destination address book of the access control policy of the virtual private cloud (VPC) firewall.
         self.destination_group_cidrs = destination_group_cidrs
-        # The type of the destination address book. Valid values:
-        # 
-        # - **ip**: an address book of IP addresses or CIDR blocks.
-        # 
-        # - **domain**: an address book of domain names.
+        # The type of the destination address book in the access control policy. Valid values:
         self.destination_group_type = destination_group_type
-        # The type of the destination address. Valid values:
-        # 
-        # - **net**: a destination CIDR block
-        # 
-        # - **group**: a destination address book
-        # 
-        # - **domain**: a destination domain name
+        # The destination address type in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
         self.destination_type = destination_type
-        # The domain name resolution mode. Valid values:
-        # 
-        # - **FQDN**: FQDN-based resolution
-        # 
-        # - **DNS**: DNS-based dynamic resolution
-        # 
-        # - **FQDN_AND_DNS**: FQDN-based and DNS-based dynamic resolution
+        # The domain name resolution method of the access control policy. Valid values:
         self.domain_resolve_type = domain_resolve_type
-        # The UNIX timestamp, in seconds, for the end of the policy\\"s effective period. The time must be on the hour or half-hour and at least 30 minutes after the start time.
-        # 
-        # > This parameter is not used if `RepeatType` is `Permanent`. It is required for `None`, `Daily`, `Weekly`, or `Monthly` recurrence.
+        # The end time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The time must be on the hour or half hour and must be at least 30 minutes later than the start time.
         self.end_time = end_time
-        # The UNIX timestamp, in seconds, of the last policy hit.
+        # The most recent time of hits. The value is a UNIX timestamp in seconds format.
         self.hit_last_time = hit_last_time
-        # The number of policy hits.
+        # The number of hits for the access control policy of the virtual private cloud (VPC) firewall.
         self.hit_times = hit_times
-        # The UID of the member account.
+        # The UID of a member account of the current Alibaba Cloud account.
         self.member_uid = member_uid
-        # The UNIX timestamp, in seconds, of when the policy was last modified.
+        # The time when the policy was modified. The value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
-        # The priority of the access control policy, starting from 1. A smaller value indicates a higher priority.
+        # The priority of the access control policy of the virtual private cloud (VPC) firewall.
         self.order = order
-        # The protocol type. Valid values:
-        # 
-        # - **TCP**
-        # 
-        # - **UDP**
-        # 
-        # - **ICMP**
-        # 
-        # - **ANY** (all protocol types)
+        # The protocol type of the traffic in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
         self.proto = proto
-        # The enabled status of the access control policy. A policy is enabled by default after it is created. Valid values:
-        # 
-        # - **true**: The policy is enabled.
-        # 
-        # - **false**: The policy is disabled.
+        # The enabled status of the access control policy. The policy is enabled by default after creation. Valid values:
         self.release = release
-        # The days of the week or month on which the policy recurs.
-        # 
-        # - If `RepeatType` is set to `Permanent`, `None`, or `Daily`, this parameter is empty. Example: `[]`
-        # 
-        # - If `RepeatType` is set to `Weekly`, this parameter is required. Example: `[0, 6]`
-        # 
-        # > If `RepeatType` is set to `Weekly`, do not specify duplicate values for this parameter.
-        # 
-        # - If `RepeatType` is set to `Monthly`, this parameter is required. Example: `[1, 31]`
-        # 
-        # > If `RepeatType` is set to `Monthly`, do not specify duplicate values for this parameter.
+        # The collection of recurrence days for the policy validity period of the access control policy.
         self.repeat_days = repeat_days
-        # The recurrence end time. The time is in the `HH:mm` 24-hour format, such as `23:30`.
-        # 
-        # > This parameter is not used if `RepeatType` is `Permanent` or `None`. It is required for `Daily`, `Weekly`, or `Monthly` recurrence.
+        # The recurrence end time of the policy validity period. The value is in the HH:mm format using a 24-hour clock, such as 23:00.
         self.repeat_end_time = repeat_end_time
-        # The recurrence start time. The time is in the `HH:mm` 24-hour format, such as `08:00`.
-        # 
-        # > This parameter is not used if `RepeatType` is `Permanent` or `None`. It is required for `Daily`, `Weekly`, or `Monthly` recurrence.
+        # The recurrence start time of the policy validity period. The value is in the HH:mm format using a 24-hour clock, such as 08:00.
         self.repeat_start_time = repeat_start_time
-        # The recurrence type for the policy\\"s effective period. Valid values:
-        # 
-        # - **Permanent** (default): The policy is always active.
-        # 
-        # - **None**: The policy applies only once.
-        # 
-        # - **Daily**: The policy recurs daily.
-        # 
-        # - **Weekly**: The policy recurs weekly.
-        # 
-        # - **Monthly**: The policy recurs monthly.
+        # The recurrence type of the policy validity period for the access control policy. Valid values:
         self.repeat_type = repeat_type
-        # The source address for the access control policy. The value depends on `SourceType`.
-        # 
-        # - If `SourceType` is `net`, the value is a source CIDR block.
-        # 
-        # - If `SourceType` is `group`, the value is the name of a source address book.
+        # The source address in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
         self.source = source
-        # The CIDR blocks in the source address book.
+        # The details of the source address book in the access control policy of the virtual private cloud (VPC) firewall.
         self.source_group_cidrs = source_group_cidrs
-        # The type of the source address book. The value is always **ip**, which indicates an address book that contains IP addresses or CIDR blocks.
+        # The type of the source address book in the access control policy. The only valid value is **ip**, which indicates an IP address book that contains one or more CIDR blocks.
         self.source_group_type = source_group_type
-        # The type of the source address. Valid values:
-        # 
-        # - **net**: a source CIDR block
-        # 
-        # - **group**: a source address book
+        # The source address type in the access control policy of the virtual private cloud (VPC) firewall. Valid values:
         self.source_type = source_type
-        # The number of rule capacity units that the access control policy consumes. This is calculated as: Number of source addresses × Number of destination addresses × Number of applications × Number of port ranges.
+        # The number of access control policy specifications consumed, which is the cumulative number of specifications consumed by each policy.
         self.spread_cnt = spread_cnt
-        # The UNIX timestamp, in seconds, for the start of the policy\\"s effective period. The time must be on the hour or half-hour and at least 30 minutes before the end time.
-        # 
-        # > This parameter is not used if `RepeatType` is `Permanent`. It is required for `None`, `Daily`, `Weekly`, or `Monthly` recurrence.
+        # The start time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The time must be on the hour or half hour and must be at least 30 minutes earlier than the end time.
         self.start_time = start_time
 
     def validate(self):

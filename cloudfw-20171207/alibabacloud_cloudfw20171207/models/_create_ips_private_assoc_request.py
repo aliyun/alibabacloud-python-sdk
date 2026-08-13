@@ -10,11 +10,11 @@ class CreateIpsPrivateAssocRequest(DaraModel):
         lang: str = None,
         resource_id: str = None,
     ):
-        # The language type for the request and response messages. Valid values:
-        # - en: English.
-        # - zh: Chinese.
+        # The language of the request and response messages.
         self.lang = lang
-        # The instance ID. This parameter is required. If this parameter is not specified, the API returns error code -103201. Only NAT gateway instance IDs (in the format ngw-*) that are protected by Cloud Firewall are accepted. Other resource types such as vpc-* or eip-* are rejected.
+        # The ID of the Internet NAT gateway instance to associate. This parameter is required. If this parameter is not specified, ErrorParamsNotEnough is returned (HTTP 400, Parameters are insufficient.).
+        # 
+        # > The backend does not validate the ID format. Instead, it queries the instance in the Cloud Firewall private network asset table for the current account. If the instance is not found, ErrorParamsInvalid is returned (HTTP 400, Invalid Params). Common scenarios include the resource type not being a NAT gateway, the resource not being managed by Cloud Firewall, or a newly created NAT gateway for which asynchronous asset synchronization has not yet completed.
         self.resource_id = resource_id
 
     def validate(self):

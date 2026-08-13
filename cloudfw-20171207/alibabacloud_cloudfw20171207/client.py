@@ -24,30 +24,30 @@ class Client(OpenApiClient):
         self._endpoint_map = {
             'ap-southeast-1': 'cloudfw.ap-southeast-1.aliyuncs.com',
             'cn-hangzhou': 'cloudfw.cn-hangzhou.aliyuncs.com',
-            'us-west-1': 'cloudfw.aliyuncs.com',
-            'us-east-1': 'cloudfw.aliyuncs.com',
-            'me-east-1': 'cloudfw.aliyuncs.com',
-            'eu-west-1': 'cloudfw.aliyuncs.com',
-            'eu-central-1': 'cloudfw.aliyuncs.com',
-            'cn-zhangjiakou': 'cloudfw.aliyuncs.com',
-            'cn-wulanchabu': 'cloudfw.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cloudfw.aliyuncs.com',
-            'cn-shenzhen': 'cloudfw.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cloudfw.aliyuncs.com',
-            'cn-shanghai': 'cloudfw.aliyuncs.com',
             'cn-qingdao': 'cloudfw.aliyuncs.com',
-            'cn-north-2-gov-1': 'cloudfw.aliyuncs.com',
+            'cn-zhangjiakou': 'cloudfw.aliyuncs.com',
             'cn-huhehaote': 'cloudfw.aliyuncs.com',
-            'cn-hongkong': 'cloudfw.aliyuncs.com',
+            'cn-wulanchabu': 'cloudfw.aliyuncs.com',
             'cn-heyuan': 'cloudfw.aliyuncs.com',
-            'cn-hangzhou-finance': 'cloudfw.aliyuncs.com',
-            'cn-guangzhou': 'cloudfw.aliyuncs.com',
             'cn-chengdu': 'cloudfw.aliyuncs.com',
-            'cn-beijing-finance-1': 'cloudfw.aliyuncs.com',
-            'cn-beijing': 'cloudfw.aliyuncs.com',
+            'ap-northeast-1': 'cloudfw.aliyuncs.com',
             'ap-southeast-5': 'cloudfw.aliyuncs.com',
             'ap-southeast-3': 'cloudfw.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'cloudfw.aliyuncs.com'
+            'cn-shenzhen': 'cloudfw.aliyuncs.com',
+            'cn-beijing': 'cloudfw.aliyuncs.com',
+            'cn-shanghai': 'cloudfw.aliyuncs.com',
+            'cn-guangzhou': 'cloudfw.aliyuncs.com',
+            'cn-hongkong': 'cloudfw.aliyuncs.com',
+            'us-east-1': 'cloudfw.aliyuncs.com',
+            'us-west-1': 'cloudfw.aliyuncs.com',
+            'eu-west-1': 'cloudfw.aliyuncs.com',
+            'eu-central-1': 'cloudfw.aliyuncs.com',
+            'me-east-1': 'cloudfw.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cloudfw.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cloudfw.aliyuncs.com',
+            'cn-hangzhou-finance': 'cloudfw.aliyuncs.com',
+            'cn-beijing-finance-1': 'cloudfw.aliyuncs.com',
+            'cn-north-2-gov-1': 'cloudfw.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudfw', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -297,6 +297,8 @@ class Client(OpenApiClient):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.application_name_list):
             query['ApplicationNameList'] = request.application_name_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.dest_port):
@@ -313,6 +315,8 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not DaraCore.is_null(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.ip_version):
@@ -373,6 +377,8 @@ class Client(OpenApiClient):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.application_name_list):
             query['ApplicationNameList'] = request.application_name_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.dest_port):
@@ -389,6 +395,8 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not DaraCore.is_null(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.ip_version):
@@ -1873,6 +1881,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSecurityProxyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.firewall_service_mode):
+            query['FirewallServiceMode'] = request.firewall_service_mode
+        if not DaraCore.is_null(request.firewall_service_zones):
+            query['FirewallServiceZones'] = request.firewall_service_zones
         if not DaraCore.is_null(request.firewall_switch):
             query['FirewallSwitch'] = request.firewall_switch
         if not DaraCore.is_null(request.fw_vswitch_zone_id):
@@ -1923,6 +1935,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSecurityProxyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.firewall_service_mode):
+            query['FirewallServiceMode'] = request.firewall_service_mode
+        if not DaraCore.is_null(request.firewall_service_zones):
+            query['FirewallServiceZones'] = request.firewall_service_zones
         if not DaraCore.is_null(request.firewall_switch):
             query['FirewallSwitch'] = request.firewall_switch
         if not DaraCore.is_null(request.fw_vswitch_zone_id):
@@ -2063,10 +2079,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cen_id):
             query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.firewall_attachment_zone):
+            query['FirewallAttachmentZone'] = request.firewall_attachment_zone
         if not DaraCore.is_null(request.firewall_description):
             query['FirewallDescription'] = request.firewall_description
         if not DaraCore.is_null(request.firewall_name):
             query['FirewallName'] = request.firewall_name
+        if not DaraCore.is_null(request.firewall_service_mode):
+            query['FirewallServiceMode'] = request.firewall_service_mode
+        if not DaraCore.is_null(request.firewall_service_zones):
+            query['FirewallServiceZones'] = request.firewall_service_zones
         if not DaraCore.is_null(request.firewall_subnet_cidr):
             query['FirewallSubnetCidr'] = request.firewall_subnet_cidr
         if not DaraCore.is_null(request.firewall_vpc_cidr):
@@ -2089,6 +2111,8 @@ class Client(OpenApiClient):
             query['TrAttachmentSlaveCidr'] = request.tr_attachment_slave_cidr
         if not DaraCore.is_null(request.tr_attachment_slave_zone):
             query['TrAttachmentSlaveZone'] = request.tr_attachment_slave_zone
+        if not DaraCore.is_null(request.tr_attachment_zones):
+            query['TrAttachmentZones'] = request.tr_attachment_zones
         if not DaraCore.is_null(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         req = open_api_util_models.OpenApiRequest(
@@ -2119,10 +2143,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cen_id):
             query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.firewall_attachment_zone):
+            query['FirewallAttachmentZone'] = request.firewall_attachment_zone
         if not DaraCore.is_null(request.firewall_description):
             query['FirewallDescription'] = request.firewall_description
         if not DaraCore.is_null(request.firewall_name):
             query['FirewallName'] = request.firewall_name
+        if not DaraCore.is_null(request.firewall_service_mode):
+            query['FirewallServiceMode'] = request.firewall_service_mode
+        if not DaraCore.is_null(request.firewall_service_zones):
+            query['FirewallServiceZones'] = request.firewall_service_zones
         if not DaraCore.is_null(request.firewall_subnet_cidr):
             query['FirewallSubnetCidr'] = request.firewall_subnet_cidr
         if not DaraCore.is_null(request.firewall_vpc_cidr):
@@ -2145,6 +2175,8 @@ class Client(OpenApiClient):
             query['TrAttachmentSlaveCidr'] = request.tr_attachment_slave_cidr
         if not DaraCore.is_null(request.tr_attachment_slave_zone):
             query['TrAttachmentSlaveZone'] = request.tr_attachment_slave_zone
+        if not DaraCore.is_null(request.tr_attachment_zones):
+            query['TrAttachmentZones'] = request.tr_attachment_zones
         if not DaraCore.is_null(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         req = open_api_util_models.OpenApiRequest(
@@ -2299,6 +2331,8 @@ class Client(OpenApiClient):
             query['FirewallSwitch'] = request.firewall_switch
         if not DaraCore.is_null(request.firewall_vswitch_cidr_block):
             query['FirewallVSwitchCidrBlock'] = request.firewall_vswitch_cidr_block
+        if not DaraCore.is_null(request.firewall_vswitch_zone_id):
+            query['FirewallVSwitchZoneId'] = request.firewall_vswitch_zone_id
         if not DaraCore.is_null(request.firewall_vpc_cidr_block):
             query['FirewallVpcCidrBlock'] = request.firewall_vpc_cidr_block
         if not DaraCore.is_null(request.firewall_vpc_standby_zone_id):
@@ -2349,6 +2383,8 @@ class Client(OpenApiClient):
             query['FirewallSwitch'] = request.firewall_switch
         if not DaraCore.is_null(request.firewall_vswitch_cidr_block):
             query['FirewallVSwitchCidrBlock'] = request.firewall_vswitch_cidr_block
+        if not DaraCore.is_null(request.firewall_vswitch_zone_id):
+            query['FirewallVSwitchZoneId'] = request.firewall_vswitch_zone_id
         if not DaraCore.is_null(request.firewall_vpc_cidr_block):
             query['FirewallVpcCidrBlock'] = request.firewall_vpc_cidr_block
         if not DaraCore.is_null(request.firewall_vpc_standby_zone_id):
@@ -20283,8 +20319,12 @@ class Client(OpenApiClient):
             query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.group_uuid):
@@ -20343,8 +20383,12 @@ class Client(OpenApiClient):
             query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.group_name):
             query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.group_uuid):
@@ -20481,6 +20525,8 @@ class Client(OpenApiClient):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.application_name_list):
             query['ApplicationNameList'] = request.application_name_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.dest_port):
@@ -20497,6 +20543,8 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not DaraCore.is_null(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.lang):
@@ -20553,6 +20601,8 @@ class Client(OpenApiClient):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.application_name_list):
             query['ApplicationNameList'] = request.application_name_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.dest_port):
@@ -20569,6 +20619,8 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not DaraCore.is_null(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.lang):

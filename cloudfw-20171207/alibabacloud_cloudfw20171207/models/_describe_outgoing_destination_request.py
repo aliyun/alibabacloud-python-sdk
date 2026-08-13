@@ -32,9 +32,11 @@ class DescribeOutgoingDestinationRequest(DaraModel):
         self.application_name = application_name
         # The category ID.
         self.category_id = category_id
-        # The current page number.
+        # The page number.
         self.current_page = current_page
-        # The destination IP address.
+        # The legacy destination IP parameter.
+        # 
+        # > The POP gateway passes this parameter through, but the backend of this operation does not read it. Specifying this parameter has no filtering effect. To filter by IP address, use PublicIP or PrivateIP. If only DstIP is specified, the operation returns MissingParameter.IpFilter (-340415) because no valid IP filtering parameter is provided.
         self.dst_ip = dst_ip
         # The end time of the query. The value is a UNIX timestamp in seconds.
         # 
@@ -51,14 +53,16 @@ class DescribeOutgoingDestinationRequest(DaraModel):
         # The port number.
         self.port = port
         # The private IP address.
+        # > At least one of PublicIP and PrivateIP must be specified.
         self.private_ip = private_ip
         # The public IP address.
+        # > At least one of PublicIP and PrivateIP must be specified.
         self.public_ip = public_ip
-        # The security policy for Outbound Domain of outbound connections.
+        # The security policy for the Outbound Domain.
         self.security_suggest = security_suggest
         # The field by which to sort the results.
         self.sort = sort
-        # The IP address of the access source. (This field is deprecated.)
+        # The IP address of the access source. **[Deprecated]**
         self.source_ip = source_ip
         # The start time of the query. The value is a UNIX timestamp in seconds.
         # 

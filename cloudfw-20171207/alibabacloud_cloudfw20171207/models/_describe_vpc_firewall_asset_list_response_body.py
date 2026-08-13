@@ -89,7 +89,7 @@ class DescribeVpcFirewallAssetListResponseBodyDataList(DaraModel):
         self.ips_hit_cnt = ips_hit_cnt
         # The outbound traffic, in bytes.
         self.out_bytes = out_bytes
-        # The port list.
+        # The list of ports.
         self.port_list = port_list
         # The region.
         self.region_no = region_no

@@ -10,7 +10,7 @@ class CreateSecurityProxyResponseBody(DaraModel):
         proxy_id: str = None,
         request_id: str = None,
     ):
-        # The NAT firewall ID.
+        # The ID of the NAT firewall.
         self.proxy_id = proxy_id
         # The request ID.
         self.request_id = request_id

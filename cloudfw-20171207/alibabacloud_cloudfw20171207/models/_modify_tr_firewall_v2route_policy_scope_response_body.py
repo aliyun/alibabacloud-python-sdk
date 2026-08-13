@@ -10,9 +10,9 @@ class ModifyTrFirewallV2RoutePolicyScopeResponseBody(DaraModel):
         request_id: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the routing policy.
+        # The ID of the firewall route policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):

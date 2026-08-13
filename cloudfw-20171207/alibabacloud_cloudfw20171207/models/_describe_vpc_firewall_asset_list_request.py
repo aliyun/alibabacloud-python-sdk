@@ -46,7 +46,7 @@ class DescribeVpcFirewallAssetListRequest(DaraModel):
         self.ipprotocol = ipprotocol
         # Specifies whether to collect statistics only on traffic that accesses AI services.
         self.is_aitraffic = is_aitraffic
-        # The language type of the request and response messages.
+        # The language of the request and response.
         self.lang = lang
         # The sort order.
         self.order = order

@@ -22,97 +22,34 @@ class DescribeOutgoingDomainRequest(DaraModel):
         tag_id_new: str = None,
     ):
         # The product category. Default value: empty. Valid values:
-        # 
-        # - **All**: All categories.
-        # - **RiskDomain**: Risky domain category.
-        # - **RiskIP**: Risky IP category.
-        # - **AliYun**: Alibaba Cloud product category.
-        # - **NotAliYun**: Non-Alibaba Cloud product category.
         self.category_id = category_id
-        # The page number of the results to return in a paged query.
-        # 
-        # Default value: 1, which indicates the first page.
+        # The page number to return in a paged query.
         self.current_page = current_page
         # The source of the traffic statistics. Default value: Internet firewall. Valid values:
-        # 
-        # - **internet**: Internet firewall.
-        # - **nat**: NAT firewall.
         self.data_type = data_type
-        # The domain name of outbound connections.
+        # The domain name of the outbound connections.
         self.domain = domain
         # The end time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies whether to collect statistics only on traffic that accesses AI services. Default value: false. Valid values:
-        # 
-        # - **true**: Yes.
-        # - **false**: No.
+        # Specifies whether to collect statistics only on traffic that accesses AI services. Default value: no. Valid values:
         self.is_aitraffic = is_aitraffic
         # The language type of the request message. Valid values:
-        # 
-        # - **zh** (default): Chinese
-        # - **en**: English
         self.lang = lang
-        # The sort order. Valid values:
-        # 
-        # - **asc**: ascending order.
-        # - **desc** (default): descending order.
+        # The sort method. Valid values:
         self.order = order
         # The number of entries per page in a paged query.
-        # 
-        # Default value: 6. Maximum value: 100.
         self.page_size = page_size
         # The public IP address of the ECS instance that initiates the outbound connection.
         self.public_ip = public_ip
-        # The field by which to sort the results. Valid values:
-        # 
-        # - **SessionCount** (default): the number of requests.
-        # - **TotalBytes**: the total traffic volume.
+        # The sort order based on the specified field. Valid values:
         self.sort = sort
         # The start time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The intelligence tags label ID. Valid values:
-        # 
-        # - **AliYun**: Alibaba Cloud product.
-        # - **RiskDomain**: Risky domain.
-        # - **RiskIP**: Risky IP.
-        # - **TrustedDomain**: Trusted website.
-        # - **AliPay**: Alipay.
-        # - **DingDing**: DingTalk.
-        # - **WeChat**: WeChat.
-        # - **QQ**: Tencent QQ.
-        # - **SecurityService**: Security service.
-        # - **Microsoft**: Microsoft.
-        # - **Amazon**: Amazon.
-        # - **Pan**: Cloud drive.
-        # - **Map**: Map.
-        # - **Code**: Code hosting.
-        # - **SystemService**: System service.
-        # - **Taobao**: Taobao.
-        # - **Google**: Google.
-        # - **ThirdPartyService**: Third-party platform service.
-        # - **FirstFlow**: First Visit.
-        # - **Downloader**: Malicious download.
-        # - **Alexa Top1M**: Popular website.
-        # - **Miner**: Miner Pool.
-        # - **Intelligence**: Threat intelligence.
-        # - **DDoS**: DDoS Trojan.
-        # - **Ransomware**: Ransomware.
-        # - **Spyware**: Spyware.
-        # - **Rogue**: Rogue software.
-        # - **Botnet**: Botnets.
-        # - **Suspicious**: Suspicious website.
-        # - **C&C**: Remote control.
-        # - **Gang**: Gang.
-        # - **CVE**: CVE vulnerability.
-        # - **Backdoor**: Backdoor Trojan.
-        # - **Phishing**: Phishing website.
-        # - **APT**: APT attack.
-        # - **Supply Chain Attack**: Supply chain attack.
-        # - **Malicious software**: Malware.
+        # The intelligence tag ID. Valid values:
         self.tag_id_new = tag_id_new
 
     def validate(self):

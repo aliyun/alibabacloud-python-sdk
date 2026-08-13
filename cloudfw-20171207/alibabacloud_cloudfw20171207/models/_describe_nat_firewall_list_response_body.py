@@ -16,7 +16,7 @@ class DescribeNatFirewallListResponseBody(DaraModel):
     ):
         # The list of Cloud Firewalls.
         self.nat_firewall_list = nat_firewall_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of NAT firewalls.
         self.total_count = total_count
@@ -66,6 +66,8 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(DaraModel):
         self,
         ali_uid: int = None,
         error_detail: str = None,
+        firewall_service_mode: str = None,
+        firewall_service_zones: List[str] = None,
         member_uid: int = None,
         nat_gateway_id: str = None,
         nat_gateway_name: str = None,
@@ -83,55 +85,51 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(DaraModel):
     ):
         # The UID of the Alibaba Cloud account.
         # 
-        # > This is the primary account of the Cloud Firewall member account.
+        # > The management account of the Cloud Firewall member accounts.
         self.ali_uid = ali_uid
-        # The cause of the error.
+        # The error details.
         self.error_detail = error_detail
-        # The UID of the Cloud Firewall member account.
+        # The deployment mode of the NAT firewall service. Valid values: **PrimaryStandby** (active/standby mode) and **MultiPrimary** (active-active mode).
+        self.firewall_service_mode = firewall_service_mode
+        # The list of zone IDs used by the NAT firewall service.
+        self.firewall_service_zones = firewall_service_zones
+        # The UID of the Cloud Firewall member accounts.
         self.member_uid = member_uid
-        # The ID of the NAT Gateway to query.
+        # The ID of the NAT gateway to query.
         self.nat_gateway_id = nat_gateway_id
-        # The name of the NAT Gateway.
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
-        # The list of default route entries for the NAT Gateway.
+        # The list of default route entries for the NAT gateway.
         self.nat_route_entry_list = nat_route_entry_list
-        # The ID of the NAT firewall.
+        # The NAT firewall ID.
         self.proxy_id = proxy_id
-        # The name of the NAT firewall.
+        # The NAT firewall name.
         self.proxy_name = proxy_name
-        # The ID of the Elastic Network Interface (ENI) that the firewall uses.
+        # The elastic network interface (ENI) ID used by the firewall.
         self.proxy_network_interface_id = proxy_network_interface_id
-        # The ID of the route table that the firewall uses.
+        # The route table ID used by the firewall.
         self.proxy_route_table_id = proxy_route_table_id
-        # The status of the Cloud Firewall. Valid values:
+        # The Cloud Firewall status. Valid values:
         # 
-        # - configuring: The firewall is being created.
-        # 
-        # - deleting: The firewall is being deleted.
-        # 
-        # - normal: The firewall is working as expected.
-        # 
-        # - abnormal: The firewall is not working as expected.
-        # 
-        # - opening: The firewall is being enabled.
-        # 
-        # - closing: The firewall is being disabled.
-        # 
-        # - closed: The firewall is disabled.
+        # - configuring: being created
+        # - deleting: being deleted
+        # - normal: normal 
+        # - abnormal: abnormal
+        # - opening: being enabled
+        # - closing: being disabled
+        # - closed: disabled
         self.proxy_status = proxy_status
-        # The ID of the vSwitch that the firewall uses.
+        # The vSwitch ID used by the firewall.
         self.proxy_vswitch_id = proxy_vswitch_id
-        # The region ID where the Cloud Firewall is located.
-        # 
-        # > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # The region ID of the Cloud Firewall.
+        # > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_id = region_id
         # Indicates whether strict mode is enabled.
         # 
-        # - 1: Strict mode is enabled.
-        # 
+        # - 1: Strict mode is enabled. 
         # - 0: Strict mode is disabled.
         self.strict_mode = strict_mode
-        # The ID of the VPC instance.
+        # The VPC-connected instance ID.
         self.vpc_id = vpc_id
         # The name of the VPC instance.
         self.vpc_name = vpc_name
@@ -152,6 +150,12 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(DaraModel):
 
         if self.error_detail is not None:
             result['ErrorDetail'] = self.error_detail
+
+        if self.firewall_service_mode is not None:
+            result['FirewallServiceMode'] = self.firewall_service_mode
+
+        if self.firewall_service_zones is not None:
+            result['FirewallServiceZones'] = self.firewall_service_zones
 
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
@@ -206,6 +210,12 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(DaraModel):
 
         if m.get('ErrorDetail') is not None:
             self.error_detail = m.get('ErrorDetail')
+
+        if m.get('FirewallServiceMode') is not None:
+            self.firewall_service_mode = m.get('FirewallServiceMode')
+
+        if m.get('FirewallServiceZones') is not None:
+            self.firewall_service_zones = m.get('FirewallServiceZones')
 
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
@@ -264,11 +274,11 @@ class DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList(DaraMo
     ):
         # The destination CIDR block of the default route.
         self.destination_cidr = destination_cidr
-        # The next hop of the original NAT Gateway.
+        # The original next hop address of the NAT gateway.
         self.next_hop_id = next_hop_id
-        # The network type of the next hop. The value is \\`NatGateway\\`.
+        # The network type of the next hop. Valid values: NatGateway.
         self.next_hop_type = next_hop_type
-        # The route table that contains the default route of the NAT Gateway.
+        # The route table that contains the default route of the NAT gateway.
         self.route_table_id = route_table_id
 
     def validate(self):

@@ -27,13 +27,13 @@ class DescribeVpcFirewallAccessDetailRequest(DaraModel):
     ):
         # The IP address of the local asset. You must specify at least one of AssetIP and Port. If both are left empty, the API returns a 400 error.
         self.asset_ip = asset_ip
-        # The page number in a paging query. Settings this parameter to specify the current page for paging.
+        # The page number in a paged query.
         self.current_page = current_page
         # The traffic direction. Valid values:
         # - **in**: inbound.
         # - **out**: outbound.
         # 
-        # >If this parameter is not specified in Settings, traffic in all directions is queried.
+        # >If you do not configure this parameter in Settings, traffic in all directions is queried.
         self.direction = direction
         # The end time of the query. The value is a UNIX timestamp. Unit: seconds.
         # 
@@ -53,7 +53,7 @@ class DescribeVpcFirewallAccessDetailRequest(DaraModel):
         # - **asc**: ascending order.
         # -  **desc** (default): descending order.
         self.order = order
-        # The number of entries per page in a paging query.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
         # The source IP address of the peer.
         self.peer_asset_ip = peer_asset_ip

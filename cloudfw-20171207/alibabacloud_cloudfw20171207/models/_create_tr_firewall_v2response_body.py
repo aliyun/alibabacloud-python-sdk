@@ -10,7 +10,7 @@ class CreateTrFirewallV2ResponseBody(DaraModel):
         firewall_id: str = None,
         request_id: str = None,
     ):
-        # The VPC firewall instance ID.
+        # The instance ID of the virtual private cloud (VPC) firewall.
         self.firewall_id = firewall_id
         # The request ID.
         self.request_id = request_id

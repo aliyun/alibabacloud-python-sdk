@@ -14,7 +14,7 @@ class DescribePrepayBillTotalResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The bill list, with each entry representing a day.
+        # The bill list, aggregated by day.
         self.bill_list = bill_list
         # The request ID.
         self.request_id = request_id
@@ -81,15 +81,15 @@ class DescribePrepayBillTotalResponseBodyBillList(DaraModel):
     ):
         # The actual billed traffic for sensitive data leak detection.
         self.billed_detection_traffic = billed_detection_traffic
-        # The sensitive data detection traffic for the day.
+        # The sensitive data detection traffic of the day.
         self.daily_detection_traffic = daily_detection_traffic
-        # The total elastic traffic for the day. Unit: GB.
+        # The total elastic traffic of the day. Unit: GB.
         self.daily_overflow_traffic = daily_overflow_traffic
         # The default bandwidth of the edition. Unit: Mbit/s.
         self.default_bandwidth = default_bandwidth
         # The elastic bandwidth value. Unit: Mbit/s.
         self.elastic_bandwidth = elastic_bandwidth
-        # The end time of the day. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the day. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The extended bandwidth. Unit: Mbit/s.
         self.extension_bandwidth = extension_bandwidth
@@ -101,7 +101,7 @@ class DescribePrepayBillTotalResponseBodyBillList(DaraModel):
         self.nat_traffic_bandwidth = nat_traffic_bandwidth
         # The timestamp when the maximum bandwidth (Internet + VPC + NAT) of the day occurred.
         self.overflow_time = overflow_time
-        # The start time of the day. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the day. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
         # The temporary upgrade bandwidth. Unit: Mbit/s.
         self.temporary_bandwidth = temporary_bandwidth

@@ -21,7 +21,7 @@ class DescribeOutgoingDomainDetailResponseBody(DaraModel):
         self.asset_list = asset_list
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -109,7 +109,7 @@ class DescribeOutgoingDomainDetailResponseBodyAssetList(DaraModel):
         self.last_time = last_time
         # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
-        # The name of the NAT gateway.
+        # The NAT gateway name.
         self.nat_gateway_name = nat_gateway_name
         # The outbound traffic (request traffic), in bytes.
         self.out_bytes = out_bytes
@@ -125,9 +125,9 @@ class DescribeOutgoingDomainDetailResponseBodyAssetList(DaraModel):
         self.resource_instance_name = resource_instance_name
         # The public IP address type of the asset.
         self.resource_type = resource_type
-        # The ID of the ACL rule.
+        # The ACL rule ID.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
         # The number of access sessions.
         self.session_count = session_count
@@ -135,7 +135,7 @@ class DescribeOutgoingDomainDetailResponseBodyAssetList(DaraModel):
         self.tag_list = tag_list
         # The total traffic.
         self.total_bytes = total_bytes
-        # The instance ID of the VPC-connected instance.
+        # The VPC instance ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -295,7 +295,7 @@ class DescribeOutgoingDomainDetailResponseBodyAssetListTagList(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # The risk category ID.
+        # The risk classification ID.
         self.class_id = class_id
         # The risk level.
         self.risk_level = risk_level

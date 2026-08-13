@@ -12,6 +12,7 @@ class AddControlPolicyRequest(DaraModel):
         acl_action: str = None,
         application_name: str = None,
         application_name_list: List[str] = None,
+        client_token: str = None,
         description: str = None,
         dest_port: str = None,
         dest_port_group: str = None,
@@ -20,6 +21,7 @@ class AddControlPolicyRequest(DaraModel):
         destination_type: str = None,
         direction: str = None,
         domain_resolve_type: str = None,
+        dry_run: bool = None,
         end_time: int = None,
         ip_version: str = None,
         lang: str = None,
@@ -35,10 +37,10 @@ class AddControlPolicyRequest(DaraModel):
         source_type: str = None,
         start_time: int = None,
     ):
-        # The action that is set in the access control policy. Settings the method in which traffic passes through Cloud Firewall. Valid values:
+        # The action configured in the access control policy for the traffic that passes through Cloud Firewall. Valid values:
         # 
-        # - **accept**: allows the access.
-        # - **drop**: deny the access.
+        # - **accept**: allows the traffic.
+        # - **drop**: denies the traffic.
         # - **log**: monitors the traffic.
         # 
         # This parameter is required.
@@ -59,12 +61,14 @@ class AddControlPolicyRequest(DaraModel):
         # - **SSL_No_Cert**
         # - **SSL**
         # - **VNC**
-        # - **ANY**: all application types
+        # - **ANY** (all application types)
         # 
-        # > The valid values of ApplicationName depend on the value of the protocol type (Proto). If Proto is set to TCP, ApplicationName can be set to any of the preceding application types. If Proto is set to UDP, ICMP, or ANY, ApplicationName can be set only to ANY. You must specify either ApplicationNameList or ApplicationName. You cannot leave both of them empty.
+        # > The supported application types depend on the value of the protocol type (Proto). If Proto is set to TCP, ApplicationName can be set to any of the preceding application types. If Proto is set to UDP, ICMP, or ANY, ApplicationName can be set only to ANY. You must specify either ApplicationNameList or ApplicationName. You cannot leave both of them empty.
         self.application_name = application_name
-        # The application types supported by the access control policy.
+        # The list of application types supported by the access control policy.
         self.application_name_list = application_name_list
+        # The idempotence token.
+        self.client_token = client_token
         # The description of the access control policy.
         # 
         # This parameter is required.
@@ -91,7 +95,7 @@ class AddControlPolicyRequest(DaraModel):
         # Valid values:
         # 
         # - **port**: port
-        # - **group**: port address book.
+        # - **group**: port address book
         self.dest_port_type = dest_port_type
         # The destination address in the access control policy.
         # 
@@ -121,25 +125,27 @@ class AddControlPolicyRequest(DaraModel):
         # - **net**: destination CIDR block
         # - **group**: destination address book
         # - **domain**: destination domain name
-        # - **location**: destination region.
+        # - **location**: destination region
         # 
         # This parameter is required.
         self.destination_type = destination_type
         # The traffic direction of the access control policy. Valid values:
         # 
-        # - **in**: inbound traffic
-        # - **out**: outbound traffic.
+        # - **in**: inbound traffic access control
+        # - **out**: outbound traffic access control
         # 
         # This parameter is required.
         self.direction = direction
         # The domain name resolution method of the access control policy. Valid values:
         # 
-        # * **FQDN**: FQDN-based resolution
+        # * **FQDN**: FQDN-based
         # * **DNS**: DNS-based dynamic resolution
-        # * **FQDN_AND_DNS**: FQDN-based and DNS-based dynamic resolution.
+        # * **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
         self.domain_resolve_type = domain_resolve_type
-        # The end time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        # > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
+        # Specifies whether to perform a dry run.
+        self.dry_run = dry_run
+        # The end time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or half hour and must be at least 30 minutes later than the start time.
+        # > If RepeatType is set to Permanent, EndTime is empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must have a value.
         self.end_time = end_time
         # The IP address version supported.
         # 
@@ -147,25 +153,25 @@ class AddControlPolicyRequest(DaraModel):
         # 
         # - **4**: IPv4
         # 
-        # - **6**: IPv6.
+        # - **6**: IPv6
         self.ip_version = ip_version
         # The language of the request and response. Valid values:
         # 
         # - **zh** (default): Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The priority of the access control policy. The priority value starts from 1. A smaller value indicates a higher priority.
+        # The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         # 
         # This parameter is required.
         self.new_order = new_order
         # The protocol type in the access control policy. Valid values:
         # 
-        # - **ANY**: any protocol
+        # - **ANY**
         # - **TCP**
         # - **UDP**
         # - **ICMP**
         # 
-        # > If the traffic direction is outbound and the destination address is a threat intelligence address book or cloud service address book of the domain name type, only TCP is supported. The application type can be set to HTTP, HTTPS, SMTP, SMTPS, or SSL.
+        # > If the traffic direction is outbound and the destination address is a threat intelligence address book or cloud service address book of the domain type, only TCP is supported. The application type can be set to HTTP, HTTPS, SMTP, SMTPS, or SSL.
         # 
         # This parameter is required.
         self.proto = proto
@@ -175,21 +181,21 @@ class AddControlPolicyRequest(DaraModel):
         # - **false**: disables the access control policy.
         self.release = release
         # The days of the recurrence for the policy validity period of the access control policy.
-        # - If RepeatType is set to `Permanent`, `None`, or `Daily`, the value of RepeatDays is an empty array.
+        # - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty collection.
         #   Example: []
-        # - If RepeatType is set to Weekly, the value of RepeatDays must not be empty.
+        # - If RepeatType is set to Weekly, RepeatDays cannot be empty.
         #   Example: [0, 6]
-        # > If RepeatType is set to Weekly, the values in RepeatDays cannot be repeated.
-        # - If RepeatType is set to `Monthly`, the value of RepeatDays must not be empty.
+        # > If RepeatType is set to Weekly, values in RepeatDays cannot be repeated.
+        # - If RepeatType is set to `Monthly`, RepeatDays cannot be empty.
         #   Example: [1, 31]
-        # > If RepeatType is set to Monthly, the values in RepeatDays cannot be repeated.
+        # > If RepeatType is set to Monthly, values in RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
-        # The recurrence end time of the policy validity period for the access control policy. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the recurrence start time.
-        # > If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter is required.
+        # The recurrence end time of the policy validity period for the access control policy. Example: 23:30. The value must be on the hour or half hour and must be at least 30 minutes later than the recurrence start time.
+        # > If RepeatType is set to Permanent or None, RepeatEndTime is empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must have a value.
         # > The time is in the HH:mm format (24-hour clock). Example: 08:00 or 23:30.
         self.repeat_end_time = repeat_end_time
-        # The recurrence start time of the policy validity period for the access control policy. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the recurrence end time.
-        # > If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter is required.
+        # The recurrence start time of the policy validity period for the access control policy. Example: 08:00. The value must be on the hour or half hour and must be at least 30 minutes earlier than the recurrence end time.
+        # > If RepeatType is set to Permanent or None, RepeatStartTime is empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatStartTime must have a value.
         # > The time is in the HH:mm format (24-hour clock). Example: 08:00 or 23:30.
         self.repeat_start_time = repeat_start_time
         # The recurrence type of the policy validity period for the access control policy. Valid values:
@@ -222,12 +228,12 @@ class AddControlPolicyRequest(DaraModel):
         # The type of the source address in the access control policy. Valid values:
         # - **net**: source CIDR block
         # - **group**: source address book
-        # - **location**: source region.
+        # - **location**: source region
         # 
         # This parameter is required.
         self.source_type = source_type
-        # The start time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
-        # > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
+        # The start time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or half hour and must be at least 30 minutes earlier than the end time.
+        # > If RepeatType is set to Permanent, StartTime is empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must have a value.
         self.start_time = start_time
 
     def validate(self):
@@ -246,6 +252,9 @@ class AddControlPolicyRequest(DaraModel):
 
         if self.application_name_list is not None:
             result['ApplicationNameList'] = self.application_name_list
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.description is not None:
             result['Description'] = self.description
@@ -270,6 +279,9 @@ class AddControlPolicyRequest(DaraModel):
 
         if self.domain_resolve_type is not None:
             result['DomainResolveType'] = self.domain_resolve_type
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.end_time is not None:
             result['EndTime'] = self.end_time
@@ -326,6 +338,9 @@ class AddControlPolicyRequest(DaraModel):
         if m.get('ApplicationNameList') is not None:
             self.application_name_list = m.get('ApplicationNameList')
 
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
@@ -349,6 +364,9 @@ class AddControlPolicyRequest(DaraModel):
 
         if m.get('DomainResolveType') is not None:
             self.domain_resolve_type = m.get('DomainResolveType')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')

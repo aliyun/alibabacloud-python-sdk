@@ -39,17 +39,18 @@ class CreatePrivateDnsEndpointRequest(DaraModel):
         # - **TCP**
         # - **UDP**
         self.ip_protocol = ip_protocol
-        # The UID of the Alibaba Cloud member account. This parameter is required when you use Cloud Firewall to manage member accounts.
+        # The UID of the Alibaba Cloud member accounts.
         self.member_uid = member_uid
         # The port number.
         self.port = port
         # The primary DNS server.
+        # > When PrivateDnsType is set to Custom, you must specify PrimaryDns and StandbyDns.
         self.primary_dns = primary_dns
         # The ID of the primary vSwitch. The zone of PrimaryVSwitchId and StandbyVSwitchId must be a zone that supports private DNS. Otherwise, an error is returned. The region must also be in the supported list.
         self.primary_vswitch_id = primary_vswitch_id
         # The IP address of the primary vSwitch.
         self.primary_vswitch_ip = primary_vswitch_ip
-        # The private DNS type. When PrivateDnsType is set to Custom, Port and IpProtocol are required. When PrivateDnsType is set to PrivateZone, the backend automatically sets the port to 53 and uses the default protocol. Valid values:
+        # The type of private DNS. When PrivateDnsType is set to Custom, Port and IpProtocol are required. When PrivateDnsType is set to PrivateZone, the backend automatically sets the port to 53 and uses the default protocol. Valid values:
         # - **PrivateZone**
         # - **Custom** (default)
         # 
@@ -60,6 +61,8 @@ class CreatePrivateDnsEndpointRequest(DaraModel):
         # This parameter is required.
         self.region_no = region_no
         # The secondary DNS server.
+        # 
+        # > When PrivateDnsType is set to Custom, you must specify PrimaryDns and StandbyDns.
         self.standby_dns = standby_dns
         # The ID of the secondary vSwitch. The zone of PrimaryVSwitchId and StandbyVSwitchId must be a zone that supports private DNS. Otherwise, error code -200534 is returned. The region must also be in the supported list.
         self.standby_vswitch_id = standby_vswitch_id

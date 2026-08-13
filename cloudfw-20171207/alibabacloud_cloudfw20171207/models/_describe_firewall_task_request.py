@@ -12,14 +12,14 @@ class DescribeFirewallTaskRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The VPC-connected instance ID. You must specify at least one of TaskId and ChildInstanceId. If neither is specified, the API returns ErrorParameters(400).
+        # The child instance ID. You must specify at least one of ChildInstanceId and TaskId. If both are empty, the error MissingParameter.TaskId (-360448) is returned.
         self.child_instance_id = child_instance_id
         # The language type. Valid values:
         # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The task ID. You must specify at least one of TaskId and ChildInstanceId. If neither is specified, the API returns ErrorParameters(400).
+        # The task ID. You must specify at least one of TaskId and ChildInstanceId. If both are empty, the error MissingParameter.TaskId (-360448, At least one of TaskId or ChildInstanceId is required.) is returned.
         self.task_id = task_id
         # The type of the task. Valid values:
         # 

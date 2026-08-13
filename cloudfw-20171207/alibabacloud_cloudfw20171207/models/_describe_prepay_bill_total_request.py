@@ -14,23 +14,26 @@ class DescribePrepayBillTotalRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The bill type of the user. This parameter is required. An error is returned if this parameter is not specified. Valid values:
+        # The bill type of the user. This parameter is required in practice. An error is returned if this parameter is not specified. Valid values:
         # - elastic_traffic: elastic traffic
         # - sdl: sensitive data leak detection traffic
         self.bill_type = bill_type
-        # The page number for a paged query. Default value: 1.
+        # The page number in a paged query. Default value: 1.
         self.current_page = current_page
-        # The end time. The value is a UNIX timestamp. Unit: seconds.
+        # The end time. Specify a UNIX timestamp in seconds.
+        # > Because billing data is aggregated at the daily granularity, the timestamp must correspond to 00:00:00 of the day in CST (UTC+8). If the timestamp is not aligned to the start of the day, no data may be returned.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The language. Enumeration value.
+        # The language. Enumerated value.
         # Default value: zh.
         # Valid value: en.
         self.lang = lang
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The start time of the query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. Specify a UNIX timestamp in seconds.
+        # 
+        # > Because billing data is aggregated at the daily granularity, the timestamp must correspond to 00:00:00 of the day in CST (UTC+8). If the timestamp is not aligned to the start of the day, no data may be returned.
         # 
         # This parameter is required.
         self.start_time = start_time

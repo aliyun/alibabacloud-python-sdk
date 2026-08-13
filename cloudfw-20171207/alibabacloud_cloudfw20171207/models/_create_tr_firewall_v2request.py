@@ -2,14 +2,19 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class CreateTrFirewallV2Request(DaraModel):
     def __init__(
         self,
         cen_id: str = None,
+        firewall_attachment_zone: str = None,
         firewall_description: str = None,
         firewall_name: str = None,
+        firewall_service_mode: str = None,
+        firewall_service_zones: List[str] = None,
         firewall_subnet_cidr: str = None,
         firewall_vpc_cidr: str = None,
         firewall_vpc_id: str = None,
@@ -21,14 +26,26 @@ class CreateTrFirewallV2Request(DaraModel):
         tr_attachment_master_zone: str = None,
         tr_attachment_slave_cidr: str = None,
         tr_attachment_slave_zone: str = None,
+        tr_attachment_zones: List[str] = None,
         transit_router_id: str = None,
     ):
-        # The CEN instance ID. This parameter is required when you invoke this operation.
+        # The ID of the CEN instance. This parameter is required. Create a CEN instance in the CEN console before calling this operation, and ensure that an Enterprise Edition transit router has been created.
         self.cen_id = cen_id
+        # The zone ID used by the firewall connection.
+        self.firewall_attachment_zone = firewall_attachment_zone
         # The description of the firewall.
         self.firewall_description = firewall_description
         # The name of the Cloud Firewall instance.
         self.firewall_name = firewall_name
+        # The deployment mode of the firewall service. Valid values:
+        # 
+        # - **PrimaryStandby**: Primary/standby mode.
+        # - **MultiPrimary**: Active-active mode.
+        # 
+        # > If this parameter is not specified, the system automatically selects a deployment mode based on the capabilities of the transit router. If an invalid value is specified, the error ErrorFwServiceMode (-360437) is returned. MultiPrimary mode does not support specifying zones.
+        self.firewall_service_mode = firewall_service_mode
+        # The list of zone IDs used by the firewall service.
+        self.firewall_service_zones = firewall_service_zones
         # The subnet CIDR block used to store the firewall ENI in the firewall VPC in automatic mode.
         self.firewall_subnet_cidr = firewall_subnet_cidr
         # The CIDR block of the firewall VPC in automatic mode.
@@ -37,30 +54,26 @@ class CreateTrFirewallV2Request(DaraModel):
         self.firewall_vpc_id = firewall_vpc_id
         # The ID of the vSwitch in which the firewall ENI is created in manual mode.
         self.firewall_vswitch_id = firewall_vswitch_id
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The region ID of the transit router instance. This parameter is required in actual calls.
+        # The region ID of the Enterprise Edition transit router. This parameter is required.
         self.region_no = region_no
-        # The routing mode. Valid values:
-        # 
-        # - **managed**: automatic mode.
-        # 
-        # - **manual**: manual mode.
-        # 
-        # > This parameter is required in actual calls. If RouteMode is set to managed (automatic), FirewallVpcCidr, FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr are required. If RouteMode is set to manual, FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone are required. Required parameters vary by mode.
+        # The routing mode. This parameter is required. Valid values: managed (automatic mode) and manual (manual mode). In managed mode, you must specify FirewallVpcCidr, FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr. In manual mode, you must specify FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone.
         self.route_mode = route_mode
-        # The primary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
+        # The primary subnet CIDR block used to connect to the TR in the firewall VPC in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
         # The primary zone of the vSwitch.
         self.tr_attachment_master_zone = tr_attachment_master_zone
-        # The secondary subnet CIDR block used to connect to the transit router in the firewall VPC in automatic mode.
+        # The secondary subnet CIDR block used to connect to the TR in the firewall VPC in automatic mode.
         self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
         # The secondary zone of the vSwitch.
         self.tr_attachment_slave_zone = tr_attachment_slave_zone
-        # The transit router instance ID. This parameter is required when you invoke this operation.
+        # The list of zone IDs used by the TR connection.
+        self.tr_attachment_zones = tr_attachment_zones
+        # The ID of the Enterprise Edition transit router instance. This parameter is required. The transit router must belong to the CEN instance specified by CenId.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -74,11 +87,20 @@ class CreateTrFirewallV2Request(DaraModel):
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
 
+        if self.firewall_attachment_zone is not None:
+            result['FirewallAttachmentZone'] = self.firewall_attachment_zone
+
         if self.firewall_description is not None:
             result['FirewallDescription'] = self.firewall_description
 
         if self.firewall_name is not None:
             result['FirewallName'] = self.firewall_name
+
+        if self.firewall_service_mode is not None:
+            result['FirewallServiceMode'] = self.firewall_service_mode
+
+        if self.firewall_service_zones is not None:
+            result['FirewallServiceZones'] = self.firewall_service_zones
 
         if self.firewall_subnet_cidr is not None:
             result['FirewallSubnetCidr'] = self.firewall_subnet_cidr
@@ -113,6 +135,9 @@ class CreateTrFirewallV2Request(DaraModel):
         if self.tr_attachment_slave_zone is not None:
             result['TrAttachmentSlaveZone'] = self.tr_attachment_slave_zone
 
+        if self.tr_attachment_zones is not None:
+            result['TrAttachmentZones'] = self.tr_attachment_zones
+
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
 
@@ -123,11 +148,20 @@ class CreateTrFirewallV2Request(DaraModel):
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
 
+        if m.get('FirewallAttachmentZone') is not None:
+            self.firewall_attachment_zone = m.get('FirewallAttachmentZone')
+
         if m.get('FirewallDescription') is not None:
             self.firewall_description = m.get('FirewallDescription')
 
         if m.get('FirewallName') is not None:
             self.firewall_name = m.get('FirewallName')
+
+        if m.get('FirewallServiceMode') is not None:
+            self.firewall_service_mode = m.get('FirewallServiceMode')
+
+        if m.get('FirewallServiceZones') is not None:
+            self.firewall_service_zones = m.get('FirewallServiceZones')
 
         if m.get('FirewallSubnetCidr') is not None:
             self.firewall_subnet_cidr = m.get('FirewallSubnetCidr')
@@ -161,6 +195,9 @@ class CreateTrFirewallV2Request(DaraModel):
 
         if m.get('TrAttachmentSlaveZone') is not None:
             self.tr_attachment_slave_zone = m.get('TrAttachmentSlaveZone')
+
+        if m.get('TrAttachmentZones') is not None:
+            self.tr_attachment_zones = m.get('TrAttachmentZones')
 
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')

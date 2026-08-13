@@ -14,11 +14,11 @@ class DescribeOutgoingDomainResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of Outbound Domain names.
+        # The list of outbound domains.
         self.domain_list = domain_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of Outbound Domain names.
+        # The total number of outbound domains.
         self.total_count = total_count
 
     def validate(self):
@@ -93,17 +93,11 @@ class DescribeOutgoingDomainResponseBodyDomainList(DaraModel):
         tag_list: List[main_models.DescribeOutgoingDomainResponseBodyDomainListTagList] = None,
         total_bytes: str = None,
     ):
-        # Indicates whether the access control policy covers the domain name. Valid values:
-        # 
-        # - **Uncovered**: Not covered.
-        # - **FullCoverage**: Covered.
+        # Indicates whether the access control policy provides coverage. Valid values:
         self.acl_coverage = acl_coverage
         # The ACL recommendation details.
         self.acl_recommend_detail = acl_recommend_detail
         # The health status of the access control policy. Valid values:
-        # 
-        # - **Normal**: Healthy.
-        # - **Abnormal**: Unhealthy.
         self.acl_status = acl_status
         # The name of the address book.
         self.address_group_name = address_group_name
@@ -111,53 +105,35 @@ class DescribeOutgoingDomainResponseBodyDomainList(DaraModel):
         self.address_group_uuid = address_group_uuid
         # The application names.
         self.application_name_list = application_name_list
+        # The list of application ports.
         self.application_port_list = application_port_list
-        # The total number of assets that initiate outbound connections.
+        # The total number of assets with outbound connections.
         self.asset_count = asset_count
         # The website business.
         self.business = business
-        # The categorization of the intelligence tags label. Valid values:
-        # 
-        # - **Suspicious**: Suspicious.
-        # - **Malicious**: Malicious.
-        # - **Trusted**: Trusted.
+        # The categorization of the intelligence label. Valid values:
         self.category_class_id = category_class_id
         # The product category ID. Valid values:
-        # 
-        # - **Aliyun**: Alibaba Cloud product.
-        # - **NotAliyun**: Non-Alibaba Cloud product.
         self.category_id = category_id
         # The category name of the product. Valid values:
-        # 
-        # - **Alibaba Cloud product**
-        # - **Non-Alibaba Cloud product**
         self.category_name = category_name
-        # The domain name of outbound connections.
+        # The domain name of the outbound connections.
         self.domain = domain
         # The group name of the rule.
         self.group_name = group_name
-        # Indicates whether an ACL already covers this domain name. Valid values:
-        # 
-        # - **true**: Yes.
-        # - **false**: No.
+        # Indicates whether an ACL covers the management of this domain name. Valid values:
         self.has_acl = has_acl
         # Indicates whether an ACL recommendation exists. Valid values:
-        # 
-        # - **true**: Yes.
-        # - **false**: No.
         self.has_acl_recommend = has_acl_recommend
         # The inbound traffic.
         self.in_bytes = in_bytes
-        # Indicates whether the Outbound Domain is marked as normal. Valid values:
-        # 
-        # - **true**: Normal.
-        # - **false**: Abnormal.
+        # Indicates whether the outbound domain is marked as normal. Valid values:
         self.is_mark_normal = is_mark_normal
         # The organization name.
         self.organization = organization
         # The outbound traffic.
         self.out_bytes = out_bytes
-        # The total number of private network assets that initiate outbound connections.
+        # The total number of private network assets with outbound connections.
         self.private_asset_count = private_asset_count
         # The ACL rule ID.
         self.rule_id = rule_id
@@ -165,15 +141,11 @@ class DescribeOutgoingDomainResponseBodyDomainList(DaraModel):
         self.rule_name = rule_name
         # The security reason.
         self.security_reason = security_reason
-        # The security policy for the Outbound Domain of outbound connections. Valid values:
-        # 
-        # - **pass**: Allow.
-        # - **alert**: Monitor.
-        # - **drop**: Deny.
+        # The security policy for the Outbound Domain. Valid values:
         self.security_suggest = security_suggest
         # The number of requests.
         self.session_count = session_count
-        # The tag list.
+        # The list of tags.
         self.tag_list = tag_list
         # The total traffic. Unit: bytes.
         self.total_bytes = total_bytes
@@ -386,21 +358,13 @@ class DescribeOutgoingDomainResponseBodyDomainListTagList(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # The categorization of the intelligence tags label. Valid values:
-        # 
-        # - **Suspicious**: Suspicious.
-        # - **Malicious**: Malicious.
-        # - **Trusted**: Trusted.
+        # The categorization of the intelligence label. Valid values:
         self.class_id = class_id
         # The risk assessment level. Valid values:
-        # 
-        # - **1**: Low.
-        # - **2**: Medium.
-        # - **3**: High.
         self.risk_level = risk_level
         # The tag description.
         self.tag_describe = tag_describe
-        # The intelligence tags label ID.
+        # The intelligence label ID.
         self.tag_id = tag_id
         # The tag name.
         self.tag_name = tag_name
@@ -455,7 +419,9 @@ class DescribeOutgoingDomainResponseBodyDomainListApplicationPortList(DaraModel)
         application_name: str = None,
         port: int = None,
     ):
+        # The application names.
         self.application_name = application_name
+        # The application port number.
         self.port = port
 
     def validate(self):
