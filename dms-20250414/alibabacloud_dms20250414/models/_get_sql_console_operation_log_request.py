@@ -32,7 +32,7 @@ class GetSqlConsoleOperationLogRequest(DaraModel):
         self.page_size = page_size
         # The database schema.
         self.schema = schema
-        # The type of the SQL statement.
+        # The SQL statement type.
         self.sql_type = sql_type
         # The start time of the logs.
         # 

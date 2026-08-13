@@ -1,3 +1,18 @@
+2026-08-13 Version: 1.21.2
+- Update API CreateCustomAgent: add request parameters ExecutionConfig.ForbiddenAppendDataSource.
+- Update API CreateCustomAgent: add response parameters Body.Data.ExecutionConfig.ForbiddenAppendDataSource.
+- Update API DescribeCustomAgent: add response parameters Body.Data.ExecutionConfig.ForbiddenAppendDataSource.
+- Update API GetDataAgentTaskModelUsage: add request parameters PayLevel.
+- Update API GetDataAgentTaskModelUsage: add response parameters Body.Data.AccelerationRatio.
+- Update API GetDataAgentTaskModelUsage: add response parameters Body.Data.RateLimitedSessionCount.
+- Update API GetDataAgentTaskModelUsage: add response parameters Body.Data.TotalLlmWaitDuration.
+- Update API GetDataAgentTaskModelUsage: add response parameters Body.Data.TotalSessionCount.
+- Update API GetDataAgentTaskModelUsageMetrics: add request parameters PayLevel.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.ExecutionConfig.ForbiddenAppendDataSource.
+- Update API ModifyCustomAgent: add request parameters ExecutionConfig.ForbiddenAppendDataSource.
+- Update API ModifyCustomAgent: add response parameters Body.Data.ExecutionConfig.ForbiddenAppendDataSource.
+
+
 2026-08-11 Version: 1.21.1
 - Generated python 2025-04-14 for Dms.
 

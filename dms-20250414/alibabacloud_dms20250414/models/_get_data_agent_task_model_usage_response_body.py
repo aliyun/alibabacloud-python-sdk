@@ -16,16 +16,16 @@ class GetDataAgentTaskModelUsageResponseBody(DaraModel):
     ):
         # The summary data of model usage for DataAgent analysis tasks.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code returned if the request fails.
         self.error_code = error_code
-        # The error message returned if the call failed.
+        # The error message returned if the request fails.
         self.error_message = error_message
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -77,11 +77,19 @@ class GetDataAgentTaskModelUsageResponseBody(DaraModel):
 class GetDataAgentTaskModelUsageResponseBodyData(DaraModel):
     def __init__(
         self,
+        acceleration_ratio: float = None,
+        rate_limited_session_count: int = None,
+        total_llm_wait_duration: float = None,
+        total_session_count: int = None,
         peak_tpm: int = None,
         total_call_count: int = None,
         total_token_consumed: int = None,
         used_models: int = None,
     ):
+        self.acceleration_ratio = acceleration_ratio
+        self.rate_limited_session_count = rate_limited_session_count
+        self.total_llm_wait_duration = total_llm_wait_duration
+        self.total_session_count = total_session_count
         # The peak TPM (tokens per minute) within the query time range, which is the maximum number of tokens consumed per minute.
         self.peak_tpm = peak_tpm
         # The total number of model calls within the query time range.
@@ -99,6 +107,18 @@ class GetDataAgentTaskModelUsageResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.acceleration_ratio is not None:
+            result['AccelerationRatio'] = self.acceleration_ratio
+
+        if self.rate_limited_session_count is not None:
+            result['RateLimitedSessionCount'] = self.rate_limited_session_count
+
+        if self.total_llm_wait_duration is not None:
+            result['TotalLlmWaitDuration'] = self.total_llm_wait_duration
+
+        if self.total_session_count is not None:
+            result['TotalSessionCount'] = self.total_session_count
+
         if self.peak_tpm is not None:
             result['peakTpm'] = self.peak_tpm
 
@@ -115,6 +135,18 @@ class GetDataAgentTaskModelUsageResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccelerationRatio') is not None:
+            self.acceleration_ratio = m.get('AccelerationRatio')
+
+        if m.get('RateLimitedSessionCount') is not None:
+            self.rate_limited_session_count = m.get('RateLimitedSessionCount')
+
+        if m.get('TotalLlmWaitDuration') is not None:
+            self.total_llm_wait_duration = m.get('TotalLlmWaitDuration')
+
+        if m.get('TotalSessionCount') is not None:
+            self.total_session_count = m.get('TotalSessionCount')
+
         if m.get('peakTpm') is not None:
             self.peak_tpm = m.get('peakTpm')
 

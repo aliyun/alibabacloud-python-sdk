@@ -4225,6 +4225,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.pay_level):
+            query['PayLevel'] = request.pay_level
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -4259,6 +4261,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.pay_level):
+            query['PayLevel'] = request.pay_level
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -4307,6 +4311,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.pay_level):
+            query['PayLevel'] = request.pay_level
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -4341,6 +4347,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.pay_level):
+            query['PayLevel'] = request.pay_level
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(

@@ -30,7 +30,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data scope in **JSON string format**.
         # - Common parameter description
@@ -41,7 +41,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # **File type**. Pass parameters in the following format:
         # - DataSourceType: remote_data_center is a fixed value
         # - FileId: the file ID
-        # - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name
+        # - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name
         # - Tables: the table name returned by the ListDataCenterTable operation
         # - TableIds: the TableId returned by the ListDataCenterTable operation
         # - RegionId: the current region
@@ -59,7 +59,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         #     "TableIds": [
         #       "35hfn94pxl********50pi"
         #     ],
-        #     "RegionId": "ap-southeast-1"
+        #     "RegionId": "cn-hangzhou"
         #   }
         # }
         # ```
@@ -93,7 +93,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         #       "5263****31"
         #     ],
         #     "Engine": "postgresql",
-        #     "RegionId": "ap-southeast-1"
+        #     "RegionId": "cn-hangzhou"
         #   }
         # }
         # ```

@@ -112,7 +112,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
-        # The Alibaba Cloud account ID of the parent account.
+        # The Alibaba Cloud primary account ID.
         self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
@@ -413,7 +413,7 @@ class DescribeCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
     ):
         # The cron expression for timed scheduling.
         self.cron_expression = cron_expression
-        # The query of the periodic task.
+        # The query for the periodic task.
         self.query = query
         # The referenced historical session ID.
         self.related_session_id = related_session_id
@@ -547,18 +547,20 @@ class DescribeCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
 class DescribeCustomAgentResponseBodyDataExecutionConfig(DaraModel):
     def __init__(
         self,
+        forbidden_append_data_source: bool = None,
         skip_ask_human: bool = None,
         skip_plan: bool = None,
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
+        self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
         # Specifies whether to skip the plan confirmation step.
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report drawing confirmation.
+        # Specifies whether to skip the web report rendering confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -569,6 +571,9 @@ class DescribeCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.forbidden_append_data_source is not None:
+            result['ForbiddenAppendDataSource'] = self.forbidden_append_data_source
+
         if self.skip_ask_human is not None:
             result['SkipAskHuman'] = self.skip_ask_human
 
@@ -585,6 +590,9 @@ class DescribeCustomAgentResponseBodyDataExecutionConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ForbiddenAppendDataSource') is not None:
+            self.forbidden_append_data_source = m.get('ForbiddenAppendDataSource')
+
         if m.get('SkipAskHuman') is not None:
             self.skip_ask_human = m.get('SkipAskHuman')
 

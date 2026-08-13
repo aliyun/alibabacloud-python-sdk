@@ -25,21 +25,21 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.callback_config_shrink = callback_config_shrink
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dmsunit = dmsunit
-        # The specified data scope in **JSON string format**.
+        # The specified data range in **JSON string format**.
         # - Common parameter description
-        #   - tableFlag: true indicates a specified data scope
-        #   - scope: personal is a fixed value
-        #   - personal: pass parameters for file or database types
+        #   - tableFlag: true indicates a specified data range.
+        #   - scope: personal is a fixed value.
+        #   - personal: pass parameters for file or database types.
         # 
         # **File type**. Pass parameters in the following format:
-        # - DataSourceType: remote_data_center is a fixed value
-        # - FileId: the file ID
-        # - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name
-        # - Tables: the table name returned by the ListDataCenterTable operation
-        # - TableIds: the TableId returned by the ListDataCenterTable operation
-        # - RegionId: the current region
+        # - DataSourceType: remote_data_center is a fixed value.
+        # - FileId: The file ID.
+        # - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
+        # - Tables: The table name returned by the ListDataCenterTable operation.
+        # - TableIds: The TableId returned by the ListDataCenterTable operation.
+        # - RegionId: The current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -54,22 +54,22 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         #     "TableIds": [
         #       "35hfn94pxl********50pi"
         #     ],
-        #     "RegionId": "ap-southeast-1"
+        #     "RegionId": "cn-hangzhou"
         #   }
         # }
         # ```
         # 
-        # **Database type**. Pass parameters in the following format:
-        # - DataSourceType: database is a fixed value
-        # - DmsInstanceId: the DMS instance ID returned by the data center operation
-        # - DmsDatabaseId: the DMS database ID returned by the data center operation
-        # - FileId: the instance name (deprecated)
-        # - DbName: the database name returned by the data center operation
-        # - Database: the database name returned by the data center operation
-        # - Tables: the table name returned by the data center operation
-        # - TableIds: the TableId returned by the data center operation
-        # - Engine: the engine type (mysql or postgresql)
-        # - RegionId: the current region
+        # **Database type**. Pass parameters as follows:
+        # - DataSourceType: database is a fixed value.
+        # - DmsInstanceId: The DMS instance ID returned by the data center operation.
+        # - DmsDatabaseId: The DMS database ID returned by the data center operation.
+        # - FileId: The instance name (deprecated).
+        # - DbName: The database name returned by the data center operation.
+        # - Database: The database name returned by the data center operation.
+        # - Tables: The table name returned by the data center operation.
+        # - TableIds: The TableId returned by the data center operation.
+        # - Engine: The engine type (mysql or postgresql).
+        # - RegionId: The current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -88,7 +88,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         #       "5263****31"
         #     ],
         #     "Engine": "postgresql",
-        #     "RegionId": "ap-southeast-1"
+        #     "RegionId": "cn-hangzhou"
         #   }
         # }
         # ```

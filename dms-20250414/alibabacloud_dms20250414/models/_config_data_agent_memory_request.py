@@ -11,8 +11,19 @@ class ConfigDataAgentMemoryRequest(DaraModel):
         enabled: bool = None,
         recall_enabled: bool = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # Specifies whether to enable memory generation. Valid values:
+        # 
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         self.enabled = enabled
+        # Specifies whether to enable memory recall usage. Valid values:
+        # 
+        # true: Enabled.
+        # 
+        # false: Disabled.
         self.recall_enabled = recall_enabled
 
     def validate(self):

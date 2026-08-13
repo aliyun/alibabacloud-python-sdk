@@ -10,6 +10,7 @@ class GetDataAgentTaskModelUsageMetricsRequest(DaraModel):
         begin_time: str = None,
         dmsunit: str = None,
         end_time: str = None,
+        pay_level: str = None,
         region_id: str = None,
     ):
         # The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
@@ -18,6 +19,7 @@ class GetDataAgentTaskModelUsageMetricsRequest(DaraModel):
         self.dmsunit = dmsunit
         # The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
         self.end_time = end_time
+        self.pay_level = pay_level
         # The region ID.
         self.region_id = region_id
 
@@ -38,6 +40,9 @@ class GetDataAgentTaskModelUsageMetricsRequest(DaraModel):
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
+        if self.pay_level is not None:
+            result['PayLevel'] = self.pay_level
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -53,6 +58,9 @@ class GetDataAgentTaskModelUsageMetricsRequest(DaraModel):
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('PayLevel') is not None:
+            self.pay_level = m.get('PayLevel')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

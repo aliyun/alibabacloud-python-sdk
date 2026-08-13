@@ -16,7 +16,7 @@ class GetDataAgentTaskModelUsageMetricsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of TPM time series metrics for model usage, returned in chronological order with usage at each time point.
+        # The list of TPM time series metrics for model usage, returned in chronological order.
         self.data = data
         # The error code returned when the request is abnormal.
         self.error_code = error_code

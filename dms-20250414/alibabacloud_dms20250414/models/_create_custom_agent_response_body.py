@@ -120,13 +120,13 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.creator_user_name = creator_user_name
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data scope in JSON string format.
         self.data_json = data_json
         # The description of the custom agent.
         self.description = description
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dms_unit = dms_unit
         # The execution configuration.
         self.execution_config = execution_config
@@ -136,7 +136,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The instruction.
         self.instruction = instruction
-        # Indicates whether a scheduled task is configured.
+        # Indicates whether a periodic task is configured.
         self.is_schedule_task = is_schedule_task
         # The knowledge.
         self.knowledge = knowledge
@@ -149,7 +149,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.modifier_user_name = modifier_user_name
         # The name of the custom agent.
         self.name = name
-        # The next run time of the scheduled task.
+        # The next run time of the periodic task.
         self.next_runtime = next_runtime
         # The offline time.
         self.offline_time = offline_time
@@ -159,7 +159,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.related_session_id = related_session_id
         # The publish time.
         self.release_time = release_time
-        # The scheduled task configuration.
+        # The periodic task configuration.
         self.schedule_task_config = schedule_task_config
         # The status of the custom agent.
         self.status = status
@@ -542,11 +542,13 @@ class CreateCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
 class CreateCustomAgentResponseBodyDataExecutionConfig(DaraModel):
     def __init__(
         self,
+        forbidden_append_data_source: bool = None,
         skip_ask_human: bool = None,
         skip_plan: bool = None,
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
+        self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
         # Specifies whether to skip the plan confirmation step.
@@ -564,6 +566,9 @@ class CreateCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.forbidden_append_data_source is not None:
+            result['ForbiddenAppendDataSource'] = self.forbidden_append_data_source
+
         if self.skip_ask_human is not None:
             result['SkipAskHuman'] = self.skip_ask_human
 
@@ -580,6 +585,9 @@ class CreateCustomAgentResponseBodyDataExecutionConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ForbiddenAppendDataSource') is not None:
+            self.forbidden_append_data_source = m.get('ForbiddenAppendDataSource')
+
         if m.get('SkipAskHuman') is not None:
             self.skip_ask_human = m.get('SkipAskHuman')
 

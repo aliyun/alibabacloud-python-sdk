@@ -16,7 +16,7 @@ class ModifyCustomAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response struct.
+        # The returned struct.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -117,13 +117,13 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self.creator_user_name = creator_user_name
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data range in JSON string format.
         self.data_json = data_json
         # The description of the custom agent.
         self.description = description
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dms_unit = dms_unit
         # The execution configuration.
         self.execution_config = execution_config
@@ -539,11 +539,13 @@ class ModifyCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
 class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
     def __init__(
         self,
+        forbidden_append_data_source: bool = None,
         skip_ask_human: bool = None,
         skip_plan: bool = None,
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
+        self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
         # Specifies whether to skip the plan confirmation step.
@@ -561,6 +563,9 @@ class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.forbidden_append_data_source is not None:
+            result['ForbiddenAppendDataSource'] = self.forbidden_append_data_source
+
         if self.skip_ask_human is not None:
             result['SkipAskHuman'] = self.skip_ask_human
 
@@ -577,6 +582,9 @@ class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ForbiddenAppendDataSource') is not None:
+            self.forbidden_append_data_source = m.get('ForbiddenAppendDataSource')
+
         if m.get('SkipAskHuman') is not None:
             self.skip_ask_human = m.get('SkipAskHuman')
 

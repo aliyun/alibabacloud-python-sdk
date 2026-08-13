@@ -33,7 +33,7 @@ class ModifyCustomAgentRequest(DaraModel):
         # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data scope in **JSON string format**.
         # - Common parameter description
@@ -44,7 +44,7 @@ class ModifyCustomAgentRequest(DaraModel):
         # **File type**. Pass parameters in the following format:
         # - DataSourceType: remote_data_center is a fixed value
         # - FileId: the file ID
-        # - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name
+        # - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name
         # - Tables: the table name returned by the ListDataCenterTable operation
         # - TableIds: the TableId returned by the ListDataCenterTable operation
         # - RegionId: the current region
@@ -62,7 +62,7 @@ class ModifyCustomAgentRequest(DaraModel):
         #     "TableIds": [
         #       "35hfn94pxl********50pi"
         #     ],
-        #     "RegionId": "ap-southeast-1"
+        #     "RegionId": "cn-hangzhou"
         #   }
         # }
         # ```
@@ -96,7 +96,7 @@ class ModifyCustomAgentRequest(DaraModel):
         #       "5263****31"
         #     ],
         #     "Engine": "postgresql",
-        #     "RegionId": "ap-southeast-1"
+        #     "RegionId": "cn-hangzhou"
         #   }
         # }
         # ```
@@ -413,11 +413,13 @@ class ModifyCustomAgentRequestKnowledgeConfigList(DaraModel):
 class ModifyCustomAgentRequestExecutionConfig(DaraModel):
     def __init__(
         self,
+        forbidden_append_data_source: bool = None,
         skip_ask_human: bool = None,
         skip_plan: bool = None,
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
+        self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
         # Specifies whether to skip the plan confirmation step.
@@ -435,6 +437,9 @@ class ModifyCustomAgentRequestExecutionConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.forbidden_append_data_source is not None:
+            result['ForbiddenAppendDataSource'] = self.forbidden_append_data_source
+
         if self.skip_ask_human is not None:
             result['SkipAskHuman'] = self.skip_ask_human
 
@@ -451,6 +456,9 @@ class ModifyCustomAgentRequestExecutionConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ForbiddenAppendDataSource') is not None:
+            self.forbidden_append_data_source = m.get('ForbiddenAppendDataSource')
+
         if m.get('SkipAskHuman') is not None:
             self.skip_ask_human = m.get('SkipAskHuman')
 
