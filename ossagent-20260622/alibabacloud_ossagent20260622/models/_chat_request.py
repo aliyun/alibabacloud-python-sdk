@@ -13,7 +13,9 @@ class ChatRequest(DaraModel):
         messages: List[main_models.ChatRequestMessages] = None,
         session_id: str = None,
     ):
+        # The messages.
         self.messages = messages
+        # The ID of the Q&A session.
         self.session_id = session_id
 
     def validate(self):
@@ -58,7 +60,9 @@ class ChatRequestMessages(DaraModel):
         content: str = None,
         role: str = None,
     ):
+        # The conversation text content.
         self.content = content
+        # The role of the message.
         self.role = role
 
     def validate(self):

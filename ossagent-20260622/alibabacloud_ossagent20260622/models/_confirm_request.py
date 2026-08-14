@@ -16,10 +16,15 @@ class ConfirmRequest(DaraModel):
         session_id: str = None,
         tool_calls: List[main_models.ConfirmRequestToolCalls] = None,
     ):
+        # Specifies whether to approve the tool execution.
         self.confirmed = confirmed
+        # The current execution phase.
         self.phase = phase
+        # The reason for whether to call the tool.
         self.reason = reason
+        # The Q&A session ID.
         self.session_id = session_id
+        # The tool invocations.
         self.tool_calls = tool_calls
 
     def validate(self):
@@ -81,8 +86,11 @@ class ConfirmRequestToolCalls(DaraModel):
         modified_input: Dict[str, Any] = None,
         name: str = None,
     ):
+        # The tool ID, returned by the Chat operation.
         self.id = id
+        # The command to execute for the tool calling operation, returned by the Chat operation.
         self.modified_input = modified_input
+        # The consumer name.
         self.name = name
 
     def validate(self):
