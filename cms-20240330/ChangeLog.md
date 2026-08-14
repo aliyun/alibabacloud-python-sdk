@@ -1,3 +1,11 @@
+2026-08-14 Version: 10.4.1
+- Update API GetIntegrationPolicy: add response parameters Body.policy.addonNames.
+- Update API ListIntegrationPolicies: add response parameters Body.policies.$.addonNames.
+- Update API ListIntegrationPolicyCustomScrapeJobRules: add request parameters collectorReleaseName.
+- Update API ListIntegrationPolicyPodMonitors: add request parameters collectorReleaseName.
+- Update API ListIntegrationPolicyServiceMonitors: add request parameters collectorReleaseName.
+
+
 2026-08-12 Version: 10.4.0
 - Support API CreateDataPipeline.
 - Support API DeleteDataPipeline.

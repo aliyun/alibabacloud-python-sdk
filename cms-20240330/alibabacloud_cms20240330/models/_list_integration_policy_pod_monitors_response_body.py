@@ -21,7 +21,7 @@ class ListIntegrationPolicyPodMonitorsResponseBody(DaraModel):
         self.pod_monitors = pod_monitors
         # The policy ID.
         self.policy_id = policy_id
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -84,17 +84,17 @@ class ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors(DaraModel):
         name: str = None,
         namespace: str = None,
     ):
-        # The name of the add-on.
+        # The addon name.
         self.addon_name = addon_name
-        # The name of the add-on release.
+        # The addon release name.
         self.addon_release_name = addon_release_name
-        # The version of the add-on.
+        # The addon version.
         self.addon_version = addon_version
-        # The YAML configuration.
+        # The configuration YAML.
         self.config_yaml = config_yaml
-        # The status.
+        # The enabling status.
         self.enable_status = enable_status
-        # Indicates whether the YAML file is encrypted.
+        # The encrypted YAML.
         self.encrypt_yaml = encrypt_yaml
         # The endpoints of the instance.
         self.endpoints = endpoints

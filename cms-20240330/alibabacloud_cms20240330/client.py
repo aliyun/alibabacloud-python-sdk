@@ -9818,6 +9818,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_release_name):
             query['addonReleaseName'] = request.addon_release_name
+        if not DaraCore.is_null(request.collector_release_name):
+            query['collectorReleaseName'] = request.collector_release_name
         if not DaraCore.is_null(request.encrypt_yaml):
             query['encryptYaml'] = request.encrypt_yaml
         if not DaraCore.is_null(request.namespace):
@@ -9853,6 +9855,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_release_name):
             query['addonReleaseName'] = request.addon_release_name
+        if not DaraCore.is_null(request.collector_release_name):
+            query['collectorReleaseName'] = request.collector_release_name
         if not DaraCore.is_null(request.encrypt_yaml):
             query['encryptYaml'] = request.encrypt_yaml
         if not DaraCore.is_null(request.namespace):
@@ -9994,6 +9998,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_release_name):
             query['addonReleaseName'] = request.addon_release_name
+        if not DaraCore.is_null(request.collector_release_name):
+            query['collectorReleaseName'] = request.collector_release_name
         if not DaraCore.is_null(request.encrypt_yaml):
             query['encryptYaml'] = request.encrypt_yaml
         if not DaraCore.is_null(request.namespace):
@@ -10029,6 +10035,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_release_name):
             query['addonReleaseName'] = request.addon_release_name
+        if not DaraCore.is_null(request.collector_release_name):
+            query['collectorReleaseName'] = request.collector_release_name
         if not DaraCore.is_null(request.encrypt_yaml):
             query['encryptYaml'] = request.encrypt_yaml
         if not DaraCore.is_null(request.namespace):
@@ -10082,6 +10090,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_release_name):
             query['addonReleaseName'] = request.addon_release_name
+        if not DaraCore.is_null(request.collector_release_name):
+            query['collectorReleaseName'] = request.collector_release_name
         if not DaraCore.is_null(request.encrypt_yaml):
             query['encryptYaml'] = request.encrypt_yaml
         if not DaraCore.is_null(request.namespace):
@@ -10117,6 +10127,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_release_name):
             query['addonReleaseName'] = request.addon_release_name
+        if not DaraCore.is_null(request.collector_release_name):
+            query['collectorReleaseName'] = request.collector_release_name
         if not DaraCore.is_null(request.encrypt_yaml):
             query['encryptYaml'] = request.encrypt_yaml
         if not DaraCore.is_null(request.namespace):

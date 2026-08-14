@@ -21,7 +21,7 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBody(DaraModel):
         self.custom_scrape_job_rules = custom_scrape_job_rules
         # The policy ID.
         self.policy_id = policy_id
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -85,21 +85,21 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules(
         namespace: str = None,
         scrape_configs: List[main_models.ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs] = None,
     ):
-        # The add-on name.
+        # The addon name.
         self.addon_name = addon_name
-        # The name of the add-on release.
+        # The addon release name.
         self.addon_release_name = addon_release_name
-        # The add-on version.
+        # The addon version.
         self.addon_version = addon_version
-        # The configuration YAML file.
+        # The configuration YAML.
         self.config_yaml = config_yaml
-        # The enabled status.
+        # The enabling status.
         self.enable_status = enable_status
-        # Indicates whether the YAML file is encrypted.
+        # The encrypted YAML.
         self.encrypt_yaml = encrypt_yaml
         # The number of matched pods.
         self.matched_pod_count = matched_pod_count
-        # The details.
+        # The detailed information.
         self.message = message
         # The service name.
         self.name = name
@@ -209,9 +209,9 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesS
     ):
         # The scrape job name.
         self.job_name = job_name
-        # The details.
+        # The detailed information.
         self.message = message
-        # The scrape path.
+        # The metrics path.
         self.metrics_path = metrics_path
         # The invocation method.
         self.scheme = scheme

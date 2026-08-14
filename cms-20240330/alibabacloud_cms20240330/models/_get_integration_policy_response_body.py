@@ -49,6 +49,7 @@ class GetIntegrationPolicyResponseBody(DaraModel):
 class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
     def __init__(
         self,
+        addon_names: List[str] = None,
         bind_resource: main_models.GetIntegrationPolicyResponseBodyPolicyBindResource = None,
         cs_umodel_status: bool = None,
         entity_group: main_models.GetIntegrationPolicyResponseBodyPolicyEntityGroup = None,
@@ -62,6 +63,8 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # The names of all components installed in this policy.
+        self.addon_names = addon_names
         # The bound resource information.
         self.bind_resource = bind_resource
         # The umodel installation status in the container environment.
@@ -104,6 +107,9 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.addon_names is not None:
+            result['addonNames'] = self.addon_names
+
         if self.bind_resource is not None:
             result['bindResource'] = self.bind_resource.to_map()
 
@@ -146,6 +152,9 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('addonNames') is not None:
+            self.addon_names = m.get('addonNames')
+
         if m.get('bindResource') is not None:
             temp_model = main_models.GetIntegrationPolicyResponseBodyPolicyBindResource()
             self.bind_resource = temp_model.from_map(m.get('bindResource'))
@@ -284,7 +293,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroup(DaraModel):
         self.entity_group_name = entity_group_name
         # The entity rules.
         self.entity_rules = entity_rules
-        # The query parameter.
+        # Used for querying.
         self.query = query
         # The region ID.
         self.region_id = region_id
@@ -374,7 +383,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules(DaraModel):
         self.annotations = annotations
         # The list of entity types.
         self.entity_types = entity_types
-        # The list of field rules.
+        # The list of property rules.
         self.field_rules = field_rules
         # The instance IDs.
         self.instance_ids = instance_ids
@@ -633,7 +642,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules(Dar
     ):
         # The unique identifier of the field.
         self.field_key = field_key
-        # The field values.
+        # The field content.
         self.field_values = field_values
         # The operation to perform.
         self.op = op

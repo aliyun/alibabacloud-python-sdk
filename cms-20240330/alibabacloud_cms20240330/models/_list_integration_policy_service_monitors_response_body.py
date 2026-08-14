@@ -84,23 +84,23 @@ class ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors(DaraModel)
         name: str = None,
         namespace: str = None,
     ):
-        # The add-on name.
+        # The addon name.
         self.addon_name = addon_name
-        # The name of the add-on release.
+        # The addon release name.
         self.addon_release_name = addon_release_name
-        # The add-on version.
+        # The addon version.
         self.addon_version = addon_version
-        # The configuration YAML file.
+        # The configuration YAML.
         self.config_yaml = config_yaml
-        # The status.
+        # The enabling status.
         self.enable_status = enable_status
-        # Indicates whether the YAML file is encrypted.
+        # The encrypted YAML.
         self.encrypt_yaml = encrypt_yaml
-        # The list of Endpoints.
+        # The list of endpoints.
         self.endpoints = endpoints
         # The number of matched services.
         self.matched_service_count = matched_service_count
-        # The name of the ServiceMonitor.
+        # The ServiceMonitor name.
         self.name = name
         # The namespace.
         self.namespace = namespace
@@ -200,7 +200,7 @@ class ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints(D
         self.interval = interval
         # The number of matched targets.
         self.matched_target_count = matched_target_count
-        # The collection path.
+        # The sampling path.
         self.path = path
         # The collection port.
         self.port = port

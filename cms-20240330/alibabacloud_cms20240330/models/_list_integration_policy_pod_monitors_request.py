@@ -8,12 +8,15 @@ class ListIntegrationPolicyPodMonitorsRequest(DaraModel):
     def __init__(
         self,
         addon_release_name: str = None,
+        collector_release_name: str = None,
         encrypt_yaml: bool = None,
         namespace: str = None,
     ):
-        # The name of the add-on release.
+        # The name of the addon release.
         self.addon_release_name = addon_release_name
-        # Specifies whether to encrypt the YAML file.
+        # The identifier of the collector. If a release exists, pass the release name. If no release exists, pass the component name.
+        self.collector_release_name = collector_release_name
+        # Specifies whether to encrypt the YAML.
         self.encrypt_yaml = encrypt_yaml
         # The namespace.
         self.namespace = namespace
@@ -29,6 +32,9 @@ class ListIntegrationPolicyPodMonitorsRequest(DaraModel):
         if self.addon_release_name is not None:
             result['addonReleaseName'] = self.addon_release_name
 
+        if self.collector_release_name is not None:
+            result['collectorReleaseName'] = self.collector_release_name
+
         if self.encrypt_yaml is not None:
             result['encryptYaml'] = self.encrypt_yaml
 
@@ -41,6 +47,9 @@ class ListIntegrationPolicyPodMonitorsRequest(DaraModel):
         m = m or dict()
         if m.get('addonReleaseName') is not None:
             self.addon_release_name = m.get('addonReleaseName')
+
+        if m.get('collectorReleaseName') is not None:
+            self.collector_release_name = m.get('collectorReleaseName')
 
         if m.get('encryptYaml') is not None:
             self.encrypt_yaml = m.get('encryptYaml')

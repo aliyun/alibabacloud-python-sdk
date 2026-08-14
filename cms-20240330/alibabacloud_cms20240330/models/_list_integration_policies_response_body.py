@@ -17,10 +17,6 @@ class ListIntegrationPoliciesResponseBody(DaraModel):
         total_count: int = None,
     ):
         # The page size.
-        # Default value:
-        # 	50
-        # Maximum value:
-        # 	50.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
@@ -86,6 +82,7 @@ class ListIntegrationPoliciesResponseBody(DaraModel):
 class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
     def __init__(
         self,
+        addon_names: List[str] = None,
         bind_resource: main_models.ListIntegrationPoliciesResponseBodyPoliciesBindResource = None,
         cs_umodel_status: bool = None,
         entity_group: main_models.ListIntegrationPoliciesResponseBodyPoliciesEntityGroup = None,
@@ -100,6 +97,8 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # The names of all components installed in this policy.
+        self.addon_names = addon_names
         # The bound resource information.
         self.bind_resource = bind_resource
         # The umodel installation status in the container environment.
@@ -120,7 +119,7 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The number of sub-releases.
+        # The sub-release count.
         self.sub_addon_release = sub_addon_release
         # The user ID.
         self.user_id = user_id
@@ -142,6 +141,9 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.addon_names is not None:
+            result['addonNames'] = self.addon_names
+
         if self.bind_resource is not None:
             result['bindResource'] = self.bind_resource.to_map()
 
@@ -185,6 +187,9 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('addonNames') is not None:
+            self.addon_names = m.get('addonNames')
+
         if m.get('bindResource') is not None:
             temp_model = main_models.ListIntegrationPoliciesResponseBodyPoliciesBindResource()
             self.bind_resource = temp_model.from_map(m.get('bindResource'))
@@ -238,7 +243,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease(DaraModel):
     ):
         # The number of ready sub-releases.
         self.ready = ready
-        # The total number of rules.
+        # The number of rules.
         self.total = total
 
     def validate(self):
@@ -682,7 +687,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRule
     ):
         # The unique identifier of the field.
         self.field_key = field_key
-        # The field values. Multiple values are separated by commas.
+        # The field values. Multiple values are separated by commas (,).
         self.field_values = field_values
         # The operation to perform.
         self.op = op
