@@ -1,3 +1,8 @@
+2026-08-14 Version: 2.0.26
+- Update API CreateTask: add request parameters body.Parameters.Transcription.DisfluencyEnabled.
+- Update API CreateTask: add request parameters body.Parameters.Translation.TranslateLlmSceneEnabled.
+
+
 2026-03-16 Version: 2.0.25
 - Update API CreateTask: add request parameters body.Parameters.ExtraParams.TranslationHotwordMap.
 

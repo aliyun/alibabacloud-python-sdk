@@ -16,10 +16,28 @@ class CreateTaskRequest(DaraModel):
         operation: str = None,
         type: str = None,
     ):
+        # The AppKey of the project that you created in the console.
         self.app_key = app_key
+        # The basic input parameters for creating a task. The required parameters vary based on the task type.
+        # 
+        # - For an offline task (`type="offline"`), you must specify the `SourceLanguage` and `FileUrl` parameters.
+        # 
+        # - For a real-time task (`type="realtime"`), you must also specify the `SourceLanguage`, `Format`, and `SampleRate` parameters.
         self.input = input
+        # Algorithm-related parameters for customizing task processing.
         self.parameters = parameters
+        # The operation to perform. Valid values:
+        # 
+        # - **start**: Creates a task. This is the default value and does not typically need to be set.
+        # 
+        # - **stop**: Stops a real-time recording task. This value is used only for real-time tasks. To end the recording, set this parameter to `stop`.
         self.operation = operation
+        # The type of the task. Valid values:
+        # 
+        # - **offline**: An offline task, such as an offline transcription.
+        # 
+        # - **realtime**: A real-time task, such as a real-time recording.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -100,27 +118,46 @@ class CreateTaskRequestParameters(DaraModel):
         translation_enabled: bool = None,
     ):
         self.auto_chapters = auto_chapters
+        # Specifies whether to generate a chapter summary, which includes chapter titles and summaries for each chapter.
         self.auto_chapters_enabled = auto_chapters_enabled
+        # Conversation content extraction parameters.
         self.content_extraction = content_extraction
         self.content_extraction_enabled = content_extraction_enabled
+        # Parameters to control the custom prompt feature.
         self.custom_prompt = custom_prompt
+        # Specifies whether to enable the custom prompt feature.
         self.custom_prompt_enabled = custom_prompt_enabled
+        # Extended parameters for advanced use cases. You do not typically need to configure these parameters.
         self.extra_params = extra_params
+        # Identity recognition parameters.
         self.identity_recognition = identity_recognition
+        # Enable identity recognition.
         self.identity_recognition_enabled = identity_recognition_enabled
         self.llm_output_language = llm_output_language
+        # Parameters for the intelligent minutes feature, which supports processing for action items, keywords, and key points. If `MeetingAssistanceEnabled` is set to `true` but you do not specify this object, all analysis types are enabled by default.
         self.meeting_assistance = meeting_assistance
+        # Specifies whether to generate intelligent minutes, which include keywords, key points, and action items.
         self.meeting_assistance_enabled = meeting_assistance_enabled
         self.model = model
+        # Specifies whether to enable PPT extraction. If enabled, the service extracts slides from the video file and generates corresponding summaries. This feature applies only to offline transcription tasks with a video source file and has no effect on other task types.
         self.ppt_extraction_enabled = ppt_extraction_enabled
+        # Service quality inspection parameters.
         self.service_inspection = service_inspection
+        # Enable service quality inspection. Default is false.
         self.service_inspection_enabled = service_inspection_enabled
+        # Parameters for the summarization feature.
         self.summarization = summarization
+        # Specifies whether to enable the summarization feature, which can generate results such as a full-text summary and a speaker summary.
         self.summarization_enabled = summarization_enabled
+        # Specifies whether to enable the spoken-to-written conversion feature.
         self.text_polish_enabled = text_polish_enabled
+        # Parameters for transcoding source audio/video files or audio streams.
         self.transcoding = transcoding
+        # Parameters to control the speech transcription process.
         self.transcription = transcription
+        # Parameters to control the translation feature.
         self.translation = translation
+        # Specifies whether to enable the translation feature.
         self.translation_enabled = translation_enabled
 
     def validate(self):
@@ -313,10 +350,27 @@ class CreateTaskRequestParametersTranslation(DaraModel):
         additional_stream_output_level: int = None,
         output_level: int = None,
         target_languages: List[str] = None,
+        translate_llm_scene_enabled: bool = None,
     ):
+        # Specifies the level of detail for real-time translation results for the active speaker.
+        # 
+        # - **1**: Returns results only for complete sentences.
+        # 
+        # - **2**: Returns both intermediate and final results.
+        # 
+        # This parameter applies only to real-time recordings when `MultipleStreamsEnabled` is set to `true`.
         self.additional_stream_output_level = additional_stream_output_level
+        # Specifies the level of detail for real-time translation results. Default value: `1`.
+        # 
+        # - **1**: Returns results only for complete sentences.
+        # 
+        # - **2**: Returns both intermediate and final results.
+        # 
+        # This parameter applies only to real-time recordings.
         self.output_level = output_level
+        # The target languages for translation. This parameter is required if translation is enabled. Supported languages include Chinese, English, and Japanese.
         self.target_languages = target_languages
+        self.translate_llm_scene_enabled = translate_llm_scene_enabled
 
     def validate(self):
         pass
@@ -335,6 +389,9 @@ class CreateTaskRequestParametersTranslation(DaraModel):
         if self.target_languages is not None:
             result['TargetLanguages'] = self.target_languages
 
+        if self.translate_llm_scene_enabled is not None:
+            result['TranslateLlmSceneEnabled'] = self.translate_llm_scene_enabled
+
         return result
 
     def from_map(self, m: dict = None):
@@ -348,6 +405,9 @@ class CreateTaskRequestParametersTranslation(DaraModel):
         if m.get('TargetLanguages') is not None:
             self.target_languages = m.get('TargetLanguages')
 
+        if m.get('TranslateLlmSceneEnabled') is not None:
+            self.translate_llm_scene_enabled = m.get('TranslateLlmSceneEnabled')
+
         return self
 
 class CreateTaskRequestParametersTranscription(DaraModel):
@@ -357,19 +417,39 @@ class CreateTaskRequestParametersTranscription(DaraModel):
         audio_event_detection_enabled: bool = None,
         diarization: main_models.CreateTaskRequestParametersTranscriptionDiarization = None,
         diarization_enabled: bool = None,
+        disfluency_enabled: bool = None,
         model: str = None,
         output_level: int = None,
         phrase_id: str = None,
         profanity_filter_enabled: bool = None,
         realtime_diarization_enabled: bool = None,
     ):
+        # Specifies the level of detail for speech transcription results for the active speaker in a real-time recording scenario.
+        # 
+        # - **1**: Returns results only when a complete sentence is recognized.
+        # 
+        # - **2**: Returns both intermediate and final results as they are recognized.
+        # 
+        # This parameter applies only to real-time recordings when `MultipleStreamsEnabled` is set to `true`.
         self.additional_stream_output_level = additional_stream_output_level
+        # Specifies whether to enable sound event detection, which identifies non-speech events in the audio, such as music.
         self.audio_event_detection_enabled = audio_event_detection_enabled
+        # Parameters for the speaker diarization feature.
         self.diarization = diarization
+        # Specifies whether to enable speaker diarization.
         self.diarization_enabled = diarization_enabled
+        self.disfluency_enabled = disfluency_enabled
+        # Set the speech transcription model to improve accuracy for specific domains.
         self.model = model
+        # Specifies the level of detail for the speech transcription results. Default value: `1`.
+        # 
+        # - **1**: Returns results only when a complete sentence is recognized.
+        # 
+        # - **2**: Returns both intermediate and final results as they are recognized.
         self.output_level = output_level
+        # The ID of the hotword list.
         self.phrase_id = phrase_id
+        # Enable sensitive word filtering during speech transcription. Enabled by default.
         self.profanity_filter_enabled = profanity_filter_enabled
         self.realtime_diarization_enabled = realtime_diarization_enabled
 
@@ -393,6 +473,9 @@ class CreateTaskRequestParametersTranscription(DaraModel):
 
         if self.diarization_enabled is not None:
             result['DiarizationEnabled'] = self.diarization_enabled
+
+        if self.disfluency_enabled is not None:
+            result['DisfluencyEnabled'] = self.disfluency_enabled
 
         if self.model is not None:
             result['Model'] = self.model
@@ -426,6 +509,9 @@ class CreateTaskRequestParametersTranscription(DaraModel):
         if m.get('DiarizationEnabled') is not None:
             self.diarization_enabled = m.get('DiarizationEnabled')
 
+        if m.get('DisfluencyEnabled') is not None:
+            self.disfluency_enabled = m.get('DisfluencyEnabled')
+
         if m.get('Model') is not None:
             self.model = m.get('Model')
 
@@ -448,6 +534,13 @@ class CreateTaskRequestParametersTranscriptionDiarization(DaraModel):
         self,
         speaker_count: int = None,
     ):
+        # Specifies the number of speakers to identify.
+        # 
+        # If this parameter is not set, speakers are not differentiated in the transcript.
+        # 
+        # Set the value to `0` to identify an unknown number of speakers.
+        # 
+        # Set the value to `2` to identify two speakers.
         self.speaker_count = speaker_count
 
     def validate(self):
@@ -478,9 +571,13 @@ class CreateTaskRequestParametersTranscoding(DaraModel):
         target_video_format: str = None,
         video_thumbnail_enabled: bool = None,
     ):
+        # Specifies whether to generate and save an audio waveform from the source audio/video file or audio stream. This parameter is optional for offline transcription and real-time recording tasks.
         self.spectrum_enabled = spectrum_enabled
+        # Specifies the target format for the transcoded audio. Set to `mp3` to transcode the source audio into MP3 format for storage. This parameter is optional for offline transcription and real-time recording tasks.
         self.target_audio_format = target_audio_format
+        # Specifies the target format for the transcoded video. Set to `mp4` to transcode the source video into MP4 format for storage. This parameter applies only to offline transcription tasks with a video source file.
         self.target_video_format = target_video_format
+        # Specifies whether to extract and save video thumbnails from the source video file. This parameter applies only to offline transcription tasks with a video source file.
         self.video_thumbnail_enabled = video_thumbnail_enabled
 
     def validate(self):
@@ -526,6 +623,7 @@ class CreateTaskRequestParametersSummarization(DaraModel):
         self,
         types: List[str] = None,
     ):
+        # The types of summaries to generate. This parameter is required when summarization is enabled. Supported types include `Paragraph` (full-text summary), `Conversational` (speaker summary), and `QuestionsAnswering` (Q\\&A summary).
         self.types = types
 
     def validate(self):
@@ -556,8 +654,11 @@ class CreateTaskRequestParametersServiceInspection(DaraModel):
         scene_introduction: str = None,
         speaker_map: Dict[str, Any] = None,
     ):
+        # List of inspection dimensions for service quality inspection. Each dimension includes a name and definition, which tells the Large Language Model how to evaluate whether the dimension is met.
         self.inspection_contents = inspection_contents
+        # Description of the inspection goals and focus areas for service quality inspection.
         self.inspection_introduction = inspection_introduction
+        # Description of the conversation scenario for service quality inspection.
         self.scene_introduction = scene_introduction
         self.speaker_map = speaker_map
 
@@ -613,7 +714,9 @@ class CreateTaskRequestParametersServiceInspectionInspectionContents(DaraModel):
         content: str = None,
         title: str = None,
     ):
+        # Definition of the inspection dimension.
         self.content = content
+        # Name of the inspection dimension.
         self.title = title
 
     def validate(self):
@@ -647,6 +750,7 @@ class CreateTaskRequestParametersMeetingAssistance(DaraModel):
         self,
         types: List[str] = None,
     ):
+        # The types of analysis to perform when the intelligent minutes feature is enabled. Supported values: `Actions` (action items) and `KeyInformation` (key information, including keywords and key points).
         self.types = types
 
     def validate(self):
@@ -675,7 +779,9 @@ class CreateTaskRequestParametersIdentityRecognition(DaraModel):
         identity_contents: List[main_models.CreateTaskRequestParametersIdentityRecognitionIdentityContents] = None,
         scene_introduction: str = None,
     ):
+        # List of identities, including identity name and description.
         self.identity_contents = identity_contents
+        # Description of the scenario for identity recognition.
         self.scene_introduction = scene_introduction
 
     def validate(self):
@@ -718,7 +824,9 @@ class CreateTaskRequestParametersIdentityRecognitionIdentityContents(DaraModel):
         description: str = None,
         name: str = None,
     ):
+        # Identity description.
         self.description = description
+        # Identity name.
         self.name = name
 
     def validate(self):
@@ -759,8 +867,11 @@ class CreateTaskRequestParametersExtraParams(DaraModel):
         translation_hotword_map: main_models.CreateTaskRequestParametersExtraParamsTranslationHotwordMap = None,
     ):
         self.domain_education_enabled = domain_education_enabled
+        # Full-text summary format.
         self.full_text_summary_format = full_text_summary_format
+        # Maximum number of keywords.
         self.max_keywords = max_keywords
+        # Specifies whether to enable nfix. You do not typically need to configure this parameter.
         self.nfix_enabled = nfix_enabled
         self.ocr_auxiliary_enabled = ocr_auxiliary_enabled
         self.translate_llm_scene_enabled = translate_llm_scene_enabled
@@ -864,6 +975,7 @@ class CreateTaskRequestParametersCustomPrompt(DaraModel):
         self,
         contents: List[main_models.CreateTaskRequestParametersCustomPromptContents] = None,
     ):
+        # A list of custom prompt parameters.
         self.contents = contents
 
     def validate(self):
@@ -902,11 +1014,17 @@ class CreateTaskRequestParametersCustomPromptContents(DaraModel):
         prompt: str = None,
         trans_type: str = None,
     ):
+        # The model to use for the prompt.
         self.model = model
+        # A custom name for the prompt, used to identify the corresponding output.
+        # 
         # This parameter is required.
         self.name = name
+        # The content of the custom prompt.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # Specifies the format for the `{Transcription}` tag.
         self.trans_type = trans_type
 
     def validate(self):
@@ -954,7 +1072,9 @@ class CreateTaskRequestParametersContentExtraction(DaraModel):
         scene_introduction: str = None,
         speaker_map: Dict[str, Any] = None,
     ):
+        # List of content extraction dimensions. Each dimension includes a name and definition.
         self.extraction_contents = extraction_contents
+        # Description of the conversation scenario for content extraction.
         self.scene_introduction = scene_introduction
         self.speaker_map = speaker_map
 
@@ -1005,8 +1125,10 @@ class CreateTaskRequestParametersContentExtractionExtractionContents(DaraModel):
         identity: str = None,
         title: str = None,
     ):
+        # Definition of the content extraction dimension.
         self.content = content
         self.identity = identity
+        # Name of the content extraction dimension.
         self.title = title
 
     def validate(self):
@@ -1085,17 +1207,53 @@ class CreateTaskRequestInput(DaraModel):
         task_id: str = None,
         task_key: str = None,
     ):
+        # Multi-channel audio or video processing mode.
         self.audio_channel_mode = audio_channel_mode
+        # The HTTP or HTTPS URL of the source audio or video file. This parameter is required when you create an offline transcription task.
         self.file_url = file_url
+        # The encoding format of the audio stream data. This parameter is required when you create a real-time recording task. The following values are supported:
+        # 
+        # - **pcm**
+        # 
+        # - **opus**
+        # 
+        # - **aac**
+        # 
+        # - **speex**
+        # 
+        # - **mp3**
         self.format = format
+        # Preferred languages. This applies only when SourceLanguage is multilingual. It restricts the output language of the model.
         self.language_hints = language_hints
+        # Specifies whether to enable multi-channel audio stream recognition. This parameter applies only to real-time recording scenarios. The default value is `false`.
         self.multiple_streams_enabled = multiple_streams_enabled
+        # After you configure OSS settings in the console, specify an OSS path to save results directly to your OSS bucket.
         self.output_path = output_path
+        # Specifies whether to enable callbacks. To receive callbacks, you must configure the callback type and URL in the console and set this parameter to `true`.
         self.progressive_callbacks_enabled = progressive_callbacks_enabled
+        # The sample rate of the audio stream data. This parameter is required when you create a real-time recording task. The supported values are 8000 and 16000.
+        # 
+        # - **8000**: Suitable for telephony and customer service scenarios.
+        # 
+        # - **16000**: Suitable for real-time meeting audio capture scenarios.
         self.sample_rate = sample_rate
+        # The language model for speech transcription. The following values are supported:
+        # 
+        # - **cn**: Chinese
+        # 
+        # - **en**: English
+        # 
+        # - **fspk**: Chinese-English code-switching
+        # 
+        # - **ja**: Japanese
+        # 
+        # - **yue**: Cantonese
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # The task ID that is returned when you create a real-time recording. This ID is required to stop the recording. Specify this parameter only when stopping a real-time recording.
         self.task_id = task_id
+        # A custom identifier that you can set for the task.
         self.task_key = task_key
 
     def validate(self):

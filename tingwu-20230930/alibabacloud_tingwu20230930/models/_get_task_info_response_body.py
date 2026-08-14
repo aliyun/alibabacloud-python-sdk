@@ -13,9 +13,13 @@ class GetTaskInfoResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # Returned object.
         self.data = data
+        # Status description.
         self.message = message
+        # Request ID, used only for joint debugging.
         self.request_id = request_id
 
     def validate(self):
@@ -72,15 +76,30 @@ class GetTaskInfoResponseBodyData(DaraModel):
         task_key: str = None,
         task_status: str = None,
     ):
+        # Error code
         self.error_code = error_code
+        # Error message
         self.error_message = error_message
+        # URL link to the MP3 conversion result
         self.output_mp_3path = output_mp_3path
+        # URL link to the MP4 conversion result
         self.output_mp_4path = output_mp_4path
+        # URL link to the audio waveform graph
         self.output_spectrum_path = output_spectrum_path
+        # URL link to the video thumbnail
         self.output_thumbnail_path = output_thumbnail_path
+        # A collection of results from various algorithm processing tasks. The result is returned as an HTTP link, which the user can use to parse the native result.
         self.result = result
+        # Job ID.
         self.task_id = task_id
+        # The custom ID set by the user when creating the job.
         self.task_key = task_key
+        # Task Status.
+        # 
+        # - ONGOING: The job is in progress.
+        # - COMPLETED: The job is completed.
+        # - FAILED: The job has failed.
+        # - INVALID: The job is invalid.
         self.task_status = task_status
 
     def validate(self):
@@ -174,16 +193,27 @@ class GetTaskInfoResponseBodyDataResult(DaraModel):
         transcription: str = None,
         translation: str = None,
     ):
+        # Link to the result of the Auto Chapters feature.
         self.auto_chapters = auto_chapters
+        # URL link to the result of conversation content extraction
         self.content_extraction = content_extraction
+        # Link to the result of the Custom prompt
         self.custom_prompt = custom_prompt
+        # The URL link to the identity recognition result.
         self.identity_recognition = identity_recognition
+        # URL link to the result of Intelligent Meeting Summary
         self.meeting_assistance = meeting_assistance
+        # URL link to the result of video PPT extraction and summarization
         self.ppt_extraction = ppt_extraction
+        # Link to the result of service inspection
         self.service_inspection = service_inspection
+        # Link to the result of LLM-based summarization.
         self.summarization = summarization
+        # Link to the result of spoken-to-written text conversion
         self.text_polish = text_polish
+        # Link to the result of speech transcription.
         self.transcription = transcription
+        # URL link to the result of text translation
         self.translation = translation
 
     def validate(self):

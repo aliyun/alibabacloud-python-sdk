@@ -11,9 +11,14 @@ class CreateTranscriptionPhrasesRequest(DaraModel):
         name: str = None,
         word_weights: str = None,
     ):
+        # The description of the phrases list.
         self.description = description
+        # The name of the phrases list.
+        # 
         # This parameter is required.
         self.name = name
+        # A JSON-formatted string that represents a map of words and their corresponding weights.
+        # 
         # This parameter is required.
         self.word_weights = word_weights
 

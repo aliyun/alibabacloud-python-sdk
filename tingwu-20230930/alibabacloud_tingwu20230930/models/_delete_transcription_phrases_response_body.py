@@ -14,8 +14,11 @@ class DeleteTranscriptionPhrasesResponseBody(DaraModel):
         status: str = None,
     ):
         self.data = data
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # Is the operation successful?
         self.status = status
 
     def validate(self):
@@ -65,8 +68,11 @@ class DeleteTranscriptionPhrasesResponseBodyData(DaraModel):
         error_message: str = None,
         status: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # Is the operation successful?
         self.status = status
 
     def validate(self):

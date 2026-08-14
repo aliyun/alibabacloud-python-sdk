@@ -15,8 +15,11 @@ class ListTranscriptionPhrasesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # status code.
         self.code = code
+        # Response object.
         self.data = data
+        # status description.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,9 +72,13 @@ class ListTranscriptionPhrasesResponseBodyData(DaraModel):
         phrases: List[main_models.ListTranscriptionPhrasesResponseBodyDataPhrases] = None,
         status: str = None,
     ):
+        # error code.
         self.error_code = error_code
+        # error message.
         self.error_message = error_message
+        # Phrase objects.
         self.phrases = phrases
+        # Indicates whether the operation was successful.
         self.status = status
 
     def validate(self):
@@ -127,8 +134,11 @@ class ListTranscriptionPhrasesResponseBodyDataPhrases(DaraModel):
         name: str = None,
         phrase_id: str = None,
     ):
+        # Phrase list description.
         self.description = description
+        # Phrase list name.
         self.name = name
+        # Phrase list ID.
         self.phrase_id = phrase_id
 
     def validate(self):

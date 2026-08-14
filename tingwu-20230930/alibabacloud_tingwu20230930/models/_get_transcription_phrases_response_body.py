@@ -15,10 +15,13 @@ class GetTranscriptionPhrasesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code.
         self.code = code
+        # Response object.
         self.data = data
+        # Status message.
         self.message = message
-        # Id of the request
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,9 +72,13 @@ class GetTranscriptionPhrasesResponseBodyData(DaraModel):
         phrases: List[main_models.GetTranscriptionPhrasesResponseBodyDataPhrases] = None,
         status: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # Hotword objects.
         self.phrases = phrases
+        # Indicates whether the operation succeeded.
         self.status = status
 
     def validate(self):
@@ -128,9 +135,13 @@ class GetTranscriptionPhrasesResponseBodyDataPhrases(DaraModel):
         phrase_id: str = None,
         word_weights: str = None,
     ):
+        # Hotword list description.
         self.description = description
+        # Hotword list name.
         self.name = name
+        # ID of the phrase list.
         self.phrase_id = phrase_id
+        # Words and their weights in the hotword list, formatted as a JSON map string.
         self.word_weights = word_weights
 
     def validate(self):

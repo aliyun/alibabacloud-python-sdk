@@ -11,9 +11,14 @@ class UpdateTranscriptionPhrasesRequest(DaraModel):
         name: str = None,
         word_weights: str = None,
     ):
+        # A description of the hotword list.
         self.description = description
+        # The name of the hotword list.
+        # 
         # This parameter is required.
         self.name = name
+        # A JSON map string that defines hotwords and their weights.
+        # 
         # This parameter is required.
         self.word_weights = word_weights
 

@@ -13,10 +13,13 @@ class UpdateTranscriptionPhrasesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response object.
         self.data = data
+        # The status message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -66,8 +69,11 @@ class UpdateTranscriptionPhrasesResponseBodyData(DaraModel):
         error_message: str = None,
         status: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # Indicates whether the operation succeeded.
         self.status = status
 
     def validate(self):

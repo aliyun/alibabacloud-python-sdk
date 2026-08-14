@@ -13,9 +13,13 @@ class CreateTaskResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The status message.
         self.message = message
+        # The request ID, used for troubleshooting only.
         self.request_id = request_id
 
     def validate(self):
@@ -66,9 +70,13 @@ class CreateTaskResponseBodyData(DaraModel):
         task_key: str = None,
         task_status: str = None,
     ):
+        # The stream ingestion URL. Push audio streams to this URL for real-time transcription.
         self.meeting_join_url = meeting_join_url
+        # The task ID.
         self.task_id = task_id
+        # The custom identifier specified during task creation.
         self.task_key = task_key
+        # The task status.
         self.task_status = task_status
 
     def validate(self):
