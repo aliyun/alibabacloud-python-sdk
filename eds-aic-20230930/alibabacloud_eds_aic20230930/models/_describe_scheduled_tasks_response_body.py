@@ -122,7 +122,7 @@ class DescribeScheduledTasksResponseBodyTasks(DaraModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The list of associated instance IDs.
+        # The list of bound instance IDs.
         self.instance_ids = instance_ids
         # The last execution time.
         self.last_execution_at = last_execution_at
@@ -258,13 +258,16 @@ class DescribeScheduledTasksResponseBodyTasksRunConfig(DaraModel):
         self,
         extra_params: str = None,
         max_steps: int = None,
+        skills: List[str] = None,
         timeout_seconds: int = None,
     ):
         # The extra parameters.
         self.extra_params = extra_params
         # The maximum number of steps.
         self.max_steps = max_steps
-        # The timeout period, in seconds.
+        # The list of skill IDs.
+        self.skills = skills
+        # The timeout period in seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -281,6 +284,9 @@ class DescribeScheduledTasksResponseBodyTasksRunConfig(DaraModel):
         if self.max_steps is not None:
             result['MaxSteps'] = self.max_steps
 
+        if self.skills is not None:
+            result['Skills'] = self.skills
+
         if self.timeout_seconds is not None:
             result['TimeoutSeconds'] = self.timeout_seconds
 
@@ -293,6 +299,9 @@ class DescribeScheduledTasksResponseBodyTasksRunConfig(DaraModel):
 
         if m.get('MaxSteps') is not None:
             self.max_steps = m.get('MaxSteps')
+
+        if m.get('Skills') is not None:
+            self.skills = m.get('Skills')
 
         if m.get('TimeoutSeconds') is not None:
             self.timeout_seconds = m.get('TimeoutSeconds')

@@ -11,6 +11,7 @@ class RenewMobileAgentPackageRequest(DaraModel):
         self,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        client_token: str = None,
         mobile_agent_package_ids: List[str] = None,
         paid_callback_url: str = None,
         period: int = None,
@@ -19,28 +20,32 @@ class RenewMobileAgentPackageRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
+        # - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
+        # - **false** (default): Only an order is generated. No payment is made.
         # 
-        # - **false** (default): Generates an unpaid order.
         # 
-        # > If your account balance is insufficient, set this parameter to `false` to generate an unpaid order. You can then pay for the order in the Wuying Mobile Cloud Phone management console.
+        # 
+        # 
+        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the Elastic Cloud Phone console to complete the payment.
+        # >
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. The default value is `false`.
+        # Specifies whether to enable auto-renewal. Default value: false.
         self.auto_renew = auto_renew
-        # A list of mobile agent package IDs.
+        # The idempotence key.
+        self.client_token = client_token
+        # The list of resource plan IDs.
         self.mobile_agent_package_ids = mobile_agent_package_ids
-        # The URL to which a user is redirected after a successful payment.
+        # The redirect URL after a successful payment.
         self.paid_callback_url = paid_callback_url
-        # The renewal period. The `PeriodUnit` parameter specifies the time unit.
+        # The duration for which you want to purchase the resource. The unit is specified by `PeriodUnit`.
         self.period = period
-        # The unit of the renewal period.
+        # The unit of the duration for which you want to purchase the resource.
+        # 
         # Valid values:
-        # 
         # - **Month**: month.
-        # 
         # - **Year**: year.
         self.period_unit = period_unit
-        # The promotion ID.
+        # The ID of the promotional campaign.
         self.promotion_id = promotion_id
 
     def validate(self):
@@ -56,6 +61,9 @@ class RenewMobileAgentPackageRequest(DaraModel):
 
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.mobile_agent_package_ids is not None:
             result['MobileAgentPackageIds'] = self.mobile_agent_package_ids
@@ -81,6 +89,9 @@ class RenewMobileAgentPackageRequest(DaraModel):
 
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('MobileAgentPackageIds') is not None:
             self.mobile_agent_package_ids = m.get('MobileAgentPackageIds')

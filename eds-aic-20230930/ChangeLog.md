@@ -1,3 +1,9 @@
+2026-08-15 Version: 4.34.1
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.Channel.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.PackageId.
+- Update API RenewMobileAgentPackage: add request parameters ClientToken.
+
+
 2026-07-24 Version: 4.33.0
 - Support API CreateAICloudPhone.
 - Update API DescribeCreditDetail: add request parameters MaxResults.

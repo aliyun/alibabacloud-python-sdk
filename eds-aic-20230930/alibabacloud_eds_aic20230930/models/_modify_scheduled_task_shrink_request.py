@@ -28,7 +28,7 @@ class ModifyScheduledTaskShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
-        # The status switch: ACTIVE/DISABLED.
+        # Switches the status. Valid values: ACTIVE and DISABLED.
         self.status = status
         # The task name.
         self.task_name = task_name

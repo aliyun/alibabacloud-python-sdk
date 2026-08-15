@@ -28,9 +28,9 @@ class DescribeScheduledTasksRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # The scheduled task IDs used to filter results.
+        # Filters by scheduled task IDs.
         self.scheduled_ids = scheduled_ids
-        # The status used to filter results. Valid values: ACTIVE and DISABLED.
+        # Filters by status: ACTIVE/DISABLED.
         self.status = status
         # The task name.
         self.task_name = task_name

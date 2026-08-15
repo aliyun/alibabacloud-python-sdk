@@ -32,7 +32,7 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         self.charge_type = charge_type
         # The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can pass the returned NextToken in the next request to continue the query.
+        # The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue retrieving results.
         self.next_token = next_token
         # The list of cloud phone matrix IDs.
         self.node_ids = node_ids

@@ -17,7 +17,7 @@ class DescribeAndroidInstancesResponseBody(DaraModel):
     ):
         # The instance information.
         self.instance_model = instance_model
-        # The pagination token that indicates the position to which the current call has read. An empty value indicates that all data has been read.
+        # The position from which the current call starts reading. An empty value indicates that all data has been read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -141,19 +141,21 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
         self.app_instance_group_id = app_instance_group_id
         # The physical instance ID.
         self.app_instance_id = app_instance_id
-        # The application management policy information. This corresponds to the blacklists and whitelists management of application management policies in the console.
+        # The application management rule information. This corresponds to the blacklists and whitelists management of application management rules in the console.
         self.app_manage_policy = app_manage_policy
         # The assigned user.
         self.authorized_user_id = authorized_user_id
-        # The bandwidth package ID.
+        # The ID of the bandwidth package.
         self.bandwidth_package_id = bandwidth_package_id
         # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
         # The bound user.
         self.bind_user_id = bind_user_id
+        # The image type.
         self.biz_image_type = biz_image_type
         # The tag array.
         self.biz_tags = biz_tags
+        # The order source.
         self.channel = channel
         # The billing type of the instance.
         self.charge_type = charge_type
@@ -165,7 +167,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
         self.display_config = display_config
         # The downstream bandwidth throttling. Unit: Mbit/s.
         self.down_bandwidth_limit = down_bandwidth_limit
-        # The error reason for instance data backup failure or recovery failure.
+        # The error reason for instance data backup failure or restoration failure.
         self.error_code = error_code
         # The creation time.
         self.gmt_create = gmt_create
@@ -179,6 +181,15 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
         self.image_version = image_version
         # The instance type.
         self.instance_type = instance_type
+        # The network status.
+        # 
+        # - INIT: Being created.
+        # 
+        # - UPDATING: Being updated.
+        # 
+        # - AVAILABLE: Available.
+        # 
+        # - UNAVAILABLE: Unavailable.
         self.internet_status = internet_status
         # The key pair ID.
         self.key_pair_id = key_pair_id
@@ -192,11 +203,11 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
         self.network_type = network_type
         # The network ID. This corresponds to the network selected during creation in the console (basic shared network or advanced shared network).
         self.office_site_id = office_site_id
+        # The ID of the plan associated with the AI cloud phone.
         self.package_id = package_id
         # The persistent session ID.
         self.persistent_app_instance_id = persistent_app_instance_id
-        # <props="china">The independent device storage information of the cloud phone matrix edition instance.
-        # <props="intl">This parameter is not publicly available..
+        # <props="china">The independent device storage information of the cloud phone matrix instance.
         self.phone_data_info = phone_data_info
         # The policy group ID.
         self.policy_group_id = policy_group_id
@@ -204,34 +215,31 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
         self.public_ip_address = public_ip_address
         # > This parameter is not publicly available.
         self.public_ipv_6address = public_ipv_6address
-        # The public network rate limiting rule ID (applies only to premium bandwidth).
+        # The ID of the public network rate limiting rule. This applies only to premium bandwidth.
         self.qos_rule_id = qos_rule_id
-        # The progress of instance data backup or recovery.
+        # The progress of instance data backup or restoration.
         self.rate = rate
         # The region ID.
         self.region_id = region_id
         # The rendering type.
         self.rendering_type = rendering_type
         # <props="china">The matrix status.
-        # <props="intl">This parameter is not publicly available..
         self.server_status = server_status
         # <props="china">The cloud phone matrix specification.
-        # <props="intl">This parameter is not publicly available..
         self.server_type = server_type
         # The session connection status.
         self.session_status = session_status
-        # <props="china">The streaming mode of instances in the cloud phone matrix.
-        # <props="intl">This parameter is not publicly available..
+        # <props="china">The streaming mode of the instance in the cloud phone matrix.
         self.stream_mode = stream_mode
         # The Android system version.
         self.system_version = system_version
-        # The list of tags.
+        # The tag list.
         self.tags = tags
         # The upstream bandwidth throttling. Unit: Mbit/s.
         self.up_bandwidth_limit = up_bandwidth_limit
         # The vSwitch ID in the VPC.
         self.v_switch_id = v_switch_id
-        # The zone ID to which the instance belongs.
+        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -821,7 +829,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy(DaraModel
     ):
         # The application management policy ID.
         self.app_manage_policy_id = app_manage_policy_id
-        # The name of the application management policy.
+        # The name of the application management rule.
         self.app_manage_policy_name = app_manage_policy_name
 
     def validate(self):

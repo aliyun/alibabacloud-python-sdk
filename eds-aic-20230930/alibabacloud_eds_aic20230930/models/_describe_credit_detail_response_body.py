@@ -134,6 +134,7 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         change_time: str = None,
         credit_change: str = None,
         description: str = None,
+        duration_ms: int = None,
         input_tokens: int = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -143,6 +144,7 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         request_id: str = None,
         task_id: str = None,
         total_tokens: int = None,
+        ttft_ms: int = None,
     ):
         self.api_key_name = api_key_name
         self.cached_tokens = cached_tokens
@@ -152,6 +154,7 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         self.credit_change = credit_change
         # The task description.
         self.description = description
+        self.duration_ms = duration_ms
         self.input_tokens = input_tokens
         # The instance ID.
         self.instance_id = instance_id
@@ -164,6 +167,7 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         # The task ID, which is globally unique.
         self.task_id = task_id
         self.total_tokens = total_tokens
+        self.ttft_ms = ttft_ms
 
     def validate(self):
         pass
@@ -187,6 +191,9 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.duration_ms is not None:
+            result['DurationMs'] = self.duration_ms
 
         if self.input_tokens is not None:
             result['InputTokens'] = self.input_tokens
@@ -215,6 +222,9 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         if self.total_tokens is not None:
             result['TotalTokens'] = self.total_tokens
 
+        if self.ttft_ms is not None:
+            result['TtftMs'] = self.ttft_ms
+
         return result
 
     def from_map(self, m: dict = None):
@@ -233,6 +243,9 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DurationMs') is not None:
+            self.duration_ms = m.get('DurationMs')
 
         if m.get('InputTokens') is not None:
             self.input_tokens = m.get('InputTokens')
@@ -260,6 +273,9 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
 
         if m.get('TotalTokens') is not None:
             self.total_tokens = m.get('TotalTokens')
+
+        if m.get('TtftMs') is not None:
+            self.ttft_ms = m.get('TtftMs')
 
         return self
 

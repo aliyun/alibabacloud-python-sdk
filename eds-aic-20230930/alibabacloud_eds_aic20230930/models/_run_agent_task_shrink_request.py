@@ -7,15 +7,15 @@ from typing import List
 from alibabacloud_eds_aic20230930 import models as main_models
 from darabonba.model import DaraModel
 
-class RunAgentTaskRequest(DaraModel):
+class RunAgentTaskShrinkRequest(DaraModel):
     def __init__(
         self,
         biz_region_id: str = None,
         instance_ids: List[str] = None,
         max_steps: int = None,
-        run_config: main_models.RunAgentTaskRequestRunConfig = None,
+        run_config_shrink: str = None,
         schedule_id: str = None,
-        targets: List[main_models.RunAgentTaskRequestTargets] = None,
+        targets: List[main_models.RunAgentTaskShrinkRequestTargets] = None,
         task_config_id: str = None,
         timeout_seconds: int = None,
         user_prompt: str = None,
@@ -27,7 +27,7 @@ class RunAgentTaskRequest(DaraModel):
         # The maximum number of execution steps for the task. This prevents infinite loops. Valid values: 30 to 1000. Default value: 1000.
         self.max_steps = max_steps
         # The runtime configuration that carries the runtime parameters (skills) for this task.
-        self.run_config = run_config
+        self.run_config_shrink = run_config_shrink
         # The scheduling plan ID. When specified, the execution record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling dimension through aggregation.
         self.schedule_id = schedule_id
         # The Targets array. Each element is an object that contains InstanceId and SessionId.
@@ -40,8 +40,6 @@ class RunAgentTaskRequest(DaraModel):
         self.user_prompt = user_prompt
 
     def validate(self):
-        if self.run_config:
-            self.run_config.validate()
         if self.targets:
             for v1 in self.targets:
                  if v1:
@@ -61,8 +59,8 @@ class RunAgentTaskRequest(DaraModel):
         if self.max_steps is not None:
             result['MaxSteps'] = self.max_steps
 
-        if self.run_config is not None:
-            result['RunConfig'] = self.run_config.to_map()
+        if self.run_config_shrink is not None:
+            result['RunConfig'] = self.run_config_shrink
 
         if self.schedule_id is not None:
             result['ScheduleId'] = self.schedule_id
@@ -95,8 +93,7 @@ class RunAgentTaskRequest(DaraModel):
             self.max_steps = m.get('MaxSteps')
 
         if m.get('RunConfig') is not None:
-            temp_model = main_models.RunAgentTaskRequestRunConfig()
-            self.run_config = temp_model.from_map(m.get('RunConfig'))
+            self.run_config_shrink = m.get('RunConfig')
 
         if m.get('ScheduleId') is not None:
             self.schedule_id = m.get('ScheduleId')
@@ -104,7 +101,7 @@ class RunAgentTaskRequest(DaraModel):
         self.targets = []
         if m.get('Targets') is not None:
             for k1 in m.get('Targets'):
-                temp_model = main_models.RunAgentTaskRequestTargets()
+                temp_model = main_models.RunAgentTaskShrinkRequestTargets()
                 self.targets.append(temp_model.from_map(k1))
 
         if m.get('TaskConfigId') is not None:
@@ -118,7 +115,7 @@ class RunAgentTaskRequest(DaraModel):
 
         return self
 
-class RunAgentTaskRequestTargets(DaraModel):
+class RunAgentTaskShrinkRequestTargets(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
@@ -152,34 +149,6 @@ class RunAgentTaskRequestTargets(DaraModel):
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
-
-        return self
-
-class RunAgentTaskRequestRunConfig(DaraModel):
-    def __init__(
-        self,
-        skills: List[str] = None,
-    ):
-        # The list of skill IDs. A maximum of 10 skill IDs are supported. Only the first skill is passed through during command delivery. All skills are stored in task_skill_relation for reverse lookup.
-        self.skills = skills
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.skills is not None:
-            result['Skills'] = self.skills
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Skills') is not None:
-            self.skills = m.get('Skills')
 
         return self
 

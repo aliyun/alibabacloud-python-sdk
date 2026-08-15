@@ -17,14 +17,24 @@ class CreateScheduledTaskRequest(DaraModel):
         task_name: str = None,
         user_prompt: str = None,
     ):
+        # The cron expression.
+        # 
         # This parameter is required.
         self.cron_expression = cron_expression
+        # The list of instance IDs.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The maximum number of executions.
         self.max_executions = max_executions
+        # The run configuration.
         self.run_config = run_config
+        # The task name.
+        # 
         # This parameter is required.
         self.task_name = task_name
+        # The user prompt.
+        # 
         # This parameter is required.
         self.user_prompt = user_prompt
 
@@ -85,10 +95,16 @@ class CreateScheduledTaskRequestRunConfig(DaraModel):
         self,
         extra_params: str = None,
         max_steps: int = None,
+        skills: List[str] = None,
         timeout_seconds: int = None,
     ):
+        # The extended parameters as a JSON string.
         self.extra_params = extra_params
+        # The maximum number of execution steps.
         self.max_steps = max_steps
+        # The list of skill IDs, up to 1. Written to aim_task_config.run_config when the scheduled task is created and read when the callback is delivered.
+        self.skills = skills
+        # The timeout in seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -105,6 +121,9 @@ class CreateScheduledTaskRequestRunConfig(DaraModel):
         if self.max_steps is not None:
             result['MaxSteps'] = self.max_steps
 
+        if self.skills is not None:
+            result['Skills'] = self.skills
+
         if self.timeout_seconds is not None:
             result['TimeoutSeconds'] = self.timeout_seconds
 
@@ -117,6 +136,9 @@ class CreateScheduledTaskRequestRunConfig(DaraModel):
 
         if m.get('MaxSteps') is not None:
             self.max_steps = m.get('MaxSteps')
+
+        if m.get('Skills') is not None:
+            self.skills = m.get('Skills')
 
         if m.get('TimeoutSeconds') is not None:
             self.timeout_seconds = m.get('TimeoutSeconds')

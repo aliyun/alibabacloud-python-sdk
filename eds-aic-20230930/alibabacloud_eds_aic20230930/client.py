@@ -22,8 +22,8 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-shanghai': 'eds-aic.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'eds-aic.ap-southeast-1.aliyuncs.com'
+            'ap-southeast-1': 'eds-aic.ap-southeast-1.aliyuncs.com',
+            'cn-shanghai': 'eds-aic.cn-shanghai.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eds-aic', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -7546,6 +7546,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_instance_charge_type_with_options_async(request, runtime)
 
+    def modify_instance_group_spec_with_options(
+        self,
+        request: main_models.ModifyInstanceGroupSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceGroupSpecResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.instance_group_ids):
+            query['InstanceGroupIds'] = request.instance_group_ids
+        if not DaraCore.is_null(request.instance_group_spec):
+            query['InstanceGroupSpec'] = request.instance_group_spec
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceGroupSpec',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceGroupSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_group_spec_with_options_async(
+        self,
+        request: main_models.ModifyInstanceGroupSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceGroupSpecResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.instance_group_ids):
+            query['InstanceGroupIds'] = request.instance_group_ids
+        if not DaraCore.is_null(request.instance_group_spec):
+            query['InstanceGroupSpec'] = request.instance_group_spec
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceGroupSpec',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceGroupSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_group_spec(
+        self,
+        request: main_models.ModifyInstanceGroupSpecRequest,
+    ) -> main_models.ModifyInstanceGroupSpecResponse:
+        runtime = RuntimeOptions()
+        return self.modify_instance_group_spec_with_options(request, runtime)
+
+    async def modify_instance_group_spec_async(
+        self,
+        request: main_models.ModifyInstanceGroupSpecRequest,
+    ) -> main_models.ModifyInstanceGroupSpecResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_instance_group_spec_with_options_async(request, runtime)
+
     def modify_jvsinstance_with_options(
         self,
         request: main_models.ModifyJVSInstanceRequest,
@@ -7553,6 +7635,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyJVSInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
         if not DaraCore.is_null(request.apply_to_all):
             query['ApplyToAll'] = request.apply_to_all
         if not DaraCore.is_null(request.credit_config):
@@ -7589,6 +7673,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyJVSInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
         if not DaraCore.is_null(request.apply_to_all):
             query['ApplyToAll'] = request.apply_to_all
         if not DaraCore.is_null(request.credit_config):
@@ -8797,6 +8883,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.mobile_agent_package_ids):
             query['MobileAgentPackageIds'] = request.mobile_agent_package_ids
         if not DaraCore.is_null(request.paid_callback_url):
@@ -8837,6 +8925,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.mobile_agent_package_ids):
             query['MobileAgentPackageIds'] = request.mobile_agent_package_ids
         if not DaraCore.is_null(request.paid_callback_url):
@@ -9046,10 +9136,14 @@ class Client(OpenApiClient):
 
     def run_agent_task_with_options(
         self,
-        request: main_models.RunAgentTaskRequest,
+        tmp_req: main_models.RunAgentTaskRequest,
         runtime: RuntimeOptions,
     ) -> main_models.RunAgentTaskResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunAgentTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.run_config):
+            request.run_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.run_config, 'RunConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
@@ -9057,6 +9151,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.max_steps):
             query['MaxSteps'] = request.max_steps
+        if not DaraCore.is_null(request.run_config_shrink):
+            query['RunConfig'] = request.run_config_shrink
         if not DaraCore.is_null(request.schedule_id):
             query['ScheduleId'] = request.schedule_id
         if not DaraCore.is_null(request.targets):
@@ -9088,10 +9184,14 @@ class Client(OpenApiClient):
 
     async def run_agent_task_with_options_async(
         self,
-        request: main_models.RunAgentTaskRequest,
+        tmp_req: main_models.RunAgentTaskRequest,
         runtime: RuntimeOptions,
     ) -> main_models.RunAgentTaskResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunAgentTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.run_config):
+            request.run_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.run_config, 'RunConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
@@ -9099,6 +9199,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.max_steps):
             query['MaxSteps'] = request.max_steps
+        if not DaraCore.is_null(request.run_config_shrink):
+            query['RunConfig'] = request.run_config_shrink
         if not DaraCore.is_null(request.schedule_id):
             query['ScheduleId'] = request.schedule_id
         if not DaraCore.is_null(request.targets):

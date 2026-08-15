@@ -42,9 +42,7 @@ class DescribeAndroidInstancesRequest(DaraModel):
         self.app_manage_policy_id = app_manage_policy_id
         # The user ID assigned to the instance, which is the China Wuying convenience account ID.
         self.authorized_user_id = authorized_user_id
-        # <props="china">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones of different editions (Instance Edition/Matrix Edition).
-        # 
-        # <props="intl">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones..
+        # <props="china">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones of different editions (Instance Edition or Matrix Edition).
         self.biz_region_id = biz_region_id
         # The billing type.
         self.charge_type = charge_type
@@ -54,28 +52,29 @@ class DescribeAndroidInstancesRequest(DaraModel):
         self.instance_group_ids = instance_group_ids
         # The instance group name.
         self.instance_group_name = instance_group_name
+        # The instance version. Default value: basic, which queries Wuying cloud phone instances.
         self.instance_version = instance_version
         # The ID of the bound key pair.
         self.key_pair_id = key_pair_id
         # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The pagination token that indicates the position from which to start reading. Leave this parameter empty to start reading from the beginning.
+        # The pagination token that indicates the position from which to start reading. Leave this parameter empty to read from the beginning.
         self.next_token = next_token
         # <props="china">The matrix ID.
-        # <props="intl">This parameter is not publicly available..
         self.node_id = node_id
         # <props="china">The name of the matrix.
-        # <props="intl">This parameter is not publicly available..
         self.node_name = node_name
-        # The cloud phone network ID.
+        # The cloud phone network IDs.
         self.office_site_ids = office_site_ids
         # The private IP address of the instance.
         self.private_ip_address = private_ip_address
-        # The public network rate limiting rule group ID. The rate limiting rule for instances in the basic shared network.
+        # The IDs of the public network rate limiting rule groups. These are rate limiting rules for instances in the basic shared network.
         self.qos_rule_ids = qos_rule_ids
         # The sales mode.
         self.sale_mode = sale_mode
+        # The sort key used when querying resources.
         self.sort_key = sort_key
+        # The sort order. Default value: descending order. Valid values:
         self.sort_type = sort_type
         # The instance status.
         self.status = status

@@ -18,9 +18,9 @@ class DescribeCloudPhoneNodesResponseBody(DaraModel):
     ):
         # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # Indicates whether a next pagination token exists. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** has a value, the value is the token for the next query.
+        # The pagination token for the next query. Valid values:
+        # - If **NextToken** is empty, no more results exist.
+        # - If **NextToken** has a value, the value indicates the token from which the next query starts.
         self.next_token = next_token
         # The details of the cloud phone matrix.
         self.node_model = node_model
@@ -88,6 +88,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         bandwidth_package_status: str = None,
         bandwidth_package_type: str = None,
         biz_tags: List[main_models.DescribeCloudPhoneNodesResponseBodyNodeModelBizTags] = None,
+        channel: str = None,
         charge_type: str = None,
         cpu: str = None,
         gmt_create: str = None,
@@ -100,6 +101,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         network_type: str = None,
         node_id: str = None,
         node_name: str = None,
+        package_id: str = None,
         phone_count: int = None,
         phone_data_info: main_models.DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo = None,
         region_id: str = None,
@@ -123,6 +125,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         self.bandwidth_package_type = bandwidth_package_type
         # The array of tag information.
         self.biz_tags = biz_tags
+        self.channel = channel
         # The billing type.
         self.charge_type = charge_type
         # The number of CPU cores.
@@ -147,6 +150,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         self.node_id = node_id
         # The name of the cloud phone matrix.
         self.node_name = node_name
+        self.package_id = package_id
         # The number of instances provisioned under the cloud phone matrix.
         self.phone_count = phone_count
         # The independent device storage information.
@@ -203,6 +207,9 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
             for k1 in self.biz_tags:
                 result['BizTags'].append(k1.to_map() if k1 else None)
 
+        if self.channel is not None:
+            result['Channel'] = self.channel
+
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
 
@@ -240,6 +247,9 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
 
         if self.node_name is not None:
             result['NodeName'] = self.node_name
+
+        if self.package_id is not None:
+            result['PackageId'] = self.package_id
 
         if self.phone_count is not None:
             result['PhoneCount'] = self.phone_count
@@ -295,6 +305,9 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
                 temp_model = main_models.DescribeCloudPhoneNodesResponseBodyNodeModelBizTags()
                 self.biz_tags.append(temp_model.from_map(k1))
 
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
 
@@ -333,6 +346,9 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
 
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
+
+        if m.get('PackageId') is not None:
+            self.package_id = m.get('PackageId')
 
         if m.get('PhoneCount') is not None:
             self.phone_count = m.get('PhoneCount')

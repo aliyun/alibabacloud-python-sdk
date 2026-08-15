@@ -10,15 +10,18 @@ from darabonba.model import DaraModel
 class ModifyJVSInstanceRequest(DaraModel):
     def __init__(
         self,
+        agent_version: str = None,
         apply_to_all: bool = None,
         credit_config: List[main_models.ModifyJVSInstanceRequestCreditConfig] = None,
         image_id: str = None,
         instance_ids: List[str] = None,
         instance_name: str = None,
     ):
+        # The target version, such as 2607W1. Set this parameter to latest to automatically resolve to the latest available version.
+        self.agent_version = agent_version
         # Specifies whether to apply the configuration to all instances.
         self.apply_to_all = apply_to_all
-        # The credit limit configuration. Subsequent configurations overwrite previous ones.
+        # The credit quota configuration. If you submit the configuration multiple times, the latest configuration overwrites the previous one.
         self.credit_config = credit_config
         self.image_id = image_id
         # The list of instance IDs.
@@ -37,6 +40,9 @@ class ModifyJVSInstanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
+
         if self.apply_to_all is not None:
             result['ApplyToAll'] = self.apply_to_all
 
@@ -58,6 +64,9 @@ class ModifyJVSInstanceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
+
         if m.get('ApplyToAll') is not None:
             self.apply_to_all = m.get('ApplyToAll')
 
@@ -84,13 +93,13 @@ class ModifyJVSInstanceRequestCreditConfig(DaraModel):
         credit_limit: int = None,
         limit_period: str = None,
     ):
-        # The credit limit.
+        # The quota limit.
         self.credit_limit = credit_limit
         # The dimension of the current credit. Valid values:
         # 
-        # - total: total usage limit.
-        # - month: monthly. The limit resets based on the resource activation time cycle.
-        # - day: daily. The limit resets at 00:00.
+        # - total: Total usage limit.
+        # - month: Monthly. The quota resets based on the resource activation time cycle.
+        # - day: Daily. The quota resets at 00:00.
         self.limit_period = limit_period
 
     def validate(self):

@@ -16,14 +16,24 @@ class CreateScheduledTaskShrinkRequest(DaraModel):
         task_name: str = None,
         user_prompt: str = None,
     ):
+        # The cron expression.
+        # 
         # This parameter is required.
         self.cron_expression = cron_expression
+        # The list of instance IDs.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The maximum number of executions.
         self.max_executions = max_executions
+        # The run configuration.
         self.run_config_shrink = run_config_shrink
+        # The task name.
+        # 
         # This parameter is required.
         self.task_name = task_name
+        # The user prompt.
+        # 
         # This parameter is required.
         self.user_prompt = user_prompt
 

@@ -87,7 +87,7 @@ class DeleteScheduledTaskResponseBodyTasks(DaraModel):
     ):
         # The ID of the scheduled task.
         self.scheduled_id = scheduled_id
-        # Indicates whether the scheduled task is deleted successfully.
+        # Indicates whether the deletion is successful.
         self.success = success
 
     def validate(self):

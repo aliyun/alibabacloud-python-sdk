@@ -24,7 +24,7 @@ class DescribeCreditDetailRequest(DaraModel):
         self.instance_ids = instance_ids
         self.max_results = max_results
         self.next_token = next_token
-        # The list of plan packages or credit top-up packages.
+        # The list of plan packages or credit booster packages.
         self.package_ids = package_ids
         # The page number. Default value: 1.
         self.page_num = page_num

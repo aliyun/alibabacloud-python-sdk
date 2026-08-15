@@ -29,7 +29,7 @@ class ModifyScheduledTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
-        # The status switch: ACTIVE/DISABLED.
+        # Switches the status. Valid values: ACTIVE and DISABLED.
         self.status = status
         # The task name.
         self.task_name = task_name
@@ -109,13 +109,16 @@ class ModifyScheduledTaskRequestRunConfig(DaraModel):
         self,
         extra_params: str = None,
         max_steps: int = None,
+        skills: List[str] = None,
         timeout_seconds: int = None,
     ):
-        # The extended parameters as a JSON string.
+        # The extended parameter JSON string.
         self.extra_params = extra_params
         # The maximum number of execution steps.
         self.max_steps = max_steps
-        # The timeout in seconds.
+        # The list of skill IDs. A maximum of 1 skill ID is supported. The value overwrites aim_task_config.run_config after modification.
+        self.skills = skills
+        # The timeout period, in seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):
@@ -132,6 +135,9 @@ class ModifyScheduledTaskRequestRunConfig(DaraModel):
         if self.max_steps is not None:
             result['MaxSteps'] = self.max_steps
 
+        if self.skills is not None:
+            result['Skills'] = self.skills
+
         if self.timeout_seconds is not None:
             result['TimeoutSeconds'] = self.timeout_seconds
 
@@ -144,6 +150,9 @@ class ModifyScheduledTaskRequestRunConfig(DaraModel):
 
         if m.get('MaxSteps') is not None:
             self.max_steps = m.get('MaxSteps')
+
+        if m.get('Skills') is not None:
+            self.skills = m.get('Skills')
 
         if m.get('TimeoutSeconds') is not None:
             self.timeout_seconds = m.get('TimeoutSeconds')

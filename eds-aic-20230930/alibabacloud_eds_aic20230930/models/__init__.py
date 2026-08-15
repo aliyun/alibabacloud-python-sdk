@@ -260,6 +260,9 @@ from ._modify_display_config_response import ModifyDisplayConfigResponse
 from ._modify_instance_charge_type_request import ModifyInstanceChargeTypeRequest
 from ._modify_instance_charge_type_response_body import ModifyInstanceChargeTypeResponseBody
 from ._modify_instance_charge_type_response import ModifyInstanceChargeTypeResponse
+from ._modify_instance_group_spec_request import ModifyInstanceGroupSpecRequest
+from ._modify_instance_group_spec_response_body import ModifyInstanceGroupSpecResponseBody
+from ._modify_instance_group_spec_response import ModifyInstanceGroupSpecResponse
 from ._modify_jvsinstance_request import ModifyJVSInstanceRequest
 from ._modify_jvsinstance_response_body import ModifyJVSInstanceResponseBody
 from ._modify_jvsinstance_response import ModifyJVSInstanceResponse
@@ -315,6 +318,7 @@ from ._resume_agent_task_request import ResumeAgentTaskRequest
 from ._resume_agent_task_response_body import ResumeAgentTaskResponseBody
 from ._resume_agent_task_response import ResumeAgentTaskResponse
 from ._run_agent_task_request import RunAgentTaskRequest
+from ._run_agent_task_shrink_request import RunAgentTaskShrinkRequest
 from ._run_agent_task_response_body import RunAgentTaskResponseBody
 from ._run_agent_task_response import RunAgentTaskResponse
 from ._run_command_request import RunCommandRequest
@@ -442,7 +446,9 @@ from ._describe_image_list_request import DescribeImageListRequestImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyDataImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyData
 from ._describe_invocations_response_body import DescribeInvocationsResponseBodyData
+from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBodyDataAgentVersion
 from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBodyDataCreditConfig
+from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBodyDataInstalledSkills
 from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBodyDataUsedCredit
 from ._describe_jvsinstance_response_body import DescribeJVSInstanceResponseBodyData
 from ._describe_key_pairs_response_body import DescribeKeyPairsResponseBodyData
@@ -484,6 +490,7 @@ from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolic
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._modify_display_config_request import ModifyDisplayConfigRequestDisplayConfig
+from ._modify_instance_group_spec_response_body import ModifyInstanceGroupSpecResponseBodyOrderInfo
 from ._modify_jvsinstance_request import ModifyJVSInstanceRequestCreditConfig
 from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicyRules
 from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicy
@@ -505,7 +512,9 @@ from ._reset_android_instances_in_group_response_body import ResetAndroidInstanc
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
 from ._resume_agent_task_request import ResumeAgentTaskRequestClarificationAnswers
 from ._resume_agent_task_response_body import ResumeAgentTaskResponseBodyTasks
+from ._run_agent_task_request import RunAgentTaskRequestRunConfig
 from ._run_agent_task_request import RunAgentTaskRequestTargets
+from ._run_agent_task_shrink_request import RunAgentTaskShrinkRequestTargets
 from ._run_agent_task_response_body import RunAgentTaskResponseBodyTasks
 from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
 from ._run_sync_command_response_body import RunSyncCommandResponseBodyData
@@ -775,6 +784,9 @@ __all__ = [
     ModifyInstanceChargeTypeRequest,
     ModifyInstanceChargeTypeResponseBody,
     ModifyInstanceChargeTypeResponse,
+    ModifyInstanceGroupSpecRequest,
+    ModifyInstanceGroupSpecResponseBody,
+    ModifyInstanceGroupSpecResponse,
     ModifyJVSInstanceRequest,
     ModifyJVSInstanceResponseBody,
     ModifyJVSInstanceResponse,
@@ -830,6 +842,7 @@ __all__ = [
     ResumeAgentTaskResponseBody,
     ResumeAgentTaskResponse,
     RunAgentTaskRequest,
+    RunAgentTaskShrinkRequest,
     RunAgentTaskResponseBody,
     RunAgentTaskResponse,
     RunCommandRequest,
@@ -957,7 +970,9 @@ __all__ = [
     DescribeImageListResponseBodyDataImageBizTags,
     DescribeImageListResponseBodyData,
     DescribeInvocationsResponseBodyData,
+    DescribeJVSInstanceResponseBodyDataAgentVersion,
     DescribeJVSInstanceResponseBodyDataCreditConfig,
+    DescribeJVSInstanceResponseBodyDataInstalledSkills,
     DescribeJVSInstanceResponseBodyDataUsedCredit,
     DescribeJVSInstanceResponseBodyData,
     DescribeKeyPairsResponseBodyData,
@@ -999,6 +1014,7 @@ __all__ = [
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     ModifyDisplayConfigRequestDisplayConfig,
+    ModifyInstanceGroupSpecResponseBodyOrderInfo,
     ModifyJVSInstanceRequestCreditConfig,
     ModifyPolicyGroupRequestNetRedirectPolicyRules,
     ModifyPolicyGroupRequestNetRedirectPolicy,
@@ -1020,7 +1036,9 @@ __all__ = [
     ResetAndroidInstancesInGroupResponseBodyTasks,
     ResumeAgentTaskRequestClarificationAnswers,
     ResumeAgentTaskResponseBodyTasks,
+    RunAgentTaskRequestRunConfig,
     RunAgentTaskRequestTargets,
+    RunAgentTaskShrinkRequestTargets,
     RunAgentTaskResponseBodyTasks,
     RunCommandResponseBodyRunCommandInfos,
     RunSyncCommandResponseBodyData,

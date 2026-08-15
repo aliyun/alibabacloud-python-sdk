@@ -14,9 +14,9 @@ class ChangeCloudPhoneNodeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # Information about the modified cloud phone matrix.
+        # The cloud phone matrix information.
         self.node_infos = node_infos
-        # The ID of the order for this change.
+        # The generated order ID.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
@@ -68,11 +68,11 @@ class ChangeCloudPhoneNodeResponseBodyNodeInfos(DaraModel):
         node_id: str = None,
         share_data_volume: int = None,
     ):
-        # Information about the cloud phone instances.
+        # The cloud phone instance information.
         self.instance_infos = instance_infos
-        # The ID of the cloud phone matrix.
+        # The cloud phone matrix ID.
         self.node_id = node_id
-        # The size of the shared storage, in GiB. If the matrix uses independent internal storage, this defaults to a fixed 64 GiB for global files, such as images. If the matrix was configured with shared storage at purchase, this indicates the size of that storage.
+        # When the matrix uses dedicated device storage, a 64 GiB shared storage space is allocated by default (not modifiable) for storing images and other matrix-wide files. When the matrix uses shared device storage (with the size specified at purchase), this storage space is shared by all instances.
         self.share_data_volume = share_data_volume
 
     def validate(self):
@@ -123,7 +123,7 @@ class ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The internal storage capacity, in GiB.
+        # The dedicated device storage capacity.
         self.phone_data_volume = phone_data_volume
 
     def validate(self):
