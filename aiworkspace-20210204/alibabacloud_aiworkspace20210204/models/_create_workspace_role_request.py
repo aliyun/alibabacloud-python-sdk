@@ -13,6 +13,7 @@ class CreateWorkspaceRoleRequest(DaraModel):
         module_permissions: List[main_models.CreateWorkspaceRoleRequestModulePermissions] = None,
         role_name: str = None,
         role_type: str = None,
+        user_id: str = None,
     ):
         # The permission settings for the role.
         self.module_permissions = module_permissions
@@ -20,6 +21,7 @@ class CreateWorkspaceRoleRequest(DaraModel):
         self.role_name = role_name
         # The role type. This operation only creates custom roles. Valid value: custom.
         self.role_type = role_type
+        self.user_id = user_id
 
     def validate(self):
         if self.module_permissions:
@@ -43,6 +45,9 @@ class CreateWorkspaceRoleRequest(DaraModel):
         if self.role_type is not None:
             result['RoleType'] = self.role_type
 
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +63,9 @@ class CreateWorkspaceRoleRequest(DaraModel):
 
         if m.get('RoleType') is not None:
             self.role_type = m.get('RoleType')
+
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
 
         return self
 

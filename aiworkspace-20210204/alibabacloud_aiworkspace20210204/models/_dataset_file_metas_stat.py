@@ -10,7 +10,9 @@ class DatasetFileMetasStat(DaraModel):
         count: int = None,
         key: str = None,
     ):
+        # The count after aggregation.
         self.count = count
+        # The metadata property content.
         self.key = key
 
     def validate(self):

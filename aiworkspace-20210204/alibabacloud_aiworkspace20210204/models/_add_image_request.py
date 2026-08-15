@@ -19,6 +19,7 @@ class AddImageRequest(DaraModel):
         size: int = None,
         source_id: str = None,
         source_type: str = None,
+        user_id: str = None,
         workspace_id: str = None,
     ):
         # The visibility of the image. Valid values:
@@ -94,6 +95,7 @@ class AddImageRequest(DaraModel):
         # Import
         # Build
         self.source_type = source_type
+        self.user_id = user_id
         # The ID of the workspace to which the image belongs. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
@@ -137,6 +139,9 @@ class AddImageRequest(DaraModel):
         if self.source_type is not None:
             result['SourceType'] = self.source_type
 
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -173,6 +178,9 @@ class AddImageRequest(DaraModel):
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

@@ -10,7 +10,7 @@ class CreateRunResponseBody(DaraModel):
         run_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the run.
+        # The run ID.
         self.run_id = run_id
         # Id of the request
         self.request_id = request_id

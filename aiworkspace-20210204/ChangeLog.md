@@ -1,3 +1,8 @@
+2026-08-15 Version: 8.3.1
+- Update API AddImage: add request parameters body.UserId.
+- Update API CreateWorkspaceRole: add request parameters body.UserId.
+
+
 2026-08-06 Version: 8.3.0
 - Support API CreatePrompt.
 - Support API DeletePrompt.
