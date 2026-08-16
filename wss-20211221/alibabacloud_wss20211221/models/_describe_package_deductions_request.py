@@ -18,20 +18,21 @@ class DescribePackageDeductionsRequest(DaraModel):
         resource_types: List[str] = None,
         start_time: int = None,
     ):
-        # The end time, in Unix timestamp format.
+        # The end time in UNIX timestamp format.
         self.end_time = end_time
-        # An array of instance IDs. If you specify this parameter, the `PackageIds` parameter is required.
+        # The list of cloud computer IDs. If this parameter is specified, the `PackageIds` parameter is required.
         self.instance_ids = instance_ids
-        # An array of package IDs.
+        # The list of core-hour package IDs in JSON format.
         self.package_ids = package_ids
-        # The page number. Default value: 1.
+        # The current page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries per page. Maximum value: 100.
+        # The number of entries per page in a paged query. Settings the number of rows per page for paging. Maximum value: 100.
         self.page_size = page_size
         # The resource type.
         self.resource_type = resource_type
+        # The list of resource types.
         self.resource_types = resource_types
-        # The start time, in Unix timestamp format.
+        # The start time in UNIX timestamp format.
         self.start_time = start_time
 
     def validate(self):

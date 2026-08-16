@@ -23,6 +23,9 @@ from ._describe_multi_price_response import DescribeMultiPriceResponse
 from ._describe_package_deductions_request import DescribePackageDeductionsRequest
 from ._describe_package_deductions_response_body import DescribePackageDeductionsResponseBody
 from ._describe_package_deductions_response import DescribePackageDeductionsResponse
+from ._describe_run_id_deductions_request import DescribeRunIdDeductionsRequest
+from ._describe_run_id_deductions_response_body import DescribeRunIdDeductionsResponseBody
+from ._describe_run_id_deductions_response import DescribeRunIdDeductionsResponse
 from ._modify_instance_properties_request import ModifyInstancePropertiesRequest
 from ._modify_instance_properties_response_body import ModifyInstancePropertiesResponseBody
 from ._modify_instance_properties_response import ModifyInstancePropertiesResponse
@@ -35,6 +38,7 @@ from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequestOrd
 from ._create_multi_order_shrink_request import CreateMultiOrderShrinkRequestOrderItems
 from ._describe_credit_package_agents_response_body import DescribeCreditPackageAgentsResponseBodyAgents
 from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList
+from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo
 from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo
 from ._describe_credit_usage_info_response_body import DescribeCreditUsageInfoResponseBodyUsageInfoList
 from ._describe_deduction_statistic_request import DescribeDeductionStatisticRequestPeriods
@@ -57,6 +61,7 @@ from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyP
 from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfoRules
 from ._describe_multi_price_response_body import DescribeMultiPriceResponseBodyPriceInfo
 from ._describe_package_deductions_response_body import DescribePackageDeductionsResponseBodyDeductions
+from ._describe_run_id_deductions_response_body import DescribeRunIdDeductionsResponseBodyDeductions
 
 __all__ = [
     CreateMultiOrderRequest,
@@ -80,6 +85,9 @@ __all__ = [
     DescribePackageDeductionsRequest,
     DescribePackageDeductionsResponseBody,
     DescribePackageDeductionsResponse,
+    DescribeRunIdDeductionsRequest,
+    DescribeRunIdDeductionsResponseBody,
+    DescribeRunIdDeductionsResponse,
     ModifyInstancePropertiesRequest,
     ModifyInstancePropertiesResponseBody,
     ModifyInstancePropertiesResponse,
@@ -92,6 +100,7 @@ __all__ = [
     CreateMultiOrderShrinkRequestOrderItems,
     DescribeCreditPackageAgentsResponseBodyAgents,
     DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList,
+    DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo,
     DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo,
     DescribeCreditUsageInfoResponseBodyUsageInfoList,
     DescribeDeductionStatisticRequestPeriods,
@@ -113,5 +122,6 @@ __all__ = [
     DescribeMultiPriceResponseBodyPriceInfoPrice,
     DescribeMultiPriceResponseBodyPriceInfoRules,
     DescribeMultiPriceResponseBodyPriceInfo,
-    DescribePackageDeductionsResponseBodyDeductions
+    DescribePackageDeductionsResponseBodyDeductions,
+    DescribeRunIdDeductionsResponseBodyDeductions
 ]

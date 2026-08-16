@@ -53,11 +53,11 @@ class DescribeDeductionStatisticResponseBodyData(DaraModel):
         deductions: List[main_models.DescribeDeductionStatisticResponseBodyDataDeductions] = None,
         usages: List[main_models.DescribeDeductionStatisticResponseBodyDataUsages] = None,
     ):
-        # **The available core-hour packages.**
+        # **The list of available core-hour package resources.**
         self.available_core_packages = available_core_packages
         # The deduction details.
         self.deductions = deductions
-        # **The usage details.**
+        # **The usage list.**
         self.usages = usages
 
     def validate(self):
@@ -125,7 +125,7 @@ class DescribeDeductionStatisticResponseBodyDataUsages(DaraModel):
         period: str = None,
         resource_type: str = None,
     ):
-        # **The consumption duration in seconds.**
+        # **The consumption duration, in seconds.**
         self.consume_second = consume_second
         # **The time period.**
         self.period = period
@@ -171,7 +171,7 @@ class DescribeDeductionStatisticResponseBodyDataDeductions(DaraModel):
         deduction_date: str = None,
         resource_type: str = None,
     ):
-        # The consumption duration in seconds.
+        # The consumption duration, in seconds.
         self.consume_second = consume_second
         # The deduction date.
         self.deduction_date = deduction_date
@@ -228,7 +228,7 @@ class DescribeDeductionStatisticResponseBodyDataAvailableCorePackages(DaraModel)
         total_time: int = None,
         used_time: int = None,
     ):
-        # The Alibaba Cloud account ID.
+        # The Alibaba Cloud UID.
         self.ali_uid = ali_uid
         # The creation time.
         self.create_time = create_time
@@ -240,9 +240,9 @@ class DescribeDeductionStatisticResponseBodyDataAvailableCorePackages(DaraModel)
         self.group_id = group_id
         # The group resource type.
         self.group_resource_type = group_resource_type
-        # Indicates whether the resource is a No-Lx resource.
+        # Indicates whether LingXiao is excluded.
         self.no_lx = no_lx
-        # The source of the No-Lx resource.
+        # The source when LingXiao is excluded.
         self.no_lx_source = no_lx_source
         # The resource ID.
         self.resource_id = resource_id

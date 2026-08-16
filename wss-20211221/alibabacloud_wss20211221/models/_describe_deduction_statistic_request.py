@@ -16,15 +16,15 @@ class DescribeDeductionStatisticRequest(DaraModel):
         resource_types: List[str] = None,
         start_time: int = None,
     ):
-        # The end time, specified as a Unix timestamp.
+        # The end time (timestamp).
         self.end_time = end_time
-        # The list of instance IDs, specified as a JSON array.
+        # The list of instance IDs (JSON array).
         self.instance_ids = instance_ids
-        # The list of periods, formatted as a JSON array of `PeriodParam` objects.
+        # The list of time periods in JSON array format. Each element is a `PeriodParam` object.
         self.periods = periods
-        # The list of resource types, specified as a JSON array.
+        # The list of resource types in JSON array format.
         self.resource_types = resource_types
-        # The start time, specified as a Unix timestamp.
+        # The start time (timestamp).
         self.start_time = start_time
 
     def validate(self):
@@ -87,7 +87,7 @@ class DescribeDeductionStatisticRequestPeriods(DaraModel):
     ):
         # The base time.
         self.base_time = base_time
-        # The period unit. For valid values, see the `PeriodUnit` enumeration.
+        # The time period unit. For more information, see the `PeriodUnit` enumeration.
         self.period_unit = period_unit
 
     def validate(self):

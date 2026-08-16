@@ -94,15 +94,19 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoList(DaraModel):
 class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
     def __init__(
         self,
+        available_amount: int = None,
+        contact_group_names: List[str] = None,
         credit_trend_list: List[main_models.DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList] = None,
         current_instance_id: str = None,
         current_remain_credit: int = None,
         current_total_credit: int = None,
         current_used_credit: int = None,
         day_used_credit: int = None,
+        last_triggered_at: str = None,
         period_total_credit: int = None,
         period_used_credit: int = None,
         remain_credit: int = None,
+        remain_credit_info: main_models.DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo = None,
         today_used: str = None,
         total_credit: int = None,
         total_used: str = None,
@@ -110,6 +114,8 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         warn_percent: int = None,
         week_used_credit: int = None,
     ):
+        self.available_amount = available_amount
+        self.contact_group_names = contact_group_names
         # The hourly consumption samples of the current credit package.
         self.credit_trend_list = credit_trend_list
         # The instance ID of the current active credit package.
@@ -122,15 +128,19 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         self.current_used_credit = current_used_credit
         # The credit usage in the last 1 day.
         self.day_used_credit = day_used_credit
+        self.last_triggered_at = last_triggered_at
         # The shared credit quota in the current active period.
         self.period_total_credit = period_total_credit
         # The shared credit usage in the current active period.
         self.period_used_credit = period_used_credit
         # The cumulative remaining credits.
         self.remain_credit = remain_credit
+        self.remain_credit_info = remain_credit_info
+        # The quota used today.
         self.today_used = today_used
-        # The cumulative total credits.
+        # The total cumulative credits.
         self.total_credit = total_credit
+        # The cumulative used quota.
         self.total_used = total_used
         # The cumulative credit usage.
         self.total_used_credit = total_used_credit
@@ -144,12 +154,20 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
             for v1 in self.credit_trend_list:
                  if v1:
                     v1.validate()
+        if self.remain_credit_info:
+            self.remain_credit_info.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.available_amount is not None:
+            result['AvailableAmount'] = self.available_amount
+
+        if self.contact_group_names is not None:
+            result['ContactGroupNames'] = self.contact_group_names
+
         result['CreditTrendList'] = []
         if self.credit_trend_list is not None:
             for k1 in self.credit_trend_list:
@@ -170,6 +188,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         if self.day_used_credit is not None:
             result['DayUsedCredit'] = self.day_used_credit
 
+        if self.last_triggered_at is not None:
+            result['LastTriggeredAt'] = self.last_triggered_at
+
         if self.period_total_credit is not None:
             result['PeriodTotalCredit'] = self.period_total_credit
 
@@ -178,6 +199,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
 
         if self.remain_credit is not None:
             result['RemainCredit'] = self.remain_credit
+
+        if self.remain_credit_info is not None:
+            result['RemainCreditInfo'] = self.remain_credit_info.to_map()
 
         if self.today_used is not None:
             result['TodayUsed'] = self.today_used
@@ -201,6 +225,12 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvailableAmount') is not None:
+            self.available_amount = m.get('AvailableAmount')
+
+        if m.get('ContactGroupNames') is not None:
+            self.contact_group_names = m.get('ContactGroupNames')
+
         self.credit_trend_list = []
         if m.get('CreditTrendList') is not None:
             for k1 in m.get('CreditTrendList'):
@@ -222,6 +252,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         if m.get('DayUsedCredit') is not None:
             self.day_used_credit = m.get('DayUsedCredit')
 
+        if m.get('LastTriggeredAt') is not None:
+            self.last_triggered_at = m.get('LastTriggeredAt')
+
         if m.get('PeriodTotalCredit') is not None:
             self.period_total_credit = m.get('PeriodTotalCredit')
 
@@ -230,6 +263,10 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
 
         if m.get('RemainCredit') is not None:
             self.remain_credit = m.get('RemainCredit')
+
+        if m.get('RemainCreditInfo') is not None:
+            temp_model = main_models.DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo()
+            self.remain_credit_info = temp_model.from_map(m.get('RemainCreditInfo'))
 
         if m.get('TodayUsed') is not None:
             self.today_used = m.get('TodayUsed')
@@ -251,15 +288,50 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
 
         return self
 
+class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo(DaraModel):
+    def __init__(
+        self,
+        deducting_amount: int = None,
+        pending_amount: int = None,
+    ):
+        self.deducting_amount = deducting_amount
+        self.pending_amount = pending_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.deducting_amount is not None:
+            result['DeductingAmount'] = self.deducting_amount
+
+        if self.pending_amount is not None:
+            result['PendingAmount'] = self.pending_amount
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeductingAmount') is not None:
+            self.deducting_amount = m.get('DeductingAmount')
+
+        if m.get('PendingAmount') is not None:
+            self.pending_amount = m.get('PendingAmount')
+
+        return self
+
 class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList(DaraModel):
     def __init__(
         self,
         time_point: str = None,
         used_credit: int = None,
     ):
-        # The time point in the format of `yyyy-MM-dd HH` (accurate to the hour).
+        # The time point in the format `yyyy-MM-dd HH` (accurate to the hour).
         self.time_point = time_point
-        # The number of credits consumed during the hour.
+        # The number of credits consumed in this hour.
         self.used_credit = used_credit
 
     def validate(self):

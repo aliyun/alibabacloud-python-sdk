@@ -22,8 +22,8 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-shanghai': 'wss.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'wss.ap-southeast-1.aliyuncs.com'
+            'ap-southeast-1': 'wss.ap-southeast-1.aliyuncs.com',
+            'cn-shanghai': 'wss.cn-shanghai.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('wss', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -617,6 +617,152 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePackageDeductionsResponse:
         runtime = RuntimeOptions()
         return await self.describe_package_deductions_with_options_async(request, runtime)
+
+    def describe_run_id_deductions_with_options(
+        self,
+        request: main_models.DescribeRunIdDeductionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRunIdDeductionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.agent_types):
+            query['AgentTypes'] = request.agent_types
+        if not DaraCore.is_null(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.deduction_types):
+            query['DeductionTypes'] = request.deduction_types
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group_by_fields):
+            query['GroupByFields'] = request.group_by_fields
+        if not DaraCore.is_null(request.group_resource_types):
+            query['GroupResourceTypes'] = request.group_resource_types
+        if not DaraCore.is_null(request.group_separator):
+            query['GroupSeparator'] = request.group_separator
+        if not DaraCore.is_null(request.instance_id_type):
+            query['InstanceIdType'] = request.instance_id_type
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.wy_id):
+            query['WyId'] = request.wy_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRunIdDeductions',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRunIdDeductionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_run_id_deductions_with_options_async(
+        self,
+        request: main_models.DescribeRunIdDeductionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRunIdDeductionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.agent_types):
+            query['AgentTypes'] = request.agent_types
+        if not DaraCore.is_null(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.deduction_types):
+            query['DeductionTypes'] = request.deduction_types
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group_by_fields):
+            query['GroupByFields'] = request.group_by_fields
+        if not DaraCore.is_null(request.group_resource_types):
+            query['GroupResourceTypes'] = request.group_resource_types
+        if not DaraCore.is_null(request.group_separator):
+            query['GroupSeparator'] = request.group_separator
+        if not DaraCore.is_null(request.instance_id_type):
+            query['InstanceIdType'] = request.instance_id_type
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.wy_id):
+            query['WyId'] = request.wy_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRunIdDeductions',
+            version = '2021-12-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRunIdDeductionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_run_id_deductions(
+        self,
+        request: main_models.DescribeRunIdDeductionsRequest,
+    ) -> main_models.DescribeRunIdDeductionsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_run_id_deductions_with_options(request, runtime)
+
+    async def describe_run_id_deductions_async(
+        self,
+        request: main_models.DescribeRunIdDeductionsRequest,
+    ) -> main_models.DescribeRunIdDeductionsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_run_id_deductions_with_options_async(request, runtime)
 
     def modify_instance_properties_with_options(
         self,

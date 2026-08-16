@@ -15,15 +15,15 @@ class DescribeCreditPackageAgentsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # An array of agent IDs to query. Example: `["agent-1","agent-2"]`.
+        # A JSON string of the AgentId list. Example: `["agent-1","agent-2"]`.
         self.agent_ids = agent_ids
-        # The agent type. Valid values: `CREDIT_PACKAGE`, `JVS_CLAW`, `OPEN_CLAW`, and `JVS_COPILOT`.
+        # The Agent type. Valid values: `CREDIT_PACKAGE`, `JVS_CLAW`, `OPEN_CLAW`, and `JVS_COPILOT`.
         self.agent_type = agent_type
         # The business type.
         self.biz_type = biz_type
-        # The maximum number of results to return per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The token to retrieve the next page of results. Obtain this value from the `NextToken` parameter of the previous response. For the first request, set this parameter to an empty string.
+        # The pagination token. Set this parameter to an empty string for the first request. For subsequent requests, use the `nextToken` value from the previous response.
         self.next_token = next_token
 
     def validate(self):

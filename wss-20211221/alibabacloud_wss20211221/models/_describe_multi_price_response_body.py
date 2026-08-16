@@ -144,10 +144,6 @@ class DescribeMultiPriceResponseBodyPriceInfoPrice(DaraModel):
         trade_price: float = None,
     ):
         # The currency unit.
-        # 
-        # China site: CNY.
-        # 
-        # International site: USD.
         self.currency = currency
         # The discount price.
         self.discount_price = discount_price
@@ -258,12 +254,17 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         selected: bool = None,
         start_timestamp: str = None,
     ):
+        # The activity ID.
         self.activity_id = activity_id
+        # Indicates whether the activity is effective.
         self.effective = effective
+        # The timestamp when the activity ends.
         self.end_timestamp = end_timestamp
         # The description of the promotion rule.
         self.option_code = option_code
+        # The tiered pricing discount value.
         self.price_break_reduce_value = price_break_reduce_value
+        # The tiered pricing threshold.
         self.price_break_threshold = price_break_threshold
         # The description of the promotion.
         self.promotion_desc = promotion_desc
@@ -273,6 +274,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         self.promotion_name = promotion_name
         # Indicates whether the promotion is selected.
         self.selected = selected
+        # The timestamp when the activity starts.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -427,6 +429,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail(DaraMo
         self.original_price = original_price
         # The resource type.
         self.resource_type = resource_type
+        # The savings plan recommended price.
         self.saving_plan_recommend_price = saving_plan_recommend_price
         # The actual payment price. The value is the original price minus the discount.
         self.trade_price = trade_price
@@ -496,6 +499,7 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(Dara
         self.module_value = module_value
         # The original price.
         self.original_price = original_price
+        # The savings plan discount price.
         self.saving_plan_discount_price = saving_plan_discount_price
         # The actual payment price. The value is the original price minus the discount.
         self.trade_price = trade_price

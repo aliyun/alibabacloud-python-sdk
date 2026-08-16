@@ -19,9 +19,9 @@ class DescribeMultiPriceRequest(DaraModel):
         self.order_items = order_items
         # The order type.
         self.order_type = order_type
-        # The package code. You do not need to specify this parameter for non-package types.
+        # The package code. You do not need to specify this parameter if the product is not a package.
         self.package_code = package_code
-        # The user ID of the resource ownership in reseller pattern. You do not need to specify this parameter in non-reseller pattern.
+        # The user ID of resource ownership in the reselling pattern. You do not need to specify this parameter if the product is not in the reselling pattern.
         self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
@@ -84,18 +84,15 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         resource_type: str = None,
         saving_plan_period: str = None,
     ):
-        # The purchase quantity.
+        # The quantity to purchase.
         self.amount = amount
         # The list of product modules.
         self.components = components
+        # The extended properties.
         self.data = data
         # The list of instance IDs.
         self.instance_ids = instance_ids
         # The subscription duration. Valid values:
-        # 
-        # - If PeriodUnit is set to Year: 1, 2, or 3.
-        # 
-        # - If PeriodUnit is set to Month: 1, 2, 3, or 6.
         self.period = period
         # The unit of the subscription duration.
         self.period_unit = period_unit
@@ -104,8 +101,8 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         # The list of resource IDs.
         self.resource_ids = resource_ids
         # The resource type.
-        # > This parameter is case-sensitive. Make sure that the value is spelled correctly.
         self.resource_type = resource_type
+        # The period of the savings plan.
         self.saving_plan_period = saving_plan_period
 
     def validate(self):
@@ -199,30 +196,6 @@ class DescribeMultiPriceRequestOrderItemsComponents(DaraModel):
         # The key of the module.
         self.key = key
         # The value of the module.
-        # 
-        # The following example values and valid values are for the Enterprise Edition monthly duration package:
-        # 
-        # - RegionId: cn-shanghai
-        # - InstanceType: eds.enterprise_office.4c8g
-        # - DurationType (hours): Valid values: 
-        #    - 120
-        #    - 250
-        # - OsType: Valid values: 
-        #    - Windows
-        #    - Linux
-        # - RootDiskSize (GiB): 80
-        # - RootDiskCategory: Valid values: 
-        #    - cloud_efficiency: ultra cloud disk
-        #    - cloud_auto: ESSD AutoPL cloud disk
-        #    - cloud_essd: enhanced standard SSD. Only specific instance types support this value.
-        # - RootPerformanceLevel: Valid values: 
-        #    - PL0
-        #    - PL1
-        #    - PL2
-        #    - PL3
-        # - DataDiskSize (GiB): same as RootDiskSize
-        # - DataDiskCategory: same as RootDiskCategory
-        # - DataPerformanceLevel: same as RootPerformanceLevel
         self.value = value
 
     def validate(self):

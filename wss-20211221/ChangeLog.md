@@ -1,3 +1,13 @@
+2026-08-16 Version: 1.5.1
+- Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.AvailableAmount.
+- Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.RemainCreditInfo.
+- Update API DescribeRunIdDeductions: add request parameters AgentTypes.
+- Update API DescribeRunIdDeductions: add request parameters GroupByFields.
+- Update API DescribeRunIdDeductions: add request parameters GroupResourceTypes.
+- Update API DescribeRunIdDeductions: add request parameters WyId.
+- Update API DescribeRunIdDeductions: add response parameters Body.Deductions.$.Model.
+
+
 2026-08-03 Version: 1.4.4
 - Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.Effective.
 - Update API DescribeMultiPrice: add response parameters Body.PriceInfo.Price.Promotions.$.EndTimestamp.

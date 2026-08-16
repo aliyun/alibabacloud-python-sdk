@@ -19,20 +19,21 @@ class DescribePackageDeductionsResponseBody(DaraModel):
         total_used_time: int = None,
         total_used_time_decimal: str = None,
     ):
-        # The deduction details.
+        # The list of deduction details.
         self.deductions = deductions
         # The current page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The number of entries per page in a paged query. Settings the number of rows per page for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of matching entries.
+        # The total number of deduction detail records returned.
         self.total_count = total_count
-        # The total core-hours deducted for all matching entries.
+        # The total deducted core-hours.
         self.total_used_core_time = total_used_core_time
-        # The total usage duration of all matching entries, in seconds.
+        # The total usage duration.
         self.total_used_time = total_used_time
+        # The total usage duration in decimal format.
         self.total_used_time_decimal = total_used_time_decimal
 
     def validate(self):
@@ -132,33 +133,39 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
         self.cpu = cpu
         # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
-        # The desktop type.
+        # The specifications of the cloud computer.
         self.desktop_type = desktop_type
-        # The billing cycle end time.
+        # The end time of the period.
         self.end_time = end_time
+        # The group resource type.
         self.group_resource_type = group_resource_type
+        # The instance ID.
         self.instance_id = instance_id
-        # The core-hour package state.
+        # The status of the core-hour package.
         self.instance_state = instance_state
+        # The instance type.
         self.instance_type = instance_type
-        # The memory size, in MB.
+        # The memory size. Unit: MB.
         self.memory = memory
-        # The OS of the cloud computer.
+        # The operating system type of the cloud computer.
         self.os_type = os_type
-        # The region ID.
+        # The region ID of the cloud computer.
         self.region_id = region_id
         # The resource type.
         self.resource_type = resource_type
+        # The session ID.
         self.session_id = session_id
-        # The billing cycle start time.
+        # The start time of the period.
         self.sta_time = sta_time
-        # The deducted core-hours.
+        # The number of cores deducted in this period.
         self.used_core_time = used_core_time
-        # The usage duration, in seconds.
+        # The usage duration. Unit: seconds.
         self.used_time = used_time
+        # The usage duration in decimal format.
         self.used_time_decimal = used_time_decimal
+        # The usage duration after proportional scaling.
         self.used_time_with_scale = used_time_with_scale
 
     def validate(self):

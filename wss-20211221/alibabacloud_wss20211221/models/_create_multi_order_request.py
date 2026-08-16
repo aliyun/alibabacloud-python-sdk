@@ -16,6 +16,7 @@ class CreateMultiOrderRequest(DaraModel):
         properties: Dict[str, str] = None,
         reseller_owner_uid: int = None,
     ):
+        # The channel cookie information.
         self.channel_cookie = channel_cookie
         # The product information.
         self.order_items = order_items
@@ -23,6 +24,7 @@ class CreateMultiOrderRequest(DaraModel):
         self.order_type = order_type
         # The extended properties.
         self.properties = properties
+        # The UID of the reseller owner.
         self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
@@ -99,28 +101,31 @@ class CreateMultiOrderRequestOrderItems(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
+        # Specifies whether this is a change purchase.
         self.buy_change = buy_change
         # The product modules.
         self.components = components
+        # The list of instance IDs.
         self.instance_ids = instance_ids
+        # The callback URL after the payment is completed.
         self.paid_call_back_url = paid_call_back_url
         # The subscription duration. Valid values:
         # 
-        # - If `PeriodUnit` is set to `Year`: 1, 2, 3, or 5.
+        # - If PeriodUnit is set to Year: 1, 2, 3, and 5.
         # 
-        # - If `PeriodUnit` is set to `Month`: 1, 2, 3, or 6.
+        # - If PeriodUnit is set to Month: 1, 2, 3, and 6.
         self.period = period
-        # The unit of the billing cycle for the subscription instance.
+        # The unit of the subscription duration for a subscription instance.
         # 
-        # > This parameter is required only when the billing method of the instance is subscription. This parameter is case-sensitive. Make sure that the spelling is correct.
+        # > This parameter is required only when the billing method of the instance is subscription. This parameter is case-sensitive. Make sure that the value is spelled correctly.
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
         # The list of resource IDs.
-        # > For monthly duration packages, this parameter corresponds to the cloud desktop ID. This parameter is required when OrderType is not `create`.
+        # > For monthly duration packages, this parameter corresponds to the cloud desktop ID. This parameter is required when OrderType is not set to `create`.
         self.resource_ids = resource_ids
         # The resource type.
-        # > This parameter is case-sensitive. Make sure that the spelling is correct.
+        # > This parameter is case-sensitive. Make sure that the value is spelled correctly.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -231,22 +236,22 @@ class CreateMultiOrderRequestOrderItemsComponents(DaraModel):
         self.key = key
         # The value of the module.
         # 
-        # The following example values or valid values are available for each key of the Enterprise Edition monthly duration package:
+        # The following section describes the sample values and valid values for each key of the Enterprise Edition monthly duration package:
         # 
-        # - RegionId: cn-shanghai
+        # - RegionId: ap-southeast-1
         # - InstanceType: eds.enterprise_office.4c8g
-        # - DurationType (hours): [Valid values] 
+        # - DurationType (hours): Valid values: 
         #    - 120
         #    - 250
-        # - OsType: [Valid values] 
+        # - OsType: Valid values: 
         #    - Windows
         #    - Linux
         # - RootDiskSize (GiB): 80
-        # - RootDiskCategory: [Valid values] 
+        # - RootDiskCategory: Valid values: 
         #    - cloud_efficiency (ultra cloud disk)
         #    - cloud_auto (ultra-fast cloud disk)
         #    - cloud_essd (enhanced standard SSD. Only specific instance types support this value.)
-        # - RootPerformanceLevel: [Valid values] 
+        # - RootPerformanceLevel: Valid values: 
         #    - PL0
         #    - PL1
         #    - PL2
