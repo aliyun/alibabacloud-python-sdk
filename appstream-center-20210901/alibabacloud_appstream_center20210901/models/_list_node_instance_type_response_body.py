@@ -97,7 +97,7 @@ class ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels(DaraModel):
         self.gpu = gpu
         # The GPU memory size. Unit: MB.
         self.gpu_memory = gpu_memory
-        # The maximum number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification. The valid values for each resource specification are as follows:
+        # The maximum number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary by resource specification. The valid values for each resource specification are as follows:
         # 
         # - appstreaming.general.2c4g: 1
         # - appstreaming.general.4c8g: 1 to 2
@@ -114,15 +114,15 @@ class ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels(DaraModel):
         # - appstreaming.vgpu.12c46g.11g28: 1 to 6
         # - appstreaming.vgpu.14c93g.12g: 1 to 7
         # - appstreaming.vgpu.16c32g.8g: 1 to 8
-        # - appstreaming.vgpu.16c62g.8ga10: 1 to 8.
+        # - appstreaming.vgpu.16c62g.8ga10: 1 to 8
         self.max_capacity = max_capacity
         # The memory size. Unit: MB.
         self.memory = memory
-        # The ID of the resource specification type.
+        # The resource specification type ID.
         self.node_instance_type = node_instance_type
         # The resource specification family.
         self.node_instance_type_family = node_instance_type_family
-        # The name of the resource specification.
+        # The resource specification name.
         self.node_type_name = node_type_name
 
     def validate(self):

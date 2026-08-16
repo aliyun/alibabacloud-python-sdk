@@ -16,7 +16,7 @@ class ListNodesResponseBody(DaraModel):
         request_id: str = None,
         to_page: int = None,
     ):
-        # The total number of entries that can be returned.
+        # The total number of data entries that can be returned.
         self.count = count
         # The list of resource nodes.
         self.node_models = node_models
@@ -87,10 +87,10 @@ class ListNodesResponseBodyNodeModels(DaraModel):
     ):
         # The billing type of the resource node.
         # 
-        # > This parameter is returned only when the billing mode of the delivery group is per-resource billing (ChargeResourceMode=Node).
+        # > This parameter is returned only when the billing mode of the delivery group is resource-based billing (ChargeResourceMode=Node).
         self.charge_type = charge_type
         # The resource node ID.
-        # > This parameter is returned only when the billing mode of the delivery group is per-resource billing (ChargeResourceMode=Node).
+        # > This parameter is returned only when the billing mode of the delivery group is resource-based billing (ChargeResourceMode=Node).
         self.node_id = node_id
 
     def validate(self):

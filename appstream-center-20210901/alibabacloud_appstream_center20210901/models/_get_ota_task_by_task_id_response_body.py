@@ -20,7 +20,7 @@ class GetOtaTaskByTaskIdResponseBody(DaraModel):
         self.message = message
         # The OTA version.
         self.ota_version = ota_version
-        # The version description that describes the content of the over-the-air update.
+        # The release note that describes the content of the over-the-air update.
         self.release_note = release_note
         # The request ID.
         self.request_id = request_id

@@ -19,29 +19,29 @@ class AuthorizeInstanceGroupShrinkRequest(DaraModel):
         un_authorize_user_ids: List[str] = None,
         user_meta_shrink: str = None,
     ):
-        # The delivery group ID. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the value.
+        # 交付群組 ID。可呼叫 [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) 介面取得。
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The persistent session ID.
+        # 持續性工作階段 ID。
         self.app_instance_persistent_id = app_instance_persistent_id
-        # The list of user group IDs to be authorized.
+        # 授權使用者群組 ID 清單。
         self.authorize_user_group_ids = authorize_user_group_ids
-        # The list of usernames to be authorized for the delivery group. You can specify 1 to 100 usernames.
+        # 要新增交付群組授權的使用者名稱清單。可設定 1\\~100 個。
         self.authorize_user_ids = authorize_user_ids
-        # The user avatar ID.
+        # 使用者分身 ID。
         # 
-        # > This parameter is not available for public use.
+        # > 此參數未開放使用。
         self.avatar_id = avatar_id
-        # The product type.
+        # 產品類型。
         # 
         # This parameter is required.
         self.product_type = product_type
-        # The list of user group IDs to be deauthorized.
+        # 取消授權使用者群組 ID 清單。
         self.un_authorize_user_group_ids = un_authorize_user_group_ids
-        # The list of usernames to be deauthorized from the delivery group. You can specify 1 to 100 usernames.
+        # 要移除交付群組授權的使用者名稱清單。可設定 1\\~100 個。
         self.un_authorize_user_ids = un_authorize_user_ids
-        # The user information.
+        # 使用者資訊。
         self.user_meta_shrink = user_meta_shrink
 
     def validate(self):

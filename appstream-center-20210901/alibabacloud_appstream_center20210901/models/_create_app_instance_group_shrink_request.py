@@ -38,7 +38,7 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         users: List[str] = None,
         video_policy_shrink: str = None,
     ):
-        # The application image ID. You can obtain the ID from the **O&M** > **Custom Images** or **System Images** page in the [WUYING Cloud Application console](https://appstreaming.console.aliyun.com/).
+        # The application image ID. You can obtain the ID from the **O&M** > **Custom Images** or **System Images** page in the [WUYING CloudApp console](https://appstreaming.console.aliyun.com/).
         # 
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
@@ -48,7 +48,7 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         self.app_package_type = app_package_type
         # The policy ID.
         self.app_policy_id = app_policy_id
-        # The authorization mode of the delivery group.
+        # The delivery group authorization mode.
         self.auth_mode = auth_mode
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
@@ -99,26 +99,26 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         self.period = period
         # The unit of the subscription duration when `ChargeType` is set to `PrePaid`.
         # 
-        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid.
+        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is not.
         # If the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement.
         # 
         # > If `ChargeType` is set to `PostPaid`, set this parameter to `Month`.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The pre-opened application ID.
+        # The pre-opened AppId.
         self.pre_open_app_id = pre_open_app_id
         # The product type.
         # 
         # This parameter is required.
         self.product_type = product_type
-        # The promotion ID. You can call the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation to obtain the ID.
+        # The promotion ID. You can obtain the ID by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
         self.promotion_id = promotion_id
         # The runtime policy.
         self.runtime_policy_shrink = runtime_policy_shrink
         # The security policy.
         self.security_policy_shrink = security_policy_shrink
-        # The application recycling timeout period, in minutes. After an end user disconnects from a cloud application for a period of time, the cloud application process exits. This period is the application recycling timeout. Set this parameter to `-1` if you do not want the application to be recycled. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
+        # The application recycling time, in minutes. After an end user disconnects from the cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
         # 
         # This parameter is required.
         self.session_timeout = session_timeout
@@ -130,7 +130,7 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         self.user_define_policy_shrink = user_define_policy_shrink
         # The list of authorized user group IDs.
         self.user_group_ids = user_group_ids
-        # The user information of the users to be added to the delivery group. This field is required if the `Users` parameter is specified.
+        # The user information to be added to the delivery group as assigned users. This field is required if the `Users` parameter is specified.
         self.user_info_shrink = user_info_shrink
         # The list of usernames to be added to the delivery group as assigned users.
         self.users = users

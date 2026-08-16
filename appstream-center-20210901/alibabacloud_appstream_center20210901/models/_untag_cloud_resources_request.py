@@ -21,8 +21,8 @@ class UntagCloudResourcesRequest(DaraModel):
         self.resource_type = resource_type
         # The list of tags. System tags and custom tags are supported. You can specify up to 10 tags.
         # 
-        # Valid values of system tags:
-        # - `System/Scheduler/GRAYSCALE`: canary release tag
+        # Enumerated values for system tags:
+        # - `System/Scheduler/GRAYSCALE`: canary release tag.
         # - `System/Scheduler/STOP_NEW_USER_CONNECTION`: tag that prevents newly bound users in a delivery group from establishing connections.
         # 
         # This parameter is required.

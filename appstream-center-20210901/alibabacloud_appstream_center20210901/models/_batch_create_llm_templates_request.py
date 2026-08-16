@@ -76,7 +76,7 @@ class BatchCreateLlmTemplatesRequestLlmTemplateItems(DaraModel):
         self.config = config
         # The model description.
         self.description = description
-        # Specifies whether to set this model as the default model. Each model group can have at most one default model.
+        # Specifies whether to set the model as the default model. A model group can have at most one default model.
         self.is_default_model = is_default_model
         # The model code, which must be unique within the same provider.
         self.llm_code = llm_code

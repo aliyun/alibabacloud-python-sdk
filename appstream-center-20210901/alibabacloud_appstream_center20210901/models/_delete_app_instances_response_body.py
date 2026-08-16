@@ -66,7 +66,7 @@ class DeleteAppInstancesResponseBodyDeleteAppInstanceModels(DaraModel):
         self.code = code
         # The error message returned when an error occurs.
         self.message = message
-        # Indicates whether the deletion is triggered.
+        # Indicates whether the deletion is triggered successfully.
         self.success = success
 
     def validate(self):

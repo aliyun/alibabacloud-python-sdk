@@ -54,11 +54,11 @@ class BatchCreateLlmTemplatesResponseBodyData(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
-        # The list of IDs of the model templates that are created.
+        # The list of successfully created model template IDs.
         self.llm_template_ids = llm_template_ids
         # The list of skipped model configuration items.
         self.skipped_items = skipped_items
-        # The number of model templates that are created.
+        # The number of successfully created items.
         self.success_count = success_count
         # The total number of requests.
         self.total_count = total_count
@@ -115,9 +115,9 @@ class BatchCreateLlmTemplatesResponseBodyDataSkippedItems(DaraModel):
         llm_code: str = None,
         reason: str = None,
     ):
-        # The model code that is skipped.
+        # The model code that was skipped.
         self.llm_code = llm_code
-        # The reason why the model is skipped.
+        # The reason why the item was skipped.
         self.reason = reason
 
     def validate(self):

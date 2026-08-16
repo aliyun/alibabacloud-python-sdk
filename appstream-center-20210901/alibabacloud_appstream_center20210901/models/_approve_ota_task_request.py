@@ -13,7 +13,7 @@ class ApproveOtaTaskRequest(DaraModel):
         start_time: str = None,
         task_id: str = None,
     ):
-        # The delivery group ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
+        # The delivery group ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain this value.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
@@ -21,19 +21,19 @@ class ApproveOtaTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
-        # The over-the-air upgrade task type.
+        # The OTA upgrade task type.
         # 
         # This parameter is required.
         self.ota_type = ota_type
-        # The start time of the over-the-air upgrade task. Specify the time in ISO 8601 format.
+        # The start time of the OTA upgrade task. Specify the time in ISO 8601 format.
         # 
         # This parameter is required.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
-        # The over-the-air upgrade task ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
+        # The OTA upgrade task ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain this value.
         # 
-        # > Each successful call of `ApproveOtaTask` causes the `TaskId` to change. Therefore, before calling this operation again, call `ListAppInstanceGroup` again to obtain the latest `TaskId`.
+        # > Each successful call to `ApproveOtaTask` causes the `TaskId` to change. Therefore, before calling this operation again, call `ListAppInstanceGroup` again to obtain the latest `TaskId`.
         # 
         # This parameter is required.
         self.task_id = task_id

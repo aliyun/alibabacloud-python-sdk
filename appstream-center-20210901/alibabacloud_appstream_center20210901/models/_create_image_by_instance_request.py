@@ -21,23 +21,23 @@ class CreateImageByInstanceRequest(DaraModel):
         sub_instance_id: str = None,
         tag_list: List[main_models.CreateImageByInstanceRequestTagList] = None,
     ):
-        # This parameter is applicable only when the instance type is cloud desktop. Specifies whether to clear user personal data. If you set this parameter to true, the created image clears data in all directories under C:\\Users except the Administrator and Public directories.
+        # This parameter applies only to Cloud Desktop instances. Specifies whether to clear user personal data. If set to true, the created image clears data in all directories under C:\\Users except Administrator and Public.
         self.auto_clean_userdata = auto_clean_userdata
         # This parameter is not publicly available.
         self.biz_type = biz_type
         # The image description.
         self.description = description
-        # The type of disk data included in the image. By default, the image includes both the system cloud disk and data cloud disk of the instance.
+        # The type of disk data included in the image. By default, both the system cloud disk and data cloud disk of the instance are included.
         self.disk_type = disk_type
         # The image name.
         self.image_name = image_name
-        # The WUYING instance ID. The instance can be a cloud desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before creating the image.
+        # The WUYING instance ID. The instance can be a Cloud Desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before creating the image.
         self.instance_id = instance_id
         # The instance type.
         self.instance_type = instance_type
         # This parameter is not publicly available.
         self.product_type = product_type
-        # The sub-instance ID. This parameter is not applicable to cloud desktop scenarios. In workstation scenarios, specify the persistent session ID to identify a specific instance.
+        # The sub-instance ID. This parameter does not apply to Cloud Desktop scenarios. In workstation scenarios, specify the persistent session ID to identify a specific instance.
         self.sub_instance_id = sub_instance_id
         self.tag_list = tag_list
 

@@ -15,7 +15,7 @@ class CreateImageFromAppInstanceGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_center_image_name = app_center_image_name
-        # The delivery group ID. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the value.
+        # The delivery group ID. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id

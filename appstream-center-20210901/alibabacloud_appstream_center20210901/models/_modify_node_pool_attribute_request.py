@@ -18,7 +18,7 @@ class ModifyNodePoolAttributeRequest(DaraModel):
     ):
         # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.biz_region_id = biz_region_id
-        # The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification. The valid values for each resource specification are as follows:
+        # The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The value range varies depending on the resource specification. The value ranges for each resource specification are as follows:
         # 
         # - appstreaming.general.4c8g: 1 to 2.
         # - appstreaming.general.8c16g: 1 to 4.
@@ -26,7 +26,7 @@ class ModifyNodePoolAttributeRequest(DaraModel):
         # - appstreaming.vgpu.8c31g.16g: 1 to 4.
         # - appstreaming.vgpu.14c93g.12g: 1 to 6.
         self.node_capacity = node_capacity
-        # The automatic scaling policy of the delivery group.
+        # The automatic scaling strategy of the delivery group.
         self.node_pool_strategy = node_pool_strategy
         # The resource group ID.
         self.pool_id = pool_id
@@ -94,7 +94,7 @@ class ModifyNodePoolAttributeRequestNodePoolStrategy(DaraModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
-        # The maximum number of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the idle sessions in the delivery group are considered sufficient, and no automatic scale-out is performed. This parameter can be used to flexibly control elastic scale-out behavior and reduce costs.
+        # The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the idle sessions in the delivery group are considered sufficient and automatic scale-out is not triggered. This parameter can be used to flexibly control elastic scale-out behavior and reduce costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
         # The maximum number of resources that can be created during scale-out. This parameter is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE`.
         self.max_scaling_amount = max_scaling_amount
@@ -102,31 +102,31 @@ class ModifyNodePoolAttributeRequestNodePoolStrategy(DaraModel):
         # 
         # > 
         # - If the resources are subscription resources, this parameter cannot be modified.
-        # - If the resources are pay-as-you-go resources, this parameter can be modified when the scaling mode (`StrategyType`) is set to fixed quantity (`NODE_FIXED`) or automatic scaling (`NODE_SCALING_BY_USAGE`).
+        # - If the resources are pay-as-you-go resources, this parameter can be modified when the elastic mode (`StrategyType`) is set to fixed quantity (`NODE_FIXED`) or automatic scaling (`NODE_SCALING_BY_USAGE`).
         self.node_amount = node_amount
-        # The list of policy execution cycles. This parameter is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+        # The list of strategy execution cycles. This parameter is required when `StrategyType` (elastic mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
         self.recurrence_schedules = recurrence_schedules
-        # The maximum duration (in minutes) that a resource without session connections is retained. When no sessions are connected to a resource, a countdown starts based on the duration specified here. The resource is scaled in when the countdown ends. Valid values: 5 to 120. Default value: 5. The following exceptions apply:
+        # The maximum duration (in minutes) that a resource without session connections is retained. When no sessions are connected to a resource, a countdown starts based on the duration specified here. Scale-in is completed when the countdown ends. Valid values: 5 to 120. Default value: 5. The following exceptions apply:
         # 
-        # - If scale-in would trigger automatic scale-out again, the scale-in is not performed to avoid repeated scale-in and scale-out operations.
-        # - If automatic scale-out is triggered by an increase in sessions during this period, the resource is not scaled in as originally planned, and the countdown restarts.
+        # - If scale-in would trigger automatic scale-out again, scale-in is not performed to avoid repeated scale-in and scale-out operations.
+        # - If automatic scale-out is triggered due to an increase in sessions during this period, the resource is not scaled in as originally planned, and the countdown restarts.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
-        # The number of resources created per scale-out operation. Valid values: 1 to 10. This parameter is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE`.
+        # The number of resources created during each scale-out operation. Valid values: 1 to 10. This parameter is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE`.
         self.scaling_step = scaling_step
-        # The upper threshold of session usage (%). Automatic scale-out is triggered when the session usage exceeds this threshold. The session usage is calculated by using the following formula: `Session usage = Current sessions ÷ (Total resources × Concurrent sessions per resource) × 100%`. This parameter is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE`. Valid values: 0 to 100. Default value: 85.
+        # The upper threshold of session usage (%). Automatic scale-out is triggered when the session usage exceeds this threshold. The formula for session usage is `Session usage = Current sessions ÷ (Total resources × Concurrent sessions per resource) × 100%`. This parameter is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE`. Valid values: 0 to 100. Default value: 85.
         self.scaling_usage_threshold = scaling_usage_threshold
-        # The date when the policy expires. Format: yyyy-MM-dd. The interval between the expiration date and the effective date must be between 7 days and 1 year, inclusive. This parameter is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+        # The date when the strategy expires. Format: yyyy-MM-dd. The interval between the expiration date and the effective date must be between 7 days and 1 year (inclusive). This parameter is required when `StrategyType` (elastic mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
         self.strategy_disable_date = strategy_disable_date
-        # The date when the policy takes effect. Format: yyyy-MM-dd. The date must be equal to or later than the current date. This parameter is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+        # The date when the strategy takes effect. Format: yyyy-MM-dd. This date must be greater than or equal to the current date. This parameter is required when `StrategyType` (elastic mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
         self.strategy_enable_date = strategy_enable_date
-        # The scaling mode.
+        # The elastic mode.
         # 
         # > 
         # - `NODE_FIXED` (fixed quantity): Applicable to subscription and pay-as-you-go resources.
         # - `NODE_SCALING_BY_USAGE` (automatic scaling): Applicable to subscription and pay-as-you-go resources.
         # - `NODE_SCALING_BY_SCHEDULE` (scheduled scaling): Applicable only to pay-as-you-go resources.
         self.strategy_type = strategy_type
-        # Specifies whether to enable the resource prefetch policy. This parameter is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+        # Specifies whether to enable the resource prefetch policy. This parameter is required when `StrategyType` (elastic mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
         self.warm_up = warm_up
 
     def validate(self):
@@ -224,16 +224,16 @@ class ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules(DaraMode
         recurrence_values: List[int] = None,
         timer_periods: List[main_models.ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods] = None,
     ):
-        # The type of the policy execution cycle. You must specify both `RecurrenceType` and `RecurrenceValues`.
+        # The type of the strategy execution cycle. You must specify both `RecurrenceType` and `RecurrenceValues`.
         self.recurrence_type = recurrence_type
-        # The list of values for the policy execution cycle.
+        # The list of values for the strategy execution cycle.
         self.recurrence_values = recurrence_values
-        # The list of time periods for the policy execution cycle. Requirements for time period settings:
+        # The list of time periods for the strategy execution cycle. Requirements for time period settings:
         # 
-        # - You can add up to three time periods.
-        # - Time periods must not overlap.
-        # - The interval between time periods must be at least 5 minutes.
-        # - Each time period must be at least 15 minutes long.
+        # - You can add up to 3 time periods.
+        # - Time periods cannot overlap.
+        # - The interval between time periods must be greater than or equal to 5 minutes.
+        # - The duration of a single time period must be greater than or equal to 15 minutes.
         # - All time periods combined must not span across days.
         self.timer_periods = timer_periods
 

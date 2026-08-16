@@ -16,7 +16,7 @@ class ListPersistentAppInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the query results currently displayed.
+        # The current page number of the query results.
         self.page_number = page_number
         # The number of query results per page.
         self.page_size = page_size

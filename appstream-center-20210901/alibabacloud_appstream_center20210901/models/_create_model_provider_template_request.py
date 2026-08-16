@@ -18,38 +18,38 @@ class CreateModelProviderTemplateRequest(DaraModel):
         provider_name: str = None,
         provider_type: str = None,
     ):
-        # Agent platform.
+        # The Agent platform.
         self.agent_platform = agent_platform
-        # Agent provider name.
+        # The Agent provider name.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
-        # Business type.
+        # The business type.
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # Model provider configuration JSON, containing connection information such as baseUrl, apiKey, and api. The apiKey is encrypted after creation. Not required when ProviderType is WuyingCredit, as it is copied from the system template.
+        # The model provider configuration in JSON format, which contains connection information such as baseUrl, apiKey, and api. The apiKey is encrypted after creation. When ProviderType is set to WuyingCredit, this parameter is not required because the configuration is copied from the system template.
         # 
         # This parameter is required.
         self.config = config
-        # Model provider template description.
+        # The description of the model provider template.
         self.description = description
-        # Whether to enable Wuying security proxy. Must be true when ProviderType is WuyingCredit.
+        # Specifies whether to enable the WUYING secure proxy. This parameter must be set to true when ProviderType is set to WuyingCredit.
         self.enable_wuying_proxy = enable_wuying_proxy
-        # Associated model group ID.
+        # The ID of the associated model template.
         # 
         # This parameter is required.
         self.model_template_id = model_template_id
-        # Model provider template name.
+        # The name of the model provider template.
         self.name = name
-        # Model provider name. Must be unique within the same model template. Naming rules vary by ProviderType. For details, see the ProviderType description.
+        # The model provider name. The name must be unique within the same model template. The naming rules vary based on the value of ProviderType. For more information, see the description of ProviderType.
         # 
         # This parameter is required.
         self.provider_name = provider_name
-        # Model provider type. Different types impose different constraints on ProviderName and Config:
-        # - WuyingCredit: Wuying credit package. ProviderName must be wuying-credit. Created by copying from the system template. Config is not required.
-        # - Managed: Managed provider. System-reserved names such as wuying-credit cannot be used. Config is required.
-        # - Custom: User-defined provider. ProviderName must start with the provider- prefix. Config is required.
+        # The model provider type. Different types impose different constraints on ProviderName and Config. Valid values:
+        # - WuyingCredit: WUYING credit plan. ProviderName must be set to wuying-credit. The template is created by copying from a system template, and Config is not required.
+        # - Managed: managed provider. System-reserved names such as wuying-credit cannot be used. Config is required.
+        # - Custom: user-defined provider. ProviderName must start with the prefix provider-. Config is required.
         self.provider_type = provider_type
 
     def validate(self):

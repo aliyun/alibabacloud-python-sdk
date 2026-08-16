@@ -1176,6 +1176,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.ref_scope):
+            query['RefScope'] = request.ref_scope
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1212,6 +1214,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.ref_scope):
+            query['RefScope'] = request.ref_scope
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3340,16 +3344,26 @@ class Client(OpenApiClient):
     ) -> main_models.ListDesktopAgentRuntimeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_im_online_status):
+            query['AgentImOnlineStatus'] = request.agent_im_online_status
         if not DaraCore.is_null(request.agent_instance_statuses):
             query['AgentInstanceStatuses'] = request.agent_instance_statuses
         if not DaraCore.is_null(request.agent_instance_versions):
             query['AgentInstanceVersions'] = request.agent_instance_versions
         if not DaraCore.is_null(request.agent_platform):
             query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_platform_list):
+            query['AgentPlatformList'] = request.agent_platform_list
         if not DaraCore.is_null(request.agent_provider):
             query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.agent_provider_list):
+            query['AgentProviderList'] = request.agent_provider_list
+        if not DaraCore.is_null(request.agent_template_ids):
+            query['AgentTemplateIds'] = request.agent_template_ids
         if not DaraCore.is_null(request.auth_users):
             query['AuthUsers'] = request.auth_users
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.channel_configure):
@@ -3374,6 +3388,8 @@ class Client(OpenApiClient):
             query['ModelConfigure'] = request.model_configure
         if not DaraCore.is_null(request.model_template_id):
             query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -3408,16 +3424,26 @@ class Client(OpenApiClient):
     ) -> main_models.ListDesktopAgentRuntimeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_im_online_status):
+            query['AgentImOnlineStatus'] = request.agent_im_online_status
         if not DaraCore.is_null(request.agent_instance_statuses):
             query['AgentInstanceStatuses'] = request.agent_instance_statuses
         if not DaraCore.is_null(request.agent_instance_versions):
             query['AgentInstanceVersions'] = request.agent_instance_versions
         if not DaraCore.is_null(request.agent_platform):
             query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_platform_list):
+            query['AgentPlatformList'] = request.agent_platform_list
         if not DaraCore.is_null(request.agent_provider):
             query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.agent_provider_list):
+            query['AgentProviderList'] = request.agent_provider_list
+        if not DaraCore.is_null(request.agent_template_ids):
+            query['AgentTemplateIds'] = request.agent_template_ids
         if not DaraCore.is_null(request.auth_users):
             query['AuthUsers'] = request.auth_users
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.channel_configure):
@@ -3442,6 +3468,8 @@ class Client(OpenApiClient):
             query['ModelConfigure'] = request.model_configure
         if not DaraCore.is_null(request.model_template_id):
             query['ModelTemplateId'] = request.model_template_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -3652,6 +3680,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.llm_template_ids):
             request.llm_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.llm_template_ids, 'LlmTemplateIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.llm_code):
             query['LlmCode'] = request.llm_code
         if not DaraCore.is_null(request.llm_template_ids_shrink):
@@ -3664,6 +3694,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.provider_template_id):
             query['ProviderTemplateId'] = request.provider_template_id
+        if not DaraCore.is_null(request.smart_model):
+            query['SmartModel'] = request.smart_model
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3694,6 +3726,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.llm_template_ids):
             request.llm_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.llm_template_ids, 'LlmTemplateIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.llm_code):
             query['LlmCode'] = request.llm_code
         if not DaraCore.is_null(request.llm_template_ids_shrink):
@@ -3706,6 +3740,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.provider_template_id):
             query['ProviderTemplateId'] = request.provider_template_id
+        if not DaraCore.is_null(request.smart_model):
+            query['SmartModel'] = request.smart_model
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4022,18 +4058,28 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_platform):
             query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_platform_list):
+            query['AgentPlatformList'] = request.agent_platform_list
         if not DaraCore.is_null(request.agent_provider):
             query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.agent_provider_list):
+            query['AgentProviderList'] = request.agent_provider_list
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.has_model):
             query['HasModel'] = request.has_model
         if not DaraCore.is_null(request.model_template_id_list_shrink):
             query['ModelTemplateIdList'] = request.model_template_id_list_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.ref_scope):
+            query['RefScope'] = request.ref_scope
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4066,18 +4112,28 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_platform):
             query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_platform_list):
+            query['AgentPlatformList'] = request.agent_platform_list
         if not DaraCore.is_null(request.agent_provider):
             query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.agent_provider_list):
+            query['AgentProviderList'] = request.agent_provider_list
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.has_model):
             query['HasModel'] = request.has_model
         if not DaraCore.is_null(request.model_template_id_list_shrink):
             query['ModelTemplateIdList'] = request.model_template_id_list_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.ref_scope):
+            query['RefScope'] = request.ref_scope
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4120,6 +4176,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.cpu):
             query['Cpu'] = request.cpu
         if not DaraCore.is_null(request.gpu):
@@ -4178,6 +4236,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.cpu):
             query['Cpu'] = request.cpu
         if not DaraCore.is_null(request.gpu):
@@ -4717,8 +4777,18 @@ class Client(OpenApiClient):
             body['BizType'] = request.biz_type
         if not DaraCore.is_null(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.create_time_end):
+            body['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.create_time_start):
+            body['CreateTimeStart'] = request.create_time_start
+        if not DaraCore.is_null(request.expired_time_end):
+            body['ExpiredTimeEnd'] = request.expired_time_end
+        if not DaraCore.is_null(request.expired_time_start):
+            body['ExpiredTimeStart'] = request.expired_time_start
         if not DaraCore.is_null(request.image_id):
             body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.network_interface_ip):
+            body['NetworkInterfaceIp'] = request.network_interface_ip
         if not DaraCore.is_null(request.office_site_id):
             body['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.page_number):
@@ -4739,6 +4809,8 @@ class Client(OpenApiClient):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
         if not DaraCore.is_null(request.wuying_server_name_or_id):
             body['WuyingServerNameOrId'] = request.wuying_server_name_or_id
+        if not DaraCore.is_null(request.zone_id):
+            body['ZoneId'] = request.zone_id
         body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
@@ -4775,8 +4847,18 @@ class Client(OpenApiClient):
             body['BizType'] = request.biz_type
         if not DaraCore.is_null(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.create_time_end):
+            body['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.create_time_start):
+            body['CreateTimeStart'] = request.create_time_start
+        if not DaraCore.is_null(request.expired_time_end):
+            body['ExpiredTimeEnd'] = request.expired_time_end
+        if not DaraCore.is_null(request.expired_time_start):
+            body['ExpiredTimeStart'] = request.expired_time_start
         if not DaraCore.is_null(request.image_id):
             body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.network_interface_ip):
+            body['NetworkInterfaceIp'] = request.network_interface_ip
         if not DaraCore.is_null(request.office_site_id):
             body['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.page_number):
@@ -4797,6 +4879,8 @@ class Client(OpenApiClient):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
         if not DaraCore.is_null(request.wuying_server_name_or_id):
             body['WuyingServerNameOrId'] = request.wuying_server_name_or_id
+        if not DaraCore.is_null(request.zone_id):
+            body['ZoneId'] = request.zone_id
         body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
@@ -6938,6 +7022,8 @@ class Client(OpenApiClient):
             query['ModelTemplateId'] = request.model_template_id
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.ref_scope):
+            query['RefScope'] = request.ref_scope
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6972,6 +7058,8 @@ class Client(OpenApiClient):
             query['ModelTemplateId'] = request.model_template_id
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.ref_scope):
+            query['RefScope'] = request.ref_scope
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -18,7 +18,7 @@ class ListAppInstanceGroupResponseBody(DaraModel):
     ):
         # The delivery group information.
         self.app_instance_group_models = app_instance_group_models
-        # The page number of the query results currently displayed.
+        # The page number of the displayed query results.
         self.page_number = page_number
         # The number of query results per page.
         self.page_size = page_size
@@ -161,17 +161,17 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel):
         self.office_site_id = office_site_id
         # The operating system type.
         self.os_type = os_type
-        # The over-the-air update task information.
+        # The OTA upgrade task information.
         self.ota_info = ota_info
         # The product type.
         self.product_type = product_type
         # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.region_id = region_id
-        # The percentage of reserved instances, which represents the ratio of unused sessions in the delivery group. Valid values: 0 to 99.
+        # The reserved instance percentage, which is the ratio of unused sessions in the delivery group. Valid values: 0 to 99.
         self.reserve_amount_ratio = reserve_amount_ratio
-        # The maximum number of reserved instances, which represents the maximum number of unused sessions in the delivery group. Minimum value: 1.
+        # The maximum number of reserved instances, which is the maximum number of unused sessions in the delivery group. Minimum value: 1.
         self.reserve_max_amount = reserve_max_amount
-        # The minimum number of reserved instances, which represents the minimum number of unused sessions in the delivery group. Minimum value: 1.
+        # The minimum number of reserved instances, which is the minimum number of unused sessions in the delivery group. Minimum value: 1.
         self.reserve_min_amount = reserve_min_amount
         # The resource status.
         self.resource_status = resource_status
@@ -179,13 +179,13 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel):
         self.resource_tags = resource_tags
         # The duration of no session connections, in minutes. When a resource remains in a no-session-connection state for the specified duration, automatic scale-in is triggered. Minimum value: 0.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
-        # The number of sessions created during each scale-out event. Minimum value: 1.
+        # The number of sessions created per scale-out operation. Minimum value: 1.
         self.scaling_step = scaling_step
-        # The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: Session usage = Number of sessions in use ÷ Total number of sessions × 100%. Valid values: 0 to 99.
+        # The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: session usage = number of sessions in use ÷ total number of sessions × 100%. Valid values: 0 to 99.
         self.scaling_usage_threshold = scaling_usage_threshold
-        # The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+        # The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this value to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
-        # Indicates whether user authorization verification is skipped.
+        # Specifies whether to skip user authorization verification.
         self.skip_user_auth_check = skip_user_auth_check
         # The ID that uniquely corresponds to the delivery group ID.
         self.spec_id = spec_id
@@ -639,15 +639,15 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(DaraModel):
     ):
         # The number of resources purchased when the delivery group was created.
         self.amount = amount
-        # The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the delivery group is considered to have sufficient idle sessions and no automatic scale-out is performed. This parameter allows you to flexibly control elastic scaling behavior and reduce costs.
+        # The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the delivery group is considered to have sufficient idle sessions and automatic scale-out is not triggered. This parameter allows flexible control over elastic scaling behavior and helps reduce costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
         # The maximum number of resources that can be created during scale-out.
         self.max_scaling_amount = max_scaling_amount
         # The total number of current subscription resources.
         self.node_amount = node_amount
-        # The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. Too many simultaneous sessions may degrade the application experience. The valid values vary depending on the resource specification.
+        # The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification.
         self.node_capacity = node_capacity
-        # The specification type ID of the purchased resources.
+        # The specification type ID of the purchased resource.
         self.node_instance_type = node_instance_type
         # The resource group ID.
         self.node_pool_id = node_pool_id
@@ -663,9 +663,9 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(DaraModel):
         self.scaling_node_amount = scaling_node_amount
         # The resource count of elastic resources in use.
         self.scaling_node_used = scaling_node_used
-        # The number of resources created during each scale-out event. Valid values: 1 to 10.
+        # The number of resources created per scale-out operation. Valid values: 1 to 10.
         self.scaling_step = scaling_step
-        # The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: `Session usage = Number of current sessions ÷ (Total number of resources × Concurrent sessions per resource) × 100%`.
+        # The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: `session usage = current number of sessions ÷ (total number of resources × concurrent sessions per resource) × 100%`.
         self.scaling_usage_threshold = scaling_usage_threshold
         # The date when the policy expires. Format: yyyy-MM-dd.
         self.strategy_disable_date = strategy_disable_date

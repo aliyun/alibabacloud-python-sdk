@@ -24,7 +24,7 @@ class ListDesktopAgentRuntimeResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -109,7 +109,7 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         self.agent_instance_info_list = agent_instance_info_list
         # The list of authorized users.
         self.auth_users = auth_users
-        # Indicates whether the agent runtime has a configured third-party channel.
+        # Indicates whether a third-party channel has been configured for the agent runtime.
         self.channel_configure = channel_configure
         # The list of third-party channels configured for the agent runtime.
         self.channel_configured_list = channel_configured_list
@@ -117,30 +117,31 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         self.desktop_id = desktop_id
         # The agent runtime name.
         self.desktop_name = desktop_name
-        # The cloud computer status.
+        # The Cloud Desktop status.
         self.desktop_status = desktop_status
-        # Indicates whether authorized users exist.
+        # Indicates whether there is an authorized user with authorization.
         self.has_auth_user = has_auth_user
+        # The management status list, parsed from the managementStatus composite value.
         self.management_statuses = management_statuses
-        # Indicates whether the agent runtime has a configured model.
+        # Indicates whether a model has been configured for the agent runtime.
         self.model_configure = model_configure
-        # The effective model template ID (returned only when modelConfigure=true).
+        # The active model template ID. This parameter is returned only when modelConfigure is set to true.
         self.model_template_id = model_template_id
-        # The effective model template name (returned only when modelConfigure=true).
+        # The active model template name. This parameter is returned only when modelConfigure is set to true.
         self.model_template_name = model_template_name
         # The operating system type.
         self.os_type = os_type
-        # The list of channels in QR code configuration.
+        # The list of channel codes in QR code configuration.
         self.qr_code_configuring_list = qr_code_configuring_list
         # The region ID.
         self.region_id = region_id
-        # The region location (domestic/overseas).
+        # The region location (the Chinese mainland or outside China).
         self.region_location = region_location
         # The resource group information.
         self.resource_group = resource_group
-        # The resource ID, which is the cloud computer ID.
+        # The resource ID, which is the Cloud Desktop ID.
         self.resource_id = resource_id
-        # The risk information (returned only when the request parameter IncludeRiskInfo is set to true, otherwise null).
+        # The risk information. This parameter is returned only when the request parameter IncludeRiskInfo is set to true. Otherwise, null is returned.
         self.risk_info = risk_info
 
     def validate(self):
@@ -301,11 +302,11 @@ class ListDesktopAgentRuntimeResponseBodyDataRiskInfo(DaraModel):
         channel_modified: bool = None,
         model_modified: bool = None,
     ):
-        # Indicates whether the agent is uninstalled.
+        # Indicates whether the agent has been uninstalled.
         self.agent_uninstalled = agent_uninstalled
-        # Indicates whether the third-party channel configuration is modified (inconsistent with the admin-distributed configuration).
+        # Indicates whether the third-party channel configuration has been modified (inconsistent with the administrator-distributed configuration).
         self.channel_modified = channel_modified
-        # Indicates whether the model configuration is modified (inconsistent with the admin-distributed configuration).
+        # Indicates whether the model configuration has been modified (inconsistent with the administrator-distributed configuration).
         self.model_modified = model_modified
 
     def validate(self):
@@ -394,15 +395,17 @@ class ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList(DaraModel):
         self.agent_instance_status = agent_instance_status
         # The agent instance version.
         self.agent_instance_version = agent_instance_version
+        # The agent platform (enum name, such as ENTERPRISE, JVS, or ENTERPRISE_JVS).
         self.agent_platform = agent_platform
+        # The agent provider (enum name, such as OPEN_CLAW or HERMES_AGENT).
         self.agent_provider = agent_provider
-        # Indicates whether the agent instance has a configured third-party channel.
+        # Indicates whether a third-party channel has been configured for the agent instance.
         self.channel_configure = channel_configure
         # The list of third-party channels configured for the agent instance.
         self.channel_configured_list = channel_configured_list
         # The deployment source.
         self.deployment_source = deployment_source
-        # Indicates whether the agent instance has a configured model.
+        # Indicates whether a model has been configured for the agent instance.
         self.model_configure = model_configure
         # The configured model group ID.
         self.model_template_id = model_template_id
@@ -478,9 +481,12 @@ class ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList(DaraModel):
 class ListDesktopAgentRuntimeResponseBodyDataAgentImInfo(DaraModel):
     def __init__(
         self,
+        agent_im_online_status: str = None,
         agent_im_status: str = None,
         cloud_space_status: str = None,
     ):
+        # The agent IM online status (Online/Offline). Default value: Offline.
+        self.agent_im_online_status = agent_im_online_status
         # The agent IM status.
         self.agent_im_status = agent_im_status
         # The CloudSpace status.
@@ -494,6 +500,9 @@ class ListDesktopAgentRuntimeResponseBodyDataAgentImInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_im_online_status is not None:
+            result['AgentImOnlineStatus'] = self.agent_im_online_status
+
         if self.agent_im_status is not None:
             result['AgentImStatus'] = self.agent_im_status
 
@@ -504,6 +513,9 @@ class ListDesktopAgentRuntimeResponseBodyDataAgentImInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentImOnlineStatus') is not None:
+            self.agent_im_online_status = m.get('AgentImOnlineStatus')
+
         if m.get('AgentImStatus') is not None:
             self.agent_im_status = m.get('AgentImStatus')
 

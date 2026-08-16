@@ -12,12 +12,12 @@ class ModifyWuyingServerAttributeRequest(DaraModel):
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
-        # The logon password of the cloud graphics workstation.
+        # The logon password of the workstation.
         self.password = password
         self.product_type = product_type
-        # The ID of the cloud graphics workstation.
+        # The workstation ID.
         self.wuying_server_id = wuying_server_id
-        # The name of the cloud graphics workstation.
+        # The name.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):

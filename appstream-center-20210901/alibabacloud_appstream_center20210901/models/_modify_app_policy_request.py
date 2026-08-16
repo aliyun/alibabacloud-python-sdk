@@ -74,7 +74,7 @@ class ModifyAppPolicyRequestVideoPolicy(DaraModel):
         self.session_resolution_height = session_resolution_height
         # The width of the resolution, in pixels.
         self.session_resolution_width = session_resolution_width
-        # The streaming mode. This parameter is used together with the Webrtc parameter to specify the protocol type.
+        # The streaming mode. Used together with the Webrtc parameter to specify the protocol type.
         # 
         # - Webrtc=`true` and StreamingMode=`video`: WebRTC stream.
         # - Webrtc=`false` and StreamingMode=`video`: video stream.
@@ -88,7 +88,7 @@ class ModifyAppPolicyRequestVideoPolicy(DaraModel):
         self.terminal_resolution_adaptive = terminal_resolution_adaptive
         # The visual quality strategy.
         self.visual_quality_strategy = visual_quality_strategy
-        # Specifies whether to enable WebRTC. This parameter is used together with the StreamingMode parameter to specify the protocol type.
+        # Specifies whether to enable WebRTC. Used together with the StreamingMode parameter to specify the protocol type.
         # 
         # - Webrtc=`true` and StreamingMode=`video`: WebRTC stream.
         # - Webrtc=`false` and StreamingMode=`video`: video stream.

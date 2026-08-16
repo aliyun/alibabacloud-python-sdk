@@ -18,7 +18,7 @@ class GetRuntimeChannelResponseBody(DaraModel):
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -74,27 +74,23 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
         risk_type: str = None,
         status: str = None,
     ):
-        # The URL of the channel avatar.
+        # The channel avatar URL.
         self.avatar_url = avatar_url
-        # The channel type. Valid values:
-        # - System: a channel supported by the system.
-        # - Custom: a custom channel.
+        # The channel type.
         self.channel_type = channel_type
         # The channel code.
         self.code = code
         # The channel configuration JSON string.
         # 
-        # Currently, only the simple configuration mode is supported. You must pass the AppKey and AppSecret parameters.
+        # Currently, only the simple configuration mode is supported. You must pass AppKey and AppSecret.
         self.config = config
-        # The configuration mode. Valid values:
-        # - Simple: simple configuration mode.
-        # - Custom: custom configuration mode.
+        # The configuration mode.
         self.config_mode = config_mode
-        # The URL of the QR code configuration notification page. This parameter is returned only for the ENTERPRISE or ENTERPRISE_JVS platform.
+        # The QR code configuration notification page URL (returned only for ENTERPRISE/ENTERPRISE_JVS platforms).
         self.qr_code_notify_url = qr_code_notify_url
-        # The QR code configuration status. This parameter is returned only when the status is not in a final state.
+        # The QR code configuration status (returned only when not in a desired state).
         self.qr_code_status = qr_code_status
-        # The risk type. This parameter is returned only when **includeRiskInfo=true**.
+        # The risk type (returned only when **includeRiskInfo=true**).
         self.risk_type = risk_type
         # The configuration status.
         self.status = status

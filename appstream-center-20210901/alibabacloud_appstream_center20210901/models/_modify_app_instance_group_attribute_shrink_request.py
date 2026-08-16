@@ -31,10 +31,10 @@ class ModifyAppInstanceGroupAttributeShrinkRequest(DaraModel):
         self.network_shrink = network_shrink
         # The resource group object.
         self.node_pool_shrink = node_pool_shrink
-        # Specifies whether to allow only one application per session.
-        # - If enabled, opening multiple applications within a delivery group allocates a separate session for each application, consuming more sessions.
+        # Specifies whether only one application can be opened per session.
+        # - If enabled, opening multiple applications within the delivery group allocates a separate session for each application, consuming more sessions.
         self.per_session_per_app = per_session_per_app
-        # The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
+        # The AppId of the pre-open application. If the `PreOpenMode` parameter is set to `SINGLE_APP`, the `PreOpenAppId` parameter cannot be an empty string.
         self.pre_open_app_id = pre_open_app_id
         # The pre-open mode.
         self.pre_open_mode = pre_open_mode
@@ -44,7 +44,7 @@ class ModifyAppInstanceGroupAttributeShrinkRequest(DaraModel):
         self.product_type = product_type
         # The security policy.
         self.security_policy_shrink = security_policy_shrink
-        # The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+        # The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
         # The storage policy.
         self.storage_policy_shrink = storage_policy_shrink

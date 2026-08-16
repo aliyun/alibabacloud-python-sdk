@@ -14,11 +14,11 @@ class CreateImageByInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the request failed.
+        # The error code returned when the request fails.
         self.code = code
         # The returned object.
         self.data = data
-        # The error message returned if the request failed.
+        # The error message returned when the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -80,7 +80,7 @@ class CreateImageByInstanceResponseBodyData(DaraModel):
     ):
         # The WUYING image ID.
         self.image_id = image_id
-        # The task ID for creating the image.
+        # The ID of the image creation task.
         self.task_id = task_id
         # The image version.
         self.version_id = version_id

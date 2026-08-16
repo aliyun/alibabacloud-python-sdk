@@ -9,7 +9,7 @@ class DeleteImageRequest(DaraModel):
         self,
         image_id: str = None,
     ):
-        # The AppStream image ID.
+        # The WUYING image ID.
         self.image_id = image_id
 
     def validate(self):

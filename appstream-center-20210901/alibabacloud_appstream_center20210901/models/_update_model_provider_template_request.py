@@ -18,7 +18,7 @@ class UpdateModelProviderTemplateRequest(DaraModel):
         self.config = config
         # The description of the model provider template.
         self.description = description
-        # Specifies whether to enable the Wuying security gateway proxy.
+        # Specifies whether to enable the WUYING security gateway proxy.
         self.enable_wuying_proxy = enable_wuying_proxy
         # The name of the model provider template.
         self.name = name
@@ -80,7 +80,7 @@ class UpdateModelProviderTemplateRequestConfig(DaraModel):
         api_type: str = None,
         base_url: str = None,
     ):
-        # The API key of the model service, which is used for authentication. The key is encrypted after it is created.
+        # The API key of the model service, used for authentication. The key is stored in encrypted form after creation.
         self.api_key = api_key
         # The API protocol type.
         self.api_type = api_type

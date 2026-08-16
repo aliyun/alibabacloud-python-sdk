@@ -12,7 +12,9 @@ class AssignWuyingServerPrivateAddressesResponseBody(DaraModel):
         assigned_private_ip_addresses: List[str] = None,
         request_id: str = None,
     ):
+        # The list of assigned secondary private IP addresses.
         self.assigned_private_ip_addresses = assigned_private_ip_addresses
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

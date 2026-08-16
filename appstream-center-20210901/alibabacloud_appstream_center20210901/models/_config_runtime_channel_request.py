@@ -18,9 +18,13 @@ class ConfigRuntimeChannelRequest(DaraModel):
         runtime_ids: List[str] = None,
         runtime_type: str = None,
     ):
-        # The Agent platform (such as ENTERPRISE or JVS).
+        # The Agent platform.
         self.agent_platform = agent_platform
         # The Agent provider.
+        # 
+        # - JVS Computer: set to OpenClaw.
+        # - OpenClaw: set to OpenClaw.
+        # - Hermes Agent: set to HermesAgent.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
@@ -29,6 +33,23 @@ class ConfigRuntimeChannelRequest(DaraModel):
         # This parameter is required.
         self.code = code
         # The channel configuration JSON string.
+        # 
+        # - Simple configuration mode example:
+        # ```json
+        # {
+        #     "appKey": "abc",
+        #     "appSecret": "efg"
+        # }
+        # ```
+        # 
+        # - Custom configuration mode example:
+        # ```json
+        # {
+        #   "enabled": true,
+        #   "clientId": "xxx",
+        #   "clientSecret": "xxx"
+        # }
+        # ```
         # 
         # This parameter is required.
         self.config = config

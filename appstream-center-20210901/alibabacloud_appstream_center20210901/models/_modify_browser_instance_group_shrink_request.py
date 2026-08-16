@@ -24,11 +24,13 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
+        # The maximum resource count. This parameter takes effect for monthly active pay-as-you-go billing.
         self.max_amount = max_amount
         # The network configuration.
         self.network_shrink = network_shrink
         # The access policy.
         self.policy_shrink = policy_shrink
+        # The storage-related policy.
         self.storage_policy_shrink = storage_policy_shrink
         # The timers.
         self.timers_shrink = timers_shrink

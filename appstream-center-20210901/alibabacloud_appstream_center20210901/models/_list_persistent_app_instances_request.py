@@ -21,9 +21,9 @@ class ListPersistentAppInstancesRequest(DaraModel):
         self.app_instance_group_id = app_instance_group_id
         # The list of persistent session IDs.
         self.app_instance_persistent_ids = app_instance_persistent_ids
-        # The page number of the query results to display. Minimum value: **1**. Default value: **1**.
+        # The page number of the query results to display. The value starts from **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of query results per page. Maximum value: **100**. Default value: **20**.
+        # The number of query results per page. The maximum value is **100**. Default value: **20**.
         self.page_size = page_size
         # The product type.
         # 

@@ -13,7 +13,12 @@ class ListWuyingServerRequest(DaraModel):
         biz_region_id: str = None,
         biz_type: int = None,
         charge_type: str = None,
+        create_time_end: str = None,
+        create_time_start: str = None,
+        expired_time_end: str = None,
+        expired_time_start: str = None,
         image_id: str = None,
+        network_interface_ip: str = None,
         office_site_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -24,27 +29,41 @@ class ListWuyingServerRequest(DaraModel):
         virtual_node_pool_id: str = None,
         wuying_server_id_list: List[str] = None,
         wuying_server_name_or_id: str = None,
+        zone_id: str = None,
     ):
         # The list of statuses for joining a virtual node pool.
         self.add_virtual_node_pool_status_list = add_virtual_node_pool_status_list
         # The region ID.
         self.biz_region_id = biz_region_id
+        # The business type.
         self.biz_type = biz_type
         # The billing type.
         self.charge_type = charge_type
+        # The end time of the creation time range, in ISO 8601 format. This time point is exclusive.
+        self.create_time_end = create_time_end
+        # The start time of the creation time range, in ISO 8601 format. This time point is inclusive.
+        self.create_time_start = create_time_start
+        # The end time of the expiration time range, in ISO 8601 format. This time point is exclusive.
+        self.expired_time_end = expired_time_end
+        # The start time of the expiration time range, in ISO 8601 format. This time point is inclusive.
+        self.expired_time_start = expired_time_start
         # The image ID.
         self.image_id = image_id
+        # The internal IP address.
+        self.network_interface_ip = network_interface_ip
         # The office network ID.
         self.office_site_id = office_site_id
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
+        # The product type.
         self.product_type = product_type
         # The workstation instance type.
         self.server_instance_type = server_instance_type
         # The workstation status.
         self.status = status
+        # The list of authorized users.
         self.users = users
         # The virtual node pool ID.
         self.virtual_node_pool_id = virtual_node_pool_id
@@ -52,6 +71,8 @@ class ListWuyingServerRequest(DaraModel):
         self.wuying_server_id_list = wuying_server_id_list
         # The workstation name or workstation ID.
         self.wuying_server_name_or_id = wuying_server_name_or_id
+        # The zone ID.
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -73,8 +94,23 @@ class ListWuyingServerRequest(DaraModel):
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
 
+        if self.create_time_end is not None:
+            result['CreateTimeEnd'] = self.create_time_end
+
+        if self.create_time_start is not None:
+            result['CreateTimeStart'] = self.create_time_start
+
+        if self.expired_time_end is not None:
+            result['ExpiredTimeEnd'] = self.expired_time_end
+
+        if self.expired_time_start is not None:
+            result['ExpiredTimeStart'] = self.expired_time_start
+
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+
+        if self.network_interface_ip is not None:
+            result['NetworkInterfaceIp'] = self.network_interface_ip
 
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
@@ -106,6 +142,9 @@ class ListWuyingServerRequest(DaraModel):
         if self.wuying_server_name_or_id is not None:
             result['WuyingServerNameOrId'] = self.wuying_server_name_or_id
 
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -122,8 +161,23 @@ class ListWuyingServerRequest(DaraModel):
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
 
+        if m.get('CreateTimeEnd') is not None:
+            self.create_time_end = m.get('CreateTimeEnd')
+
+        if m.get('CreateTimeStart') is not None:
+            self.create_time_start = m.get('CreateTimeStart')
+
+        if m.get('ExpiredTimeEnd') is not None:
+            self.expired_time_end = m.get('ExpiredTimeEnd')
+
+        if m.get('ExpiredTimeStart') is not None:
+            self.expired_time_start = m.get('ExpiredTimeStart')
+
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+
+        if m.get('NetworkInterfaceIp') is not None:
+            self.network_interface_ip = m.get('NetworkInterfaceIp')
 
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
@@ -154,6 +208,9 @@ class ListWuyingServerRequest(DaraModel):
 
         if m.get('WuyingServerNameOrId') is not None:
             self.wuying_server_name_or_id = m.get('WuyingServerNameOrId')
+
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
 
         return self
 

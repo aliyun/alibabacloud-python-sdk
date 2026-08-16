@@ -1,3 +1,29 @@
+2026-08-16 Version: 5.6.4
+- Update API CreateModelTemplate: add request parameters RefScope.
+- Update API GetRuntimeModelConfig: add response parameters Body.Data.ModelProviderList.$.LlmInfoList.$.CreditMultiplier.
+- Update API ListLlmTemplates: add request parameters BizType.
+- Update API ListLlmTemplates: add request parameters SmartModel.
+- Update API ListLlmTemplates: add response parameters Body.Data.$.CreditMultiplier.
+- Update API ListLlmTemplates: add response parameters Body.Data.$.Features.
+- Update API ListLlmTemplates: add response parameters Body.Data.$.InferenceMetadata.
+- Update API ListLlmTemplates: add response parameters Body.Data.$.ModelInfo.
+- Update API ListLlmTemplates: add response parameters Body.Data.$.Prices.
+- Update API ListLlmTemplates: add response parameters Body.Data.$.PublishedTime.
+- Update API ListLlmTemplates: add response parameters Body.Data.$.RefScope.
+- Update API ListLlmTemplates: add response parameters Body.Data.$.RoutePolicyCount.
+- Update API ListModelTemplates: add request parameters Name.
+- Update API ListModelTemplates: add request parameters RefScope.
+- Update API ListModelTemplates: add request parameters Source.
+- Update API ListModelTemplates: add response parameters Body.Data.$.ModelCount.
+- Update API ListModelTemplates: add response parameters Body.Data.$.RefScope.
+- Update API ListModelTemplates: add response parameters Body.Data.$.UserCount.
+- Update API ListModelTemplates: add response parameters Body.Data.$.UserGroupCount.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.AppContentProtection.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.AuthorizeAccessPolicyRules.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClientTypes.
+- Update API UpdateModelTemplate: add request parameters RefScope.
+
+
 2026-07-02 Version: 5.6.2
 - Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportType.
 - Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportedRegions.

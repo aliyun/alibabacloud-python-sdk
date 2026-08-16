@@ -33,8 +33,7 @@ class ListImageRequest(DaraModel):
         status: str = None,
         tag_list: List[main_models.ListImageRequestTagList] = None,
     ):
-        # The list of supported regions.
-        # WUYING images are centralized. Use this parameter to query the regions where the image is deployed.
+        # The list of supported regions. WUYING images are centralized. Use this parameter to query the regions where the image is deployed.
         self.biz_region_id_list = biz_region_id_list
         # The business type. This parameter is not publicly available.
         self.biz_type = biz_type
@@ -57,7 +56,7 @@ class ListImageRequest(DaraModel):
         self.os_type = os_type
         # The image package type.
         self.package_type = package_type
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page for paging queries. Maximum value: 100. Default value: 10.
         self.page_size = page_size
@@ -238,9 +237,9 @@ class ListImageRequestTagList(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The custom tag key.
+        # The user-defined tag key.
         self.key = key
-        # The custom tag value.
+        # The user-defined tag value.
         self.value = value
 
     def validate(self):

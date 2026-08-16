@@ -64,9 +64,9 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
         self.model_template_id = model_template_id
         # The model group name.
         self.model_template_name = model_template_name
-        # The model template association type (returned only when an association exists).
+        # The model template association type (returned only when present).
         self.model_template_ref_type = model_template_ref_type
-        # The resource group ID to which the runtime belongs. The value is null if the runtime is not associated with a resource group.
+        # The resource group ID to which the runtime belongs (null if not assigned to a resource group).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -193,6 +193,7 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderList(DaraModel):
 class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList(DaraModel):
     def __init__(
         self,
+        credit_multiplier: main_models.GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier = None,
         description: str = None,
         features: List[str] = None,
         inference_metadata: main_models.GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata = None,
@@ -201,22 +202,26 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList(DaraMode
         published_time: str = None,
         risk_type: str = None,
     ):
+        # The credit consumption multiplier. An empty value indicates the model does not participate in credit-based billing.
+        self.credit_multiplier = credit_multiplier
         # The model description.
         self.description = description
-        # The list of model features, such as function-calling, web-search, and structured-outputs.
+        # The list of model features (such as function-calling, web-search, and structured-outputs).
         self.features = features
-        # The inference metadata, including request and response modalities.
+        # The inference metadata (request and response modalities).
         self.inference_metadata = inference_metadata
         # The model code.
         self.llm_code = llm_code
         # The model name.
         self.name = name
-        # The publish time in ISO 8601 format.
+        # The publish time (ISO 8601 format).
         self.published_time = published_time
-        # The model risk type. This parameter is returned only when the request parameter IncludeRiskInfo is set to true.
+        # The model risk type (returned only when the request parameter IncludeRiskInfo is set to true).
         self.risk_type = risk_type
 
     def validate(self):
+        if self.credit_multiplier:
+            self.credit_multiplier.validate()
         if self.inference_metadata:
             self.inference_metadata.validate()
 
@@ -225,6 +230,9 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList(DaraMode
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.credit_multiplier is not None:
+            result['CreditMultiplier'] = self.credit_multiplier.to_map()
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -250,6 +258,10 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList(DaraMode
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreditMultiplier') is not None:
+            temp_model = main_models.GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier()
+            self.credit_multiplier = temp_model.from_map(m.get('CreditMultiplier'))
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
@@ -280,9 +292,9 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInference
         request_modality: List[str] = None,
         response_modality: List[str] = None,
     ):
-        # The list of request modalities, such as Text, Image, and Audio.
+        # The list of request modalities (such as Text, Image, and Audio).
         self.request_modality = request_modality
-        # The list of response modalities, such as Text, Image, and Audio.
+        # The list of response modalities (such as Text, Image, and Audio).
         self.response_modality = response_modality
 
     def validate(self):
@@ -308,6 +320,43 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInference
 
         if m.get('ResponseModality') is not None:
             self.response_modality = m.get('ResponseModality')
+
+        return self
+
+class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier(DaraModel):
+    def __init__(
+        self,
+        max: float = None,
+        min: float = None,
+    ):
+        # The maximum multiplier. An empty value indicates no upper limit. For example, Min=1 with an empty Max is displayed as 1x and above.
+        self.max = max
+        # The minimum multiplier. When equal to Max, it is a fixed multiplier. For example, Min=Max=2 is displayed as 2x.
+        self.min = min
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.max is not None:
+            result['Max'] = self.max
+
+        if self.min is not None:
+            result['Min'] = self.min
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Max') is not None:
+            self.max = m.get('Max')
+
+        if m.get('Min') is not None:
+            self.min = m.get('Min')
 
         return self
 

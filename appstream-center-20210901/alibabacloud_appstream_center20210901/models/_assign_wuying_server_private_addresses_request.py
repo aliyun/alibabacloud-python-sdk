@@ -10,8 +10,12 @@ class AssignWuyingServerPrivateAddressesRequest(DaraModel):
         secondary_private_ip_address_count: int = None,
         wuying_server_id: str = None,
     ):
+        # The number of secondary private IP addresses to assign. Valid values: 1 to 50.
+        # 
         # This parameter is required.
         self.secondary_private_ip_address_count = secondary_private_ip_address_count
+        # The ID of the development host.
+        # 
         # This parameter is required.
         self.wuying_server_id = wuying_server_id
 

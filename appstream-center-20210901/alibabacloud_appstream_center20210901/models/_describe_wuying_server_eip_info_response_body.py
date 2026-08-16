@@ -11,7 +11,7 @@ class DescribeWuyingServerEipInfoResponseBody(DaraModel):
         eip_info_model: main_models.DescribeWuyingServerEipInfoResponseBodyEipInfoModel = None,
         request_id: str = None,
     ):
-        # The EIP information.
+        # The Elastic IP Address (EIP) information.
         self.eip_info_model = eip_info_model
         # Id of the request
         self.request_id = request_id

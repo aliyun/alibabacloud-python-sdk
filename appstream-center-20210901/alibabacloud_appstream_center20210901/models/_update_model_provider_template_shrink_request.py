@@ -17,7 +17,7 @@ class UpdateModelProviderTemplateShrinkRequest(DaraModel):
         self.config_shrink = config_shrink
         # The description of the model provider template.
         self.description = description
-        # Specifies whether to enable the Wuying security gateway proxy.
+        # Specifies whether to enable the WUYING security gateway proxy.
         self.enable_wuying_proxy = enable_wuying_proxy
         # The name of the model provider template.
         self.name = name

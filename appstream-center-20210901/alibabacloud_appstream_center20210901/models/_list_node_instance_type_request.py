@@ -8,6 +8,7 @@ class ListNodeInstanceTypeRequest(DaraModel):
     def __init__(
         self,
         biz_region_id: str = None,
+        charge_type: str = None,
         cpu: float = None,
         gpu: float = None,
         gpu_memory: int = None,
@@ -26,22 +27,23 @@ class ListNodeInstanceTypeRequest(DaraModel):
     ):
         # The region ID of the resource. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.biz_region_id = biz_region_id
+        self.charge_type = charge_type
         # The number of CPU cores.
         self.cpu = cpu
         # The number of GPUs.
         self.gpu = gpu
-        # The GPU memory size. This parameter is meaningful only for GPU-accelerated cloud desktops. Unit: MB.
+        # The GPU memory size. This parameter is meaningful for GPU-accelerated cloud desktops. Unit: MB.
         self.gpu_memory = gpu_memory
         self.instance_type_for_modify = instance_type_for_modify
         # The language type.
         self.language = language
         # The memory size. Unit: MB.
         self.memory = memory
-        # The resource specification type to query. If you leave this parameter empty, all specification types are returned.
+        # The resource specification type to query. If this parameter is not specified, all specification types are returned.
         self.node_instance_type = node_instance_type
         # The instance family.
         self.node_instance_type_family = node_instance_type_family
-        # CPU/Memory.
+        # CPU/Memory
         self.order_by = order_by
         self.order_type = order_type
         # The supported operating system type.
@@ -58,7 +60,7 @@ class ListNodeInstanceTypeRequest(DaraModel):
         # 
         # This parameter is required.
         self.product_type = product_type
-        # DESC/ASC.
+        # DESC/ASC
         self.sort_type = sort_type
 
     def validate(self):
@@ -71,6 +73,9 @@ class ListNodeInstanceTypeRequest(DaraModel):
             result = _map
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
 
         if self.cpu is not None:
             result['Cpu'] = self.cpu
@@ -123,6 +128,9 @@ class ListNodeInstanceTypeRequest(DaraModel):
         m = m or dict()
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
 
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')

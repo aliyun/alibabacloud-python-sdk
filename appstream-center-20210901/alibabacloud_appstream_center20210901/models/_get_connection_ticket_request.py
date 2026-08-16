@@ -23,7 +23,9 @@ class GetConnectionTicketRequest(DaraModel):
         product_type: str = None,
         task_id: str = None,
     ):
-        # The access type. If you do not specify this parameter, both types are displayed. Valid values:
+        # The access type. If you do not specify this parameter, both types are displayed.
+        # 
+        # Valid values:
         # - INTERNET: Internet access.
         # - VPC: Express Connect access.
         self.access_type = access_type
@@ -45,7 +47,7 @@ class GetConnectionTicketRequest(DaraModel):
         # The persistent session ID.
         self.app_instance_persistent_id = app_instance_persistent_id
         self.app_policy_id = app_policy_id
-        # The application startup parameter. For information about how to obtain startup parameters, see [How to obtain application installation and startup parameters](https://help.aliyun.com/document_detail/426045.html).
+        # The application startup parameter. For information about how to obtain startup parameters, see [How to obtain application installation parameters and startup parameters](https://help.aliyun.com/document_detail/426045.html).
         self.app_start_param = app_start_param
         # The application version. If you specify this parameter, only the specified version of the application is opened. If you do not specify this parameter, any authorized version of the application is opened.
         self.app_version = app_version
@@ -65,7 +67,7 @@ class GetConnectionTicketRequest(DaraModel):
         self.product_type = product_type
         # The task ID.
         # 
-        # > This request parameter is required for non-initial invokes. Use this parameter to check the task status and connection credentials.
+        # > This parameter is required for non-initial calls. Use this parameter to query the task status and connection credentials.
         self.task_id = task_id
 
     def validate(self):

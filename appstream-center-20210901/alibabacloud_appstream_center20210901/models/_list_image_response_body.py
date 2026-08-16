@@ -192,35 +192,35 @@ class ListImageResponseBodyData(DaraModel):
         # The image creation type.
         self.image_create_mode = image_create_mode
         self.image_icon_url = image_icon_url
-        # The image ID. System image IDs are meaningful, while custom image IDs are automatically generated.
+        # The image ID. System image IDs are meaningful, while custom image IDs are auto-generated.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The effective region information for overlay layers.
+        # The overlay effective region information.
         self.image_region_distribute_list = image_region_distribute_list
         # The regions.
         self.image_region_list = image_region_list
         # The image type.
         self.image_type = image_type
-        # The image language. If the package type is VHD or Container, this property is inherited from the ECS-packaged image in the image combination.
+        # The image language. If the package type is VHD/Container, this property is inherited from the ECS package type image in the image combination.
         self.language = language
         # The latest sub-version of the image. An image consists of multiple sub-versions.
         self.latest_version_id = latest_version_id
         # Indicates whether the current version is the active version.
         self.online_version = online_version
-        # The sub-version from which the current image reads the primary image information. An image consists of multiple sub-versions.
+        # The sub-version from which the current image reads the main image information. An image consists of multiple sub-versions.
         self.online_version_id = online_version_id
         # The image type.
         self.os_type = os_type
         # The image package type.
         self.package_type = package_type
-        # The parent image ID. This parameter indicates only the inheritance relationship. System images do not have a parent image.
+        # The parent image ID. This only indicates the inheritance relationship. System images have no parent image.
         self.parent_image_id = parent_image_id
         # The parent image version.
         self.parent_image_version = parent_image_version
-        # The operating system platform of the image.
+        # The image operating system platform.
         # 
-        # > If the package type is VHD or Container, this property is inherited from the ECS-packaged image in the image combination.
+        # > If the package type is VHD/Container, this property is inherited from the ECS package type image in the image combination.
         self.platform = platform
         # The system platform name.
         self.platform_name = platform_name
@@ -248,9 +248,9 @@ class ListImageResponseBodyData(DaraModel):
         self.version_id = version_id
         # The version name.
         self.version_name = version_name
-        # Indicates whether cloud disk encryption is enabled.
+        # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The KMS key ID used when cloud disk encryption is enabled.
+        # The KMS key ID used when disk encryption is enabled.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -709,7 +709,7 @@ class ListImageResponseBodyDataImageRegionDistributeList(DaraModel):
         status: str = None,
         version_id: str = None,
     ):
-        # The image ID. System image IDs are meaningful, while custom image IDs are automatically generated.
+        # The image ID. System image IDs are meaningful, while custom image IDs are auto-generated.
         self.image_id = image_id
         # The progress percentage.
         self.progress = progress

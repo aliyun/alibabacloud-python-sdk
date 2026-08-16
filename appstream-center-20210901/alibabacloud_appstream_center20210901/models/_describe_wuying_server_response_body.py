@@ -13,7 +13,9 @@ class DescribeWuyingServerResponseBody(DaraModel):
         data: main_models.DescribeWuyingServerResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the development workstation.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -67,24 +69,43 @@ class DescribeWuyingServerResponseBodyData(DaraModel):
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
+        # The bandwidth. Unit: Mbit/s.
         self.bandwidth = bandwidth
+        # The region ID.
         self.biz_region_id = biz_region_id
+        # The billing type.
         self.charge_type = charge_type
+        # The time when the workstation was created.
         self.create_time = create_time
+        # The maximum number of private IP addresses per ENI, including the primary IP address.
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
+        # The time when the workstation expires.
         self.expired_time = expired_time
+        # The image ID.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # The internal IP address.
         self.network_interface_ip = network_interface_ip
+        # The workspace ID.
         self.office_site_id = office_site_id
+        # The workspace name.
         self.office_site_name = office_site_name
+        # The workspace type.
         self.office_site_type = office_site_type
+        # The operating system type.
         self.os_type = os_type
+        # The set of private IP addresses, including the primary and secondary IP addresses.
         self.private_ip_sets = private_ip_sets
+        # The status of the development workstation.
         self.status = status
+        # The type of the system cloud disk.
         self.system_disk_category = system_disk_category
+        # The size of the system cloud disk. Unit: GB.
         self.system_disk_size = system_disk_size
+        # The ID of the development workstation.
         self.wuying_server_id = wuying_server_id
+        # The name of the development workstation.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -229,7 +250,11 @@ class DescribeWuyingServerResponseBodyDataPrivateIpSets(DaraModel):
         primary: bool = None,
         private_ip_address: str = None,
     ):
+        # Indicates whether the IP address is the primary private IP address. Valid values:
+        # - true: The IP address is the primary private IP address.
+        # - false: The IP address is a secondary private IP address.
         self.primary = primary
+        # The private IP address.
         self.private_ip_address = private_ip_address
 
     def validate(self):

@@ -18,11 +18,11 @@ class ListWuyingServerResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
         # The list of workstation information.
         self.wuying_server_list = wuying_server_list
@@ -121,10 +121,13 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         vk_version: str = None,
         wuying_server_id: str = None,
         wuying_server_name: str = None,
+        zone_id: str = None,
     ):
-        # The status of joining a virtual node pool.
+        # The status of adding to the virtual node pool.
         self.add_virtual_node_pool_status = add_virtual_node_pool_status
+        # The tenant UID.
         self.ali_uid = ali_uid
+        # The bandwidth size. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The region.
         self.biz_region_id = biz_region_id
@@ -134,16 +137,19 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         self.create_time = create_time
         # The list of data cloud disks.
         self.data_disk = data_disk
+        # The maximum number of private IP addresses per ENI, including the primary IP address.
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
         # The expiration time.
         self.expired_time = expired_time
+        # The FOTA version number.
         self.fota_version = fota_version
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The list of workstation instance information.
+        # The list of workspace instance information.
         self.instance_info_list = instance_info_list
+        # The maximum price of the spot instance.
         self.max_price = max_price
         # The internal IP address.
         self.network_interface_ip = network_interface_ip
@@ -155,35 +161,48 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         self.office_site_type = office_site_type
         # The operating system type.
         self.os_type = os_type
+        # The list of policy group IDs.
         self.policy_group_id_list = policy_group_id_list
+        # The set of private IP addresses, including the primary IP address and secondary IP addresses.
         self.private_ip_sets = private_ip_sets
+        # The resource session status.
         self.resource_session_status = resource_session_status
         # The list of security group IDs.
         self.security_group_ids = security_group_ids
         # The instance type information.
         self.server_instance_type_info = server_instance_type_info
+        # The list of sessions.
         self.sessions = sessions
         # The workstation status.
         self.status = status
+        # The sub-payment type.
         self.sub_pay_type = sub_pay_type
         # The system cloud disk type.
         self.system_disk_category = system_disk_category
+        # The ID of the system cloud disk.
         self.system_disk_id = system_disk_id
-        # The performance level of the system cloud disk.
+        # The system cloud disk performance level.
         self.system_disk_performance_level = system_disk_performance_level
         # The system cloud disk size. Unit: GB.
         self.system_disk_size = system_disk_size
+        # The ID of the timer group.
         self.timer_group_id = timer_group_id
+        # The list of authorized users.
         self.users = users
+        # The IP address of the Virtual Kubelet node.
         self.virtual_kubelet_ip = virtual_kubelet_ip
         # The virtual node pool ID.
         self.virtual_node_pool_id = virtual_node_pool_id
+        # Indicates whether the Virtual Kubelet needs to be upgraded.
         self.vk_upgrade_needed = vk_upgrade_needed
+        # The Virtual Kubelet version.
         self.vk_version = vk_version
         # The workstation ID.
         self.wuying_server_id = wuying_server_id
         # The workstation name.
         self.wuying_server_name = wuying_server_name
+        # The zone ID.
+        self.zone_id = zone_id
 
     def validate(self):
         if self.data_disk:
@@ -335,6 +354,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         if self.wuying_server_name is not None:
             result['WuyingServerName'] = self.wuying_server_name
 
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -469,6 +491,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         if m.get('WuyingServerName') is not None:
             self.wuying_server_name = m.get('WuyingServerName')
 
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+
         return self
 
 class ListWuyingServerResponseBodyWuyingServerListSessions(DaraModel):
@@ -477,7 +502,9 @@ class ListWuyingServerResponseBodyWuyingServerListSessions(DaraModel):
         resource_session_start_time: str = None,
         user_id: str = None,
     ):
+        # The start time of the session.
         self.resource_session_start_time = resource_session_start_time
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -522,6 +549,7 @@ class ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo(DaraMod
         self.gpu = gpu
         # The GPU memory size. Unit: MB.
         self.gpu_memory = gpu_memory
+        # The GPU specification description.
         self.gpu_spec = gpu_spec
         # The memory size. Unit: MB.
         self.memory = memory
@@ -584,7 +612,9 @@ class ListWuyingServerResponseBodyWuyingServerListPrivateIpSets(DaraModel):
         primary: bool = None,
         private_ip_address: str = None,
     ):
+        # Indicates whether the IP address is the primary private IP address. A value of true indicates the primary private IP address. A value of false indicates a secondary private IP address.
         self.primary = primary
+        # The private IP address.
         self.private_ip_address = private_ip_address
 
     def validate(self):
@@ -621,7 +651,7 @@ class ListWuyingServerResponseBodyWuyingServerListInstanceInfoList(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The network interface controller (NIC) ID.
+        # The ID of the network interface controller (NIC).
         self.network_interface_id = network_interface_id
 
     def validate(self):
@@ -661,9 +691,11 @@ class ListWuyingServerResponseBodyWuyingServerListDataDisk(DaraModel):
     ):
         # The data cloud disk type.
         self.data_disk_category = data_disk_category
+        # The data cloud disk ID.
         self.data_disk_id = data_disk_id
+        # The data cloud disk sequence number.
         self.data_disk_no = data_disk_no
-        # The performance level of the data cloud disk.
+        # The data cloud disk performance level.
         self.data_disk_performance_level = data_disk_performance_level
         # The data cloud disk size. Unit: GB.
         self.data_disk_size = data_disk_size

@@ -101,16 +101,16 @@ class ListAppInstancesResponseBodyAppInstanceModels(DaraModel):
         self.app_instance_id = app_instance_id
         # The binding information between the instance and the user.
         self.bind_info = bind_info
-        # The billing method of the instance. Valid values:
-        # - **PrePaid**: subscription.
-        # - **PostPaid**: pay-as-you-go.
+        # The billing type of the instance. Valid values:
+        # - **PrePaid**: subscription (prepaid).
+        # - **PostPaid**: pay-as-you-go (postpaid).
         # > This parameter is returned only when the billing mode of the delivery group to which this instance belongs is resource-based billing (ChargeResourceMode=Node).
         self.charge_type = charge_type
         # The creation time.
         self.gmt_create = gmt_create
         # The update time.
         self.gmt_modified = gmt_modified
-        # The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to the mixed pattern (`Mixed`). Otherwise, this value is empty.
+        # The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to mixed mode pattern (`Mixed`). Otherwise, this value is empty.
         self.main_eth_public_ip = main_eth_public_ip
         self.network_interface_id = network_interface_id
         self.network_interface_ip = network_interface_ip

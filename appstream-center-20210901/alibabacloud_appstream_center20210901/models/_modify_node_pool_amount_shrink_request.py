@@ -15,7 +15,7 @@ class ModifyNodePoolAmountShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The node pool specification change parameters.
+        # The parameters for node pool specification changes.
         # 
         # This parameter is required.
         self.node_pool_shrink = node_pool_shrink

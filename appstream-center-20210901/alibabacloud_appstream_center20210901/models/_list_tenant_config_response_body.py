@@ -53,10 +53,7 @@ class ListTenantConfigResponseBodyTenantConfigModel(DaraModel):
         multi_session_support_type: str = None,
         multi_session_supported_regions: List[str] = None,
     ):
-        # Indicates whether resource expiration reminders are enabled. Valid values:
-        # 
-        # - true: Enabled.
-        # - false: Not enabled.
+        # Indicates whether resource expiration reminders are enabled.
         self.app_instance_group_expire_remind = app_instance_group_expire_remind
         self.multi_session_support_type = multi_session_support_type
         self.multi_session_supported_regions = multi_session_supported_regions

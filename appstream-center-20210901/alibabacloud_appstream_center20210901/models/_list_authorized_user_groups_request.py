@@ -14,19 +14,19 @@ class ListAuthorizedUserGroupsRequest(DaraModel):
         page_size: int = None,
         product_type: str = None,
     ):
-        # The delivery group ID.
+        # The ID of the delivery group.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The user group ID. This parameter is used for exact match.
+        # The ID of the user group. This parameter is used for exact match.
         self.group_id = group_id
-        # The user group name. This parameter is used for fuzzy match.
+        # The name of the user group. This parameter is used for fuzzy match.
         self.group_name = group_name
         # The page number, starting from 1.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The maximum number of entries per page.
+        # The maximum number of entries to return per page.
         # 
         # This parameter is required.
         self.page_size = page_size

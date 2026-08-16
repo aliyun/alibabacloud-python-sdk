@@ -18,7 +18,7 @@ class ModifyNodePoolAmountRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The node pool specification change parameters.
+        # The parameters for node pool specification changes.
         # 
         # This parameter is required.
         self.node_pool = node_pool
@@ -72,9 +72,9 @@ class ModifyNodePoolAmountRequestNodePool(DaraModel):
         # 
         # This parameter is required.
         self.node_amount = node_amount
-        # The modification mode for subscription nodes.
+        # The subscription node modification mode.
         self.pre_paid_node_amount_modify_mode = pre_paid_node_amount_modify_mode
-        # The list of nodes whose billing type is to be changed.
+        # The list of nodes whose billing type is to be modified.
         self.pre_paid_node_amount_modify_node_ids = pre_paid_node_amount_modify_node_ids
 
     def validate(self):

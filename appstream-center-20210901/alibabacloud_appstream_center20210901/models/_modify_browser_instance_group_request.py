@@ -27,11 +27,13 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
+        # The maximum resource count. This parameter takes effect for monthly active pay-as-you-go billing.
         self.max_amount = max_amount
         # The network configuration.
         self.network = network
         # The access policy.
         self.policy = policy
+        # The storage-related policy.
         self.storage_policy = storage_policy
         # The timers.
         self.timers = timers
@@ -160,6 +162,7 @@ class ModifyBrowserInstanceGroupRequestStoragePolicy(DaraModel):
         self,
         user_profile: main_models.ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile = None,
     ):
+        # The user roaming policy.
         self.user_profile = user_profile
 
     def validate(self):
@@ -189,6 +192,7 @@ class ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile(DaraModel):
         self,
         user_profile_switch: bool = None,
     ):
+        # Specifies whether to enable user roaming.
         self.user_profile_switch = user_profile_switch
 
     def validate(self):
@@ -214,6 +218,9 @@ class ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile(DaraModel):
 class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
     def __init__(
         self,
+        app_content_protection: str = None,
+        authorize_access_policy_rules: List[main_models.ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules] = None,
+        client_types: List[main_models.ModifyBrowserInstanceGroupRequestPolicyClientTypes] = None,
         clipboard_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy = None,
         disconnect_keep_session: str = None,
         disconnect_keep_session_time: int = None,
@@ -226,18 +233,25 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         video_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyVideoPolicy = None,
         watermark_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy = None,
     ):
-        # The clipboard policy settings.
+        # Specifies whether to enable screenshot protection.
+        self.app_content_protection = app_content_protection
+        # The server-side access IP address whitelist.
+        self.authorize_access_policy_rules = authorize_access_policy_rules
+        # The logon client type control settings.
+        self.client_types = client_types
+        # The clipboard-related policy.
         self.clipboard_policy = clipboard_policy
-        # The data retention policy for sessions after disconnection.
+        # The data retention policy upon disconnection.
         self.disconnect_keep_session = disconnect_keep_session
-        # The session retention duration after disconnection.
+        # The session retention duration upon disconnection.
         self.disconnect_keep_session_time = disconnect_keep_session_time
+        # Specifies whether to enable the floating ball file manager.
         self.file_manager = file_manager
         # The file transfer policy for the web client.
         self.html_5file_transfer = html_5file_transfer
-        # The policy for disconnecting sessions after no operation.
+        # The policy for disconnecting sessions when no operation is performed.
         self.no_operation_disconnect = no_operation_disconnect
-        # The idle timeout period before disconnection, in seconds.
+        # The time in seconds before a session is disconnected when no operation is performed.
         self.no_operation_disconnect_time = no_operation_disconnect_time
         # The policy ID.
         self.policy_id = policy_id
@@ -249,6 +263,14 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         self.watermark_policy = watermark_policy
 
     def validate(self):
+        if self.authorize_access_policy_rules:
+            for v1 in self.authorize_access_policy_rules:
+                 if v1:
+                    v1.validate()
+        if self.client_types:
+            for v1 in self.client_types:
+                 if v1:
+                    v1.validate()
         if self.clipboard_policy:
             self.clipboard_policy.validate()
         if self.video_policy:
@@ -261,6 +283,19 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_content_protection is not None:
+            result['AppContentProtection'] = self.app_content_protection
+
+        result['AuthorizeAccessPolicyRules'] = []
+        if self.authorize_access_policy_rules is not None:
+            for k1 in self.authorize_access_policy_rules:
+                result['AuthorizeAccessPolicyRules'].append(k1.to_map() if k1 else None)
+
+        result['ClientTypes'] = []
+        if self.client_types is not None:
+            for k1 in self.client_types:
+                result['ClientTypes'].append(k1.to_map() if k1 else None)
+
         if self.clipboard_policy is not None:
             result['ClipboardPolicy'] = self.clipboard_policy.to_map()
 
@@ -298,6 +333,21 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppContentProtection') is not None:
+            self.app_content_protection = m.get('AppContentProtection')
+
+        self.authorize_access_policy_rules = []
+        if m.get('AuthorizeAccessPolicyRules') is not None:
+            for k1 in m.get('AuthorizeAccessPolicyRules'):
+                temp_model = main_models.ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules()
+                self.authorize_access_policy_rules.append(temp_model.from_map(k1))
+
+        self.client_types = []
+        if m.get('ClientTypes') is not None:
+            for k1 in m.get('ClientTypes'):
+                temp_model = main_models.ModifyBrowserInstanceGroupRequestPolicyClientTypes()
+                self.client_types.append(temp_model.from_map(k1))
+
         if m.get('ClipboardPolicy') is not None:
             temp_model = main_models.ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy()
             self.clipboard_policy = temp_model.from_map(m.get('ClipboardPolicy'))
@@ -342,7 +392,7 @@ class ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy(DaraModel):
         watermark_switch: str = None,
         watermark_types: List[str] = None,
     ):
-        # Specifies whether to enable the watermark.
+        # The watermark switch.
         self.watermark_switch = watermark_switch
         # The list of watermark types.
         self.watermark_types = watermark_types
@@ -425,28 +475,39 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
     ):
         # The clipboard policy.
         self.clipboard = clipboard
-        # The maximum length for clipboard read operations.
+        # The clipboard read length limit.
         self.clipboard_read_limit = clipboard_read_limit
         # The clipboard control scope.
         self.clipboard_scope = clipboard_scope
+        # The clipboard size unit.
         self.clipboard_size_unit = clipboard_size_unit
-        # The maximum length for clipboard write operations.
+        # The clipboard write length limit.
         self.clipboard_write_limit = clipboard_write_limit
         # The file clipboard policy.
         self.file_clipboard = file_clipboard
         # The rich text clipboard policy.
         self.rich_text_clipboard = rich_text_clipboard
+        # The rich text clipboard limit.
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
+        # The maximum size of rich text that can be downloaded from the cloud via the clipboard.
         self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
+        # The size unit for rich text clipboard downloads from the cloud.
         self.rich_text_clipboard_read_size_unit = rich_text_clipboard_read_size_unit
+        # The rich text clipboard size unit.
         self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
+        # The maximum size of rich text that can be uploaded to the cloud via the clipboard.
         self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
+        # The size unit for rich text clipboard uploads to the cloud.
         self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
         # The text clipboard policy.
         self.text_clipboard = text_clipboard
+        # The maximum size of text that can be downloaded from the cloud via the clipboard.
         self.text_clipboard_read_limit = text_clipboard_read_limit
+        # The size unit for text clipboard downloads from the cloud.
         self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
+        # The maximum size of text that can be uploaded to the cloud via the clipboard.
         self.text_clipboard_write_limit = text_clipboard_write_limit
+        # The size unit for text clipboard uploads to the cloud.
         self.text_clipboard_write_size_unit = text_clipboard_write_size_unit
 
     def validate(self):
@@ -571,6 +632,76 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
 
         return self
 
+class ModifyBrowserInstanceGroupRequestPolicyClientTypes(DaraModel):
+    def __init__(
+        self,
+        client_type: str = None,
+        status: str = None,
+    ):
+        self.client_type = client_type
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        return self
+
+class ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules(DaraModel):
+    def __init__(
+        self,
+        cidr_ip: str = None,
+        description: str = None,
+    ):
+        self.cidr_ip = cidr_ip
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cidr_ip is not None:
+            result['CidrIp'] = self.cidr_ip
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrIp') is not None:
+            self.cidr_ip = m.get('CidrIp')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        return self
+
 class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
     def __init__(
         self,
@@ -585,6 +716,7 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
         self.remove_restricted_urlids = remove_restricted_urlids
         # The restricted domain name configurations.
         self.restricted_urls = restricted_urls
+        # The file path of the restricted URLs.
         self.restricted_urls_file_path = restricted_urls_file_path
 
     def validate(self):
@@ -639,7 +771,7 @@ class ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs(DaraModel):
         restricted_urlid: str = None,
         url: str = None,
     ):
-        # The ID of the domain name configuration. This parameter is required only for modification.
+        # The domain name configuration ID. This parameter is required only for modification.
         self.restricted_urlid = restricted_urlid
         # The domain name.
         self.url = url
@@ -682,9 +814,11 @@ class ModifyBrowserInstanceGroupRequestBrowserConfig(DaraModel):
     ):
         # The bookmarks.
         self.bookmarks = bookmarks
+        # The file path of the bookmark list.
         self.bookmarks_file_path = bookmarks_file_path
         # The startup parameters.
         self.browser_param = browser_param
+        # Specifies whether to enable cookies synchronization.
         self.cookies_sync = cookies_sync
         # The homepage.
         self.homepage = homepage
@@ -759,7 +893,7 @@ class ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks(DaraModel):
     ):
         # The folder to which the bookmark belongs.
         self.bookmark_folder = bookmark_folder
-        # The bookmark ID. This parameter is required only for modification.
+        # The bookmark ID. This parameter is required only for modification scenarios.
         self.bookmark_id = bookmark_id
         # The bookmark name.
         # 

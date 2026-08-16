@@ -11,9 +11,9 @@ class CreateModelProviderTemplateResponseBody(DaraModel):
         data: main_models.CreateModelProviderTemplateResponseBodyData = None,
         request_id: str = None,
     ):
-        # Returned result object.
+        # The returned result object.
         self.data = data
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class CreateModelProviderTemplateResponseBodyData(DaraModel):
         self,
         provider_template_id: str = None,
     ):
-        # Model provider template ID.
+        # The ID of the model provider template.
         self.provider_template_id = provider_template_id
 
     def validate(self):

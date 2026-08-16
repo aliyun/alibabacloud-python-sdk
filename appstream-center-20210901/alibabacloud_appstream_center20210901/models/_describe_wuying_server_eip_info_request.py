@@ -10,7 +10,7 @@ class DescribeWuyingServerEipInfoRequest(DaraModel):
         isp: str = None,
         wuying_server_id: str = None,
     ):
-        # The Internet service operation provider (ISP). Valid values: 
+        # The Internet service operation provider. Valid values: 
         # - ChinaMobile: Shift.
         # - ChinaTelecom: China Telecom.
         # - ChinaUnicom: China Unicom.

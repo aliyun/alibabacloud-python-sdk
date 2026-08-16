@@ -32,7 +32,7 @@ class ListModelProviderTemplatesShrinkRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The name of the model provider to filter by.
+        # The model provider name to filter by.
         self.provider_name = provider_name
         # The model provider template IDs to filter by.
         self.provider_template_ids_shrink = provider_template_ids_shrink

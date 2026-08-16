@@ -142,13 +142,13 @@ class GetResourceRenewPriceResponseBodyDataPrice(DaraModel):
     ):
         # The currency.
         self.currency = currency
-        # The discount amount. The actual price is calculated by subtracting the discount amount from the original price.
+        # The discount amount. The actual price equals the original price minus the discount amount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
         # The coupon descriptions.
         self.promotions = promotions
-        # The actual price. The actual price is calculated by subtracting the discount amount from the original price.
+        # The actual price. The actual price equals the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):
