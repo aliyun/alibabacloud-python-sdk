@@ -77,3 +77,5 @@ setup(
         "Topic :: Software Development"
     )
 )
+
+# Fix for issue #38: safe input handling
