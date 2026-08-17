@@ -12,11 +12,11 @@ class ListJobExecutorsRequest(DaraModel):
         page_size: int = None,
         task_name: str = None,
     ):
-        # The ID of the job.
+        # The job ID.
         self.job_id = job_id
-        # The page number of the page to return.
+        # The page number for the paged query.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The job name.
         self.task_name = task_name

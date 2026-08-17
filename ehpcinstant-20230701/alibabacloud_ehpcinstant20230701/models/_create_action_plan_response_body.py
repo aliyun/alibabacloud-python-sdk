@@ -10,7 +10,7 @@ class CreateActionPlanResponseBody(DaraModel):
         action_plan_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the execution plan.
+        # The execution plan ID.
         self.action_plan_id = action_plan_id
         # The request ID.
         self.request_id = request_id

@@ -9,6 +9,8 @@ class UpdateJobRecordDurationRequest(DaraModel):
         self,
         job_record_duration: int = None,
     ):
+        # The job record duration, in days. The value must be an integer from 1 to 30. Default value: 30.
+        # 
         # This parameter is required.
         self.job_record_duration = job_record_duration
 

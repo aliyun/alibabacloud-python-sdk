@@ -18,7 +18,7 @@ class CreateJobResponseBody(DaraModel):
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
-        # The list of tasks.
+        # The task list.
         self.tasks = tasks
 
     def validate(self):
@@ -69,7 +69,7 @@ class CreateJobResponseBodyTasks(DaraModel):
     ):
         # The list of executor IDs contained in the task.
         self.executor_ids = executor_ids
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

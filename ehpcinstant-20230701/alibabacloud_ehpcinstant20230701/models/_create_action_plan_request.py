@@ -24,36 +24,40 @@ class CreateActionPlanRequest(DaraModel):
     ):
         # The name of the execution plan.
         self.action_plan_name = action_plan_name
-        # The type of the resource.
+        # The resource type.
         # 
-        # *   Standard
-        # *   Dedicated: You must enable a whitelist for use.
-        # *   Economic: You must enable a whitelist for use.
+        # - Standard: Standard.
+        # 
+        # - Dedicated: Dedicated. This type is available only to users in the whitelist.
+        # 
+        # - Economic: Economy. This type is available only to users in the whitelist.
         self.allocation_spec = allocation_spec
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
+        # The desired size of the resource for the execution plan. For example, if you set ResourceType to VcpuCapacity, this parameter specifies the number of vCPUs that you want to maintain for the execution plan.
         self.desired_capacity = desired_capacity
         self.interval_minutes = interval_minutes
-        # The computing power level. This value is valid only when the resource type is Economic. The following disk categories are supported:
+        # The computing power level. This parameter is valid only when you set AllocationSpec to Economic. The following types are supported:
         # 
-        # *   General
-        # *   Performance
+        # - General: General-purpose.
+        # 
+        # - Performance: Compute-optimized.
         # 
         # Default value: General
         self.level = level
-        # The pre-processing script. Base64 encoding is required.
+        # The pre-execution script. The script must be Base64-encoded.
         self.prolog_script = prolog_script
-        # The list of resource configurations in the region where the execution plan runs.
+        # A list of regional resource configurations for the runtime environment of the execution plan.
         self.regions = regions
-        # Target resource type: the capacity of vCPUs or the number of execution nodes. Valid values:
+        # The type of resource for the execution target. The value can be the vCPU capacity or the number of executor nodes. Valid values:
         # 
-        # *   VCpuCapacity
-        # *   ExecutorCapacity
+        # - VCpuCapacity: vCPU capacity
+        # 
+        # - ExecutorCapacity: number of executor nodes
         self.resource_type = resource_type
-        # The list of resource configurations of the execution plan runtime environment. You can configure 1 to 10 resources.
+        # A list of resource configurations for the runtime environment of the execution plan. You can specify 1 to 10 resource configurations.
         self.resources = resources
-        # The running-job script. Base64 encoding is required.
+        # The script to run the job. The script must be Base64-encoded.
         self.script = script
 
     def validate(self):
@@ -159,9 +163,9 @@ class CreateActionPlanRequestResources(DaraModel):
         cores: float = None,
         memory: float = None,
     ):
-        # The number of CPUs in the running environment.
+        # The number of vCPUs for the runtime environment.
         self.cores = cores
-        # The memory size of the running environment. Unit: GiB.
+        # The memory size of the runtime environment. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -200,10 +204,11 @@ class CreateActionPlanRequestRegions(DaraModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # The list of security groups available for the execution plan in the region. You can have 0 to 5 security groups.
+        # A list of security groups that are available for the execution plan in the region. You can specify 0 to 5 security groups.
         self.security_group_id = security_group_id
+        # A list of security group IDs. You can call the [DescribeSecurityGroups](https://api.aliyun.com/document/Ecs/2014-05-26/DescribeSecurityGroups) operation to query information about available security groups.
         self.security_group_ids = security_group_ids
-        # The list of VSwitches available for the execution plan in the region. Supports 0 to 5 VSwitches.
+        # A list of vSwitches that are available for the execution plan in the region. You can specify 0 to 5 vSwitches.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

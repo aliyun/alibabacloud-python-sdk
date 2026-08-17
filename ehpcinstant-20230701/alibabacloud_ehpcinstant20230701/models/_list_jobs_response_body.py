@@ -20,11 +20,12 @@ class ListJobsResponseBody(DaraModel):
         self.job_list = job_list
         # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on the current page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned. This parameter is optional and is not returned by default.
+        # The total number of entries that meet the filter conditions.
+        # This parameter is optional and may not be returned.
         self.total_count = total_count
 
     def validate(self):
@@ -97,12 +98,13 @@ class ListJobsResponseBodyJobList(DaraModel):
         task_count: int = None,
         task_sustainable: bool = None,
     ):
-        # The additional information about the application.
+        # Additional information about the application.
         self.app_extra_info = app_extra_info
+        # The name of the application.
         self.app_name = app_name
         # The time when the job was submitted.
         self.create_time = create_time
-        # The end time of the job.
+        # The time when the job ended.
         self.end_time = end_time
         # The number of running nodes.
         self.executor_count = executor_count
@@ -110,30 +112,41 @@ class ListJobsResponseBodyJobList(DaraModel):
         self.job_description = job_description
         # The ID of the job.
         self.job_id = job_id
-        # The job name.
+        # The name of the job.
         self.job_name = job_name
-        # The UID of the creator.
+        # The UID of the user who created the job.
         self.owner_uid = owner_uid
-        # The start time of the job.
+        # The time when the job started.
         self.start_time = start_time
-        # The status of the job. Valid values:
+        # The status of the job. Possible values:
         # 
-        # *   Pending
-        # *   Initing
-        # *   Succeed
-        # *   Failed
-        # *   Running
-        # *   Exception
-        # *   Retrying
-        # *   Expired
-        # *   Deleting
-        # *   Deleted
+        # - Pending: The job is in the queue.
+        # 
+        # - Initing: The job is initializing.
+        # 
+        # - Succeeded: The job was successful.
+        # 
+        # - Failed: The job failed.
+        # 
+        # - Running: The job is running.
+        # 
+        # - Exception: A scheduling exception occurred.
+        # 
+        # - Retrying: The job is being retried.
+        # 
+        # - Expired: The job timed out.
+        # 
+        # - Suspended: The job is in hibernation.
+        # 
+        # - Restarting: The job is restarting.
+        # 
+        # - Deleted: The job is deleted.
         self.status = status
         # The list of job tags.
         self.tags = tags
         # The number of tasks.
         self.task_count = task_count
-        # Indicate whether the job is a long-running job.
+        # Indicates whether the job is a long-running job.
         self.task_sustainable = task_sustainable
 
     def validate(self):

@@ -11,9 +11,9 @@ class GetPoolResponseBody(DaraModel):
         pool_info: main_models.GetPoolResponseBodyPoolInfo = None,
         request_id: str = None,
     ):
-        # The information about the resource pool.
+        # The details of the resource pool.
         self.pool_info = pool_info
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,37 +58,47 @@ class GetPoolResponseBodyPoolInfo(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The time when the resource pool is created.
+        # The time when the resource pool was created.
         self.create_time = create_time
+        # The number of executors that are in use in the resource pool.
         self.executor_usage = executor_usage
-        # Indices whether the resource pool is the default resource pool. Valid values:
+        # Indicates whether the resource pool is the default resource pool. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_default = is_default
+        # The maximum number of concurrent executors per user in the resource pool.
         self.max_executor_num = max_executor_num
-        # The name of the resource group.
+        # The name of the resource pool.
         # 
-        # *   The value can be up to 15 characters in length.
-        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # - The name can be up to 15 characters long.
+        # 
+        # - The name can contain letters, digits, underscores (_), and periods (.).
         self.pool_name = pool_name
         # The priority of the resource pool.
         # 
-        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
-        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
+        # - Valid values: 1 to 99. A larger value indicates a higher priority. Default value: 1.
+        # 
+        # - Jobs in a resource pool with a higher priority are scheduled before pending jobs in a resource pool with a lower priority. The priority of the resource pool takes precedence over the priority of a job.
         self.priority = priority
-        # The cause of the error.
+        # The reason for the error.
         self.reason = reason
+        # The ID of the scheduling policy.
         self.scheduling_policy_id = scheduling_policy_id
         # The status of the resource pool. Valid values:
         # 
-        # *   Creating: The resource pool is being created.
-        # *   Updating: The resource pool is being updated.
-        # *   Deleting: The resource pool is being deleted.
-        # *   Working: The resource pool is working.
-        # *   Deleted: The resource pool is deleted.
+        # - `Creating`: The resource pool is being created.
+        # 
+        # - `Updating`: The resource pool is being updated.
+        # 
+        # - `Deleting`: The resource pool is being deleted.
+        # 
+        # - `Working`: The resource pool is active.
+        # 
+        # - `Deleted`: The resource pool has been deleted.
         self.status = status
-        # The time when the resource pool was updated.
+        # The time when the resource pool was last updated.
         self.update_time = update_time
 
     def validate(self):

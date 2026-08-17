@@ -15,16 +15,17 @@ class GetImageResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details of the image.
+        # Image details.
         self.image = image
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation succeeded. Valid values:
         # 
-        # *   true: The task is successful.
-        # *   false: The error occurred.
+        # - true: succeeded.
+        # 
+        # - false: failed.
         self.success = success
-        # The total amount of data in this request.
+        # Total number of items returned for this request.
         self.total_count = total_count
 
     def validate(self):
@@ -85,25 +86,25 @@ class GetImageResponseBodyImage(DaraModel):
     ):
         self.additional_regions_info = additional_regions_info
         self.app_id = app_id
-        # The configuration details of the container image.
+        # Container image configuration details.
         self.container_image_spec = container_image_spec
-        # The time when the image was created.
+        # Image creation time.
         self.create_time = create_time
-        # The description of the image.
+        # Image description.
         self.description = description
         self.document_info = document_info
-        # The type of the image.
+        # Image type.
         # 
         # This parameter is required.
         self.image_type = image_type
-        # The name of the image.
+        # Image name.
         self.name = name
-        # The size of the image. Unit: GiB.
+        # Image size, in GiB.
         self.size = size
         self.status = status
-        # The configuration details of the virtual machine image.
+        # Virtual machine image configuration details.
         self.vmimage_spec = vmimage_spec
-        # The version.
+        # Version.
         self.version = version
 
     def validate(self):
@@ -217,13 +218,13 @@ class GetImageResponseBodyImageVMImageSpec(DaraModel):
         os_tag: str = None,
         platform: str = None,
     ):
-        # The type of the architecture.
+        # Architecture type.
         self.architecture = architecture
-        # The image ID.
+        # Image ID.
         self.image_id = image_id
-        # The ID of the specific OS version.
+        # OS version identifier.
         self.os_tag = os_tag
-        # The type of the platform.
+        # Platform type.
         self.platform = platform
 
     def validate(self):
@@ -320,23 +321,25 @@ class GetImageResponseBodyImageContainerImageSpec(DaraModel):
         registry_url: str = None,
     ):
         self.architecture = architecture
-        # Whether the instance is an Alibaba Cloud image repository Enterprise Edition.
+        # Indicates whether the image is stored in an ACR Enterprise Edition instance. Valid values:
         # 
-        # *   True
-        # *   False
+        # - True: yes.
+        # 
+        # - False: no.
         self.is_acrenterprise = is_acrenterprise
-        # Whether it is an Alibaba Cloud image repository.
+        # Indicates whether the image is stored in an Alibaba Cloud Container Registry (ACR) instance. Valid values:
         # 
-        # *   True
-        # *   False
+        # - True: yes.
+        # 
+        # - False: no.
         self.is_acrregistry = is_acrregistry
         self.os_tag = os_tag
         self.platform = platform
-        # The authentication of the private image repository.
+        # Authentication for a private image registry.
         self.registry_credential = registry_credential
-        # The ID of the Container Registry Enterprise Edition image repository.
+        # ACR Enterprise Edition instance ID.
         self.registry_cri_id = registry_cri_id
-        # The endpoint of the container image.
+        # Container image registry URL.
         self.registry_url = registry_url
 
     def validate(self):
@@ -410,11 +413,11 @@ class GetImageResponseBodyImageContainerImageSpecRegistryCredential(DaraModel):
         server: str = None,
         user_name: str = None,
     ):
-        # The password of the logon user.
+        # Password for the username.
         self.password = password
-        # The registered address of the image repository.
+        # Registry server address.
         self.server = server
-        # The username of the logon user.
+        # Username to log on to the registry.
         self.user_name = user_name
 
     def validate(self):

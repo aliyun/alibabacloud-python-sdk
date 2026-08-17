@@ -16,7 +16,7 @@ class ListExecutorsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # Executor list.
+        # The list of executors.
         self.executors = executors
         # The current page number.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class ListExecutorsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -108,25 +108,35 @@ class ListExecutorsResponseBodyExecutors(DaraModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The resource type.
+        # 
+        # - Standard: Standard.
+        # 
+        # - Dedicated: Dedicated. This type requires whitelisting.
+        # 
+        # - Economic: Economy. This type requires whitelisting.
         self.allocation_spec = allocation_spec
+        # The application name.
         self.app_name = app_name
         # The executor number.
         self.array_index = array_index
+        # The duration for which the compute resources are reserved.
         self.block_duration = block_duration
-        # The time when the instance was created.
+        # The creation time.
         self.create_time = create_time
         # The end time.
         self.end_time = end_time
         # The executor ID. The format is JobId-TaskName-ArrayIndex.
         self.executor_id = executor_id
+        # The expiration time.
         self.expiration_time = expiration_time
-        # The list of public IP addresses of the nodes.
+        # A list of public IP addresses of the node.
         self.external_ip_address = external_ip_address
-        # The list of hostnames.
+        # A list of hostnames.
         self.host_name = host_name
-        # Executor image.
+        # The executor image.
         self.image = image
-        # The list of internal IP addresses.
+        # A list of private IP addresses.
         self.ip_address = ip_address
         # The job ID.
         self.job_id = job_id
@@ -135,33 +145,45 @@ class ListExecutorsResponseBodyExecutors(DaraModel):
         self.preemptible = preemptible
         # The resource information.
         self.resource = resource
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
         # The start time.
         self.start_time = start_time
-        # The status of the executor. Valid values:
+        # The status of the executor. Possible values:
         # 
-        # *   Pending
-        # *   Initing
-        # *   Succeed
-        # *   Failed
-        # *   Running
-        # *   Unknown
-        # *   Exception
-        # *   Retrying
-        # *   Expired
-        # *   Deleted
+        # - Pending: The executor is waiting in a queue.
+        # 
+        # - Initing: The executor is being initialized.
+        # 
+        # - Succeeded: The executor ran successfully.
+        # 
+        # - Failed: The executor failed to run.
+        # 
+        # - Running: The executor is running.
+        # 
+        # - Exception: A scheduling error occurred.
+        # 
+        # - Retrying: The system is retrying the executor.
+        # 
+        # - Expired: The executor timed out.
+        # 
+        # - Suspended: The job is in hibernation.
+        # 
+        # - Restarting: The job is restarting.
+        # 
+        # - Deleted: The executor is deleted.
         self.status = status
         # The description of the status reason.
         self.status_reason = status_reason
-        # The list of executor tags.
+        # A list of executor tags.
         self.tags = tags
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
-        # Indicate whether the job is a long-running job.
+        # Indicates whether the job is a long-running job.
         self.task_sustainable = task_sustainable
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -345,9 +367,9 @@ class ListExecutorsResponseBodyExecutorsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the executor tag.
+        # The tag key of the executor.
         self.tag_key = tag_key
-        # The value of the executor tag.
+        # The tag value of the executor.
         self.tag_value = tag_value
 
     def validate(self):
@@ -384,10 +406,11 @@ class ListExecutorsResponseBodyExecutorsResource(DaraModel):
         instance_type: str = None,
         memory: float = None,
     ):
-        # The number of running CPUs.
+        # The number of CPU cores.
         self.cores = cores
-        # The array of the disks.
+        # An array of cloud disks.
         self.disks = disks
+        # The instance type of the runtime environment.
         self.instance_type = instance_type
         # The total amount of memory resources. Unit: GiB.
         self.memory = memory
@@ -444,12 +467,13 @@ class ListExecutorsResponseBodyExecutorsResourceDisks(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The size of the disk.
+        # The size of the cloud disk.
         self.size = size
-        # The category of the disk. The following disk categories are supported:
+        # The type of the cloud disk. The following types are supported:
         # 
-        # *   System: system disk.
-        # *   Data: data disk.
+        # - System: The system disk.
+        # 
+        # - Data: The data disk.
         self.type = type
 
     def validate(self):

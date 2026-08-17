@@ -19,21 +19,21 @@ class ListJobExecutorsResponseBody(DaraModel):
         task_name: str = None,
         total_count: str = None,
     ):
-        # Executor status statistics.
+        # Statistics about executor statuses.
         self.executor_status = executor_status
-        # The executor list.
+        # A list of executors.
         self.executors = executors
         # The job ID.
         self.job_id = job_id
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The job name.
         self.task_name = task_name
-        # The total number of list entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -128,42 +128,61 @@ class ListJobExecutorsResponseBodyExecutors(DaraModel):
         status_reason: str = None,
         tags: List[main_models.ListJobExecutorsResponseBodyExecutorsTags] = None,
     ):
+        # The resource type.
+        # 
+        # - Standard: Standard.
+        # 
+        # - Dedicated: Dedicated. To use this resource type, you must be added to the whitelist.
+        # 
+        # - Economic: Economy. To use this resource type, you must be added to the whitelist.
         self.allocation_spec = allocation_spec
-        # The executor index number.
+        # The index of the executor.
         self.array_index = array_index
+        # The retention period of the compute resources.
         self.block_duration = block_duration
-        # The time when the storage resource was created.
+        # The time when the executor was created.
         self.create_time = create_time
-        # The end time.
+        # The time when the executor ended.
         self.end_time = end_time
-        # The executor ID. The format is JobId-TaskName-ArrayIndex.
+        # The ID of the executor. The format is \\`JobId-TaskName-ArrayIndex\\`.
         self.executor_id = executor_id
         self.expiration_time = expiration_time
-        # The list of public IP addresses of the nodes.
+        # A list of public IP addresses of the nodes.
         self.external_ip_address = external_ip_address
         # An array of node hostnames.
         self.host_name = host_name
-        # The list of node IP addresses.
+        # A list of node IP addresses.
         self.ip_address = ip_address
         self.preemptible = preemptible
-        # The create time.
+        # The time when the executor started.
         self.start_time = start_time
         # The status of the executor. Valid values:
         # 
-        # *   Pending
-        # *   Initing
-        # *   Succeed
-        # *   Failed
-        # *   Running
-        # *   Unknown
-        # *   Exception
-        # *   Retrying
-        # *   Expired
-        # *   Deleted
+        # - Pending: In queue
+        # 
+        # - Initing: Initializing
+        # 
+        # - Succeed: Succeeded
+        # 
+        # - Failed: Failed
+        # 
+        # - Running: Running
+        # 
+        # - Exception: Abnormal scheduling
+        # 
+        # - Retrying: Retrying
+        # 
+        # - Expired: Timed out
+        # 
+        # - Suspended: Job hibernating
+        # 
+        # - Restarting: Job restarting
+        # 
+        # - Deleted: Deleted
         self.status = status
-        # The description of the status reason.
+        # The reason for the status.
         self.status_reason = status_reason
-        # The list of executor tags.
+        # A list of executor tags.
         self.tags = tags
 
     def validate(self):
@@ -284,9 +303,9 @@ class ListJobExecutorsResponseBodyExecutorsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the executor tag.
+        # The tag key of the executor.
         self.tag_key = tag_key
-        # The value of the executor tag.
+        # The tag value of the executor.
         self.tag_value = tag_value
 
     def validate(self):
@@ -328,21 +347,23 @@ class ListJobExecutorsResponseBodyExecutorStatus(DaraModel):
         succeeded: int = None,
         suspended: int = None,
     ):
-        # The number of executers in the Deleted state.
+        # The number of executors in the Deleted state.
         self.deleted = deleted
-        # The number of executers in the abnormal state.
+        # The number of executors in the Exception state.
         self.exception = exception
-        # The number of executers in the Failed state.
+        # The number of executors in the Failed state.
         self.failed = failed
-        # The number of executers in the initialized state.
+        # The number of executors in the Initing state.
         self.initing = initing
-        # The number of executers in the queued state.
+        # The number of executors in the Pending state.
         self.pending = pending
+        # The number of executors in the Restarting state.
         self.restarting = restarting
-        # The number of executers in the running state.
+        # The number of executors in the Running state.
         self.running = running
-        # The number of executoresin the Successful state.
+        # The number of executors in the Succeeded state.
         self.succeeded = succeeded
+        # The number of executors in the Suspended state.
         self.suspended = suspended
 
     def validate(self):

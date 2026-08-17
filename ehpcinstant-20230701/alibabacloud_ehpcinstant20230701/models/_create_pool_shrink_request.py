@@ -12,20 +12,20 @@ class CreatePoolShrinkRequest(DaraModel):
         resource_limits_shrink: str = None,
         scheduling_policy_id: str = None,
     ):
-        # The name of the resource pool.
-        # 
-        # *   The name can be up to 15 characters in length.
-        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # The resource pool name.
+        # - The name can be up to 15 characters in length.
+        # - The name can contain digits, uppercase letters, lowercase letters, underscores (_), and periods (.).
         # 
         # This parameter is required.
         self.pool_name = pool_name
         # The priority of the resource pool.
         # 
-        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
-        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
+        # - Valid values: 1 to 99. Default value: 1, which indicates the lowest priority.
+        # - Jobs submitted to a resource pool with a higher priority value are scheduled before pending jobs in a resource pool with a lower priority value. The priority of a resource pool takes precedence over the priority of a job.
         self.priority = priority
-        # The quota of resources that users are allowed to concurrently use in a resource pool.
+        # The resource quota limits for concurrent usage allowed for a user within a resource pool.
         self.resource_limits_shrink = resource_limits_shrink
+        # The scheduling policy.
         self.scheduling_policy_id = scheduling_policy_id
 
     def validate(self):

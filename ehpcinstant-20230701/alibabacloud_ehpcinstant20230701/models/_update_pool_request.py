@@ -15,18 +15,21 @@ class UpdatePoolRequest(DaraModel):
     ):
         # The name of the resource pool.
         # 
-        # *   The value can be up to 15 characters in length.
-        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # - The name can be up to 15 characters long.
+        # 
+        # - The name can contain digits, uppercase letters, lowercase letters, underscores (_), and periods (.).
         # 
         # This parameter is required.
         self.pool_name = pool_name
         # The priority of the resource pool.
         # 
-        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
-        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
+        # - Valid values: 1 to 99. The default value is 1, which specifies the lowest priority.
+        # 
+        # - Jobs in a higher-priority resource pool are scheduled before pending jobs in lower-priority pools. A resource pool\\"s priority overrides a job\\"s priority.
         self.priority = priority
-        # The quota of resources that users are allowed to concurrently use in a resource pool.
+        # The limits on the resources that a user can use concurrently in the resource pool.
         self.resource_limits = resource_limits
+        # The ID of the scheduling policy.
         self.scheduling_policy_id = scheduling_policy_id
 
     def validate(self):
@@ -74,6 +77,7 @@ class UpdatePoolRequestResourceLimits(DaraModel):
         self,
         max_executor_num: int = None,
     ):
+        # The maximum number of executor nodes that a user can run concurrently in a resource pool.
         self.max_executor_num = max_executor_num
 
     def validate(self):

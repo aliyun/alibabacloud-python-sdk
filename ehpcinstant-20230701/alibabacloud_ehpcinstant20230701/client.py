@@ -20,7 +20,24 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shenzhen': 'ehpcinstant.cn-shenzhen.aliyuncs.com',
+            'cn-wulanchabu': 'ehpcinstant.cn-wulanchabu.aliyuncs.com',
+            'cn-beijing': 'ehpcinstant.cn-beijing.aliyuncs.com',
+            'ap-northeast-2': 'ehpcinstant.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'ehpcinstant.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'ehpcinstant.cn-chengdu.aliyuncs.com',
+            'cn-shanghai': 'ehpcinstant.cn-shanghai.aliyuncs.com',
+            'cn-guangzhou': 'ehpcinstant.cn-guangzhou.aliyuncs.com',
+            'cn-hongkong': 'ehpcinstant.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'ehpcinstant.cn-heyuan.aliyuncs.com',
+            'ap-southeast-1': 'ehpcinstant.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'ehpcinstant.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'ehpcinstant.ap-southeast-5.aliyuncs.com',
+            'cn-hangzhou': 'ehpcinstant.cn-hangzhou.aliyuncs.com',
+            'eu-central-1': 'ehpcinstant.eu-central-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ehpcinstant', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -291,6 +308,8 @@ class Client(OpenApiClient):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.job_scheduler):
             query['JobScheduler'] = request.job_scheduler
+        if not DaraCore.is_null(request.job_template_id):
+            query['JobTemplateId'] = request.job_template_id
         if not DaraCore.is_null(request.security_policy_shrink):
             query['SecurityPolicy'] = request.security_policy_shrink
         if not DaraCore.is_null(request.tasks_shrink):
@@ -341,6 +360,8 @@ class Client(OpenApiClient):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.job_scheduler):
             query['JobScheduler'] = request.job_scheduler
+        if not DaraCore.is_null(request.job_template_id):
+            query['JobTemplateId'] = request.job_template_id
         if not DaraCore.is_null(request.security_policy_shrink):
             query['SecurityPolicy'] = request.security_policy_shrink
         if not DaraCore.is_null(request.tasks_shrink):

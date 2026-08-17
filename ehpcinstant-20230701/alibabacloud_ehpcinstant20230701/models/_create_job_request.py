@@ -15,29 +15,26 @@ class CreateJobRequest(DaraModel):
         job_description: str = None,
         job_name: str = None,
         job_scheduler: str = None,
+        job_template_id: str = None,
         security_policy: main_models.CreateJobRequestSecurityPolicy = None,
         tasks: List[main_models.CreateJobRequestTasks] = None,
     ):
-        # Dependency policy.
+        # The dependency policy.
         self.dependency_policy = dependency_policy
         # The resource deployment policy.
         self.deployment_policy = deployment_policy
-        # The description of the job.
+        # The job description.
         self.job_description = job_description
-        # The job name. The name must be 2 to 64 characters in length and can contain letters, digits, and Chinese characters. It can contain hyphens (-) and underscores (_).
+        # The job name. The name must be 2 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
         # This parameter is required.
         self.job_name = job_name
-        # The type of the job scheduler.
-        # 
-        # *   HPC
-        # *   K8S
-        # 
-        # Default value: HPC
         self.job_scheduler = job_scheduler
+        # The job template ID.
+        self.job_template_id = job_template_id
         # The security policy.
         self.security_policy = security_policy
-        # The list of tasks. Only one task is supported.
+        # The task list. Currently, only one task is supported.
         # 
         # This parameter is required.
         self.tasks = tasks
@@ -74,6 +71,9 @@ class CreateJobRequest(DaraModel):
         if self.job_scheduler is not None:
             result['JobScheduler'] = self.job_scheduler
 
+        if self.job_template_id is not None:
+            result['JobTemplateId'] = self.job_template_id
+
         if self.security_policy is not None:
             result['SecurityPolicy'] = self.security_policy.to_map()
 
@@ -103,6 +103,9 @@ class CreateJobRequest(DaraModel):
         if m.get('JobScheduler') is not None:
             self.job_scheduler = m.get('JobScheduler')
 
+        if m.get('JobTemplateId') is not None:
+            self.job_template_id = m.get('JobTemplateId')
+
         if m.get('SecurityPolicy') is not None:
             temp_model = main_models.CreateJobRequestSecurityPolicy()
             self.security_policy = temp_model.from_map(m.get('SecurityPolicy'))
@@ -125,14 +128,13 @@ class CreateJobRequestTasks(DaraModel):
     ):
         # The task execution policy.
         self.executor_policy = executor_policy
-        # The job name. It must be 2 to 32 characters in length and can contain letters, digits, and Chinese characters. It can contain hyphens (-) and underscores (_).
+        # The task name. The name must be 2 to 32 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.task_name = task_name
-        # The details of the task specification.
+        # The task specification details.
         self.task_spec = task_spec
-        # Indicate whether the job is a long-running job.
-        # 
-        # *   true: background service the job.
-        # *   false: batch jobs.
+        # Specifies whether the job is a long-running job. Valid values:
+        # - true: background service job.
+        # - false: batch job.
         # 
         # Default value: false.
         self.task_sustainable = task_sustainable
@@ -188,15 +190,15 @@ class CreateJobRequestTasksTaskSpec(DaraModel):
         task_executor: List[main_models.CreateJobRequestTasksTaskSpecTaskExecutor] = None,
         volume_mount: List[main_models.CreateJobRequestTasksTaskSpecVolumeMount] = None,
     ):
-        # The resource information of the running environment.
+        # The resource information of the runtime environment.
         self.resource = resource
-        # Task retry policy.
+        # The task retry policy.
         self.retry_policy = retry_policy
-        # The task execution configurations.
+        # The task execution configuration.
         # 
         # This parameter is required.
         self.task_executor = task_executor
-        # The list of data volumes mounted to the task. A maximum of 10 groups.
+        # The list of data volumes mounted to the task. A maximum of 10 data volumes are supported.
         self.volume_mount = volume_mount
 
     def validate(self):
@@ -268,26 +270,20 @@ class CreateJobRequestTasksTaskSpecVolumeMount(DaraModel):
         read_only: bool = None,
         volume_driver: str = None,
     ):
-        # The list of data volume mount parameters. Each option is a key-value pair in a JSON string.
+        # The list of volume mount parameters. Passed as key-value pairs in JSON format.
+        # - Reference format for mounting NAS: {"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
+        # > server specifies the mount target address of the NAS file system. path specifies a subdirectory under the NAS path, starting with /, and the directory must already exist. vers specifies the NFS protocol version for mounting NAS. Version 3 is recommended. options specifies custom parameters for mounting NAS, in the format "xxx,xxx,xxx".
         # 
-        # *   Format for mounting a NAS file system:{"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
-        # 
-        # > server indicates the address of the mount point of the NAS file system. path indicates the subdirectory of the NAS file system. The subdirectory must start with a (/) and must already exist. vers indicates the version number of the NFS protocol used to mount the file system. We recommend that you use v3. options indicates the custom parameters in the format of "xxx,xxx,xxx".
-        # 
-        # *   OSS mount format:{"bucket":"xxxxx", "url":"oss-cn-heyuan-internal.aliyuncs.com","path":"/data","akId":"xxxxx","akSecret":"xxxxx"}
-        # 
-        # > bucket indicates the name of the OSS bucket. url indicates the endpoint of the OSS bucket. You can log on to the OSS console and obtain the endpoint on the Overview page of the destination bucket. path indicates the directory structure of the root file of the bucket. The default value is /, which requires that the directory already exists. akId indicates the AccessKey ID. akSecret indicates the AccessKey secret.
+        # - Reference format for mounting OSS: {"bucket":"xxxxx", "url":"oss-cn-heyuan-internal.aliyuncs.com","path":"/data","akId":"xxxxx","akSecret":"xxxxx"}
+        # > bucket specifies the name of the OSS bucket. url specifies the endpoint of the OSS bucket. You can log on to the OSS console and obtain the endpoint on the overview page of the target bucket. path specifies the directory structure relative to the root of the bucket when mounting. The default value is /. The directory must already exist. akId specifies the AccessKey ID used for direct authorization with an AccessKey pair. akSecret specifies the AccessKey secret used for direct authorization with an AccessKey pair.
         self.mount_options = mount_options
-        # The directory where the task mounts the data volume.
-        # 
-        # > The content of the mounted directory is overwritten by the content of the volume. Exercise caution when you use the directory.
+        # The directory where the data volume is mounted to the task.
         self.mount_path = mount_path
-        # Specifies whether the volume is read-only. Default value: false.
+        # Specifies whether the data volume is read-only. Default value: false.
         self.read_only = read_only
-        # Currently supported data volume types.
-        # 
-        # *   alicloud/nas: mounts NAS.
-        # *   alicloud/oss: mounts OSS.
+        # The supported data volume type. Valid values:
+        # - alicloud/nas: mounts a NAS file system.
+        # - alicloud/oss: mounts an OSS bucket.
         self.volume_driver = volume_driver
 
     def validate(self):
@@ -334,9 +330,9 @@ class CreateJobRequestTasksTaskSpecTaskExecutor(DaraModel):
         container: main_models.CreateJobRequestTasksTaskSpecTaskExecutorContainer = None,
         vm: main_models.CreateJobRequestTasksTaskSpecTaskExecutorVM = None,
     ):
-        # Use the container environment.
+        # The container environment settings.
         self.container = container
-        # Use a virtual machine environment.
+        # The virtual machine environment settings.
         self.vm = vm
 
     def validate(self):
@@ -374,30 +370,37 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(DaraModel):
     def __init__(
         self,
         app_id: str = None,
+        environment_vars: List[main_models.CreateJobRequestTasksTaskSpecTaskExecutorVMEnvironmentVars] = None,
         image: str = None,
         password: str = None,
         prolog_script: str = None,
         script: str = None,
     ):
-        # The ID of the virtual machine application.
+        # The virtual machine application ID.
         self.app_id = app_id
-        # The ID of the image.
+        self.environment_vars = environment_vars
+        # The image ID.
         # 
         # This parameter is required.
         self.image = image
-        # The logon password of the virtual machine environment. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+        # The logon password for the virtual machine environment. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters are:
         # 
-        # ()\\`~!@#$%^&\\*-_+=|{}[]:;\\"<>,.?/ In Windows, the password cannot contain a forward slash (/) as the first character.
+        # ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
         # 
-        # > We recommend that you use HTTPS to send requests if you specify Password to avoid password leakage.
+        # For Windows environments, the password cannot start with a forward slash (/).
+        # 
+        # > If you specify the Password parameter, use HTTPS to send the request to prevent password leakage.
         self.password = password
-        # The pre-processing script. Base64 encoding is required.
+        # The pre-processing script. The script must be Base64-encoded.
         self.prolog_script = prolog_script
-        # The running-job script. Base64 encoding is required.
+        # The job execution script. The script must be Base64-encoded.
         self.script = script
 
     def validate(self):
-        pass
+        if self.environment_vars:
+            for v1 in self.environment_vars:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -406,6 +409,11 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(DaraModel):
             result = _map
         if self.app_id is not None:
             result['AppId'] = self.app_id
+
+        result['EnvironmentVars'] = []
+        if self.environment_vars is not None:
+            for k1 in self.environment_vars:
+                result['EnvironmentVars'].append(k1.to_map() if k1 else None)
 
         if self.image is not None:
             result['Image'] = self.image
@@ -426,6 +434,12 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(DaraModel):
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
 
+        self.environment_vars = []
+        if m.get('EnvironmentVars') is not None:
+            for k1 in m.get('EnvironmentVars'):
+                temp_model = main_models.CreateJobRequestTasksTaskSpecTaskExecutorVMEnvironmentVars()
+                self.environment_vars.append(temp_model.from_map(k1))
+
         if m.get('Image') is not None:
             self.image = m.get('Image')
 
@@ -440,6 +454,41 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(DaraModel):
 
         return self
 
+class CreateJobRequestTasksTaskSpecTaskExecutorVMEnvironmentVars(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
 class CreateJobRequestTasksTaskSpecTaskExecutorContainer(DaraModel):
     def __init__(
         self,
@@ -451,26 +500,25 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(DaraModel):
         image_registry_options: str = None,
         working_dir: str = None,
     ):
-        # The application ID.
+        # The container application ID.
         self.app_id = app_id
-        # The startup argument of the init container. A maximum of 10 groups.
+        # The arguments for the container startup command. A maximum of 10 arguments are supported.
         self.arg = arg
-        # The container startup commands. You can specify up to 20 commands. Each command can be up to 256 characters in length.
-        # 
-        # > 
-        # 
-        # *   If the start command contains spaces (for example, `sleep 60s` ), the input JSON format parameter is `["sleep", "60s"]`.
-        # 
-        # *   If the startup command is complex, the parameter format may be a combination of `Command: ["/bin/bash"]` and `Arg:["-c", "<customized command>"]`. The `<customized command>` is a user-defined combination of commands and can contain characters such as spaces.
+        # The list of container startup commands. A maximum of 20 commands are supported. Each command can contain up to 256 characters.
+        # > 1. If a startup command contains spaces (for example, `sleep 60s`), pass the JSON parameter as `["sleep", "60s"]`.
+        # > 2. If a startup command is complex, use a combination of `Command: ["/bin/bash"]` and `Arg:["-c", "<customized command>"]`, where `<customized command>` is a user-defined command that can contain spaces and other characters.
         self.command = command
-        # The environment variables of the container. A maximum of 20 groups.
+        # The environment variables of the container. A maximum of 20 environment variables are supported.
         self.environment_vars = environment_vars
-        # The image of the container.
+        # The container image.
         # 
         # This parameter is required.
         self.image = image
+        # The list of mount parameters for a self-managed image registry. The parameters are in key-value format and passed as a JSON string.
+        # 
+        # - Reference format: {"ImageRegistryType":"https","ImageRegistryServer":"xxx","ImageRegistryUserName":"xxx","ImageRegistryPassword":"xxx"}
         self.image_registry_options = image_registry_options
-        # The working directory of the container.
+        # The container working directory.
         self.working_dir = working_dir
 
     def validate(self):
@@ -543,9 +591,9 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars(DaraMode
         name: str = None,
         value: str = None,
     ):
-        # The name of the environment variable for the container. It can be 1 to 128 characters in length. Format requirement: [0-9a-zA-Z], and underscores, cannot start with a number.
+        # The environment variable name. The name must be 1 to 128 characters in length. The format is [0-9a-zA-Z] and underscores. The name cannot start with a digit.
         self.name = name
-        # The value of the environment variable for the container. The value must be 0 to 256 bits in length.
+        # The environment variable value. The value can be 0 to 256 characters in length.
         self.value = value
 
     def validate(self):
@@ -580,9 +628,9 @@ class CreateJobRequestTasksTaskSpecRetryPolicy(DaraModel):
         exit_code_actions: List[main_models.CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions] = None,
         retry_count: int = None,
     ):
-        # The retry rule. A maximum of 10 groups.
+        # The retry rules. A maximum of 10 rules are supported.
         self.exit_code_actions = exit_code_actions
-        # The maximum number of retries. Valid values: 1 to 10. Default value: 3.
+        # The number of retries. Valid values: 1 to 10. Default value: 3.
         self.retry_count = retry_count
 
     def validate(self):
@@ -625,14 +673,15 @@ class CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions(DaraModel):
         action: str = None,
         exit_code: int = None,
     ):
-        # The next step behavior of the task.
+        # The next action for the node. Valid values:
         # 
-        # *   Retry: The job starts a retry when a specific exit code is hit.
-        # *   Exit: The job exits when a specific exit code is hit.
+        # - Retry: When a specific exit code is matched, the job starts a new retry.
+        # 
+        # - Exit: When a specific exit code is matched, the job exits.
         # 
         # This parameter is required.
         self.action = action
-        # The task exit code, which is used together with the action to form a job retry rule. Valid values: 0 to 255.
+        # The task exit code, which is used together with Action to form a job retry rule. Valid values: 0 to 255.
         # 
         # This parameter is required.
         self.exit_code = exit_code
@@ -673,15 +722,21 @@ class CreateJobRequestTasksTaskSpecResource(DaraModel):
         instance_types: List[str] = None,
         memory: float = None,
     ):
-        # The number of CPUs in the running environment.
+        # The number of CPUs in the runtime environment.
         self.cores = cores
-        # The array of the disks.
+        # The cloud disk array.
         self.disks = disks
+        # Specifies whether hyper-threading is enabled in the runtime environment. Default value: true.
         self.enable_ht = enable_ht
+        # The hostname prefix of the runtime environment. The following limits apply:
+        # 
+        # - A period (.) and a hyphen (-) cannot be used as the first or last character, or consecutively.
+        # - Windows environment: The value can be up to 10 characters in length, cannot contain periods (.), and cannot consist of digits only. Uppercase and lowercase letters, digits, and hyphens (-) are allowed.
+        # - Linux environment: The value can be up to 32 characters in length and can contain multiple periods (.). The hostname is divided into segments by periods. Each segment can contain uppercase and lowercase letters, digits, and hyphens (-).
         self.host_name_prefix = host_name_prefix
-        # The instance type of the running environment. A maximum of 5 groups.
+        # The instance types of the runtime environment. A maximum of 5 instance types are supported.
         self.instance_types = instance_types
-        # The memory size of the running environment. Unit: GiB.
+        # The memory size of the runtime environment. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -748,9 +803,9 @@ class CreateJobRequestTasksTaskSpecResourceDisks(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The size of the disk. Unit: GiB.
+        # The cloud disk size. Unit: GiB.
         self.size = size
-        # The type of the disk. Currently, only System is supported, which indicates the system disk.
+        # The cloud disk type. Currently, only System is supported, which indicates a system cloud disk.
         self.type = type
 
     def validate(self):
@@ -785,21 +840,19 @@ class CreateJobRequestTasksExecutorPolicy(DaraModel):
         array_spec: main_models.CreateJobRequestTasksExecutorPolicyArraySpec = None,
         max_count: int = None,
     ):
-        # The details of the array job. The index value of the sub-job is passed to the running environment through environment variables to support user business program reference. Environment variables include:
-        # 
-        # *   EHPC_JOB_NAME: the name of the job. This parameter corresponds to the JobName parameter.
-        # *   EHPC_JOB_ID: The ID of the job.
-        # *   EHPC_TASK_NAME: the name of the task. This parameter corresponds to the TaskName parameter.
-        # *   EHPC_EXECUTOR_ID: The ID of the execution unit.
-        # *   EHPC_ARRAY_TASK_ID: the sub-job index value.
-        # *   EHPC_ARRAY_TASK_COUNT: the total number of sub-jobs.
-        # *   EHPC_ARRAY_TASK_MAX: the maximum sub-job index, which corresponds to the IndexStart parameter.
-        # *   EHPC_ARRAY_TASK_MIN: the minimum value of the sub-job index, which corresponds to the IndexEnd parameter.
-        # *   EHPC_ARRAY_TASK_STEP: the index step size of the sub-job, which corresponds to the IndexStep parameter.
+        # The array job details. Sub-job index values are passed to the runtime environment through environment variables, which can be referenced by user applications. The environment variables include:
+        # - EHPC_JOB_NAME: the job name, corresponding to the JobName parameter.
+        # - EHPC_JOB_ID: the job ID.
+        # - EHPC_TASK_NAME: the task name, corresponding to the TaskName parameter.
+        # - EHPC_EXECUTOR_ID: the executor ID.
+        # - EHPC_ARRAY_TASK_ID: the sub-job index value.
+        # - EHPC_ARRAY_TASK_COUNT: the total number of sub-jobs.
+        # - EHPC_ARRAY_TASK_MAX: the maximum sub-job index value, corresponding to the IndexStart parameter.
+        # - EHPC_ARRAY_TASK_MIN: the minimum sub-job index value, corresponding to the IndexEnd parameter.
+        # - EHPC_ARRAY_TASK_STEP: the sub-job index step, corresponding to the IndexStep parameter.
         self.array_spec = array_spec
-        # The maximum number of nodes to run the job.
-        # 
-        # > Follow the calculation formula: `MaxCount = (IndexEnd - IndexStart) / IndexStep +1`
+        # The maximum number of nodes for the job.
+        # > The value must comply with the following formula: `MaxCount = (IndexEnd - IndexStart) / IndexStep + 1`
         self.max_count = max_count
 
     def validate(self):
@@ -837,13 +890,12 @@ class CreateJobRequestTasksExecutorPolicyArraySpec(DaraModel):
         index_start: int = None,
         index_step: int = None,
     ):
-        # The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
+        # The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to IndexStart.
         self.index_end = index_end
-        # The starting value of the array job index. Valid values: 0 to 4999.
+        # The start value of the array job index. Valid values: 0 to 4999.
         self.index_start = index_start
-        # The interval of the array job index.
-        # 
-        # > If the array job property is IndexStart=1,IndexEnd=5, and IndexStep=2, the array job contains three sub-jobs. The index values of the sub-jobs are 1,3, and 5. You can access the sub-jobs by using environment variables.
+        # The interval between indexes in an array job.
+        # > If the array job has the properties IndexStart=1, IndexEnd=5, and IndexStep=2, the array job contains three sub-jobs with indexes 1, 3, and 5. Your application can access these indexes through environment variables.
         self.index_step = index_step
 
     def validate(self):
@@ -883,7 +935,7 @@ class CreateJobRequestSecurityPolicy(DaraModel):
         self,
         security_group: main_models.CreateJobRequestSecurityPolicySecurityGroup = None,
     ):
-        # The security group ID.
+        # The security group.
         self.security_group = security_group
 
     def validate(self):
@@ -946,26 +998,21 @@ class CreateJobRequestDeploymentPolicy(DaraModel):
         priority: int = None,
         tag: List[main_models.CreateJobRequestDeploymentPolicyTag] = None,
     ):
-        # The resource type,
-        # 
-        # *   Standard
-        # *   Dedicated: You must enable a whitelist for use.
-        # *   Economic: You must enable a whitelist for use.
+        # The resource type.
         self.allocation_spec = allocation_spec
-        # The computing power level. This value is valid only when the resource type is Economic. The following disk categories are supported:
+        # The computing power level. This parameter is valid only when the resource type is economy. Valid values:
+        # - General: general-purpose.
+        # - Performance: compute-optimized.
         # 
-        # *   General
-        # *   Performance
-        # 
-        # Default value: General.
+        # Default value: General
         self.level = level
-        # The network configuration information.
+        # The network configuration.
         self.network = network
-        # The resource pool of the job.
+        # The job resource pool.
         self.pool = pool
-        # The priorities of the jobs. A larger value indicates a higher job scheduling priority. Valid values: 1 to 100.
+        # The job priority. A larger value indicates a higher scheduling priority. Valid values: 1 to 100.
         self.priority = priority
-        # The tag information of the job. A maximum of 20 groups.
+        # The job tag information. A maximum of 20 tags are supported.
         self.tag = tag
 
     def validate(self):
@@ -1035,11 +1082,11 @@ class CreateJobRequestDeploymentPolicyTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the job tag. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        # The tag key of the job. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the job tag. You can specify empty strings as tag values. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+        # The tag value of the job. If you specify this parameter, the value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -1074,14 +1121,9 @@ class CreateJobRequestDeploymentPolicyNetwork(DaraModel):
         enable_external_ip_address: bool = None,
         vswitch: List[str] = None,
     ):
-        # Whether the job creates a public IP address.
-        # 
-        # *   true: creates a public IP address.
-        # *   false: does not create a public IP address.
-        # 
-        # Default value: false.
+        # Specifies whether to create a public IP address for the job.
         self.enable_external_ip_address = enable_external_ip_address
-        # The VSwitch array.
+        # The vSwitch array.
         self.vswitch = vswitch
 
     def validate(self):
@@ -1115,7 +1157,7 @@ class CreateJobRequestDependencyPolicy(DaraModel):
         self,
         job_dependency: List[main_models.CreateJobRequestDependencyPolicyJobDependency] = None,
     ):
-        # The job dependency. A maximum of 10 groups.
+        # The job dependencies. A maximum of 10 groups are supported.
         self.job_dependency = job_dependency
 
     def validate(self):
@@ -1152,16 +1194,16 @@ class CreateJobRequestDependencyPolicyJobDependency(DaraModel):
         job_id: str = None,
         type: str = None,
     ):
-        # The ID of the job.
+        # The job ID.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The type of the dependency. Valid values:
+        # The dependency type. Valid values:
         # 
-        # *   AfterSucceeded: **All subtasks** of the dependent job or array job succeed. The exit code is 0.
-        # *   AfterFailed: **All subtasks** of the dependent job or array job fail. The exit code is not 0.
-        # *   AfterAny: The dependent job completes (succeeds or fails).
-        # *   AfterCorresponding: The subtask corresponding to the dependent array job succeeds. The exit code is 0.
+        # - AfterSucceeded: **All tasks** in the dependent job or array job run successfully (exit code 0).
+        # - AfterFailed: **Any task** in the dependent job or array job fails (exit code is not 0).
+        # - AfterAny: The dependent job finishes running (succeeded or failed).
+        # - AfterCorresponding: The corresponding task in the dependent array job runs successfully (exit code 0).
         # 
         # Default value: AfterSucceeded.
         self.type = type

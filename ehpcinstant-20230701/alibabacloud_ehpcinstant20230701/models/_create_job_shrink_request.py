@@ -12,29 +12,26 @@ class CreateJobShrinkRequest(DaraModel):
         job_description: str = None,
         job_name: str = None,
         job_scheduler: str = None,
+        job_template_id: str = None,
         security_policy_shrink: str = None,
         tasks_shrink: str = None,
     ):
-        # Dependency policy.
+        # The dependency policy.
         self.dependency_policy_shrink = dependency_policy_shrink
         # The resource deployment policy.
         self.deployment_policy_shrink = deployment_policy_shrink
-        # The description of the job.
+        # The job description.
         self.job_description = job_description
-        # The job name. The name must be 2 to 64 characters in length and can contain letters, digits, and Chinese characters. It can contain hyphens (-) and underscores (_).
+        # The job name. The name must be 2 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
         # This parameter is required.
         self.job_name = job_name
-        # The type of the job scheduler.
-        # 
-        # *   HPC
-        # *   K8S
-        # 
-        # Default value: HPC
         self.job_scheduler = job_scheduler
+        # The job template ID.
+        self.job_template_id = job_template_id
         # The security policy.
         self.security_policy_shrink = security_policy_shrink
-        # The list of tasks. Only one task is supported.
+        # The task list. Currently, only one task is supported.
         # 
         # This parameter is required.
         self.tasks_shrink = tasks_shrink
@@ -62,6 +59,9 @@ class CreateJobShrinkRequest(DaraModel):
         if self.job_scheduler is not None:
             result['JobScheduler'] = self.job_scheduler
 
+        if self.job_template_id is not None:
+            result['JobTemplateId'] = self.job_template_id
+
         if self.security_policy_shrink is not None:
             result['SecurityPolicy'] = self.security_policy_shrink
 
@@ -86,6 +86,9 @@ class CreateJobShrinkRequest(DaraModel):
 
         if m.get('JobScheduler') is not None:
             self.job_scheduler = m.get('JobScheduler')
+
+        if m.get('JobTemplateId') is not None:
+            self.job_template_id = m.get('JobTemplateId')
 
         if m.get('SecurityPolicy') is not None:
             self.security_policy_shrink = m.get('SecurityPolicy')

@@ -138,6 +138,7 @@ from ._create_job_request import CreateJobRequestTasksTaskSpecRetryPolicyExitCod
 from ._create_job_request import CreateJobRequestTasksTaskSpecRetryPolicy
 from ._create_job_request import CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars
 from ._create_job_request import CreateJobRequestTasksTaskSpecTaskExecutorContainer
+from ._create_job_request import CreateJobRequestTasksTaskSpecTaskExecutorVMEnvironmentVars
 from ._create_job_request import CreateJobRequestTasksTaskSpecTaskExecutorVM
 from ._create_job_request import CreateJobRequestTasksTaskSpecTaskExecutor
 from ._create_job_request import CreateJobRequestTasksTaskSpecVolumeMount
@@ -192,6 +193,7 @@ from ._list_images_response_body import ListImagesResponseBodyImages
 from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExecutorStatus
 from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExecutorsTags
 from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExecutors
+from ._list_jobs_request import ListJobsRequestFilterTag
 from ._list_jobs_request import ListJobsRequestFilter
 from ._list_jobs_request import ListJobsRequestSortBy
 from ._list_jobs_response_body import ListJobsResponseBodyJobListTags
@@ -341,6 +343,7 @@ __all__ = [
     CreateJobRequestTasksTaskSpecRetryPolicy,
     CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars,
     CreateJobRequestTasksTaskSpecTaskExecutorContainer,
+    CreateJobRequestTasksTaskSpecTaskExecutorVMEnvironmentVars,
     CreateJobRequestTasksTaskSpecTaskExecutorVM,
     CreateJobRequestTasksTaskSpecTaskExecutor,
     CreateJobRequestTasksTaskSpecVolumeMount,
@@ -395,6 +398,7 @@ __all__ = [
     ListJobExecutorsResponseBodyExecutorStatus,
     ListJobExecutorsResponseBodyExecutorsTags,
     ListJobExecutorsResponseBodyExecutors,
+    ListJobsRequestFilterTag,
     ListJobsRequestFilter,
     ListJobsRequestSortBy,
     ListJobsResponseBodyJobListTags,

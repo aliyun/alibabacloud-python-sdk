@@ -1,3 +1,13 @@
+2026-08-17 Version: 4.0.1
+- Update API CreateJob: add request parameters JobTemplateId.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.TaskExecutor.$.VM.EnvironmentVars.
+- Update API GetJob: add response parameters Body.JobInfo.DeploymentPolicy.Priority.
+- Update API ListExecutors: add request parameters Filter.JobTemplateId.
+- Update API ListJobs: add request parameters Filter.JobIds.
+- Update API ListJobs: add request parameters Filter.JobTemplateId.
+- Update API ListJobs: add request parameters Filter.Tag.
+
+
 2026-05-11 Version: 4.0.0
 - Support API GetJobRecordDuration.
 - Support API UpdateJobRecordDuration.

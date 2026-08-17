@@ -14,11 +14,11 @@ class ListPoolsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Queries the filter conditions of a resource pool.
+        # The filter conditions for querying resource pools.
         self.filter = filter
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries on each page. Maximum value: 50. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 50. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -63,13 +63,13 @@ class ListPoolsRequestFilter(DaraModel):
         time_created_after: int = None,
         time_created_before: int = None,
     ):
-        # Queries the list of resource pool names.
+        # The list of resource pool names to query.
         self.pool_name = pool_name
-        # Queries resource pool status list.
+        # The list of resource pool statuses to query.
         self.status = status
-        # For node pools created after this time, the time in the region is converted into a UNIX timestamp.
+        # Returns only resource pools created after the specified time. The time must be a Unix timestamp in UTC+8.
         self.time_created_after = time_created_after
-        # For node pools created before this time, the time in the region is converted into a UNIX timestamp.
+        # Returns only resource pools created before the specified time. The time must be a Unix timestamp in UTC+8.
         self.time_created_before = time_created_before
 
     def validate(self):

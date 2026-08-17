@@ -14,11 +14,23 @@ class DescribeJobResultsRequest(DaraModel):
         start_time: str = None,
         task_name: str = None,
     ):
+        # The executor number.
         self.array_index = array_index
+        # The encoding format for the `CommandContent` and `Output` fields in the response. Valid values:
+        # 
+        # - PlainText: Returns the original script content and output.
+        # 
+        # - Base64: Returns the Base64-encoded script content and output.
+        # 
+        # The default value is Base64.
         self.content_encoding = content_encoding
+        # The job ID.
         self.job_id = job_id
+        # The maximum size of the log in bytes. The value must be between 1 and 1,048,576 (1 MB).
         self.limit_bytes = limit_bytes
+        # The time in UTC, formatted according to RFC 3339.
         self.start_time = start_time
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

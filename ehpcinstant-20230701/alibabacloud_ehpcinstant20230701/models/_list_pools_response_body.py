@@ -18,13 +18,13 @@ class ListPoolsResponseBody(DaraModel):
     ):
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries on each page. Maximum value: 50. Default value: 10.
+        # The number of entries returned per page. Maximum value: 50. Default value: 10.
         self.page_size = page_size
-        # Queries the resource pool list.
+        # An array of resource pools.
         self.pool_list = pool_list
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The total number of list entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,32 +91,43 @@ class ListPoolsResponseBodyPoolList(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The time when the resource pool was created.
         self.create_time = create_time
-        # Indices whether the resource pool is the default resource pool. Valid values:
+        # Indicates whether the resource pool is the default pool. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The resource pool is the default pool.
+        # 
+        # - **false**: The resource pool is not the default pool.
         self.is_default = is_default
+        # The number of running executor nodes in the resource pool.
         self.max_executor_num = max_executor_num
         # The name of the resource pool.
         # 
-        # *   The value can be up to 15 characters in length.
-        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # - Maximum length: 15 characters.
+        # 
+        # - Allowed characters: digits, letters, underscores (_), and periods (.).
         self.pool_name = pool_name
         # The priority of the resource pool.
         # 
-        # *   You can set a priority in the range of 1 to 99. The default value is 1, which is the lowest priority.
-        # *   Jobs submitted to a resource pool with a higher priority level value will be scheduled before pending jobs in a resource pool with a lower priority level value, and the priority level of the resource pool takes precedence over the priority of the job.
+        # - Valid values: 1 to 99. Default value: 1 (lowest priority).
+        # 
+        # - Jobs in a resource pool with a higher priority are scheduled before those in a pool with a lower priority. The pool\\"s priority overrides the priority of an individual job.
         self.priority = priority
+        # The ID of the scheduling policy.
         self.scheduling_policy_id = scheduling_policy_id
         # The status of the resource pool. Valid values:
         # 
-        # *   Creating: The resource pool is being created.
-        # *   Updating: The resource pool is being updated.
-        # *   Deleting: The resource pool is being deleted.
-        # *   Working: The resource pool is working.
-        # *   Deleted: The resource pool is deleted.
+        # - Creating: The resource pool is being created.
+        # 
+        # - Updating: The resource pool is being updated.
+        # 
+        # - Deleting: The resource pool is being deleted.
+        # 
+        # - Working: The resource pool is operational.
+        # 
+        # - Deleted: The resource pool has been deleted.
         self.status = status
+        # The time when the resource pool was last updated.
         self.update_time = update_time
 
     def validate(self):

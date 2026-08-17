@@ -27,43 +27,46 @@ class GetActionPlanResponseBody(DaraModel):
         total_capacity: float = None,
         update_time: str = None,
     ):
-        # The ID of the execution plan.
+        # ID of the execution plan.
         self.action_plan_id = action_plan_id
-        # The name of the execution plan.
+        # Name of the execution plan.
         self.action_plan_name = action_plan_name
-        # The type of the resource.
+        # Resource type.
         self.allocation_spec = allocation_spec
-        # The ID of the application.
+        # ID of the application.
         self.app_id = app_id
-        # The time when the execution plan was created.
+        # Time when the execution plan was created.
         self.create_time = create_time
-        # The expected scale of resources for the execution plan. If the ResourceType parameter is set to VcpuCapacity, the execution plan is expected to have 10000 vCPUs.
+        # Target resource size for the execution plan. If ResourceType is VCpuCapacity, this value represents the target vCPU count.
         self.desired_capacity = desired_capacity
         self.interval_minutes = interval_minutes
-        # The computing power level.
+        # Computing power level.
         self.level = level
-        # The pre-processing script. Base64 encoding is required.
+        # Prologue script. Must be Base64-encoded.
         self.prolog_script = prolog_script
-        # The list of resource configurations in the region where the execution plan runs.
+        # List of region-specific resource configurations for the execution plan\\"s runtime environment.
         self.regions = regions
-        # The request ID.
+        # ID of the request.
         self.request_id = request_id
-        # Target resource type: the capacity of vCPUs or the number of execution nodes. Valid values:
+        # Type of target resource for the execution plan. Valid values are:
         # 
-        # *   VCpuCapacity
-        # *   ExecutorCapacity
+        # - VCpuCapacity: vCPU capacity
+        # 
+        # - ExecutorCapacity: number of executor nodes
         self.resource_type = resource_type
-        # The list of resource configurations of the execution plan runtime environment.
+        # List of resource configurations for the execution plan\\"s runtime environment.
         self.resources = resources
-        # The status of the execution plan. The possible values are as follows:
+        # Status of the execution plan. Valid values are:
         # 
-        # *   Active Instant tasks are dynamically managed only when the execution plan is in the Active state.
-        # *   Inactive Instant tasks are no longer managed by execution plans in the Inactive state.
-        # *   Deleting You cannot modify the parameters of an execution plan in this state.
+        # - Active: The execution plan is active and dynamically manages Instant jobs.
+        # 
+        # - Inactive: The execution plan is inactive and no longer manages Instant jobs.
+        # 
+        # - Deleting: The execution plan is being deleted. You cannot modify parameters during this state.
         self.status = status
-        # The size of the resources currently managed by the execution plan.
+        # Current resource size managed by the execution plan.
         self.total_capacity = total_capacity
-        # The time when the execution plan was last modified.
+        # Last time the execution plan was modified.
         self.update_time = update_time
 
     def validate(self):
@@ -199,9 +202,9 @@ class GetActionPlanResponseBodyResources(DaraModel):
         cores: float = None,
         memory: float = None,
     ):
-        # The number of CPUs in the running environment.
+        # Number of CPUs in the runtime environment.
         self.cores = cores
-        # The memory size of the running environment. Unit: GiB.
+        # Memory size in the runtime environment, in GiB.
         self.memory = memory
 
     def validate(self):
@@ -237,11 +240,11 @@ class GetActionPlanResponseBodyRegions(DaraModel):
         security_group_ids: List[str] = None,
         v_switch_ids: List[str] = None,
     ):
-        # The region ID of the instance.
+        # ID of the region.
         self.region_id = region_id
-        # The list of security groups available for the execution plan in the region.
+        # List of security groups available to the execution plan in this region.
         self.security_group_ids = security_group_ids
-        # The list of VSwitches available for the execution plan in the region.
+        # List of vSwitches available to the execution plan in this region.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

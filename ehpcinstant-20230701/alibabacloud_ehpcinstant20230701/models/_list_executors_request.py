@@ -14,13 +14,11 @@ class ListExecutorsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Queries the Executor filter conditions.
+        # The filter conditions for querying executors.
         self.filter = filter
-        # The current page number.\\
-        # Starting value: 1\\
-        # Default value: 1
+        # The current page number.<br>Start value: 1<br>Default value: 1<br><br>
         self.page_number = page_number
-        # The number of entries per page. The number of entries returned per page. Default value: 50. Maximum value: 100.
+        # The number of entries to return on each page for a paged query. Default value: 50. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -64,28 +62,31 @@ class ListExecutorsRequestFilter(DaraModel):
         image: str = None,
         ip_addresses: List[str] = None,
         job_name: str = None,
+        job_template_id: str = None,
         status: List[str] = None,
         time_created_after: int = None,
         time_created_before: int = None,
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
-        # The list of executor IDs. A maximum of 100 IDs are supported.
+        # A list of executor IDs. You can specify up to 100 IDs.
         self.executor_ids = executor_ids
-        # Executor image.
+        # The executor image.
         self.image = image
-        # The list of internal IP addresses. A maximum of 100 IP addresses are supported.
+        # A list of private IP addresses. You can specify up to 100 IP addresses.
         self.ip_addresses = ip_addresses
-        # The job name. Exact filtering. Fuzzy query is not supported.
+        # The job name. Fuzzy queries are supported.
         self.job_name = job_name
-        # Executor status list.
+        self.job_template_id = job_template_id
+        # A list of executor statuses.
         self.status = status
-        # For jobs submitted after this time, the time in the region is converted into a UNIX timestamp (UI8).
+        # The jobs submitted after this time. This is a UNIX timestamp that is converted from the time in the region where the job is located. For sites in mainland China, the time is in the UTC+8 time zone.
         self.time_created_after = time_created_after
-        # For jobs submitted before this time, the time in the region is converted into a Unix timestamp (for domestic sites, the UI8 region).
+        # The jobs submitted before this time. This is a UNIX timestamp that is converted from the time in the region where the job is located. For sites in mainland China, the time is in the UTC+8 time zone.
         self.time_created_before = time_created_before
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -107,6 +108,9 @@ class ListExecutorsRequestFilter(DaraModel):
 
         if self.job_name is not None:
             result['JobName'] = self.job_name
+
+        if self.job_template_id is not None:
+            result['JobTemplateId'] = self.job_template_id
 
         if self.status is not None:
             result['Status'] = self.status
@@ -138,6 +142,9 @@ class ListExecutorsRequestFilter(DaraModel):
 
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+
+        if m.get('JobTemplateId') is not None:
+            self.job_template_id = m.get('JobTemplateId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

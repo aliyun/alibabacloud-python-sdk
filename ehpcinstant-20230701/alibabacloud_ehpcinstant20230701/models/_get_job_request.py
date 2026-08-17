@@ -9,7 +9,7 @@ class GetJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the job.
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):

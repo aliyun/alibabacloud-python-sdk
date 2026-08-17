@@ -11,9 +11,15 @@ class DescribeJobResultsResponseBody(DaraModel):
         output: str = None,
         request_id: str = None,
     ):
+        # The exit code of the command.
+        # 
+        # - For Linux instances, this is the exit code of the shell command.
+        # 
+        # - For Windows instances, this is the exit code of the batch or PowerShell command.
         self.exit_code = exit_code
+        # The output of the command. If ContentEncoding is set to PlainText, the original output is returned. If ContentEncoding is set to Base64, the Base64-encoded output is returned.
         self.output = output
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

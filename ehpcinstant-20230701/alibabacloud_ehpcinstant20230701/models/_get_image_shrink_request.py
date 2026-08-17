@@ -13,17 +13,19 @@ class GetImageShrinkRequest(DaraModel):
         image_type: str = None,
     ):
         self.additional_region_ids_shrink = additional_region_ids_shrink
-        # The source of the image. Valid values:
+        # Image source. Valid values:
         # 
-        # *   Public: public images provided by Alibaba Cloud.
-        # *   Custom: the custom image that you added.
+        # - Public: public images provided by Alibaba Cloud.
+        # 
+        # - Custom: custom images that you added.
         self.image_category = image_category
-        # The image ID.
+        # Image ID.
         self.image_id = image_id
-        # The type of the images. Valid values:
+        # Image type. Valid values:
         # 
-        # *   VM: virtual machine image.
-        # *   Container: the container image.
+        # - VM: virtual machine image.
+        # 
+        # - Container: container image.
         # 
         # Default value: VM
         self.image_type = image_type

@@ -11,8 +11,9 @@ class GetPoolRequest(DaraModel):
     ):
         # The name of the resource pool.
         # 
-        # *   The value can be up to 15 characters in length.
-        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # - The name can be up to 15 characters long.
+        # 
+        # - The name can contain letters, digits, underscores (_), and periods (.).
         # 
         # This parameter is required.
         self.pool_name = pool_name

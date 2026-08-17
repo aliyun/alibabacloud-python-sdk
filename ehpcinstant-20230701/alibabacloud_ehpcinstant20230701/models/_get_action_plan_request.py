@@ -9,7 +9,7 @@ class GetActionPlanRequest(DaraModel):
         self,
         action_plan_id: str = None,
     ):
-        # The ID of the execution plan.
+        # ID of the execution plan.
         self.action_plan_id = action_plan_id
 
     def validate(self):
