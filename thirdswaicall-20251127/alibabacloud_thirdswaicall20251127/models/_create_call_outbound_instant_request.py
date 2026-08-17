@@ -8,12 +8,16 @@ class CreateCallOutboundInstantRequest(DaraModel):
     def __init__(
         self,
         called_number: str = None,
+        caller_uac_account_id: str = None,
+        current_workspace_id: str = None,
         customer_name: str = None,
         encrypt_call: bool = None,
         prompt_variables: str = None,
         task_id: int = None,
     ):
         self.called_number = called_number
+        self.caller_uac_account_id = caller_uac_account_id
+        self.current_workspace_id = current_workspace_id
         self.customer_name = customer_name
         self.encrypt_call = encrypt_call
         self.prompt_variables = prompt_variables
@@ -29,6 +33,12 @@ class CreateCallOutboundInstantRequest(DaraModel):
             result = _map
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
+
+        if self.caller_uac_account_id is not None:
+            result['CallerUacAccountId'] = self.caller_uac_account_id
+
+        if self.current_workspace_id is not None:
+            result['CurrentWorkspaceId'] = self.current_workspace_id
 
         if self.customer_name is not None:
             result['CustomerName'] = self.customer_name
@@ -48,6 +58,12 @@ class CreateCallOutboundInstantRequest(DaraModel):
         m = m or dict()
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
+
+        if m.get('CallerUacAccountId') is not None:
+            self.caller_uac_account_id = m.get('CallerUacAccountId')
+
+        if m.get('CurrentWorkspaceId') is not None:
+            self.current_workspace_id = m.get('CurrentWorkspaceId')
 
         if m.get('CustomerName') is not None:
             self.customer_name = m.get('CustomerName')

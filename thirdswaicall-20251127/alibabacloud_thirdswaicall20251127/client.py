@@ -49,6 +49,10 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.called_number):
             body['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            body['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.current_workspace_id):
+            body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.customer_name):
             body['CustomerName'] = request.customer_name
         if not DaraCore.is_null(request.encrypt_call):
@@ -85,6 +89,10 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.called_number):
             body['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            body['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.current_workspace_id):
+            body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.customer_name):
             body['CustomerName'] = request.customer_name
         if not DaraCore.is_null(request.encrypt_call):
@@ -135,6 +143,10 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.application_code):
             body['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            body['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.current_workspace_id):
+            body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -165,6 +177,10 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.application_code):
             body['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            body['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.current_workspace_id):
+            body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -221,8 +237,12 @@ class Client(OpenApiClient):
             body['CallStartTimeBegin'] = request.call_start_time_begin
         if not DaraCore.is_null(request.call_start_time_end):
             body['CallStartTimeEnd'] = request.call_start_time_end
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            body['CallerUacAccountId'] = request.caller_uac_account_id
         if not DaraCore.is_null(request.current):
             body['Current'] = request.current
+        if not DaraCore.is_null(request.current_workspace_id):
+            body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.customer_name_or_phone):
             body['CustomerNameOrPhone'] = request.customer_name_or_phone
         if not DaraCore.is_null(request.display_status_list_shrink):
@@ -279,8 +299,12 @@ class Client(OpenApiClient):
             body['CallStartTimeBegin'] = request.call_start_time_begin
         if not DaraCore.is_null(request.call_start_time_end):
             body['CallStartTimeEnd'] = request.call_start_time_end
+        if not DaraCore.is_null(request.caller_uac_account_id):
+            body['CallerUacAccountId'] = request.caller_uac_account_id
         if not DaraCore.is_null(request.current):
             body['Current'] = request.current
+        if not DaraCore.is_null(request.current_workspace_id):
+            body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.customer_name_or_phone):
             body['CustomerNameOrPhone'] = request.customer_name_or_phone
         if not DaraCore.is_null(request.display_status_list_shrink):

@@ -1,3 +1,12 @@
+2026-08-17 Version: 1.2.1
+- Update API CreateCallOutboundInstant: add request parameters CallerUacAccountId.
+- Update API CreateCallOutboundInstant: add request parameters CurrentWorkspaceId.
+- Update API QueryTaskConcurrency: add request parameters CallerUacAccountId.
+- Update API QueryTaskConcurrency: add request parameters CurrentWorkspaceId.
+- Update API ReadOutboundTaskCallList: add request parameters CallerUacAccountId.
+- Update API ReadOutboundTaskCallList: add request parameters CurrentWorkspaceId.
+
+
 2026-07-24 Version: 1.2.0
 - Support API CreateCallOutboundInstant.
 

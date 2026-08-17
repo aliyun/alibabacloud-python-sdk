@@ -11,7 +11,9 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         call_end_time_end: int = None,
         call_start_time_begin: int = None,
         call_start_time_end: int = None,
+        caller_uac_account_id: str = None,
         current: int = None,
+        current_workspace_id: str = None,
         customer_name_or_phone: str = None,
         display_status_list_shrink: str = None,
         label_tags_shrink: str = None,
@@ -25,7 +27,9 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         self.call_end_time_end = call_end_time_end
         self.call_start_time_begin = call_start_time_begin
         self.call_start_time_end = call_start_time_end
+        self.caller_uac_account_id = caller_uac_account_id
         self.current = current
+        self.current_workspace_id = current_workspace_id
         self.customer_name_or_phone = customer_name_or_phone
         self.display_status_list_shrink = display_status_list_shrink
         self.label_tags_shrink = label_tags_shrink
@@ -55,8 +59,14 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         if self.call_start_time_end is not None:
             result['CallStartTimeEnd'] = self.call_start_time_end
 
+        if self.caller_uac_account_id is not None:
+            result['CallerUacAccountId'] = self.caller_uac_account_id
+
         if self.current is not None:
             result['Current'] = self.current
+
+        if self.current_workspace_id is not None:
+            result['CurrentWorkspaceId'] = self.current_workspace_id
 
         if self.customer_name_or_phone is not None:
             result['CustomerNameOrPhone'] = self.customer_name_or_phone
@@ -98,8 +108,14 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         if m.get('CallStartTimeEnd') is not None:
             self.call_start_time_end = m.get('CallStartTimeEnd')
 
+        if m.get('CallerUacAccountId') is not None:
+            self.caller_uac_account_id = m.get('CallerUacAccountId')
+
         if m.get('Current') is not None:
             self.current = m.get('Current')
+
+        if m.get('CurrentWorkspaceId') is not None:
+            self.current_workspace_id = m.get('CurrentWorkspaceId')
 
         if m.get('CustomerNameOrPhone') is not None:
             self.customer_name_or_phone = m.get('CustomerNameOrPhone')
