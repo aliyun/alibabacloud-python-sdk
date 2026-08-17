@@ -61,6 +61,76 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def close_flink_ai_service_with_options(
+        self,
+        request: main_models.CloseFlinkAiServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseFlinkAiServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloseFlinkAiService',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloseFlinkAiServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_flink_ai_service_with_options_async(
+        self,
+        request: main_models.CloseFlinkAiServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseFlinkAiServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloseFlinkAiService',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloseFlinkAiServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_flink_ai_service(
+        self,
+        request: main_models.CloseFlinkAiServiceRequest,
+    ) -> main_models.CloseFlinkAiServiceResponse:
+        runtime = RuntimeOptions()
+        return self.close_flink_ai_service_with_options(request, runtime)
+
+    async def close_flink_ai_service_async(
+        self,
+        request: main_models.CloseFlinkAiServiceRequest,
+    ) -> main_models.CloseFlinkAiServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.close_flink_ai_service_with_options_async(request, runtime)
+
     def convert_hybrid_instance_with_options(
         self,
         tmp_req: main_models.ConvertHybridInstanceRequest,
@@ -1011,6 +1081,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_supported_zones_with_options_async(request, runtime)
 
+    def get_flink_ai_service_with_options(
+        self,
+        request: main_models.GetFlinkAiServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlinkAiServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlinkAiService',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlinkAiServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flink_ai_service_with_options_async(
+        self,
+        request: main_models.GetFlinkAiServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlinkAiServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlinkAiService',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlinkAiServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flink_ai_service(
+        self,
+        request: main_models.GetFlinkAiServiceRequest,
+    ) -> main_models.GetFlinkAiServiceResponse:
+        runtime = RuntimeOptions()
+        return self.get_flink_ai_service_with_options(request, runtime)
+
+    async def get_flink_ai_service_async(
+        self,
+        request: main_models.GetFlinkAiServiceRequest,
+    ) -> main_models.GetFlinkAiServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_flink_ai_service_with_options_async(request, runtime)
+
+    def get_flink_ai_service_free_quota_with_options(
+        self,
+        request: main_models.GetFlinkAiServiceFreeQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlinkAiServiceFreeQuotaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlinkAiServiceFreeQuota',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlinkAiServiceFreeQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flink_ai_service_free_quota_with_options_async(
+        self,
+        request: main_models.GetFlinkAiServiceFreeQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFlinkAiServiceFreeQuotaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFlinkAiServiceFreeQuota',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFlinkAiServiceFreeQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flink_ai_service_free_quota(
+        self,
+        request: main_models.GetFlinkAiServiceFreeQuotaRequest,
+    ) -> main_models.GetFlinkAiServiceFreeQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.get_flink_ai_service_free_quota_with_options(request, runtime)
+
+    async def get_flink_ai_service_free_quota_async(
+        self,
+        request: main_models.GetFlinkAiServiceFreeQuotaRequest,
+    ) -> main_models.GetFlinkAiServiceFreeQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.get_flink_ai_service_free_quota_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: main_models.ListTagResourcesRequest,
@@ -1096,6 +1306,80 @@ class Client(OpenApiClient):
     ) -> main_models.ListTagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def modify_ai_service_protection_with_options(
+        self,
+        request: main_models.ModifyAiServiceProtectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAiServiceProtectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.deletion_protection):
+            body['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAiServiceProtection',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAiServiceProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_ai_service_protection_with_options_async(
+        self,
+        request: main_models.ModifyAiServiceProtectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAiServiceProtectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.deletion_protection):
+            body['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAiServiceProtection',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAiServiceProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_ai_service_protection(
+        self,
+        request: main_models.ModifyAiServiceProtectionRequest,
+    ) -> main_models.ModifyAiServiceProtectionResponse:
+        runtime = RuntimeOptions()
+        return self.modify_ai_service_protection_with_options(request, runtime)
+
+    async def modify_ai_service_protection_async(
+        self,
+        request: main_models.ModifyAiServiceProtectionRequest,
+    ) -> main_models.ModifyAiServiceProtectionResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_ai_service_protection_with_options_async(request, runtime)
 
     def modify_elastic_resource_spec_with_options(
         self,
@@ -1692,6 +1976,76 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyPrepayNamespaceSpecResponse:
         runtime = RuntimeOptions()
         return await self.modify_prepay_namespace_spec_with_options_async(request, runtime)
+
+    def open_flink_ai_service_with_options(
+        self,
+        request: main_models.OpenFlinkAiServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenFlinkAiServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenFlinkAiService',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenFlinkAiServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_flink_ai_service_with_options_async(
+        self,
+        request: main_models.OpenFlinkAiServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenFlinkAiServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenFlinkAiService',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenFlinkAiServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_flink_ai_service(
+        self,
+        request: main_models.OpenFlinkAiServiceRequest,
+    ) -> main_models.OpenFlinkAiServiceResponse:
+        runtime = RuntimeOptions()
+        return self.open_flink_ai_service_with_options(request, runtime)
+
+    async def open_flink_ai_service_async(
+        self,
+        request: main_models.OpenFlinkAiServiceRequest,
+    ) -> main_models.OpenFlinkAiServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.open_flink_ai_service_with_options_async(request, runtime)
 
     def query_convert_instance_price_with_options(
         self,

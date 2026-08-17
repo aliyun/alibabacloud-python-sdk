@@ -1,3 +1,11 @@
+2026-08-17 Version: 2.3.0
+- Support API CloseFlinkAiService.
+- Support API GetFlinkAiService.
+- Support API GetFlinkAiServiceFreeQuota.
+- Support API ModifyAiServiceProtection.
+- Support API OpenFlinkAiService.
+
+
 2026-08-12 Version: 2.2.2
 - Update API DescribeInstances: add response parameters Body.Instances.$.SupportDisasterRecoveryDrill.
 

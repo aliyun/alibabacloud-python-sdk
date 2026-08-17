@@ -8,6 +8,9 @@ from ._fluss_instance import FlussInstance
 from ._fluss_resource_spec import FlussResourceSpec
 from ._fluss_vswitch import FlussVswitch
 from ._stage_with_weight import StageWithWeight
+from ._close_flink_ai_service_request import CloseFlinkAiServiceRequest
+from ._close_flink_ai_service_response_body import CloseFlinkAiServiceResponseBody
+from ._close_flink_ai_service_response import CloseFlinkAiServiceResponse
 from ._convert_hybrid_instance_request import ConvertHybridInstanceRequest
 from ._convert_hybrid_instance_shrink_request import ConvertHybridInstanceShrinkRequest
 from ._convert_hybrid_instance_response_body import ConvertHybridInstanceResponseBody
@@ -46,9 +49,18 @@ from ._describe_supported_regions_response import DescribeSupportedRegionsRespon
 from ._describe_supported_zones_request import DescribeSupportedZonesRequest
 from ._describe_supported_zones_response_body import DescribeSupportedZonesResponseBody
 from ._describe_supported_zones_response import DescribeSupportedZonesResponse
+from ._get_flink_ai_service_request import GetFlinkAiServiceRequest
+from ._get_flink_ai_service_response_body import GetFlinkAiServiceResponseBody
+from ._get_flink_ai_service_response import GetFlinkAiServiceResponse
+from ._get_flink_ai_service_free_quota_request import GetFlinkAiServiceFreeQuotaRequest
+from ._get_flink_ai_service_free_quota_response_body import GetFlinkAiServiceFreeQuotaResponseBody
+from ._get_flink_ai_service_free_quota_response import GetFlinkAiServiceFreeQuotaResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._modify_ai_service_protection_request import ModifyAiServiceProtectionRequest
+from ._modify_ai_service_protection_response_body import ModifyAiServiceProtectionResponseBody
+from ._modify_ai_service_protection_response import ModifyAiServiceProtectionResponse
 from ._modify_elastic_resource_spec_request import ModifyElasticResourceSpecRequest
 from ._modify_elastic_resource_spec_shrink_request import ModifyElasticResourceSpecShrinkRequest
 from ._modify_elastic_resource_spec_response_body import ModifyElasticResourceSpecResponseBody
@@ -73,6 +85,9 @@ from ._modify_prepay_namespace_spec_request import ModifyPrepayNamespaceSpecRequ
 from ._modify_prepay_namespace_spec_shrink_request import ModifyPrepayNamespaceSpecShrinkRequest
 from ._modify_prepay_namespace_spec_response_body import ModifyPrepayNamespaceSpecResponseBody
 from ._modify_prepay_namespace_spec_response import ModifyPrepayNamespaceSpecResponse
+from ._open_flink_ai_service_request import OpenFlinkAiServiceRequest
+from ._open_flink_ai_service_response_body import OpenFlinkAiServiceResponseBody
+from ._open_flink_ai_service_response import OpenFlinkAiServiceResponse
 from ._query_convert_instance_price_request import QueryConvertInstancePriceRequest
 from ._query_convert_instance_price_shrink_request import QueryConvertInstancePriceShrinkRequest
 from ._query_convert_instance_price_response_body import QueryConvertInstancePriceResponseBody
@@ -139,6 +154,9 @@ from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNa
 from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNamespacesTags
 from ._describe_namespaces_response_body import DescribeNamespacesResponseBodyNamespaces
 from ._describe_supported_regions_response_body import DescribeSupportedRegionsResponseBodyRegions
+from ._get_flink_ai_service_response_body import GetFlinkAiServiceResponseBodyFlinkAiServiceDTO
+from ._get_flink_ai_service_free_quota_response_body import GetFlinkAiServiceFreeQuotaResponseBodyFlinkAiFreeQuotaDTOUsedQuotaDetails
+from ._get_flink_ai_service_free_quota_response_body import GetFlinkAiServiceFreeQuotaResponseBodyFlinkAiFreeQuotaDTO
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._modify_elastic_resource_spec_request import ModifyElasticResourceSpecRequestResourceSpec
@@ -149,6 +167,7 @@ from ._modify_namespace_spec_v2request import ModifyNamespaceSpecV2RequestGuaran
 from ._modify_prepay_instance_spec_request import ModifyPrepayInstanceSpecRequestHaResourceSpec
 from ._modify_prepay_instance_spec_request import ModifyPrepayInstanceSpecRequestResourceSpec
 from ._modify_prepay_namespace_spec_request import ModifyPrepayNamespaceSpecRequestResourceSpec
+from ._open_flink_ai_service_response_body import OpenFlinkAiServiceResponseBodyOrderInfo
 from ._query_convert_instance_price_request import QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec
 from ._query_convert_instance_price_request import QueryConvertInstancePriceRequestNamespaceResourceSpecs
 from ._query_convert_instance_price_response_body import QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo
@@ -186,6 +205,9 @@ __all__ = [
     FlussResourceSpec,
     FlussVswitch,
     StageWithWeight,
+    CloseFlinkAiServiceRequest,
+    CloseFlinkAiServiceResponseBody,
+    CloseFlinkAiServiceResponse,
     ConvertHybridInstanceRequest,
     ConvertHybridInstanceShrinkRequest,
     ConvertHybridInstanceResponseBody,
@@ -224,9 +246,18 @@ __all__ = [
     DescribeSupportedZonesRequest,
     DescribeSupportedZonesResponseBody,
     DescribeSupportedZonesResponse,
+    GetFlinkAiServiceRequest,
+    GetFlinkAiServiceResponseBody,
+    GetFlinkAiServiceResponse,
+    GetFlinkAiServiceFreeQuotaRequest,
+    GetFlinkAiServiceFreeQuotaResponseBody,
+    GetFlinkAiServiceFreeQuotaResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ModifyAiServiceProtectionRequest,
+    ModifyAiServiceProtectionResponseBody,
+    ModifyAiServiceProtectionResponse,
     ModifyElasticResourceSpecRequest,
     ModifyElasticResourceSpecShrinkRequest,
     ModifyElasticResourceSpecResponseBody,
@@ -251,6 +282,9 @@ __all__ = [
     ModifyPrepayNamespaceSpecShrinkRequest,
     ModifyPrepayNamespaceSpecResponseBody,
     ModifyPrepayNamespaceSpecResponse,
+    OpenFlinkAiServiceRequest,
+    OpenFlinkAiServiceResponseBody,
+    OpenFlinkAiServiceResponse,
     QueryConvertInstancePriceRequest,
     QueryConvertInstancePriceShrinkRequest,
     QueryConvertInstancePriceResponseBody,
@@ -317,6 +351,9 @@ __all__ = [
     DescribeNamespacesResponseBodyNamespacesTags,
     DescribeNamespacesResponseBodyNamespaces,
     DescribeSupportedRegionsResponseBodyRegions,
+    GetFlinkAiServiceResponseBodyFlinkAiServiceDTO,
+    GetFlinkAiServiceFreeQuotaResponseBodyFlinkAiFreeQuotaDTOUsedQuotaDetails,
+    GetFlinkAiServiceFreeQuotaResponseBodyFlinkAiFreeQuotaDTO,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     ModifyElasticResourceSpecRequestResourceSpec,
@@ -327,6 +364,7 @@ __all__ = [
     ModifyPrepayInstanceSpecRequestHaResourceSpec,
     ModifyPrepayInstanceSpecRequestResourceSpec,
     ModifyPrepayNamespaceSpecRequestResourceSpec,
+    OpenFlinkAiServiceResponseBodyOrderInfo,
     QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec,
     QueryConvertInstancePriceRequestNamespaceResourceSpecs,
     QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo,
