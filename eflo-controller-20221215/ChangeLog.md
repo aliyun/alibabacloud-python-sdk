@@ -1,3 +1,12 @@
+2026-08-17 Version: 3.1.1
+- Update API ListMachineTypes: add response parameters Body.MachineTypes.$.CpuInfoDetail.
+- Update API ListMachineTypes: add response parameters Body.MachineTypes.$.DiskInfoDetail.
+- Update API ListMachineTypes: add response parameters Body.MachineTypes.$.FrontendNetworkDetail.
+- Update API ListMachineTypes: add response parameters Body.MachineTypes.$.GpuInfoDetail.
+- Update API ListMachineTypes: add response parameters Body.MachineTypes.$.MemoryInfoDetail.
+- Update API ListMachineTypes: add response parameters Body.MachineTypes.$.RdmaInfoDetail.
+
+
 2026-07-10 Version: 3.0.8
 - Update API UpdateNodeGroup: add request parameters SystemDisk.
 

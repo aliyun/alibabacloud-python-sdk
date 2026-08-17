@@ -77,6 +77,10 @@ from ._describe_node_response import DescribeNodeResponse
 from ._describe_node_group_request import DescribeNodeGroupRequest
 from ._describe_node_group_response_body import DescribeNodeGroupResponseBody
 from ._describe_node_group_response import DescribeNodeGroupResponse
+from ._describe_node_group_refresh_task_request import DescribeNodeGroupRefreshTaskRequest
+from ._describe_node_group_refresh_task_shrink_request import DescribeNodeGroupRefreshTaskShrinkRequest
+from ._describe_node_group_refresh_task_response_body import DescribeNodeGroupRefreshTaskResponseBody
+from ._describe_node_group_refresh_task_response import DescribeNodeGroupRefreshTaskResponse
 from ._describe_node_type_request import DescribeNodeTypeRequest
 from ._describe_node_type_response_body import DescribeNodeTypeResponseBody
 from ._describe_node_type_response import DescribeNodeTypeResponse
@@ -134,6 +138,14 @@ from ._list_machine_types_response import ListMachineTypesResponse
 from ._list_net_test_results_request import ListNetTestResultsRequest
 from ._list_net_test_results_response_body import ListNetTestResultsResponseBody
 from ._list_net_test_results_response import ListNetTestResultsResponse
+from ._list_node_group_drifted_nodes_request import ListNodeGroupDriftedNodesRequest
+from ._list_node_group_drifted_nodes_shrink_request import ListNodeGroupDriftedNodesShrinkRequest
+from ._list_node_group_drifted_nodes_response_body import ListNodeGroupDriftedNodesResponseBody
+from ._list_node_group_drifted_nodes_response import ListNodeGroupDriftedNodesResponse
+from ._list_node_group_refresh_tasks_request import ListNodeGroupRefreshTasksRequest
+from ._list_node_group_refresh_tasks_shrink_request import ListNodeGroupRefreshTasksShrinkRequest
+from ._list_node_group_refresh_tasks_response_body import ListNodeGroupRefreshTasksResponseBody
+from ._list_node_group_refresh_tasks_response import ListNodeGroupRefreshTasksResponse
 from ._list_node_groups_request import ListNodeGroupsRequest
 from ._list_node_groups_response_body import ListNodeGroupsResponseBody
 from ._list_node_groups_response import ListNodeGroupsResponse
@@ -153,6 +165,10 @@ from ._reboot_nodes_request import RebootNodesRequest
 from ._reboot_nodes_shrink_request import RebootNodesShrinkRequest
 from ._reboot_nodes_response_body import RebootNodesResponseBody
 from ._reboot_nodes_response import RebootNodesResponse
+from ._refresh_node_group_nodes_request import RefreshNodeGroupNodesRequest
+from ._refresh_node_group_nodes_shrink_request import RefreshNodeGroupNodesShrinkRequest
+from ._refresh_node_group_nodes_response_body import RefreshNodeGroupNodesResponseBody
+from ._refresh_node_group_nodes_response import RefreshNodeGroupNodesResponse
 from ._reimage_nodes_request import ReimageNodesRequest
 from ._reimage_nodes_shrink_request import ReimageNodesShrinkRequest
 from ._reimage_nodes_response_body import ReimageNodesResponseBody
@@ -245,6 +261,8 @@ from ._describe_net_test_result_response_body import DescribeNetTestResultRespon
 from ._describe_node_response_body import DescribeNodeResponseBodyDisks
 from ._describe_node_response_body import DescribeNodeResponseBodyNetworks
 from ._describe_node_group_response_body import DescribeNodeGroupResponseBodySystemDisk
+from ._describe_node_group_refresh_task_response_body import DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts
+from ._describe_node_group_refresh_task_response_body import DescribeNodeGroupRefreshTaskResponseBodyNodes
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode
 from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes
@@ -290,6 +308,12 @@ from ._list_hyper_nodes_response_body import ListHyperNodesResponseBodyHyperNode
 from ._list_images_response_body import ListImagesResponseBodyImages
 from ._list_machine_network_info_request import ListMachineNetworkInfoRequestMachineHpnInfo
 from ._list_machine_network_info_response_body import ListMachineNetworkInfoResponseBodyMachineNetworkInfo
+from ._list_machine_types_response_body import ListMachineTypesResponseBodyMachineTypesCpuInfoDetail
+from ._list_machine_types_response_body import ListMachineTypesResponseBodyMachineTypesDiskInfoDetail
+from ._list_machine_types_response_body import ListMachineTypesResponseBodyMachineTypesFrontendNetworkDetail
+from ._list_machine_types_response_body import ListMachineTypesResponseBodyMachineTypesGpuInfoDetail
+from ._list_machine_types_response_body import ListMachineTypesResponseBodyMachineTypesMemoryInfoDetail
+from ._list_machine_types_response_body import ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail
 from ._list_machine_types_response_body import ListMachineTypesResponseBodyMachineTypes
 from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsCommTestHosts
 from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsCommTest
@@ -299,6 +323,9 @@ from ._list_net_test_results_response_body import ListNetTestResultsResponseBody
 from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers
 from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsTrafficTest
 from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResults
+from ._list_node_group_drifted_nodes_response_body import ListNodeGroupDriftedNodesResponseBodyNodesPropertyDrifts
+from ._list_node_group_drifted_nodes_response_body import ListNodeGroupDriftedNodesResponseBodyNodes
+from ._list_node_group_refresh_tasks_response_body import ListNodeGroupRefreshTasksResponseBodyNodeGroupRefreshTasks
 from ._list_node_groups_response_body import ListNodeGroupsResponseBodyGroups
 from ._list_syslogs_response_body import ListSyslogsResponseBodyLogs
 from ._list_tag_resources_request import ListTagResourcesRequestTag
@@ -392,6 +419,10 @@ __all__ = [
     DescribeNodeGroupRequest,
     DescribeNodeGroupResponseBody,
     DescribeNodeGroupResponse,
+    DescribeNodeGroupRefreshTaskRequest,
+    DescribeNodeGroupRefreshTaskShrinkRequest,
+    DescribeNodeGroupRefreshTaskResponseBody,
+    DescribeNodeGroupRefreshTaskResponse,
     DescribeNodeTypeRequest,
     DescribeNodeTypeResponseBody,
     DescribeNodeTypeResponse,
@@ -449,6 +480,14 @@ __all__ = [
     ListNetTestResultsRequest,
     ListNetTestResultsResponseBody,
     ListNetTestResultsResponse,
+    ListNodeGroupDriftedNodesRequest,
+    ListNodeGroupDriftedNodesShrinkRequest,
+    ListNodeGroupDriftedNodesResponseBody,
+    ListNodeGroupDriftedNodesResponse,
+    ListNodeGroupRefreshTasksRequest,
+    ListNodeGroupRefreshTasksShrinkRequest,
+    ListNodeGroupRefreshTasksResponseBody,
+    ListNodeGroupRefreshTasksResponse,
     ListNodeGroupsRequest,
     ListNodeGroupsResponseBody,
     ListNodeGroupsResponse,
@@ -468,6 +507,10 @@ __all__ = [
     RebootNodesShrinkRequest,
     RebootNodesResponseBody,
     RebootNodesResponse,
+    RefreshNodeGroupNodesRequest,
+    RefreshNodeGroupNodesShrinkRequest,
+    RefreshNodeGroupNodesResponseBody,
+    RefreshNodeGroupNodesResponse,
     ReimageNodesRequest,
     ReimageNodesShrinkRequest,
     ReimageNodesResponseBody,
@@ -560,6 +603,8 @@ __all__ = [
     DescribeNodeResponseBodyDisks,
     DescribeNodeResponseBodyNetworks,
     DescribeNodeGroupResponseBodySystemDisk,
+    DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts,
+    DescribeNodeGroupRefreshTaskResponseBodyNodes,
     DescribeRegionsResponseBodyRegions,
     DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode,
     DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes,
@@ -605,6 +650,12 @@ __all__ = [
     ListImagesResponseBodyImages,
     ListMachineNetworkInfoRequestMachineHpnInfo,
     ListMachineNetworkInfoResponseBodyMachineNetworkInfo,
+    ListMachineTypesResponseBodyMachineTypesCpuInfoDetail,
+    ListMachineTypesResponseBodyMachineTypesDiskInfoDetail,
+    ListMachineTypesResponseBodyMachineTypesFrontendNetworkDetail,
+    ListMachineTypesResponseBodyMachineTypesGpuInfoDetail,
+    ListMachineTypesResponseBodyMachineTypesMemoryInfoDetail,
+    ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail,
     ListMachineTypesResponseBodyMachineTypes,
     ListNetTestResultsResponseBodyNetTestResultsCommTestHosts,
     ListNetTestResultsResponseBodyNetTestResultsCommTest,
@@ -614,6 +665,9 @@ __all__ = [
     ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers,
     ListNetTestResultsResponseBodyNetTestResultsTrafficTest,
     ListNetTestResultsResponseBodyNetTestResults,
+    ListNodeGroupDriftedNodesResponseBodyNodesPropertyDrifts,
+    ListNodeGroupDriftedNodesResponseBodyNodes,
+    ListNodeGroupRefreshTasksResponseBodyNodeGroupRefreshTasks,
     ListNodeGroupsResponseBodyGroups,
     ListSyslogsResponseBodyLogs,
     ListTagResourcesRequestTag,

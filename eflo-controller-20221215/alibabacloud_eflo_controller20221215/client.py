@@ -22,24 +22,24 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'me-east-1': 'eflo-controller.me-east-1.aliyuncs.com',
-            'eu-central-1': 'eflo-controller.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'eflo-controller.cn-zhangjiakou.aliyuncs.com',
             'cn-wulanchabu': 'eflo-controller.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'eflo-controller.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'eflo-controller.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-beijing': 'eflo-controller.cn-beijing.aliyuncs.com',
             'cn-shanghai': 'eflo-controller.cn-shanghai.aliyuncs.com',
-            'cn-huhehaote': 'eflo-controller.cn-huhehaote.aliyuncs.com',
             'cn-hongkong': 'eflo-controller.cn-hongkong.aliyuncs.com',
             'cn-heyuan': 'eflo-controller.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou': 'eflo-controller.cn-hangzhou.aliyuncs.com',
+            'cn-zhangjiakou': 'eflo-controller.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'eflo-controller.cn-shenzhen.aliyuncs.com',
+            'ap-northeast-1': 'eflo-controller.ap-northeast-1.aliyuncs.com',
             'cn-guangzhou': 'eflo-controller.cn-guangzhou.aliyuncs.com',
-            'cn-beijing': 'eflo-controller.cn-beijing.aliyuncs.com',
-            'ap-southeast-8': 'eflo-controller.ap-sourtheast-8.aliyuncs.com',
-            'ap-southeast-7': 'eflo-controller.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-3': 'eflo-controller.ap-southeast-3.aliyuncs.com',
             'ap-southeast-1': 'eflo-controller.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'eflo-controller.ap-northeast-1.aliyuncs.com'
+            'ap-southeast-3': 'eflo-controller.ap-southeast-3.aliyuncs.com',
+            'cn-huhehaote': 'eflo-controller.cn-huhehaote.aliyuncs.com',
+            'ap-southeast-7': 'eflo-controller.ap-southeast-7.aliyuncs.com',
+            'cn-hangzhou': 'eflo-controller.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-8': 'eflo-controller.ap-southeast-8.aliyuncs.com',
+            'eu-central-1': 'eflo-controller.eu-central-1.aliyuncs.com',
+            'me-east-1': 'eflo-controller.me-east-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'eflo-controller.cn-shanghai-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eflo-controller', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1934,6 +1934,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_node_group_with_options_async(request, runtime)
 
+    def describe_node_group_refresh_task_with_options(
+        self,
+        tmp_req: main_models.DescribeNodeGroupRefreshTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeNodeGroupRefreshTaskResponse:
+        tmp_req.validate()
+        request = main_models.DescribeNodeGroupRefreshTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.node_statuses):
+            request.node_statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_statuses, 'NodeStatuses', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.node_group_refresh_task_id):
+            body['NodeGroupRefreshTaskId'] = request.node_group_refresh_task_id
+        if not DaraCore.is_null(request.node_statuses_shrink):
+            body['NodeStatuses'] = request.node_statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeNodeGroupRefreshTask',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeNodeGroupRefreshTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_node_group_refresh_task_with_options_async(
+        self,
+        tmp_req: main_models.DescribeNodeGroupRefreshTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeNodeGroupRefreshTaskResponse:
+        tmp_req.validate()
+        request = main_models.DescribeNodeGroupRefreshTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.node_statuses):
+            request.node_statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_statuses, 'NodeStatuses', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.node_group_refresh_task_id):
+            body['NodeGroupRefreshTaskId'] = request.node_group_refresh_task_id
+        if not DaraCore.is_null(request.node_statuses_shrink):
+            body['NodeStatuses'] = request.node_statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeNodeGroupRefreshTask',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeNodeGroupRefreshTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_node_group_refresh_task(
+        self,
+        request: main_models.DescribeNodeGroupRefreshTaskRequest,
+    ) -> main_models.DescribeNodeGroupRefreshTaskResponse:
+        runtime = RuntimeOptions()
+        return self.describe_node_group_refresh_task_with_options(request, runtime)
+
+    async def describe_node_group_refresh_task_async(
+        self,
+        request: main_models.DescribeNodeGroupRefreshTaskRequest,
+    ) -> main_models.DescribeNodeGroupRefreshTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_node_group_refresh_task_with_options_async(request, runtime)
+
     def describe_node_type_with_options(
         self,
         request: main_models.DescribeNodeTypeRequest,
@@ -3458,6 +3548,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_net_test_results_with_options_async(request, runtime)
 
+    def list_node_group_drifted_nodes_with_options(
+        self,
+        tmp_req: main_models.ListNodeGroupDriftedNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodeGroupDriftedNodesResponse:
+        tmp_req.validate()
+        request = main_models.ListNodeGroupDriftedNodesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.node_ids):
+            request.node_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodeGroupDriftedNodes',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodeGroupDriftedNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_node_group_drifted_nodes_with_options_async(
+        self,
+        tmp_req: main_models.ListNodeGroupDriftedNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodeGroupDriftedNodesResponse:
+        tmp_req.validate()
+        request = main_models.ListNodeGroupDriftedNodesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.node_ids):
+            request.node_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodeGroupDriftedNodes',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodeGroupDriftedNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_node_group_drifted_nodes(
+        self,
+        request: main_models.ListNodeGroupDriftedNodesRequest,
+    ) -> main_models.ListNodeGroupDriftedNodesResponse:
+        runtime = RuntimeOptions()
+        return self.list_node_group_drifted_nodes_with_options(request, runtime)
+
+    async def list_node_group_drifted_nodes_async(
+        self,
+        request: main_models.ListNodeGroupDriftedNodesRequest,
+    ) -> main_models.ListNodeGroupDriftedNodesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_node_group_drifted_nodes_with_options_async(request, runtime)
+
+    def list_node_group_refresh_tasks_with_options(
+        self,
+        tmp_req: main_models.ListNodeGroupRefreshTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodeGroupRefreshTasksResponse:
+        tmp_req.validate()
+        request = main_models.ListNodeGroupRefreshTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.statuses_shrink):
+            body['Statuses'] = request.statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodeGroupRefreshTasks',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodeGroupRefreshTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_node_group_refresh_tasks_with_options_async(
+        self,
+        tmp_req: main_models.ListNodeGroupRefreshTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodeGroupRefreshTasksResponse:
+        tmp_req.validate()
+        request = main_models.ListNodeGroupRefreshTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.statuses_shrink):
+            body['Statuses'] = request.statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodeGroupRefreshTasks',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodeGroupRefreshTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_node_group_refresh_tasks(
+        self,
+        request: main_models.ListNodeGroupRefreshTasksRequest,
+    ) -> main_models.ListNodeGroupRefreshTasksResponse:
+        runtime = RuntimeOptions()
+        return self.list_node_group_refresh_tasks_with_options(request, runtime)
+
+    async def list_node_group_refresh_tasks_async(
+        self,
+        request: main_models.ListNodeGroupRefreshTasksRequest,
+    ) -> main_models.ListNodeGroupRefreshTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_node_group_refresh_tasks_with_options_async(request, runtime)
+
     def list_node_groups_with_options(
         self,
         request: main_models.ListNodeGroupsRequest,
@@ -3953,6 +4227,92 @@ class Client(OpenApiClient):
     ) -> main_models.RebootNodesResponse:
         runtime = RuntimeOptions()
         return await self.reboot_nodes_with_options_async(request, runtime)
+
+    def refresh_node_group_nodes_with_options(
+        self,
+        tmp_req: main_models.RefreshNodeGroupNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshNodeGroupNodesResponse:
+        tmp_req.validate()
+        request = main_models.RefreshNodeGroupNodesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.node_ids):
+            request.node_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_disruptive_action):
+            body['MaxDisruptiveAction'] = request.max_disruptive_action
+        if not DaraCore.is_null(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshNodeGroupNodes',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshNodeGroupNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_node_group_nodes_with_options_async(
+        self,
+        tmp_req: main_models.RefreshNodeGroupNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshNodeGroupNodesResponse:
+        tmp_req.validate()
+        request = main_models.RefreshNodeGroupNodesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.node_ids):
+            request.node_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_ids, 'NodeIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_disruptive_action):
+            body['MaxDisruptiveAction'] = request.max_disruptive_action
+        if not DaraCore.is_null(request.node_group_id):
+            body['NodeGroupId'] = request.node_group_id
+        if not DaraCore.is_null(request.node_ids_shrink):
+            body['NodeIds'] = request.node_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshNodeGroupNodes',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshNodeGroupNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_node_group_nodes(
+        self,
+        request: main_models.RefreshNodeGroupNodesRequest,
+    ) -> main_models.RefreshNodeGroupNodesResponse:
+        runtime = RuntimeOptions()
+        return self.refresh_node_group_nodes_with_options(request, runtime)
+
+    async def refresh_node_group_nodes_async(
+        self,
+        request: main_models.RefreshNodeGroupNodesRequest,
+    ) -> main_models.RefreshNodeGroupNodesResponse:
+        runtime = RuntimeOptions()
+        return await self.refresh_node_group_nodes_with_options_async(request, runtime)
 
     def reimage_nodes_with_options(
         self,
