@@ -240,6 +240,9 @@ from ._list_client_users_response import ListClientUsersResponse
 from ._list_connectors_request import ListConnectorsRequest
 from ._list_connectors_response_body import ListConnectorsResponseBody
 from ._list_connectors_response import ListConnectorsResponse
+from ._list_domain_items_request import ListDomainItemsRequest
+from ._list_domain_items_response_body import ListDomainItemsResponseBody
+from ._list_domain_items_response import ListDomainItemsResponse
 from ._list_domain_metas_request import ListDomainMetasRequest
 from ._list_domain_metas_response_body import ListDomainMetasResponseBody
 from ._list_domain_metas_response import ListDomainMetasResponse
@@ -603,6 +606,7 @@ from ._list_connectors_response_body import ListConnectorsResponseBodyConnectors
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectorsConnectorClients
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectorsUpgradeTime
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectors
+from ._list_domain_items_response_body import ListDomainItemsResponseBodyDomainItems
 from ._list_domain_metas_response_body import ListDomainMetasResponseBodyDomainMetas
 from ._list_dynamic_disposal_processes_response_body import ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo
 from ._list_dynamic_disposal_processes_response_body import ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo
@@ -979,6 +983,9 @@ __all__ = [
     ListConnectorsRequest,
     ListConnectorsResponseBody,
     ListConnectorsResponse,
+    ListDomainItemsRequest,
+    ListDomainItemsResponseBody,
+    ListDomainItemsResponse,
     ListDomainMetasRequest,
     ListDomainMetasResponseBody,
     ListDomainMetasResponse,
@@ -1342,6 +1349,7 @@ __all__ = [
     ListConnectorsResponseBodyConnectorsConnectorClients,
     ListConnectorsResponseBodyConnectorsUpgradeTime,
     ListConnectorsResponseBodyConnectors,
+    ListDomainItemsResponseBodyDomainItems,
     ListDomainMetasResponseBodyDomainMetas,
     ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo,
     ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceStatusInfo,

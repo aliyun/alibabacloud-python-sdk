@@ -5177,6 +5177,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_connectors_with_options_async(request, runtime)
 
+    def list_domain_items_with_options(
+        self,
+        request: main_models.ListDomainItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDomainItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.item_value):
+            query['ItemValue'] = request.item_value
+        if not DaraCore.is_null(request.list_id):
+            query['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            query['ListType'] = request.list_type
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDomainItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDomainItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_domain_items_with_options_async(
+        self,
+        request: main_models.ListDomainItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDomainItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.item_value):
+            query['ItemValue'] = request.item_value
+        if not DaraCore.is_null(request.list_id):
+            query['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            query['ListType'] = request.list_type
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDomainItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDomainItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_domain_items(
+        self,
+        request: main_models.ListDomainItemsRequest,
+    ) -> main_models.ListDomainItemsResponse:
+        runtime = RuntimeOptions()
+        return self.list_domain_items_with_options(request, runtime)
+
+    async def list_domain_items_async(
+        self,
+        request: main_models.ListDomainItemsRequest,
+    ) -> main_models.ListDomainItemsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_domain_items_with_options_async(request, runtime)
+
     def list_domain_metas_with_options(
         self,
         request: main_models.ListDomainMetasRequest,

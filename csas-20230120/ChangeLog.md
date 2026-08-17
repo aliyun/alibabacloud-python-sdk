@@ -1,3 +1,7 @@
+2026-08-17 Version: 1.15.0
+- Support API ListDomainItems.
+
+
 2026-08-12 Version: 1.14.0
 - Support API ListRiskItems.
 - Support API UpdateRiskStatus.
