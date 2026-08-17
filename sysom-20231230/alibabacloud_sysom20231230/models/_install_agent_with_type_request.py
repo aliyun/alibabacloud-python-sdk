@@ -10,23 +10,38 @@ from darabonba.model import DaraModel
 class InstallAgentWithTypeRequest(DaraModel):
     def __init__(
         self,
+        tag: List[main_models.InstallAgentWithTypeRequestTag] = None,
         agent_id: str = None,
         agent_version: str = None,
         config_id: str = None,
         instance_type: str = None,
         instances: List[main_models.InstallAgentWithTypeRequestInstances] = None,
     ):
+        self.tag = tag
+        # The ID of the component to install.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The version of the component to install.
+        # 
         # This parameter is required.
         self.agent_version = agent_version
+        # The configuration ID of the component to install.
         self.config_id = config_id
+        # The instance type.
+        # 
         # This parameter is required.
         self.instance_type = instance_type
+        # The list of instances on which to install the component.
+        # 
         # This parameter is required.
         self.instances = instances
 
     def validate(self):
+        if self.tag:
+            for v1 in self.tag:
+                 if v1:
+                    v1.validate()
         if self.instances:
             for v1 in self.instances:
                  if v1:
@@ -37,6 +52,11 @@ class InstallAgentWithTypeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['Tag'] = []
+        if self.tag is not None:
+            for k1 in self.tag:
+                result['Tag'].append(k1.to_map() if k1 else None)
+
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
 
@@ -58,6 +78,12 @@ class InstallAgentWithTypeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k1 in m.get('Tag'):
+                temp_model = main_models.InstallAgentWithTypeRequestTag()
+                self.tag.append(temp_model.from_map(k1))
+
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
 
@@ -84,8 +110,12 @@ class InstallAgentWithTypeRequestInstances(DaraModel):
         instance: str = None,
         region: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance = instance
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
 
@@ -112,6 +142,41 @@ class InstallAgentWithTypeRequestInstances(DaraModel):
 
         if m.get('region') is not None:
             self.region = m.get('region')
+
+        return self
+
+class InstallAgentWithTypeRequestTag(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

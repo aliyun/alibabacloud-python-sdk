@@ -273,6 +273,7 @@ from ._initial_sysom_response_body import InitialSysomResponseBodyData
 from ._install_agent_request import InstallAgentRequestInstances
 from ._install_agent_response_body import InstallAgentResponseBodyData
 from ._install_agent_for_cluster_response_body import InstallAgentForClusterResponseBodyData
+from ._install_agent_with_type_request import InstallAgentWithTypeRequestTag
 from ._install_agent_with_type_request import InstallAgentWithTypeRequestInstances
 from ._install_agent_with_type_response_body import InstallAgentWithTypeResponseBodyData
 from ._invoke_diagnosis_response_body import InvokeDiagnosisResponseBodyData
@@ -593,6 +594,7 @@ __all__ = [
     InstallAgentRequestInstances,
     InstallAgentResponseBodyData,
     InstallAgentForClusterResponseBodyData,
+    InstallAgentWithTypeRequestTag,
     InstallAgentWithTypeRequestInstances,
     InstallAgentWithTypeResponseBodyData,
     InvokeDiagnosisResponseBodyData,

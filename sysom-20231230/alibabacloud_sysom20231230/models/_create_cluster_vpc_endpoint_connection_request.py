@@ -11,9 +11,14 @@ class CreateClusterVpcEndpointConnectionRequest(DaraModel):
         dry_run: bool = None,
         region: str = None,
     ):
+        # The ID of the ACK cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to perform a dry run.
         self.dry_run = dry_run
+        # The region to which the cluster belongs.
+        # 
         # This parameter is required.
         self.region = region
 

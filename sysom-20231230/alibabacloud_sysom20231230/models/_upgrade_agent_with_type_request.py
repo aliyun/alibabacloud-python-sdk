@@ -15,11 +15,18 @@ class UpgradeAgentWithTypeRequest(DaraModel):
         instance_type: str = None,
         instances: List[main_models.UpgradeAgentWithTypeRequestInstances] = None,
     ):
+        # The ID of the component to update.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The version of the component to update to.
+        # 
         # This parameter is required.
         self.agent_version = agent_version
+        # The instance type.
         self.instance_type = instance_type
+        # The list of instances for which to update the component.
+        # 
         # This parameter is required.
         self.instances = instances
 
@@ -75,8 +82,12 @@ class UpgradeAgentWithTypeRequestInstances(DaraModel):
         instance: str = None,
         region: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance = instance
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
 

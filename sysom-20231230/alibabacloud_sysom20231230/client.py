@@ -371,6 +371,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAlertDestinationResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.app_secret):
+            body['app_secret'] = request.app_secret
+        if not DaraCore.is_null(request.group_id):
+            body['group_id'] = request.group_id
+        if not DaraCore.is_null(request.imbot):
+            body['imbot'] = request.imbot
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
         if not DaraCore.is_null(request.params):
@@ -407,6 +415,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAlertDestinationResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.app_secret):
+            body['app_secret'] = request.app_secret
+        if not DaraCore.is_null(request.group_id):
+            body['group_id'] = request.group_id
+        if not DaraCore.is_null(request.imbot):
+            body['imbot'] = request.imbot
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
         if not DaraCore.is_null(request.params):
@@ -3605,6 +3621,8 @@ class Client(OpenApiClient):
     ) -> main_models.InstallAgentWithTypeResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.tag):
+            body['Tag'] = request.tag
         if not DaraCore.is_null(request.agent_id):
             body['agentId'] = request.agent_id
         if not DaraCore.is_null(request.agent_version):
@@ -3643,6 +3661,8 @@ class Client(OpenApiClient):
     ) -> main_models.InstallAgentWithTypeResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.tag):
+            body['Tag'] = request.tag
         if not DaraCore.is_null(request.agent_id):
             body['agentId'] = request.agent_id
         if not DaraCore.is_null(request.agent_version):
@@ -6101,8 +6121,16 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAlertDestinationResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.app_secret):
+            body['app_secret'] = request.app_secret
+        if not DaraCore.is_null(request.group_id):
+            body['group_id'] = request.group_id
         if not DaraCore.is_null(request.id):
             body['id'] = request.id
+        if not DaraCore.is_null(request.imbot):
+            body['imbot'] = request.imbot
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
         if not DaraCore.is_null(request.params):
@@ -6139,8 +6167,16 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAlertDestinationResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.app_secret):
+            body['app_secret'] = request.app_secret
+        if not DaraCore.is_null(request.group_id):
+            body['group_id'] = request.group_id
         if not DaraCore.is_null(request.id):
             body['id'] = request.id
+        if not DaraCore.is_null(request.imbot):
+            body['imbot'] = request.imbot
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
         if not DaraCore.is_null(request.params):

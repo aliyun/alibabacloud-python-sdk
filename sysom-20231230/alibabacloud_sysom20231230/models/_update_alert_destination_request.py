@@ -2,20 +2,30 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_sysom20231230 import models as main_models
 from darabonba.model import DaraModel
 
 class UpdateAlertDestinationRequest(DaraModel):
     def __init__(
         self,
+        app_id: str = None,
+        app_secret: str = None,
+        group_id: List[str] = None,
         id: str = None,
+        imbot: bool = None,
         name: str = None,
         params: main_models.UpdateAlertDestinationRequestParams = None,
         source: str = None,
         target: str = None,
     ):
+        self.app_id = app_id
+        self.app_secret = app_secret
+        self.group_id = group_id
         # The ID of the alert contact.
         self.id = id
+        self.imbot = imbot
         # The name of the alert contact.
         self.name = name
         # The configuration parameters.
@@ -34,8 +44,20 @@ class UpdateAlertDestinationRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+
+        if self.app_secret is not None:
+            result['app_secret'] = self.app_secret
+
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+
         if self.id is not None:
             result['id'] = self.id
+
+        if self.imbot is not None:
+            result['imbot'] = self.imbot
 
         if self.name is not None:
             result['name'] = self.name
@@ -53,8 +75,20 @@ class UpdateAlertDestinationRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('app_id') is not None:
+            self.app_id = m.get('app_id')
+
+        if m.get('app_secret') is not None:
+            self.app_secret = m.get('app_secret')
+
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+
         if m.get('id') is not None:
             self.id = m.get('id')
+
+        if m.get('imbot') is not None:
+            self.imbot = m.get('imbot')
 
         if m.get('name') is not None:
             self.name = m.get('name')

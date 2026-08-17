@@ -13,9 +13,13 @@ class CreateClusterVpcEndpointConnectionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The description of the error code. This parameter is empty if no error occurs.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -63,6 +67,7 @@ class CreateClusterVpcEndpointConnectionResponseBodyData(DaraModel):
         self,
         endpoint_connection_id: str = None,
     ):
+        # The ID of the endpoint connection.
         self.endpoint_connection_id = endpoint_connection_id
 
     def validate(self):
