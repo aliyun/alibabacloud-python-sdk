@@ -97,6 +97,7 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         available_amount: int = None,
         contact_group_names: List[str] = None,
         credit_trend_list: List[main_models.DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList] = None,
+        current_instance_expired_time: str = None,
         current_instance_id: str = None,
         current_remain_credit: int = None,
         current_total_credit: int = None,
@@ -118,6 +119,7 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         self.contact_group_names = contact_group_names
         # The hourly consumption samples of the current credit package.
         self.credit_trend_list = credit_trend_list
+        self.current_instance_expired_time = current_instance_expired_time
         # The instance ID of the current active credit package.
         self.current_instance_id = current_instance_id
         # The remaining credits of the current active credit package.
@@ -172,6 +174,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         if self.credit_trend_list is not None:
             for k1 in self.credit_trend_list:
                 result['CreditTrendList'].append(k1.to_map() if k1 else None)
+
+        if self.current_instance_expired_time is not None:
+            result['CurrentInstanceExpiredTime'] = self.current_instance_expired_time
 
         if self.current_instance_id is not None:
             result['CurrentInstanceId'] = self.current_instance_id
@@ -236,6 +241,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
             for k1 in m.get('CreditTrendList'):
                 temp_model = main_models.DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList()
                 self.credit_trend_list.append(temp_model.from_map(k1))
+
+        if m.get('CurrentInstanceExpiredTime') is not None:
+            self.current_instance_expired_time = m.get('CurrentInstanceExpiredTime')
 
         if m.get('CurrentInstanceId') is not None:
             self.current_instance_id = m.get('CurrentInstanceId')

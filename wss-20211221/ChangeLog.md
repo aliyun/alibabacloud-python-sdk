@@ -1,3 +1,7 @@
+2026-08-17 Version: 1.5.2
+- Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.CurrentInstanceExpiredTime.
+
+
 2026-08-16 Version: 1.5.1
 - Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.AvailableAmount.
 - Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.RemainCreditInfo.
