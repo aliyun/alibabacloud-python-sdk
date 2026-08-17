@@ -10,11 +10,11 @@ class ResumeCampaignRequest(DaraModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
-        # 活动ID
+        # The ID of the campaign.
         # 
         # This parameter is required.
         self.campaign_id = campaign_id
-        # 外呼实例ID
+        # The outbound instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

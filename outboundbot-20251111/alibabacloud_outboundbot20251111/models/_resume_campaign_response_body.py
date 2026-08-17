@@ -17,19 +17,19 @@ class ResumeCampaignResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 结果码
+        # The result code.
         self.code = code
-        # 操作是否成功
+        # Indicates whether the operation was successful.
         self.data = data
-        # HTTP状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 错误信息
+        # The error message.
         self.message = message
-        # 错误信息参数列表
+        # The list of error message parameters.
         self.params = params
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
-        # 请求是否成功
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

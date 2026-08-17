@@ -1,3 +1,7 @@
+2026-08-17 Version: 1.4.1
+- Update API AppendCases: add response parameters Body.Data.
+
+
 2026-08-13 Version: 1.4.0
 - Support API AbortCampaign.
 - Support API AbortCases.

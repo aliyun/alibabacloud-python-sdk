@@ -158,6 +158,7 @@ from ._update_voice_access_profile_shrink_request import UpdateVoiceAccessProfil
 from ._update_voice_access_profile_response_body import UpdateVoiceAccessProfileResponseBody
 from ._update_voice_access_profile_response import UpdateVoiceAccessProfileResponse
 from ._append_cases_request import AppendCasesRequestCases
+from ._append_cases_response_body import AppendCasesResponseBodyData
 from ._create_campaign_request import CreateCampaignRequestCases
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
 from ._create_flash_sms_access_profile_request import CreateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles
@@ -390,6 +391,7 @@ __all__ = [
     UpdateVoiceAccessProfileResponseBody,
     UpdateVoiceAccessProfileResponse,
     AppendCasesRequestCases,
+    AppendCasesResponseBodyData,
     CreateCampaignRequestCases,
     CreateCloneVoiceResponseBodyData,
     CreateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles,
