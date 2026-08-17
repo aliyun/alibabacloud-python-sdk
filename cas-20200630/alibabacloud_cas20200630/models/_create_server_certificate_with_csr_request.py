@@ -12,6 +12,7 @@ class CreateServerCertificateWithCsrRequest(DaraModel):
         self,
         after_time: int = None,
         algorithm: str = None,
+        asynchronous_flag: bool = None,
         before_time: int = None,
         common_name: str = None,
         country: str = None,
@@ -31,100 +32,90 @@ class CreateServerCertificateWithCsrRequest(DaraModel):
         tags: List[main_models.CreateServerCertificateWithCsrRequestTags] = None,
         years: int = None,
     ):
-        # Expiration time of the server-side certificate, in UNIX timestamp format. Unit: seconds.
-        # 
-        # > The **BeforeTime** and **AfterTime** parameters must both be empty or both configured.
+        # The expiration time of the server certificate in UNIX timestamp format. Unit: seconds.
+        # >The **BeforeTime** and **AfterTime** parameters must both be empty or both be specified.
         self.after_time = after_time
-        # Key algorithm for the server-side certificate. Use the format `<encryption algorithm>_<key length>`. Valid values:
+        # The key algorithm of the server certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
         # 
-        # - **RSA_1024**: Signature algorithm is Sha256WithRSA.
+        # - **RSA_1024**: The signature algorithm is Sha256WithRSA.
+        # - **RSA_2048**: The signature algorithm is Sha256WithRSA.
+        # - **RSA_4096**: The signature algorithm is Sha256WithRSA.
+        # - **ECC_256**: The signature algorithm is Sha256WithECDSA.
+        # - **ECC_384**: The signature algorithm is Sha256WithECDSA.
+        # - **ECC_512**: The signature algorithm is Sha256WithECDSA.
+        # - **SM2_256**: The signature algorithm is SM3WithSM2.
         # 
-        # - **RSA_2048**: Signature algorithm is Sha256WithRSA.
         # 
-        # - **RSA_4096**: Signature algorithm is Sha256WithRSA.
+        # The encryption algorithm of the server certificate must be the same as that of the subordinate CA certificate, but the key length can be different. For example, if the key algorithm of the subordinate CA certificate is RSA_2048, the key algorithm of the server certificate must be RSA_1024, RSA_2048, or RSA_4096.
         # 
-        # - **ECC_256**: Signature algorithm is Sha256WithECDSA.
-        # 
-        # - **ECC_384**: Signature algorithm is Sha256WithECDSA.
-        # 
-        # - **ECC_512**: Signature algorithm is Sha256WithECDSA.
-        # 
-        # - **SM2_256**: Signature algorithm is SM3WithSM2.
-        # 
-        # The encryption algorithm of the server-side certificate must match that of the sub-CA certificate. The key length can differ. For example, if the sub-CA certificate uses RSA_2048, the server-side certificate must use RSA_1024, RSA_2048, or RSA_4096.
-        # 
-        # > Call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to check the key algorithm of the sub-CA certificate.
+        # >You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to query the key algorithm of the subordinate CA certificate.
         self.algorithm = algorithm
-        # Issue time of the server-side certificate, in UNIX timestamp format. Default: current time when you call this API. Unit: seconds.
+        self.asynchronous_flag = asynchronous_flag
+        # The issuance time of the server certificate in UNIX timestamp format. The default value is the time when you call this operation. Unit: seconds.
         # 
-        # > The **BeforeTime** and **AfterTime** parameters must both be empty or both configured.
+        # >The **BeforeTime** and **AfterTime** parameters must both be empty or both be specified.
         self.before_time = before_time
-        # Set the common name for the certificate. Supports Chinese, English, and other characters.
-        # 
-        # > If you set the **Csr** parameter, the value of **CommonName** comes from the corresponding field in the **Csr** parameter.
+        # The common name of the certificate. Chinese characters, English characters, and other characters are supported.
+        # >If you set the **Csr** parameter, the value of the **CommonName** parameter is determined by the corresponding information in the **Csr** parameter.
         self.common_name = common_name
-        # The country code. For example, CN or US.
+        # The country code, such as **CN**.
         self.country = country
-        # You can generate a CSR using OpenSSL or Keytool. For more information, see [How to create a CSR file](https://help.aliyun.com/document_detail/42218.html).
-        # 
-        # <props="china">
-        # 
-        # You can also create a CSR in the SSL Certificate console. For more information, see [Create a CSR](https://help.aliyun.com/document_detail/313297.html).
+        # The CSR content.
+        # You can use OpenSSL or Keytool to generate a CSR. For more information, see [How do I create a CSR file?](https://help.aliyun.com/document_detail/42218.html).
+        # <props="china">You can also create a CSR in the SSL Certificates Service console. For more information, see [Create a CSR](https://help.aliyun.com/document_detail/313297.html).
         # 
         # This parameter is required.
         self.csr = csr
-        # A custom identifier. This is a unique key.
+        # The user-defined identifier, which serves as a unique key.
         self.custom_identifier = custom_identifier
-        # The **Days**, **BeforeTime**, and **AfterTime** parameters cannot all be empty. The **BeforeTime** and **AfterTime** parameters must both be empty or both set. Follow these rules:
+        # The validity period of the server certificate. Unit: days.
+        # The **Days**, **BeforeTime**, and **AfterTime** parameters cannot all be empty. The **BeforeTime** and **AfterTime** parameters must both be empty or both be specified. The following rules apply:
         # 
-        # - If you set **Days**, you can optionally set **BeforeTime** and **AfterTime**.
+        # - If you set the **Days** parameter, you can choose to set or not set the **BeforeTime** and **AfterTime** parameters.
         # 
-        # - If you do not set **Days**, you must set both **BeforeTime** and **AfterTime**.
         # 
-        # > * If you set **Days**, **BeforeTime**, and **AfterTime** together, the validity period uses the value of **Days**.
+        # - If you do not set the **Days** parameter, you must set the **BeforeTime** and **AfterTime** parameters.
         # 
-        # - The server-side certificate validity period cannot exceed that of the sub-CA certificate. Call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to check the sub-CA certificate validity period.
+        # >- If you set the **Days**, **BeforeTime**, and **AfterTime** parameters at the same time, the validity period of the server certificate is determined by the value of the **Days** parameter.
+        # - The validity period of the server certificate cannot exceed the validity period of the subordinate CA certificate. You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to query the validity period of the subordinate CA certificate.
         self.days = days
-        # Additional domain names or IP addresses for the server-side certificate. Adding this information lets you apply the certificate to multiple domains or IP addresses.
+        # The extended domain name or extended IP address of the server certificate. After you add extended information to the certificate, you can apply the certificate to multiple domain names or IP addresses.
         # 
-        # You can enter multiple domain names and IP addresses. Separate them with commas (,).
+        # You can enter multiple domain names and IP addresses at the same time. Separate multiple values with commas (,).
         self.domain = domain
-        # Specifies whether to include the certificate revocation list (CRL) address.
+        # Specifies whether to include the CRL address. Valid values:
         # 
-        # 0 - No
+        # - 0: No. 
         # 
-        # 1 - Yes
+        # - 1: Yes.
         self.enable_crl = enable_crl
-        # Specifies whether to return the digital certificate immediately.
-        # 
-        # - **0**: Do not return. Default.
-        # 
-        # - **1**: Return the certificate.
-        # 
-        # - **2**: Return the certificate and its certificate chain.
+        # Specifies whether to immediately return the digital certificate. Valid values:
+        # - **0**: Does not return the certificate. This is the default value.
+        # - **1**: Returns the certificate.
+        # - **2**: Returns the certificate and its certificate chain.
         self.immediately = immediately
-        # The city where the organization for the certificate is located. The name can contain both Chinese and English characters. By default, this parameter is set to the city of the organization for the issuing subordinate Certificate Authority (CA).
+        # The name of the city where the certificate organization is located. Chinese characters, English characters, and other characters are supported.
+        # The default value is the name of the city where the organization of the subordinate CA certificate that issues this certificate is located.
         self.locality = locality
-        # The validity period of the certificate, in months.
+        # The certificate validity period. Unit: months.
         self.months = months
-        # The name of the organization. Default value: Alibaba Inc.
+        # The organization name. Default value: Alibaba Inc.
         self.organization = organization
-        # The name of the department. Default value: Alibaba Cloud CDN.
+        # The department name. Default value: Aliyun CDN.
         self.organization_unit = organization_unit
-        # Unique identifier of the sub-CA certificate that issues this certificate.
-        # 
-        # > Call [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) to query the unique identifier of the sub-CA certificate.
+        # The unique identifier of the subordinate CA certificate that issues this certificate.
+        # >You can call [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) to query the unique identifier of the subordinate CA certificate.
         # 
         # This parameter is required.
         self.parent_identifier = parent_identifier
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # <props="china">Set the name of the province, municipality, or autonomous region where the organization is located. Supports Chinese, English, and other characters. Defaults to the province, municipality, or autonomous region of the issuing sub-CA certificate\\"s organization.
-        # <props="intl">Set the name of the state or province where the organization is located. Supports Chinese, English, and other characters. Defaults to the state or province of the issuing sub-CA certificate\\"s organization.
+        # <props="china">The name of the province, municipality, or autonomous region where the certificate organization is located. Chinese characters, English characters, and other characters are supported. The default value is the name of the province, municipality, or autonomous region where the organization of the subordinate CA certificate that issues this certificate is located.
+        # <props="intl">The name of the province or state where the certificate organization is located. Chinese characters, English characters, and other characters are supported. The default value is the name of the province or state where the organization of the subordinate CA certificate that issues this certificate is located.
         self.state = state
-        # A list of tags.
+        # The tag list.
         self.tags = tags
-        # The validity period of the certificate, in years.
+        # The certificate validity period. Unit: years.
         self.years = years
 
     def validate(self):
@@ -143,6 +134,9 @@ class CreateServerCertificateWithCsrRequest(DaraModel):
 
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
+
+        if self.asynchronous_flag is not None:
+            result['AsynchronousFlag'] = self.asynchronous_flag
 
         if self.before_time is not None:
             result['BeforeTime'] = self.before_time
@@ -210,6 +204,9 @@ class CreateServerCertificateWithCsrRequest(DaraModel):
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
 
+        if m.get('AsynchronousFlag') is not None:
+            self.asynchronous_flag = m.get('AsynchronousFlag')
+
         if m.get('BeforeTime') is not None:
             self.before_time = m.get('BeforeTime')
 
@@ -275,9 +272,9 @@ class CreateServerCertificateWithCsrRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

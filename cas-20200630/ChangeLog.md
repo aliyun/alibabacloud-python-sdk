@@ -1,3 +1,10 @@
+2026-08-17 Version: 2.1.2
+- Update API CreateClientCertificate: add request parameters AsynchronousFlag.
+- Update API CreateClientCertificateWithCsr: add request parameters AsynchronousFlag.
+- Update API CreateServerCertificate: add request parameters AsynchronousFlag.
+- Update API CreateServerCertificateWithCsr: add request parameters AsynchronousFlag.
+
+
 2026-08-04 Version: 2.1.1
 - Update API GetCaInstanceCrlAddress: add response parameters Body.CaType.
 

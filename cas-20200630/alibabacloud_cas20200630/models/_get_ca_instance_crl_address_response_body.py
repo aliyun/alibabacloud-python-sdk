@@ -17,11 +17,11 @@ class GetCaInstanceCrlAddressResponseBody(DaraModel):
         # The status of the CA instance.
         self.ca_instance_status = ca_instance_status
         self.ca_type = ca_type
-        # The cron expression.
+        # The CRL URL.
         self.crl_url = crl_url
-        # Used to identify whether there are new revoked certificates in the revocation list.
+        # The hash code used to identify whether the CRL contains new revoked certificates.
         self.hash_code = hash_code
-        # The next update time of the revocation list.
+        # The next update time of the CRL.
         self.next_update_time = next_update_time
         # Id of the request
         self.request_id = request_id

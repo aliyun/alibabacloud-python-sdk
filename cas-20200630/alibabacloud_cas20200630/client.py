@@ -73,13 +73,13 @@ class Client(OpenApiClient):
             'rus-west-1-pop': 'cas.aliyuncs.com',
             'us-east-1': 'cas.aliyuncs.com',
             'us-west-1': 'cas.aliyuncs.com',
-            'me-east-1': 'cas.me-east-1.aliyuncs.com',
-            'me-central-1': 'cas.me-central-1.aliyuncs.com',
-            'eu-central-1': 'cas.eu-central-1.aliyuncs.com',
             'ap-southeast-2': 'cas.ap-southeast-2.aliyuncs.com',
+            'ap-northeast-1': 'cas.ap-northeast-1.aliyuncs.com',
             'ap-southeast-1': 'cas.ap-southeast-1.aliyuncs.com',
+            'eu-central-1': 'cas.eu-central-1.aliyuncs.com',
+            'me-central-1': 'cas.me-central-1.aliyuncs.com',
             'ap-south-1': 'cas.ap-south-1.aliyuncs.com',
-            'ap-northeast-1': 'cas.ap-northeast-1.aliyuncs.com'
+            'me-east-1': 'cas.me-east-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -187,6 +187,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not DaraCore.is_null(request.alias_name):
             query['AliasName'] = request.alias_name
+        if not DaraCore.is_null(request.asynchronous_flag):
+            query['AsynchronousFlag'] = request.asynchronous_flag
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -259,6 +261,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not DaraCore.is_null(request.alias_name):
             query['AliasName'] = request.alias_name
+        if not DaraCore.is_null(request.asynchronous_flag):
+            query['AsynchronousFlag'] = request.asynchronous_flag
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -343,6 +347,8 @@ class Client(OpenApiClient):
             query['AfterTime'] = request.after_time
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.asynchronous_flag):
+            query['AsynchronousFlag'] = request.asynchronous_flag
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -411,6 +417,8 @@ class Client(OpenApiClient):
             query['AfterTime'] = request.after_time
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.asynchronous_flag):
+            query['AsynchronousFlag'] = request.asynchronous_flag
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -877,6 +885,8 @@ class Client(OpenApiClient):
             query['AfterTime'] = request.after_time
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.asynchronous_flag):
+            query['AsynchronousFlag'] = request.asynchronous_flag
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -941,6 +951,8 @@ class Client(OpenApiClient):
             query['AfterTime'] = request.after_time
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.asynchronous_flag):
+            query['AsynchronousFlag'] = request.asynchronous_flag
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -1019,6 +1031,8 @@ class Client(OpenApiClient):
             query['AfterTime'] = request.after_time
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.asynchronous_flag):
+            query['AsynchronousFlag'] = request.asynchronous_flag
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -1085,6 +1099,8 @@ class Client(OpenApiClient):
             query['AfterTime'] = request.after_time
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.asynchronous_flag):
+            query['AsynchronousFlag'] = request.asynchronous_flag
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
