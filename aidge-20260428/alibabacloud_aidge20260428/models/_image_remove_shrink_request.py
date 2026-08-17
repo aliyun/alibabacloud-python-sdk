@@ -11,6 +11,9 @@ class ImageRemoveShrinkRequest(DaraModel):
         mask: str = None,
         non_object_remove_elements_shrink: str = None,
         object_remove_elements_shrink: str = None,
+        position: str = None,
+        user_image_shrink: str = None,
+        user_text_shrink: str = None,
     ):
         # The URL of the image to process. This parameter is mutually exclusive with ImageBase64. You must specify one of them.
         # 
@@ -34,6 +37,9 @@ class ImageRemoveShrinkRequest(DaraModel):
         # 
         # You can specify multiple values.
         self.object_remove_elements_shrink = object_remove_elements_shrink
+        self.position = position
+        self.user_image_shrink = user_image_shrink
+        self.user_text_shrink = user_text_shrink
 
     def validate(self):
         pass
@@ -55,6 +61,15 @@ class ImageRemoveShrinkRequest(DaraModel):
         if self.object_remove_elements_shrink is not None:
             result['ObjectRemoveElements'] = self.object_remove_elements_shrink
 
+        if self.position is not None:
+            result['Position'] = self.position
+
+        if self.user_image_shrink is not None:
+            result['UserImage'] = self.user_image_shrink
+
+        if self.user_text_shrink is not None:
+            result['UserText'] = self.user_text_shrink
+
         return result
 
     def from_map(self, m: dict = None):
@@ -70,6 +85,15 @@ class ImageRemoveShrinkRequest(DaraModel):
 
         if m.get('ObjectRemoveElements') is not None:
             self.object_remove_elements_shrink = m.get('ObjectRemoveElements')
+
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+
+        if m.get('UserImage') is not None:
+            self.user_image_shrink = m.get('UserImage')
+
+        if m.get('UserText') is not None:
+            self.user_text_shrink = m.get('UserText')
 
         return self
 

@@ -467,6 +467,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.category_match_with_options_async(request, runtime)
 
+    def didui_area_deduction_with_options(
+        self,
+        tmp_req: main_models.DiduiAreaDeductionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DiduiAreaDeductionResponse:
+        tmp_req.validate()
+        request = main_models.DiduiAreaDeductionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.products):
+            request.products_shrink = Utils.array_to_string_with_specified_style(tmp_req.products, 'Products', 'json')
+        query = {}
+        if not DaraCore.is_null(request.products_shrink):
+            query['Products'] = request.products_shrink
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.req_id):
+            query['ReqId'] = request.req_id
+        if not DaraCore.is_null(request.target_image_url):
+            query['TargetImageUrl'] = request.target_image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DiduiAreaDeduction',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DiduiAreaDeductionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def didui_area_deduction_with_options_async(
+        self,
+        tmp_req: main_models.DiduiAreaDeductionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DiduiAreaDeductionResponse:
+        tmp_req.validate()
+        request = main_models.DiduiAreaDeductionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.products):
+            request.products_shrink = Utils.array_to_string_with_specified_style(tmp_req.products, 'Products', 'json')
+        query = {}
+        if not DaraCore.is_null(request.products_shrink):
+            query['Products'] = request.products_shrink
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.req_id):
+            query['ReqId'] = request.req_id
+        if not DaraCore.is_null(request.target_image_url):
+            query['TargetImageUrl'] = request.target_image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DiduiAreaDeduction',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DiduiAreaDeductionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def didui_area_deduction(
+        self,
+        request: main_models.DiduiAreaDeductionRequest,
+    ) -> main_models.DiduiAreaDeductionResponse:
+        runtime = RuntimeOptions()
+        return self.didui_area_deduction_with_options(request, runtime)
+
+    async def didui_area_deduction_async(
+        self,
+        request: main_models.DiduiAreaDeductionRequest,
+    ) -> main_models.DiduiAreaDeductionResponse:
+        runtime = RuntimeOptions()
+        return await self.didui_area_deduction_with_options_async(request, runtime)
+
     def document_translate_with_options(
         self,
         request: main_models.DocumentTranslateRequest,
@@ -909,6 +999,10 @@ class Client(OpenApiClient):
             request.non_object_remove_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.non_object_remove_elements, 'NonObjectRemoveElements', 'json')
         if not DaraCore.is_null(tmp_req.object_remove_elements):
             request.object_remove_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_remove_elements, 'ObjectRemoveElements', 'json')
+        if not DaraCore.is_null(tmp_req.user_image):
+            request.user_image_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_image, 'UserImage', 'json')
+        if not DaraCore.is_null(tmp_req.user_text):
+            request.user_text_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_text, 'UserText', 'json')
         query = {}
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
@@ -918,6 +1012,12 @@ class Client(OpenApiClient):
             query['NonObjectRemoveElements'] = request.non_object_remove_elements_shrink
         if not DaraCore.is_null(request.object_remove_elements_shrink):
             query['ObjectRemoveElements'] = request.object_remove_elements_shrink
+        if not DaraCore.is_null(request.position):
+            query['Position'] = request.position
+        if not DaraCore.is_null(request.user_image_shrink):
+            query['UserImage'] = request.user_image_shrink
+        if not DaraCore.is_null(request.user_text_shrink):
+            query['UserText'] = request.user_text_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -949,6 +1049,10 @@ class Client(OpenApiClient):
             request.non_object_remove_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.non_object_remove_elements, 'NonObjectRemoveElements', 'json')
         if not DaraCore.is_null(tmp_req.object_remove_elements):
             request.object_remove_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_remove_elements, 'ObjectRemoveElements', 'json')
+        if not DaraCore.is_null(tmp_req.user_image):
+            request.user_image_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_image, 'UserImage', 'json')
+        if not DaraCore.is_null(tmp_req.user_text):
+            request.user_text_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_text, 'UserText', 'json')
         query = {}
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
@@ -958,6 +1062,12 @@ class Client(OpenApiClient):
             query['NonObjectRemoveElements'] = request.non_object_remove_elements_shrink
         if not DaraCore.is_null(request.object_remove_elements_shrink):
             query['ObjectRemoveElements'] = request.object_remove_elements_shrink
+        if not DaraCore.is_null(request.position):
+            query['Position'] = request.position
+        if not DaraCore.is_null(request.user_image_shrink):
+            query['UserImage'] = request.user_image_shrink
+        if not DaraCore.is_null(request.user_text_shrink):
+            query['UserText'] = request.user_text_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1588,6 +1698,194 @@ class Client(OpenApiClient):
     ) -> main_models.PackageWeightSizeCheckResponse:
         runtime = RuntimeOptions()
         return await self.package_weight_size_check_with_options_async(request, runtime)
+
+    def prepaid_text_translate_with_options(
+        self,
+        tmp_req: main_models.PrepaidTextTranslateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PrepaidTextTranslateResponse:
+        tmp_req.validate()
+        request = main_models.PrepaidTextTranslateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.source_text_list):
+            request.source_text_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_text_list, 'SourceTextList', 'json')
+        body = {}
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.format_type):
+            body['FormatType'] = request.format_type
+        if not DaraCore.is_null(request.glossary):
+            body['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.source_text_list_shrink):
+            body['SourceTextList'] = request.source_text_list_shrink
+        if not DaraCore.is_null(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translate_scene):
+            body['TranslateScene'] = request.translate_scene
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrepaidTextTranslate',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrepaidTextTranslateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def prepaid_text_translate_with_options_async(
+        self,
+        tmp_req: main_models.PrepaidTextTranslateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PrepaidTextTranslateResponse:
+        tmp_req.validate()
+        request = main_models.PrepaidTextTranslateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.source_text_list):
+            request.source_text_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_text_list, 'SourceTextList', 'json')
+        body = {}
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.format_type):
+            body['FormatType'] = request.format_type
+        if not DaraCore.is_null(request.glossary):
+            body['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.source_text_list_shrink):
+            body['SourceTextList'] = request.source_text_list_shrink
+        if not DaraCore.is_null(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translate_scene):
+            body['TranslateScene'] = request.translate_scene
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrepaidTextTranslate',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrepaidTextTranslateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def prepaid_text_translate(
+        self,
+        request: main_models.PrepaidTextTranslateRequest,
+    ) -> main_models.PrepaidTextTranslateResponse:
+        runtime = RuntimeOptions()
+        return self.prepaid_text_translate_with_options(request, runtime)
+
+    async def prepaid_text_translate_async(
+        self,
+        request: main_models.PrepaidTextTranslateRequest,
+    ) -> main_models.PrepaidTextTranslateResponse:
+        runtime = RuntimeOptions()
+        return await self.prepaid_text_translate_with_options_async(request, runtime)
+
+    def product_hotspot_detection_with_options(
+        self,
+        tmp_req: main_models.ProductHotspotDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ProductHotspotDetectionResponse:
+        tmp_req.validate()
+        request = main_models.ProductHotspotDetectionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.reference_image_urls):
+            request.reference_image_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.reference_image_urls, 'ReferenceImageUrls', 'json')
+        query = {}
+        if not DaraCore.is_null(request.reference_image_urls_shrink):
+            query['ReferenceImageUrls'] = request.reference_image_urls_shrink
+        if not DaraCore.is_null(request.req_id):
+            query['ReqId'] = request.req_id
+        if not DaraCore.is_null(request.target_image_url):
+            query['TargetImageUrl'] = request.target_image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ProductHotspotDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ProductHotspotDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def product_hotspot_detection_with_options_async(
+        self,
+        tmp_req: main_models.ProductHotspotDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ProductHotspotDetectionResponse:
+        tmp_req.validate()
+        request = main_models.ProductHotspotDetectionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.reference_image_urls):
+            request.reference_image_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.reference_image_urls, 'ReferenceImageUrls', 'json')
+        query = {}
+        if not DaraCore.is_null(request.reference_image_urls_shrink):
+            query['ReferenceImageUrls'] = request.reference_image_urls_shrink
+        if not DaraCore.is_null(request.req_id):
+            query['ReqId'] = request.req_id
+        if not DaraCore.is_null(request.target_image_url):
+            query['TargetImageUrl'] = request.target_image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ProductHotspotDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ProductHotspotDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def product_hotspot_detection(
+        self,
+        request: main_models.ProductHotspotDetectionRequest,
+    ) -> main_models.ProductHotspotDetectionResponse:
+        runtime = RuntimeOptions()
+        return self.product_hotspot_detection_with_options(request, runtime)
+
+    async def product_hotspot_detection_async(
+        self,
+        request: main_models.ProductHotspotDetectionRequest,
+    ) -> main_models.ProductHotspotDetectionResponse:
+        runtime = RuntimeOptions()
+        return await self.product_hotspot_detection_with_options_async(request, runtime)
 
     def query_async_task_result_with_options(
         self,

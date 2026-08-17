@@ -16,10 +16,15 @@ class VideoGenerationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. A value of success indicates a successful call, and failed indicates a failure.
         self.code = code
+        # The struct of the returned result.
         self.data = data
+        # The returned message. Returns the fault message upon failure.
         self.message = message
+        # The request ID, used to identify a unique request call.
         self.request_id = request_id
+        # Indicates whether the call is successful. A value of true indicates success, and false indicates failure.
         self.success = success
 
     def validate(self):
@@ -74,7 +79,9 @@ class VideoGenerationResponseBodyData(DaraModel):
         task_id: str = None,
         usage_map: Dict[str, int] = None,
     ):
+        # The downstream task ID.
         self.task_id = task_id
+        # The metering usage information.
         self.usage_map = usage_map
 
     def validate(self):

@@ -16,6 +16,10 @@ from ._category_attribute_match_response import CategoryAttributeMatchResponse
 from ._category_match_request import CategoryMatchRequest
 from ._category_match_response_body import CategoryMatchResponseBody
 from ._category_match_response import CategoryMatchResponse
+from ._didui_area_deduction_request import DiduiAreaDeductionRequest
+from ._didui_area_deduction_shrink_request import DiduiAreaDeductionShrinkRequest
+from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBody
+from ._didui_area_deduction_response import DiduiAreaDeductionResponse
 from ._document_translate_request import DocumentTranslateRequest
 from ._document_translate_response_body import DocumentTranslateResponseBody
 from ._document_translate_response import DocumentTranslateResponse
@@ -57,6 +61,14 @@ from ._merchandise_placement_detection_response import MerchandisePlacementDetec
 from ._package_weight_size_check_request import PackageWeightSizeCheckRequest
 from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBody
 from ._package_weight_size_check_response import PackageWeightSizeCheckResponse
+from ._prepaid_text_translate_request import PrepaidTextTranslateRequest
+from ._prepaid_text_translate_shrink_request import PrepaidTextTranslateShrinkRequest
+from ._prepaid_text_translate_response_body import PrepaidTextTranslateResponseBody
+from ._prepaid_text_translate_response import PrepaidTextTranslateResponse
+from ._product_hotspot_detection_request import ProductHotspotDetectionRequest
+from ._product_hotspot_detection_shrink_request import ProductHotspotDetectionShrinkRequest
+from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBody
+from ._product_hotspot_detection_response import ProductHotspotDetectionResponse
 from ._query_async_task_result_request import QueryAsyncTaskResultRequest
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBody
 from ._query_async_task_result_response import QueryAsyncTaskResultResponse
@@ -92,6 +104,11 @@ from ._category_attribute_match_response_body import CategoryAttributeMatchRespo
 from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBodyDataUsageMap
 from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBodyData
 from ._category_match_response_body import CategoryMatchResponseBodyData
+from ._didui_area_deduction_request import DiduiAreaDeductionRequestProductsBoxes
+from ._didui_area_deduction_request import DiduiAreaDeductionRequestProducts
+from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel
+from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyDataResult
+from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyData
 from ._document_translate_response_body import DocumentTranslateResponseBodyData
 from ._image_cropping_response_body import ImageCroppingResponseBodyData
 from ._image_matting_response_body import ImageMattingResponseBodyData
@@ -125,12 +142,18 @@ from ._merchandise_placement_detection_response_body import MerchandisePlacement
 from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyDataData
 from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyData
 from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBodyData
+from ._prepaid_text_translate_response_body import PrepaidTextTranslateResponseBodyDataTranslations
+from ._prepaid_text_translate_response_body import PrepaidTextTranslateResponseBodyData
+from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyDataProductsBoxes
+from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyDataProducts
+from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyData
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBodyData
 from ._size_chart_detect_response_body import SizeChartDetectResponseBodyData
 from ._size_chart_extract_response_body import SizeChartExtractResponseBodyData
 from ._text_correct_response_body import TextCorrectResponseBodyData
 from ._text_translate_response_body import TextTranslateResponseBodyDataTranslations
 from ._text_translate_response_body import TextTranslateResponseBodyData
+from ._video_generation_request import VideoGenerationRequestInputAssetBindings
 from ._video_generation_request import VideoGenerationRequestInput
 from ._video_generation_request import VideoGenerationRequestIntent
 from ._video_generation_request import VideoGenerationRequestOutput
@@ -153,6 +176,10 @@ __all__ = [
     CategoryMatchRequest,
     CategoryMatchResponseBody,
     CategoryMatchResponse,
+    DiduiAreaDeductionRequest,
+    DiduiAreaDeductionShrinkRequest,
+    DiduiAreaDeductionResponseBody,
+    DiduiAreaDeductionResponse,
     DocumentTranslateRequest,
     DocumentTranslateResponseBody,
     DocumentTranslateResponse,
@@ -194,6 +221,14 @@ __all__ = [
     PackageWeightSizeCheckRequest,
     PackageWeightSizeCheckResponseBody,
     PackageWeightSizeCheckResponse,
+    PrepaidTextTranslateRequest,
+    PrepaidTextTranslateShrinkRequest,
+    PrepaidTextTranslateResponseBody,
+    PrepaidTextTranslateResponse,
+    ProductHotspotDetectionRequest,
+    ProductHotspotDetectionShrinkRequest,
+    ProductHotspotDetectionResponseBody,
+    ProductHotspotDetectionResponse,
     QueryAsyncTaskResultRequest,
     QueryAsyncTaskResultResponseBody,
     QueryAsyncTaskResultResponse,
@@ -229,6 +264,11 @@ __all__ = [
     CategoryAttributeMatchResponseBodyDataUsageMap,
     CategoryAttributeMatchResponseBodyData,
     CategoryMatchResponseBodyData,
+    DiduiAreaDeductionRequestProductsBoxes,
+    DiduiAreaDeductionRequestProducts,
+    DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel,
+    DiduiAreaDeductionResponseBodyDataResult,
+    DiduiAreaDeductionResponseBodyData,
     DocumentTranslateResponseBodyData,
     ImageCroppingResponseBodyData,
     ImageMattingResponseBodyData,
@@ -262,12 +302,18 @@ __all__ = [
     MerchandisePlacementDetectionResponseBodyDataData,
     MerchandisePlacementDetectionResponseBodyData,
     PackageWeightSizeCheckResponseBodyData,
+    PrepaidTextTranslateResponseBodyDataTranslations,
+    PrepaidTextTranslateResponseBodyData,
+    ProductHotspotDetectionResponseBodyDataProductsBoxes,
+    ProductHotspotDetectionResponseBodyDataProducts,
+    ProductHotspotDetectionResponseBodyData,
     QueryAsyncTaskResultResponseBodyData,
     SizeChartDetectResponseBodyData,
     SizeChartExtractResponseBodyData,
     TextCorrectResponseBodyData,
     TextTranslateResponseBodyDataTranslations,
     TextTranslateResponseBodyData,
+    VideoGenerationRequestInputAssetBindings,
     VideoGenerationRequestInput,
     VideoGenerationRequestIntent,
     VideoGenerationRequestOutput,

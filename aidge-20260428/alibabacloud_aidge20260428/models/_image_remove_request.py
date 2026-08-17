@@ -13,6 +13,9 @@ class ImageRemoveRequest(DaraModel):
         mask: str = None,
         non_object_remove_elements: List[int] = None,
         object_remove_elements: List[int] = None,
+        position: str = None,
+        user_image: List[str] = None,
+        user_text: List[str] = None,
     ):
         # The URL of the image to process. This parameter is mutually exclusive with ImageBase64. You must specify one of them.
         # 
@@ -36,6 +39,9 @@ class ImageRemoveRequest(DaraModel):
         # 
         # You can specify multiple values.
         self.object_remove_elements = object_remove_elements
+        self.position = position
+        self.user_image = user_image
+        self.user_text = user_text
 
     def validate(self):
         pass
@@ -57,6 +63,15 @@ class ImageRemoveRequest(DaraModel):
         if self.object_remove_elements is not None:
             result['ObjectRemoveElements'] = self.object_remove_elements
 
+        if self.position is not None:
+            result['Position'] = self.position
+
+        if self.user_image is not None:
+            result['UserImage'] = self.user_image
+
+        if self.user_text is not None:
+            result['UserText'] = self.user_text
+
         return result
 
     def from_map(self, m: dict = None):
@@ -72,6 +87,15 @@ class ImageRemoveRequest(DaraModel):
 
         if m.get('ObjectRemoveElements') is not None:
             self.object_remove_elements = m.get('ObjectRemoveElements')
+
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+
+        if m.get('UserImage') is not None:
+            self.user_image = m.get('UserImage')
+
+        if m.get('UserText') is not None:
+            self.user_text = m.get('UserText')
 
         return self
 

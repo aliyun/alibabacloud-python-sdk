@@ -11,9 +11,14 @@ class VideoGenerationShrinkRequest(DaraModel):
         intent_shrink: str = None,
         output_shrink: str = None,
     ):
+        # The product input.
+        # 
         # This parameter is required.
         self.input_shrink = input_shrink
+        # The intent parameters. Currently unavailable.
         self.intent_shrink = intent_shrink
+        # The output parameters.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
 

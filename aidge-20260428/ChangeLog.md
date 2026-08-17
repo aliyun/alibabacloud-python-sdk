@@ -1,3 +1,9 @@
+2026-08-17 Version: 5.3.1
+- Update API ImageRemove: add request parameters Position.
+- Update API ImageRemove: add request parameters UserImage.
+- Update API ImageRemove: add request parameters UserText.
+
+
 2026-07-30 Version: 5.1.0
 - Support API ImageTranslationPlus.
 
