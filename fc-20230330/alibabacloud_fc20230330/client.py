@@ -510,6 +510,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_session_with_options_async(function_name, request, headers, runtime)
 
+    def create_snapshot_with_options(
+        self,
+        function_name: str,
+        request: main_models.CreateSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSnapshot',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/snapshots',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_snapshot_with_options_async(
+        self,
+        function_name: str,
+        request: main_models.CreateSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSnapshot',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/snapshots',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_snapshot(
+        self,
+        function_name: str,
+        request: main_models.CreateSnapshotRequest,
+    ) -> main_models.CreateSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_snapshot_with_options(function_name, request, headers, runtime)
+
+    async def create_snapshot_async(
+        self,
+        function_name: str,
+        request: main_models.CreateSnapshotRequest,
+    ) -> main_models.CreateSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_snapshot_with_options_async(function_name, request, headers, runtime)
+
     def create_trigger_with_options(
         self,
         function_name: str,
@@ -1389,6 +1471,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_session_with_options_async(function_name, session_id, request, headers, runtime)
+
+    def delete_snapshot_with_options(
+        self,
+        function_name: str,
+        snapshot_id: str,
+        request: main_models.DeleteSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSnapshotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSnapshot',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_snapshot_with_options_async(
+        self,
+        function_name: str,
+        snapshot_id: str,
+        request: main_models.DeleteSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSnapshotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSnapshot',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_snapshot(
+        self,
+        function_name: str,
+        snapshot_id: str,
+        request: main_models.DeleteSnapshotRequest,
+    ) -> main_models.DeleteSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_snapshot_with_options(function_name, snapshot_id, request, headers, runtime)
+
+    async def delete_snapshot_async(
+        self,
+        function_name: str,
+        snapshot_id: str,
+        request: main_models.DeleteSnapshotRequest,
+    ) -> main_models.DeleteSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_snapshot_with_options_async(function_name, snapshot_id, request, headers, runtime)
 
     def delete_trigger_with_options(
         self,
@@ -2661,6 +2819,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_session_with_options_async(function_name, session_id, request, headers, runtime)
+
+    def get_snapshot_with_options(
+        self,
+        function_name: str,
+        snapshot_id: str,
+        request: main_models.GetSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSnapshotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSnapshot',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_snapshot_with_options_async(
+        self,
+        function_name: str,
+        snapshot_id: str,
+        request: main_models.GetSnapshotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSnapshotResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSnapshot',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/functions/{DaraURL.percent_encode(function_name)}/snapshots/{DaraURL.percent_encode(snapshot_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_snapshot(
+        self,
+        function_name: str,
+        snapshot_id: str,
+        request: main_models.GetSnapshotRequest,
+    ) -> main_models.GetSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_snapshot_with_options(function_name, snapshot_id, request, headers, runtime)
+
+    async def get_snapshot_async(
+        self,
+        function_name: str,
+        snapshot_id: str,
+        request: main_models.GetSnapshotRequest,
+    ) -> main_models.GetSnapshotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_snapshot_with_options_async(function_name, snapshot_id, request, headers, runtime)
 
     def get_trigger_with_options(
         self,
@@ -4069,6 +4303,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_sessions_with_options_async(function_name, request, headers, runtime)
+
+    def list_snapshots_with_options(
+        self,
+        request: main_models.ListSnapshotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.function_name):
+            query['functionName'] = request.function_name
+        if not DaraCore.is_null(request.limit):
+            query['limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.qualifier):
+            query['qualifier'] = request.qualifier
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSnapshots',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/snapshots',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_snapshots_with_options_async(
+        self,
+        request: main_models.ListSnapshotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.function_name):
+            query['functionName'] = request.function_name
+        if not DaraCore.is_null(request.limit):
+            query['limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.qualifier):
+            query['qualifier'] = request.qualifier
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSnapshots',
+            version = '2023-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/2023-03-30/snapshots',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_snapshots(
+        self,
+        request: main_models.ListSnapshotsRequest,
+    ) -> main_models.ListSnapshotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_snapshots_with_options(request, headers, runtime)
+
+    async def list_snapshots_async(
+        self,
+        request: main_models.ListSnapshotsRequest,
+    ) -> main_models.ListSnapshotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_snapshots_with_options_async(request, headers, runtime)
 
     def list_tag_resources_with_options(
         self,

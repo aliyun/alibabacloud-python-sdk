@@ -1,3 +1,10 @@
+2026-08-18 Version: 4.8.0
+- Support API CreateSnapshot.
+- Support API DeleteSnapshot.
+- Support API GetSnapshot.
+- Support API ListSnapshots.
+
+
 2026-08-18 Version: 4.7.10
 - Generated python 2023-03-30 for FC.
 

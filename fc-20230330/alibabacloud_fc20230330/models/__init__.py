@@ -178,6 +178,8 @@ from ._create_layer_version_request import CreateLayerVersionRequest
 from ._create_layer_version_response import CreateLayerVersionResponse
 from ._create_session_request import CreateSessionRequest
 from ._create_session_response import CreateSessionResponse
+from ._create_snapshot_request import CreateSnapshotRequest
+from ._create_snapshot_response import CreateSnapshotResponse
 from ._create_trigger_request import CreateTriggerRequest
 from ._create_trigger_response import CreateTriggerResponse
 from ._create_vpc_binding_request import CreateVpcBindingRequest
@@ -196,6 +198,8 @@ from ._delete_scaling_config_request import DeleteScalingConfigRequest
 from ._delete_scaling_config_response import DeleteScalingConfigResponse
 from ._delete_session_request import DeleteSessionRequest
 from ._delete_session_response import DeleteSessionResponse
+from ._delete_snapshot_request import DeleteSnapshotRequest
+from ._delete_snapshot_response import DeleteSnapshotResponse
 from ._delete_trigger_response import DeleteTriggerResponse
 from ._delete_vpc_binding_response import DeleteVpcBindingResponse
 from ._describe_regions_request import DescribeRegionsRequest
@@ -224,6 +228,8 @@ from ._get_scaling_config_request import GetScalingConfigRequest
 from ._get_scaling_config_response import GetScalingConfigResponse
 from ._get_session_request import GetSessionRequest
 from ._get_session_response import GetSessionResponse
+from ._get_snapshot_request import GetSnapshotRequest
+from ._get_snapshot_response import GetSnapshotResponse
 from ._get_trigger_response import GetTriggerResponse
 from ._invoke_function_headers import InvokeFunctionHeaders
 from ._invoke_function_request import InvokeFunctionRequest
@@ -256,6 +262,8 @@ from ._list_scaling_configs_request import ListScalingConfigsRequest
 from ._list_scaling_configs_response import ListScalingConfigsResponse
 from ._list_sessions_request import ListSessionsRequest
 from ._list_sessions_response import ListSessionsResponse
+from ._list_snapshots_request import ListSnapshotsRequest
+from ._list_snapshots_response import ListSnapshotsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_shrink_request import ListTagResourcesShrinkRequest
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -476,6 +484,8 @@ __all__ = [
     CreateLayerVersionResponse,
     CreateSessionRequest,
     CreateSessionResponse,
+    CreateSnapshotRequest,
+    CreateSnapshotResponse,
     CreateTriggerRequest,
     CreateTriggerResponse,
     CreateVpcBindingRequest,
@@ -494,6 +504,8 @@ __all__ = [
     DeleteScalingConfigResponse,
     DeleteSessionRequest,
     DeleteSessionResponse,
+    DeleteSnapshotRequest,
+    DeleteSnapshotResponse,
     DeleteTriggerResponse,
     DeleteVpcBindingResponse,
     DescribeRegionsRequest,
@@ -522,6 +534,8 @@ __all__ = [
     GetScalingConfigResponse,
     GetSessionRequest,
     GetSessionResponse,
+    GetSnapshotRequest,
+    GetSnapshotResponse,
     GetTriggerResponse,
     InvokeFunctionHeaders,
     InvokeFunctionRequest,
@@ -554,6 +568,8 @@ __all__ = [
     ListScalingConfigsResponse,
     ListSessionsRequest,
     ListSessionsResponse,
+    ListSnapshotsRequest,
+    ListSnapshotsResponse,
     ListTagResourcesRequest,
     ListTagResourcesShrinkRequest,
     ListTagResourcesResponse,
