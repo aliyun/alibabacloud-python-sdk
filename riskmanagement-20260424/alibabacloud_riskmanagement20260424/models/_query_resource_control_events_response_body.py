@@ -130,7 +130,7 @@ class QueryResourceControlEventsResponseBodyDataPageInfo(DaraModel):
     ):
         # The current page number.
         self.current = current
-        # The number of records per page.
+        # The number of records returned per page.
         self.page_size = page_size
         # The total number of events.
         self.total = total
@@ -206,15 +206,21 @@ class QueryResourceControlEventsResponseBodyDataList(DaraModel):
         self.action_code = action_code
         # The action name.
         self.action_name = action_name
-        # The time when the alert ended.
+        # The alert end time.
         self.alert_end_time = alert_end_time
-        # The time when the first alert was triggered.
+        # The first alert time.
         self.alert_start_time = alert_start_time
         # The time when the control action was released.
         self.anti_punish_time = anti_punish_time
         # The number of unblock application records.
         self.apply_record_count = apply_record_count
         # The application status.
+        # 
+        # Valid values:
+        # 
+        # - **AUDIT**: Under review.
+        # - **SUCCESS**: Approved.
+        # - **FAIL**: Rejected.
         self.apply_status = apply_status
         # Indicates whether the unblock application is processed through the review platform.
         self.apply_trial = apply_trial
@@ -255,6 +261,12 @@ class QueryResourceControlEventsResponseBodyDataList(DaraModel):
         # The security hardening suggestion.
         self.reinforcement = reinforcement
         # The task status.
+        # 
+        # - **Executing**: executing
+        # - **Removed**: removed
+        # - **Alerting**: alerting
+        # - **Ended**: ended
+        # - **Processed**: processed by the user and under platform review
         self.status = status
         # Indicates whether batch unblock applications are supported.
         self.support_batch_apply = support_batch_apply

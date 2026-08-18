@@ -42,6 +42,7 @@ class QueryResourceControlEventsShrinkRequest(DaraModel):
         self.aliyun_lang = aliyun_lang
         # The product.
         self.business_code = business_code
+        # The list of product types.
         self.business_codes_shrink = business_codes_shrink
         # The collection of event name code prefixes.
         self.case_codes_prefix_shrink = case_codes_prefix_shrink
@@ -52,6 +53,8 @@ class QueryResourceControlEventsShrinkRequest(DaraModel):
         # The event name code.
         self.event_code = event_code
         # The collection of event name codes.
+        # 
+        # > Example: [\\\\\\"BANFF_ECS_PE_ECS_MINING_SHUTDOWN\\\\\\"]
         self.event_codes_shrink = event_codes_shrink
         # The event ID.
         self.event_id = event_id
@@ -81,7 +84,12 @@ class QueryResourceControlEventsShrinkRequest(DaraModel):
         self.source_codes_shrink = source_codes_shrink
         # The task status.
         self.status = status
-        # The collection of task statuses.
+        # The collection of task statuses. Valid values:
+        # - **Executing**: executing
+        # - **Removed**: removed
+        # - **Alerting**: alerting
+        # - **Ended**: ended
+        # - **Processed**: processed by the user and under platform review
         self.status_list_shrink = status_list_shrink
         # The control URL.
         self.url = url

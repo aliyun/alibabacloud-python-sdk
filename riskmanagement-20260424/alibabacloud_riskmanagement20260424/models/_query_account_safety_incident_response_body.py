@@ -178,11 +178,15 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         action_code: str = None,
         action_name: str = None,
         anti_punish_time: str = None,
+        call_api: str = None,
         date_extras: main_models.QueryAccountSafetyIncidentResponseBodyDataListDateExtras = None,
         event_id: str = None,
         event_impact: str = None,
         event_name: str = None,
         event_reason: str = None,
+        event_type: str = None,
+        exception_call_time: str = None,
+        exception_ip: str = None,
         punish_time: str = None,
         reinforcement: str = None,
         resource_id: str = None,
@@ -200,6 +204,7 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
         self.anti_punish_time = anti_punish_time
+        self.call_api = call_api
         # The control action time information.
         self.date_extras = date_extras
         # The event ID.
@@ -210,6 +215,9 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         self.event_name = event_name
         # The event reason.
         self.event_reason = event_reason
+        self.event_type = event_type
+        self.exception_call_time = exception_call_time
+        self.exception_ip = exception_ip
         # The start time of the control action.
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
@@ -252,6 +260,9 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         if self.anti_punish_time is not None:
             result['AntiPunishTime'] = self.anti_punish_time
 
+        if self.call_api is not None:
+            result['CallApi'] = self.call_api
+
         if self.date_extras is not None:
             result['DateExtras'] = self.date_extras.to_map()
 
@@ -266,6 +277,15 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
 
         if self.event_reason is not None:
             result['EventReason'] = self.event_reason
+
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+
+        if self.exception_call_time is not None:
+            result['ExceptionCallTime'] = self.exception_call_time
+
+        if self.exception_ip is not None:
+            result['ExceptionIp'] = self.exception_ip
 
         if self.punish_time is not None:
             result['PunishTime'] = self.punish_time
@@ -304,6 +324,9 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         if m.get('AntiPunishTime') is not None:
             self.anti_punish_time = m.get('AntiPunishTime')
 
+        if m.get('CallApi') is not None:
+            self.call_api = m.get('CallApi')
+
         if m.get('DateExtras') is not None:
             temp_model = main_models.QueryAccountSafetyIncidentResponseBodyDataListDateExtras()
             self.date_extras = temp_model.from_map(m.get('DateExtras'))
@@ -319,6 +342,15 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
 
         if m.get('EventReason') is not None:
             self.event_reason = m.get('EventReason')
+
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+
+        if m.get('ExceptionCallTime') is not None:
+            self.exception_call_time = m.get('ExceptionCallTime')
+
+        if m.get('ExceptionIp') is not None:
+            self.exception_ip = m.get('ExceptionIp')
 
         if m.get('PunishTime') is not None:
             self.punish_time = m.get('PunishTime')

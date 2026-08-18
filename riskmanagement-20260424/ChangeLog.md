@@ -1,3 +1,10 @@
+2026-08-18 Version: 1.1.3
+- Update API QueryAccountSafetyIncident: add response parameters Body.Data.List.$.CallApi.
+- Update API QueryAccountSafetyIncident: add response parameters Body.Data.List.$.EventType.
+- Update API QueryAccountSafetyIncident: add response parameters Body.Data.List.$.ExceptionCallTime.
+- Update API QueryAccountSafetyIncident: add response parameters Body.Data.List.$.ExceptionIp.
+
+
 2026-08-12 Version: 1.1.2
 - Update API QueryResourceControlEvents: add request parameters BusinessCodes.
 

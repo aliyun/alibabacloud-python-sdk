@@ -44,6 +44,7 @@ class QueryResourceControlEventsRequest(DaraModel):
         self.aliyun_lang = aliyun_lang
         # The product.
         self.business_code = business_code
+        # The list of product types.
         self.business_codes = business_codes
         # The collection of event name code prefixes.
         self.case_codes_prefix = case_codes_prefix
@@ -54,6 +55,8 @@ class QueryResourceControlEventsRequest(DaraModel):
         # The event name code.
         self.event_code = event_code
         # The collection of event name codes.
+        # 
+        # > Example: [\\\\\\"BANFF_ECS_PE_ECS_MINING_SHUTDOWN\\\\\\"]
         self.event_codes = event_codes
         # The event ID.
         self.event_id = event_id
@@ -83,7 +86,12 @@ class QueryResourceControlEventsRequest(DaraModel):
         self.source_codes = source_codes
         # The task status.
         self.status = status
-        # The collection of task statuses.
+        # The collection of task statuses. Valid values:
+        # - **Executing**: executing
+        # - **Removed**: removed
+        # - **Alerting**: alerting
+        # - **Ended**: ended
+        # - **Processed**: processed by the user and under platform review
         self.status_list = status_list
         # The control URL.
         self.url = url
