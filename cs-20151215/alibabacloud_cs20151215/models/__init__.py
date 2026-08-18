@@ -60,6 +60,9 @@ from ._create_cluster_node_pool_response import CreateClusterNodePoolResponse
 from ._create_kubernetes_trigger_request import CreateKubernetesTriggerRequest
 from ._create_kubernetes_trigger_response_body import CreateKubernetesTriggerResponseBody
 from ._create_kubernetes_trigger_response import CreateKubernetesTriggerResponse
+from ._create_node_pool_component_instances_request import CreateNodePoolComponentInstancesRequest
+from ._create_node_pool_component_instances_response_body import CreateNodePoolComponentInstancesResponseBody
+from ._create_node_pool_component_instances_response import CreateNodePoolComponentInstancesResponse
 from ._create_template_request import CreateTemplateRequest
 from ._create_template_response_body import CreateTemplateResponseBody
 from ._create_template_response import CreateTemplateResponse
@@ -87,6 +90,10 @@ from ._delete_cluster_nodes_request import DeleteClusterNodesRequest
 from ._delete_cluster_nodes_response_body import DeleteClusterNodesResponseBody
 from ._delete_cluster_nodes_response import DeleteClusterNodesResponse
 from ._delete_kubernetes_trigger_response import DeleteKubernetesTriggerResponse
+from ._delete_node_pool_component_instance_request import DeleteNodePoolComponentInstanceRequest
+from ._delete_node_pool_component_instance_shrink_request import DeleteNodePoolComponentInstanceShrinkRequest
+from ._delete_node_pool_component_instance_response_body import DeleteNodePoolComponentInstanceResponseBody
+from ._delete_node_pool_component_instance_response import DeleteNodePoolComponentInstanceResponse
 from ._delete_policy_instance_request import DeletePolicyInstanceRequest
 from ._delete_policy_instance_response_body import DeletePolicyInstanceResponseBody
 from ._delete_policy_instance_response import DeletePolicyInstanceResponse
@@ -244,6 +251,13 @@ from ._list_cluster_inspect_reports_response import ListClusterInspectReportsRes
 from ._list_cluster_kubeconfig_states_request import ListClusterKubeconfigStatesRequest
 from ._list_cluster_kubeconfig_states_response_body import ListClusterKubeconfigStatesResponseBody
 from ._list_cluster_kubeconfig_states_response import ListClusterKubeconfigStatesResponse
+from ._list_node_pool_component_instances_request import ListNodePoolComponentInstancesRequest
+from ._list_node_pool_component_instances_response_body import ListNodePoolComponentInstancesResponseBody
+from ._list_node_pool_component_instances_response import ListNodePoolComponentInstancesResponse
+from ._list_node_pool_components_request import ListNodePoolComponentsRequest
+from ._list_node_pool_components_shrink_request import ListNodePoolComponentsShrinkRequest
+from ._list_node_pool_components_response_body import ListNodePoolComponentsResponseBody
+from ._list_node_pool_components_response import ListNodePoolComponentsResponse
 from ._list_operation_plans_request import ListOperationPlansRequest
 from ._list_operation_plans_response_body import ListOperationPlansResponseBody
 from ._list_operation_plans_response import ListOperationPlansResponse
@@ -353,6 +367,9 @@ from ._update_kmsencryption_response import UpdateKMSEncryptionResponse
 from ._update_node_pool_component_request import UpdateNodePoolComponentRequest
 from ._update_node_pool_component_response_body import UpdateNodePoolComponentResponseBody
 from ._update_node_pool_component_response import UpdateNodePoolComponentResponse
+from ._update_node_pool_component_instance_request import UpdateNodePoolComponentInstanceRequest
+from ._update_node_pool_component_instance_response_body import UpdateNodePoolComponentInstanceResponseBody
+from ._update_node_pool_component_instance_response import UpdateNodePoolComponentInstanceResponse
 from ._update_resources_delete_protection_request import UpdateResourcesDeleteProtectionRequest
 from ._update_resources_delete_protection_response_body import UpdateResourcesDeleteProtectionResponseBody
 from ._update_resources_delete_protection_response import UpdateResourcesDeleteProtectionResponse
@@ -430,6 +447,9 @@ from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScali
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroupTags
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroup
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestTeeConfig
+from ._create_node_pool_component_instances_request import CreateNodePoolComponentInstancesRequestComponentsConfig
+from ._create_node_pool_component_instances_request import CreateNodePoolComponentInstancesRequestComponents
+from ._create_node_pool_component_instances_request import CreateNodePoolComponentInstancesRequestRollingPolicy
 from ._delete_alert_contact_response import DeleteAlertContactResponseBodyResult
 from ._delete_alert_contact_response import DeleteAlertContactResponseBody
 from ._delete_alert_contact_group_response import DeleteAlertContactGroupResponseBody
@@ -584,6 +604,9 @@ from ._list_cluster_inspect_reports_response_body import ListClusterInspectRepor
 from ._list_cluster_kubeconfig_states_response_body import ListClusterKubeconfigStatesResponseBodyPage
 from ._list_cluster_kubeconfig_states_response_body import ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles
 from ._list_cluster_kubeconfig_states_response_body import ListClusterKubeconfigStatesResponseBodyStates
+from ._list_node_pool_component_instances_response_body import ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig
+from ._list_node_pool_component_instances_response_body import ListNodePoolComponentInstancesResponseBodyComponentInstances
+from ._list_node_pool_components_response_body import ListNodePoolComponentsResponseBodyComponents
 from ._list_operation_plans_response_body import ListOperationPlansResponseBodyPlans
 from ._list_operation_plans_for_region_response_body import ListOperationPlansForRegionResponseBodyPlansStateReason
 from ._list_operation_plans_for_region_response_body import ListOperationPlansForRegionResponseBodyPlans
@@ -626,6 +649,8 @@ from ._scale_out_cluster_request import ScaleOutClusterRequestWorkerDataDisks
 from ._un_install_cluster_addons_request import UnInstallClusterAddonsRequestAddons
 from ._update_node_pool_component_request import UpdateNodePoolComponentRequestConfig
 from ._update_node_pool_component_request import UpdateNodePoolComponentRequestRollingPolicy
+from ._update_node_pool_component_instance_request import UpdateNodePoolComponentInstanceRequestConfig
+from ._update_node_pool_component_instance_request import UpdateNodePoolComponentInstanceRequestRollingPolicy
 from ._update_user_permissions_request import UpdateUserPermissionsRequestBody
 from ._upgrade_cluster_request import UpgradeClusterRequestRollingPolicy
 from ._upgrade_cluster_addons_request import UpgradeClusterAddonsRequestBody
@@ -690,6 +715,9 @@ __all__ = [
     CreateKubernetesTriggerRequest,
     CreateKubernetesTriggerResponseBody,
     CreateKubernetesTriggerResponse,
+    CreateNodePoolComponentInstancesRequest,
+    CreateNodePoolComponentInstancesResponseBody,
+    CreateNodePoolComponentInstancesResponse,
     CreateTemplateRequest,
     CreateTemplateResponseBody,
     CreateTemplateResponse,
@@ -717,6 +745,10 @@ __all__ = [
     DeleteClusterNodesResponseBody,
     DeleteClusterNodesResponse,
     DeleteKubernetesTriggerResponse,
+    DeleteNodePoolComponentInstanceRequest,
+    DeleteNodePoolComponentInstanceShrinkRequest,
+    DeleteNodePoolComponentInstanceResponseBody,
+    DeleteNodePoolComponentInstanceResponse,
     DeletePolicyInstanceRequest,
     DeletePolicyInstanceResponseBody,
     DeletePolicyInstanceResponse,
@@ -874,6 +906,13 @@ __all__ = [
     ListClusterKubeconfigStatesRequest,
     ListClusterKubeconfigStatesResponseBody,
     ListClusterKubeconfigStatesResponse,
+    ListNodePoolComponentInstancesRequest,
+    ListNodePoolComponentInstancesResponseBody,
+    ListNodePoolComponentInstancesResponse,
+    ListNodePoolComponentsRequest,
+    ListNodePoolComponentsShrinkRequest,
+    ListNodePoolComponentsResponseBody,
+    ListNodePoolComponentsResponse,
     ListOperationPlansRequest,
     ListOperationPlansResponseBody,
     ListOperationPlansResponse,
@@ -983,6 +1022,9 @@ __all__ = [
     UpdateNodePoolComponentRequest,
     UpdateNodePoolComponentResponseBody,
     UpdateNodePoolComponentResponse,
+    UpdateNodePoolComponentInstanceRequest,
+    UpdateNodePoolComponentInstanceResponseBody,
+    UpdateNodePoolComponentInstanceResponse,
     UpdateResourcesDeleteProtectionRequest,
     UpdateResourcesDeleteProtectionResponseBody,
     UpdateResourcesDeleteProtectionResponse,
@@ -1060,6 +1102,9 @@ __all__ = [
     CreateClusterNodePoolRequestScalingGroupTags,
     CreateClusterNodePoolRequestScalingGroup,
     CreateClusterNodePoolRequestTeeConfig,
+    CreateNodePoolComponentInstancesRequestComponentsConfig,
+    CreateNodePoolComponentInstancesRequestComponents,
+    CreateNodePoolComponentInstancesRequestRollingPolicy,
     DeleteAlertContactResponseBodyResult,
     DeleteAlertContactResponseBody,
     DeleteAlertContactGroupResponseBody,
@@ -1214,6 +1259,9 @@ __all__ = [
     ListClusterKubeconfigStatesResponseBodyPage,
     ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles,
     ListClusterKubeconfigStatesResponseBodyStates,
+    ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig,
+    ListNodePoolComponentInstancesResponseBodyComponentInstances,
+    ListNodePoolComponentsResponseBodyComponents,
     ListOperationPlansResponseBodyPlans,
     ListOperationPlansForRegionResponseBodyPlansStateReason,
     ListOperationPlansForRegionResponseBodyPlans,
@@ -1256,6 +1304,8 @@ __all__ = [
     UnInstallClusterAddonsRequestAddons,
     UpdateNodePoolComponentRequestConfig,
     UpdateNodePoolComponentRequestRollingPolicy,
+    UpdateNodePoolComponentInstanceRequestConfig,
+    UpdateNodePoolComponentInstanceRequestRollingPolicy,
     UpdateUserPermissionsRequestBody,
     UpgradeClusterRequestRollingPolicy,
     UpgradeClusterAddonsRequestBody,

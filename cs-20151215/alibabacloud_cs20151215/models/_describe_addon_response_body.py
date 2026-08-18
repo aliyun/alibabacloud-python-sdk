@@ -20,23 +20,23 @@ class DescribeAddonResponseBody(DaraModel):
         supported_actions: List[str] = None,
         version: str = None,
     ):
-        # CPU architectures supported by the component.
+        # The CPU architectures supported by the component.
         self.architecture = architecture
-        # Component category.
+        # The component category.
         self.category = category
-        # Custom parameter schema of the component.
+        # The schema of custom parameters for the component.
         self.config_schema = config_schema
-        # Whether it is installed by default.
+        # Indicates whether the component is installed by default.
         self.install_by_default = install_by_default
-        # Whether it is a managed component.
+        # Indicates whether the component is managed.
         self.managed = managed
-        # Component name.
+        # The name of the component.
         self.name = name
-        # Information about the latest component versions.
+        # The information about newer versions of the component.
         self.newer_versions = newer_versions
-        # Operations supported by the component.
+        # The operations supported by the component.
         self.supported_actions = supported_actions
-        # Component version.
+        # The component version.
         self.version = version
 
     def validate(self):
@@ -124,11 +124,11 @@ class DescribeAddonResponseBodyNewerVersions(DaraModel):
     ):
         # The minimum cluster version required by this component version.
         self.minimum_cluster_version = minimum_cluster_version
-        # Whether the component can be upgraded to this version.
+        # Indicates whether the component can be upgraded to this version.
         # 
-        # - true: Upgrade is supported.
+        # - true: The upgrade is supported.
         # 
-        # - false: Upgrade is not supported.
+        # - false: The upgrade is not supported.
         self.upgradable = upgradable
         # The latest version number of the component.
         self.version = version

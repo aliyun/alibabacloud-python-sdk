@@ -19,12 +19,13 @@ class UpgradeClusterNodepoolRequest(DaraModel):
         runtime_version: str = None,
         use_replace: bool = None,
     ):
+        # Specifies whether to ignore warning-level pre-checks.
         self.ignore_warning_check = ignore_warning_check
         # The system image ID of the node.
         self.image_id = image_id
-        # The Kubernetes version of the node. You can call [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) to obtain the current cluster version information from the `KubernetesVersion` field.
+        # The Kubernetes version of the node. You can call [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) to obtain the current cluster version information from `KubernetesVersion`.
         self.kubernetes_version = kubernetes_version
-        # The list of nodes to upgrade. If this parameter is not specified, all nodes in the node pool are upgraded.
+        # The list of nodes to upgrade. If not specified, all nodes in the node pool are upgraded by default.
         self.node_names = node_names
         # The rolling update configuration.
         self.rolling_policy = rolling_policy
@@ -32,9 +33,9 @@ class UpgradeClusterNodepoolRequest(DaraModel):
         self.runtime_type = runtime_type
         # The runtime version of the node. You can call [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) to obtain the runtime version information from the runtime field.
         self.runtime_version = runtime_version
-        # Specifies whether to use system cloud disk replacement for the upgrade. Valid values:
-        # - true: Uses system cloud disk replacement to upgrade the node pool. ACK reinitializes the nodes based on the current node pool configurations, such as the logon method, labels, taints, operating system image, and runtime version.
-        # - false: Does not use system cloud disk replacement.
+        # Specifies whether to use disk replacement for the upgrade. Valid values:
+        # - true: Uses disk replacement to upgrade the node pool. ACK reinitializes the nodes based on the current node pool configurations, such as logon method, labels, taints, operating system image, and runtime version.
+        # - false: Does not use disk replacement.
         # 
         # Default value: false.
         self.use_replace = use_replace
@@ -107,25 +108,28 @@ class UpgradeClusterNodepoolRequestRollingPolicy(DaraModel):
     def __init__(
         self,
         batch_interval: int = None,
+        max_failed_nodes: int = None,
         max_parallelism: int = None,
         pause_policy: str = None,
     ):
-        # The interval between batches during the upgrade. This parameter takes effect only when the pause policy is set to `NotPause`.
+        # The upgrade interval between batches. This parameter takes effect only when the pause policy is set to `NotPause`.
         # 
         # Valid values: [5,120]. Unit: minutes.
         # 
-        # You can set this parameter to 0 to specify no interval between batches.
+        # This parameter can be set to 0, which indicates no interval between batches.
         self.batch_interval = batch_interval
-        # The maximum number of nodes that can be updated in parallel per batch. Nodes in the node pool are updated in batches.
+        # The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+        self.max_failed_nodes = max_failed_nodes
+        # The maximum number of nodes that can be updated in parallel per batch. Node pool updates are performed in batches.
         # 
         # Valid values: [1,10].
         # 
         # Default value: 10.
         self.max_parallelism = max_parallelism
         # The automatic pause policy during node upgrades. Valid values:
-        # - FirstBatch: pauses after the first batch is complete.
-        # - EveryBatch: pauses after each batch is complete.
-        # - NotPause: does not pause.
+        # - FirstBatch: Pauses after the first batch is complete.
+        # - EveryBatch: Pauses after each batch is complete.
+        # - NotPause: Does not pause.
         self.pause_policy = pause_policy
 
     def validate(self):
@@ -139,6 +143,9 @@ class UpgradeClusterNodepoolRequestRollingPolicy(DaraModel):
         if self.batch_interval is not None:
             result['batch_interval'] = self.batch_interval
 
+        if self.max_failed_nodes is not None:
+            result['max_failed_nodes'] = self.max_failed_nodes
+
         if self.max_parallelism is not None:
             result['max_parallelism'] = self.max_parallelism
 
@@ -151,6 +158,9 @@ class UpgradeClusterNodepoolRequestRollingPolicy(DaraModel):
         m = m or dict()
         if m.get('batch_interval') is not None:
             self.batch_interval = m.get('batch_interval')
+
+        if m.get('max_failed_nodes') is not None:
+            self.max_failed_nodes = m.get('max_failed_nodes')
 
         if m.get('max_parallelism') is not None:
             self.max_parallelism = m.get('max_parallelism')

@@ -1,3 +1,11 @@
+2026-08-18 Version: 7.1.0
+- Support API CreateNodePoolComponentInstances.
+- Support API DeleteNodePoolComponentInstance.
+- Support API ListNodePoolComponentInstances.
+- Support API ListNodePoolComponents.
+- Support API UpdateNodePoolComponentInstance.
+
+
 2026-07-17 Version: 7.0.4
 - Update API CreateCluster: add request parameters body.control_plane_endpoints_config.load_balancers_config.
 - Update API CreateClusterNodePool: add request parameters body.management.auto_repair_policy.max_parallel_repairing_nodes.

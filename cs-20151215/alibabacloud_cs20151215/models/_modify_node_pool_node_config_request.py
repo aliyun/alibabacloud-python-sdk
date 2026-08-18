@@ -85,9 +85,12 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
 class ModifyNodePoolNodeConfigRequestRollingPolicy(DaraModel):
     def __init__(
         self,
+        max_failed_nodes: int = None,
         max_parallelism: int = None,
     ):
-        # Node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
+        # The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+        self.max_failed_nodes = max_failed_nodes
+        # The node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
         # 
         # Valid values: [1,10].
         # 
@@ -102,6 +105,9 @@ class ModifyNodePoolNodeConfigRequestRollingPolicy(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.max_failed_nodes is not None:
+            result['max_failed_nodes'] = self.max_failed_nodes
+
         if self.max_parallelism is not None:
             result['max_parallelism'] = self.max_parallelism
 
@@ -109,6 +115,9 @@ class ModifyNodePoolNodeConfigRequestRollingPolicy(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('max_failed_nodes') is not None:
+            self.max_failed_nodes = m.get('max_failed_nodes')
+
         if m.get('max_parallelism') is not None:
             self.max_parallelism = m.get('max_parallelism')
 
