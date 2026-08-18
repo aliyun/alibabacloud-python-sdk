@@ -1,3 +1,6 @@
+2026-08-18 Version: 2.1.3
+- Generated python 2020-06-30 for cas.
+
 2026-08-17 Version: 2.1.2
 - Update API CreateClientCertificate: add request parameters AsynchronousFlag.
 - Update API CreateClientCertificateWithCsr: add request parameters AsynchronousFlag.
