@@ -1,3 +1,6 @@
+2026-08-18 Version: 3.5.6
+- Fix websocket_utils / websocket_utils_models imports so the SDK can be imported.
+
 2026-08-03 Version: 3.5.4
 - Generated python 2022-03-02 for Green.
 

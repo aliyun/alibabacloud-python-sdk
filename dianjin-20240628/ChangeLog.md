@@ -1,3 +1,6 @@
+2026-08-18 Version: 1.21.2
+- Fix websocket_utils / websocket_utils_models imports so the SDK can be imported.
+
 2026-07-14 Version: 1.21.1
 - Update API CommercializeFetch: add request parameters body.encryptType.
 - Update API CommercializeFetch: add request parameters body.env.

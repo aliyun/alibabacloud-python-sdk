@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_tea_openapi import websocketUtils_models as web_socket_utils_models
+from alibabacloud_tea_openapi import websocket_utils_models as web_socket_utils_models
 from darabonba.model import DaraModel
 
 class MultiModalGuardWsResponse(DaraModel):
