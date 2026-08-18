@@ -14,16 +14,17 @@ class LogConfig(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
-        # Specifies whether to enable instance-level metrics. When this feature is enabled, you can view core metrics for each instance, such as CPU usage, memory usage, network conditions, and the number of requests. The default value is \\`false\\`, which disables instance-level metrics. Set the value to \\`true\\` to enable them.
+        # Specifies whether to enable instance-level metrics. After you enable this feature, you can view core metrics such as CPU usage, memory usage, network status, and request count at the instance level. Valid values: false: disables instance-level metrics. This is the default value. true: enables instance-level metrics.
         self.enable_instance_metrics = enable_instance_metrics
+        # Specifies whether to enable LLM metrics. After you enable this feature, you can view LLM metrics. We recommend that you enable this feature only for LLM inference services. Valid values: false: disables LLM metrics. This is the default value. true: enables LLM metrics.
         self.enable_llm_metrics = enable_llm_metrics
-        # Specifies whether to enable request-level metrics. When this feature is enabled, you can view the time and memory consumed by each function invocation in the service. The default value is \\`true\\`, which enables request-level metrics. Set the value to \\`false\\` to disable them.
+        # Specifies whether to enable request-level metrics. After you enable this feature, you can view the time and memory consumed by each invocation of all functions in the service. Valid values: false: disables request-level metrics. true: enables request-level metrics. This is the default value.
         self.enable_request_metrics = enable_request_metrics
-        # The rule for matching the first line of a log entry.
+        # The log line beginning matching rule.
         self.log_begin_rule = log_begin_rule
-        # The name of the Logstore in Simple Log Service.
+        # The Logstore name in Simple Log Service.
         self.logstore = logstore
-        # The name of the Project in Simple Log Service.
+        # The project name in Simple Log Service.
         self.project = project
 
     def validate(self):

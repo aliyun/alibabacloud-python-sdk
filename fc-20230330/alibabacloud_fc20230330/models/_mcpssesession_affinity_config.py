@@ -10,7 +10,9 @@ class MCPSSESessionAffinityConfig(DaraModel):
         session_concurrency_per_instance: int = None,
         sse_endpoint_path: str = None,
     ):
+        # The maximum number of sessions that a single instance can handle through simultaneous processing. Valid values: 1 to 200.
         self.session_concurrency_per_instance = session_concurrency_per_instance
+        # The SSE path.
         self.sse_endpoint_path = sse_endpoint_path
 
     def validate(self):

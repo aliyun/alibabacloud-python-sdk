@@ -20,26 +20,29 @@ class ProvisionConfig(DaraModel):
         target: int = None,
         target_tracking_policies: List[main_models.TargetTrackingPolicy] = None,
     ):
-        # The target number of provisioned instances at the current time. If a metric-based or scheduled auto scaling policy is in effect, the value of this parameter is the number of provisioned instances as calculated by the policy. Otherwise, the value is the default number of provisioned instances when all auto scaling policies become invalid.
-        # 
-        # >  Comparison between this parameter and defaultTarget\\
-        # Assume that after the number of provisioned instances is set to 1, a scheduled auto scaling policy is added, and this auto scaling policy increases the number of provisioned instances during a specified time period to 5.
-        # 
-        # *   During the time period when the scheduled policy **takes effect**, the value of the target parameter is 5, while the value of the defaultTarget parameter is 1.
-        # 
-        # *   When the scheduled policy **is ineffective**, both the target value and defaultTarget value are 1.
+        # Specifies whether to always allocate CPU to function instances.
         self.always_allocate_cpu = always_allocate_cpu
+        # Specifies whether to always allocate GPU to function instances.
         self.always_allocate_gpu = always_allocate_gpu
-        # public
+        # The actual number of resources.
         self.current = current
-        # public
+        # The error message when provisioned instance creation fails.
         self.current_error = current_error
-        # public
+        # The default number of resources when all metric-based scaling policies and scheduled scaling policies are inactive.
         self.default_target = default_target
+        # The resource descriptor of the function.
         self.function_arn = function_arn
-        # public
+        # The scheduled scaling policy configurations.
         self.scheduled_actions = scheduled_actions
+        # The current target number of resources. If a metric-based scaling policy or scheduled scaling policy exists, this value is the number of resources calculated by the policy. Otherwise, it is the default number of provisioned instances.
+        # 
+        # 
+        # > What is the difference between target and defaultTarget?\\
+        # > Assume that the number of provisioned instances is configured as 1, and then a scheduled scaling policy is added to set the number of provisioned instances to 5 during a specific time period.
+        # > - During the **active period** of the scheduled scaling policy, target and defaultTarget are 5 and 1, respectively.
+        # >-  During the **inactive period** of the scheduled scaling policy, both target and defaultTarget are 1.
         self.target = target
+        # The metric-based scaling policy configurations.
         self.target_tracking_policies = target_tracking_policies
 
     def validate(self):

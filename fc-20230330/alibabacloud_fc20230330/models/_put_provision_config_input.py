@@ -17,14 +17,22 @@ class PutProvisionConfigInput(DaraModel):
         target: int = None,
         target_tracking_policies: List[main_models.TargetTrackingPolicy] = None,
     ):
+        # Specifies whether to always allocate CPU. Default value: true.
         self.always_allocate_cpu = always_allocate_cpu
+        # Specifies whether to always allocate GPU. Default value: true.
         self.always_allocate_gpu = always_allocate_gpu
-        # The number of target provisioned instances. Valid values: [0,10000].
+        # The default minimum number of provisioned instances. Valid values: 0 to 10000.
+        # > - If no metric-based auto elastic policy or scheduled elastic policy is configured, the current minimum number of instances equals the minimum number of instances you configured.
+        # > - If you configured multiple elastic policies for the minimum number of instances, the system calculates the minimum number of instances triggered by each policy and uses the maximum value among the elastic policies that are effective at the current time as the current minimum number of instances.
         self.default_target = default_target
-        # public
+        # The scheduled scaling configuration.
         self.scheduled_actions = scheduled_actions
+        # >Notice: This parameter is no longer recommended. Use the defaultTarget parameter instead.</notice>
+        # The target number of provisioned resources. Valid values: 0 to 10000.
+        # 
         # This parameter is required.
         self.target = target
+        # The metric-based scaling policy configuration.
         self.target_tracking_policies = target_tracking_policies
 
     def validate(self):

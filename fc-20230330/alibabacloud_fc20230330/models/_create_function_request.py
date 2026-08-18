@@ -10,7 +10,7 @@ class CreateFunctionRequest(DaraModel):
         self,
         body: main_models.CreateFunctionInput = None,
     ):
-        # The function configuration information.
+        # The function configuration.
         # 
         # This parameter is required.
         self.body = body

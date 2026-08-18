@@ -16,20 +16,21 @@ class HTTPTriggerConfig(DaraModel):
         disable_urlinternet: bool = None,
         methods: List[str] = None,
     ):
-        # Authentication configuration
+        # The authentication configuration.
         self.auth_config = auth_config
-        # The authentication type. Valid values are:
+        # The authentication type. Valid values:
         # 
         # - **function**: Authentication is required.
         # 
         # - **anonymous**: Authentication is not required.
         # 
-        # > The default type is **function**.
+        # > The default value is **function**.
         self.auth_type = auth_type
+        # The CORS configuration.
         self.cors_config = cors_config
-        # Specifies whether to disable access from the default public domain name. If set to true, accessing the function\\"s default public URL returns a 403 error. If set to false, this parameter has no effect.
+        # Specifies whether to disable access through the default public domain name. If set to true, accessing the default public URL of the function returns a 403 error. If set to false, access is not affected.
         self.disable_urlinternet = disable_urlinternet
-        # The list of request methods. Multiple methods are supported.
+        # The list of request methods. Multiple methods can be supported simultaneously.
         self.methods = methods
 
     def validate(self):

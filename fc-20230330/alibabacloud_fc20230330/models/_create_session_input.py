@@ -20,6 +20,7 @@ class CreateSessionInput(DaraModel):
         session_id: str = None,
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
+        snapshot_id: str = None,
     ):
         self.allow_internet_access = allow_internet_access
         # Default value: False. This indicates that after a session with a specific SessionID expires, you can send requests with the same SessionID. The system treats it as a new session and binds it to a new instance. If set to True, the SessionID cannot be reused after the session expires.
@@ -40,6 +41,7 @@ class CreateSessionInput(DaraModel):
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
         # The session lifetime.
         self.session_ttlin_seconds = session_ttlin_seconds
+        self.snapshot_id = snapshot_id
 
     def validate(self):
         if self.juice_fs_config:
@@ -94,6 +96,9 @@ class CreateSessionInput(DaraModel):
         if self.session_ttlin_seconds is not None:
             result['sessionTTLInSeconds'] = self.session_ttlin_seconds
 
+        if self.snapshot_id is not None:
+            result['snapshotId'] = self.snapshot_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -138,6 +143,9 @@ class CreateSessionInput(DaraModel):
 
         if m.get('sessionTTLInSeconds') is not None:
             self.session_ttlin_seconds = m.get('sessionTTLInSeconds')
+
+        if m.get('snapshotId') is not None:
+            self.snapshot_id = m.get('snapshotId')
 
         return self
 

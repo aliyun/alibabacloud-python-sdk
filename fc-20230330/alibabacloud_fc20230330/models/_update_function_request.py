@@ -10,7 +10,7 @@ class UpdateFunctionRequest(DaraModel):
         self,
         body: main_models.UpdateFunctionInput = None,
     ):
-        # The function\\"s configuration.
+        # The function information.
         # 
         # This parameter is required.
         self.body = body

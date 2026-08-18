@@ -22,6 +22,7 @@ from ._create_function_input import CreateFunctionInput
 from ._create_layer_version_input import CreateLayerVersionInput
 from ._create_session_input import CreateSessionInput
 from ._create_session_network_config import CreateSessionNetworkConfig
+from ._create_snapshot_input import CreateSnapshotInput
 from ._create_timed_resident_resource_pool_application_input import CreateTimedResidentResourcePoolApplicationInput
 from ._create_timed_resident_resource_pool_application_output import CreateTimedResidentResourcePoolApplicationOutput
 from ._create_trigger_input import CreateTriggerInput
@@ -82,6 +83,7 @@ from ._list_resident_resource_pools_output import ListResidentResourcePoolsOutpu
 from ._list_scaling_config_status_output import ListScalingConfigStatusOutput
 from ._list_scaling_configs_output import ListScalingConfigsOutput
 from ._list_sessions_output import ListSessionsOutput
+from ._list_snapshots_output import ListSnapshotsOutput
 from ._list_tag_resources_output import ListTagResourcesOutput
 from ._list_tagged_resources_output import ListTaggedResourcesOutput
 from ._list_timed_resident_resource_pool_applications_output import ListTimedResidentResourcePoolApplicationsOutput
@@ -134,6 +136,7 @@ from ._scaling_status import ScalingStatus
 from ._scheduled_action import ScheduledAction
 from ._scheduled_policy import ScheduledPolicy
 from ._session import Session
+from ._snapshot import Snapshot
 from ._source_config import SourceConfig
 from ._source_dtsparameters import SourceDTSParameters
 from ._source_kafka_parameters import SourceKafkaParameters
@@ -317,6 +320,7 @@ __all__ = [
     CreateLayerVersionInput,
     CreateSessionInput,
     CreateSessionNetworkConfig,
+    CreateSnapshotInput,
     CreateTimedResidentResourcePoolApplicationInput,
     CreateTimedResidentResourcePoolApplicationOutput,
     CreateTriggerInput,
@@ -377,6 +381,7 @@ __all__ = [
     ListScalingConfigStatusOutput,
     ListScalingConfigsOutput,
     ListSessionsOutput,
+    ListSnapshotsOutput,
     ListTagResourcesOutput,
     ListTaggedResourcesOutput,
     ListTimedResidentResourcePoolApplicationsOutput,
@@ -429,6 +434,7 @@ __all__ = [
     ScheduledAction,
     ScheduledPolicy,
     Session,
+    Snapshot,
     SourceConfig,
     SourceDTSParameters,
     SourceKafkaParameters,

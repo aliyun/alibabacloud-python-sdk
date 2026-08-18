@@ -18,16 +18,20 @@ class UpdateCustomDomainInput(DaraModel):
     ):
         # The authentication configuration.
         self.auth_config = auth_config
-        # Information about the HTTPS certificate.
+        # The HTTPS certificate information.
         self.cert_config = cert_config
+        # The CORS configuration.
         self.cors_config = cors_config
-        # The protocol type that the domain name supports. \\`HTTP\\`: supports only the HTTP protocol. \\`HTTPS\\`: supports only the HTTPS protocol. \\`HTTP,HTTPS\\`: supports both HTTP and HTTPS protocols.
+        # The protocol type supported by the domain name. Valid values:
+        # - HTTP: Only the HTTP protocol is supported.
+        # - HTTPS: Only the HTTPS protocol is supported.
+        # - HTTP,HTTPS: Both HTTP and HTTPS protocols are supported.
         self.protocol = protocol
-        # The route table that maps the access paths of the custom domain name to functions.
+        # The route table that maps paths to functions when the custom domain name is accessed.
         self.route_config = route_config
-        # The TLS configuration.
+        # The TLS configuration information.
         self.tls_config = tls_config
-        # The Web Application Firewall (WAF) configuration.
+        # The Web Application Protection configuration information.
         self.waf_config = waf_config
 
     def validate(self):
