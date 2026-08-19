@@ -1,3 +1,6 @@
+2026-08-19 Version: 1.21.2
+- Generated python 2024-06-28 for DianJin.
+
 2026-07-14 Version: 1.21.1
 - Update API CommercializeFetch: add request parameters body.encryptType.
 - Update API CommercializeFetch: add request parameters body.env.

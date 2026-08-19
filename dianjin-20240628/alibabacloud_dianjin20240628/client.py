@@ -11,7 +11,7 @@ from alibabacloud_tea_openapi import exceptions as open_api_exceptions
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
-from alibabacloud_tea_openapi.websocketUtils import Client as WebSocketUtilsClient
+from alibabacloud_tea_openapi.websocket_utils import Client as WebSocketUtilsClient
 from darabonba.core import DaraCore
 from darabonba.core import DaraCore as DaraCore
 from darabonba.exceptions import UnretryableException
