@@ -10,7 +10,7 @@ class ManualModerationResultRequest(DaraModel):
         service_parameters: str = None,
     ):
         # The set of parameters required by the service, in JSON string format.
-        # - TaskId: The task ID returned when the task was submitted.
+        # - taskId: The task ID returned when the task was submitted.
         self.service_parameters = service_parameters
 
     def validate(self):

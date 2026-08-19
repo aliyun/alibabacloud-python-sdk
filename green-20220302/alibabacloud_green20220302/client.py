@@ -10,7 +10,7 @@ from alibabacloud_green20220302 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
-from alibabacloud_tea_openapi.websocketUtils import Client as WebSocketUtilsClient
+from alibabacloud_tea_openapi.websocket_utils import Client as WebSocketUtilsClient
 from darabonba.core import DaraCore as DaraCore
 from darabonba.runtime import RuntimeOptions
 
@@ -44,10 +44,10 @@ class Client(OpenApiClient):
             'cn-shanghai-finance-1': 'green.aliyuncs.com',
             'cn-north-2-gov-1': 'green.aliyuncs.com',
             'cn-shenzhen': 'green-cip.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'green-cip.cn-shanghai.aliyuncs.com',
-            'cn-hangzhou': 'green-cip.cn-hangzhou.aliyuncs.com',
             'cn-beijing': 'green-cip.cn-beijing.aliyuncs.com',
-            'ap-southeast-1': 'green-cip.ap-southeast-1.aliyuncs.com'
+            'cn-shanghai': 'green-cip.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'green-cip.ap-southeast-1.aliyuncs.com',
+            'cn-hangzhou': 'green-cip.cn-hangzhou.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('green', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)

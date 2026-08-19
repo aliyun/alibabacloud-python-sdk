@@ -10,9 +10,9 @@ class VideoModerationCancelRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The moderation service type.
+        # The type of the moderation service.
         self.service = service
-        # The TaskId of the task to be canceled.
+        # The TaskId of the task to cancel.
         self.service_parameters = service_parameters
 
     def validate(self):

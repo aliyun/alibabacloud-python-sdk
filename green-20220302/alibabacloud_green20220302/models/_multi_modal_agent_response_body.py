@@ -15,7 +15,7 @@ class MultiModalAgentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The return code. A value of 200 indicates that the request was successful.
+        # The response code. A value of 200 indicates success.
         self.code = code
         # The result of the image content detection.
         self.data = data
@@ -74,19 +74,19 @@ class MultiModalAgentResponseBodyData(DaraModel):
     ):
         # The data ID.
         self.data_id = data_id
-        # The structure of the label item.
+        # The label item structure.
         self.result = result
-        # The risk level. The value is returned based on the configured high and low risk scores. Valid values:
+        # The risk level, which is returned based on the configured high and low risk scores. Valid values:
         # 
-        # - high: High risk
+        # - high: high risk.
         # 
-        # - medium: Medium risk
+        # - medium: medium risk.
+        #  
+        # - low: low risk.
         # 
-        # - low: Low risk
-        # 
-        # - none: No risk detected
+        # - none: no risk detected.
         self.risk_level = risk_level
-        # Token usage.
+        # The token usage.
         self.usage = usage
 
     def validate(self):
@@ -143,13 +143,16 @@ class MultiModalAgentResponseBodyDataUsage(DaraModel):
         self,
         agent_detail: Dict[str, Any] = None,
         content_length: int = None,
+        credits: float = None,
         prompt_length: int = None,
     ):
-        # Agent details.
+        # The agent details.
         self.agent_detail = agent_detail
-        # The length of the content.
+        # The content length.
         self.content_length = content_length
-        # The length of the prompt.
+        # The credits consumed.
+        self.credits = credits
+        # The prompt length.
         self.prompt_length = prompt_length
 
     def validate(self):
@@ -166,6 +169,9 @@ class MultiModalAgentResponseBodyDataUsage(DaraModel):
         if self.content_length is not None:
             result['ContentLength'] = self.content_length
 
+        if self.credits is not None:
+            result['Credits'] = self.credits
+
         if self.prompt_length is not None:
             result['PromptLength'] = self.prompt_length
 
@@ -179,6 +185,9 @@ class MultiModalAgentResponseBodyDataUsage(DaraModel):
         if m.get('ContentLength') is not None:
             self.content_length = m.get('ContentLength')
 
+        if m.get('Credits') is not None:
+            self.credits = m.get('Credits')
+
         if m.get('PromptLength') is not None:
             self.prompt_length = m.get('PromptLength')
 
@@ -191,26 +200,18 @@ class MultiModalAgentResponseBodyDataResult(DaraModel):
         label: str = None,
         reason: str = None,
     ):
-        # The description of the label.
+        # The label description.
         self.description = description
         # The risk label.
         self.label = label
-        # A description of the result when the session is terminated.
-        # 
-        # - **SESSION_KILLED**: The session was successfully terminated.
-        # 
+        # The result description when the session is terminated.
+        # - **SESSION_KILLED**: The session is terminated.
         # - **SESSION_EXPIRED**: The session has expired.
-        # 
-        # - **SESSION_NO_PERMISSION**: The account used to terminate the session does not have sufficient permissions.
-        # 
+        # - **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
         # - **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is incorrect.
-        # 
-        # - **SESSION_IGNORED_USER**: The session of an account that does not need to be terminated.
-        # 
-        # - **SESSION_INTERNAL_USER_OR_COMMAND**: The session or command of an Alibaba Cloud operations account.
-        # 
-        # - **SESSION_KILL_TASK_TIMEOUT**: A timeout occurred when terminating the session.
-        # 
+        # - **SESSION_IGNORED_USER**: The session belongs to an account that does not need to be terminated.
+        # - **SESSION_INTERNAL_USER_OR_COMMAND**: The session or command belongs to an Alibaba Cloud operations account.
+        # - **SESSION_KILL_TASK_TIMEOUT**: The session termination timed out.
         # - **SESSION_OTHER_ERROR**: Other errors.
         self.reason = reason
 

@@ -12,6 +12,7 @@ class MultiModalGuardForBase64Request(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The base64-encoded string of the document.
         self.file_base_64str = file_base_64str
         # The base64-encoded string of the image.
         self.image_base_64str = image_base_64str
