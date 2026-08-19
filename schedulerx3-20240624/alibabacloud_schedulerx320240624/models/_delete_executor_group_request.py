@@ -8,11 +8,13 @@ class DeleteExecutorGroupRequest(DaraModel):
     def __init__(
         self,
         cluster_id: str = None,
+        delete_jobs: bool = None,
         id: int = None,
         name: str = None,
     ):
         # This parameter is required.
         self.cluster_id = cluster_id
+        self.delete_jobs = delete_jobs
         # This parameter is required.
         self.id = id
         self.name = name
@@ -28,6 +30,9 @@ class DeleteExecutorGroupRequest(DaraModel):
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
 
+        if self.delete_jobs is not None:
+            result['DeleteJobs'] = self.delete_jobs
+
         if self.id is not None:
             result['Id'] = self.id
 
@@ -40,6 +45,9 @@ class DeleteExecutorGroupRequest(DaraModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+
+        if m.get('DeleteJobs') is not None:
+            self.delete_jobs = m.get('DeleteJobs')
 
         if m.get('Id') is not None:
             self.id = m.get('Id')

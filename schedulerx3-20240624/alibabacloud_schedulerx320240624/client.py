@@ -1413,6 +1413,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.delete_jobs):
+            body['DeleteJobs'] = request.delete_jobs
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
         if not DaraCore.is_null(request.name):
@@ -1445,6 +1447,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.delete_jobs):
+            body['DeleteJobs'] = request.delete_jobs
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
         if not DaraCore.is_null(request.name):

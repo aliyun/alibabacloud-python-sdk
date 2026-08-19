@@ -1,3 +1,7 @@
+2026-08-19 Version: 1.9.2
+- Update API DeleteExecutorGroup: add request parameters DeleteJobs.
+
+
 2026-08-11 Version: 1.9.1
 - Generated python 2024-06-24 for SchedulerX3.
 
