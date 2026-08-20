@@ -1,3 +1,6 @@
+2026-08-20 Version: 2.19.1
+- Generated python 2024-03-13 for IntelligentCreation.
+
 2026-08-03 Version: 2.19.0
 - Support API CreateGenerateAICoachScriptTask.
 - Support API GetAICoachDebugResult.

@@ -8,6 +8,7 @@ class UploadInfo(DaraModel):
     def __init__(
         self,
         access_id: str = None,
+        access_url: str = None,
         host: str = None,
         key: str = None,
         policy: str = None,
@@ -16,6 +17,7 @@ class UploadInfo(DaraModel):
     ):
         # This parameter is required.
         self.access_id = access_id
+        self.access_url = access_url
         # This parameter is required.
         self.host = host
         # This parameter is required.
@@ -36,6 +38,9 @@ class UploadInfo(DaraModel):
             result = _map
         if self.access_id is not None:
             result['accessId'] = self.access_id
+
+        if self.access_url is not None:
+            result['accessUrl'] = self.access_url
 
         if self.host is not None:
             result['host'] = self.host
@@ -58,6 +63,9 @@ class UploadInfo(DaraModel):
         m = m or dict()
         if m.get('accessId') is not None:
             self.access_id = m.get('accessId')
+
+        if m.get('accessUrl') is not None:
+            self.access_url = m.get('accessUrl')
 
         if m.get('host') is not None:
             self.host = m.get('host')
