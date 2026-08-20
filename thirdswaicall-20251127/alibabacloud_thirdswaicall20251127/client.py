@@ -49,10 +49,14 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.called_number):
             body['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.caller_number):
+            body['CallerNumber'] = request.caller_number
         if not DaraCore.is_null(request.caller_uac_account_id):
             body['CallerUacAccountId'] = request.caller_uac_account_id
         if not DaraCore.is_null(request.current_workspace_id):
             body['CurrentWorkspaceId'] = request.current_workspace_id
+        if not DaraCore.is_null(request.customer_line_code):
+            body['CustomerLineCode'] = request.customer_line_code
         if not DaraCore.is_null(request.customer_name):
             body['CustomerName'] = request.customer_name
         if not DaraCore.is_null(request.encrypt_call):
@@ -89,10 +93,14 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.called_number):
             body['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.caller_number):
+            body['CallerNumber'] = request.caller_number
         if not DaraCore.is_null(request.caller_uac_account_id):
             body['CallerUacAccountId'] = request.caller_uac_account_id
         if not DaraCore.is_null(request.current_workspace_id):
             body['CurrentWorkspaceId'] = request.current_workspace_id
+        if not DaraCore.is_null(request.customer_line_code):
+            body['CustomerLineCode'] = request.customer_line_code
         if not DaraCore.is_null(request.customer_name):
             body['CustomerName'] = request.customer_name
         if not DaraCore.is_null(request.encrypt_call):

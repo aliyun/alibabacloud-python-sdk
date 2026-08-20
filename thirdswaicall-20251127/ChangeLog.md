@@ -1,3 +1,8 @@
+2026-08-20 Version: 1.2.2
+- Update API CreateCallOutboundInstant: add request parameters CallerNumber.
+- Update API CreateCallOutboundInstant: add request parameters CustomerLineCode.
+
+
 2026-08-17 Version: 1.2.1
 - Update API CreateCallOutboundInstant: add request parameters CallerUacAccountId.
 - Update API CreateCallOutboundInstant: add request parameters CurrentWorkspaceId.
