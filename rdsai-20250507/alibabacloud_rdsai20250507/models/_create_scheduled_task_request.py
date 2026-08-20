@@ -23,15 +23,15 @@ class CreateScheduledTaskRequest(DaraModel):
         # The description of the scheduled inspection task.
         self.description = description
         # The inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
-        # * DAILY: every day.
-        # * Monday: Monday.
-        # * Tuesday: Tuesday.
-        # * Wednesday: Wednesday.
-        # * Thursday: Thursday.
-        # * Friday: Friday.
-        # * Saturday: Saturday.
-        # * Sunday: Sunday.
-        # ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the backend uses DAILY as the inspection frequency.
+        # * DAILY: every day
+        # * Monday: Monday
+        # * Tuesday: Tuesday
+        # * Wednesday: Wednesday
+        # * Thursday: Thursday
+        # * Friday: Friday
+        # * Saturday: Saturday
+        # * Sunday: Sunday
+        # ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the system uses DAILY as the inspection frequency.
         self.frequency = frequency
         self.inspection_items = inspection_items
         # The list of associated instance IDs. Separate multiple IDs with commas (,).
@@ -41,14 +41,14 @@ class CreateScheduledTaskRequest(DaraModel):
         # This parameter is required.
         self.name = name
         self.region_id = region_id
-        # The report language. Default value: zh-CN. Valid values: zh-CN, zh-TW, ja-JP, and en-US.
+        # The language of the report. Default value: zh-CN. Valid values: zh-CN, zh-TW, ja-JP, and en-US.
         self.report_language = report_language
         self.report_region_id = report_region_id
         self.report_type = report_type
-        # The time to run the inspection task. Format: HH:mm:ssZ (UTC). Default value: 02:00:00Z.
+        # The time at which the inspection task is executed. Format: HH:mm:ssZ (UTC). Default value: 02:00:00Z.
         self.start_time = start_time
         self.template_id = template_id
-        # The time range for the inspection. Default value: the last 24 hours. Valid values: 1 to 168 (up to 7 days).
+        # The time range for the inspection. Default value: 24 (the last 24 hours). Valid values: 1 to 168 (up to 7 days).
         self.time_range = time_range
 
     def validate(self):

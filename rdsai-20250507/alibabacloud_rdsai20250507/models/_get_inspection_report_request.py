@@ -11,7 +11,7 @@ class GetInspectionReportRequest(DaraModel):
         report_type: str = None,
         task_id: str = None,
     ):
-        # The instance ID for the inspection. If this parameter is not specified, the entire report is returned. If this parameter is specified, only the content for the specified instance is returned.
+        # The instance ID. If this parameter is not specified, the entire report is returned. If this parameter is specified, only the content for the specified instance is returned.
         self.instance_id = instance_id
         self.report_type = report_type
         # The inspection report ID.

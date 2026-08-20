@@ -81,6 +81,7 @@ class ListApiKeysResponseBodyData(DaraModel):
         self.base_url = base_url
         # The list of custom API keys.
         self.custom_key_list = custom_key_list
+        # The daily throttling quota for the system API key.
         self.daily_token_quota = daily_token_quota
         # Indicates whether the key is throttled.
         self.is_rate_limited = is_rate_limited
@@ -90,7 +91,7 @@ class ListApiKeysResponseBodyData(DaraModel):
         self.page_size = page_size
         # The system-generated key.
         self.system_api_key = system_api_key
-        # The alert threshold percentage for SystemApiKey. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
+        # The alert threshold percentage for SystemApiKey. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert resets when the usage drops below this percentage.
         self.threshold_percent = threshold_percent
         # The total number of records.
         self.total = total
@@ -180,26 +181,30 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
         key_name: str = None,
         limit_rate: float = None,
         limit_type: str = None,
+        role_arn: str = None,
         threshold_percent: int = None,
         token_quota: int = None,
     ):
         # API Key
         self.api_key = api_key
+        # The daily throttling quota.
         self.daily_token_quota = daily_token_quota
         # Indicates whether the key is throttled.
         self.is_rate_limited = is_rate_limited
-        # The name of the API key.
+        # The API key name.
         self.key_name = key_name
-        # The quota ratio.
+        # The quota limit ratio.
         self.limit_rate = limit_rate
-        # The quota type. Valid values:
-        # - **fixed**: fixed value.
-        # - **ratio**: percentage.
-        # - **auto**: automatic allocation.
+        # The quota limit method. Valid values:
+        # 
+        # - **fixed**: Fixed value.
+        # - **ratio**: Percentage.
+        # - **auto**: Automatic allocation.
         self.limit_type = limit_type
-        # The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
+        self.role_arn = role_arn
+        # The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert resets when the usage drops below this percentage.
         self.threshold_percent = threshold_percent
-        # The quota of the current key.
+        # The quota limit of the current key.
         self.token_quota = token_quota
 
     def validate(self):
@@ -228,6 +233,9 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
         if self.limit_type is not None:
             result['LimitType'] = self.limit_type
 
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
         if self.threshold_percent is not None:
             result['ThresholdPercent'] = self.threshold_percent
 
@@ -255,6 +263,9 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
 
         if m.get('LimitType') is not None:
             self.limit_type = m.get('LimitType')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
 
         if m.get('ThresholdPercent') is not None:
             self.threshold_percent = m.get('ThresholdPercent')

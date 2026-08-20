@@ -13,23 +13,29 @@ class CreateApiKeyRequest(DaraModel):
         limit_rate: float = None,
         limit_type: str = None,
         quantity: int = None,
+        role_arn: str = None,
+        role_name: str = None,
         token_quota: int = None,
     ):
+        # The daily quota of the API key.
         self.daily_token_quota = daily_token_quota
         # The instance name.
         self.instance_id = instance_id
-        # The name of the API key.
+        # The API key name.
         self.key_name = key_name
         # The quota percentage.
         self.limit_rate = limit_rate
-        # The quota type. Valid values:
+        # The quota allocation method. Valid values:
+        # 
         # - ratio: by percentage.
         # - fixed: by fixed value.
         # - auto: automatic allocation.
         self.limit_type = limit_type
         # The number of API keys to create. Default value: **1**.
         self.quantity = quantity
-        # The quota for the current key.
+        self.role_arn = role_arn
+        self.role_name = role_name
+        # The quota limit for the current key.
         self.token_quota = token_quota
 
     def validate(self):
@@ -58,6 +64,12 @@ class CreateApiKeyRequest(DaraModel):
         if self.quantity is not None:
             result['Quantity'] = self.quantity
 
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+
         if self.token_quota is not None:
             result['TokenQuota'] = self.token_quota
 
@@ -82,6 +94,12 @@ class CreateApiKeyRequest(DaraModel):
 
         if m.get('Quantity') is not None:
             self.quantity = m.get('Quantity')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
 
         if m.get('TokenQuota') is not None:
             self.token_quota = m.get('TokenQuota')

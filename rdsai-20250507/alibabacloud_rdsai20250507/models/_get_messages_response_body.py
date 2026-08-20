@@ -15,13 +15,13 @@ class GetMessagesResponseBody(DaraModel):
         limit: int = None,
         request_id: str = None,
     ):
-        # A list of message objects.
+        # The query result.
         self.data = data
-        # Indicates whether there are more messages to retrieve.
+        # Indicates whether there is a next page.
         self.has_more = has_more
-        # The value of the Limit parameter used for this request.
+        # The maximum number of entries returned.
         self.limit = limit
-        # The unique identifier for the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,34 +83,40 @@ class GetMessagesResponseBodyData(DaraModel):
         generation_status: str = None,
         id: str = None,
         last_sent_entry_id: str = None,
+        message_files: List[main_models.GetMessagesResponseBodyDataMessageFiles] = None,
         query: str = None,
         retriever_resources: List[Any] = None,
         stream_key: str = None,
     ):
-        # The AI-generated response to the query.
+        # The answer.
         self.answer = answer
-        # The unique identifier for the conversation.
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # The Unix timestamp (in seconds) when the message was created.
+        # The creation time.
         self.created_at = created_at
         self.events = events
-        # The user\\"s feedback on the answer, such as "like" or "dislike".
+        # The feedback.
         self.feedback = feedback
         self.generation_finished_at = generation_finished_at
         self.generation_started_at = generation_started_at
         self.generation_status = generation_status
-        # The unique identifier for the message.
+        # The message ID.
         self.id = id
         self.last_sent_entry_id = last_sent_entry_id
-        # The user\\"s query.
+        self.message_files = message_files
+        # The query statement.
         self.query = query
-        # The resources that were retrieved to generate the answer.
+        # The retrieval resources.
         self.retriever_resources = retriever_resources
         self.stream_key = stream_key
 
     def validate(self):
         if self.events:
             for v1 in self.events:
+                 if v1:
+                    v1.validate()
+        if self.message_files:
+            for v1 in self.message_files:
                  if v1:
                     v1.validate()
 
@@ -150,6 +156,11 @@ class GetMessagesResponseBodyData(DaraModel):
 
         if self.last_sent_entry_id is not None:
             result['LastSentEntryId'] = self.last_sent_entry_id
+
+        result['MessageFiles'] = []
+        if self.message_files is not None:
+            for k1 in self.message_files:
+                result['MessageFiles'].append(k1.to_map() if k1 else None)
 
         if self.query is not None:
             result['Query'] = self.query
@@ -197,6 +208,12 @@ class GetMessagesResponseBodyData(DaraModel):
         if m.get('LastSentEntryId') is not None:
             self.last_sent_entry_id = m.get('LastSentEntryId')
 
+        self.message_files = []
+        if m.get('MessageFiles') is not None:
+            for k1 in m.get('MessageFiles'):
+                temp_model = main_models.GetMessagesResponseBodyDataMessageFiles()
+                self.message_files.append(temp_model.from_map(k1))
+
         if m.get('Query') is not None:
             self.query = m.get('Query')
 
@@ -205,6 +222,49 @@ class GetMessagesResponseBodyData(DaraModel):
 
         if m.get('StreamKey') is not None:
             self.stream_key = m.get('StreamKey')
+
+        return self
+
+class GetMessagesResponseBodyDataMessageFiles(DaraModel):
+    def __init__(
+        self,
+        id: str = None,
+        preview_url: str = None,
+        type: str = None,
+    ):
+        self.id = id
+        self.preview_url = preview_url
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

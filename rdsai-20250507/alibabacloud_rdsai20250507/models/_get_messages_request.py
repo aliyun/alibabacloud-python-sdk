@@ -12,12 +12,12 @@ class GetMessagesRequest(DaraModel):
         first_id: str = None,
         limit: int = None,
     ):
-        # The ID of the conversation.
+        # The conversation ID.
         self.conversation_id = conversation_id
         self.event_mode = event_mode
-        # The ID of the message from which to start fetching the list. Use this for pagination.
+        # The ID of the first message.
         self.first_id = first_id
-        # The maximum number of messages to return per page. Valid values: 1–100. Default: 100.
+        # The number of entries per page in a paging query. Valid values: 1 to 100. Default value: 100.
         self.limit = limit
 
     def validate(self):

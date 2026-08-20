@@ -114,13 +114,13 @@ class GetStandAloneReportsResponseBodyReports(DaraModel):
     ):
         # The creation time.
         self.created_time = created_time
-        # The inspection end time (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The inspection end time in the format of YYYY-MM-DDTHH:mm:ssZ.
         self.end_time = end_time
         self.inspection_items = inspection_items
         self.region_id = region_id
         self.report_language = report_language
         self.report_type = report_type
-        # The inspection start time (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The inspection start time in the format of YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
         # The status.
         self.status = status

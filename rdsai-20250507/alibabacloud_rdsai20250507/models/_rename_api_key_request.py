@@ -10,17 +10,21 @@ class RenameApiKeyRequest(DaraModel):
         api_key: str = None,
         instance_id: str = None,
         key_name: str = None,
+        role_arn: str = None,
+        role_name: str = None,
     ):
-        # The API key to rename.
+        # API KEY
         # 
         # This parameter is required.
         self.api_key = api_key
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The new name for the API key.
+        # The API key name.
         # 
         # This parameter is required.
         self.key_name = key_name
+        self.role_arn = role_arn
+        self.role_name = role_name
 
     def validate(self):
         pass
@@ -39,6 +43,12 @@ class RenameApiKeyRequest(DaraModel):
         if self.key_name is not None:
             result['KeyName'] = self.key_name
 
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -51,6 +61,12 @@ class RenameApiKeyRequest(DaraModel):
 
         if m.get('KeyName') is not None:
             self.key_name = m.get('KeyName')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
 
         return self
 

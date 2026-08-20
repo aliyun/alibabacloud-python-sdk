@@ -17,7 +17,7 @@ class CreateInspectionTaskRequest(DaraModel):
         start_time: str = None,
         template_id: str = None,
     ):
-        # The end time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: the current time.
+        # The end time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: the end time of the last 24 hours.
         self.end_time = end_time
         # The list of inspection items. Separate multiple values with commas (,). If this parameter is left empty or not specified, all inspection items are executed.
         # ### Available inspection items:
@@ -40,7 +40,7 @@ class CreateInspectionTaskRequest(DaraModel):
         self.report_language = report_language
         self.report_region_id = report_region_id
         self.report_type = report_type
-        # The start time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: 24 hours before the current time.
+        # The start time of the inspection range. Format: YYYY-MM-DDTHH:mm:ssZ (UTC). Default value: the start time of the last 24 hours.
         self.start_time = start_time
         self.template_id = template_id
 

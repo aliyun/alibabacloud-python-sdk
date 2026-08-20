@@ -16,6 +16,15 @@ from ._create_app_instance_request import CreateAppInstanceRequest
 from ._create_app_instance_shrink_request import CreateAppInstanceShrinkRequest
 from ._create_app_instance_response_body import CreateAppInstanceResponseBody
 from ._create_app_instance_response import CreateAppInstanceResponse
+from ._create_context_database_api_key_request import CreateContextDatabaseApiKeyRequest
+from ._create_context_database_api_key_response_body import CreateContextDatabaseApiKeyResponseBody
+from ._create_context_database_api_key_response import CreateContextDatabaseApiKeyResponse
+from ._create_context_database_member_request import CreateContextDatabaseMemberRequest
+from ._create_context_database_member_response_body import CreateContextDatabaseMemberResponseBody
+from ._create_context_database_member_response import CreateContextDatabaseMemberResponse
+from ._create_context_database_workspace_request import CreateContextDatabaseWorkspaceRequest
+from ._create_context_database_workspace_response_body import CreateContextDatabaseWorkspaceResponseBody
+from ._create_context_database_workspace_response import CreateContextDatabaseWorkspaceResponse
 from ._create_custom_agent_request import CreateCustomAgentRequest
 from ._create_custom_agent_shrink_request import CreateCustomAgentShrinkRequest
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBody
@@ -42,6 +51,12 @@ from ._delete_api_key_response import DeleteApiKeyResponse
 from ._delete_app_instance_request import DeleteAppInstanceRequest
 from ._delete_app_instance_response_body import DeleteAppInstanceResponseBody
 from ._delete_app_instance_response import DeleteAppInstanceResponse
+from ._delete_context_database_member_request import DeleteContextDatabaseMemberRequest
+from ._delete_context_database_member_response_body import DeleteContextDatabaseMemberResponseBody
+from ._delete_context_database_member_response import DeleteContextDatabaseMemberResponse
+from ._delete_context_database_workspace_request import DeleteContextDatabaseWorkspaceRequest
+from ._delete_context_database_workspace_response_body import DeleteContextDatabaseWorkspaceResponseBody
+from ._delete_context_database_workspace_response import DeleteContextDatabaseWorkspaceResponse
 from ._delete_custom_agent_request import DeleteCustomAgentRequest
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
 from ._delete_custom_agent_response import DeleteCustomAgentResponse
@@ -145,6 +160,15 @@ from ._get_stand_alone_reports_response import GetStandAloneReportsResponse
 from ._list_api_keys_request import ListApiKeysRequest
 from ._list_api_keys_response_body import ListApiKeysResponseBody
 from ._list_api_keys_response import ListApiKeysResponse
+from ._list_context_database_api_keys_request import ListContextDatabaseApiKeysRequest
+from ._list_context_database_api_keys_response_body import ListContextDatabaseApiKeysResponseBody
+from ._list_context_database_api_keys_response import ListContextDatabaseApiKeysResponse
+from ._list_context_database_members_request import ListContextDatabaseMembersRequest
+from ._list_context_database_members_response_body import ListContextDatabaseMembersResponseBody
+from ._list_context_database_members_response import ListContextDatabaseMembersResponse
+from ._list_context_database_workspaces_request import ListContextDatabaseWorkspacesRequest
+from ._list_context_database_workspaces_response_body import ListContextDatabaseWorkspacesResponseBody
+from ._list_context_database_workspaces_response import ListContextDatabaseWorkspacesResponse
 from ._list_custom_agent_request import ListCustomAgentRequest
 from ._list_custom_agent_response_body import ListCustomAgentResponseBody
 from ._list_custom_agent_response import ListCustomAgentResponse
@@ -215,6 +239,9 @@ from ._reset_instance_password_response import ResetInstancePasswordResponse
 from ._restart_instance_request import RestartInstanceRequest
 from ._restart_instance_response_body import RestartInstanceResponseBody
 from ._restart_instance_response import RestartInstanceResponse
+from ._revoke_context_database_api_key_request import RevokeContextDatabaseApiKeyRequest
+from ._revoke_context_database_api_key_response_body import RevokeContextDatabaseApiKeyResponseBody
+from ._revoke_context_database_api_key_response import RevokeContextDatabaseApiKeyResponse
 from ._start_instance_request import StartInstanceRequest
 from ._start_instance_response_body import StartInstanceResponseBody
 from ._start_instance_response import StartInstanceResponse
@@ -225,6 +252,15 @@ from ._update_api_key_quota_request import UpdateApiKeyQuotaRequest
 from ._update_api_key_quota_shrink_request import UpdateApiKeyQuotaShrinkRequest
 from ._update_api_key_quota_response_body import UpdateApiKeyQuotaResponseBody
 from ._update_api_key_quota_response import UpdateApiKeyQuotaResponse
+from ._update_context_database_api_key_request import UpdateContextDatabaseApiKeyRequest
+from ._update_context_database_api_key_response_body import UpdateContextDatabaseApiKeyResponseBody
+from ._update_context_database_api_key_response import UpdateContextDatabaseApiKeyResponse
+from ._update_context_database_member_request import UpdateContextDatabaseMemberRequest
+from ._update_context_database_member_response_body import UpdateContextDatabaseMemberResponseBody
+from ._update_context_database_member_response import UpdateContextDatabaseMemberResponse
+from ._update_context_database_workspace_request import UpdateContextDatabaseWorkspaceRequest
+from ._update_context_database_workspace_response_body import UpdateContextDatabaseWorkspaceResponseBody
+from ._update_context_database_workspace_response import UpdateContextDatabaseWorkspaceResponse
 from ._update_custom_agent_request import UpdateCustomAgentRequest
 from ._update_custom_agent_shrink_request import UpdateCustomAgentShrinkRequest
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBody
@@ -237,15 +273,20 @@ from ._update_skill_request import UpdateSkillRequest
 from ._update_skill_shrink_request import UpdateSkillShrinkRequest
 from ._update_skill_response_body import UpdateSkillResponseBody
 from ._update_skill_response import UpdateSkillResponse
+from ._chat_messages_request import ChatMessagesRequestFiles
 from ._chat_messages_request import ChatMessagesRequestInputs
 from ._create_api_key_response_body import CreateApiKeyResponseBodyDataCustomKeyList
 from ._create_api_key_response_body import CreateApiKeyResponseBodyData
 from ._create_app_instance_request import CreateAppInstanceRequestComponents
 from ._create_app_instance_request import CreateAppInstanceRequestDBInstanceConfig
+from ._create_context_database_api_key_response_body import CreateContextDatabaseApiKeyResponseBodyKey
+from ._create_context_database_member_response_body import CreateContextDatabaseMemberResponseBodyMemberKeys
+from ._create_context_database_member_response_body import CreateContextDatabaseMemberResponseBodyMember
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodySkills
 from ._create_inspection_task_response_body import CreateInspectionTaskResponseBodyData
 from ._create_mousage_detail_export_response_body import CreateMOUsageDetailExportResponseBodyDataFilters
 from ._create_mousage_detail_export_response_body import CreateMOUsageDetailExportResponseBodyData
+from ._delete_context_database_member_response_body import DeleteContextDatabaseMemberResponseBodyKeys
 from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBodyComponents
 from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBodyUploadKeyList
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBodyInstancesComponents
@@ -281,6 +322,7 @@ from ._get_inspection_report_response_body import GetInspectionReportResponseBod
 from ._get_inspection_report_response_body import GetInspectionReportResponseBodyDataLevelSummary
 from ._get_inspection_report_response_body import GetInspectionReportResponseBodyData
 from ._get_messages_response_body import GetMessagesResponseBodyDataEvents
+from ._get_messages_response_body import GetMessagesResponseBodyDataMessageFiles
 from ._get_messages_response_body import GetMessagesResponseBodyData
 from ._get_model_operator_order_response_body import GetModelOperatorOrderResponseBodyDataInstanceList
 from ._get_model_operator_order_response_body import GetModelOperatorOrderResponseBodyData
@@ -289,6 +331,10 @@ from ._get_scheduled_reports_response_body import GetScheduledReportsResponseBod
 from ._get_stand_alone_reports_response_body import GetStandAloneReportsResponseBodyReports
 from ._list_api_keys_response_body import ListApiKeysResponseBodyDataCustomKeyList
 from ._list_api_keys_response_body import ListApiKeysResponseBodyData
+from ._list_context_database_api_keys_response_body import ListContextDatabaseApiKeysResponseBodyKeys
+from ._list_context_database_members_response_body import ListContextDatabaseMembersResponseBodyMembersKeys
+from ._list_context_database_members_response_body import ListContextDatabaseMembersResponseBodyMembers
+from ._list_context_database_workspaces_response_body import ListContextDatabaseWorkspacesResponseBodyWorkspaces
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodySkills
 from ._list_custom_agent_tools_response_body import ListCustomAgentToolsResponseBodyData
@@ -305,6 +351,7 @@ from ._reset_api_key_response_body import ResetApiKeyResponseBodyData
 from ._update_api_key_quota_request import UpdateApiKeyQuotaRequestKeys
 from ._update_api_key_quota_response_body import UpdateApiKeyQuotaResponseBodyDataCustomKeyList
 from ._update_api_key_quota_response_body import UpdateApiKeyQuotaResponseBodyData
+from ._update_context_database_member_response_body import UpdateContextDatabaseMemberResponseBodyKeys
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodySkills
 from ._update_moquota_alert_threshold_request import UpdateMOQuotaAlertThresholdRequestApikey
 from ._update_moquota_alert_threshold_response_body import UpdateMOQuotaAlertThresholdResponseBodyResults
@@ -324,6 +371,15 @@ __all__ = [
     CreateAppInstanceShrinkRequest,
     CreateAppInstanceResponseBody,
     CreateAppInstanceResponse,
+    CreateContextDatabaseApiKeyRequest,
+    CreateContextDatabaseApiKeyResponseBody,
+    CreateContextDatabaseApiKeyResponse,
+    CreateContextDatabaseMemberRequest,
+    CreateContextDatabaseMemberResponseBody,
+    CreateContextDatabaseMemberResponse,
+    CreateContextDatabaseWorkspaceRequest,
+    CreateContextDatabaseWorkspaceResponseBody,
+    CreateContextDatabaseWorkspaceResponse,
     CreateCustomAgentRequest,
     CreateCustomAgentShrinkRequest,
     CreateCustomAgentResponseBody,
@@ -350,6 +406,12 @@ __all__ = [
     DeleteAppInstanceRequest,
     DeleteAppInstanceResponseBody,
     DeleteAppInstanceResponse,
+    DeleteContextDatabaseMemberRequest,
+    DeleteContextDatabaseMemberResponseBody,
+    DeleteContextDatabaseMemberResponse,
+    DeleteContextDatabaseWorkspaceRequest,
+    DeleteContextDatabaseWorkspaceResponseBody,
+    DeleteContextDatabaseWorkspaceResponse,
     DeleteCustomAgentRequest,
     DeleteCustomAgentResponseBody,
     DeleteCustomAgentResponse,
@@ -453,6 +515,15 @@ __all__ = [
     ListApiKeysRequest,
     ListApiKeysResponseBody,
     ListApiKeysResponse,
+    ListContextDatabaseApiKeysRequest,
+    ListContextDatabaseApiKeysResponseBody,
+    ListContextDatabaseApiKeysResponse,
+    ListContextDatabaseMembersRequest,
+    ListContextDatabaseMembersResponseBody,
+    ListContextDatabaseMembersResponse,
+    ListContextDatabaseWorkspacesRequest,
+    ListContextDatabaseWorkspacesResponseBody,
+    ListContextDatabaseWorkspacesResponse,
     ListCustomAgentRequest,
     ListCustomAgentResponseBody,
     ListCustomAgentResponse,
@@ -523,6 +594,9 @@ __all__ = [
     RestartInstanceRequest,
     RestartInstanceResponseBody,
     RestartInstanceResponse,
+    RevokeContextDatabaseApiKeyRequest,
+    RevokeContextDatabaseApiKeyResponseBody,
+    RevokeContextDatabaseApiKeyResponse,
     StartInstanceRequest,
     StartInstanceResponseBody,
     StartInstanceResponse,
@@ -533,6 +607,15 @@ __all__ = [
     UpdateApiKeyQuotaShrinkRequest,
     UpdateApiKeyQuotaResponseBody,
     UpdateApiKeyQuotaResponse,
+    UpdateContextDatabaseApiKeyRequest,
+    UpdateContextDatabaseApiKeyResponseBody,
+    UpdateContextDatabaseApiKeyResponse,
+    UpdateContextDatabaseMemberRequest,
+    UpdateContextDatabaseMemberResponseBody,
+    UpdateContextDatabaseMemberResponse,
+    UpdateContextDatabaseWorkspaceRequest,
+    UpdateContextDatabaseWorkspaceResponseBody,
+    UpdateContextDatabaseWorkspaceResponse,
     UpdateCustomAgentRequest,
     UpdateCustomAgentShrinkRequest,
     UpdateCustomAgentResponseBody,
@@ -545,15 +628,20 @@ __all__ = [
     UpdateSkillShrinkRequest,
     UpdateSkillResponseBody,
     UpdateSkillResponse,
+    ChatMessagesRequestFiles,
     ChatMessagesRequestInputs,
     CreateApiKeyResponseBodyDataCustomKeyList,
     CreateApiKeyResponseBodyData,
     CreateAppInstanceRequestComponents,
     CreateAppInstanceRequestDBInstanceConfig,
+    CreateContextDatabaseApiKeyResponseBodyKey,
+    CreateContextDatabaseMemberResponseBodyMemberKeys,
+    CreateContextDatabaseMemberResponseBodyMember,
     CreateCustomAgentResponseBodySkills,
     CreateInspectionTaskResponseBodyData,
     CreateMOUsageDetailExportResponseBodyDataFilters,
     CreateMOUsageDetailExportResponseBodyData,
+    DeleteContextDatabaseMemberResponseBodyKeys,
     DescribeAppInstanceAttributeResponseBodyComponents,
     DescribeAppInstanceAttributeResponseBodyUploadKeyList,
     DescribeAppInstancesResponseBodyInstancesComponents,
@@ -589,6 +677,7 @@ __all__ = [
     GetInspectionReportResponseBodyDataLevelSummary,
     GetInspectionReportResponseBodyData,
     GetMessagesResponseBodyDataEvents,
+    GetMessagesResponseBodyDataMessageFiles,
     GetMessagesResponseBodyData,
     GetModelOperatorOrderResponseBodyDataInstanceList,
     GetModelOperatorOrderResponseBodyData,
@@ -597,6 +686,10 @@ __all__ = [
     GetStandAloneReportsResponseBodyReports,
     ListApiKeysResponseBodyDataCustomKeyList,
     ListApiKeysResponseBodyData,
+    ListContextDatabaseApiKeysResponseBodyKeys,
+    ListContextDatabaseMembersResponseBodyMembersKeys,
+    ListContextDatabaseMembersResponseBodyMembers,
+    ListContextDatabaseWorkspacesResponseBodyWorkspaces,
     ListCustomAgentResponseBodyData,
     ListCustomAgentResponseBodySkills,
     ListCustomAgentToolsResponseBodyData,
@@ -613,6 +706,7 @@ __all__ = [
     UpdateApiKeyQuotaRequestKeys,
     UpdateApiKeyQuotaResponseBodyDataCustomKeyList,
     UpdateApiKeyQuotaResponseBodyData,
+    UpdateContextDatabaseMemberResponseBodyKeys,
     UpdateCustomAgentResponseBodySkills,
     UpdateMOQuotaAlertThresholdRequestApikey,
     UpdateMOQuotaAlertThresholdResponseBodyResults

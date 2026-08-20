@@ -24,20 +24,20 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'us-west-1': 'rdsai.us-west-1.aliyuncs.com',
-            'eu-central-1': 'rdsai.eu-central-1.aliyuncs.com',
             'cn-wulanchabu': 'rdsai.aliyuncs.com',
             'cn-shenzhen': 'rdsai.aliyuncs.com',
-            'cn-shanghai': 'rdsai.aliyuncs.com',
-            'cn-hongkong': 'rdsai.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'rdsai.aliyuncs.com',
-            'cn-guangzhou': 'rdsai.aliyuncs.com',
-            'cn-chengdu': 'rdsai.cn-chengdu.aliyuncs.com',
             'cn-beijing': 'rdsai.aliyuncs.com',
-            'ap-southeast-5': 'rdsai.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'rdsai.ap-southeast-3.aliyuncs.com',
+            'ap-northeast-1': 'rdsai.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'rdsai.cn-chengdu.aliyuncs.com',
+            'cn-shanghai': 'rdsai.aliyuncs.com',
+            'cn-guangzhou': 'rdsai.aliyuncs.com',
+            'cn-hongkong': 'rdsai.cn-hongkong.aliyuncs.com',
             'ap-southeast-1': 'rdsai.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'rdsai.ap-northeast-1.aliyuncs.com'
+            'ap-southeast-3': 'rdsai.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'rdsai.ap-southeast-5.aliyuncs.com',
+            'cn-hangzhou': 'rdsai.aliyuncs.com',
+            'us-west-1': 'rdsai.us-west-1.aliyuncs.com',
+            'eu-central-1': 'rdsai.eu-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('rdsai', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -66,6 +66,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ChatMessagesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.files):
+            request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
         if not DaraCore.is_null(tmp_req.inputs):
             request.inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
         query = {}
@@ -73,6 +75,8 @@ class Client(OpenApiClient):
             query['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.event_mode):
             query['EventMode'] = request.event_mode
+        if not DaraCore.is_null(request.files_shrink):
+            query['Files'] = request.files_shrink
         if not DaraCore.is_null(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
         if not DaraCore.is_null(request.parent_message_id):
@@ -115,6 +119,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ChatMessagesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.files):
+            request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
         if not DaraCore.is_null(tmp_req.inputs):
             request.inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
         query = {}
@@ -122,6 +128,8 @@ class Client(OpenApiClient):
             query['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.event_mode):
             query['EventMode'] = request.event_mode
+        if not DaraCore.is_null(request.files_shrink):
+            query['Files'] = request.files_shrink
         if not DaraCore.is_null(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
         if not DaraCore.is_null(request.parent_message_id):
@@ -164,6 +172,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ChatMessagesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.files):
+            request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
         if not DaraCore.is_null(tmp_req.inputs):
             request.inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
         query = {}
@@ -171,6 +181,8 @@ class Client(OpenApiClient):
             query['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.event_mode):
             query['EventMode'] = request.event_mode
+        if not DaraCore.is_null(request.files_shrink):
+            query['Files'] = request.files_shrink
         if not DaraCore.is_null(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
         if not DaraCore.is_null(request.parent_message_id):
@@ -204,6 +216,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ChatMessagesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.files):
+            request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
         if not DaraCore.is_null(tmp_req.inputs):
             request.inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
         query = {}
@@ -211,6 +225,8 @@ class Client(OpenApiClient):
             query['ConversationId'] = request.conversation_id
         if not DaraCore.is_null(request.event_mode):
             query['EventMode'] = request.event_mode
+        if not DaraCore.is_null(request.files_shrink):
+            query['Files'] = request.files_shrink
         if not DaraCore.is_null(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
         if not DaraCore.is_null(request.parent_message_id):
@@ -339,6 +355,10 @@ class Client(OpenApiClient):
             query['LimitType'] = request.limit_type
         if not DaraCore.is_null(request.quantity):
             query['Quantity'] = request.quantity
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
         if not DaraCore.is_null(request.token_quota):
             query['TokenQuota'] = request.token_quota
         req = open_api_util_models.OpenApiRequest(
@@ -379,6 +399,10 @@ class Client(OpenApiClient):
             query['LimitType'] = request.limit_type
         if not DaraCore.is_null(request.quantity):
             query['Quantity'] = request.quantity
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
         if not DaraCore.is_null(request.token_quota):
             query['TokenQuota'] = request.token_quota
         req = open_api_util_models.OpenApiRequest(
@@ -559,6 +583,244 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAppInstanceResponse:
         runtime = RuntimeOptions()
         return await self.create_app_instance_with_options_async(request, runtime)
+
+    def create_context_database_api_key_with_options(
+        self,
+        request: main_models.CreateContextDatabaseApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextDatabaseApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextDatabaseApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextDatabaseApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_context_database_api_key_with_options_async(
+        self,
+        request: main_models.CreateContextDatabaseApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextDatabaseApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextDatabaseApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextDatabaseApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_context_database_api_key(
+        self,
+        request: main_models.CreateContextDatabaseApiKeyRequest,
+    ) -> main_models.CreateContextDatabaseApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.create_context_database_api_key_with_options(request, runtime)
+
+    async def create_context_database_api_key_async(
+        self,
+        request: main_models.CreateContextDatabaseApiKeyRequest,
+    ) -> main_models.CreateContextDatabaseApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_context_database_api_key_with_options_async(request, runtime)
+
+    def create_context_database_member_with_options(
+        self,
+        request: main_models.CreateContextDatabaseMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextDatabaseMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.generate_initial_key):
+            query['GenerateInitialKey'] = request.generate_initial_key
+        if not DaraCore.is_null(request.initial_key_name):
+            query['InitialKeyName'] = request.initial_key_name
+        if not DaraCore.is_null(request.member_name):
+            query['MemberName'] = request.member_name
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextDatabaseMember',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextDatabaseMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_context_database_member_with_options_async(
+        self,
+        request: main_models.CreateContextDatabaseMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextDatabaseMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.generate_initial_key):
+            query['GenerateInitialKey'] = request.generate_initial_key
+        if not DaraCore.is_null(request.initial_key_name):
+            query['InitialKeyName'] = request.initial_key_name
+        if not DaraCore.is_null(request.member_name):
+            query['MemberName'] = request.member_name
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextDatabaseMember',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextDatabaseMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_context_database_member(
+        self,
+        request: main_models.CreateContextDatabaseMemberRequest,
+    ) -> main_models.CreateContextDatabaseMemberResponse:
+        runtime = RuntimeOptions()
+        return self.create_context_database_member_with_options(request, runtime)
+
+    async def create_context_database_member_async(
+        self,
+        request: main_models.CreateContextDatabaseMemberRequest,
+    ) -> main_models.CreateContextDatabaseMemberResponse:
+        runtime = RuntimeOptions()
+        return await self.create_context_database_member_with_options_async(request, runtime)
+
+    def create_context_database_workspace_with_options(
+        self,
+        request: main_models.CreateContextDatabaseWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextDatabaseWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.member_name):
+            query['MemberName'] = request.member_name
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextDatabaseWorkspace',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextDatabaseWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_context_database_workspace_with_options_async(
+        self,
+        request: main_models.CreateContextDatabaseWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextDatabaseWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.member_name):
+            query['MemberName'] = request.member_name
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextDatabaseWorkspace',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextDatabaseWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_context_database_workspace(
+        self,
+        request: main_models.CreateContextDatabaseWorkspaceRequest,
+    ) -> main_models.CreateContextDatabaseWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_context_database_workspace_with_options(request, runtime)
+
+    async def create_context_database_workspace_async(
+        self,
+        request: main_models.CreateContextDatabaseWorkspaceRequest,
+    ) -> main_models.CreateContextDatabaseWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_context_database_workspace_with_options_async(request, runtime)
 
     def create_custom_agent_with_options(
         self,
@@ -1307,6 +1569,150 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAppInstanceResponse:
         runtime = RuntimeOptions()
         return await self.delete_app_instance_with_options_async(request, runtime)
+
+    def delete_context_database_member_with_options(
+        self,
+        request: main_models.DeleteContextDatabaseMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextDatabaseMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextDatabaseMember',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextDatabaseMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_context_database_member_with_options_async(
+        self,
+        request: main_models.DeleteContextDatabaseMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextDatabaseMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextDatabaseMember',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextDatabaseMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_context_database_member(
+        self,
+        request: main_models.DeleteContextDatabaseMemberRequest,
+    ) -> main_models.DeleteContextDatabaseMemberResponse:
+        runtime = RuntimeOptions()
+        return self.delete_context_database_member_with_options(request, runtime)
+
+    async def delete_context_database_member_async(
+        self,
+        request: main_models.DeleteContextDatabaseMemberRequest,
+    ) -> main_models.DeleteContextDatabaseMemberResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_context_database_member_with_options_async(request, runtime)
+
+    def delete_context_database_workspace_with_options(
+        self,
+        request: main_models.DeleteContextDatabaseWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextDatabaseWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextDatabaseWorkspace',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextDatabaseWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_context_database_workspace_with_options_async(
+        self,
+        request: main_models.DeleteContextDatabaseWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextDatabaseWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextDatabaseWorkspace',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextDatabaseWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_context_database_workspace(
+        self,
+        request: main_models.DeleteContextDatabaseWorkspaceRequest,
+    ) -> main_models.DeleteContextDatabaseWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_context_database_workspace_with_options(request, runtime)
+
+    async def delete_context_database_workspace_async(
+        self,
+        request: main_models.DeleteContextDatabaseWorkspaceRequest,
+    ) -> main_models.DeleteContextDatabaseWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_context_database_workspace_with_options_async(request, runtime)
 
     def delete_custom_agent_with_options(
         self,
@@ -4030,6 +4436,248 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_api_keys_with_options_async(request, runtime)
 
+    def list_context_database_api_keys_with_options(
+        self,
+        request: main_models.ListContextDatabaseApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextDatabaseApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextDatabaseApiKeys',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextDatabaseApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_context_database_api_keys_with_options_async(
+        self,
+        request: main_models.ListContextDatabaseApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextDatabaseApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextDatabaseApiKeys',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextDatabaseApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_context_database_api_keys(
+        self,
+        request: main_models.ListContextDatabaseApiKeysRequest,
+    ) -> main_models.ListContextDatabaseApiKeysResponse:
+        runtime = RuntimeOptions()
+        return self.list_context_database_api_keys_with_options(request, runtime)
+
+    async def list_context_database_api_keys_async(
+        self,
+        request: main_models.ListContextDatabaseApiKeysRequest,
+    ) -> main_models.ListContextDatabaseApiKeysResponse:
+        runtime = RuntimeOptions()
+        return await self.list_context_database_api_keys_with_options_async(request, runtime)
+
+    def list_context_database_members_with_options(
+        self,
+        request: main_models.ListContextDatabaseMembersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextDatabaseMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextDatabaseMembers',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextDatabaseMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_context_database_members_with_options_async(
+        self,
+        request: main_models.ListContextDatabaseMembersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextDatabaseMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextDatabaseMembers',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextDatabaseMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_context_database_members(
+        self,
+        request: main_models.ListContextDatabaseMembersRequest,
+    ) -> main_models.ListContextDatabaseMembersResponse:
+        runtime = RuntimeOptions()
+        return self.list_context_database_members_with_options(request, runtime)
+
+    async def list_context_database_members_async(
+        self,
+        request: main_models.ListContextDatabaseMembersRequest,
+    ) -> main_models.ListContextDatabaseMembersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_context_database_members_with_options_async(request, runtime)
+
+    def list_context_database_workspaces_with_options(
+        self,
+        request: main_models.ListContextDatabaseWorkspacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextDatabaseWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextDatabaseWorkspaces',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextDatabaseWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_context_database_workspaces_with_options_async(
+        self,
+        request: main_models.ListContextDatabaseWorkspacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextDatabaseWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextDatabaseWorkspaces',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextDatabaseWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_context_database_workspaces(
+        self,
+        request: main_models.ListContextDatabaseWorkspacesRequest,
+    ) -> main_models.ListContextDatabaseWorkspacesResponse:
+        runtime = RuntimeOptions()
+        return self.list_context_database_workspaces_with_options(request, runtime)
+
+    async def list_context_database_workspaces_async(
+        self,
+        request: main_models.ListContextDatabaseWorkspacesRequest,
+    ) -> main_models.ListContextDatabaseWorkspacesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_context_database_workspaces_with_options_async(request, runtime)
+
     def list_custom_agent_with_options(
         self,
         request: main_models.ListCustomAgentRequest,
@@ -5517,6 +6165,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.key_name):
             query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5549,6 +6201,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.key_name):
             query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5894,6 +6550,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.restart_instance_with_options_async(request, runtime)
 
+    def revoke_context_database_api_key_with_options(
+        self,
+        request: main_models.RevokeContextDatabaseApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeContextDatabaseApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_id):
+            query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeContextDatabaseApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeContextDatabaseApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_context_database_api_key_with_options_async(
+        self,
+        request: main_models.RevokeContextDatabaseApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeContextDatabaseApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_id):
+            query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeContextDatabaseApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeContextDatabaseApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_context_database_api_key(
+        self,
+        request: main_models.RevokeContextDatabaseApiKeyRequest,
+    ) -> main_models.RevokeContextDatabaseApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.revoke_context_database_api_key_with_options(request, runtime)
+
+    async def revoke_context_database_api_key_async(
+        self,
+        request: main_models.RevokeContextDatabaseApiKeyRequest,
+    ) -> main_models.RevokeContextDatabaseApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.revoke_context_database_api_key_with_options_async(request, runtime)
+
     def start_instance_with_options(
         self,
         request: main_models.StartInstanceRequest,
@@ -6135,6 +6869,248 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateApiKeyQuotaResponse:
         runtime = RuntimeOptions()
         return await self.update_api_key_quota_with_options_async(request, runtime)
+
+    def update_context_database_api_key_with_options(
+        self,
+        request: main_models.UpdateContextDatabaseApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextDatabaseApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.key_id):
+            query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContextDatabaseApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextDatabaseApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_context_database_api_key_with_options_async(
+        self,
+        request: main_models.UpdateContextDatabaseApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextDatabaseApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.key_id):
+            query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContextDatabaseApiKey',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextDatabaseApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_context_database_api_key(
+        self,
+        request: main_models.UpdateContextDatabaseApiKeyRequest,
+    ) -> main_models.UpdateContextDatabaseApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.update_context_database_api_key_with_options(request, runtime)
+
+    async def update_context_database_api_key_async(
+        self,
+        request: main_models.UpdateContextDatabaseApiKeyRequest,
+    ) -> main_models.UpdateContextDatabaseApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_context_database_api_key_with_options_async(request, runtime)
+
+    def update_context_database_member_with_options(
+        self,
+        request: main_models.UpdateContextDatabaseMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextDatabaseMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContextDatabaseMember',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextDatabaseMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_context_database_member_with_options_async(
+        self,
+        request: main_models.UpdateContextDatabaseMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextDatabaseMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContextDatabaseMember',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextDatabaseMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_context_database_member(
+        self,
+        request: main_models.UpdateContextDatabaseMemberRequest,
+    ) -> main_models.UpdateContextDatabaseMemberResponse:
+        runtime = RuntimeOptions()
+        return self.update_context_database_member_with_options(request, runtime)
+
+    async def update_context_database_member_async(
+        self,
+        request: main_models.UpdateContextDatabaseMemberRequest,
+    ) -> main_models.UpdateContextDatabaseMemberResponse:
+        runtime = RuntimeOptions()
+        return await self.update_context_database_member_with_options_async(request, runtime)
+
+    def update_context_database_workspace_with_options(
+        self,
+        request: main_models.UpdateContextDatabaseWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextDatabaseWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContextDatabaseWorkspace',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextDatabaseWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_context_database_workspace_with_options_async(
+        self,
+        request: main_models.UpdateContextDatabaseWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContextDatabaseWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContextDatabaseWorkspace',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContextDatabaseWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_context_database_workspace(
+        self,
+        request: main_models.UpdateContextDatabaseWorkspaceRequest,
+    ) -> main_models.UpdateContextDatabaseWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.update_context_database_workspace_with_options(request, runtime)
+
+    async def update_context_database_workspace_async(
+        self,
+        request: main_models.UpdateContextDatabaseWorkspaceRequest,
+    ) -> main_models.UpdateContextDatabaseWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_context_database_workspace_with_options_async(request, runtime)
 
     def update_custom_agent_with_options(
         self,

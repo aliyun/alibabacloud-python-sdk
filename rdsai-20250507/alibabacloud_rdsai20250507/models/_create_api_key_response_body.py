@@ -15,9 +15,9 @@ class CreateApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -126,24 +126,27 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
         key_name: str = None,
         limit_rate: float = None,
         limit_type: str = None,
+        role_arn: str = None,
         token_quota: int = None,
     ):
         # Api Key
         self.api_key = api_key
+        # The daily quota of the API key.
         self.daily_token_quota = daily_token_quota
-        # The name of the API key.
+        # The API key name.
         self.key_name = key_name
         # The quota percentage.
         self.limit_rate = limit_rate
-        # The quota type. Valid values:
+        # The quota allocation method. Valid values:
         # 
-        # - **fixed**: by fixed value.
+        # - **fixed**: By fixed value.
         # 
-        # - **ratio**: by percentage.
+        # - **ratio**: By percentage.
         # 
-        # - **auto**: automatic allocation.
+        # - **auto**: Automatic allocation.
         self.limit_type = limit_type
-        # The quota for the current key.
+        self.role_arn = role_arn
+        # The quota limit for the current key.
         self.token_quota = token_quota
 
     def validate(self):
@@ -169,6 +172,9 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
         if self.limit_type is not None:
             result['LimitType'] = self.limit_type
 
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
         if self.token_quota is not None:
             result['TokenQuota'] = self.token_quota
 
@@ -190,6 +196,9 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
 
         if m.get('LimitType') is not None:
             self.limit_type = m.get('LimitType')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
 
         if m.get('TokenQuota') is not None:
             self.token_quota = m.get('TokenQuota')

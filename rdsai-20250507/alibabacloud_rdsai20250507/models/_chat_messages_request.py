@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_rdsai20250507 import models as main_models
 from darabonba.model import DaraModel
 
@@ -10,6 +12,7 @@ class ChatMessagesRequest(DaraModel):
         self,
         conversation_id: str = None,
         event_mode: str = None,
+        files: List[main_models.ChatMessagesRequestFiles] = None,
         inputs: main_models.ChatMessagesRequestInputs = None,
         parent_message_id: str = None,
         query: str = None,
@@ -18,6 +21,7 @@ class ChatMessagesRequest(DaraModel):
         self.conversation_id = conversation_id
         # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
         self.event_mode = event_mode
+        self.files = files
         # The task input.
         self.inputs = inputs
         # The parent message ID.
@@ -28,6 +32,10 @@ class ChatMessagesRequest(DaraModel):
         self.query = query
 
     def validate(self):
+        if self.files:
+            for v1 in self.files:
+                 if v1:
+                    v1.validate()
         if self.inputs:
             self.inputs.validate()
 
@@ -41,6 +49,11 @@ class ChatMessagesRequest(DaraModel):
 
         if self.event_mode is not None:
             result['EventMode'] = self.event_mode
+
+        result['Files'] = []
+        if self.files is not None:
+            for k1 in self.files:
+                result['Files'].append(k1.to_map() if k1 else None)
 
         if self.inputs is not None:
             result['Inputs'] = self.inputs.to_map()
@@ -61,6 +74,12 @@ class ChatMessagesRequest(DaraModel):
         if m.get('EventMode') is not None:
             self.event_mode = m.get('EventMode')
 
+        self.files = []
+        if m.get('Files') is not None:
+            for k1 in m.get('Files'):
+                temp_model = main_models.ChatMessagesRequestFiles()
+                self.files.append(temp_model.from_map(k1))
+
         if m.get('Inputs') is not None:
             temp_model = main_models.ChatMessagesRequestInputs()
             self.inputs = temp_model.from_map(m.get('Inputs'))
@@ -73,8 +92,6 @@ class ChatMessagesRequest(DaraModel):
 
         return self
 
-
-
 class ChatMessagesRequestInputs(DaraModel):
     def __init__(
         self,
@@ -86,14 +103,17 @@ class ChatMessagesRequestInputs(DaraModel):
         think_effort: str = None,
         timezone: str = None,
     ):
-        # The user-specific agent ID.
+        # The custom agent ID for the user.
         self.custom_agent_id = custom_agent_id
+        # Specifies whether to enable deep thinking mode.
         self.enable_thinking = enable_thinking
         # The conversation language.
         self.language = language
+        # The model ID.
         self.model_id = model_id
         # The region ID.
         self.region_id = region_id
+        # The thinking depth.
         self.think_effort = think_effort
         # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
@@ -151,6 +171,51 @@ class ChatMessagesRequestInputs(DaraModel):
 
         if m.get('Timezone') is not None:
             self.timezone = m.get('Timezone')
+
+        return self
+
+
+
+class ChatMessagesRequestFiles(DaraModel):
+    def __init__(
+        self,
+        transfer_method: str = None,
+        type: str = None,
+        upload_file_id: str = None,
+    ):
+        self.transfer_method = transfer_method
+        self.type = type
+        self.upload_file_id = upload_file_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.transfer_method is not None:
+            result['TransferMethod'] = self.transfer_method
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        if self.upload_file_id is not None:
+            result['UploadFileId'] = self.upload_file_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TransferMethod') is not None:
+            self.transfer_method = m.get('TransferMethod')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        if m.get('UploadFileId') is not None:
+            self.upload_file_id = m.get('UploadFileId')
 
         return self
 

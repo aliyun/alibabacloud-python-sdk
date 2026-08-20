@@ -21,6 +21,7 @@ class ModifyScheduledTaskRequest(DaraModel):
         # The new description of the inspection configuration.
         self.description = description
         # The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+        # 
         # * DAILY: every day
         # * Monday: Monday
         # * Tuesday: Tuesday
@@ -29,10 +30,11 @@ class ModifyScheduledTaskRequest(DaraModel):
         # * Friday: Friday
         # * Saturday: Saturday
         # * Sunday: Sunday
+        # 
         # ### Note: DAILY overrides weekly values. For example, if you specify DAILY,Monday, the backend uses DAILY as the inspection frequency.
         self.frequency = frequency
         self.inspection_items = inspection_items
-        # The new list of associated instance IDs. Separate multiple values with commas (,).
+        # The new list of associated instances. Separate multiple values with commas (,).
         self.instance_ids = instance_ids
         # The new name of the inspection configuration.
         self.name = name

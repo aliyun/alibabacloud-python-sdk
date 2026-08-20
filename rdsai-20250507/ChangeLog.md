@@ -1,3 +1,6 @@
+2026-08-20 Version: 3.8.2
+- Generated python 2025-05-07 for RdsAi.
+
 2026-08-06 Version: 3.7.0
 - Support API DescribeMOTokenUsageSummary.
 

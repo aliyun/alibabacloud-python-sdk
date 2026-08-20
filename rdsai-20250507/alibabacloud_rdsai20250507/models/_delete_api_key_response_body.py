@@ -13,9 +13,9 @@ class DeleteApiKeyResponseBody(DaraModel):
     ):
         # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The request result.
         self.success = success
 
     def validate(self):

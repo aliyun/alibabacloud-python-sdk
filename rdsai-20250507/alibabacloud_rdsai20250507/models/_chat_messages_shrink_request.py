@@ -9,6 +9,7 @@ class ChatMessagesShrinkRequest(DaraModel):
         self,
         conversation_id: str = None,
         event_mode: str = None,
+        files_shrink: str = None,
         inputs_shrink: str = None,
         parent_message_id: str = None,
         query: str = None,
@@ -17,6 +18,7 @@ class ChatMessagesShrinkRequest(DaraModel):
         self.conversation_id = conversation_id
         # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
         self.event_mode = event_mode
+        self.files_shrink = files_shrink
         # The task input.
         self.inputs_shrink = inputs_shrink
         # The parent message ID.
@@ -40,6 +42,9 @@ class ChatMessagesShrinkRequest(DaraModel):
         if self.event_mode is not None:
             result['EventMode'] = self.event_mode
 
+        if self.files_shrink is not None:
+            result['Files'] = self.files_shrink
+
         if self.inputs_shrink is not None:
             result['Inputs'] = self.inputs_shrink
 
@@ -58,6 +63,9 @@ class ChatMessagesShrinkRequest(DaraModel):
 
         if m.get('EventMode') is not None:
             self.event_mode = m.get('EventMode')
+
+        if m.get('Files') is not None:
+            self.files_shrink = m.get('Files')
 
         if m.get('Inputs') is not None:
             self.inputs_shrink = m.get('Inputs')
