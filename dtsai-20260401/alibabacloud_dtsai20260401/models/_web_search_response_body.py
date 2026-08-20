@@ -29,7 +29,7 @@ class WebSearchResponseBody(DaraModel):
         self.query = query
         # The request ID.
         self.request_id = request_id
-        # The search result list.
+        # The list of search results.
         self.search_result = search_result
         # Indicates whether the request was successful.
         self.success = success
@@ -115,7 +115,7 @@ class WebSearchResponseBodySearchResult(DaraModel):
         title: str = None,
         url: str = None,
     ):
-        # The summary of the web page content.
+        # The snippet of the web page content.
         self.snippet = snippet
         # The title of the web page.
         self.title = title

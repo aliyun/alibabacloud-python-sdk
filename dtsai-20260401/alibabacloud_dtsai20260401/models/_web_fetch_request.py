@@ -7,10 +7,12 @@ from darabonba.model import DaraModel
 class WebFetchRequest(DaraModel):
     def __init__(
         self,
+        agent_name: str = None,
         output_format: str = None,
         region_id: str = None,
         url: str = None,
     ):
+        self.agent_name = agent_name
         # The output format. Valid values:
         # 
         # - **markdown**: Markdown format.
@@ -36,6 +38,9 @@ class WebFetchRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+
         if self.output_format is not None:
             result['OutputFormat'] = self.output_format
 
@@ -49,6 +54,9 @@ class WebFetchRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+
         if m.get('OutputFormat') is not None:
             self.output_format = m.get('OutputFormat')
 

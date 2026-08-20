@@ -7,12 +7,14 @@ from darabonba.model import DaraModel
 class WebSearchRequest(DaraModel):
     def __init__(
         self,
+        agent_name: str = None,
         max_results: int = None,
         query: str = None,
         region_id: str = None,
         url_scope_domains: str = None,
         url_scope_mode: str = None,
     ):
+        self.agent_name = agent_name
         # The maximum number of results to return. Default value: 10. Valid values: 1 to 50.
         self.max_results = max_results
         # The search query statement.
@@ -23,7 +25,9 @@ class WebSearchRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The list of domain names.
         self.url_scope_domains = url_scope_domains
+        # The URL scope mode.
         self.url_scope_mode = url_scope_mode
 
     def validate(self):
@@ -34,6 +38,9 @@ class WebSearchRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -53,6 +60,9 @@ class WebSearchRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
 

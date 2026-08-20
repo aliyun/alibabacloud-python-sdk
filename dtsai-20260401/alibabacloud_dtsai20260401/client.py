@@ -215,20 +215,50 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDocParserJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.asr_language):
+            query['AsrLanguage'] = request.asr_language
+        if not DaraCore.is_null(request.audio_clip_output):
+            query['AudioClipOutput'] = request.audio_clip_output
+        if not DaraCore.is_null(request.audio_window_seconds):
+            query['AudioWindowSeconds'] = request.audio_window_seconds
+        if not DaraCore.is_null(request.chunk_summary):
+            query['ChunkSummary'] = request.chunk_summary
         if not DaraCore.is_null(request.file_format):
             query['FileFormat'] = request.file_format
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
             query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.frame_output):
+            query['FrameOutput'] = request.frame_output
+        if not DaraCore.is_null(request.global_summary):
+            query['GlobalSummary'] = request.global_summary
         if not DaraCore.is_null(request.image_mode):
             query['ImageMode'] = request.image_mode
+        if not DaraCore.is_null(request.image_understanding):
+            query['ImageUnderstanding'] = request.image_understanding
+        if not DaraCore.is_null(request.media_chunk_interval_seconds):
+            query['MediaChunkIntervalSeconds'] = request.media_chunk_interval_seconds
+        if not DaraCore.is_null(request.media_chunk_strategy):
+            query['MediaChunkStrategy'] = request.media_chunk_strategy
+        if not DaraCore.is_null(request.media_frames_per_minute):
+            query['MediaFramesPerMinute'] = request.media_frames_per_minute
+        if not DaraCore.is_null(request.media_max_frame_budget):
+            query['MediaMaxFrameBudget'] = request.media_max_frame_budget
+        if not DaraCore.is_null(request.media_min_frame_budget):
+            query['MediaMinFrameBudget'] = request.media_min_frame_budget
         if not DaraCore.is_null(request.oss_file_url):
             query['OssFileUrl'] = request.oss_file_url
         if not DaraCore.is_null(request.output_format):
             query['OutputFormat'] = request.output_format
+        if not DaraCore.is_null(request.parse_scene):
+            query['ParseScene'] = request.parse_scene
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_mode):
+            query['ResponseMode'] = request.response_mode
         if not DaraCore.is_null(request.result_type):
             query['ResultType'] = request.result_type
         if not DaraCore.is_null(request.table_format):
@@ -259,20 +289,50 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDocParserJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.asr_language):
+            query['AsrLanguage'] = request.asr_language
+        if not DaraCore.is_null(request.audio_clip_output):
+            query['AudioClipOutput'] = request.audio_clip_output
+        if not DaraCore.is_null(request.audio_window_seconds):
+            query['AudioWindowSeconds'] = request.audio_window_seconds
+        if not DaraCore.is_null(request.chunk_summary):
+            query['ChunkSummary'] = request.chunk_summary
         if not DaraCore.is_null(request.file_format):
             query['FileFormat'] = request.file_format
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
             query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.frame_output):
+            query['FrameOutput'] = request.frame_output
+        if not DaraCore.is_null(request.global_summary):
+            query['GlobalSummary'] = request.global_summary
         if not DaraCore.is_null(request.image_mode):
             query['ImageMode'] = request.image_mode
+        if not DaraCore.is_null(request.image_understanding):
+            query['ImageUnderstanding'] = request.image_understanding
+        if not DaraCore.is_null(request.media_chunk_interval_seconds):
+            query['MediaChunkIntervalSeconds'] = request.media_chunk_interval_seconds
+        if not DaraCore.is_null(request.media_chunk_strategy):
+            query['MediaChunkStrategy'] = request.media_chunk_strategy
+        if not DaraCore.is_null(request.media_frames_per_minute):
+            query['MediaFramesPerMinute'] = request.media_frames_per_minute
+        if not DaraCore.is_null(request.media_max_frame_budget):
+            query['MediaMaxFrameBudget'] = request.media_max_frame_budget
+        if not DaraCore.is_null(request.media_min_frame_budget):
+            query['MediaMinFrameBudget'] = request.media_min_frame_budget
         if not DaraCore.is_null(request.oss_file_url):
             query['OssFileUrl'] = request.oss_file_url
         if not DaraCore.is_null(request.output_format):
             query['OutputFormat'] = request.output_format
+        if not DaraCore.is_null(request.parse_scene):
+            query['ParseScene'] = request.parse_scene
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.response_mode):
+            query['ResponseMode'] = request.response_mode
         if not DaraCore.is_null(request.result_type):
             query['ResultType'] = request.result_type
         if not DaraCore.is_null(request.table_format):
@@ -479,10 +539,14 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDocParserJobResultResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
         if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.result_type):
+            query['ResultType'] = request.result_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -509,10 +573,14 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDocParserJobResultResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
         if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.result_type):
+            query['ResultType'] = request.result_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -553,6 +621,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDocParserJobStatusResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
         if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.region_id):
@@ -583,6 +653,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDocParserJobStatusResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
         if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.region_id):
@@ -627,6 +699,8 @@ class Client(OpenApiClient):
     ) -> main_models.WebFetchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
         if not DaraCore.is_null(request.output_format):
             query['OutputFormat'] = request.output_format
         if not DaraCore.is_null(request.region_id):
@@ -659,6 +733,8 @@ class Client(OpenApiClient):
     ) -> main_models.WebFetchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
         if not DaraCore.is_null(request.output_format):
             query['OutputFormat'] = request.output_format
         if not DaraCore.is_null(request.region_id):
@@ -705,6 +781,8 @@ class Client(OpenApiClient):
     ) -> main_models.WebSearchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.query):
@@ -741,6 +819,8 @@ class Client(OpenApiClient):
     ) -> main_models.WebSearchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.query):

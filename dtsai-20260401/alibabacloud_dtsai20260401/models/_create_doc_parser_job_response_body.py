@@ -12,6 +12,10 @@ class CreateDocParserJobResponseBody(DaraModel):
         http_status_code: int = None,
         job_id: str = None,
         request_id: str = None,
+        result: str = None,
+        result_type: str = None,
+        result_url: str = None,
+        status: str = None,
         success: bool = None,
     ):
         # The error code.
@@ -24,6 +28,10 @@ class CreateDocParserJobResponseBody(DaraModel):
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
+        self.result = result
+        self.result_type = result_type
+        self.result_url = result_url
+        self.status = status
         # Indicates whether the request was successful.
         self.success = success
 
@@ -50,6 +58,18 @@ class CreateDocParserJobResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.result is not None:
+            result['Result'] = self.result
+
+        if self.result_type is not None:
+            result['ResultType'] = self.result_type
+
+        if self.result_url is not None:
+            result['ResultUrl'] = self.result_url
+
+        if self.status is not None:
+            result['Status'] = self.status
+
         if self.success is not None:
             result['Success'] = self.success
 
@@ -71,6 +91,18 @@ class CreateDocParserJobResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+
+        if m.get('ResultType') is not None:
+            self.result_type = m.get('ResultType')
+
+        if m.get('ResultUrl') is not None:
+            self.result_url = m.get('ResultUrl')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         if m.get('Success') is not None:
             self.success = m.get('Success')

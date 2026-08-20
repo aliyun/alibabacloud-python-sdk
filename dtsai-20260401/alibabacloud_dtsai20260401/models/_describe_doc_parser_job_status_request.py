@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class DescribeDocParserJobStatusRequest(DaraModel):
     def __init__(
         self,
+        agent_name: str = None,
         job_id: str = None,
         region_id: str = None,
     ):
+        self.agent_name = agent_name
         # The ID of the document parsing task. You can obtain the ID by calling CreateDocParserJob.
         # 
         # This parameter is required.
@@ -27,6 +29,9 @@ class DescribeDocParserJobStatusRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+
         if self.job_id is not None:
             result['JobId'] = self.job_id
 
@@ -37,6 +42,9 @@ class DescribeDocParserJobStatusRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
 
