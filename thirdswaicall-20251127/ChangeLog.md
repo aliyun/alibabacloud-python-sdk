@@ -1,3 +1,6 @@
+2026-08-20 Version: 1.2.3
+- Generated python 2025-11-27 for ThirdswAicall.
+
 2026-08-20 Version: 1.2.2
 - Update API CreateCallOutboundInstant: add request parameters CallerNumber.
 - Update API CreateCallOutboundInstant: add request parameters CustomerLineCode.
