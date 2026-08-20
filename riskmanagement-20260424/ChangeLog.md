@@ -1,3 +1,10 @@
+2026-08-20 Version: 1.1.4
+- Update API QueryAccountSafetyIncident: add request parameters ActionCodes.
+- Update API QueryAccountSafetyIncident: add request parameters CaseCodes.
+- Update API QueryAccountSafetyIncident: add request parameters EventIds.
+- Update API QueryAccountSafetyIncident: add request parameters Statuses.
+
+
 2026-08-18 Version: 1.1.3
 - Update API QueryAccountSafetyIncident: add response parameters Body.Data.List.$.CallApi.
 - Update API QueryAccountSafetyIncident: add response parameters Body.Data.List.$.EventType.

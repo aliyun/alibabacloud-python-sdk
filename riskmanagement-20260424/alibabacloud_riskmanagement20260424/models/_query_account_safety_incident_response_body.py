@@ -18,15 +18,15 @@ class QueryAccountSafetyIncidentResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > 200: The request was successful. Other values (such as 500 or 400): An error occurred.
+        # > 200: success. Other values (such as 500 or 400): error codes.
         self.code = code
         # The returned data.
         self.data = data
-        # The message returned.
+        # The prompt message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request was successful. Valid values:
         # 
         # - **true**
         # - **false**
@@ -135,7 +135,7 @@ class QueryAccountSafetyIncidentResponseBodyDataPageInfo(DaraModel):
     ):
         # The current page number.
         self.current = current
-        # The number of assets displayed per page when you perform a paging query.
+        # The number of assets displayed on each page in a paging query.
         self.page_size = page_size
         # The total number of events.
         self.total = total
@@ -200,12 +200,13 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         self.action_code = action_code
         # The control action name.
         self.action_name = action_name
-        # The time when the control action was removed.
+        # The control removal time.
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
         self.anti_punish_time = anti_punish_time
+        # The called API operation.
         self.call_api = call_api
-        # The control action time information.
+        # The control time information.
         self.date_extras = date_extras
         # The event ID.
         self.event_id = event_id
@@ -215,10 +216,14 @@ class QueryAccountSafetyIncidentResponseBodyDataList(DaraModel):
         self.event_name = event_name
         # The event reason.
         self.event_reason = event_reason
+        # The event subtype name.
         self.event_type = event_type
+        # The exception call time.
+        # > Format: yyyy-MM-dd HH:mm:ss
         self.exception_call_time = exception_call_time
+        # The exception IP address.
         self.exception_ip = exception_ip
-        # The start time of the control action.
+        # The control start time.
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
         self.punish_time = punish_time
@@ -385,13 +390,13 @@ class QueryAccountSafetyIncidentResponseBodyDataListDateExtras(DaraModel):
         alert_start_time: str = None,
         last_check_time: str = None,
     ):
-        # The time when the alert ended.
+        # The alert end time.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.alert_end_time = alert_end_time
-        # The time when the first alert was triggered.
+        # The first alert time.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.alert_start_time = alert_start_time
-        # The time of the latest detection.
+        # The latest detection time.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.last_check_time = last_check_time
 

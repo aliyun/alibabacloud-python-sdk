@@ -2,29 +2,27 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class QueryAccountSafetyIncidentRequest(DaraModel):
+class QueryAccountSafetyIncidentShrinkRequest(DaraModel):
     def __init__(
         self,
-        action_codes: List[str] = None,
+        action_codes_shrink: str = None,
         aliyun_lang: str = None,
         case_code: str = None,
-        case_codes: List[str] = None,
+        case_codes_shrink: str = None,
         current: str = None,
         event_id: str = None,
-        event_ids: List[str] = None,
+        event_ids_shrink: str = None,
         page_size: str = None,
         punish_end_time: str = None,
         punish_start_time: str = None,
         resource_id: str = None,
         status: str = None,
-        statuses: List[str] = None,
+        statuses_shrink: str = None,
     ):
         # The list of control action codes.
-        self.action_codes = action_codes
+        self.action_codes_shrink = action_codes_shrink
         # The internationalization language. Default value: zh. Valid values:
         # 
         # - **zh**: Chinese.
@@ -33,12 +31,12 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         # The event name code.
         self.case_code = case_code
         # The list of event name codes.
-        self.case_codes = case_codes
+        self.case_codes_shrink = case_codes_shrink
         # The current page number. The value must be greater than 0.
         self.current = current
         # The event ID.
         self.event_id = event_id
-        self.event_ids = event_ids
+        self.event_ids_shrink = event_ids_shrink
         # The number of records per page. Valid values: 1 to 100.
         self.page_size = page_size
         # The control end time.
@@ -58,7 +56,7 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         # - **Alerting**: Alerting.
         # - **Ended**: Ended.
         self.status = status
-        self.statuses = statuses
+        self.statuses_shrink = statuses_shrink
 
     def validate(self):
         pass
@@ -68,8 +66,8 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.action_codes is not None:
-            result['ActionCodes'] = self.action_codes
+        if self.action_codes_shrink is not None:
+            result['ActionCodes'] = self.action_codes_shrink
 
         if self.aliyun_lang is not None:
             result['AliyunLang'] = self.aliyun_lang
@@ -77,8 +75,8 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         if self.case_code is not None:
             result['CaseCode'] = self.case_code
 
-        if self.case_codes is not None:
-            result['CaseCodes'] = self.case_codes
+        if self.case_codes_shrink is not None:
+            result['CaseCodes'] = self.case_codes_shrink
 
         if self.current is not None:
             result['Current'] = self.current
@@ -86,8 +84,8 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         if self.event_id is not None:
             result['EventId'] = self.event_id
 
-        if self.event_ids is not None:
-            result['EventIds'] = self.event_ids
+        if self.event_ids_shrink is not None:
+            result['EventIds'] = self.event_ids_shrink
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
@@ -104,15 +102,15 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
-        if self.statuses is not None:
-            result['Statuses'] = self.statuses
+        if self.statuses_shrink is not None:
+            result['Statuses'] = self.statuses_shrink
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ActionCodes') is not None:
-            self.action_codes = m.get('ActionCodes')
+            self.action_codes_shrink = m.get('ActionCodes')
 
         if m.get('AliyunLang') is not None:
             self.aliyun_lang = m.get('AliyunLang')
@@ -121,7 +119,7 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
             self.case_code = m.get('CaseCode')
 
         if m.get('CaseCodes') is not None:
-            self.case_codes = m.get('CaseCodes')
+            self.case_codes_shrink = m.get('CaseCodes')
 
         if m.get('Current') is not None:
             self.current = m.get('Current')
@@ -130,7 +128,7 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
             self.event_id = m.get('EventId')
 
         if m.get('EventIds') is not None:
-            self.event_ids = m.get('EventIds')
+            self.event_ids_shrink = m.get('EventIds')
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
@@ -148,7 +146,7 @@ class QueryAccountSafetyIncidentRequest(DaraModel):
             self.status = m.get('Status')
 
         if m.get('Statuses') is not None:
-            self.statuses = m.get('Statuses')
+            self.statuses_shrink = m.get('Statuses')
 
         return self
 

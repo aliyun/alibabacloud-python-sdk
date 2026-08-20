@@ -95,6 +95,7 @@ from ._open_trial_package_request import OpenTrialPackageRequest
 from ._open_trial_package_response_body import OpenTrialPackageResponseBody
 from ._open_trial_package_response import OpenTrialPackageResponse
 from ._query_account_safety_incident_request import QueryAccountSafetyIncidentRequest
+from ._query_account_safety_incident_shrink_request import QueryAccountSafetyIncidentShrinkRequest
 from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBody
 from ._query_account_safety_incident_response import QueryAccountSafetyIncidentResponse
 from ._query_guide_sub_status_request import QueryGuideSubStatusRequest
@@ -308,6 +309,7 @@ __all__ = [
     OpenTrialPackageResponseBody,
     OpenTrialPackageResponse,
     QueryAccountSafetyIncidentRequest,
+    QueryAccountSafetyIncidentShrinkRequest,
     QueryAccountSafetyIncidentResponseBody,
     QueryAccountSafetyIncidentResponse,
     QueryGuideSubStatusRequest,

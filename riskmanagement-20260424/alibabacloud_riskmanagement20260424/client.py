@@ -2075,19 +2075,35 @@ class Client(OpenApiClient):
 
     def query_account_safety_incident_with_options(
         self,
-        request: main_models.QueryAccountSafetyIncidentRequest,
+        tmp_req: main_models.QueryAccountSafetyIncidentRequest,
         runtime: RuntimeOptions,
     ) -> main_models.QueryAccountSafetyIncidentResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.QueryAccountSafetyIncidentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.action_codes):
+            request.action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.action_codes, 'ActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.case_codes):
+            request.case_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_codes, 'CaseCodes', 'json')
+        if not DaraCore.is_null(tmp_req.event_ids):
+            request.event_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_ids, 'EventIds', 'json')
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
         query = {}
+        if not DaraCore.is_null(request.action_codes_shrink):
+            query['ActionCodes'] = request.action_codes_shrink
         if not DaraCore.is_null(request.aliyun_lang):
             query['AliyunLang'] = request.aliyun_lang
         if not DaraCore.is_null(request.case_code):
             query['CaseCode'] = request.case_code
+        if not DaraCore.is_null(request.case_codes_shrink):
+            query['CaseCodes'] = request.case_codes_shrink
         if not DaraCore.is_null(request.current):
             query['Current'] = request.current
         if not DaraCore.is_null(request.event_id):
             query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.event_ids_shrink):
+            query['EventIds'] = request.event_ids_shrink
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.punish_end_time):
@@ -2098,6 +2114,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.statuses_shrink):
+            query['Statuses'] = request.statuses_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2119,19 +2137,35 @@ class Client(OpenApiClient):
 
     async def query_account_safety_incident_with_options_async(
         self,
-        request: main_models.QueryAccountSafetyIncidentRequest,
+        tmp_req: main_models.QueryAccountSafetyIncidentRequest,
         runtime: RuntimeOptions,
     ) -> main_models.QueryAccountSafetyIncidentResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.QueryAccountSafetyIncidentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.action_codes):
+            request.action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.action_codes, 'ActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.case_codes):
+            request.case_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_codes, 'CaseCodes', 'json')
+        if not DaraCore.is_null(tmp_req.event_ids):
+            request.event_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_ids, 'EventIds', 'json')
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
         query = {}
+        if not DaraCore.is_null(request.action_codes_shrink):
+            query['ActionCodes'] = request.action_codes_shrink
         if not DaraCore.is_null(request.aliyun_lang):
             query['AliyunLang'] = request.aliyun_lang
         if not DaraCore.is_null(request.case_code):
             query['CaseCode'] = request.case_code
+        if not DaraCore.is_null(request.case_codes_shrink):
+            query['CaseCodes'] = request.case_codes_shrink
         if not DaraCore.is_null(request.current):
             query['Current'] = request.current
         if not DaraCore.is_null(request.event_id):
             query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.event_ids_shrink):
+            query['EventIds'] = request.event_ids_shrink
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.punish_end_time):
@@ -2142,6 +2176,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.statuses_shrink):
+            query['Statuses'] = request.statuses_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
