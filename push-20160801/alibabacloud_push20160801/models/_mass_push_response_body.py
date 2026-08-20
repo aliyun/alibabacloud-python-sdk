@@ -14,7 +14,7 @@ class MassPushResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.message_ids = message_ids
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

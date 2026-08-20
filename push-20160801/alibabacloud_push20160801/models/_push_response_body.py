@@ -10,7 +10,7 @@ class PushResponseBody(DaraModel):
         message_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the message for a push.
+        # The message ID that identifies a push operation.
         self.message_id = message_id
         # The request ID.
         self.request_id = request_id

@@ -1,3 +1,6 @@
+2026-08-20 Version: 2.1.8
+- Generated python 2016-08-01 for Push.
+
 2026-06-15 Version: 2.1.6
 - Update API MassPush: add request parameters PushTask.$.AndroidXiaomiTemplateId.
 - Update API MassPush: add request parameters PushTask.$.AndroidXiaomiTemplateParams.

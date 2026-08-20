@@ -16,37 +16,26 @@ class PushTask(DaraModel):
         options: main_models.PushTaskOptions = None,
         target: main_models.PushTaskTarget = None,
     ):
-        # The push method. This is an optional parameter. The default value is `PUSH_IMMEDIATELY` (immediate push).
-        # 
-        # >Notice: 
-        # 
-        # The `MassPushV2` batch push API supports only the following push methods:
-        # 
-        # - `PUSH_IMMEDIATELY` (immediate push)
-        # 
-        # - `SCHEDULED_PUSH` (scheduled push)
+        # The push method. Optional parameter. Default value: `PUSH_IMMEDIATELY` (push immediately).
         self.action = action
         # The pass-through message data sent to the device. The total length cannot exceed 4,000 bytes.
         # 
-        # > Length calculation
-        # >
-        # > - The length is calculated based on the byte length of the UTF-8 encoded string after the Message object is serialized into JSON.
-        # >
-        # > - A Chinese character typically occupies 3 bytes in UTF-8 encoding.
+        # > Length calculation notes
+        # > - The length is calculated based on the byte length of the UTF-8 encoded string after the Message object is serialized to JSON.
+        # > - Chinese characters typically occupy 3 bytes in UTF-8 encoding.
         self.message = message
         # The vendor notification data sent to the device.
         # 
         # >Notice: 
         # 
-        # If you set both `Message` and `Notification`, the device receives only one. The sending rules are as follows:
+        # When both `Message` and `Notification` are set, the device receives only one of them. The delivery rules are as follows:
         # 
-        # - If the device is online, pass-through message data is sent.
-        # 
-        # - If the device is offline, a system notification is sent.
+        # - When the device is online, the pass-through message data is delivered.
+        # - When the device is offline, the system notification is sent.
         self.notification = notification
-        # Push options
+        # The push options.
         self.options = options
-        # The target object for the message push. This parameter is optional when the `Action` operation type is `CREATE_CONTINUOUS_PUSH` (create a continuous push task).
+        # Specifies the target object for message push. This parameter is optional when the operation type `Action` is set to `CREATE_CONTINUOUS_PUSH` (create a continuous push task).
         self.target = target
 
     def validate(self):
@@ -111,31 +100,19 @@ class PushTaskTarget(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The platform type. This is an optional parameter.
+        # The platform type. Optional parameter.
         self.platform = platform
         # The push target type.
         # 
         # >Notice: 
         # 
-        # The `MassPushV2` batch push API and `CONTINUOUS_PUSH` continuous push support only the following three target types:
+        # The batch push operation `MassPushV2` and continuous push `CONTINUOUS_PUSH` support only the following three target types:
         # 
         # - `DEVICE`
-        # 
         # - `ACCOUNT`
-        # 
         # - `ALIAS`
         self.type = type
-        # Set the push target based on `Target.Type`. Separate multiple targets with commas. The target types and their values are described as follows:
-        # 
-        # > - `DEVICE`: Device ID, such as deviceid1,deviceid2. You can specify up to 1,000 device IDs.
-        # >
-        # > - `ACCOUNT`: Account ID, such as account1,account2. You can specify up to 1,000 account IDs.
-        # >
-        # > - `ALIAS`: Alias, such as alias1,alias2. You can specify up to 1,000 aliases.
-        # >
-        # > - `TAG`: Supports one or more tags. For more information about the format, see [Tag format specifications](https://help.aliyun.com/document_detail/434847.html).
-        # >
-        # > - `ALL`: Push to all devices. You do not need to set a value. Pushing to all devices may increase costs. Use this feature with caution.
+        # The push target based on `Target.Type`. Separate multiple targets with commas. The following describes the target types and target values:
         self.value = value
 
     def validate(self):
@@ -181,61 +158,45 @@ class PushTaskOptions(DaraModel):
         trim: bool = None,
         use_channels: str = None,
     ):
-        # Sets the expiration time of the message. After this time, the message will no longer be sent. The maximum retention period is 72 hours.
+        # The expiration time of the message. The message will not be sent after it expires. Messages can be retained for up to 72 hours.
         # 
-        # > - This uses the ISO 8601 standard and UTC time. The format is YYYY-MM-DDThh:mm:ssZ.
-        # >
-        # > - The expiration time must satisfy: ExpireTime > PushTime + 3 seconds (3 seconds is a buffer for network and system delays).
-        # >
-        # > - Recommendation: The expiration time for a single push should be at least 1 minute. For a push to all or a batch push, it should be at least 10 minutes.
+        # > * The time follows the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+        # > * The expiration time must meet the following condition: ExpireTime > PushTime + 3 seconds (3 seconds is the redundancy for network and system latency).
+        # > * Recommendation: Set the expiration time to at least 1 minute for single push notifications and at least 10 minutes for full push or batch push notifications.
         # 
-        # >Notice: 
         # 
-        # For pass-through messages, if you do not set an expiration time, the message is only sent to online devices. If the device is offline, the message is discarded.
+        # >Notice: For pass-through messages, if no expiration time is set, the message is sent only to online devices. When the device is offline, the message is discarded.
         self.expire_time = expire_time
-        # A custom identifier for the push task. If JobKey is not empty, this field will be included in the receipt log. To view receipt logs, see [Receipt logs](https://help.aliyun.com/document_detail/434651.html).
+        # The custom identifier for the push task. When JobKey is not empty, this field is included in the receipt log. For more information about receipt logs, see [Receipt logs](https://help.aliyun.com/document_detail/434651.html).
         self.job_key = job_key
-        # A unique ID used to identify the message. This is only valid when the `Action` parameter is `CONTINUOUS_PUSH`.
+        # The unique ID used to identify the message. This parameter is valid only when the `Action` parameter is set to `CONTINUOUS_PUSH`.
         self.message_id = message_id
-        # Specifies the sending time of the message, up to 7 days in the future. This is only valid when the `Action` parameter is `SCHEDULED_PUSH`.
+        # The scheduled time to send the message. The value cannot be later than 7 days from the current time. This parameter takes effect only when `Action` is set to `SCHEDULED_PUSH`.
         # 
-        # > This uses the ISO 8601 standard and UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+        # > The time follows the ISO 8601 standard in UTC in the format of yyyy-MM-ddTHH:mm:ssZ.
         self.push_time = push_time
-        # Resends the message as a text message.
-        # 
-        # > Currently, this is only supported for `Android` and `HarmonyOS` devices.
+        # The supplementary SMS settings.
         self.sms = sms
-        # Specifies whether to automatically truncate oversized titles and content.
+        # Specifies whether to automatically truncate titles and content that exceed the length limit.
         # 
-        # > This is only supported for vendor channels that have explicit limits on title and content length. It does not apply to channels like APNs, Huawei, and Honor, which do not limit title and content length but only the total request body size.
+        # >This parameter applies only to vendor channels that explicitly limit the title and content length. It does not apply to channels such as APNs, Huawei, and Honor that do not limit the title or content length but only limit the total request body size.
         self.trim = trim
-        # Specifies the sending channel. Valid values are:
+        # Specifies the delivery channels. Valid values:
         # 
         # - `accs`: Alibaba Cloud proprietary channel
-        # 
         # - `huawei`: Huawei channel
-        # 
         # - `honor`: Honor channel
-        # 
         # - `xiaomi`: Xiaomi channel
-        # 
         # - `oppo`: OPPO channel
-        # 
         # - `vivo`: vivo channel
-        # 
         # - `meizu`: Meizu channel
-        # 
         # - `fcm`: Google Firebase channel (HTTP v1 API)
-        # 
         # - `apns`: APNs channel
-        # 
         # - `harmony`: HarmonyOS channel
         # 
-        # > * If this parameter is not configured, all channels can be used.
-        # >
-        # > * If this parameter is configured, only the channels specified in the parameter are used.
-        # >
-        # > * If the configured channel conflicts with the sending policy (for example, iOS notifications only go through the APNs channel, but this parameter does not include \\`apns\\`), the message is not sent.
+        # > - If this parameter is not specified, all channels are available.
+        # > - If this parameter is specified, only the specified channels are used.
+        # > - If the specified channels conflict with the delivery policy (for example, iOS notifications can only be delivered through the APNs channel, but apns is not included in this parameter), the message is not delivered.
         self.use_channels = use_channels
 
     def validate(self):
@@ -305,19 +266,19 @@ class PushTaskOptionsSms(DaraModel):
         sign_name: str = None,
         template_name: str = None,
     ):
-        # The delay time to trigger the text message, in seconds.
+        # The delay before triggering the SMS message. Unit: seconds.
         # 
-        # This must be set if you use SMS filter interaction. We recommend setting it to 15 seconds or more, with a maximum of 3 days, to avoid duplicate text messages and pushes.
+        # This parameter is required when SMS linkage is used. We recommend that you set this parameter to at least 15 seconds and no more than 3 days to avoid duplicate notifications from both SMS and push.
         # 
-        # > When you use SMS filter interaction, the ExpireTime parameter is invalid. The notification expiration time is calculated based on the DelaySecs parameter. The expiration time is the current time plus the DelaySecs time.
+        # > When SMS linkage is used, the ExpireTime parameter does not take effect. The notification expiration time is calculated based on the DelaySecs parameter. The expiration time is the current time plus the DelaySecs value.
         self.delay_secs = delay_secs
-        # Key-value pairs for the variables in the SMS template.
+        # The key-value pairs of variable names in the SMS template.
         self.params = params
         # The SMS sending policy.
         self.send_policy = send_policy
         # The SMS signature.
         self.sign_name = sign_name
-        # The SMS template name. You can get this from the SMS template management interface. It is the name assigned by the system, not the name set by the developer.
+        # The SMS template name. You can obtain this name from the SMS template management page. This is the system-assigned name, not the name set by the developer.
         self.template_name = template_name
 
     def validate(self):
@@ -373,25 +334,19 @@ class PushTaskNotification(DaraModel):
         ios: main_models.PushTaskNotificationIos = None,
         title: str = None,
     ):
-        # Android notification configuration
+        # The Android notification configuration.
         self.android = android
-        # The content of the push notification.
-        # 
-        # > The length limits are as follows:
-        # >
-        # > - For iOS, HarmonyOS, and Android, the character length cannot exceed 200.
+        # The body of the push notification.
         self.body = body
-        # HarmonyOS notification configuration.
+        # The HarmonyOS notification configuration.
         self.hmos = hmos
-        # iOS notification configuration
+        # The iOS notification configuration.
         self.ios = ios
         # The title of the push notification.
         # 
-        # > The length limits are as follows:
-        # >
-        # > - For iOS/HarmonyOS, the byte length cannot exceed 200.
-        # >
-        # > - For Android, the character length cannot exceed 50.
+        # > Length limits:
+        # > - iOS/Harmony: The **byte length** cannot exceed 200.
+        # > - Android: The **character length** cannot exceed 50.
         self.title = title
 
     def validate(self):
@@ -464,80 +419,51 @@ class PushTaskNotificationIos(DaraModel):
         subtitle: str = None,
         thread_id: str = None,
     ):
-        # iOS notifications are sent through the Apple Push Notification service (APNs) center. You must specify the environment information. This is an optional parameter. The default is the production environment.
-        # 
-        # - DEV: Development environment, for applications installed and tested directly from Xcode.
-        # 
-        # - PRODUCT: Production environment, for applications distributed through the App Store, TestFlight, Ad Hoc, and enterprise channels.
+        # iOS notifications are sent through the APNs center. You need to specify the corresponding environment information. Optional parameter. Default value: production environment.
         self.apns_env = apns_env
-        # The iOS application badge.
+        # The iOS application badge number.
         self.badge = badge
-        # Specifies whether to enable the badge auto-increment feature. This is an optional parameter. The default value is false.
-        # 
-        # > - This parameter cannot be used with the badge setting parameter.
-        # >
-        # > - The badge auto-increment feature is maintained by the Alibaba Cloud push server, which counts the badges for each device. You must use SDK version 1.9.5 or later and actively sync the badge number to the server through the SDK.
+        # Specifies whether to enable the badge auto-increment feature. Optional parameter. Default value: false.
         self.badge_auto_increment = badge_auto_increment
-        # Specifies the category identifier for an iOS notification. This defines the notification\\"s interactive behavior and display style.
+        # The category identifier for the iOS notification, which defines the interaction behavior and display style of the notification.
         # 
         # > - The category must be pre-registered in the app to take effect.
-        # >
         # > - Different categories can define different sets of actions.
         self.category = category
-        # A unique identifier that controls notification merging. Notifications with the same identifier are overwritten.
+        # The unique identifier for notification collapsing. Notifications with the same identifier are overwritten and displayed as one.
         self.collapse_id = collapse_id
-        # Custom extension properties for iOS notifications.
-        # 
-        # > - The parameter must be passed in a standard JSON Map format. An incorrect format causes parsing to fail.
+        # The custom extension attributes of the iOS notification.
         self.ext_parameters = ext_parameters
-        # The interruption level. This is an optional parameter. Valid values are:
-        # 
-        # - `passive`: The system adds the notification to the notification list without lighting up the screen or playing a sound.
-        # 
-        # - `active`: The system displays the notification immediately, lights up the screen, and can play a sound.
-        # 
-        # - `time-sensitive`: The system presents the notification immediately, lights up the screen, and can play a sound, but does not override system notification controls.
-        # 
-        # - `critical`: The system displays the notification immediately, lights up the screen, and plays a sound, bypassing the mute switch.
+        # The interruption level. Optional parameter. Valid values:
         self.interruption_level = interruption_level
-        # Live Activities parameter object.
+        # The Live Activity parameter object.
         # 
         # >Notice: 
         # 
-        # - Live Activities push only supports pushing to a single device of the `DEVICE` type.
-        # 
-        # - When you push to Live Activities, you can leave the title and body parameters empty.
+        # - Live Activity push notifications can only be sent to a **single device** by specifying the `DEVICE` type.
+        # - When pushing Live Activity notifications, the title and body parameters are optional.
         self.live_activity = live_activity
-        # The iOS notification sound. Specify the name of the audio file stored in the app bundle or the sandbox Library/Sounds directory. For more information, see [How to set the notification sound for iOS push](https://help.aliyun.com/document_detail/48906.html).
+        # The notification sound for iOS. Specify the name of an audio file stored in the app bundle or the Library/Sounds directory of the sandbox. For more information, see [How to set notification sounds for iOS push](https://help.aliyun.com/document_detail/48906.html).
         # 
-        # > - If you specify an empty string (""), the notification is silent.
-        # >
-        # > - If this parameter is not set, the default value is \\`default\\`, which is the system prompt sound.
+        # > - If set to an empty string (""), the notification is silent.
+        # > - If not specified, the value defaults to "default", which plays the system alert sound.
         self.music = music
-        # Enables extended notifications and controls whether iOS notifications support processing by the Notification Service Extension.
-        # 
-        # > - This must be set to true when you send a silent notification.
-        # >
-        # > - The extension processing time cannot exceed 30 seconds.
-        # >
+        # Specifies whether to enable the notification extension, which controls whether iOS notifications support processing by Notification Service Extension.
+        # > - When sending silent notifications, this parameter must be set to true.
+        # > - The Extension processing time cannot exceed 30 seconds.
         # > - A timeout causes the notification to display the original content.
-        # >
         # > - You must add a Notification Service Extension to your application.
         self.mutable = mutable
-        # The relevance score of the notification message. It is used to control the priority and display policy of the notification.
+        # The relevance score of the notification message, used to control the priority and display strategy of the notification.
         self.relevance_score = relevance_score
-        # Controls whether to enable silent push mode.
-        # 
-        # > - When you send a silent notification, you can leave the `title` and `body` parameters empty.
+        # Specifies whether to enable silent push mode.
         self.silent = silent
-        # The subtitle of the iOS notification.
+        # The subtitle content of the iOS notification.
         self.subtitle = subtitle
-        # The thread identifier for iOS notification grouping. It is used to classify and collapse related notifications.
+        # The thread identifier for iOS notification grouping, which is used to categorize and collapse related notifications.
         # 
-        # > - Notifications with the same thread-id are automatically grouped.
-        # >
-        # > - Multiple related notifications are collapsed into one notification group.
-        # >
+        # > - Notifications with the same thread-id are automatically grouped together.
+        # > - Multiple related notifications are collapsed into a single notification group.
         # > - Users can expand the group to view all notifications within it.
         self.thread_id = thread_id
 
@@ -652,43 +578,25 @@ class PushTaskNotificationIosLiveActivity(DaraModel):
         id: str = None,
         stale_date: int = None,
     ):
-        # Static pass-through parameters for iOS Live Activities push. They are used to transmit immutable business identification information.
+        # The static pass-through parameter for iOS Live Activities push notifications, used to pass immutable business identifier information.
         # 
-        # > This is required when `Event` is \\`start\\`.
+        # > Required when `Event` is set to start.
         self.attributes = attributes
-        # The type of Live Activity to start.
-        # 
-        # > This is required when `Event` is \\`start\\`.
+        # The type of the Live Activity to start.
         self.attributes_type = attributes_type
-        # Dynamic pass-through parameters for a Live Activity. They contain real-time updatable status information and changing data.
-        # 
-        # > - Avoid overly frequent updates. An interval of 5 seconds or more is recommended.
-        # >
-        # > - Update multiple fields in a batch to reduce the number of pushes.
-        # >
-        # > - Consider the user experience and avoid screen flickering.
-        # >
-        # > - Must be a valid JSON string.
+        # The dynamic pass-through parameters of the Live Activity, containing real-time updatable status information and changing data.
         self.content_state = content_state
-        # Sets the retention period for a finished Live Activity on the lock screen. This lets users view information after the activity has ended. It is a Unix timestamp in seconds.
+        # The retention time of an ended Live Activity on the lock screen, allowing users to view information after the activity ends. The value is a UNIX timestamp in seconds.
         self.dismissal_date = dismissal_date
         # Starts, updates, or ends a Live Activity.
         self.event = event
-        # The unique identifier for a Live Activity. It associates the activity instance on the device with the push target on the server.
-        # 
-        # >Notice: 
-        # 
-        # - This `ID` must be the same as the `forActivityId` parameter of the `registerLiveActivityPushToken` method in the client SDK.
-        # 
-        # - The server uses this `ID` to locate the specific activity instance during a push.
+        # The unique identifier of the Live Activity, used to associate the device-side activity instance with the server-side push target.
         self.id = id
-        # Sets the expiration timestamp for the content of an iOS Live Activity. It is a Unix timestamp in seconds.
+        # The expiration timestamp for the iOS Live Activity content, specified as a Unix timestamp in seconds.
         # 
         # > - After the specified time is reached, the system automatically marks the activity as expired.
-        # >
-        # > - Expired activities are removed from the Live Activity and the lock screen.
-        # >
-        # > - This prevents outdated information from occupying the user interface for a long time.
+        # > - Expired activities are removed from the Dynamic Island and Lock Screen.
+        # > - This prevents outdated information from occupying the user interface for an extended period.
         self.stale_date = stale_date
 
     def validate(self):
@@ -769,83 +677,69 @@ class PushTaskNotificationHmos(DaraModel):
         test_message: bool = None,
         uri: str = None,
     ):
-        # Specifies the action corresponding to the ability of an in-app page.
+        # The action that corresponds to the ability of the in-app page.
         # 
-        # > For more information, see [ClickAction.action](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section152462191216) on the official HarmonyOS website.
+        # > For more information, refer to [ClickAction.action](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section152462191216) on the HarmonyOS official website.
         self.action = action
-        # The HarmonyOS application badge cumulative number.
+        # The incremental badge number for HarmonyOS applications.
         # 
-        # > - This is supported starting from HarmonyOS SDK 1.2.0.
-        # >
-        # > - See the description of the [addNum field](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section266310382145) for HarmonyOS badges.
+        # > - Supported since HarmonyOS SDK 1.2.0.
+        # > - Refer to the HarmonyOS badge [addNum field description](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section266310382145).
         self.badge_add_num = badge_add_num
-        # The HarmonyOS application badge number setting.
+        # The number to set for the HarmonyOS app badge.
         # 
-        # > - See the description of the [setNum field](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section266310382145) for HarmonyOS badges.
-        # >
-        # > - This is supported starting from HarmonyOS SDK 1.2.0.
+        # > - Refer to the HarmonyOS badge [setNum field](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section266310382145) description.
+        # > - Supported since HarmonyOS SDK version 1.2.0.
         self.badge_set_num = badge_set_num
-        # The notification message category. This is an optional parameter. The default category is `MARKETING`.
+        # The category of the notification message. This is an optional parameter. Default value: `MARKETING`.
         # 
-        # > After you apply for the right to self-classify notification messages, this parameter is used to identify the message type. Different notification message types affect how messages are displayed and how users are reminded. For more information, see [Notification.category](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117) on the official HarmonyOS website.
+        # > After you complete the application for the notification message self-classification privilege, this parameter identifies the message type. Different notification message types affect how messages are displayed and how reminders are triggered. For more information, refer to [Notification.category](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117) on the HarmonyOS official website.
         self.category = category
-        # Sets custom extension properties for the notification message. This is used to pass additional business data.
-        # 
-        # > The parameter must be passed in a standard JSON Map format. An incorrect format causes parsing to fail.
+        # The custom extension attributes of the notification message, used to pass additional business data.
         self.ext_parameters = ext_parameters
-        # Extra data for the notification extension message.
+        # The extra data of the notification extension message.
         # 
-        # > - This is valid when sending a HarmonyOS notification extension message.
-        # >
-        # > - It is conceptually equivalent to the extraData field of a HarmonyOS notification extension message. For a specific definition, see the HarmonyOS [ExtensionPayload](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section161192514234) description.
-        # >
-        # > - This is supported starting from HarmonyOS SDK 1.2.0.
+        # > - Valid when sending HarmonyOS notification extension messages.
+        # > - Conceptually equivalent to the extraData field of HarmonyOS notification extension messages. For the specific definition, refer to the HarmonyOS [ExtensionPayload](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section161192514234) documentation.
+        # > - Supported since HarmonyOS SDK 1.2.0.
         self.extension_extra_data = extension_extra_data
-        # Enables the HarmonyOS notification extension.
+        # Enables HarmonyOS notification extension.
         # 
-        # > - You must first apply for permission on the official HarmonyOS website to send notification extension messages. For related content, see the [HarmonyOS documentation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/push-send-extend-noti-V5) on sending notification extension messages.
-        # >
-        # > - This is supported starting from HarmonyOS SDK 1.2.0.
+        # > - To send notification extension messages, you must first apply for permissions on the HarmonyOS official website. For more information, refer to [HarmonyOS documentation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/push-send-extend-noti-V5) on sending notification extension messages.
+        # > - Supported starting from HarmonyOS SDK 1.2.0.
         self.extension_push = extension_push
-        # The URL for the large icon on the right side of the notification. The URL must use the HTTPS protocol.
+        # The URL of the large icon displayed on the right side of the notification. The URL must use the HTTPS protocol.
         # 
-        # > - Supported image formats are png, jpg, jpeg, heif, gif, and bmp. The image dimensions (length × width) must be less than 25,000 pixels.
-        # >
-        # > - For more information, see [Notification.image](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117) on the official HarmonyOS website.
+        # > - Supported image formats include png, jpg, jpeg, heif, gif, and bmp. The image length × width must be less than 25000 pixels.
+        # > - For more information, refer to the HarmonyOS official documentation [Notification.image](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117).
         self.image_url = image_url
-        # When `RenderStyle` is `MULTI_LINE`, you must fill in this field to define the content for the multi-line text style. It supports up to 3 lines of content.
+        # When `RenderStyle` is set to `MULTI_LINE`, this field is required to define the content in multi-line text style. A maximum of 3 items are supported.
         self.inbox_content = inbox_content
-        # The JSON string of the HarmonyOS Live Window data structure [LiveViewPayload](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V13/push-scenariozed-api-request-param-V13#section66881469306). For developer integration, see the document [HarmonyOS Live Window Push Guide](https://help.aliyun.com/document_detail/2982112.html).
+        # The JSON string of the HarmonyOS Live View data structure [LiveViewPayload](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V13/push-scenariozed-api-request-param-V13#section66881469306). For development and integration, refer to [HarmonyOS Live View Push Guide](https://help.aliyun.com/document_detail/2982112.html).
         self.live_view_payload = live_view_payload
-        # Specifies the unique identifier (notifyId) for each message when it is displayed in the notification bar. If not provided, the push service automatically generates a unique identifier. Different notification messages can use the same notifyId to allow new messages to overwrite old ones. For more information, see [Notification.notifyId](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117) on the official HarmonyOS website.
+        # The unique identifier (notifyId) for each message displayed in the notification bar. If not provided, the push service automatically generates a unique identifier. Different notification messages can use the same notifyId to enable new messages to overwrite old messages. For more information, see [Notification.notifyId](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section17371529101117) on the HarmonyOS official website.
         self.notify_id = notify_id
-        # The receipt ID for the HarmonyOS channel. This ID can be found in the receipt parameter settings on the HarmonyOS channel push operations platform.
-        # 
-        # > - If the default receipt configuration on the HarmonyOS channel push operations platform is the Alibaba Cloud receipt, you do not need to provide this. If not, we recommend that you first configure the default HarmonyOS channel receipt ID in the Alibaba Cloud EMAS Mobile Push console.
-        # >
-        # > - For more information, see [pushOptions.receiptId](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section418321011212) on the official HarmonyOS website.
+        # The receipt ID of the HarmonyOS channel. You can view this receipt ID in the receipt parameter settings on the HarmonyOS channel push operation platform.
         self.receipt_id = receipt_id
-        # The notification message style. This is an optional parameter. The default is a normal notification.
+        # The notification message style. This is an optional parameter. Default value: normal notification.
         self.render_style = render_style
-        # Uses the specified type of notification channel.
+        # Specifies the notification channel type to use.
         # 
-        # > - This is only valid for Alibaba Cloud\\"s proprietary channels.
-        # >
-        # > - For more information, see [SlotType](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-notificationmanager-V5#slottype) on the official HarmonyOS website.
+        # > - Valid only for the Alibaba Cloud proprietary channel.
+        # > - For more information, refer to the HarmonyOS official documentation [SlotType](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-notificationmanager-V5#slottype).
         self.slot_type = slot_type
         # The HarmonyOS custom ringtone file name.
         self.sound = sound
-        # The duration of the custom message notification ringtone in seconds. The range is [1, 60]. If the ringtone duration is too short, it will loop.
+        # The custom notification ringtone duration in seconds. Valid values: 1 to 60. The ringtone loops if its duration is shorter than the specified value.
         self.sound_duration = sound_duration
-        # Enables test messages.
+        # Enables the test message.
         # 
-        # > - For more information, see the HarmonyOS push parameter [TestMessage](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section418321011212).
+        # > - For more information, refer to the HarmonyOS push parameter [TestMessage](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section418321011212).
         self.test_message = test_message
-        # The URI corresponding to the ability of an in-app page.
+        # The URI that corresponds to the in-app page ability.
         # 
-        # > - If there are multiple abilities, specify the action and URI for each ability separately. The system prioritizes using the action to find the corresponding in-app page.
-        # >
-        # > - For more information, see [ClickAction.uri](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section152462191216) on the official HarmonyOS website.
+        # > - When multiple Abilities exist, specify the action and URI for each Ability separately. The action is used first to find the corresponding in-app page.
+        # > - For more information, see [ClickAction.uri](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/push-scenariozed-api-request-param-V5#section152462191216) on the HarmonyOS official website.
         self.uri = uri
 
     def validate(self):
@@ -989,95 +883,59 @@ class PushTaskNotificationAndroid(DaraModel):
         test_message: bool = None,
         vendor_channel_activity: str = None,
     ):
-        # The full class name of the application entry Activity for badge settings.
-        # 
-        # > This is only valid when pushing through the Huawei or Honor vendor channel.
+        # The full class name of the Activity for the badge setting application entry.
         self.badge_activity = badge_activity
-        # Sets a cumulative value for the badge, which is added to the original badge number.
+        # The incremental badge count value, which is added to the current badge count.
         # 
-        # > - This is supported by `Huawei` and `Honor` channels.
-        # >
-        # > - If both `BadgeAddNum` and `BadgeSetNum` are present, the latter takes precedence.
+        # > - Supported on `Huawei` and `Honor` channels.
+        # > - If both `BadgeAddNum` and `BadgeSetNum` are specified, `BadgeSetNum` takes precedence.
         self.badge_add_num = badge_add_num
-        # Sets a fixed value for the badge number. The value range is [1, 99].
-        # 
-        # > - For vendor channel pushes, this is only effective for Huawei and Honor channels.
-        # >
-        # > - When pushing through Alibaba Cloud\\"s proprietary channel, this is only effective on Huawei, Honor, and vivo models.
+        # The fixed badge number. Valid values: 1 to 99.
         self.badge_set_num = badge_set_num
-        # Sets the channelId for the Android app. It must correspond to the channelId in the vendor\\"s app.
-        # 
-        # > - Because the channel_id for OPPO\\"s private message notification channel is the same as the app\\"s channelId, the channel_id takes this value when pushing through the OPPO channel.
-        # >
-        # > - For pushes through Huawei, FCM, and Alibaba Cloud\\"s proprietary channels, the channel_id takes this value.
-        # >
-        # > - For specific uses, see the FAQ: [Notifications not received on Android 8.0 and later devices](https://help.aliyun.com/document_detail/67398.html).
+        # The channelId of the Android app. This must match the channelId configured in the vendor app.
         self.channel_id = channel_id
-        # Custom extension properties for Android notifications.
-        # 
-        # > - The parameter must be passed in a standard JSON Map format. An incorrect format causes parsing to fail.
+        # The custom extension attributes of the Android notification.
         self.ext_parameters = ext_parameters
-        # Message grouping. For messages in the same group, only the latest one and the total number of messages received in that group are displayed in the notification bar. Not all messages are displayed, and they cannot be expanded. Currently supported by:
+        # The message group. Only the latest message and the total number of messages received in the group are displayed in the notification bar. All messages are not displayed and cannot be expanded. Currently supported channels:
         # 
-        # - Huawei vendor channel
+        # - Huawei channel
+        # - Honor channel
+        # - Chinese domestic channel with Android SDK 3.9.1 and earlier
         # 
-        # - Honor vendor channel
-        # 
-        # - Proprietary channels with Android SDK 3.9.1 and earlier
-        # 
-        # > This parameter is no longer supported by proprietary channels in Android SDK 3.9.2 and later versions.
+        # > The Chinese domestic channel no longer supports this parameter in Android SDK 3.9.2 and later.
         self.group_id = group_id
-        # The URL for the icon on the right. Currently supported by:
+        # The URL of the right-side icon. Currently supported:
         # 
-        # - `Huawei EMUI` (only applicable in long text mode and Inbox mode).
-        # 
-        # - `Honor Magic UI` (only applicable in long text mode).
-        # 
-        # - `Proprietary channels` (Android SDK 3.5.0 and later).
+        # - `Huawei EMUI` (applicable only in long text mode and Inbox mode).
+        # - `Honor Magic UI` (applicable only in long text mode).
+        # - `Custom channel` (Android SDK 3.5.0 and later).
         self.image_url = image_url
-        # The body text in Inbox mode. The content is a valid JSON Array with no more than 5 elements. Currently supported by:
+        # The body content in Inbox mode. The value must be a valid JSON array with no more than 5 elements. Currently supported on:
         # 
         # - Huawei: EMUI 9 and later
-        # 
         # - Honor: Magic UI 4.0 and later
-        # 
         # - Xiaomi: MIUI 10 and later
-        # 
-        # - OPPO: ColorOS 5.0 and later
-        # 
-        # - Proprietary channels: Android SDK 3.6.0 and later
+        # - OPPO: ColorOS later than 5.0
+        # - Custom channel: Android SDK 3.6.0 and later
         self.inbox_content = inbox_content
-        # The Huawei vendor channel notification sound. Specify the name of the audio file stored in the `app/src/main/res/raw/` directory of the client project, without the file format suffix. If not set, the default ringtone is used.
+        # The notification sound for the Huawei vendor channel. Specify the audio file name stored in the client project directory `app/src/main/res/raw/` without the file format extension. If not set, the default ringtone is used.
         self.music = music
-        # The unique identifier for an Android notification bar message. It controls the overwriting and replacement behavior of notifications. A new notification with the same NotifyId automatically overwrites the old one.
+        # The unique identifier of the Android notification bar message, used to control notification override and replacement behavior. A new notification with the same NotifyId automatically overrides the old notification.
         self.notify_id = notify_id
-        # Detailed channel configuration.
+        # The detailed channel configuration.
         self.options = options
-        # The image URL in large image mode. Currently supported by: proprietary channels with Android SDK 3.6.0 and later.
+        # The image URL in big picture mode. Currently supported: proprietary channel: Android SDK 3.6.0 and later.
         self.picture_url = picture_url
-        # The notification style. Valid values are:
-        # 
-        # - `0`: Standard mode (default)
-        # 
-        # - `1`: Long text mode (supported by Huawei, Honor, Xiaomi, OPPO, Meizu, and proprietary channels)
-        # 
-        # - `2`: Large image mode (supported by proprietary channels)
-        # 
-        # - `3`: List mode (supported by Huawei, Honor, Xiaomi, OPPO, and proprietary channels)
+        # The notification style. Valid values:
         self.render_style = render_style
-        # Sets the vendor channel notification type:
+        # Specifies the notification type for the manufacturer channel. Valid values:
         # 
-        # - `false`: Formal notification (default).
-        # 
+        # - `false`: Production notification. This is the default value.
         # - `true`: Test notification.
         # 
-        # > Currently supported by: Huawei channel, Honor channel, vivo channel, and OPPO Fluid Cloud.
+        # > Currently supported: Huawei channel, Honor channel, vivo channel, and OPPO Fluid Cloud.
         self.test_message = test_message
-        # Specifies the Activity to open after the notification is clicked.
-        # 
-        # >Warning: 
-        # 
-        # You must fill in this option when you use an Android vendor channel.
+        # The Activity to open when the notification is tapped.
         self.vendor_channel_activity = vendor_channel_activity
 
     def validate(self):
@@ -1197,21 +1055,19 @@ class PushTaskNotificationAndroidOptions(DaraModel):
         vivo: main_models.PushTaskNotificationAndroidOptionsVivo = None,
         xiaomi: main_models.PushTaskNotificationAndroidOptionsXiaomi = None,
     ):
-        # Alibaba Cloud proprietary configuration
-        # 
-        # > This is only valid when using Alibaba Cloud\\"s proprietary channel.
+        # The Alibaba Cloud proprietary channel configuration.
         self.accs = accs
-        # Honor configuration
+        # The Honor channel configuration.
         self.honor = honor
-        # Huawei configuration
+        # The Huawei channel configuration.
         self.huawei = huawei
-        # Meizu configuration
+        # The Meizu channel configuration.
         self.meizu = meizu
-        # OPPO configuration
+        # The OPPO channel configuration.
         self.oppo = oppo
-        # vivo configuration
+        # The vivo channel configuration.
         self.vivo = vivo
-        # Xiaomi configuration
+        # The Xiaomi channel configuration.
         self.xiaomi = xiaomi
 
     def validate(self):
@@ -1299,15 +1155,17 @@ class PushTaskNotificationAndroidOptionsXiaomi(DaraModel):
         template_id: str = None,
         template_params: str = None,
     ):
-        # Sets the channelId for the Xiaomi notification type. You must apply for this on the Xiaomi platform. For more information, see: [Application link](https://dev.mi.com/console/doc/detail?pId=2422#_4).
+        # The channel ID for Xiaomi notification types. You must apply for this on the Xiaomi platform. For more information, see [Application link](https://dev.mi.com/console/doc/detail?pId=2422#_4).
         # 
-        # > A single application can apply for a maximum of 8 channels on the Xiaomi channel. Plan accordingly.
+        # > A single application can apply for a maximum of 8 channels on the Xiaomi channel. Plan ahead.
         self.channel = channel
-        # The JSON string of the Xiaomi Super Island data structure [miui.focus.param](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2131). For developer integration, see the document [Xiaomi Super Island Push Guide](https://help.aliyun.com/zh/document_detail/3037956.html).
+        # The JSON character string of the Xiaomi Super Island data structure [miui.focus.param](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2131). References: [Xiaomi Super Island Push Guide](https://www.alibabacloud.com/help/en/document_detail/3037956.html).
         self.focus_param = focus_param
-        # The JSON string of the Xiaomi Super Island data image [miui.focus.pic_xxx](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2131). For developer integration, see the document [Xiaomi Super Island Push Guide](https://help.aliyun.com/zh/document_detail/3037956.html).
+        # The JSON character string of the Xiaomi Super Island image data [miui.focus.pic_xxx](https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2131). References: [Xiaomi Super Island Push Guide](https://www.alibabacloud.com/help/en/document_detail/3037956.html).
         self.focus_pics = focus_pics
+        # The Xiaomi private message template ID.
         self.template_id = template_id
+        # The Xiaomi private message template parameters in JSON string format.
         self.template_params = template_params
 
     def validate(self):
@@ -1357,56 +1215,43 @@ class PushTaskNotificationAndroidOptionsXiaomi(DaraModel):
 class PushTaskNotificationAndroidOptionsVivo(DaraModel):
     def __init__(
         self,
+        add_badge: bool = None,
         category: str = None,
         importance: int = None,
         live_message: str = None,
         receipt_id: str = None,
     ):
-        # vivo classifies messages into two categories for management: system messages and operational messages.
+        self.add_badge = add_badge
+        # vivo categorizes messages into two types: system messages and operational messages.
         # 
         # **System messages:**
         # 
-        # - IM: Instant messages
-        # 
-        # - ACCOUNT: Account and asset
-        # 
-        # - TODO: To-do list
-        # 
-        # - DEVICE_REMINDER: Device information
-        # 
-        # - ORDER: Order and logistics
-        # 
-        # - SUBSCRIPTION: Subscription reminder
+        # - IM: instant messaging
+        # - ACCOUNT: accounts and assets
+        # - TODO: schedules and to-do items
+        # - DEVICE_REMINDER: device information
+        # - ORDER: orders and logistics
+        # - SUBSCRIPTION: subscription reminders
         # 
         # **Operational messages:**
         # 
-        # - NEWS: News
+        # - NEWS: news
+        # - CONTENT: content recommendation
+        # - MARKETING: operational activity
+        # - SOCIAL: social updates
         # 
-        # - CONTENT: Content recommendation
-        # 
-        # - MARKETING: Operational activity
-        # 
-        # - SOCIAL: Social dynamics
-        # 
-        # For more information, see [vivo classification description](https://dev.vivo.com.cn/documentCenter/doc/359#s-ef3qugc3).
+        # For more information, refer to [vivo category description](https://dev.vivo.com.cn/documentCenter/doc/359#s-ef3qugc3).
         self.category = category
-        # Sets the vivo notification message classification. Valid values are:
+        # Specifies the vivo notification message category. Valid values:
         # 
-        # - `0`: Operational message (default)
+        # - `0`: Operational message (default).
+        # - `1`: System message.
         # 
-        # - `1`: System message
-        # 
-        # > We recommend using `Category` for notification classification. You must apply for this on the vivo platform. For more information, see: [Application link](https://dev.vivo.com.cn/documentCenter/doc/359).
+        # > Use `Category` for notification classification. You need to apply on the vivo platform. For more information, see [Application link](https://dev.vivo.com.cn/documentCenter/doc/359).
         self.importance = importance
-        # The JSON string of the vivo Atomic Island data structure [liveMessage](https://dev.vivo.com.cn/documentCenter/doc/896#s-fdagzbd4). For developer integration, see the document [vivo Atomic Island Push Guide](https://help.aliyun.com/zh/document_detail/3030718.html).
+        # The JSON character string of the vivo Atomic Island data structure [liveMessage](https://dev.vivo.com.cn/documentCenter/doc/896#s-fdagzbd4). References: [vivo Atomic Island Push Guide](https://www.alibabacloud.com/help/en/document_detail/3030718.html).
         self.live_message = live_message
-        # The message receipt identifier for the vivo vendor push channel. It is used to receive push result callback notifications.
-        # 
-        # > - Location: vivo Open Platform → Push Service → Application Information → Receipt Configuration
-        # >
-        # > - Recommendation: First, configure the default receipt ID in the Alibaba Cloud EMAS console.
-        # >
-        # > - Condition: This must be configured only if the default receipt on the vivo platform is not the Alibaba Cloud receipt.
+        # The message receipt identifier for the vivo vendor push channel, used to receive push result callback notifications.
         self.receipt_id = receipt_id
 
     def validate(self):
@@ -1417,6 +1262,9 @@ class PushTaskNotificationAndroidOptionsVivo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.add_badge is not None:
+            result['AddBadge'] = self.add_badge
+
         if self.category is not None:
             result['Category'] = self.category
 
@@ -1433,6 +1281,9 @@ class PushTaskNotificationAndroidOptionsVivo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddBadge') is not None:
+            self.add_badge = m.get('AddBadge')
+
         if m.get('Category') is not None:
             self.category = m.get('Category')
 
@@ -1458,47 +1309,13 @@ class PushTaskNotificationAndroidOptionsOppo(DaraModel):
         private_msg_template_id: str = None,
         private_title_parameters: str = None,
     ):
-        # OPPO classifies messages into two categories for management: communication and services, and content and marketing.
-        # 
-        # **Communication and services (requires permission application):**
-        # 
-        # - IM: Instant messages
-        # 
-        # - ACCOUNT: Account and asset
-        # 
-        # - TODO: To-do list
-        # 
-        # - DEVICE_REMINDER: Device information
-        # 
-        # - ORDER: Order and logistics
-        # 
-        # - SUBSCRIPTION: Subscription reminder
-        # 
-        # **Content and marketing:**
-        # 
-        # - NEWS: News
-        # 
-        # - CONTENT: Content recommendation
-        # 
-        # - MARKETING: Operational activity
-        # 
-        # - SOCIAL: Social dynamics
-        # 
-        # For more information, see [vivo classification description](https://open.oppomobile.com/new/developmentDoc/info?id=13189).
+        # OPPO categorizes messages into two types for management: Communication & Service, and Content & Marketing.
         self.category = category
-        # The JSON string of the OPPO Fluid Cloud\\"s intent deletion data structure [data](https://open.oppomobile.com/documentation/page/info?id=13578). This parameter is invalid if the AndroidOppoIntelligentIntent parameter is already filled. For developer integration, see the document [OPPO Fluid Cloud Push Guide](https://help.aliyun.com/document_detail/2997310.html).
+        # The JSON character string of the OPPO Fluid Cloud intent delete data structure [data](https://open.oppomobile.com/documentation/page/info?id=13578). This parameter is invalid when the AndroidOppoIntelligentIntent parameter is already specified. References: [OPPO Fluid Cloud Push Guide](https://help.aliyun.com/document_detail/2997310.html).
         self.delete_intent_data = delete_intent_data
-        # The JSON string of the OPPO Fluid Cloud\\"s intent sharing data structure [IntelligentIntent](https://open.oppomobile.com/documentation/page/info?id=13565). For developer integration, see the document [OPPO Fluid Cloud Push Guide](https://help.aliyun.com/document_detail/2997310.html).
+        # The JSON character string of the OPPO Fluid Cloud intent sharing data structure [IntelligentIntent](https://open.oppomobile.com/documentation/page/info?id=13565). References: [OPPO Fluid Cloud Push Guide](https://help.aliyun.com/document_detail/2997310.html).
         self.intelligent_intent = intelligent_intent
-        # The OPPO channel notification bar message reminder level. Valid values are:
-        # 
-        # - `1`: Notification bar
-        # 
-        # - `2`: Notification bar, lock screen, ringtone, vibration (default notification level for communication and service messages)
-        # 
-        # - `16`: Notification bar, lock screen, ringtone, vibration, banner (requires permission application)
-        # 
-        # > When you use the `NotifyLevel` parameter, you must also pass the `Category` parameter.
+        # The notification bar message alert level for the OPPO channel. Valid values:
         self.notify_level = notify_level
         # The OPPO private message template content parameters.
         self.private_content_parameters = private_content_parameters
@@ -1569,10 +1386,6 @@ class PushTaskNotificationAndroidOptionsMeizu(DaraModel):
         notice_msg_type: int = None,
     ):
         # The Meizu message type.
-        # 
-        # - 0 Public message (default)
-        # 
-        # - 1 Private message
         self.notice_msg_type = notice_msg_type
 
     def validate(self):
@@ -1605,45 +1418,27 @@ class PushTaskNotificationAndroidOptionsHuawei(DaraModel):
         receipt_id: str = None,
         urgency: str = None,
     ):
-        # Sets the Huawei quick notification parameters.
-        # 
-        # - **0**: Send a normal Huawei notification (default).
-        # 
-        # - **1**: Send a Huawei quick notification.
+        # The Huawei quick notification parameter.
         self.business_type = business_type
-        # Function 1: After you apply for [self-classification rights](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835?#section3410731125514), this is used to identify the message type and determine the [message reminder method](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#ZH-CN_TOPIC_0000001149358835__p3850133955718). It speeds up the sending of specific types of messages. For valid values, see the [message classification standards](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#section1076611477914) in the official Huawei Push documentation. Fill in the "Cloud notification category value" or "Local notification category value" from the document\\"s table.
+        # Purpose 1: After completing the [self-classification privilege](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835?#section3410731125514) application, this parameter identifies the message type, determines the [notification method](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#ZH-CN_TOPIC_0000001149358835__p3850133955718), and accelerates delivery for specific message types. For valid values, refer to the [message classification standard](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#section1076611477914) in the official Huawei Push documentation. Use the value from the "Cloud notification category value" or "Local notification category value" column in the table.
         # 
-        # Function 2: After [applying for special permissions](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/faq-0000001050042183#section037425218509), this is used to identify high-priority pass-through scenarios. Valid values are:
+        # Purpose 2: After [applying for special permissions](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/faq-0000001050042183#section037425218509), this parameter identifies high-priority pass-through scenarios. Valid values:
         # 
-        # - `VOIP`: Video call
+        # - `VOIP`: audio and video calls
+        # - `PLAY_VOICE`: voice broadcast
         # 
-        # - `PLAY_VOICE`: Voice playback
-        # 
-        # > * For "Cloud notification category value" that is "Not applicable," all messages go through Alibaba Cloud\\"s proprietary channel.
-        # >
-        # > * For "Local notification category value" that is "Not applicable," all messages go through the Huawei channel.
+        # > - For messages where the "Cloud notification category value" is "Not applicable", messages are sent through the Alibaba Cloud proprietary channel.
+        # > - For messages where the "Local notification category value" is "Not applicable", messages are sent through the Huawei channel.
         self.category = category
-        # Sets the importance parameter for Huawei notification message classification, which determines the notification behavior on the user\\"s device. Valid values are:
-        # 
-        # - `0`: Marketing message
-        # 
-        # - `1`: Service and communication message
-        # 
-        # > We recommend using `Category` for notification classification. You must apply for this on the Huawei platform. [Application link](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/message-classification-0000001149358835#section893184112272).
+        # The importance parameter for Huawei notification message classification, which determines the notification behavior on the user device. Valid values:
         self.importance = importance
-        # The JSON string of the Huawei Android Live Window data structure [LiveNotificationPayload](https://developer.huawei.com/consumer/cn/doc/HMSCore-References/rest-live-0000001562939968#ZH-CN_TOPIC_0000001700850537__p195121620102511). For developer integration, see the document [Huawei Live Window Push Guide](https://help.aliyun.com/document_detail/2983768.html).
+        # The JSON string of the Huawei Android Live Notification data structure [LiveNotificationPayload](https://developer.huawei.com/consumer/cn/doc/HMSCore-References/rest-live-0000001562939968#ZH-CN_TOPIC_0000001700850537__p195121620102511). For development and integration, refer to [Huawei Live Notification Push Guide](https://help.aliyun.com/document_detail/2983768.html).
         self.live_notification_payload = live_notification_payload
-        # The receipt ID for the Huawei channel. This ID can be found in the receipt parameter settings on the Huawei channel push operations platform.
+        # The receipt ID of the Huawei channel. You can view this receipt ID in the receipt parameter configuration on the Huawei channel push operation platform.
         # 
-        # > If the default receipt configuration on the Huawei channel push operations platform is the Alibaba Cloud receipt, you do not need to provide this. If not, we recommend that you first configure the default Huawei channel receipt ID in the Alibaba Cloud EMAS Mobile Push console.
+        # > If the default receipt configuration on the Huawei channel push operation platform is set to Alibaba Cloud receipt, you do not need to provide this parameter. If not, configure the default Huawei channel receipt ID in the Alibaba Cloud EMAS Mobile Push console first.
         self.receipt_id = receipt_id
-        # The Huawei channel notification delivery priority. Valid values are:
-        # 
-        # - `HIGH`
-        # 
-        # - `NORMAL`
-        # 
-        # You must apply for permission. For more information, see: [Application link](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/faq-0000001050042183#section037425218509).
+        # The delivery priority of the Huawei channel notification. Valid values:
         self.urgency = urgency
 
     def validate(self):
@@ -1701,11 +1496,10 @@ class PushTaskNotificationAndroidOptionsHonor(DaraModel):
         self,
         importance: int = None,
     ):
-        # Sets the importance parameter for Honor notification message classification, which determines the notification behavior on the user\\"s device. Valid values are:
+        # Specifies the importance parameter for Honor notification message classification, which determines the notification behavior on the user\\"s device. Valid values:
         # 
-        # - `0`: Marketing message
-        # 
-        # - `1`: Service and communication message
+        # - `0`: informational and marketing messages
+        # - `1`: service and communication messages
         # 
         # You must apply for this on the Honor platform. [Application link](https://developer.honor.com/cn/docs/11002/guides/notification-class#%E8%87%AA%E5%88%86%E7%B1%BB%E6%9D%83%E7%9B%8A%E7%94%B3%E8%AF%B7).
         self.importance = importance
@@ -1741,39 +1535,28 @@ class PushTaskNotificationAndroidOptionsAccs(DaraModel):
         priority: int = None,
         thread_id: str = None,
     ):
-        # The custom Android notification bar style. The value can be from 1 to 100.
+        # The custom notification bar style for Android. Valid values: 1 to 100.
         # 
-        # > The client must complete the style preset configuration. For more information, see the [Custom Notification Style API](https://help.aliyun.com/document_detail/2834944.html) document.
+        # > The style preset must be configured on the client. For more information, see [Custom notification style API](https://help.aliyun.com/document_detail/2834944.html).
         self.custom_style = custom_style
-        # The notification reminder method. Valid values:
+        # The notification alert type. Valid values:
         # 
-        # - `VIBRATE`: Vibrate (default)
-        # 
-        # - `SOUND`: Sound
-        # 
-        # - `BOTH`: Sound and vibration
-        # 
-        # - `NONE`: Silent
+        # - `VIBRATE`: vibration (default)
+        # - `SOUND`: sound
+        # - `BOTH`: sound and vibration
+        # - `NONE`: silent
         self.notify_type = notify_type
-        # Sets the activity to open when the notification is clicked. This is valid when `OpenType` is `ACTIVITY`.
+        # The activity to open when the notification is tapped. This parameter takes effect only when `OpenType` is set to `ACTIVITY`.
         self.open_activity = open_activity
-        # The action to take after the notification is clicked. Valid values:
-        # 
-        # - `APPLICATION`: Open the application (default).
-        # 
-        # - `ACTIVITY`: Open the specified page `OpenActivity`.
-        # 
-        # - `URL`: Open a URL.
-        # 
-        # - `NONE`: No action.
+        # The action after tapping the notification. Valid values:
         self.open_type = open_type
-        # After an Android device receives a push, clicking the notification opens the corresponding URL. This is valid when `OpenType` is `URL`.
+        # The URL to open when the notification is tapped on Android. This is valid when `OpenType` is set to `URL`.
         self.open_url = open_url
-        # The priority of the Android notification\\"s position in the notification bar. Valid values: -2, -1, 0, 1, 2.
+        # The priority of the Android notification position in the notification bar. Valid values: -2, -1, 0, 1, 2.
         self.priority = priority
-        # Message grouping. Messages in the same group are displayed collapsed in the notification bar and can be expanded. Different groups of notifications are displayed separately.
+        # The message group. Messages in the same group are collapsed in the notification bar and can be expanded. Messages in different groups are displayed separately.
         # 
-        # > This is for Android SDK 3.9.2 and later.
+        # > Android SDK 3.9.2 and later
         self.thread_id = thread_id
 
     def validate(self):
@@ -1840,7 +1623,7 @@ class PushTaskMessage(DaraModel):
         body: str = None,
         title: str = None,
     ):
-        # The content of the message to send.
+        # The body of the message to send.
         self.body = body
         # The title of the message to send.
         self.title = title
