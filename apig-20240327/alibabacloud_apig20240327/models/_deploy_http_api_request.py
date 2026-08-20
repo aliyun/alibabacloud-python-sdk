@@ -62,6 +62,7 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
     def __init__(
         self,
         description: str = None,
+        enable_route_compression: bool = None,
         environment: main_models.DeployHttpApiRequestRestApiConfigEnvironment = None,
         gateway_id: str = None,
         operation_deployments: List[main_models.DeployHttpApiRequestRestApiConfigOperationDeployments] = None,
@@ -70,11 +71,13 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
     ):
         # The publish description.
         self.description = description
+        # Specifies whether to enable REST API route compression. If omitted or set to false, operations are published individually. If set to true, the API is published as a single prefix route. This parameter is ignored for historical version publishing, which uses the routing mode saved in the historical version.
+        self.enable_route_compression = enable_route_compression
         # The publish environment configuration.
         self.environment = environment
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The operation-level publish control list.
+        # The operation-level deployment control list.
         self.operation_deployments = operation_deployments
         # The operation IDs.
         self.operation_ids = operation_ids
@@ -96,6 +99,9 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
             result = _map
         if self.description is not None:
             result['description'] = self.description
+
+        if self.enable_route_compression is not None:
+            result['enableRouteCompression'] = self.enable_route_compression
 
         if self.environment is not None:
             result['environment'] = self.environment.to_map()
@@ -120,6 +126,9 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('enableRouteCompression') is not None:
+            self.enable_route_compression = m.get('enableRouteCompression')
 
         if m.get('environment') is not None:
             temp_model = main_models.DeployHttpApiRequestRestApiConfigEnvironment()
@@ -187,13 +196,13 @@ class DeployHttpApiRequestRestApiConfigEnvironment(DaraModel):
         environment_id: str = None,
         service_configs: List[main_models.DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs] = None,
     ):
-        # The API publish scenario. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
+        # The API publish scenario. Backend configurations cannot be specified during publishing. Use UpdateHttpApi or UpdateHttpApiOperation to configure the backend before publishing.
         self.backend_scene = backend_scene
         # The list of custom domain names.
         self.custom_domain_ids = custom_domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
+        # The existing service configurations. In the single service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Use UpdateHttpApi or UpdateHttpApiOperation to configure the backend before publishing.
         self.service_configs = service_configs
 
     def validate(self):
@@ -256,7 +265,7 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         self.match = match
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
-        # The Terms of Service. Valid values:
+        # The service protocol:
         # - HTTP.
         # - HTTPS.
         self.protocol = protocol

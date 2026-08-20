@@ -24,6 +24,7 @@ class HttpApiDeployConfig(DaraModel):
         gateway_type: str = None,
         mock: main_models.HttpApiMockContract = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
+        rest_api_route_mode: str = None,
         route_backend: main_models.Backend = None,
         service_configs: List[main_models.HttpApiDeployConfigServiceConfigs] = None,
         sub_domains: List[main_models.HttpApiDeployConfigSubDomains] = None,
@@ -56,11 +57,13 @@ class HttpApiDeployConfig(DaraModel):
         self.mock = mock
         # The list of policy configurations.
         self.policy_configs = policy_configs
+        # The current online routing mode of the REST API. ordinary indicates per-Operation routing. compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
+        self.rest_api_route_mode = rest_api_route_mode
         # The backend service information.
         self.route_backend = route_backend
         # The list of service configurations.
         self.service_configs = service_configs
-        # The subdomain content list.
+        # The list of subdomain contents.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -144,6 +147,9 @@ class HttpApiDeployConfig(DaraModel):
             for k1 in self.policy_configs:
                 result['policyConfigs'].append(k1.to_map() if k1 else None)
 
+        if self.rest_api_route_mode is not None:
+            result['restApiRouteMode'] = self.rest_api_route_mode
+
         if self.route_backend is not None:
             result['routeBackend'] = self.route_backend.to_map()
 
@@ -213,6 +219,9 @@ class HttpApiDeployConfig(DaraModel):
             for k1 in m.get('policyConfigs'):
                 temp_model = main_models.HttpApiPolicyConfigs()
                 self.policy_configs.append(temp_model.from_map(k1))
+
+        if m.get('restApiRouteMode') is not None:
+            self.rest_api_route_mode = m.get('restApiRouteMode')
 
         if m.get('routeBackend') is not None:
             temp_model = main_models.Backend()

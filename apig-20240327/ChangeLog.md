@@ -1,3 +1,7 @@
+2026-08-20 Version: 11.0.1
+- Update API DeployHttpApi: add request parameters body.restApiConfig.enableRouteCompression.
+
+
 2026-08-20 Version: 11.0.0
 - Update API BatchImportHttpApis: add request parameters body.specContentBase64.
 - Update API CreateDomain: add request parameters dryRun.
