@@ -59,40 +59,38 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'r-kvstore.aliyuncs.com',
             'eu-west-1-oxs': 'r-kvstore.aliyuncs.com',
             'rus-west-1-pop': 'r-kvstore.aliyuncs.com',
-            'us-west-1': 'r-kvstore.us-west-1.aliyuncs.com',
-            'us-southeast-1': 'r-kvstore.us-southeast-1.aliyuncs.com',
+            'cn-zhengzhou-jva': 'r-kvstore.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-wuhan-lr': 'r-kvstore.cn-wuhan-lr.aliyuncs.com',
+            'cn-hongkong': 'r-kvstore.cn-hongkong.aliyuncs.com',
+            'cn-zhangjiakou': 'r-kvstore.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'r-kvstore.cn-shenzhen.aliyuncs.com',
+            'cn-nanjing': 'r-kvstore.cn-nanjing.aliyuncs.com',
+            'ap-northeast-2': 'r-kvstore.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'r-kvstore.ap-northeast-1.aliyuncs.com',
+            'cn-fuzhou': 'r-kvstore.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'r-kvstore.cn-chengdu.aliyuncs.com',
+            'cn-guangzhou': 'r-kvstore.cn-guangzhou.aliyuncs.com',
+            'ap-southeast-1': 'r-kvstore.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-2': 'r-kvstore.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-3': 'r-kvstore.ap-southeast-3.aliyuncs.com',
+            'cn-huhehaote': 'r-kvstore.cn-huhehaote.aliyuncs.com',
+            'ap-southeast-5': 'r-kvstore.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'r-kvstore.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'r-kvstore.ap-southeast-7.aliyuncs.com',
             'us-east-1': 'r-kvstore.us-east-1.aliyuncs.com',
+            'us-southeast-1': 'r-kvstore.us-southeast-1.aliyuncs.com',
+            'eu-west-1': 'r-kvstore.eu-west-1.aliyuncs.com',
+            'us-west-1': 'r-kvstore.us-west-1.aliyuncs.com',
+            'eu-central-1': 'r-kvstore.eu-central-1.aliyuncs.com',
             'na-south-1': 'r-kvstore.na-south-1.aliyuncs.com',
             'me-east-1': 'r-kvstore.me-east-1.aliyuncs.com',
             'me-central-1': 'r-kvstore.me-central-1.aliyuncs.com',
-            'eu-west-2': 'r-kvstore.eu-west-2.aliyuncs.com',
-            'eu-west-1': 'r-kvstore.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'r-kvstore.eu-central-1.aliyuncs.com',
-            'cn-zhongwei': 'r-kvstore.cn-zhongwei.aliyuncs.com',
-            'cn-zhengzhou-jva': 'r-kvstore.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-zhangjiakou': 'r-kvstore.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-wuhan-lr': 'r-kvstore.cn-wuhan-lr.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'r-kvstore.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'r-kvstore.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'r-kvstore.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-north-2-gov-1': 'r-kvstore.cn-north-2-gov-1.aliyuncs.com',
-            'cn-nanjing': 'r-kvstore.cn-nanjing.aliyuncs.com',
-            'cn-huhehaote': 'r-kvstore.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'r-kvstore.cn-hongkong.aliyuncs.com',
+            'ap-south-1': 'r-kvstore.ap-south-1.aliyuncs.com',
             'cn-heyuan-acdr-1': 'r-kvstore.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-guangzhou': 'r-kvstore.cn-guangzhou.aliyuncs.com',
-            'cn-fuzhou': 'r-kvstore.cn-fuzhou.aliyuncs.com',
-            'cn-chengdu': 'r-kvstore.cn-chengdu.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'r-kvstore.cn-shenzhen-finance-1.aliyuncs.com',
             'cn-beijing-finance-1': 'r-kvstore.cn-beijing-finance-1.aliyuncs.com',
-            'ap-southeast-8': 'r-kvstore.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'r-kvstore.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'r-kvstore.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'r-kvstore.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'r-kvstore.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'r-kvstore.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'r-kvstore.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'r-kvstore.ap-northeast-1.aliyuncs.com'
+            'cn-shanghai-finance-1': 'r-kvstore.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('r-kvstore', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -712,6 +710,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -762,6 +762,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -3506,10 +3508,16 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.search_account_name):
+            query['SearchAccountName'] = request.search_account_name
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_util_models.OpenApiRequest(
@@ -3546,10 +3554,16 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.search_account_name):
+            query['SearchAccountName'] = request.search_account_name
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_util_models.OpenApiRequest(
@@ -8712,6 +8726,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.parameter_category):
+            query['ParameterCategory'] = request.parameter_category
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.resource_owner_account):
@@ -8758,6 +8774,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.parameter_category):
+            query['ParameterCategory'] = request.parameter_category
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.resource_owner_account):
@@ -11760,6 +11778,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyAccountDescriptionResponse:
         runtime = RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
+
+    def modify_account_parameter_with_options(
+        self,
+        request: main_models.ModifyAccountParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAccountParameterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAccountParameter',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAccountParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_account_parameter_with_options_async(
+        self,
+        request: main_models.ModifyAccountParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAccountParameterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAccountParameter',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAccountParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_account_parameter(
+        self,
+        request: main_models.ModifyAccountParameterRequest,
+    ) -> main_models.ModifyAccountParameterResponse:
+        runtime = RuntimeOptions()
+        return self.modify_account_parameter_with_options(request, runtime)
+
+    async def modify_account_parameter_async(
+        self,
+        request: main_models.ModifyAccountParameterRequest,
+    ) -> main_models.ModifyAccountParameterResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_account_parameter_with_options_async(request, runtime)
 
     def modify_account_password_with_options(
         self,

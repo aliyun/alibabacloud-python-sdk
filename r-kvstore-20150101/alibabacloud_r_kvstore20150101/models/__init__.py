@@ -338,6 +338,9 @@ from ._migrate_to_other_zone_response import MigrateToOtherZoneResponse
 from ._modify_account_description_request import ModifyAccountDescriptionRequest
 from ._modify_account_description_response_body import ModifyAccountDescriptionResponseBody
 from ._modify_account_description_response import ModifyAccountDescriptionResponse
+from ._modify_account_parameter_request import ModifyAccountParameterRequest
+from ._modify_account_parameter_response_body import ModifyAccountParameterResponseBody
+from ._modify_account_parameter_response import ModifyAccountParameterResponse
 from ._modify_account_password_request import ModifyAccountPasswordRequest
 from ._modify_account_password_response_body import ModifyAccountPasswordResponseBody
 from ._modify_account_password_response import ModifyAccountPasswordResponse
@@ -1044,6 +1047,9 @@ __all__ = [
     ModifyAccountDescriptionRequest,
     ModifyAccountDescriptionResponseBody,
     ModifyAccountDescriptionResponse,
+    ModifyAccountParameterRequest,
+    ModifyAccountParameterResponseBody,
+    ModifyAccountParameterResponse,
     ModifyAccountPasswordRequest,
     ModifyAccountPasswordResponseBody,
     ModifyAccountPasswordResponse,

@@ -4,22 +4,21 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateAccountResponseBody(DaraModel):
+class ModifyAccountParameterRequest(DaraModel):
     def __init__(
         self,
         account_name: str = None,
-        acount_name: str = None,
         instance_id: str = None,
-        request_id: str = None,
+        parameters: str = None,
+        security_token: str = None,
     ):
-        # The account name.
+        # This parameter is required.
         self.account_name = account_name
-        # **[Deprecated]** This parameter is deprecated.
-        self.acount_name = acount_name
-        # The instance ID.
+        # This parameter is required.
         self.instance_id = instance_id
-        # The request ID.
-        self.request_id = request_id
+        # This parameter is required.
+        self.parameters = parameters
+        self.security_token = security_token
 
     def validate(self):
         pass
@@ -32,14 +31,14 @@ class CreateAccountResponseBody(DaraModel):
         if self.account_name is not None:
             result['AccountName'] = self.account_name
 
-        if self.acount_name is not None:
-            result['AcountName'] = self.acount_name
-
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
 
         return result
 
@@ -48,14 +47,14 @@ class CreateAccountResponseBody(DaraModel):
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
 
-        if m.get('AcountName') is not None:
-            self.acount_name = m.get('AcountName')
-
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
 
         return self
 

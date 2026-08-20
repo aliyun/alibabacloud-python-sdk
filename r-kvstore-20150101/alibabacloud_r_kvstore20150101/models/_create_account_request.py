@@ -15,42 +15,42 @@ class CreateAccountRequest(DaraModel):
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        parameters: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
         source_biz: str = None,
     ):
         # The description of the account.
-        # 
-        # *   The description must start with a letter, and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, underscores (_), and hyphens (-).
-        # *   The description must be 2 to 256 characters in length.
+        # * Must start with a Chinese character or an English letter. Cannot start with `http://` or `https://`.
+        # * Can contain Chinese characters, English letters, digits, underscores (_), and hyphens (-). 
+        # * Must be 2 to 256 characters in length.
         self.account_description = account_description
-        # The name of the account. The name must meet the following requirements:
-        # 
-        # *   The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
-        # *   The name can be up to 100 characters in length.
-        # *   The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3) section.
+        # The account name. The name must meet the following requirements:
+        # * Starts with a lowercase letter and contains only lowercase letters, digits, or underscores (_).
+        # * Contains up to 100 characters.
+        # * Cannot be a <props="china">[Redis reserved account name](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3)<props="intl">[Redis reserved account name](https://www.alibabacloud.com/help/zh/redis/user-guide/create-and-manage-database-accounts#section-u3q-817-om3).
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The password of the account. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. The following special characters are supported: `!@#$%^&*()_+-=`.
         # 
         # This parameter is required.
         self.account_password = account_password
         # The permissions of the account. Valid values:
-        # 
-        # *   **RoleReadOnly**: The account has read-only permissions.
-        # *   **RoleReadWrite**: The account has read and write permissions.
+        # * **RoleReadOnly**: read-only permissions.
+        # * **RoleReadWrite**: read and write permissions. This is the default value.
         self.account_privilege = account_privilege
-        # The type of the account. Set the value to **Normal**, which indicates that the account is a standard account.
+        # The account type. Set the value to **Normal** (standard account).
         self.account_type = account_type
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The account parameters to modify in JSON format. The new values overwrite the original values.
+        self.parameters = parameters
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -88,6 +88,9 @@ class CreateAccountRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -128,6 +131,9 @@ class CreateAccountRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

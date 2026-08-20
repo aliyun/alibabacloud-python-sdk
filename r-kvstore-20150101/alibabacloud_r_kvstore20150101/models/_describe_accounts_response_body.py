@@ -11,11 +11,20 @@ class DescribeAccountsResponseBody(DaraModel):
     def __init__(
         self,
         accounts: main_models.DescribeAccountsResponseBodyAccounts = None,
+        page_number: int = None,
+        page_size: int = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.accounts = accounts
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        # The total number of entries.
+        self.total_count = total_count
 
     def validate(self):
         if self.accounts:
@@ -29,8 +38,17 @@ class DescribeAccountsResponseBody(DaraModel):
         if self.accounts is not None:
             result['Accounts'] = self.accounts.to_map()
 
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
 
         return result
 
@@ -40,8 +58,17 @@ class DescribeAccountsResponseBody(DaraModel):
             temp_model = main_models.DescribeAccountsResponseBodyAccounts()
             self.accounts = temp_model.from_map(m.get('Accounts'))
 
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
 
         return self
 
@@ -89,6 +116,7 @@ class DescribeAccountsResponseBodyAccountsAccount(DaraModel):
         account_type: str = None,
         database_privileges: main_models.DescribeAccountsResponseBodyAccountsAccountDatabasePrivileges = None,
         instance_id: str = None,
+        parameters: str = None,
     ):
         self.account_description = account_description
         self.account_name = account_name
@@ -96,6 +124,7 @@ class DescribeAccountsResponseBodyAccountsAccount(DaraModel):
         self.account_type = account_type
         self.database_privileges = database_privileges
         self.instance_id = instance_id
+        self.parameters = parameters
 
     def validate(self):
         if self.database_privileges:
@@ -124,6 +153,9 @@ class DescribeAccountsResponseBodyAccountsAccount(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+
         return result
 
     def from_map(self, m: dict = None):
@@ -146,6 +178,9 @@ class DescribeAccountsResponseBodyAccountsAccount(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
 
         return self
 

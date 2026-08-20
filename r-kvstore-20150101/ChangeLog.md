@@ -1,3 +1,16 @@
+2026-08-20 Version: 6.6.0
+- Support API ModifyAccountParameter.
+- Update API CreateAccount: add request parameters Parameters.
+- Update API DescribeAccounts: add request parameters PageNumber.
+- Update API DescribeAccounts: add request parameters PageSize.
+- Update API DescribeAccounts: add request parameters SearchAccountName.
+- Update API DescribeAccounts: add response parameters Body.PageNumber.
+- Update API DescribeAccounts: add response parameters Body.PageSize.
+- Update API DescribeAccounts: add response parameters Body.TotalCount.
+- Update API DescribeAccounts: add response parameters Body.Accounts.$.Parameters.
+- Update API DescribeParameterTemplates: add request parameters ParameterCategory.
+
+
 2026-08-06 Version: 6.5.1
 - Update API ModifyInstanceSpec: add request parameters SecondaryZoneId.
 - Update API SwitchInstanceToTargetZone: add response parameters Body.TaskId.

@@ -13,19 +13,22 @@ class DescribeParameterTemplatesRequest(DaraModel):
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        parameter_category: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The architecture of the instance. For more information, see [Overview](https://help.aliyun.com/document_detail/86132.html). Valid values:
+        # The architecture of the instance. For more information, see [Architecture overview](https://help.aliyun.com/document_detail/86132.html). Valid values:
         # 
-        # *   **logic**: The instance is a cluster master-replica instance or a read/write splitting instance.
-        # *   **normal**: The instance is a standard master-replica instance.
+        # * **logic**: cluster or read/write splitting architecture.
+        # * **normal**: standard architecture (primary/secondary).
+        # 
+        # <props="china">If **EngineVersion** is set to **6.0**, this parameter does not support the value **logic**.
         # 
         # This parameter is required.
         self.character_type = character_type
-        # The database engine that is run on the instance. Set the value to **Redis**.
+        # The database type. Set the value to **Redis**.
         # 
         # This parameter is required.
         self.engine = engine
@@ -33,13 +36,14 @@ class DescribeParameterTemplatesRequest(DaraModel):
         # 
         # This parameter is required.
         self.engine_version = engine_version
-        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the IDs of instances.
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the IDs of resource groups.
-        # 
-        # >  You can also query the ID of a resource group in the Resource Management console. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The parameter category.
+        self.parameter_category = parameter_category
+        # The resource group ID. You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the resource group ID.
+        # > You can also obtain the resource group ID in the console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -70,6 +74,9 @@ class DescribeParameterTemplatesRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.parameter_category is not None:
+            result['ParameterCategory'] = self.parameter_category
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
@@ -104,6 +111,9 @@ class DescribeParameterTemplatesRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('ParameterCategory') is not None:
+            self.parameter_category = m.get('ParameterCategory')
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
