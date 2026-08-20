@@ -9,7 +9,7 @@ class DeleteSessionRequest(DaraModel):
         self,
         qualifier: str = None,
     ):
-        # The function alias or version associated with the session to be deleted.
+        # The function alias or version associated with the session ID to delete.
         self.qualifier = qualifier
 
     def validate(self):

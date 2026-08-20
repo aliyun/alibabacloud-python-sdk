@@ -2,8 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
+from alibabacloud_fc20230330 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateSessionNetworkConfig(DaraModel):
@@ -13,14 +14,21 @@ class CreateSessionNetworkConfig(DaraModel):
         allow_public_traffic: bool = None,
         deny_out: List[str] = None,
         mask_request_host: str = None,
+        rules: Dict[str, List[main_models.SessionNetworkRule]] = None,
     ):
         self.allow_out = allow_out
         self.allow_public_traffic = allow_public_traffic
         self.deny_out = deny_out
         self.mask_request_host = mask_request_host
+        # The request transform rules configured by exact target host. Supports transform.headers and transform.headerValueReplacements.
+        self.rules = rules
 
     def validate(self):
-        pass
+        if self.rules:
+            for v1 in self.rules.values():
+                for v2 in v1:
+                     if v2:
+                        v2.validate()
 
     def to_map(self):
         result = dict()
@@ -39,6 +47,14 @@ class CreateSessionNetworkConfig(DaraModel):
         if self.mask_request_host is not None:
             result['maskRequestHost'] = self.mask_request_host
 
+        result['rules'] = {}
+        if self.rules is not None:
+            for k1, v1 in self.rules.items():
+                l1 = []
+                for k2 in v1:
+                    l1.append(k2.to_map() if k2 else None)
+                result['rules'][k1] = l1
+
         return result
 
     def from_map(self, m: dict = None):
@@ -54,6 +70,15 @@ class CreateSessionNetworkConfig(DaraModel):
 
         if m.get('maskRequestHost') is not None:
             self.mask_request_host = m.get('maskRequestHost')
+
+        self.rules = {}
+        if m.get('rules') is not None:
+            for k1, v1 in m.get('rules').items():
+                l1 = []
+                for k2 in v1:
+                    temp_model = main_models.SessionNetworkRule()
+                    l1.append(temp_model.from_map(k2))
+                self.rules[k1] = l1
 
         return self
 

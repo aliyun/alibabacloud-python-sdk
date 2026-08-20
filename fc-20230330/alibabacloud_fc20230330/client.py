@@ -4664,6 +4664,8 @@ class Client(OpenApiClient):
     ) -> main_models.PauseSessionResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.file_system_only):
+            query['fileSystemOnly'] = request.file_system_only
         if not DaraCore.is_null(request.qualifier):
             query['qualifier'] = request.qualifier
         req = open_api_util_models.OpenApiRequest(
@@ -4696,6 +4698,8 @@ class Client(OpenApiClient):
     ) -> main_models.PauseSessionResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.file_system_only):
+            query['fileSystemOnly'] = request.file_system_only
         if not DaraCore.is_null(request.qualifier):
             query['qualifier'] = request.qualifier
         req = open_api_util_models.OpenApiRequest(

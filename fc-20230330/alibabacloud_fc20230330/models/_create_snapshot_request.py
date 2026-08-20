@@ -11,7 +11,9 @@ class CreateSnapshotRequest(DaraModel):
         body: main_models.CreateSnapshotInput = None,
         qualifier: str = None,
     ):
+        # The request body for creating a snapshot.
         self.body = body
+        # The function alias.
         self.qualifier = qualifier
 
     def validate(self):

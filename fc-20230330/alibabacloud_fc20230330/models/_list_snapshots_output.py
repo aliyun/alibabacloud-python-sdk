@@ -13,7 +13,10 @@ class ListSnapshotsOutput(DaraModel):
         next_token: str = None,
         snapshots: List[main_models.Snapshot] = None,
     ):
+        # The token used to retrieve the next page of results. This parameter is not returned if no more results are available.
         self.next_token = next_token
+        # The list of snapshots.
+        # 
         # This parameter is required.
         self.snapshots = snapshots
 

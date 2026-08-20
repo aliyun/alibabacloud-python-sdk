@@ -11,7 +11,7 @@ class CreateSessionRequest(DaraModel):
         body: main_models.CreateSessionInput = None,
         qualifier: str = None,
     ):
-        # The session configuration.
+        # The session configuration for creating the session.
         self.body = body
         # The version or alias of the function to which the session belongs.
         self.qualifier = qualifier

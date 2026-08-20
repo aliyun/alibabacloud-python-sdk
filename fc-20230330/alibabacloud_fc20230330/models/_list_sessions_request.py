@@ -21,7 +21,7 @@ class ListSessionsRequest(DaraModel):
         self.qualifier = qualifier
         # The session ID to filter by. If specified, all Active or Expired status information associated with this session is returned.
         self.session_id = session_id
-        # The session status to filter by. By default, all session information in Active or Expired status is returned. Set this parameter to Active to retrieve only active session information, or to Expired to retrieve only expired session information.
+        # The session status to filter by. By default, all session information in Active or Expired status is returned. You can specify Active to retrieve only active session information, or specify Expired to retrieve only expired session information.
         self.session_status = session_status
 
     def validate(self):

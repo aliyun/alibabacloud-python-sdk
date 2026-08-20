@@ -136,6 +136,9 @@ from ._scaling_status import ScalingStatus
 from ._scheduled_action import ScheduledAction
 from ._scheduled_policy import ScheduledPolicy
 from ._session import Session
+from ._session_network_header_value_replacement import SessionNetworkHeaderValueReplacement
+from ._session_network_rule import SessionNetworkRule
+from ._session_network_rule_transform import SessionNetworkRuleTransform
 from ._snapshot import Snapshot
 from ._source_config import SourceConfig
 from ._source_dtsparameters import SourceDTSParameters
@@ -442,6 +445,9 @@ __all__ = [
     ScheduledAction,
     ScheduledPolicy,
     Session,
+    SessionNetworkHeaderValueReplacement,
+    SessionNetworkRule,
+    SessionNetworkRuleTransform,
     Snapshot,
     SourceConfig,
     SourceDTSParameters,

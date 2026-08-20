@@ -13,10 +13,15 @@ class ListSnapshotsRequest(DaraModel):
         qualifier: str = None,
         session_id: str = None,
     ):
+        # The function name.
         self.function_name = function_name
+        # The maximum number of snapshots to return. Valid values: 1 to 100. Default value: 20.
         self.limit = limit
+        # The pagination token used to retrieve more results.
         self.next_token = next_token
+        # The function alias.
         self.qualifier = qualifier
+        # The source session ID from which the snapshot was created. When specified, functionName must also be specified.
         self.session_id = session_id
 
     def validate(self):
