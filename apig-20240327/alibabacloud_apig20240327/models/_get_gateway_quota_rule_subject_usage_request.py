@@ -11,6 +11,7 @@ class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Specifies whether to filter zero values.
         self.filter_failed_requests = filter_failed_requests
         # The page number of the detailed consumption (request) records of the consumer within the cycle.
         self.page_number = page_number

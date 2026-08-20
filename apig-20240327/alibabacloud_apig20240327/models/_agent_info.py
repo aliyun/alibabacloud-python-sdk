@@ -23,17 +23,29 @@ class AgentInfo(DaraModel):
         status: str = None,
         update_timestamp: int = None,
     ):
+        # The associated resource information for the Agent access capability. Returns null if the Agent access capability is not configured.
         self.agent_access = agent_access
+        # Agent ID。
         self.agent_id = agent_id
+        # The Agent type. DashScope (Bailian) allows only Agent access. Dify allows both Agent access and model access. ClaudeCode allows only model access. Custom allows both Agent access and model access.
         self.agent_type = agent_type
+        # The list of capabilities that the current Agent type allows to be configured. This field does not indicate that the capabilities are already configured. To determine whether a capability is configured, check whether agentAccess or modelAccess is null.
         self.allowed_capabilities = allowed_capabilities
+        # The Agent creation time, in Unix millisecond timestamp.
         self.create_timestamp = create_timestamp
+        # The Agent description.
         self.description = description
+        # The gateway ID to which the Agent belongs. When reading the associated API deployment configuration, select the configuration whose gatewayId matches this value.
         self.gateway_id = gateway_id
+        # The associated resource information for the model access capability. Returns null if the model access capability is not configured.
         self.model_access = model_access
+        # The Agent name.
         self.name = name
+        # The resource group ID in which the Agent is saved.
         self.resource_group_id = resource_group_id
+        # The Agent status. An Agent that is successfully created and queryable always returns Ready. Internal creation or compensation states are not returned externally.
         self.status = status
+        # The Agent last update time, in Unix millisecond timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -133,7 +145,9 @@ class AgentInfoModelAccess(DaraModel):
         consumer_ids: List[str] = None,
         model_api_id: str = None,
     ):
+        # The list of consumer identity bindings maintained by the Agent domain. The Model API ID and the consumer IDs in this list together identify the Agent identity and take effect on all routes of the Model API. Consumer details and their Model API authorization details can be obtained through existing Consumer API and consumer authorization query interfaces.
         self.consumer_ids = consumer_ids
+        # The Model API ID associated with the model access capability. Model Access does not distinguish routes. The frontend uses this ID to query the Model API basic information and all routes.
         self.model_api_id = model_api_id
 
     def validate(self):
@@ -167,6 +181,7 @@ class AgentInfoAgentAccess(DaraModel):
         self,
         http_api_id: str = None,
     ):
+        # The HTTP API ID associated with the Agent access capability. The frontend uses this ID to call existing HTTP API, route, consumer authorization, policy, and plugin query interfaces.
         self.http_api_id = http_api_id
 
     def validate(self):

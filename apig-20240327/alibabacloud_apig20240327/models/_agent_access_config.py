@@ -16,12 +16,19 @@ class AgentAccessConfig(DaraModel):
         domain_ids: List[str] = None,
         remove_base_path_on_forward: bool = None,
     ):
+        # Specifies whether to enable AI request logging. Default value if omitted: true.
         self.ai_request_log_enabled = ai_request_log_enabled
+        # The consumer authorization configuration for Agent access. If omitted, consumer authorization is not enabled.
         self.authorization = authorization
+        # The base path of the Agent access entry. The path must start with a forward slash (/).
+        # 
         # This parameter is required.
         self.base_path = base_path
+        # The list of domain name IDs bound to the Agent access entry. At least one domain name must be specified.
+        # 
         # This parameter is required.
         self.domain_ids = domain_ids
+        # Specifies whether to remove the base path when forwarding requests to the backend. Default value if omitted: false.
         self.remove_base_path_on_forward = remove_base_path_on_forward
 
     def validate(self):
@@ -79,9 +86,13 @@ class AgentAccessConfigAuthorization(DaraModel):
         enabled: bool = None,
         principals: List[main_models.AgentAuthorizationPrincipal] = None,
     ):
+        # The authentication type of the Agent access entry. Specify this parameter only when enabled is set to true.
         self.auth_type = auth_type
+        # Specifies whether to enable consumer authorization. If set to true, authType must be specified and at least one principal must be provided. If set to false, no principals can be specified.
+        # 
         # This parameter is required.
         self.enabled = enabled
+        # The list of consumers or consumer groups that are granted Agent access permissions. At least one principal must be specified when enabled is set to true.
         self.principals = principals
 
     def validate(self):

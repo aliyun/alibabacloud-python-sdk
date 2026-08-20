@@ -47,10 +47,11 @@ class Service(DaraModel):
         self.ai_service_config = ai_service_config
         # The time when the service was created.
         self.create_timestamp = create_timestamp
+        # The list of DNS servers.
         self.dns_servers = dns_servers
         # The execution mode of CloudFlow.
         self.express_type = express_type
-        # The gateway instance ID.
+        # The instance ID of the gateway.
         self.gateway_id = gateway_id
         # The name of the service group.
         self.group_name = group_name
@@ -58,14 +59,17 @@ class Service(DaraModel):
         self.health_check = health_check
         # The health check status. Valid values: Healthy and Unhealthy.
         self.health_status = health_status
+        # The healthy panic threshold.
         self.healthy_panic_threshold = healthy_panic_threshold
         # The label information of the service.
         self.label_details = label_details
+        # The resource ID of the model provider.
         self.model_provider_id = model_provider_id
         # The name of the service.
         self.name = name
         # The namespace.
         self.namespace = namespace
+        # The configuration for removing abnormal instances.
         self.outlier_detection = outlier_detection
         # The circuit-broken endpoints.
         self.outlier_endpoints = outlier_endpoints
@@ -77,7 +81,9 @@ class Service(DaraModel):
         self.qualifier = qualifier
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The masked error code of the runtime details.
         self.runtime_detail_error_code = runtime_detail_error_code
+        # The runtime detail status.
         self.runtime_detail_status = runtime_detail_status
         # The unique ID of the service.
         self.service_id = service_id
@@ -85,7 +91,7 @@ class Service(DaraModel):
         self.source_type = source_type
         # The unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The time when the service was updated.
+        # The time when the service was created.
         self.update_timestamp = update_timestamp
         # The list of service versions.
         self.versions = versions
@@ -447,10 +453,15 @@ class ServiceOutlierDetection(DaraModel):
         failure_percentage_threshold: int = None,
         interval: int = None,
     ):
+        # The base ejection duration in seconds. Valid values: 1 to 3600.
         self.base_ejection_time = base_ejection_time
+        # Specifies whether to enable outlier detection.
         self.enable = enable
+        # The minimum number of hosts. The value must be greater than or equal to 0.
         self.failure_percentage_minimum_hosts = failure_percentage_minimum_hosts
+        # The failure rate threshold in percentage. Valid values: 1 to 100.
         self.failure_percentage_threshold = failure_percentage_threshold
+        # The detection interval in seconds. Valid values: 1 to 3600.
         self.interval = interval
 
     def validate(self):

@@ -21,16 +21,27 @@ class TransportCertificateInfo(DaraModel):
         not_before_timestamp: int = None,
         sans: str = None,
     ):
+        # The signature/key algorithm.
         self.algorithm = algorithm
+        # The certificate identifier (certificate ID under the APIG cloud account).
         self.cert_identifier = cert_identifier
+        # The certificate name.
         self.cert_name = cert_name
+        # The match status between the certificate and gateway instance domain names.
         self.certificate_match_status = certificate_match_status
+        # The certificate Common Name (CN).
         self.common_name = common_name
+        # The set of covered domain names parsed from CN and SAN (deduplicated in lowercase, may contain *. wildcards).
         self.covered_domains = covered_domains
+        # The certificate issuer.
         self.issuer = issuer
+        # The gateway instance domain names matched by covered domains (ordered by instance domain name, deduplicated).
         self.matched_domains = matched_domains
+        # The expiration timestamp (Unix milliseconds, from the certificate afterDate).
         self.not_after_timestamp = not_after_timestamp
+        # The effective period UNIX timestamp (Unix milliseconds, from the certificate beforeDate).
         self.not_before_timestamp = not_before_timestamp
+        # The raw SAN string (separated by commas, semicolons, or whitespace. Elements may have a DNS: prefix).
         self.sans = sans
 
     def validate(self):

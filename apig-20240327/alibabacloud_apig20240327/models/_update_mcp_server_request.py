@@ -40,9 +40,9 @@ class UpdateMcpServerRequest(DaraModel):
         self.domain_ids = domain_ids
         # The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
         self.exposed_uri_path = exposed_uri_path
-        # The list of canary release MCP server route configurations.
+        # The list of canary release MCP server routing configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # The route match rule.
+        # The route match rules.
         self.match = match
         # The HTTP-to-MCP configuration.
         self.mcp_server_config = mcp_server_config
@@ -52,7 +52,7 @@ class UpdateMcpServerRequest(DaraModel):
         # - HTTP: HTTP protocol.
         # - HTTPS: HTTPS protocol.
         # - SSE: Server-Sent Events protocol.
-        # - StreamableHTTP: streamable HTTP protocol.
+        # - StreamableHTTP: Streamable HTTP protocol.
         # 
         # This parameter is required.
         self.protocol = protocol
@@ -221,7 +221,7 @@ class UpdateMcpServerRequestGrayMcpServerConfigs(DaraModel):
     ):
         # The backend configuration.
         self.backend_config = backend_config
-        # The route match rule.
+        # The route match rules.
         self.match = match
         # The route ID.
         self.route_id = route_id

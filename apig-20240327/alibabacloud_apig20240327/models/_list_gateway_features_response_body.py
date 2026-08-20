@@ -107,6 +107,7 @@ class ListGatewayFeaturesResponseBodyDataItems(DaraModel):
         definition: main_models.ListGatewayFeaturesResponseBodyDataItemsDefinition = None,
         value: str = None,
     ):
+        # The runtime constraints calculated based on the current gateway form. Only returned for certain features.
         self.constraints = constraints
         # The parameter definition.
         self.definition = definition
@@ -176,12 +177,12 @@ class ListGatewayFeaturesResponseBodyDataItemsDefinition(DaraModel):
         # The display name of the parameter.
         self.display_name = display_name
         # The parameter group. Valid values:
-        # - Telemetry: observability parameter.
-        # - Engine: engine parameter.
+        # - Telemetry: observability-related parameter.
+        # - Engine: engine-related parameter.
         self.group = group
         # The input type of the parameter. Valid values:
         # - Trigger: toggle.
-        # - Input: input.
+        # - Input: text input.
         # - SingleSelect: single-select.
         # - MultiSelect: multi-select.
         self.input_type = input_type
@@ -204,11 +205,11 @@ class ListGatewayFeaturesResponseBodyDataItemsDefinition(DaraModel):
         # The type supported by the parameter value. Valid values:
         # - bool: Boolean.
         # - string: String.
-        # - int32: Integer.
-        # - int64: Long integer.
+        # - int32: 32-bit integer.
+        # - int64: 64-bit integer.
         # - json: JSON format.
         # - array: JSON array format.
-        # - float: Float.
+        # - float: Floating-point.
         self.value_type = value_type
         # The unit.
         self.value_unit = value_unit
@@ -331,7 +332,7 @@ class ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions(DaraModel):
         key: str = None,
         label: str = None,
     ):
-        # The pass parameter key.
+        # The key used to pass the parameter.
         self.key = key
         # The display value.
         self.label = label
@@ -367,6 +368,7 @@ class ListGatewayFeaturesResponseBodyDataItemsConstraints(DaraModel):
         self,
         body_max_size_limit: int = None,
     ):
+        # The maximum body collection size per request in bytes. This value is returned based on the managed form of the gateway deployment cluster. Only the log-request-response feature returns this field.
         self.body_max_size_limit = body_max_size_limit
 
     def validate(self):

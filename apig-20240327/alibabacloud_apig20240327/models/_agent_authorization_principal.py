@@ -10,8 +10,15 @@ class AgentAuthorizationPrincipal(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
+        # The ID of the authorization principal. Specify a consumer ID or consumer group ID based on the value of principalType.
+        # 
         # This parameter is required.
         self.principal_id = principal_id
+        # The type of the authorization principal. Valid values:
+        # 
+        # - Consumer: consumer.
+        # - ConsumerGroup: consumer group.
+        # 
         # This parameter is required.
         self.principal_type = principal_type
 

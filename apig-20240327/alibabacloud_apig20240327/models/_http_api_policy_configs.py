@@ -16,28 +16,31 @@ class HttpApiPolicyConfigs(DaraModel):
         ai_token_rate_limit_config: main_models.AiTokenRateLimitConfig = None,
         ai_tool_selection_config: main_models.AiToolSelectionConfig = None,
         enable: bool = None,
+        policy_reference: main_models.HttpApiPolicyReference = None,
         semantic_router_config: main_models.HttpApiPolicyConfigsSemanticRouterConfig = None,
         type: str = None,
     ):
-        # AiCacheConfig
+        # The AI cache configuration.
         self.ai_cache_config = ai_cache_config
-        # AiFallbackConfig
+        # The AI fallback configuration.
         self.ai_fallback_config = ai_fallback_config
-        # AiNetworkSearchConfig
+        # The AI web search configuration.
         self.ai_network_search_config = ai_network_search_config
-        # AiSecurityGuardConfig
+        # The AI security protection configuration.
         self.ai_security_guard_config = ai_security_guard_config
-        # AiStatisticsConfig
+        # The AI statistics configuration.
         self.ai_statistics_config = ai_statistics_config
-        # AiTokenRateLimitConfig
+        # The AI token rate limiting configuration.
         self.ai_token_rate_limit_config = ai_token_rate_limit_config
-        # AiToolSelectionConfig
+        # The AI tool selection configuration.
         self.ai_tool_selection_config = ai_tool_selection_config
-        # Policy Enable
+        # Indicates whether the policy is enabled.
         self.enable = enable
-        # SemanticRouterConfig
+        # The read-only compatible reference. GetHttpApi returns policyId/policyAttachmentId for ModelAPI AiTokenRateLimit. This must be stripped before write path persistence and is not used as a bind/unbind instruction.
+        self.policy_reference = policy_reference
+        # The semantic routing configuration.
         self.semantic_router_config = semantic_router_config
-        # Policy Type
+        # The policy template type.
         self.type = type
 
     def validate(self):
@@ -55,6 +58,8 @@ class HttpApiPolicyConfigs(DaraModel):
             self.ai_token_rate_limit_config.validate()
         if self.ai_tool_selection_config:
             self.ai_tool_selection_config.validate()
+        if self.policy_reference:
+            self.policy_reference.validate()
         if self.semantic_router_config:
             self.semantic_router_config.validate()
 
@@ -86,6 +91,9 @@ class HttpApiPolicyConfigs(DaraModel):
 
         if self.enable is not None:
             result['enable'] = self.enable
+
+        if self.policy_reference is not None:
+            result['policyReference'] = self.policy_reference.to_map()
 
         if self.semantic_router_config is not None:
             result['semanticRouterConfig'] = self.semantic_router_config.to_map()
@@ -128,6 +136,10 @@ class HttpApiPolicyConfigs(DaraModel):
         if m.get('enable') is not None:
             self.enable = m.get('enable')
 
+        if m.get('policyReference') is not None:
+            temp_model = main_models.HttpApiPolicyReference()
+            self.policy_reference = temp_model.from_map(m.get('policyReference'))
+
         if m.get('semanticRouterConfig') is not None:
             temp_model = main_models.HttpApiPolicyConfigsSemanticRouterConfig()
             self.semantic_router_config = temp_model.from_map(m.get('semanticRouterConfig'))
@@ -142,7 +154,7 @@ class HttpApiPolicyConfigsSemanticRouterConfig(DaraModel):
         self,
         timeout_millisecond: int = None,
     ):
-        # Timeout in milliseconds
+        # The timeout period, in milliseconds.
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):

@@ -83,7 +83,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         self.input_amount = input_amount
         # The total output token consumption.
         self.output_amount = output_amount
-        # Indicates whether the quota limit is exceeded.
+        # Indicates whether the limit is exceeded.
         self.over_limit = over_limit
         # The total quota of the subject.
         self.total_quota = total_quota

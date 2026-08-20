@@ -68,6 +68,7 @@ from ._http_api_operation import HttpApiOperation
 from ._http_api_operation_info import HttpApiOperationInfo
 from ._http_api_parameter import HttpApiParameter
 from ._http_api_policy_configs import HttpApiPolicyConfigs
+from ._http_api_policy_reference import HttpApiPolicyReference
 from ._http_api_publish_revision_info import HttpApiPublishRevisionInfo
 from ._http_api_request_contract import HttpApiRequestContract
 from ._http_api_response_contract import HttpApiResponseContract
@@ -214,6 +215,7 @@ from ._delete_gateway_quota_rule_response import DeleteGatewayQuotaRuleResponse
 from ._delete_gateway_security_group_rule_request import DeleteGatewaySecurityGroupRuleRequest
 from ._delete_gateway_security_group_rule_response_body import DeleteGatewaySecurityGroupRuleResponseBody
 from ._delete_gateway_security_group_rule_response import DeleteGatewaySecurityGroupRuleResponse
+from ._delete_http_api_request import DeleteHttpApiRequest
 from ._delete_http_api_response_body import DeleteHttpApiResponseBody
 from ._delete_http_api_response import DeleteHttpApiResponse
 from ._delete_http_api_operation_response_body import DeleteHttpApiOperationResponseBody
@@ -287,6 +289,7 @@ from ._get_gateway_quota_rule_response import GetGatewayQuotaRuleResponse
 from ._get_gateway_quota_rule_subject_usage_request import GetGatewayQuotaRuleSubjectUsageRequest
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBody
 from ._get_gateway_quota_rule_subject_usage_response import GetGatewayQuotaRuleSubjectUsageResponse
+from ._get_http_api_request import GetHttpApiRequest
 from ._get_http_api_response_body import GetHttpApiResponseBody
 from ._get_http_api_response import GetHttpApiResponse
 from ._get_http_api_operation_response_body import GetHttpApiOperationResponseBody
@@ -960,6 +963,7 @@ __all__ = [
     HttpApiOperationInfo,
     HttpApiParameter,
     HttpApiPolicyConfigs,
+    HttpApiPolicyReference,
     HttpApiPublishRevisionInfo,
     HttpApiRequestContract,
     HttpApiResponseContract,
@@ -1106,6 +1110,7 @@ __all__ = [
     DeleteGatewaySecurityGroupRuleRequest,
     DeleteGatewaySecurityGroupRuleResponseBody,
     DeleteGatewaySecurityGroupRuleResponse,
+    DeleteHttpApiRequest,
     DeleteHttpApiResponseBody,
     DeleteHttpApiResponse,
     DeleteHttpApiOperationResponseBody,
@@ -1179,6 +1184,7 @@ __all__ = [
     GetGatewayQuotaRuleSubjectUsageRequest,
     GetGatewayQuotaRuleSubjectUsageResponseBody,
     GetGatewayQuotaRuleSubjectUsageResponse,
+    GetHttpApiRequest,
     GetHttpApiResponseBody,
     GetHttpApiResponse,
     GetHttpApiOperationResponseBody,

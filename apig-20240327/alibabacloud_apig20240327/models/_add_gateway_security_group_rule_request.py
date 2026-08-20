@@ -17,7 +17,7 @@ class AddGatewaySecurityGroupRuleRequest(DaraModel):
         self.description = description
         # The port ranges.
         self.port_ranges = port_ranges
-        # The security group ID.
+        # The security group ID. This parameter is required. The specified security group must be different from the security group associated with the gateway. Otherwise, an error is returned.
         self.security_group_id = security_group_id
 
     def validate(self):

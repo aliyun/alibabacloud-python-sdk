@@ -23,7 +23,7 @@ class CreateGatewayRequest(DaraModel):
         vpc_id: str = None,
         zone_config: main_models.CreateGatewayRequestZoneConfig = None,
     ):
-        # The billing method.
+        # The billing method. Required for the Serverless edition and must be set to POSTPAY.
         self.charge_type = charge_type
         # The gateway instance edition. Valid values:
         # 
@@ -35,24 +35,25 @@ class CreateGatewayRequest(DaraModel):
         # 
         # - Unknown: unknown.
         self.gateway_edition = gateway_edition
+        # The running mode for AI multi-tenant V2. Default value: ENTERPRISE. Only allowed when the gateway type is AI and the edition is MultiTenantServerless.
         self.gateway_mode = gateway_mode
-        # The gateway type.
+        # The gateway type. Must be explicitly set to AI for AI Serverless or multi-tenant editions.
         self.gateway_type = gateway_type
         # The gateway log configuration.
         self.log_config = log_config
-        # The gateway name.
+        # The gateway name. Required for all editions.
         self.name = name
         # The network access configuration.
         self.network_access_config = network_access_config
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The node specifications.
+        # The node specifications. Required for the Serverless edition.
         self.spec = spec
         # The list of tags.
         self.tag = tag
-        # The VPC ID.
+        # The VPC ID. Required for all editions.
         self.vpc_id = vpc_id
-        # The zone configuration.
+        # The zone configuration. Required for all editions.
         self.zone_config = zone_config
 
     def validate(self):
@@ -319,7 +320,7 @@ class CreateGatewayRequestLogConfig(DaraModel):
         self,
         sls: main_models.CreateGatewayRequestLogConfigSls = None,
     ):
-        # The Simple Log Service (SLS) configuration, which controls gateway log collection.
+        # The Simple Log Service (SLS) configuration that controls gateway log collection.
         self.sls = sls
 
     def validate(self):
@@ -349,7 +350,7 @@ class CreateGatewayRequestLogConfigSls(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to enable SLS log collection.
+        # Specifies whether to enable log collection.
         self.enable = enable
 
     def validate(self):

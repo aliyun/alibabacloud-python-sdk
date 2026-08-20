@@ -23,7 +23,7 @@ class DomainInfo(DaraModel):
         tls_min: str = None,
         update_timestamp: int = None,
     ):
-        # The SSL Certificates Service certificate identity.
+        # The certificate identity from SSL Certificates Service.
         self.cert_identifier = cert_identifier
         # The client CA certificate.
         self.client_cacert = client_cacert
@@ -37,7 +37,7 @@ class DomainInfo(DaraModel):
         self.domain_scope = domain_scope
         # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
         self.force_https = force_https
-        # Specifies whether to enable mTLS mutual authentication.
+        # Specifies whether to enable mutual TLS (mTLS) authentication.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         self.name = name
@@ -50,7 +50,9 @@ class DomainInfo(DaraModel):
         self.resource_group_id = resource_group_id
         # The domain name status.
         self.status = status
+        # The maximum TLS version. TLS 1.3 is the maximum supported version.
         self.tls_max = tls_max
+        # The minimum TLS version. TLS 1.0 is the minimum supported version.
         self.tls_min = tls_min
         # The update timestamp.
         self.update_timestamp = update_timestamp

@@ -1,3 +1,13 @@
+2026-08-20 Version: 11.0.0
+- Update API BatchImportHttpApis: add request parameters body.specContentBase64.
+- Update API CreateDomain: add request parameters dryRun.
+- Update API DeleteHttpApi: add request parameters dryRun.
+- Update API DeleteHttpApi: add request The number of query or body parameters has changed from zero to many.
+- Update API GetHttpApi: add request parameters expandPolicyConfigs.
+- Update API GetHttpApi: add request The number of query or body parameters has changed from zero to many.
+- Update API UpdateHttpApi: add request parameters dryRun.
+
+
 2026-08-12 Version: 10.2.1
 - Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.modelName.
 - Update API ListGatewayFeatures: add response parameters Body.data.items.$.constraints.

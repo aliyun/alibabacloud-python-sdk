@@ -13,6 +13,7 @@ class BatchImportHttpApisRequest(DaraModel):
         dry_run: bool = None,
         gateway_id: str = None,
         resource_group_id: str = None,
+        spec_content_base_64: str = None,
         spec_file_url: str = None,
         spec_oss_config: main_models.BatchImportHttpApisRequestSpecOssConfig = None,
         strategy: str = None,
@@ -24,6 +25,7 @@ class BatchImportHttpApisRequest(DaraModel):
         self.dry_run = dry_run
         self.gateway_id = gateway_id
         self.resource_group_id = resource_group_id
+        self.spec_content_base_64 = spec_content_base_64
         self.spec_file_url = spec_file_url
         self.spec_oss_config = spec_oss_config
         self.strategy = strategy
@@ -52,6 +54,9 @@ class BatchImportHttpApisRequest(DaraModel):
 
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+
+        if self.spec_content_base_64 is not None:
+            result['specContentBase64'] = self.spec_content_base_64
 
         if self.spec_file_url is not None:
             result['specFileUrl'] = self.spec_file_url
@@ -83,6 +88,9 @@ class BatchImportHttpApisRequest(DaraModel):
 
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+
+        if m.get('specContentBase64') is not None:
+            self.spec_content_base_64 = m.get('specContentBase64')
 
         if m.get('specFileUrl') is not None:
             self.spec_file_url = m.get('specFileUrl')

@@ -16,7 +16,7 @@ class DeployHttpApiRequest(DaraModel):
     ):
         # The HTTP API deployment configuration.
         self.http_api_config = http_api_config
-        # The REST API deployment configuration. Required when the HTTP API being published is a REST API.
+        # The REST API deployment configuration. Required when the HTTP API being published is a REST API. At least one of revisionId, environment, or gatewayId must be provided to identify the publish target.
         self.rest_api_config = rest_api_config
         # The route ID. Required when publishing a route of an HTTP API.
         self.route_id = route_id
@@ -74,11 +74,11 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
         self.environment = environment
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The operation-level deployment control list.
+        # The operation-level publish control list.
         self.operation_deployments = operation_deployments
         # The operation IDs.
         self.operation_ids = operation_ids
-        # The historical version number. If this field is specified, the publish information is based on the historical version.
+        # The historical version number. If specified, the publish uses the information from this historical version.
         self.revision_id = revision_id
 
     def validate(self):
@@ -148,7 +148,7 @@ class DeployHttpApiRequestRestApiConfigOperationDeployments(DaraModel):
         action: str = None,
         operation_id: str = None,
     ):
-        # The operation type.
+        # The action type.
         self.action = action
         # The unique identifier of the operation.
         self.operation_id = operation_id
@@ -187,13 +187,13 @@ class DeployHttpApiRequestRestApiConfigEnvironment(DaraModel):
         environment_id: str = None,
         service_configs: List[main_models.DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs] = None,
     ):
-        # The API publish scenario.
+        # The API publish scenario. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
         self.backend_scene = backend_scene
         # The list of custom domain names.
         self.custom_domain_ids = custom_domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The existing service configurations. In the single service scenario, only one entry is allowed. In the by-ratio or by-content scenarios, multiple entries are allowed.
+        # The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
         self.service_configs = service_configs
 
     def validate(self):
@@ -252,11 +252,11 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The match condition configuration related to API publishing.
+        # The match condition configuration for API publishing.
         self.match = match
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
-        # The service protocol. Valid values:
+        # The Terms of Service. Valid values:
         # - HTTP.
         # - HTTPS.
         self.protocol = protocol
@@ -264,7 +264,7 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         self.service_id = service_id
         # The service version.
         self.version = version
-        # The weight. Valid values: 1 to 100. This parameter takes effect only in the by-ratio scenario.
+        # The weight. Valid values: 1 to 100. This parameter takes effect only in ratio-based scenarios.
         self.weight = weight
 
     def validate(self):

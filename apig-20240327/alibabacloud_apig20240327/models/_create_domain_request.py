@@ -22,12 +22,13 @@ class CreateDomainRequest(DaraModel):
         tls_cipher_suites_config: main_models.TlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
+        dry_run: bool = None,
     ):
-        # The CA certificate identifier. This parameter is optional for Dedicated with HTTPS. This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+        # The CA certificate identifier. This parameter is optional for Dedicated scope with HTTPS. It is not allowed for Serverless scope and is not validated for Dedicated scope with HTTP.
         self.ca_cert_identifier = ca_cert_identifier
-        # The certificate identifier. This parameter is required for Dedicated with HTTPS and must pass validation. This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+        # The certificate identifier. This parameter is required for Dedicated scope with HTTPS and must pass validation. It is not allowed for Serverless scope and is not validated for Dedicated scope with HTTP.
         self.cert_identifier = cert_identifier
-        # The client CA certificate. This parameter is conditionally required for Dedicated with HTTPS (when MTLSEnabled is set to true). This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+        # The client CA certificate. This parameter is conditionally required for Dedicated scope with HTTPS (required when MTLSEnabled is set to true). It is not allowed for Serverless scope and is not validated for Dedicated scope with HTTP.
         self.client_cacert = client_cacert
         # The domain name scope. Valid values:
         # 
@@ -36,7 +37,7 @@ class CreateDomainRequest(DaraModel):
         # 
         # Default value: Dedicated.
         self.domain_scope = domain_scope
-        # Specifies whether to enable forced HTTPS redirect for the HTTPS protocol type. This parameter is required for Serverless and for Dedicated with HTTPS. This parameter is not validated for Dedicated with HTTP.
+        # Specifies whether to enable forced HTTPS redirect for the HTTPS protocol type. This parameter is required for Serverless scope and for Dedicated scope with HTTPS. It is not validated for Dedicated scope with HTTP.
         self.force_https = force_https
         # The gateway type. If not specified, the default value is API.
         self.gateway_type = gateway_type
@@ -48,22 +49,24 @@ class CreateDomainRequest(DaraModel):
         # 
         # Default value: GlobalConfig. This setting is supported only for HTTPS domain names in the Dedicated scope.
         self.http_2option = http_2option
-        # Specifies whether to enable mTLS mutual authentication. This parameter is optional for Dedicated with HTTPS. When set to true, ClientCACert is required. This parameter is not allowed for Serverless.
+        # Specifies whether to enable mTLS mutual authentication. This parameter is optional for Dedicated scope with HTTPS. When set to true, ClientCACert is required. This parameter is not allowed for Serverless scope.
         self.m_tlsenabled = m_tlsenabled
-        # The domain name. The name must be 1 to 128 characters in length, such as abc.com.
+        # The domain name. The name must be 1 to 128 characters in length. Example: abc.com.
         # 
         # This parameter is required.
         self.name = name
-        # The protocol type used by the domain name. Valid values: HTTP and HTTPS. This parameter is required for the Dedicated scope and is not allowed for the Serverless scope.
+        # The protocol type used by the domain name. Valid values: HTTP, HTTPS. This parameter is required for the Dedicated scope and is not allowed for the Serverless scope.
         self.protocol = protocol
         # The [resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The TLS cipher suite configuration, including the configuration type, cipher suite names, and supported TLS versions. This configuration is supported only for HTTPS domain names in the Dedicated scope.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum TLS protocol version. This parameter is optional for Dedicated with HTTPS. If not specified, the value is derived from TlsMin. The value must be greater than or equal to TlsMin. This parameter is not allowed for Serverless.
+        # The maximum TLS protocol version. This parameter is optional for Dedicated scope with HTTPS. If not specified, the value is derived from TlsMin. The value must be greater than or equal to TlsMin. This parameter is not allowed for Serverless scope.
         self.tls_max = tls_max
-        # The minimum TLS protocol version. This parameter is optional for Dedicated with HTTPS. If not specified, the default value is TLS 1.0. Valid values: TLS 1.0 to TLS 1.3, compatible with TLSv1.x. This parameter is not allowed for Serverless.
+        # The minimum TLS protocol version. This parameter is optional for Dedicated scope with HTTPS. If not specified, the default value is TLS 1.0. Valid values: TLS 1.0 to TLS 1.3 (compatible with TLSv1.x). This parameter is not allowed for Serverless scope.
         self.tls_min = tls_min
+        # Specifies whether to perform only a dry run validation. If set to true, all synchronous validations identical to an actual creation are performed (including idempotency checks for existing test domain names), but no domain name is created and no side effects are produced. If not specified or set to false, the behavior is the same as the existing version.
+        self.dry_run = dry_run
 
     def validate(self):
         if self.tls_cipher_suites_config:
@@ -116,6 +119,9 @@ class CreateDomainRequest(DaraModel):
         if self.tls_min is not None:
             result['tlsMin'] = self.tls_min
 
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+
         return result
 
     def from_map(self, m: dict = None):
@@ -162,6 +168,9 @@ class CreateDomainRequest(DaraModel):
 
         if m.get('tlsMin') is not None:
             self.tls_min = m.get('tlsMin')
+
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
 
         return self
 

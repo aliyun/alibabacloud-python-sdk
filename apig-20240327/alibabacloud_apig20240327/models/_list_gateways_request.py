@@ -36,7 +36,7 @@ class ListGatewaysRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The list of tags.
         self.tag = tag
-        # The VPC ID.
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -16,15 +16,15 @@ class HttpRouteMatch(DaraModel):
         path: main_models.HttpRouteMatchPath = None,
         query_params: List[main_models.HttpRouteMatchQueryParams] = None,
     ):
-        # The rules for matching based on HTTP request headers.
+        # The list of HTTP request header matching rules.
         self.headers = headers
         # Specifies whether the path is case-insensitive.
         self.ignore_uri_case = ignore_uri_case
-        # The HTTP methods.
+        # The list of request methods.
         self.methods = methods
         # The path rule.
         self.path = path
-        # The rules for matching based on query parameters.
+        # The list of query request parameter matching rules.
         self.query_params = query_params
 
     def validate(self):
@@ -100,11 +100,10 @@ class HttpRouteMatchQueryParams(DaraModel):
     ):
         # The parameter name.
         self.name = name
-        # The match type. Valid values:
-        # 
-        # *   Exact: exact match
-        # *   Prefix: prefix match
-        # *   Regex: regular expression
+        # The query parameter matching type. Valid values:
+        # - Exact: exact match. 
+        # - Prefix: prefix match. 
+        # - Regex: regular expression match.
         self.type = type
         # The parameter value.
         self.value = value
@@ -147,11 +146,10 @@ class HttpRouteMatchPath(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The path matching type. Valid values:
-        # 
-        # *   Exact: exact match
-        # *   Prefix: prefix match
-        # *   Regex: regular expression
+        # The path matching rule. Valid values:
+        # - Exact: exact match.
+        # - Prefix: prefix match. 
+        # - Regex: regular expression match.
         self.type = type
         # The path.
         self.value = value
@@ -189,15 +187,14 @@ class HttpRouteMatchHeaders(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The header name.
+        # The name of the header.
         self.name = name
-        # The match type. Valid values:
-        # 
-        # *   Exact: exact match
-        # *   Prefix: prefix match
-        # *   Regex: regular expression
+        # The header matching type. Valid values:
+        # - Exact: exact match.
+        # - Prefix: prefix match. 
+        # - Regex: regular expression match.
         self.type = type
-        # The header value.
+        # The value of the header.
         self.value = value
 
     def validate(self):

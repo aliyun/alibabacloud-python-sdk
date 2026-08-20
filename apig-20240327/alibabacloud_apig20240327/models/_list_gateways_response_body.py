@@ -167,10 +167,15 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id
+        # The running mode of the AI MultiTenantServerless gateway. Valid values:
+        # - ENTERPRISE: Enterprise Edition.
+        # - STANDARD: Standard Edition.
+        # 
+        # This parameter is returned only for AI MultiTenantServerless gateways.
         self.gateway_mode = gateway_mode
         # The gateway type.
         self.gateway_type = gateway_type
-        # Indicates whether the gateway instance was created before AI gateway was released.
+        # Indicates whether the gateway instance was created before the AI gateway was released.
         self.legacy = legacy
         # The list of gateway entry addresses.
         self.load_balancers = load_balancers
@@ -190,7 +195,7 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.sub_domain_infos = sub_domain_infos
         # The list of tags.
         self.tags = tags
-        # The target version of the gateway. If this value differs from the version, a version upgrade can be performed.
+        # The target version of the gateway. When this value differs from version, a version upgrade can be performed.
         self.target_version = target_version
         # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp

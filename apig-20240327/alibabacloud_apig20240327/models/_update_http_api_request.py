@@ -23,6 +23,7 @@ class UpdateHttpApiRequest(DaraModel):
         protocols: List[str] = None,
         remove_base_path_on_forward: bool = None,
         version_config: main_models.HttpApiVersionConfig = None,
+        dry_run: bool = None,
     ):
         # The list of agent protocols.
         self.agent_protocols = agent_protocols
@@ -30,13 +31,13 @@ class UpdateHttpApiRequest(DaraModel):
         self.ai_protocols = ai_protocols
         # The authentication configuration.
         self.auth_config = auth_config
-        # The API base path, which must start with /.
+        # The base path of the API. The value must start with a forward slash (/).
         # 
         # This parameter is required.
         self.base_path = base_path
         # The list of API deployment configurations.
         self.deploy_configs = deploy_configs
-        # The API description.
+        # The description of the API.
         self.description = description
         # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
@@ -44,14 +45,16 @@ class UpdateHttpApiRequest(DaraModel):
         self.first_byte_timeout = first_byte_timeout
         # The configuration of the HTTP Ingress API.
         self.ingress_config = ingress_config
-        # Specifies whether to only modify the configuration without triggering redeployment. A value of true indicates that only the configuration is modified.
+        # Specifies whether to only modify the configuration. If set to true, only the configuration is modified without triggering a redeployment.
         self.only_change_config = only_change_config
         # The list of API access protocols.
         self.protocols = protocols
         # Specifies whether to remove the base path when forwarding requests.
         self.remove_base_path_on_forward = remove_base_path_on_forward
-        # The API versioning configuration.
+        # The versioning configuration of the API.
         self.version_config = version_config
+        # Specifies whether to perform only a dry run. If set to true, all synchronous validations identical to a real update are performed without updating any configurations or producing side effects. If not specified or set to false, the behavior is the same as the existing version.
+        self.dry_run = dry_run
 
     def validate(self):
         if self.auth_config:
@@ -111,6 +114,9 @@ class UpdateHttpApiRequest(DaraModel):
         if self.version_config is not None:
             result['versionConfig'] = self.version_config.to_map()
 
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+
         return result
 
     def from_map(self, m: dict = None):
@@ -159,6 +165,9 @@ class UpdateHttpApiRequest(DaraModel):
         if m.get('versionConfig') is not None:
             temp_model = main_models.HttpApiVersionConfig()
             self.version_config = temp_model.from_map(m.get('versionConfig'))
+
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
 
         return self
 

@@ -72,7 +72,7 @@ class ListMcpServersResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of MCP servers.
+        # The MCP server list information.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -154,16 +154,16 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
     ):
         # API ID。
         self.api_id = api_id
-        # The list of assembly sources. This parameter is required when type is AssemblyMCP.
+        # The list of assembled sources. This parameter is required when type is AssemblyMCP.
         self.assembled_sources = assembled_sources
         # The backend service of the route.
         self.backend = backend
         # The creation source type. Valid values:
         # 
-        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP.
         # - ApiGatewayMcpHosting: gateway-managed MCP direct proxy.
         # - ApiGatewayAssembly: gateway MCP assembly.
-        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP.
         # - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
         self.create_from_type = create_from_type
         # The deployment status of the API in the current environment.
@@ -188,7 +188,7 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
         self.mcp_server_id = mcp_server_id
         # The MCP server access path provided by the gateway.
         self.mcp_server_path = mcp_server_path
-        # Indicates whether MCP observability is enabled. Default value: false.
+        # Specifies whether MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
         # The Nacos-synced managed MCP information.
         self.nacos_mcp_sync_info = nacos_mcp_sync_info

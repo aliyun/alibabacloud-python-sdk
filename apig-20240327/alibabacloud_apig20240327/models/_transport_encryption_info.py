@@ -16,10 +16,15 @@ class TransportEncryptionInfo(DaraModel):
         http_2enabled: bool = None,
         tls_policy: str = None,
     ):
+        # The list of transport certificates added by the user.
         self.certificates = certificates
+        # The reason for the deployment failure.
         self.deploy_error = deploy_error
+        # The submit status.
         self.deploy_status = deploy_status
+        # Indicates whether HTTP/2 is enabled.
         self.http_2enabled = http_2enabled
+        # The TLS cipher suite policy.
         self.tls_policy = tls_policy
 
     def validate(self):

@@ -33,7 +33,7 @@ class ListGatewaysShrinkRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The list of tags.
         self.tag_shrink = tag_shrink
-        # The VPC ID.
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):

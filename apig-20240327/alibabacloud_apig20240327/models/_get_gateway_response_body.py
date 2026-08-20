@@ -104,10 +104,14 @@ class GetGatewayResponseBodyData(DaraModel):
         self.environments = environments
         # The subscription expiration timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
-        # The gateway instance edition. Valid values:
+        # The edition of the gateway instance. Valid values:
+        # 
+        # - Professional: standard instance.
+        # - Serverless: Serverless.
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id
+        # The running mode of AI multi-tenant V2. Default value: ENTERPRISE. This parameter can be specified only when AI + MultiTenantServerless is used.
         self.gateway_mode = gateway_mode
         # The gateway type. Valid values:
         self.gateway_type = gateway_type
@@ -133,6 +137,7 @@ class GetGatewayResponseBodyData(DaraModel):
         self.tags = tags
         # The target version of the gateway. When this value differs from version, a version upgrade can be performed.
         self.target_version = target_version
+        # The tenant ID returned in STANDARD mode.
         self.tenant_id = tenant_id
         # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp

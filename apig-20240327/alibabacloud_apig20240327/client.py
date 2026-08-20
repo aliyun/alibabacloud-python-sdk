@@ -546,6 +546,8 @@ class Client(OpenApiClient):
             body['gatewayId'] = request.gateway_id
         if not DaraCore.is_null(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.spec_content_base_64):
+            body['specContentBase64'] = request.spec_content_base_64
         if not DaraCore.is_null(request.spec_file_url):
             body['specFileUrl'] = request.spec_file_url
         if not DaraCore.is_null(request.spec_oss_config):
@@ -592,6 +594,8 @@ class Client(OpenApiClient):
             body['gatewayId'] = request.gateway_id
         if not DaraCore.is_null(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.spec_content_base_64):
+            body['specContentBase64'] = request.spec_content_base_64
         if not DaraCore.is_null(request.spec_file_url):
             body['specFileUrl'] = request.spec_file_url
         if not DaraCore.is_null(request.spec_oss_config):
@@ -1471,6 +1475,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateDomainResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.ca_cert_identifier):
             body['caCertIdentifier'] = request.ca_cert_identifier
@@ -1502,6 +1509,7 @@ class Client(OpenApiClient):
             body['tlsMin'] = request.tls_min
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1527,6 +1535,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateDomainResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.ca_cert_identifier):
             body['caCertIdentifier'] = request.ca_cert_identifier
@@ -1558,6 +1569,7 @@ class Client(OpenApiClient):
             body['tlsMin'] = request.tls_min
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3745,11 +3757,17 @@ class Client(OpenApiClient):
     def delete_http_api_with_options(
         self,
         http_api_id: str,
+        request: main_models.DeleteHttpApiRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteHttpApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'DeleteHttpApi',
@@ -3770,11 +3788,17 @@ class Client(OpenApiClient):
     async def delete_http_api_with_options_async(
         self,
         http_api_id: str,
+        request: main_models.DeleteHttpApiRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.DeleteHttpApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'DeleteHttpApi',
@@ -3795,18 +3819,20 @@ class Client(OpenApiClient):
     def delete_http_api(
         self,
         http_api_id: str,
+        request: main_models.DeleteHttpApiRequest,
     ) -> main_models.DeleteHttpApiResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.delete_http_api_with_options(http_api_id, headers, runtime)
+        return self.delete_http_api_with_options(http_api_id, request, headers, runtime)
 
     async def delete_http_api_async(
         self,
         http_api_id: str,
+        request: main_models.DeleteHttpApiRequest,
     ) -> main_models.DeleteHttpApiResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.delete_http_api_with_options_async(http_api_id, headers, runtime)
+        return await self.delete_http_api_with_options_async(http_api_id, request, headers, runtime)
 
     def delete_http_api_operation_with_options(
         self,
@@ -5907,11 +5933,17 @@ class Client(OpenApiClient):
     def get_http_api_with_options(
         self,
         http_api_id: str,
+        request: main_models.GetHttpApiRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetHttpApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.expand_policy_configs):
+            query['expandPolicyConfigs'] = request.expand_policy_configs
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'GetHttpApi',
@@ -5932,11 +5964,17 @@ class Client(OpenApiClient):
     async def get_http_api_with_options_async(
         self,
         http_api_id: str,
+        request: main_models.GetHttpApiRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetHttpApiResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.expand_policy_configs):
+            query['expandPolicyConfigs'] = request.expand_policy_configs
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'GetHttpApi',
@@ -5957,18 +5995,20 @@ class Client(OpenApiClient):
     def get_http_api(
         self,
         http_api_id: str,
+        request: main_models.GetHttpApiRequest,
     ) -> main_models.GetHttpApiResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_http_api_with_options(http_api_id, headers, runtime)
+        return self.get_http_api_with_options(http_api_id, request, headers, runtime)
 
     async def get_http_api_async(
         self,
         http_api_id: str,
+        request: main_models.GetHttpApiRequest,
     ) -> main_models.GetHttpApiResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_http_api_with_options_async(http_api_id, headers, runtime)
+        return await self.get_http_api_with_options_async(http_api_id, request, headers, runtime)
 
     def get_http_api_operation_with_options(
         self,
@@ -11956,6 +11996,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateHttpApiResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.agent_protocols):
             body['agentProtocols'] = request.agent_protocols
@@ -11985,6 +12028,7 @@ class Client(OpenApiClient):
             body['versionConfig'] = request.version_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -12011,6 +12055,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateHttpApiResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.agent_protocols):
             body['agentProtocols'] = request.agent_protocols
@@ -12040,6 +12087,7 @@ class Client(OpenApiClient):
             body['versionConfig'] = request.version_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
