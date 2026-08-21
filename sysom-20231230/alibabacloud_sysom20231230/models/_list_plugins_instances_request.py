@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListPluginsInstancesRequest(DaraModel):
     def __init__(
         self,
+        x_debug_id: str = None,
         current: int = None,
         instance_id_name: str = None,
         instance_tag: str = None,
@@ -14,20 +15,22 @@ class ListPluginsInstancesRequest(DaraModel):
         page_size: int = None,
         plugin_id: str = None,
         region: str = None,
+        x_sysom_invoke_source: str = None,
     ):
-        # The current page number. This field is present when pagination is used.
+        self.x_debug_id = x_debug_id
+        # The page number for pagination. This field indicates the current page.
         self.current = current
         # Filters instances by instance ID or instance name. Fuzzy match is supported.
         self.instance_id_name = instance_id_name
         # Filters instances by instance tag.
         self.instance_tag = instance_tag
-        # Filters instances by plug-in installation status.
+        # Filters instances by plugin installation status.
         # 
         # This parameter is required.
         self.operation_type = operation_type
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Filters the instance list by the specified agent. If this parameter is specified, only instances associated with the specified agent are returned.
+        # Specifies the agent ID to filter the instance list for the specified agent.
         # 
         # This parameter is required.
         self.plugin_id = plugin_id
@@ -35,6 +38,7 @@ class ListPluginsInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region = region
+        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         pass
@@ -44,6 +48,9 @@ class ListPluginsInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.x_debug_id is not None:
+            result['X-Debug-Id'] = self.x_debug_id
+
         if self.current is not None:
             result['current'] = self.current
 
@@ -65,10 +72,16 @@ class ListPluginsInstancesRequest(DaraModel):
         if self.region is not None:
             result['region'] = self.region
 
+        if self.x_sysom_invoke_source is not None:
+            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('X-Debug-Id') is not None:
+            self.x_debug_id = m.get('X-Debug-Id')
+
         if m.get('current') is not None:
             self.current = m.get('current')
 
@@ -89,6 +102,9 @@ class ListPluginsInstancesRequest(DaraModel):
 
         if m.get('region') is not None:
             self.region = m.get('region')
+
+        if m.get('x-sysom-invoke-source') is not None:
+            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

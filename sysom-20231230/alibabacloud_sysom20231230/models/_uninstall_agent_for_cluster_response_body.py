@@ -23,7 +23,7 @@ class UninstallAgentForClusterResponseBody(DaraModel):
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error information of the request.
+        # - Otherwise, this field contains the request error information.
         self.message = message
 
     def validate(self):
@@ -71,7 +71,7 @@ class UninstallAgentForClusterResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID. You can use this task ID to call GetAgentTasK to query the execution status of the task.
+        # The task ID. You can use this task ID to call GetAgentTask to query the execution status of the task.
         self.task_id = task_id
 
     def validate(self):

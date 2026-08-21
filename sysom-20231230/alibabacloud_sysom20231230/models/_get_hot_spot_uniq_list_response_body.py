@@ -16,17 +16,17 @@ class GetHotSpotUniqListResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # Status code
-        # - `code == Success` indicates that the authorization is successful;
-        # - Other status codes indicate that the authorization has failed. When authorization fails, check the `message` field for detailed error information;
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed error message.
         self.code = code
-        # Response data
+        # The returned data.
         self.data = data
-        # Response message
+        # The response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # true indicates the API call succeeded, false indicates the API call failed
+        # Indicates whether the API call is successful. true: successful. false: failed.
         self.success = success
 
     def validate(self):
@@ -81,9 +81,9 @@ class GetHotSpotUniqListResponseBodyData(DaraModel):
         columns: List[str] = None,
         values: List[str] = None,
     ):
-        # List of data column names
+        # The list of data names.
         self.columns = columns
-        # List of data values
+        # The list of data values.
         self.values = values
 
     def validate(self):

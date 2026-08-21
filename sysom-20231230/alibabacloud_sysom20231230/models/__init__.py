@@ -59,6 +59,9 @@ from ._get_alert_destination_response import GetAlertDestinationResponse
 from ._get_alert_strategy_request import GetAlertStrategyRequest
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBody
 from ._get_alert_strategy_response import GetAlertStrategyResponse
+from ._get_config_by_name_request import GetConfigByNameRequest
+from ._get_config_by_name_response_body import GetConfigByNameResponseBody
+from ._get_config_by_name_response import GetConfigByNameResponse
 from ._get_copilot_history_request import GetCopilotHistoryRequest
 from ._get_copilot_history_response_body import GetCopilotHistoryResponseBody
 from ._get_copilot_history_response import GetCopilotHistoryResponse
@@ -164,6 +167,9 @@ from ._list_diagnosis_response import ListDiagnosisResponse
 from ._list_instance_health_request import ListInstanceHealthRequest
 from ._list_instance_health_response_body import ListInstanceHealthResponseBody
 from ._list_instance_health_response import ListInstanceHealthResponse
+from ._list_instance_info_request import ListInstanceInfoRequest
+from ._list_instance_info_response_body import ListInstanceInfoResponseBody
+from ._list_instance_info_response import ListInstanceInfoResponse
 from ._list_instance_status_request import ListInstanceStatusRequest
 from ._list_instance_status_response_body import ListInstanceStatusResponseBody
 from ._list_instance_status_response import ListInstanceStatusResponse
@@ -292,6 +298,7 @@ from ._list_cluster_agent_install_records_response_body import ListClusterAgentI
 from ._list_clusters_response_body import ListClustersResponseBodyData
 from ._list_diagnosis_response_body import ListDiagnosisResponseBodyData
 from ._list_instance_health_response_body import ListInstanceHealthResponseBodyData
+from ._list_instance_info_response_body import ListInstanceInfoResponseBodyData
 from ._list_instance_status_response_body import ListInstanceStatusResponseBodyData
 from ._list_instances_response_body import ListInstancesResponseBodyData
 from ._list_instances_ecs_info_list_response_body import ListInstancesEcsInfoListResponseBodyData
@@ -380,6 +387,9 @@ __all__ = [
     GetAlertStrategyRequest,
     GetAlertStrategyResponseBody,
     GetAlertStrategyResponse,
+    GetConfigByNameRequest,
+    GetConfigByNameResponseBody,
+    GetConfigByNameResponse,
     GetCopilotHistoryRequest,
     GetCopilotHistoryResponseBody,
     GetCopilotHistoryResponse,
@@ -485,6 +495,9 @@ __all__ = [
     ListInstanceHealthRequest,
     ListInstanceHealthResponseBody,
     ListInstanceHealthResponse,
+    ListInstanceInfoRequest,
+    ListInstanceInfoResponseBody,
+    ListInstanceInfoResponse,
     ListInstanceStatusRequest,
     ListInstanceStatusResponseBody,
     ListInstanceStatusResponse,
@@ -613,6 +626,7 @@ __all__ = [
     ListClustersResponseBodyData,
     ListDiagnosisResponseBodyData,
     ListInstanceHealthResponseBodyData,
+    ListInstanceInfoResponseBodyData,
     ListInstanceStatusResponseBodyData,
     ListInstancesResponseBodyData,
     ListInstancesEcsInfoListResponseBodyData,

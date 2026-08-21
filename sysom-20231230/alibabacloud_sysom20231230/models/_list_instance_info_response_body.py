@@ -7,22 +7,21 @@ from typing import List
 from alibabacloud_sysom20231230 import models as main_models
 from darabonba.model import DaraModel
 
-class GetCopilotHistoryResponseBody(DaraModel):
+class ListInstanceInfoResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: List[main_models.GetCopilotHistoryResponseBodyData] = None,
+        data: List[main_models.ListInstanceInfoResponseBodyData] = None,
+        max_results: int = None,
         message: str = None,
+        next_token: str = None,
         request_id: str = None,
     ):
-        # The error code.
         self.code = code
-        # The list of chat records. The length equals the requested count. If the actual chat records are fewer than the requested count, the actual number is returned. Format: [{"user":"","content":"".question,"time":""},{...}]
         self.data = data
-        # The error message.
-        # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error message.
+        self.max_results = max_results
         self.message = message
+        self.next_token = next_token
         # Id of the request
         self.request_id = request_id
 
@@ -45,8 +44,14 @@ class GetCopilotHistoryResponseBody(DaraModel):
             for k1 in self.data:
                 result['data'].append(k1.to_map() if k1 else None)
 
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+
         if self.message is not None:
             result['message'] = self.message
+
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -61,32 +66,33 @@ class GetCopilotHistoryResponseBody(DaraModel):
         self.data = []
         if m.get('data') is not None:
             for k1 in m.get('data'):
-                temp_model = main_models.GetCopilotHistoryResponseBodyData()
+                temp_model = main_models.ListInstanceInfoResponseBodyData()
                 self.data.append(temp_model.from_map(k1))
+
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
 
         if m.get('message') is not None:
             self.message = m.get('message')
+
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
         return self
 
-class GetCopilotHistoryResponseBodyData(DaraModel):
+class ListInstanceInfoResponseBodyData(DaraModel):
     def __init__(
         self,
-        content: str = None,
-        time: str = None,
-        user: str = None,
+        info_key: str = None,
+        info_type: str = None,
+        info_value: str = None,
     ):
-        # The chat content text.
-        self.content = content
-        # The time of the chat record. The value is of the string type.
-        self.time = time
-        # The role identifier. Valid values:
-        # - user: a user.
-        # - copilot: a bot.
-        self.user = user
+        self.info_key = info_key
+        self.info_type = info_type
+        self.info_value = info_value
 
     def validate(self):
         pass
@@ -96,27 +102,27 @@ class GetCopilotHistoryResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.content is not None:
-            result['content'] = self.content
+        if self.info_key is not None:
+            result['infoKey'] = self.info_key
 
-        if self.time is not None:
-            result['time'] = self.time
+        if self.info_type is not None:
+            result['infoType'] = self.info_type
 
-        if self.user is not None:
-            result['user'] = self.user
+        if self.info_value is not None:
+            result['infoValue'] = self.info_value
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('content') is not None:
-            self.content = m.get('content')
+        if m.get('infoKey') is not None:
+            self.info_key = m.get('infoKey')
 
-        if m.get('time') is not None:
-            self.time = m.get('time')
+        if m.get('infoType') is not None:
+            self.info_type = m.get('infoType')
 
-        if m.get('user') is not None:
-            self.user = m.get('user')
+        if m.get('infoValue') is not None:
+            self.info_value = m.get('infoValue')
 
         return self
 

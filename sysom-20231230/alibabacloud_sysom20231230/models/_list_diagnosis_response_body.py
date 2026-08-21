@@ -16,21 +16,21 @@ class ListDiagnosisResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
-        # Request ID, which can be used for full-link diagnostics
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code
-        # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned data
+        # The returned data.
         self.data = data
-        # Error message
+        # The error message.
         # - If `code == Success`, this field is empty.
         # - Otherwise, this field contains the request error message.
         # 
         # This parameter is required.
         self.message = message
-        # Total
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -100,32 +100,33 @@ class ListDiagnosisResponseBodyData(DaraModel):
         updated_at: str = None,
         url: str = None,
     ):
-        # Diagnostic error code. 0 indicates no error.
+        # The diagnostic error code. A value of 0 indicates no error.
         self.code = code
-        # Diagnostic command
+        # The diagnostic command.
         self.command = command
-        # Creation time
+        # The creation time.
         self.created_at = created_at
-        # Error message
+        # The error message.
         self.err_msg = err_msg
-        # Diagnostic parameters
+        # The diagnostic parameters.
         self.params = params
-        # Diagnostic result
+        # The diagnostic result.
         self.result = result
-        # Diagnostic type
+        # The diagnostic type.
         self.service_name = service_name
-        # Execution status of the diagnostic task.
+        # The execution status of the diagnostic task.
+        # 
         # Valid values:
-        # - **Ready**: Ready
-        # - **Running**: Running
-        # - **Success**: Execution succeeded
-        # - **Fail**: Execution failed
+        # - **Ready**: Ready.
+        # - **Running**: Running.
+        # - **Success**: Succeeded.
+        # - **Fail**: Failed.
         self.status = status
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Update time
+        # The update time.
         self.updated_at = updated_at
-        # URL for diagnostic details
+        # The URL of the diagnostic details.
         self.url = url
 
     def validate(self):

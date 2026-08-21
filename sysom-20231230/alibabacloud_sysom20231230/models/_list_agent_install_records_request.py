@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListAgentInstallRecordsRequest(DaraModel):
     def __init__(
         self,
+        x_debug_id: str = None,
         current: int = None,
         instance_id: str = None,
         page_size: int = None,
@@ -14,7 +15,9 @@ class ListAgentInstallRecordsRequest(DaraModel):
         plugin_version: str = None,
         region: str = None,
         status: str = None,
+        x_sysom_invoke_source: str = None,
     ):
+        self.x_debug_id = x_debug_id
         # The current page number. Pages start from page 1.
         self.current = current
         # The ID of the instance. If you specify this parameter, only the Agent installation records for the specified instance are returned.
@@ -29,6 +32,7 @@ class ListAgentInstallRecordsRequest(DaraModel):
         self.region = region
         # Filters component installation records by status.
         self.status = status
+        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         pass
@@ -38,6 +42,9 @@ class ListAgentInstallRecordsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.x_debug_id is not None:
+            result['X-Debug-Id'] = self.x_debug_id
+
         if self.current is not None:
             result['current'] = self.current
 
@@ -59,10 +66,16 @@ class ListAgentInstallRecordsRequest(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
+        if self.x_sysom_invoke_source is not None:
+            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('X-Debug-Id') is not None:
+            self.x_debug_id = m.get('X-Debug-Id')
+
         if m.get('current') is not None:
             self.current = m.get('current')
 
@@ -83,6 +96,9 @@ class ListAgentInstallRecordsRequest(DaraModel):
 
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        if m.get('x-sysom-invoke-source') is not None:
+            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

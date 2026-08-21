@@ -94,7 +94,7 @@ class GetListRecordResponseBodyData(DaraModel):
         self.analysis_time = analysis_time
         # The analysis parameters of the AI job analysis.
         self.arguments = arguments
-        # The failure log of the analysis.
+        # The analysis failure log.
         self.failed_log = failed_log
         # The analysis status.
         self.status = status

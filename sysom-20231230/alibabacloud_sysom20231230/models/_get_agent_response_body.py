@@ -15,17 +15,17 @@ class GetAgentResponseBody(DaraModel):
         data: main_models.GetAgentResponseBodyData = None,
         message: str = None,
     ):
-        # Request ID, which can be used for end-to-end diagnostics
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code
-        # - `code == Success` indicates the authorization is successful;
-        # - Other status codes indicate authorization failure. Check the `message` field for detailed error information when authorization fails;
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
         self.code = code
-        # Response data.
+        # The returned data.
         self.data = data
-        # Error message
-        # - If `code == Success`, this field is empty;
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
 
     def validate(self):
@@ -80,21 +80,21 @@ class GetAgentResponseBodyData(DaraModel):
         updated_at: str = None,
         versions: List[main_models.GetAgentResponseBodyDataVersions] = None,
     ):
-        # Agent creation time
+        # The time when the component was created.
         self.created_at = created_at
-        # Agent description
+        # The component description.
         self.description = description
-        # Agent ID
+        # The component ID.
         self.id = id
-        # Agent name
+        # The component name.
         self.name = name
-        # Supported architectures
+        # The supported architectures.
         self.support_arch = support_arch
-        # Agent type
+        # The agent type.
         self.type = type
-        # Update time
+        # The time when the component was last updated.
         self.updated_at = updated_at
-        # Agent version information
+        # The component version information.
         self.versions = versions
 
     def validate(self):
@@ -177,17 +177,17 @@ class GetAgentResponseBodyDataVersions(DaraModel):
         upgrade_script: str = None,
         version: str = None,
     ):
-        # Agent version creation time
+        # The time when the agent version was created.
         self.created_at = created_at
-        # Installation script for this agent version
+        # The installation script for this agent version.
         self.install_script = install_script
-        # Uninstallation script for this agent version
+        # The uninstallation script for this agent version.
         self.uninstall_script = uninstall_script
-        # Agent version update time
+        # The time when the agent version was last updated.
         self.updated_at = updated_at
-        # Upgrade script for this agent version
+        # The update script for this agent version.
         self.upgrade_script = upgrade_script
-        # Agent version number
+        # The agent version number.
         self.version = version
 
     def validate(self):

@@ -7,13 +7,16 @@ from darabonba.model import DaraModel
 class ListInstancesRequest(DaraModel):
     def __init__(
         self,
+        x_debug_id: str = None,
         cluster_id: str = None,
         current: int = None,
         instance: str = None,
         page_size: int = None,
         region: str = None,
         status: str = None,
+        x_sysom_invoke_source: str = None,
     ):
+        self.x_debug_id = x_debug_id
         # The cluster ID.
         self.cluster_id = cluster_id
         # The current page number. This field exists when pagination is used.
@@ -26,6 +29,7 @@ class ListInstancesRequest(DaraModel):
         self.region = region
         # Filters instances by status.
         self.status = status
+        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         pass
@@ -35,6 +39,9 @@ class ListInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.x_debug_id is not None:
+            result['X-Debug-Id'] = self.x_debug_id
+
         if self.cluster_id is not None:
             result['cluster_id'] = self.cluster_id
 
@@ -53,10 +60,16 @@ class ListInstancesRequest(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
+        if self.x_sysom_invoke_source is not None:
+            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('X-Debug-Id') is not None:
+            self.x_debug_id = m.get('X-Debug-Id')
+
         if m.get('cluster_id') is not None:
             self.cluster_id = m.get('cluster_id')
 
@@ -74,6 +87,9 @@ class ListInstancesRequest(DaraModel):
 
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        if m.get('x-sysom-invoke-source') is not None:
+            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

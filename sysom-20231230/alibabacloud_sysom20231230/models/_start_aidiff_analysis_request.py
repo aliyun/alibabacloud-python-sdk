@@ -10,9 +10,12 @@ from darabonba.model import DaraModel
 class StartAIDiffAnalysisRequest(DaraModel):
     def __init__(
         self,
+        x_debug_id: str = None,
         task_1: main_models.StartAIDiffAnalysisRequestTask1 = None,
         task_2: main_models.StartAIDiffAnalysisRequestTask2 = None,
+        x_sysom_invoke_source: str = None,
     ):
+        self.x_debug_id = x_debug_id
         # The task1 parameters.
         # 
         # This parameter is required.
@@ -21,6 +24,7 @@ class StartAIDiffAnalysisRequest(DaraModel):
         # 
         # This parameter is required.
         self.task_2 = task_2
+        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         if self.task_1:
@@ -33,16 +37,25 @@ class StartAIDiffAnalysisRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.x_debug_id is not None:
+            result['X-Debug-Id'] = self.x_debug_id
+
         if self.task_1 is not None:
             result['task1'] = self.task_1.to_map()
 
         if self.task_2 is not None:
             result['task2'] = self.task_2.to_map()
 
+        if self.x_sysom_invoke_source is not None:
+            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('X-Debug-Id') is not None:
+            self.x_debug_id = m.get('X-Debug-Id')
+
         if m.get('task1') is not None:
             temp_model = main_models.StartAIDiffAnalysisRequestTask1()
             self.task_1 = temp_model.from_map(m.get('task1'))
@@ -50,6 +63,9 @@ class StartAIDiffAnalysisRequest(DaraModel):
         if m.get('task2') is not None:
             temp_model = main_models.StartAIDiffAnalysisRequestTask2()
             self.task_2 = temp_model.from_map(m.get('task2'))
+
+        if m.get('x-sysom-invoke-source') is not None:
+            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 
@@ -65,7 +81,7 @@ class StartAIDiffAnalysisRequestTask2(DaraModel):
         # 
         # This parameter is required.
         self.analysis_id = analysis_id
-        # The pids of AI job processes. Batch input is supported. Separate multiple pids with commas.
+        # The process IDs (PIDs) of AI job processes. Batch input is supported with comma-separated values.
         # 
         # This parameter is required.
         self.pids = pids
@@ -126,7 +142,7 @@ class StartAIDiffAnalysisRequestTask1(DaraModel):
     ):
         # The AI analysis ID.
         self.analysis_id = analysis_id
-        # The pids of AI job processes. Batch input is supported. Separate multiple pids with commas.
+        # The process IDs (PIDs) of AI job processes. Batch input is supported with comma-separated values.
         self.pids = pids
         # The step end time, calculated based on the selected step number.
         self.step_end = step_end

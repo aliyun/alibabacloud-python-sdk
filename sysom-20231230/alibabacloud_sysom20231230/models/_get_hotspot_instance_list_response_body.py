@@ -15,11 +15,11 @@ class GetHotspotInstanceListResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Error code
+        # The error code.
         self.code = code
-        # Response data.
+        # The returned data.
         self.data = data
-        # Description
+        # The description.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -70,9 +70,9 @@ class GetHotspotInstanceListResponseBodyData(DaraModel):
         columns: List[str] = None,
         values: List[str] = None,
     ):
-        # Field names
+        # The field names.
         self.columns = columns
-        # Instance list
+        # The instance list.
         self.values = values
 
     def validate(self):

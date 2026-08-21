@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetAIQueryResultResponseBody(DaraModel):
+class GetConfigByNameResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
@@ -12,11 +12,15 @@ class GetAIQueryResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The error code.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed error message.
         self.code = code
-        # The returned result. The data volume is large.
+        # The response data.
         self.data = data
         # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # Id of the request
         self.request_id = request_id

@@ -13,15 +13,15 @@ class GetInstantScoreResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code.
-        # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate authorization failure. Check the `message` field for detailed error information when authorization fails.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization has failed. If the authorization has failed, check the `message` field for the detailed fault information.
         self.code = code
-        # Response data.
+        # The returned data.
         self.data = data
-        # Error message.
+        # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error message.
+        # - Otherwise, this field contains the error information of the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -75,15 +75,15 @@ class GetInstantScoreResponseBodyData(DaraModel):
         saturation: float = None,
         total: float = None,
     ):
-        # Error score.
+        # The error score.
         self.error = error
-        # Latency score.
+        # The latency score.
         self.latency = latency
-        # Load score.
+        # The load score.
         self.load = load
-        # Saturation score.
+        # The saturation score.
         self.saturation = saturation
-        # Total score.
+        # The total score.
         self.total = total
 
     def validate(self):

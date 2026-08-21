@@ -16,19 +16,19 @@ class ListClusterAgentInstallRecordsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
-        # Request ID, which can be used for end-to-end diagnostics.
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code.
+        # The status code.
         # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Response results.
+        # The returned result.
         self.data = data
-        # Error message.
+        # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error message.
+        # - Otherwise, this field contains the request error information.
         self.message = message
-        # Total number of query results.
+        # The total number of query results.
         self.total = total
 
     def validate(self):
@@ -97,19 +97,19 @@ class ListClusterAgentInstallRecordsResponseBodyData(DaraModel):
     ):
         self.agent_config_id = agent_config_id
         self.agent_config_name = agent_config_name
-        # Cluster ID.
+        # The cluster ID.
         # 
         # > This cluster ID is not the ACK cluster ID.
         self.cluster_id = cluster_id
-        # Creation time.
+        # The creation time.
         self.created_at = created_at
-        # Canary release configuration.
+        # The canary release environment.
         self.grayscale_config = grayscale_config
-        # Component ID.
+        # The component ID.
         self.plugin_id = plugin_id
-        # Plugin version.
+        # The plug-in version.
         self.plugin_version = plugin_version
-        # Modification time.
+        # The modification time.
         self.updated_at = updated_at
 
     def validate(self):

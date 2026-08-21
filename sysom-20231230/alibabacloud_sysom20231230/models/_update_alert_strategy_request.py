@@ -10,12 +10,15 @@ from darabonba.model import DaraModel
 class UpdateAlertStrategyRequest(DaraModel):
     def __init__(
         self,
+        x_debug_id: str = None,
         enabled: bool = None,
         id: int = None,
         k_8s_label: bool = None,
         name: str = None,
         strategy: main_models.UpdateAlertStrategyRequestStrategy = None,
+        x_sysom_invoke_source: str = None,
     ):
+        self.x_debug_id = x_debug_id
         # Specifies whether the alert policy is enabled.
         # 
         # This parameter is required.
@@ -24,6 +27,7 @@ class UpdateAlertStrategyRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
+        # The Kubernetes labels.
         self.k_8s_label = k_8s_label
         # The Policy Name of the alerting policy.
         # 
@@ -33,6 +37,7 @@ class UpdateAlertStrategyRequest(DaraModel):
         # 
         # This parameter is required.
         self.strategy = strategy
+        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         if self.strategy:
@@ -43,6 +48,9 @@ class UpdateAlertStrategyRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.x_debug_id is not None:
+            result['X-Debug-Id'] = self.x_debug_id
+
         if self.enabled is not None:
             result['enabled'] = self.enabled
 
@@ -58,10 +66,16 @@ class UpdateAlertStrategyRequest(DaraModel):
         if self.strategy is not None:
             result['strategy'] = self.strategy.to_map()
 
+        if self.x_sysom_invoke_source is not None:
+            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('X-Debug-Id') is not None:
+            self.x_debug_id = m.get('X-Debug-Id')
+
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
 
@@ -78,6 +92,9 @@ class UpdateAlertStrategyRequest(DaraModel):
             temp_model = main_models.UpdateAlertStrategyRequestStrategy()
             self.strategy = temp_model.from_map(m.get('strategy'))
 
+        if m.get('x-sysom-invoke-source') is not None:
+            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
+
         return self
 
 class UpdateAlertStrategyRequestStrategy(DaraModel):
@@ -89,8 +106,9 @@ class UpdateAlertStrategyRequestStrategy(DaraModel):
     ):
         # The collection of clusters for which alerts are received.
         self.clusters = clusters
+        # The alert contacts.
         self.destinations = destinations
-        # 接收告警的异常项合计
+        # The collection of anomaly items for which alerts are received.
         self.items = items
 
     def validate(self):

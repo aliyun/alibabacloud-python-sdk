@@ -13,11 +13,11 @@ class StartAIAnalysisResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The return code.
         self.code = code
-        # Response data
+        # The response data.
         self.data = data
-        # Error message.
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -67,7 +67,7 @@ class StartAIAnalysisResponseBodyData(DaraModel):
         self,
         analysis_id: str = None,
     ):
-        # AI analysis ID
+        # The AI analysis ID.
         self.analysis_id = analysis_id
 
     def validate(self):

@@ -7,26 +7,30 @@ from darabonba.model import DaraModel
 class ListInstancesEcsInfoListRequest(DaraModel):
     def __init__(
         self,
+        x_debug_id: str = None,
         info_type: str = None,
         instance_id: str = None,
         managed_type: str = None,
         plugin_id: str = None,
         region: str = None,
+        x_sysom_invoke_source: str = None,
     ):
+        self.x_debug_id = x_debug_id
         # The type of information to retrieve.
         # 
         # This parameter is required.
         self.info_type = info_type
-        # Specifies the instance ID to filter and return the Agent installation status of the specified instance.
+        # Specifies the instance ID to filter the Agent installation status of the specified instance.
         self.instance_id = instance_id
         # The management status of the instance.
         self.managed_type = managed_type
-        # Specifies the component ID to filter and return the instance information list for the corresponding component.
+        # Specifies the component ID to filter the instance information list for the corresponding component.
         self.plugin_id = plugin_id
         # The region used to filter instances.
         # 
         # This parameter is required.
         self.region = region
+        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         pass
@@ -36,6 +40,9 @@ class ListInstancesEcsInfoListRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.x_debug_id is not None:
+            result['X-Debug-Id'] = self.x_debug_id
+
         if self.info_type is not None:
             result['info_type'] = self.info_type
 
@@ -51,10 +58,16 @@ class ListInstancesEcsInfoListRequest(DaraModel):
         if self.region is not None:
             result['region'] = self.region
 
+        if self.x_sysom_invoke_source is not None:
+            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('X-Debug-Id') is not None:
+            self.x_debug_id = m.get('X-Debug-Id')
+
         if m.get('info_type') is not None:
             self.info_type = m.get('info_type')
 
@@ -69,6 +82,9 @@ class ListInstancesEcsInfoListRequest(DaraModel):
 
         if m.get('region') is not None:
             self.region = m.get('region')
+
+        if m.get('x-sysom-invoke-source') is not None:
+            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

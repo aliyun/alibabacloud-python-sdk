@@ -14,14 +14,14 @@ class CreateVmcoreDiagnosisTaskResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - If code is Success, the authorization is successful.
-        # - Other status codes indicate that the authorization has failed. Check the message field for the detailed fault message.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
-        # - If code is Success, this field is empty.
-        # - Otherwise, this field contains the error message for the request.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # The request ID.
         self.request_id = request_id

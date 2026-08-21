@@ -15,8 +15,8 @@ class GetInspectionReportResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed error message.
         self.code = code
         # The response data.
         self.data = data

@@ -19,13 +19,13 @@ class GetAgentTaskResponseBody(DaraModel):
         self.request_id = request_id
         # The status code.
         # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error information.
+        # - Otherwise, this field contains the request error message.
         self.message = message
 
     def validate(self):
@@ -133,7 +133,7 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         result: str = None,
         status: str = None,
     ):
-        # The cause of the task failure. This field is returned only when the task fails.
+        # The reason that caused the task to fail. This field is returned only when the task execution fails.
         self.error = error
         # The error code of the subtask failure. Valid values:
         # * Empty: The task is executed normally.
@@ -147,13 +147,13 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         # * AGENT_SAME_VERSION: The version is the same.
         # * HAS_RUNNING_JOB: A running task exists.
         # * RPM_LOCK_HELD: The RPM lock is held.
-        # * DISK_SPACE_INSUFFICIENT: Insufficient disk space.
+        # * DISK_SPACE_INSUFFICIENT: The disk space is insufficient.
         # * NODE_LOAD_HIGH: The node load is high.
-        # * COMMAND_FAILED: Command execution failed.
+        # * COMMAND_FAILED: The command execution failed.
         # * CLIENT_NOT_RUNNING: The Cloud Assistant Agent is not running.
         # * CLIENT_NOT_RESPONSE: The Cloud Assistant Agent is not responding.
-        # * DELIVERY_TIMEOUT: Command delivery timed out.
-        # * EXECUTION_TIMEOUT: Command execution timed out.
+        # * DELIVERY_TIMEOUT: The command delivery timed out.
+        # * EXECUTION_TIMEOUT: The command execution timed out.
         # * TASK_CONCURRENCY_LIMIT: The task concurrency limit is reached.
         self.error_code = error_code
         # The detailed description of the subtask failure. Valid values:
@@ -167,13 +167,13 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         # * The Agent version is the same. No upgrade is required.
         # * A running task exists. Try again later.
         # * The RPM lock is held. Try again later.
-        # * Insufficient disk space.
+        # * The disk space is insufficient.
         # * The node load is too high. Try again later.
-        # * Command execution failed. Try again later.
+        # * The command execution failed. Try again later.
         # * The Cloud Assistant Agent is not running.
         # * The Cloud Assistant Agent is not responding.
-        # * Command delivery timed out.
-        # * Command execution timed out.
+        # * The command delivery timed out.
+        # * The command execution timed out.
         # * The task concurrency limit is reached.
         self.error_message = error_message
         # The instance ID.
@@ -185,10 +185,10 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         # The subtask execution result.
         self.result = result
         # The subtask status. Valid values:
-        # - Created: Created.
-        # - Running: Running.
-        # - Success: The task succeeded.
-        # - Fail: The task failed.
+        # - Created: The subtask is created.
+        # - Running: The subtask is running.
+        # - Success: The subtask succeeded.
+        # - Fail: The subtask failed.
         self.status = status
 
     def validate(self):

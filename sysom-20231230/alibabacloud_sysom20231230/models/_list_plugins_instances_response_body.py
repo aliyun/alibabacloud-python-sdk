@@ -26,7 +26,7 @@ class ListPluginsInstancesResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of query results.
         self.total = total
 
     def validate(self):
@@ -98,7 +98,7 @@ class ListPluginsInstancesResponseBodyData(DaraModel):
         self.instance_id = instance_id
         # The component instance name.
         self.instance_name = instance_name
-        # The instance tag.
+        # The instance tags.
         self.instance_tag = instance_tag
         # The operating system name of the instance.
         self.os_name = os_name

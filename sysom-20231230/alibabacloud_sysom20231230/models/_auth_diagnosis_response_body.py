@@ -22,7 +22,7 @@ class AuthDiagnosisResponseBody(DaraModel):
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error information of the request.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # The request ID.
         self.request_id = request_id

@@ -16,15 +16,17 @@ class GetHotspotCompareResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code
+        # The error code.
         self.code = code
-        # Response data
+        # The returned data.
         self.data = data
-        # Response message
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # true: API call succeeded; false: API call failed
+        # Indicates whether the API call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -80,11 +82,11 @@ class GetHotspotCompareResponseBodyData(DaraModel):
         series_instance_1: main_models.GetHotspotCompareResponseBodyDataSeriesInstance1 = None,
         series_instance_2: main_models.GetHotspotCompareResponseBodyDataSeriesInstance2 = None,
     ):
-        # Differential flame graph data
+        # The differential flame graph data.
         self.flame = flame
-        # Hotspot time series 1
+        # The hot spot time series 1.
         self.series_instance_1 = series_instance_1
-        # Hotspot time series 2
+        # The hot spot time series 2.
         self.series_instance_2 = series_instance_2
 
     def validate(self):
@@ -133,9 +135,9 @@ class GetHotspotCompareResponseBodyDataSeriesInstance2(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
-        # Field name list
+        # The list of field names.
         self.columns = columns
-        # Hotspot time series data list
+        # The list of hot spot time series data.
         self.values = values
 
     def validate(self):
@@ -170,9 +172,9 @@ class GetHotspotCompareResponseBodyDataSeriesInstance1(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
-        # Field name list
+        # The list of field names.
         self.columns = columns
-        # Hotspot time series data list
+        # The list of hot spot time series data.
         self.values = values
 
     def validate(self):
@@ -207,9 +209,9 @@ class GetHotspotCompareResponseBodyDataFlame(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
-        # Field name list
+        # The list of field names.
         self.columns = columns
-        # Flame graph data list
+        # The list of flame graph data.
         self.values = values
 
     def validate(self):

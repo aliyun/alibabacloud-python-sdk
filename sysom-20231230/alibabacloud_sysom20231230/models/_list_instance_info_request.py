@@ -4,28 +4,27 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListAlertStrategiesRequest(DaraModel):
+class ListInstanceInfoRequest(DaraModel):
     def __init__(
         self,
         x_debug_id: str = None,
-        current: int = None,
+        info_type: str = None,
+        instance_type: str = None,
+        managed_type: str = None,
         max_results: int = None,
-        name: str = None,
         next_token: str = None,
-        page_size: int = None,
+        plugin_id: str = None,
+        region: str = None,
         x_sysom_invoke_source: str = None,
     ):
         self.x_debug_id = x_debug_id
-        # The current page number (starting from 1).
-        self.current = current
-        # The maximum number of records to retrieve in a single request.
+        self.info_type = info_type
+        self.instance_type = instance_type
+        self.managed_type = managed_type
         self.max_results = max_results
-        # The policy name of the alerting policy.
-        self.name = name
-        # The pagination token for the next request.
         self.next_token = next_token
-        # The number of entries per page.
-        self.page_size = page_size
+        self.plugin_id = plugin_id
+        self.region = region
         self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
@@ -39,20 +38,26 @@ class ListAlertStrategiesRequest(DaraModel):
         if self.x_debug_id is not None:
             result['X-Debug-Id'] = self.x_debug_id
 
-        if self.current is not None:
-            result['current'] = self.current
+        if self.info_type is not None:
+            result['infoType'] = self.info_type
+
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+
+        if self.managed_type is not None:
+            result['managedType'] = self.managed_type
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
 
-        if self.name is not None:
-            result['name'] = self.name
-
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
+        if self.plugin_id is not None:
+            result['pluginId'] = self.plugin_id
+
+        if self.region is not None:
+            result['region'] = self.region
 
         if self.x_sysom_invoke_source is not None:
             result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
@@ -64,20 +69,26 @@ class ListAlertStrategiesRequest(DaraModel):
         if m.get('X-Debug-Id') is not None:
             self.x_debug_id = m.get('X-Debug-Id')
 
-        if m.get('current') is not None:
-            self.current = m.get('current')
+        if m.get('infoType') is not None:
+            self.info_type = m.get('infoType')
+
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+
+        if m.get('managedType') is not None:
+            self.managed_type = m.get('managedType')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
 
-        if m.get('name') is not None:
-            self.name = m.get('name')
-
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
 
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
+        if m.get('pluginId') is not None:
+            self.plugin_id = m.get('pluginId')
+
+        if m.get('region') is not None:
+            self.region = m.get('region')
 
         if m.get('x-sysom-invoke-source') is not None:
             self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')

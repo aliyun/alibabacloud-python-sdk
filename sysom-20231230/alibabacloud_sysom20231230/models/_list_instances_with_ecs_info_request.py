@@ -8,6 +8,7 @@ from darabonba.model import DaraModel
 class ListInstancesWithEcsInfoRequest(DaraModel):
     def __init__(
         self,
+        x_debug_id: str = None,
         current: int = None,
         health_status: str = None,
         instance_id: str = None,
@@ -23,7 +24,9 @@ class ListInstancesWithEcsInfoRequest(DaraModel):
         resource_group_id: str = None,
         resource_group_id_name: str = None,
         resource_group_name: str = None,
+        x_sysom_invoke_source: str = None,
     ):
+        self.x_debug_id = x_debug_id
         # The page number for pagination. This parameter specifies the current page.
         self.current = current
         # Filters instances by health status.
@@ -56,6 +59,7 @@ class ListInstancesWithEcsInfoRequest(DaraModel):
         self.resource_group_id_name = resource_group_id_name
         # Filters instances by resource group name.
         self.resource_group_name = resource_group_name
+        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         if self.instance_tag:
@@ -66,6 +70,9 @@ class ListInstancesWithEcsInfoRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.x_debug_id is not None:
+            result['X-Debug-Id'] = self.x_debug_id
+
         if self.current is not None:
             result['current'] = self.current
 
@@ -111,10 +118,16 @@ class ListInstancesWithEcsInfoRequest(DaraModel):
         if self.resource_group_name is not None:
             result['resource_group_name'] = self.resource_group_name
 
+        if self.x_sysom_invoke_source is not None:
+            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('X-Debug-Id') is not None:
+            self.x_debug_id = m.get('X-Debug-Id')
+
         if m.get('current') is not None:
             self.current = m.get('current')
 
@@ -160,6 +173,9 @@ class ListInstancesWithEcsInfoRequest(DaraModel):
 
         if m.get('resource_group_name') is not None:
             self.resource_group_name = m.get('resource_group_name')
+
+        if m.get('x-sysom-invoke-source') is not None:
+            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

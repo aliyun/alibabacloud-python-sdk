@@ -16,8 +16,8 @@ class GetAlertDestinationResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
         self.data = data
@@ -90,7 +90,7 @@ class GetAlertDestinationResponseBodyData(DaraModel):
         self.params = params
         # The configuration source.
         self.source = source
-        # The alert notification target. Currently, only DingTalk chatbots are supported.
+        # The alert push target. Currently, only DingTalk chatbots are supported.
         self.target = target
         # The user ID.
         self.uid = uid

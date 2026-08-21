@@ -7,13 +7,16 @@ from darabonba.model import DaraModel
 class GetHotspotAnalysisRequest(DaraModel):
     def __init__(
         self,
+        x_debug_id: str = None,
         app_type: str = None,
         beg_end: int = None,
         beg_start: int = None,
         instance: str = None,
         pid: int = None,
         table: str = None,
+        x_sysom_invoke_source: str = None,
     ):
+        self.x_debug_id = x_debug_id
         # The application type.
         # 
         # This parameter is required.
@@ -30,10 +33,11 @@ class GetHotspotAnalysisRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance = instance
-        # The process ID (PID).
+        # The process PID.
         self.pid = pid
         # The name of the table to query.
         self.table = table
+        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         pass
@@ -43,6 +47,9 @@ class GetHotspotAnalysisRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.x_debug_id is not None:
+            result['X-Debug-Id'] = self.x_debug_id
+
         if self.app_type is not None:
             result['appType'] = self.app_type
 
@@ -61,10 +68,16 @@ class GetHotspotAnalysisRequest(DaraModel):
         if self.table is not None:
             result['table'] = self.table
 
+        if self.x_sysom_invoke_source is not None:
+            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('X-Debug-Id') is not None:
+            self.x_debug_id = m.get('X-Debug-Id')
+
         if m.get('appType') is not None:
             self.app_type = m.get('appType')
 
@@ -82,6 +95,9 @@ class GetHotspotAnalysisRequest(DaraModel):
 
         if m.get('table') is not None:
             self.table = m.get('table')
+
+        if m.get('x-sysom-invoke-source') is not None:
+            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

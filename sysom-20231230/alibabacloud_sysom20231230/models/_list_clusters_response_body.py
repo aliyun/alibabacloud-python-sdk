@@ -16,19 +16,19 @@ class ListClustersResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
-        # Request ID, which can be used for end-to-end diagnostics.
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code.
-        # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate authorization failure. Check the `message` field for detailed error information.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Response data.
+        # The returned data.
         self.data = data
-        # Error message.
+        # The error message.
         # - If `code == Success`, this field is empty.
         # - Otherwise, this field contains the request error information.
         self.message = message
-        # Total number of records.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -95,29 +95,29 @@ class ListClustersResponseBodyData(DaraModel):
         region: str = None,
         updated_at: str = None,
     ):
-        # Actual cluster ID.
+        # The actual cluster ID.
         # 
-        # > - For `ACK` type clusters, this cluster ID is the ACK cluster ID.
-        # > - For `CUSTOM` type clusters, this cluster ID serves as a unique identifier with no additional meaning.
+        # > - For `ACK` type clusters, this is the ACK cluster ID.
+        # > - For `CUSTOM` type clusters, this serves as a unique identifier with no additional meaning.
         self.cluster_id = cluster_id
         # - `Running`: The cluster is managed normally.
-        # - `Installing`: The cluster has an installation task in progress.
-        # - `Uninstalling`: The cluster has an uninstallation task in progress.
-        # - `Upgrading`: The cluster has an upgrade task in progress.
+        # - `Installing`: An installation task is in progress for the cluster.
+        # - `Uninstalling`: An uninstallation task is in progress for the cluster.
+        # - `Upgrading`: An update task is in progress for the cluster.
         # - `Offline`: The cluster is offline and management is abnormal.
         self.cluster_status = cluster_status
         # - `ACK`: ACK cluster.
-        # - `CUSTOM`: Custom cluster (the default cluster belongs to custom clusters).
+        # - `CUSTOM`: Custom cluster (default clusters belong to custom clusters).
         self.cluster_type = cluster_type
-        # Creation time.
+        # The creation time.
         self.created_at = created_at
-        # Cluster ID.
+        # The cluster ID.
         self.id = id
-        # Cluster name.
+        # The cluster name.
         self.name = name
-        # Region ID.
+        # The region ID.
         self.region = region
-        # Update time.
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

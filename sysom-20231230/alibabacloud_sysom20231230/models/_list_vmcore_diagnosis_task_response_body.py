@@ -16,19 +16,19 @@ class ListVmcoreDiagnosisTaskResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Status code.
-        # - `code == Success` indicates the authorization was successful.
-        # - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Response data.
+        # The returned data.
         self.data = data
-        # Error message.
+        # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error message.
+        # - Otherwise, this field contains the error message of the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Total number of tasks
+        # The total number of tasks.
         self.total = total
 
     def validate(self):
@@ -92,15 +92,15 @@ class ListVmcoreDiagnosisTaskResponseBodyData(DaraModel):
         task_status: str = None,
         task_type: str = None,
     ):
-        # Task creation time
+        # The task creation time.
         self.created_at = created_at
-        # Error message
+        # The error message.
         self.error_msg = error_msg
-        # Task ID
+        # The task ID.
         self.task_id = task_id
-        # Task status
+        # The task status.
         self.task_status = task_status
-        # Task type
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

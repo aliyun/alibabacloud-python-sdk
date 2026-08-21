@@ -19,14 +19,14 @@ class ListAgentsResponseBody(DaraModel):
         # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
         # The status code.
-        # - If code is Success, the authorization is successful.
-        # - Other status codes indicate authorization failed. Check the message field for the detailed fault information.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
-        # - If code is Success, this field is empty.
-        # - Otherwise, this field contains the request error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # The total number of records.
         self.total = total
@@ -103,13 +103,13 @@ class ListAgentsResponseBodyData(DaraModel):
         self.id = id
         # The component name.
         self.name = name
-        # The supported architectures. Multiple architectures are separated by commas.
+        # The supported architectures (multiple architectures are separated by commas).
         self.support_arch = support_arch
         # The type of the component. Valid values:
         # - Control: control-type component.
         # - AI: AI component.
         self.type = type
-        # The time when the component was last updated.
+        # The time when the component was updated.
         self.updated_at = updated_at
         # The list of component versions.
         self.versions = versions
@@ -200,7 +200,7 @@ class ListAgentsResponseBodyDataVersions(DaraModel):
         self.install_script = install_script
         # The uninstallation script of the component.
         self.uninstall_script = uninstall_script
-        # The time when the component version was last updated.
+        # The time when the component version was updated.
         self.updated_at = updated_at
         # The update script of the component.
         self.upgrade_script = upgrade_script

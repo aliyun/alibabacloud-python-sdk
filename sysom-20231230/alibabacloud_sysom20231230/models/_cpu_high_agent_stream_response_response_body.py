@@ -13,13 +13,13 @@ class CpuHighAgentStreamResponseResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - If code is Success, the authorization is successful.
-        # - Other status codes indicate authorization failed. Check the message field for the detailed fault information.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The response data.
         self.data = data
         # The error message.
-        # - If code is Success, this field is empty.
+        # - If `code == Success`, this field is empty.
         # - Otherwise, this field contains the request error information.
         self.message = message
         # Id of the request

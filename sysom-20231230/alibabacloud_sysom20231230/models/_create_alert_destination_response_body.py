@@ -19,7 +19,7 @@ class CreateAlertDestinationResponseBody(DaraModel):
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error message of the request.
+        # - Otherwise, this field contains the error message for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
