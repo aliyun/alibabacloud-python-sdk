@@ -1,3 +1,6 @@
+2026-08-21 Version: 11.0.2
+- Generated python 2024-03-27 for APIG.
+
 2026-08-20 Version: 11.0.1
 - Update API DeployHttpApi: add request parameters body.restApiConfig.enableRouteCompression.
 
