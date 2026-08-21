@@ -13,8 +13,12 @@ class SetAppPlayKeyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
         self.owner_id = owner_id
+        # The playback key.
+        # - Only uppercase letters, lowercase letters, and digits are supported. The length must be 8 to 20 characters.
+        # - UTF-8 encoding.
         self.play_key = play_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

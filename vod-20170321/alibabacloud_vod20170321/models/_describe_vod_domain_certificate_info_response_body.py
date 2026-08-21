@@ -14,7 +14,7 @@ class DescribeVodDomainCertificateInfoResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.cert_infos = cert_infos
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

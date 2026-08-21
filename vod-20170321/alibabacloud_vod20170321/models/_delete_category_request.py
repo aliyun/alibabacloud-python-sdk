@@ -9,12 +9,11 @@ class DeleteCategoryRequest(DaraModel):
         self,
         cate_id: int = None,
     ):
-        # The ID of the category. You can specify only one ID. You can use one of the following methods to obtain the ID:
+        # The category ID. Only a single category ID is supported. You can obtain the category ID by using the following methods:
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Asset Management Configuration** > **Category Management** to view the category ID.
+        # - Obtain the category ID from the response of the [AddCategory](~~AddCategory~~) operation when you create a category.
         # 
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). Choose **Configuration Management** > **Media Management** > **Categories**. On the Audio and Video / Image Category or Short Video Material Category tab, view the category ID.
-        # *   Obtain the category ID from the response to the [AddCategory](~~AddCategory~~) operation.
-        # 
-        # >  If you specify the ID of a parent category, all subcategories under the parent category are deleted at the same time.
+        # > If the specified category ID is the ID of a parent category, the parent category and all its subcategories are deleted. Proceed with caution.
         # 
         # This parameter is required.
         self.cate_id = cate_id

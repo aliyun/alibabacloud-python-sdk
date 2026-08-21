@@ -15,13 +15,13 @@ class GetTranscodeTaskResponseBody(DaraModel):
         transcode_job_info_list: List[main_models.GetTranscodeTaskResponseBodyTranscodeJobInfoList] = None,
         transcode_task: main_models.GetTranscodeTaskResponseBodyTranscodeTask = None,
     ):
-        # The nonexistent job ID.
+        # The IDs of transcoding jobs that do not exist.
         self.non_exist_job_ids = non_exist_job_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # List of transcode job information.
+        # The transcoding job information.
         self.transcode_job_info_list = transcode_job_info_list
-        # Details about transcoding tasks.
+        # The transcoding task information.
         self.transcode_task = transcode_task
 
     def validate(self):
@@ -85,30 +85,30 @@ class GetTranscodeTaskResponseBodyTranscodeTask(DaraModel):
         trigger: str = None,
         video_id: str = None,
     ):
-        # The time when the transcoding task was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding task was completed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.complete_time = complete_time
-        # The time when the transcoding task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
         # The status of the transcoding task. Valid values:
         # 
-        # *   **Processing**: In progress.
-        # *   **Partial**: Some transcoding jobs were complete.
-        # *   **CompleteAllSucc**: All transcoding jobs were successful.
-        # *   **CompleteAllFail**: All transcoding jobs failed. If an exception occurs in the source file, no transcoding job is initiated and the transcoding task fails.
-        # *   **CompletePartialSucc**: All transcoding jobs were complete but only some were successful.
+        # - **Processing**: processing in progress.
+        # - **Partial**: partially completed.
+        # - **CompleteAllSucc**: all transcoding jobs are completed and succeeded.
+        # - **CompleteAllFail**: all transcoding jobs are completed but failed. If the source file has issues, no transcoding jobs are initiated and the entire transcoding task fails.
+        # - **CompletePartialSucc**: all transcoding jobs are completed but only some succeeded.
         self.task_status = task_status
-        # Details about transcoding jobs.
+        # The transcoding job information.
         self.transcode_job_info_list = transcode_job_info_list
-        # The ID of the transcoding task.
+        # The transcoding task ID.
         self.transcode_task_id = transcode_task_id
-        # The ID of the transcoding template group.
+        # The ID of the transcoding template group used for transcoding.
         self.transcode_template_group_id = transcode_template_group_id
-        # The mode in which the transcoding task is triggered. Valid values:
+        # The trigger type. Valid values:
         # 
-        # *   **Auto**: The transcoding task is automatically triggered when the video is uploaded.
-        # *   **Manual**: The transcoding task is triggered by calling the SubmitTranscodeJobs operation.
+        # - **Auto**: automatically triggered after a video is uploaded.
+        # - **Manual**: triggered by calling the SubmitTranscodeJobs operation.
         self.trigger = trigger
-        # The ID of the audio or video file.
+        # The audio or video ID.
         self.video_id = video_id
 
     def validate(self):
@@ -197,46 +197,45 @@ class GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoList(DaraModel):
         transcode_progress: int = None,
         transcode_template_id: str = None,
     ):
-        # The time when the transcoding job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding job was completed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.complete_time = complete_time
-        # The time when the transcoding job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding job was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The video resolution. Valid values:
+        # The video definition. Valid values:
         # 
-        # *   **LD**: low definition
-        # *   **SD**: standard definition
-        # *   **HD**: high definition
-        # *   **FHD**: ultra high definition
-        # *   **OD**: original definition
-        # *   **2K**: 2K
-        # *   **4K**: 4K
-        # *   **SQ**: standard sound quality
-        # *   **HQ**: high sound quality
-        # *   **AUTO**: adaptive bitrate Adaptive bitrate streams are returned only if PackageSetting is set in the transcoding template. For more information, see [Basic structures](https://help.aliyun.com/document_detail/52839.html).
+        # - **LD**: fluent.
+        # - **SD**: standard definition.
+        # - **HD**: high definition.
+        # - **FHD**: ultra high definition.
+        # - **OD**: original quality.
+        # - **2K**: 2K.
+        # - **4K**: 4K.
+        # - **SQ**: standard sound quality.
+        # - **HQ**: high sound quality.
+        # - **AUTO**: adaptive bitrate streaming. This definition is available only when packaging is configured in the transcoding template. For more information, see [Transcoding template configuration - PackageSetting](https://help.aliyun.com/document_detail/52839.html).
         # 
-        # > This parameter indicates the definition that is configured in the transcoding template and does not indicate the actual resolution of the output video.
+        # > This value is the definition label configured in the transcoding template and does not indicate the actual resolution range of the transcoded output file.
         self.definition = definition
         # The error code returned when the transcoding job failed.
         self.error_code = error_code
         # The error message returned when the transcoding job failed.
         self.error_message = error_message
-        # The Object Storage Service (OSS) URL of the input file.
+        # The OSS URL of the transcoding source file.
         self.input_file_url = input_file_url
-        # The information about the output file.
+        # The information about the transcoding output file.
         self.output_file = output_file
-        # The priority of the transcoding job.
+        # The priority of the transcoding task.
         self.priority = priority
-        # The ID of the transcoding job.
+        # The transcoding job ID.
         self.transcode_job_id = transcode_job_id
-        # The status of the transcoding job.
-        # 
-        # *   **Transcoding**
-        # *   **TranscodeSuccess**
-        # *   **TranscodeFail**
+        # The status of the transcoding job. Valid values:
+        # - **Transcoding**: transcoding in progress.
+        # - **TranscodeSuccess**: transcoding succeeded.
+        # - **TranscodeFail**: transcoding failed.
         self.transcode_job_status = transcode_job_status
-        # The progress of the transcoding job. Valid values: `[0,100]`.
+        # The transcoding job progress. Value range: `[0,100]`.
         self.transcode_progress = transcode_progress
-        # The ID of the transcoding template.
+        # The ID of the transcoding template used for transcoding.
         self.transcode_template_id = transcode_template_id
 
     def validate(self):
@@ -344,34 +343,34 @@ class GetTranscodeTaskResponseBodyTranscodeTaskTranscodeJobInfoListOutputFile(Da
         watermark_id_list: List[str] = None,
         width: str = None,
     ):
-        # The audio streams.
+        # The list of audio streams.
         self.audio_stream_list = audio_stream_list
-        # The average bitrate of the output file. Unit: Kbit/s.
+        # The average bitrate of the transcoding output file. Unit: Kbps.
         self.bitrate = bitrate
-        # The length of the output file. Unit: seconds.
+        # The duration of the transcoding output file. Unit: seconds.
         self.duration = duration
-        # The encryption method of the output file. Valid values:
+        # The encryption configuration used for the transcoding output file. Valid values:
         # 
-        # *   **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
-        # *   **HLSEncryption**: HTTP Live Streaming (HLS) encryption
+        # - **AliyunVoDEncryption**: Alibaba Cloud video encryption (proprietary encryption).
+        # - **HLSEncryption**: HLS encryption.
         self.encryption = encryption
-        # The size of the output file. Unit: byte.
+        # The size of the transcoding output file. Unit: bytes.
         self.filesize = filesize
-        # The container format of the output file.
+        # The container format of the transcoding output file.
         self.format = format
-        # The frame rate of the output file. Unit: frames per second.
+        # The frame rate of the transcoding output file. Unit: frames per second.
         self.fps = fps
-        # The height of the output video. Unit: pixels.
+        # The height of the transcoding output video. Unit: px.
         self.height = height
-        # The OSS URL of the output file.
+        # The OSS URL of the transcoding output file.
         self.output_file_url = output_file_url
-        # The subtitle streams.
+        # The list of subtitle streams.
         self.subtitle_stream_list = subtitle_stream_list
-        # The video streams.
+        # The list of video streams.
         self.video_stream_list = video_stream_list
-        # The IDs of the watermarks used by the output file.
+        # The list of watermark IDs used for the transcoding output file.
         self.watermark_id_list = watermark_id_list
-        # The width of the output video. Unit: pixels.
+        # The width of the transcoding output video. Unit: px.
         self.width = width
 
     def validate(self):
@@ -482,45 +481,45 @@ class GetTranscodeTaskResponseBodyTranscodeJobInfoList(DaraModel):
         transcode_progress: int = None,
         transcode_template_id: str = None,
     ):
-        # The complete time of the transcoding job. The format is yyyy-MM-dd\\"T\\"HH:mm:ssZ (UTC time).
+        # The time when the transcoding job was completed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.complete_time = complete_time
-        # The creation time of the transcoding job. The format is yyyy-MM-dd\\"T\\"HH:mm:ssZ (UTC time).
+        # The time when the transcoding job was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The clarity and audio quality types are defined as follows:
+        # The video definition. Valid values:
         # 
-        # - SD: Standard Definition.
-        # - HD: High Definition.
-        # - FHD: Full High Definition.
-        # - OD: Original Definition.
-        # - 2K: 2K.
-        # - 4K: 4K.
-        # - SQ: Standard Audio Quality.
-        # - HQ: High Audio Quality.
-        # - AUTO: Adaptive Bitrate.  This is only available when the transcoding template is configured with packaging settings. Please refer to [the Transcoding Template Configuration - Package Setting](https://api.aliyun-inc.com/~~52839~~?spm=openapi-amp.newDocPublishment.0.0.65b0281fNUFIXC) for more details.
+        # - **LD**: fluent.
+        # - **SD**: standard definition.
+        # - **HD**: high definition.
+        # - **FHD**: ultra high definition.
+        # - **OD**: original quality.
+        # - **2K**: 2K.
+        # - **4K**: 4K.
+        # - **SQ**: standard sound quality.
+        # - **HQ**: high sound quality.
+        # - **AUTO**: adaptive bitrate streaming. This definition is available only when packaging is configured in the transcoding template. For more information, see [Transcoding template configuration - PackageSetting](https://help.aliyun.com/document_detail/52839.html).
         # 
-        # > This value represents the clarity label configured in the transcoding template and does not indicate the actual resolution range of the transcoded output file.
+        # > This value is the definition label configured in the transcoding template and does not indicate the actual resolution range of the transcoded output file.
         self.definition = definition
-        # The error code.
+        # The error code returned when the transcoding job failed.
         self.error_code = error_code
-        # The error message returned.
+        # The error message returned when the transcoding job failed.
         self.error_message = error_message
-        # The OSS address of the source file for transcoding.
+        # The OSS URL of the transcoding source file.
         self.input_file_url = input_file_url
-        # Information about the transcoded output files.
+        # The information about the transcoding output file.
         self.output_file = output_file
         # The priority of the transcoding task.
         self.priority = priority
-        # The ID of the transcode job.
+        # The transcoding job ID.
         self.transcode_job_id = transcode_job_id
-        # The status of the transcoding job:
-        # 
-        # Transcoding: Transcoding in progress.
-        # TranscodeSuccess: Transcoding successful.
-        # TranscodeFail: Transcoding failed.
+        # The status of the transcoding job. Valid values:
+        # - **Transcoding**: transcoding in progress.
+        # - **TranscodeSuccess**: transcoding succeeded.
+        # - **TranscodeFail**: transcoding failed.
         self.transcode_job_status = transcode_job_status
-        # The processing progress of the transcoding job. The value range is [0, 100].
+        # The transcoding job progress. Value range: `[0,100]`.
         self.transcode_progress = transcode_progress
-        # The ID of the template used for the transcode job.
+        # The ID of the transcoding template used for transcoding.
         self.transcode_template_id = transcode_template_id
 
     def validate(self):
@@ -628,34 +627,34 @@ class GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile(DaraModel):
         watermark_id_list: List[str] = None,
         width: str = None,
     ):
-        # List of audio streams.
+        # The list of audio streams.
         self.audio_stream_list = audio_stream_list
-        # Average bitrate of the transcoded output file. Unit: Kbps.
+        # The average bitrate of the transcoding output file. Unit: Kbps.
         self.bitrate = bitrate
-        # Duration of the transcoded output file. Unit: seconds (s).
+        # The duration of the transcoding output file. Unit: seconds.
         self.duration = duration
-        # Encryption configuration used for the transcoded output file. Values:
+        # The encryption configuration used for the transcoding output file. Valid values:
         # 
-        # - AliyunVoDEncryption: Alibaba Cloud Video Encryption (private encryption).
-        # - HLSEncryption: HLS standard encryption.
+        # - **AliyunVoDEncryption**: Alibaba Cloud video encryption (proprietary encryption).
+        # - **HLSEncryption**: HLS encryption.
         self.encryption = encryption
-        # Size of the transcoded output file. Unit: bytes (B).
+        # The size of the transcoding output file. Unit: bytes.
         self.filesize = filesize
-        # Container format of the transcoded output file.
+        # The container format of the transcoding output file.
         self.format = format
-        # Frame rate of the transcoded output file. Unit: frames per second (fps).
+        # The frame rate of the transcoding output file. Unit: frames per second.
         self.fps = fps
-        # Height of the video frame in the transcoded output file. Unit: pixels (px).
+        # The height of the transcoding output video. Unit: px.
         self.height = height
-        # OSS address of the transcoded output file.
+        # The OSS URL of the transcoding output file.
         self.output_file_url = output_file_url
-        # List of subtitle streams.
+        # The list of subtitle streams.
         self.subtitle_stream_list = subtitle_stream_list
-        # List of video streams.
+        # The list of video streams.
         self.video_stream_list = video_stream_list
-        # List of watermarks used for transcoding.
+        # The list of watermarks used for transcoding.
         self.watermark_id_list = watermark_id_list
-        # Width of the video frame in the transcoded output file. Unit: pixels (px).
+        # The width of the transcoding output video. Unit: px.
         self.width = width
 
     def validate(self):

@@ -10,7 +10,7 @@ class UpdateVodTemplateResponseBody(DaraModel):
         request_id: str = None,
         vod_template_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the snapshot template.
         self.vod_template_id = vod_template_id

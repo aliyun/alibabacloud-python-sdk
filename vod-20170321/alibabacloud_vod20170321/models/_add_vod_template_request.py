@@ -12,20 +12,22 @@ class AddVodTemplateRequest(DaraModel):
         template_config: str = None,
         template_type: str = None,
     ):
-        # The ID of the application. Default value: **app-1000000**. For more information, see [Multi-application service](https://help.aliyun.com/document_detail/113600.html).
+        # The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
-        # The name of the template.
+        # The template name.
         # 
-        # *   The name cannot exceed 128 bytes.
-        # *   The value must be encoded in UTF-8.
+        # - The name can be up to 128 bytes in length.
+        # - UTF-8 encoded.
         # 
         # This parameter is required.
         self.name = name
-        # The configurations of the snapshot template. The value must be a JSON string. For more information about the data structure, see [SnapshotTemplateConfig](https://help.aliyun.com/document_detail/98618.html) and [DynamicImageTemplateConfig](https://help.aliyun.com/document_detail/98618.html).
+        # The template configuration data in JSON format. For more information about the data structure, see [Snapshot template configuration](https://help.aliyun.com/document_detail/98618.html) or [Animated image template configuration](https://help.aliyun.com/document_detail/98618.html).
         # 
         # This parameter is required.
         self.template_config = template_config
-        # The type of the template. Set the value to **Snapshot**.
+        # The templatetype. Valid values:
+        # - **Snapshot**: snapshot.
+        # - **DynamicImage**: animated image.
         # 
         # This parameter is required.
         self.template_type = template_type

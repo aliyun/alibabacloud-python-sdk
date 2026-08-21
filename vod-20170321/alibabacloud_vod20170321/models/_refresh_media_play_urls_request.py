@@ -17,55 +17,48 @@ class RefreshMediaPlayUrlsRequest(DaraModel):
         task_type: str = None,
         user_data: str = None,
     ):
-        # Specifies the resolutions of the media streams you want to refresh or prefetch. You can specify multiple resolutions. Separate multiple resolutions with commas (,). If you leave this parameter empty, media streams in all resolutions are refreshed or prefetched by default.
-        # 
-        # >  The value must be supported in the **Definition** section in [Parameters for media assets](https://help.aliyun.com/document_detail/124671.html).
+        # Specifies the definitions of the streams that you want to purge or prefetch. You can specify multiple definitions. Separate multiple definitions with commas (,). If you do not specify this parameter, **streams in all definitions are purged or prefetched by default**.
+        # > The value must be one of the values defined in **Definition** in [Metric description for media assets](https://help.aliyun.com/document_detail/124671.html).
         self.definitions = definitions
-        # The formats of the media streams you want to refresh or prefetch. You can specify multiple formats. Separate multiple formats with commas (,). If you leave this parameter empty, media streams in all formats are refreshed or prefetched by default. Valid values:
-        # 
-        # *   **mp4**
-        # *   **m3u8**
-        # *   **mp3**
-        # *   **flv**
-        # *   **webm**
-        # *   **ts**
+        # The streaming formats that you want to refresh or prefetch. You can specify multiple formats. Separate multiple formats with commas (,). If you do not specify this parameter, **streams in all formats are refreshed or prefetched by default**. Valid values:
+        # - **mp4**
+        # - **m3u8**
+        # - **mp3**
+        # - **flv**
+        # - **webm**
+        # - **ts**
         self.formats = formats
-        # The IDs of the media files that you want to refresh or prefetch. You can specify a maximum of 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
-        # 
-        # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
-        # *   Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you call to upload media files.
-        # *   Obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you call to query the media ID after the media file is uploaded.
+        # The IDs of the audio or video files that you want to refresh or prefetch. You can specify one or more IDs. Separate multiple IDs with commas (,). You can specify up to 20 IDs.
+        # You can obtain audio or video IDs by using the following methods:
+        # - For audio or video files uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the audio or video ID.
+        # - When you call the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential, the audio or video ID is the value of the VideoId response parameter.
+        # - After the audio or video file is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the audio or video ID, which is the value of the VideoId response parameter.
         # 
         # This parameter is required.
         self.media_ids = media_ids
-        # Specifies the type of the refresh or prefetch operation. Default value: Single. Valid values:
-        # 
-        # *   **Single**: Only one latest transcoded stream is refreshed or prefetched for each resolution and format.
-        # *   **Multiple**: All transcoded streams are refreshed or prefetched for each resolution and format.
+        # The result type of the refresh or prefetch task. Valid values:
+        # - **Single** (default): Only the latest transcoded stream for each definition and format is refreshed or prefetched.
+        # - **Multiple**: All transcoded streams for each definition and format are refreshed or prefetched.
         self.result_type = result_type
-        # Specifies the number of the playback URLs of the TS files for the M3U8 media stream you want to refresh or prefetch. After you set this parameter, only the playback URLs of the first N TS files will be refreshed or prefetched. Valid values: 1 to 20. Default value: 5.
+        # The number of TS file playback URLs to refresh or prefetch for M3U8 streams. Only the first N TS file playback URLs of each M3U8 stream are refreshed or prefetched. Valid values: 1 to 20. **Default value: 5**.
         self.slice_count = slice_count
-        # Specifies whether to refresh or prefetch the playback URLs of the TS files of the M3U8 media stream. Default value: false. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
+        # Specifies whether to refresh or prefetch the playback URLs of TS files in M3U8 streams. Valid values:
+        # - **false** (default): No.
+        # - **true**: Yes.
         self.slice_flag = slice_flag
-        # Specifies the types of media streams you want to refresh or prefetch. You can specify multiple types. Separate multiple types with commas (,). If you leave this parameter empty, media streams in all types are refreshed or prefetched by default. Valid values:
-        # 
-        # *   **video**
-        # *   **audio**
+        # The types of the streams that you want to refresh or prefetch. You can specify multiple stream types. Separate multiple stream types with commas (,). If you do not specify this parameter, **all stream types are refreshed or prefetched by default**. Valid values:
+        # - **video**: video.
+        # - **audio**: audio.
         self.stream_type = stream_type
-        # The type of the task that you want to create. Valid values:
-        # 
-        # *   **Refresh**
-        # *   **Preload**
+        # The type of the task. Valid values:
+        # - **Refresh**: purge.
+        # - **Preload**: prefetch.
         # 
         # This parameter is required.
         self.task_type = task_type
-        # The custom configurations such as callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section in the [Request parameter](https://help.aliyun.com/document_detail/86952.html) topic.
-        # 
-        # >*   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
-        # >*   To enable the upload acceleration feature, submit a ticket. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html). For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
+        # The custom settings. The value is a JSON string that supports settings such as message callbacks and upload acceleration. For more information, see [UserData](https://help.aliyun.com/document_detail/86952.html).
+        # > - To use message callbacks in this parameter, configure an HTTP callback URL and select the corresponding callback event types in the console. Otherwise, the callback settings do not take effect. For information about how to configure HTTP callbacks in the console, see [Callback settings](https://help.aliyun.com/document_detail/86071.html).
+        # > - To use the upload acceleration feature, submit a ticket to activate it. For more information, see [Upload instructions](https://help.aliyun.com/document_detail/55396.html). For information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
         self.user_data = user_data
 
     def validate(self):

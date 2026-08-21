@@ -10,17 +10,16 @@ class UpdateCategoryRequest(DaraModel):
         cate_id: int = None,
         cate_name: str = None,
     ):
-        # The ID of the category. You can specify only one ID. You can use one of the following methods to obtain the ID:
-        # 
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). Choose **Configuration Management** > **Media Management** > **Categories**. On the **Audio and Video / Image Category** or **Short Video Material Category** tab, view the category ID.
-        # *   Obtain the category ID from the response to the [AddCategory](~~AddCategory~~) operation.
+        # The category ID. Only a single category ID can be specified. You can obtain the category ID by using the following methods:
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Asset Management Configuration** > **Category Management** > **Audio/Video/Image Category** or **Short Video Material Category** to view the category ID.
+        # - Obtain the category ID from the response of the [AddCategory](~~AddCategory~~) operation when you create a category.
         # 
         # This parameter is required.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         # 
-        # *   The value can be up to 64 bytes in length.
-        # *   The value must be encoded in UTF-8.
+        # - The name can be up to 64 bytes in length.
+        # - The name must be encoded in UTF-8.
         # 
         # This parameter is required.
         self.cate_name = cate_name

@@ -11,22 +11,21 @@ class SetAuditSecurityIpRequest(DaraModel):
         operate_mode: str = None,
         security_group_name: str = None,
     ):
-        # The IP addresses that you want to add to the review security group. You can add a maximum of 100 IP addresses to a review security group. Separate multiple IP addresses with commas (,). You can add IP addresses in the following formats to review security groups:
+        # The list of security IP addresses for review. Each group supports a maximum of 100 IP addresses. Separate multiple IP addresses with commas (,). The following formats are supported:
         # 
-        # *   IP address: 192.168.0.1
-        # *   CIDR block: 192.168.0.1/24. /24 indicates that the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value that ranges `from 1 to 32`.
+        # - Exact IP address: 192.168.0.1
+        # - CIDR block: 192.168.0.1/24 (Classless Inter-Domain Routing. /24 specifies the length of the prefix in the address. Valid values: `[1,32]`.)
         # 
         # This parameter is required.
         self.ips = ips
-        # The operation type. Valid values:
+        # The operation mode. Valid values:
         # 
-        # *   **Append** (default): adds the IP addresses to the original whitelist.
-        # *   **Cover**: overwrites the original whitelist.
-        # *   **Delete**: removes the IP addresses from the original whitelist.
-        # 
-        # >  If the value that you specify is invalid, the default value is used.
+        # - **Append**: default value. Appends IP addresses to the IP address whitelist.
+        # - **Cover**: overwrites the existing IP address whitelist.
+        # - **Delete**: deletes IP addresses from the IP address whitelist.
+        # > If the specified value is not within the valid values, the default value (Append) is used.
         self.operate_mode = operate_mode
-        # The name of the review security group. Default value: **Default**. You can specify a maximum of 10 review security groups.
+        # The name of the security group for review. Default value: **Default**. A maximum of 10 security groups are supported.
         self.security_group_name = security_group_name
 
     def validate(self):

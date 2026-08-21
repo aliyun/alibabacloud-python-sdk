@@ -14,10 +14,10 @@ class SubmitTranscodeJobsResponseBody(DaraModel):
         transcode_jobs: main_models.SubmitTranscodeJobsResponseBodyTranscodeJobs = None,
         transcode_task_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.transcode_jobs = transcode_jobs
-        # The ID of the transcoding task that was submitted.
+        # The ID of the submitted transcoding task.
         self.transcode_task_id = transcode_task_id
 
     def validate(self):

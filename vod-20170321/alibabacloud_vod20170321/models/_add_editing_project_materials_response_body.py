@@ -13,9 +13,9 @@ class AddEditingProjectMaterialsResponseBody(DaraModel):
         material_list: List[main_models.AddEditingProjectMaterialsResponseBodyMaterialList] = None,
         request_id: str = None,
     ):
-        # The materials.
+        # The list of materials.
         self.material_list = material_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,47 +73,47 @@ class AddEditingProjectMaterialsResponseBodyMaterialList(DaraModel):
         tags: str = None,
         title: str = None,
     ):
-        # The ID of the category.
+        # The category ID.
         self.cate_id = cate_id
-        # The category name of the material.
+        # The material category name.
         self.cate_name = cate_name
-        # The thumbnail URL.
+        # The thumbnail URL of the material.
         self.cover_url = cover_url
-        # The time when the material was created. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss* format. The time is displayed in UTC.
+        # The time when the material was created. The time follows the format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
         self.create_time = create_time
-        # The ID of the user.
+        # The user ID.
         self.customer_id = customer_id
-        # The description of the material.
+        # The material description.
         self.description = description
-        # The duration of the material. Unit: seconds. The value is accurate to four decimal places.
+        # The material duration. Unit: seconds. The value is accurate to four decimal places.
         self.duration = duration
-        # The ID of the material.
+        # The material ID.
         self.material_id = material_id
-        # The type of the material. Valid values:
+        # The material type. Valid values:
         # 
-        # *   **video**
-        # *   **audio**
-        # *   **image**
+        # - **video**: video.
+        # - **audio**: audio-only.
+        # - **image**: image.
         self.material_type = material_type
-        # The time when the material was last updated. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss* format. The time is displayed in UTC.
+        # The time when the material was last modified. The time follows the format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
         self.modify_time = modify_time
-        # The size of the material.
+        # The file size.
         self.size = size
-        # The URLs of snapshots.
+        # The array of snapshot URLs for the material.
         self.snapshots = snapshots
-        # The configuration of the sprite snapshot.
+        # The sprite configuration.
         self.sprite_config = sprite_config
-        # The URLs of sprite snapshots.
+        # The array of sprite URLs for the material.
         self.sprites = sprites
-        # The status of the material. Valid values:
+        # The material status. Valid values:
         # 
-        # *   **Normal**
-        # *   **Uploading**
-        # *   **UploadFail**
+        # - **Normal**: Normal.
+        # - **Uploading**: Uploading.
+        # - **UploadFail**: Upload failed.
         self.status = status
-        # The tag of the material. Multiple tags are separated by commas (,).
+        # The material tags. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The title of the material.
+        # The material title.
         self.title = title
 
     def validate(self):

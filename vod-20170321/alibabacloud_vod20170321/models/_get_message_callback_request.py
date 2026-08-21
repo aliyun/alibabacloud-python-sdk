@@ -10,7 +10,7 @@ class GetMessageCallbackRequest(DaraModel):
         app_id: str = None,
         owner_account: str = None,
     ):
-        # The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
+        # The application ID. If this parameter is not specified, the ID of the system default application is used. The fixed value is **app-1000000**.
         self.app_id = app_id
         self.owner_account = owner_account
 

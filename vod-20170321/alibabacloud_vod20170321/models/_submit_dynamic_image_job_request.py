@@ -11,17 +11,17 @@ class SubmitDynamicImageJobRequest(DaraModel):
         override_params: str = None,
         video_id: str = None,
     ):
-        # The ID of the frame animation template.
+        # The ID of the animated image template.
         # 
         # This parameter is required.
         self.dynamic_image_template_id = dynamic_image_template_id
-        # The override parameter. Specify the value in the JSON format. For more information, see [Parameters for media processing](https://help.aliyun.com/document_detail/98618.html). You can use this parameter to override configurations in the animated image template. For more information, see the "DynamicImageTemplateConfig: the configurations of an animated sticker template" section of the [Basic data types](https://help.aliyun.com/document_detail/52839.html) topic.
+        # The override parameters in the JSON format. For more information, see [OverrideParams](https://help.aliyun.com/document_detail/98618.html). You can use this parameter to override the parameters in the animated image template. For more information, see [DynamicImageTemplateConfig](https://help.aliyun.com/document_detail/52839.html).
         self.override_params = override_params
-        # The ID of the video. You can use one of the following methods to obtain the ID:
+        # The video ID. You can obtain the video ID by using one of the following methods:
         # 
-        # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the media file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
-        # *   Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you call to upload media files.
-        # *   Obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation after you upload media files.
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Assets** > **Audio/Video** to view the video ID.
+        # - Obtain the video ID from the value of the VideoId parameter returned by the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation when you obtain the upload URL and credential.
+        # - After the video is uploaded, obtain the video ID from the value of the VideoId parameter returned by the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation.
         # 
         # This parameter is required.
         self.video_id = video_id

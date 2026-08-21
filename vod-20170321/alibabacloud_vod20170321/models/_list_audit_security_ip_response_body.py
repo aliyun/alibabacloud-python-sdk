@@ -15,7 +15,7 @@ class ListAuditSecurityIpResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the review security group.
+        # The details of the review security IPs.
         self.security_ip_list = security_ip_list
 
     def validate(self):
@@ -60,13 +60,13 @@ class ListAuditSecurityIpResponseBodySecurityIpList(DaraModel):
         modification_time: str = None,
         security_group_name: str = None,
     ):
-        # The time when the review security group was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the security IP group was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The IP addresses in the review security group.
+        # The list of security IPs.
         self.ips = ips
-        # The time when the review security group was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the security IP group was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modification_time = modification_time
-        # The name of the review security group.
+        # The name of the security IP group.
         self.security_group_name = security_group_name
 
     def validate(self):

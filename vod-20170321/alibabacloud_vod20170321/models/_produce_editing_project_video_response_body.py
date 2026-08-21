@@ -12,13 +12,12 @@ class ProduceEditingProjectVideoResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The ID of the produced video.
-        # 
-        # > *   This parameter is returned for each request.
-        # > *   If a value is returned for this parameter, the video production task is being asynchronously processed.
+        # > - The video production operation synchronously returns the ID of the produced video.
+        # > - When MediaId is returned, the video production has entered the asynchronous processing phase.
         self.media_id = media_id
-        # The ID of the online editing project.
+        # The online editing project ID.
         self.project_id = project_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

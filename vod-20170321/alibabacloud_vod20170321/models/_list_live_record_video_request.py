@@ -16,24 +16,24 @@ class ListLiveRecordVideoRequest(DaraModel):
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The name of the application that was used to record the live stream.
+        # The name of the application used during recording.
         self.app_name = app_name
-        # The domain name of the recorded live stream.
+        # The domain name used during recording.
         self.domain_name = domain_name
-        # The end of the time range to query. The query is performed based on the time range during which the required live streams were recorded. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time of the recording operation (when the live stream recording begins). The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.end_time = end_time
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_no = page_no
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The sorting rule of the results. Valid values:
+        # The sorting method for results. Valid values:
         # 
-        # *   **CreationTime:Desc**: The results are sorted in reverse chronological order based on the creation time.
-        # *   **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
+        # - **CreationTime:Desc** (default): sorted by creation time in descending order.
+        # - **CreationTime:Asc**: sorted by creation time in ascending order.
         self.sort_by = sort_by
-        # The beginning of the time range to query. The query is performed based on the time range during which the required live streams were recorded. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time of the recording operation (when the live stream recording begins). Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.start_time = start_time
-        # The name of the recorded live stream.
+        # The name of the live stream used during recording.
         self.stream_name = stream_name
 
     def validate(self):

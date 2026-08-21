@@ -10,9 +10,9 @@ class AddVodTemplateResponseBody(DaraModel):
         request_id: str = None,
         vod_template_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the snapshot template. You can call the [SubmitSnapshotJob](https://help.aliyun.com/document_detail/72213.html) operation to submit snapshot jobs.
+        # The snapshot or animated image template ID. This ID can be used as a request parameter of the [SubmitSnapshotJob](~~SubmitSnapshotJob~~) or [SubmitDynamicImageJob](~~SubmitDynamicImageJob~~) operation to initiate snapshot or animated image processing.
         self.vod_template_id = vod_template_id
 
     def validate(self):

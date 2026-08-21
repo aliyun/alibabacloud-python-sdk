@@ -12,9 +12,9 @@ class DeleteTranscodeTemplateGroupResponseBody(DaraModel):
         non_exist_transcode_template_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of transcoding templates that were not found.
+        # The IDs of transcoding templates that do not exist when you delete transcoding templates by specifying template IDs.
         self.non_exist_transcode_template_ids = non_exist_transcode_template_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

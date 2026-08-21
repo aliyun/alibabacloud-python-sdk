@@ -13,9 +13,9 @@ class DescribeVodSSLCertificateListResponseBody(DaraModel):
         certificate_list_model: main_models.DescribeVodSSLCertificateListResponseBodyCertificateListModel = None,
         request_id: str = None,
     ):
-        # The information about certificates.
+        # The certificate list information.
         self.certificate_list_model = certificate_list_model
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,11 +55,11 @@ class DescribeVodSSLCertificateListResponseBodyCertificateListModel(DaraModel):
         page_size: int = None,
     ):
         self.cert_list = cert_list
-        # The number of certificates that are returned.
+        # The number of certificates.
         self.count = count
-        # The page number. Pages start from page 1. Default value: 1.
+        # The current page number. The start value is 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: integers from 1 to 1000.
+        # The page size. Valid values: any integer from 1 to 1000.
         self.page_size = page_size
 
     def validate(self):

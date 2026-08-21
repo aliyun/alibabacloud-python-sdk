@@ -14,14 +14,15 @@ class DeleteMezzaninesResponseBody(DaraModel):
         request_id: str = None,
         un_removeable_video_ids: List[str] = None,
     ):
+        # The list of custom IDs that do not exist.
         self.non_exist_reference_ids = non_exist_reference_ids
-        # The IDs of the audio or video files that do not exist.
+        # The list of audio or video IDs that do not exist.
         self.non_exist_video_ids = non_exist_video_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The IDs of the audio or video files whose source files cannot be deleted.
+        # The list of audio or video IDs that cannot be deleted.
         # 
-        # >  In most cases, source files cannot be deleted if they are used for original-quality playback or you do not have required permissions to delete them. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # > This is typically because the source file is used as the original stream (if the video transcoding pattern is no transcoding or asynchronous transcoding, the source file is used as the original stream for playback and cannot be deleted by default) or because of insufficient [permissions](https://help.aliyun.com/document_detail/113600.html).
         self.un_removeable_video_ids = un_removeable_video_ids
 
     def validate(self):

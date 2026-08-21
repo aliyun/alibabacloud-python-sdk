@@ -65,7 +65,18 @@ class Client(OpenApiClient):
             'eu-west-1-oxs': 'vod.aliyuncs.com',
             'me-east-1': 'vod.aliyuncs.com',
             'rus-west-1-pop': 'vod.aliyuncs.com',
-            'us-east-1': 'vod.aliyuncs.com'
+            'us-east-1': 'vod.aliyuncs.com',
+            'cn-shenzhen': 'vod.cn-shenzhen.aliyuncs.com',
+            'cn-beijing': 'vod.cn-beijing.aliyuncs.com',
+            'cn-shanghai': 'vod.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'vod.cn-hongkong.aliyuncs.com',
+            'ap-southeast-1': 'vod.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'vod.ap-northeast-1.aliyuncs.com',
+            'ap-southeast-5': 'vod.ap-southeast-5.aliyuncs.com',
+            'us-west-1': 'vod.us-west-1.aliyuncs.com',
+            'eu-central-1': 'vod.eu-central-1.aliyuncs.com',
+            'me-central-1': 'vod.me-central-1.aliyuncs.com',
+            'cn-north-2-gov-1': 'vod.cn-north-2-gov-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('vod', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -8824,6 +8835,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_job_detail_with_options_async(request, runtime)
 
+    def get_media_ai_analysis_with_options(
+        self,
+        request: main_models.GetMediaAiAnalysisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMediaAiAnalysisResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not DaraCore.is_null(request.media_id):
+            query['MediaId'] = request.media_id
+        if not DaraCore.is_null(request.output_type):
+            query['OutputType'] = request.output_type
+        if not DaraCore.is_null(request.result_types):
+            query['ResultTypes'] = request.result_types
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMediaAiAnalysis',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMediaAiAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_media_ai_analysis_with_options_async(
+        self,
+        request: main_models.GetMediaAiAnalysisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMediaAiAnalysisResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not DaraCore.is_null(request.media_id):
+            query['MediaId'] = request.media_id
+        if not DaraCore.is_null(request.output_type):
+            query['OutputType'] = request.output_type
+        if not DaraCore.is_null(request.result_types):
+            query['ResultTypes'] = request.result_types
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMediaAiAnalysis',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMediaAiAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_media_ai_analysis(
+        self,
+        request: main_models.GetMediaAiAnalysisRequest,
+    ) -> main_models.GetMediaAiAnalysisResponse:
+        runtime = RuntimeOptions()
+        return self.get_media_ai_analysis_with_options(request, runtime)
+
+    async def get_media_ai_analysis_async(
+        self,
+        request: main_models.GetMediaAiAnalysisRequest,
+    ) -> main_models.GetMediaAiAnalysisResponse:
+        runtime = RuntimeOptions()
+        return await self.get_media_ai_analysis_with_options_async(request, runtime)
+
     def get_media_audit_audio_result_detail_with_options(
         self,
         request: main_models.GetMediaAuditAudioResultDetailRequest,
@@ -10395,6 +10488,72 @@ class Client(OpenApiClient):
     ) -> main_models.GetWatermarkResponse:
         runtime = RuntimeOptions()
         return await self.get_watermark_with_options_async(request, runtime)
+
+    def get_workflow_task_with_options(
+        self,
+        request: main_models.GetWorkflowTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowTask',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_task_with_options_async(
+        self,
+        request: main_models.GetWorkflowTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowTask',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow_task(
+        self,
+        request: main_models.GetWorkflowTaskRequest,
+    ) -> main_models.GetWorkflowTaskResponse:
+        runtime = RuntimeOptions()
+        return self.get_workflow_task_with_options(request, runtime)
+
+    async def get_workflow_task_async(
+        self,
+        request: main_models.GetWorkflowTaskRequest,
+    ) -> main_models.GetWorkflowTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workflow_task_with_options_async(request, runtime)
 
     def list_aiimage_info_with_options(
         self,

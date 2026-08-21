@@ -13,25 +13,23 @@ class DescribeVodAIDataRequest(DaraModel):
         region: str = None,
         start_time: str = None,
     ):
-        # The type of video AI. If you leave this parameter empty, statistics on video AI of all types are returned. Separate multiple types with commas (,). Valid values:
-        # 
-        # *   **AIVideoCensor**: automated review
-        # *   **AIVideoFPShot**: media fingerprinting
-        # *   **AIVideoTag**: smart tagging
+        # The AI type. By default, all types are returned. You can specify multiple types separated by commas (,). Valid values:
+        # - **AIVideoCensor**: automated review.
+        # - **AIVideoFPShot**: media fingerprint.
+        # - **AIVideoTag**: smart tagging.
         self.aitype = aitype
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The region in which you want to query data. If you leave this parameter empty, data in all regions is returned. Separate multiple regions with commas (,). Valid values:
-        # 
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-beijing**: China (Beijing)
-        # *   **eu-central-1**: Germany (Frankfurt)
-        # *   **ap-southeast-1**: Singapore
+        # The storage region. By default, data in all regions is returned. You can specify multiple regions separated by commas (,). Valid values:
+        # - **cn-shanghai**: Shanghai.
+        # - **cn-beijing**: Beijing.
+        # - **eu-central-1**: Germany.
+        # - **ap-southeast-1**: Singapore.
         self.region = region
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The start of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

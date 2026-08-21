@@ -11,9 +11,9 @@ class AddEditingProjectResponseBody(DaraModel):
         project: main_models.AddEditingProjectResponseBodyProject = None,
         request_id: str = None,
     ):
-        # The information about the online editing project. For more information about the structure, see [EditingProject](https://help.aliyun.com/document_detail/52839.html).
+        # The online editing project. For the specific structure definition, see [EditingProject](https://help.aliyun.com/document_detail/52839.html).
         self.project = project
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,20 +54,20 @@ class AddEditingProjectResponseBodyProject(DaraModel):
         status: str = None,
         title: str = None,
     ):
-        # The time when the online editing project was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the online editing project was created. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.creation_time = creation_time
         # The description of the online editing project.
         self.description = description
-        # The time when the online editing project was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The last time when the online editing project was modified. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.modified_time = modified_time
         # The ID of the online editing project.
         self.project_id = project_id
         # The status of the online editing project. Valid values:
         # 
-        # *   **Normal**: the online editing project is in draft.
-        # *   **Producing**: the video is being produced.
-        # *   **Produced**: the video is produced.
-        # *   **ProduceFailed**: the video failed to be produced.
+        # - **Normal**: draft.
+        # - **Producing**: being produced.
+        # - **Produced**: produced.
+        # - **ProduceFailed**: failed to be produced.
         self.status = status
         # The title of the online editing project.
         self.title = title

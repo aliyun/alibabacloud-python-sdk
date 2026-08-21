@@ -11,17 +11,16 @@ class ListAppPoliciesForIdentityRequest(DaraModel):
         identity_name: str = None,
         identity_type: str = None,
     ):
-        # The ID of the application. Default value: **app-1000000**. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # The application ID. Default value: **app-1000000**. For more information, see [Multiple applications](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
-        # The name of the identity.
+        # The identity name.
         # 
-        # *   Specifies the ID of the RAM user when the IdentityType parameter is set to RamUser.
-        # *   Specifies the name of the RAM role when the IdentityType parameter is set to RamRole.
+        # - If IdentityType is set to RamUser, specify the Resource Access Management (RAM) user ID.
+        # - If IdentityType is set to RamRole, specify the role name.
         self.identity_name = identity_name
-        # The type of the identity. Valid values:
-        # 
-        # *   **RamUser**: a RAM user.
-        # *   **RamRole**: a RAM role.
+        # The identity type. Valid values:
+        # - **RamUser**: Resource Access Management (RAM) user.
+        # - **RamRole**: RAM role.
         self.identity_type = identity_type
 
     def validate(self):

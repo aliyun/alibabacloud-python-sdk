@@ -9,10 +9,9 @@ class ListAITemplateRequest(DaraModel):
         self,
         template_type: str = None,
     ):
-        # The type of the AI template. Valid values:
-        # 
-        # *   **AIMediaAudit**: automated review
-        # *   **AIImage**: smart thumbnail
+        # The templatetype of the AI template. Valid values:
+        # - **AIMediaAudit**: automated review.
+        # - **AIImage**: smart thumbnail.
         # 
         # This parameter is required.
         self.template_type = template_type

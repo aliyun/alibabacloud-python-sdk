@@ -13,9 +13,9 @@ class GetVideoInfoResponseBody(DaraModel):
         request_id: str = None,
         video: main_models.GetVideoInfoResponseBodyVideo = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the audio or video file.
+        # The audio or video information.
         self.video = video
 
     def validate(self):
@@ -75,81 +75,83 @@ class GetVideoInfoResponseBodyVideo(DaraModel):
         user_data: str = None,
         video_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
         # The final review result of the audio or video file. Valid values:
         # 
-        # *   **Normal**: pass
-        # *   **Blocked**: blocked
+        # - **Normal**: Approved.
+        # - **Blocked**: Blocked.
         self.audit_status = audit_status
-        # The category ID of the media file.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The thumbnail URL of the media file.
+        # The thumbnail URL of the audio or video file.
         self.cover_url = cover_url
-        # The time when the media file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video file was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The custom information about the media file.\\n\\n> This parameter has been deprecated. This parameter is no longer returned after you call the operation.
+        # The custom media asset information.
+        # 
+        # > This parameter is deprecated. The API no longer returns this parameter.
         self.custom_media_info = custom_media_info
-        # The description of the media file.
+        # The description of the audio or video file.
         self.description = description
-        # Indicates whether the offline download feature is enabled. If you enable the offline download feature, users can download and play videos by using the ApsaraVideo Player on a local PC. For more information, see [Configure download settings](https://help.aliyun.com/document_detail/86107.html). Valid values:
+        # The status of the offline download switch. After the offline download feature is enabled, mobile users can cache videos to their local devices for offline viewing by using ApsaraVideo Player. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
         # 
-        # *   **on**: the offline download feature is enabled.
-        # *   **off**: the offline download feature is not enabled.
+        # - **on**: enabled. Offline download is allowed.
+        # - **off**: disabled. Offline download is not allowed.
         self.download_switch = download_switch
-        # The duration of the media file. Unit: seconds.
+        # The duration of the audio or video file. Unit: seconds.
         self.duration = duration
-        # The time when the audio or video file was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video file was last updated. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modification_time = modification_time
+        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The length is 6 to 64 characters. The ID is unique at the user level.
         self.reference_id = reference_id
-        # The region where the media file is stored.
+        # The region where the audio or video file is stored.
         self.region_id = region_id
-        # The period of time in which the object remains in the restored state.
+        # The expiration time of the media asset restoration.
         self.restore_expiration = restore_expiration
-        # The restoration status of the audio or video file. Valid values:
-        # 
-        # *   **Processing**
-        # *   **Success**
-        # *   **Failed**
+        # The restoration status of the media asset. Valid values:
+        # - **Processing**: The media asset is being restored.
+        # - **Success**: The media asset is restored.
+        # - **Failed**: The media asset failed to be restored.
         self.restore_status = restore_status
-        # The size of the source file. Unit: bytes.
+        # The size of the audio or video source file. Unit: bytes.
         self.size = size
         self.snapshots = snapshots
-        # The status of the media file. For more information about the operations that you can perform on files in different statuses and usage limits, see [Status: the status of a video](~~52839#title-vqg-8cz-7p8~~). Valid values:
+        # The status of the audio or video file. For more information about the operations that can be performed on audio and video files in each status and the limits, see [Status: audio and video status](~~52839#title-vqg-8cz-7p8~~). Valid values:
         # 
-        # *   **Uploading**
-        # *   **UploadFail**
-        # *   **UploadSucc**
-        # *   **Transcoding**
-        # *   **TranscodeFail**
-        # *   **Blocked**
-        # *   **Normal**
+        # - **Uploading**: The file is being uploaded.
+        # - **UploadFail**: The file failed to be uploaded.
+        # - **UploadSucc**: The file is uploaded.
+        # - **Transcoding**: The file is being transcoded.
+        # - **TranscodeFail**: The file failed to be transcoded.
+        # - **Blocked**: The file is blocked.
+        # - **Normal**: The file is in a normal state.
         self.status = status
-        # The storage class of the audio or video file. Valid values:
+        # The storage class of the media asset. Valid values:
         # 
-        # *   **Standard**: All media resources are stored as Standard objects.
-        # *   **IA**: All media resources are stored as IA objects.
-        # *   **Archive**: All media resources are stored as Archive objects.
-        # *   **ColdArchive**: All media resources are stored as Cold Archive objects.
-        # *   **SourceIA**: Only the source files are IA objects.
-        # *   **SourceArchive**: Only the source files are Archive objects.
-        # *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-        # *   **Changing**: The storage class of the audio or video file is being changed.
-        # *   **SourceChanging**: The storage class of the source file is being changed.
+        # - **Standard**: standard.
+        # - **IA**: Infrequent Access (media asset).
+        # - **Archive**: Archive (media asset).
+        # - **ColdArchive**: Cold Archive (media asset).
+        # - **SourceIA**: Infrequent Access (source file).
+        # - **SourceArchive**: Archive (source file).
+        # - **SourceColdArchive**: Cold Archive (source file).
+        # - **Changing**: The storage class of the media asset is being changed.
+        # - **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
-        # The storage address of the media file.
+        # The storage address of the audio or video file.
         self.storage_location = storage_location
         # The tags of the audio or video file. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The ID of the transcoding template group.
+        # The transcoding template group ID.
         self.template_group_id = template_group_id
-        # The title of the media file.
+        # The title of the audio or video file.
         self.title = title
-        # Custom settings. This is a JSON string that supports settings such as message callbacks and upload acceleration. For more information, please refer to [UserData](https://help.aliyun.com/document_detail/86952.html).
+        # The custom settings. The value is a JSON string that supports settings such as message callbacks and upload acceleration. For more information, see [UserData](https://help.aliyun.com/document_detail/86952.html).
         self.user_data = user_data
-        # The ID of the media file.
+        # The audio or video ID.
         self.video_id = video_id
 
     def validate(self):

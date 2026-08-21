@@ -12,30 +12,27 @@ class DetachAppPolicyFromIdentityRequest(DaraModel):
         identity_type: str = None,
         policy_names: str = None,
     ):
-        # The ID of the application. This parameter is optional if you set PolicyNames to VODAppAdministratorAccess. This parameter is required if you set PolicyNames to a value other than VODAppAdministratorAccess.
-        # 
-        # *   Default value: **app-1000000**.
-        # *   For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # The application ID. If the policy name is VODAppAdministratorAccess, this parameter is optional. For other policies, this parameter is required.
+        # - Value (default): **app-1000000**.
+        # - For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
-        # The ID of the RAM user or the name of the RAM role.
+        # The identity name.
         # 
-        # *   Specifies the ID of the RAM user for this parameter if you set IdentityType to RamUser.
-        # *   Specifies the name of the RAM role for this parameter if you set IdentityType to RamRole.
+        # - If the type is RamUser, specify the Resource Access Management (RAM) user ID.
+        # - If the type is RamRole, specify the role name.
         # 
         # This parameter is required.
         self.identity_name = identity_name
-        # The type of the identity. Valid values:
-        # 
-        # *   **RamUser**: RAM user
-        # *   **RamRole**: RAM role
+        # The identity type. Valid values:
+        # - **RamUser**: Resource Access Management (RAM) user.
+        # - **RamRole**: RAM role.
         # 
         # This parameter is required.
         self.identity_type = identity_type
-        # The name of the policy. Separate multiple names with commas (,). Only system policies are supported.
-        # 
-        # *   **VODAppFullAccess**: permissions to manage all resources in an application
-        # *   **VODAppReadOnlyAccess**: permissions to read all resources in an application
-        # *   **VODAppAdministratorAccess**: permissions of the application administrator
+        # The policy names. Separate multiple names with commas (,). Only system policies are supported. Valid values:
+        # - **VODAppFullAccess**: permissions to manage and operate all resources in the application.
+        # - **VODAppReadOnlyAccess**: read-only permissions for all resources in the application.
+        # - **VODAppAdministratorAccess**: application administrator permissions.
         # 
         # This parameter is required.
         self.policy_names = policy_names

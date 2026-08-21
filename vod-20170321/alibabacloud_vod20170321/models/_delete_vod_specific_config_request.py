@@ -13,18 +13,17 @@ class DeleteVodSpecificConfigRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the configuration.
+        # The configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The accelerated domain name.
+        # The accelerated domain name for ApsaraVideo VOD.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The environment from which the domain name configurations are deleted. Valid values:
-        # 
-        # *   online: production environment
-        # *   gray: simulation environment
+        # The environment from which you want to delete the configuration. Valid values:
+        # - online: production environment
+        # - gray: canary release environment
         self.env = env
         self.owner_id = owner_id
         self.security_token = security_token

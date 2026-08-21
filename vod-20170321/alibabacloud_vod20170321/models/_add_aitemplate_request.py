@@ -11,18 +11,18 @@ class AddAITemplateRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The detailed configurations of the AI template. The value must be a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
+        # The detailed configuration of the AI template. The value is a JSON string.
+        # For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
         # 
         # This parameter is required.
         self.template_config = template_config
-        # The name of the AI template. The name can be up to 128 bytes in length.
+        # The name of the AI template. Maximum length: 128 bytes.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The type of the AI template. Valid values:
-        # 
-        # *   **AIMediaAudit**: automated review
-        # *   **AIImage**: smart thumbnail
+        # The templatetype of the AI template. Valid values:
+        # - **AIMediaAudit**: automated review.
+        # - **AIImage**: smart thumbnail.
         # 
         # This parameter is required.
         self.template_type = template_type

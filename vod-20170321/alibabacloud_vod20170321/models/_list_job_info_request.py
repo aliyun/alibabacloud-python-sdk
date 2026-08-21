@@ -10,15 +10,17 @@ class ListJobInfoRequest(DaraModel):
         job_type: str = None,
         media_id: str = None,
     ):
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
-        # *   transcode
-        # *   snapshot
-        # *   ai
+        # - transcode
+        # 
+        # - snapshot
+        # 
+        # - ai
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The ID of the media asset.
+        # The media asset ID.
         # 
         # This parameter is required.
         self.media_id = media_id

@@ -10,9 +10,9 @@ class UpdateAITemplateResponseBody(DaraModel):
         request_id: str = None,
         template_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the template.
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

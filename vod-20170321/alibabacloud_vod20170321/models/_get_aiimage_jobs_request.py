@@ -13,9 +13,9 @@ class GetAIImageJobsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The ID of the image AI processing job. You can obtain the value of JobId from the response to the [SubmitAIImageJob](~~SubmitAIImageJob~~) operation.
-        # *   You can specify a maximum of 10 IDs.
-        # *   Separate multiple IDs with commas (,).
+        # The IDs of AI image processing tasks. The value consists of one or more job IDs. A job ID is the value of the JobId parameter returned by the [SubmitAIImageJob](https://help.aliyun.com/document_detail/186922.html) operation.
+        # - A maximum of 10 IDs are supported.
+        # - Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.job_ids = job_ids

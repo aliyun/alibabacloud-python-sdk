@@ -15,7 +15,7 @@ class SetCrossdomainContentRequest(DaraModel):
         resource_real_owner_id: str = None,
         storage_location: str = None,
     ):
-        # The content of the cross-domain policy file. The file must be in the XML format and can contain up to 2,048 characters.
+        # The content of the cross-domain file. The content is in XML format and cannot exceed 2,048 characters.
         # 
         # This parameter is required.
         self.content = content
@@ -25,7 +25,7 @@ class SetCrossdomainContentRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the resource owner.
         self.resource_real_owner_id = resource_real_owner_id
-        # The URL of the Object Storage Service (OSS) bucket.
+        # The OSS storage address.
         # 
         # This parameter is required.
         self.storage_location = storage_location

@@ -11,9 +11,9 @@ class AddCategoryResponseBody(DaraModel):
         category: main_models.AddCategoryResponseBodyCategory = None,
         request_id: str = None,
     ):
-        # The information about the category.
+        # The media asset category information.
         self.category = category
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,22 +53,21 @@ class AddCategoryResponseBodyCategory(DaraModel):
         parent_id: int = None,
         type: str = None,
     ):
-        # The ID of the category. You can use the value of this parameter when you call the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
+        # The category ID. This ID can be used as a request parameter for the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The level of the category. Valid values:
-        # 
-        # *   **0**: level 1 category
-        # *   **1**: level 2 category
-        # *   **1**: level 3 category
+        # The category level. Valid values:
+        # - **0**: level-0 category.
+        # - **1**: level-1 category.
+        # - **2**: level-2 category.
         self.level = level
-        # The ID of the parent category.
+        # The parent category ID.
         self.parent_id = parent_id
-        # The type of the category. Valid values:
+        # The category type. Valid values:
         # 
-        # *   **default**: audio, video, and image files
-        # *   **material**: short video materials
+        # - **default**: audio/video/image category.
+        # - **material**: short video material category.
         self.type = type
 
     def validate(self):

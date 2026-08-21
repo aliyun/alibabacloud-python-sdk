@@ -11,33 +11,29 @@ class GetAttachedMediaInfoRequest(DaraModel):
         media_ids: str = None,
         output_type: str = None,
     ):
-        # The validity period of the URL. Unit: seconds.
+        # The validity period of the auxiliary media asset URL. Unit: seconds.
         # 
-        # *   If you set the OutputType parameter to **cdn**:
-        # 
-        #     *   The URL of the auxiliary media asset has a validity period only if URL signing is enabled. Otherwise, the URL of the auxiliary media asset is permanently valid.
-        #     *   Minimum value: **1**.
-        #     *   Maximum value: unlimited.
-        #     *   Default value: If you do not set this parameter, the default validity period that is specified in URL signing is used.
-        # 
-        # *   If you set the OutputType parameter to **oss**:
-        # 
-        #     *   The URL of the auxiliary media asset has a validity period only if the permissions on the Object Storage Service (OSS) bucket are private. Otherwise, the URL of the auxiliary media asset is permanently valid.
-        #     *   Minimum value: **1**.
-        #     *   The maximum value for a media asset stored in the VOD bucket is **2592000** (30 days) and the maximum value for a media asset stored in an OSS bucket is **129600** (36 hours). The maximum value is limited to reduce security risks of the origin.
-        #     *   Default value: If you do not set this parameter, the default value **3600** is used.
+        #  - If OutputType is set to **cdn**:
+        #     - The URL expires only if URL authentication is enabled. Otherwise, the URL is permanently valid.
+        #     - Minimum value: **1**.
+        #     - Maximum value: unlimited.
+        #     - Default value: If you do not specify this parameter, the default validity period specified in URL authentication is used.
+        # - If OutputType is set to **oss**:
+        #     - The URL expires only if the storage permission is set to private. Otherwise, the URL is permanently valid.
+        #     - Minimum value: **1**.
+        #     - Maximum value: To reduce security risks to the origin server, the maximum value is **2592000** (30 days) if the auxiliary media asset is stored in a bucket managed by ApsaraVideo VOD, and **129600** (36 hours) if the auxiliary media asset is stored in your own OSS bucket.
+        #     - Default value: If you do not specify this parameter, the value is **3600**.
         self.auth_timeout = auth_timeout
-        # The ID of the auxiliary media asset.
-        # 
-        # *   Separate multiple IDs with commas (,). You can specify up to 20 IDs.
-        # *   You can obtain the ID from the response to the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation that you call to obtain the upload URL and credential.
+        # The auxiliary media asset IDs.
+        # - Separate multiple IDs with commas (,). You can specify up to 20 IDs.
+        # - The IDs are returned after you call the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation to obtain the upload URL and credential for the auxiliary media asset.
         # 
         # This parameter is required.
         self.media_ids = media_ids
-        # The type of the media asset URL. Valid values:
+        # The type of the output URL. Valid values:
         # 
-        # *   **oss**
-        # *   **cdn** (default)
+        # - **oss**: the back-to-origin URL.
+        # - **cdn** (default): the CDN-accelerated URL.
         self.output_type = output_type
 
     def validate(self):

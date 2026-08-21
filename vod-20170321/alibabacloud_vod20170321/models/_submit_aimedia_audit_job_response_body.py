@@ -11,11 +11,11 @@ class SubmitAIMediaAuditJobResponseBody(DaraModel):
         media_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the job.
+        # The job ID.
         self.job_id = job_id
-        # The ID of the media file.
+        # The audio or video ID.
         self.media_id = media_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

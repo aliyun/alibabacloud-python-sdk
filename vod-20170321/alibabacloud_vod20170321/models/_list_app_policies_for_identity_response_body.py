@@ -13,11 +13,11 @@ class ListAppPoliciesForIdentityResponseBody(DaraModel):
         app_policy_list: List[main_models.ListAppPoliciesForIdentityResponseBodyAppPolicyList] = None,
         request_id: str = None,
     ):
-        # The details of each policy.
+        # The list of access policy names.
         # 
-        # > A maximum of 100 entries can be returned.
+        # > A maximum of 100 entries are returned.
         self.app_policy_list = app_policy_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,22 +65,21 @@ class ListAppPoliciesForIdentityResponseBodyAppPolicyList(DaraModel):
         policy_type: str = None,
         policy_value: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The time when the application policy was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the application policy was granted to the role. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.creation_time = creation_time
-        # The description of the policy.
+        # The policy description.
         self.description = description
-        # The last time when the application policy was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the application policy granted to the role was last modified. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.modification_time = modification_time
-        # The name of the policy.
+        # The policy name.
         self.policy_name = policy_name
-        # The type of the policy. Valid values:
-        # 
-        # *   **System**
-        # *   **Custom**
+        # The policy type. Valid values:
+        # - **System**: system policy.
+        # - **Custom**: user-defined policy.
         self.policy_type = policy_type
-        # The content of the policy.
+        # The policy value.
         self.policy_value = policy_value
 
     def validate(self):

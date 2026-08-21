@@ -19,9 +19,9 @@ class DescribeVodSSLCertificateListRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: integers from 1 to 1000.
+        # The page size. Valid values: any integer from 1 to 1000.
         self.page_size = page_size
-        # The keyword that is used to query certificates.
+        # The certificate name for fuzzy match.
         self.search_keyword = search_keyword
         self.security_token = security_token
 

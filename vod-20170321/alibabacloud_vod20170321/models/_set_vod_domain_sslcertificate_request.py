@@ -19,39 +19,42 @@ class SetVodDomainSSLCertificateRequest(DaraModel):
         sslpub: str = None,
         security_token: str = None,
     ):
-        # The ID of the certificate.
+        # The certificate ID.
         self.cert_id = cert_id
-        # The name of the certificate.
+        # The certificate name.
         self.cert_name = cert_name
-        # The region of the certificate. Valid values:
+        # The certificate region. Valid values:
+        # - **ap-southeast-1** (Singapore)
+        # - **cn-hangzhou** (Hangzhou)
         # 
-        # *   **ap-southeast-1**: Singapore
-        # *   **cn-hangzhou**: China (Hangzhou)
-        # 
-        # Default value: **cn-hangzhou**
+        # Default value: **cn-hangzhou**.
         self.cert_region = cert_region
-        # The type of the certificate.
+        # The certificate type. Valid values:
         # 
-        # *   **upload**: a user-uploaded SSL certificate.
-        # *   **cas**: a certificate that is acquired through Certificate Management Service.
+        # - **upload**: an uploaded certificate.
+        # - **cas**: a certificate from SSL Certificates Service.
         self.cert_type = cert_type
-        # VOD acceleration domain.
+        # The accelerated domain name for ApsaraVideo VOD.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether the certificate is issued in canary releases. If you set this parameter to **staging**, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+        # Specifies whether to distribute the certificate in a canary release environment. Valid values:
+        # 
+        # - **staging**: distributes the certificate in a canary release environment.
+        # 
+        # If this parameter is not specified or set to any other value, the certificate is formally distributed.
         self.env = env
         self.owner_id = owner_id
-        # The private key. This parameter is required only if you enable the certificate.
+        # The content of the private key. If you do not enable the certificate, you do not need to specify this parameter. If you configure a certificate, enter the private key content.
         self.sslpri = sslpri
-        # Specifies whether to enable the SSL certificate. Default value: off. Valid values:
+        # Specifies whether to enable the HTTPS certificate. Valid values:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         # 
         # This parameter is required.
         self.sslprotocol = sslprotocol
-        # The content of the certificate. This parameter is required only if you enable the SSL certificate.
+        # The content of the security certificate. If you do not enable the certificate, you do not need to specify this parameter. If you configure a certificate, enter the certificate content.
         self.sslpub = sslpub
         self.security_token = security_token
 

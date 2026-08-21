@@ -13,7 +13,7 @@ class DescribePlayUserTotalResponseBody(DaraModel):
         request_id: str = None,
         user_play_statis_totals: main_models.DescribePlayUserTotalResponseBodyUserPlayStatisTotals = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.user_play_statis_totals = user_play_statis_totals
 

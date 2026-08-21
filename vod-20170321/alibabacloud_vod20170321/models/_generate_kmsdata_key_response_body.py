@@ -12,13 +12,13 @@ class GenerateKMSDataKeyResponseBody(DaraModel):
         plaintext: str = None,
         request_id: str = None,
     ):
-        # The ciphertext of the encrypted data key. This is used as CipherText when you create a transcoding job.
+        # The ciphertext of the encrypted data key (DK). This value is used for the CipherText parameter when you submit a transcoding job.
         self.ciphertext_blob = ciphertext_blob
-        # The ID of the customer master key (CMK). The ID must be globally unique.
+        # The globally unique identifier of the master key.
         self.key_id = key_id
-        # The Base64-encoded plaintext of the data key.
+        # The Base64-encoding plaintext of the data key (DK).
         self.plaintext = plaintext
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,7 +10,7 @@ class UpdateTranscodeTemplateGroupResponseBody(DaraModel):
         request_id: str = None,
         transcode_template_group_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the transcoding template group.
         self.transcode_template_group_id = transcode_template_group_id

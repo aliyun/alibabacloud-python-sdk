@@ -16,7 +16,7 @@ class ListAIJobResponseBody(DaraModel):
     ):
         self.aijob_list = aijob_list
         self.non_exist_aijob_ids = non_exist_aijob_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

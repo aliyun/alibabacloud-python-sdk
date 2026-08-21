@@ -13,9 +13,9 @@ class ListAIJobRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The list of job IDs. You can obtain the job ID from the PlayInfo parameter in the response to the [GetPlayInfo](https://help.aliyun.com/document_detail/56124.html) operation.
+        # The list of job IDs. You can obtain the JobId from the PlayInfo struct returned by the [GetPlayInfo](https://help.aliyun.com/document_detail/56124.html) operation.
         # 
-        # >  You can specify a maximum of 10 job IDs in a request. Separate multiple IDs with commas (,).
+        # > Separate multiple IDs with commas (,). You can specify up to 10 job IDs at a time.
         # 
         # This parameter is required.
         self.job_ids = job_ids

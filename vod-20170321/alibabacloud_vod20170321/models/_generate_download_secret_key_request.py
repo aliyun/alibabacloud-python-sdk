@@ -13,17 +13,17 @@ class GenerateDownloadSecretKeyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # A custom string of 16 to 32 characters in length. The string must contain uppercase letters, lowercase letters, and digits.
+        # The custom encryption private key string. The string is 16 to 32 characters in length and consists of letters and digits. The string must contain uppercase letters, lowercase letters, and digits.
         # 
         # This parameter is required.
         self.app_decrypt_key = app_decrypt_key
-        # The unique identifier of the app.
+        # The unique identity of the app.
         # 
-        # *   Android: the SHA-1 fingerprint of the keystore. The value is a string that contains a colon (:).
-        # *   iOS: the bundle ID of the app.
-        # *   Windows: the serial number in the digital signature certificate.
+        # - Android: the SHA-1 value of the keystore file. The obtained SHA-1 value is a character string with colons.
+        # - iOS: the App Bundle ID value.
+        # - Windows: the serial number of the digital signing certificate.
         # 
-        # For more information about how to obtain the unique identifier of an app, see [Obtain the unique app identifier](~~86107#section-wtj-9d7-lg2~~).
+        # For information about how to obtain the unique identity of the app, see [Obtain the unique identity of the app](~~86107#section-wtj-9d7-lg2~~).
         # 
         # This parameter is required.
         self.app_identification = app_identification

@@ -14,7 +14,7 @@ class DeleteAttachedMediaResponseBody(DaraModel):
     ):
         # The IDs of the auxiliary media assets that failed to be deleted.
         self.non_exist_media_ids = non_exist_media_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

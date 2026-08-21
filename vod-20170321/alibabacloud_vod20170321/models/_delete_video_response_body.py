@@ -14,14 +14,15 @@ class DeleteVideoResponseBody(DaraModel):
         non_exist_video_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the videos that cannot be deleted.
-        # > Generally, videos cannot be deleted if you do not have the required [permissions](https://help.aliyun.com/document_detail/113600.html).
+        # The list of video IDs for which the operation is forbidden.
+        # 
+        # > This is typically caused by insufficient [permissions](https://help.aliyun.com/document_detail/113600.html).
         self.forbidden_video_ids = forbidden_video_ids
+        # The list of custom IDs that do not exist.
         self.non_exist_reference_ids = non_exist_reference_ids
-        # The IDs of the videos that do not exist.
-        # > If the list of videos to be deleted contains one or more videos that do not exist, the IDs of these non-existing videos are returned. If none of the videos in the list exists, a 404 error is returned.
+        # The list of video IDs that do not exist.
         self.non_exist_video_ids = non_exist_video_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

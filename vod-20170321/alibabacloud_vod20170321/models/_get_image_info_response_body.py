@@ -11,9 +11,9 @@ class GetImageInfoResponseBody(DaraModel):
         image_info: main_models.GetImageInfoResponseBodyImageInfo = None,
         request_id: str = None,
     ):
-        # The information about the image.
+        # The image information.
         self.image_info = image_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,41 +61,38 @@ class GetImageInfoResponseBodyImageInfo(DaraModel):
         title: str = None,
         url: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The ID of the category.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The time when the image was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the image was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the image.
+        # The image description.
         self.description = description
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The type of the image. Valid values:
+        # The image type. Valid values:
         # 
-        # *   **CoverSnapshot**: thumbnail snapshot.
-        # *   **NormalSnapshot**: normal snapshot.
-        # *   **SpriteSnapshot**: sprite snapshot.
-        # *   **SpriteOriginSnapshot**: sprite source snapshot.
-        # *   **All**: images of all the preceding types. Multiple types other than All can return for this parameter. Multiple types are separated by commas (,).
+        # - **default**: regular image.
+        # - **cover**: video thumbnail.
         self.image_type = image_type
-        # The source information about the image.
+        # The mezzanine information of the image.
         self.mezzanine = mezzanine
-        # The status of the image. Valid values:
+        # The image status. Valid values:
         # 
-        # *   **Uploading**: The image is being uploaded. This is the initial status.
-        # *   **Normal**: The image is uploaded.
-        # *   **UploadFail**: The image fails to be uploaded.
+        # - **Uploading**: The image is being uploaded. This is the initial status.
+        # - **Normal**: The image is uploaded.
+        # - **UploadFail**: The image failed to be uploaded.
         self.status = status
-        # The bucket in which the image is stored.
+        # The storage address of the image file.
         self.storage_location = storage_location
-        # The tags of the image. Multiple tags are separated by commas (,).
+        # The image tags. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The title of the image.
+        # The image title.
         self.title = title
-        # The image URL. If a domain name for CDN is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+        # The image access URL. If a CDN domain name is configured, the CDN URL is returned. Otherwise, the OSS URL is returned.
         self.url = url
 
     def validate(self):
@@ -201,15 +198,15 @@ class GetImageInfoResponseBodyImageInfoMezzanine(DaraModel):
         original_file_name: str = None,
         width: int = None,
     ):
-        # The size of the image. Unit: bytes.
+        # The file size. Unit: bytes.
         self.file_size = file_size
         # The OSS URL of the image file.
         self.file_url = file_url
-        # The height of the image. Unit: pixels.
+        # The image height. Unit: pixel.
         self.height = height
-        # The URL of the source file.
+        # The address of the uploaded source image file.
         self.original_file_name = original_file_name
-        # The width of the image. Unit: pixels.
+        # The image width. Unit: pixel.
         self.width = width
 
     def validate(self):

@@ -12,22 +12,20 @@ class DescribeVodDomainReqHitRateDataRequest(DaraModel):
         interval: str = None,
         start_time: str = None,
     ):
-        # The accelerated domain name.
+        # The accelerated domain name to query.
         # 
-        # *   If you leave this parameter empty, the merged data of all your accelerated domain names is returned.
-        # *   You can specify a maximum of 500 accelerated domain names. Separate multiple domain names with commas (,).
+        # - If you do not specify this parameter, the pooled data of all accelerated domain names is returned by default.
+        # - Batch query is supported. Separate multiple domain names with commas (,). You can specify up to 500 domain names at a time.
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Configuration Management > CDN Configuration > Domain Names** in the left-side navigation pane to view the accelerated domain names that you have added to ApsaraVideo VOD. You can also call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
         self.domain_name = domain_name
-        # The end of the time range to query.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
-        # >  The end time must be later than the start time.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # > The end time must be later than the start time.
         self.end_time = end_time
-        # The time granularity. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you leave this parameter empty or specify an invalid value, the default value is used. The supported time granularity varies based on the time range specified by `EndTime` and `StartTime`. The following content describes the supported time granularity.
+        # The time granularity of the data to query. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you do not specify this parameter or specify an unsupported value, the default value is used. Based on the time span specified by `StartTime` and `EndTime`, the supported time granularity is as follows:
         # 
-        # *   Time range per query < 3 days: **300** (default), **3600**, and **86400**
-        # *   3 days ≤ Time range per query < 31 days: **3600** (default) and **86400**
-        # *   31 days ≤ Time range per query ≤ 90 days: **86400** (default)
+        # - Less than 3 days (exclusive): **300** (default), **3600**, and **86400**.
+        # - 3 to 31 days (exclusive): **3600** (default) and **86400**.
+        # - 31 days or more: **86400** (default).
         self.interval = interval
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time

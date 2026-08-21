@@ -15,15 +15,17 @@ class ListJobInfoResponseBody(DaraModel):
         media_id: str = None,
         request_id: str = None,
     ):
-        # The historical tasks of the last 6 months.
+        # The historical task list within the last 6 months.
         self.job_info_list = job_info_list
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
-        # *   transcode
-        # *   snapshot
-        # *   ai
+        # - transcode
+        # 
+        # - snapshot
+        # 
+        # - ai
         self.job_type = job_type
-        # The ID of the media asset.
+        # The media asset ID.
         self.media_id = media_id
         # The request ID.
         self.request_id = request_id
@@ -83,15 +85,15 @@ class ListJobInfoResponseBodyJobInfoList(DaraModel):
         status: str = None,
         user_id: int = None,
     ):
-        # The time when the task was complete.
+        # The time when the task was completed.
         self.complete_time = complete_time
-        # The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
         self.create_time = create_time
-        # The ID of the task.
+        # The task ID.
         self.job_id = job_id
-        # The status of the task.
+        # The task status.
         self.status = status
-        # The ID of the user who submitted the task.
+        # The ID of the user who initiated the task.
         self.user_id = user_id
 
     def validate(self):

@@ -14,7 +14,9 @@ class DescribeVodUserVipsByDomainResponseBody(DaraModel):
         request_id: str = None,
         vips: main_models.DescribeVodUserVipsByDomainResponseBodyVips = None,
     ):
+        # The accelerated domain name for ApsaraVideo VOD.
         self.domain_name = domain_name
+        # The request ID.
         self.request_id = request_id
         self.vips = vips
 

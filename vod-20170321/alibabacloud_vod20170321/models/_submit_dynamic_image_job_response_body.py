@@ -13,7 +13,7 @@ class SubmitDynamicImageJobResponseBody(DaraModel):
     ):
         # The information about the animated image job.
         self.dynamic_image_job = dynamic_image_job
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

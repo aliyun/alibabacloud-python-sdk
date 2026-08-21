@@ -13,9 +13,9 @@ class DescribeVodTieringStorageDataResponseBody(DaraModel):
         request_id: str = None,
         storage_data: List[main_models.DescribeVodTieringStorageDataResponseBodyStorageData] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The storage usage data returned.
+        # The storage usage data.
         self.storage_data = storage_data
 
     def validate(self):
@@ -61,15 +61,15 @@ class DescribeVodTieringStorageDataResponseBodyStorageData(DaraModel):
         storage_utilization: int = None,
         time_stamp: str = None,
     ):
-        # The data that is stored less than a month. Unit: bytes.
+        # The size of data stored for less than one month. Unit: bytes.
         self.lessthan_month_datasize = lessthan_month_datasize
-        # The region in which data is queried.
+        # The storage region.
         self.region = region
-        # The storage type.
+        # The storage class.
         self.storage_class = storage_class
         # The storage usage. Unit: bytes.
         self.storage_utilization = storage_utilization
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time of the time interval. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.time_stamp = time_stamp
 
     def validate(self):

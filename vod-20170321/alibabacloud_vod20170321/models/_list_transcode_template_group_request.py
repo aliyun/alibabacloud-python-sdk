@@ -9,7 +9,7 @@ class ListTranscodeTemplateGroupRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of the application. Default value: **app-1000000**. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
 
     def validate(self):

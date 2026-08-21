@@ -17,9 +17,9 @@ class RestoreMediaResponseBody(DaraModel):
     ):
         self.forbidden_list = forbidden_list
         self.ignored_list = ignored_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

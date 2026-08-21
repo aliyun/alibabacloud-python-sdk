@@ -9,9 +9,10 @@ class UpdateImageInfosRequest(DaraModel):
         self,
         update_content: str = None,
     ):
-        # The new information about the one or more images. You can modify the information about up to 20 images at a time. For more information about the parameter structure, see the **UpdateContent** section.
+        # The update content. You can modify the information of up to 20 images at a time. For the parameter structure, see the **UpdateContent** table below.
         # 
-        # >  The values of the nested parameters Title, Description, and Tags under the UpdateContent parameter cannot contain emoticons.
+        # > - The Title, Description, and Tags fields cannot contain emoticons.
+        # >- If a parameter is specified, the corresponding field is updated. Otherwise, the corresponding field is not overwritten or updated.
         # 
         # This parameter is required.
         self.update_content = update_content

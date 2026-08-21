@@ -15,13 +15,13 @@ class SearchMediaResponseBody(DaraModel):
         scroll_token: str = None,
         total: int = None,
     ):
-        # The information about the media assets.
+        # The list of media asset information.
         self.media_list = media_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The pagination identifier.
+        # The pagination token.
         self.scroll_token = scroll_token
-        # The total number of data records that meet the specified filter criteria.
+        # The total number of media assets that match the search conditions.
         self.total = total
 
     def validate(self):
@@ -83,28 +83,26 @@ class SearchMediaResponseBodyMediaList(DaraModel):
         media_type: str = None,
         video: main_models.SearchMediaResponseBodyMediaListVideo = None,
     ):
-        # Details about AI data.
         self.ai_data = ai_data
-        # The basic information about AI data.
         self.ai_rough_data = ai_rough_data
-        # [The information about the auxiliary media asset](https://help.aliyun.com/document_detail/86991.html).
+        # [Auxiliary media asset information](https://help.aliyun.com/document_detail/86991.html).
         self.attached_media = attached_media
-        # [The information about the audio](https://help.aliyun.com/document_detail/86991.html).
+        # [Audio information](https://help.aliyun.com/document_detail/86991.html).
         self.audio = audio
-        # The time when the media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the media asset was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # [The information about the image](https://help.aliyun.com/document_detail/86991.html).
+        # [Image information](https://help.aliyun.com/document_detail/86991.html).
         self.image = image
-        # The ID of the file.
+        # The media ID.
         self.media_id = media_id
-        # The type of the media asset. Valid values:
+        # The media type. Valid values:
         # 
-        # *   **video**
-        # *   **audio**
-        # *   **image**
-        # *   **attached**
+        # - **video**: video.
+        # - **audio**: audio.
+        # - **image**: image.
+        # - **attached**: auxiliary media asset.
         self.media_type = media_type
-        # [The information about the video](https://help.aliyun.com/document_detail/86991.html).
+        # [Video information](https://help.aliyun.com/document_detail/86991.html).
         self.video = video
 
     def validate(self):
@@ -220,91 +218,90 @@ class SearchMediaResponseBodyMediaListVideo(DaraModel):
         transcode_mode: str = None,
         video_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The ID of the category.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The URL of the thumbnail.
+        # The thumbnail URL.
         self.cover_url = cover_url
-        # The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the video information was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The description of the video file.
+        # The video description.
         self.description = description
-        # The download switch. The video file can be downloaded offline only when the download switch is turned on. Valid values:
+        # The download switch. Offline download is allowed only when the switch is enabled. Valid values:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on** (enabled): the initial state. Offline download is allowed.
+        # - **off** (disabled): offline download is disabled.
         self.download_switch = download_switch
-        # The duration of the video file. Unit: seconds.
+        # The video duration. Unit: seconds.
         self.duration = duration
-        # The source of the video file. Valid values:
+        # The source. Valid values:
         # 
-        # *   **general**: The video file is uploaded by using ApsaraVideo VOD.
-        # *   **short_video**: The video file is uploaded by using the short video SDK.
-        # *   **editing**: The video file is produced after online editing.
-        # *   **live**: The video stream is recorded and uploaded as a file.
+        # - **general**: ApsaraVideo VOD upload.
+        # - **short_video**: the short video SDK.
+        # - **editing**: online editing.
+        # - **live**: live recording.
         self.media_source = media_source
-        # The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the video information was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modification_time = modification_time
         # The preprocessing status. Valid values:
         # 
-        # *   **UnPreprocess**
-        # *   **Preprocessing**
-        # *   **PreprocessSucceed**
-        # *   **PreprocessFailed**
+        # - **UnPreprocess**: not preprocessed.
+        # - **Preprocessing**: preprocessing.
+        # - **PreprocessSucceed**: preprocessing complete.
+        # - **PreprocessFailed**: preprocessing failed.
         self.preprocess_status = preprocess_status
+        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique at the user level.
         self.reference_id = reference_id
-        # The period of time in which the video file remains in the restored state.
+        # The expiration time of the media asset restoration.
         self.restore_expiration = restore_expiration
-        # The restoration status of the video file. Valid values:
-        # 
-        # *   **Processing**
-        # *   **Success**
-        # *   **Failed**
+        # The media asset restoration status. Valid values:
+        # - **Processing**: restoring.
+        # - **Success**: restoration successful.
+        # - **Failed**: restoration failed.
         self.restore_status = restore_status
-        # The size of the video file.
+        # The video size.
         self.size = size
-        # The automatic snapshots.
+        # The list of automatic snapshots.
         self.snapshots = snapshots
-        # The sprite snapshots.
+        # The list of sprites.
         self.sprite_snapshots = sprite_snapshots
-        # The status of the file. Valid values:
+        # The status. Valid values:
         # 
-        # *   **Uploading**
-        # *   **UploadFail**
-        # *   **UploadSucc**
-        # *   **Transcoding**
-        # *   **TranscodeFail**
-        # *   **Blocked**
-        # *   **Normal**
+        # - **Uploading**: uploading.
+        # - **UploadFail**: upload failed.
+        # - **UploadSucc**: upload complete.
+        # - **Transcoding**: transcoding.
+        # - **TranscodeFail**: transcoding failed.
+        # - **Blocked**: blocked.
+        # - **Normal**: normal.
         self.status = status
-        # The storage class of the video file. Valid values:
-        # 
-        # *   **Standard**: All media resources are stored as Standard objects.
-        # *   **IA**: All media resources are stored as IA objects.
-        # *   **Archive**: All media resources are stored as Archive objects.
-        # *   **ColdArchive**: All media resources are stored as Cold Archive objects.
-        # *   **SourceIA**: Only the source file is stored as an IA object.
-        # *   **SourceArchive**: Only the source file is stored as an Archive object.
-        # *   **SourceColdArchive**: Only the source file is stored as a Cold Archive object.
-        # *   **Changing**: The storage class of the video file is being changed.
-        # *   **SourceChanging**: The storage class of the source file is being changed.
+        # The storage class of the media asset. Valid values:
+        # - **Standard**: standard.
+        # - **IA**: Infrequent Access (media asset).
+        # - **Archive**: Archive (media asset).
+        # - **ColdArchive**: Cold Archive (media asset).
+        # - **SourceIA**: Infrequent Access (source file).
+        # - **SourceArchive**: Archive (source file).
+        # - **SourceColdArchive**: Cold Archive (source file).
+        # - **Changing**: the storage class of the media asset is being changed.
+        # - **SourceChanging**: the storage class of the source file is being changed.
         self.storage_class = storage_class
-        # The region in which the video is stored.
+        # The storage region.
         self.storage_location = storage_location
-        # The tags of the video file.
+        # The video tags.
         self.tags = tags
-        # The title of the video.
+        # The video title.
         self.title = title
         # The transcoding mode. Valid values:
         # 
-        # *   **FastTranscode**: The video file is immediately transcoded after it is uploaded. You cannot play the file before it is transcoded.
-        # *   **NoTranscode**: The video file can be played without being transcoded. You can immediately play the file after it is uploaded.
-        # *   **AsyncTranscode**: The video file can be immediately played and asynchronously transcoded after it is uploaded.
+        # - **FastTranscode** (standard transcoding): the default mode. Transcoding starts after the upload is complete, and the video can be played only after transcoding is complete.
+        # - **NoTranscode** (distribution without transcoding): the video can be played immediately after the upload is complete without transcoding.
+        # - **AsyncTranscode** (distribution and transcoding upon upload): the video can be played immediately after the upload is complete, and transcoding is performed asynchronously.
         self.transcode_mode = transcode_mode
-        # The ID of the video file.
+        # The video ID.
         self.video_id = video_id
 
     def validate(self):
@@ -481,33 +478,33 @@ class SearchMediaResponseBodyMediaListImage(DaraModel):
         title: str = None,
         url: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The ID of the category.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The time when the image was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The description of the image file.
+        # The description.
         self.description = description
-        # The ID of the image file.
+        # The image ID.
         self.image_id = image_id
-        # The time when the image file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The last modification time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modification_time = modification_time
-        # The status of the image file.
+        # The image status. Valid values:
         # 
-        # *   **Uploading**
-        # *   **Normal**
-        # *   **UploadFail**
+        # - **Uploading** (uploading): the initial state. The image is being uploaded.
+        # - **Normal** (normal): the image is uploaded.
+        # - **UploadFail** (failed): the image failed to be uploaded.
         self.status = status
-        # The region in which the image is stored.
+        # The storage region.
         self.storage_location = storage_location
-        # The tags of the image file.
+        # The tags.
         self.tags = tags
-        # The title of the image file.
+        # The title.
         self.title = title
-        # The URL of the image file.
+        # The image URL.
         self.url = url
 
     def validate(self):
@@ -624,87 +621,86 @@ class SearchMediaResponseBodyMediaListAudio(DaraModel):
         title: str = None,
         transcode_mode: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The ID of the audio file.
+        # The audio ID.
         self.audio_id = audio_id
-        # The ID of the category.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The URL of the thumbnail.
+        # The thumbnail URL.
         self.cover_url = cover_url
-        # The time when the audio stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The description of the audio file.
+        # The description.
         self.description = description
-        # The download switch. The audio file can be downloaded offline only when the download switch is turned on. Valid values:
+        # The download switch. Offline download is allowed only when the switch is enabled. Valid values:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on** (enabled): the initial state. Offline download is allowed.
+        # - **off** (disabled): offline download is disabled.
         self.download_switch = download_switch
-        # The duration of the audio file.
+        # The duration.
         self.duration = duration
-        # The source of the audio file. Valid values:
+        # The source. Valid values:
         # 
-        # *   **general**: The audio file is uploaded by using ApsaraVideo VOD.
-        # *   **short_video**: The audio file is uploaded to ApsaraVideo VOD by using the short video SDK. For more information, see [Introduction](https://help.aliyun.com/document_detail/53407.html).
-        # *   **editing**: The audio file is uploaded to ApsaraVideo VOD after online editing and production. For more information, see [ProduceEditingProjectVideo](https://help.aliyun.com/document_detail/68536.html).
-        # *   **live**: The audio file is recorded and uploaded as a file to ApsaraVideo VOD.
+        # - **general** (ApsaraVideo VOD upload): standard upload.
+        # - **short_video** (the short video SDK): files uploaded to ApsaraVideo VOD by using the short video SDK. For more information, see [Short video SDK](https://help.aliyun.com/document_detail/53407.html).
+        # - **editing** (online editing): files uploaded to ApsaraVideo VOD by using online editing. For more information, see [Produce videos](https://help.aliyun.com/document_detail/68536.html).
+        # - **live** (live recording): files uploaded to ApsaraVideo VOD through live recording.
         self.media_source = media_source
-        # The time when the audio file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The last modification time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modification_time = modification_time
-        # The preprocessing status. Only preprocessed videos can be used for live streaming in the production studio. Valid values:
+        # The preprocessing status. Only preprocessed videos can be used for live streaming. Valid values:
         # 
-        # *   **UnPreprocess**
-        # *   **Preprocessing**
-        # *   **PreprocessSucceed**
-        # *   **PreprocessFailed**
+        # - **UnPreprocess**: not preprocessed.
+        # - **Preprocessing**: preprocessing.
+        # - **PreprocessSucceed**: preprocessing complete.
+        # - **PreprocessFailed**: preprocessing failed.
         self.preprocess_status = preprocess_status
+        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique at the user level.
         self.reference_id = reference_id
-        # The period of time in which the audio file remains in the restored state.
+        # The expiration time of the media asset restoration.
         self.restore_expiration = restore_expiration
-        # The restoration status of the audio file. Valid values:
-        # 
-        # *   **Processing**
-        # *   **Success**
-        # *   **Failed**
+        # The media asset restoration status. Valid values:
+        # - **Processing**: restoring.
+        # - **Success**: restoration successful.
+        # - **Failed**: restoration failed.
         self.restore_status = restore_status
-        # The size of the audio file.
+        # The size.
         self.size = size
-        # The automatic snapshots.
+        # The list of automatic snapshots.
         self.snapshots = snapshots
-        # The sprite snapshots.
+        # The list of sprites.
         self.sprite_snapshots = sprite_snapshots
-        # The status of the audio file. Valid values:
+        # The status. Valid values:
         # 
-        # *   **Uploading**
-        # *   **Normal**
-        # *   **UploadFail**
-        # *   **Deleted**
+        # - **Uploading**: uploading.
+        # - **Normal**: normal.	
+        # - **UploadFail**: upload failed.
+        # - **Deleted**: deleted.
         self.status = status
-        # The storage class of the audio file. Valid values:
-        # 
-        # *   **Standard**: All media resources are stored as Standard objects.
-        # *   **IA**: All media resources are stored as IA objects.
-        # *   **Archive**: All media resources are stored as Archive objects.
-        # *   **ColdArchive**: All media resources are stored as Cold Archive objects.
-        # *   **SourceIA**: Only the source file is stored as an IA object.
-        # *   **SourceArchive**: Only the source file is stored as an Archive object.
-        # *   **SourceColdArchive**: Only the source file is stored as a Cold Archive object.
-        # *   **Changing**: The storage class is being modified.
+        # The storage class of the media asset. Valid values:
+        # - **Standard**: standard.
+        # - **IA**: Infrequent Access (media asset).
+        # - **Archive**: Archive (media asset).
+        # - **ColdArchive**: Cold Archive (media asset).
+        # - **SourceIA**: Infrequent Access (source file).
+        # - **SourceArchive**: Archive (source file).
+        # - **SourceColdArchive**: Cold Archive (source file).
+        # - **Changing**: the storage class is being changed.
         self.storage_class = storage_class
-        # The region in which the audio is stored.
+        # The storage region.
         self.storage_location = storage_location
-        # The tags of the audio file.
+        # The tags.
         self.tags = tags
-        # The title of the audio file
+        # The title.
         self.title = title
         # The transcoding mode. Valid values:
         # 
-        # *   **FastTranscode**: The audio file is immediately transcoded after it is uploaded. You cannot play the file before it is transcoded.
-        # *   **NoTranscode**: The audio file can be played without being transcoded. You can immediately play the file after it is uploaded.
-        # *   **AsyncTranscode**: The audio file can be immediately played and asynchronously transcoded after it is uploaded.
+        # - **FastTranscode** (standard transcoding, default): transcoding starts after the upload is complete, and the audio can be played only after transcoding is complete.
+        # - **NoTranscode** (distribution without transcoding): the audio can be played immediately after the upload is complete without transcoding.
+        # - **AsyncTranscode** (distribution and transcoding upon upload): the audio can be played immediately after the upload is complete, and transcoding is performed asynchronously.
         self.transcode_mode = transcode_mode
 
     def validate(self):
@@ -881,37 +877,37 @@ class SearchMediaResponseBodyMediaListAttachedMedia(DaraModel):
         title: str = None,
         url: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The type of the auxiliary media asset. Valid values:
+        # The business type. Valid values:
         # 
-        # *   **watermark**
-        # *   **subtitle**
-        # *   **material**
+        # - **watermark**: watermark.
+        # - **subtitle**: subtitle.
+        # - **material**: material.
         self.business_type = business_type
         # The list of category IDs.
         self.categories = categories
-        # The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The description of the auxiliary media asset.
+        # The description.
         self.description = description
-        # The ID of the auxiliary media asset.
+        # The auxiliary media asset ID.
         self.media_id = media_id
-        # The time when the auxiliary media asset was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The last modification time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modification_time = modification_time
-        # The status of the auxiliary media asset. Valid values:
+        # The status. Valid values:
         # 
-        # *   **Uploading**
-        # *   **Normal**
-        # *   **UploadFail**
+        # - **Uploading** (uploading): the initial state. The auxiliary media asset is being uploaded.
+        # - **Normal** (normal): the auxiliary media asset is uploaded.
+        # - **UploadFail** (failed): the auxiliary media asset failed to be uploaded.
         self.status = status
-        # The region in which the auxiliary media asset is stored.
+        # The storage region.
         self.storage_location = storage_location
-        # The tags of the auxiliary media asset.
+        # The tags.
         self.tags = tags
-        # The title of the auxiliary media asset.
+        # The title.
         self.title = title
-        # The URL of the auxiliary media asset.
+        # The auxiliary media asset URL.
         self.url = url
 
     def validate(self):
@@ -1016,13 +1012,13 @@ class SearchMediaResponseBodyMediaListAttachedMediaCategories(DaraModel):
         level: int = None,
         parent_id: int = None,
     ):
-        # The category ID of the auxiliary media asset.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The level of the category.
+        # The category level.
         self.level = level
-        # The ID of the parent node.
+        # The parent node ID.
         self.parent_id = parent_id
 
     def validate(self):
@@ -1071,13 +1067,9 @@ class SearchMediaResponseBodyMediaListAiRoughData(DaraModel):
         save_type: str = None,
         status: str = None,
     ):
-        # The AI category.
         self.ai_category = ai_category
-        # The ID of the AI task.
         self.ai_job_id = ai_job_id
-        # The save type.
         self.save_type = save_type
-        # The data status.
         self.status = status
 
     def validate(self):
@@ -1124,9 +1116,7 @@ class SearchMediaResponseBodyMediaListAiData(DaraModel):
         ai_label_info: List[main_models.SearchMediaResponseBodyMediaListAiDataAiLabelInfo] = None,
         ocr_info: List[main_models.SearchMediaResponseBodyMediaListAiDataOcrInfo] = None,
     ):
-        # The AI tags.
         self.ai_label_info = ai_label_info
-        # The information about subtitles.
         self.ocr_info = ocr_info
 
     def validate(self):
@@ -1179,11 +1169,8 @@ class SearchMediaResponseBodyMediaListAiDataOcrInfo(DaraModel):
         from_: float = None,
         to: float = None,
     ):
-        # The text content.
         self.content = content
-        # The start time of the subtitle.
         self.from_ = from_
-        # The end time of the subtitle.
         self.to = to
 
     def validate(self):
@@ -1226,13 +1213,9 @@ class SearchMediaResponseBodyMediaListAiDataAiLabelInfo(DaraModel):
         label_name: str = None,
         occurrences: List[main_models.SearchMediaResponseBodyMediaListAiDataAiLabelInfoOccurrences] = None,
     ):
-        # The category.
         self.category = category
-        # The ID of the tag.
         self.label_id = label_id
-        # The name of the tag.
         self.label_name = label_name
-        # The clips.
         self.occurrences = occurrences
 
     def validate(self):
@@ -1288,11 +1271,8 @@ class SearchMediaResponseBodyMediaListAiDataAiLabelInfoOccurrences(DaraModel):
         score: float = None,
         to: float = None,
     ):
-        # The start time of the clip.
         self.from_ = from_
-        # The score.
         self.score = score
-        # The end time of the clip.
         self.to = to
 
     def validate(self):

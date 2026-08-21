@@ -12,27 +12,21 @@ class UpdateAppInfoRequest(DaraModel):
         description: str = None,
         status: str = None,
     ):
-        # The ID of the application.
-        # 
-        # *   Default value: **app-1000000**.
-        # *   For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # The application ID. This is the value of the AppId parameter returned by the [CreateApp](https://help.aliyun.com/document_detail/113266.html) or [GetAppInfos](https://help.aliyun.com/document_detail/114000.html) operation.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The name of the application.
-        # 
-        # *   The name can contain up to 128 characters in length, including Chinese letters, digits, and periods (.), dash (-), and at character (@).
-        # *   The name can contain only UTF-8 characters.
+        # The new application name.
+        # - The name can be up to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), hyphens (-), and at signs (@).
+        # - UTF-8 encoding.
         self.app_name = app_name
-        # The description of the application.
-        # 
-        # *   The description can contain up to 512 characters in length.
-        # *   The description can contain only UTF-8 characters.
+        # The new application description.
+        # - The description can be up to 512 characters in length.
+        # - UTF-8 encoding.
         self.description = description
-        # The status of the application. Valid values:
-        # 
-        # *   **Normal**
-        # *   **Disable**
+        # The new application status. Valid values:
+        # - **Normal**: Normal.
+        # - **Disable**: Disabled.
         self.status = status
 
     def validate(self):

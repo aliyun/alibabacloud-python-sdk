@@ -15,9 +15,13 @@ class GetDailyPlayRegionStatisResponseBody(DaraModel):
         fail_dates: List[str] = None,
         request_id: str = None,
     ):
+        # The CSV file information returned.
         self.daily_play_region_statis_list = daily_play_region_statis_list
+        # If no playback data exists on a specific day, the date is displayed in this field.
         self.empty_dates = empty_dates
+        # If the playback data export fails on a specific day, the date is displayed in this field.
         self.fail_dates = fail_dates
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +76,9 @@ class GetDailyPlayRegionStatisResponseBodyDailyPlayRegionStatisList(DaraModel):
         date: str = None,
         file_url: str = None,
     ):
+        # The playback date, in days. Format: yyyy-MM-dd.
         self.date = date
+        # The download URL of the CSV file.
         self.file_url = file_url
 
     def validate(self):

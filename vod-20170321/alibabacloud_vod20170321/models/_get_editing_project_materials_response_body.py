@@ -14,7 +14,7 @@ class GetEditingProjectMaterialsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.material_list = material_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

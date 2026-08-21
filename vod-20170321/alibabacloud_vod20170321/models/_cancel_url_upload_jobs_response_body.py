@@ -13,11 +13,11 @@ class CancelUrlUploadJobsResponseBody(DaraModel):
         non_exists: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of canceled jobs.
+        # The list of tasks that were successfully canceled.
         self.canceled_jobs = canceled_jobs
-        # The jobs that do not exist.
+        # The list of tasks that do not exist.
         self.non_exists = non_exists
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

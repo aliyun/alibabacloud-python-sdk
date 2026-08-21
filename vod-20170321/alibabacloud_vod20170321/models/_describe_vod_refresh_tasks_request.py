@@ -21,35 +21,34 @@ class DescribeVodRefreshTasksRequest(DaraModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.end_time = end_time
-        # The path of the object. The path is used as a condition for exact matching.
+        # The path used to query. Exact match is used.
         self.object_path = object_path
-        # The type of the task. Valid values:
+        # The task type. Valid values:
+        # - **file**: file purge.
+        # - **directory**: directory purge.
+        # - **preload**: file prefetch.
         # 
-        # *   **file**: refreshes one or more files.
-        # *   **directory**: refreshes files in the specified directories.
-        # *   **preload**: prefetches one or more files.
-        # 
-        # > If you specify the DomainName or Status parameter, you must also specify the ObjectType parameter.
+        # > When DomainName or Status is specified, ObjectType is required.
         self.object_type = object_type
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **20**. Maximum value: **50**.
+        # The number of entries per page. Default value: **20**. Maximum value: **50**.
         self.page_size = page_size
         self.security_token = security_token
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         # 
-        # > You can query data that is collected in the last three days.
+        # > Only data within the last 3 days can be queried.
         self.start_time = start_time
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **Complete**: The task is complete.
-        # *   **Refreshing**: The task is in progress.
-        # *   **Failed**: The task failed.
+        # - **Complete**: completed.
+        # - **Refreshing**: in progress.
+        # - **Failed**: failed.
         self.status = status
-        # The ID of the task that you want to query.
+        # The task ID used to query the purge status.
         self.task_id = task_id
 
     def validate(self):

@@ -13,9 +13,9 @@ class GetMediaAuditResultTimelineResponseBody(DaraModel):
         media_audit_result_timeline: main_models.GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline = None,
         request_id: str = None,
     ):
-        # The collection of review result timelines.
+        # The collection of automated review result timelines.
         self.media_audit_result_timeline = media_audit_result_timeline
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,15 +55,15 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline(DaraModel)
         porn: List[main_models.GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelinePorn] = None,
         terrorism: List[main_models.GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineTerrorism] = None,
     ):
-        # The collection of ad timelines.
+        # The collection of advertisement detection timelines.
         self.ad = ad
-        # The collection of undesirable content timelines.
+        # The collection of undesirable scene timelines.
         self.live = live
-        # The collection of logo timelines.
+        # The collection of logo detection timelines.
         self.logo = logo
-        # The collection of pornographic content timelines.
+        # The collection of pornography detection timelines.
         self.porn = porn
-        # The collection of terrorist content timelines.
+        # The collection of terrorism detection timelines.
         self.terrorism = terrorism
 
     def validate(self):
@@ -161,26 +161,26 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineTerrorism(D
         score: str = None,
         timestamp: str = None,
     ):
-        # The category of the review result. Valid values:
+        # The terrorism and political content detection result. Valid values:
         # 
-        # *   **normal**
-        # *   **bloody**
-        # *   **explosion**
-        # *   **outfit**
-        # *   **logo**
-        # *   **weapon**
-        # *   **politics**
-        # *   **violence**
-        # *   **crowd**
-        # *   **parade**
-        # *   **carcrash**
-        # *   **flag**
-        # *   **location**
-        # *   **others**
+        # - **normal**: normal.
+        # - **bloody**: bloody content.
+        # - **explosion**: explosions and smoke.
+        # - **outfit**: special attire.
+        # - **logo**: special logos.
+        # - **weapon**: weapons.
+        # - **politics**: political content.
+        # - **violence**: fighting.
+        # - **crowd**: crowd gathering.
+        # - **parade**: parades.
+        # - **carcrash**: car accident scenes.
+        # - **flag**: flags.
+        # - **location**: landmarks.
+        # - **others**: others.
         self.label = label
-        # The score of the video snapshot in the terrorist content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the terrorism and political content detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -222,15 +222,15 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelinePorn(DaraMo
         score: str = None,
         timestamp: str = None,
     ):
-        # The category of the review result. Valid values:
+        # The classification of the pornography detection result. Valid values:
         # 
-        # *   **porn**
-        # *   **sexy**
-        # *   **normal**
+        # - **porn**: pornographic content.
+        # - **sexy**: sexually suggestive content.
+        # - **normal**: normal content.
         self.label = label
-        # The score of the video snapshot in the pornographic content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the pornography detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video screenshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -272,15 +272,14 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLogo(DaraMo
         score: str = None,
         timestamp: str = None,
     ):
-        # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **TV**: controlled TV station logo.
-        # *   **trademark**: trademark.
+        # The classification of the logo detection result. Valid values:
+        # - **normal**: normal.
+        # - **TV**: contains a regulated logo.
+        # - **trademark**: contains a trademark.
         self.label = label
-        # The score of the video snapshot in the logo review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the logo detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video screenshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -322,17 +321,16 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLive(DaraMo
         score: str = None,
         timestamp: str = None,
     ):
-        # The categories of undesired content review results. Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **meaningless**: meaningless content, such as a black or white screen.
-        # *   **PIP**: picture-in-picture.
-        # *   **smoking**: smoking.
-        # *   **drivelive**: live broadcasting in a running vehicle.
+        # The classification of the undesirable content detection result. Valid values:
+        # - **normal**: normal.
+        # - **meaningless**: no content in the image (such as a black screen or white screen).
+        # - **PIP**: Picture-in-Picture (PiP).
+        # - **smoking**: smoking.
+        # - **drivelive**: in-car live streaming.
         self.label = label
-        # The score of the video snapshot in the undesirable content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the undesirable content detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video screenshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -374,23 +372,22 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd(DaraMode
         score: str = None,
         timestamp: str = None,
     ):
-        # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **ad**: other ads.
-        # *   **politics**: political content in text.
-        # *   **porn**: pornographic content in text.
-        # *   **abuse**: abuse in text.
-        # *   **terrorism**: terrorist content in text.
-        # *   **contraband**: prohibited content in text.
-        # *   **spam**: spam content.
-        # *   **npx**: illegal ad.
-        # *   **qrcode**: QR code.
-        # *   **programCode**: mini program code.
+        # The classification of the advertisement detection result. Valid values:
+        # - **normal**: normal.
+        # - **ad**: other advertisements.
+        # - **politics**: text contains political content.
+        # - **porn**: text contains pornographic content.
+        # - **abuse**: text contains abusive content.
+        # - **terrorism**: text contains terrorism-related content.
+        # - **contraband**: text contains prohibited content.
+        # - **spam**: text contains other spam content.
+        # - **npx**: psoriasis advertisements.
+        # - **qrcode**: contains a QR code.
+        # - **programCode**: contains a mini program code.
         self.label = label
-        # The score of the video snapshot in the ad review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the advertisement detection result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video screenshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

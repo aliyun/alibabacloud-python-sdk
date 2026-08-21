@@ -15,11 +15,11 @@ class GetUploadDetailsResponseBody(DaraModel):
         request_id: str = None,
         upload_details: List[main_models.GetUploadDetailsResponseBodyUploadDetails] = None,
     ):
-        # The IDs of the media files that cannot be accessed.
+        # The IDs of media files that cannot be accessed.
         self.forbidden_media_ids = forbidden_media_ids
-        # The IDs of the media files that do not exist.
+        # The IDs of media files that do not exist.
         self.non_exist_media_ids = non_exist_media_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The upload details.
         self.upload_details = upload_details
@@ -87,31 +87,31 @@ class GetUploadDetailsResponseBodyUploadDetails(DaraModel):
         upload_source: str = None,
         upload_status: str = None,
     ):
-        # The time when the upload job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The completion time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.completion_time = completion_time
-        # The time when the upload job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
         # The device model.
         self.device_model = device_model
-        # The size of the uploaded file. Unit: byte.
+        # The file size. Unit: bytes.
         self.file_size = file_size
-        # The ID of the uploaded audio or video.
+        # The ID of the uploaded audio or video file.
         self.media_id = media_id
-        # The time when the information about the media file was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The modification time. The time is in the _yyyy-MM-ddTHH:mm:ssZ_ format (UTC).
         self.modification_time = modification_time
-        # The status of the video. For more information about the valid values and value description of the parameter, see the "Status: the status of a video" section of the [Basic structures](https://help.aliyun.com/document_detail/52839.html) topic.
+        # The video status. For the valid values and descriptions of video statuses, see the value list in [Status: video status](https://help.aliyun.com/document_detail/52839.html).
         self.status = status
-        # The title of the media file.
+        # The title.
         self.title = title
-        # The IP address of the server that uploads the media file.
+        # The upload IP address.
         self.upload_ip = upload_ip
         # The upload ratio.
         self.upload_ratio = upload_ratio
-        # The upload size. Unit: byte.
+        # The upload size. Unit: bytes.
         self.upload_size = upload_size
-        # The method that is used to upload the media file.
+        # The upload source.
         self.upload_source = upload_source
-        # The status of the upload job. For more information about the valid values and value description of the parameter, see the "Status: the status of a URL-based upload job" section of the [Basic structures](https://help.aliyun.com/document_detail/52839.html) topic.
+        # The upload task status. For the valid values and descriptions of upload statuses, see the value list in [Status: URL upload task status](https://help.aliyun.com/document_detail/52839.html).
         self.upload_status = upload_status
 
     def validate(self):

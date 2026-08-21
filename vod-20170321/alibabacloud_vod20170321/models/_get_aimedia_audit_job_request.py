@@ -9,7 +9,7 @@ class GetAIMediaAuditJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the intelligent review job.
+        # The ID of the automated review job.
         # 
         # This parameter is required.
         self.job_id = job_id

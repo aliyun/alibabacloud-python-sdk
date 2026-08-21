@@ -10,7 +10,7 @@ class DescribeVodVerifyContentRequest(DaraModel):
         domain_name: str = None,
         owner_id: int = None,
     ):
-        # The domain name for which you want to verify the ownership. You can specify only one domain name in each call.
+        # The domain name to be verified. Only a single domain name is supported.
         # 
         # This parameter is required.
         self.domain_name = domain_name

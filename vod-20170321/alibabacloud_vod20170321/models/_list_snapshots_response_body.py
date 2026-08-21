@@ -13,9 +13,9 @@ class ListSnapshotsResponseBody(DaraModel):
         media_snapshot: main_models.ListSnapshotsResponseBodyMediaSnapshot = None,
         request_id: str = None,
     ):
-        # The information about the snapshot.
+        # The video snapshot data.
         self.media_snapshot = media_snapshot
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,11 +55,11 @@ class ListSnapshotsResponseBodyMediaSnapshot(DaraModel):
         snapshots: main_models.ListSnapshotsResponseBodyMediaSnapshotSnapshots = None,
         total: int = None,
     ):
-        # The time when the snapshot job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the snapshot job was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The ID of the snapshot job.
+        # The snapshot job ID.
         self.job_id = job_id
-        # The rule used to generate snapshot URLs.
+        # The rule for generating snapshot URLs.
         self.regular = regular
         self.snapshots = snapshots
         # The total number of snapshots.

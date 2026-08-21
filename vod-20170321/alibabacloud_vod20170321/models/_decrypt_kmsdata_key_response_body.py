@@ -11,9 +11,9 @@ class DecryptKMSDataKeyResponseBody(DaraModel):
         plaintext: str = None,
         request_id: str = None,
     ):
-        # The ID of the customer master key (CMK) that was used to decrypt the ciphertext.
+        # The ID of the master key used to decrypt the ciphertext.
         self.key_id = key_id
-        # The plaintext that is generated after decryption.
+        # The decrypted plaintext.
         self.plaintext = plaintext
         # The request ID.
         self.request_id = request_id

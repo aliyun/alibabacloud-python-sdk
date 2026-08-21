@@ -13,9 +13,9 @@ class GetAIVideoTagResultResponseBody(DaraModel):
         request_id: str = None,
         video_tag_result: main_models.GetAIVideoTagResultResponseBodyVideoTagResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The result data.
         self.video_tag_result = video_tag_result
 
     def validate(self):
@@ -55,15 +55,15 @@ class GetAIVideoTagResultResponseBodyVideoTagResult(DaraModel):
         person: List[main_models.GetAIVideoTagResultResponseBodyVideoTagResultPerson] = None,
         time: List[main_models.GetAIVideoTagResultResponseBodyVideoTagResultTime] = None,
     ):
-        # The video categories.
+        # The collection of video categories.
         self.category = category
-        # The keyword tags.
+        # The collection of keyword tags.
         self.keyword = keyword
-        # The location tags.
+        # The collection of location tags.
         self.location = location
-        # The figure tags.
+        # The collection of person tags.
         self.person = person
-        # The time tags.
+        # The collection of time tags.
         self.time = time
 
     def validate(self):
@@ -160,9 +160,9 @@ class GetAIVideoTagResultResponseBodyVideoTagResultTime(DaraModel):
         tag: str = None,
         times: List[str] = None,
     ):
-        # The tag string.
+        # The label.
         self.tag = tag
-        # The points in time when the tags are displayed. Unit: milliseconds.
+        # The collection of time points. Unit: milliseconds.
         self.times = times
 
     def validate(self):
@@ -198,13 +198,13 @@ class GetAIVideoTagResultResponseBodyVideoTagResultPerson(DaraModel):
         tag: str = None,
         times: List[str] = None,
     ):
-        # The URL of the profile photo.
+        # The face URL.
         # 
-        # > This parameter is returned only when a figure tag was used.
+        # > This field is returned only for person tag results.
         self.face_url = face_url
-        # The tag string.
+        # The label.
         self.tag = tag
-        # The points in time when the tags are displayed. Unit: milliseconds.
+        # The collection of time points. Unit: milliseconds.
         self.times = times
 
     def validate(self):
@@ -245,9 +245,9 @@ class GetAIVideoTagResultResponseBodyVideoTagResultLocation(DaraModel):
         tag: str = None,
         times: List[str] = None,
     ):
-        # The tag string.
+        # The label.
         self.tag = tag
-        # The points in time when the tags are displayed. Unit: milliseconds.
+        # The collection of time points. Unit: milliseconds.
         self.times = times
 
     def validate(self):
@@ -282,9 +282,9 @@ class GetAIVideoTagResultResponseBodyVideoTagResultKeyword(DaraModel):
         tag: str = None,
         times: List[str] = None,
     ):
-        # The tag string.
+        # The label.
         self.tag = tag
-        # The points in time when the tags are displayed. Unit: milliseconds.
+        # The collection of time points. Unit: milliseconds.
         self.times = times
 
     def validate(self):
@@ -318,7 +318,7 @@ class GetAIVideoTagResultResponseBodyVideoTagResultCategory(DaraModel):
         self,
         tag: str = None,
     ):
-        # The tag string.
+        # The label.
         self.tag = tag
 
     def validate(self):

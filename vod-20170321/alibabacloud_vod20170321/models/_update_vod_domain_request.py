@@ -13,13 +13,13 @@ class UpdateVodDomainRequest(DaraModel):
         sources: str = None,
         top_level_domain: str = None,
     ):
-        # The domain name.
+        # The accelerated domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
-        # The information about the addresses of origin servers.
+        # The addresses of the origin server. For more information about the Sources parameter, see the **Sources** section.
         self.sources = sources
         # The top-level domain.
         self.top_level_domain = top_level_domain

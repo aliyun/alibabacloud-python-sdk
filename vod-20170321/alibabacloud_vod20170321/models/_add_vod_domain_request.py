@@ -16,26 +16,25 @@ class AddVodDomainRequest(DaraModel):
         sources: str = None,
         top_level_domain: str = None,
     ):
-        # The URL that is used for health checks.
+        # The health check URL.
         self.check_url = check_url
-        # The domain name that you want to accelerate. Wildcard domain names that start with periods (.) are supported. Example: .example.com.
+        # The accelerated domain name to be added to ApsaraVideo VOD. Wildcard domain names are supported, starting with a period (.), such as .example.com.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # This parameter is applicable to users of level 3 or higher in the Chinese mainland and users outside the Chinese mainland. Default value: domestic. Valid values:
-        # 
-        # *   **domestic**: Chinese mainland
-        # *   **overseas**: outside the Chinese mainland
-        # *   **global**: regions in and outside the Chinese mainland
+        # This parameter is valid for international users and Chinese mainland users of L3 or higher. Valid values:
+        # - **domestic** (default): the Chinese mainland.
+        # - **overseas**: Hong Kong (China), Macao (China), Taiwan (China), and regions outside China.
+        # - **global**: global acceleration.
         self.scope = scope
         self.security_token = security_token
-        # The information about the addresses of origin servers. For more information, see the **Sources** table in this topic.
+        # The list of origin addresses. For more information about the parameters, see the **Sources** table below.
         # 
         # This parameter is required.
         self.sources = sources
-        # The top-level domain.
+        # The top-level domain name.
         self.top_level_domain = top_level_domain
 
     def validate(self):

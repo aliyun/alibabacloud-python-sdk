@@ -14,11 +14,11 @@ class GetAttachedMediaInfoResponseBody(DaraModel):
         non_exist_media_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The information about the media assets.
+        # The information about the auxiliary media assets.
         self.attached_media_list = attached_media_list
         # The IDs of the auxiliary media assets that do not exist.
         self.non_exist_media_ids = non_exist_media_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77,43 +77,40 @@ class GetAttachedMediaInfoResponseBodyAttachedMediaList(DaraModel):
         type: str = None,
         url: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The categories.
+        # The list of categories.
         self.categories = categories
-        # The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the auxiliary media asset was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The description of the auxiliary media asset.
-        # 
-        # >  This parameter is returned only when a description is specified for the auxiliary media asset.
+        # The description.
+        # >This parameter is returned only if the auxiliary media asset has a description.
         self.description = description
-        # The ID of the auxiliary media asset.
+        # The auxiliary media asset ID.
         self.media_id = media_id
-        # The time when the auxiliary media asset was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the auxiliary media asset was last updated. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modification_time = modification_time
         # The status of the auxiliary media asset. Valid values:
-        # 
-        # *   **Uploading**
-        # *   **Normal**
-        # *   **UploadFail**
+        # - **Uploading**: uploading.
+        # - **Normal**: Normal.
+        # - **UploadFail**: upload failed.
         self.status = status
         # The storage address of the auxiliary media asset.
         self.storage_location = storage_location
-        # The tags of the auxiliary media asset.
-        # 
-        # >  This parameter is returned only when tags are specified for the auxiliary media asset.
+        # The tags.
+        # >This parameter is returned only if the auxiliary media asset has tag information.
         self.tags = tags
-        # The title of the auxiliary media asset.
+        # The title.
         self.title = title
-        # The type of the auxiliary media asset.
+        # The type of the auxiliary media asset. Valid values:
         # 
-        # *   **watermark**
-        # *   **subtitle**
-        # *   **material**
+        # - **watermark**: watermark.
+        # - **subtitle**: subtitle.
+        # - **material**: material.
         self.type = type
-        # The URL of the auxiliary media asset.
+        # The access URL of the auxiliary media asset.
         # 
-        # >  If a CDN domain name is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+        # > If a CDN domain name is configured in ApsaraVideo VOD, the CDN URL is returned. Otherwise, the OSS URL is returned.
         self.url = url
 
     def validate(self):
@@ -218,11 +215,11 @@ class GetAttachedMediaInfoResponseBodyAttachedMediaListCategories(DaraModel):
         level: int = None,
         parent_id: int = None,
     ):
-        # The ID of the category.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The level of the category.
+        # The category level.
         self.level = level
         # The ID of the parent category.
         self.parent_id = parent_id

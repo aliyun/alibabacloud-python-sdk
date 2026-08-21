@@ -17,23 +17,23 @@ class DescribeVodRefreshQuotaResponseBody(DaraModel):
         url_remain: str = None,
         block_remain: str = None,
     ):
-        # The maximum number of Object Storage Service (OSS) buckets that can be refreshed each day.
+        # The maximum number of storage purge operations per day.
         self.block_quota = block_quota
-        # The maximum number of directories of files that can be refreshed each day.
+        # The maximum number of directory purge operations per day.
         self.dir_quota = dir_quota
-        # The remaining number of directories of files that can be refreshed on the current day.
+        # The remaining number of directory purge operations for the current day.
         self.dir_remain = dir_remain
-        # The maximum number of URLs of files that can be prefetched each day.
+        # The maximum number of prefetch operations per day.
         self.preload_quota = preload_quota
-        # The remaining number of URLs of files that can be prefetched on the current day.
+        # The remaining number of prefetch operations for the current day.
         self.preload_remain = preload_remain
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The maximum number of URLs of files that can be refreshed each day.
+        # The maximum number of URL purge operations per day.
         self.url_quota = url_quota
-        # The remaining number of URLs of files that can be refreshed on the current day.
+        # The remaining number of URL purge operations for the current day.
         self.url_remain = url_remain
-        # The remaining number of OSS buckets that can be refreshed on the current day.
+        # The remaining number of storage purge operations for the current day.
         self.block_remain = block_remain
 
     def validate(self):

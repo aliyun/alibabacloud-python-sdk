@@ -20,10 +20,10 @@ class DescribePlayTopVideosResponseBody(DaraModel):
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.top_play_videos = top_play_videos
-        # The total number of entries that were collected in playback statistics on top videos.
+        # The total number of top videos.
         self.total_num = total_num
 
     def validate(self):

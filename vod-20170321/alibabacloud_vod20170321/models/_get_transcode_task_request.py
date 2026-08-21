@@ -10,14 +10,12 @@ class GetTranscodeTaskRequest(DaraModel):
         job_ids: str = None,
         transcode_task_id: str = None,
     ):
-        # Transcoding job ID. Supports up to 10 IDs, and multiple IDs should be separated by a comma (,). You can obtain this value in the following ways:
-        # 
-        # When initiating a transcoding task through the [SubmitTranscodeJobs](https://help.aliyun.com/document_detail/454920.html) interface, it is the value of the returned parameter JobId.
+        # The transcoding job IDs. You can specify a maximum of 10 IDs. Separate multiple IDs with commas (,). You can obtain the IDs by using the following method:
+        # - Call the [SubmitTranscodeJobs](https://help.aliyun.com/document_detail/68570.html) operation to submit a transcoding task. The value of JobId in the response is the transcoding job ID.
         self.job_ids = job_ids
-        # The ID of the transcoding task. You can use one of the following methods to obtain the ID:
-        # 
-        # *   Obtain the value of TranscodeTaskId from the response to the [SubmitTranscodeJobs](https://help.aliyun.com/document_detail/68570.html) operation.
-        # *   Obtain the value of TranscodeTaskId from the response to the [ListTranscodeTask](https://help.aliyun.com/document_detail/109120.html) operation.
+        # The transcoding task ID. You can obtain the ID by using one of the following methods:
+        # - Call the [SubmitTranscodeJobs](https://help.aliyun.com/document_detail/68570.html) operation to submit a transcoding task. The value of TranscodeTaskId in the response is the transcoding task ID.
+        # - Call the [ListTranscodeTask](https://help.aliyun.com/document_detail/109120.html) operation. The value of TranscodeTaskId in the response is the transcoding task ID.
         self.transcode_task_id = transcode_task_id
 
     def validate(self):

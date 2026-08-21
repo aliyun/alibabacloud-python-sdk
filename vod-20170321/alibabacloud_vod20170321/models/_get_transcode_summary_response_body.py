@@ -14,11 +14,11 @@ class GetTranscodeSummaryResponseBody(DaraModel):
         request_id: str = None,
         transcode_summary_list: List[main_models.GetTranscodeSummaryResponseBodyTranscodeSummaryList] = None,
     ):
-        # The IDs of the audio or video files that do not exist.
+        # The IDs of audio or video files that do not exist.
         self.non_exist_video_ids = non_exist_video_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The transcoding summary of the file.
+        # The video transcoding summary list of audio or video files.
         self.transcode_summary_list = transcode_summary_list
 
     def validate(self):
@@ -71,23 +71,23 @@ class GetTranscodeSummaryResponseBodyTranscodeSummaryList(DaraModel):
         transcode_template_group_id: str = None,
         video_id: str = None,
     ):
-        # The time when the transcoding task was complete. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding task was complete. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.complete_time = complete_time
-        # The time when the transcoding task was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The summaries of transcoding jobs.
+        # The list of transcoding job summaries.
         self.transcode_job_info_summary_list = transcode_job_info_summary_list
-        # The status of the transcoding task. Valid values:
+        # The transcoding status. Valid values:
         # 
-        # *   **Processing**: Transcoding is in process.
-        # *   **Partial**: Some transcoding jobs were complete.
-        # *   **CompleteAllSucc**: All transcoding jobs were successful.
-        # *   **CompleteAllFail**: All transcoding jobs failed. If an exception occurs in the source file, no transcoding job is initiated and the transcoding task fails.
-        # *   **CompletePartialSucc**: All transcoding jobs were complete but only some were successful.
+        # - **Processing**: The transcoding task is in progress.
+        # - **Partial**: The transcoding task is partially complete.
+        # - **CompleteAllSucc**: All transcoding jobs are complete and successful.
+        # - **CompleteAllFail**: All transcoding jobs are complete but all failed. If the source file has issues, no transcoding jobs are initiated and the entire transcoding task fails.
+        # - **CompletePartialSucc**: All transcoding jobs are complete but only some are successful.
         self.transcode_status = transcode_status
-        # The ID of the transcoding template group.
+        # The ID of the transcoding template group used for transcoding.
         self.transcode_template_group_id = transcode_template_group_id
-        # The ID of the audio or video file.
+        # The audio or video ID.
         self.video_id = video_id
 
     def validate(self):
@@ -167,39 +167,39 @@ class GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummary
         watermark_id_list: List[str] = None,
         width: str = None,
     ):
-        # The average bitrate of the output video. Unit: Kbit/s.
+        # The average bitrate of the transcoded video output. Unit: Kbps.
         self.bitrate = bitrate
-        # The time when the transcoding job was complete. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding job was complete. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.complete_time = complete_time
-        # The time when the transcoding job was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding job was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The duration of the output video. Unit: seconds.
+        # The duration of the transcoded video output. Unit: seconds.
         self.duration = duration
         # The error code returned when the transcoding job failed.
         self.error_code = error_code
         # The error message returned when the transcoding job failed.
         self.error_message = error_message
-        # The size of the output video. Unit: bytes.
+        # The file size of the transcoded video output. Unit: bytes.
         self.filesize = filesize
-        # The container format of the output video.
+        # The container format of the transcoded video output.
         self.format = format
-        # The frame rate of the output video. Unit: frames per second.
+        # The frame rate of the transcoded video output. Unit: frames per second.
         self.fps = fps
-        # The height of the output video. Unit: pixels.
+        # The height of the transcoded video output. Unit: px.
         self.height = height
         # The status of the transcoding job. Valid values:
         # 
-        # *   **Transcoding**: Transcoding is in process.
-        # *   **TranscodeSuccess**: The job was successful.
-        # *   **TranscodeFail**: The job failed.
+        # - **Transcoding**: The transcoding job is in progress.
+        # - **TranscodeSuccess**: The transcoding job is successful.
+        # - **TranscodeFail**: The transcoding job failed.
         self.transcode_job_status = transcode_job_status
-        # The transcoding progress. Valid values: `[0,100]`.
+        # The transcoding progress. Value range: `[0,100]`.
         self.transcode_progress = transcode_progress
-        # The ID of the transcoding template.
+        # The ID of the transcoding template used.
         self.transcode_template_id = transcode_template_id
-        # The IDs of the watermarks that are applied to the output video.
+        # The list of watermarks used for transcoding.
         self.watermark_id_list = watermark_id_list
-        # The width of the output video. Unit: pixels.
+        # The width of the transcoded video output. Unit: px.
         self.width = width
 
     def validate(self):

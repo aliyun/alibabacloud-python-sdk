@@ -13,9 +13,9 @@ class GetMediaAuditResultDetailResponseBody(DaraModel):
         media_audit_result_detail: main_models.GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail = None,
         request_id: str = None,
     ):
-        # Details about review results.
+        # The details of the review results.
         self.media_audit_result_detail = media_audit_result_detail
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +52,9 @@ class GetMediaAuditResultDetailResponseBodyMediaAuditResultDetail(DaraModel):
         list: List[main_models.GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList] = None,
         total: int = None,
     ):
-        # The review results returned.
+        # The list of video review result details.
         self.list = list
-        # The total number of snapshots returned.
+        # The total number of video review result screenshots.
         self.total = total
 
     def validate(self):
@@ -107,70 +107,67 @@ class GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList(DaraModel)
         timestamp: str = None,
         url: str = None,
     ):
-        # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **ad**: other ads.
-        # *   **politics**: political content in text.
-        # *   **porn**: pornographic content in text.
-        # *   **abuse**: verbal abuse in text.
-        # *   **terrorism**: terrorist content in text.
-        # *   **contraband**: prohibited content in text.
-        # *   **spam**: spam content in text.
-        # *   **npx**: illegal ad
-        # *   **qrcode**: QR code.
-        # *   **programCode**: mini program code.
+        # The classification of the ad review result. Valid values:
+        # - **normal**: Normal.
+        # - **ad**: Other ads.
+        # - **politics**: Text contains politically sensitive content.
+        # - **porn**: Text contains pornographic content.
+        # - **abuse**: Text contains abusive content.
+        # - **terrorism**: Text contains terrorism-related content.
+        # - **contraband**: Text contains prohibited content.
+        # - **spam**: Text contains other spam content.
+        # - **npx**: Psoriasis ads.
+        # - **qrcode**: Contains a QR code.
+        # - **programCode**: Contains a mini program code.
         self.ad_label = ad_label
-        # The score of the video snapshot in the ad review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the ad review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.ad_score = ad_score
-        # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **meaningless**: meaningless content, such as a black or white screen.
-        # *   **PIP**: picture-in-picture.
-        # *   **smoking**: smoking.
-        # *   **drivelive**: live broadcasting in a running vehicle.
+        # The classification of the undesirable scene review result. Valid values:
+        # - **normal**: Normal.
+        # - **meaningless**: The image has no content (for example, a black screen or white screen).
+        # - **PIP**: Picture-in-Picture (PiP).
+        # - **smoking**: Smoking.
+        # - **drivelive**: In-car live streaming.
         self.live_label = live_label
-        # The score of the video snapshot in the undesirable content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the undesirable scene review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.live_score = live_score
-        # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content.
-        # *   **TV**: controlled TV station logo.
-        # *   **trademark**: trademark.
+        # The classification of the logo review result. Valid values:
+        # - **normal**: Normal.
+        # - **TV**: Contains a regulated logo.
+        # - **trademark**: Contains a trademark.
         self.logo_label = logo_label
-        # The score of the video snapshot in the logo review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the logo review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.logo_score = logo_score
-        # The category of the review result. Valid values:
+        # The classification of the pornography review result. Valid values:
         # 
-        # *   **normal**
-        # *   **porn**
-        # *   **sexy**
+        # - **normal**: Normal.
+        # - **porn**: Pornographic.
+        # - **sexy**: Sexy.
         self.porn_label = porn_label
-        # The score of the video snapshot in the pornographic content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the pornography review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.porn_score = porn_score
-        # The category of the review result. Valid values:
+        # The classification of the terrorism review result. Valid values:
         # 
-        # *   **normal**
-        # *   **bloody**
-        # *   **explosion**
-        # *   **outfit**
-        # *   **logo**
-        # *   **weapon**
-        # *   **politics**
-        # *   **violence**
-        # *   **crowd**
-        # *   **parade**
-        # *   **carcrash**
-        # *   **flag**
-        # *   **location**
-        # *   **others**
+        # - **normal**: Normal.
+        # - **bloody**: Bloody.
+        # - **explosion**: Explosion and smoke.
+        # - **outfit**: Special attire.
+        # - **logo**: Special logo.
+        # - **weapon**: Weapon.
+        # - **politics**: Politically sensitive.
+        # - **violence**: Fighting.
+        # - **crowd**: Crowd gathering.
+        # - **parade**: Parade.
+        # - **carcrash**: Car crash scene.
+        # - **flag**: Flag.
+        # - **location**: Landmark.
+        # - **others**: Others.
         self.terrorism_label = terrorism_label
-        # The score of the video snapshot in the terrorist content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The hit score of the video screenshot for the terrorism review result. Value range: `[0-100]`, with a precision of 10 decimal places. The hit result indicates the probability of the corresponding classification label. A higher value indicates higher accuracy.
         self.terrorism_score = terrorism_score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video screenshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
-        # The URL of the video snapshot.
+        # The URL of the video screenshot.
         self.url = url
 
     def validate(self):

@@ -14,11 +14,11 @@ class RegisterMediaResponseBody(DaraModel):
         registered_media_list: List[main_models.RegisterMediaResponseBodyRegisteredMediaList] = None,
         request_id: str = None,
     ):
-        # The URLs of the media files that failed to be registered.
+        # The list of file URLs that failed to be registered.
         self.failed_file_urls = failed_file_urls
-        # The media files that are registered, including newly registered and repeatedly registered media files.
+        # The list of media assets that are successfully registered, including both newly registered files and previously registered files.
         self.registered_media_list = registered_media_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,14 +68,14 @@ class RegisterMediaResponseBodyRegisteredMediaList(DaraModel):
         media_id: str = None,
         new_register: bool = None,
     ):
-        # The URL of the media file.
+        # The OSS file URL.
         self.file_url = file_url
-        # The ID of the media file that is registered with ApsaraVideo VOD. If the registered media file is an audio or video file, the value of this parameter is the same as that of the VideoId parameter.
+        # The VOD media ID. If the registered media file is an audio or video file, this value corresponds to the VideoId in ApsaraVideo VOD.
         self.media_id = media_id
-        # Indicates whether the media file is newly registered or repeatedly registered. Valid values:
+        # Indicates whether the media asset is newly registered or repeatedly registered.
         # 
-        # *   **true**: The media file is newly registered.
-        # *   **false**: The media file is repeatedly registered.
+        # - **true**: newly registered.
+        # - **false**: repeatedly registered.
         self.new_register = new_register
 
     def validate(self):

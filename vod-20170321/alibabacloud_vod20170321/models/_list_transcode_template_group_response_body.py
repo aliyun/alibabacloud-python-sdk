@@ -13,9 +13,9 @@ class ListTranscodeTemplateGroupResponseBody(DaraModel):
         request_id: str = None,
         transcode_template_group_list: List[main_models.ListTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupList] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The transcoding template groups.
+        # The list of transcoding template group data.
         self.transcode_template_group_list = transcode_template_group_list
 
     def validate(self):
@@ -63,25 +63,24 @@ class ListTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupList(DaraModel
         name: str = None,
         transcode_template_group_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The time when the template group was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the template group was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
         # Indicates whether the template group is the default one. Valid values:
         # 
-        # *   **Default**: The template group is the default one.
-        # *   **NotDefault**: The template group is not the default one.
+        # - **Default**: The template group is the default one.
+        # - **NotDefault**: The template group is not the default one.
         self.is_default = is_default
         # The lock status of the transcoding template group. Valid values:
-        # 
-        # *   **Disabled**: The template group is not locked.
-        # *   **Enabled**: The template group is locked.
+        # - **Disabled**: unlocked
+        # - **Enabled**: locked
         self.locked = locked
-        # The time when the template group was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the template group was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modify_time = modify_time
         # The name of the template group.
         self.name = name
-        # The ID of the transcoding template group.
+        # The transcoding template group ID.
         self.transcode_template_group_id = transcode_template_group_id
 
     def validate(self):

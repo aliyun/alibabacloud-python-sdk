@@ -15,12 +15,11 @@ class DescribeVodAIDataResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.aidata = aidata
-        # The time granularity at which the data was queried. Valid values:
-        # 
-        # *   **hour**
-        # *   **day**
+        # The time granularity of the returned data. Valid values:
+        # - **hour**: hourly data.
+        # - **day**: daily data.
         self.data_interval = data_interval
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

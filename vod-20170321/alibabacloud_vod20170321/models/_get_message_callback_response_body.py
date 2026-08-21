@@ -11,9 +11,9 @@ class GetMessageCallbackResponseBody(DaraModel):
         message_callback: main_models.GetMessageCallbackResponseBodyMessageCallback = None,
         request_id: str = None,
     ):
-        # The configuration of the event notification.
+        # The event notification configuration.
         self.message_callback = message_callback
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,27 +56,25 @@ class GetMessageCallbackResponseBodyMessageCallback(DaraModel):
         mns_endpoint: str = None,
         mns_queue_name: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The cryptographic key. This parameter is returned only for HTTP callbacks.
+        # The authentication key when the callback method is set to HTTP.
         self.auth_key = auth_key
-        # Indicates whether callback authentication is enabled. This parameter is returned only for HTTP callbacks. Valid values:
-        # 
-        # *   **on**
-        # *   **off**
+        # The callback authentication switch when the callback method is set to HTTP. Valid values:
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.auth_switch = auth_switch
         # The callback method. Valid values:
-        # 
-        # *   **HTTP**
-        # *   **MNS**
+        # - **HTTP**
+        # - **MNS**
         self.callback_type = callback_type
-        # The callback URL. This parameter is returned only for HTTP callbacks.
+        # The callback URL when the callback method is set to HTTP.
         self.callback_url = callback_url
-        # The type of the callback event.
+        # The callback event types.
         self.event_type_list = event_type_list
-        # The public endpoint of MNS. This parameter is returned only for MNS callbacks.
+        # The public endpoint of the MSMQ when the callback method is set to MNS.
         self.mns_endpoint = mns_endpoint
-        # The name of the Message Service (MNS) queue. This parameter is returned only for MNS callbacks.
+        # The name of the MSMQ when the callback method is set to MNS.
         self.mns_queue_name = mns_queue_name
 
     def validate(self):

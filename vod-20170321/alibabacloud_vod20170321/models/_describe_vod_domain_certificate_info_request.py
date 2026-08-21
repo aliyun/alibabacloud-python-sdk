@@ -11,7 +11,7 @@ class DescribeVodDomainCertificateInfoRequest(DaraModel):
         hera_api_auto_version: str = None,
         owner_id: int = None,
     ):
-        # The accelerated domain name.
+        # The accelerated domain name for ApsaraVideo VOD.
         # 
         # This parameter is required.
         self.domain_name = domain_name

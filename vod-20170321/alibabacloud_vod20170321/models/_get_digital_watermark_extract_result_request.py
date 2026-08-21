@@ -15,22 +15,20 @@ class GetDigitalWatermarkExtractResultRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The type of the watermark. Valid values:
+        # The type of watermark extraction. Valid values:
         # 
-        # *   **TraceMark**: user-tracing watermark
-        # *   **CopyrightMark**: copyright watermark
+        # - **TraceMark**: tracing watermark.
+        # - **CopyrightMark**: copyright watermark.
         # 
         # This parameter is required.
         self.extract_type = extract_type
         # The ID of the watermark extraction job.
-        # 
-        # *   You can obtain the ID from the response to the [SubmitDigitalWatermarkExtractJob](~~SubmitDigitalWatermarkExtractJob~~) operation.
-        # *   If you specify this parameter, the result of the specified watermark extraction job is returned. If you leave this parameter empty, the results of all watermark extraction jobs submitted for the video are returned.
+        # - The job ID is returned after you call the [SubmitDigitalWatermarkExtractJob](~~SubmitDigitalWatermarkExtractJob~~) operation.
+        # - If you specify this parameter, the result of the specified watermark extraction job is returned. If you do not specify this parameter, the results of all historical watermark extraction jobs for the video are returned.
         self.job_id = job_id
-        # The ID of the video from which you want to query the watermark content. You can specify only one ID. You can use one of the following methods to obtain the ID:
-        # 
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Audio/Video** to view the video ID.
-        # *   Obtain the VideoId from the response to the [SearchMedia](~~SearchMedia~~) operation.
+        # The ID of the video to query. Only a single video ID is supported. You can obtain the video ID by using the following methods:
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the video ID.
+        # - Call the [SearchMedia](~~SearchMedia~~) operation. The video ID (VideoId) is returned in the response.
         # 
         # This parameter is required.
         self.media_id = media_id

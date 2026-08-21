@@ -15,15 +15,17 @@ class DeleteEditingProjectMaterialsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The material ID. Separate multiple material IDs with commas (,).
+        # The material IDs. These are media asset IDs, such as VideoId for videos, ImageId for images, and MediaId for auxiliary media assets. Separate multiple material IDs with commas (,).
+        # 
+        # To obtain material IDs, see [Search for media information](https://help.aliyun.com/document_detail/86044.html).
         # 
         # This parameter is required.
         self.material_ids = material_ids
-        # The type of the material. Valid values:
+        # The material type. Valid values:
         # 
-        # *   **video**
-        # *   **audio**
-        # *   **image**
+        # - **video**: video.
+        # - **audio**: audio-only.
+        # - **image**: image.
         # 
         # This parameter is required.
         self.material_type = material_type

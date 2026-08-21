@@ -13,9 +13,9 @@ class GetMediaDNAResultResponseBody(DaraModel):
         dnaresult: main_models.GetMediaDNAResultResponseBodyDNAResult = None,
         request_id: str = None,
     ):
-        # The media fingerprinting results.
+        # The media fingerprint result.
         self.dnaresult = dnaresult
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class GetMediaDNAResultResponseBodyDNAResult(DaraModel):
         self,
         video_dna: List[main_models.GetMediaDNAResultResponseBodyDNAResultVideoDNA] = None,
     ):
-        # The video fingerprint recognition result.
+        # The media fingerprint recognition results.
         self.video_dna = video_dna
 
     def validate(self):
@@ -89,11 +89,11 @@ class GetMediaDNAResultResponseBodyDNAResultVideoDNA(DaraModel):
         primary_key: str = None,
         similarity: str = None,
     ):
-        # The details of the matched video. Information such as the location and duration of the video is returned.
+        # The details of the similar video, including the position and duration.
         self.detail = detail
-        # The ID of the video that has a similar fingerprint.
+        # The ID of the similar video.
         self.primary_key = primary_key
-        # The similarity between the fingerprints of the input video and the matched video. 1 indicates that the fingerprints of the two videos are the same.
+        # The similarity of the video. A similarity value of 1 indicates 100% similarity.
         self.similarity = similarity
 
     def validate(self):
@@ -142,7 +142,7 @@ class GetMediaDNAResultResponseBodyDNAResultVideoDNADetail(DaraModel):
         duplication: main_models.GetMediaDNAResultResponseBodyDNAResultVideoDNADetailDuplication = None,
         input: main_models.GetMediaDNAResultResponseBodyDNAResultVideoDNADetailInput = None,
     ):
-        # The start time and duration of the matched video.
+        # The start time and duration of the video in the library.
         self.duplication = duplication
         # The start time and duration of the input video.
         self.input = input

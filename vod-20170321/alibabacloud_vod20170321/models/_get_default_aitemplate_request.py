@@ -9,7 +9,7 @@ class GetDefaultAITemplateRequest(DaraModel):
         self,
         template_type: str = None,
     ):
-        # The type of the AI template. Set the value to **AIMediaAudit**, which specifies the automated review.
+        # The AI templatetype. Set the value to **AIMediaAudit** (automated review).
         # 
         # This parameter is required.
         self.template_type = template_type

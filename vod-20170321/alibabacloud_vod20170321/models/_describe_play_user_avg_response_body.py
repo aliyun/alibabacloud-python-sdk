@@ -13,7 +13,7 @@ class DescribePlayUserAvgResponseBody(DaraModel):
         request_id: str = None,
         user_play_statis_avgs: main_models.DescribePlayUserAvgResponseBodyUserPlayStatisAvgs = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.user_play_statis_avgs = user_play_statis_avgs
 

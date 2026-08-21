@@ -13,11 +13,11 @@ class AttachAppPolicyToIdentityResponseBody(DaraModel):
         non_exist_policy_names: List[str] = None,
         request_id: str = None,
     ):
-        # The names of the policies that failed to be granted to the RAM user or RAM role.
+        # The policy names that failed to be attached.
         self.failed_policy_names = failed_policy_names
-        # The names of the policies that were not found.
+        # The list of policy names that do not exist.
         self.non_exist_policy_names = non_exist_policy_names
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

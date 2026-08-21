@@ -14,20 +14,24 @@ class DescribeVodRangeDataByLocateAndIspServiceRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
-        # The accelerated domain name.
+        # The accelerated domain name to query.
+        # 
+        # You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Configuration Management > CDN Configuration > Domain Names** in the left-side navigation pane to view the accelerated domain names that you have added to ApsaraVideo VOD. You can also call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # > The end time must be later than the start time. The maximum time range between the start time and end time is 1 hour.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The name of the ISP. If you leave this parameter empty, all ISPs are queried.
+        # The ISP name in English. If you do not specify this parameter, data of all ISPs is queried. You can specify only one ISP for each request.
         self.isp_name_en = isp_name_en
-        # The name of the region. If you leave this parameter empty, data in all regions is queried.
+        # The region name in English. If you do not specify this parameter, data of all regions is queried. Separate multiple region names with commas (,).
         self.location_name_en = location_name_en
         self.owner_id = owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

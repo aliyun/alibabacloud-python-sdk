@@ -13,9 +13,9 @@ class GetMediaAuditAudioResultDetailResponseBody(DaraModel):
         media_audit_audio_result_detail: main_models.GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail = None,
         request_id: str = None,
     ):
-        # Details of review results.
+        # The review results.
         self.media_audit_audio_result_detail = media_audit_audio_result_detail
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail(Dara
         page_total: int = None,
         total: int = None,
     ):
-        # The list of results.
+        # The result list.
         self.list = list
-        # The page number of the returned page.
+        # The current page number.
         self.page_total = page_total
-        # The total number of pages returned.
+        # The total number of pages.
         self.total = total
 
     def validate(self):
@@ -108,20 +108,24 @@ class GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList(
         start_time: int = None,
         text: str = None,
     ):
-        # The end time of the audio that failed the review. Unit: seconds.
+        # The end time of the problematic audio segment. Unit: seconds.
         self.end_time = end_time
-        # The review results. Valid values:
-        # *   **spam**
-        # *   **ad**
-        # *   **abuse**
-        # *   **flood**
-        # *   **contraband**
-        # *   **meaningless**
-        # *   **normal**
+        # The category of the audio review result. Valid values:
+        # 
+        # - **normal**: Normal.
+        # - **spam**: Contains spam.
+        # - **ad**: Advertisement.
+        # - **politics**: Political content.
+        # - **terrorism**: Terrorist content.
+        # - **abuse**: Abusive content.
+        # - **porn**: Pornographic content.
+        # - **flood**: Junk content.
+        # - **contraband**: Prohibited content.
+        # - **meaningless**: Meaningless content.
         self.label = label
-        # The start time of the audio that failed the review. Unit: seconds.
+        # The start time of the problematic audio segment. Unit: seconds.
         self.start_time = start_time
-        # The text that corresponds to the audio.
+        # The text content corresponding to the audio.
         self.text = text
 
     def validate(self):

@@ -16,13 +16,13 @@ class DescribeVodMediaPlayDataResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned data.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The data returned.
+        # The list of returned data.
         self.qoe_info_list = qoe_info_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -91,21 +91,21 @@ class DescribeVodMediaPlayDataResponseBodyQoeInfoList(DaraModel):
         video_duration: float = None,
         video_title: str = None,
     ):
-        # The number of visits to the audio or video per day.
+        # The number of unique visitors for the audio or video file.
         self.dau = dau
-        # The ID of the media file (VideoId).
+        # The media ID, which is the audio or video ID (VideoId).
         self.media_id = media_id
-        # The total playback duration of the audio or video. Unit: seconds.
+        # The total play duration for the audio or video file. Unit: seconds.
         self.play_duration = play_duration
-        # The average playback duration of the audio or video per viewer. Unit: seconds.
+        # The average play duration per user for the audio or video file. Unit: seconds.
         self.play_duration_per_uv = play_duration_per_uv
-        # The average number of times that the audio or video was played per viewer.
+        # The average number of plays per user for the audio or video file.
         self.play_per_vv = play_per_vv
-        # The total number of times the audio or video has been played.
+        # The total number of plays for the audio or video file.
         self.play_success_vv = play_success_vv
         # The duration of the audio or video file. Unit: seconds.
         self.video_duration = video_duration
-        # The name of the audio or video file.
+        # The title of the audio or video file.
         self.video_title = video_title
 
     def validate(self):

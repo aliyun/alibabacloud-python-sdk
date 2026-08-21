@@ -10,9 +10,9 @@ class PreloadVodObjectCachesResponseBody(DaraModel):
         preload_task_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the prefetch task. Separate multiple task IDs with commas (,).
+        # The task ID returned for the prefetch operation. Multiple task IDs are separated by commas (,).
         self.preload_task_id = preload_task_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

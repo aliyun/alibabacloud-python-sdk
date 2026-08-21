@@ -10,9 +10,11 @@ class RefreshVodObjectCachesResponseBody(DaraModel):
         refresh_task_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the refresh task. Multiple IDs are separated by commas (,). Refresh tasks are merged based on the following rules:
+        # The ID of the purge task. Multiple task IDs are separated by commas (,).
+        # The returned purge task IDs are merged based on the following rules:
         # 
-        # If the tasks are set for the same accelerated domain name, submitted within the same second, and refresh content based on URLs instead of directories, the tasks IDs are merged into the same task ID (RefreshTaskId). If the number of these tasks exceeds 2,000, every 2,000 tasks IDs are merged into the same task ID (RefreshTaskId).
+        # Purge tasks (at URL granularity) submitted for the same domain name within the same second are merged into a single RefreshTaskId.
+        # If purge tasks (at URL granularity) submitted for the same domain name within the same second exceed 2,000, they are merged into one RefreshTaskId per 2,000 tasks.
         self.refresh_task_id = refresh_task_id
         # The request ID.
         self.request_id = request_id

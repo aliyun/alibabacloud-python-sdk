@@ -11,7 +11,7 @@ class DescribeVodCertificateListRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The domain name for CDN.
+        # The accelerated domain name for ApsaraVideo VOD.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token

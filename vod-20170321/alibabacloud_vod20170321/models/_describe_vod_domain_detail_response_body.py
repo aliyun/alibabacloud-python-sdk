@@ -13,9 +13,9 @@ class DescribeVodDomainDetailResponseBody(DaraModel):
         domain_detail: main_models.DescribeVodDomainDetailResponseBodyDomainDetail = None,
         request_id: str = None,
     ):
-        # The basic information about the domain name for CDN.
+        # The basic configuration information of the domain name.
         self.domain_detail = domain_detail
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,39 +62,42 @@ class DescribeVodDomainDetailResponseBodyDomainDetail(DaraModel):
         sources: main_models.DescribeVodDomainDetailResponseBodyDomainDetailSources = None,
         weight: str = None,
     ):
-        # The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        # The name of the HTTPS certificate. This parameter is returned only if HTTPS secure acceleration is enabled.
         self.cert_name = cert_name
-        # The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
+        # The CNAME assigned to the accelerated domain name. You must add a CNAME record with your DNS provider to map the accelerated domain name to this CNAME. For more information, see [Configure a CNAME record](https://help.aliyun.com/document_detail/86075.html).
         self.cname = cname
-        # The description of the domain name for CDN.
+        # The description of the VOD acceleration domain name.
         self.description = description
-        # The domain name for CDN.
+        # The VOD acceleration domain name.
         self.domain_name = domain_name
-        # The status of the domain name for CDN. Value values:
-        # *   **online**: indicates that the domain name is enabled.
-        # *   **offline**: indicates that the domain name is disabled.
-        # *   **configuring**: indicates that the domain name is being configured.
-        # *   **configure_failed**: indicates that the domain name failed to be configured.
-        # *   **checking**: indicates that the domain name is under review.
-        # *   **check_failed**: indicates that the domain name failed the review.
+        # The status of the accelerated domain name. Valid values:
+        # 
+        # - **online**: enabled.
+        # - **offline**: disabled.
+        # - **configuring**: being configured.
+        # - **configure_failed**: configuration failed.
+        # - **checking**: being reviewed.
+        # - **check_failed**: review failed.
         self.domain_status = domain_status
-        # The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the domain name was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.gmt_created = gmt_created
-        # The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the domain name was last modified. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
-        # Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values:
-        # *   **on**: indicates that the SSL certificate is enabled.
-        # *   **off**: indicates that the SSL certificate is disabled.
+        # Indicates whether the SSL certificate is enabled. Valid values:
+        # 
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.sslprotocol = sslprotocol
-        # The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        # The public key of the HTTPS certificate. This parameter is returned only if HTTPS secure acceleration is enabled.
         self.sslpub = sslpub
-        # This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        # *   **domestic**: mainland China. This is the default value.
-        # *   **overseas**: outside mainland China.
-        # *   **global**: regions in and outside mainland China.
+        # The acceleration region. Valid values:
+        # 
+        # - **domestic** (default): the Chinese mainland only.
+        # - **overseas**: global (excluding the Chinese mainland).
+        # - **global**: global.
         self.scope = scope
         self.sources = sources
-        # The weight of the origin server.
+        # The back-to-origin weight.
         self.weight = weight
 
     def validate(self):

@@ -14,12 +14,12 @@ class DescribeVodStorageDataResponseBody(DaraModel):
         request_id: str = None,
         storage_data: main_models.DescribeVodStorageDataResponseBodyStorageData = None,
     ):
-        # The time granularity at which the data was queried. Valid values:
+        # The time granularity of the returned data. Valid values:
         # 
-        # *   **hour**
-        # *   **day**
+        # - **hour**: hourly data.
+        # - **day**: daily data.
         self.data_interval = data_interval
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.storage_data = storage_data
 

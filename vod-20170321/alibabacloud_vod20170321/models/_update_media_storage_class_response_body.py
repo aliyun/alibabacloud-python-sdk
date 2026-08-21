@@ -17,12 +17,12 @@ class UpdateMediaStorageClassResponseBody(DaraModel):
     ):
         self.forbidden_list = forbidden_list
         self.ignored_list = ignored_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The state of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **Processing**
-        # *   **Failed**
+        # - **Processing**: Processing.
+        # - **Failed**: Failed.
         self.status = status
 
     def validate(self):

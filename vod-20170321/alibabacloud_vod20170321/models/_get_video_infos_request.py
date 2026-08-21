@@ -10,8 +10,12 @@ class GetVideoInfosRequest(DaraModel):
         reference_ids: str = None,
         video_ids: str = None,
     ):
+        # The list of custom IDs. Separate multiple IDs with commas (,). You can specify a maximum of 20 IDs.
         self.reference_ids = reference_ids
-        # The list of video IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified.
+        # The list of audio or video IDs. Separate multiple IDs with commas (,). You can specify a maximum of 20 IDs. You can obtain the audio or video ID by using the following methods:
+        # - If the video is uploaded by using the ApsaraVideo VOD console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the audio or video ID.
+        # - Obtain the audio or video ID from the value of the VideoId response parameter when you call the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential.
+        # - After the audio or video file is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the audio or video ID, which is the value of the VideoId response parameter.
         self.video_ids = video_ids
 
     def validate(self):

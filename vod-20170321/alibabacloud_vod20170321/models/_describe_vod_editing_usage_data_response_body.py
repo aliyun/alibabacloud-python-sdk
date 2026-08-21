@@ -15,9 +15,13 @@ class DescribeVodEditingUsageDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The usage data.
         self.editing_data = editing_data
+        # The end of the time range to query. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.end_time = end_time
+        # The request ID.
         self.request_id = request_id
+        # The beginning of the time range to query. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.start_time = start_time
 
     def validate(self):
@@ -74,9 +78,13 @@ class DescribeVodEditingUsageDataResponseBodyEditingData(DaraModel):
         specification: str = None,
         time_stamp: str = None,
     ):
+        # The audio or video duration. Unit: seconds.
         self.duration = duration
+        # The region.
         self.region = region
+        # The output specification.
         self.specification = specification
+        # The start time of the time interval. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.time_stamp = time_stamp
 
     def validate(self):

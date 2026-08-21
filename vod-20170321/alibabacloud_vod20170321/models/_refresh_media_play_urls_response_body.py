@@ -12,13 +12,13 @@ class RefreshMediaPlayUrlsResponseBody(DaraModel):
         non_exist_media_ids: str = None,
         request_id: str = None,
     ):
-        # The IDs of the media files that cannot be operated on. In most cases, media files cannot be operated on because you are not authorized to perform the operations. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # The list of audio or video IDs that are forbidden. This is typically because you do not have multi-application permissions. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.forbidden_media_ids = forbidden_media_ids
         # The ID of the refresh or prefetch task.
         self.media_refresh_job_id = media_refresh_job_id
-        # The IDs of the media files that do not exist.
+        # The list of audio or video IDs that do not exist.
         self.non_exist_media_ids = non_exist_media_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

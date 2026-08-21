@@ -10,9 +10,9 @@ class AddVodStorageForAppResponseBody(DaraModel):
         request_id: str = None,
         storage_location: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The address of the VOD bucket.
+        # The storage address of the created VOD system bucket.
         self.storage_location = storage_location
 
     def validate(self):

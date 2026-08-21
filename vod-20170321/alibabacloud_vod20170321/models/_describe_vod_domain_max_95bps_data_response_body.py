@@ -20,15 +20,11 @@ class DescribeVodDomainMax95BpsDataResponseBody(DaraModel):
         start_time: str = None,
     ):
         self.detail_data = detail_data
-        # The domain name for CDN.
+        # The accelerated domain name information.
         self.domain_name = domain_name
         # The 95th percentile bandwidth in the Chinese mainland.
         self.domestic_max_95bps = domestic_max_95bps
-        # The end of the time range to query.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
-        # >  The end time must be later than the start time.
+        # The end time of the data.
         self.end_time = end_time
         # The 95th percentile bandwidth.
         self.max_95bps = max_95bps
@@ -36,9 +32,7 @@ class DescribeVodDomainMax95BpsDataResponseBody(DaraModel):
         self.overseas_max_95bps = overseas_max_95bps
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range to query.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start time of the data.
         self.start_time = start_time
 
     def validate(self):

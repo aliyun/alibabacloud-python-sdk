@@ -12,9 +12,9 @@ class GetVideoPlayAuthResponseBody(DaraModel):
         request_id: str = None,
         video_meta: main_models.GetVideoPlayAuthResponseBodyVideoMeta = None,
     ):
-        # The credential for media playback.
+        # The playback credential for the audio or video file.
         self.play_auth = play_auth
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The metadata of the audio or video file.
         self.video_meta = video_meta
@@ -62,15 +62,15 @@ class GetVideoPlayAuthResponseBodyVideoMeta(DaraModel):
         title: str = None,
         video_id: str = None,
     ):
-        # The thumbnail URL of the media file.
+        # The thumbnail URL of the audio or video file.
         self.cover_url = cover_url
-        # The duration of the media file. Unit: seconds.
+        # The duration of the audio or video file. Unit: seconds.
         self.duration = duration
-        # The status of the media file. For more information about the value range and description, see [Status: the status of a video](~~52839#title-vqg-8cz-7p8~~).
+        # The status of the audio or video file. For valid values and descriptions, see [Status: audio and video status](~~52839#title-vqg-8cz-7p8~~).
         self.status = status
-        # The title of the media file.
+        # The title of the audio or video file.
         self.title = title
-        # The ID of the media file.
+        # The audio or video ID.
         self.video_id = video_id
 
     def validate(self):

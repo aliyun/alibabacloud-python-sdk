@@ -12,7 +12,7 @@ class DeleteVodDomainRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The domain name for CDN that you want to delete.
+        # The accelerated domain name for ApsaraVideo VOD that you want to delete.
         # 
         # This parameter is required.
         self.domain_name = domain_name

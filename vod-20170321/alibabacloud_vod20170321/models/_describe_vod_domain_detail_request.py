@@ -11,7 +11,7 @@ class DescribeVodDomainDetailRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The domain name for CDN.
+        # The VOD acceleration domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name

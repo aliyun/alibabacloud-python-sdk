@@ -14,7 +14,7 @@ class UpdateImageInfosResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.non_exist_image_ids = non_exist_image_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

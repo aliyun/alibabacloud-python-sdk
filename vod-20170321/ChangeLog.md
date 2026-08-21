@@ -1,3 +1,7 @@
+2026-08-21 Version: 3.12.0
+- Support API GetMediaAiAnalysis.
+
+
 2026-05-07 Version: 3.10.3
 - Update API CreateUploadVideo: add request parameters EnableFirstFrameCover.
 - Update API CreateUploadVideo: add request parameters GenerateThumbnail.

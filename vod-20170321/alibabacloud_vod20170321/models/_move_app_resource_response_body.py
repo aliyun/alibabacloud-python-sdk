@@ -13,9 +13,9 @@ class MoveAppResourceResponseBody(DaraModel):
         non_exist_resource_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the resources that failed to be migrated.
+        # The IDs of resources that failed to be migrated.
         self.failed_resource_ids = failed_resource_ids
-        # The IDs of the resources that were not found.
+        # The IDs of resources that do not exist.
         self.non_exist_resource_ids = non_exist_resource_ids
         # The request ID.
         self.request_id = request_id

@@ -13,9 +13,9 @@ class ListDynamicImageResponseBody(DaraModel):
         dynamic_image_list: List[main_models.ListDynamicImageResponseBodyDynamicImageList] = None,
         request_id: str = None,
     ):
-        # The list of animated stickers.
+        # The animated image results.
         self.dynamic_image_list = dynamic_image_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,27 +67,29 @@ class ListDynamicImageResponseBodyDynamicImageList(DaraModel):
         video_id: str = None,
         width: str = None,
     ):
-        # The time when the animated sticker was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the animated image was created. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.creation_time = creation_time
-        # The duration of the animated sticker. Unit: seconds.
+        # The duration of the animated image. Unit: seconds.
         self.duration = duration
-        # The ID of the animated sticker.
+        # The animated image ID.
         self.dynamic_image_id = dynamic_image_id
-        # The size of the animated sticker file. Unit: byte.
+        # The size of the animated image file. Unit: bytes.
         self.file_size = file_size
-        # The URL of the animated sticker file.
+        # The URL of the animated image file.
         self.file_url = file_url
-        # The format of the animated sticker. Valid values: gif and webp.
+        # The format of the animated image. Valid values:
+        # - **gif**
+        # - **webp**
         self.format = format
-        # The frame rate of the animated sticker. Unit: frames per second.
+        # The frame rate of the animated image. Unit: frames per second.
         self.fps = fps
-        # The height of the animated sticker. Unit: pixel.
+        # The height of the animated image. Unit: px.
         self.height = height
-        # The job ID for creating the animated sticker.
+        # The animated image job ID.
         self.job_id = job_id
-        # The ID of the video.
+        # The video ID.
         self.video_id = video_id
-        # The width of the animated sticker. Unit: pixel.
+        # The width of the animated image. Unit: px.
         self.width = width
 
     def validate(self):

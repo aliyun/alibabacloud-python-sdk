@@ -11,7 +11,13 @@ class DescribeVodUserVipsByDomainRequest(DaraModel):
         domain_name: str = None,
         owner_id: int = None,
     ):
+        # Specifies whether to query healthy VIPs. Valid values:
+        # 
+        # - **on**: Healthy VIPs.
+        # - **off**: All VIPs.
         self.available = available
+        # The accelerated domain name for ApsaraVideo VOD. Only a single domain name can be queried.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id

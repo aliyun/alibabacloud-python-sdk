@@ -16,23 +16,40 @@ class DescribeVodDomainBpsDataByLayerRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
-        # The accelerated domain name. You can specify a maximum of 500 accelerated domain names. Separate multiple domain names with commas (,).
+        # The accelerated domain name to query.
+        # 
+        # - If you do not specify this parameter, the pooled data of all accelerated domain names is returned by default.
+        # - Batch queries are supported. Separate multiple domain names with commas (,). You can specify up to 500 domain names at a time.
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Configuration Management > CDN Configuration > Domain Names** in the left-side navigation pane to view the accelerated domain names that you have added to ApsaraVideo VOD. You can also call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # > The end time must be later than the start time.
         self.end_time = end_time
-        # The time interval between the data entries. Unit: seconds.
+        # The time granularity of the data. Unit: seconds. Valid values: **300**, **3600**, and **86400**. If you do not specify this parameter or specify an unsupported value, the default value is used. The supported time granularity varies based on the time range specified by `StartTime` and `EndTime`:
         # 
-        # The time granularity varies based on the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see the supported time granularity described in Usage notes.
+        # - Less than 3 days (exclusive): **300** (default), **3600**, and **86400**.
+        # - 3 to 31 days (exclusive): **3600** (default) and **86400**.
+        # - 31 days or more: **86400** (default).
         self.interval = interval
-        # The name of the Internet service provider (ISP).
+        # The name of the Internet service provider (ISP) in English. If you do not specify this parameter, data of all ISPs is queried by default.
         self.isp_name_en = isp_name_en
-        # The layer at which you want to query the data.
+        # The protocol type. You can specify the protocol type at the network layer or application layer.
         # 
-        # Network layer: IPv4 and IPv6. Application layer: http, https, and quic. all: specifies that both the network and application layers are included. Default value: all.
+        # Default value:
+        # - all: includes both network layer and application layer
+        # 
+        # Network layer values:
+        # - IPv4
+        # - IPv6
+        # 
+        # Application layer values:
+        # - http
+        # - https
+        # - quic
         self.layer = layer
-        # The name of the region.
+        # The name of the region in English. If you do not specify this parameter, data of all regions is queried by default.
         self.location_name_en = location_name_en
         self.owner_id = owner_id
         # The beginning of the time range to query.

@@ -14,21 +14,26 @@ class DescribeVodDomainMax95BpsDataRequest(DaraModel):
         start_time: str = None,
         time_point: str = None,
     ):
-        # The cycle to query the 95th percentile bandwidth data. Valid values:
+        # The cycle for the 95th percentile bandwidth. Default value: day. Valid values:
         # 
-        # *   day (default)
-        # *   month
+        # - day: queries the 95th percentile bandwidth by day.
+        # 
+        # - month: queries the 95th percentile bandwidth by month.
         self.cycle = cycle
-        # The domain name to be queried for acceleration. If the parameter is empty, the data merged from all accelerated domain names will be returned by default.
+        # The accelerated domain name to query. If this parameter is left empty, the merged data of all accelerated domain names is returned by default.
+        # 
         # 
         # > Batch domain name queries are not supported.
         self.domain_name = domain_name
-        # End time point. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+        # The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # 
+        # > The end time must be later than the start time.
         self.end_time = end_time
         self.owner_id = owner_id
-        # Start time point. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+        # The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # The start time point for getting the data. The date format follows the ISO8601 representation and uses UTC time, in the format yyyy-MM-dd\\"T\\"HH:mm:ssZ.
+        # The start time point for data retrieval. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.time_point = time_point
 
     def validate(self):

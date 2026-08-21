@@ -17,41 +17,42 @@ class DescribeVodDomainRealTimeDetailDataRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
-        # The accelerated domain name. You can specify a maximum of 20 accelerated domain names in each call. Separate domain names with commas (,).
+        # The accelerated domain name to query.
+        # 
+        # - Batch queries are supported. Separate multiple domain names with commas (,). You can specify up to 20 domain names at a time.
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and in the left-side navigation pane, choose **Configuration Management > CDN Configuration > Domain Names** to view the accelerated domain names that you have added to ApsaraVideo VOD. Alternatively, call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:40:00Z.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # > The end time must be later than the start time, and the difference between the end time and the start time cannot exceed 10 minutes.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The type of data that you want to query. You can specify multiple data types and separate them with commas (,). Valid values:
+        # The type of access data to query. You can specify multiple types. Separate multiple types with commas (,). Valid values:
         # 
-        # qps: the number of queries per second bps: bandwidth data http_code: HTTP status codes
+        # - **qps**: queries per second (QPS).
+        # - **bps**: bandwidth data.
+        # - **http_code**: HTTP status codes.
         # 
         # This parameter is required.
         self.field = field
-        # The name of the Internet service provider (ISP).
+        # The Internet service provider (ISP) name in English. If you do not specify this parameter, data for all ISPs is queried by default.
         self.isp_name_en = isp_name_en
-        # The name of the region. If you do not specify a region, data in all regions is queried.
+        # The region name in English. If you do not specify this parameter, data for all regions is queried by default.
         self.location_name_en = location_name_en
-        # Specifies whether to return a summary value. Valid values:
+        # Specifies whether to return aggregated data by domain name. Valid values:
         # 
-        # true false (default)
+        # - **true**: Returns aggregated data across all domain names.
+        # - **false** (default): Returns data grouped by domain name.
         self.merge = merge
-        # Specifies whether to return a summary value. Valid values:
+        # Specifies whether to return aggregated data by region and ISP. Valid values:
         # 
-        # *   **true**: groups the results by domain name and merges the results by region and ISP.
-        # *   **false**: groups the results by domain name.
-        # 
-        # Default value: **false**.
+        # - **true**: Returns data grouped only by domain name, with region and ISP values aggregated.
+        # - **false** (default): Returns data grouped by domain name, region, and ISP.
         self.merge_loc_isp = merge_loc_isp
         self.owner_id = owner_id
-        # The beginning of the time range to query.
-        # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:33:00Z.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

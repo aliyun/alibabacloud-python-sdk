@@ -10,9 +10,9 @@ class SubmitDigitalWatermarkExtractJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the watermark extraction job.
+        # The ID of the watermark extraction job. This ID can be used as a request parameter of the [GetDigitalWatermarkExtractResult](https://help.aliyun.com/document_detail/2587769.html) operation.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

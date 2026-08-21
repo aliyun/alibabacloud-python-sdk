@@ -11,7 +11,7 @@ class BatchStartVodDomainRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The accelerated domain name. Separate multiple domain names with commas (,).
+        # The accelerated domain names for ApsaraVideo VOD. Separate multiple domain names with commas (,).
         # 
         # This parameter is required.
         self.domain_names = domain_names

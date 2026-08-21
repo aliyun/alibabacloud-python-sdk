@@ -15,9 +15,9 @@ class DescribeVodDomainBpsDataByLayerResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.bps_data_interval = bps_data_interval
-        # The time interval between the entries returned. Unit: seconds.
+        # The time interval between each record, which is the time granularity of the data. Unit: seconds.
         self.data_interval = data_interval
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

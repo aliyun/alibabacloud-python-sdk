@@ -12,6 +12,7 @@ class GetAppPlayKeyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

@@ -17,16 +17,16 @@ class DescribeVodDomainHitRateDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The time interval at which data is returned, which is the time granularity. Unit: seconds.
+        # The time interval between data entries, which is the time granularity of the data. Unit: seconds.
         self.data_interval = data_interval
         # The accelerated domain name.
         self.domain_name = domain_name
-        # The end of the time range.
+        # The end of the time range for the returned data.
         self.end_time = end_time
         self.hit_rate_interval = hit_rate_interval
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The beginning of the time range.
+        # The beginning of the time range for the returned data.
         self.start_time = start_time
 
     def validate(self):

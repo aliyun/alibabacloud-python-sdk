@@ -15,7 +15,7 @@ class DeleteEditingProjectRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the online editing project. Separate multiple IDs with commas (,).
+        # The online editing project IDs. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.project_ids = project_ids

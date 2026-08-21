@@ -15,9 +15,9 @@ class SearchEditingProjectResponseBody(DaraModel):
         total: int = None,
     ):
         self.project_list = project_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of online editing projects returned.
+        # The total number of online editing projects.
         self.total = total
 
     def validate(self):

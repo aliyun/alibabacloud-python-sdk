@@ -15,7 +15,7 @@ class GetEditingProjectRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the online editing project.
+        # The online editing project ID.
         # 
         # This parameter is required.
         self.project_id = project_id

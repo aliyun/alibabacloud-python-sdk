@@ -13,9 +13,9 @@ class GetAIImageJobsResponseBody(DaraModel):
         aiimage_job_list: List[main_models.GetAIImageJobsResponseBodyAIImageJobList] = None,
         request_id: str = None,
     ):
-        # The image AI processing jobs.
+        # The list of AI image processing tasks.
         self.aiimage_job_list = aiimage_job_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,36 +66,33 @@ class GetAIImageJobsResponseBodyAIImageJobList(DaraModel):
         user_data: str = None,
         video_id: str = None,
     ):
-        # The Object Storage Service (OSS) URL of the image file.
-        # 
-        # > This parameter does not include the complete authentication information. To obtain the authentication information, you must generate a signed URL. Alternatively, you can call the [ListAIImageInfo](~~ListAIImageInfo~~) operation to obtain the image information.
+        # The OSS URL of the AI image.
+        # >This is the task result. The URL does not contain complete authentication information. To obtain authentication information, generate it yourself or call the [ListAIImage](https://help.aliyun.com/document_detail/186924.html) operation to retrieve the media asset result.
         self.aiimage_result = aiimage_result
         # The error code.
         self.code = code
-        # The time when the image AI processing job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the AI image processing task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The ID of the image AI processing job.
+        # The ID of the AI image processing task.
         self.job_id = job_id
         # The error message.
         self.message = message
-        # The status of the job. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The task status. Valid values:
+        # - **success**: The task is successful.
+        # - **fail**: The task failed.
         self.status = status
-        # The configurations of the AI template that was used to submit the job.
+        # The snapshot of the configuration information of the specified template when the task was submitted.
         self.template_config = template_config
-        # The ID of the AI template.
+        # The AI template ID.
         self.template_id = template_id
-        # The user data.
+        # The custom settings.
+        # - The value must be a JSON string.
+        # - The value must contain the MessageCallback or Extend parameter.
+        # - The maximum length is 512 bytes.
         # 
-        # *   The value must be a JSON string.
-        # *   The MessageCallback or Extend parameter is returned.
-        # *   The value contains a maximum of 512 bytes.
-        # 
-        # For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
+        # For more information about the parameter structure, see [UserData](https://help.aliyun.com/document_detail/86952.html).
         self.user_data = user_data
-        # The ID of the video.
+        # The video ID.
         self.video_id = video_id
 
     def validate(self):

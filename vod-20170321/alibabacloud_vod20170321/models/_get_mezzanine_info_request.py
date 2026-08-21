@@ -13,38 +13,36 @@ class GetMezzanineInfoRequest(DaraModel):
         reference_id: str = None,
         video_id: str = None,
     ):
-        # The type of additional information. Separate multiple values with commas (,). By default, only the basic information is returned. Valid values:
+        # The type of additional information. Separate multiple values with commas (,). By default, only basic information is returned. Valid values:
         # 
-        # *   **video**: video stream information
-        # *   **audio**: audio stream information
+        # - **video**: video stream information.
+        # - **audio**: audio stream information.
         self.addition_type = addition_type
-        # The validity period of the mezzanine file URL. Unit: seconds. Default value: **1800**. Minimum value: **1**.
-        # 
-        # *   If the OutputType parameter is set to **cdn**:
-        # 
-        #     *   The mezzanine file URL has a validity period only if URL signing is enabled. Otherwise, the mezzanine file URL is permanently valid.
-        #     *   Minimum value: **1**.
-        #     *   Maximum Value: unlimited.
-        #     *   Default value: If you do not set this parameter, the default validity period that is specified in URL signing is used.
-        # 
-        # <!---->
-        # 
-        # *   If the OutputType parameter is set to **oss**:
-        # 
-        #     *   The mezzanine file URL has a validity period only if the permissions on the Object Storage Service (OSS) bucket are private. Otherwise, the mezzanine file URL is permanently valid.
-        #     *   Minimum value: **1**.
-        #     *   Maximum value: **2592000** (30 days). The maximum value is limited to reduce security risks of the origin.
-        #     *   Default value: If you do not set this parameter, the default value is **3600**.
+        # The validity period of the signature for FileURL (source file URL). Unit: seconds. Default value: **3600**. The minimum value is **1**.
+        #  - If OutputType is set to **cdn**:
+        #     - FileURL expires periodically only if URL signing is enabled. Otherwise, FileURL is permanently valid.
+        #     - Minimum value: **1**.
+        #     - Maximum value: unlimited.
+        #     - Default value: **3600** if this parameter is not specified.
+        # - If OutputType is set to **oss**:
+        #     - FileURL expires periodically only if the storage permission is set to private. Otherwise, FileURL is permanently valid.
+        #     - Minimum value: **1**.
+        #     - Maximum value: To reduce security risks to the origin server, the maximum value is **2592000** (30 days) when the audio or video file is stored in a bucket managed by ApsaraVideo VOD, and **129600** (36 hours) when the file is stored in your own OSS bucket.
+        #     - Default value: **3600** if this parameter is not specified.
         self.auth_timeout = auth_timeout
-        # The type of the mezzanine file URL. Valid values:
+        # The type of the output URL. Valid values:
         # 
-        # - **oss**: OSS URL
-        # - **cdn** (default): Content Delivery Network (CDN) URL
+        # - **oss**: back-to-origin URL.
+        # - **cdn** (default): CDN URL.
         # 
-        # > If the mezzanine file is stored in a bucket of the in type, only an OSS URL is returned.
+        # > If the bucket type of the source file is in, only the OSS URL is returned.
         self.output_type = output_type
+        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens (-), and underscores (_) are supported. The value must be 6 to 64 characters in length and is unique at the user level.
         self.reference_id = reference_id
-        # The ID of the video.
+        # The audio or video ID. You can obtain the ID by using one of the following methods:
+        # - For audio or video files uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the video ID.
+        # - Obtain the video ID from the VideoId parameter returned by the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation when you request an upload URL and credential.
+        # - After the video is uploaded, call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the audio or video ID, which is the value of VideoId in the response.
         self.video_id = video_id
 
     def validate(self):

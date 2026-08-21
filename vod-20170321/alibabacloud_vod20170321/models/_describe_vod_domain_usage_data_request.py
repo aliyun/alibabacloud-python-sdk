@@ -16,40 +16,37 @@ class DescribeVodDomainUsageDataRequest(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The region in which you want to query data. Valid values:
-        # 
-        # *   **CN**: Chinese mainland
-        # *   **OverSeas**: outside the Chinese mainland
+        # The region code. Default value: CN (the Chinese mainland). Valid values:
+        # - **CN**: the Chinese mainland.
+        # - **OverSeas**: outside the Chinese mainland.
         self.area = area
-        # The accelerated domain name. If you leave this parameter empty, the merged data of all your accelerated domain names is returned. Separate multiple accelerated domain names with commas (,).
+        # The accelerated domain name. If this parameter is left empty, the merged data of all accelerated domain names is returned by default. Batch queries are supported. Separate multiple domain names with commas (,).
         self.domain_name = domain_name
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The type of the data to return. Valid values:
-        # 
-        # *   **bps**: bandwidth
-        # *   **traf**: traffic
+        # The data type. Valid values:
+        # - **bps**: bandwidth.
+        # - **traf**: traffic.
         # 
         # This parameter is required.
         self.field = field
-        # The time interval between the data entries to return. Unit: seconds. Valid values: **300** (5 minutes), **3600** (1 hour), and **86400** (1 day).
-        # 
-        # *   If **Interval** is set to **300**, you can query usage data in the last six months. The maximum time range per query that can be specified is three days.
-        # *   If **Interval** is set to **3600** or **86400**, you can query usage data of the previous year.
-        # *   If you do not set the **Interval** parameter, the maximum time range that you can query is one month. If you specify a time range of 1 to 3 days, the time interval between the entries that are returned is 1 hour. If you specify a time range of at least 4 days, the time interval between the entries that are returned is 1 day.
+        # Forces the retrieval of data at the specified time granularity, in seconds. Valid values: **300** (5 minutes), **3600** (1 hour), and **86400** (1 day).
+        # - **Interval**=**300**: You can query data for up to the last half year. The maximum time span for a single query is 3 days.
+        # - **Interval**=**3600** or **86400**: You can query data for up to the last year.
+        # - If **Interval** is not specified: The maximum time span for a single query is 1 month. If the query time range is 1 to 3 days, data is returned at hourly granularity. If the query time range is 4 days or more, data is returned at daily granularity.
         self.interval = interval
         self.owner_id = owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The type of content that you want to query. Valid values:
+        # The type of usage data to retrieve. Valid values:
         # 
-        # *   **static**: static content
-        # *   **dynamic**: dynamic requests
-        # *   **all**: all content
+        #  - **static**: static content.
+        # - **dynamic**: dynamic content.
+        # - **all**: all content.
         self.type = type
 
     def validate(self):

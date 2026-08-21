@@ -13,9 +13,9 @@ class ListVodTemplateResponseBody(DaraModel):
         request_id: str = None,
         vod_template_info_list: List[main_models.ListVodTemplateResponseBodyVodTemplateInfoList] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The snapshot templates.
+        # The list of snapshot template data.
         self.vod_template_info_list = vod_template_info_list
 
     def validate(self):
@@ -64,27 +64,27 @@ class ListVodTemplateResponseBodyVodTemplateInfoList(DaraModel):
         template_type: str = None,
         vod_template_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The time when the template was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the template was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # Indicates whether the template is the default one. Valid values:
+        # Indicates whether the template is the default template. Valid values:
         # 
-        # *   **Default**: The template is the default one.
-        # *   **NotDefault**: The template is not the default one.
+        # - **Default**: The template is the default template.
+        # - **NotDefault**: The template is not the default template.
         self.is_default = is_default
-        # The time when the template was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the template was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modify_time = modify_time
-        # The name of the template.
+        # The template name.
         self.name = name
-        # The detailed configurations of the template. The value is a JSON-formatted string. For more information about the data structure, see the "SnapshotTemplateConfig" section of the [Media processing parameters](https://help.aliyun.com/document_detail/98618.html) topic.
+        # The detailed template configuration in JSON format. For more information about the data structure, see [SnapshotTemplateConfig](https://help.aliyun.com/document_detail/98618.html).
         self.template_config = template_config
-        # The type of the template. Valid values:
+        # The templatetype. Valid values:
         # 
-        # *   **Snapshot**
-        # *   **DynamicImage**
+        # - **Snapshot**: snapshot.
+        # - **DynamicImage**: animated image.
         self.template_type = template_type
-        # The ID of the template.
+        # The template ID.
         self.vod_template_id = vod_template_id
 
     def validate(self):

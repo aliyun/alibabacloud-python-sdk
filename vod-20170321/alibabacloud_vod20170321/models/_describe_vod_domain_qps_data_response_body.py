@@ -17,16 +17,16 @@ class DescribeVodDomainQpsDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The time interval between the data entries returned. Unit: seconds.
+        # The time interval between entries. Unit: seconds.
         self.data_interval = data_interval
         # The accelerated domain name.
         self.domain_name = domain_name
-        # The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss* format. The time is displayed in UTC.
+        # The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.end_time = end_time
         self.qps_data_interval = qps_data_interval
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss* format. The time is displayed in UTC.
+        # The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.start_time = start_time
 
     def validate(self):

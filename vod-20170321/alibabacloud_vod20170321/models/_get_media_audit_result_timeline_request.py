@@ -9,7 +9,7 @@ class GetMediaAuditResultTimelineRequest(DaraModel):
         self,
         media_id: str = None,
     ):
-        # The ID of the video.
+        # The video ID.
         # 
         # This parameter is required.
         self.media_id = media_id

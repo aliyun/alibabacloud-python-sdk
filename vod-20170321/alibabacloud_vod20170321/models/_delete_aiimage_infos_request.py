@@ -9,9 +9,8 @@ class DeleteAIImageInfosRequest(DaraModel):
         self,
         aiimage_info_ids: str = None,
     ):
-        # The IDs of the images that are submitted for AI processing. You can obtain the value of AIImageInfoId from the response to the [ListAIImageInfo](~~ListAIImageInfo~~) operation.
-        # 
-        # - You can specify a maximum of 10 IDs.
+        # The IDs of AI image information. This parameter consists of one or more AIImageInfoId values. The AIImageInfoId is the value of the AIImageInfoId response parameter returned by the [ListAIImageInfo](https://help.aliyun.com/document_detail/186924.html) operation.
+        # - A maximum of 10 IDs are supported.
         # - Separate multiple IDs with commas (,).
         # 
         # This parameter is required.

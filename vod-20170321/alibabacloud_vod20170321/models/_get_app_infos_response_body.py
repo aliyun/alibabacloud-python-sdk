@@ -15,13 +15,13 @@ class GetAppInfosResponseBody(DaraModel):
         non_exist_app_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The details of applications.
+        # The list of application information.
         self.app_info_list = app_info_list
-        # The HTTP status code that is returned.
+        # The error code.
         self.code = code
-        # The IDs of applications that do not exist.
+        # The list of application IDs that do not exist.
         self.non_exist_app_ids = non_exist_app_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,27 +82,25 @@ class GetAppInfosResponseBodyAppInfoList(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The time when the application was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time in UTC. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the application.
+        # The application description.
         self.description = description
-        # The last time when the application was modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The modification time in UTC. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.modification_time = modification_time
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the application. Valid values:
-        # 
-        # *   **Normal**
-        # *   **Disable**
+        # The application status. Valid values:
+        # - **Normal**: normal.
+        # - **Disable**: disabled.
         self.status = status
-        # The type of the application. Valid values:
-        # 
-        # *   **System**
-        # *   **Custom**
+        # The application type. Valid values:
+        # - **System**: system default.
+        # - **Custom**: user-created.
         self.type = type
 
     def validate(self):

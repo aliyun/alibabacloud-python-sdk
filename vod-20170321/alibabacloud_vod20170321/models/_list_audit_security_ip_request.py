@@ -9,7 +9,7 @@ class ListAuditSecurityIpRequest(DaraModel):
         self,
         security_group_name: str = None,
     ):
-        # The name of the review security group in which you want to query IP addresses. If you do not specify this parameter, IP addresses in all review security groups are queried.
+        # The name of the review security IP group. By default, all groups are returned.
         self.security_group_name = security_group_name
 
     def validate(self):

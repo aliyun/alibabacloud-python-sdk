@@ -14,27 +14,26 @@ class CreateUploadAttachedMediaResponseBody(DaraModel):
         upload_address: str = None,
         upload_auth: str = None,
     ):
-        # The URL of the auxiliary media asset file. The URL is an Object Storage Service (OSS) URL and does not contain the information used for URL signing.
+        # The OSS URL of the auxiliary media asset file (without authentication).
         # 
-        # You can use specify this value for the `FileUrl` parameter when you call the [AddWatermark](~~AddWatermark~~) operation to create a watermark template.
+        # When you add an image watermark template, this URL can be used as the request parameter `FileUrl` of the [AddWatermark](~~AddWatermark~~) operation.
         self.file_url = file_url
-        # The ID of the auxiliary media asset.
+        # The media asset ID.
         self.media_id = media_id
-        # The URL of the auxiliary media asset.
+        # The access URL of the media asset.
         # 
-        # If a domain name for Alibaba Cloud CDN is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+        # If a CDN domain name is configured, a CDN URL is returned. Otherwise, an OSS URL is returned.
         # 
-        # >  If you enable the URL signing feature of ApsaraVideo VOD, you may be unable to access the returned URL of the auxiliary media asset by using a browser and the HTTP status code 403 may be returned. To resolve this issue, you can disable the [URL signing](https://help.aliyun.com/document_detail/86090.html) feature or [generate a signed URL](https://help.aliyun.com/document_detail/57007.html).
+        # > If the returned MediaURL is inaccessible in a browser (403), you have enabled URL authentication for the VOD domain name. You can disable [URL authentication](https://help.aliyun.com/document_detail/86090.html) or [generate an authentication signature](https://help.aliyun.com/document_detail/57007.html) yourself.
         self.media_url = media_url
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The upload URL.
-        # 
-        # >  The upload URL returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload URL, you must decode the upload URL by using the Base64 algorithm. You must parse the upload URL only if you use native OSS SDKs or OSS API for uploads.
+        # > The upload URL returned by the operation is a Base64-encoded value. When you use the SDK or API to upload media assets, you must Base64-decode the value before use. Only uploads by using the OSS native SDK or OSS API require you to parse UploadAddress yourself.
         self.upload_address = upload_address
         # The upload credential.
         # 
-        # >  The upload credential returned by this operation is Base64-encoded. Before you can use an SDK or an API operation to upload a media asset based on the upload credential, you must decode the upload credential by using the Base64 algorithm. You must parse the upload credential only if you use native OSS SDKs or OSS API for uploads.
+        # > The upload credential returned by the operation is a Base64-encoded value. When you use the SDK or API to upload media assets, you must Base64-decode the value before use. Only uploads by using the OSS native SDK or OSS API require you to parse UploadAuth yourself.
         self.upload_auth = upload_auth
 
     def validate(self):

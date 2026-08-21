@@ -10,9 +10,9 @@ class GenerateDownloadSecretKeyResponseBody(DaraModel):
         app_encrypt_key: str = None,
         request_id: str = None,
     ):
-        # The key file for secure download.
+        # The generated secure download key.
         self.app_encrypt_key = app_encrypt_key
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

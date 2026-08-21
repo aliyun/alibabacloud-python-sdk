@@ -11,15 +11,14 @@ class DeleteMultipartUploadRequest(DaraModel):
         media_type: str = None,
         owner_account: str = None,
     ):
-        # The ID of the media file (VideoId). You can use one of the following methods to obtain the ID:
-        # 
-        # *   After you upload a video in the [ApsaraVideo VOD console](https://vod.console.aliyun.com), you can log on to the ApsaraVideo VOD console and choose **Media Files** > **Audio/Video** to view the ID of the video.
-        # *   Obtain the value of VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you called to obtain the upload URL and credential.
-        # *   Obtain the value of VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you called to query media information after the audio or video file is uploaded.
+        # The media ID, which is the audio or video ID (VideoId). You can obtain the ID by using the following methods:
+        # - For audio or video files uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the audio or video ID.
+        # - When you call the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential, the audio or video ID is the value of the VideoId response parameter.
+        # - After the audio or video file is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the audio or video ID, which is the value of the VideoId response parameter.
         # 
         # This parameter is required.
         self.media_id = media_id
-        # The type of the media file. Set the value to **video**. video indicates audio and video files.
+        # The media type. Set the value to **video** (audio/video).
         # 
         # This parameter is required.
         self.media_type = media_type

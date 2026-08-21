@@ -13,6 +13,7 @@ class DescribeVodPlayerCollectDataResponseBody(DaraModel):
         data_list: List[main_models.DescribeVodPlayerCollectDataResponseBodyDataList] = None,
         request_id: str = None,
     ):
+        # The returned data list.
         self.data_list = data_list
         # Id of the request
         self.request_id = request_id
@@ -59,9 +60,13 @@ class DescribeVodPlayerCollectDataResponseBodyDataList(DaraModel):
         value_ratio: float = None,
         value_refer: float = None,
     ):
+        # The returned data metric.
         self.metric = metric
+        # The value of the returned data metric.
         self.value = value
+        # The period-over-period percentage.
         self.value_ratio = value_ratio
+        # The period-over-period value of the returned data metric.
         self.value_refer = value_refer
 
     def validate(self):

@@ -15,15 +15,15 @@ class GetAuditHistoryResponseBody(DaraModel):
         status: str = None,
         total: int = None,
     ):
-        # The review records.
+        # The list of review history records.
         self.histories = histories
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The manual review result. Valid values:
-        # - **Normal**: The video can be played.
-        # - **Blocked**: The video is blocked.
+        # The review result. Indicates the result of the current manual review. Valid values:
+        # - **Normal**: the content is normal.
+        # - **Blocked**: the content is blocked.
         self.status = status
-        # The total number of review records.
+        # The total number of review history records.
         self.total = total
 
     def validate(self):
@@ -83,15 +83,15 @@ class GetAuditHistoryResponseBodyHistories(DaraModel):
     ):
         # The reviewer.
         self.auditor = auditor
-        # The review comments, which are provided by the reviewer.
+        # The review details, which are the specific comments provided by the reviewer.
         self.comment = comment
-        # The time when the review record was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the record was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The reason why the video failed the review. If the video failed the review, specify the reason.
+        # The reason for rejection. If the review result is rejection, the reason must be provided.
         self.reason = reason
-        # The manual review result. Valid values:
-        # - **Normal**: The video can be played.
-        # - **Blocked**: The video is blocked.
+        # The review result. Valid values:
+        # - **Normal**
+        # - **Blocked**
         self.status = status
 
     def validate(self):

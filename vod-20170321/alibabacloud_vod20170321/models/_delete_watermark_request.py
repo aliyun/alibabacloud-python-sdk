@@ -9,10 +9,9 @@ class DeleteWatermarkRequest(DaraModel):
         self,
         watermark_id: str = None,
     ):
-        # The ID of watermark template that you want to delete. You can specify only one watermark template ID. You can obtain the ID by using one of the following methods:
-        # 
-        # *   Obtain the watermark template ID from the response to the [AddWatermark](~~AddWatermark~~) operation that you call to create a watermark template.
-        # *   Obtain the watermark template ID from the response to the [ListWatermark](~~ListWatermark~~) operation that you call to query all watermark templates within your account.
+        # The ID of the watermark template to delete. Only a single watermark template ID can be specified. You can obtain the ID by using the following methods:
+        # - The ID is returned after you call the [AddWatermark](~~AddWatermark~~) operation to add a watermark template.
+        # - The ID is returned after you call the [ListWatermark](~~ListWatermark~~) operation to query the list of watermark templates.
         # 
         # This parameter is required.
         self.watermark_id = watermark_id

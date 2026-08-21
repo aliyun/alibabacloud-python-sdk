@@ -13,9 +13,9 @@ class DescribeVodCertificateListResponseBody(DaraModel):
         certificate_list_model: main_models.DescribeVodCertificateListResponseBodyCertificateListModel = None,
         request_id: str = None,
     ):
-        # The information about each certificate.
+        # The certificate list information.
         self.certificate_list_model = certificate_list_model
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,7 +53,7 @@ class DescribeVodCertificateListResponseBodyCertificateListModel(DaraModel):
         count: int = None,
     ):
         self.cert_list = cert_list
-        # The number of certificates that are returned.
+        # The number of certificates.
         self.count = count
 
     def validate(self):

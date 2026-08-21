@@ -15,16 +15,17 @@ class GetJobDetailResponseBody(DaraModel):
         transcode_job_detail: main_models.GetJobDetailResponseBodyTranscodeJobDetail = None,
         workflow_task_detail: main_models.GetJobDetailResponseBodyWorkflowTaskDetail = None,
     ):
-        # The details of the AI task. This parameter takes effect only when the TaskType parameter is set to AI.
+        # The details of the AI task. This field has a value only when TaskType is AI.
         self.aijob_detail = aijob_detail
-        # The type of the task. Valid values:
+        # The task type.
         self.job_type = job_type
         # The request ID.
         self.request_id = request_id
-        # The details of the snapshot task. This parameter takes effect only when the jobType parameter is set to Snapshot.
+        # The details of the snapshot task. This field has a value only when jobType is Snapshot.
         self.snapshot_job_detail = snapshot_job_detail
-        # The details of the transcoding task. This parameter takes effect only when the jobType parameter is set to Transcode.
+        # The details of the transcoding task. This field has a value only when jobType is Transcode.
         self.transcode_job_detail = transcode_job_detail
+        # The details of the workflow task. This field has a value only when TaskType is Workflow.
         self.workflow_task_detail = workflow_task_detail
 
     def validate(self):
@@ -100,13 +101,28 @@ class GetJobDetailResponseBodyWorkflowTaskDetail(DaraModel):
         user_data: str = None,
         workflow: main_models.GetJobDetailResponseBodyWorkflowTaskDetailWorkflow = None,
     ):
+        # The processing results of each workflow node, in JSON format.
         self.activity_results = activity_results
+        # The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
         self.create_time = create_time
+        # The time when the task was completed.
         self.finish_time = finish_time
+        # The task status. Valid values:
+        # 
+        # - Init: started.
+        # - Processing: processing in progress.
+        # - Succeed: succeeded.
+        # - Failed: failed.
+        # - Canceled: canceled.
+        # - Skip: skipped.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The media asset information.
         self.task_input = task_input
+        # The custom settings. The value is a JSON string that supports message callback, upload acceleration, and other settings.
         self.user_data = user_data
+        # The workflow details.
         self.workflow = workflow
 
     def validate(self):
@@ -184,12 +200,22 @@ class GetJobDetailResponseBodyWorkflowTaskDetailWorkflow(DaraModel):
         type: str = None,
         workflow_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The time when the workflow was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
         self.create_time = create_time
+        # The time when the workflow was last modified.
         self.modified_time = modified_time
+        # The workflow name.
         self.name = name
+        # The workflow status. Valid values:
+        # - Active: activated.
+        # - Inactive: not activated.
+        # - Deleted: deleted.
         self.status = status
+        # The workflow type. Not populated by default.
         self.type = type
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -260,27 +286,27 @@ class GetJobDetailResponseBodyTranscodeJobDetail(DaraModel):
         user_id: int = None,
         video_id: str = None,
     ):
-        # The time when the task was complete.
+        # The time when the task was completed.
         self.complete_time = complete_time
-        # The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
         self.create_time = create_time
         # The definition.
         self.definition = definition
-        # The ID of the task.
+        # The task ID.
         self.job_id = job_id
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   Submitted
-        # *   Transcoding
-        # *   TranscodeSuccess
-        # *   TranscodeFail
-        # *   TranscodeCancelled
+        # - Submitted: submitted.
+        # - Transcoding: transcoding in progress.
+        # - TranscodeSuccess: transcoding succeeded.
+        # - TranscodeFail: transcoding failed.
+        # - TranscodeCancelled: transcoding canceled.
         self.status = status
-        # The ID of the template.
+        # The template ID.
         self.template_id = template_id
-        # The ID of the user who submitted the task.
+        # The ID of the user who initiated the task.
         self.user_id = user_id
-        # The ID of the media asset.
+        # The media asset ID.
         self.video_id = video_id
 
     def validate(self):
@@ -358,30 +384,30 @@ class GetJobDetailResponseBodySnapshotJobDetail(DaraModel):
         user_id: int = None,
         video_id: str = None,
     ):
-        # The time when the task was complete.
+        # The time when the task was completed.
         self.complete_time = complete_time
-        # The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
         self.create_time = create_time
-        # The ID of the task.
+        # The task ID.
         self.job_id = job_id
-        # Configuration of normal snapshots.
+        # The normal snapshot configuration.
         self.normal_config = normal_config
         # The sprite configuration.
         self.sprite_config = sprite_config
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   Processing
-        # *   Fail
-        # *   Success
+        # - Processing: processing in progress.
+        # - Fail: task failed.
+        # - Success: task succeeded.
         self.status = status
-        # The trigger mode. Valid values:
+        # The trigger method. Valid values:
         # 
-        # *   Auto
-        # *   Manual
+        # - Auto: automatically triggered by a workflow.
+        # - Manual: manually submitted.
         self.trigger = trigger
-        # The ID of the user who submitted the task.
+        # The ID of the user who initiated the task.
         self.user_id = user_id
-        # The ID of the media asset.
+        # The media asset ID.
         self.video_id = video_id
 
     def validate(self):
@@ -465,33 +491,32 @@ class GetJobDetailResponseBodyAIJobDetail(DaraModel):
         trigger: str = None,
         user_id: int = None,
     ):
-        # The end time of the task.
+        # The time when the task was completed.
         self.complete_time = complete_time
-        # The time when the task was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the task was created, in UTC. Format: YYYY-MM-DDTHH:MM:SSZ.
         self.create_time = create_time
-        # The ID of the task.
+        # The task ID.
         self.job_id = job_id
-        # The type of the AI task.
+        # The AI task type.
         self.job_type = job_type
-        # The ID of the media asset.
+        # The media asset ID.
         self.media_id = media_id
-        # The status of the task. Valid values:
-        # 
-        # *   reserved
-        # *   init
-        # *   success
-        # *   fail
-        # *   processing
-        # *   analysing
+        # The task status. Valid values:
+        # - reserved: submitted.
+        # - init: started.
+        # - success: execution succeeded.
+        # - fail: execution failed.
+        # - processing: processing in progress.
+        # - analysing: analysis in progress.
         self.status = status
         # The template configuration.
         self.template_config = template_config
-        # The trigger mode. Valid values:
+        # The trigger method. Valid values:
         # 
-        # *   Auto
-        # *   Manual
+        # - Auto: automatically triggered by a workflow.
+        # - Manual: manually submitted.
         self.trigger = trigger
-        # The ID of the user who submitted the task.
+        # The ID of the user who initiated the task.
         self.user_id = user_id
 
     def validate(self):

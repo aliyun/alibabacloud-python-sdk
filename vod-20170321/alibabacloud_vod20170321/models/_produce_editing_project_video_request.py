@@ -20,33 +20,34 @@ class ProduceEditingProjectVideoRequest(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
-        # The ID of the application. Default value: **app-1000000**. For more information, see [Multi-application service](https://help.aliyun.com/document_detail/113600.html).
+        # The application ID. Default value: **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
-        # The thumbnail URL of the online editing project.
+        # The thumbnail of the online editing project.
         self.cover_url = cover_url
         # The description of the online editing project.
         self.description = description
-        # The video metadata. The value must be in JSON format. For more information about the parameter structure, see [MediaMetadata](~~52839#title_rtf_ry5_gjp~~).
+        # The metadata of the produced video in JSON format. For more information about the structure, see [MediaMetadata](~~52839#title-rtf-ry5-gjp~~).
         self.media_metadata = media_metadata
         self.owner_id = owner_id
-        # The configuration of video production. The value must be in the JSON format. For more information about the parameter structure, see [ProduceConfig](~~52839#title-ybl-7cs-y7d~~).
-        # 
-        # >  StorageLocation is required if you produce videos in a region other than China (Shanghai).
+        # The production configuration in JSON format. For more information about the structure, see [ProduceConfig](~~52839#title-ybl-7cs-y7d~~).
+        # <notice>
+        # The StorageLocation field can be ignored when the file storage region is Shanghai. It is required when the file storage region is in other regions.
+        # </notice>
         self.produce_config = produce_config
-        # The ID of the online editing project. You can use one of the following methods to obtain the ID of the online editing project:
-        # 
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Production Center** > **Video Editing** to view the ID of the online editing project.
-        # *   Obtain the value of ProjectId from the response to the [AddEditingProject](https://help.aliyun.com/document_detail/69048.html) operation.
+        # The online editing project ID. You can obtain the ID by using one of the following methods:
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), choose **Production Center** > **Video Editing**, and view the ID.
+        # - Obtain the value of the ProjectId parameter returned when you call the [CreateEditingProject](https://help.aliyun.com/document_detail/69048.html) operation.
         self.project_id = project_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The timeline of the online editing project. The value must be in JSON format. For more information about the parameter structure, see [Timeline](~~52839#07bc7fe0f2xuh~~).
+        # The timeline of the online editing project in JSON format. For more information about the structure, see [Timeline](~~52839#07bc7fe0f2xuh~~).
+        # >Make sure that each VideoTrackClip object contains a valid MediaId. Otherwise, the request fails.
         self.timeline = timeline
         # The title of the online editing project.
         self.title = title
-        # The custom configurations, such as the callback configuration. The value must be a JSON string. For more information about the parameter structure, see [UserData](~~86952#title_vz7_xzs_0c5~~).
+        # The custom settings in JSON format. The maximum length is 256 characters. The settings support message callbacks and other configurations. For more information about the structure, see [UserData](~~86952#title-vz7-xzs-0c5~~).
         # 
-        # > The callback configurations take effect only after you specify an HTTP URL for receiving callback notifications and select the event types in the ApsaraVideo VOD console.
+        # > To use the message callback in this parameter, configure the HTTP callback URL and select the corresponding callback event types in the console. Otherwise, the callback settings do not take effect.
         self.user_data = user_data
 
     def validate(self):

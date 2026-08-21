@@ -12,7 +12,7 @@ class SetDefaultAITemplateResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the AI template.
+        # The AI template ID.
         self.template_id = template_id
 
     def validate(self):

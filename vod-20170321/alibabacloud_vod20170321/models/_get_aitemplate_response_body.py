@@ -11,7 +11,7 @@ class GetAITemplateResponseBody(DaraModel):
         request_id: str = None,
         template_info: main_models.GetAITemplateResponseBodyTemplateInfo = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the AI template.
         self.template_info = template_info
@@ -56,30 +56,28 @@ class GetAITemplateResponseBodyTemplateInfo(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The time when the AI template was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the AI template was created. The time is displayed in ISO 8601 format in UTC. The format is <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z.
         self.creation_time = creation_time
-        # Indicates whether the template is the default AI template. Valid values:
-        # 
-        # *   **Default**
-        # *   **NotDefault**
+        # Indicates whether the AI template is the default template. Valid values:
+        # - **Default**: The template is the default template.
+        # - **NotDefault**: The template is not the default template.
         self.is_default = is_default
-        # The time when the AI template was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the AI template was last modified. The time is displayed in ISO 8601 format in UTC. The format is <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z.
         self.modify_time = modify_time
         # The source of the AI template. Valid values:
-        # 
-        # *   **System**
-        # *   **Custom**
+        # - **System**: system.
+        # - **Custom**: custom.
         self.source = source
-        # The detailed configurations of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
+        # The detailed configuration of the AI template. The value is a JSON string. For more information, see [AITemplateConfig](~~89863#title-vd3-499-o36~~).
         self.template_config = template_config
-        # The ID of the AI template.
+        # The AI template ID.
         self.template_id = template_id
         # The name of the AI template.
         self.template_name = template_name
-        # The type of the AI template. Valid values:
+        # The templatetype of the AI template. Valid values:
         # 
-        # *   **AIMediaAudit**: automated review
-        # *   **AIImage**: smart thumbnail
+        # - **AIMediaAudit**: automated review.
+        # - **AIImage**: smart thumbnail.
         self.template_type = template_type
 
     def validate(self):

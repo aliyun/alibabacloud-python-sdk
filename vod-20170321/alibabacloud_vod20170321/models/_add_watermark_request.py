@@ -13,29 +13,26 @@ class AddWatermarkRequest(DaraModel):
         type: str = None,
         watermark_config: str = None,
     ):
-        # The ID of the application. Default value: **app-1000000**. If you have activated the multi-application service, specify the ID of the application to add the watermark template in the specified application. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # The application ID. Default value: **app-1000000**. If you have activated the multi-application service, specify the application ID to add the watermark template to the specified application. For more information, see [Multi-application service](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
-        # The URL of the watermark file. The URL must be an Object Storage Service (OSS) URL and cannot contain the information used for URL signing.
-        # 
-        # > *   This parameter is required if you set `Type` to `Image`.
-        # > *  You can obtain the URL from the `FileURL` parameter in the response to the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation that you call to upload the watermark image to ApsaraVideo VOD.
+        # The Object Storage Service (OSS) URL of the watermark image file (without authentication).
+        # >- Request parameter is required when you set an image watermark template (`Type` is `Image`).
+        # >- You can call [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) to upload the watermark image to ApsaraVideo VOD. The value of the `FileURL` parameter returned after the upload can be used as the value of request parameter.
         self.file_url = file_url
         # The name of the watermark template.
-        # 
-        # *   Only letters and digits are supported.
-        # *   The name cannot exceed 128 bytes.
-        # *   The value must be encoded in UTF-8.
+        # - Only Chinese characters, letters, and digits are supported.
+        # - The name can be up to 128 bytes in length.
+        # - UTF-8 encoding.
         # 
         # This parameter is required.
         self.name = name
-        # The type of the watermark template. Valid values:
-        # 
-        # *   **Image** (default): image watermark template
-        # *   **Text**: text watermark template
+        # The templatetype of the watermark. Valid values:
+        # - **Image** (default): image watermark template.
+        # - **Text**: text watermark template.
         # 
         # This parameter is required.
         self.type = type
-        # The configuration information of the watermark such as the display position and special effects. The value must be a JSON string. The configuration parameters for image and text watermarks are different. For more information about the parameter structure, see [WatermarkConfig](~~98618#section-h01-44s-2lr~~).
+        # The configuration information of the watermark (JSON string), including the display position and effect of the watermark. The configuration parameters differ between image watermarks and text watermarks. For more information about the parameter structure, see [WatermarkConfig](~~98618#section-h01-44s-2lr~~).
         # 
         # This parameter is required.
         self.watermark_config = watermark_config

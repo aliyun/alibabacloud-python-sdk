@@ -9,7 +9,7 @@ class SetDefaultTranscodeTemplateGroupRequest(DaraModel):
         self,
         transcode_template_group_id: str = None,
     ):
-        # The ID of the transcoding template group.
+        # The transcoding template group ID.
         # 
         # This parameter is required.
         self.transcode_template_group_id = transcode_template_group_id

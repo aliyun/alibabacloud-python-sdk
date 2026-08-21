@@ -14,11 +14,18 @@ class DescribeVodEditingUsageDataRequest(DaraModel):
         specification: str = None,
         start_time: str = None,
     ):
+        # The application ID. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The region. By default, data from all regions is returned. You can specify multiple regions separated by commas (,).
         self.region = region
+        # The output specification.
         self.specification = specification
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC.
+        # 
+        # If you leave this parameter empty, data from the last 24 hours is queried by default.
         self.start_time = start_time
 
     def validate(self):

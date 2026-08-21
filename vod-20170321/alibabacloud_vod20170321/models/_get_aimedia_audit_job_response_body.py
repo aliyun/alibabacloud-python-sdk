@@ -13,9 +13,9 @@ class GetAIMediaAuditJobResponseBody(DaraModel):
         media_audit_job: main_models.GetAIMediaAuditJobResponseBodyMediaAuditJob = None,
         request_id: str = None,
     ):
-        # The information about the intelligent review job.
+        # The information about the automated review job.
         self.media_audit_job = media_audit_job
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,28 +59,28 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJob(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The error code. This parameter is returned if the value of Status is fail.
+        # The error code of the job. Check this field when Status is fail.
         self.code = code
-        # The time when the job is complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the job ended. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.complete_time = complete_time
-        # The time when the job started to run. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the job started. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The job result.
+        # The job result data.
         self.data = data
-        # The ID of the job.
+        # The job ID.
         self.job_id = job_id
-        # The ID of the video.
+        # The video ID.
         self.media_id = media_id
-        # The error message. This parameter is returned if the value of Status is fail.
+        # The error message of the job. Check this field when Status is fail.
         self.message = message
-        # The status of the job. Valid values:
+        # The job status. Valid values:
         # 
-        # *   **success**: The job is successful.
-        # *   **fail**: The job failed.
-        # *   **init**: The job is being initialized.
-        # *   **Processing**: The job is in progress.
+        # - **success**: The job is successful.
+        # - **fail**: The job failed.
+        # - **init**: The job is being initialized.
+        # - **processing**: The job is being processed.
         self.status = status
-        # The type of the job. The value is AIMediaAudit.
+        # The job type. Only automated review is supported.
         self.type = type
 
     def validate(self):
@@ -164,35 +164,35 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobData(DaraModel):
         text_result: List[main_models.GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult] = None,
         video_result: main_models.GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult = None,
     ):
-        # The content that violates the regulations. Separate multiple values with commas (,). Valid values:
+        # The content types that contain violations. Multiple values are separated by commas (,). Valid values:
         # 
-        # *   **video**: the video.
-        # *   **image-cover**: the cover.
-        # *   **text-title**: the title.
+        # - **video**: video.
+        # - **image-cover**: thumbnail.
+        # - **text-title**: title.
         self.abnormal_modules = abnormal_modules
-        # The results of audio review.
+        # The audio review results.
         self.audio_result = audio_result
-        # The results of image review.
+        # The image review results.
         self.image_result = image_result
         # The category of the review result. Multiple values are separated by commas (,). Valid values:
         # 
-        # *   **porn**: pornographic content
-        # *   **terrorism**: terrorist or politically sensitive content
-        # *   **ad**: ad violation
-        # *   **live**: undesirable scene
-        # *   **logo**: logo
-        # *   **audio**: audio anti-spam
-        # *   **normal**: normal content
+        # - **porn**: pornography.
+        # - **terrorism**: terrorist content or politically sensitive content.
+        # - **ad**: image or text violation.
+        # - **live**: undesirable scene.
+        # - **logo**: logo in image.
+        # - **audio**: audio anti-spam.
+        # - **normal**: normal.
         self.label = label
-        # The recommendation for review results. Valid values:
+        # The review result suggestion. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The text moderation results.
+        # The text review results.
         self.text_result = text_result
-        # The results of video review.
+        # The video review results.
         self.video_result = video_result
 
     def validate(self):
@@ -291,30 +291,29 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult(DaraModel):
         suggestion: str = None,
         terrorism_result: main_models.GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult = None,
     ):
-        # The results of ad review.
+        # The advertisement review result.
         self.ad_result = ad_result
         # The category of the review result. Valid values:
-        # 
-        # *   **porn**: pornographic content
-        # *   **terrorism**: terrorist or politically sensitive content
-        # *   **ad**: ad violation
-        # *   **live**: undesirable scene
-        # *   **logo**: logo
-        # *   **normal**
+        # - **porn**: pornography.
+        # - **terrorism**: terrorist content or politically sensitive content.
+        # - **ad**: image or text violation.
+        # - **live**: undesirable scene.
+        # - **logo**: logo in image.
+        # - **normal**: normal.
         self.label = label
-        # The results of undesired content review.
+        # The undesirable content review result.
         self.live_result = live_result
-        # The results of logo review.
+        # The logo review result.
         self.logo_result = logo_result
-        # The results of pornographic content review.
+        # The pornography detection result.
         self.porn_result = porn_result
-        # The recommendation for video review results. Valid values:
+        # The video review result suggestion. Valid values:
         # 
-        # *   **block**
-        # *   **review**
-        # *   **pass**
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The results of terrorist content review.
+        # The terrorism and politically sensitive content review result.
         self.terrorism_result = terrorism_result
 
     def validate(self):
@@ -397,36 +396,36 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult(
         suggestion: str = None,
         top_list: List[main_models.GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultTopList] = None,
     ):
-        # The average score of the snapshots of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The average score of the video snapshots that hit the label. Value range: `[0, 100]`. The value is accurate to 10 decimal places. The score indicates the probability of the corresponding label. A higher score indicates higher accuracy.
         self.average_score = average_score
-        # The categories of terrorist content review results and the number of video snapshots in each category.
+        # The categories of the terrorism and politically sensitive content review results and the number of video snapshots in each category.
         self.counter_list = counter_list
-        # The category of the review result. Valid values:
+        # The terrorism and politically sensitive content review result. Valid values:
         # 
-        # *   **normal**
-        # *   **bloody**
-        # *   **explosion**
-        # *   **outfit**
-        # *   **logo**
-        # *   **weapon**
-        # *   **politics**
-        # *   **violence**
-        # *   **crowd**
-        # *   **parade**
-        # *   **carcrash**
-        # *   **flag**
-        # *   **location**
-        # *   **others**
+        # - **normal**: normal.
+        # - **bloody**: bloody content.
+        # - **explosion**: explosion or smoke.
+        # - **outfit**: special outfit.
+        # - **logo**: special logo.
+        # - **weapon**: weapon.
+        # - **politics**: politically sensitive content.
+        # - **violence**: violence.
+        # - **crowd**: crowd gathering.
+        # - **parade**: parade.
+        # - **carcrash**: car crash scene.
+        # - **flag**: flag.
+        # - **location**: landmark.
+        # - **others**: others.
         self.label = label
-        # The highest score of the snapshot of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The highest score of the video snapshots that hit the label. Value range: `[0, 100]`. The value is accurate to 10 decimal places. The score indicates the probability of the corresponding label. A higher score indicates higher accuracy.
         self.max_score = max_score
-        # The recommendation for terrorist content review results. Valid values:
+        # The terrorism and politically sensitive content review suggestion. Valid values:
         # 
-        # *   **block**
-        # *   **review**
-        # *   **pass**
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The information about the snapshot that has the highest score in the category.
+        # The information about the video snapshots with the highest scores that hit the label.
         self.top_list = top_list
 
     def validate(self):
@@ -504,26 +503,26 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultT
         timestamp: str = None,
         url: str = None,
     ):
-        # The results of terrorist content review. Valid values:
+        # The terrorism and politically sensitive content review result. Valid values:
         # 
-        # *   **normal**
-        # *   **bloody**
-        # *   **explosion**
-        # *   **outfit**
-        # *   **logo**
-        # *   **weapon**
-        # *   **politics**
-        # *   **violence**
-        # *   **crowd**
-        # *   **parade**
-        # *   **carcrash**
-        # *   **flag**
-        # *   **location**
-        # *   **others**
+        # - **normal**: normal.
+        # - **bloody**: bloody content.
+        # - **explosion**: explosion or smoke.
+        # - **outfit**: special outfit.
+        # - **logo**: special logo.
+        # - **weapon**: weapon.
+        # - **politics**: politically sensitive content.
+        # - **violence**: violence.
+        # - **crowd**: crowd gathering.
+        # - **parade**: parade.
+        # - **carcrash**: car crash scene.
+        # - **flag**: flag.
+        # - **location**: landmark.
+        # - **others**: others.
         self.label = label
-        # The score of the snapshot in the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The score of the video snapshot that hits the label. Value range: `[0, 100]`. The value is accurate to 10 decimal places. The score indicates the probability of the corresponding label. A higher score indicates higher accuracy.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
         # The URL of the video snapshot.
         self.url = url
@@ -574,22 +573,21 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultC
     ):
         # The number of video snapshots.
         self.count = count
-        # The results of terrorist content review. Valid values:
-        # 
-        # *   **normal**
-        # *   **bloody**
-        # *   **explosion**
-        # *   **outfit**
-        # *   **logo**
-        # *   **weapon**
-        # *   **politics**
-        # *   **violence**
-        # *   **crowd**
-        # *   **parade**
-        # *   **carcrash**
-        # *   **flag**
-        # *   **location**
-        # *   **others**
+        # The terrorism and politically sensitive content review result. Valid values:
+        # - **normal**: normal.
+        # - **bloody**: bloody content.
+        # - **explosion**: explosion or smoke.
+        # - **outfit**: special outfit.
+        # - **logo**: special logo.
+        # - **weapon**: weapon.
+        # - **politics**: politically sensitive content.
+        # - **violence**: violence.
+        # - **crowd**: crowd gathering.
+        # - **parade**: parade.
+        # - **carcrash**: car crash scene.
+        # - **flag**: flag.
+        # - **location**: landmark.
+        # - **others**: others.
         self.label = label
 
     def validate(self):
@@ -628,25 +626,25 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult(DaraM
         suggestion: str = None,
         top_list: List[main_models.GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopList] = None,
     ):
-        # The average score of the snapshots of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The average score of the video snapshots that hit the label. Value range: `[0, 100]`. The value is accurate to 10 decimal places. The score indicates the probability of the corresponding label. A higher score indicates higher accuracy.
         self.average_score = average_score
-        # The number of snapshots of each category in the review result.
+        # The categories of the review results and the number of video snapshots in each category.
         self.counter_list = counter_list
-        # The category of the review result. Valid values:
+        # The pornography detection result. Valid values:
         # 
-        # *   **porn**
-        # *   **sexy**
-        # *   **normal**
+        # - **porn**: pornographic content.
+        # - **sexy**: sexy content.
+        # - **normal**: normal.
         self.label = label
-        # The highest score of the snapshot of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The highest score of the video snapshots that hit the label. Value range: `[0, 100]`. The value is accurate to 10 decimal places. The score indicates the probability of the corresponding label. A higher score indicates higher accuracy.
         self.max_score = max_score
-        # The recommendation for review results. Valid values:
+        # The pornography detection suggestion. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The information about the snapshot that has the highest score in the category.
+        # The information about the video snapshots with the highest scores that hit the label.
         self.top_list = top_list
 
     def validate(self):
@@ -724,15 +722,15 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopLis
         timestamp: str = None,
         url: str = None,
     ):
-        # The results of pornographic content review. Valid values:
+        # The pornography detection result. Valid values:
         # 
-        # *   **porn**
-        # *   **sexy**
-        # *   **normal**
+        # - **porn**: pornographic content.
+        # - **sexy**: sexy content.
+        # - **normal**: normal.
         self.label = label
-        # The score of the snapshot in the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The score of the video snapshot that hits the label. Value range: `[0, 100]`. The value is accurate to 10 decimal places. The score indicates the probability of the corresponding label. A higher score indicates higher accuracy.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
         # The URL of the video snapshot.
         self.url = url
@@ -783,11 +781,11 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCounte
     ):
         # The number of video snapshots.
         self.count = count
-        # The results of pornographic content review. Valid values:
+        # The pornography detection result. Valid values:
         # 
-        # *   **porn**
-        # *   **sexy**
-        # *   **normal**
+        # - **porn**: pornographic content.
+        # - **sexy**: sexy content.
+        # - **normal**: normal.
         self.label = label
 
     def validate(self):
@@ -826,25 +824,24 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult(DaraM
         suggestion: str = None,
         top_list: List[main_models.GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTopList] = None,
     ):
-        # The average score of the snapshots in the category indicated by Label.
+        # The average score of the video snapshots that hit the label.
         self.average_score = average_score
         # The categories of the review results and the number of video snapshots in each category.
         self.counter_list = counter_list
-        # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **TV**: controlled TV station logo
-        # *   **trademark**: trademark
+        # The category of the logo review result. Valid values:
+        # - **normal**: normal.
+        # - **TV**: contains a controlled logo.
+        # - **trademark**: contains a trademark.
         self.label = label
-        # The highest score of the snapshot of the category that is indicated by Label.
+        # The highest score of the video snapshots that hit the label.
         self.max_score = max_score
-        # The recommendation for review results. Valid values:
+        # The logo review suggestion. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The information about the snapshot that has the highest score in the category.
+        # The information about the video snapshots with the highest scores that hit the label.
         self.top_list = top_list
 
     def validate(self):
@@ -922,15 +919,14 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTopLis
         timestamp: str = None,
         url: str = None,
     ):
-        # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **TV**: controlled TV station logo
-        # *   **trademark**: trademark
+        # The category of the logo review result. Valid values:
+        # - **normal**: normal.
+        # - **TV**: contains a controlled logo.
+        # - **trademark**: contains a trademark.
         self.label = label
-        # The score of the snapshot in the category that is indicated by Label.
+        # The score of the video snapshot that hits the label.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
         # The URL of the video snapshot.
         self.url = url
@@ -981,11 +977,10 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCounte
     ):
         # The number of video snapshots.
         self.count = count
-        # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **TV**: controlled TV station logo
-        # *   **trademark**: trademark
+        # The category of the logo review result. Valid values:
+        # - **normal**: normal.
+        # - **TV**: contains a controlled logo.
+        # - **trademark**: contains a trademark.
         self.label = label
 
     def validate(self):
@@ -1024,27 +1019,25 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult(DaraM
         suggestion: str = None,
         top_list: List[main_models.GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTopList] = None,
     ):
-        # The average score of the review results.
+        # The average score of the review result.
         self.average_score = average_score
         # The categories of the review results and the number of video snapshots in each category.
         self.counter_list = counter_list
         # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **meaningless**: meaningless content, such as a black or white screen.
-        # *   **PIP**: picture-in-picture
-        # *   **smoking**: smoking
-        # *   **drivelive**: live broadcasting in a running vehicle
+        # - **normal**: normal.
+        # - **meaningless**: no content in the image (such as black screen or white screen).
+        # - **PIP**: Picture-in-Picture (PiP).
+        # - **smoking**: smoking.
+        # - **drivelive**: in-car live streaming.
         self.label = label
         # The highest review score.
         self.max_score = max_score
-        # The recommendation for review results. Valid values:
-        # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # The review result suggestion. Valid values:
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The information about the snapshot that has the highest score in the category.
+        # The information about the video snapshots with the highest scores that hit the label.
         self.top_list = top_list
 
     def validate(self):
@@ -1123,16 +1116,15 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTopLis
         url: str = None,
     ):
         # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **meaningless**: meaningless content, such as a black or white screen.
-        # *   **PIP**: picture-in-picture
-        # *   **smoking**: smoking
-        # *   **drivelive**: live broadcasting in a running vehicle
+        # - **normal**: normal.
+        # - **meaningless**: no content in the image (such as black screen or white screen).
+        # - **PIP**: Picture-in-Picture (PiP).
+        # - **smoking**: smoking.
+        # - **drivelive**: in-car live streaming.
         self.label = label
-        # The score of the snapshot in the category that is indicated by Label.
+        # The score of the video snapshot that hits the label.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
         # The URL of the video snapshot.
         self.url = url
@@ -1184,12 +1176,11 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCounte
         # The number of video snapshots.
         self.count = count
         # The category of the review result. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **meaningless**: meaningless content, such as a black or white screen.
-        # *   **PIP**: picture-in-picture
-        # *   **smoking**: smoking
-        # *   **drivelive**: live broadcasting in a running vehicle
+        # - **normal**: normal.
+        # - **meaningless**: no content in the image (such as black screen or white screen).
+        # - **PIP**: Picture-in-Picture (PiP).
+        # - **smoking**: smoking.
+        # - **drivelive**: in-car live streaming.
         self.label = label
 
     def validate(self):
@@ -1228,33 +1219,32 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult(DaraMod
         suggestion: str = None,
         top_list: List[main_models.GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultTopList] = None,
     ):
-        # The average score of the review results.
+        # The average score of the advertisement review result.
         self.average_score = average_score
-        # The number of snapshots of each category in the review result.
+        # The categories of the review results and the number of video snapshots in each category.
         self.counter_list = counter_list
-        # The categories of the ad review results. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **ad**: other ads
-        # *   **politics**: political content
-        # *   **porn**: pornographic content
-        # *   **abuse**: abuse
-        # *   **terrorism**: terrorist content
-        # *   **contraband**: prohibited content
-        # *   **spam**: spam content
-        # *   **npx**: illegal ad
-        # *   **qrcode**: QR code
-        # *   **programCode**: mini program code
+        # The category of the advertisement review result. Valid values:
+        # - **normal**: normal.
+        # - **ad**: other advertisement.
+        # - **politics**: text contains politically sensitive content.
+        # - **porn**: text contains pornographic content.
+        # - **abuse**: text contains abusive content.
+        # - **terrorism**: text contains terrorist content.
+        # - **contraband**: text contains prohibited content.
+        # - **spam**: text contains other spam content.
+        # - **npx**: psoriasis advertisement.
+        # - **qrcode**: contains a QR code.
+        # - **programCode**: contains a mini program code.
         self.label = label
         # The highest review score.
         self.max_score = max_score
-        # The recommendation for review results. Valid values:
+        # The review result suggestion. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The information about the snapshot that has the highest score in the category.
+        # The information about the video snapshots with the highest scores that hit the label.
         self.top_list = top_list
 
     def validate(self):
@@ -1332,23 +1322,22 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultTopList(
         timestamp: str = None,
         url: str = None,
     ):
-        # The categories of the ad review results. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **ad**: other ads
-        # *   **politics**: political content
-        # *   **porn**: pornographic content
-        # *   **abuse**: abuse
-        # *   **terrorism**: terrorist content
-        # *   **contraband**: prohibited content
-        # *   **spam**: spam content
-        # *   **npx**: illegal ad
-        # *   **qrcode**: QR code
-        # *   **programCode**: mini program code
+        # The category of the advertisement review result. Valid values:
+        # - **normal**: normal.
+        # - **ad**: other advertisement.
+        # - **politics**: text contains politically sensitive content.
+        # - **porn**: text contains pornographic content.
+        # - **abuse**: text contains abusive content.
+        # - **terrorism**: text contains terrorist content.
+        # - **contraband**: text contains prohibited content.
+        # - **spam**: text contains other spam content.
+        # - **npx**: psoriasis advertisement.
+        # - **qrcode**: contains a QR code.
+        # - **programCode**: contains a mini program code.
         self.label = label
-        # The score of the snapshot in the category that is indicated by Label.
+        # The score of the video snapshot that hits the label.
         self.score = score
-        # The timestamp of the snapshot in the video. Unit: milliseconds.
+        # The position of the video snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
         # The URL of the video snapshot.
         self.url = url
@@ -1399,19 +1388,18 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCounterL
     ):
         # The number of video snapshots.
         self.count = count
-        # The categories of the ad review results. Valid values:
-        # 
-        # *   **normal**: normal content
-        # *   **ad**: other ads
-        # *   **politics**: political content
-        # *   **porn**: pornographic content
-        # *   **abuse**: abuse
-        # *   **terrorism**: terrorist content
-        # *   **contraband**: prohibited content
-        # *   **spam**: spam content
-        # *   **npx**: illegal ad
-        # *   **qrcode**: QR code
-        # *   **programCode**: mini program code
+        # The category of the advertisement review result. Valid values:
+        # - **normal**: normal.
+        # - **ad**: other advertisement.
+        # - **politics**: text contains politically sensitive content.
+        # - **porn**: text contains pornographic content.
+        # - **abuse**: text contains abusive content.
+        # - **terrorism**: text contains terrorist content.
+        # - **contraband**: text contains prohibited content.
+        # - **spam**: text contains other spam content.
+        # - **npx**: psoriasis advertisement.
+        # - **qrcode**: contains a QR code.
+        # - **programCode**: contains a mini program code.
         self.label = label
 
     def validate(self):
@@ -1453,26 +1441,25 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult(DaraModel):
         # The text content.
         self.content = content
         # The category of the review result. Valid values:
-        # 
-        # *   **spam**: spam content
-        # *   **ad**: ads
-        # *   **abuse**: abuse
-        # *   **flood**: excessive junk content
-        # *   **contraband**: prohibited content
-        # *   **meaningless**: meaningless content
-        # *   **normal**: normal content
+        # - **spam**: spam.
+        # - **ad**: advertisement.
+        # - **abuse**: abuse.
+        # - **flood**: flooding.
+        # - **contraband**: prohibited content.
+        # - **meaningless**: meaningless content.
+        # - **normal**: normal.
         self.label = label
-        # The review scenario. The value is **antispam**.
+        # The review scene. Fixed value: **antispam**.
         self.scene = scene
-        # The score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The score is representative of the confidence.
+        # The score of the image that hits the label. Value range: `[0, 100]`. The score indicates the probability of the corresponding label. A higher score indicates higher accuracy.
         self.score = score
-        # The recommendation for review results. Valid values:
+        # The review result suggestion. Valid values:
         # 
-        # *   **block**
-        # *   **review**
-        # *   **pass**
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The type of the text. The value is **title**.
+        # The text categorization. Valid values: **title** (title).
         self.type = type
 
     def validate(self):
@@ -1534,24 +1521,24 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult(DaraModel):
         type: str = None,
         url: str = None,
     ):
-        # The categories of the image review results. Multiple values are separated by commas (,). Valid values:
+        # The category of the image review result. Multiple values are separated by commas (,). Valid values:
         # 
-        # *   **porn**: pornographic content
-        # *   **terrorism**: terrorist or politically sensitive content
-        # *   **ad**: ad violation
-        # *   **live**: undesirable scene
-        # *   **logo**: logo
-        # *   **normal**: normal content
+        # - **porn**: pornography.
+        # - **terrorism**: terrorist content or politically sensitive content.
+        # - **ad**: image or text violation.
+        # - **live**: undesirable scene.
+        # - **logo**: logo in image.
+        # - **normal**: normal.
         self.label = label
-        # Details of image review results.
+        # The details of the image review result.
         self.result = result
-        # The recommendation for review results. Valid values:
+        # The review result suggestion. Valid values:
         # 
-        # *   **block**
-        # *   **review**
-        # *   **pass**
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The type of the image. Valid value: **cover**.
+        # The image type. Valid values: **cover** (thumbnail).
         self.type = type
         # The URL of the image.
         self.url = url
@@ -1618,72 +1605,70 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult(DaraModel
     ):
         # The category of the review result.
         # 
-        # Valid values if scene is **porn**:
+        # When scene is **porn**, valid values:
         # 
-        # *   **porn**
-        # *   **sexy**
-        # *   **normal**
+        # - **porn**: pornographic content.
+        # - **sexy**: sexy content.
+        # - **normal**: normal.
         # 
-        # Valid values if scene is **terrorism**:
+        # When scene is **terrorism**, valid values:
         # 
-        # *   **normal**
-        # *   **bloody**
-        # *   **explosion**
-        # *   **outfit**
-        # *   **logo**
-        # *   **weapon**
-        # *   **politics**
-        # *   **violence**
-        # *   **crowd**
-        # *   **parade**
-        # *   **carcrash**
-        # *   **flag**
-        # *   **location**
-        # *   **others**
+        # - **normal**: normal.
+        # - **bloody**: bloody content.
+        # - **explosion**: explosion or smoke.
+        # - **outfit**: special outfit.
+        # - **logo**: special logo.
+        # - **weapon**: weapon.
+        # - **politics**: politically sensitive content.
+        # - **violence**: violence.
+        # - **crowd**: crowd gathering.
+        # - **parade**: parade.
+        # - **carcrash**: car crash scene.
+        # - **flag**: flag.
+        # - **location**: landmark.
+        # - **others**: others.
         # 
-        # Valid values if scene is **ad**:
+        # When scene is **ad**, valid values:
         # 
-        # *   **normal**: normal content
-        # *   **ad**: ads
-        # *   **politics**: political content
-        # *   **porn**: pornographic content
-        # *   **abuse**: verbal abuse
-        # *   **terrorism**: terrorist content
-        # *   **contraband**: prohibited content
-        # *   **spam**: spam content
-        # *   **npx**: illegal ad
-        # *   **qrcode**: QR code
-        # *   **programCode**: mini program code
+        # - **normal**: normal.
+        # - **ad**: other advertisement.
+        # - **politics**: text contains politically sensitive content.
+        # - **porn**: text contains pornographic content.
+        # - **abuse**: text contains abusive content.
+        # - **terrorism**: text contains terrorist content.
+        # - **contraband**: text contains prohibited content.
+        # - **spam**: text contains other spam content.
+        # - **npx**: psoriasis advertisement.
+        # - **qrcode**: contains a QR code.
+        # - **programCode**: contains a mini program code.
         # 
-        # Valid values if scene is **live**:
+        # When scene is **live**, valid values:
+        # - **normal**: normal.
+        # - **meaningless**: no content in the image (such as black screen or white screen).
+        # - **PIP**: Picture-in-Picture (PiP).
+        # - **smoking**: smoking.
+        # - **drivelive**: in-car live streaming.
         # 
-        # *   **normal**: normal content
-        # *   **meaningless**: meaningless content, such as a black or white screen.
-        # *   **PIP**: picture-in-picture
-        # *   **smoking**: smoking
-        # *   **drivelive**: live broadcasting in a running vehicle
-        # 
-        # Valid values if scene is **logo**:
-        # 
-        # *   **normal**: normal content
-        # *   **TV**: controlled TV station logo
-        # *   **trademark**: trademark
+        # When scene is **logo**, valid values:
+        # - **normal**: normal.
+        # - **TV**: contains a controlled logo.
+        # - **trademark**: contains a trademark.
         self.label = label
-        # The review scenario. Valid values:
+        # The review scene. Valid values:
         # 
-        # *   **porn**: pornographic content
-        # *   **terrorism**: terrorist or politically sensitive content
-        # *   **ad**: ad violation
-        # *   **live**: undesirable scene
-        # *   **logo**: logo
+        # - **porn**: pornography detection.
+        # - **terrorism**: terrorist content or politically sensitive content.
+        # - **ad**: image or text violation.
+        # - **live**: undesirable scene.
+        # - **logo**: logo in image.
         self.scene = scene
-        # The score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The score is representative of the confidence.
+        # The score of the image that hits the label. Value range: `[0, 100]`. The score indicates the probability of the corresponding label. A higher score indicates higher accuracy.
         self.score = score
-        # The recommendation for review results. Valid values:
+        # The review result suggestion. Valid values:
         # 
-        # *   **block**
-        # *   **review**
-        # *   **pass**
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
 
     def validate(self):
@@ -1732,28 +1717,28 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult(DaraModel):
         score: str = None,
         suggestion: str = None,
     ):
-        # The category of the review result.
+        # The category of the review result:
         # 
-        # *   **normal**: normal content
-        # *   **spam**: spam
-        # *   **ad**: ads
-        # *   **politics**: political content
-        # *   **terrorism**: terrorist content
-        # *   **abuse**: abuse
-        # *   **porn**: pornographic content.
-        # *   **flood**: excessive junk content
-        # *   **contraband**: prohibited content
-        # *   **meaningless**: meaningless content
+        # - **normal**: normal.
+        # - **spam**: spam.
+        # - **ad**: advertisement.
+        # - **politics**: politically sensitive content.
+        # - **terrorism**: terrorist content.
+        # - **abuse**: abuse.
+        # - **porn**: pornographic content.
+        # - **flood**: flooding.
+        # - **contraband**: prohibited content.
+        # - **meaningless**: meaningless content.
         self.label = label
-        # The review scenario. The value is **antispam**.
+        # The review scene. Fixed value: **antispam**.
         self.scene = scene
-        # The score.
+        # The result score.
         self.score = score
-        # The recommendation for review results. Valid values:
+        # The review result suggestion. Valid values:
         # 
-        # *   **block**
-        # *   **review**
-        # *   **pass**
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
 
     def validate(self):

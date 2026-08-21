@@ -15,7 +15,7 @@ class ListLiveRecordVideoResponseBody(DaraModel):
         total: int = None,
     ):
         self.live_record_video_list = live_record_video_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of videos.
         self.total = total

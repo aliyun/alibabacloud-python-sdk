@@ -10,9 +10,9 @@ class SubmitAIImageJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the image AI processing job.
+        # The AI image processing task ID.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

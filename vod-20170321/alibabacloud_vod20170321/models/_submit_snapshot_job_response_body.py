@@ -11,9 +11,9 @@ class SubmitSnapshotJobResponseBody(DaraModel):
         request_id: str = None,
         snapshot_job: main_models.SubmitSnapshotJobResponseBodySnapshotJob = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the snapshot job.
+        # The snapshot job information.
         self.snapshot_job = snapshot_job
 
     def validate(self):
@@ -49,7 +49,7 @@ class SubmitSnapshotJobResponseBodySnapshotJob(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the snapshot job.
+        # The snapshot job ID.
         self.job_id = job_id
 
     def validate(self):

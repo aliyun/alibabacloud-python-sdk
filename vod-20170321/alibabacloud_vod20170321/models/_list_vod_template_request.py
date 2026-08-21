@@ -10,9 +10,9 @@ class ListVodTemplateRequest(DaraModel):
         app_id: str = None,
         template_type: str = None,
     ):
-        # The ID of the application. Set the value to **app-1000000**. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # The application ID. Set the value to **app-1000000**. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
-        # The type of the template. Set the value to **Snapshot**.
+        # The templatetype. Set the value to **Snapshot**.
         # 
         # This parameter is required.
         self.template_type = template_type

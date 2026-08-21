@@ -13,9 +13,9 @@ class DescribeVodTieringStorageRetrievalDataResponseBody(DaraModel):
         request_id: str = None,
         retrieval_data: List[main_models.DescribeVodTieringStorageRetrievalDataResponseBodyRetrievalData] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The data retrieval information.
+        # The retrieval data.
         self.retrieval_data = retrieval_data
 
     def validate(self):
@@ -63,19 +63,19 @@ class DescribeVodTieringStorageRetrievalDataResponseBodyRetrievalData(DaraModel)
         storage_class: str = None,
         time_stamp: str = None,
     ):
-        # The retrieved Cold Archive data in the bulk mode.
+        # The Cold Archive bulk retrieval data.
         self.cabulk_retrieval_data = cabulk_retrieval_data
-        # The retrieved Cold Archive data in the expedited mode.
+        # The Cold Archive high-priority retrieval data.
         self.cahigh_prior_retrieval_data = cahigh_prior_retrieval_data
-        # The retrieved Cold Archive data in the standard mode.
+        # The Cold Archive standard retrieval data.
         self.castd_retrieval_data = castd_retrieval_data
         # The storage region.
         self.region = region
-        # The data retrieval information.
+        # The retrieval data.
         self.retrieval_data = retrieval_data
-        # The storage type.
+        # The media asset storage class.
         self.storage_class = storage_class
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time of the time interval. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.time_stamp = time_stamp
 
     def validate(self):

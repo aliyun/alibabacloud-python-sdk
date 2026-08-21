@@ -10,15 +10,14 @@ class SubmitPreprocessJobsRequest(DaraModel):
         preprocess_type: str = None,
         video_id: str = None,
     ):
-        # The preprocessing type. Set the value to **LivePreprocess**. LivePreprocess specifies that the video is preprocessed in the production studio.
+        # The preprocessing type. Set the value to **LivePreprocess** (video preprocessing for the China Production Studio).
         # 
         # This parameter is required.
         self.preprocess_type = preprocess_type
-        # The ID of the video. You can use one of the following methods to obtain the ID:
-        # 
-        # *   After you upload a video in the ApsaraVideo VOD console, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the ID of the video.
-        # *   Obtain the VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you call to upload videos.
-        # *   Obtain the VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you call to query videos.
+        # The video ID. You can obtain the video ID by using one of the following methods:
+        # - For videos uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the video ID.
+        # - When you upload a video by calling the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation, the video ID is the value of the VideoId parameter in the response.
+        # - After the video is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the video ID, which is the value of the VideoId parameter in the response.
         # 
         # This parameter is required.
         self.video_id = video_id

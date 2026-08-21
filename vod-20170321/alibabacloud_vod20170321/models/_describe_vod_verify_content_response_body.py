@@ -12,7 +12,7 @@ class DescribeVodVerifyContentResponseBody(DaraModel):
     ):
         # The verification content.
         self.content = content
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -15,9 +15,9 @@ class GetCategoriesResponseBody(DaraModel):
         sub_categories: main_models.GetCategoriesResponseBodySubCategories = None,
         sub_total: int = None,
     ):
-        # The information about the category.
+        # The details of the category.
         self.category = category
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.sub_categories = sub_categories
         # The total number of subcategories.
@@ -177,22 +177,21 @@ class GetCategoriesResponseBodyCategory(DaraModel):
         parent_id: int = None,
         type: str = None,
     ):
-        # The ID of the category.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
-        # The level of the category. Valid values:
+        # The category level. Valid values:
         # 
-        # *   **0**: level 1 category
-        # *   **1**: level 2 category
-        # *   **2**: level 3 category
+        # - **0**: level-1 category.
+        # - **1**: level-2 category.
+        # - **2**: level-3 category.
         self.level = level
         # The ID of the parent category.
         self.parent_id = parent_id
-        # The type of the category. Valid values:
-        # 
-        # *   **default**: audio, video, and image files
-        # *   **material**: short video materials
+        # The category type. Valid values:
+        # - **default**: audio, video, and image category.
+        # - **material**: short video material category.
         self.type = type
 
     def validate(self):

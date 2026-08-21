@@ -319,6 +319,9 @@ from ._get_image_infos_response import GetImageInfosResponse
 from ._get_job_detail_request import GetJobDetailRequest
 from ._get_job_detail_response_body import GetJobDetailResponseBody
 from ._get_job_detail_response import GetJobDetailResponse
+from ._get_media_ai_analysis_request import GetMediaAiAnalysisRequest
+from ._get_media_ai_analysis_response_body import GetMediaAiAnalysisResponseBody
+from ._get_media_ai_analysis_response import GetMediaAiAnalysisResponse
 from ._get_media_audit_audio_result_detail_request import GetMediaAuditAudioResultDetailRequest
 from ._get_media_audit_audio_result_detail_response_body import GetMediaAuditAudioResultDetailResponseBody
 from ._get_media_audit_audio_result_detail_response import GetMediaAuditAudioResultDetailResponse
@@ -379,6 +382,9 @@ from ._get_vod_template_response import GetVodTemplateResponse
 from ._get_watermark_request import GetWatermarkRequest
 from ._get_watermark_response_body import GetWatermarkResponseBody
 from ._get_watermark_response import GetWatermarkResponse
+from ._get_workflow_task_request import GetWorkflowTaskRequest
+from ._get_workflow_task_response_body import GetWorkflowTaskResponseBody
+from ._get_workflow_task_response import GetWorkflowTaskResponse
 from ._list_aiimage_info_request import ListAIImageInfoRequest
 from ._list_aiimage_info_response_body import ListAIImageInfoResponseBody
 from ._list_aiimage_info_response import ListAIImageInfoResponse
@@ -720,6 +726,8 @@ from ._get_job_detail_response_body import GetJobDetailResponseBodySnapshotJobDe
 from ._get_job_detail_response_body import GetJobDetailResponseBodyTranscodeJobDetail
 from ._get_job_detail_response_body import GetJobDetailResponseBodyWorkflowTaskDetailWorkflow
 from ._get_job_detail_response_body import GetJobDetailResponseBodyWorkflowTaskDetail
+from ._get_media_ai_analysis_response_body import GetMediaAiAnalysisResponseBodyAiAnalysisResultListAiAnalysisResult
+from ._get_media_ai_analysis_response_body import GetMediaAiAnalysisResponseBodyAiAnalysisResultList
 from ._get_media_audit_audio_result_detail_response_body import GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList
 from ._get_media_audit_audio_result_detail_response_body import GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail
 from ._get_media_audit_result_response_body import GetMediaAuditResultResponseBodyMediaAuditResultAudioResult
@@ -1155,6 +1163,9 @@ __all__ = [
     GetJobDetailRequest,
     GetJobDetailResponseBody,
     GetJobDetailResponse,
+    GetMediaAiAnalysisRequest,
+    GetMediaAiAnalysisResponseBody,
+    GetMediaAiAnalysisResponse,
     GetMediaAuditAudioResultDetailRequest,
     GetMediaAuditAudioResultDetailResponseBody,
     GetMediaAuditAudioResultDetailResponse,
@@ -1215,6 +1226,9 @@ __all__ = [
     GetWatermarkRequest,
     GetWatermarkResponseBody,
     GetWatermarkResponse,
+    GetWorkflowTaskRequest,
+    GetWorkflowTaskResponseBody,
+    GetWorkflowTaskResponse,
     ListAIImageInfoRequest,
     ListAIImageInfoResponseBody,
     ListAIImageInfoResponse,
@@ -1556,6 +1570,8 @@ __all__ = [
     GetJobDetailResponseBodyTranscodeJobDetail,
     GetJobDetailResponseBodyWorkflowTaskDetailWorkflow,
     GetJobDetailResponseBodyWorkflowTaskDetail,
+    GetMediaAiAnalysisResponseBodyAiAnalysisResultListAiAnalysisResult,
+    GetMediaAiAnalysisResponseBodyAiAnalysisResultList,
     GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList,
     GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail,
     GetMediaAuditResultResponseBodyMediaAuditResultAudioResult,

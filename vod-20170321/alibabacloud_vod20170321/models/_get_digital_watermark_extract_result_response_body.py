@@ -13,9 +13,9 @@ class GetDigitalWatermarkExtractResultResponseBody(DaraModel):
         ai_extract_result_list: List[main_models.GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList] = None,
         request_id: str = None,
     ):
-        # The details of the watermark extraction job.
+        # The details of the watermark extraction jobs.
         self.ai_extract_result_list = ai_extract_result_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +64,7 @@ class GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList(DaraModel)
     ):
         # The time when the watermark extraction job was created.
         self.create_time = create_time
-        # The error message.
+        # The error message. This parameter is returned only when the watermark extraction job fails (the value of `Status` is `Failed`).
         self.error_message = error_message
         # The ID of the watermark extraction job.
         self.job_id = job_id
@@ -72,11 +72,11 @@ class GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList(DaraModel)
         self.modify_time = modify_time
         # The status of the watermark extraction job. Valid values:
         # 
-        # *   **Success**
-        # *   **Failed**
-        # *   **Processing**
+        # - **Success**: The job succeeded.	
+        # - **Failed**: The job failed.
+        # - **Processing**: The job is being processed.
         self.status = status
-        # The extracted watermark content.
+        # The extracted watermark text.
         self.water_mark_text = water_mark_text
 
     def validate(self):

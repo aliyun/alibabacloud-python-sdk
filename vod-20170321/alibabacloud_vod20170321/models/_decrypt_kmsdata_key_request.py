@@ -13,7 +13,7 @@ class DecryptKMSDataKeyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The ciphertext to be decrypted.
+        # The ciphertext to decrypt.
         # 
         # This parameter is required.
         self.cipher_text = cipher_text

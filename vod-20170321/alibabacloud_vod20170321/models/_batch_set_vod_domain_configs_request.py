@@ -13,15 +13,19 @@ class BatchSetVodDomainConfigsRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The domain name for CDN. Separate multiple domain names with commas (,).
+        # The accelerated domain names for ApsaraVideo VOD. Separate multiple domain names with commas (,). You can configure up to 50 domain names at a time.
         # 
         # This parameter is required.
         self.domain_names = domain_names
-        # The features to configure.
+        # The list of features.
+        # - functionName (feature name, required): For the features that can be configured and their feature name parameters, see [Domain name configuration features](https://help.aliyun.com/document_detail/2411639.html).
+        # - argName (parameter name, required): The configuration items of functionName. You can configure multiple configuration items.
+        # - argValue (parameter value, required): The values of the configuration items of functionName.
         # 
-        # *   Set this parameter in the following format: `[{"functionArgs":[{"argName":"domain_name","argValue":"www.example.com"}],"functionName":"set_req_host_header"}]`.
-        # *   Specific features, such as filetype_based_ttl_set, support more than one configuration record. To update one of the configuration records, use the configId field to specify the record. `[{"functionArgs":[{"argName":"file_type","argValue":"jpg"},{"argName":"ttl","argValue":"18"},{"argName":"weight","argValue":"30"}],"functionName":"filetype_based_ttl_set","configId":5068995}]`
-        # *   For more information, see the **Feature description** section.
+        # For detailed information about the features that can be configured for accelerated domain names, including feature names and parameter names, see [Domain name configuration features](https://help.aliyun.com/document_detail/2411639.html).
+        # 
+        # > Some features, such as filetype_based_ttl_set (file expiration time), support multiple configuration rules. To update a specific configuration rule, specify the configId of that rule. Example:
+        # `[{"functionArgs":[{"argName":"file_type","argValue":"jpg"},{"argName":"ttl","argValue":"18"},{"argName":"weight","argValue":"30"}],"functionName":"filetype_based_ttl_set","configId":5068995}]`
         # 
         # This parameter is required.
         self.functions = functions

@@ -9,10 +9,9 @@ class DeleteAttachedMediaRequest(DaraModel):
         self,
         media_ids: str = None,
     ):
-        # The ID of the auxiliary media asset that you want to delete.
-        # 
-        # *   Separate multiple IDs with commas (,). You can specify up to 20 IDs.
-        # *   You can obtain the ID from the response to the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation that you call to obtain the upload URL and credential.
+        # The auxiliary media asset IDs.
+        # - Separate multiple IDs with commas (,). A maximum of 20 IDs are supported.
+        # - The IDs are returned after you call the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation to obtain the upload URL and credential for auxiliary media assets.
         # 
         # This parameter is required.
         self.media_ids = media_ids

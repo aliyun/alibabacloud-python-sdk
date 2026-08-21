@@ -11,9 +11,9 @@ class UpdateWatermarkResponseBody(DaraModel):
         request_id: str = None,
         watermark_info: main_models.UpdateWatermarkResponseBodyWatermarkInfo = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the watermark template.
+        # The watermark template information.
         self.watermark_info = watermark_info
 
     def validate(self):
@@ -55,25 +55,22 @@ class UpdateWatermarkResponseBodyWatermarkInfo(DaraModel):
         watermark_config: str = None,
         watermark_id: str = None,
     ):
-        # The time when the watermark template was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the watermark template was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
-        # The URL of the watermark file. The URL is an Object Storage Service (OSS) URL or an Alibaba Cloud CDN URL.
-        # 
-        # >  This parameter is returned only for image watermark templates.
+        # The URL of the watermark file (OSS address or CDN address).
+        # > This parameter is returned only for image watermark templates.
         self.file_url = file_url
-        # Indicates whether the watermark template is the default one.
-        # 
-        # *   **Default**
-        # *   **NotDefault**
+        # Indicates whether the template is the default image and text watermark template. Valid values:
+        # - **Default**: the default image and text watermark template.
+        # - **NotDefault**: not the default image and text watermark template.
         self.is_default = is_default
         # The name of the watermark template.
         self.name = name
-        # The type of the watermark template.
-        # 
-        # *   **Image**: image watermark template
-        # *   **Text**: text watermark template
+        # The type of the watermark template. Valid values:
+        # - **Image**: image watermark template.
+        # - **Text**: text watermark template.
         self.type = type
-        # The configuration information of the watermark such as the display position and special effects. The value is a JSON string. The configuration parameters for image and text watermarks are different. For more information about the parameter structure, see [WatermarkConfig](~~98618#section-h01-44s-2lr~~).
+        # The configuration information of the image and text watermark (JSON string), including the watermark display position and watermark effect. The configuration parameters for image watermarks and text watermarks are different. For more information about the parameter structure, see [WatermarkConfig](~~98618#section-h01-44s-2lr~~).
         self.watermark_config = watermark_config
         # The ID of the watermark template.
         self.watermark_id = watermark_id

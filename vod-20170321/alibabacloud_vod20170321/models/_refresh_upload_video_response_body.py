@@ -12,17 +12,15 @@ class RefreshUploadVideoResponseBody(DaraModel):
         upload_auth: str = None,
         video_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The upload URL.
-        # 
-        # >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use the OSS SDK or call an OSS API operation to upload media files.
+        # >The upload URL returned by this operation is a Base64-encoded value. When you use an SDK or API to upload media assets, you must decode the value in Base64 before use. You need to parse UploadAddress only if you use the China (China) native OSS SDK or OSS API for upload.
         self.upload_address = upload_address
         # The upload credential.
-        # 
-        # >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use the OSS SDK or call an OSS API operation to upload media files.
+        # >The upload credential returned by this operation is a Base64-encoded value. When you use an SDK or API to upload media assets, you must decode the value in Base64 before use. You need to parse UploadAuth only if you use the native OSS SDK or OSS API for upload.
         self.upload_auth = upload_auth
-        # The ID of the audio or video file.
+        # The audio or video ID.
         self.video_id = video_id
 
     def validate(self):

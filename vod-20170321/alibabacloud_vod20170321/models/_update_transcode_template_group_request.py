@@ -12,21 +12,23 @@ class UpdateTranscodeTemplateGroupRequest(DaraModel):
         transcode_template_group_id: str = None,
         transcode_template_list: str = None,
     ):
-        # The lock status of the transcoding template group. Valid values:
+        # The lock state of the template group. Valid values:
         # 
-        # *   **Enabled**: The transcoding template group is locked and cannot be modified.
-        # *   **Disabled** (default): The transcoding template group is not locked.
+        # - **Enabled**: locked. A locked template group cannot be modified.
+        # - **Disabled** (default): unlocked.
+        # 
+        # Default value: **Disabled**. If you specify this parameter, the lock state of the template group is changed, while the name and configurations of the transcoding template group remain unchanged.
         self.locked = locked
         # The name of the transcoding template group.
         # 
-        # *   The name cannot exceed 128 bytes.
-        # *   The value must be encoded in UTF-8.
+        # - The name can be up to 128 bytes in length.
+        # - The name is encoded in UTF-8.
         self.name = name
         # The ID of the transcoding template group.
         # 
         # This parameter is required.
         self.transcode_template_group_id = transcode_template_group_id
-        # The configurations of the transcoding template. The value must be a JSON string. For more information about the data structure, see [TranscodeTemplate](~~52839#title-9mb-8o2-uu6~~).
+        # The transcoding template configurations (a JSON string). For more information about the parameter structure, see [TranscodeTemplate](~~52839#title-9mb-8o2-uu6~~).
         self.transcode_template_list = transcode_template_list
 
     def validate(self):

@@ -9,7 +9,9 @@ class SetDefaultAITemplateRequest(DaraModel):
         self,
         template_id: str = None,
     ):
-        # The ID of the AI template.
+        # The AI template ID. You can obtain the ID by using one of the following methods:
+        # - When you call the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, the AI template ID is the value of the TemplateId response parameter.
+        # - After the AI template is added, call the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation to query the AI template ID, which is the value of the TemplateId response parameter.
         # 
         # This parameter is required.
         self.template_id = template_id

@@ -12,15 +12,15 @@ class UploadStreamByURLResponseBody(DaraModel):
         source_url: str = None,
         stream_job_id: str = None,
     ):
-        # The URL of the OSS object.
+        # The OSS file URL of the transcoded stream.
         self.file_url = file_url
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The URL of the input stream. This parameter is used when you call the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+        # The input URL of the transcoded stream. This value can be used as a request parameter of the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
         self.source_url = source_url
-        # The ID of the stream upload job. This parameter is used when you call the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+        # The job ID of the transcoded stream. This value can be used as a request parameter of the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
         # 
-        # In ApsaraVideo VOD, you can upload only one transcoded stream in an upload job. For more information, see the PlayInfo: the playback information about a video stream section in [Basic structures](https://help.aliyun.com/document_detail/52839.html).
+        # ApsaraVideo VOD uses the job ID to uniquely identify a transcoded stream file. For more information, see [Basic data types - PlayInfo](https://help.aliyun.com/document_detail/52839.html).
         self.stream_job_id = stream_job_id
 
     def validate(self):
