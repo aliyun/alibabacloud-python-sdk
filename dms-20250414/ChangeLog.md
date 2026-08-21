@@ -1,3 +1,6 @@
+2026-08-21 Version: 1.21.3
+- Generated python 2025-04-14 for Dms.
+
 2026-08-13 Version: 1.21.2
 - Update API CreateCustomAgent: add request parameters ExecutionConfig.ForbiddenAppendDataSource.
 - Update API CreateCustomAgent: add response parameters Body.Data.ExecutionConfig.ForbiddenAppendDataSource.
