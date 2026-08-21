@@ -972,13 +972,13 @@ class GlobalHotelQueryOrderResponseBodyDataItemInfoCancelPolicyPenalties(DaraMod
         start: str = None,
         tracer_id: str = None,
     ):
-        # The currency code (present only for AMOUNT type penalties).
+        # The currency code (present only for AMOUNT type).
         self.currency = currency
         # The effective end time (UTC millisecond timestamp).
         self.end = end
         # The penalty type.
         self.penalty_type = penalty_type
-        # The penalty value (percentage, amount, or number of nights).
+        # The penalty value (percentage/amount/number of nights).
         self.penalty_value = penalty_value
         # The effective start time (UTC millisecond timestamp).
         self.start = start

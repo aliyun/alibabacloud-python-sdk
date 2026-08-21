@@ -23,7 +23,7 @@ class GlobalHotelCancelOrRefundResponseBody(DaraModel):
         self.error_msg = error_msg
         # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the operation is successful.
         self.success = success
         # TraceId
         self.tracer_id = tracer_id
@@ -88,10 +88,11 @@ class GlobalHotelCancelOrRefundResponseBodyData(DaraModel):
         total_refund_amount: main_models.GlobalHotelCancelOrRefundResponseBodyDataTotalRefundAmount = None,
         tracer_id: str = None,
     ):
+        # The after-sales refund order number. This parameter is returned when an after-sales refund is processed and can be used for polling the refund status. This parameter is null when a cancellation is processed.
         self.refund_order_no = refund_order_no
-        # The total penalty amount on the sales side.
+        # The total penalty amount on the sales side. This parameter is returned when an after-sales refund is processed.
         self.total_penalty_amount = total_penalty_amount
-        # The total refund amount.
+        # The total refund amount. This parameter is returned when an after-sales refund is processed. The value equals the total sales price minus the total penalty amount.
         self.total_refund_amount = total_refund_amount
         # TraceId
         self.tracer_id = tracer_id

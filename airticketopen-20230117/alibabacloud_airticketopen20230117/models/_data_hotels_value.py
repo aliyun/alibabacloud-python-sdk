@@ -415,15 +415,15 @@ class DataHotelsValueOffersCancelPolicyPenalties(DaraModel):
         currency: str = None,
         tracer_id: str = None,
     ):
-        # The effective start time (UTC millisecond timestamp).
+        # The effective start time as a UTC millisecond timestamp.
         self.start = start
-        # The effective end time (UTC millisecond timestamp).
+        # The effective end time as a UTC millisecond timestamp.
         self.end = end
         # The penalty type (PERCENTAGE/AMOUNT/NIGHTS).
         self.penalty_type = penalty_type
         # The penalty value (percentage/amount/nights).
         self.penalty_value = penalty_value
-        # The currency code. This field has a value only when the penalty type is AMOUNT.
+        # The currency code. This field is present only when the penalty type is AMOUNT.
         self.currency = currency
         # TraceId
         self.tracer_id = tracer_id

@@ -2466,6 +2466,1122 @@ class Client(OpenApiClient):
         headers = main_models.StandardSearchHeaders()
         return await self.standard_search_with_options_async(request, headers, runtime)
 
+    def ticket_apply_refund_with_options(
+        self,
+        request: main_models.TicketApplyRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketApplyRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        if not DaraCore.is_null(request.refund_reason):
+            body['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.refund_remark):
+            body['RefundRemark'] = request.refund_remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketApplyRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketApplyRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketApplyRefundResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_apply_refund_with_options_async(
+        self,
+        request: main_models.TicketApplyRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketApplyRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        if not DaraCore.is_null(request.refund_reason):
+            body['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.refund_remark):
+            body['RefundRemark'] = request.refund_remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketApplyRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketApplyRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketApplyRefundResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_apply_refund(
+        self,
+        request: main_models.TicketApplyRefundRequest,
+    ) -> main_models.TicketApplyRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_apply_refund_with_options(request, headers, runtime)
+
+    async def ticket_apply_refund_async(
+        self,
+        request: main_models.TicketApplyRefundRequest,
+    ) -> main_models.TicketApplyRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_apply_refund_with_options_async(request, headers, runtime)
+
+    def ticket_cancel_order_with_options(
+        self,
+        request: main_models.TicketCancelOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketCancelOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketCancelOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketCancelOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketCancelOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_cancel_order_with_options_async(
+        self,
+        request: main_models.TicketCancelOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketCancelOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketCancelOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketCancelOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketCancelOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_cancel_order(
+        self,
+        request: main_models.TicketCancelOrderRequest,
+    ) -> main_models.TicketCancelOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_cancel_order_with_options(request, headers, runtime)
+
+    async def ticket_cancel_order_async(
+        self,
+        request: main_models.TicketCancelOrderRequest,
+    ) -> main_models.TicketCancelOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_cancel_order_with_options_async(request, headers, runtime)
+
+    def ticket_check_refund_with_options(
+        self,
+        request: main_models.TicketCheckRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketCheckRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        if not DaraCore.is_null(request.refund_reason):
+            body['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.refund_remark):
+            body['RefundRemark'] = request.refund_remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketCheckRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketCheckRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketCheckRefundResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_check_refund_with_options_async(
+        self,
+        request: main_models.TicketCheckRefundRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketCheckRefundResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        if not DaraCore.is_null(request.refund_reason):
+            body['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.refund_remark):
+            body['RefundRemark'] = request.refund_remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketCheckRefund',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketCheckRefund',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketCheckRefundResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_check_refund(
+        self,
+        request: main_models.TicketCheckRefundRequest,
+    ) -> main_models.TicketCheckRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_check_refund_with_options(request, headers, runtime)
+
+    async def ticket_check_refund_async(
+        self,
+        request: main_models.TicketCheckRefundRequest,
+    ) -> main_models.TicketCheckRefundResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_check_refund_with_options_async(request, headers, runtime)
+
+    def ticket_create_order_with_options(
+        self,
+        tmp_req: main_models.TicketCreateOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketCreateOrderResponse:
+        tmp_req.validate()
+        request = main_models.TicketCreateOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.order_product):
+            request.order_product_shrink = Utils.array_to_string_with_specified_style(tmp_req.order_product, 'OrderProduct', 'json')
+        if not DaraCore.is_null(tmp_req.total_distribution_price):
+            request.total_distribution_price_shrink = Utils.array_to_string_with_specified_style(tmp_req.total_distribution_price, 'TotalDistributionPrice', 'json')
+        if not DaraCore.is_null(tmp_req.travelers):
+            request.travelers_shrink = Utils.array_to_string_with_specified_style(tmp_req.travelers, 'Travelers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        if not DaraCore.is_null(request.order_product_shrink):
+            body['OrderProduct'] = request.order_product_shrink
+        if not DaraCore.is_null(request.quantity):
+            body['Quantity'] = request.quantity
+        if not DaraCore.is_null(request.total_distribution_price_shrink):
+            body['TotalDistributionPrice'] = request.total_distribution_price_shrink
+        if not DaraCore.is_null(request.travelers_shrink):
+            body['Travelers'] = request.travelers_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketCreateOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketCreateOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketCreateOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_create_order_with_options_async(
+        self,
+        tmp_req: main_models.TicketCreateOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketCreateOrderResponse:
+        tmp_req.validate()
+        request = main_models.TicketCreateOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact):
+            request.contact_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact, 'Contact', 'json')
+        if not DaraCore.is_null(tmp_req.order_product):
+            request.order_product_shrink = Utils.array_to_string_with_specified_style(tmp_req.order_product, 'OrderProduct', 'json')
+        if not DaraCore.is_null(tmp_req.total_distribution_price):
+            request.total_distribution_price_shrink = Utils.array_to_string_with_specified_style(tmp_req.total_distribution_price, 'TotalDistributionPrice', 'json')
+        if not DaraCore.is_null(tmp_req.travelers):
+            request.travelers_shrink = Utils.array_to_string_with_specified_style(tmp_req.travelers, 'Travelers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.contact_shrink):
+            body['Contact'] = request.contact_shrink
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        if not DaraCore.is_null(request.order_product_shrink):
+            body['OrderProduct'] = request.order_product_shrink
+        if not DaraCore.is_null(request.quantity):
+            body['Quantity'] = request.quantity
+        if not DaraCore.is_null(request.total_distribution_price_shrink):
+            body['TotalDistributionPrice'] = request.total_distribution_price_shrink
+        if not DaraCore.is_null(request.travelers_shrink):
+            body['Travelers'] = request.travelers_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketCreateOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketCreateOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketCreateOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_create_order(
+        self,
+        request: main_models.TicketCreateOrderRequest,
+    ) -> main_models.TicketCreateOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_create_order_with_options(request, headers, runtime)
+
+    async def ticket_create_order_async(
+        self,
+        request: main_models.TicketCreateOrderRequest,
+    ) -> main_models.TicketCreateOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_create_order_with_options_async(request, headers, runtime)
+
+    def ticket_page_query_product_with_options(
+        self,
+        request: main_models.TicketPageQueryProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketPageQueryProductResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scenic_id):
+            body['ScenicId'] = request.scenic_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketPageQueryProduct',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketPageQueryProduct',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketPageQueryProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_page_query_product_with_options_async(
+        self,
+        request: main_models.TicketPageQueryProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketPageQueryProductResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scenic_id):
+            body['ScenicId'] = request.scenic_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketPageQueryProduct',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketPageQueryProduct',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketPageQueryProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_page_query_product(
+        self,
+        request: main_models.TicketPageQueryProductRequest,
+    ) -> main_models.TicketPageQueryProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_page_query_product_with_options(request, headers, runtime)
+
+    async def ticket_page_query_product_async(
+        self,
+        request: main_models.TicketPageQueryProductRequest,
+    ) -> main_models.TicketPageQueryProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_page_query_product_with_options_async(request, headers, runtime)
+
+    def ticket_page_query_scenic_with_options(
+        self,
+        request: main_models.TicketPageQueryScenicRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketPageQueryScenicResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketPageQueryScenic',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketPageQueryScenic',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketPageQueryScenicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_page_query_scenic_with_options_async(
+        self,
+        request: main_models.TicketPageQueryScenicRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketPageQueryScenicResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketPageQueryScenic',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketPageQueryScenic',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketPageQueryScenicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_page_query_scenic(
+        self,
+        request: main_models.TicketPageQueryScenicRequest,
+    ) -> main_models.TicketPageQueryScenicResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_page_query_scenic_with_options(request, headers, runtime)
+
+    async def ticket_page_query_scenic_async(
+        self,
+        request: main_models.TicketPageQueryScenicRequest,
+    ) -> main_models.TicketPageQueryScenicResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_page_query_scenic_with_options_async(request, headers, runtime)
+
+    def ticket_pay_order_with_options(
+        self,
+        request: main_models.TicketPayOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketPayOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketPayOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketPayOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketPayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_pay_order_with_options_async(
+        self,
+        request: main_models.TicketPayOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketPayOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketPayOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketPayOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketPayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_pay_order(
+        self,
+        request: main_models.TicketPayOrderRequest,
+    ) -> main_models.TicketPayOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_pay_order_with_options(request, headers, runtime)
+
+    async def ticket_pay_order_async(
+        self,
+        request: main_models.TicketPayOrderRequest,
+    ) -> main_models.TicketPayOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_pay_order_with_options_async(request, headers, runtime)
+
+    def ticket_query_order_with_options(
+        self,
+        request: main_models.TicketQueryOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_query_order_with_options_async(
+        self,
+        request: main_models.TicketQueryOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_query_order(
+        self,
+        request: main_models.TicketQueryOrderRequest,
+    ) -> main_models.TicketQueryOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_query_order_with_options(request, headers, runtime)
+
+    async def ticket_query_order_async(
+        self,
+        request: main_models.TicketQueryOrderRequest,
+    ) -> main_models.TicketQueryOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_query_order_with_options_async(request, headers, runtime)
+
+    def ticket_query_price_stock_with_options(
+        self,
+        request: main_models.TicketQueryPriceStockRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryPriceStockResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.product_id):
+            body['ProductId'] = request.product_id
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryPriceStock',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryPriceStock',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryPriceStockResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_query_price_stock_with_options_async(
+        self,
+        request: main_models.TicketQueryPriceStockRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryPriceStockResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.product_id):
+            body['ProductId'] = request.product_id
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryPriceStock',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryPriceStock',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryPriceStockResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_query_price_stock(
+        self,
+        request: main_models.TicketQueryPriceStockRequest,
+    ) -> main_models.TicketQueryPriceStockResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_query_price_stock_with_options(request, headers, runtime)
+
+    async def ticket_query_price_stock_async(
+        self,
+        request: main_models.TicketQueryPriceStockRequest,
+    ) -> main_models.TicketQueryPriceStockResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_query_price_stock_with_options_async(request, headers, runtime)
+
+    def ticket_query_product_with_options(
+        self,
+        request: main_models.TicketQueryProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryProductResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.product_id):
+            body['ProductId'] = request.product_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryProduct',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryProduct',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_query_product_with_options_async(
+        self,
+        request: main_models.TicketQueryProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryProductResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.product_id):
+            body['ProductId'] = request.product_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryProduct',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryProduct',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_query_product(
+        self,
+        request: main_models.TicketQueryProductRequest,
+    ) -> main_models.TicketQueryProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_query_product_with_options(request, headers, runtime)
+
+    async def ticket_query_product_async(
+        self,
+        request: main_models.TicketQueryProductRequest,
+    ) -> main_models.TicketQueryProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_query_product_with_options_async(request, headers, runtime)
+
+    def ticket_query_refund_order_with_options(
+        self,
+        request: main_models.TicketQueryRefundOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryRefundOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryRefundOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryRefundOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryRefundOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_query_refund_order_with_options_async(
+        self,
+        request: main_models.TicketQueryRefundOrderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryRefundOrderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.distributor_order_id):
+            body['DistributorOrderId'] = request.distributor_order_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryRefundOrder',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryRefundOrder',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryRefundOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_query_refund_order(
+        self,
+        request: main_models.TicketQueryRefundOrderRequest,
+    ) -> main_models.TicketQueryRefundOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_query_refund_order_with_options(request, headers, runtime)
+
+    async def ticket_query_refund_order_async(
+        self,
+        request: main_models.TicketQueryRefundOrderRequest,
+    ) -> main_models.TicketQueryRefundOrderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_query_refund_order_with_options_async(request, headers, runtime)
+
+    def ticket_query_scenic_with_options(
+        self,
+        request: main_models.TicketQueryScenicRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryScenicResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.scenic_id):
+            body['ScenicId'] = request.scenic_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryScenic',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryScenic',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryScenicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_query_scenic_with_options_async(
+        self,
+        request: main_models.TicketQueryScenicRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryScenicResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.scenic_id):
+            body['ScenicId'] = request.scenic_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryScenic',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryScenic',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryScenicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_query_scenic(
+        self,
+        request: main_models.TicketQueryScenicRequest,
+    ) -> main_models.TicketQueryScenicResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_query_scenic_with_options(request, headers, runtime)
+
+    async def ticket_query_scenic_async(
+        self,
+        request: main_models.TicketQueryScenicRequest,
+    ) -> main_models.TicketQueryScenicResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_query_scenic_with_options_async(request, headers, runtime)
+
+    def ticket_query_shelf_with_options(
+        self,
+        request: main_models.TicketQueryShelfRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryShelfResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.scenic_id):
+            body['ScenicId'] = request.scenic_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryShelf',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryShelf',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryShelfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ticket_query_shelf_with_options_async(
+        self,
+        request: main_models.TicketQueryShelfRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TicketQueryShelfResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.account_no):
+            body['AccountNo'] = request.account_no
+        if not DaraCore.is_null(request.scenic_id):
+            body['ScenicId'] = request.scenic_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TicketQueryShelf',
+            version = '2023-01-17',
+            protocol = 'HTTPS',
+            pathname = f'/TicketQueryShelf',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TicketQueryShelfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ticket_query_shelf(
+        self,
+        request: main_models.TicketQueryShelfRequest,
+    ) -> main_models.TicketQueryShelfResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.ticket_query_shelf_with_options(request, headers, runtime)
+
+    async def ticket_query_shelf_async(
+        self,
+        request: main_models.TicketQueryShelfRequest,
+    ) -> main_models.TicketQueryShelfResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.ticket_query_shelf_with_options_async(request, headers, runtime)
+
     def ticketing_with_options(
         self,
         request: main_models.TicketingRequest,
