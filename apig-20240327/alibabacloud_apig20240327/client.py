@@ -1476,6 +1476,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDomainResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
@@ -1536,6 +1538,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDomainResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}

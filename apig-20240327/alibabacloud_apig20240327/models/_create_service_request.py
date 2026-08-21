@@ -22,7 +22,7 @@ class CreateServiceRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The list of service configurations. At least one service configuration is required.
         self.service_configs = service_configs
-        # The service source type. Valid values:
+        # The service source. Valid values:
         # - MSE_NACOS: a service in MSE Nacos.
         # - K8S: a service in a Kubernetes cluster of Container Service.
         # - VIP: a fixed address service.
@@ -105,30 +105,30 @@ class CreateServiceRequestServiceConfigs(DaraModel):
     ):
         # The list of domain names or fixed addresses.
         self.addresses = addresses
-        # The Agent service configuration. This parameter is required when sourceType is set to AGENT.
+        # The Agent service configuration. Required when sourceType is AGENT.
         self.agent_service_config = agent_service_config
-        # The AI service configuration. This parameter is required when sourceType is set to AI.
+        # The AI service configuration. Required when sourceType is AI.
         self.ai_service_config = ai_service_config
         # The list of DNS server addresses.
         self.dns_servers = dns_servers
         # The service expression type that identifies the special type or mode of the service.
         self.express_type = express_type
-        # The service group name. This parameter is required when sourceType is set to MSE_NACOS.
+        # The service group name. Required when sourceType is MSE_NACOS.
         self.group_name = group_name
         # The model provider ID. This parameter is applicable only to AI services.
         self.model_provider_id = model_provider_id
-        # The service name. This parameter is required when sourceType is set to FC3.
+        # The service name. Required when sourceType is FC3.
         self.name = name
-        # The namespace of the service.
+        # The namespace of the service:
         # 
-        # - If sourceType is set to K8S, this parameter specifies the namespace of the Kubernetes service.
-        # - If sourceType is set to MSE_NACOS, this parameter specifies the namespace in Nacos.
+        # - If sourceType is K8S, this indicates the namespace of the Kubernetes service.
+        # - If sourceType is MSE_NACOS, this indicates the namespace in Nacos.
         # 
-        # This parameter is required when sourceType is set to K8S or MSE_NACOS.
+        # Required when sourceType is K8S or MSE_NACOS.
         self.namespace = namespace
         # The function version or alias.
         self.qualifier = qualifier
-        # The service source ID. This parameter is required in multi-Nacos instance scenarios.
+        # The service source ID. Required in multi-Nacos instance scenarios.
         self.source_id = source_id
         # The validation options for service verification configuration.
         self.validation_options = validation_options

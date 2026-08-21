@@ -1,3 +1,7 @@
+2026-08-21 Version: 11.0.3
+- Update API CreateDomain: add request parameters clientToken.
+
+
 2026-08-21 Version: 11.0.2
 - Generated python 2024-03-27 for APIG.
 
