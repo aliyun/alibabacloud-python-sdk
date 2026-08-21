@@ -13,7 +13,7 @@ class CheckResourceStockResponseBody(DaraModel):
         request_id: str = None,
         resource_stock_models: List[main_models.CheckResourceStockResponseBodyResourceStockModels] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The resource inventory details.
         self.resource_stock_models = resource_stock_models
@@ -59,11 +59,11 @@ class CheckResourceStockResponseBodyResourceStockModels(DaraModel):
         stock_status: str = None,
         zone_id: str = None,
     ):
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The inventory status of the instance group.
         self.stock_status = stock_status
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

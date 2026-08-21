@@ -19,19 +19,19 @@ class CreateEdgeMobileAgentPackageRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: enables automatic payment. Make sure that your account balance is sufficient.
-        # - **false** (default): generates the order without charging the account.
+        # - **true**: Enable automatic payment. Make sure that your account balance is sufficient.
+        # - **false** (default): Generate the order without making a payment.
         # 
         # 
         # 
         # 
-        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated. You can then log on to the Cloud Phone console to complete the payment.
+        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the WUYING Cloud Phone console to complete the payment.
         # >
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # * **true**: enables auto-renewal.
-        # * **false** (default): disables auto-renewal.
+        # * **true**: Enable auto-renewal.
+        # * **false** (default): Disable auto-renewal.
         self.auto_renew = auto_renew
         # The region where the agent is located.
         # 
@@ -40,19 +40,22 @@ class CreateEdgeMobileAgentPackageRequest(DaraModel):
         # The idempotency token.
         self.client_token = client_token
         # The device form factor.
+        # 
+        # This parameter is required.
         self.device_class = device_class
-        # The subscription duration of the resource. The unit is specified by PeriodUnit.
+        # The subscription duration of the resource. The unit is specified by `PeriodUnit`.
         # 
         # This parameter is required.
         self.period = period
-        # The unit of the subscription duration. Valid values:
+        # The unit of the subscription duration.
         # 
+        # Valid values:
         # - **Month**: month.
         # - **Year**: year.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The ID of the promotional activity.
+        # The promotion ID.
         self.promotion_id = promotion_id
         # The number of packages.
         # 

@@ -13,17 +13,17 @@ class CheckResourceStockRequest(DaraModel):
         gpu_acceleration: bool = None,
         zone_id: str = None,
     ):
-        # The ID of the instance type.
+        # The specification ID.
         self.acp_spec_id = acp_spec_id
-        # The number of Cloud Phone instances.
+        # The number of cloud phone instances.
         self.amount = amount
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
         # Specifies whether to enable GPU acceleration.
         self.gpu_acceleration = gpu_acceleration
-        # The zone where the resource resides.
+        # The zone to which the resource belongs.
         self.zone_id = zone_id
 
     def validate(self):

@@ -1,3 +1,6 @@
+2026-08-21 Version: 4.34.2
+- Generated python 2023-09-30 for eds-aic.
+
 2026-08-15 Version: 4.34.1
 - Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.Channel.
 - Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.PackageId.
