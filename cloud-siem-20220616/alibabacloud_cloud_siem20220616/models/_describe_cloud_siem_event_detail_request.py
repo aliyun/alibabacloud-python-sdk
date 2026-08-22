@@ -16,19 +16,16 @@ class DescribeCloudSiemEventDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.incident_uuid = incident_uuid
-        # The region of the data management center for Threat Analysis. Select the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: assets in the Chinese mainland and China (Hong Kong)
-        # 
-        # - ap-southeast-1: assets in regions outside the Chinese mainland
+        # The region of the data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: the assets reside in the Chinese mainland or Hong Kong (China).
+        # - ap-southeast-1: the assets reside in regions outside China.
         self.region_id = region_id
-        # The ID of the member account. An administrator can use this parameter to query data from the perspective of the member.
+        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
-        # The view type.
+        # The view type. Valid values:
         # 
         # - 0: the view of the current Alibaba Cloud account.
-        # 
-        # - 1: the view of all accounts in your enterprise.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

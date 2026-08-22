@@ -1,3 +1,11 @@
+2026-08-22 Version: 6.2.5
+- Update API DescribeAlertType: add response parameters Body.Data.$.AlertTypeCategory.
+- Update API DescribeAlertType: add response parameters Body.Data.$.AlertTypeCategoryMds.
+- Update API DescribeAlertType: add response parameters Body.Data.$.AlertTypeCategoryOrder.
+- Update API DescribeAlertType: add response parameters Body.Data.$.AlertTypeNameEn.
+- Update API DescribeAlertType: add response parameters Body.Data.$.AlertTypeNameZh.
+
+
 2026-08-13 Version: 6.2.4
 - Update API DescribeDisposeAndPlaybook: add request parameters AvailableOnly.
 - Update API DescribeDisposeAndPlaybook: add request parameters EntityUuidList.

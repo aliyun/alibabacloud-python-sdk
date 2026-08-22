@@ -16,19 +16,17 @@ class DescribeCloudSiemEventDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The status code of the request.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # - true: successful.
+        # - false: failed.
         self.success = success
 
     def validate(self):
@@ -102,23 +100,23 @@ class DescribeCloudSiemEventDetailResponseBodyData(DaraModel):
         threat_level: str = None,
         threat_score: float = None,
     ):
-        # The number of alerts that are associated with the event.
+        # The number of alerts associated with the event.
         self.alert_num = alert_num
         # The ID of the Alibaba Cloud account to which the event belongs.
         self.aliuid = aliuid
-        # The number of assets that are associated with the event.
+        # The number of assets associated with the event.
         self.asset_num = asset_num
-        # The ATT\\&CK technique labels.
+        # The collection of ATT&CK attack technique labels.
         self.att_ck_labels = att_ck_labels
-        # The attack stages.
+        # The list of attack stages.
         self.attck_stages = attck_stages
-        # The cloud services that generated the alerts associated with the event.
+        # The source products of the alerts associated with the event.
         self.data_sources = data_sources
         # The description of the event.
         self.description = description
         # The English description of the event.
         self.description_en = description_en
-        # The extended information about the event, in JSON format.
+        # The extended information of the event in JSON format.
         self.ext_content = ext_content
         # The time when the event occurred.
         self.gmt_create = gmt_create
@@ -128,43 +126,33 @@ class DescribeCloudSiemEventDetailResponseBodyData(DaraModel):
         self.incident_name = incident_name
         # The English name of the event.
         self.incident_name_en = incident_name_en
-        # The type of the event.
-        # 
-        # - net-attack: Expert rule
-        # 
-        # - graph: Graph computing
-        # 
-        # - singleToSingle: Alert pass-through
-        # 
-        # - allToSingle: Alert aggregation
+        # The event type. Valid values:
+        # - net-attack: expert rule.
+        # - graph: graph computing.
+        # - singleToSingle: alert pass-through.
+        # - allToSingle: alert aggregation.
         self.incident_type = incident_type
-        # The globally unique ID of the event.
+        # The globally unique UUID of the event.
         self.incident_uuid = incident_uuid
-        # The linked accounts.
+        # The associated account.
         self.refer_account = refer_account
-        # The remarks for the event.
+        # The remarks of the event.
         self.remark = remark
-        # The rule that is used to generate the event.
+        # The rule that generated the event.
         self.rule_id = rule_id
-        # The status of the event. Valid values:
+        # The event status. Valid values:
         # 
-        # - 0: unhandled
-        # 
-        # - 1: handling
-        # 
-        # - 5: handling failed
-        # 
-        # - 10: handled
+        # - 0: unhandled.  
+        # - 1: handling. 
+        # - 5: handling failed. 
+        # - 10: handled.
         self.status = status
         # The threat level. Valid values:
-        # 
-        # - serious: high
-        # 
-        # - suspicious: medium
-        # 
-        # - remind: low
+        # - serious: high.
+        # - suspicious: medium.
+        # - remind: low.
         self.threat_level = threat_level
-        # The threat score of the event. The score is a value from 0 to 100. A higher score indicates a higher threat level.
+        # The threat score of the event, ranging from 0 to 100. A higher score indicates a higher risk level.
         self.threat_score = threat_score
 
     def validate(self):
@@ -322,11 +310,11 @@ class DescribeCloudSiemEventDetailResponseBodyDataAttckStages(DaraModel):
         tactic_id: str = None,
         tactic_name: str = None,
     ):
-        # The number of alerts that are associated with the tactic.
+        # The number of alerts associated with the attack stage.
         self.alert_num = alert_num
-        # The ID of the ATT\\&CK tactic.
+        # The ATT&CK attack stage ID.
         self.tactic_id = tactic_id
-        # The name of the tactic.
+        # The name of the attack stage.
         self.tactic_name = tactic_name
 
     def validate(self):

@@ -18,17 +18,15 @@ class DescribeAlertTypeResponseBody(DaraModel):
     ):
         # The request status code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # - true: successful.
+        # - false: failed.
         self.success = success
 
     def validate(self):
@@ -87,12 +85,27 @@ class DescribeAlertTypeResponseBodyData(DaraModel):
     def __init__(
         self,
         alert_type: str = None,
+        alert_type_category: str = None,
+        alert_type_category_mds: str = None,
+        alert_type_category_order: int = None,
         alert_type_mds: str = None,
+        alert_type_name_en: str = None,
+        alert_type_name_zh: str = None,
     ):
         # The threat type.
         self.alert_type = alert_type
+        # The threat type category identifier.
+        self.alert_type_category = alert_type_category
+        # The threat type category name in the language of the current request. Empty if no translation is available.
+        self.alert_type_category_mds = alert_type_category_mds
+        # The display order of the threat type category.
+        self.alert_type_category_order = alert_type_category_order
         # The Medusa code of the threat type.
         self.alert_type_mds = alert_type_mds
+        # The English name of the threat type. Empty if no translation is available.
+        self.alert_type_name_en = alert_type_name_en
+        # The Chinese name of the threat type. Empty if no translation is available.
+        self.alert_type_name_zh = alert_type_name_zh
 
     def validate(self):
         pass
@@ -105,8 +118,23 @@ class DescribeAlertTypeResponseBodyData(DaraModel):
         if self.alert_type is not None:
             result['AlertType'] = self.alert_type
 
+        if self.alert_type_category is not None:
+            result['AlertTypeCategory'] = self.alert_type_category
+
+        if self.alert_type_category_mds is not None:
+            result['AlertTypeCategoryMds'] = self.alert_type_category_mds
+
+        if self.alert_type_category_order is not None:
+            result['AlertTypeCategoryOrder'] = self.alert_type_category_order
+
         if self.alert_type_mds is not None:
             result['AlertTypeMds'] = self.alert_type_mds
+
+        if self.alert_type_name_en is not None:
+            result['AlertTypeNameEn'] = self.alert_type_name_en
+
+        if self.alert_type_name_zh is not None:
+            result['AlertTypeNameZh'] = self.alert_type_name_zh
 
         return result
 
@@ -115,8 +143,23 @@ class DescribeAlertTypeResponseBodyData(DaraModel):
         if m.get('AlertType') is not None:
             self.alert_type = m.get('AlertType')
 
+        if m.get('AlertTypeCategory') is not None:
+            self.alert_type_category = m.get('AlertTypeCategory')
+
+        if m.get('AlertTypeCategoryMds') is not None:
+            self.alert_type_category_mds = m.get('AlertTypeCategoryMds')
+
+        if m.get('AlertTypeCategoryOrder') is not None:
+            self.alert_type_category_order = m.get('AlertTypeCategoryOrder')
+
         if m.get('AlertTypeMds') is not None:
             self.alert_type_mds = m.get('AlertTypeMds')
+
+        if m.get('AlertTypeNameEn') is not None:
+            self.alert_type_name_en = m.get('AlertTypeNameEn')
+
+        if m.get('AlertTypeNameZh') is not None:
+            self.alert_type_name_zh = m.get('AlertTypeNameZh')
 
         return self
 
