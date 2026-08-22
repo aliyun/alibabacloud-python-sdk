@@ -9,12 +9,14 @@ class CreateAuthorizationRuleRequest(DaraModel):
         self,
         authorization_resource_scope: str = None,
         authorization_rule_name: str = None,
+        authorization_rule_scenario_label: str = None,
         client_token: str = None,
         description: str = None,
         instance_id: str = None,
         project_id: str = None,
     ):
-        # The scope of authorized resources. Valid values:
+        # The authorization resource scope. Valid values:
+        # 
         # - global: all resources under the project.
         # - custom: specified resources under the project.
         self.authorization_resource_scope = authorization_resource_scope
@@ -22,7 +24,9 @@ class CreateAuthorizationRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.authorization_rule_name = authorization_rule_name
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # The scenario label of the authorization rule. The label can be up to 64 characters in length.
+        self.authorization_rule_scenario_label = authorization_rule_scenario_label
+        # Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -51,6 +55,9 @@ class CreateAuthorizationRuleRequest(DaraModel):
         if self.authorization_rule_name is not None:
             result['AuthorizationRuleName'] = self.authorization_rule_name
 
+        if self.authorization_rule_scenario_label is not None:
+            result['AuthorizationRuleScenarioLabel'] = self.authorization_rule_scenario_label
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
@@ -72,6 +79,9 @@ class CreateAuthorizationRuleRequest(DaraModel):
 
         if m.get('AuthorizationRuleName') is not None:
             self.authorization_rule_name = m.get('AuthorizationRuleName')
+
+        if m.get('AuthorizationRuleScenarioLabel') is not None:
+            self.authorization_rule_scenario_label = m.get('AuthorizationRuleScenarioLabel')
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')

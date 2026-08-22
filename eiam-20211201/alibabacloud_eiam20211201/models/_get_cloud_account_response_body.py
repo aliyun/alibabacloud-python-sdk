@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_eiam20211201 import models as main_models
 from darabonba.model import DaraModel
 
@@ -54,11 +56,16 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         cloud_account_name: str = None,
         cloud_account_provider_config: main_models.GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig = None,
         cloud_account_provider_name: str = None,
+        cloud_account_role_creation_type: str = None,
         cloud_account_site: str = None,
         cloud_account_vendor_type: str = None,
         create_time: int = None,
         description: str = None,
         instance_id: str = None,
+        privilege_application_ids: List[str] = None,
+        privilege_hosting_error: main_models.GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError = None,
+        privilege_hosting_state: str = None,
+        privilege_status: str = None,
         update_time: int = None,
     ):
         # The external unique identifier of the cloud account.
@@ -78,6 +85,8 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         self.cloud_account_provider_config = cloud_account_provider_config
         # The identity provider name.
         self.cloud_account_provider_name = cloud_account_provider_name
+        self.cloud_account_role_creation_type = cloud_account_role_creation_type
+        # The cloud account site.
         self.cloud_account_site = cloud_account_site
         # The cloud account type. Valid values:
         # 
@@ -89,6 +98,14 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
+        # The list of associated privilege application IDs.
+        self.privilege_application_ids = privilege_application_ids
+        # The reason for the privilege hosting or removal failure.
+        self.privilege_hosting_error = privilege_hosting_error
+        # The privilege hosting state, which indicates whether the privilege capability is available.
+        self.privilege_hosting_state = privilege_hosting_state
+        # The privilege switch status, which indicates whether the privilege capability is enabled.
+        self.privilege_status = privilege_status
         # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
@@ -97,6 +114,8 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
             self.cloud_account_health_check_result.validate()
         if self.cloud_account_provider_config:
             self.cloud_account_provider_config.validate()
+        if self.privilege_hosting_error:
+            self.privilege_hosting_error.validate()
 
     def to_map(self):
         result = dict()
@@ -124,6 +143,9 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         if self.cloud_account_provider_name is not None:
             result['CloudAccountProviderName'] = self.cloud_account_provider_name
 
+        if self.cloud_account_role_creation_type is not None:
+            result['CloudAccountRoleCreationType'] = self.cloud_account_role_creation_type
+
         if self.cloud_account_site is not None:
             result['CloudAccountSite'] = self.cloud_account_site
 
@@ -138,6 +160,18 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.privilege_application_ids is not None:
+            result['PrivilegeApplicationIds'] = self.privilege_application_ids
+
+        if self.privilege_hosting_error is not None:
+            result['PrivilegeHostingError'] = self.privilege_hosting_error.to_map()
+
+        if self.privilege_hosting_state is not None:
+            result['PrivilegeHostingState'] = self.privilege_hosting_state
+
+        if self.privilege_status is not None:
+            result['PrivilegeStatus'] = self.privilege_status
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -169,6 +203,9 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         if m.get('CloudAccountProviderName') is not None:
             self.cloud_account_provider_name = m.get('CloudAccountProviderName')
 
+        if m.get('CloudAccountRoleCreationType') is not None:
+            self.cloud_account_role_creation_type = m.get('CloudAccountRoleCreationType')
+
         if m.get('CloudAccountSite') is not None:
             self.cloud_account_site = m.get('CloudAccountSite')
 
@@ -184,8 +221,58 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('PrivilegeApplicationIds') is not None:
+            self.privilege_application_ids = m.get('PrivilegeApplicationIds')
+
+        if m.get('PrivilegeHostingError') is not None:
+            temp_model = main_models.GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError()
+            self.privilege_hosting_error = temp_model.from_map(m.get('PrivilegeHostingError'))
+
+        if m.get('PrivilegeHostingState') is not None:
+            self.privilege_hosting_state = m.get('PrivilegeHostingState')
+
+        if m.get('PrivilegeStatus') is not None:
+            self.privilege_status = m.get('PrivilegeStatus')
+
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        return self
+
+class GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError(DaraModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+    ):
+        # The failure error code.
+        self.error_code = error_code
+        # The failure message.
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
 
         return self
 

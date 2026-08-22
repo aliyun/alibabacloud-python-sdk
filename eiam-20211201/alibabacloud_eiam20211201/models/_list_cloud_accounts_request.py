@@ -21,15 +21,15 @@ class ListCloudAccountsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of records per page.
+        # The maximum number of entries per page.
         # 
-        # - Default value: 20.
+        # - If this parameter is not specified, the default value is 20.
         # 
-        # - Maximum value: 100.
+        # - The maximum value is 100.
         self.max_results = max_results
-        # The token that marks the starting position of the next page.
+        # The token that identifies the start position of the next page.
         # 
-        # - If you do not specify this parameter, the query starts from the first page.
+        # - If this parameter is not specified, the query starts from the first page.
         self.next_token = next_token
 
     def validate(self):
@@ -84,13 +84,13 @@ class ListCloudAccountsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The name of the filter field. Valid values:
+        # The filter field name. Valid values:
         # 
         # - CloudAccountId: the cloud account ID.
         # - CloudAccountExternalId: the external unique identifier of the cloud account.
         # - CloudAccountVendorType: the cloud account type.
         self.name = name
-        # The values of the filter field.
+        # The list of filter field values.
         self.value = value
 
     def validate(self):

@@ -4,22 +4,19 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class RemoveGroupFromAuthorizationRuleRequest(DaraModel):
+class ExecuteInstanceFailoverRequest(DaraModel):
     def __init__(
         self,
-        authorization_rule_id: str = None,
-        group_id: str = None,
+        instance_failover_status: str = None,
         instance_id: str = None,
     ):
-        # The authorization rule ID.
+        # The failover status. Valid values:
+        # - inactive: The primary instance is active.
+        # - active: The replica instance is active.
         # 
         # This parameter is required.
-        self.authorization_rule_id = authorization_rule_id
-        # The group ID.
-        # 
-        # This parameter is required.
-        self.group_id = group_id
-        # The instance ID.
+        self.instance_failover_status = instance_failover_status
+        # The replica instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -32,11 +29,8 @@ class RemoveGroupFromAuthorizationRuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.authorization_rule_id is not None:
-            result['AuthorizationRuleId'] = self.authorization_rule_id
-
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
+        if self.instance_failover_status is not None:
+            result['InstanceFailoverStatus'] = self.instance_failover_status
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -45,11 +39,8 @@ class RemoveGroupFromAuthorizationRuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AuthorizationRuleId') is not None:
-            self.authorization_rule_id = m.get('AuthorizationRuleId')
-
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
+        if m.get('InstanceFailoverStatus') is not None:
+            self.instance_failover_status = m.get('InstanceFailoverStatus')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

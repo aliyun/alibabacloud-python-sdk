@@ -11,9 +11,9 @@ class GetAuthorizationRuleResponseBody(DaraModel):
         authorization_rule: main_models.GetAuthorizationRuleResponseBodyAuthorizationRule = None,
         request_id: str = None,
     ):
-        # Authorization rule object.
+        # The authorization rule object.
         self.authorization_rule = authorization_rule
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,6 +51,7 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
         authorization_rule_creation_type: str = None,
         authorization_rule_id: str = None,
         authorization_rule_name: str = None,
+        authorization_rule_scenario_label: str = None,
         authorization_rule_subject_id: str = None,
         authorization_rule_subject_scope: str = None,
         authorization_rule_subject_type: str = None,
@@ -61,51 +62,43 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # Authorization resource scope. Valid values:
-        # 
-        # - global: Global resources under the project
-        # 
-        # - custom: Resources within the specified project scope
+        # The authorization resource scope. Valid values:
+        # - global: All resources under the project.
+        # - custom: Specified resources within the project scope.
         self.authorization_resource_scope = authorization_resource_scope
-        # Authorization rule creation type. Valid values:
-        # 
-        # - system_init: System created
-        # 
-        # - user_custom: User created
+        # The creation type of the authorization rule. Valid values:
+        # - system_init: Created by the system.
+        # - user_custom: Created by the user.
         self.authorization_rule_creation_type = authorization_rule_creation_type
-        # Authorization rule ID.
+        # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # Authorization rule name.
+        # The authorization rule name.
         self.authorization_rule_name = authorization_rule_name
-        # Subject ID associated with the authorization rule.
+        # The scenario label of the authorization rule.
+        self.authorization_rule_scenario_label = authorization_rule_scenario_label
+        # The subject ID associated with the authorization rule.
         self.authorization_rule_subject_id = authorization_rule_subject_id
-        # Authorization rule subject scope. Valid values:
-        # 
-        # - shared: Shared type, supports all subjects, including accounts and applications
-        # 
-        # - exclusive: Exclusive type
+        # The subject scope of the authorization rule. Valid values:
+        # - shared: Shared type, which supports all subjects, including accounts and applications.
+        # - exclusive: Exclusive type.
         self.authorization_rule_subject_scope = authorization_rule_subject_scope
-        # Subject type associated with the authorization rule. Valid when the authorization rule subject scope is exclusive. Valid values:
-        # 
-        # - application: Application
-        # 
-        # - user: Account
+        # The subject type associated with the authorization rule. This parameter is valid only when the authorization rule subject scope is exclusive. Valid values:
+        # - application: Application.
+        # - user: Account.
         self.authorization_rule_subject_type = authorization_rule_subject_type
-        # Creation time, in UNIX timestamp format, in milliseconds.
+        # The creation time, in UNIX timestamp format, measured in milliseconds.
         self.create_time = create_time
-        # Authorization rule description.
+        # The description of the authorization rule.
         self.description = description
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Project ID associated with the authorization rule.
+        # The project ID associated with the authorization rule.
         self.project_id = project_id
-        # Authorization rule status. Valid values:
-        # 
-        # - enabled: Enabled
-        # 
-        # - disabled: Disabled
+        # The authorization rule status. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
-        # Last update time, in UNIX timestamp format, in milliseconds.
+        # The last update time, in UNIX timestamp format, measured in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -127,6 +120,9 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
 
         if self.authorization_rule_name is not None:
             result['AuthorizationRuleName'] = self.authorization_rule_name
+
+        if self.authorization_rule_scenario_label is not None:
+            result['AuthorizationRuleScenarioLabel'] = self.authorization_rule_scenario_label
 
         if self.authorization_rule_subject_id is not None:
             result['AuthorizationRuleSubjectId'] = self.authorization_rule_subject_id
@@ -170,6 +166,9 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
 
         if m.get('AuthorizationRuleName') is not None:
             self.authorization_rule_name = m.get('AuthorizationRuleName')
+
+        if m.get('AuthorizationRuleScenarioLabel') is not None:
+            self.authorization_rule_scenario_label = m.get('AuthorizationRuleScenarioLabel')
 
         if m.get('AuthorizationRuleSubjectId') is not None:
             self.authorization_rule_subject_id = m.get('AuthorizationRuleSubjectId')

@@ -10,11 +10,11 @@ class GetAuthorizationRuleRequest(DaraModel):
         authorization_rule_id: str = None,
         instance_id: str = None,
     ):
-        # Authorization rule ID.
+        # The authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

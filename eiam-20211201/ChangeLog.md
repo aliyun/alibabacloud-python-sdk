@@ -1,3 +1,7 @@
+2026-08-22 Version: 2.18.3
+- Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.PamLicenseStatus.
+
+
 2026-07-31 Version: 2.17.7
 - Generated python 2021-12-01 for Eiam.
 

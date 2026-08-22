@@ -4,14 +4,11 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateInstanceResponseBody(DaraModel):
+class ExecuteInstanceFailoverResponseBody(DaraModel):
     def __init__(
         self,
-        instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the instance created by this API call.
-        self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
 
@@ -23,9 +20,6 @@ class CreateInstanceResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -33,9 +27,6 @@ class CreateInstanceResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 

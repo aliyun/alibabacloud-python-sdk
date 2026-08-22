@@ -48,6 +48,7 @@ class GetCloudAccountRoleResponseBodyCloudAccountRole(DaraModel):
     def __init__(
         self,
         cloud_account_id: str = None,
+        cloud_account_role_creation_type: str = None,
         cloud_account_role_external_id: str = None,
         cloud_account_role_health: str = None,
         cloud_account_role_health_check_result: main_models.GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheckResult = None,
@@ -63,6 +64,7 @@ class GetCloudAccountRoleResponseBodyCloudAccountRole(DaraModel):
     ):
         # The cloud account ID.
         self.cloud_account_id = cloud_account_id
+        self.cloud_account_role_creation_type = cloud_account_role_creation_type
         # The cloud role identifier.
         self.cloud_account_role_external_id = cloud_account_role_external_id
         # The cloud role health status. Valid values:
@@ -84,7 +86,7 @@ class GetCloudAccountRoleResponseBodyCloudAccountRole(DaraModel):
         # - system: system.
         # - user: user.
         self.cloud_account_role_usage_type = cloud_account_role_usage_type
-        # The creation time. The value is a UNIX timestamp in milliseconds.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The cloud role description.
         self.description = description
@@ -94,7 +96,7 @@ class GetCloudAccountRoleResponseBodyCloudAccountRole(DaraModel):
         # - enabled: enabled.
         # - disable: disabled.
         self.status = status
-        # The last update time. The value is a UNIX timestamp in milliseconds.
+        # The last update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -108,6 +110,9 @@ class GetCloudAccountRoleResponseBodyCloudAccountRole(DaraModel):
             result = _map
         if self.cloud_account_id is not None:
             result['CloudAccountId'] = self.cloud_account_id
+
+        if self.cloud_account_role_creation_type is not None:
+            result['CloudAccountRoleCreationType'] = self.cloud_account_role_creation_type
 
         if self.cloud_account_role_external_id is not None:
             result['CloudAccountRoleExternalId'] = self.cloud_account_role_external_id
@@ -151,6 +156,9 @@ class GetCloudAccountRoleResponseBodyCloudAccountRole(DaraModel):
         m = m or dict()
         if m.get('CloudAccountId') is not None:
             self.cloud_account_id = m.get('CloudAccountId')
+
+        if m.get('CloudAccountRoleCreationType') is not None:
+            self.cloud_account_role_creation_type = m.get('CloudAccountRoleCreationType')
 
         if m.get('CloudAccountRoleExternalId') is not None:
             self.cloud_account_role_external_id = m.get('CloudAccountRoleExternalId')
@@ -200,7 +208,7 @@ class GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheck
     ):
         # The error reason. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
-        # The time of the last health check. The value is a UNIX timestamp in milliseconds.
+        # The last check time, in UNIX timestamp format. Unit: milliseconds.
         self.last_check_time = last_check_time
         # The cloud role health check result. Valid values:
         # 

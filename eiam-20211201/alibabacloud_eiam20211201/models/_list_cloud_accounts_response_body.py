@@ -18,9 +18,9 @@ class ListCloudAccountsResponseBody(DaraModel):
     ):
         # The list of cloud accounts.
         self.cloud_accounts = cloud_accounts
-        # The number of rows per page when paging is used.
+        # The maximum number of entries per page for paging.
         self.max_results = max_results
-        # The token returned for the current call to indicate the starting position of the next page.
+        # The token returned for the current call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -93,6 +93,10 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         create_time: int = None,
         description: str = None,
         instance_id: str = None,
+        privilege_application_ids: List[str] = None,
+        privilege_hosting_error: main_models.ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError = None,
+        privilege_hosting_state: str = None,
+        privilege_status: str = None,
         update_time: int = None,
     ):
         # The external unique identifier of the cloud account.
@@ -110,23 +114,34 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         self.cloud_account_name = cloud_account_name
         # The identity provider name.
         self.cloud_account_provider_name = cloud_account_provider_name
+        # The cloud account site.
         self.cloud_account_site = cloud_account_site
         # The cloud account type. Valid values:
         # 
         # - alibaba_cloud: Alibaba Cloud.
         self.cloud_account_vendor_type = cloud_account_vendor_type
-        # The time when the cloud account was created. The value is a UNIX timestamp in milliseconds.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The description of the cloud account.
+        # The cloud account description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the cloud account was last updated. The value is a UNIX timestamp in milliseconds.
+        # The list of associated privileged access application IDs.
+        self.privilege_application_ids = privilege_application_ids
+        # The reason for the privilege hosting or removal failure.
+        self.privilege_hosting_error = privilege_hosting_error
+        # The privilege hosting state, which indicates whether the account has privileged access capabilities.
+        self.privilege_hosting_state = privilege_hosting_state
+        # The privilege switch status, which indicates whether the privileged access capability is available.
+        self.privilege_status = privilege_status
+        # The last update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
         if self.cloud_account_health_check_result:
             self.cloud_account_health_check_result.validate()
+        if self.privilege_hosting_error:
+            self.privilege_hosting_error.validate()
 
     def to_map(self):
         result = dict()
@@ -165,6 +180,18 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.privilege_application_ids is not None:
+            result['PrivilegeApplicationIds'] = self.privilege_application_ids
+
+        if self.privilege_hosting_error is not None:
+            result['PrivilegeHostingError'] = self.privilege_hosting_error.to_map()
+
+        if self.privilege_hosting_state is not None:
+            result['PrivilegeHostingState'] = self.privilege_hosting_state
+
+        if self.privilege_status is not None:
+            result['PrivilegeStatus'] = self.privilege_status
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -207,8 +234,58 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('PrivilegeApplicationIds') is not None:
+            self.privilege_application_ids = m.get('PrivilegeApplicationIds')
+
+        if m.get('PrivilegeHostingError') is not None:
+            temp_model = main_models.ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError()
+            self.privilege_hosting_error = temp_model.from_map(m.get('PrivilegeHostingError'))
+
+        if m.get('PrivilegeHostingState') is not None:
+            self.privilege_hosting_state = m.get('PrivilegeHostingState')
+
+        if m.get('PrivilegeStatus') is not None:
+            self.privilege_status = m.get('PrivilegeStatus')
+
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        return self
+
+class ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError(DaraModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+    ):
+        # The failure error code.
+        self.error_code = error_code
+        # The failure message.
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
 
         return self
 
@@ -221,11 +298,11 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult(Da
     ):
         # The error reason. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
-        # The time of the last health check. The value is a UNIX timestamp in milliseconds.
+        # The last check time, in UNIX timestamp format. Unit: milliseconds.
         self.last_check_time = last_check_time
         # The health check result of the cloud account. Valid values:
-        # - success: The health check succeeded.
-        # - failed: The health check failed.
+        # - success: Succeeded.
+        # - failed: Failed.
         self.result = result
 
     def validate(self):
@@ -270,7 +347,7 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErr
     ):
         # The error code.
         self.error_code = error_code
-        # The error message.
+        # The error description.
         self.error_message = error_message
 
     def validate(self):

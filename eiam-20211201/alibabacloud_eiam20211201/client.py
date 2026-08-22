@@ -22,13 +22,13 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'eu-central-1': 'eiam.eu-central-1.aliyuncs.com',
             'cn-hongkong': 'eiam.cn-hongkong.aliyuncs.com',
+            'ap-northeast-2': 'eiam.ap-northeast-2.aliyuncs.com',
+            'ap-southeast-1': 'eiam.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-5': 'eiam.ap-southeast-5.aliyuncs.com',
             'cn-hangzhou': 'eiam.cn-hangzhou.aliyuncs.com',
             'cn-beijing': 'eiam.cn-beijing.aliyuncs.com',
-            'ap-southeast-5': 'eiam.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-1': 'eiam.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'eiam.ap-northeast-2.aliyuncs.com'
+            'eu-central-1': 'eiam.eu-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eiam', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -2106,6 +2106,8 @@ class Client(OpenApiClient):
             query['AuthorizationResourceEntityType'] = request.authorization_resource_entity_type
         if not DaraCore.is_null(request.authorization_rule_id):
             query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.condition):
+            query['Condition'] = request.condition
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         body = {}
@@ -2144,6 +2146,8 @@ class Client(OpenApiClient):
             query['AuthorizationResourceEntityType'] = request.authorization_resource_entity_type
         if not DaraCore.is_null(request.authorization_rule_id):
             query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.condition):
+            query['Condition'] = request.condition
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         body = {}
@@ -2194,6 +2198,8 @@ class Client(OpenApiClient):
             query['AuthorizationResourceScope'] = request.authorization_resource_scope
         if not DaraCore.is_null(request.authorization_rule_name):
             query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not DaraCore.is_null(request.authorization_rule_scenario_label):
+            query['AuthorizationRuleScenarioLabel'] = request.authorization_rule_scenario_label
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
@@ -2234,6 +2240,8 @@ class Client(OpenApiClient):
             query['AuthorizationResourceScope'] = request.authorization_resource_scope
         if not DaraCore.is_null(request.authorization_rule_name):
             query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not DaraCore.is_null(request.authorization_rule_scenario_label):
+            query['AuthorizationRuleScenarioLabel'] = request.authorization_rule_scenario_label
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.instance_id):
@@ -3710,6 +3718,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         req = open_api_util_models.OpenApiRequest(
@@ -3738,6 +3748,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         req = open_api_util_models.OpenApiRequest(
@@ -10754,6 +10766,80 @@ class Client(OpenApiClient):
     ) -> main_models.ExecIdentityProviderMetadataUrlResolutionResponse:
         runtime = RuntimeOptions()
         return await self.exec_identity_provider_metadata_url_resolution_with_options_async(request, runtime)
+
+    def execute_instance_failover_with_options(
+        self,
+        request: main_models.ExecuteInstanceFailoverRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteInstanceFailoverResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_failover_status):
+            query['InstanceFailoverStatus'] = request.instance_failover_status
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteInstanceFailover',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteInstanceFailoverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_instance_failover_with_options_async(
+        self,
+        request: main_models.ExecuteInstanceFailoverRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteInstanceFailoverResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_failover_status):
+            query['InstanceFailoverStatus'] = request.instance_failover_status
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteInstanceFailover',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteInstanceFailoverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_instance_failover(
+        self,
+        request: main_models.ExecuteInstanceFailoverRequest,
+    ) -> main_models.ExecuteInstanceFailoverResponse:
+        runtime = RuntimeOptions()
+        return self.execute_instance_failover_with_options(request, runtime)
+
+    async def execute_instance_failover_async(
+        self,
+        request: main_models.ExecuteInstanceFailoverRequest,
+    ) -> main_models.ExecuteInstanceFailoverResponse:
+        runtime = RuntimeOptions()
+        return await self.execute_instance_failover_with_options_async(request, runtime)
 
     def generate_download_url_for_synchronization_job_with_options(
         self,
@@ -18912,6 +18998,8 @@ class Client(OpenApiClient):
             query['Edition'] = request.edition
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.managed_service_code):
+            query['ManagedServiceCode'] = request.managed_service_code
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -18952,6 +19040,8 @@ class Client(OpenApiClient):
             query['Edition'] = request.edition
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.managed_service_code):
+            query['ManagedServiceCode'] = request.managed_service_code
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

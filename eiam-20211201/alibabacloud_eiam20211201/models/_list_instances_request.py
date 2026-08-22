@@ -12,6 +12,7 @@ class ListInstancesRequest(DaraModel):
         cross_region_replication: str = None,
         edition: str = None,
         instance_ids: List[str] = None,
+        managed_service_code: str = None,
         page_number: int = None,
         page_size: int = None,
         service_managed: bool = None,
@@ -28,10 +29,13 @@ class ListInstancesRequest(DaraModel):
         self.edition = edition
         # The list of instance IDs.
         self.instance_ids = instance_ids
+        # The service code of the managing cloud service.
+        self.managed_service_code = managed_service_code
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
+        # Indicates whether the instance is managed by a cloud service.
         self.service_managed = service_managed
         # The instance status. Valid values:
         # - creating: Being created.
@@ -54,6 +58,9 @@ class ListInstancesRequest(DaraModel):
 
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+
+        if self.managed_service_code is not None:
+            result['ManagedServiceCode'] = self.managed_service_code
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -79,6 +86,9 @@ class ListInstancesRequest(DaraModel):
 
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+
+        if m.get('ManagedServiceCode') is not None:
+            self.managed_service_code = m.get('ManagedServiceCode')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

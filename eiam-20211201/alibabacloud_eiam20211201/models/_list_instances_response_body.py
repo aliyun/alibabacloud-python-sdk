@@ -76,7 +76,7 @@ class ListInstancesResponseBodyInstances(DaraModel):
         service_managed: bool = None,
         status: str = None,
     ):
-        # The instance creation time, in UNIX timestamp format. Unit: milliseconds.
+        # The time when the instance was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # Indicates whether cross-region replication is enabled. Valid values: enabled or disabled.
         self.cross_region_replication = cross_region_replication
@@ -90,11 +90,11 @@ class ListInstancesResponseBodyInstances(DaraModel):
         self.instance_failover_status = instance_failover_status
         # The instance ID.
         self.instance_id = instance_id
-        # The service code of the Alibaba Cloud service that manages the instance.
+        # The service code of the cloud service that manages the instance.
         self.managed_service_code = managed_service_code
         # The replication configuration. This parameter is returned only when CrossRegionReplication is set to enabled.
         self.replication_configuration = replication_configuration
-        # Indicates whether the instance is managed by an Alibaba Cloud service.
+        # Indicates whether the instance is managed by a cloud service.
         self.service_managed = service_managed
         # The instance status. Valid values:
         # - creating: Being created.
@@ -203,7 +203,7 @@ class ListInstancesResponseBodyInstancesReplicationConfiguration(DaraModel):
         self.primary_instance_id = primary_instance_id
         # The region ID of the primary instance.
         self.primary_instance_region_id = primary_instance_region_id
-        # The creation time of the disaster recovery data replication, in UNIX timestamp format. Unit: milliseconds.
+        # The time when the disaster recovery data replication was created. The value is a UNIX timestamp in milliseconds.
         self.replication_create_time = replication_create_time
 
     def validate(self):
