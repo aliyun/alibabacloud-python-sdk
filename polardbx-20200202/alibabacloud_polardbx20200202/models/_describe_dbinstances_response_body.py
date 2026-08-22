@@ -132,19 +132,7 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
     ):
         # The name of the log node.
         self.cdc_instance_name = cdc_instance_name
-        # The CN node specifications. Valid values:
-        # 
-        # - **polarx.x4.medium.2e**: 2 cores, 8 GB
-        # - **polarx.x4.large.2e**: 4 cores, 16 GB
-        # - **polarx.x8.large.2e**: 4 cores, 32 GB
-        # - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
-        # - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
-        # - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
-        # - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
-        # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
-        # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
-        # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
-        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+        # The CN node specifications.
         self.cn_node_class_code = cn_node_class_code
         # The number of CN nodes.
         self.cn_node_count = cn_node_count
@@ -154,10 +142,7 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         self.columnar_read_dbinstances = columnar_read_dbinstances
         # The commodity code.
         self.commodity_code = commodity_code
-        # Indicates whether the instance contains the multi-stream log service. Valid values:
-        # 
-        # - **true**: The instance contains the multi-stream log service.
-        # - **false**: The instance does not contain the multi-stream log service.
+        # Specifies whether the instance contains the multi-stream log service. Valid values:
         self.contain_binlog_x = contain_binlog_x
         self.cpu_type = cpu_type
         # The creation time.
@@ -166,26 +151,11 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The database type.
         self.dbtype = dbtype
-        # The database version.
+        # The database engine version.
         self.dbversion = dbversion
         # The database description.
         self.description = description
-        # The DN node specifications. Valid values:
-        # - **mysql.n2.medium.25**: 2 cores, 4 GB
-        # - **mysql.n4.medium.25**: 2 cores, 8 GB
-        # - **mysql.x8.medium.25**: 2 cores, 16 GB
-        # - **mysql.n2.large.25**: 4 cores, 8 GB
-        # - **mysql.n4.large.25**: 4 cores, 16 GB
-        # - **mysql.x8.large.25**: 4 cores, 32 GB
-        # - **mysql.n2.xlarge.25**: 8 cores, 16 GB
-        # - **mysql.n4.xlarge.25**: 8 cores, 32 GB
-        # - **mysql.x8.xlarge.25**: 8 cores, 64 GB
-        # - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
-        # - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
-        # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
-        # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
-        # - **mysql.st.8xlarge.25**: 60 cores, 470 GB
-        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+        # The DN node specifications.
         self.dn_node_class_code = dn_node_class_code
         # The number of DN nodes.
         self.dn_node_count = dn_node_count
@@ -213,9 +183,6 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         # The list of nodes.
         self.nodes = nodes
         # The billing method of the instance. Valid values:
-        # 
-        # - **Postpaid**: pay-as-you-go.
-        # - **Prepaid**: subscription.
         self.pay_type = pay_type
         self.primary_instance_id = primary_instance_id
         # The primary zone.
@@ -231,9 +198,6 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         # The secondary zone.
         self.secondary_zone = secondary_zone
         # The instance edition. Valid values:
-        # 
-        # - **enterprise**: Enterprise Edition.
-        # - **standard**: Standard Edition.
         self.series = series
         # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
         self.status = status
@@ -241,25 +205,16 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         # The storage usage.
         self.storage_used = storage_used
         # Indicates whether the instance supports multi-stream. Valid values:
-        # 
-        # - **true**: Yes.
-        # - **false**: No.
         self.support_binlog_x = support_binlog_x
         # The set of tags.
         self.tag_set = tag_set
-        # The third zone in the three-zone deployment.
+        # The tertiary active zone for three-zone deployment.
         self.tertiary_zone = tertiary_zone
-        # The topology type. Valid values:
-        # 
-        # - **3azones**: three-zone deployment.
-        # - **1azone**: single-zone deployment.
+        # The topology type.
         # 
         # This parameter is required.
         self.topology_type = topology_type
-        # The instance type. Valid values:
-        # 
-        # - **ReadWrite**: primary instance.
-        # - **ReadOnly**: read-only instance.
+        # The instance type.
         self.type = type
         # VPC ID。
         self.vpcid = vpcid

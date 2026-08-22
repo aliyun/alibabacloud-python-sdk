@@ -17,9 +17,9 @@ class ModifyDBInstanceConnectionStringResponseBody(DaraModel):
         self.code = code
         # The new connection string information.
         self.data = data
-        # The response message. This is typically an error message.
+        # The response message, which is typically an error message.
         self.message = message
-        # The request ID. It is a unique identifier.
+        # The request ID, which is a unique identifier.
         self.request_id = request_id
 
     def validate(self):

@@ -17,7 +17,7 @@ class DescribeAvailableCrossRegionsResponseBody(DaraModel):
     ):
         # The parameter details.
         self.data = data
-        # The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+        # The additional information returned. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id

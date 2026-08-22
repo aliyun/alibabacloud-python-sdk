@@ -25,7 +25,7 @@ class UntagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type. Set this parameter to PolarDBXInstance.
+        # The resource type. The value must be PolarDBXInstance.
         # 
         # This parameter is required.
         self.resource_type = resource_type

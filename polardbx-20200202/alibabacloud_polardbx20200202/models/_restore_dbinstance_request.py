@@ -39,44 +39,133 @@ class RestoreDBInstanceRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to enable auto-renewal. Default value: true.
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.auto_renew = auto_renew
+        # The backup set ID.
         self.backup_set_id = backup_set_id
+        # The region where the backup set resides.
+        # 
         # This parameter is required.
         self.backup_set_region = backup_set_region
+        # The number of compute nodes.
         self.cnnode_count = cnnode_count
+        # The client token used to ensure the idempotence of the request. Use a different value for each request.
         self.client_token = client_token
+        # The name of the source instance.
+        # 
         # This parameter is required.
         self.clone_instance_name = clone_instance_name
+        # The compute node specifications. Valid values:
+        # 
+        # - polarx.x4.medium.2e: 2 cores, 8 GB
+        # - polarx.x4.large.2e: 4 cores, 16 GB
+        # - polarx.x8.large.2e: 4 cores, 32 GB
+        # - polarx.x4.xlarge.2e: 8 cores, 32 GB
+        # - polarx.x8.xlarge.2e: 8 cores, 64 GB
+        # - polarx.x4.2xlarge.2e: 16 cores, 64 GB
+        # - polarx.x8.2xlarge.2e: 16 cores, 128 GB
+        # - polarx.x4.4xlarge.2e: 32 cores, 128 GB
+        # - polarx.x8.4xlarge.2e: 32 cores, 256 GB
+        # - polarx.st.8xlarge.2e: 60 cores, 470 GB
+        # - polarx.st.12xlarge.2e: 90 cores, 720 GB
         self.cn_class = cn_class
+        # The node specifications. Valid values:
+        # 
+        # - polarx.x4.medium.2e: 2 cores, 8 GB
+        # - polarx.x4.large.2e: 4 cores, 16 GB
+        # - polarx.x8.large.2e: 4 cores, 32 GB
+        # - polarx.x4.xlarge.2e: 8 cores, 32 GB
+        # - polarx.x8.xlarge.2e: 8 cores, 64 GB
+        # - polarx.x4.2xlarge.2e: 16 cores, 64 GB
+        # - polarx.x8.2xlarge.2e: 16 cores, 128 GB
+        # - polarx.x4.4xlarge.2e: 32 cores, 128 GB
+        # - polarx.x8.4xlarge.2e: 32 cores, 256 GB
+        # - polarx.st.8xlarge.2e: 60 cores, 470 GB
+        # - polarx.st.12xlarge.2e: 90 cores, 720 GB
         self.dbnode_class = dbnode_class
+        # The number of instance nodes. The minimum value is 2.
         self.dbnode_count = dbnode_count
+        # The number of storage nodes.
         self.dnnode_count = dnnode_count
+        # The storage node specifications. Valid values:
+        # 
+        # - mysql.n4.medium.25: 2 cores, 8 GB
+        # - mysql.n4.large.25: 4 cores, 16 GB
+        # - mysql.x8.large.25: 4 cores, 32 GB
+        # - mysql.n4.xlarge.25: 8 cores, 32 GB
+        # - mysql.x8.xlarge.25: 8 cores, 64 GB
+        # - mysql.n4.2xlarge.25: 16 cores, 64 GB
+        # - mysql.x8.2xlarge.25: 16 cores, 128 GB
+        # - mysql.x4.4xlarge.25: 32 cores, 128 GB
+        # - mysql.x8.4xlarge.25: 32 cores, 256 GB
+        # - mysql.st.8xlarge.25: 60 cores, 470 GB
+        # - mysql.st.12xlarge.25: 90 cores, 720 GB
         self.dn_class = dn_class
+        # The MySQL DPI engine version. Valid values: 5.7 and 8.0.
+        # 
         # This parameter is required.
         self.engine_version = engine_version
+        # The GDN role.
         self.gdn_role = gdn_role
+        # The network type. Only VPC is supported.
         self.network_type = network_type
+        # The billing method of the instance.
+        # 
+        # - PREPAY: subscription
+        # - POSTPAY: pay-as-you-go
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The billing cycle. Valid values for subscription: Year and Month. Default value for pay-as-you-go: Hour.
         self.period = period
+        # The primary zone.
         self.primary_zone = primary_zone
+        # The recovery type.
+        # 
         # This parameter is required.
         self.recovery_type_code = recovery_type_code
+        # The region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID. This parameter can be left empty. This parameter is not supported.
         self.resource_group_id = resource_group_id
+        # The point in time to which you want to restore the instance. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.restore_time = restore_time
+        # The secondary zone.
         self.secondary_zone = secondary_zone
+        # The instance series. Valid values:
+        # 
+        # - enterprise: Enterprise Edition.
+        # - standard: Standard Edition.
         self.series = series
+        # The region where the source instance resides.
+        # 
         # This parameter is required.
         self.source_instance_region = source_instance_region
+        # The storage type.
         self.storage_type = storage_type
+        # The zone for Three-zone deployment.
         self.tertiary_zone = tertiary_zone
+        # The topology type. Valid values:
+        # 
+        # - 3azones: three-zone deployment.
+        # - 1azone: single-zone deployment.
+        # 
         # This parameter is required.
         self.topology_type = topology_type
+        # The subscription duration. Specify the number of months or years.
+        # 
+        # > If Period is set to Year, valid values of this parameter are 1, 2, and 3.
         self.used_time = used_time
+        # VPC ID。
         self.vpcid = vpcid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The zone of the instance.
         self.zone_id = zone_id
 
     def validate(self):

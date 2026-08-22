@@ -11,8 +11,11 @@ class CreateGdnStandbyMemberResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The name of the created instance.
         self.dbinstance_name = dbinstance_name
+        # The order ID.
         self.order_id = order_id
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

@@ -16,11 +16,11 @@ class ExecuteMetaQueryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The instance details.
+        # The list of instance details.
         self.data = data
-        # The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+        # The additional information returned. If the request is successful, **success** is returned. If the request fails, the corresponding error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id

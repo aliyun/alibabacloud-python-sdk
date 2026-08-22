@@ -27,9 +27,9 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The database name.
         self.dbname = dbname
-        # The node ID. You can specify multiple node IDs separated by commas (`,`). This parameter is required when you query storage nodes.
+        # The node IDs. You can specify multiple node IDs separated by commas (`,`). This parameter is required when you query storage nodes.
         self.dbnode_ids = dbnode_ids
-        # The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format (UTC).
+        # The start time of the query. Format: YYYY-MM-ddTHH:mmZ (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -43,7 +43,7 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format (UTC).
+        # The start time of the query. Format: YYYY-MM-ddTHH:mmZ (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

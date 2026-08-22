@@ -10,7 +10,7 @@ class AttachColumnarInstanceRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
-        # The instance name or ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

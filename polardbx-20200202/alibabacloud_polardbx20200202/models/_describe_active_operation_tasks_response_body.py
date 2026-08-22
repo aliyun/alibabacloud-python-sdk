@@ -112,15 +112,15 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
     ):
         # Indicates whether cancellation is allowed. Valid values:
         # 
-        # - **0**: Not allowed.
-        # - **1**: Allowed.
+        # - **0**: not allowed.
+        # - **1**: allowed.
         self.allow_cancel = allow_cancel
         # Indicates whether modification is allowed. Valid values:
         # 
-        # - **0**: Not allowed.
-        # - **1**: Allowed.
+        # - **0**: not allowed.
+        # - **1**: allowed.
         self.allow_change = allow_change
-        # The change level. This parameter can be ignored.
+        # The change level (can be ignored).
         self.change_level = change_level
         # The change level in English.
         self.change_level_en = change_level_en
@@ -138,11 +138,11 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.deadline = deadline
         # The task ID.
         self.id = id
-        # The impact. This parameter is not returned.
+        # The impact (not output).
         self.impact = impact
-        # The impact description in English.
+        # The impact in English.
         self.impact_en = impact_en
-        # The impact description in Chinese.
+        # The impact in Chinese.
         self.impact_zh = impact_zh
         # The description.
         self.ins_comment = ins_comment
@@ -154,14 +154,14 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.prepare_interval = prepare_interval
         # The region.
         self.region = region
-        # The result information. This parameter can be ignored.
+        # The result information (can be ignored).
         self.result_info = result_info
         # The start time.
         self.start_time = start_time
         # The status. Valid values:
         # 
-        # - **3**: Pending. 
-        # - **4**: Running.
+        # - **3**: pending. 
+        # - **4**: running.
         self.status = status
         # The list of child instances.
         self.sub_ins_names = sub_ins_names
@@ -169,9 +169,9 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.switch_time = switch_time
         # The task type.
         self.task_type = task_type
-        # The task type in English. This parameter can be ignored.
+        # The task type in English (can be ignored).
         self.task_type_en = task_type_en
-        # The task type in Chinese. This parameter can be ignored.
+        # The task type in Chinese (can be ignored).
         self.task_type_zh = task_type_zh
 
     def validate(self):

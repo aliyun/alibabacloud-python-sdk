@@ -16,7 +16,7 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token for the next query. If this parameter is empty, no more results exist.
+        # The token used to start the next query.
         self.next_token = next_token
         # The region ID.
         # 
@@ -89,9 +89,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The label key.
+        # The key of the label.
         self.key = key
-        # The label value.
+        # The value of the label.
         self.value = value
 
     def validate(self):

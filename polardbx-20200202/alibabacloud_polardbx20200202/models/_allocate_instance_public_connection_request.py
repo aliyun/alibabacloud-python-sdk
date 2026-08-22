@@ -25,6 +25,7 @@ class AllocateInstancePublicConnectionRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The name of the instance CN cluster, such as default.
         self.instance_cluster_name = instance_cluster_name
         self.owner_account = owner_account
         self.owner_id = owner_id

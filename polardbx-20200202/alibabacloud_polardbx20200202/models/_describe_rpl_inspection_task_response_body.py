@@ -132,7 +132,7 @@ class DescribeRplInspectionTaskResponseBodyDataInspectionTaskList(DaraModel):
         self.stage = stage
         # The task status.
         self.status = status
-        # The timestamp of the most recent task update.
+        # The timestamp when the task was last updated.
         self.update_time = update_time
 
     def validate(self):

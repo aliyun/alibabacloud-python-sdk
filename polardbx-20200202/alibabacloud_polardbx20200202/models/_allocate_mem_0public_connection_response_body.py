@@ -44,8 +44,6 @@ class AllocateMem0PublicConnectionResponseBody(DaraModel):
 
         return self
 
-
-
 class AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
     def __init__(
         self,

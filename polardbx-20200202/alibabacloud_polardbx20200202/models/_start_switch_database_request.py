@@ -32,7 +32,7 @@ class StartSwitchDatabaseRequest(DaraModel):
         # 
         # This parameter is required.
         self.slink_task_id = slink_task_id
-        # The endpoint of the primary node of the source instance, which is typically the internal or public endpoint of the instance.
+        # The endpoint of the primary node of the source instance. This is typically the internal or public endpoint of the instance.
         self.src_main_connect_string = src_main_connect_string
         # The port number of the primary node of the source instance.
         self.src_main_port = src_main_port

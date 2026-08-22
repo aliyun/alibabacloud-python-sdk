@@ -32,7 +32,7 @@ class CreateAccountRequest(DaraModel):
         # - ReadWrite
         # - ReadOnly
         # - DMLOnly
-        # - DDLOnly.
+        # - DDLOnly
         self.account_privilege = account_privilege
         # The name of the instance.
         # 
@@ -40,17 +40,17 @@ class CreateAccountRequest(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The name of the database to be authorized.
         self.dbname = dbname
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The name of the security administrator account.
         # 
-        # > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
+        # > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
         self.security_account_name = security_account_name
         # The password of the security administrator account.
         # 
-        # > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
+        # > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
         self.security_account_password = security_account_password
 
     def validate(self):

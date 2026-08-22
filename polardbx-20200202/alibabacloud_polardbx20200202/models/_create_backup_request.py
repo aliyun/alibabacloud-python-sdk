@@ -11,7 +11,7 @@ class CreateBackupRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
-        # The backup type. Currently, only "0" is supported, which indicates fast backup.
+        # The backup type. Currently, only "0" is supported, which indicates a fast backup.
         self.backup_type = backup_type
         # The name of the instance.
         # 

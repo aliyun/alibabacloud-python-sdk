@@ -103,7 +103,7 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
         # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
         # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
-        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
         self.cn_node_class_code = cn_node_class_code
         # The number of CN nodes.
         self.cn_node_count = cn_node_count
@@ -147,7 +147,7 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
         # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
         # - **mysql.st.8xlarge.25**: 60 cores, 470 GB
-        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB
         self.dn_node_class_code = dn_node_class_code
         # The number of DN nodes.
         self.dn_node_count = dn_node_count
@@ -157,14 +157,14 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         self.expire_date = expire_date
         # Indicates whether the instance has expired. Valid values:
         # 
-        # - **true**: The instance has expired.
-        # - **false**: The instance is running normally.
+        # - **true**: Expired.
+        # - **false**: Not expired.
         self.expired = expired
         # The ID of the primary instance. If this parameter is not returned, the instance is a primary instance.
         self.id = id
         # The DPI engine version of the instance. This is an internal parameter.
         self.kind_code = kind_code
-        # The Long-Term Support (LTS) version number.
+        # The LTS version numbers.
         # 
         # This parameter is required.
         self.ltsversions = ltsversions
@@ -176,8 +176,8 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         # - **ManualLock**: Manually locked.
         # - **LockByExpiration**: Automatically locked due to instance expiration.
         # - **LockByRestoration**: Automatically locked before instance rollback.
-        # - **LockByDiskQuota**: Automatically locked because the instance storage is full.
-        # - **LockReadInstanceByDiskQuota**: Automatically locked because the read-only instance storage is full.
+        # - **LockByDiskQuota**: Automatically locked due to insufficient disk space.
+        # - **LockReadInstanceByDiskQuota**: Read-only instance automatically locked due to insufficient disk space.
         self.lock_mode = lock_mode
         # The end time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
         self.maintain_end_time = maintain_end_time
@@ -194,13 +194,13 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         self.pay_type = pay_type
         # The port of the instance endpoint.
         self.port = port
-        # The names of the read-only instances.
+        # The names of read-only instances.
         self.read_dbinstances = read_dbinstances
         # The region where the instance resides.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The three-role mode status. Valid values:
+        # Indicates whether the three-role mode is enabled. Valid values:
         # 
         # - **false**: Disabled.
         # - **true**: Enabled.
@@ -210,7 +210,7 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         # - **disabled**: Disabled.
         # - **enabled**: Enabled.
         # - **processing**: Being processed.
-        # - **unknown**: Unknown. The instance may be disconnected.
+        # - **unknown**: Unknown. This may be caused by the instance being unreachable.
         self.rights_separation_status = rights_separation_status
         # The instance edition. Valid values:
         # 
@@ -657,7 +657,7 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs(DaraModel):
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The internal cloud instance ID within the VPC. You can ignore this parameter.
+        # The internal CloudInstanceId within the VPC. This parameter can be ignored.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

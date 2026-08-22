@@ -54,7 +54,7 @@ class DescribeCustomEndpointListResponseBodyData(DaraModel):
     ):
         # Indicates whether the node can be deleted.
         self.can_delete_count = can_delete_count
-        # The details of the endpoints.
+        # The endpoint details.
         self.endpoints = endpoints
 
     def validate(self):
@@ -110,24 +110,24 @@ class DescribeCustomEndpointListResponseBodyDataEndpoints(DaraModel):
         self.cn_names = cn_names
         # The endpoint of the instance.
         self.connection_string = connection_string
-        # The ID of the custom endpoint.
+        # The custom endpoint ID.
         self.custom_endpoint_id = custom_endpoint_id
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The name of the custom endpoint.
+        # The name.
         self.name = name
-        # Indicates whether a node automatically joins the cluster and starts providing services after the node is added or recovered.
+        # Specifies whether the node automatically joins the cluster and starts providing services after being added or restored.
         self.node_auto_enter = node_auto_enter
-        # To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY** and specify the **NodeId** parameter.
-        # >  In other cases, you do not need to specify this parameter or you can set it to **MASTER**.
+        # If you want to query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY** along with the specific **NodeId**.
+        # >  In other cases, you do not need to specify this parameter (or set it to **MASTER**).
         self.node_role = node_role
-        # The port used to connect to the instance.
+        # The connection port of the instance.
         self.port = port
-        # The status of the custom endpoint.
+        # The status.
         self.status = status
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC) in which the endpoint resides.
+        # The ID of the VPC where the endpoint resides.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -96,9 +96,9 @@ class DescribeBackupSetResponseBodyData(DaraModel):
         # - **0**: Fast backup.
         # - **1**: Consistent backup.
         self.backup_type = backup_type
-        # The time when the backup started.
+        # The backup start time.
         self.begin_time = begin_time
-        # The time when the backup ended.
+        # The backup end time.
         self.end_time = end_time
         # The list of OSS information for the backup set.
         self.osslist = osslist
@@ -191,7 +191,7 @@ class DescribeBackupSetResponseBodyDataOSSList(DaraModel):
         self.backup_set_file = backup_set_file
         # The public download URL.
         self.download_link = download_link
-        # The internal network download URL for the OSS file.
+        # The internal network OSS download URL.
         self.intranet_download_link = intranet_download_link
         # The expiration time of the OSS file link.
         self.link_expired_time = link_expired_time

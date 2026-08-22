@@ -90,7 +90,7 @@ class DescribeColumnarInfoResponseBodyData(DaraModel):
         self.check_sum_switch = check_sum_switch
         # The instance specifications.
         self.class_code = class_code
-        # The new column store version.
+        # The new version of the column store.
         # 
         # This parameter is required.
         self.columnar_new_version = columnar_new_version
@@ -237,7 +237,7 @@ class DescribeColumnarInfoResponseBodyDataInstanceTopologyListPhysicalNodes(Dara
         status: str = None,
         version: str = None,
     ):
-        # The zone in which the instance resides.
+        # The zone where the instance resides.
         self.azone = azone
         # The disk size, in MB.
         self.disk = disk

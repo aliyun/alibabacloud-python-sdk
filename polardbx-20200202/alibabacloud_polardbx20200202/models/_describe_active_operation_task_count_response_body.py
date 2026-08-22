@@ -11,7 +11,7 @@ class DescribeActiveOperationTaskCountResponseBody(DaraModel):
         request_id: str = None,
         task_count: int = None,
     ):
-        # Indicates whether a pop-up notification is required. Valid values:
+        # Indicates whether a pop-up window is required. Valid values:
         # 
         # - 1: Required.
         # - 0: Not required.

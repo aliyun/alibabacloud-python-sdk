@@ -18,7 +18,9 @@ class ModifyActiveOperationMaintainConfRequest(DaraModel):
         # 
         # This parameter is required.
         self.cycle_time = cycle_time
-        # The cycle mode. Set this parameter to Week.
+        # The cycle mode. Valid values:
+        # 
+        # - Week: weekly.
         # 
         # This parameter is required.
         self.cycle_type = cycle_type

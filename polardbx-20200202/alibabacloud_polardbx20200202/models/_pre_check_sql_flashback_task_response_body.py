@@ -13,9 +13,9 @@ class PreCheckSqlFlashbackTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result set.
+        # The returned result set.
         self.data = data
-        # The response message. This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+        # The response message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -101,9 +101,10 @@ class PreCheckSqlFlashbackTaskResponseBodyDataCheckResult(DaraModel):
         has_table: bool = None,
         support_binlog_row_query_events: bool = None,
     ):
-        # Indicates whether valid binary log files exist. This value is used to determine whether operations such as flashback and synchronization can be performed.
+        # Indicates whether valid binary log files exist. This is used to determine whether flashback or synchronization operations can be performed.
         self.binlog_exists = binlog_exists
         # Indicates whether the recording of original SQL query events is enabled. Valid values:
+        # 
         # - **true**: Enabled.
         # - **false**: Disabled.
         self.binlog_row_query_event_enabled = binlog_row_query_event_enabled
@@ -112,6 +113,7 @@ class PreCheckSqlFlashbackTaskResponseBodyDataCheckResult(DaraModel):
         # Indicates whether the table exists. Valid values: true and false.
         self.has_table = has_table
         # Indicates whether log recording is supported. Valid values:
+        # 
         # - **true**: Supported.
         # - **false**: Not supported.
         self.support_binlog_row_query_events = support_binlog_row_query_events

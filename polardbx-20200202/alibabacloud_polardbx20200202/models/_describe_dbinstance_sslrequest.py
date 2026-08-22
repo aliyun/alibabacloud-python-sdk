@@ -12,7 +12,7 @@ class DescribeDBInstanceSSLRequest(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The ID of the region where the instance resides.
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

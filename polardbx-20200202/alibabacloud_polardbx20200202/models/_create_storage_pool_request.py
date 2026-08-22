@@ -25,7 +25,7 @@ class CreateStoragePoolRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The list of storage pool DNs.
         self.storage_pool_dnlist = storage_pool_dnlist
-        # The name of the storage pool.
+        # The storage pool name.
         self.storage_pool_name = storage_pool_name
 
     def validate(self):

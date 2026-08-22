@@ -11,15 +11,15 @@ class DescribeShowStorageInfoRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The name of the instance.
+        # The instance name.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

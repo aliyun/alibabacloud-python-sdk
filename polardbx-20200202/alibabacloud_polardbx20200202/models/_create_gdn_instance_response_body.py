@@ -16,7 +16,7 @@ class CreateGdnInstanceResponseBody(DaraModel):
         # The instance details.
         self.data = data
         # The returned message.
-        # > This parameter is empty when the request succeeds. If the request fails, an error message is returned, such as an error code.
+        # > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
         self.message = message
         # Id of the request
         self.request_id = request_id

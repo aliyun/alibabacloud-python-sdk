@@ -15,7 +15,7 @@ class CreateStructureImportTaskResponseBody(DaraModel):
     ):
         # The returned result.
         self.data = data
-        # The response message. > This parameter is empty if the request is successful. If the request fails, an exception message is returned, such as an error code.
+        # The returned message. > This parameter is empty if the request is successful. If the request fails, an exception message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id

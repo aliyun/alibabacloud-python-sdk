@@ -20,7 +20,7 @@ class DescribeServiceAccountResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The instance details.
         self.data = data
-        # The response message. "success" is returned if the request was successful. Otherwise, the corresponding error code is returned.
+        # The response message. "success" is returned if the request was successful. Otherwise, an error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -81,7 +81,7 @@ class DescribeServiceAccountResponseBodyData(DaraModel):
         self,
         service_accounts: List[main_models.DescribeServiceAccountResponseBodyDataServiceAccounts] = None,
     ):
-        # The service account in the list.
+        # A service account in the list.
         self.service_accounts = service_accounts
 
     def validate(self):
@@ -122,7 +122,7 @@ class DescribeServiceAccountResponseBodyDataServiceAccounts(DaraModel):
     ):
         # The account name.
         self.account_name = account_name
-        # The time when the account was created.
+        # The creation time.
         self.created_time = created_time
         # The service account type.
         self.service_account_type = service_account_type

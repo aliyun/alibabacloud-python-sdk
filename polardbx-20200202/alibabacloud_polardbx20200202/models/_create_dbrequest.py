@@ -23,19 +23,19 @@ class CreateDBRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The permissions granted to the account on the database. Valid values:
+        # The permissions granted to the account on the new database. Valid values:
         # 
-        # - **ReadWrite**: read and write permissions.
-        # - **ReadOnly**: read-only permissions.
-        # - **DMLOnly**: DML-only permissions.
-        # - **DDLOnly**: DDL-only permissions.
+        # - **ReadWrite**
+        # - **ReadOnly**
+        # - **DMLOnly**
+        # - **DDLOnly**
         self.account_privilege = account_privilege
-        # The character set. Valid values:
+        # The character set. The following character sets are supported:
         # 
         # - **utf8**
         # - **gbk**
         # - **latin1**
-        # - **utf8mb4**.
+        # - **utf8mb4**
         # 
         # This parameter is required.
         self.charset = charset
@@ -49,10 +49,10 @@ class CreateDBRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_name = db_name
-        # The mode of the database. Valid values:
+        # The mode selected when creating the database. Valid values:
         # 
-        # - **auto**: The database supports automatic partitioning. You do not need to specify a partition key when you create a table.
-        # - **drds**: The database does not support automatic partitioning. You must use the dedicated sharding syntax to specify sharding keys when you create a table.
+        # - **auto**: The database supports automatic partitioning. You do not need to specify a partition key when creating a table.
+        # - **drds**: The database does not support automatic partitioning. You must use dedicated table and database sharding syntax and specify sharding keys when creating a table.
         self.mode = mode
         # The region where the instance resides.
         # 
@@ -60,11 +60,11 @@ class CreateDBRequest(DaraModel):
         self.region_id = region_id
         # The name of the security administrator account.
         # 
-        # > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
+        # > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is optional.
         self.security_account_name = security_account_name
         # The password of the security administrator account.
         # 
-        # > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is not required.
+        # > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is optional.
         self.security_account_password = security_account_password
         self.storage_pool_name = storage_pool_name
 

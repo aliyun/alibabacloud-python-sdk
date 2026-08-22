@@ -15,11 +15,11 @@ class SkipCurrentStepResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The return message. This parameter is empty when the request succeeds. When the request fails, exception information such as error codes is returned.
+        # The returned message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

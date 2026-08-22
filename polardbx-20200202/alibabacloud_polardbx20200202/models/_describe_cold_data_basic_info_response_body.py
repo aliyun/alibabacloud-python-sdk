@@ -62,7 +62,7 @@ class DescribeColdDataBasicInfoResponseBodyData(DaraModel):
         self.backup_set_count = backup_set_count
         # The data size of valid backup sets.
         self.backup_set_space_size = backup_set_space_size
-        # The underlying storage cloud service.
+        # The underlying storage cloud product.
         self.cloud_product = cloud_product
         # The data size of cold storage.
         self.current_space_size = current_space_size

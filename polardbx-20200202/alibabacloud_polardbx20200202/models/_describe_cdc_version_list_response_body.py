@@ -13,7 +13,7 @@ class DescribeCdcVersionListResponseBody(DaraModel):
         data: main_models.DescribeCdcVersionListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data struct.
+        # The response struct.
         self.data = data
         # Id of the request
         self.request_id = request_id

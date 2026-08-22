@@ -26,7 +26,7 @@ class DescribePolarxDataNodesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The keyword for filtering query results.
+        # The keyword for filtering results.
         self.search_key = search_key
 
     def validate(self):

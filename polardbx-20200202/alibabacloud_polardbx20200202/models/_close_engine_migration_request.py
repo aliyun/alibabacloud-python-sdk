@@ -18,9 +18,9 @@ class CloseEngineMigrationRequest(DaraModel):
         # 
         # Default value: **true**.
         # 
-        # > Disabling binlog restarts your PolarDB cluster.
+        # > Disabling binlog will restart your PolarDB cluster.
         self.continue_enable_binlog = continue_enable_binlog
-        # The name of the instance.
+        # The instance name.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

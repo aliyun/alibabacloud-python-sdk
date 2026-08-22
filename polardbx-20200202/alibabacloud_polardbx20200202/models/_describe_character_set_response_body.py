@@ -75,7 +75,7 @@ class DescribeCharacterSetResponseBodyData(DaraModel):
         # - utf8mb4
         # - gbk
         # - latin1
-        # - utf8.
+        # - utf8
         self.character_set = character_set
         # The storage type of databases in the target instance. Currently, only polarx is supported.
         self.engine = engine

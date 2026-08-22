@@ -16,8 +16,8 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
         self.config = config
         # Indicates whether the O&M window has been configured. Valid values:
         # 
-        # - 1: configured.
-        # - 0: not configured.
+        # - 1: Configured.
+        # - 0: Not configured.
         self.has_config = has_config
         # The request ID.
         self.request_id = request_id
@@ -73,9 +73,9 @@ class DescribeActiveOperationMaintainConfResponseBodyConfig(DaraModel):
         self.cycle_time = cycle_time
         # The cycle type.
         self.cycle_type = cycle_type
-        # The end time of the O&M window.
+        # The O&M end time.
         self.maintain_end_time = maintain_end_time
-        # The start time of the O&M window.
+        # The O&M start time.
         self.maintain_start_time = maintain_start_time
         # The modification time.
         self.modified_time = modified_time

@@ -11,7 +11,7 @@ class EnableRightsSeparationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Returns success if the request is successful, or returns the corresponding error code if an error occurs.
+        # Returns success if the request is successful, or the corresponding error code if an error occurs.
         self.message = message
         # The unique request ID.
         self.request_id = request_id

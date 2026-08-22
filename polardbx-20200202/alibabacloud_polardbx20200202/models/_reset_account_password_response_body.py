@@ -11,7 +11,7 @@ class ResetAccountPasswordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response message. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+        # The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
         self.message = message
         # The unique request ID.
         self.request_id = request_id

@@ -19,7 +19,7 @@ class DescribeDBInstanceConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The ID of the region in which the instance resides.
+        # The ID of the region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -150,8 +150,8 @@ class DescribeSqlFlashbackTaskListResponseBodyDataSqlFlashbackTasks(DaraModel):
         self.recall_status = recall_status
         # The recall type. Valid values:
         # 
-        # - **0**: exact match.
-        # - **1**: fuzzy match.
+        # - **0**: Exact match.
+        # - **1**: Fuzzy match.
         self.recall_type = recall_type
         # The end time specified when the SQL flashback task was submitted. Unit: ms.
         self.search_end_time = search_end_time

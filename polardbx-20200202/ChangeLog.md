@@ -1,3 +1,37 @@
+2026-08-22 Version: 3.11.0
+- Support API AllocateContext0PublicConnection.
+- Support API CreateContext0.
+- Support API CreateOpenSearch.
+- Support API CreateOpenSearchAccount.
+- Support API CreateOpenSearchWhitelistGroup.
+- Support API DeleteContext0.
+- Support API DeleteOpenSearch.
+- Support API DeleteOpenSearchAccount.
+- Support API DeleteOpenSearchWhitelistGroup.
+- Support API DescribeContext0Config.
+- Support API DescribeContext0Info.
+- Support API DescribeContext0SecurityIps.
+- Support API DescribeOpenSearchAccountInfo.
+- Support API DescribeOpenSearchConnectionInfo.
+- Support API DescribeOpenSearchInfo.
+- Support API DescribeOpenSearchInstances.
+- Support API DescribeOpenSearchNodes.
+- Support API DescribeOpenSearchResourceUsage.
+- Support API DescribeOpenSearchTopology.
+- Support API DescribeOpenSearchWhitelists.
+- Support API DisableOpenSearchPublicEndpoint.
+- Support API EnableOpenSearchPublicEndpoint.
+- Support API ModifyContext0SecurityIps.
+- Support API ModifyOpenSearchAccessProtocol.
+- Support API ModifyOpenSearchClass.
+- Support API ModifyOpenSearchWhitelistGroup.
+- Support API ReleaseContext0PublicConnection.
+- Support API ResetOpenSearchPassword.
+- Support API RestartOpenSearch.
+- Support API ScaleInOpenSearch.
+- Support API ScaleOutOpenSearch.
+
+
 2026-07-16 Version: 3.9.0
 - Support API CreateServiceAccount.
 - Support API DeleteServiceAccount.

@@ -23,15 +23,15 @@ class ModifyCustomEndpointRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The name of the custom endpoint.
+        # The name.
         self.name = name
         # Specifies whether a node automatically joins the cluster and starts providing services after it is added or recovered.
         self.node_auto_enter = node_auto_enter
-        # The node IDs.
+        # node ids
         self.node_ids = node_ids
         # The role of the node.
         self.node_role = node_role
-        # The region ID of the instance.
+        # The region in which the instance resides.
         self.region_id = region_id
 
     def validate(self):

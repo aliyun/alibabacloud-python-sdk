@@ -41,7 +41,7 @@ class CreateSQLEvaluateTaskRequest(DaraModel):
         self.slink_task_desc = slink_task_desc
         # The task ID for executing the target SQL statement. > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the IDs of target SQL statements supported by PolarDB-X.
         self.slink_task_id = slink_task_id
-        # Specifies whether to enable the source ApsaraDB RDS instance. Valid values: ***enable**: enabled. ***disabled**: disabled.
+        # Specifies whether to enable the source ApsaraDB RDS instance. Valid values: **enable**: enables the source ApsaraDB RDS instance. **disabled**: disables the source ApsaraDB RDS instance.
         self.src_db = src_db
         # The port number of the source instance. Valid values: 3200 to 3999. > This parameter is available and required only when **DBEndpointInstanceType** is set to **polardb-o**.
         self.src_password = src_password

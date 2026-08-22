@@ -15,7 +15,7 @@ class DescribeEvaluateAndImportTaskResponseBody(DaraModel):
     ):
         # The returned result.
         self.data = data
-        # The response message. This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+        # The response message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id

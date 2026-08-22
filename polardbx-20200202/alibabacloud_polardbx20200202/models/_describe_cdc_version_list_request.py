@@ -11,10 +11,10 @@ class DescribeCdcVersionListRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The name of the instance.
+        # The instance name.
         self.dbinstance_name = dbinstance_name
         self.instance_name = instance_name
-        # The ID of the region in which the instance resides.
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

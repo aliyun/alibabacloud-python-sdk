@@ -14,7 +14,7 @@ class DescribeSqlFlashbackTaskListRequest(DaraModel):
         # 
         # This parameter is required.
         self.polardbx_instance_id = polardbx_instance_id
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

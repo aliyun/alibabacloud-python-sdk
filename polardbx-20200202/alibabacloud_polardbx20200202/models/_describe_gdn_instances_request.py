@@ -18,9 +18,9 @@ class DescribeGdnInstancesRequest(DaraModel):
         self.filter_type = filter_type
         # The filter value for querying resources.
         # 
-        # This parameter is used together with FilterKey.
+        # Used together with FilterKey.
         self.filter_value = filter_value
-        # The GDN ID.
+        # GDN ID。
         self.gdnid = gdnid
         # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_num = page_num

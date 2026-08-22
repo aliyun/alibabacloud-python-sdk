@@ -16,7 +16,7 @@ class ModifyDBInstanceConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.config_name = config_name
-        # If configName is set to ENABLE_CONSISTENT_REPLICA_READ, the valid values are "true" and "false".
+        # If configName is set to ENABLE_CONSISTENT_REPLICA_READ, valid values are "true" and "false".
         # 
         # This parameter is required.
         self.config_value = config_value

@@ -13,17 +13,17 @@ class CreateSuperAccountRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
-        # The description of the account.
+        # The account description.
         self.account_description = account_description
-        # The name of the account.
+        # The account name.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The password of the account.
+        # The account password.
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The name of the instance.
+        # The instance name.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

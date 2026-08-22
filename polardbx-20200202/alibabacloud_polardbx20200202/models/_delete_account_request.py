@@ -17,21 +17,21 @@ class DeleteAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The name of the instance.
+        # The instance name.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The name of the security administrator account.
         # 
-        # > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, you do not need to specify this parameter.
+        # > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
         self.security_account_name = security_account_name
         # The password of the security administrator account.
         # 
-        # > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, you do not need to specify this parameter.
+        # > If three-role mode is enabled, this parameter is required. If three-role mode is not enabled, this parameter is not required.
         self.security_account_password = security_account_password
 
     def validate(self):

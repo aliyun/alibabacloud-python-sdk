@@ -135,9 +135,10 @@ class DescribeParameterTemplatesResponseBodyDataParameters(DaraModel):
         self.parameter_value = parameter_value
         # Indicates whether the parameter can be modified. Valid values:
         # 
-        # - **0**: The parameter cannot be modified.
-        # - **1**: The parameter can be modified.
+        # - **0**: Cannot be modified.
+        # - **1**: Can be modified.
         self.revisable = revisable
+        # Indicates whether the parameter can be modified by the user.
         self.user_changable = user_changable
 
     def validate(self):

@@ -90,7 +90,7 @@ class CreateServiceAccountResponseBodyData(DaraModel):
         self.already_exists = already_exists
         # The request ID.
         self.request_id = request_id
-        # The type of the service account.
+        # The service account type.
         self.service_account_type = service_account_type
         # The instance status.
         self.status = status

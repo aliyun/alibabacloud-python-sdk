@@ -13,8 +13,8 @@ class CheckSqlAuditSlsStatusResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # The enabling status of the SQL audit feature. Valid values:
-        # * enabled: Enabled.
-        # * disabled: Not enabled.
+        # * enabled: The feature is enabled.
+        # * disabled: The feature is disabled.
         self.status = status
 
     def validate(self):

@@ -23,7 +23,7 @@ class UpdateDBInstanceTDERequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The global resource descriptor of the role, used to specify a specific role. For details, see RAM role overview.
+        # The global resource descriptor of the role. This parameter specifies the role to assume. For details, see RAM role overview.
         self.role_arn = role_arn
         # Enables TDE. Set this parameter to 1.
         # 

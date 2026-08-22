@@ -21,7 +21,7 @@ class ModifyEngineMigrationResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The additional information. The value success is returned if the request succeeds. Otherwise, an error code is returned.
+        # The additional information. The value success is returned if the request is successful. Otherwise, an error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id

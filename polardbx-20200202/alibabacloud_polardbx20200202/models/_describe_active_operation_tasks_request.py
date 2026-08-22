@@ -21,23 +21,23 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         task_type: str = None,
     ):
         # Specifies whether cancellation is allowed. Valid values:
-        # - **-1**: All O&M events can be canceled.
-        # - **0**: Not allowed. 
-        # - **1**: Allowed.
+        # - **-1**: allows cancellation of all O&M events.
+        # - **0**: not allowed. 
+        # - **1**: allowed.
         self.allow_cancel = allow_cancel
         # Specifies whether the time can be modified. Valid values:
         # 
-        # - **-1**: The time of all O&M events can be modified.
-        # - **0**: Not allowed. 
-        # - **1**: Allowed.
+        # - **-1**: allows modification of the time for all O&M events.
+        # - **0**: not allowed. 
+        # - **1**: allowed.
         self.allow_change = allow_change
         # The change level. Default value: all. Valid values:
         # 
-        # - **all**: All levels of exception recovery and system O&M.
-        # - **S0**: Exception recovery.
-        # - **S1**: System O&M.
+        # - **all**: all levels of exception repair and system O&M.
+        # - **S0**: exception repair.
+        # - **S1**: system O&M.
         self.change_level = change_level
-        # The database type. Set this parameter to polarx.
+        # The database type. Set the value to polarx.
         self.db_type = db_type
         # The instance name. Default value: empty string.
         self.ins_name = ins_name
@@ -55,11 +55,11 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         self.region_id = region_id
         # The task status. Valid values:
         # 
-        # - **-1**: All pending and running tasks.  
-        # - **3**: Pending. 
-        # - **4**: Running.
+        # - **-1**: all pending and running tasks.  
+        # - **3**: pending. 
+        # - **4**: running.
         self.status = status
-        # The task type. A value of all indicates that all tasks of the user are queried. Set this parameter to all.
+        # The task type. A value of all indicates that all tasks of the user are queried. Set the value to all.
         self.task_type = task_type
 
     def validate(self):

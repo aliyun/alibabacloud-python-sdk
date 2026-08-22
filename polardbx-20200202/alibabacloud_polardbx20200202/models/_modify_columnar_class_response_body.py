@@ -11,7 +11,7 @@ class ModifyColumnarClassResponseBody(DaraModel):
         data: main_models.ModifyColumnarClassResponseBodyData = None,
         request_id: str = None,
     ):
-        # The policy details returned.
+        # The returned policy details.
         self.data = data
         # Id of the request
         self.request_id = request_id

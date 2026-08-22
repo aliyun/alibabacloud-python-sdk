@@ -17,7 +17,7 @@ class CloseEngineMigrationResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The new endpoint information.
+        # The new endpoint connection string information.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

@@ -24,16 +24,16 @@ class CreateCustomEndpointRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether a node automatically joins the cluster and starts providing services after the node is added or recovered.
+        # Specifies whether the node automatically joins the cluster and starts providing services after being added or recovered.
         # 
         # This parameter is required.
         self.node_auto_enter = node_auto_enter
-        # The IDs of the monitored nodes when RemindUnit (object type) is set to NODE (node). Separate multiple IDs with commas (,). A maximum of 50 nodes can be monitored per rule.
+        # The IDs of the monitored nodes when RemindUnit (object type) is set to NODE (node). Separate multiple IDs with commas (,). A maximum of 50 nodes can be monitored by a single rule.
         # 
         # This parameter is required.
         self.node_ids = node_ids
-        # To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY** and specify the **NodeId** parameter.
-        # >  In other cases, you do not need to specify this parameter or you can set it to **MASTER**.
+        # To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, specify **READONLY** for this parameter along with the specific **NodeId**.
+        # >  In other cases, you do not need to specify this parameter or you can specify **MASTER**.
         self.node_role = node_role
         # The region in which the instance resides.
         self.region_id = region_id

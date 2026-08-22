@@ -67,18 +67,18 @@ class Client(OpenApiClient):
             'eu-west-1-oxs': 'polardbx.aliyuncs.com',
             'me-east-1': 'polardbx.aliyuncs.com',
             'rus-west-1-pop': 'polardbx.aliyuncs.com',
-            'us-west-1': 'polardbx.us-west-1.aliyuncs.com',
-            'us-east-1': 'polardbx.us-east-1.aliyuncs.com',
+            'cn-beijing': 'polardbx.cn-beijing.aliyuncs.com',
+            'cn-qingdao': 'polardbx.cn-qingdao.aliyuncs.com',
+            'cn-shanghai': 'polardbx.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'polardbx.cn-hongkong.aliyuncs.com',
             'cn-zhangjiakou': 'polardbx.cn-zhangjiakou.aliyuncs.com',
             'cn-shenzhen': 'polardbx.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'polardbx.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'polardbx.cn-qingdao.aliyuncs.com',
-            'cn-huhehaote': 'polardbx.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'polardbx.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'polardbx.cn-hangzhou.aliyuncs.com',
             'cn-chengdu': 'polardbx.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'polardbx.cn-beijing.aliyuncs.com',
-            'ap-southeast-1': 'polardbx.ap-southeast-1.aliyuncs.com'
+            'ap-southeast-1': 'polardbx.ap-southeast-1.aliyuncs.com',
+            'cn-huhehaote': 'polardbx.cn-huhehaote.aliyuncs.com',
+            'cn-hangzhou': 'polardbx.cn-hangzhou.aliyuncs.com',
+            'us-east-1': 'polardbx.us-east-1.aliyuncs.com',
+            'us-west-1': 'polardbx.us-west-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('polardbx', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -258,6 +258,178 @@ class Client(OpenApiClient):
     ) -> main_models.AllocateColdDataVolumeResponse:
         runtime = RuntimeOptions()
         return await self.allocate_cold_data_volume_with_options_async(request, runtime)
+
+    def allocate_context_0public_connection_with_options(
+        self,
+        request: main_models.AllocateContext0PublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocateContext0PublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocateContext0PublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocateContext0PublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allocate_context_0public_connection_with_options_async(
+        self,
+        request: main_models.AllocateContext0PublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocateContext0PublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocateContext0PublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocateContext0PublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allocate_context_0public_connection(
+        self,
+        request: main_models.AllocateContext0PublicConnectionRequest,
+    ) -> main_models.AllocateContext0PublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.allocate_context_0public_connection_with_options(request, runtime)
+
+    async def allocate_context_0public_connection_async(
+        self,
+        request: main_models.AllocateContext0PublicConnectionRequest,
+    ) -> main_models.AllocateContext0PublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.allocate_context_0public_connection_with_options_async(request, runtime)
+
+    def allocate_context_dbpublic_connection_with_options(
+        self,
+        request: main_models.AllocateContextDBPublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocateContextDBPublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocateContextDBPublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocateContextDBPublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allocate_context_dbpublic_connection_with_options_async(
+        self,
+        request: main_models.AllocateContextDBPublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocateContextDBPublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocateContextDBPublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocateContextDBPublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allocate_context_dbpublic_connection(
+        self,
+        request: main_models.AllocateContextDBPublicConnectionRequest,
+    ) -> main_models.AllocateContextDBPublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.allocate_context_dbpublic_connection_with_options(request, runtime)
+
+    async def allocate_context_dbpublic_connection_async(
+        self,
+        request: main_models.AllocateContextDBPublicConnectionRequest,
+    ) -> main_models.AllocateContextDBPublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.allocate_context_dbpublic_connection_with_options_async(request, runtime)
 
     def allocate_instance_public_connection_with_options(
         self,
@@ -1209,6 +1381,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
+    def create_context_0with_options(
+        self,
+        request: main_models.CreateContext0Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContext0Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.open_search_instance_name):
+            query['OpenSearchInstanceName'] = request.open_search_instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContext0',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContext0Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_context_0with_options_async(
+        self,
+        request: main_models.CreateContext0Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContext0Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.open_search_instance_name):
+            query['OpenSearchInstanceName'] = request.open_search_instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContext0',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContext0Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_context_0(
+        self,
+        request: main_models.CreateContext0Request,
+    ) -> main_models.CreateContext0Response:
+        runtime = RuntimeOptions()
+        return self.create_context_0with_options(request, runtime)
+
+    async def create_context_0_async(
+        self,
+        request: main_models.CreateContext0Request,
+    ) -> main_models.CreateContext0Response:
+        runtime = RuntimeOptions()
+        return await self.create_context_0with_options_async(request, runtime)
+
+    def create_context_dbwith_options(
+        self,
+        request: main_models.CreateContextDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.open_search_instance_name):
+            query['OpenSearchInstanceName'] = request.open_search_instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextDB',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextDBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_context_dbwith_options_async(
+        self,
+        request: main_models.CreateContextDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContextDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.open_search_instance_name):
+            query['OpenSearchInstanceName'] = request.open_search_instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContextDB',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContextDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_context_db(
+        self,
+        request: main_models.CreateContextDBRequest,
+    ) -> main_models.CreateContextDBResponse:
+        runtime = RuntimeOptions()
+        return self.create_context_dbwith_options(request, runtime)
+
+    async def create_context_db_async(
+        self,
+        request: main_models.CreateContextDBRequest,
+    ) -> main_models.CreateContextDBResponse:
+        runtime = RuntimeOptions()
+        return await self.create_context_dbwith_options_async(request, runtime)
+
     def create_custom_endpoint_with_options(
         self,
         request: main_models.CreateCustomEndpointRequest,
@@ -2129,6 +2457,320 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_mem_0with_options_async(request, runtime)
 
+    def create_open_search_with_options(
+        self,
+        request: main_models.CreateOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not DaraCore.is_null(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.instance_spec):
+            query['InstanceSpec'] = request.instance_spec
+        if not DaraCore.is_null(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.topology_type):
+            query['TopologyType'] = request.topology_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_2):
+            query['Zone2'] = request.zone_2
+        if not DaraCore.is_null(request.zone_3):
+            query['Zone3'] = request.zone_3
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_open_search_with_options_async(
+        self,
+        request: main_models.CreateOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not DaraCore.is_null(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.instance_spec):
+            query['InstanceSpec'] = request.instance_spec
+        if not DaraCore.is_null(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.topology_type):
+            query['TopologyType'] = request.topology_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.zone_2):
+            query['Zone2'] = request.zone_2
+        if not DaraCore.is_null(request.zone_3):
+            query['Zone3'] = request.zone_3
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_open_search(
+        self,
+        request: main_models.CreateOpenSearchRequest,
+    ) -> main_models.CreateOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return self.create_open_search_with_options(request, runtime)
+
+    async def create_open_search_async(
+        self,
+        request: main_models.CreateOpenSearchRequest,
+    ) -> main_models.CreateOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return await self.create_open_search_with_options_async(request, runtime)
+
+    def create_open_search_account_with_options(
+        self,
+        request: main_models.CreateOpenSearchAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSearchAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSearchAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSearchAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_open_search_account_with_options_async(
+        self,
+        request: main_models.CreateOpenSearchAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSearchAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSearchAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSearchAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_open_search_account(
+        self,
+        request: main_models.CreateOpenSearchAccountRequest,
+    ) -> main_models.CreateOpenSearchAccountResponse:
+        runtime = RuntimeOptions()
+        return self.create_open_search_account_with_options(request, runtime)
+
+    async def create_open_search_account_async(
+        self,
+        request: main_models.CreateOpenSearchAccountRequest,
+    ) -> main_models.CreateOpenSearchAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.create_open_search_account_with_options_async(request, runtime)
+
+    def create_open_search_whitelist_group_with_options(
+        self,
+        request: main_models.CreateOpenSearchWhitelistGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSearchWhitelistGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.ips):
+            query['IPs'] = request.ips
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSearchWhitelistGroup',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSearchWhitelistGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_open_search_whitelist_group_with_options_async(
+        self,
+        request: main_models.CreateOpenSearchWhitelistGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSearchWhitelistGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.ips):
+            query['IPs'] = request.ips
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSearchWhitelistGroup',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSearchWhitelistGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_open_search_whitelist_group(
+        self,
+        request: main_models.CreateOpenSearchWhitelistGroupRequest,
+    ) -> main_models.CreateOpenSearchWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        return self.create_open_search_whitelist_group_with_options(request, runtime)
+
+    async def create_open_search_whitelist_group_async(
+        self,
+        request: main_models.CreateOpenSearchWhitelistGroupRequest,
+    ) -> main_models.CreateOpenSearchWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_open_search_whitelist_group_with_options_async(request, runtime)
+
     def create_polardbx_supabase_instance_with_options(
         self,
         request: main_models.CreatePolardbxSupabaseInstanceRequest,
@@ -2254,6 +2896,80 @@ class Client(OpenApiClient):
     ) -> main_models.CreatePolardbxSupabaseInstanceResponse:
         runtime = RuntimeOptions()
         return await self.create_polardbx_supabase_instance_with_options_async(request, runtime)
+
+    def create_pxfuse_with_options(
+        self,
+        request: main_models.CreatePxfuseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfuseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfuse',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfuseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pxfuse_with_options_async(
+        self,
+        request: main_models.CreatePxfuseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfuseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfuse',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfuseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pxfuse(
+        self,
+        request: main_models.CreatePxfuseRequest,
+    ) -> main_models.CreatePxfuseResponse:
+        runtime = RuntimeOptions()
+        return self.create_pxfuse_with_options(request, runtime)
+
+    async def create_pxfuse_async(
+        self,
+        request: main_models.CreatePxfuseRequest,
+    ) -> main_models.CreatePxfuseResponse:
+        runtime = RuntimeOptions()
+        return await self.create_pxfuse_with_options_async(request, runtime)
 
     def create_rpl_inspection_task_with_options(
         self,
@@ -3131,6 +3847,154 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
+    def delete_context_0with_options(
+        self,
+        request: main_models.DeleteContext0Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContext0Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContext0',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContext0Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_context_0with_options_async(
+        self,
+        request: main_models.DeleteContext0Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContext0Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContext0',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContext0Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_context_0(
+        self,
+        request: main_models.DeleteContext0Request,
+    ) -> main_models.DeleteContext0Response:
+        runtime = RuntimeOptions()
+        return self.delete_context_0with_options(request, runtime)
+
+    async def delete_context_0_async(
+        self,
+        request: main_models.DeleteContext0Request,
+    ) -> main_models.DeleteContext0Response:
+        runtime = RuntimeOptions()
+        return await self.delete_context_0with_options_async(request, runtime)
+
+    def delete_context_dbwith_options(
+        self,
+        request: main_models.DeleteContextDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextDB',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextDBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_context_dbwith_options_async(
+        self,
+        request: main_models.DeleteContextDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContextDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContextDB',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContextDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_context_db(
+        self,
+        request: main_models.DeleteContextDBRequest,
+    ) -> main_models.DeleteContextDBResponse:
+        runtime = RuntimeOptions()
+        return self.delete_context_dbwith_options(request, runtime)
+
+    async def delete_context_db_async(
+        self,
+        request: main_models.DeleteContextDBRequest,
+    ) -> main_models.DeleteContextDBResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_context_dbwith_options_async(request, runtime)
+
     def delete_custom_endpoint_with_options(
         self,
         request: main_models.DeleteCustomEndpointRequest,
@@ -3583,6 +4447,236 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_mem_0with_options_async(request, runtime)
 
+    def delete_open_search_with_options(
+        self,
+        request: main_models.DeleteOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_open_search_with_options_async(
+        self,
+        request: main_models.DeleteOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_open_search(
+        self,
+        request: main_models.DeleteOpenSearchRequest,
+    ) -> main_models.DeleteOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return self.delete_open_search_with_options(request, runtime)
+
+    async def delete_open_search_async(
+        self,
+        request: main_models.DeleteOpenSearchRequest,
+    ) -> main_models.DeleteOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_open_search_with_options_async(request, runtime)
+
+    def delete_open_search_account_with_options(
+        self,
+        request: main_models.DeleteOpenSearchAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSearchAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSearchAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSearchAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_open_search_account_with_options_async(
+        self,
+        request: main_models.DeleteOpenSearchAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSearchAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSearchAccount',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSearchAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_open_search_account(
+        self,
+        request: main_models.DeleteOpenSearchAccountRequest,
+    ) -> main_models.DeleteOpenSearchAccountResponse:
+        runtime = RuntimeOptions()
+        return self.delete_open_search_account_with_options(request, runtime)
+
+    async def delete_open_search_account_async(
+        self,
+        request: main_models.DeleteOpenSearchAccountRequest,
+    ) -> main_models.DeleteOpenSearchAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_open_search_account_with_options_async(request, runtime)
+
+    def delete_open_search_whitelist_group_with_options(
+        self,
+        request: main_models.DeleteOpenSearchWhitelistGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSearchWhitelistGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSearchWhitelistGroup',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSearchWhitelistGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_open_search_whitelist_group_with_options_async(
+        self,
+        request: main_models.DeleteOpenSearchWhitelistGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSearchWhitelistGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSearchWhitelistGroup',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSearchWhitelistGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_open_search_whitelist_group(
+        self,
+        request: main_models.DeleteOpenSearchWhitelistGroupRequest,
+    ) -> main_models.DeleteOpenSearchWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        return self.delete_open_search_whitelist_group_with_options(request, runtime)
+
+    async def delete_open_search_whitelist_group_async(
+        self,
+        request: main_models.DeleteOpenSearchWhitelistGroupRequest,
+    ) -> main_models.DeleteOpenSearchWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_open_search_whitelist_group_with_options_async(request, runtime)
+
     def delete_polardbx_supabase_instance_with_options(
         self,
         request: main_models.DeletePolardbxSupabaseInstanceRequest,
@@ -3656,6 +4750,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePolardbxSupabaseInstanceResponse:
         runtime = RuntimeOptions()
         return await self.delete_polardbx_supabase_instance_with_options_async(request, runtime)
+
+    def delete_pxfuse_with_options(
+        self,
+        request: main_models.DeletePxfuseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePxfuseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePxfuse',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePxfuseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_pxfuse_with_options_async(
+        self,
+        request: main_models.DeletePxfuseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePxfuseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePxfuse',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePxfuseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_pxfuse(
+        self,
+        request: main_models.DeletePxfuseRequest,
+    ) -> main_models.DeletePxfuseResponse:
+        runtime = RuntimeOptions()
+        return self.delete_pxfuse_with_options(request, runtime)
+
+    async def delete_pxfuse_async(
+        self,
+        request: main_models.DeletePxfuseRequest,
+    ) -> main_models.DeletePxfuseResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_pxfuse_with_options_async(request, runtime)
 
     def delete_service_account_with_options(
         self,
@@ -5332,6 +6500,450 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeComponentPropetiesResponse:
         runtime = RuntimeOptions()
         return await self.describe_component_propeties_with_options_async(request, runtime)
+
+    def describe_context_0config_with_options(
+        self,
+        request: main_models.DescribeContext0ConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContext0ConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContext0Config',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContext0ConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_context_0config_with_options_async(
+        self,
+        request: main_models.DescribeContext0ConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContext0ConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContext0Config',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContext0ConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_context_0config(
+        self,
+        request: main_models.DescribeContext0ConfigRequest,
+    ) -> main_models.DescribeContext0ConfigResponse:
+        runtime = RuntimeOptions()
+        return self.describe_context_0config_with_options(request, runtime)
+
+    async def describe_context_0config_async(
+        self,
+        request: main_models.DescribeContext0ConfigRequest,
+    ) -> main_models.DescribeContext0ConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_context_0config_with_options_async(request, runtime)
+
+    def describe_context_0info_with_options(
+        self,
+        request: main_models.DescribeContext0InfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContext0InfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContext0Info',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContext0InfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_context_0info_with_options_async(
+        self,
+        request: main_models.DescribeContext0InfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContext0InfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContext0Info',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContext0InfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_context_0info(
+        self,
+        request: main_models.DescribeContext0InfoRequest,
+    ) -> main_models.DescribeContext0InfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_context_0info_with_options(request, runtime)
+
+    async def describe_context_0info_async(
+        self,
+        request: main_models.DescribeContext0InfoRequest,
+    ) -> main_models.DescribeContext0InfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_context_0info_with_options_async(request, runtime)
+
+    def describe_context_0security_ips_with_options(
+        self,
+        request: main_models.DescribeContext0SecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContext0SecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContext0SecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContext0SecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_context_0security_ips_with_options_async(
+        self,
+        request: main_models.DescribeContext0SecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContext0SecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContext0SecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContext0SecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_context_0security_ips(
+        self,
+        request: main_models.DescribeContext0SecurityIpsRequest,
+    ) -> main_models.DescribeContext0SecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_context_0security_ips_with_options(request, runtime)
+
+    async def describe_context_0security_ips_async(
+        self,
+        request: main_models.DescribeContext0SecurityIpsRequest,
+    ) -> main_models.DescribeContext0SecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_context_0security_ips_with_options_async(request, runtime)
+
+    def describe_context_dbconfig_with_options(
+        self,
+        request: main_models.DescribeContextDBConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContextDBConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContextDBConfig',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContextDBConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_context_dbconfig_with_options_async(
+        self,
+        request: main_models.DescribeContextDBConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContextDBConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContextDBConfig',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContextDBConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_context_dbconfig(
+        self,
+        request: main_models.DescribeContextDBConfigRequest,
+    ) -> main_models.DescribeContextDBConfigResponse:
+        runtime = RuntimeOptions()
+        return self.describe_context_dbconfig_with_options(request, runtime)
+
+    async def describe_context_dbconfig_async(
+        self,
+        request: main_models.DescribeContextDBConfigRequest,
+    ) -> main_models.DescribeContextDBConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_context_dbconfig_with_options_async(request, runtime)
+
+    def describe_context_dbinfo_with_options(
+        self,
+        request: main_models.DescribeContextDBInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContextDBInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContextDBInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContextDBInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_context_dbinfo_with_options_async(
+        self,
+        request: main_models.DescribeContextDBInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContextDBInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContextDBInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContextDBInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_context_dbinfo(
+        self,
+        request: main_models.DescribeContextDBInfoRequest,
+    ) -> main_models.DescribeContextDBInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_context_dbinfo_with_options(request, runtime)
+
+    async def describe_context_dbinfo_async(
+        self,
+        request: main_models.DescribeContextDBInfoRequest,
+    ) -> main_models.DescribeContextDBInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_context_dbinfo_with_options_async(request, runtime)
+
+    def describe_context_dbsecurity_ips_with_options(
+        self,
+        request: main_models.DescribeContextDBSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContextDBSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContextDBSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContextDBSecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_context_dbsecurity_ips_with_options_async(
+        self,
+        request: main_models.DescribeContextDBSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeContextDBSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeContextDBSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeContextDBSecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_context_dbsecurity_ips(
+        self,
+        request: main_models.DescribeContextDBSecurityIpsRequest,
+    ) -> main_models.DescribeContextDBSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_context_dbsecurity_ips_with_options(request, runtime)
+
+    async def describe_context_dbsecurity_ips_async(
+        self,
+        request: main_models.DescribeContextDBSecurityIpsRequest,
+    ) -> main_models.DescribeContextDBSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_context_dbsecurity_ips_with_options_async(request, runtime)
 
     def describe_custom_endpoint_list_with_options(
         self,
@@ -7093,6 +8705,614 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_open_backup_set_with_options_async(request, runtime)
 
+    def describe_open_search_account_info_with_options(
+        self,
+        request: main_models.DescribeOpenSearchAccountInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchAccountInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchAccountInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchAccountInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_search_account_info_with_options_async(
+        self,
+        request: main_models.DescribeOpenSearchAccountInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchAccountInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchAccountInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchAccountInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_search_account_info(
+        self,
+        request: main_models.DescribeOpenSearchAccountInfoRequest,
+    ) -> main_models.DescribeOpenSearchAccountInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_open_search_account_info_with_options(request, runtime)
+
+    async def describe_open_search_account_info_async(
+        self,
+        request: main_models.DescribeOpenSearchAccountInfoRequest,
+    ) -> main_models.DescribeOpenSearchAccountInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_open_search_account_info_with_options_async(request, runtime)
+
+    def describe_open_search_connection_info_with_options(
+        self,
+        request: main_models.DescribeOpenSearchConnectionInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchConnectionInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchConnectionInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchConnectionInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_search_connection_info_with_options_async(
+        self,
+        request: main_models.DescribeOpenSearchConnectionInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchConnectionInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchConnectionInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchConnectionInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_search_connection_info(
+        self,
+        request: main_models.DescribeOpenSearchConnectionInfoRequest,
+    ) -> main_models.DescribeOpenSearchConnectionInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_open_search_connection_info_with_options(request, runtime)
+
+    async def describe_open_search_connection_info_async(
+        self,
+        request: main_models.DescribeOpenSearchConnectionInfoRequest,
+    ) -> main_models.DescribeOpenSearchConnectionInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_open_search_connection_info_with_options_async(request, runtime)
+
+    def describe_open_search_info_with_options(
+        self,
+        request: main_models.DescribeOpenSearchInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_search_info_with_options_async(
+        self,
+        request: main_models.DescribeOpenSearchInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_search_info(
+        self,
+        request: main_models.DescribeOpenSearchInfoRequest,
+    ) -> main_models.DescribeOpenSearchInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_open_search_info_with_options(request, runtime)
+
+    async def describe_open_search_info_async(
+        self,
+        request: main_models.DescribeOpenSearchInfoRequest,
+    ) -> main_models.DescribeOpenSearchInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_open_search_info_with_options_async(request, runtime)
+
+    def describe_open_search_instances_with_options(
+        self,
+        request: main_models.DescribeOpenSearchInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchInstances',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_search_instances_with_options_async(
+        self,
+        request: main_models.DescribeOpenSearchInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchInstances',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_search_instances(
+        self,
+        request: main_models.DescribeOpenSearchInstancesRequest,
+    ) -> main_models.DescribeOpenSearchInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_open_search_instances_with_options(request, runtime)
+
+    async def describe_open_search_instances_async(
+        self,
+        request: main_models.DescribeOpenSearchInstancesRequest,
+    ) -> main_models.DescribeOpenSearchInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_open_search_instances_with_options_async(request, runtime)
+
+    def describe_open_search_nodes_with_options(
+        self,
+        request: main_models.DescribeOpenSearchNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchNodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchNodes',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_search_nodes_with_options_async(
+        self,
+        request: main_models.DescribeOpenSearchNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchNodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchNodes',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_search_nodes(
+        self,
+        request: main_models.DescribeOpenSearchNodesRequest,
+    ) -> main_models.DescribeOpenSearchNodesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_open_search_nodes_with_options(request, runtime)
+
+    async def describe_open_search_nodes_async(
+        self,
+        request: main_models.DescribeOpenSearchNodesRequest,
+    ) -> main_models.DescribeOpenSearchNodesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_open_search_nodes_with_options_async(request, runtime)
+
+    def describe_open_search_resource_usage_with_options(
+        self,
+        request: main_models.DescribeOpenSearchResourceUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchResourceUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchResourceUsage',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchResourceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_search_resource_usage_with_options_async(
+        self,
+        request: main_models.DescribeOpenSearchResourceUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchResourceUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchResourceUsage',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchResourceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_search_resource_usage(
+        self,
+        request: main_models.DescribeOpenSearchResourceUsageRequest,
+    ) -> main_models.DescribeOpenSearchResourceUsageResponse:
+        runtime = RuntimeOptions()
+        return self.describe_open_search_resource_usage_with_options(request, runtime)
+
+    async def describe_open_search_resource_usage_async(
+        self,
+        request: main_models.DescribeOpenSearchResourceUsageRequest,
+    ) -> main_models.DescribeOpenSearchResourceUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_open_search_resource_usage_with_options_async(request, runtime)
+
+    def describe_open_search_topology_with_options(
+        self,
+        request: main_models.DescribeOpenSearchTopologyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchTopologyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchTopology',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchTopologyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_search_topology_with_options_async(
+        self,
+        request: main_models.DescribeOpenSearchTopologyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchTopologyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchTopology',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchTopologyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_search_topology(
+        self,
+        request: main_models.DescribeOpenSearchTopologyRequest,
+    ) -> main_models.DescribeOpenSearchTopologyResponse:
+        runtime = RuntimeOptions()
+        return self.describe_open_search_topology_with_options(request, runtime)
+
+    async def describe_open_search_topology_async(
+        self,
+        request: main_models.DescribeOpenSearchTopologyRequest,
+    ) -> main_models.DescribeOpenSearchTopologyResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_open_search_topology_with_options_async(request, runtime)
+
+    def describe_open_search_whitelists_with_options(
+        self,
+        request: main_models.DescribeOpenSearchWhitelistsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchWhitelistsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchWhitelists',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchWhitelistsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_open_search_whitelists_with_options_async(
+        self,
+        request: main_models.DescribeOpenSearchWhitelistsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOpenSearchWhitelistsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeOpenSearchWhitelists',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeOpenSearchWhitelistsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_open_search_whitelists(
+        self,
+        request: main_models.DescribeOpenSearchWhitelistsRequest,
+    ) -> main_models.DescribeOpenSearchWhitelistsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_open_search_whitelists_with_options(request, runtime)
+
+    async def describe_open_search_whitelists_async(
+        self,
+        request: main_models.DescribeOpenSearchWhitelistsRequest,
+    ) -> main_models.DescribeOpenSearchWhitelistsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_open_search_whitelists_with_options_async(request, runtime)
+
     def describe_parameter_groups_with_options(
         self,
         request: main_models.DescribeParameterGroupsRequest,
@@ -7404,6 +9624,154 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePolarxDataNodesResponse:
         runtime = RuntimeOptions()
         return await self.describe_polarx_data_nodes_with_options_async(request, runtime)
+
+    def describe_pxfuse_info_with_options(
+        self,
+        request: main_models.DescribePxfuseInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfuseInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfuseInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfuseInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pxfuse_info_with_options_async(
+        self,
+        request: main_models.DescribePxfuseInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfuseInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfuseInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfuseInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pxfuse_info(
+        self,
+        request: main_models.DescribePxfuseInfoRequest,
+    ) -> main_models.DescribePxfuseInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pxfuse_info_with_options(request, runtime)
+
+    async def describe_pxfuse_info_async(
+        self,
+        request: main_models.DescribePxfuseInfoRequest,
+    ) -> main_models.DescribePxfuseInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pxfuse_info_with_options_async(request, runtime)
+
+    def describe_pxfuse_security_ips_with_options(
+        self,
+        request: main_models.DescribePxfuseSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfuseSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfuseSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfuseSecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pxfuse_security_ips_with_options_async(
+        self,
+        request: main_models.DescribePxfuseSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfuseSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfuseSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfuseSecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pxfuse_security_ips(
+        self,
+        request: main_models.DescribePxfuseSecurityIpsRequest,
+    ) -> main_models.DescribePxfuseSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pxfuse_security_ips_with_options(request, runtime)
+
+    async def describe_pxfuse_security_ips_async(
+        self,
+        request: main_models.DescribePxfuseSecurityIpsRequest,
+    ) -> main_models.DescribePxfuseSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pxfuse_security_ips_with_options_async(request, runtime)
 
     def describe_rds_vpcs_with_options(
         self,
@@ -9079,6 +11447,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
 
+    def disable_open_search_public_endpoint_with_options(
+        self,
+        request: main_models.DisableOpenSearchPublicEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableOpenSearchPublicEndpointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableOpenSearchPublicEndpoint',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableOpenSearchPublicEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_open_search_public_endpoint_with_options_async(
+        self,
+        request: main_models.DisableOpenSearchPublicEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableOpenSearchPublicEndpointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableOpenSearchPublicEndpoint',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableOpenSearchPublicEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_open_search_public_endpoint(
+        self,
+        request: main_models.DisableOpenSearchPublicEndpointRequest,
+    ) -> main_models.DisableOpenSearchPublicEndpointResponse:
+        runtime = RuntimeOptions()
+        return self.disable_open_search_public_endpoint_with_options(request, runtime)
+
+    async def disable_open_search_public_endpoint_async(
+        self,
+        request: main_models.DisableOpenSearchPublicEndpointRequest,
+    ) -> main_models.DisableOpenSearchPublicEndpointResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_open_search_public_endpoint_with_options_async(request, runtime)
+
     def disable_rights_separation_with_options(
         self,
         request: main_models.DisableRightsSeparationRequest,
@@ -9242,6 +11688,84 @@ class Client(OpenApiClient):
     ) -> main_models.DisableSqlAuditResponse:
         runtime = RuntimeOptions()
         return await self.disable_sql_audit_with_options_async(request, runtime)
+
+    def enable_open_search_public_endpoint_with_options(
+        self,
+        request: main_models.EnableOpenSearchPublicEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableOpenSearchPublicEndpointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableOpenSearchPublicEndpoint',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableOpenSearchPublicEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_open_search_public_endpoint_with_options_async(
+        self,
+        request: main_models.EnableOpenSearchPublicEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableOpenSearchPublicEndpointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableOpenSearchPublicEndpoint',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableOpenSearchPublicEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_open_search_public_endpoint(
+        self,
+        request: main_models.EnableOpenSearchPublicEndpointRequest,
+    ) -> main_models.EnableOpenSearchPublicEndpointResponse:
+        runtime = RuntimeOptions()
+        return self.enable_open_search_public_endpoint_with_options(request, runtime)
+
+    async def enable_open_search_public_endpoint_async(
+        self,
+        request: main_models.EnableOpenSearchPublicEndpointRequest,
+    ) -> main_models.EnableOpenSearchPublicEndpointResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_open_search_public_endpoint_with_options_async(request, runtime)
 
     def enable_rights_separation_with_options(
         self,
@@ -10193,6 +12717,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_columnar_class_with_options_async(request, runtime)
 
+    def modify_context_0security_ips_with_options(
+        self,
+        request: main_models.ModifyContext0SecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyContext0SecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyContext0SecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyContext0SecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_context_0security_ips_with_options_async(
+        self,
+        request: main_models.ModifyContext0SecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyContext0SecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyContext0SecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyContext0SecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_context_0security_ips(
+        self,
+        request: main_models.ModifyContext0SecurityIpsRequest,
+    ) -> main_models.ModifyContext0SecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_context_0security_ips_with_options(request, runtime)
+
+    async def modify_context_0security_ips_async(
+        self,
+        request: main_models.ModifyContext0SecurityIpsRequest,
+    ) -> main_models.ModifyContext0SecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_context_0security_ips_with_options_async(request, runtime)
+
+    def modify_context_dbsecurity_ips_with_options(
+        self,
+        request: main_models.ModifyContextDBSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyContextDBSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyContextDBSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyContextDBSecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_context_dbsecurity_ips_with_options_async(
+        self,
+        request: main_models.ModifyContextDBSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyContextDBSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyContextDBSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyContextDBSecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_context_dbsecurity_ips(
+        self,
+        request: main_models.ModifyContextDBSecurityIpsRequest,
+    ) -> main_models.ModifyContextDBSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_context_dbsecurity_ips_with_options(request, runtime)
+
+    async def modify_context_dbsecurity_ips_async(
+        self,
+        request: main_models.ModifyContextDBSecurityIpsRequest,
+    ) -> main_models.ModifyContextDBSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_context_dbsecurity_ips_with_options_async(request, runtime)
+
     def modify_custom_endpoint_with_options(
         self,
         request: main_models.ModifyCustomEndpointRequest,
@@ -10388,6 +13084,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBInstanceClassResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.align_storage_primary_azone):
+            query['AlignStoragePrimaryAzone'] = request.align_storage_primary_azone
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.cn_class):
@@ -10404,6 +13102,8 @@ class Client(OpenApiClient):
             query['SpecifiedDNScale'] = request.specified_dnscale
         if not DaraCore.is_null(request.specified_dnspec_map_json):
             query['SpecifiedDNSpecMapJson'] = request.specified_dnspec_map_json
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not DaraCore.is_null(request.switch_time):
             query['SwitchTime'] = request.switch_time
         if not DaraCore.is_null(request.switch_time_mode):
@@ -10436,6 +13136,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBInstanceClassResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.align_storage_primary_azone):
+            query['AlignStoragePrimaryAzone'] = request.align_storage_primary_azone
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.cn_class):
@@ -10452,6 +13154,8 @@ class Client(OpenApiClient):
             query['SpecifiedDNScale'] = request.specified_dnscale
         if not DaraCore.is_null(request.specified_dnspec_map_json):
             query['SpecifiedDNSpecMapJson'] = request.specified_dnspec_map_json
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not DaraCore.is_null(request.switch_time):
             query['SwitchTime'] = request.switch_time
         if not DaraCore.is_null(request.switch_time_mode):
@@ -11163,6 +13867,252 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_mem_0security_ips_with_options_async(request, runtime)
 
+    def modify_open_search_access_protocol_with_options(
+        self,
+        request: main_models.ModifyOpenSearchAccessProtocolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOpenSearchAccessProtocolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOpenSearchAccessProtocol',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOpenSearchAccessProtocolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_open_search_access_protocol_with_options_async(
+        self,
+        request: main_models.ModifyOpenSearchAccessProtocolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOpenSearchAccessProtocolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOpenSearchAccessProtocol',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOpenSearchAccessProtocolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_open_search_access_protocol(
+        self,
+        request: main_models.ModifyOpenSearchAccessProtocolRequest,
+    ) -> main_models.ModifyOpenSearchAccessProtocolResponse:
+        runtime = RuntimeOptions()
+        return self.modify_open_search_access_protocol_with_options(request, runtime)
+
+    async def modify_open_search_access_protocol_async(
+        self,
+        request: main_models.ModifyOpenSearchAccessProtocolRequest,
+    ) -> main_models.ModifyOpenSearchAccessProtocolResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_open_search_access_protocol_with_options_async(request, runtime)
+
+    def modify_open_search_class_with_options(
+        self,
+        request: main_models.ModifyOpenSearchClassRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOpenSearchClassResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_disk_size):
+            query['DBInstanceDiskSize'] = request.dbinstance_disk_size
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_class_code):
+            query['SearchClassCode'] = request.search_class_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOpenSearchClass',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOpenSearchClassResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_open_search_class_with_options_async(
+        self,
+        request: main_models.ModifyOpenSearchClassRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOpenSearchClassResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_disk_size):
+            query['DBInstanceDiskSize'] = request.dbinstance_disk_size
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_class_code):
+            query['SearchClassCode'] = request.search_class_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOpenSearchClass',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOpenSearchClassResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_open_search_class(
+        self,
+        request: main_models.ModifyOpenSearchClassRequest,
+    ) -> main_models.ModifyOpenSearchClassResponse:
+        runtime = RuntimeOptions()
+        return self.modify_open_search_class_with_options(request, runtime)
+
+    async def modify_open_search_class_async(
+        self,
+        request: main_models.ModifyOpenSearchClassRequest,
+    ) -> main_models.ModifyOpenSearchClassResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_open_search_class_with_options_async(request, runtime)
+
+    def modify_open_search_whitelist_group_with_options(
+        self,
+        request: main_models.ModifyOpenSearchWhitelistGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOpenSearchWhitelistGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.ips):
+            query['IPs'] = request.ips
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOpenSearchWhitelistGroup',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOpenSearchWhitelistGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_open_search_whitelist_group_with_options_async(
+        self,
+        request: main_models.ModifyOpenSearchWhitelistGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOpenSearchWhitelistGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.ips):
+            query['IPs'] = request.ips
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOpenSearchWhitelistGroup',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOpenSearchWhitelistGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_open_search_whitelist_group(
+        self,
+        request: main_models.ModifyOpenSearchWhitelistGroupRequest,
+    ) -> main_models.ModifyOpenSearchWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        return self.modify_open_search_whitelist_group_with_options(request, runtime)
+
+    async def modify_open_search_whitelist_group_async(
+        self,
+        request: main_models.ModifyOpenSearchWhitelistGroupRequest,
+    ) -> main_models.ModifyOpenSearchWhitelistGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_open_search_whitelist_group_with_options_async(request, runtime)
+
     def modify_parameter_with_options(
         self,
         request: main_models.ModifyParameterRequest,
@@ -11252,6 +14202,92 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyParameterResponse:
         runtime = RuntimeOptions()
         return await self.modify_parameter_with_options_async(request, runtime)
+
+    def modify_pxfuse_security_ips_with_options(
+        self,
+        request: main_models.ModifyPxfuseSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPxfuseSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPxfuseSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPxfuseSecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_pxfuse_security_ips_with_options_async(
+        self,
+        request: main_models.ModifyPxfuseSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPxfuseSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPxfuseSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPxfuseSecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_pxfuse_security_ips(
+        self,
+        request: main_models.ModifyPxfuseSecurityIpsRequest,
+    ) -> main_models.ModifyPxfuseSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_pxfuse_security_ips_with_options(request, runtime)
+
+    async def modify_pxfuse_security_ips_async(
+        self,
+        request: main_models.ModifyPxfuseSecurityIpsRequest,
+    ) -> main_models.ModifyPxfuseSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_pxfuse_security_ips_with_options_async(request, runtime)
 
     def modify_security_ips_with_options(
         self,
@@ -11741,6 +14777,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.release_cold_data_volume_with_options_async(request, runtime)
 
+    def release_context_0public_connection_with_options(
+        self,
+        request: main_models.ReleaseContext0PublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseContext0PublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleaseContext0PublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleaseContext0PublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_context_0public_connection_with_options_async(
+        self,
+        request: main_models.ReleaseContext0PublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseContext0PublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleaseContext0PublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleaseContext0PublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_context_0public_connection(
+        self,
+        request: main_models.ReleaseContext0PublicConnectionRequest,
+    ) -> main_models.ReleaseContext0PublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.release_context_0public_connection_with_options(request, runtime)
+
+    async def release_context_0public_connection_async(
+        self,
+        request: main_models.ReleaseContext0PublicConnectionRequest,
+    ) -> main_models.ReleaseContext0PublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.release_context_0public_connection_with_options_async(request, runtime)
+
+    def release_context_dbpublic_connection_with_options(
+        self,
+        request: main_models.ReleaseContextDBPublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseContextDBPublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleaseContextDBPublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleaseContextDBPublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_context_dbpublic_connection_with_options_async(
+        self,
+        request: main_models.ReleaseContextDBPublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseContextDBPublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleaseContextDBPublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleaseContextDBPublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_context_dbpublic_connection(
+        self,
+        request: main_models.ReleaseContextDBPublicConnectionRequest,
+    ) -> main_models.ReleaseContextDBPublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.release_context_dbpublic_connection_with_options(request, runtime)
+
+    async def release_context_dbpublic_connection_async(
+        self,
+        request: main_models.ReleaseContextDBPublicConnectionRequest,
+    ) -> main_models.ReleaseContextDBPublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.release_context_dbpublic_connection_with_options_async(request, runtime)
+
     def release_instance_public_connection_with_options(
         self,
         request: main_models.ReleaseInstancePublicConnectionRequest,
@@ -12155,6 +15355,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.reset_mem_0account_password_with_options_async(request, runtime)
 
+    def reset_open_search_password_with_options(
+        self,
+        request: main_models.ResetOpenSearchPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetOpenSearchPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetOpenSearchPassword',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetOpenSearchPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_open_search_password_with_options_async(
+        self,
+        request: main_models.ResetOpenSearchPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetOpenSearchPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetOpenSearchPassword',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetOpenSearchPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_open_search_password(
+        self,
+        request: main_models.ResetOpenSearchPasswordRequest,
+    ) -> main_models.ResetOpenSearchPasswordResponse:
+        runtime = RuntimeOptions()
+        return self.reset_open_search_password_with_options(request, runtime)
+
+    async def reset_open_search_password_async(
+        self,
+        request: main_models.ResetOpenSearchPasswordRequest,
+    ) -> main_models.ResetOpenSearchPasswordResponse:
+        runtime = RuntimeOptions()
+        return await self.reset_open_search_password_with_options_async(request, runtime)
+
     def restart_dbinstance_with_options(
         self,
         request: main_models.RestartDBInstanceRequest,
@@ -12310,6 +15592,80 @@ class Client(OpenApiClient):
     ) -> main_models.RestartDataImportTaskResponse:
         runtime = RuntimeOptions()
         return await self.restart_data_import_task_with_options_async(request, runtime)
+
+    def restart_open_search_with_options(
+        self,
+        request: main_models.RestartOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartOpenSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_open_search_with_options_async(
+        self,
+        request: main_models.RestartOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartOpenSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_open_search(
+        self,
+        request: main_models.RestartOpenSearchRequest,
+    ) -> main_models.RestartOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return self.restart_open_search_with_options(request, runtime)
+
+    async def restart_open_search_async(
+        self,
+        request: main_models.RestartOpenSearchRequest,
+    ) -> main_models.RestartOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return await self.restart_open_search_with_options_async(request, runtime)
 
     def restart_supabase_instance_with_options(
         self,
@@ -12574,6 +15930,162 @@ class Client(OpenApiClient):
     ) -> main_models.RestoreDBInstanceResponse:
         runtime = RuntimeOptions()
         return await self.restore_dbinstance_with_options_async(request, runtime)
+
+    def scale_in_open_search_with_options(
+        self,
+        request: main_models.ScaleInOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ScaleInOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_node_count):
+            query['SearchNodeCount'] = request.search_node_count
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScaleInOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScaleInOpenSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scale_in_open_search_with_options_async(
+        self,
+        request: main_models.ScaleInOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ScaleInOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_node_count):
+            query['SearchNodeCount'] = request.search_node_count
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScaleInOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScaleInOpenSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scale_in_open_search(
+        self,
+        request: main_models.ScaleInOpenSearchRequest,
+    ) -> main_models.ScaleInOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return self.scale_in_open_search_with_options(request, runtime)
+
+    async def scale_in_open_search_async(
+        self,
+        request: main_models.ScaleInOpenSearchRequest,
+    ) -> main_models.ScaleInOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return await self.scale_in_open_search_with_options_async(request, runtime)
+
+    def scale_out_open_search_with_options(
+        self,
+        request: main_models.ScaleOutOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ScaleOutOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_node_count):
+            query['SearchNodeCount'] = request.search_node_count
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScaleOutOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScaleOutOpenSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scale_out_open_search_with_options_async(
+        self,
+        request: main_models.ScaleOutOpenSearchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ScaleOutOpenSearchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_node_count):
+            query['SearchNodeCount'] = request.search_node_count
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScaleOutOpenSearch',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScaleOutOpenSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scale_out_open_search(
+        self,
+        request: main_models.ScaleOutOpenSearchRequest,
+    ) -> main_models.ScaleOutOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return self.scale_out_open_search_with_options(request, runtime)
+
+    async def scale_out_open_search_async(
+        self,
+        request: main_models.ScaleOutOpenSearchRequest,
+    ) -> main_models.ScaleOutOpenSearchResponse:
+        runtime = RuntimeOptions()
+        return await self.scale_out_open_search_with_options_async(request, runtime)
 
     def skip_current_step_with_options(
         self,

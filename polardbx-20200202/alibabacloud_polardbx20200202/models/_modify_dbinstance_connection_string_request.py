@@ -25,7 +25,7 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         # 
         # This parameter is required.
         self.new_port = new_port
-        # The new connection string prefix.
+        # The new address prefix.
         # 
         # This parameter is required.
         self.new_prefix = new_prefix

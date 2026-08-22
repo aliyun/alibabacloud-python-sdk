@@ -19,12 +19,12 @@ class ModifyAccountPrivilegeRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The account permissions. Valid values:
+        # The account permission. Valid values:
         # 
         # - **ReadWrite**
         # - **ReadOnly**
         # - **DMLOnly**
-        # - **DDLOnly**.
+        # - **DDLOnly**
         self.account_privilege = account_privilege
         # The instance ID.
         # 

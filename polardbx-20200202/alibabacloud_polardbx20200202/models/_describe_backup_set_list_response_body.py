@@ -17,7 +17,7 @@ class DescribeBackupSetListResponseBody(DaraModel):
     ):
         # The data struct.
         self.data = data
-        # The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
+        # The returned message. "success" is returned if the request is successful. Otherwise, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -86,22 +86,22 @@ class DescribeBackupSetListResponseBodyData(DaraModel):
         # - **0**: automatic backup.
         # - **1**: manual backup.
         self.backup_model = backup_model
-        # The ID of the backup set.
+        # The backup set ID.
         self.backup_set_id = backup_set_id
-        # The size of the backup set. Unit: bytes.
+        # The size of the backup set, in bytes.
         self.backup_set_size = backup_set_size
         # The backup type. Valid values:
         # 
         # - **0**: fast backup.
         # - **1**: consistent backup.
         self.backup_type = backup_type
-        # The time when the backup started.
+        # The backup start time.
         self.begin_time = begin_time
-        # The time when the backup ended.
+        # The backup end time.
         self.end_time = end_time
         # The status of the backup set. Valid values:
         # 
-        # - **0**: Being backed up.
+        # - **0**: Backing up.
         # - **1**: Backup succeeded.
         # - **2**: Backup failed.
         self.status = status

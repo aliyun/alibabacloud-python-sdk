@@ -128,7 +128,7 @@ class DescribeSlowLogRecordsResponseBodyItems(DaraModel):
         self.fail = fail
         # The number of rows fetched. This field is available only for CN.
         self.frows = frows
-        # The name and address of the client that connects to the database.
+        # The client name and address that connects to the database.
         self.host_address = host_address
         # The instance name. This field is available only for DN.
         self.ins_name = ins_name
@@ -140,12 +140,12 @@ class DescribeSlowLogRecordsResponseBodyItems(DaraModel):
         self.params = params
         # The number of rows scanned. This field is available only for DN.
         self.parse_row_counts = parse_row_counts
-        # The timestamp in the YYYY-MM-ddTHH:mm.ss.SSSZ format (UTC).
+        # The timestamp. Format: YYYY-MM-ddTHH:mm.ss.SSSZ (UTC).
         # 
         # - In CN slow logs, this field indicates the execution start time.
         # - In DN slow logs, this field indicates the execution end time.
         self.query_start_time = query_start_time
-        # The execution duration of the SQL statement. Unit: seconds.
+        # The execution duration of the SQL statement. Unit: seconds (s).
         self.query_time = query_time
         # The execution duration of the SQL statement. Unit: milliseconds (ms).
         self.query_time_ms = query_time_ms
@@ -155,7 +155,7 @@ class DescribeSlowLogRecordsResponseBodyItems(DaraModel):
         self.rows = rows
         # The number of physical SQL statements. This field is available only for CN.
         self.scnt = scnt
-        # The unique identifier of the SQL statement in slow query log statistics.
+        # The unique identity of the SQL statement in slow query log statistics.
         self.sqlhash = sqlhash
         # The SQL statement.
         self.sqltext = sqltext

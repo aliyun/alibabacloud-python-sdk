@@ -18,14 +18,14 @@ class ModifyActiveOperationTasksRequest(DaraModel):
         self.ids = ids
         # Specifies whether to immediately execute the event. Valid values:
         # 
-        # - 1: immediately execute
-        # - 0: execute at the specified time.
+        # - 1: immediately executes the event.
+        # - 0: executes the event at the specified time.
         self.immediate_start = immediate_start
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The switchover start time in the YYYY-MM-DDThh:mm:ssZ format.
+        # The time when the switchover starts. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
         self.switch_time = switch_time
 
     def validate(self):

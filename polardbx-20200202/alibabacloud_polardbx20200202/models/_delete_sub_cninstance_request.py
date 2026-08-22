@@ -11,9 +11,13 @@ class DeleteSubCNInstanceRequest(DaraModel):
         instance_cluster_name: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.instance_cluster_name = instance_cluster_name
+        # The region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

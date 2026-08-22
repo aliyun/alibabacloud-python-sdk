@@ -13,13 +13,13 @@ class DescribeStructureImportTaskInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned result set.
+        # The result set.
         self.data = data
-        # The returned message. This parameter is empty if the request is successful. If the request fails, an error message is returned, such as an error code.
+        # The returned message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

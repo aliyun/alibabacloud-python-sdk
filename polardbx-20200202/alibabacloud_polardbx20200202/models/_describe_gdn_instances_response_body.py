@@ -18,7 +18,7 @@ class DescribeGdnInstancesResponseBody(DaraModel):
         # The list of instance details.
         self.data = data
         # The response message.
-        # > This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
+        # > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -150,7 +150,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceList(DaraModel):
         self.gdn_mode = gdn_mode
         # The creation time.
         self.gmt_created = gmt_created
-        # The list of members.
+        # The member list.
         self.member_list = member_list
         # The MySQL version supported by the instance.
         self.mysql_version = mysql_version
@@ -159,7 +159,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceList(DaraModel):
         self.rpl_sync_ddl = rpl_sync_ddl
         # The status.
         self.status = status
-        # The switchover log.
+        # The switchover history.
         self.switch_history = switch_history
 
     def validate(self):
@@ -275,9 +275,9 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         tertiary_zone: str = None,
         zone_id: str = None,
     ):
-        # The instance type.
+        # The instance specifications.
         self.class_code = class_code
-        # The CN node specifications. Valid values:
+        # The CN node specifications.
         # 
         # - **polarx.x4.medium.2e**: 2 cores, 8 GB
         # - **polarx.x4.large.2e**: 4 cores, 16 GB
@@ -289,14 +289,14 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
         # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
         # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
-        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
         self.cn_node_class_code = cn_node_class_code
         # The number of CN nodes.
         self.cn_node_count = cn_node_count
         # The commodity code.
         self.commodity_code = commodity_code
         self.data_sync_status = data_sync_status
-        # The DN node specifications. Valid values:
+        # The DN node specifications.
         # - **mysql.n2.medium.25**: 2 cores, 4 GB
         # - **mysql.n4.medium.25**: 2 cores, 8 GB
         # - **mysql.x8.medium.25**: 2 cores, 16 GB
@@ -311,7 +311,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
         # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
         # - **mysql.st.8xlarge.25**: 60 cores, 470 GB
-        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB
         self.dn_node_class_code = dn_node_class_code
         # The number of DN nodes.
         self.dn_node_count = dn_node_count
@@ -335,13 +335,13 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         self.role = role
         # The secondary zone.
         self.secondary_zone = secondary_zone
-        # The data latency.
+        # The data replication lag.
         self.seconds_behind_master = seconds_behind_master
         # The member status.
         self.status = status
         # The switchover task status.
         self.task_status = task_status
-        # The zone for Three-zone deployment. This zone is active only when three-zone deployment is enabled.
+        # The zone for three-zone deployment. This zone is active along with the primary and secondary zones.
         self.tertiary_zone = tertiary_zone
         # The zone ID.
         self.zone_id = zone_id

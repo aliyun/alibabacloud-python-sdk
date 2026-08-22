@@ -20,7 +20,7 @@ class UpdatePolarDBXInstanceNodeRequest(DaraModel):
         self.add_dnspec = add_dnspec
         # The number of compute nodes.
         self.cnnode_count = cnnode_count
-        # The client token. You can set this parameter to any random string.
+        # The client token, which is an arbitrary random string.
         self.client_token = client_token
         # The instance name ID.
         # 

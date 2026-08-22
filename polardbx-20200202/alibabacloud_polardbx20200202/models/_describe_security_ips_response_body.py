@@ -17,7 +17,7 @@ class DescribeSecurityIpsResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+        # The additional information returned. "success" is returned if the request is successful. Otherwise, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -70,7 +70,7 @@ class DescribeSecurityIpsResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         group_items: List[main_models.DescribeSecurityIpsResponseBodyDataGroupItems] = None,
     ):
-        # The name of the instance.
+        # The instance name.
         self.dbinstance_name = dbinstance_name
         # The list of whitelist groups.
         self.group_items = group_items

@@ -11,7 +11,9 @@ class DeleteSubCNInstanceResponseBody(DaraModel):
         data: main_models.DeleteSubCNInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class DeleteSubCNInstanceResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The backend task ID.
         self.task_id = task_id
 
     def validate(self):

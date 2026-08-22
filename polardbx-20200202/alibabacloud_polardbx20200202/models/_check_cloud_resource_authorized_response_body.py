@@ -56,7 +56,7 @@ class CheckCloudResourceAuthorizedResponseBodyData(DaraModel):
         # - **1**: authorized.
         # - **2**: KMS is not activated.
         self.authorization_state = authorization_state
-        # The global resource descriptor ARN (Alibaba Cloud Resource Name) of the authorized role. After the authorization of this role is complete, the related KMS can be used. Format: acs:ram::$accountID:role/$roleName.
+        # The global resource descriptor ARN (Alibaba Cloud Resource Name) of the authorized role. After the authorization of the role is complete, the related KMS can be used. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
 
     def validate(self):

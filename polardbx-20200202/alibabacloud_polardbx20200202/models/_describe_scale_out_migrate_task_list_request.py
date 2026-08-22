@@ -14,7 +14,7 @@ class DescribeScaleOutMigrateTaskListRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

@@ -17,7 +17,7 @@ class DescribeCdcInfoResponseBody(DaraModel):
     ):
         # The instance data.
         self.data = data
-        # The HTTP status code of the request.
+        # The HTTP status code.
         # 
         # This parameter is required.
         self.http_status_code = http_status_code
@@ -82,7 +82,7 @@ class DescribeCdcInfoResponseBodyData(DaraModel):
     ):
         # The number of days that binlogs are retained.
         self.binlog_persist_time = binlog_persist_time
-        # The size of the binlog.
+        # The binlog size.
         # 
         # This parameter is required.
         self.binlog_size = binlog_size
@@ -90,11 +90,11 @@ class DescribeCdcInfoResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.cdc_new_version = cdc_new_version
-        # The checksum switch status.
+        # The checksum switch.
         self.check_sum_switch = check_sum_switch
         # Indicates whether bidirectional replication is supported.
         self.enable_cyclic_replication = enable_cyclic_replication
-        # The list of instances.
+        # The instance list.
         self.instance_topology_list = instance_topology_list
         # server id
         # 
@@ -186,15 +186,15 @@ class DescribeCdcInfoResponseBodyDataInstanceTopologyList(DaraModel):
     ):
         # The cluster type.
         self.cluster_type = cluster_type
-        # The remarks on the instance type.
+        # The instance type remarks.
         self.comment = comment
-        # The name of the multi-stream group.
+        # The multi-stream group name.
         self.group_name = group_name
         # The split level.
         self.hash_level = hash_level
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
-        # The array of nodes.
+        # The node array.
         self.physical_nodes = physical_nodes
         # The number of splits.
         self.stream_num = stream_num
@@ -274,15 +274,15 @@ class DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes(DaraModel
         status: str = None,
         version: str = None,
     ):
-        # The zone in which the instance resides.
+        # The zone where the instance resides.
         self.azone = azone
-        # The disk size. Unit: MB.
+        # The disk size, in MB.
         self.disk = disk
         # The instance specifications.
         self.node_class = node_class
         # The node ID.
         self.node_id = node_id
-        # The name of the node.
+        # The node name.
         self.node_name = node_name
         # The instance status.
         self.status = status

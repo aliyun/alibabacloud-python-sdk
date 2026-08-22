@@ -16,15 +16,15 @@ class DescribeBinaryLogListResponseBody(DaraModel):
         request_id: str = None,
         total_number: int = None,
     ):
-        # The list of binlog files.
+        # The list of binary log files.
         self.log_list = log_list
         # The page number of the current query.
         self.page_number = page_number
-        # The number of binlog entries displayed on the current page.
+        # The number of binary logs displayed on the current page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of binlog files found.
+        # The total number of binary log files returned.
         self.total_number = total_number
 
     def validate(self):
@@ -98,30 +98,30 @@ class DescribeBinaryLogListResponseBodyLogList(DaraModel):
         self.begin_time = begin_time
         # The creation time of the file.
         self.created_time = created_time
-        # The download link for the file. The link is valid for 2 days.
+        # The download link of the file. The link is valid for 2 days.
         self.download_link = download_link
-        # The end time of the current binlog.
+        # The end time of the current binary log.
         self.end_time = end_time
-        # The name of the binlog file.
+        # The name of the binary log file.
         self.file_name = file_name
         # The unique ID of the current record.
         self.id = id
         # The size of the current log file.
         self.log_size = log_size
-        # The last modification time.
+        # The last modified time.
         self.modified_time = modified_time
         # The purge status. Valid values:
         # 
-        # - 0: Not deleted.
-        # - 1: Deleted.
+        # - 0: not deleted. 
+        # - 1: deleted.
         self.purge_status = purge_status
         # The backup host.
         self.upload_host = upload_host
         # The backup status. Valid values:
         # 
-        # - 0: Not backed up.
-        # - 1: Backing up.
-        # - 2: Backed up.
+        # - 0: not backed up. 
+        # - 1: being backed up. 
+        # - 2: backed up.
         self.upload_status = upload_status
 
     def validate(self):

@@ -16,11 +16,11 @@ class DescribeDataImportTaskInfoResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The return code. This parameter is empty when the request succeeds. When the request fails, an exception message such as an error code is returned.
+        # The response code. This parameter is empty when the request succeeds. If the request fails, an error message is returned, such as an error code.
         self.code = code
-        # The returned result set.
+        # The result set.
         self.data = data
-        # The returned message. This parameter has a value only when the task status is success. Otherwise, an empty value is returned.
+        # The response message. This parameter has a value only when the task status is success. Otherwise, an empty value is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -113,9 +113,9 @@ class DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfo(DaraMod
     ):
         # The progress ID.
         self.fsm_id = fsm_id
-        # The state identifier in a data migration or synchronization task.
+        # The state identifier in the data migration or synchronization task.
         self.fsm_state = fsm_state
-        # The status in a data migration, import, or synchronization system.
+        # The status in the data migration, import, or synchronization system.
         self.fsm_status = fsm_status
         # The data import task details.
         self.service_detail_list = service_detail_list
@@ -180,7 +180,8 @@ class DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceD
         self.status = status
         # The task details.
         self.task_detail_list = task_detail_list
-        # Valid values:
+        # The replication type. Valid values:
+        # 
         # - FULL_COPY: full replication.
         # - INC_COPY: incremental replication.
         self.type = type
@@ -251,7 +252,7 @@ class DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceD
         self.physical_db_name = physical_db_name
         # The data import progress.
         self.progress = progress
-        # The performance and runtime metrics collected during the execution of the data migration or import task.
+        # The performance and runtime metrics recorded during the execution of the data migration or import task.
         self.statistics = statistics
         # The task status.
         self.status = status

@@ -22,11 +22,11 @@ class ModifyParameterRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The parameter type. Valid values:
         # 
-        # - **compute**: compute layer parameters.
-        # - **storage**: storage layer parameters.
+        # - **compute**: compute layer parameter.
+        # - **storage**: storage layer parameter.
         self.param_level = param_level
         self.parameter_group_id = parameter_group_id
-        # A JSON-formatted string. MapKey specifies the parameter name, and MapValue specifies the parameter value. The modifiable parameters are dynamically added or removed. Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/196856.html) operation to query the available parameters. You can specify multiple parameters in a single request.
+        # A JSON-formatted string. MapKey specifies the parameter name, and MapValue specifies the parameter value. The modifiable parameters are dynamically added or removed. Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/196856.html) operation to query the available parameters. You can specify multiple parameters at a time.
         self.parameters = parameters
         # The region ID.
         # 

@@ -18,7 +18,7 @@ class CreateRplInspectionTaskRequest(DaraModel):
     ):
         # The ID of the ApsaraDB RDS instance to which the migration object belongs in the target instance. > You can invoke the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all ApsaraDB RDS instances in the specified region, including instance IDs.
         self.dst_db = dst_db
-        # The password of the privileged account for the destination ApsaraDB RDS instance. > * The password must be 8 to 32 characters in length. * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. * Special characters include ! @ # $ & % ^ * ( ) _ + - =.
+        # The password of the privileged user for the destination ApsaraDB RDS instance. > * The password must be 8 to 32 characters in length. * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. * Special characters include ! @ # $ & % ^ * ( ) _ + - =
         self.dst_password = dst_password
         # The destination task ID.
         self.dst_res_id = dst_res_id

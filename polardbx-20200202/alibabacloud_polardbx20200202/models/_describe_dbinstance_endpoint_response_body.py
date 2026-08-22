@@ -15,9 +15,13 @@ class DescribeDBInstanceEndpointResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The monitoring data.
         self.data = data
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -65,6 +69,7 @@ class DescribeDBInstanceEndpointResponseBodyData(DaraModel):
         self,
         items: List[main_models.DescribeDBInstanceEndpointResponseBodyDataItems] = None,
     ):
+        # The internal connection type. The value is fixed as 1, which indicates the classic network.
         self.items = items
 
     def validate(self):
@@ -101,7 +106,9 @@ class DescribeDBInstanceEndpointResponseBodyDataItems(DaraModel):
         endpoint: main_models.DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint = None,
         real_server: List[main_models.DescribeDBInstanceEndpointResponseBodyDataItemsRealServer] = None,
     ):
+        # The endpoint of the instance.
         self.endpoint = endpoint
+        # The addresses of the origin server.
         self.real_server = real_server
 
     def validate(self):
@@ -151,11 +158,22 @@ class DescribeDBInstanceEndpointResponseBodyDataItemsRealServer(DaraModel):
         replica_id: int = None,
         weight: int = None,
     ):
+        # Indicates whether the node is enabled. For the compute layer, only the primary zone node is enabled. After a primary/secondary switchover, the standby compute node becomes the primary node. All storage layer nodes are enabled.
         self.activated = activated
+        # The instance specification type (specification code).
         self.class_ = class_
+        # The IP address.
         self.ip = ip
+        # The port number.
         self.port = port
+        # The replica ID.
         self.replica_id = replica_id
+        # The weight of the destination route.
+        # 
+        # - For VPN gateway instances that support the dual-tunnel mode for IPsec-VPN connections, the weight of the destination route is **100** by default and has no practical significance.
+        # - For VPN gateway instances that support the single-tunnel mode for IPsec-VPN connections, the weight represents the priority of the destination route:
+        #     - **100**: high priority. If multiple destination routes have the same destination CIDR block, the IPsec-VPN connection associated with this route serves as the active link.
+        #     - **0**: low priority. If multiple destination routes have the same destination CIDR block, the IPsec-VPN connection associated with this route serves as the standby link.
         self.weight = weight
 
     def validate(self):
@@ -229,22 +247,49 @@ class DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint(DaraModel):
         vport: int = None,
         zone_id: str = None,
     ):
+        # The address.
         self.address = address
+        # The instance specification type (specification code).
         self.class_ = class_
+        # The ID of the endpoint group to which the endpoint belongs.
         self.endpoint_group_id = endpoint_group_id
+        # The logical node ID.
         self.id = id
+        # Indicates whether this is the default vSwitch.
         self.is_default = is_default
+        # The payload type. Valid values:
+        # - agentTurn: agent conversation.
+        # - systemEvent: system event.
         self.kind = kind
+        # The network type of the endpoint. Valid values:
+        # * **Public**: public endpoint.
+        # * **Private**: private endpoint.
+        # * **Inner**: private endpoint (classic network).
         self.net_type = net_type
+        # The read/write type. Valid values:
+        # - ReadWrite: row store read/write.
+        # - ColumnarRead: column store read-only.
         self.read_type = read_type
+        # The object name.
         self.target_name = target_name
+        # The tunnel ID.
         self.tunnel_id = tunnel_id
+        # The instance type. Valid values:
+        # 
+        # - **ReadWrite**: primary instance.
+        # - **ReadOnly**: read-only instance.
         self.type = type
+        # Indicates whether the endpoint is visible to the user.
         self.user_visible = user_visible
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance protected by the policy.
         self.vip = vip
+        # The ID of the VPC in which the endpoint resides.
         self.vpc_id = vpc_id
+        # The VIP port, such as 80, 8080, or 443.
         self.vport = vport
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

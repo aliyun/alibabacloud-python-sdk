@@ -10,11 +10,11 @@ class DescribeCdcInfoRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
-        # The name of the instance.
+        # The instance name.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

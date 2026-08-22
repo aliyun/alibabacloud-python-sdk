@@ -11,7 +11,9 @@ class UpdateCustinsParamResponseBody(DaraModel):
         data: main_models.UpdateCustinsParamResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class UpdateCustinsParamResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

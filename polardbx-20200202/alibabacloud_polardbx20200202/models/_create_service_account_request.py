@@ -19,7 +19,7 @@ class CreateServiceAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The type of the service account.
+        # The service account type.
         # 
         # This parameter is required.
         self.service_account_type = service_account_type

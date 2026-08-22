@@ -11,7 +11,7 @@ class DeleteCustomEndpointRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the custom endpoint domain name.
+        # The ID of the custom endpoint.
         self.custom_endpoint_id = custom_endpoint_id
         # The name of the instance.
         self.dbinstance_name = dbinstance_name

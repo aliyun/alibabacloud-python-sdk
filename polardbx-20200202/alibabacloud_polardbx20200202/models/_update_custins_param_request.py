@@ -12,12 +12,20 @@ class UpdateCustinsParamRequest(DaraModel):
         region_id: str = None,
         value: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The tag name.
+        # 
         # This parameter is required.
         self.name = name
+        # The region ID. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The tag value.
+        # 
         # This parameter is required.
         self.value = value
 

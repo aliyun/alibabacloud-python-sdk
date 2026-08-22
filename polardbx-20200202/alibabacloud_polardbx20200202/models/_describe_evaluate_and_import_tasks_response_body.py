@@ -18,9 +18,9 @@ class DescribeEvaluateAndImportTasksResponseBody(DaraModel):
         success: bool = None,
         total_number: int = None,
     ):
-        # The task details.
+        # The details of the restoration tasks.
         self.data = data
-        # The returned message. > This parameter is empty when the request succeeds. When the request fails, exception information (such as error codes) is returned.
+        # The returned message. > This parameter is empty when the request succeeds. When the request fails, exception information such as an error code is returned.
         self.message = message
         # The page number.
         self.page_number = page_number
@@ -126,9 +126,9 @@ class DescribeEvaluateAndImportTasksResponseBodyData(DaraModel):
         self.creator = creator
         # Indicates whether the task is deleted.
         self.deleted = deleted
-        # The task creation timestamp, in milliseconds.
+        # The timestamp when the task was created. Unit: milliseconds.
         self.gmt_created = gmt_created
-        # The modification time of the metadata information.
+        # The time when the metadata information was last modified.
         self.gmt_modified = gmt_modified
         # The task ID.
         self.id = id

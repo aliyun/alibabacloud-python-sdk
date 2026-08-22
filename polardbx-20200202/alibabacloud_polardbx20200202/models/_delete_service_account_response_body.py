@@ -162,7 +162,7 @@ class DeleteServiceAccountResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of missing permission.
+        # The type of the permission denial.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

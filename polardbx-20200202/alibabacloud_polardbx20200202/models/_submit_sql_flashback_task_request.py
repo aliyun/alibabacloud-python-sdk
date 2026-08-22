@@ -19,7 +19,7 @@ class SubmitSqlFlashbackTaskRequest(DaraModel):
         table_name: str = None,
         trace_id: str = None,
     ):
-        # The name of the database.
+        # The database name.
         # 
         # This parameter is required.
         self.db_name = db_name
@@ -31,14 +31,14 @@ class SubmitSqlFlashbackTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.polardbx_instance_id = polardbx_instance_id
-        # The restoration type. Valid values:
+        # The restore type. Valid values:
         # 
-        # - **1**: Image-based restoration.
-        # - **0**: Reverse restoration.
+        # - **1**: image-based restore.
+        # - **0**: reverse restore.
         # 
         # This parameter is required.
         self.recall_restore_type = recall_restore_type
-        # The matching mode. Valid values:
+        # The match type. Valid values:
         # 
         # - **0**: exact match.
         # - **1**: fuzzy match.
@@ -49,7 +49,7 @@ class SubmitSqlFlashbackTaskRequest(DaraModel):
         self.region_id = region_id
         # The primary key of the flashback SQL.
         self.sql_pk = sql_pk
-        # The type of SQL. Valid values: INSERT, UPDATE, and DELETE. Separate multiple types with commas (,).
+        # The type of SQL statement. Valid values: INSERT, UPDATE, and DELETE. Separate multiple types with commas (,).
         self.sql_type = sql_type
         # The start time for executing the flashback SQL.
         # 

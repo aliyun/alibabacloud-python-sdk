@@ -17,7 +17,7 @@ class DescribeParametersRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The parameter level. Valid values:
         # 
-        # - compute: compute layer
+        # - compute: compute layer.
         # - storage: storage layer.
         self.param_level = param_level
         # The region to which the instance belongs.

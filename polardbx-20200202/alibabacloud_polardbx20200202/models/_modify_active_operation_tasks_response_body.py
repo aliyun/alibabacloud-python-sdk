@@ -10,7 +10,7 @@ class ModifyActiveOperationTasksResponseBody(DaraModel):
         ids: str = None,
         request_id: str = None,
     ):
-        # The list of O&M event IDs, separated by commas.
+        # The list of O&M event IDs, separated by commas (,).
         self.ids = ids
         # The request ID.
         self.request_id = request_id

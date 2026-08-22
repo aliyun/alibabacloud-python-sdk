@@ -10,11 +10,11 @@ class DescribeStructureImportTaskInfoRequest(DaraModel):
         region_id: str = None,
         slink_task_id: str = None,
     ):
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the destination task.
+        # The ID of the target task.
         # 
         # This parameter is required.
         self.slink_task_id = slink_task_id
