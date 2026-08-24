@@ -5,27 +5,19 @@ from __future__ import annotations
 from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
-class AddDataAgentMemoryResponseBody(DaraModel):
+class CreateOneMetaSqlTemplateResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.AddDataAgentMemoryResponseBodyData = None,
+        data: main_models.OneMetaSqlTemplateView = None,
         error_code: str = None,
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The response struct.
         self.data = data
-        # The error code.
         self.error_code = error_code
-        # The error message returned if the call failed.
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # - **true**: The request is successful.
-        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -57,7 +49,7 @@ class AddDataAgentMemoryResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
-            temp_model = main_models.AddDataAgentMemoryResponseBodyData()
+            temp_model = main_models.OneMetaSqlTemplateView()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('ErrorCode') is not None:
@@ -68,46 +60,6 @@ class AddDataAgentMemoryResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-
-        return self
-
-class AddDataAgentMemoryResponseBodyData(DaraModel):
-    def __init__(
-        self,
-        job_id: str = None,
-        success: bool = None,
-    ):
-        # The task ID.
-        self.job_id = job_id
-        # Indicates whether the task submission request is successful. Valid values:
-        # 
-        # - True: The request is successful.                                 
-        # - False: The request failed.
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-
-        if self.success is not None:
-            result['Success'] = self.success
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
 
         if m.get('Success') is not None:
             self.success = m.get('Success')

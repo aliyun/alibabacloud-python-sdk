@@ -14,11 +14,25 @@ class AddDataAgentMemoryRequest(DaraModel):
         mem_from: str = None,
         session_uuid: str = None,
     ):
+        # The memory content.
         self.content = content
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The source ID.
+        # - If MemFrom is set to session, FromId indicates the session ID.
+        # - If MemFrom is set to user, FromId indicates the RAM user ID.
         self.from_id = from_id
+        # The memory label. Valid values:
+        # - fact_specifications: fact definitions.
+        # - task_constraints: node constraints.
+        # - execution_config: execution configuration.
         self.label = label
+        # The memory source. Valid values:
+        # - session: generated from a session.
+        # - user: edited by a user.
         self.mem_from = mem_from
+        # The session ID.
+        # - Note: This parameter is deprecated.
         self.session_uuid = session_uuid
 
     def validate(self):

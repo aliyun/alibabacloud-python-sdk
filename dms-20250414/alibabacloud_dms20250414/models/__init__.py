@@ -123,6 +123,9 @@ from ._create_data_lake_table_request import CreateDataLakeTableRequest
 from ._create_data_lake_table_shrink_request import CreateDataLakeTableShrinkRequest
 from ._create_data_lake_table_response_body import CreateDataLakeTableResponseBody
 from ._create_data_lake_table_response import CreateDataLakeTableResponse
+from ._create_one_meta_sql_template_request import CreateOneMetaSqlTemplateRequest
+from ._create_one_meta_sql_template_response_body import CreateOneMetaSqlTemplateResponseBody
+from ._create_one_meta_sql_template_response import CreateOneMetaSqlTemplateResponse
 from ._delete_airflow_request import DeleteAirflowRequest
 from ._delete_airflow_response_body import DeleteAirflowResponseBody
 from ._delete_airflow_response import DeleteAirflowResponse
@@ -171,6 +174,12 @@ from ._delete_document_chunks_response import DeleteDocumentChunksResponse
 from ._delete_file_upload_request import DeleteFileUploadRequest
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBody
 from ._delete_file_upload_response import DeleteFileUploadResponse
+from ._delete_one_meta_ossie_model_request import DeleteOneMetaOssieModelRequest
+from ._delete_one_meta_ossie_model_response_body import DeleteOneMetaOssieModelResponseBody
+from ._delete_one_meta_ossie_model_response import DeleteOneMetaOssieModelResponse
+from ._delete_one_meta_sql_template_request import DeleteOneMetaSqlTemplateRequest
+from ._delete_one_meta_sql_template_response_body import DeleteOneMetaSqlTemplateResponseBody
+from ._delete_one_meta_sql_template_response import DeleteOneMetaSqlTemplateResponse
 from ._delete_workspace_code_request import DeleteWorkspaceCodeRequest
 from ._delete_workspace_code_response_body import DeleteWorkspaceCodeResponseBody
 from ._delete_workspace_code_response import DeleteWorkspaceCodeResponse
@@ -247,6 +256,9 @@ from ._get_notebook_and_submit_task_response import GetNotebookAndSubmitTaskResp
 from ._get_notebook_task_status_request import GetNotebookTaskStatusRequest
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBody
 from ._get_notebook_task_status_response import GetNotebookTaskStatusResponse
+from ._get_one_meta_ossie_model_request import GetOneMetaOssieModelRequest
+from ._get_one_meta_ossie_model_response_body import GetOneMetaOssieModelResponseBody
+from ._get_one_meta_ossie_model_response import GetOneMetaOssieModelResponse
 from ._get_sql_console_operation_log_request import GetSqlConsoleOperationLogRequest
 from ._get_sql_console_operation_log_response_body import GetSqlConsoleOperationLogResponseBody
 from ._get_sql_console_operation_log_response import GetSqlConsoleOperationLogResponse
@@ -259,6 +271,9 @@ from ._get_workspace_code_publish_setting_response import GetWorkspaceCodePublis
 from ._get_workspace_quota_request import GetWorkspaceQuotaRequest
 from ._get_workspace_quota_response_body import GetWorkspaceQuotaResponseBody
 from ._get_workspace_quota_response import GetWorkspaceQuotaResponse
+from ._import_one_meta_ossie_model_request import ImportOneMetaOssieModelRequest
+from ._import_one_meta_ossie_model_response_body import ImportOneMetaOssieModelResponseBody
+from ._import_one_meta_ossie_model_response import ImportOneMetaOssieModelResponse
 from ._init_workspace_system_mcp_server_request import InitWorkspaceSystemMcpServerRequest
 from ._init_workspace_system_mcp_server_response_body import InitWorkspaceSystemMcpServerResponseBody
 from ._init_workspace_system_mcp_server_response import InitWorkspaceSystemMcpServerResponse
@@ -347,6 +362,12 @@ from ._list_file_upload_response import ListFileUploadResponse
 from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
 from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBody
 from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
+from ._list_one_meta_ossie_models_request import ListOneMetaOssieModelsRequest
+from ._list_one_meta_ossie_models_response_body import ListOneMetaOssieModelsResponseBody
+from ._list_one_meta_ossie_models_response import ListOneMetaOssieModelsResponse
+from ._list_one_meta_sql_templates_request import ListOneMetaSqlTemplatesRequest
+from ._list_one_meta_sql_templates_response_body import ListOneMetaSqlTemplatesResponseBody
+from ._list_one_meta_sql_templates_response import ListOneMetaSqlTemplatesResponse
 from ._list_workspace_code_request import ListWorkspaceCodeRequest
 from ._list_workspace_code_response_body import ListWorkspaceCodeResponseBody
 from ._list_workspace_code_response import ListWorkspaceCodeResponse
@@ -429,6 +450,12 @@ from ._update_document_response import UpdateDocumentResponse
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
 from ._update_knowledge_base_response_body import UpdateKnowledgeBaseResponseBody
 from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
+from ._update_one_meta_ossie_model_request import UpdateOneMetaOssieModelRequest
+from ._update_one_meta_ossie_model_response_body import UpdateOneMetaOssieModelResponseBody
+from ._update_one_meta_ossie_model_response import UpdateOneMetaOssieModelResponse
+from ._update_one_meta_sql_template_request import UpdateOneMetaSqlTemplateRequest
+from ._update_one_meta_sql_template_response_body import UpdateOneMetaSqlTemplateResponseBody
+from ._update_one_meta_sql_template_response import UpdateOneMetaSqlTemplateResponse
 from ._upload_document_request import UploadDocumentRequest
 from ._upload_document_shrink_request import UploadDocumentShrinkRequest
 from ._upload_document_response_body import UploadDocumentResponseBody
@@ -696,6 +723,9 @@ __all__ = [
     CreateDataLakeTableShrinkRequest,
     CreateDataLakeTableResponseBody,
     CreateDataLakeTableResponse,
+    CreateOneMetaSqlTemplateRequest,
+    CreateOneMetaSqlTemplateResponseBody,
+    CreateOneMetaSqlTemplateResponse,
     DeleteAirflowRequest,
     DeleteAirflowResponseBody,
     DeleteAirflowResponse,
@@ -744,6 +774,12 @@ __all__ = [
     DeleteFileUploadRequest,
     DeleteFileUploadResponseBody,
     DeleteFileUploadResponse,
+    DeleteOneMetaOssieModelRequest,
+    DeleteOneMetaOssieModelResponseBody,
+    DeleteOneMetaOssieModelResponse,
+    DeleteOneMetaSqlTemplateRequest,
+    DeleteOneMetaSqlTemplateResponseBody,
+    DeleteOneMetaSqlTemplateResponse,
     DeleteWorkspaceCodeRequest,
     DeleteWorkspaceCodeResponseBody,
     DeleteWorkspaceCodeResponse,
@@ -820,6 +856,9 @@ __all__ = [
     GetNotebookTaskStatusRequest,
     GetNotebookTaskStatusResponseBody,
     GetNotebookTaskStatusResponse,
+    GetOneMetaOssieModelRequest,
+    GetOneMetaOssieModelResponseBody,
+    GetOneMetaOssieModelResponse,
     GetSqlConsoleOperationLogRequest,
     GetSqlConsoleOperationLogResponseBody,
     GetSqlConsoleOperationLogResponse,
@@ -832,6 +871,9 @@ __all__ = [
     GetWorkspaceQuotaRequest,
     GetWorkspaceQuotaResponseBody,
     GetWorkspaceQuotaResponse,
+    ImportOneMetaOssieModelRequest,
+    ImportOneMetaOssieModelResponseBody,
+    ImportOneMetaOssieModelResponse,
     InitWorkspaceSystemMcpServerRequest,
     InitWorkspaceSystemMcpServerResponseBody,
     InitWorkspaceSystemMcpServerResponse,
@@ -920,6 +962,12 @@ __all__ = [
     ListKnowledgeBasesRequest,
     ListKnowledgeBasesResponseBody,
     ListKnowledgeBasesResponse,
+    ListOneMetaOssieModelsRequest,
+    ListOneMetaOssieModelsResponseBody,
+    ListOneMetaOssieModelsResponse,
+    ListOneMetaSqlTemplatesRequest,
+    ListOneMetaSqlTemplatesResponseBody,
+    ListOneMetaSqlTemplatesResponse,
     ListWorkspaceCodeRequest,
     ListWorkspaceCodeResponseBody,
     ListWorkspaceCodeResponse,
@@ -1002,6 +1050,12 @@ __all__ = [
     UpdateKnowledgeBaseRequest,
     UpdateKnowledgeBaseResponseBody,
     UpdateKnowledgeBaseResponse,
+    UpdateOneMetaOssieModelRequest,
+    UpdateOneMetaOssieModelResponseBody,
+    UpdateOneMetaOssieModelResponse,
+    UpdateOneMetaSqlTemplateRequest,
+    UpdateOneMetaSqlTemplateResponseBody,
+    UpdateOneMetaSqlTemplateResponse,
     UploadDocumentRequest,
     UploadDocumentShrinkRequest,
     UploadDocumentResponseBody,

@@ -1942,6 +1942,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_data_lake_table_with_options_async(request, runtime)
 
+    def create_one_meta_sql_template_with_options(
+        self,
+        request: main_models.CreateOneMetaSqlTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOneMetaSqlTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.expr):
+            query['Expr'] = request.expr
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.sql_params):
+            query['SqlParams'] = request.sql_params
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOneMetaSqlTemplate',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOneMetaSqlTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_one_meta_sql_template_with_options_async(
+        self,
+        request: main_models.CreateOneMetaSqlTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOneMetaSqlTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.expr):
+            query['Expr'] = request.expr
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.sql_params):
+            query['SqlParams'] = request.sql_params
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOneMetaSqlTemplate',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOneMetaSqlTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_one_meta_sql_template(
+        self,
+        request: main_models.CreateOneMetaSqlTemplateRequest,
+    ) -> main_models.CreateOneMetaSqlTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_one_meta_sql_template_with_options(request, runtime)
+
+    async def create_one_meta_sql_template_async(
+        self,
+        request: main_models.CreateOneMetaSqlTemplateRequest,
+    ) -> main_models.CreateOneMetaSqlTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_one_meta_sql_template_with_options_async(request, runtime)
+
     def delete_airflow_with_options(
         self,
         request: main_models.DeleteAirflowRequest,
@@ -3147,6 +3245,146 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteFileUploadResponse:
         runtime = RuntimeOptions()
         return await self.delete_file_upload_with_options_async(request, runtime)
+
+    def delete_one_meta_ossie_model_with_options(
+        self,
+        request: main_models.DeleteOneMetaOssieModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOneMetaOssieModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_uuid):
+            query['KnowledgeUuid'] = request.knowledge_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOneMetaOssieModel',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOneMetaOssieModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_one_meta_ossie_model_with_options_async(
+        self,
+        request: main_models.DeleteOneMetaOssieModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOneMetaOssieModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_uuid):
+            query['KnowledgeUuid'] = request.knowledge_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOneMetaOssieModel',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOneMetaOssieModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_one_meta_ossie_model(
+        self,
+        request: main_models.DeleteOneMetaOssieModelRequest,
+    ) -> main_models.DeleteOneMetaOssieModelResponse:
+        runtime = RuntimeOptions()
+        return self.delete_one_meta_ossie_model_with_options(request, runtime)
+
+    async def delete_one_meta_ossie_model_async(
+        self,
+        request: main_models.DeleteOneMetaOssieModelRequest,
+    ) -> main_models.DeleteOneMetaOssieModelResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_one_meta_ossie_model_with_options_async(request, runtime)
+
+    def delete_one_meta_sql_template_with_options(
+        self,
+        request: main_models.DeleteOneMetaSqlTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOneMetaSqlTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_uuid):
+            query['KnowledgeUuid'] = request.knowledge_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOneMetaSqlTemplate',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOneMetaSqlTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_one_meta_sql_template_with_options_async(
+        self,
+        request: main_models.DeleteOneMetaSqlTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOneMetaSqlTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_uuid):
+            query['KnowledgeUuid'] = request.knowledge_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOneMetaSqlTemplate',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOneMetaSqlTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_one_meta_sql_template(
+        self,
+        request: main_models.DeleteOneMetaSqlTemplateRequest,
+    ) -> main_models.DeleteOneMetaSqlTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_one_meta_sql_template_with_options(request, runtime)
+
+    async def delete_one_meta_sql_template_async(
+        self,
+        request: main_models.DeleteOneMetaSqlTemplateRequest,
+    ) -> main_models.DeleteOneMetaSqlTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_one_meta_sql_template_with_options_async(request, runtime)
 
     def delete_workspace_code_with_options(
         self,
@@ -5232,6 +5470,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_notebook_task_status_with_options_async(request, runtime)
 
+    def get_one_meta_ossie_model_with_options(
+        self,
+        request: main_models.GetOneMetaOssieModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOneMetaOssieModelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.doc_format):
+            body['DocFormat'] = request.doc_format
+        if not DaraCore.is_null(request.knowledge_uuid):
+            body['KnowledgeUuid'] = request.knowledge_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOneMetaOssieModel',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOneMetaOssieModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_one_meta_ossie_model_with_options_async(
+        self,
+        request: main_models.GetOneMetaOssieModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOneMetaOssieModelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.doc_format):
+            body['DocFormat'] = request.doc_format
+        if not DaraCore.is_null(request.knowledge_uuid):
+            body['KnowledgeUuid'] = request.knowledge_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOneMetaOssieModel',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOneMetaOssieModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_one_meta_ossie_model(
+        self,
+        request: main_models.GetOneMetaOssieModelRequest,
+    ) -> main_models.GetOneMetaOssieModelResponse:
+        runtime = RuntimeOptions()
+        return self.get_one_meta_ossie_model_with_options(request, runtime)
+
+    async def get_one_meta_ossie_model_async(
+        self,
+        request: main_models.GetOneMetaOssieModelRequest,
+    ) -> main_models.GetOneMetaOssieModelResponse:
+        runtime = RuntimeOptions()
+        return await self.get_one_meta_ossie_model_with_options_async(request, runtime)
+
     def get_sql_console_operation_log_with_options(
         self,
         request: main_models.GetSqlConsoleOperationLogRequest,
@@ -5547,6 +5859,104 @@ class Client(OpenApiClient):
     ) -> main_models.GetWorkspaceQuotaResponse:
         runtime = RuntimeOptions()
         return await self.get_workspace_quota_with_options_async(request, runtime)
+
+    def import_one_meta_ossie_model_with_options(
+        self,
+        request: main_models.ImportOneMetaOssieModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportOneMetaOssieModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.doc_format):
+            query['DocFormat'] = request.doc_format
+        if not DaraCore.is_null(request.document):
+            query['Document'] = request.document
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportOneMetaOssieModel',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportOneMetaOssieModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_one_meta_ossie_model_with_options_async(
+        self,
+        request: main_models.ImportOneMetaOssieModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportOneMetaOssieModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.doc_format):
+            query['DocFormat'] = request.doc_format
+        if not DaraCore.is_null(request.document):
+            query['Document'] = request.document
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportOneMetaOssieModel',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportOneMetaOssieModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_one_meta_ossie_model(
+        self,
+        request: main_models.ImportOneMetaOssieModelRequest,
+    ) -> main_models.ImportOneMetaOssieModelResponse:
+        runtime = RuntimeOptions()
+        return self.import_one_meta_ossie_model_with_options(request, runtime)
+
+    async def import_one_meta_ossie_model_async(
+        self,
+        request: main_models.ImportOneMetaOssieModelRequest,
+    ) -> main_models.ImportOneMetaOssieModelResponse:
+        runtime = RuntimeOptions()
+        return await self.import_one_meta_ossie_model_with_options_async(request, runtime)
 
     def init_workspace_system_mcp_server_with_options(
         self,
@@ -8318,6 +8728,198 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_knowledge_bases_with_options_async(request, runtime)
 
+    def list_one_meta_ossie_models_with_options(
+        self,
+        request: main_models.ListOneMetaOssieModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOneMetaOssieModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.enable_vector_search):
+            query['EnableVectorSearch'] = request.enable_vector_search
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOneMetaOssieModels',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOneMetaOssieModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_one_meta_ossie_models_with_options_async(
+        self,
+        request: main_models.ListOneMetaOssieModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOneMetaOssieModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.enable_vector_search):
+            query['EnableVectorSearch'] = request.enable_vector_search
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOneMetaOssieModels',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOneMetaOssieModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_one_meta_ossie_models(
+        self,
+        request: main_models.ListOneMetaOssieModelsRequest,
+    ) -> main_models.ListOneMetaOssieModelsResponse:
+        runtime = RuntimeOptions()
+        return self.list_one_meta_ossie_models_with_options(request, runtime)
+
+    async def list_one_meta_ossie_models_async(
+        self,
+        request: main_models.ListOneMetaOssieModelsRequest,
+    ) -> main_models.ListOneMetaOssieModelsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_one_meta_ossie_models_with_options_async(request, runtime)
+
+    def list_one_meta_sql_templates_with_options(
+        self,
+        request: main_models.ListOneMetaSqlTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOneMetaSqlTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.enable_vector_search):
+            query['EnableVectorSearch'] = request.enable_vector_search
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.uuids):
+            query['Uuids'] = request.uuids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOneMetaSqlTemplates',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOneMetaSqlTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_one_meta_sql_templates_with_options_async(
+        self,
+        request: main_models.ListOneMetaSqlTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOneMetaSqlTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.enable_vector_search):
+            query['EnableVectorSearch'] = request.enable_vector_search
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.uuids):
+            query['Uuids'] = request.uuids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOneMetaSqlTemplates',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOneMetaSqlTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_one_meta_sql_templates(
+        self,
+        request: main_models.ListOneMetaSqlTemplatesRequest,
+    ) -> main_models.ListOneMetaSqlTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_one_meta_sql_templates_with_options(request, runtime)
+
+    async def list_one_meta_sql_templates_async(
+        self,
+        request: main_models.ListOneMetaSqlTemplatesRequest,
+    ) -> main_models.ListOneMetaSqlTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_one_meta_sql_templates_with_options_async(request, runtime)
+
     def list_workspace_code_with_options(
         self,
         request: main_models.ListWorkspaceCodeRequest,
@@ -10727,6 +11329,202 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateKnowledgeBaseResponse:
         runtime = RuntimeOptions()
         return await self.update_knowledge_base_with_options_async(request, runtime)
+
+    def update_one_meta_ossie_model_with_options(
+        self,
+        request: main_models.UpdateOneMetaOssieModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOneMetaOssieModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.doc_format):
+            query['DocFormat'] = request.doc_format
+        if not DaraCore.is_null(request.document):
+            query['Document'] = request.document
+        if not DaraCore.is_null(request.knowledge_uuid):
+            query['KnowledgeUuid'] = request.knowledge_uuid
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOneMetaOssieModel',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOneMetaOssieModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_one_meta_ossie_model_with_options_async(
+        self,
+        request: main_models.UpdateOneMetaOssieModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOneMetaOssieModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.doc_format):
+            query['DocFormat'] = request.doc_format
+        if not DaraCore.is_null(request.document):
+            query['Document'] = request.document
+        if not DaraCore.is_null(request.knowledge_uuid):
+            query['KnowledgeUuid'] = request.knowledge_uuid
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOneMetaOssieModel',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOneMetaOssieModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_one_meta_ossie_model(
+        self,
+        request: main_models.UpdateOneMetaOssieModelRequest,
+    ) -> main_models.UpdateOneMetaOssieModelResponse:
+        runtime = RuntimeOptions()
+        return self.update_one_meta_ossie_model_with_options(request, runtime)
+
+    async def update_one_meta_ossie_model_async(
+        self,
+        request: main_models.UpdateOneMetaOssieModelRequest,
+    ) -> main_models.UpdateOneMetaOssieModelResponse:
+        runtime = RuntimeOptions()
+        return await self.update_one_meta_ossie_model_with_options_async(request, runtime)
+
+    def update_one_meta_sql_template_with_options(
+        self,
+        request: main_models.UpdateOneMetaSqlTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOneMetaSqlTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.expr):
+            query['Expr'] = request.expr
+        if not DaraCore.is_null(request.knowledge_uuid):
+            query['KnowledgeUuid'] = request.knowledge_uuid
+        if not DaraCore.is_null(request.sql_params):
+            query['SqlParams'] = request.sql_params
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOneMetaSqlTemplate',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOneMetaSqlTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_one_meta_sql_template_with_options_async(
+        self,
+        request: main_models.UpdateOneMetaSqlTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOneMetaSqlTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.expr):
+            query['Expr'] = request.expr
+        if not DaraCore.is_null(request.knowledge_uuid):
+            query['KnowledgeUuid'] = request.knowledge_uuid
+        if not DaraCore.is_null(request.sql_params):
+            query['SqlParams'] = request.sql_params
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOneMetaSqlTemplate',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOneMetaSqlTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_one_meta_sql_template(
+        self,
+        request: main_models.UpdateOneMetaSqlTemplateRequest,
+    ) -> main_models.UpdateOneMetaSqlTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.update_one_meta_sql_template_with_options(request, runtime)
+
+    async def update_one_meta_sql_template_async(
+        self,
+        request: main_models.UpdateOneMetaSqlTemplateRequest,
+    ) -> main_models.UpdateOneMetaSqlTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.update_one_meta_sql_template_with_options_async(request, runtime)
 
     def upload_document_with_options(
         self,

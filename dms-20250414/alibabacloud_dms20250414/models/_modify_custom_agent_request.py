@@ -36,19 +36,19 @@ class ModifyCustomAgentRequest(DaraModel):
         self.custom_agent_id = custom_agent_id
         # The current DMS unit.
         self.dmsunit = dmsunit
-        # The specified data scope in **JSON string format**.
+        # The specified data scope in **JSON character string format**.
         # - Common parameter description
-        #   - tableFlag: true indicates a specified data scope
-        #   - scope: personal is a fixed value
-        #   - personal: pass parameters for file or database types
+        #   - tableFlag: true indicates a specified data scope.
+        #   - scope: personal is a fixed value.
+        #   - personal: pass parameters for file or database types.
         # 
         # **File type**. Pass parameters in the following format:
-        # - DataSourceType: remote_data_center is a fixed value
-        # - FileId: the file ID
-        # - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name
-        # - Tables: the table name returned by the ListDataCenterTable operation
-        # - TableIds: the TableId returned by the ListDataCenterTable operation
-        # - RegionId: the current region
+        # - DataSourceType: remote_data_center is a fixed value.
+        # - FileId: the file ID.
+        # - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name.
+        # - Tables: the table name returned by the ListDataCenterTable operation.
+        # - TableIds: the TableId returned by the ListDataCenterTable operation.
+        # - RegionId: the current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -68,17 +68,17 @@ class ModifyCustomAgentRequest(DaraModel):
         # }
         # ```
         # 
-        # **Database type**. Pass parameters in the following format:
-        # - DataSourceType: database is a fixed value
-        # - DmsInstanceId: the DMS instance ID returned by the data center operation
-        # - DmsDatabaseId: the DMS database ID returned by the data center operation
-        # - FileId: the instance name (deprecated)
-        # - DbName: the database name returned by the data center operation
-        # - Database: the database name returned by the data center operation
-        # - Tables: the table name returned by the data center operation
-        # - TableIds: the TableId returned by the data center operation
-        # - Engine: the engine type (mysql or postgresql)
-        # - RegionId: the current region
+        # **Database type**. Pass parameters as follows:
+        # - DataSourceType: database is a fixed value.
+        # - DmsInstanceId: the DMS instance ID returned by the data center operation.
+        # - DmsDatabaseId: the DMS database ID returned by the data center operation.
+        # - FileId: the instance name (deprecated).
+        # - DbName: the database name returned by the data center operation.
+        # - Database: the database name returned by the data center operation.
+        # - Tables: the table name returned by the data center operation.
+        # - TableIds: the TableId returned by the data center operation.
+        # - Engine: the engine type (mysql or postgresql).
+        # - RegionId: the current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -107,10 +107,12 @@ class ModifyCustomAgentRequest(DaraModel):
         # The execution configuration.
         self.execution_config = execution_config
         # The instruction.
+        # - Input limit: up to 10,000 characters.
         self.instruction = instruction
         # The knowledge.
+        # - Input limit: up to 10,000 characters.
         self.knowledge = knowledge
-        # The external knowledge bases.
+        # The external knowledge base list.
         self.knowledge_config_list = knowledge_config_list
         self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The name of the custom agent.
@@ -120,9 +122,11 @@ class ModifyCustomAgentRequest(DaraModel):
         # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
         # The text report format.
+        #  - Input limit: up to 10,000 characters.
         self.text_report_config = text_report_config
         self.user_specified_skill_list = user_specified_skill_list
         # The web report format.
+        # - Input limit: up to 50,000 characters.
         self.web_report_config = web_report_config
         self.web_report_theme = web_report_theme
         # The workspace ID.
@@ -283,7 +287,7 @@ class ModifyCustomAgentRequestScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for the time-based scheduling.
+        # The cron expression for timed scheduling.
         self.cron_expression = cron_expression
         # The query for the scheduled task.
         self.query = query
@@ -381,9 +385,11 @@ class ModifyCustomAgentRequestKnowledgeConfigList(DaraModel):
         mcp_server_id: str = None,
     ):
         # The access type.
+        # 
+        # - mcp: access through MCP.
         self.access_type = access_type
         self.kb_uuid = kb_uuid
-        # The ID of the MCP server.
+        # The ID of the MCP Server.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):

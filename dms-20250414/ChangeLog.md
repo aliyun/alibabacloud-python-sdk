@@ -1,3 +1,15 @@
+2026-08-24 Version: 1.23.0
+- Support API CreateOneMetaSqlTemplate.
+- Support API DeleteOneMetaOssieModel.
+- Support API DeleteOneMetaSqlTemplate.
+- Support API GetOneMetaOssieModel.
+- Support API ImportOneMetaOssieModel.
+- Support API ListOneMetaOssieModels.
+- Support API ListOneMetaSqlTemplates.
+- Support API UpdateOneMetaOssieModel.
+- Support API UpdateOneMetaSqlTemplate.
+
+
 2026-08-24 Version: 1.22.0
 - Support API AddDataAgentMemory.
 - Update API CreateCustomAgent: add request parameters UserSpecifiedSkillList.

@@ -4,49 +4,29 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class OneMetaSqlTemplateView(DaraModel):
+class CreateOneMetaSqlTemplateRequest(DaraModel):
     def __init__(
         self,
         catalog_uuid: str = None,
         database_uuid: str = None,
         description: str = None,
         expr: str = None,
-        gmt_created: int = None,
-        gmt_modified: int = None,
-        knowledge_uuid: str = None,
         source: str = None,
         sql_params: str = None,
-        summary: str = None,
         tag: str = None,
         title: str = None,
-        version: str = None,
     ):
-        # The UUID of the associated folder.
         self.catalog_uuid = catalog_uuid
-        # The UUID of the associated database.
         self.database_uuid = database_uuid
-        # The description of the SQL template.
         self.description = description
-        # The content of the SQL template.
+        # This parameter is required.
         self.expr = expr
-        # The creation time.
-        self.gmt_created = gmt_created
-        # The modification time.
-        self.gmt_modified = gmt_modified
-        # The UUID of the knowledge.
-        self.knowledge_uuid = knowledge_uuid
-        # The source of the SQL template knowledge.
+        # This parameter is required.
         self.source = source
-        # The parameters of the SQL template.
         self.sql_params = sql_params
-        # The summary of the SQL template.
-        self.summary = summary
-        # The tag of the SQL template.
         self.tag = tag
-        # The title of the SQL template.
+        # This parameter is required.
         self.title = title
-        # The version of the SQL template.
-        self.version = version
 
     def validate(self):
         pass
@@ -68,32 +48,17 @@ class OneMetaSqlTemplateView(DaraModel):
         if self.expr is not None:
             result['Expr'] = self.expr
 
-        if self.gmt_created is not None:
-            result['GmtCreated'] = self.gmt_created
-
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-
-        if self.knowledge_uuid is not None:
-            result['KnowledgeUuid'] = self.knowledge_uuid
-
         if self.source is not None:
             result['Source'] = self.source
 
         if self.sql_params is not None:
             result['SqlParams'] = self.sql_params
 
-        if self.summary is not None:
-            result['Summary'] = self.summary
-
         if self.tag is not None:
             result['Tag'] = self.tag
 
         if self.title is not None:
             result['Title'] = self.title
-
-        if self.version is not None:
-            result['Version'] = self.version
 
         return result
 
@@ -111,32 +76,17 @@ class OneMetaSqlTemplateView(DaraModel):
         if m.get('Expr') is not None:
             self.expr = m.get('Expr')
 
-        if m.get('GmtCreated') is not None:
-            self.gmt_created = m.get('GmtCreated')
-
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-
-        if m.get('KnowledgeUuid') is not None:
-            self.knowledge_uuid = m.get('KnowledgeUuid')
-
         if m.get('Source') is not None:
             self.source = m.get('Source')
 
         if m.get('SqlParams') is not None:
             self.sql_params = m.get('SqlParams')
 
-        if m.get('Summary') is not None:
-            self.summary = m.get('Summary')
-
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
-
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
 
         return self
 

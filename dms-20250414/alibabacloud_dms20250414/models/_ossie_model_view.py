@@ -24,21 +24,37 @@ class OssieModelView(DaraModel):
         title: str = None,
         version: str = None,
     ):
+        # The UUID of the associated instance.
         self.catalog_uuid = catalog_uuid
+        # The UUID of the associated database.
         self.database_uuid = database_uuid
+        # The semantic description.
         self.description = description
+        # The semantic document format type.
         self.doc_format = doc_format
+        # The domain topic.
         self.domain_topic = domain_topic
+        # The expression content.
         self.expr = expr
+        # The creation time.
         self.gmt_created = gmt_created
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The UUID of the semantic knowledge.
         self.knowledge_uuid = knowledge_uuid
+        # The semantic document content.
         self.raw_doc = raw_doc
+        # The semantic type.
         self.semantic_type = semantic_type
+        # The source.
         self.source = source
+        # The document summary.
         self.summary = summary
+        # The knowledge base tag.
         self.tag = tag
+        # The semantic title.
         self.title = title
+        # The version information.
         self.version = version
 
     def validate(self):
