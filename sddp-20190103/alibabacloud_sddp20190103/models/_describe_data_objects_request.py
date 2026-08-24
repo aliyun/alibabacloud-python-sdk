@@ -10,13 +10,17 @@ class DescribeDataObjectsRequest(DaraModel):
         apiversion: int = None,
         bucket: str = None,
         current_page: int = None,
+        cursor: str = None,
+        cursor_direction: str = None,
         db_name: str = None,
         domain_id: int = None,
         engine_type: str = None,
+        facet_type: str = None,
         feature_type: int = None,
         file_category_code: int = None,
         file_type: int = None,
         instance_id: str = None,
+        is_revision: int = None,
         lang: str = None,
         log_store: str = None,
         log_store_flag: int = None,
@@ -39,130 +43,107 @@ class DescribeDataObjectsRequest(DaraModel):
         task_id: int = None,
         template_id: int = None,
     ):
-        # The version of the API.
+        # The identifier used for canary release evaluation.
         self.apiversion = apiversion
-        # The name of the OSS bucket.
+        # The OSS bucket filter.
         self.bucket = bucket
-        # The page number of the returned page. Default value: 1.
+        # The page number in a paged query. Default value: 1.
         self.current_page = current_page
-        # The name of the database.
+        self.cursor = cursor
+        self.cursor_direction = cursor_direction
+        # The database name filter.
         self.db_name = db_name
-        # The ID of the data domain to which the data asset belongs.
+        # The data domain ID to which the data asset belongs.
         self.domain_id = domain_id
         self.engine_type = engine_type
-        # This parameter is deprecated.
+        # The facet dimension for associated filtering in the data catalog. Valid values: rule (category), task (task), instance (instance), and db (database). If this parameter is not specified or is empty, the original list and count query is performed (behavior unchanged). If a valid value is specified, the list query is skipped and only content.hitValues is returned. If an invalid value is specified, a parameter error is returned.
+        self.facet_type = facet_type
+        # **[Deprecated]** This parameter is deprecated.
         self.feature_type = feature_type
-        # The code of the file category.
+        # The file category code.
         self.file_category_code = file_category_code
-        # The type of the OSS file.
+        # The OSS file type supported for detection.
         # 
-        # > This parameter is valid only for querying data assets of the OSS type. You can call the [DescribeDocTypes](https://help.aliyun.com/document_detail/2536492.html) operation to obtain the supported OSS file types. Use the value of the `Code` parameter in the response.
+        # > You can call [DescribeDocTypes](https://help.aliyun.com/document_detail/2536492.html) to obtain the supported OSS file types. Use the Code field value from the response. This parameter is valid only for OSS asset queries.
         self.file_type = file_type
-        # The keyword of the instance ID.
+        # The keyword of the asset instance ID.
         self.instance_id = instance_id
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
-        # 
+        # Specifies whether to filter revision items.
+        self.is_revision = is_revision
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
         # - **zh_cn**: Chinese.
-        # 
         # - **en_us**: English.
         self.lang = lang
-        # The name of the Logstore.
+        # The SLS Logstore filter.
         self.log_store = log_store
-        # Specifies whether to query data at the Logstore level. The Simple Log Service data catalog has two layers. Set this parameter to 1 to query data at the Logstore level.
+        # The data catalog SLS page has two layers. This parameter indicates whether the query is at the Logstore dimension.
         self.log_store_flag = log_store_flag
-        # The ID of the member.
+        # The member accounts ID.
         self.member_account = member_account
-        # The model ID of the industry-specific rule template. You can specify multiple IDs. Separate them with commas (,).
-        # 
-        # > You can call the [DescribeTemplateAllRules](https://help.aliyun.com/document_detail/2536491.html) operation to obtain the model ID of the industry-specific rule template.
+        # The model IDs of the industry template, separated by commas.
+        # > You can call [DescribeTemplateAllRules](https://help.aliyun.com/document_detail/2536491.html) to obtain the industry template model IDs.
         self.model_ids = model_ids
-        # The data labels to be queried. You can specify multiple data labels. Separate them with commas (,). Valid values:
-        # 
-        # - **101**: personal sensitive information
-        # 
-        # - **102**: personal information
-        # 
-        # - **107**: general information
+        # The data tags to query, separated by commas. Valid values:
+        # - **101**: personal sensitive information.
+        # - **102**: personal information.
+        # - **107**: general information.
         self.model_tag_ids = model_tag_ids
-        # The number of data assets to return on each page. Default value: **10**.
+        # The maximum number of data asset instances to return per page in a paged query. Default value: **10**.
         self.page_size = page_size
-        # The IDs of the parent asset categories to be queried. You can specify multiple IDs. Separate them with commas (,).
+        # The list of parent category IDs of the templates to query, separated by commas.
         self.parent_category_ids = parent_category_ids
-        # The path of the file.
+        # The file path filter.
         self.path = path
-        # The ID of the product.
+        # The product of the data catalog.
         self.product_id = product_id
-        # The IDs of the products to which the data assets to be queried belong. You can specify multiple product IDs. Separate them with commas (,). We recommend that you specify this parameter. Valid values:
-        # 
+        # We recommend that you specify this parameter. The list of product IDs to query, separated by commas. Valid values:
         # - **1**: MaxCompute
-        # 
         # - **2**: OSS
-        # 
         # - **3**: ADB-MYSQL
-        # 
         # - **4**: TableStore
-        # 
         # - **5**: RDS
-        # 
         # - **6**: SELF_DB
-        # 
         # - **7**: PolarDB-X
-        # 
         # - **8**: PolarDB
-        # 
         # - **9**: ADB-PG
-        # 
         # - **10**: OceanBase
-        # 
         # - **11**: MongoDB
-        # 
         # - **25**: Redis
         # 
-        # > If you want to query data assets that belong to OSS, you cannot query data assets of other products. By default, data assets of products other than OSS are queried.
+        # > OSS is mutually exclusive with other products. If OSS is included in the query, no other products can be specified. By default, non-OSS products are queried.
         self.product_ids = product_ids
-        # The name of the Simple Log Service project.
+        # The SLS project filter.
         self.project = project
-        # The keyword of the data asset to be queried.
+        # The keyword of the data object to query.
         self.query_name = query_name
-        # The region in which the data asset catalog resides.
+        # The region of the data catalog display page.
         self.region_id = region_id
-        # The IDs of the sensitivity levels. You can specify multiple sensitivity level IDs. Separate them with commas (,).
+        # The risk level filter.
         self.risk_level_id_list = risk_level_id_list
-        # The sensitivity level of the data asset. You can specify multiple sensitivity levels. Separate them with commas (,).
-        # 
-        # - **2**: S1, low sensitivity level
-        # 
-        # - **3**: S2, medium sensitivity level
-        # 
-        # - **4**: S3, high sensitivity level
-        # 
-        # - **5**: S4, highest sensitivity level
+        # The risk levels of the data assets to query. Separate multiple values with commas (,).
+        # - **2**: S1, low risk level.
+        # - **3**: S2, medium risk level.
+        # - **4**: S3, high risk level.
+        # - **5**: S4, highest risk level.
         self.risk_levels = risk_levels
-        # The IDs of the rules. You can specify multiple rule IDs. Separate them with commas (,).
+        # The rule filter.
         self.rule_ids = rule_ids
-        # The region where the data asset resides. Valid values:
-        # 
-        # - **cn-beijing**: China (Beijing)
-        # 
-        # - **cn-zhangjiakou**: China (Zhangjiakou)
-        # 
-        # - **cn-huhehaote**: China (Hohhot)
-        # 
-        # - **cn-hangzhou**: China (Hangzhou)
-        # 
-        # - **cn-shanghai**: China (Shanghai)
-        # 
-        # - **cn-shenzhen**: China (Shenzhen)
-        # 
-        # - **cn-hongkong**: China (Hong Kong)
+        # The region where the asset resides. Valid values:
+        # - **cn-beijing**: China (Beijing).
+        # - **cn-zhangjiakou**: China (Zhangjiakou).
+        # - **cn-huhehaote**: China (Hohhot).
+        # - **cn-hangzhou**: China (Hangzhou).
+        # - **cn-shanghai**: China (Shanghai).
+        # - **cn-shenzhen**: China (Shenzhen).
+        # - **cn-hongkong**: Hong Kong (China).
         self.service_region_id = service_region_id
-        # The name of the table.
+        # The task name filter.
         self.table_name = table_name
-        # The ID of the task.
+        # The task ID filter.
         self.task_id = task_id
-        # The ID of the industry-specific rule template.
+        # The industry template ID.
         # 
-        # > You can call the [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) operation to obtain the ID of the industry-specific rule template.
+        # > You can call [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) to obtain the industry template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
@@ -184,6 +165,12 @@ class DescribeDataObjectsRequest(DaraModel):
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
+        if self.cursor is not None:
+            result['Cursor'] = self.cursor
+
+        if self.cursor_direction is not None:
+            result['CursorDirection'] = self.cursor_direction
+
         if self.db_name is not None:
             result['DbName'] = self.db_name
 
@@ -192,6 +179,9 @@ class DescribeDataObjectsRequest(DaraModel):
 
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+
+        if self.facet_type is not None:
+            result['FacetType'] = self.facet_type
 
         if self.feature_type is not None:
             result['FeatureType'] = self.feature_type
@@ -204,6 +194,9 @@ class DescribeDataObjectsRequest(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.is_revision is not None:
+            result['IsRevision'] = self.is_revision
 
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -281,6 +274,12 @@ class DescribeDataObjectsRequest(DaraModel):
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
 
+        if m.get('Cursor') is not None:
+            self.cursor = m.get('Cursor')
+
+        if m.get('CursorDirection') is not None:
+            self.cursor_direction = m.get('CursorDirection')
+
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
 
@@ -289,6 +288,9 @@ class DescribeDataObjectsRequest(DaraModel):
 
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+
+        if m.get('FacetType') is not None:
+            self.facet_type = m.get('FacetType')
 
         if m.get('FeatureType') is not None:
             self.feature_type = m.get('FeatureType')
@@ -301,6 +303,9 @@ class DescribeDataObjectsRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('IsRevision') is not None:
+            self.is_revision = m.get('IsRevision')
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')

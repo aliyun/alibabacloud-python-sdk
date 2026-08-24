@@ -11,20 +11,37 @@ class DescribeDataObjectsResponseBody(DaraModel):
     def __init__(
         self,
         current_page: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        has_next: bool = None,
+        has_previous: bool = None,
+        hit_values: List[str] = None,
         items: List[main_models.DescribeDataObjectsResponseBodyItems] = None,
+        next_cursor: str = None,
         page_size: int = None,
+        previous_cursor: str = None,
         request_id: str = None,
+        sync_status: str = None,
         total_count: int = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the current page in a paged query. Settings for paging. Default value: **1**.
         self.current_page = current_page
-        # A list of data objects.
+        self.error_code = error_code
+        self.error_message = error_message
+        self.has_next = has_next
+        self.has_previous = has_previous
+        # The associate filter values used to return filtered values.
+        self.hit_values = hit_values
+        # The list of data objects.
         self.items = items
-        # The number of data asset instances to return on each page. Default value: **10**.
+        self.next_cursor = next_cursor
+        # The maximum number of data asset instances to return per page in a paged query. Default value: **10**.
         self.page_size = page_size
-        # The unique ID of the request. Alibaba Cloud generates this ID to help you troubleshoot issues.
+        self.previous_cursor = previous_cursor
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
-        # The total number of entries that match the query.
+        self.sync_status = sync_status
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -41,16 +58,40 @@ class DescribeDataObjectsResponseBody(DaraModel):
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
+        if self.has_next is not None:
+            result['HasNext'] = self.has_next
+
+        if self.has_previous is not None:
+            result['HasPrevious'] = self.has_previous
+
+        if self.hit_values is not None:
+            result['HitValues'] = self.hit_values
+
         result['Items'] = []
         if self.items is not None:
             for k1 in self.items:
                 result['Items'].append(k1.to_map() if k1 else None)
 
+        if self.next_cursor is not None:
+            result['NextCursor'] = self.next_cursor
+
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.previous_cursor is not None:
+            result['PreviousCursor'] = self.previous_cursor
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.sync_status is not None:
+            result['SyncStatus'] = self.sync_status
 
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
@@ -62,17 +103,41 @@ class DescribeDataObjectsResponseBody(DaraModel):
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
 
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+
+        if m.get('HasNext') is not None:
+            self.has_next = m.get('HasNext')
+
+        if m.get('HasPrevious') is not None:
+            self.has_previous = m.get('HasPrevious')
+
+        if m.get('HitValues') is not None:
+            self.hit_values = m.get('HitValues')
+
         self.items = []
         if m.get('Items') is not None:
             for k1 in m.get('Items'):
                 temp_model = main_models.DescribeDataObjectsResponseBodyItems()
                 self.items.append(temp_model.from_map(k1))
 
+        if m.get('NextCursor') is not None:
+            self.next_cursor = m.get('NextCursor')
+
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
 
+        if m.get('PreviousCursor') is not None:
+            self.previous_cursor = m.get('PreviousCursor')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('SyncStatus') is not None:
+            self.sync_status = m.get('SyncStatus')
 
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
@@ -121,23 +186,24 @@ class DescribeDataObjectsResponseBodyItems(DaraModel):
         template_id: int = None,
         template_name: str = None,
     ):
-        # An array of industry categories to which the sensitive data belongs.
+        # The list of industry categories to which the sensitive data belongs.
         self.categories = categories
         self.cluster_type = cluster_type
-        # The comment on the column.
+        # The column comment.
         self.comment = comment
-        # The data type of the database column.
+        # The database column type.
         self.data_type = data_type
-        # The name of the database.
+        # The database name.
         self.db_name = db_name
+        # The engine type.
         self.engine_type = engine_type
-        # The code for the file category.
+        # The file type.
         self.file_category_code = file_category_code
         # The unique ID of the data object.
         self.id = id
-        # The description of the data asset instance.
+        # The instance description of the data object.
         self.instance_description = instance_description
-        # The ID of the data asset instance.
+        # The data asset instance ID.
         self.instance_id = instance_id
         # The revision status.
         self.is_revision = is_revision
@@ -145,103 +211,79 @@ class DescribeDataObjectsResponseBodyItems(DaraModel):
         self.last_modified_time = last_modified_time
         # The timestamp of the last scan, in milliseconds.
         self.last_scan_time = last_scan_time
-        # The name of the Logstore in SLS.
+        # The SLS Logstore.
         self.log_store = log_store
         # The column encryption status.
         self.mask_status = mask_status
-        # The ID of the member account.
+        # The member accounts ID.
         self.member_account = member_account
-        # A list of data tags.
+        # The list of data labels.
         self.model_tags = model_tags
         # The name of the data object.
         self.name = name
-        # The name of the file category.
+        # The file category name.
         self.object_file_category = object_file_category
-        # The type of the data object.
+        # The object type of the data object.
         self.object_type = object_type
         # The path of the data object.
         self.path = path
-        # The name of the product to which the data object belongs. Valid values:
-        # 
+        # The product name to which the data object belongs. Valid values:
         # - **MaxCompute**
-        # 
         # - **OSS**
-        # 
         # - **ADB-MYSQL**
-        # 
-        # - **Table Store**
-        # 
+        # - **TableStore**
         # - **RDS**
-        # 
         # - **SELF_DB**
-        # 
         # - **PolarDB-X**
-        # 
         # - **PolarDB**
-        # 
         # - **ADB-PG**
-        # 
         # - **OceanBase**
-        # 
         # - **MongoDB**
-        # 
         # - **Redis**
         self.product_code = product_code
-        # The ID of the product to which the data object belongs. Valid values:
-        # 
+        # The ID that corresponds to the product name to which the data object belongs. Valid values:
         # - **1**: MaxCompute
-        # 
         # - **2**: OSS
-        # 
         # - **3**: ADB-MYSQL
-        # 
-        # - **4**: Table Store
-        # 
+        # - **4**: TableStore
         # - **5**: RDS
-        # 
         # - **6**: SELF_DB
-        # 
         # - **7**: PolarDB-X
-        # 
         # - **8**: PolarDB
-        # 
         # - **9**: ADB-PG
-        # 
         # - **10**: OceanBase
-        # 
         # - **11**: MongoDB
-        # 
         # - **25**: Redis
         self.product_id = product_id
-        # The name of the Simple Log Service (SLS) project.
+        # The Simple Log Service (SLS) project.
         self.project = project
-        # The ID of the region where the data object is located.
+        # The region ID to which the data object belongs.
         self.region_id = region_id
-        # The name of the region.
+        # The region name.
         self.region_name = region_name
-        # The risk level.
+        # The sensitivity level.
         self.risk_level_id = risk_level_id
         # The number of matched rules.
         self.rule_count = rule_count
-        # A list of matched detection models.
+        # The list of matched detection models.
         self.rule_list = rule_list
-        # The number of sensitive data fields.
+        # The number of sensitive data entries.
         self.sensitive_count = sensitive_count
-        # The size of the file in bytes.
+        # The file size.
         self.size = size
-        # A comma-separated string that specifies the count of matched rules for each risk level. The string follows the format `S1,S2...S10`, where the value at each position represents the count for the corresponding risk level.
+        # The array that consists of the number of rules matched at each sensitivity level, in the format "S1,S2,S3,S4,S5,S6,S7,S8,S9,S10", where S1 represents the number of rules matched at sensitivity level S1.
         self.sx = sx
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
-        # The task number.
+        # The user task number.
         self.task_number = task_number
-        # The ID of the industry template.
+        # The industry template ID.
         self.template_id = template_id
-        # The name of the template.
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -514,37 +556,27 @@ class DescribeDataObjectsResponseBodyItemsRuleList(DaraModel):
         rule_name: str = None,
         sample_list: str = None,
     ):
-        # The ID of the risk level. Valid values:
-        # 
-        # - **1**: N/A - No sensitive data is detected
-        # 
-        # - **2**: S1 - Level-1 sensitive data
-        # 
-        # - **3**: S2 - Level-2 sensitive data
-        # 
-        # - **4**: S3 - Level-3 sensitive data
-        # 
-        # - **5**: S4 - Level-4 sensitive data
+        # The risk level ID of the sensitive data detection rule. Valid values:
+        # - **1**: N/A. No sensitive data is detected.
+        # - **2**: S1. Level 1 sensitive data.
+        # - **3**: S2. Level 2 sensitive data.
+        # - **4**: S3. Level 3 sensitive data.
+        # - **5**: S4. Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The name of the risk level. Valid values:
-        # 
-        # - **N/A**: No sensitive data is detected
-        # 
-        # - **S1**: Level-1 sensitive data
-        # 
-        # - **S2**: Level-2 sensitive data
-        # 
-        # - **S3**: Level-3 sensitive data
-        # 
-        # - **S4**: Level-4 sensitive data
+        # The risk level name of the data asset table. Valid values:
+        # - **N/A**: No sensitive data is detected.
+        # - **S1**: Level 1 sensitive data.
+        # - **S2**: Level 2 sensitive data.
+        # - **S3**: Level 3 sensitive data.
+        # - **S4**: Level 4 sensitive data.
         self.risk_level_name = risk_level_name
-        # The hierarchical category of the rule, from the top-level to the leaf-level category in the template.
+        # The rule information described from the top to the bottom of the template.
         self.rule_category_name_list = rule_category_name_list
         # The number of matched detection models.
         self.rule_count = rule_count
-        # The ID of the detection model.
+        # The detection model ID.
         self.rule_id = rule_id
-        # The name of the detection model.
+        # The detection model name.
         self.rule_name = rule_name
         # The sample data.
         self.sample_list = sample_list
@@ -611,21 +643,15 @@ class DescribeDataObjectsResponseBodyItemsModelTags(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the data tag. Valid values:
-        # 
-        # - **101**: Personal sensitive information
-        # 
-        # - **102**: Personal information
-        # 
-        # - **107**: General information
+        # The data label ID. Valid values:
+        # - **101**: Personal sensitive information.
+        # - **102**: Personal information.
+        # - **107**: General information.
         self.id = id
-        # The name of the data tag. Valid values:
-        # 
-        # - **Personal sensitive information**
-        # 
-        # - **Personal information**
-        # 
-        # - **General information**
+        # The data label name. Valid values:
+        # - **Personal sensitive information.**
+        # - **Personal information.**
+        # - **General information.**
         self.name = name
 
     def validate(self):

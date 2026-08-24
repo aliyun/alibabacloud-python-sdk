@@ -23,11 +23,11 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hongkong': 'sddp-api.cn-hongkong.aliyuncs.com',
+            'ap-southeast-1': 'sddp.ap-southeast-1.aliyuncs.com',
             'cn-zhangjiakou': 'sddp.cn-zhangjiakou.aliyuncs.com',
-            'cn-shanghai': 'sddp.cn-shanghai.aliyuncs.com',
-            'cn-hangzhou': 'sddp.cn-hangzhou.aliyuncs.com',
             'ap-southeast-5': 'sddp.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-1': 'sddp.ap-southeast-1.aliyuncs.com'
+            'cn-hangzhou': 'sddp.cn-hangzhou.aliyuncs.com',
+            'cn-shanghai': 'sddp.cn-shanghai.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sddp', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -2267,12 +2267,18 @@ class Client(OpenApiClient):
             query['Bucket'] = request.bucket
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.cursor):
+            query['Cursor'] = request.cursor
+        if not DaraCore.is_null(request.cursor_direction):
+            query['CursorDirection'] = request.cursor_direction
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.domain_id):
             query['DomainId'] = request.domain_id
         if not DaraCore.is_null(request.engine_type):
             query['EngineType'] = request.engine_type
+        if not DaraCore.is_null(request.facet_type):
+            query['FacetType'] = request.facet_type
         if not DaraCore.is_null(request.feature_type):
             query['FeatureType'] = request.feature_type
         if not DaraCore.is_null(request.file_category_code):
@@ -2281,6 +2287,8 @@ class Client(OpenApiClient):
             query['FileType'] = request.file_type
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_revision):
+            query['IsRevision'] = request.is_revision
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.log_store):
@@ -2355,12 +2363,18 @@ class Client(OpenApiClient):
             query['Bucket'] = request.bucket
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.cursor):
+            query['Cursor'] = request.cursor
+        if not DaraCore.is_null(request.cursor_direction):
+            query['CursorDirection'] = request.cursor_direction
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.domain_id):
             query['DomainId'] = request.domain_id
         if not DaraCore.is_null(request.engine_type):
             query['EngineType'] = request.engine_type
+        if not DaraCore.is_null(request.facet_type):
+            query['FacetType'] = request.facet_type
         if not DaraCore.is_null(request.feature_type):
             query['FeatureType'] = request.feature_type
         if not DaraCore.is_null(request.file_category_code):
@@ -2369,6 +2383,8 @@ class Client(OpenApiClient):
             query['FileType'] = request.file_type
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_revision):
+            query['IsRevision'] = request.is_revision
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.log_store):
