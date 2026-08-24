@@ -13,12 +13,24 @@ class CreateContextDatabaseMemberRequest(DaraModel):
         role: str = None,
         workspace_id: str = None,
     ):
+        # Specifies whether to issue the first API key when the member is created. Default value: false.
         self.generate_initial_key = generate_initial_key
+        # The name of the first API key. This parameter takes effect only when GenerateInitialKey is set to true.
         self.initial_key_name = initial_key_name
+        # The member name.
+        # 
         # This parameter is required.
         self.member_name = member_name
+        # The member role. Valid values:
+        # 
+        # - owner
+        # - admin
+        # - member
+        # 
         # This parameter is required.
         self.role = role
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from darabonba.model import DaraModel
 
 class CreateSandboxTemplateRequest(DaraModel):
@@ -10,9 +12,11 @@ class CreateSandboxTemplateRequest(DaraModel):
         default_cpu: str = None,
         default_memory: str = None,
         description: str = None,
+        image: str = None,
         instance_name: str = None,
         region_id: str = None,
         replicas: int = None,
+        tags: Dict[str, str] = None,
         template_name: str = None,
     ):
         # The number of CPUs for sandboxes created by using this template. Valid values: 1 to 4.
@@ -21,6 +25,7 @@ class CreateSandboxTemplateRequest(DaraModel):
         self.default_memory = default_memory
         # The description of the sandbox template. The description must be unique within the VPC.
         self.description = description
+        self.image = image
         # The instance ID of the AI application.
         # 
         # This parameter is required.
@@ -29,6 +34,7 @@ class CreateSandboxTemplateRequest(DaraModel):
         self.region_id = region_id
         # The number of prewarmed sandboxes. Valid values: 1 to 1000.
         self.replicas = replicas
+        self.tags = tags
         # The name of the sandbox template.
         # 
         # This parameter is required.
@@ -51,6 +57,9 @@ class CreateSandboxTemplateRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.image is not None:
+            result['Image'] = self.image
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
@@ -59,6 +68,9 @@ class CreateSandboxTemplateRequest(DaraModel):
 
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
@@ -76,6 +88,9 @@ class CreateSandboxTemplateRequest(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
@@ -84,6 +99,9 @@ class CreateSandboxTemplateRequest(DaraModel):
 
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')

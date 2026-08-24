@@ -12,10 +12,16 @@ class ListContextDatabaseApiKeysRequest(DaraModel):
         next_token: str = None,
         workspace_id: str = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # The member ID.
+        # 
         # This parameter is required.
         self.member_id = member_id
+        # The pagination token.
         self.next_token = next_token
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

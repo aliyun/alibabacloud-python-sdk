@@ -2,11 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
-
 from darabonba.model import DaraModel
 
-class ModifySandboxTemplateRequest(DaraModel):
+class ModifySandboxTemplateShrinkRequest(DaraModel):
     def __init__(
         self,
         default_cpu: str = None,
@@ -15,7 +13,7 @@ class ModifySandboxTemplateRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
         replicas: int = None,
-        tags: Dict[str, str] = None,
+        tags_shrink: str = None,
         template_id: str = None,
     ):
         # The number of CPUs for sandboxes created from this template. Valid values: 1 to 4.
@@ -31,7 +29,7 @@ class ModifySandboxTemplateRequest(DaraModel):
         self.region_id = region_id
         # The initial number of instances. Valid values: 1 to 1000.
         self.replicas = replicas
-        self.tags = tags
+        self.tags_shrink = tags_shrink
         # The sandbox template ID.
         # 
         # This parameter is required.
@@ -63,8 +61,8 @@ class ModifySandboxTemplateRequest(DaraModel):
         if self.replicas is not None:
             result['Replicas'] = self.replicas
 
-        if self.tags is not None:
-            result['Tags'] = self.tags
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
 
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
@@ -92,7 +90,7 @@ class ModifySandboxTemplateRequest(DaraModel):
             self.replicas = m.get('Replicas')
 
         if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
+            self.tags_shrink = m.get('Tags')
 
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')

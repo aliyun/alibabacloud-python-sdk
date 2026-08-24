@@ -2,26 +2,27 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
-
 from darabonba.model import DaraModel
 
-class ModifySandboxTemplateRequest(DaraModel):
+class CreateSandboxTemplateShrinkRequest(DaraModel):
     def __init__(
         self,
         default_cpu: str = None,
         default_memory: str = None,
+        description: str = None,
         image: str = None,
         instance_name: str = None,
         region_id: str = None,
         replicas: int = None,
-        tags: Dict[str, str] = None,
-        template_id: str = None,
+        tags_shrink: str = None,
+        template_name: str = None,
     ):
-        # The number of CPUs for sandboxes created from this template. Valid values: 1 to 4.
+        # The number of CPUs for sandboxes created by using this template. Valid values: 1 to 4.
         self.default_cpu = default_cpu
-        # The memory size for sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+        # The memory size for sandboxes created by using this template. Unit: Gi. Valid values: 1Gi to 8Gi.
         self.default_memory = default_memory
+        # The description of the sandbox template. The description must be unique within the VPC.
+        self.description = description
         self.image = image
         # The instance ID of the AI application.
         # 
@@ -29,13 +30,13 @@ class ModifySandboxTemplateRequest(DaraModel):
         self.instance_name = instance_name
         # The region ID.
         self.region_id = region_id
-        # The initial number of instances. Valid values: 1 to 1000.
+        # The number of prewarmed sandboxes. Valid values: 1 to 1000.
         self.replicas = replicas
-        self.tags = tags
-        # The sandbox template ID.
+        self.tags_shrink = tags_shrink
+        # The name of the sandbox template.
         # 
         # This parameter is required.
-        self.template_id = template_id
+        self.template_name = template_name
 
     def validate(self):
         pass
@@ -51,6 +52,9 @@ class ModifySandboxTemplateRequest(DaraModel):
         if self.default_memory is not None:
             result['DefaultMemory'] = self.default_memory
 
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.image is not None:
             result['Image'] = self.image
 
@@ -63,11 +67,11 @@ class ModifySandboxTemplateRequest(DaraModel):
         if self.replicas is not None:
             result['Replicas'] = self.replicas
 
-        if self.tags is not None:
-            result['Tags'] = self.tags
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
 
-        if self.template_id is not None:
-            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
 
         return result
 
@@ -78,6 +82,9 @@ class ModifySandboxTemplateRequest(DaraModel):
 
         if m.get('DefaultMemory') is not None:
             self.default_memory = m.get('DefaultMemory')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('Image') is not None:
             self.image = m.get('Image')
@@ -92,10 +99,10 @@ class ModifySandboxTemplateRequest(DaraModel):
             self.replicas = m.get('Replicas')
 
         if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
+            self.tags_shrink = m.get('Tags')
 
-        if m.get('TemplateId') is not None:
-            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
 
         return self
 

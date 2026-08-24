@@ -15,9 +15,13 @@ class ListContextDatabaseMembersResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The maximum number of entries per page. This field is empty.
         self.max_results = max_results
+        # The list of members.
         self.members = members
+        # The pagination token for the next page. This field is empty.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,11 +80,17 @@ class ListContextDatabaseMembersResponseBodyMembers(DaraModel):
         role: str = None,
         status: str = None,
     ):
+        # The time when the member was created.
         self.created_at = created_at
+        # The list of API keys.
         self.keys = keys
+        # The member ID.
         self.member_id = member_id
+        # The member name.
         self.member_name = member_name
+        # The member role.
         self.role = role
+        # The member status.
         self.status = status
 
     def validate(self):
@@ -155,15 +165,25 @@ class ListContextDatabaseMembersResponseBodyMembersKeys(DaraModel):
         revoked_at: str = None,
         status: str = None,
     ):
+        # The time when the member was created.
         self.created_at = created_at
+        # The API key description.
         self.description = description
+        # This field is empty.
         self.expires_at = expires_at
+        # The suffix of the API key.
         self.key_display_suffix = key_display_suffix
+        # The key ID.
         self.key_id = key_id
+        # The prefix of the API key.
         self.key_prefix = key_prefix
+        # The time when the key was last used. This field is populated after the key has been authenticated and used. This field is empty for keys that have never been used.
         self.last_used_at = last_used_at
+        # The API key name.
         self.name = name
+        # This field is empty.
         self.revoked_at = revoked_at
+        # The API key status.
         self.status = status
 
     def validate(self):

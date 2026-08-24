@@ -1114,10 +1114,14 @@ class Client(OpenApiClient):
 
     def create_sandbox_template_with_options(
         self,
-        request: main_models.CreateSandboxTemplateRequest,
+        tmp_req: main_models.CreateSandboxTemplateRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateSandboxTemplateResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateSandboxTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not DaraCore.is_null(request.default_cpu):
             query['DefaultCpu'] = request.default_cpu
@@ -1125,12 +1129,16 @@ class Client(OpenApiClient):
             query['DefaultMemory'] = request.default_memory
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.image):
+            query['Image'] = request.image
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.replicas):
             query['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
         req = open_api_util_models.OpenApiRequest(
@@ -1154,10 +1162,14 @@ class Client(OpenApiClient):
 
     async def create_sandbox_template_with_options_async(
         self,
-        request: main_models.CreateSandboxTemplateRequest,
+        tmp_req: main_models.CreateSandboxTemplateRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateSandboxTemplateResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateSandboxTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not DaraCore.is_null(request.default_cpu):
             query['DefaultCpu'] = request.default_cpu
@@ -1165,12 +1177,16 @@ class Client(OpenApiClient):
             query['DefaultMemory'] = request.default_memory
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.image):
+            query['Image'] = request.image
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.replicas):
             query['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not DaraCore.is_null(request.template_name):
             query['TemplateName'] = request.template_name
         req = open_api_util_models.OpenApiRequest(
@@ -3662,6 +3678,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_available_llmmodels_with_options_async(request, runtime)
 
+    def get_chat_model_with_options(
+        self,
+        request: main_models.GetChatModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetChatModelResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetChatModel',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetChatModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_model_with_options_async(
+        self,
+        request: main_models.GetChatModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetChatModelResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetChatModel',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetChatModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_model(
+        self,
+        request: main_models.GetChatModelRequest,
+    ) -> main_models.GetChatModelResponse:
+        runtime = RuntimeOptions()
+        return self.get_chat_model_with_options(request, runtime)
+
+    async def get_chat_model_async(
+        self,
+        request: main_models.GetChatModelRequest,
+    ) -> main_models.GetChatModelResponse:
+        runtime = RuntimeOptions()
+        return await self.get_chat_model_with_options_async(request, runtime)
+
     def get_conversations_with_options(
         self,
         request: main_models.GetConversationsRequest,
@@ -5884,21 +5960,29 @@ class Client(OpenApiClient):
 
     def modify_sandbox_template_with_options(
         self,
-        request: main_models.ModifySandboxTemplateRequest,
+        tmp_req: main_models.ModifySandboxTemplateRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifySandboxTemplateResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifySandboxTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not DaraCore.is_null(request.default_cpu):
             query['DefaultCpu'] = request.default_cpu
         if not DaraCore.is_null(request.default_memory):
             query['DefaultMemory'] = request.default_memory
+        if not DaraCore.is_null(request.image):
+            query['Image'] = request.image
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.replicas):
             query['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
@@ -5922,21 +6006,29 @@ class Client(OpenApiClient):
 
     async def modify_sandbox_template_with_options_async(
         self,
-        request: main_models.ModifySandboxTemplateRequest,
+        tmp_req: main_models.ModifySandboxTemplateRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifySandboxTemplateResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifySandboxTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not DaraCore.is_null(request.default_cpu):
             query['DefaultCpu'] = request.default_cpu
         if not DaraCore.is_null(request.default_memory):
             query['DefaultMemory'] = request.default_memory
+        if not DaraCore.is_null(request.image):
+            query['Image'] = request.image
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.replicas):
             query['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(

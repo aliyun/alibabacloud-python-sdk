@@ -19,16 +19,27 @@ class RevokeContextDatabaseApiKeyResponseBody(DaraModel):
         revoked_at: str = None,
         status: str = None,
     ):
+        # The time when the API key was created.
         self.created_at = created_at
+        # The description of the API key.
         self.description = description
+        # A reserved field. This field is currently empty.
         self.expires_at = expires_at
+        # The suffix of the API key.
         self.key_display_suffix = key_display_suffix
+        # The key ID.
         self.key_id = key_id
+        # The prefix of the API key.
         self.key_prefix = key_prefix
+        # The time when the API key was last used.
         self.last_used_at = last_used_at
+        # The name of the API key.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The time when the API key was revoked.
         self.revoked_at = revoked_at
+        # The status of the API key. After revocation, the value is revoked.
         self.status = status
 
     def validate(self):

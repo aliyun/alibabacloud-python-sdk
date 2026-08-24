@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_rdsai20250507 import models as main_models
 from darabonba.model import DaraModel
@@ -20,7 +20,7 @@ class DescribeSandboxTemplatesResponseBody(DaraModel):
     ):
         # A reserved parameter. You do not need to specify this parameter.
         self.max_results = max_results
-        # The position from which to start the current read. An empty value indicates that the read starts from the beginning.
+        # The token that indicates the position from which the current read operation starts. An empty value indicates that the read operation starts from the beginning.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
@@ -30,7 +30,7 @@ class DescribeSandboxTemplatesResponseBody(DaraModel):
         self.request_id = request_id
         # The list of sandbox templates.
         self.sandbox_templates = sandbox_templates
-        # The total number of records that match the query conditions. This is an optional response element and may not be returned by default.
+        # The total number of records that match the request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -105,23 +105,27 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         default_memory: str = None,
         description: str = None,
         enable_vpc_access: str = None,
+        image: str = None,
         name: str = None,
         replicas: int = None,
+        tags: Dict[str, str] = None,
         template_id: str = None,
     ):
         self.created_by = created_by
-        # The number of CPUs for the sandbox created by using this template.
+        # The number of CPUs for the sandbox created with this template.
         self.default_cpu = default_cpu
-        # The memory size of the sandbox created by using this template.
+        # The memory size of the sandbox created with this template.
         self.default_memory = default_memory
         # The sandbox template description.
         self.description = description
-        # Indicates whether the sandbox created by using this template can access resources within the VPC where Supabase resides.
+        # Indicates whether the sandbox created with this template can access resources in the VPC where Supabase resides.
         self.enable_vpc_access = enable_vpc_access
+        self.image = image
         # The sandbox template name.
         self.name = name
         self.replicas = replicas
-        # The sandbox template ID. Specify this ID when you create a sandbox by using this template.
+        self.tags = tags
+        # The sandbox template ID. Specify this ID when creating a sandbox with this template.
         self.template_id = template_id
 
     def validate(self):
@@ -147,11 +151,17 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         if self.enable_vpc_access is not None:
             result['EnableVpcAccess'] = self.enable_vpc_access
 
+        if self.image is not None:
+            result['Image'] = self.image
+
         if self.name is not None:
             result['Name'] = self.name
 
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
@@ -175,11 +185,17 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         if m.get('EnableVpcAccess') is not None:
             self.enable_vpc_access = m.get('EnableVpcAccess')
 
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')

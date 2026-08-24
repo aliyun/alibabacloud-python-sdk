@@ -9,6 +9,8 @@ class DeleteContextDatabaseWorkspaceRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
+        # The ID of the target workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

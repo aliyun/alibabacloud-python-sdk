@@ -10,8 +10,12 @@ class CreateContextDatabaseWorkspaceRequest(DaraModel):
         member_name: str = None,
         workspace_name: str = None,
     ):
+        # The name of the first member.
+        # 
         # This parameter is required.
         self.member_name = member_name
+        # The workspace name.
+        # 
         # This parameter is required.
         self.workspace_name = workspace_name
 

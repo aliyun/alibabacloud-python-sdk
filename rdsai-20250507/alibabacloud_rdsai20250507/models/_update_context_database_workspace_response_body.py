@@ -14,11 +14,17 @@ class UpdateContextDatabaseWorkspaceResponseBody(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The time when the workspace was created, in ISO-8601 format.
         self.created_at = created_at
+        # The request ID.
         self.request_id = request_id
+        # The status of the workspace.
         self.status = status
+        # The type of the workspace.
         self.type = type
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The modified name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

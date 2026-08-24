@@ -12,8 +12,11 @@ class CreateContextDatabaseApiKeyResponseBody(DaraModel):
         key: main_models.CreateContextDatabaseApiKeyResponseBodyKey = None,
         request_id: str = None,
     ):
+        # Api Key
         self.api_key = api_key
+        # The API key details.
         self.key = key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,15 +67,25 @@ class CreateContextDatabaseApiKeyResponseBodyKey(DaraModel):
         revoked_at: str = None,
         status: str = None,
     ):
+        # The time when the API key was created.
         self.created_at = created_at
+        # The API key description. This field is not used.
         self.description = description
+        # This field is empty.
         self.expires_at = expires_at
+        # The suffix of the API key.
         self.key_display_suffix = key_display_suffix
+        # The key ID.
         self.key_id = key_id
+        # The prefix of the API key.
         self.key_prefix = key_prefix
+        # This field is empty.
         self.last_used_at = last_used_at
+        # The API key name.
         self.name = name
+        # This field is empty.
         self.revoked_at = revoked_at
+        # The API key status.
         self.status = status
 
     def validate(self):

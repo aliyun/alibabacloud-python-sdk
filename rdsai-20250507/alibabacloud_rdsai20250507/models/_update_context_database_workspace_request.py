@@ -10,8 +10,12 @@ class UpdateContextDatabaseWorkspaceRequest(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The ID of the target workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # The new name of the workspace.
+        # 
         # This parameter is required.
         self.workspace_name = workspace_name
 

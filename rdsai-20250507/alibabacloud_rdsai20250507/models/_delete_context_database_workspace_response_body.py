@@ -14,11 +14,17 @@ class DeleteContextDatabaseWorkspaceResponseBody(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The time when the workspace was created, in ISO-8601 format.
         self.created_at = created_at
+        # The request ID.
         self.request_id = request_id
+        # The workspace status. The value is fixed as Deleted.
         self.status = status
+        # The workspace type.
         self.type = type
+        # The ID of the deleted workspace.
         self.workspace_id = workspace_id
+        # The name of the deleted workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

@@ -11,10 +11,16 @@ class RevokeContextDatabaseApiKeyRequest(DaraModel):
         member_id: str = None,
         workspace_id: str = None,
     ):
+        # API Key ID
+        # 
         # This parameter is required.
         self.key_id = key_id
+        # The member ID.
+        # 
         # This parameter is required.
         self.member_id = member_id
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -12,9 +12,13 @@ class ListContextDatabaseWorkspacesRequest(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The status used to filter results. Valid values: Active and Locked.
         self.status = status
+        # The ID used to filter results. Only the workspace that matches this ID is returned.
         self.workspace_id = workspace_id
 
     def validate(self):

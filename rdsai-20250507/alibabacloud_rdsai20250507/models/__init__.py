@@ -36,6 +36,7 @@ from ._create_mousage_detail_export_request import CreateMOUsageDetailExportRequ
 from ._create_mousage_detail_export_response_body import CreateMOUsageDetailExportResponseBody
 from ._create_mousage_detail_export_response import CreateMOUsageDetailExportResponse
 from ._create_sandbox_template_request import CreateSandboxTemplateRequest
+from ._create_sandbox_template_shrink_request import CreateSandboxTemplateShrinkRequest
 from ._create_sandbox_template_response_body import CreateSandboxTemplateResponseBody
 from ._create_sandbox_template_response import CreateSandboxTemplateResponse
 from ._create_scheduled_task_request import CreateScheduledTaskRequest
@@ -130,6 +131,9 @@ from ._enable_agent_runtime_response import EnableAgentRuntimeResponse
 from ._get_available_llmmodels_request import GetAvailableLLMModelsRequest
 from ._get_available_llmmodels_response_body import GetAvailableLLMModelsResponseBody
 from ._get_available_llmmodels_response import GetAvailableLLMModelsResponse
+from ._get_chat_model_request import GetChatModelRequest
+from ._get_chat_model_response_body import GetChatModelResponseBody
+from ._get_chat_model_response import GetChatModelResponse
 from ._get_conversations_request import GetConversationsRequest
 from ._get_conversations_response_body import GetConversationsResponseBody
 from ._get_conversations_response import GetConversationsResponse
@@ -216,6 +220,7 @@ from ._modify_messages_feedbacks_request import ModifyMessagesFeedbacksRequest
 from ._modify_messages_feedbacks_response_body import ModifyMessagesFeedbacksResponseBody
 from ._modify_messages_feedbacks_response import ModifyMessagesFeedbacksResponse
 from ._modify_sandbox_template_request import ModifySandboxTemplateRequest
+from ._modify_sandbox_template_shrink_request import ModifySandboxTemplateShrinkRequest
 from ._modify_sandbox_template_response_body import ModifySandboxTemplateResponseBody
 from ._modify_sandbox_template_response import ModifySandboxTemplateResponse
 from ._modify_scheduled_task_request import ModifyScheduledTaskRequest
@@ -314,6 +319,7 @@ from ._describe_monitor_data_response_body import DescribeMonitorDataResponseBod
 from ._describe_monitor_data_response_body import DescribeMonitorDataResponseBodyData
 from ._describe_sandbox_templates_response_body import DescribeSandboxTemplatesResponseBodySandboxTemplates
 from ._describe_whitelist_ips_response_body import DescribeWhitelistIpsResponseBodyData
+from ._get_chat_model_response_body import GetChatModelResponseBodyData
 from ._get_conversations_response_body import GetConversationsResponseBodyData
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodySkills
 from ._get_inspection_report_response_body import GetInspectionReportResponseBodyDataDataItemsData
@@ -391,6 +397,7 @@ __all__ = [
     CreateMOUsageDetailExportResponseBody,
     CreateMOUsageDetailExportResponse,
     CreateSandboxTemplateRequest,
+    CreateSandboxTemplateShrinkRequest,
     CreateSandboxTemplateResponseBody,
     CreateSandboxTemplateResponse,
     CreateScheduledTaskRequest,
@@ -485,6 +492,9 @@ __all__ = [
     GetAvailableLLMModelsRequest,
     GetAvailableLLMModelsResponseBody,
     GetAvailableLLMModelsResponse,
+    GetChatModelRequest,
+    GetChatModelResponseBody,
+    GetChatModelResponse,
     GetConversationsRequest,
     GetConversationsResponseBody,
     GetConversationsResponse,
@@ -571,6 +581,7 @@ __all__ = [
     ModifyMessagesFeedbacksResponseBody,
     ModifyMessagesFeedbacksResponse,
     ModifySandboxTemplateRequest,
+    ModifySandboxTemplateShrinkRequest,
     ModifySandboxTemplateResponseBody,
     ModifySandboxTemplateResponse,
     ModifyScheduledTaskRequest,
@@ -669,6 +680,7 @@ __all__ = [
     DescribeMonitorDataResponseBodyData,
     DescribeSandboxTemplatesResponseBodySandboxTemplates,
     DescribeWhitelistIpsResponseBodyData,
+    GetChatModelResponseBodyData,
     GetConversationsResponseBodyData,
     GetCustomAgentResponseBodySkills,
     GetInspectionReportResponseBodyDataDataItemsData,

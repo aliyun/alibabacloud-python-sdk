@@ -19,16 +19,31 @@ class CreateContextDatabaseWorkspaceResponseBody(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The plaintext API key. This value is returned only once at creation time. The caller must persist it.
         self.api_key = api_key
+        # The name of the first API key. The value is fixed as default.
         self.api_key_name = api_key_name
+        # The time when the workspace was created, in ISO 8601 format.
         self.created_at = created_at
+        # The ID of the first member.
         self.member_id = member_id
+        # The name of the first member.
         self.member_name = member_name
+        # The request ID.
         self.request_id = request_id
+        # The role of the first member. The value is fixed as owner.
         self.role = role
+        # The workspace status. Valid values:
+        # - Active: running normally.
+        # - Locked: locked due to overdue payment or expiration.
         self.status = status
+        # The workspace type. Valid values:
+        # - personal: individual account.
+        # - enterprise: enterprise account.
         self.type = type
+        # The ID of the new workspace.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

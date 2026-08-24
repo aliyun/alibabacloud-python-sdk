@@ -18,12 +18,19 @@ class DeleteContextDatabaseMemberResponseBody(DaraModel):
         role: str = None,
         status: str = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # The API key details. An empty array is returned.
         self.keys = keys
+        # The member ID.
         self.member_id = member_id
+        # The member name.
         self.member_name = member_name
+        # The request ID.
         self.request_id = request_id
+        # The member role.
         self.role = role
+        # The member status.
         self.status = status
 
     def validate(self):
@@ -104,15 +111,25 @@ class DeleteContextDatabaseMemberResponseBodyKeys(DaraModel):
         revoked_at: str = None,
         status: str = None,
     ):
+        # The creation time. This field is empty.
         self.created_at = created_at
+        # The API key description. This field is empty.
         self.description = description
+        # This field is empty.
         self.expires_at = expires_at
+        # The API key suffix. This field is empty.
         self.key_display_suffix = key_display_suffix
+        # The key ID. This field is empty.
         self.key_id = key_id
+        # The API key prefix. This field is empty.
         self.key_prefix = key_prefix
+        # This field is empty.
         self.last_used_at = last_used_at
+        # The API key name. This field is empty.
         self.name = name
+        # This field is empty.
         self.revoked_at = revoked_at
+        # The API key status. This field is empty.
         self.status = status
 
     def validate(self):

@@ -12,10 +12,16 @@ class UpdateContextDatabaseMemberRequest(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
+        # The member ID.
+        # 
         # This parameter is required.
         self.member_id = member_id
+        # The new role. Valid values: owner, admin, and member. If not specified, the current role is retained.
         self.role = role
+        # The new status. Valid values: active, disabled, and deleted. If not specified, the current status is retained.
         self.status = status
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

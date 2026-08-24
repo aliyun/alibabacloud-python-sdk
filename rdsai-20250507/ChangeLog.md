@@ -1,3 +1,13 @@
+2026-08-24 Version: 3.9.0
+- Support API GetChatModel.
+- Update API CreateSandboxTemplate: add request parameters Image.
+- Update API CreateSandboxTemplate: add request parameters Tags.
+- Update API DescribeSandboxTemplates: add response parameters Body.SandboxTemplates.$.Image.
+- Update API DescribeSandboxTemplates: add response parameters Body.SandboxTemplates.$.Tags.
+- Update API ModifySandboxTemplate: add request parameters Image.
+- Update API ModifySandboxTemplate: add request parameters Tags.
+
+
 2026-08-20 Version: 3.8.2
 - Generated python 2025-05-07 for RdsAi.
 
