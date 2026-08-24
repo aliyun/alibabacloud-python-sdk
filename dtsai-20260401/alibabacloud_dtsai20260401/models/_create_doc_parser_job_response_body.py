@@ -28,9 +28,13 @@ class CreateDocParserJobResponseBody(DaraModel):
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
+        # The result data.
         self.result = result
+        # The result type.
         self.result_type = result_type
+        # The result URL.
         self.result_url = result_url
+        # The status information.
         self.status = status
         # Indicates whether the request was successful.
         self.success = success

@@ -208,6 +208,84 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def authorize_file_upload_with_options(
+        self,
+        request: main_models.AuthorizeFileUploadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthorizeFileUploadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.file_format):
+            query['FileFormat'] = request.file_format
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2026-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AuthorizeFileUploadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def authorize_file_upload_with_options_async(
+        self,
+        request: main_models.AuthorizeFileUploadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthorizeFileUploadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.file_format):
+            query['FileFormat'] = request.file_format
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2026-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AuthorizeFileUploadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def authorize_file_upload(
+        self,
+        request: main_models.AuthorizeFileUploadRequest,
+    ) -> main_models.AuthorizeFileUploadResponse:
+        runtime = RuntimeOptions()
+        return self.authorize_file_upload_with_options(request, runtime)
+
+    async def authorize_file_upload_async(
+        self,
+        request: main_models.AuthorizeFileUploadRequest,
+    ) -> main_models.AuthorizeFileUploadResponse:
+        runtime = RuntimeOptions()
+        return await self.authorize_file_upload_with_options_async(request, runtime)
+
     def create_doc_parser_job_with_options(
         self,
         request: main_models.CreateDocParserJobRequest,

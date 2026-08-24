@@ -14,6 +14,7 @@ class WebSearchRequest(DaraModel):
         url_scope_domains: str = None,
         url_scope_mode: str = None,
     ):
+        # The agent name.
         self.agent_name = agent_name
         # The maximum number of results to return. Default value: 10. Valid values: 1 to 50.
         self.max_results = max_results

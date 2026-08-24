@@ -4,20 +4,18 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeDocParserJobStatusRequest(DaraModel):
+class AuthorizeFileUploadRequest(DaraModel):
     def __init__(
         self,
         agent_name: str = None,
-        job_id: str = None,
+        file_format: str = None,
         region_id: str = None,
     ):
-        # The agent name.
+        # The Agent or client source that initiates the call, such as codex, cursor, or openapi. Maximum length: 32 characters. Used only for statistics and does not participate in authentication, throttling, quota, or billing.
         self.agent_name = agent_name
-        # The ID of the document parsing task. You can obtain this ID by calling CreateDocParserJob.
-        # 
-        # This parameter is required.
-        self.job_id = job_id
-        # The region ID.
+        # The format of the file to be uploaded.
+        self.file_format = file_format
+        # The region ID, such as cn-beijing.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -33,8 +31,8 @@ class DescribeDocParserJobStatusRequest(DaraModel):
         if self.agent_name is not None:
             result['AgentName'] = self.agent_name
 
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.file_format is not None:
+            result['FileFormat'] = self.file_format
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -46,8 +44,8 @@ class DescribeDocParserJobStatusRequest(DaraModel):
         if m.get('AgentName') is not None:
             self.agent_name = m.get('AgentName')
 
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('FileFormat') is not None:
+            self.file_format = m.get('FileFormat')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

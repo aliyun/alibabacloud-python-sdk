@@ -12,8 +12,9 @@ class DescribeDocParserJobResultRequest(DaraModel):
         region_id: str = None,
         result_type: str = None,
     ):
+        # The agent name.
         self.agent_name = agent_name
-        # The document parsing task ID. You can obtain this ID by calling CreateDocParserJob.
+        # The document parsing task ID, obtained by calling CreateDocParserJob.
         # 
         # This parameter is required.
         self.job_id = job_id
@@ -21,6 +22,7 @@ class DescribeDocParserJobResultRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The result type.
         self.result_type = result_type
 
     def validate(self):

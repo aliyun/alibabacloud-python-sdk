@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._authorize_file_upload_request import AuthorizeFileUploadRequest
+from ._authorize_file_upload_response_body import AuthorizeFileUploadResponseBody
+from ._authorize_file_upload_response import AuthorizeFileUploadResponse
 from ._create_doc_parser_job_request import CreateDocParserJobRequest
 from ._create_doc_parser_job_advance_request import CreateDocParserJobAdvanceRequest
 from ._create_doc_parser_job_response_body import CreateDocParserJobResponseBody
@@ -21,6 +24,9 @@ from ._web_search_response import WebSearchResponse
 from ._web_search_response_body import WebSearchResponseBodySearchResult
 
 __all__ = [
+    AuthorizeFileUploadRequest,
+    AuthorizeFileUploadResponseBody,
+    AuthorizeFileUploadResponse,
     CreateDocParserJobRequest,
     CreateDocParserJobAdvanceRequest,
     CreateDocParserJobResponseBody,

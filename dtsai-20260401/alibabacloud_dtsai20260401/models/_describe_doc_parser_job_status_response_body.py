@@ -19,7 +19,7 @@ class DescribeDocParserJobStatusResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The failure cause. This parameter has a value only when Status is failed.
+        # The failure reason. This parameter has a value only when Status is failed.
         self.failure_message = failure_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -35,9 +35,9 @@ class DescribeDocParserJobStatusResponseBody(DaraModel):
         # 
         # - **success**: Completed. You can call DescribeDocParserJobResult to obtain the result.
         # 
-        # - **failed**: Failed. The cause is provided in FailureMessage.
+        # - **failed**: Failed. The reason is provided in FailureMessage.
         # 
-        # - **cancelled**: Canceled.
+        # - **cancelled**: Cancelled.
         self.status = status
         # Indicates whether the request was successful.
         self.success = success

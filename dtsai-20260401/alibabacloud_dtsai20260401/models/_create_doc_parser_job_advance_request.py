@@ -34,10 +34,15 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         result_type: str = None,
         table_format: str = None,
     ):
+        # The agent name.
         self.agent_name = agent_name
+        # The language type for speech recognition.
         self.asr_language = asr_language
+        # The audio clip output.
         self.audio_clip_output = audio_clip_output
+        # The audio window duration in seconds.
         self.audio_window_seconds = audio_window_seconds
+        # The chunk summary information.
         self.chunk_summary = chunk_summary
         # The format of the input file. Valid values:
         # 
@@ -51,7 +56,7 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         # 
         # - **ppt**: PPT file in ppt format.
         # 
-        # - **txt**: plain text file.
+        # - **txt**: Plain text file.
         # 
         # - **md**: Markdown file.
         # 
@@ -68,19 +73,28 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         # This parameter is required.
         self.file_name = file_name
         # The HTTP or HTTPS URL of the file to be parsed.
-        # >SDKs for various languages provide an additional `CreateDocParserJobAdvance` method that supports passing a local file stream directly (such as InputStream in Java), without the need to upload the file to OSS and construct a FileUrl in advance. When using the Advance method, replace the `FileUrl` parameter (URL string) with the `FileUrlObject` parameter (file stream). All other request parameters remain unchanged. The SDK automatically performs the following operations:
+        # >SDKs for various programming languages additionally provide a `CreateDocParserJobAdvance` method that supports passing a local file stream directly (such as Java InputStream), without the need to upload the file to OSS and construct a FileUrl in advance. When using the Advance method, replace the `FileUrl` parameter (URL string) with the `FileUrlObject` parameter (file stream). All other request parameters remain unchanged. The SDK automatically performs the following operations:
         # >1. Obtains temporary OSS upload credentials.
         # >2. Uploads the file stream directly to OSS.
-        # >3. Calls the CreateDocParserJob operation with the generated OSS URL.
+        # >3. Calls the CreateDocParserJob operation using the generated OSS URL.
         self.file_url_object = file_url_object
+        # The frame output result.
         self.frame_output = frame_output
+        # The global summary information.
         self.global_summary = global_summary
+        # The image processing format.
         self.image_mode = image_mode
+        # The image understanding and analysis setting.
         self.image_understanding = image_understanding
+        # The media chunk interval in seconds.
         self.media_chunk_interval_seconds = media_chunk_interval_seconds
+        # The media chunk strategy.
         self.media_chunk_strategy = media_chunk_strategy
+        # The number of media frames per minute.
         self.media_frames_per_minute = media_frames_per_minute
+        # The maximum frame budget for media.
         self.media_max_frame_budget = media_max_frame_budget
+        # The minimum frame budget for media.
         self.media_min_frame_budget = media_min_frame_budget
         # The OSS file URL.
         self.oss_file_url = oss_file_url
@@ -90,13 +104,17 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.output_format = output_format
+        # The parsing scene.
         self.parse_scene = parse_scene
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The response mode.
         self.response_mode = response_mode
+        # The result type.
         self.result_type = result_type
+        # The table processing format.
         self.table_format = table_format
 
     def validate(self):

@@ -1,3 +1,7 @@
+2026-08-24 Version: 1.1.0
+- Support API AuthorizeFileUpload.
+
+
 2026-08-20 Version: 1.0.3
 - Update API CreateDocParserJob: add request parameters AgentName.
 - Update API CreateDocParserJob: add request parameters AsrLanguage.

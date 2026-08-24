@@ -12,6 +12,7 @@ class WebFetchRequest(DaraModel):
         region_id: str = None,
         url: str = None,
     ):
+        # The agent name.
         self.agent_name = agent_name
         # The output format. Valid values:
         # 

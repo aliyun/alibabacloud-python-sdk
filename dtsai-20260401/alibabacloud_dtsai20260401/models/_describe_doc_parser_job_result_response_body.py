@@ -26,7 +26,9 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
         self.request_id = request_id
         # The document parsing result. The format is determined by the OutputFormat parameter specified in the CreateDocParserJob request.
         self.result = result
+        # The result format.
         self.result_type = result_type
+        # oss url
         self.result_url = result_url
         # Indicates whether the request was successful.
         self.success = success
