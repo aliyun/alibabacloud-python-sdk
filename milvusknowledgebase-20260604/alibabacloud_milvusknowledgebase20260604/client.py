@@ -64,6 +64,8 @@ class Client(OpenApiClient):
             body['StrategyId'] = request.strategy_id
         if not DaraCore.is_null(request.ding_talk_configuration):
             body['dingTalkConfiguration'] = request.ding_talk_configuration
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -107,6 +109,8 @@ class Client(OpenApiClient):
             body['StrategyId'] = request.strategy_id
         if not DaraCore.is_null(request.ding_talk_configuration):
             body['dingTalkConfiguration'] = request.ding_talk_configuration
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

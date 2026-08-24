@@ -34,9 +34,9 @@ class SearchKnowledgeBaseRequest(DaraModel):
         self.page_size = page_size
         # The query for retrieval.
         self.query = query
-        # The reranking model ID.
+        # The rerank model ID.
         self.rerank_model_id = rerank_model_id
-        # 租户已开通的重排模型名称。同时填写 rerankModelId 时，本参数优先生效。
+        # The name of the rerank model that the tenant has activated. If both rerankModelName and rerankModelId are specified, this parameter takes precedence.
         self.rerank_model_name = rerank_model_name
         # The retrieval configuration.
         self.retrieval_config = retrieval_config

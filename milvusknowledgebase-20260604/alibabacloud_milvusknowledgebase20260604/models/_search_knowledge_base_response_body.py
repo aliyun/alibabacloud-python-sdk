@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Any
 
 from alibabacloud_milvusknowledgebase20260604 import models as main_models
 from darabonba.model import DaraModel
@@ -24,11 +24,11 @@ class SearchKnowledgeBaseResponseBody(DaraModel):
     ):
         # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # The response status code.
+        # The status code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The returned message.
         self.message = message
         # The page number.
         self.page_number = page_number
@@ -145,6 +145,7 @@ class SearchKnowledgeBaseResponseBodyResults(DaraModel):
         knowledge_base_id: str = None,
         locations: List[main_models.SearchKnowledgeBaseResponseBodyResultsLocations] = None,
         parent_chunk_id: str = None,
+        scalar_fields: Any = None,
         score: float = None,
         score_details: main_models.SearchKnowledgeBaseResponseBodyResultsScoreDetails = None,
         tags: List[str] = None,
@@ -167,6 +168,8 @@ class SearchKnowledgeBaseResponseBodyResults(DaraModel):
         self.locations = locations
         # The parent chunk ID.
         self.parent_chunk_id = parent_chunk_id
+        # The scalar columns of the structured knowledge base. The columns are returned by their original column names and are not used in retrieval.
+        self.scalar_fields = scalar_fields
         # The overall relevance score.
         self.score = score
         # The relevance score details.
@@ -222,6 +225,9 @@ class SearchKnowledgeBaseResponseBodyResults(DaraModel):
         if self.parent_chunk_id is not None:
             result['parentChunkId'] = self.parent_chunk_id
 
+        if self.scalar_fields is not None:
+            result['scalarFields'] = self.scalar_fields
+
         if self.score is not None:
             result['score'] = self.score
 
@@ -267,6 +273,9 @@ class SearchKnowledgeBaseResponseBodyResults(DaraModel):
 
         if m.get('parentChunkId') is not None:
             self.parent_chunk_id = m.get('parentChunkId')
+
+        if m.get('scalarFields') is not None:
+            self.scalar_fields = m.get('scalarFields')
 
         if m.get('score') is not None:
             self.score = m.get('score')

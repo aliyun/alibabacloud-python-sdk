@@ -14,8 +14,11 @@ class GetKnowledgeBasePreSignedUrlRequest(DaraModel):
         expires_in: int = None,
         knowledge_base_id: str = None,
     ):
+        # The list of files to upload. You can specify 1 to 100 files.
         self.documents = documents
+        # The validity period of the pre-signed URL in seconds. Default value: `3600`.
         self.expires_in = expires_in
+        # The knowledge base ID. Either this parameter or datasetId must be specified. This parameter takes priority.
         self.knowledge_base_id = knowledge_base_id
 
     def validate(self):
@@ -65,9 +68,11 @@ class GetKnowledgeBasePreSignedUrlRequestDocuments(DaraModel):
         path: str = None,
         size: int = None,
     ):
+        # The display name of the file. If not specified, the file name from Path is used.
         self.name = name
-        # 本地上传时为预签名上传使用的批次相对路径；不同 ImportType 下含义由导入类型定义。
+        # The file name or relative path for local upload scenarios. The value cannot start with `direct_upload/` or `uploaded/`, cannot contain empty segments, `.`, or `..`, and must be 1024 bytes or less.
         self.path = path
+        # The file size in bytes.
         self.size = size
 
     def validate(self):

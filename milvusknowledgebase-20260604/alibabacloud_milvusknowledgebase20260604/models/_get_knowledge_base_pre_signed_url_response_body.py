@@ -16,10 +16,15 @@ class GetKnowledgeBasePreSignedUrlResponseBody(DaraModel):
         http_status_code: int = None,
         success: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # The business status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -75,8 +80,11 @@ class GetKnowledgeBasePreSignedUrlResponseBodyData(DaraModel):
         expires_in: int = None,
         pre_signed_urls: List[str] = None,
     ):
+        # The bucket name.
         self.bucket_name = bucket_name
+        # The validity period of the pre-signed URL in seconds.
         self.expires_in = expires_in
+        # The list of pre-signed PUT URLs. **The order corresponds one-to-one with the `Documents` in the request.**
         self.pre_signed_urls = pre_signed_urls
 
     def validate(self):

@@ -17,16 +17,24 @@ class AddDocumentsRequest(DaraModel):
         meta_fields: Any = None,
         strategy_id: str = None,
         ding_talk_configuration: main_models.AddDocumentsRequestDingTalkConfiguration = None,
+        parent_id: str = None,
     ):
+        # The deduplication configuration.
         self.dedup = dedup
+        # The list of documents.
         self.documents = documents
-        # 当前支持 LOCAL_UPLOAD；OSS_IMPORT 和 PUBLIC_URL 为后续导入方式预留。
+        # The import type.
         self.import_type = import_type
+        # The ID of the knowledge base.
         self.knowledge_base_id = knowledge_base_id
-        # 导入时批量设置到本批次所有知识数据的标签键值。Key 必须为知识库已定义标签字段；Value 支持 string、int64、float32、bool、list。
+        # The batch label configuration. The key must be a label field defined in the knowledge base. The value supports string, int64, float32, bool, and list types.
         self.meta_fields = meta_fields
+        # The ID of the processing strategy.
         self.strategy_id = strategy_id
+        # Not supported. Ignore this parameter.
         self.ding_talk_configuration = ding_talk_configuration
+        # Defaults to root when omitted.
+        self.parent_id = parent_id
 
     def validate(self):
         if self.dedup:
@@ -66,6 +74,9 @@ class AddDocumentsRequest(DaraModel):
         if self.ding_talk_configuration is not None:
             result['dingTalkConfiguration'] = self.ding_talk_configuration.to_map()
 
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -96,6 +107,9 @@ class AddDocumentsRequest(DaraModel):
             temp_model = main_models.AddDocumentsRequestDingTalkConfiguration()
             self.ding_talk_configuration = temp_model.from_map(m.get('dingTalkConfiguration'))
 
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+
         return self
 
 class AddDocumentsRequestDingTalkConfiguration(DaraModel):
@@ -109,12 +123,19 @@ class AddDocumentsRequestDingTalkConfiguration(DaraModel):
         knowledge_type: str = None,
         user_id: str = None,
     ):
+        # Not supported. Ignore this parameter.
         self.app_id = app_id
+        # Not supported. Ignore this parameter.
         self.app_password = app_password
+        # Not supported. Ignore this parameter.
         self.ding_doc_mcp_link = ding_doc_mcp_link
+        # Not supported. Ignore this parameter.
         self.ding_table_mcp_link = ding_table_mcp_link
+        # Not supported. Ignore this parameter.
         self.knowledge_id = knowledge_id
+        # Not supported. Ignore this parameter.
         self.knowledge_type = knowledge_type
+        # Not supported. Ignore this parameter.
         self.user_id = user_id
 
     def validate(self):
@@ -180,9 +201,11 @@ class AddDocumentsRequestDocuments(DaraModel):
         path: str = None,
         size: int = None,
     ):
+        # The name of the document.
         self.name = name
-        # 本地上传时为预签名上传使用的批次相对路径；不同 ImportType 下含义由导入类型定义。
+        # The document path. This is the file name or relative path used during upload, which must be consistent with the pre-signed request.
         self.path = path
+        # The size of the file.
         self.size = size
 
     def validate(self):
@@ -225,7 +248,9 @@ class AddDocumentsRequestDedup(DaraModel):
         content_dedup: bool = None,
         doc_name_dedup: bool = None,
     ):
+        # Specifies whether to enable content deduplication.
         self.content_dedup = content_dedup
+        # Specifies whether to enable document name deduplication.
         self.doc_name_dedup = doc_name_dedup
 
     def validate(self):

@@ -18,12 +18,19 @@ class AddDocumentsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,7 +97,9 @@ class AddDocumentsResponseBodyData(DaraModel):
         documents: List[main_models.AddDocumentsResponseBodyDataDocuments] = None,
         errors: List[str] = None,
     ):
+        # The list of documents.
         self.documents = documents
+        # The list of errors.
         self.errors = errors
 
     def validate(self):
@@ -143,17 +152,29 @@ class AddDocumentsResponseBodyDataDocuments(DaraModel):
         thumbnail: str = None,
         token_count: int = None,
     ):
+        # The chunk count.
         self.chunk_count = chunk_count
+        # The chunk method.
         self.chunk_method = chunk_method
+        # The ID of the knowledge base.
         self.dataset_id = dataset_id
+        # The document ID.
         self.id = id
+        # The object path.
         self.location = location
+        # The name of the document.
         self.name = name
+        # The processing progress.
         self.progress = progress
+        # The processing status.
         self.run = run
+        # The size of the file.
         self.size = size
+        # The file extension.
         self.suffix = suffix
+        # The thumbnail.
         self.thumbnail = thumbnail
+        # The token count.
         self.token_count = token_count
 
     def validate(self):
