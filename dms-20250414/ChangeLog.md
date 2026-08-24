@@ -1,3 +1,14 @@
+2026-08-24 Version: 1.22.0
+- Support API AddDataAgentMemory.
+- Update API CreateCustomAgent: add request parameters UserSpecifiedSkillList.
+- Update API CreateCustomAgent: add response parameters Body.Data.UserSpecifiedSkillList.
+- Update API DescribeCustomAgent: add response parameters Body.Data.UserSpecifiedSkillList.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.UserSpecifiedSkillList.
+- Update API ModifyCustomAgent: add request parameters UserSpecifiedSkillList.
+- Update API ModifyCustomAgent: add response parameters Body.Data.UserSpecifiedSkillList.
+- Update API SendChatMessage: add request parameters SessionConfig.UserSpecifiedSkillList.
+
+
 2026-08-21 Version: 1.21.3
 - Generated python 2025-04-14 for Dms.
 

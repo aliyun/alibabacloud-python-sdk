@@ -20,6 +20,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         related_session_id: str = None,
         schedule_task_config_shrink: str = None,
         text_report_config: str = None,
+        user_specified_skill_list_shrink: str = None,
         web_report_config: str = None,
         web_report_theme: str = None,
         workspace_id: str = None,
@@ -27,19 +28,19 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         self.callback_config_shrink = callback_config_shrink
         # The current DMS unit.
         self.dmsunit = dmsunit
-        # The specified data range in **JSON string format**.
-        # - Common parameter description
-        #   - tableFlag: true indicates a specified data range.
+        # The specified data scope in **JSON character string format**.
+        # - Common metric description
+        #   - tableFlag: true indicates that a data scope is specified.
         #   - scope: personal is a fixed value.
         #   - personal: pass parameters for file or database types.
         # 
         # **File type**. Pass parameters in the following format:
         # - DataSourceType: remote_data_center is a fixed value.
-        # - FileId: The file ID.
-        # - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
-        # - Tables: The table name returned by the ListDataCenterTable operation.
-        # - TableIds: The TableId returned by the ListDataCenterTable operation.
-        # - RegionId: The current region.
+        # - FileId: the file ID.
+        # - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name.
+        # - Tables: the table name returned by the ListDataCenterTable operation.
+        # - TableIds: the TableId returned by the ListDataCenterTable operation.
+        # - RegionId: the current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -61,15 +62,15 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         # 
         # **Database type**. Pass parameters as follows:
         # - DataSourceType: database is a fixed value.
-        # - DmsInstanceId: The DMS instance ID returned by the data center operation.
-        # - DmsDatabaseId: The DMS database ID returned by the data center operation.
-        # - FileId: The instance name (deprecated).
-        # - DbName: The database name returned by the data center operation.
-        # - Database: The database name returned by the data center operation.
-        # - Tables: The table name returned by the data center operation.
-        # - TableIds: The TableId returned by the data center operation.
-        # - Engine: The engine type (mysql or postgresql).
-        # - RegionId: The current region.
+        # - DmsInstanceId: the DMS instance ID returned by the data center operation.
+        # - DmsDatabaseId: the DMS database ID returned by the data center operation.
+        # - FileId: the instance name (deprecated).
+        # - DbName: the database name returned by the data center operation.
+        # - Database: the database name returned by the data center operation.
+        # - Tables: the table name returned by the data center operation.
+        # - TableIds: the TableId returned by the data center operation.
+        # - Engine: the DPI engine type (mysql or postgresql).
+        # - RegionId: the current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -98,10 +99,12 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         # The execution configuration.
         self.execution_config_shrink = execution_config_shrink
         # The instruction.
+        # - Input limit: a maximum of 10000 characters.
         self.instruction = instruction
         # The knowledge.
+        # - Input limit: a maximum of 10000 characters.
         self.knowledge = knowledge
-        # The external knowledge base configurations.
+        # The external knowledge base.
         self.knowledge_config_list_shrink = knowledge_config_list_shrink
         self.knowledge_semantic_config_list_shrink = knowledge_semantic_config_list_shrink
         # The name of the custom agent.
@@ -112,6 +115,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         self.schedule_task_config_shrink = schedule_task_config_shrink
         # The text report format.
         self.text_report_config = text_report_config
+        self.user_specified_skill_list_shrink = user_specified_skill_list_shrink
         # The web report format.
         self.web_report_config = web_report_config
         self.web_report_theme = web_report_theme
@@ -165,6 +169,9 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         if self.text_report_config is not None:
             result['TextReportConfig'] = self.text_report_config
 
+        if self.user_specified_skill_list_shrink is not None:
+            result['UserSpecifiedSkillList'] = self.user_specified_skill_list_shrink
+
         if self.web_report_config is not None:
             result['WebReportConfig'] = self.web_report_config
 
@@ -216,6 +223,9 @@ class CreateCustomAgentShrinkRequest(DaraModel):
 
         if m.get('TextReportConfig') is not None:
             self.text_report_config = m.get('TextReportConfig')
+
+        if m.get('UserSpecifiedSkillList') is not None:
+            self.user_specified_skill_list_shrink = m.get('UserSpecifiedSkillList')
 
         if m.get('WebReportConfig') is not None:
             self.web_report_config = m.get('WebReportConfig')

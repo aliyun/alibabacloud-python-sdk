@@ -56,6 +56,9 @@ from ._open_claw_instance_vo import OpenClawInstanceVO
 from ._ossie_model_view import OssieModelView
 from ._partition_error import PartitionError
 from ._trial_order_eligibility_vo import TrialOrderEligibilityVO
+from ._add_data_agent_memory_request import AddDataAgentMemoryRequest
+from ._add_data_agent_memory_response_body import AddDataAgentMemoryResponseBody
+from ._add_data_agent_memory_response import AddDataAgentMemoryResponse
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBody
 from ._add_user_to_data_agent_workspace_response import AddUserToDataAgentWorkspaceResponse
@@ -444,6 +447,7 @@ from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseB
 from ._workspace_code_publish_response import WorkspaceCodePublishResponse
 from ._agentic_dms_instance_sync_task_instance import AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary
 from ._open_claw_instance_vo import OpenClawInstanceVOImageInfo
+from ._add_data_agent_memory_response_body import AddDataAgentMemoryResponseBodyData
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
 from ._check_data_agent_memory_config_response_body import CheckDataAgentMemoryConfigResponseBodyData
 from ._config_airflow_response_body import ConfigAirflowResponseBodyRoot
@@ -625,6 +629,9 @@ __all__ = [
     OssieModelView,
     PartitionError,
     TrialOrderEligibilityVO,
+    AddDataAgentMemoryRequest,
+    AddDataAgentMemoryResponseBody,
+    AddDataAgentMemoryResponse,
     AddUserToDataAgentWorkspaceRequest,
     AddUserToDataAgentWorkspaceResponseBody,
     AddUserToDataAgentWorkspaceResponse,
@@ -1013,6 +1020,7 @@ __all__ = [
     WorkspaceCodePublishResponse,
     AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary,
     OpenClawInstanceVOImageInfo,
+    AddDataAgentMemoryResponseBodyData,
     AddUserToDataAgentWorkspaceResponseBodyData,
     CheckDataAgentMemoryConfigResponseBodyData,
     ConfigAirflowResponseBodyRoot,

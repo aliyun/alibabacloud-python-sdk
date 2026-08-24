@@ -20,7 +20,7 @@ class DescribeCustomAgentResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message returned if the call failed.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
@@ -108,6 +108,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         schedule_task_config: main_models.DescribeCustomAgentResponseBodyDataScheduleTaskConfig = None,
         status: str = None,
         text_report_config: str = None,
+        user_specified_skill_list: List[str] = None,
         web_report_config: str = None,
         web_report_theme: str = None,
         workspace_id: str = None,
@@ -138,7 +139,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The instruction.
         self.instruction = instruction
-        # Specifies whether a periodic task is configured.
+        # Specifies whether a scheduled task is configured.
         self.is_schedule_task = is_schedule_task
         # The knowledge.
         self.knowledge = knowledge
@@ -150,7 +151,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.modifier_user_name = modifier_user_name
         # The name of the custom agent.
         self.name = name
-        # The next run time of the periodic task.
+        # The next run time of the scheduled task.
         self.next_runtime = next_runtime
         # The offline time.
         self.offline_time = offline_time
@@ -160,12 +161,13 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.related_session_id = related_session_id
         # The publish time.
         self.release_time = release_time
-        # The periodic task configuration.
+        # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
         # The status of the custom agent.
         self.status = status
         # The text report format.
         self.text_report_config = text_report_config
+        self.user_specified_skill_list = user_specified_skill_list
         # The web report format.
         self.web_report_config = web_report_config
         self.web_report_theme = web_report_theme
@@ -284,6 +286,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if self.text_report_config is not None:
             result['TextReportConfig'] = self.text_report_config
 
+        if self.user_specified_skill_list is not None:
+            result['UserSpecifiedSkillList'] = self.user_specified_skill_list
+
         if self.web_report_config is not None:
             result['WebReportConfig'] = self.web_report_config
 
@@ -393,6 +398,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if m.get('TextReportConfig') is not None:
             self.text_report_config = m.get('TextReportConfig')
 
+        if m.get('UserSpecifiedSkillList') is not None:
+            self.user_specified_skill_list = m.get('UserSpecifiedSkillList')
+
         if m.get('WebReportConfig') is not None:
             self.web_report_config = m.get('WebReportConfig')
 
@@ -413,7 +421,7 @@ class DescribeCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
     ):
         # The cron expression for timed scheduling.
         self.cron_expression = cron_expression
-        # The query for the periodic task.
+        # The query for the scheduled task.
         self.query = query
         # The referenced historical session ID.
         self.related_session_id = related_session_id

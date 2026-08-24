@@ -20,14 +20,14 @@ class CreateCustomAgentResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the call failed.
+        # The error message returned when the request failed.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - True: The request is successful.
-        # - False: The request fails.
+        # - True: The request was successful.                                 
+        # - False: The request failed.
         self.success = success
 
     def validate(self):
@@ -107,11 +107,12 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         schedule_task_config: main_models.CreateCustomAgentResponseBodyDataScheduleTaskConfig = None,
         status: str = None,
         text_report_config: str = None,
+        user_specified_skill_list: List[str] = None,
         web_report_config: str = None,
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
-        # The Alibaba Cloud account ID of the primary account.
+        # The Alibaba Cloud account ID of the parent account.
         self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
@@ -140,7 +141,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.is_schedule_task = is_schedule_task
         # The knowledge.
         self.knowledge = knowledge
-        # The external knowledge base configurations.
+        # The external knowledge base.
         self.knowledge_config_list = knowledge_config_list
         self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The modifier.
@@ -150,6 +151,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         # The name of the custom agent.
         self.name = name
         # The next run time of the periodic task.
+        # - Timestamp format.
         self.next_runtime = next_runtime
         # The offline time.
         self.offline_time = offline_time
@@ -165,6 +167,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.status = status
         # The text report format.
         self.text_report_config = text_report_config
+        self.user_specified_skill_list = user_specified_skill_list
         # The web report format.
         self.web_report_config = web_report_config
         self.web_report_theme = web_report_theme
@@ -280,6 +283,9 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         if self.text_report_config is not None:
             result['TextReportConfig'] = self.text_report_config
 
+        if self.user_specified_skill_list is not None:
+            result['UserSpecifiedSkillList'] = self.user_specified_skill_list
+
         if self.web_report_config is not None:
             result['WebReportConfig'] = self.web_report_config
 
@@ -385,6 +391,9 @@ class CreateCustomAgentResponseBodyData(DaraModel):
 
         if m.get('TextReportConfig') is not None:
             self.text_report_config = m.get('TextReportConfig')
+
+        if m.get('UserSpecifiedSkillList') is not None:
+            self.user_specified_skill_list = m.get('UserSpecifiedSkillList')
 
         if m.get('WebReportConfig') is not None:
             self.web_report_config = m.get('WebReportConfig')
@@ -502,6 +511,8 @@ class CreateCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
         mcp_server_id: str = None,
     ):
         # The access type.
+        # 
+        # - mcp: access through MCP.
         self.access_type = access_type
         self.kb_uuid = kb_uuid
         # The ID of the MCP Server.
@@ -555,7 +566,7 @@ class CreateCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report rendering confirmation.
+        # Specifies whether to skip the web report generation confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):

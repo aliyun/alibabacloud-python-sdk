@@ -21,6 +21,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         related_session_id: str = None,
         schedule_task_config_shrink: str = None,
         text_report_config: str = None,
+        user_specified_skill_list_shrink: str = None,
         web_report_config: str = None,
         web_report_theme: str = None,
         workspace_id: str = None,
@@ -117,6 +118,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         self.schedule_task_config_shrink = schedule_task_config_shrink
         # The text report format.
         self.text_report_config = text_report_config
+        self.user_specified_skill_list_shrink = user_specified_skill_list_shrink
         # The web report format.
         self.web_report_config = web_report_config
         self.web_report_theme = web_report_theme
@@ -173,6 +175,9 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         if self.text_report_config is not None:
             result['TextReportConfig'] = self.text_report_config
 
+        if self.user_specified_skill_list_shrink is not None:
+            result['UserSpecifiedSkillList'] = self.user_specified_skill_list_shrink
+
         if self.web_report_config is not None:
             result['WebReportConfig'] = self.web_report_config
 
@@ -227,6 +232,9 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
 
         if m.get('TextReportConfig') is not None:
             self.text_report_config = m.get('TextReportConfig')
+
+        if m.get('UserSpecifiedSkillList') is not None:
+            self.user_specified_skill_list_shrink = m.get('UserSpecifiedSkillList')
 
         if m.get('WebReportConfig') is not None:
             self.web_report_config = m.get('WebReportConfig')

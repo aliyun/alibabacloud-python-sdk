@@ -104,6 +104,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         schedule_task_config: main_models.ModifyCustomAgentResponseBodyDataScheduleTaskConfig = None,
         status: str = None,
         text_report_config: str = None,
+        user_specified_skill_list: List[str] = None,
         web_report_config: str = None,
         web_report_theme: str = None,
         workspace_id: str = None,
@@ -162,6 +163,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self.status = status
         # The text report format.
         self.text_report_config = text_report_config
+        self.user_specified_skill_list = user_specified_skill_list
         # The web report format.
         self.web_report_config = web_report_config
         self.web_report_theme = web_report_theme
@@ -277,6 +279,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         if self.text_report_config is not None:
             result['TextReportConfig'] = self.text_report_config
 
+        if self.user_specified_skill_list is not None:
+            result['UserSpecifiedSkillList'] = self.user_specified_skill_list
+
         if self.web_report_config is not None:
             result['WebReportConfig'] = self.web_report_config
 
@@ -382,6 +387,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
 
         if m.get('TextReportConfig') is not None:
             self.text_report_config = m.get('TextReportConfig')
+
+        if m.get('UserSpecifiedSkillList') is not None:
+            self.user_specified_skill_list = m.get('UserSpecifiedSkillList')
 
         if m.get('WebReportConfig') is not None:
             self.web_report_config = m.get('WebReportConfig')
