@@ -27,6 +27,8 @@ class DescribeInstancesResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # The total number of queried instances.
+        # 
+        # > When you use the `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is meaningless.
         self.total_count = total_count
 
     def validate(self):

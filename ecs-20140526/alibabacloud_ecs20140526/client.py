@@ -57,42 +57,43 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'ecs.cn-qingdao-nebula.aliyuncs.com',
             'eu-west-1-oxs': 'ecs.cn-shenzhen-cloudstone.aliyuncs.com',
             'rus-west-1-pop': 'ecs.aliyuncs.com',
-            'us-west-1': 'ecs.us-west-1.aliyuncs.com',
-            'us-southeast-1': 'ecs.us-southeast-1.aliyuncs.com',
-            'us-east-1': 'ecs.us-east-1.aliyuncs.com',
-            'na-south-1': 'ecs.na-south-1.aliyuncs.com',
-            'me-east-1': 'ecs.me-east-1.aliyuncs.com',
-            'me-central-1': 'ecs.me-central-1.aliyuncs.com',
-            'eu-west-2': 'ecs.eu-west-2.aliyuncs.com',
-            'eu-west-1': 'ecs.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'ecs.eu-central-1.aliyuncs.com',
-            'cn-zhongwei': 'ecs.cn-zhongwei.aliyuncs.com',
+            'cn-beijing': 'ecs.cn-beijing.aliyuncs.com',
             'cn-zhengzhou-jva': 'ecs.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-zhangjiakou': 'ecs.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'ecs.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-wulanchabu': 'ecs.cn-wulanchabu.aliyuncs.com',
-            'cn-wuhan-lr': 'ecs.cn-wuhan-lr.aliyuncs.com',
-            'cn-shenzhen': 'ecs.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'ecs.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'ecs.cn-qingdao.aliyuncs.com',
-            'cn-nanjing': 'ecs.cn-nanjing.aliyuncs.com',
-            'cn-huhehaote': 'ecs.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'ecs.cn-hongkong.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'ecs.cn-heyuan-acdr-1.aliyuncs.com',
             'cn-heyuan': 'ecs.cn-heyuan.aliyuncs.com',
-            'cn-guangzhou': 'ecs.cn-guangzhou.aliyuncs.com',
+            'cn-zhangjiakou': 'ecs.cn-zhangjiakou.aliyuncs.com',
+            'ap-northeast-2': 'ecs.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'ecs.ap-northeast-1.aliyuncs.com',
+            'ap-southeast-1': 'ecs.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'ecs.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'ecs.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'ecs.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'ecs.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-8': 'ecs.ap-southeast-8.aliyuncs.com',
+            'cn-zhongwei': 'ecs.cn-zhongwei.aliyuncs.com',
+            'cn-wulanchabu': 'ecs.cn-wulanchabu.aliyuncs.com',
+            'cn-qingdao': 'ecs.cn-qingdao.aliyuncs.com',
+            'cn-wuhan-lr': 'ecs.cn-wuhan-lr.aliyuncs.com',
+            'cn-shanghai': 'ecs.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'ecs.cn-hongkong.aliyuncs.com',
+            'cn-shenzhen': 'ecs.cn-shenzhen.aliyuncs.com',
+            'cn-nanjing': 'ecs.cn-nanjing.aliyuncs.com',
             'cn-fuzhou': 'ecs.cn-fuzhou.aliyuncs.com',
             'cn-chengdu': 'ecs.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'ecs.cn-beijing-finance-1.aliyuncs.com',
-            'cn-beijing': 'ecs.cn-beijing.aliyuncs.com',
-            'ap-southeast-8': 'ecs.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'ecs.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'ecs.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'ecs.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'ecs.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'ecs.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'ecs.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'ecs.ap-northeast-1.aliyuncs.com'
+            'cn-guangzhou': 'ecs.cn-guangzhou.aliyuncs.com',
+            'cn-huhehaote': 'ecs.cn-huhehaote.aliyuncs.com',
+            'sa-east-1': 'ecs.sa-east-1.aliyuncs.com',
+            'na-south-1': 'ecs.na-south-1.aliyuncs.com',
+            'us-west-1': 'ecs.us-west-1.aliyuncs.com',
+            'us-east-1': 'ecs.us-east-1.aliyuncs.com',
+            'eu-central-1': 'ecs.eu-central-1.aliyuncs.com',
+            'eu-west-2': 'ecs.eu-west-2.aliyuncs.com',
+            'eu-west-1': 'ecs.eu-west-1.aliyuncs.com',
+            'us-southeast-1': 'ecs.us-southeast-1.aliyuncs.com',
+            'me-central-1': 'ecs.me-central-1.aliyuncs.com',
+            'me-east-1': 'ecs.me-east-1.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'ecs.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'ecs.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-beijing-finance-1': 'ecs.cn-beijing-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -40672,6 +40673,80 @@ class Client(OpenApiClient):
     ) -> main_models.RunInstancesResponse:
         runtime = RuntimeOptions()
         return await self.run_instances_with_options_async(request, runtime)
+
+    def send_diagnostic_interrupt_with_options(
+        self,
+        request: main_models.SendDiagnosticInterruptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendDiagnosticInterruptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendDiagnosticInterrupt',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendDiagnosticInterruptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_diagnostic_interrupt_with_options_async(
+        self,
+        request: main_models.SendDiagnosticInterruptRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendDiagnosticInterruptResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendDiagnosticInterrupt',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendDiagnosticInterruptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_diagnostic_interrupt(
+        self,
+        request: main_models.SendDiagnosticInterruptRequest,
+    ) -> main_models.SendDiagnosticInterruptResponse:
+        runtime = RuntimeOptions()
+        return self.send_diagnostic_interrupt_with_options(request, runtime)
+
+    async def send_diagnostic_interrupt_async(
+        self,
+        request: main_models.SendDiagnosticInterruptRequest,
+    ) -> main_models.SendDiagnosticInterruptResponse:
+        runtime = RuntimeOptions()
+        return await self.send_diagnostic_interrupt_with_options_async(request, runtime)
 
     def send_file_with_options(
         self,

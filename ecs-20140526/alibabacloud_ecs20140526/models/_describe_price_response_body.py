@@ -13,7 +13,7 @@ class DescribePriceResponseBody(DaraModel):
         price_info: main_models.DescribePriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The price information, including the price and promotion rules.
+        # The price information, including the price and discount rules.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -208,16 +208,12 @@ class DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice(DaraMo
         trade_price: float = None,
     ):
         # The currency unit.
-        # 
-        # China site: CNY.
-        # 
-        # International site: USD.
         self.currency = currency
         # The discount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The transaction price, which is the original price minus the discount.
+        # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -269,19 +265,15 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
         trade_price: float = None,
     ):
         # The currency unit.
-        # 
-        # China site: CNY.
-        # 
-        # International site: USD.
         self.currency = currency
         self.detail_infos = detail_infos
         # The discount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The hourly price of a reserved instance with no upfront or partial upfront payment.
+        # The hourly price of the reserved instance with no upfront or partial upfront payment.
         self.reserved_instance_hour_price = reserved_instance_hour_price
-        # The transaction price, which is the original price minus the discount.
+        # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):

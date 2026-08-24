@@ -13,7 +13,7 @@ class ModifyInvocationAttributeResponseBody(DaraModel):
         # The command ID.
         #    - A new command is created and the new `CommandId` is returned only when `CommandContent` is changed.
         #    - When `CommandContent` is not changed, no new command is created, and the `CommandId` of the currently executing command is returned.
-        #    - If [InvokeCommand](https://help.aliyun.com/document_detail/64841.html) was called, or [RunCommand](https://help.aliyun.com/document_detail/141751.html) was called with `KeepCommand` set to `true`, the new command is retained. Otherwise, when the execution completes or the task is manually stopped, all commands associated with the task are deleted.
+        #    - If you called [InvokeCommand](https://help.aliyun.com/document_detail/64841.html), or called [RunCommand](https://help.aliyun.com/document_detail/141751.html) with `KeepCommand` set to `true`, the new command is retained. Otherwise, when the execution is completed or the task is manually stopped, all commands associated with the task are deleted.
         self.command_id = command_id
         # The request ID.
         self.request_id = request_id

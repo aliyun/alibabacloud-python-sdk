@@ -29,18 +29,21 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
         self.system_disk = system_disk
         # The information about data disk types.
         self.data_disk = data_disk
+        # The end time of the temporary bandwidth upgrade.
         self.end_time = end_time
+        # The Internet Service Provider.
         self.isp = isp
+        # The image ID.
         self.image_id = image_id
         # The instance ID of the instance for which you want to query the upgrade price.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The target instance type for the upgrade. Call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in a specified zone.
-        # 
-        # > The instance type parameter (`InstanceType`) and data disk parameters (`DataDisk.N.*`) cannot both be empty. You must specify at least one.
+        # The target instance type for the upgrade. We recommend that you call [DescribeResourcesModification](https://help.aliyun.com/document_detail/66187.html) to query the instance types available for upgrade in a specified zone.
         self.instance_type = instance_type
+        # The network billing method to convert to.
         self.internet_charge_type = internet_charge_type
+        # The maximum outbound public bandwidth.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -50,6 +53,7 @@ class DescribeInstanceModificationPriceRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The start time of the temporary bandwidth upgrade.
         self.start_time = start_time
 
     def validate(self):
@@ -175,7 +179,7 @@ class DescribeInstanceModificationPriceRequestDataDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The category of the data disk. Specify this parameter when you want to query the price of new subscription data disks to be attached to the ECS instance. Valid values of N: 1 to 16. Valid values:
+        # The type of the data disk. Specify this parameter to query the price of a new subscription data disk attached to an ECS instance. Valid values of N: 1 to 16. Valid values:
         # 
         # - cloud_efficiency: ultra disk.
         # - cloud_ssd: standard SSD.
@@ -184,15 +188,16 @@ class DescribeInstanceModificationPriceRequestDataDisk(DaraModel):
         # 
         # Default value: null.
         # 
-        # > The instance type parameter (`InstanceType`) and data disk parameters (`DataDisk.N.*`) cannot both be empty. You must specify at least one.
+        # > When you call this operation, the instance type parameter (`InstanceType`) and the data disk parameters (`DataDisk.N.*`) cannot both be empty. Specify at least one of them.
         self.category = category
+        # The ID of the data disk.
         self.disk_id = disk_id
-        # The performance level of the data disk when the data disk is an enterprise SSD. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
+        # The performance level of the data disk when the disk type is enterprise SSD. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
         # 
-        # - PL0: a single disk can deliver up to 10,000 random read/write IOPS.
-        # - PL1: a single disk can deliver up to 50,000 random read/write IOPS.
-        # - PL2: a single disk can deliver up to 100,000 random read/write IOPS.
-        # - PL3: a single disk can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
+        # - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
+        # - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
         # 
         # Default value: PL1.
         # 
@@ -202,14 +207,14 @@ class DescribeInstanceModificationPriceRequestDataDisk(DaraModel):
         # 
         # - cloud_efficiency: 20 to 32768.
         # - cloud_ssd: 20 to 32768.
-        # - cloud_essd: The valid values depend on the value of `DataDisk.N.PerformanceLevel`.    
+        # - cloud_essd: The valid value range depends on the value of `DataDisk.N.PerformanceLevel`.    
         #     - PL0: 1 to 32768.
         #     - PL1: 20 to 32768.
         #     - PL2: 461 to 32768.
         #     - PL3: 1261 to 32768.
         # - cloud: 5 to 2000.
         # 
-        # Default value: the minimum capacity for the specified data disk category.
+        # Default value: the minimum capacity for the specified data disk type.
         self.size = size
 
     def validate(self):
@@ -257,8 +262,11 @@ class DescribeInstanceModificationPriceRequestSystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The category of the system disk.
         self.category = category
+        # The performance level of the system disk.
         self.performance_level = performance_level
+        # The size of the system disk.
         self.size = size
 
     def validate(self):

@@ -13,7 +13,7 @@ class DescribeInstanceModificationPriceResponseBody(DaraModel):
         price_info: main_models.DescribeInstanceModificationPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The price information, including the price and discount rule information.
+        # The price information, including the price and discount rule details.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -55,6 +55,7 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfo(DaraModel):
     ):
         # The price.
         self.price = price
+        # The related price.
         self.related_price = related_price
         self.rules = rules
 
@@ -173,6 +174,7 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPrice(DaraMod
         self,
         marketplace_image_price: main_models.DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice = None,
     ):
+        # The Alibaba Cloud Marketplace image price.
         self.marketplace_image_price = marketplace_image_price
 
     def validate(self):
@@ -205,9 +207,13 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoRelatedPriceMarketpl
         original_price: float = None,
         trade_price: float = None,
     ):
+        # The currency unit.
         self.currency = currency
+        # The discount.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -258,10 +264,6 @@ class DescribeInstanceModificationPriceResponseBodyPriceInfoPrice(DaraModel):
         trade_price: float = None,
     ):
         # The currency unit. Valid values:
-        # 
-        # - China site: CNY.
-        # 
-        # - International site: USD.
         self.currency = currency
         self.detail_infos = detail_infos
         # The discount.

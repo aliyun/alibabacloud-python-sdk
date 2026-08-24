@@ -21,16 +21,16 @@ class ModifyDiskChargeTypeRequest(DaraModel):
         # Specifies whether to enable automatic payment. Valid values: 
         #          
         # - true (default): Automatic payment is enabled. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated, and you can only void the order. 
-        # - false: An order is generated without automatic payment. If your account balance is insufficient, an unpaid order is generated. You can log on to the Alibaba Cloud **Expenses and Costs** console and go to the <props="china"><ph>[Orders](https://usercenter2.aliyun.com/order/list)</ph><props="intl"><ph>[Orders](https://usercenter2-intl.aliyun.com/order/list)</ph> page to complete the payment.
+        # - false: Only an order is generated without payment. If your account balance is insufficient, a normal unpaid order is generated. You can log on to the Alibaba Cloud **Expenses and Costs** console and pay for the order on the <props="china"><ph>[My Orders](https://usercenter2.aliyun.com/order/list)</ph><props="intl"><ph>[Orders](https://usercenter2-intl.aliyun.com/order/list)</ph> page.
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The billing method of the disk. Valid values: 
         #          
-        # - PrePaid (default): The pay-as-you-go data disk is converted to a subscription data disk. 
-        # - PostPaid: The subscription data disk is converted to a pay-as-you-go data disk.
+        # - PrePaid (default): Converts pay-as-you-go data disks to subscription data disks. 
+        # - PostPaid: Converts subscription data disks to pay-as-you-go data disks.
         # 
-        # > When you convert a pay-as-you-go disk to subscription, the billing cycle of the capacity fee is automatically synchronized with the associated ECS instance.
+        # > When you convert a pay-as-you-go disk to subscription, the billing cycle of the disk capacity fee is automatically synchronized with the associated ECS instance.
         self.disk_charge_type = disk_charge_type
         # The list of disk IDs. The value is a JSON array that contains up to 16 IDs separated by commas (,).
         # 
@@ -42,7 +42,7 @@ class ModifyDiskChargeTypeRequest(DaraModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

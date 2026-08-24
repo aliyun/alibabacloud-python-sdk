@@ -56,10 +56,10 @@ class CreateAutoSnapshotPolicyRequest(DaraModel):
         self.storage_location_arn = storage_location_arn
         # The tags of the automatic snapshot policy.
         self.tag = tag
-        # The destination region to which snapshots are replicated. You can set only one destination region.
+        # The destination region to which snapshots are replicated. You can specify one destination region.
         self.target_copy_regions = target_copy_regions
         # The list of target resource tags. The automatic snapshot policy matches target resources based on tags.
-        # This parameter is required when AssociationType is set to AssociatedWithInstanceTag.
+        # When AssociationType is set to AssociatedWithInstanceTag, this parameter is required.
         self.target_tags = target_tags
         # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
         # 

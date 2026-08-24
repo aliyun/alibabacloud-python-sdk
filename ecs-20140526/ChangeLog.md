@@ -1,3 +1,7 @@
+2026-08-24 Version: 7.10.0
+- Support API SendDiagnosticInterrupt.
+
+
 2026-08-07 Version: 7.9.6
 - Update API CreateAutoSnapshotPolicy: add request parameters AssociationType.
 - Update API CreateAutoSnapshotPolicy: add request parameters TargetTags.

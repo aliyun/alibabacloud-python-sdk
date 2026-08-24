@@ -1097,6 +1097,9 @@ from ._run_command_response import RunCommandResponse
 from ._run_instances_request import RunInstancesRequest
 from ._run_instances_response_body import RunInstancesResponseBody
 from ._run_instances_response import RunInstancesResponse
+from ._send_diagnostic_interrupt_request import SendDiagnosticInterruptRequest
+from ._send_diagnostic_interrupt_response_body import SendDiagnosticInterruptResponseBody
+from ._send_diagnostic_interrupt_response import SendDiagnosticInterruptResponse
 from ._send_file_request import SendFileRequest
 from ._send_file_response_body import SendFileResponseBody
 from ._send_file_response import SendFileResponse
@@ -3180,6 +3183,9 @@ __all__ = [
     RunInstancesRequest,
     RunInstancesResponseBody,
     RunInstancesResponse,
+    SendDiagnosticInterruptRequest,
+    SendDiagnosticInterruptResponseBody,
+    SendDiagnosticInterruptResponse,
     SendFileRequest,
     SendFileResponseBody,
     SendFileResponse,
