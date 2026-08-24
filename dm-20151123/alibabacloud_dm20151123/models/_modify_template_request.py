@@ -20,10 +20,7 @@ class ModifyTemplateRequest(DaraModel):
         template_subject: str = None,
         template_text: str = None,
     ):
-        # The source channel through which the user accesses the service. Default value: 1. Valid values:
-        # 
-        # - 1: Direct access through Alibaba Cloud.
-        # - 2: Access through a partner channel.
+        # The source channel through which the user connects. Default value: 1.
         self.from_type = from_type
         self.owner_id = owner_id
         # The remarks or application description for the SMS template. This parameter is required only when the templatetype is SMS. Maximum length: 100 characters.
@@ -32,10 +29,7 @@ class ModifyTemplateRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The body content of the SMS template. This parameter is required only when the templatetype is SMS. Length: 2 to 400 characters.
         self.sms_content = sms_content
-        # The business type of the SMS template. This parameter is required only when the templatetype is SMS. Valid values:
-        # 
-        # - 0: verification code
-        # - 2: notification or promotion.
+        # The business type of the SMS template. This parameter is required only when the templatetype is SMS.
         self.sms_type = sms_type
         # The template ID.
         # 

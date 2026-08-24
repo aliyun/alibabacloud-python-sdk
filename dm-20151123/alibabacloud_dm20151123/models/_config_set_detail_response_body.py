@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_dm20151123 import models as main_models
 from darabonba.model import DaraModel
 
@@ -11,7 +13,7 @@ class ConfigSetDetailResponseBody(DaraModel):
         detail: main_models.ConfigSetDetailResponseBodyDetail = None,
         request_id: str = None,
     ):
-        # The details of the configuration set.
+        # The configuration set information.
         self.detail = detail
         # The request ID.
         self.request_id = request_id
@@ -52,20 +54,24 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
         ip_pool: main_models.ConfigSetDetailResponseBodyDetailIpPool = None,
         is_public_channel_backoff: bool = None,
         name: str = None,
+        validation_option: main_models.ConfigSetDetailResponseBodyDetailValidationOption = None,
     ):
-        # A description of the configuration set.
+        # The description.
         self.description = description
-        # The ID of the configuration set.
+        # The configuration set ID.
         self.id = id
         # The associated IP pool.
         self.ip_pool = ip_pool
         self.is_public_channel_backoff = is_public_channel_backoff
-        # The name of the configuration set.
+        # The configuration set name.
         self.name = name
+        self.validation_option = validation_option
 
     def validate(self):
         if self.ip_pool:
             self.ip_pool.validate()
+        if self.validation_option:
+            self.validation_option.validate()
 
     def to_map(self):
         result = dict()
@@ -87,6 +93,9 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.validation_option is not None:
+            result['ValidationOption'] = self.validation_option.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -107,6 +116,53 @@ class ConfigSetDetailResponseBodyDetail(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('ValidationOption') is not None:
+            temp_model = main_models.ConfigSetDetailResponseBodyDetailValidationOption()
+            self.validation_option = temp_model.from_map(m.get('ValidationOption'))
+
+        return self
+
+class ConfigSetDetailResponseBodyDetailValidationOption(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        forbidden_status_list: List[str] = None,
+        forbidden_sub_status_list: List[str] = None,
+    ):
+        self.enabled = enabled
+        self.forbidden_status_list = forbidden_status_list
+        self.forbidden_sub_status_list = forbidden_sub_status_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+
+        if self.forbidden_status_list is not None:
+            result['ForbiddenStatusList'] = self.forbidden_status_list
+
+        if self.forbidden_sub_status_list is not None:
+            result['ForbiddenSubStatusList'] = self.forbidden_sub_status_list
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+
+        if m.get('ForbiddenStatusList') is not None:
+            self.forbidden_status_list = m.get('ForbiddenStatusList')
+
+        if m.get('ForbiddenSubStatusList') is not None:
+            self.forbidden_sub_status_list = m.get('ForbiddenSubStatusList')
+
         return self
 
 class ConfigSetDetailResponseBodyDetailIpPool(DaraModel):
@@ -115,9 +171,9 @@ class ConfigSetDetailResponseBodyDetailIpPool(DaraModel):
         ip_pool_id: str = None,
         ip_pool_name: str = None,
     ):
-        # The ID of the associated IP pool.
+        # The associated IP pool ID.
         self.ip_pool_id = ip_pool_id
-        # The name of the associated IP pool.
+        # The associated IP pool name.
         self.ip_pool_name = ip_pool_name
 
     def validate(self):

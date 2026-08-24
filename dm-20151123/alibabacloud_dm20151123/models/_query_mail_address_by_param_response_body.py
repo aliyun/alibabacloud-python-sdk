@@ -112,6 +112,7 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
         self,
         account_name: str = None,
         account_status: str = None,
+        address_type: str = None,
         config_set_id: str = None,
         config_set_name: str = None,
         create_time: str = None,
@@ -119,14 +120,17 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
         daily_req_count: str = None,
         domain_status: str = None,
         mail_address_id: str = None,
+        mail_address_verification_status: str = None,
         month_count: str = None,
         month_req_count: str = None,
         reply_address: str = None,
         reply_status: str = None,
+        sender_address: str = None,
         sendtype: str = None,
     ):
         self.account_name = account_name
         self.account_status = account_status
+        self.address_type = address_type
         self.config_set_id = config_set_id
         self.config_set_name = config_set_name
         self.create_time = create_time
@@ -134,10 +138,12 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
         self.daily_req_count = daily_req_count
         self.domain_status = domain_status
         self.mail_address_id = mail_address_id
+        self.mail_address_verification_status = mail_address_verification_status
         self.month_count = month_count
         self.month_req_count = month_req_count
         self.reply_address = reply_address
         self.reply_status = reply_status
+        self.sender_address = sender_address
         self.sendtype = sendtype
 
     def validate(self):
@@ -153,6 +159,9 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
 
         if self.account_status is not None:
             result['AccountStatus'] = self.account_status
+
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
 
         if self.config_set_id is not None:
             result['ConfigSetId'] = self.config_set_id
@@ -175,6 +184,9 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
         if self.mail_address_id is not None:
             result['MailAddressId'] = self.mail_address_id
 
+        if self.mail_address_verification_status is not None:
+            result['MailAddressVerificationStatus'] = self.mail_address_verification_status
+
         if self.month_count is not None:
             result['MonthCount'] = self.month_count
 
@@ -186,6 +198,9 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
 
         if self.reply_status is not None:
             result['ReplyStatus'] = self.reply_status
+
+        if self.sender_address is not None:
+            result['SenderAddress'] = self.sender_address
 
         if self.sendtype is not None:
             result['Sendtype'] = self.sendtype
@@ -199,6 +214,9 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
 
         if m.get('AccountStatus') is not None:
             self.account_status = m.get('AccountStatus')
+
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
 
         if m.get('ConfigSetId') is not None:
             self.config_set_id = m.get('ConfigSetId')
@@ -221,6 +239,9 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
         if m.get('MailAddressId') is not None:
             self.mail_address_id = m.get('MailAddressId')
 
+        if m.get('MailAddressVerificationStatus') is not None:
+            self.mail_address_verification_status = m.get('MailAddressVerificationStatus')
+
         if m.get('MonthCount') is not None:
             self.month_count = m.get('MonthCount')
 
@@ -232,6 +253,9 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(DaraModel):
 
         if m.get('ReplyStatus') is not None:
             self.reply_status = m.get('ReplyStatus')
+
+        if m.get('SenderAddress') is not None:
+            self.sender_address = m.get('SenderAddress')
 
         if m.get('Sendtype') is not None:
             self.sendtype = m.get('Sendtype')

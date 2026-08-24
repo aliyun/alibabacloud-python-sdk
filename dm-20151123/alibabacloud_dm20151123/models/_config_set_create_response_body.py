@@ -10,9 +10,9 @@ class ConfigSetCreateResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The new configuration set ID.
+        # The configuration set ID.
         self.id = id
-        # The unique ID for the request. Provide this request ID when contacting support.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

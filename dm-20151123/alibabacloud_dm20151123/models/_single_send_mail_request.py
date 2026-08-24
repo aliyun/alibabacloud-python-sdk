@@ -34,140 +34,134 @@ class SingleSendMailRequest(DaraModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
-        # The sender address configured in the Direct Mail console.
+        # The sender address configured in the management console.
         # 
         # This parameter is required.
         self.account_name = account_name
         # The address type. Valid values:
         # 
-        # `0`: A random account.
-        # 
-        # `1`: A sender address.
+        # - 0: random account
+        # - 1: sender address
         # 
         # This parameter is required.
         self.address_type = address_type
-        # This feature is available only through the latest SDKs. It is not supported for OpenAPI calls or signature-based authentication. For more information, see [How do I send an email with an attachment by using an SDK?](https://help.aliyun.com/document_detail/2937843.html).
+        # Supported only when using the new SDK. Not supported through OpenAPI or signature mechanism methods. For more information, refer to [How do I send emails with attachments through the SDK?](https://help.aliyun.com/document_detail/2937843.html).
         self.attachments = attachments
-        # - A comma-separated list of BCC recipients.
+        # - Specifies the BCC (blind carbon copy) recipient list for the email.
+        # - The system sends a copy identical to the main email content to each BCC address. The BCC information is not visible to any recipients (including ToAddress and BccAddress).
+        # - To protect the privacy of BCC recipients, email tracking features are disabled by default for BCC emails. This means the system does not record behavioral data such as open rates or click-through rates for BCC emails. However, billing for sending volume, sending details, and sending status statistics remain consistent with regular emails.
+        # - A maximum of 2 BCC recipients can be specified per send.
         # 
-        # - The system sends a copy of the email to each BCC recipient. The BCC information is hidden from all recipients, including those specified in `ToAddress` and `BccAddress`.
-        # 
-        # - To protect privacy, email tracking features (such as open and click tracking) are disabled for emails sent to BCC recipients. However, billing and sending status are still tracked.
-        # 
-        # - A maximum of two BCC recipients are allowed per request.
-        # 
-        # Note: The `SingleSendMail` API operation does not support a CC field. To send carbon copies, use SMTP.
+        # Note: The SingleSendMail operation does not support the Cc (carbon copy) field. Use SMTP if you need this feature.
         self.bcc_address = bcc_address
-        # Specifies whether to enable click tracking. Valid values: `"1"` enables click tracking, and `"0"` disables it (default).
+        # Specifies whether to enable data tracking. Valid values:
+        # 
+        # - 1: Enable data tracking.
+        # - 0 (default): Disable data tracking.
         self.click_trace = click_trace
-        # Specifies whether to enable domain-level authentication.
+        # Specifies whether to enable domain-level authentication. Valid values:
         # 
-        # - `true`
+        # - true
+        # - false
         # 
-        # - `false`
+        # Use this parameter only for domain-level authentication. Ignore it for sender address-level authentication.
         # 
-        # This parameter is used only for domain-level authentication. Ignore it for sender address-level authentication.
+        # 1. Create the address domain-auth-created-by-system@example.com in the console. Keep the prefix before @ unchanged and use your own domain name as the suffix.
         # 
-        # 1\\. Create the address `domain-auth-created-by-system@example.com` in the console. The prefix must be fixed, and the suffix must be your domain.
-        # 
-        # 2\\.
+        # 2.
         # 
         # **API scenario**
         # 
-        # Set `AccountName` to your domain. Recipients will see the sender as `domain-auth-created-by-system@example.com`.
+        # Set AccountName to a custom sender address for the domain. The recipient sees the custom sender address as the sender.
         # 
         # **SMTP scenario**
         # 
-        # a. Call the `ModifyPWByDomain` API operation to set a password for the domain.
+        # a. Set the domain password through the ModifyPWByDomain operation.
         # 
-        # b. Authenticate with the domain and the configured password. Pass a custom address, such as `user@example.com`, as the actual sender in the `MAIL FROM` command. Recipients will see `user@example.com` as the sender.
+        # b. Authenticate using the domain name and the configured password. Pass a custom address such as user@example.com as the actual sender (mailfrom). The recipient sees user@example.com as the sender.
         self.domain_auth = domain_auth
-        # The sender name. It must be 15 characters or shorter.
+        # The sender nickname. The value cannot exceed 15 characters in length.
         # 
-        # For example, if you set the sender name to "Xiaohong" and the sender address is `test***@example.net`, the recipient sees the sender as "Xiaohong" \\<test\\*\\*\\*@example.net>.
+        # For example, if the sender nickname is set to "Jane" and the sender address is test***@example.net, the recipient sees the sender address as "Jane" test***@example.net.
         self.from_alias = from_alias
-        # Custom email header settings.
+        # The email header settings.
         # 
-        # Both standard and non-standard fields must comply with standard header syntax. You can specify up to 10 headers for an API call. Excess headers are ignored. This limit does not apply to SMTP.
+        # Both standard and non-standard fields must comply with the syntax requirements for headers defined in the standard. A maximum of 10 headers can be passed through the headers field when sending emails via API. Headers exceeding this limit are ignored. SMTP has no such limit.
         # 
-        # 1\\. Standard fields
+        # 1. Standard fields
         # 
-        # `Message-ID`, `List-Unsubscribe`, `List-Unsubscribe-Post`
+        # Message-ID, List-Unsubscribe, List-Unsubscribe-Post
         # 
-        # Standard fields overwrite existing values in the email header.
+        # Standard fields overwrite the original values in the email header.
         # 
-        # 2\\. Non-standard fields
+        # 2. Non-standard fields
         # 
         # Case-insensitive.
         # 
-        # a. Fields starting with `X-User-`: These are not pushed to EventBridge or Message Service (MNS). This prefix is required only for API calls, not for SMTP.
+        # a. Fields prefixed with X-User- (not pushed to EventBridge or Message Service MNS. This is an API-only requirement. SMTP allows any custom fields.)
         # 
-        # b. Fields starting with `X-User-Notify-`: These are pushed to EventBridge and MNS. This is supported for both API and SMTP calls.
+        # b. Fields prefixed with X-User-Notify- (pushed to EventBridge and Message Service MNS. Both API and SMTP are supported.)
         # 
-        # When pushed to EventBridge or MNS, the header object will contain these fields.
+        # When pushed to EventBridge or MNS, these fields are included under the header field.
         self.headers = headers
         # The HTML body of the email.
         # 
-        # Note: You must specify either `HtmlBody` or `TextBody`.
+        # Note: HtmlBody and TextBody are used for different types of email content. You must specify one of them.
         # 
-        # - The size of the body is limited to approximately 80 KB when passed as a URL parameter.
-        # 
-        # - For recent SDKs (Java 1.4.0+, Python 3 1.4.0+, and PHP 1.4.0+), the request body is limited to approximately 8 MB.
+        # - The size limit for URL-based parameter passing is approximately 80 KB.
+        # - The size limit for Body-based parameter passing with the new SDK is approximately 8 MB (Java 1.4.0 or later, Python3 1.4.0 or later, PHP 1.4.0 or later).
         self.html_body = html_body
-        # The ID of the dedicated IP pool. If you have purchased dedicated IPs, you can use this parameter to select which dedicated IP pool to use for sending the email. For more information, see [Dedicated IP](https://help.aliyun.com/document_detail/2932088.html).
+        # The ID of the dedicated IP address pool. Users who have purchased dedicated IP addresses can use this parameter to specify the outbound IP address for this email. For more information, refer to [Dedicated IP](https://help.aliyun.com/document_detail/2932088.html).
         self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
         # The reply-to address.
         self.reply_address = reply_address
-        # The name displayed for the reply-to address.
+        # The reply-to address nickname.
         self.reply_address_alias = reply_address_alias
-        # Specifies whether to use the default reply-to address configured in the console. This address must be verified. Valid values: true, false.
+        # Specifies whether to use the reply-to address configured in the management console (the address must be verified). Valid values: true or false.
         # 
         # This parameter is required.
         self.reply_to_address = reply_to_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The subject of the email, with a maximum length of 256 characters.
+        # The email subject. The value cannot exceed 256 characters in length.
         # 
         # This parameter is required.
         self.subject = subject
-        # A tag for categorizing email batches, which you can create in the Direct Mail console. Tags allow you to query the sending status of each batch and are required if you enable email tracking. The tag must be 1 to 128 characters long and can contain letters, digits, underscores (_), and hyphens (-).
+        # The tag created in the DirectMail console. Tags are used to categorize email batches. You can query the sending status of each batch by tag. If the email tracking feature is enabled, you must use an email tag when sending emails.
+        # The value must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
         self.tag_name = tag_name
-        # The template information for sending a templated email.
+        # The template information for template-based sending.
+        # 
+        # When sending with a template, the HtmlBody and TextBody values are ignored.
         self.template = template
         # The text body of the email.
         # 
-        # Note: You must specify either `HtmlBody` or `TextBody`.
+        # Note: HtmlBody and TextBody are used for different types of email content. You must specify one of them.
         # 
-        # - The size of the body is limited to approximately 80 KB when passed as a URL parameter.
-        # 
-        # - For recent SDKs (Java 1.4.0+, Python 3 1.4.0+, and PHP 1.4.0+), the request body is limited to approximately 8 MB.
+        # - The size limit for URL-based parameter passing is approximately 80 KB.
+        # - The size limit for Body-based parameter passing with the new SDK is approximately 8 MB (Java 1.4.0 or later, Python3 1.4.0 or later, PHP 1.4.0 or later).
         self.text_body = text_body
-        # The destination email address(es). To specify multiple addresses, separate them with commas (up to 100).
+        # The destination address. You can specify multiple email addresses separated by commas. A maximum of 100 addresses are supported (mailing lists are supported).
         # 
         # This parameter is required.
         self.to_address = to_address
-        # The filtering level. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
+        # The filtering level. For more information, refer to [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
         # 
-        # `disabled`: No filtering.
+        # Valid values:
         # 
-        # `default`: Uses the default policy. For batch addresses, filtering is applied at the sender address level.
-        # 
-        # `mailfrom`: Filters at the sender address level.
-        # 
-        # `mailfrom_domain`: Filters at the sender domain level.
-        # 
-        # `edm_id`: Filters at the account level.
+        # - disabled: No filtering is applied.
+        # - default: The default policy is used. Batch addresses use sender address-level filtering.
+        # - mailfrom: Sender address-level filtering.
+        # - mailfrom_domain: Sender domain-level filtering.
+        # - edm_id: Account-level filtering.
         self.un_subscribe_filter_level = un_subscribe_filter_level
-        # `disabled`: Does not generate an unsubscribe link.
+        # The type of unsubscribe link. Valid values:
         # 
-        # `default`: Uses the default policy. For batch sender addresses, an unsubscribe link is generated when sending to specific domains containing keywords such as "gmail", "yahoo",
+        # - disabled: No unsubscribe link is generated.
+        # - default: The default policy is used. An unsubscribe link is generated when emails are sent from batch-type sender addresses to specific domains, such as those containing keywords "gmail", "yahoo", "google", "aol.com", "hotmail", "outlook", or "ymail.com". For more information, refer to [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
         # 
-        # "google", "aol.com", "hotmail",
-        # 
-        # "outlook", and "ymail.com". For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
-        # 
-        # The display language is automatically determined based on the recipient\\"s browser settings.
+        # The display language is automatically detected based on the recipient\\"s browser settings.
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
@@ -339,7 +333,7 @@ class SingleSendMailRequestTemplate(DaraModel):
         template_data: Dict[str, str] = None,
         template_id: str = None,
     ):
-        # The variables and their values for the template.
+        # The template variables and values.
         self.template_data = template_data
         # The template ID.
         self.template_id = template_id
@@ -376,9 +370,9 @@ class SingleSendMailRequestAttachments(DaraModel):
         attachment_name: str = None,
         attachment_url: str = None,
     ):
-        # The filename of the attachment.
+        # Supported only when using the new SDK. Not supported through OpenAPI or signature mechanism methods.
         self.attachment_name = attachment_name
-        # The local file path of the attachment that the SDK will use.
+        # Supported only when using the new SDK. Not supported through OpenAPI or signature mechanism methods.
         self.attachment_url = attachment_url
 
     def validate(self):

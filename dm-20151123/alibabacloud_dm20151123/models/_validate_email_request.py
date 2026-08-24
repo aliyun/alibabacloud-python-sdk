@@ -12,18 +12,18 @@ class ValidateEmailRequest(DaraModel):
         probe_type: str = None,
         timeout: int = None,
     ):
-        # Specifies whether to check the graylist. Default value: false. Results will be sent as asynchronous notifications through EventBridge.
+        # Specifies whether to check the graylist. Default value: false. The result is asynchronously notified through EventBridge.
         self.check_graylist = check_graylist
-        # The email address to validate
+        # The email address to validate.
         # 
         # This parameter is required.
         self.email = email
-        # The detection type:
+        # The probe type. Valid values:
         # 
-        # - FULL: Enables all detection capabilities, including SMTP probing. Since SMTP probing involves remote connections, the overall latency is higher. This is suitable for scenarios that are not sensitive to response time. Each detection consumes 1 address validation quota.
-        # - BASIC_ONLY: Enables all detection capabilities except SMTP probing, with low latency. This is suitable for scenarios sensitive to response time, such as real-time validation during registration to check whether an email address is a disposable email or an abnormal address such as MX forwarding, to defend against mass registration by malicious actors. Each detection consumes 1/3 of an address validation quota.
+        # - FULL: enables all detection capabilities, including SMTP probing. Because SMTP probing involves remote connections, the overall latency is high. This mode is suitable for scenarios that are not sensitive to response time. Each detection consumes 1 address validation quota. In this mode, the UNKNOWN status is not metered.
+        # - BASIC_ONLY: enables all detection capabilities except SMTP probing, with low latency. This mode is suitable for scenarios that are sensitive to response time, such as real-time validation during registration to check whether an email address is a disposable mailbox or an abnormal address with MX forwarding, to prevent batch registration by the cyber underground economy chain. Each detection consumes 1/3 of an address validation quota. In this mode, the UNKNOWN status is metered.
         self.probe_type = probe_type
-        # Timeout period. Default value: 60 seconds.
+        # The timeout period. Default value: 60 seconds.
         self.timeout = timeout
 
     def validate(self):

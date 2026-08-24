@@ -12,9 +12,9 @@ class ConfigSetListRequest(DaraModel):
         page_index: str = None,
         page_size: str = None,
     ):
-        # Specifies whether to retrieve all ConfigSets. Optional.
+        # Specifies whether to query all configuration sets. Optional.
         self.all = all
-        # The keyword for filtering ConfigSets by name.
+        # The keyword for searching by name.
         self.keyword = keyword
         # The page number, starting from 1. Required.
         self.page_index = page_index

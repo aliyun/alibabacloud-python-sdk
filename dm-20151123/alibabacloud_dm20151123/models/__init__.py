@@ -28,6 +28,7 @@ from ._config_set_cancel_relation_from_address_request import ConfigSetCancelRel
 from ._config_set_cancel_relation_from_address_response_body import ConfigSetCancelRelationFromAddressResponseBody
 from ._config_set_cancel_relation_from_address_response import ConfigSetCancelRelationFromAddressResponse
 from ._config_set_create_request import ConfigSetCreateRequest
+from ._config_set_create_shrink_request import ConfigSetCreateShrinkRequest
 from ._config_set_create_response_body import ConfigSetCreateResponseBody
 from ._config_set_create_response import ConfigSetCreateResponse
 from ._config_set_delete_request import ConfigSetDeleteRequest
@@ -43,6 +44,7 @@ from ._config_set_relation_from_address_request import ConfigSetRelationFromAddr
 from ._config_set_relation_from_address_response_body import ConfigSetRelationFromAddressResponseBody
 from ._config_set_relation_from_address_response import ConfigSetRelationFromAddressResponse
 from ._config_set_update_request import ConfigSetUpdateRequest
+from ._config_set_update_shrink_request import ConfigSetUpdateShrinkRequest
 from ._config_set_update_response_body import ConfigSetUpdateResponseBody
 from ._config_set_update_response import ConfigSetUpdateResponse
 from ._create_domain_request import CreateDomainRequest
@@ -246,10 +248,14 @@ from ._validate_email_response_body import ValidateEmailResponseBody
 from ._validate_email_response import ValidateEmailResponse
 from ._batch_send_mail_request import BatchSendMailRequestReceivers
 from ._batch_send_mail_request import BatchSendMailRequestTemplateContent
+from ._config_set_create_request import ConfigSetCreateRequestValidationOption
 from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetailIpPool
+from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetailValidationOption
 from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetail
 from ._config_set_list_response_body import ConfigSetListResponseBodyConfigSetsIpPool
+from ._config_set_list_response_body import ConfigSetListResponseBodyConfigSetsValidationOption
 from ._config_set_list_response_body import ConfigSetListResponseBodyConfigSets
+from ._config_set_update_request import ConfigSetUpdateRequestValidationOption
 from ._dedicated_ip_list_response_body import DedicatedIpListResponseBodyIpsIpExt
 from ._dedicated_ip_list_response_body import DedicatedIpListResponseBodyIps
 from ._dedicated_ip_none_pool_list_response_body import DedicatedIpNonePoolListResponseBodyIps
@@ -324,6 +330,7 @@ __all__ = [
     ConfigSetCancelRelationFromAddressResponseBody,
     ConfigSetCancelRelationFromAddressResponse,
     ConfigSetCreateRequest,
+    ConfigSetCreateShrinkRequest,
     ConfigSetCreateResponseBody,
     ConfigSetCreateResponse,
     ConfigSetDeleteRequest,
@@ -339,6 +346,7 @@ __all__ = [
     ConfigSetRelationFromAddressResponseBody,
     ConfigSetRelationFromAddressResponse,
     ConfigSetUpdateRequest,
+    ConfigSetUpdateShrinkRequest,
     ConfigSetUpdateResponseBody,
     ConfigSetUpdateResponse,
     CreateDomainRequest,
@@ -542,10 +550,14 @@ __all__ = [
     ValidateEmailResponse,
     BatchSendMailRequestReceivers,
     BatchSendMailRequestTemplateContent,
+    ConfigSetCreateRequestValidationOption,
     ConfigSetDetailResponseBodyDetailIpPool,
+    ConfigSetDetailResponseBodyDetailValidationOption,
     ConfigSetDetailResponseBodyDetail,
     ConfigSetListResponseBodyConfigSetsIpPool,
+    ConfigSetListResponseBodyConfigSetsValidationOption,
     ConfigSetListResponseBodyConfigSets,
+    ConfigSetUpdateRequestValidationOption,
     DedicatedIpListResponseBodyIpsIpExt,
     DedicatedIpListResponseBodyIps,
     DedicatedIpNonePoolListResponseBodyIps,

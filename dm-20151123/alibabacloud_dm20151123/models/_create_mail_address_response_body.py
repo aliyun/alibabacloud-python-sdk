@@ -10,9 +10,9 @@ class CreateMailAddressResponseBody(DaraModel):
         mail_address_id: str = None,
         request_id: str = None,
     ):
-        # Mail address ID
+        # The ID of the sender address.
         self.mail_address_id = mail_address_id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

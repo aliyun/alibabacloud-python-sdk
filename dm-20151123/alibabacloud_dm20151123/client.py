@@ -31,10 +31,11 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'us-east-1': 'dm.us-east-1.aliyuncs.com',
-            'eu-central-1': 'dm.eu-central-1.aliyuncs.com',
+            'ap-southeast-1': 'dm.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-2': 'dm.ap-southeast-2.aliyuncs.com',
             'cn-hangzhou': 'dm.aliyuncs.com',
-            'ap-southeast-1': 'dm.ap-southeast-1.aliyuncs.com'
+            'us-east-1': 'dm.us-east-1.aliyuncs.com',
+            'eu-central-1': 'dm.eu-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dm', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -933,10 +934,14 @@ class Client(OpenApiClient):
 
     def config_set_create_with_options(
         self,
-        request: main_models.ConfigSetCreateRequest,
+        tmp_req: main_models.ConfigSetCreateRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ConfigSetCreateResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ConfigSetCreateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.validation_option):
+            request.validation_option_shrink = Utils.array_to_string_with_specified_style(tmp_req.validation_option, 'ValidationOption', 'json')
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
@@ -946,6 +951,8 @@ class Client(OpenApiClient):
             query['IsPublicChannelBackoff'] = request.is_public_channel_backoff
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.validation_option_shrink):
+            query['ValidationOption'] = request.validation_option_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -967,10 +974,14 @@ class Client(OpenApiClient):
 
     async def config_set_create_with_options_async(
         self,
-        request: main_models.ConfigSetCreateRequest,
+        tmp_req: main_models.ConfigSetCreateRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ConfigSetCreateResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ConfigSetCreateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.validation_option):
+            request.validation_option_shrink = Utils.array_to_string_with_specified_style(tmp_req.validation_option, 'ValidationOption', 'json')
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
@@ -980,6 +991,8 @@ class Client(OpenApiClient):
             query['IsPublicChannelBackoff'] = request.is_public_channel_backoff
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.validation_option_shrink):
+            query['ValidationOption'] = request.validation_option_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1315,10 +1328,14 @@ class Client(OpenApiClient):
 
     def config_set_update_with_options(
         self,
-        request: main_models.ConfigSetUpdateRequest,
+        tmp_req: main_models.ConfigSetUpdateRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ConfigSetUpdateResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ConfigSetUpdateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.validation_option):
+            request.validation_option_shrink = Utils.array_to_string_with_specified_style(tmp_req.validation_option, 'ValidationOption', 'json')
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
@@ -1330,6 +1347,8 @@ class Client(OpenApiClient):
             query['IsPublicChannelBackoff'] = request.is_public_channel_backoff
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.validation_option_shrink):
+            query['ValidationOption'] = request.validation_option_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1351,10 +1370,14 @@ class Client(OpenApiClient):
 
     async def config_set_update_with_options_async(
         self,
-        request: main_models.ConfigSetUpdateRequest,
+        tmp_req: main_models.ConfigSetUpdateRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ConfigSetUpdateResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ConfigSetUpdateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.validation_option):
+            request.validation_option_shrink = Utils.array_to_string_with_specified_style(tmp_req.validation_option, 'ValidationOption', 'json')
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
@@ -1366,6 +1389,8 @@ class Client(OpenApiClient):
             query['IsPublicChannelBackoff'] = request.is_public_channel_backoff
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.validation_option_shrink):
+            query['ValidationOption'] = request.validation_option_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1494,6 +1519,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.address_type):
+            query['AddressType'] = request.address_type
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.reply_address):
@@ -1532,6 +1559,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.address_type):
+            query['AddressType'] = request.address_type
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.reply_address):

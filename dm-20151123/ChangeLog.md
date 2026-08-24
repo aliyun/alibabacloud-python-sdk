@@ -1,3 +1,14 @@
+2026-08-24 Version: 1.11.1
+- Update API ConfigSetCreate: add request parameters ValidationOption.
+- Update API ConfigSetDetail: add response parameters Body.Detail.ValidationOption.
+- Update API ConfigSetList: add response parameters Body.ConfigSets.$.ValidationOption.
+- Update API ConfigSetUpdate: add request parameters ValidationOption.
+- Update API CreateMailAddress: add request parameters AddressType.
+- Update API QueryMailAddressByParam: add response parameters Body.data.$.AddressType.
+- Update API QueryMailAddressByParam: add response parameters Body.data.$.MailAddressVerificationStatus.
+- Update API QueryMailAddressByParam: add response parameters Body.data.$.SenderAddress.
+
+
 2026-06-25 Version: 1.11.0
 - Support API DeleteTemplate.
 - Support API ModifyTemplate.

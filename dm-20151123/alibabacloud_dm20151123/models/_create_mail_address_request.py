@@ -8,26 +8,31 @@ class CreateMailAddressRequest(DaraModel):
     def __init__(
         self,
         account_name: str = None,
+        address_type: str = None,
         owner_id: int = None,
         reply_address: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         sendtype: str = None,
     ):
-        # Sender\\"s email address
+        # The sender address.
         # 
         # This parameter is required.
         self.account_name = account_name
+        # The type of the address to create. Valid values:
+        # EXTERNAL: The domain name of the address to create has not been created in this system.
+        # INTERNAL: The domain name of the address to create has already been created in this system.
+        self.address_type = address_type
         self.owner_id = owner_id
-        # Reply-to address
+        # The reply-to address.
         self.reply_address = reply_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Type of sending. Values:
+        # The type of email. Valid values:
         # 
-        # - batch: Bulk emails
+        # - batch: batch email
         # 
-        # - trigger: Triggered emails
+        # - trigger: triggered email
         # 
         # This parameter is required.
         self.sendtype = sendtype
@@ -42,6 +47,9 @@ class CreateMailAddressRequest(DaraModel):
             result = _map
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -64,6 +72,9 @@ class CreateMailAddressRequest(DaraModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')

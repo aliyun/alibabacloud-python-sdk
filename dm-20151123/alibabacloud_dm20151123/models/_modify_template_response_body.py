@@ -9,7 +9,7 @@ class ModifyTemplateResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The unique request identifier.
         self.request_id = request_id
 
     def validate(self):
