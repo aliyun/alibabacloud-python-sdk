@@ -14,11 +14,11 @@ class ListApprovalsResponseBody(DaraModel):
         request_id: str = None,
         total_num: str = None,
     ):
-        # List of approval instances.
+        # The list of approval instances.
         self.approvals = approvals
-        # ID of the request.
+        # The ID of the request.
         self.request_id = request_id
-        # Total number of approval instances.
+        # The total number of approval instances.
         self.total_num = total_num
 
     def validate(self):
@@ -73,73 +73,66 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         creator_dev_tag: str = None,
         creator_user_id: str = None,
         creator_username: str = None,
+        effect_status: str = None,
         end_timestamp: int = None,
         policy_type: str = None,
         process_id: str = None,
         process_name: str = None,
         reason: str = None,
+        report_type: str = None,
         schema_content: str = None,
         schema_id: str = None,
         schema_name: str = None,
         status: str = None,
+        validity_type: str = None,
     ):
-        # Details of the approval instance.
+        # The details of the approval instance.
         self.approval_detail = approval_detail
-        # Approval instance ID.
+        # The instance ID of the approval.
         self.approval_id = approval_id
-        # List of approval progress nodes.
+        # The list of approval progress nodes.
         self.approval_progresses = approval_progresses
         self.approval_type = approval_type
-        # Time when the approval instance was created.
+        # The time when the approval instance was created.
         self.create_time = create_time
-        # Department of the user who created the approval instance.
+        # The department of the approval instance creator.
         self.creator_department = creator_department
-        # ID of the device used to create the approval instance.
+        # The terminal device ID of the approval instance creator.
         self.creator_dev_tag = creator_dev_tag
-        # ID of the user who created the approval instance.
+        # The ID of the approval instance creator.
         self.creator_user_id = creator_user_id
-        # Username of the user who created the approval instance.
+        # The username of the approval instance creator.
         self.creator_username = creator_username
-        # Expiration time of the approval instance, in seconds since the Unix epoch.
+        # The effective status of the report. Enabled indicates that the report is effective. Expired indicates that the report has expired.
+        self.effect_status = effect_status
+        # The expiration time of the approval instance. The value is a UNIX timestamp in seconds.
         self.end_timestamp = end_timestamp
-        # Policy type associated with the approval instance. Valid values:
-        # 
-        # - **DomainBlacklist**: Domain blacklist.
-        # 
-        # - **DomainWhitelist**: Domain whitelist.
-        # 
-        # - **SoftwareBlock**: Software blocking.
-        # 
-        # - **AppUninstall**: App uninstallation.
-        # 
-        # - **DlpSend**: File outbound transfer.
-        # 
-        # - **PeripheralBlock**: Peripheral control.
+        # The type of the policy associated with the approval instance. Valid values:
+        # - **DomainBlacklist**: domain name blacklist.
+        # - **DomainWhitelist**: domain name whitelist.
+        # - **SoftwareBlock**: software blocking.
+        # - **AppUninstall**: terminal uninstallation.
+        # - **DlpSend**: file outgoing.
+        # - **PeripheralBlock**: peripheral control.
         self.policy_type = policy_type
-        # ID of the associated approval process.
+        # The ID of the process associated with the approval instance.
         self.process_id = process_id
-        # Name of the associated approval process.
+        # The name of the process associated with the approval instance.
         self.process_name = process_name
-        # Reason for creating the approval instance.
+        # The reason for creating the approval instance.
         self.reason = reason
-        # Content of the associated approval template.
+        # The report type. ApprovalReport indicates an approval report. BackendReport indicates a backend report.
+        self.report_type = report_type
+        # The content of the template associated with the approval instance.
         self.schema_content = schema_content
-        # ID of the associated approval template.
+        # The ID of the template associated with the approval instance.
         self.schema_id = schema_id
-        # Name of the associated approval template.
+        # The name of the template associated with the approval instance.
         self.schema_name = schema_name
-        # Status of the approval instance. Valid values:
-        # 
-        # - **Pending**: Pending approval.
-        # 
-        # - **Approved**: Approved.
-        # 
-        # - **Rejected**: Rejected.
-        # 
-        # - **Revoked**: Revoked.
-        # 
-        # - **Expired**: Expired.
+        # The approval instance status. Valid values:
         self.status = status
+        # The validity duration type. When the value is Permanent, EndTimestamp returns 0.
+        self.validity_type = validity_type
 
     def validate(self):
         if self.approval_progresses:
@@ -181,6 +174,9 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         if self.creator_username is not None:
             result['CreatorUsername'] = self.creator_username
 
+        if self.effect_status is not None:
+            result['EffectStatus'] = self.effect_status
+
         if self.end_timestamp is not None:
             result['EndTimestamp'] = self.end_timestamp
 
@@ -196,6 +192,9 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         if self.reason is not None:
             result['Reason'] = self.reason
 
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
+
         if self.schema_content is not None:
             result['SchemaContent'] = self.schema_content
 
@@ -207,6 +206,9 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
 
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.validity_type is not None:
+            result['ValidityType'] = self.validity_type
 
         return result
 
@@ -242,6 +244,9 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         if m.get('CreatorUsername') is not None:
             self.creator_username = m.get('CreatorUsername')
 
+        if m.get('EffectStatus') is not None:
+            self.effect_status = m.get('EffectStatus')
+
         if m.get('EndTimestamp') is not None:
             self.end_timestamp = m.get('EndTimestamp')
 
@@ -257,6 +262,9 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
 
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
+
         if m.get('SchemaContent') is not None:
             self.schema_content = m.get('SchemaContent')
 
@@ -268,6 +276,9 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('ValidityType') is not None:
+            self.validity_type = m.get('ValidityType')
 
         return self
 
@@ -281,33 +292,21 @@ class ListApprovalsResponseBodyApprovalsApprovalProgresses(DaraModel):
         status: str = None,
         timestamp: int = None,
     ):
-        # Action performed at the approval progress node. Valid values:
-        # 
-        # - **Approve**: Approve.
-        # 
-        # - **Reject**: Reject.
-        # 
-        # - **Revoke**: Revoke.
-        # 
-        # - **Comment**: Comment.
+        # The action performed on the approval progress node. Valid values:
+        # - **Approve**: Approved.
+        # - **Reject**: Rejected.
+        # - **Revoke**: Revoked.
+        # - **Comment**: Commented.
         self.action = action
-        # Comment added at the approval progress node.
+        # The comment on the approval progress node.
         self.comment = comment
-        # ID of the executor for the approval progress node.
+        # The ID of the executor for the approval progress node.
         self.executor = executor
-        # List of operators for the approval progress node.
+        # The list of operators for the approval progress node.
         self.operators = operators
-        # Status of the approval progress node. Valid values:
-        # 
-        # - **Pending**: Pending approval.
-        # 
-        # - **Approved**: Approved.
-        # 
-        # - **Rejected**: Rejected.
-        # 
-        # - **Revoked**: Revoked.
+        # The status of the approval progress node. Valid values:
         self.status = status
-        # Time when the action was performed at the approval progress node, in seconds since the Unix epoch.
+        # The time when the action was performed on the approval progress node. The value is a UNIX timestamp in seconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -374,9 +373,9 @@ class ListApprovalsResponseBodyApprovalsApprovalProgressesOperators(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
-        # ID of the operator for the approval progress node.
+        # The ID of the operator for the approval progress node.
         self.sase_user_id = sase_user_id
-        # Username of the operator for the approval progress node.
+        # The username of the operator for the approval progress node.
         self.username = username
 
     def validate(self):

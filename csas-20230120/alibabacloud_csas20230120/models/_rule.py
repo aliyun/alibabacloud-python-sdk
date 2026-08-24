@@ -19,13 +19,23 @@ class Rule(DaraModel):
         rules: List[main_models.Rule] = None,
         values: List[str] = None,
     ):
+        # The logical relationship between rules at the same level. Valid values:
+        # - **AND**: All rules at the same level must be hit.
+        # - **OR**: Any one rule at the same level can be hit.
         self.combinator = combinator
+        # The rule ID.
         self.id = id
+        # The endpoint device attribute field to match. Required for leaf rules.
         self.name = name
+        # The matching operator. Required for leaf rules.
         self.operator = operator
+        # The rule subtype.
         self.rule_sub_type = rule_sub_type
+        # The rule type.
         self.rule_type = rule_type
+        # The list of matching rules. At least one rule must be included.
         self.rules = rules
+        # The set of values to match. Required for leaf rules and cannot be empty.
         self.values = values
 
     def validate(self):

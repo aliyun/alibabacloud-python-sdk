@@ -1,3 +1,41 @@
+2026-08-24 Version: 1.19.0
+- Support API AddVirusScanAdditionalLists.
+- Support API CancelVirusScanTasks.
+- Support API CancelVulScanTasks.
+- Support API CreateVirusScanScheduledStrategy.
+- Support API CreateVirusScanTask.
+- Support API CreateVulScanScheduledStrategy.
+- Support API CreateVulScanTask.
+- Support API CreateVulnerabilityFixTask.
+- Support API DeleteDevicesVulnerability.
+- Support API DeleteVirusFile.
+- Support API DeleteVirusScanScheduledStrategies.
+- Support API DeleteVulScanScheduledStrategy.
+- Support API GetAntiVirusRealTimeDefenceStrategy.
+- Support API GetVirusScanGlobalConfig.
+- Support API GetVirusScanScheduledStrategy.
+- Support API GetVulScanGlobalConfig.
+- Support API GetVulScanScheduledStrategy.
+- Support API GetVulnerability.
+- Support API ListDevicesForVulnerability.
+- Support API ListVirusFileStatuses.
+- Support API ListVirusScanAdditionalLists.
+- Support API ListVirusScanScheduledStrategies.
+- Support API ListVirusScanTaskStatuses.
+- Support API ListVirusScanTaskSummary.
+- Support API ListVirusScanTasks.
+- Support API ListVulScanScheduledStrategies.
+- Support API ListVulScanTasks.
+- Support API ListVulnerabilities.
+- Support API RemoveVirusScanAdditionalLists.
+- Support API UpdateAntiVirusRealTimeDefenceStrategy.
+- Support API UpdateVirusFileStatus.
+- Support API UpdateVirusScanGlobalConfig.
+- Support API UpdateVirusScanScheduledStrategy.
+- Support API UpdateVulScanGlobalConfig.
+- Support API UpdateVulScanScheduledStrategy.
+
+
 2026-08-17 Version: 1.15.0
 - Support API ListDomainItems.
 

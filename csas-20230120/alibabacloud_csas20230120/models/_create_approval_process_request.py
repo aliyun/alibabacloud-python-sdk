@@ -15,11 +15,11 @@ class CreateApprovalProcessRequest(DaraModel):
         process_name: str = None,
         process_nodes: List[List[str]] = None,
     ):
-        # The description of the approval process. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+        # The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
         self.description = description
         # The matched approval templates.
         self.match_schemas = match_schemas
-        # The process name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+        # The flow name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
         # 
         # This parameter is required.
         self.process_name = process_name
@@ -86,7 +86,7 @@ class CreateApprovalProcessRequestMatchSchemas(DaraModel):
         self.app_uninstall_schema_id = app_uninstall_schema_id
         # The ID of the device registration approval template.
         self.device_registration_schema_id = device_registration_schema_id
-        # The ID of the file outbound transfer approval template.
+        # The ID of the file outbound approval template.
         self.dlp_send_schema_id = dlp_send_schema_id
         # The ID of the domain name blacklist approval template.
         self.domain_blacklist_schema_id = domain_blacklist_schema_id

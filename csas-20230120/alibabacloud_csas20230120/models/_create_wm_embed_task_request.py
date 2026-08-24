@@ -25,62 +25,53 @@ class CreateWmEmbedTaskRequest(DaraModel):
         wm_info_uint: str = None,
         wm_type: str = None,
     ):
-        # Audio control parameters.
+        # The audio control parameters.
         self.audio_control = audio_control
-        # CSV watermark embedding control parameters.
+        # The CSV watermark embedding control parameters.
         self.csv_control = csv_control
-        # Document watermark control parameters.
+        # The document watermark control parameters.
         self.document_control = document_control
-        # URL for downloading the file to embed. The URL must support public network access.
+        # The URL for downloading the file to be embedded. The URL must be active for public network access.
         # 
         # This parameter is required.
         self.file_url = file_url
-        # The filename of the file to embed. The backend validates the file type based on the filename extension.
+        # The name of the file to be embedded. The backend validates the file type based on the file name extension.
         # 
         # This parameter is required.
         self.filename = filename
-        # Image watermark control parameters.
+        # The image watermark control parameters.
         self.image_control = image_control
-        # Image watermark parameter: the desired JPEG compression quality factor for the output image. Default value is 95. Valid range: 1 to 100.
+        # The image watermark parameter that specifies the expected JPEG compression quality factor of the output image. Default value: 95. Valid values: 1 to 100.
         self.image_embed_jpeg_quality = image_embed_jpeg_quality
-        # Image watermark parameter: A higher value indicates greater robustness but reduced visual quality. Default value: 2. Valid values: 0 to 4.
+        # The image watermark parameter. A larger value indicates higher robustness but lower visual quality. Default value: 2. Valid values: 0 to 4.
         self.image_embed_level = image_embed_level
-        # Specifies whether to enable invisible watermark embedding. Default value: true.  
-        # Valid values:  
-        # - **true**: Yes  
-        # - **false**: No
+        # Specifies whether to enable invisible watermark embedding. Default value: true.
         self.invisible_enable = invisible_enable
-        # Short video watermark parameter: specifies the video bitrate. By default, the video bitrate is automatically retrieved. You can use this parameter to explicitly specify the bitrate used during extraction. This parameter usually does not need to be set.
+        # The short video watermark parameter that specifies the video bitrate. By default, the video bitrate is automatically obtained. You can use this parameter to forcibly specify the bitrate used during extraction. Typically, you do not need to set this parameter.
         self.video_bitrate = video_bitrate
-        # Video control parameters.
+        # The video control parameters.
         self.video_control = video_control
-        # Video watermark parameter: whether to use the long-video watermark software development kit (SDK). The default value is false. Valid values:
+        # Video watermark parameter. Specifies whether to use the long video watermark SDK. Valid values:
         # 
-        # - **true**: Yes
-        # - **false**: No
+        # - **true**: The long video watermark SDK is used.
+        # - **false**: The long video watermark SDK is not used.
+        # 
+        # Default value: false.
         self.video_is_long = video_is_long
-        # Base64-encoded string-formatted watermark information. If this value is set, WmInfoUint cannot be set.
+        # The watermark information in Base64-encoded string format. If this parameter is set, WmInfoUint cannot be set.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
-        # The bit width of the watermark information. The default value is 32. This parameter must be consistent between embedding and extraction. For example, if a 40-bit software development kit (SDK) is used for embedding, this value must also be set to 40 during extraction.
+        # The bit width of the watermark information capacity. Default value: 32. This parameter must be consistent between embedding and extraction. For example, if the 40-bit SDK is used for embedding, set this parameter to 40 during extraction as well.
         self.wm_info_size = wm_info_size
-        # Watermark information in decimal numeric format. If this parameter is set, WmInfoBytesB64 cannot be set.  
-        # 
-        # The valid value range depends on the WmInfoSize parameter:  
-        # 
-        # - When WmInfoSize is 32, the value range is 1 to 4294967295.  
-        # 
-        # - When WmInfoSize is 40, the value range is 1 to 1099511627775.  
-        # 
-        # - When WmInfoSize is 64, the value range is 1 to 18446744073709551615.
+        # The watermark information in decimal number format. If this parameter is set, WmInfoBytesB64 cannot be set.
         self.wm_info_uint = wm_info_uint
-        # Watermark type. Valid values:  
-        # - **PureDocument**: Document watermark.  
-        # - **PureImage**: Image watermark.  
-        # - **PureAudio**: Audio watermark.  
-        # - **PureVideo**: Video watermark.  
-        # - **AigcDocument**: AIGC document watermark.  
-        # - **AigcImage**: AIGC image watermark.  
-        # - **AigcAudio**: AIGC audio watermark.  
+        # The watermark type. Valid values:
+        # - **PureDocument**: document watermark.
+        # - **PureImage**: image watermark.
+        # - **PureAudio**: audio watermark.
+        # - **PureVideo**: video watermark.
+        # - **AigcDocument**: AIGC document watermark.
+        # - **AigcImage**: AIGC image watermark.
+        # - **AigcAudio**: AIGC audio watermark.
         # - **AigcVideo**: AIGC video watermark.
         # 
         # This parameter is required.
@@ -216,9 +207,9 @@ class CreateWmEmbedTaskRequestVideoControl(DaraModel):
         metadata_control: main_models.CreateWmEmbedTaskRequestVideoControlMetadataControl = None,
         text_visible_control: main_models.CreateWmEmbedTaskRequestVideoControlTextVisibleControl = None,
     ):
-        # Metadata control parameters.
+        # The metadata control parameters.
         self.metadata_control = metadata_control
-        # Video text watermark control parameters.
+        # The control parameters for video text watermarks.
         self.text_visible_control = text_visible_control
 
     def validate(self):
@@ -265,29 +256,26 @@ class CreateWmEmbedTaskRequestVideoControlTextVisibleControl(DaraModel):
         visible: bool = None,
         visible_text: str = None,
     ):
-        # Text color of the text watermark. Format: 0xFFFFFF or #FFFFFF (RGB color format).
+        # The font color of the text watermark. The format is 0xFFFFFF or #FFFFFF RGB color format.
         self.font_color = font_color
-        # Font size. Valid values: **0** to **72**.
+        # The font size. Valid values: **0** to **72**.
         self.font_size = font_size
-        # Margin. Takes effect only when Mode is set to top-left, top-right, bottom-left, or bottom-right.
+        # This parameter takes effect when Mode is set to top-left, top-right, bottom-left, or bottom-right. The margin settings.
         self.margin = margin
-        # Text watermark display mode. Valid values:
-        # - **pos**: Fixed position with the origin at the top-left corner.
-        # - **bottom-right**: Bottom-right mode.
+        # The display mode of the text watermark. Valid values:
+        # 
+        # - **pos**: fixed position, with the upper-left corner as the origin.
+        # - **bottom-right**: lower-left mode.
         self.mode = mode
-        # Text watermark transparency. Value range: 1 to 255. A higher value indicates less transparency.
+        # The opacity of the text watermark. Valid values: 1 to 255. A larger value indicates lower transparency.
         self.opacity = opacity
-        # Effective only when Mode is "pos". Specifies the horizontal position of the visible watermark, with the origin at the top-left corner, in pixels.
+        # This parameter takes effect when Mode is set to pos. Specifies the horizontal position of the visible watermark in pixels, with the upper-left corner as the origin.
         self.pos_x = pos_x
-        # Effective only when Mode is "pos". Specifies the vertical position of the visible watermark, with the origin at the top-left corner, in pixels.
+        # This parameter takes effect when Mode is set to pos. Specifies the vertical position of the visible watermark in pixels, with the upper-left corner as the origin.
         self.pos_y = pos_y
-        # Visibility:
-        # 
-        # true: Display
-        # 
-        # false: Do not display
+        # The visibility. Valid values:
         self.visible = visible
-        # Text watermark content. The format is a UTF-8 string.
+        # The text watermark content. The format is a UTF-8 string.
         self.visible_text = visible_text
 
     def validate(self):
@@ -366,9 +354,9 @@ class CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin(DaraModel):
         bottom: int = None,
         right: int = None,
     ):
-        # Bottom margin. Takes effect only when Mode is set to bottom-left or bottom-right.
+        # This parameter takes effect when Mode is set to bottom-left or bottom-right. The bottom margin.
         self.bottom = bottom
-        # Right margin. Takes effect only when Mode is set to top-right or bottom-right.
+        # This parameter takes effect when Mode is set to top-right or bottom-right. The right margin.
         self.right = right
 
     def validate(self):
@@ -403,11 +391,9 @@ class CreateWmEmbedTaskRequestVideoControlMetadataControl(DaraModel):
         enable: bool = None,
         xmp_kv_base_64: str = None,
     ):
-        # Whether enabled.
-        # - **false**: Disabled.
-        # - **true**: Enabled.
+        # Specifies whether to enable this feature.
         self.enable = enable
-        # Metadata in Base64 format. The string in the format AIGC={"Label":"1","ContentProducer":"AXXXX","ProduceID":"BXXXX","ReservedCode1":"CXXX","ContentPropagator":"DXXX","PropagateID":"EXXX","ReservedCode2":"FXXXX"} must be encoded into a Base64 string. Note: 1. The prefix "AIGC=" must be included; otherwise, the metadata cannot be added. Also note that this prefix differs from the one used for image metadata. 2. Base64 must be in standard format and include padding.
+        # The metadata in Base64 format. Encode the following string in Base64 format: AIGC={"Label":"1","ContentProducer":"AXXXX","ProduceID":"BXXXX,"ReservedCode1":"CXXX","ContentPropagator":"DXXX","PropagateID":"EXXX","ReservedCode2":"FXXXX"}. Note: 1. The "AIGC=" prefix is required. Otherwise, the metadata cannot be added. The prefix differs from that of image metadata. 2. The Base64 encoding must be in standard format with padding.
         self.xmp_kv_base_64 = xmp_kv_base_64
 
     def validate(self):
@@ -443,11 +429,11 @@ class CreateWmEmbedTaskRequestImageControl(DaraModel):
         metadata_control: main_models.CreateWmEmbedTaskRequestImageControlMetadataControl = None,
         text_visible_control: main_models.CreateWmEmbedTaskRequestImageControlTextVisibleControl = None,
     ):
-        # Logo watermark control parameters.
+        # The control parameters for logo watermarks.
         self.logo_visible_control = logo_visible_control
-        # Metadata control parameters. Takes effect when WmType is PureImage or AigcImage.
+        # The metadata control parameters. This parameter takes effect when WmType is set to PureImage or AigcImage.
         self.metadata_control = metadata_control
-        # Text watermark control parameters for images.
+        # The control parameters for image text watermarks.
         self.text_visible_control = text_visible_control
 
     def validate(self):
@@ -508,45 +494,35 @@ class CreateWmEmbedTaskRequestImageControlTextVisibleControl(DaraModel):
         visible: bool = None,
         visible_text: str = None,
     ):
-        # Clockwise rotation angle of the text watermark, in degrees. The value range is 0 to 360.
+        # The clockwise rotation angle of the text watermark. Valid values: 0 to 360.
         self.angle = angle
-        # Text color of the text watermark. The format is 0xFFFFFF or #FFFFFF RGB color format. For example, 0x000000 or #000000 represents black.
+        # The font color of the text watermark. The format is 0xFFFFFF or #FFFFFF RGB color format. For example, 0x000000 or #000000 indicates black.
         self.font_color = font_color
-        # Font size of the text watermark. A larger value indicates a larger font.
+        # The font size of the text watermark. A larger value indicates a larger font.
         self.font_size = font_size
-        # Effective only when Mode is top-left, top-right, bottom-left, or bottom-right. Margin.
+        # This parameter takes effect when Mode is set to top-left, top-right, bottom-left, or bottom-right. The margin settings.
         self.margin = margin
-        # Text watermark display mode. Valid values:
-        # - **pos**: fixed position mode.
-        # - **repeat**: tile mode.
-        # - **top-left**: top-left mode.
-        # - **top-right**: top-right mode.
-        # - **bottom-left**: bottom-left mode.
-        # - **bottom-right**: bottom-right mode.
+        # The display mode of the text watermark. Valid values:
         self.mode = mode
-        # Opacity of the text watermark. Valid values: 1 to 255. A larger value indicates less transparency.
+        # The opacity of the text watermark. Valid values: 1 to 255. A larger value indicates lower transparency.
         self.opacity = opacity
-        # Horizontal anchor point of the text watermark.  
-        # The value range is 0 to 1. When (PosAx, PosAy) is (0, 0), the text is drawn with its top-left corner as the anchor point; when the value is 0.5, the text is drawn with its centroid as the anchor point; when the value is (1, 1), the text is drawn with its bottom-right corner as the anchor point.
+        # The horizontal anchor point of the text watermark.
+        # Valid values: 0 to 1. When (PosAx, PosAy) is set to (0, 0), the text is drawn with the upper-left corner as the anchor point. When the value is 0.5, the text is drawn at the center point. When (PosAx, PosAy) is set to (1, 1), the text is drawn with the lower-right corner as the anchor point.
         self.pos_ax = pos_ax
-        # Vertical anchor point of the text watermark.  
-        # Valid range: 0 to 1. When (PosAx, PosAy) is (0, 0), the text is drawn with its top-left corner as the anchor point; when the value is 0.5, the text is drawn centered at its centroid; when the value is (1, 1), the text is drawn with its bottom-right corner as the anchor point.
+        # The vertical anchor point of the text watermark.
+        # Valid values: 0 to 1. When (PosAx, PosAy) is set to (0, 0), the text is drawn with the upper-left corner as the anchor point. When the value is 0.5, the text is drawn from the center point. When (PosAx, PosAy) is set to (1, 1), the text is drawn with the lower-right corner as the anchor point.
         self.pos_ay = pos_ay
-        # Takes effect when Mode is pos. Specifies the horizontal position of the text watermark, using pixel coordinates with the origin at the top-left corner.
+        # This parameter takes effect when Mode is set to pos. Specifies the horizontal position of the text watermark in pixels, with the upper-left corner as the origin.
         self.pos_x = pos_x
-        # Takes effect when Mode is pos. Specifies the vertical position of the text watermark, using pixel coordinates with the origin at the top-left corner.
+        # This parameter takes effect when Mode is set to pos. Specifies the vertical position of the text watermark in pixels, with the upper-left corner as the origin.
         self.pos_y = pos_y
-        # This parameter takes effect only when Mode is set to repeat. It controls the horizontal pitch of the tiled text watermark.
+        # This parameter takes effect when Mode is set to repeat. Specifies the horizontal spacing for tiled text watermarks.
         self.space_x = space_x
-        # This parameter takes effect only when Mode is set to repeat. It controls the vertical pitch of the tiled text watermark.
+        # This parameter takes effect when Mode is set to repeat. Specifies the vertical spacing for tiled text watermarks.
         self.space_y = space_y
-        # Visibility:  
-        # 
-        # true: Display  
-        # 
-        # false: Do not display
+        # The visibility. Valid values:
         self.visible = visible
-        # Content of the text watermark. The format is a UTF-8 string.
+        # The text watermark content. The format is a UTF-8 string.
         self.visible_text = visible_text
 
     def validate(self):
@@ -657,13 +633,13 @@ class CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin(DaraModel):
         right: float = None,
         top: float = None,
     ):
-        # Effective when Mode is bottom-left or bottom-right. Bottom margin.
+        # This parameter takes effect when Mode is set to bottom-left or bottom-right. The bottom margin.
         self.bottom = bottom
-        # Effective only when Mode is top-left or bottom-left. Left margin.
+        # This parameter takes effect when Mode is set to top-left or bottom-left. The left margin.
         self.left = left
-        # Effective only when Mode is top-right or bottom-right. Right margin.
+        # This parameter takes effect when Mode is set to top-right or bottom-right. The right margin.
         self.right = right
-        # Effective only when Mode is top-left or top-right. Top margin.
+        # This parameter takes effect when Mode is set to top-left or top-right. The top margin.
         self.top = top
 
     def validate(self):
@@ -710,13 +686,9 @@ class CreateWmEmbedTaskRequestImageControlMetadataControl(DaraModel):
         enable: bool = None,
         xmp_kv_base_64: str = None,
     ):
-        # Whether to enable.
-        # 
-        # true: Display
-        # 
-        # false: Do not display
+        # Specifies whether to enable this feature.
         self.enable = enable
-        # Metadata in Base64 format. You must encode a string in the format AIGC:{"Label":"1","ContentProducer":"AXXXX","ProduceID":"BXXXX","ReservedCode1":"CXXX","ContentPropagator":"DXXX","PropagateID":"EXXX","ReservedCode2":"FXXXX"} into a Base64-encoded string. Note: 1. The prefix "AIGC:" must be included; otherwise, the metadata cannot be added. Also note that this format differs from that used for audio and video. 2. The Base64 encoding must follow the standard format and include padding as required.
+        # The metadata in Base64 format. Encode the following string in Base64 format: AIGC:{"Label":"1","ContentProducer":"AXXXX","ProduceID":"BXXXX,"ReservedCode1":"CXXX","ContentPropagator":"DXXX","PropagateID":"EXXX","ReservedCode2":"FXXXX"}. Note: 1. The "AIGC:" prefix is required. Otherwise, the metadata cannot be added. The format differs from that of audio and video metadata. 2. The Base64 encoding must be in standard format with padding.
         self.xmp_kv_base_64 = xmp_kv_base_64
 
     def validate(self):
@@ -762,41 +734,31 @@ class CreateWmEmbedTaskRequestImageControlLogoVisibleControl(DaraModel):
         space_y: int = None,
         visible: bool = None,
     ):
-        # Clockwise rotation angle of the logo watermark, in degrees. Value range: 1 to 360.
+        # The clockwise rotation angle of the logo watermark. Valid values: 1 to 360.
         self.angle = angle
-        # Specifies whether to enable enhanced visible watermarking. When enabled, the logo is processed so that embedded information can be extracted from it.
+        # Specifies whether to enable enhanced visible watermarking. After this feature is enabled, the logo is processed so that information embedded in the logo can be extracted.
         self.enhance = enhance
-        # Base64-encoded logo watermark. The logo file is a PNG image converted to Base64 format.
+        # The logo watermark in Base64 format. The logo file is a PNG image converted to Base64 format.
         self.logo_base_64 = logo_base_64
-        # Effective only when Mode is set to top-left, top-right, bottom-left, or bottom-right. Specifies the margin.
+        # This parameter takes effect when Mode is set to top-left, top-right, bottom-left, or bottom-right. The margin settings.
         self.margin = margin
-        # Watermark display mode. Valid values:  
-        # - **pos**: Fixed position mode.  
-        # - **repeat**: Tile mode.  
-        # - **top-left**: Top-left mode.  
-        # - **top-right**: Top-right mode.  
-        # - **bottom-left**: Bottom-left mode.  
-        # - **bottom-right**: Bottom-right mode.
+        # The display mode of the logo watermark. Valid values:
         self.mode = mode
-        # Opacity of the logo watermark. Value range: 1 to 255. A higher value indicates lower transparency.
+        # The opacity of the logo watermark. Valid values: 1 to 255. A larger value indicates lower transparency.
         self.opacity = opacity
-        # Horizontal anchor point of the logo watermark. Value range: 0 to 1. When (PosAx, PosAy) is (0, 0), the watermark is drawn with the top-left corner of the text as the anchor point; when the value is 0.5, it is drawn at the centroid of the text; when the value is (1, 1), it is drawn with the bottom-right corner of the text as the anchor point.
+        # The horizontal anchor point of the logo watermark. Valid values: 0 to 1. When (PosAx, PosAy) is set to (0, 0), the watermark is drawn with the upper-left corner as the anchor point. When the value is 0.5, the watermark is drawn at the center. When (PosAx, PosAy) is set to (1, 1), the watermark is drawn at the lower-right corner.
         self.pos_ax = pos_ax
-        # Vertical anchor point of the logo watermark. Value range: 0 to 1. When (PosAx, PosAy) is (0, 0), the logo is drawn with the top-left corner of the text as the anchor point; when the value is 0.5, it is drawn at the centroid of the text; when the value is (1, 1), it is drawn with the bottom-right corner of the text as the anchor point.
+        # The vertical anchor point of the logo watermark. Valid values: 0 to 1. When (PosAx, PosAy) is set to (0, 0), the watermark is drawn with the upper-left corner as the anchor point. When the value is 0.5, the watermark is drawn at the center. When (PosAx, PosAy) is set to (1, 1), the watermark is drawn at the lower-right corner.
         self.pos_ay = pos_ay
-        # This parameter takes effect only when Mode is set to pos. It controls the horizontal position of the visible watermark, measured in pixels from the top-left corner as the origin.
+        # This parameter takes effect when Mode is set to pos. Specifies the horizontal position of the visible watermark in pixels, with the upper-left corner as the origin.
         self.pos_x = pos_x
-        # This parameter takes effect only when Mode is set to pos. It controls the vertical position of the visible watermark, measured in pixels from the top-left corner as the origin.
+        # This parameter takes effect when Mode is set to pos. Specifies the vertical position of the visible watermark in pixels, with the upper-left corner as the origin.
         self.pos_y = pos_y
-        # This parameter takes effect only when Mode is set to repeat. It controls the horizontal pitch of the visible watermark tiling.
+        # This parameter takes effect when Mode is set to repeat. Specifies the horizontal spacing for tiled visible watermarks.
         self.space_x = space_x
-        # This parameter takes effect only when Mode is set to repeat. It controls the vertical pitch of the visible watermark tiling.
+        # This parameter takes effect when Mode is set to repeat. Specifies the vertical spacing for tiled visible watermarks.
         self.space_y = space_y
-        # Visibility:
-        # 
-        # **true**: Display
-        # 
-        # **false**: Do not display
+        # The visibility. Valid values:
         self.visible = visible
 
     def validate(self):
@@ -901,13 +863,13 @@ class CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin(DaraModel):
         right: float = None,
         top: float = None,
     ):
-        # Effective only when Mode is set to bottom-left or bottom-right. Specifies the bottom margin.
+        # This parameter takes effect when Mode is set to bottom-left or bottom-right. The bottom margin.
         self.bottom = bottom
-        # Effective only when Mode is set to top-left or bottom-left. Specifies the left margin.
+        # This parameter takes effect when Mode is set to top-left or bottom-left. The left margin.
         self.left = left
-        # Effective only when Mode is set to top-right or bottom-right. Specifies the right margin.
+        # This parameter takes effect when Mode is set to top-right or bottom-right. The right margin.
         self.right = right
-        # Effective only when Mode is set to top-left or top-right. Specifies the top margin.
+        # This parameter takes effect when Mode is set to top-left or top-right. The top margin.
         self.top = top
 
     def validate(self):
@@ -955,17 +917,11 @@ class CreateWmEmbedTaskRequestDocumentControl(DaraModel):
         invisible_anti_all_copy: bool = None,
         invisible_anti_text_copy: bool = None,
     ):
-        # Background watermark control parameters.
+        # The background watermark control parameters.
         self.background_control = background_control
-        # Specifies whether to enable widget invisible watermark. The widget invisible watermark can resist document insertion, deletion, modification, saving as (with unchanged format), and copying all content in a DOCX file and pasting it into a new DOCX document. It cannot resist format conversion attacks. Valid values:
-        # 
-        # - **true**: Yes
-        # - **false**: No
+        # Specifies whether to enable component invisible watermark. The component invisible watermark can resist document addition, deletion, modification, save-as (same format), and full-select copy from docx to a new docx document. It cannot resist format conversion attacks. Valid values:
         self.invisible_anti_all_copy = invisible_anti_all_copy
-        # Specifies whether to enable zero-width character invisible watermark. The zero-width character invisible watermark can resist document insertion, deletion, modification, saving as (with unchanged format), partial text copy and paste, and CopytoTxt attacks. It cannot resist format conversion to PDF attacks. Valid values:
-        # 
-        # - **true**: Yes
-        # - **false**: No
+        # Specifies whether to enable zero-width character invisible watermark. The zero-width character invisible watermark can resist document addition, deletion, modification, save-as (same format), partial text copy-paste, and CopytoTxt attacks. It cannot resist format conversion toPDF attacks. Valid values:
         self.invisible_anti_text_copy = invisible_anti_text_copy
 
     def validate(self):
@@ -1010,19 +966,13 @@ class CreateWmEmbedTaskRequestDocumentControlBackgroundControl(DaraModel):
         bg_invisible_control: main_models.CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl = None,
         bg_visible_control: main_models.CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl = None,
     ):
-        # Specifies whether to add an invisible background watermark. Valid values:
-        # 
-        # - **true**: Yes
-        # - **false**: No
+        # Specifies whether to add a background invisible watermark. Valid values:
         self.bg_add_invisible = bg_add_invisible
-        # Specifies whether to enable visible background watermark. Valid values:
-        # 
-        # - **true**: Yes
-        # - **false**: No
+        # Specifies whether to enable the background visible watermark. Valid values:
         self.bg_add_visible = bg_add_visible
-        # Control parameters for the background invisible watermark.
+        # The background invisible watermark control parameters.
         self.bg_invisible_control = bg_invisible_control
-        # Parameters for controlling visible background watermarks.
+        # The background visible watermark control parameters.
         self.bg_visible_control = bg_visible_control
 
     def validate(self):
@@ -1082,28 +1032,25 @@ class CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl(D
         vertical_number: int = None,
         visible_text: str = None,
     ):
-        # The counterclockwise rotation angle of the visible watermark text, in degrees. Valid values range from 1 to 360.
+        # The counterclockwise rotation angle of the visible watermark text. Valid values: 1 to 360.
         self.angle = angle
-        # Color of the visible watermark text. Specified in 0xFFFFFF RGB format. For example, 0x000000 represents black.
+        # The font color of the visible watermark text. The format is 0xFFFFFF RGB color format. For example, 0x000000 indicates black.
         self.font_color = font_color
         # The font size of the visible watermark text. A larger value indicates a larger font.
         self.font_size = font_size
-        # This parameter takes effect only when Mode is set to repeat. It specifies the number of times the visible watermark repeats horizontally.
+        # Takes effect when Mode is set to repeat. Specifies the number of times the visible watermark repeats horizontally.
         self.horizontal_number = horizontal_number
-        # Background visible watermark mode. Valid values:
-        # 
-        # - **pos**: Embeds a visible watermark text at a specific position in the background.
-        # - **repeat**: Tiles multiple instances of the visible watermark text across the document background.
+        # The background visible watermark mode. Valid values:
         self.mode = mode
-        # Transparency parameter for the visible watermark. Value range: 1–255. A higher value indicates less transparency.
+        # The opacity parameter of the visible watermark. Valid values: 1 to 255. A larger value indicates less transparency.
         self.opacity = opacity
-        # This parameter takes effect only when Mode is set to pos. It controls the horizontal position of the visible watermark, with the origin at the bottom-left corner. If the value is between 0 and 1, it represents a proportional position. If the value is greater than 1, it specifies an exact pixel position.
+        # Takes effect when Mode is set to pos. Controls the horizontal position of the visible watermark, with the lower-left corner as the origin. When the value is between 0 and 1, it represents proportional control. When the value is greater than 1, it represents precise pixel position control.
         self.pos_x = pos_x
-        # This parameter takes effect only when Mode is set to pos. It controls the vertical position of the visible watermark, with the origin at the bottom-left corner. If the value is between 0 and 1, it represents a proportional position. If the value is greater than 1, it specifies an exact pixel position.
+        # Takes effect when Mode is set to pos. Controls the vertical position of the visible watermark, with the lower-left corner as the origin. When the value is between 0 and 1, it represents proportional control. When the value is greater than 1, it represents precise pixel position control.
         self.pos_y = pos_y
-        # Effective only when Mode is set to repeat. Specifies the Count of times the visible watermark repeats vertically.
+        # Takes effect when Mode is set to repeat. Specifies the number of times the visible watermark repeats vertically.
         self.vertical_number = vertical_number
-        # Visible watermark text for the background. Formatted as a UTF-8 string.
+        # The background visible watermark text. The format is a UTF-8 string.
         self.visible_text = visible_text
 
     def validate(self):
@@ -1185,7 +1132,7 @@ class CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl
         self,
         opacity: int = None,
     ):
-        # Transparency parameter for the background invisible watermark. Value range: 1–13. A higher value indicates less transparency.
+        # The opacity parameter of the background invisible watermark. Valid values: 1 to 13. A larger value indicates less transparency.
         self.opacity = opacity
 
     def validate(self):
@@ -1219,25 +1166,19 @@ class CreateWmEmbedTaskRequestCsvControl(DaraModel):
         method: str = None,
         time_format: str = None,
     ):
-        # Bit width of watermark information per UNIX timestamp. Specifies how many bits of information a single timestamp can carry. A larger value theoretically reduces the number of rows required to extract the information, but increases the magnitude of timestamp modification. The modification range is 2^n, where n is the value of this parameter.
+        # The timestamp watermark information bit width. Specifies how much information a single timestamp can contain. A larger value theoretically reduces the number of rows required for extraction, but increases the time modification magnitude. The magnitude range is 2^n, where n is this parameter value.
         self.embed_bits_number_in_each_time = embed_bits_number_in_each_time
-        # Specifies the column to embed into. It is recommended to use a string-type content column. Column counting starts from 1.
+        # The column to embed the watermark. We recommend that you use a string content column. Counting starts from 1.
         self.embed_column = embed_column
-        # Zero-width character watermark parameter. Embedding density, a floating-point number between 0 and 1. A value of 0 means embedding only in the first row, and 1 means embedding in all rows.
+        # The zero-width character watermark parameter that specifies the embedding density. Valid values: a floating-point number between 0 and 1. 0 indicates that only the first row is embedded. 1 indicates that all rows are embedded.
         self.embed_density = embed_density
-        # Modification precision, indicating the scale of modification, expressed as 10^n. For example, 0 means a precision of 10^0 (units place), -1 means one decimal place, and 1 means the tens place. If a floating-point number lacks digits at the specified precision level, no modification is applied.
+        # The modification precision, which indicates the magnitude of modification as a power of 10. For example, 0 indicates a modification precision of 10^0 (the ones place), -1 indicates the first decimal place, and 1 indicates the tens place. If the float data does not have this precision, no modification is made.
         self.embed_precision = embed_precision
-        # UNIX timestamp watermark parameter. Position where the watermark is embedded. Choose one of Min (minute), Sec (second), or MilSec (millisecond). The algorithm modifies the data at the selected position.
+        # The timestamp watermark parameter that specifies the watermark embedding position. Valid values: Min (minute), Sec (second), and MilSec (millisecond). Select one of the three. The algorithm modifies the data at the selected position.
         self.embed_time_position = embed_time_position
-        # Watermark embedding mode.  
-        # Values:  
-        # 
-        # - **lossless_row_shift_embed**: Lossless data method  
-        # - **lossy_number_embed**: Lossy numeric method  
-        # - **lossy_time_stamp_embed**: UNIX timestamp method  
-        # - **lossy_zero_width_embed**: Zero-width character method
+        # The watermark embedding method.
         self.method = method
-        # UNIX timestamp watermark parameter. The format string for parsing timestamps in the CSV file. For example, if the timestamp in the CSV file is similar to “2023-10-15 13:20:59:342”, the corresponding format string is “Year-Mon-Day Hour:Min:Sec.MilSec”. In this case, you must enter “Year-Mon-Day Hour:Min:Sec.MilSec” here. After watermark embedding, the output retains this format. If an incorrect format is provided, this method cannot be used. In the format string, year, month, day, hour, minute, second, and millisecond must follow the above notation. Connectors must be single non-alphanumeric English characters, typically “:”, “/”, “-”, or a space (“ ”). Additionally, “T” and “Z” are supported as connectors. Other timestamp formats are currently not supported for parsing.
+        # The timestamp watermark parameter that specifies the format string for parsing timestamps in the CSV file. For example, if the timestamp in the CSV file is similar to "2023-10-15 13:20:59:342", the corresponding format string is "Year-Mon-Day Hour:Min:Sec.MilSec". The watermark output retains this format after embedding. If the format is incorrect, this method cannot be used. Year, month, day, hour, minute, second, and millisecond in the format string must follow the specified notation. Delimiters must be single non-alphabetic English characters, typically ":", "/", "-", or " " (space). "T" and "Z" are also supported as delimiters. Other time formats are not currently supported.
         self.time_format = time_format
 
     def validate(self):
@@ -1301,7 +1242,7 @@ class CreateWmEmbedTaskRequestAudioControl(DaraModel):
         self,
         metadata_control: main_models.CreateWmEmbedTaskRequestAudioControlMetadataControl = None,
     ):
-        # Audio metadata control parameters.
+        # The control parameters for audio metadata.
         self.metadata_control = metadata_control
 
     def validate(self):
@@ -1332,12 +1273,9 @@ class CreateWmEmbedTaskRequestAudioControlMetadataControl(DaraModel):
         enable: bool = None,
         xmp_kv_base_64: str = None,
     ):
-        # Whether enabled.
-        # - **false**: Disabled.
-        # 
-        # - **true**: Enabled.
+        # Specifies whether to enable this feature.
         self.enable = enable
-        # Metadata in Base64 format. The string in the format AIGC={"Label":"1","ContentProducer":"AXXXX","ProduceID":"BXXXX","ReservedCode1":"CXXX","ContentPropagator":"DXXX","PropagateID":"EXXX","ReservedCode2":"FXXXX"} must be encoded into a Base64 string. Note: 1. The prefix "AIGC=" must be included; otherwise, the metadata cannot be added. Also note that this prefix differs from the one used for image metadata. 2. The Base64 encoding must follow the standard format and include padding.
+        # The metadata in Base64 format. Encode the following string in Base64 format: AIGC={"Label":"1","ContentProducer":"AXXXX","ProduceID":"BXXXX,"ReservedCode1":"CXXX","ContentPropagator":"DXXX","PropagateID":"EXXX","ReservedCode2":"FXXXX"}. Note: 1. The "AIGC=" prefix is required. Otherwise, the metadata cannot be added. The prefix differs from that of image metadata. 2. The Base64 encoding must be in standard format with padding.
         self.xmp_kv_base_64 = xmp_kv_base_64
 
     def validate(self):

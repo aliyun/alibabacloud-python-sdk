@@ -13,9 +13,9 @@ class UpdateUninstallApplicationsStatusResponseBody(DaraModel):
         applications: List[main_models.UpdateUninstallApplicationsStatusResponseBodyApplications] = None,
         request_id: str = None,
     ):
-        # List of uninstall requests.
+        # The list of uninstall applications.
         self.applications = applications
-        # The ID of this request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,49 +69,40 @@ class UpdateUninstallApplicationsStatusResponseBodyApplications(DaraModel):
         status: str = None,
         username: str = None,
     ):
-        # Uninstall request ID.
+        # The uninstall application ID.
         self.application_id = application_id
-        # Time when the uninstall request was created.
+        # The time when the uninstall application was created.
         self.create_time = create_time
-        # Department to which the user belongs.
+        # The department to which the user belongs.
         self.department = department
-        # Endpoint device ID.
+        # The ID of the endpoint device.
         self.dev_tag = dev_tag
-        # Operating system type of the endpoint device. Valid values:
-        # 
-        # - **Windows**: Windows operating system.
-        # 
-        # - **macOS**: macOS operating system.
-        # 
-        # - **Linux**: Linux operating system.
-        # 
-        # - **Android**: Android operating system.
-        # 
-        # - **iOS**: iOS operating system.
-        # 
-        # - **Windows_Wuying**: Alibaba Cloud Desktop operating system.
+        # The operating system type of the endpoint device. Valid values:
+        # - **Windows**: Windows.
+        # - **macOS**: macOS.
+        # - **Linux**: Linux.
+        # - **Android**: Android.
+        # - **iOS**: iOS.
+        # - **Windows_Wuying**: WUYING Workspace.
         self.dev_type = dev_type
-        # Device name of the endpoint.
+        # The name of the endpoint device.
         self.hostname = hostname
-        # Name of the user identity source.
+        # The name of the identity provider.
         self.idp_name = idp_name
-        # Indicates whether the uninstall has been executed.
+        # Indicates whether the uninstallation has been performed.
         self.is_uninstall = is_uninstall
-        # MAC address of the endpoint device.
+        # The MAC address of the endpoint device.
         self.mac = mac
-        # Reason for the request.
+        # The reason for the application.
         self.reason = reason
-        # User ID.
+        # The user ID.
         self.sase_user_id = sase_user_id
-        # Status of the uninstall request. Valid values:
-        # 
+        # The status of the uninstall application. Valid values:
         # - **Pending**: Pending.
-        # 
         # - **Approved**: Approved.
-        # 
         # - **Rejected**: Rejected.
         self.status = status
-        # Username.
+        # The username.
         self.username = username
 
     def validate(self):

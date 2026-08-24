@@ -18,7 +18,7 @@ class ListRiskItemsResponseBody(DaraModel):
         self.request_id = request_id
         # The list of risk events.
         self.risk_items = risk_items
-        # The total number of risk events that match the query conditions.
+        # The total number of risk events that meet the query conditions.
         self.total_num = total_num
 
     def validate(self):
@@ -96,7 +96,7 @@ class ListRiskItemsResponseBodyRiskItems(DaraModel):
         self.agent_name = agent_name
         # The AI risk analysis conclusion.
         self.ai_conclusion = ai_conclusion
-        # The risk judgment provided by AI. An empty string is returned if no AI analysis result exists. Valid values:
+        # The risk judgment provided by AI. An empty string is returned if no AI analysis results exist. Valid values:
         # * `Risk`: determined as risky.
         # * `Ignore`: determined as not risky.
         self.ai_risk_confirm = ai_risk_confirm
@@ -121,7 +121,7 @@ class ListRiskItemsResponseBodyRiskItems(DaraModel):
         # - `access_safe`: access security.
         # - `ai_agent_safe`: Agent security.
         self.risk_category = risk_category
-        # The manually confirmed risk conclusion. An empty string is returned if the event has not been confirmed. Valid values:
+        # The manually confirmed risk conclusion. An empty string is returned if not confirmed. Valid values:
         # * `Risk`: confirmed as risky.
         # * `Ignore`: confirmed as not risky.
         # * `Invalid`: confirmed as a false positive.
@@ -147,7 +147,7 @@ class ListRiskItemsResponseBodyRiskItems(DaraModel):
         # - `account_share`: account sharing.
         # - `account_stolen`: account theft.
         # - `device_share`: device sharing.
-        # - `remote_logon`: remote logon.
+        # - `remote_logon`: remote logon from an unusual location.
         # - `sensitive_data_leakage`: sensitive data exfiltration.
         # - `lateral_scanning`: lateral scanning.
         # - `ai_skill_malware`: malicious Skill.

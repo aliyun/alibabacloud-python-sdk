@@ -25,13 +25,17 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         tag_ids: List[str] = None,
         unauthorized_access_config_shrink: str = None,
     ):
+        # The application address groups. Required when ConfigMode is set to Precise. Not allowed when ConfigMode is an empty string.
         self.address_groups = address_groups
-        # The addresses of the internal-facing access application. You can specify up to 1,000 addresses.
+        # The collection of internal-facing access application addresses. You can specify up to 1000 addresses.
         self.addresses = addresses
-        # The browser access status of the internal-facing access application. After this feature is enabled, you can access internal applications without a client. Default value: **Disabled**. Valid values:
+        # The browser access status of the internal-facing access application. After this feature is enabled, you can access internal applications in a clientless manner. Default value: **Disabled**. Valid values:
         # - **Enabled**: enabled.
         # - **Disabled**: disabled.
         self.browser_access_status = browser_access_status
+        # The configuration mode. Valid values:
+        # * Empty string: default mode.
+        # * Precise: precise mode.
         self.config_mode = config_mode
         # The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
         self.description = description
@@ -45,12 +49,12 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The port ranges of the internal-facing access application. You can specify up to 65,535 port ranges. Port ranges cannot be duplicate or overlapping.
+        # The collection of port ranges for the internal-facing access application. You can specify up to 65535 port ranges. Port ranges cannot overlap or be duplicated.
         self.port_ranges = port_ranges
         # The protocol of the internal-facing access application. Valid values:
         # - **All**: all protocols.
         # - **TCP**
-        # - **UDP**.
+        # - **UDP**
         # 
         # This parameter is required.
         self.protocol = protocol
@@ -60,7 +64,7 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.status = status
-        # The IDs of internal-facing access tags. You can associate up to 6 custom internal-facing access tags with each internal-facing access application.
+        # The collection of internal-facing access tag IDs. You can associate up to 6 custom-type internal-facing access tags with each application.
         self.tag_ids = tag_ids
         self.unauthorized_access_config_shrink = unauthorized_access_config_shrink
 

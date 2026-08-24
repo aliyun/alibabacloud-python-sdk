@@ -18,25 +18,25 @@ class ListUninstallApplicationsRequest(DaraModel):
         statuses: List[str] = None,
         username: str = None,
     ):
-        # An array of uninstall application IDs.
+        # The collection of uninstall application IDs.
         self.application_ids = application_ids
-        # The number of the page to return. Valid values: 1 to 10000.
+        # The page number of the current page in a paging query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+        # The department to which the user belongs. The value is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
         self.department = department
-        # The hostname of the endpoint. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (`_`), the query also returns endpoints with names that contain 4-byte UTF-8 characters.
+        # The name of the terminal device. The value is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. Entering only an underscore (_) additionally queries all terminal devices whose names contain 4-byte UTF-8 characters.
         self.hostname = hostname
-        # The MAC address of the endpoint.
+        # The MAC address of the terminal device.
         self.mac = mac
-        # The number of entries per page. Valid values: 1 to 500.
+        # The number of entries per page in a paging query. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # An array of uninstall application statuses.
+        # The collection of uninstall application statuses.
         self.statuses = statuses
-        # The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+        # The username. The value is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
         self.username = username
 
     def validate(self):

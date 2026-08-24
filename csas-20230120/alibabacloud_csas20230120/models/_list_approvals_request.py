@@ -17,65 +17,59 @@ class ListApprovalsRequest(DaraModel):
         creator_user_id: str = None,
         creator_username: str = None,
         current_page: int = None,
+        effect_statuses: List[str] = None,
         operator_user_id: str = None,
         operator_username: str = None,
         page_size: int = None,
         policy_type: str = None,
         process_id: str = None,
         process_name: str = None,
+        report_types: List[str] = None,
         schema_id: str = None,
         schema_name: str = None,
         statuses: List[str] = None,
     ):
-        # Collection of approval instance IDs.
+        # The collection of approval instance IDs.
         self.approval_ids = approval_ids
-        # End time when the approval instance was created, in seconds since the Unix epoch.
+        # The end time for approval instance creation, in seconds-level timestamp.
         self.create_end_time = create_end_time
-        # Start time when the approval instance was created, in seconds since the Unix epoch.
+        # The start time for approval instance creation, in seconds-level timestamp.
         self.create_start_time = create_start_time
-        # Department of the user who created the approval instance.
+        # The department of the approval instance creator.
         self.creator_department = creator_department
-        # ID of the device used to create the approval instance.
+        # The terminal device ID of the approval instance creator.
         self.creator_dev_tag = creator_dev_tag
-        # ID of the user who created the approval instance.
+        # The ID of the approval instance creator.
         self.creator_user_id = creator_user_id
-        # Username of the user who created the approval instance.
+        # The username of the approval instance creator.
         self.creator_username = creator_username
-        # Page number for the current page in a paged query. Valid values: 1 to 10000.
+        # The page number of the current page in a paging query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # ID of the user who performed an operation on the approval instance.
+        # The list of report effective statuses. Valid values: Enabled, Expired.
+        self.effect_statuses = effect_statuses
+        # The ID of the approval instance operator.
         self.operator_user_id = operator_user_id
-        # Username of the user who performed an operation on the approval instance.
+        # The username of the approval instance operator.
         self.operator_username = operator_username
-        # Number of entries per page in a paged query. Valid values: 1 to 500.
+        # The number of entries per page in a paging query. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Policy type. Valid values:
-        # 
-        # - **DomainBlacklist**: Domain blacklist.
-        # 
-        # - **DomainWhitelist**: Domain whitelist.
-        # 
-        # - **SoftwareBlock**: Software blocking.
-        # 
-        # - **AppUninstall**: App uninstallation.
-        # 
-        # - **DlpSend**: File outbound transfer.
-        # 
-        # - **PeripheralBlock**: Peripheral control.
+        # The adaptation policy type. Valid values:
         self.policy_type = policy_type
-        # ID of the associated approval process.
+        # The associated approval process ID.
         self.process_id = process_id
-        # Name of the associated approval process.
+        # The associated approval process name.
         self.process_name = process_name
-        # ID of the associated approval template.
+        # The list of report types. If not specified, only ApprovalReport is queried.
+        self.report_types = report_types
+        # The associated approval template ID.
         self.schema_id = schema_id
-        # Name of the associated approval template.
+        # The associated approval template name.
         self.schema_name = schema_name
-        # Collection of approval instance statuses.
+        # The collection of approval instance statuses.
         self.statuses = statuses
 
     def validate(self):
@@ -110,6 +104,9 @@ class ListApprovalsRequest(DaraModel):
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
+        if self.effect_statuses is not None:
+            result['EffectStatuses'] = self.effect_statuses
+
         if self.operator_user_id is not None:
             result['OperatorUserId'] = self.operator_user_id
 
@@ -127,6 +124,9 @@ class ListApprovalsRequest(DaraModel):
 
         if self.process_name is not None:
             result['ProcessName'] = self.process_name
+
+        if self.report_types is not None:
+            result['ReportTypes'] = self.report_types
 
         if self.schema_id is not None:
             result['SchemaId'] = self.schema_id
@@ -165,6 +165,9 @@ class ListApprovalsRequest(DaraModel):
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
 
+        if m.get('EffectStatuses') is not None:
+            self.effect_statuses = m.get('EffectStatuses')
+
         if m.get('OperatorUserId') is not None:
             self.operator_user_id = m.get('OperatorUserId')
 
@@ -182,6 +185,9 @@ class ListApprovalsRequest(DaraModel):
 
         if m.get('ProcessName') is not None:
             self.process_name = m.get('ProcessName')
+
+        if m.get('ReportTypes') is not None:
+            self.report_types = m.get('ReportTypes')
 
         if m.get('SchemaId') is not None:
             self.schema_id = m.get('SchemaId')

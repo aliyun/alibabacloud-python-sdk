@@ -10,18 +10,14 @@ class UpdateApprovalStatusRequest(DaraModel):
         approval_id: str = None,
         status: str = None,
     ):
-        # The ID of the approval instance. Obtain the value from:
-        # 
-        # - [ListApprovals](~~ListApprovals~~): Query a list of approval instances in batches.
-        # 
-        # - [GetApproval](~~GetApproval~~): Query the details of an approval instance.
+        # The approval instance ID. You can obtain this value from the following operations:
+        # - [ListApprovals](~~ListApprovals~~): Lists approval instances.
+        # - [GetApproval](~~GetApproval~~): Queries the details of an approval instance.
         # 
         # This parameter is required.
         self.approval_id = approval_id
-        # The status of the approval instance. Valid values:
-        # 
+        # The approval instance status. Valid values:
         # - **Approved**: Approved.
-        # 
         # - **Rejected**: Rejected.
         # 
         # This parameter is required.

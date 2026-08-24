@@ -13,7 +13,7 @@ class UpdateApprovalProcessResponseBody(DaraModel):
         process: main_models.UpdateApprovalProcessResponseBodyProcess = None,
         request_id: str = None,
     ):
-        # The approval flow.
+        # The approval process.
         self.process = process
         # The ID of the request.
         self.request_id = request_id
@@ -71,9 +71,9 @@ class UpdateApprovalProcessResponseBodyProcess(DaraModel):
         # The list of policies associated with terminal uninstall.
         self.app_uninstall_policies = app_uninstall_policies
         self.approval_type = approval_type
-        # The time when the approval flow was created.
+        # The time when the approval process was created.
         self.create_time = create_time
-        # The description of the approval flow.
+        # The description of the approval process.
         self.description = description
         # The list of policies associated with device registration.
         self.device_registration_policies = device_registration_policies
@@ -89,9 +89,9 @@ class UpdateApprovalProcessResponseBodyProcess(DaraModel):
         # The list of policies associated with peripheral control.
         self.periphera_block_policies = periphera_block_policies
         self.private_access_block_policies = private_access_block_policies
-        # The ID of the approval flow.
+        # The ID of the approval process.
         self.process_id = process_id
-        # The name of the approval flow.
+        # The name of the approval process.
         self.process_name = process_name
         # The list of approval nodes.
         self.process_nodes = process_nodes

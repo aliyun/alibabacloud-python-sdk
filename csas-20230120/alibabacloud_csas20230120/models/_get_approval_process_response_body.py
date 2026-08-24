@@ -13,9 +13,9 @@ class GetApprovalProcessResponseBody(DaraModel):
         process: main_models.GetApprovalProcessResponseBodyProcess = None,
         request_id: str = None,
     ):
-        # The approval flow.
+        # The approval process.
         self.process = process
-        # The request ID.
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,36 +72,37 @@ class GetApprovalProcessResponseBodyProcess(DaraModel):
         self.app_uninstall_policies = app_uninstall_policies
         # The approval type.
         self.approval_type = approval_type
-        # The time when the approval flow was created.
+        # The creation time of the approval process.
         self.create_time = create_time
-        # The approval flow description.
+        # The description of the approval process.
         self.description = description
         # The list of policies associated with device registration.
         self.device_registration_policies = device_registration_policies
-        # The list of policies associated with file outgoing.
+        # The list of associated policies for file outgoing.
         self.dlp_send_policies = dlp_send_policies
-        # The list of policies associated with the domain name blacklist.
+        # The list of policies associated with the domain blacklist.
         self.domain_blacklist_policies = domain_blacklist_policies
-        # The list of policies associated with the domain name whitelist.
+        # The list of policies associated with the domain whitelist.
         self.domain_whitelist_policies = domain_whitelist_policies
-        # The endpoint protection policies.
+        # The endpoint protection policy.
         self.endpoint_hardening_policies = endpoint_hardening_policies
         # The label.
         self.event_label = event_label
         # The external configuration.
         self.external_config = external_config
-        # The list of policies associated with peripheral control.
+        # The list of associated policies for peripheral control.
         self.peripheral_block_policies = peripheral_block_policies
+        # The software hardening policy.
         self.private_access_block_policies = private_access_block_policies
-        # The approval flow ID.
+        # The ID of the approval process.
         self.process_id = process_id
-        # The approval flow name.
+        # The name of the approval process.
         self.process_name = process_name
         # The list of approval nodes.
         self.process_nodes = process_nodes
         # The list of policies associated with software blocking.
         self.software_block_policies = software_block_policies
-        # The software hardening policies.
+        # The software hardening policy.
         self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
@@ -279,11 +280,11 @@ class GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The field mapping table.
         self.field_map = field_map
-        # The policy IDs.
+        # The policy ID.
         self.policy_ids = policy_ids
         # The template ID.
         self.schema_id = schema_id
@@ -387,13 +388,13 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The field mapping table.
         self.field_map = field_map
         # The list of software blocking policy IDs.
         self.policy_ids = policy_ids
-        # The approval template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -532,9 +533,13 @@ class GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies(DaraModel)
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The external process ID.
         self.external_process_id = external_process_id
+        # The field mapping table.
         self.field_map = field_map
+        # The policy ID.
         self.policy_ids = policy_ids
+        # The template ID.
         self.schema_id = schema_id
 
     def validate(self):
@@ -590,8 +595,10 @@ class GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap(Da
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The display field.
         self.display_field = display_field
         self.display_field_value = display_field_value
+        # The system field.
         self.system_field = system_field
 
     def validate(self):
@@ -634,13 +641,13 @@ class GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The field mapping table.
         self.field_map = field_map
         # The list of peripheral control policy IDs.
         self.policy_ids = policy_ids
-        # The approval template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -742,11 +749,11 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The field mapping table.
         self.field_map = field_map
-        # The policy IDs.
+        # The policy ID.
         self.policy_ids = policy_ids
         # The template ID.
         self.schema_id = schema_id
@@ -850,13 +857,13 @@ class GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
         # The field mapping table.
         self.field_map = field_map
-        # The list of domain name whitelist policy IDs.
+        # The list of domain whitelist policy IDs.
         self.policy_ids = policy_ids
-        # The approval template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -958,13 +965,13 @@ class GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The field mapping table.
         self.field_map = field_map
-        # The list of domain name blacklist policy IDs.
+        # The list of domain blacklist policy IDs.
         self.policy_ids = policy_ids
-        # The approval template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -1066,13 +1073,13 @@ class GetApprovalProcessResponseBodyProcessDlpSendPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The field mapping table.
         self.field_map = field_map
         # The list of file outgoing policy IDs.
         self.policy_ids = policy_ids
-        # The approval template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -1174,13 +1181,13 @@ class GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies(DaraModel)
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The field mapping table.
         self.field_map = field_map
         # The list of device registration policy IDs.
         self.policy_ids = policy_ids
-        # The approval template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -1282,13 +1289,13 @@ class GetApprovalProcessResponseBodyProcessAppUninstallPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The external flow ID.
+        # The external process ID.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The field mapping table.
         self.field_map = field_map
         # The list of endpoint uninstall policy IDs.
         self.policy_ids = policy_ids
-        # The approval template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):

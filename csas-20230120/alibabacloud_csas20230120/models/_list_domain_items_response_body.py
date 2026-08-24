@@ -14,8 +14,11 @@ class ListDomainItemsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # The list of domain name entries.
         self.domain_items = domain_items
+        # Id of the request
         self.request_id = request_id
+        # The total number of records that match the specified conditions. This is an optional parameter and may not be returned by default.
         self.total_num = total_num
 
     def validate(self):
@@ -66,9 +69,12 @@ class ListDomainItemsResponseBodyDomainItems(DaraModel):
         item_id: int = None,
         item_value: str = None,
     ):
+        # The time when the entry was created.
         self.gmt_create = gmt_create
+        # The time when the entry was last modified.
         self.gmt_modified = gmt_modified
         self.item_id = item_id
+        # The domain name. Wildcard domain names are supported.
         self.item_value = item_value
 
     def validate(self):

@@ -16,7 +16,7 @@ class ListUninstallApplicationsResponseBody(DaraModel):
     ):
         # The list of uninstall applications.
         self.applications = applications
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of uninstall applications.
         self.total_num = total_num
@@ -83,45 +83,36 @@ class ListUninstallApplicationsResponseBodyApplications(DaraModel):
         self.application_id = application_id
         # The time when the uninstall application was created.
         self.create_time = create_time
-        # The user\\"s department.
+        # The department to which the user belongs.
         self.department = department
-        # The device ID.
+        # The ID of the terminal device.
         self.dev_tag = dev_tag
-        # The operating system of the device. Valid values:
-        # 
-        # - **Windows**
-        # 
-        # - **macOS**
-        # 
-        # - **Linux**
-        # 
-        # - **Android**
-        # 
-        # - **iOS**
-        # 
-        # - **Windows_Wuying**: Elastic Desktop Service.
+        # The operating system type of the terminal device. Valid values:
+        # - **Windows**: Windows.
+        # - **macOS**: macOS.
+        # - **Linux**: Linux.
+        # - **Android**: Android.
+        # - **iOS**: iOS.
+        # - **Windows_Wuying**: WUYING Workspace.
         self.dev_type = dev_type
         # The list of full department paths.
         self.full_department = full_department
-        # The hostname of the device.
+        # The name of the terminal device.
         self.hostname = hostname
-        # The name of the Identity Provider (IdP).
+        # The name of the user identity source.
         self.idp_name = idp_name
-        # Indicates whether the application has been uninstalled.
+        # Indicates whether the uninstallation has been performed.
         self.is_uninstall = is_uninstall
-        # The MAC address of the device.
+        # The MAC address of the terminal device.
         self.mac = mac
         # The reason for the application.
         self.reason = reason
         # The user ID.
         self.sase_user_id = sase_user_id
-        # The status of the uninstall application. Valid values:
-        # 
-        # - **Pending**
-        # 
-        # - **Approved**
-        # 
-        # - **Rejected**
+        # The uninstall application status. Valid values:
+        # - **Pending**: Pending processing.
+        # - **Approved**: Approved.
+        # - **Rejected**: Rejected.
         self.status = status
         # The username.
         self.username = username

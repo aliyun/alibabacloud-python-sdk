@@ -11,7 +11,7 @@ class CreateWmExtractTaskResponseBody(DaraModel):
         data: main_models.CreateWmExtractTaskResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the watermark extraction task.
+        # The watermark extraction task information.
         self.data = data
         # The ID of the request.
         self.request_id = request_id
@@ -49,7 +49,7 @@ class CreateWmExtractTaskResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID. You can use task IDs to query task results.
+        # The task ID, which is used to query the task result.
         self.task_id = task_id
 
     def validate(self):

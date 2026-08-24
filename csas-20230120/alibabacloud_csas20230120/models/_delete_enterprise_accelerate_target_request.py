@@ -12,11 +12,11 @@ class DeleteEnterpriseAccelerateTargetRequest(DaraModel):
         eap_id: str = None,
         target: List[str] = None,
     ):
-        # Enterprise acceleration policy ID.
+        # The ID of the enterprise acceleration policy.
         # 
         # This parameter is required.
         self.eap_id = eap_id
-        # List of enterprise acceleration targets.
+        # The list of enterprise acceleration addresses.
         # 
         # This parameter is required.
         self.target = target

@@ -20,7 +20,7 @@ class ListRiskItemsRequest(DaraModel):
         status_list: List[str] = None,
         username: str = None,
     ):
-        # The current page number in a paging query. Valid values: 1 to 10000.
+        # The page number of the current page in a paging query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
@@ -28,7 +28,7 @@ class ListRiskItemsRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The name of the risk analysis policy. Fuzzy matching is supported.
+        # The name of the risk analysis policy. Fuzzy match is supported.
         self.policy_name = policy_name
         # The risk category. Valid values:
         # * `data_safe`: data security.
@@ -37,7 +37,7 @@ class ListRiskItemsRequest(DaraModel):
         # * `access_safe`: access security.
         # * `ai_agent_safe`: Agent security.
         self.risk_category = risk_category
-        # The risk event ID. If specified, the system performs an exact query for the specified risk event.
+        # The risk event ID. If specified, the exact risk event is queried.
         self.risk_id = risk_id
         # The risk level. Valid values:
         # * `High`: high risk.
@@ -48,18 +48,19 @@ class ListRiskItemsRequest(DaraModel):
         # * `account_share`: account sharing.
         # * `account_stolen`: account theft.
         # * `device_share`: device sharing.
-        # * `remote_logon`: remote logon.
+        # * `remote_logon`: remote logon from an unusual location.
         # * `sensitive_data_leakage`: sensitive data exfiltration.
+        # * `compressed_archive_exfil`: compressed data exfiltration from the internal network.
         # * `lateral_scanning`: lateral scanning.
         # * `ai_skill_malware`: malicious Skill.
         # * `ai_config_check`: AI configuration check.
         # * `openclaw_vulnerability`: OpenClaw vulnerability.
         self.risk_scene = risk_scene
-        # The disposition status of the risk event. This parameter cannot be used together with `StatusList`.
+        # The disposition status of the risk event. This parameter cannot be set together with `StatusList`.
         self.status = status
-        # The list of disposition statuses of risk events, in Flat serialization format. This parameter cannot be used together with Status.
+        # The list of disposition statuses of risk events, in Flat serialization format. This parameter cannot be set together with Status.
         self.status_list = status_list
-        # The username associated with the risk event. Fuzzy matching is supported. Maximum length: 128 characters.
+        # The username associated with the risk event. Fuzzy match is supported. Maximum length: 128 characters.
         self.username = username
 
     def validate(self):

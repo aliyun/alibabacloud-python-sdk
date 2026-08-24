@@ -1,0 +1,286 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_csas20230120 import models as main_models
+from darabonba.model import DaraModel
+
+class UpdateProhibitedSoftwareRequest(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        linux_processes: List[main_models.UpdateProhibitedSoftwareRequestLinuxProcesses] = None,
+        mac_osprocesses: List[main_models.UpdateProhibitedSoftwareRequestMacOSProcesses] = None,
+        name: str = None,
+        software_id: str = None,
+        tag_ids: List[str] = None,
+        windows_processes: List[main_models.UpdateProhibitedSoftwareRequestWindowsProcesses] = None,
+    ):
+        # The description of the prohibited software.
+        self.description = description
+        # The list of process configurations for the Linux operating system.
+        self.linux_processes = linux_processes
+        # The list of process configurations for the macOS operating system.
+        self.mac_osprocesses = mac_osprocesses
+        # The name of the prohibited software.
+        self.name = name
+        # The ID of the custom prohibited software to update. Only custom prohibited software under the current Alibaba Cloud account can be updated. Built-in prohibited software cannot be updated. You can obtain the value from the following operations:
+        # - [ListProhibitedSoftware](~~ListProhibitedSoftware~~): queries prohibited software entries in batches.
+        # - [CreateProhibitedSoftware](~~CreateProhibitedSoftware~~): creates a custom prohibited software entry.
+        # 
+        # This parameter is required.
+        self.software_id = software_id
+        # The IDs of the custom prohibited software tags to associate. Duplicate values are not allowed.
+        self.tag_ids = tag_ids
+        # The list of process configurations for the Windows operating system.
+        self.windows_processes = windows_processes
+
+    def validate(self):
+        if self.linux_processes:
+            for v1 in self.linux_processes:
+                 if v1:
+                    v1.validate()
+        if self.mac_osprocesses:
+            for v1 in self.mac_osprocesses:
+                 if v1:
+                    v1.validate()
+        if self.windows_processes:
+            for v1 in self.windows_processes:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        result['LinuxProcesses'] = []
+        if self.linux_processes is not None:
+            for k1 in self.linux_processes:
+                result['LinuxProcesses'].append(k1.to_map() if k1 else None)
+
+        result['MacOSProcesses'] = []
+        if self.mac_osprocesses is not None:
+            for k1 in self.mac_osprocesses:
+                result['MacOSProcesses'].append(k1.to_map() if k1 else None)
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.software_id is not None:
+            result['SoftwareId'] = self.software_id
+
+        if self.tag_ids is not None:
+            result['TagIds'] = self.tag_ids
+
+        result['WindowsProcesses'] = []
+        if self.windows_processes is not None:
+            for k1 in self.windows_processes:
+                result['WindowsProcesses'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        self.linux_processes = []
+        if m.get('LinuxProcesses') is not None:
+            for k1 in m.get('LinuxProcesses'):
+                temp_model = main_models.UpdateProhibitedSoftwareRequestLinuxProcesses()
+                self.linux_processes.append(temp_model.from_map(k1))
+
+        self.mac_osprocesses = []
+        if m.get('MacOSProcesses') is not None:
+            for k1 in m.get('MacOSProcesses'):
+                temp_model = main_models.UpdateProhibitedSoftwareRequestMacOSProcesses()
+                self.mac_osprocesses.append(temp_model.from_map(k1))
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('SoftwareId') is not None:
+            self.software_id = m.get('SoftwareId')
+
+        if m.get('TagIds') is not None:
+            self.tag_ids = m.get('TagIds')
+
+        self.windows_processes = []
+        if m.get('WindowsProcesses') is not None:
+            for k1 in m.get('WindowsProcesses'):
+                temp_model = main_models.UpdateProhibitedSoftwareRequestWindowsProcesses()
+                self.windows_processes.append(temp_model.from_map(k1))
+
+        return self
+
+class UpdateProhibitedSoftwareRequestWindowsProcesses(DaraModel):
+    def __init__(
+        self,
+        bundle_id: str = None,
+        cmdline: str = None,
+        directory: str = None,
+        process: str = None,
+    ):
+        # The bundle ID of the application. This parameter is required only for macOS processes. You must specify at least one of this parameter and Process. The value can be up to 1024 characters in length.
+        self.bundle_id = bundle_id
+        # The command line parameters for starting the process. If specified, only processes whose command line contains this content are matched. If left empty, the command line is not checked. The value can be up to 1024 characters in length.
+        self.cmdline = cmdline
+        # The directory where the process is located. If specified, only processes with the same name in this directory are matched. If left empty, processes in any directory are matched. The value can be up to 1024 characters in length.
+        self.directory = directory
+        # The process name. The value can be up to 1024 characters in length.
+        self.process = process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bundle_id is not None:
+            result['BundleId'] = self.bundle_id
+
+        if self.cmdline is not None:
+            result['Cmdline'] = self.cmdline
+
+        if self.directory is not None:
+            result['Directory'] = self.directory
+
+        if self.process is not None:
+            result['Process'] = self.process
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BundleId') is not None:
+            self.bundle_id = m.get('BundleId')
+
+        if m.get('Cmdline') is not None:
+            self.cmdline = m.get('Cmdline')
+
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+
+        if m.get('Process') is not None:
+            self.process = m.get('Process')
+
+        return self
+
+class UpdateProhibitedSoftwareRequestMacOSProcesses(DaraModel):
+    def __init__(
+        self,
+        bundle_id: str = None,
+        cmdline: str = None,
+        directory: str = None,
+        process: str = None,
+    ):
+        # The bundle ID of the application. This parameter is required only for macOS processes. You must specify at least one of this parameter and Process. The value can be up to 1024 characters in length.
+        self.bundle_id = bundle_id
+        # The command line parameters for starting the process. If specified, only processes whose command line contains this content are matched. If left empty, the command line is not checked. The value can be up to 1024 characters in length.
+        self.cmdline = cmdline
+        # The directory where the process is located. If specified, only processes with the same name in this directory are matched. If left empty, processes in any directory are matched. The value can be up to 1024 characters in length.
+        self.directory = directory
+        # The process name. The value can be up to 1024 characters in length.
+        self.process = process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bundle_id is not None:
+            result['BundleId'] = self.bundle_id
+
+        if self.cmdline is not None:
+            result['Cmdline'] = self.cmdline
+
+        if self.directory is not None:
+            result['Directory'] = self.directory
+
+        if self.process is not None:
+            result['Process'] = self.process
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BundleId') is not None:
+            self.bundle_id = m.get('BundleId')
+
+        if m.get('Cmdline') is not None:
+            self.cmdline = m.get('Cmdline')
+
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+
+        if m.get('Process') is not None:
+            self.process = m.get('Process')
+
+        return self
+
+class UpdateProhibitedSoftwareRequestLinuxProcesses(DaraModel):
+    def __init__(
+        self,
+        bundle_id: str = None,
+        cmdline: str = None,
+        directory: str = None,
+        process: str = None,
+    ):
+        # The bundle ID of the application. This parameter is required only for macOS processes. You must specify at least one of this parameter and Process. The value can be up to 1024 characters in length.
+        self.bundle_id = bundle_id
+        # The command line parameters for starting the process. If specified, only processes whose command line contains this content are matched. If left empty, the command line is not checked. The value can be up to 1024 characters in length.
+        self.cmdline = cmdline
+        # The directory where the process is located. If specified, only processes with the same name in this directory are matched. If left empty, processes in any directory are matched. The value can be up to 1024 characters in length.
+        self.directory = directory
+        # The process name. The value can be up to 1024 characters in length.
+        self.process = process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bundle_id is not None:
+            result['BundleId'] = self.bundle_id
+
+        if self.cmdline is not None:
+            result['Cmdline'] = self.cmdline
+
+        if self.directory is not None:
+            result['Directory'] = self.directory
+
+        if self.process is not None:
+            result['Process'] = self.process
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BundleId') is not None:
+            self.bundle_id = m.get('BundleId')
+
+        if m.get('Cmdline') is not None:
+            self.cmdline = m.get('Cmdline')
+
+        if m.get('Directory') is not None:
+            self.directory = m.get('Directory')
+
+        if m.get('Process') is not None:
+            self.process = m.get('Process')
+
+        return self
+

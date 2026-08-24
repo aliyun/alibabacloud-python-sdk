@@ -24,62 +24,53 @@ class CreateWmEmbedTaskShrinkRequest(DaraModel):
         wm_info_uint: str = None,
         wm_type: str = None,
     ):
-        # Audio control parameters.
+        # The audio control parameters.
         self.audio_control_shrink = audio_control_shrink
-        # CSV watermark embedding control parameters.
+        # The CSV watermark embedding control parameters.
         self.csv_control_shrink = csv_control_shrink
-        # Document watermark control parameters.
+        # The document watermark control parameters.
         self.document_control_shrink = document_control_shrink
-        # URL for downloading the file to embed. The URL must support public network access.
+        # The URL for downloading the file to be embedded. The URL must be active for public network access.
         # 
         # This parameter is required.
         self.file_url = file_url
-        # The filename of the file to embed. The backend validates the file type based on the filename extension.
+        # The name of the file to be embedded. The backend validates the file type based on the file name extension.
         # 
         # This parameter is required.
         self.filename = filename
-        # Image watermark control parameters.
+        # The image watermark control parameters.
         self.image_control_shrink = image_control_shrink
-        # Image watermark parameter: the desired JPEG compression quality factor for the output image. Default value is 95. Valid range: 1 to 100.
+        # The image watermark parameter that specifies the expected JPEG compression quality factor of the output image. Default value: 95. Valid values: 1 to 100.
         self.image_embed_jpeg_quality = image_embed_jpeg_quality
-        # Image watermark parameter: A higher value indicates greater robustness but reduced visual quality. Default value: 2. Valid values: 0 to 4.
+        # The image watermark parameter. A larger value indicates higher robustness but lower visual quality. Default value: 2. Valid values: 0 to 4.
         self.image_embed_level = image_embed_level
-        # Specifies whether to enable invisible watermark embedding. Default value: true.  
-        # Valid values:  
-        # - **true**: Yes  
-        # - **false**: No
+        # Specifies whether to enable invisible watermark embedding. Default value: true.
         self.invisible_enable = invisible_enable
-        # Short video watermark parameter: specifies the video bitrate. By default, the video bitrate is automatically retrieved. You can use this parameter to explicitly specify the bitrate used during extraction. This parameter usually does not need to be set.
+        # The short video watermark parameter that specifies the video bitrate. By default, the video bitrate is automatically obtained. You can use this parameter to forcibly specify the bitrate used during extraction. Typically, you do not need to set this parameter.
         self.video_bitrate = video_bitrate
-        # Video control parameters.
+        # The video control parameters.
         self.video_control_shrink = video_control_shrink
-        # Video watermark parameter: whether to use the long-video watermark software development kit (SDK). The default value is false. Valid values:
+        # Video watermark parameter. Specifies whether to use the long video watermark SDK. Valid values:
         # 
-        # - **true**: Yes
-        # - **false**: No
+        # - **true**: The long video watermark SDK is used.
+        # - **false**: The long video watermark SDK is not used.
+        # 
+        # Default value: false.
         self.video_is_long = video_is_long
-        # Base64-encoded string-formatted watermark information. If this value is set, WmInfoUint cannot be set.
+        # The watermark information in Base64-encoded string format. If this parameter is set, WmInfoUint cannot be set.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
-        # The bit width of the watermark information. The default value is 32. This parameter must be consistent between embedding and extraction. For example, if a 40-bit software development kit (SDK) is used for embedding, this value must also be set to 40 during extraction.
+        # The bit width of the watermark information capacity. Default value: 32. This parameter must be consistent between embedding and extraction. For example, if the 40-bit SDK is used for embedding, set this parameter to 40 during extraction as well.
         self.wm_info_size = wm_info_size
-        # Watermark information in decimal numeric format. If this parameter is set, WmInfoBytesB64 cannot be set.  
-        # 
-        # The valid value range depends on the WmInfoSize parameter:  
-        # 
-        # - When WmInfoSize is 32, the value range is 1 to 4294967295.  
-        # 
-        # - When WmInfoSize is 40, the value range is 1 to 1099511627775.  
-        # 
-        # - When WmInfoSize is 64, the value range is 1 to 18446744073709551615.
+        # The watermark information in decimal number format. If this parameter is set, WmInfoBytesB64 cannot be set.
         self.wm_info_uint = wm_info_uint
-        # Watermark type. Valid values:  
-        # - **PureDocument**: Document watermark.  
-        # - **PureImage**: Image watermark.  
-        # - **PureAudio**: Audio watermark.  
-        # - **PureVideo**: Video watermark.  
-        # - **AigcDocument**: AIGC document watermark.  
-        # - **AigcImage**: AIGC image watermark.  
-        # - **AigcAudio**: AIGC audio watermark.  
+        # The watermark type. Valid values:
+        # - **PureDocument**: document watermark.
+        # - **PureImage**: image watermark.
+        # - **PureAudio**: audio watermark.
+        # - **PureVideo**: video watermark.
+        # - **AigcDocument**: AIGC document watermark.
+        # - **AigcImage**: AIGC image watermark.
+        # - **AigcAudio**: AIGC audio watermark.
         # - **AigcVideo**: AIGC video watermark.
         # 
         # This parameter is required.

@@ -16,7 +16,7 @@ class CreateEnterpriseAccelerateTargetRequest(DaraModel):
         # 
         # This parameter is required.
         self.eap_id = eap_id
-        # A list of enterprise acceleration addresses.
+        # The list of enterprise acceleration addresses.
         # 
         # This parameter is required.
         self.target = target

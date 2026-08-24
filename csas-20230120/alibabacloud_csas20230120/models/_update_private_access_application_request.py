@@ -27,17 +27,21 @@ class UpdatePrivateAccessApplicationRequest(DaraModel):
         tag_ids: List[str] = None,
         unauthorized_access_config: main_models.PAApplicationUnauthorizedAccessConfig = None,
     ):
+        # The application address groups. This parameter can be specified when ConfigMode is set to Precise. This parameter cannot be specified when ConfigMode is an empty string.
         self.address_groups = address_groups
-        # The addresses of the internal-facing access application. You can specify up to 1000 addresses.
+        # The addresses of the private access application. You can specify up to 1000 addresses.
         self.addresses = addresses
-        # The ID of the internal-facing access application. You can obtain the value from the following operations:
-        # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): lists internal-facing access applications.
-        # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal-facing access application.
+        # The ID of the private access application. You can obtain the value from:
+        # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists private access applications.
+        # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # The configuration mode. Valid values:
+        # * Empty string: default mode.
+        # * Precise: precise mode.
         self.config_mode = config_mode
-        # The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+        # The description of the private access application. The description must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
         # The browser access mode parameter: the Layer 7 application configuration.
         self.l_7config = l_7config
@@ -47,24 +51,26 @@ class UpdatePrivateAccessApplicationRequest(DaraModel):
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
         # The browser access mode parameter: the private proxy domain name.
         self.l_7proxy_domain_private = l_7proxy_domain_private
-        # The modification type of the internal-facing access application. Valid values:
+        # The modification type of the private access application. Valid values:
         # - **Cover** (default): overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds** parameters.
-        # - **Append**: adds the values of the **Addresses**, **PortRanges**, and **TagIds** parameters to the original addresses, port ranges, and tag IDs.
+        # - **Append**: appends the values of the **Addresses**, **PortRanges**, and **TagIds** parameters to the original addresses, port ranges, and tag IDs.
         self.modify_type = modify_type
+        # The application name.
         self.name = name
-        # The port ranges of the internal-facing access application. You can specify up to 65535 port ranges. Multiple port ranges cannot be duplicate or overlap.
+        # The port ranges of the private access application. You can specify up to 65535 port ranges. Multiple port ranges cannot overlap.
         self.port_ranges = port_ranges
-        # The protocol of the internal-facing access application. Valid values:
+        # The protocol of the private access application. Valid values:
         # - **All**: all protocols.
         # - **TCP**
         # - **UDP**
         self.protocol = protocol
-        # The status of the internal-facing access application. Valid values:
+        # The status of the private access application. Valid values:
         # - **Enabled**: enabled.
         # - **Disabled**: disabled.
         self.status = status
-        # The IDs of internal-facing access tags. You can associate up to 6 custom internal-facing access tags with each internal-facing access application.
+        # The IDs of private access tags. A private access application can be associated with up to 6 custom private access tags.
         self.tag_ids = tag_ids
+        # The configuration for unauthorized application access requests.
         self.unauthorized_access_config = unauthorized_access_config
 
     def validate(self):

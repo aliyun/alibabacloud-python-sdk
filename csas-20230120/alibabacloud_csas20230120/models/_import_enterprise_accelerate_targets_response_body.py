@@ -10,9 +10,9 @@ class ImportEnterpriseAccelerateTargetsResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # ID of the import task.
+        # The ID of the import task.
         self.data = data
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -20,18 +20,18 @@ class UpdateApprovalProcessShrinkRequest(DaraModel):
         process_nodes: List[List[str]] = None,
     ):
         self.approval_type = approval_type
-        # The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+        # The description of the approval process. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
         self.description = description
         self.event_label = event_label
         self.external_config = external_config
         self.match_schema_configs_shrink = match_schema_configs_shrink
         # The matched approval templates.
         self.match_schemas_shrink = match_schemas_shrink
-        # The ID of the approval flow.
+        # The ID of the approval process.
         # 
         # This parameter is required.
         self.process_id = process_id
-        # The name of the approval flow. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+        # The name of the approval process. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
         self.process_name = process_name
         # The list of approval nodes. You can define up to 5 approval nodes.
         self.process_nodes = process_nodes

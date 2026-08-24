@@ -45,6 +45,162 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_device_group_match_devices_with_options(
+        self,
+        request: main_models.AddDeviceGroupMatchDevicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddDeviceGroupMatchDevicesResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.device_group_id):
+            body['DeviceGroupId'] = request.device_group_id
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddDeviceGroupMatchDevices',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddDeviceGroupMatchDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_device_group_match_devices_with_options_async(
+        self,
+        request: main_models.AddDeviceGroupMatchDevicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddDeviceGroupMatchDevicesResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.device_group_id):
+            body['DeviceGroupId'] = request.device_group_id
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddDeviceGroupMatchDevices',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddDeviceGroupMatchDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_device_group_match_devices(
+        self,
+        request: main_models.AddDeviceGroupMatchDevicesRequest,
+    ) -> main_models.AddDeviceGroupMatchDevicesResponse:
+        runtime = RuntimeOptions()
+        return self.add_device_group_match_devices_with_options(request, runtime)
+
+    async def add_device_group_match_devices_async(
+        self,
+        request: main_models.AddDeviceGroupMatchDevicesRequest,
+    ) -> main_models.AddDeviceGroupMatchDevicesResponse:
+        runtime = RuntimeOptions()
+        return await self.add_device_group_match_devices_with_options_async(request, runtime)
+
+    def add_virus_scan_additional_lists_with_options(
+        self,
+        request: main_models.AddVirusScanAdditionalListsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddVirusScanAdditionalListsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.additional_lists):
+            body_flat['AdditionalLists'] = request.additional_lists
+        if not DaraCore.is_null(request.dev_type):
+            body['DevType'] = request.dev_type
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddVirusScanAdditionalLists',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddVirusScanAdditionalListsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_virus_scan_additional_lists_with_options_async(
+        self,
+        request: main_models.AddVirusScanAdditionalListsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddVirusScanAdditionalListsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.additional_lists):
+            body_flat['AdditionalLists'] = request.additional_lists
+        if not DaraCore.is_null(request.dev_type):
+            body['DevType'] = request.dev_type
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddVirusScanAdditionalLists',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddVirusScanAdditionalListsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_virus_scan_additional_lists(
+        self,
+        request: main_models.AddVirusScanAdditionalListsRequest,
+    ) -> main_models.AddVirusScanAdditionalListsResponse:
+        runtime = RuntimeOptions()
+        return self.add_virus_scan_additional_lists_with_options(request, runtime)
+
+    async def add_virus_scan_additional_lists_async(
+        self,
+        request: main_models.AddVirusScanAdditionalListsRequest,
+    ) -> main_models.AddVirusScanAdditionalListsResponse:
+        runtime = RuntimeOptions()
+        return await self.add_virus_scan_additional_lists_with_options_async(request, runtime)
+
     def attach_application_2connector_with_options(
         self,
         tmp_req: main_models.AttachApplication2ConnectorRequest,
@@ -204,6 +360,466 @@ class Client(OpenApiClient):
     ) -> main_models.AttachPolicy2ApprovalProcessResponse:
         runtime = RuntimeOptions()
         return await self.attach_policy_2approval_process_with_options_async(request, runtime)
+
+    def batch_create_domain_items_with_options(
+        self,
+        request: main_models.BatchCreateDomainItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateDomainItemsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.domain_items):
+            body_flat['DomainItems'] = request.domain_items
+        if not DaraCore.is_null(request.list_id):
+            body['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateDomainItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateDomainItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_domain_items_with_options_async(
+        self,
+        request: main_models.BatchCreateDomainItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCreateDomainItemsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.domain_items):
+            body_flat['DomainItems'] = request.domain_items
+        if not DaraCore.is_null(request.list_id):
+            body['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCreateDomainItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCreateDomainItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_domain_items(
+        self,
+        request: main_models.BatchCreateDomainItemsRequest,
+    ) -> main_models.BatchCreateDomainItemsResponse:
+        runtime = RuntimeOptions()
+        return self.batch_create_domain_items_with_options(request, runtime)
+
+    async def batch_create_domain_items_async(
+        self,
+        request: main_models.BatchCreateDomainItemsRequest,
+    ) -> main_models.BatchCreateDomainItemsResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_create_domain_items_with_options_async(request, runtime)
+
+    def batch_delete_domain_items_with_options(
+        self,
+        request: main_models.BatchDeleteDomainItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteDomainItemsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.item_ids):
+            body_flat['ItemIds'] = request.item_ids
+        if not DaraCore.is_null(request.list_id):
+            body['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteDomainItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeleteDomainItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_domain_items_with_options_async(
+        self,
+        request: main_models.BatchDeleteDomainItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeleteDomainItemsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.item_ids):
+            body_flat['ItemIds'] = request.item_ids
+        if not DaraCore.is_null(request.list_id):
+            body['ListId'] = request.list_id
+        if not DaraCore.is_null(request.list_type):
+            body['ListType'] = request.list_type
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeleteDomainItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeleteDomainItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_domain_items(
+        self,
+        request: main_models.BatchDeleteDomainItemsRequest,
+    ) -> main_models.BatchDeleteDomainItemsResponse:
+        runtime = RuntimeOptions()
+        return self.batch_delete_domain_items_with_options(request, runtime)
+
+    async def batch_delete_domain_items_async(
+        self,
+        request: main_models.BatchDeleteDomainItemsRequest,
+    ) -> main_models.BatchDeleteDomainItemsResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_delete_domain_items_with_options_async(request, runtime)
+
+    def batch_delete_private_access_application_with_options(
+        self,
+        request: main_models.BatchDeletePrivateAccessApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeletePrivateAccessApplicationResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeletePrivateAccessApplication',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeletePrivateAccessApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_private_access_application_with_options_async(
+        self,
+        request: main_models.BatchDeletePrivateAccessApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeletePrivateAccessApplicationResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeletePrivateAccessApplication',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeletePrivateAccessApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_private_access_application(
+        self,
+        request: main_models.BatchDeletePrivateAccessApplicationRequest,
+    ) -> main_models.BatchDeletePrivateAccessApplicationResponse:
+        runtime = RuntimeOptions()
+        return self.batch_delete_private_access_application_with_options(request, runtime)
+
+    async def batch_delete_private_access_application_async(
+        self,
+        request: main_models.BatchDeletePrivateAccessApplicationRequest,
+    ) -> main_models.BatchDeletePrivateAccessApplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_delete_private_access_application_with_options_async(request, runtime)
+
+    def batch_delete_private_access_policy_with_options(
+        self,
+        request: main_models.BatchDeletePrivateAccessPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeletePrivateAccessPolicyResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.policy_ids):
+            body_flat['PolicyIds'] = request.policy_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeletePrivateAccessPolicy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeletePrivateAccessPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_private_access_policy_with_options_async(
+        self,
+        request: main_models.BatchDeletePrivateAccessPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeletePrivateAccessPolicyResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.policy_ids):
+            body_flat['PolicyIds'] = request.policy_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeletePrivateAccessPolicy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeletePrivateAccessPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_private_access_policy(
+        self,
+        request: main_models.BatchDeletePrivateAccessPolicyRequest,
+    ) -> main_models.BatchDeletePrivateAccessPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.batch_delete_private_access_policy_with_options(request, runtime)
+
+    async def batch_delete_private_access_policy_async(
+        self,
+        request: main_models.BatchDeletePrivateAccessPolicyRequest,
+    ) -> main_models.BatchDeletePrivateAccessPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_delete_private_access_policy_with_options_async(request, runtime)
+
+    def cancel_virus_scan_tasks_with_options(
+        self,
+        request: main_models.CancelVirusScanTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelVirusScanTasksResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.task_ids):
+            body_flat['TaskIds'] = request.task_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelVirusScanTasks',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelVirusScanTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_virus_scan_tasks_with_options_async(
+        self,
+        request: main_models.CancelVirusScanTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelVirusScanTasksResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.task_ids):
+            body_flat['TaskIds'] = request.task_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelVirusScanTasks',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelVirusScanTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_virus_scan_tasks(
+        self,
+        request: main_models.CancelVirusScanTasksRequest,
+    ) -> main_models.CancelVirusScanTasksResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_virus_scan_tasks_with_options(request, runtime)
+
+    async def cancel_virus_scan_tasks_async(
+        self,
+        request: main_models.CancelVirusScanTasksRequest,
+    ) -> main_models.CancelVirusScanTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_virus_scan_tasks_with_options_async(request, runtime)
+
+    def cancel_vul_scan_tasks_with_options(
+        self,
+        request: main_models.CancelVulScanTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelVulScanTasksResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.task_ids):
+            body_flat['TaskIds'] = request.task_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelVulScanTasks',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelVulScanTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_vul_scan_tasks_with_options_async(
+        self,
+        request: main_models.CancelVulScanTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelVulScanTasksResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.task_ids):
+            body_flat['TaskIds'] = request.task_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelVulScanTasks',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelVulScanTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_vul_scan_tasks(
+        self,
+        request: main_models.CancelVulScanTasksRequest,
+    ) -> main_models.CancelVulScanTasksResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_vul_scan_tasks_with_options(request, runtime)
+
+    async def cancel_vul_scan_tasks_async(
+        self,
+        request: main_models.CancelVulScanTasksRequest,
+    ) -> main_models.CancelVulScanTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_vul_scan_tasks_with_options_async(request, runtime)
 
     def create_approval_process_with_options(
         self,
@@ -392,6 +1008,182 @@ class Client(OpenApiClient):
     ) -> main_models.CreateClientUserResponse:
         runtime = RuntimeOptions()
         return await self.create_client_user_with_options_async(request, runtime)
+
+    def create_connector_with_options(
+        self,
+        request: main_models.CreateConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        if not DaraCore.is_null(request.switch_status):
+            body['SwitchStatus'] = request.switch_status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConnector',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_connector_with_options_async(
+        self,
+        request: main_models.CreateConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        if not DaraCore.is_null(request.switch_status):
+            body['SwitchStatus'] = request.switch_status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateConnector',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_connector(
+        self,
+        request: main_models.CreateConnectorRequest,
+    ) -> main_models.CreateConnectorResponse:
+        runtime = RuntimeOptions()
+        return self.create_connector_with_options(request, runtime)
+
+    async def create_connector_async(
+        self,
+        request: main_models.CreateConnectorRequest,
+    ) -> main_models.CreateConnectorResponse:
+        runtime = RuntimeOptions()
+        return await self.create_connector_with_options_async(request, runtime)
+
+    def create_device_group_with_options(
+        self,
+        tmp_req: main_models.CreateDeviceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDeviceGroupResponse:
+        tmp_req.validate()
+        request = main_models.CreateDeviceGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dynamic_rule):
+            request.dynamic_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.dynamic_rule, 'DynamicRule', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.dynamic_operator):
+            body['DynamicOperator'] = request.dynamic_operator
+        if not DaraCore.is_null(request.dynamic_rule_shrink):
+            body['DynamicRule'] = request.dynamic_rule_shrink
+        if not DaraCore.is_null(request.group_type):
+            body['GroupType'] = request.group_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDeviceGroup',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDeviceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_device_group_with_options_async(
+        self,
+        tmp_req: main_models.CreateDeviceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDeviceGroupResponse:
+        tmp_req.validate()
+        request = main_models.CreateDeviceGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dynamic_rule):
+            request.dynamic_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.dynamic_rule, 'DynamicRule', 'json')
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.dynamic_operator):
+            body['DynamicOperator'] = request.dynamic_operator
+        if not DaraCore.is_null(request.dynamic_rule_shrink):
+            body['DynamicRule'] = request.dynamic_rule_shrink
+        if not DaraCore.is_null(request.group_type):
+            body['GroupType'] = request.group_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDeviceGroup',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDeviceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_device_group(
+        self,
+        request: main_models.CreateDeviceGroupRequest,
+    ) -> main_models.CreateDeviceGroupResponse:
+        runtime = RuntimeOptions()
+        return self.create_device_group_with_options(request, runtime)
+
+    async def create_device_group_async(
+        self,
+        request: main_models.CreateDeviceGroupRequest,
+    ) -> main_models.CreateDeviceGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_device_group_with_options_async(request, runtime)
 
     def create_domain_meta_with_options(
         self,
@@ -756,6 +1548,96 @@ class Client(OpenApiClient):
     ) -> main_models.CreateEnterpriseAccelerateTargetResponse:
         runtime = RuntimeOptions()
         return await self.create_enterprise_accelerate_target_with_options_async(request, runtime)
+
+    def create_forward_strategy_with_options(
+        self,
+        request: main_models.CreateForwardStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateForwardStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.destination_id):
+            body['DestinationId'] = request.destination_id
+        if not DaraCore.is_null(request.destination_type):
+            body['DestinationType'] = request.destination_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateForwardStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateForwardStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_forward_strategy_with_options_async(
+        self,
+        request: main_models.CreateForwardStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateForwardStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.destination_id):
+            body['DestinationId'] = request.destination_id
+        if not DaraCore.is_null(request.destination_type):
+            body['DestinationType'] = request.destination_type
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateForwardStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateForwardStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_forward_strategy(
+        self,
+        request: main_models.CreateForwardStrategyRequest,
+    ) -> main_models.CreateForwardStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.create_forward_strategy_with_options(request, runtime)
+
+    async def create_forward_strategy_async(
+        self,
+        request: main_models.CreateForwardStrategyRequest,
+    ) -> main_models.CreateForwardStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_forward_strategy_with_options_async(request, runtime)
 
     def create_idp_department_with_options(
         self,
@@ -1307,6 +2189,328 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_private_access_tag_with_options_async(request, runtime)
 
+    def create_prohibited_policy_with_options(
+        self,
+        request: main_models.CreateProhibitedPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProhibitedPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allow_report):
+            body['AllowReport'] = request.allow_report
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.force_kill):
+            body['ForceKill'] = request.force_kill
+        if not DaraCore.is_null(request.main_button_text_ch):
+            body['MainButtonTextCh'] = request.main_button_text_ch
+        if not DaraCore.is_null(request.main_button_text_en):
+            body['MainButtonTextEn'] = request.main_button_text_en
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.minor_button_text_ch):
+            body['MinorButtonTextCh'] = request.minor_button_text_ch
+        if not DaraCore.is_null(request.minor_button_text_en):
+            body['MinorButtonTextEn'] = request.minor_button_text_en
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.object_type):
+            body['ObjectType'] = request.object_type
+        if not DaraCore.is_null(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.prompt_ch):
+            body['PromptCh'] = request.prompt_ch
+        if not DaraCore.is_null(request.prompt_en):
+            body['PromptEn'] = request.prompt_en
+        body_flat = {}
+        if not DaraCore.is_null(request.software_ids):
+            body_flat['SoftwareIds'] = request.software_ids
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.title_ch):
+            body['TitleCh'] = request.title_ch
+        if not DaraCore.is_null(request.title_en):
+            body['TitleEn'] = request.title_en
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProhibitedPolicy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProhibitedPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_prohibited_policy_with_options_async(
+        self,
+        request: main_models.CreateProhibitedPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProhibitedPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allow_report):
+            body['AllowReport'] = request.allow_report
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.force_kill):
+            body['ForceKill'] = request.force_kill
+        if not DaraCore.is_null(request.main_button_text_ch):
+            body['MainButtonTextCh'] = request.main_button_text_ch
+        if not DaraCore.is_null(request.main_button_text_en):
+            body['MainButtonTextEn'] = request.main_button_text_en
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.minor_button_text_ch):
+            body['MinorButtonTextCh'] = request.minor_button_text_ch
+        if not DaraCore.is_null(request.minor_button_text_en):
+            body['MinorButtonTextEn'] = request.minor_button_text_en
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.object_type):
+            body['ObjectType'] = request.object_type
+        if not DaraCore.is_null(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.prompt_ch):
+            body['PromptCh'] = request.prompt_ch
+        if not DaraCore.is_null(request.prompt_en):
+            body['PromptEn'] = request.prompt_en
+        body_flat = {}
+        if not DaraCore.is_null(request.software_ids):
+            body_flat['SoftwareIds'] = request.software_ids
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.title_ch):
+            body['TitleCh'] = request.title_ch
+        if not DaraCore.is_null(request.title_en):
+            body['TitleEn'] = request.title_en
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProhibitedPolicy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProhibitedPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_prohibited_policy(
+        self,
+        request: main_models.CreateProhibitedPolicyRequest,
+    ) -> main_models.CreateProhibitedPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.create_prohibited_policy_with_options(request, runtime)
+
+    async def create_prohibited_policy_async(
+        self,
+        request: main_models.CreateProhibitedPolicyRequest,
+    ) -> main_models.CreateProhibitedPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_prohibited_policy_with_options_async(request, runtime)
+
+    def create_prohibited_software_with_options(
+        self,
+        request: main_models.CreateProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProhibitedSoftwareResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        body_flat = {}
+        if not DaraCore.is_null(request.linux_processes):
+            body_flat['LinuxProcesses'] = request.linux_processes
+        if not DaraCore.is_null(request.mac_osprocesses):
+            body_flat['MacOSProcesses'] = request.mac_osprocesses
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.windows_processes):
+            body_flat['WindowsProcesses'] = request.windows_processes
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProhibitedSoftwareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_prohibited_software_with_options_async(
+        self,
+        request: main_models.CreateProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProhibitedSoftwareResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        body_flat = {}
+        if not DaraCore.is_null(request.linux_processes):
+            body_flat['LinuxProcesses'] = request.linux_processes
+        if not DaraCore.is_null(request.mac_osprocesses):
+            body_flat['MacOSProcesses'] = request.mac_osprocesses
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.windows_processes):
+            body_flat['WindowsProcesses'] = request.windows_processes
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProhibitedSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_prohibited_software(
+        self,
+        request: main_models.CreateProhibitedSoftwareRequest,
+    ) -> main_models.CreateProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return self.create_prohibited_software_with_options(request, runtime)
+
+    async def create_prohibited_software_async(
+        self,
+        request: main_models.CreateProhibitedSoftwareRequest,
+    ) -> main_models.CreateProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return await self.create_prohibited_software_with_options_async(request, runtime)
+
+    def create_prohibited_tag_with_options(
+        self,
+        request: main_models.CreateProhibitedTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProhibitedTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProhibitedTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProhibitedTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_prohibited_tag_with_options_async(
+        self,
+        request: main_models.CreateProhibitedTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProhibitedTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProhibitedTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProhibitedTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_prohibited_tag(
+        self,
+        request: main_models.CreateProhibitedTagRequest,
+    ) -> main_models.CreateProhibitedTagResponse:
+        runtime = RuntimeOptions()
+        return self.create_prohibited_tag_with_options(request, runtime)
+
+    async def create_prohibited_tag_async(
+        self,
+        request: main_models.CreateProhibitedTagRequest,
+    ) -> main_models.CreateProhibitedTagResponse:
+        runtime = RuntimeOptions()
+        return await self.create_prohibited_tag_with_options_async(request, runtime)
+
     def create_registration_policy_with_options(
         self,
         tmp_req: main_models.CreateRegistrationPolicyRequest,
@@ -1514,6 +2718,580 @@ class Client(OpenApiClient):
     ) -> main_models.CreateUserGroupResponse:
         runtime = RuntimeOptions()
         return await self.create_user_group_with_options_async(request, runtime)
+
+    def create_virus_scan_scheduled_strategy_with_options(
+        self,
+        request: main_models.CreateVirusScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVirusScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.high_risk_operation):
+            body['HighRiskOperation'] = request.high_risk_operation
+        if not DaraCore.is_null(request.low_risk_operation):
+            body['LowRiskOperation'] = request.low_risk_operation
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.max_cpu_usage):
+            body['MaxCpuUsage'] = request.max_cpu_usage
+        if not DaraCore.is_null(request.mid_risk_operation):
+            body['MidRiskOperation'] = request.mid_risk_operation
+        if not DaraCore.is_null(request.performance_mode):
+            body['PerformanceMode'] = request.performance_mode
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.scan_begin_time):
+            body['ScanBeginTime'] = request.scan_begin_time
+        if not DaraCore.is_null(request.scan_end_time):
+            body['ScanEndTime'] = request.scan_end_time
+        if not DaraCore.is_null(request.scan_frequency):
+            body['ScanFrequency'] = request.scan_frequency
+        if not DaraCore.is_null(request.scan_interval):
+            body['ScanInterval'] = request.scan_interval
+        if not DaraCore.is_null(request.scan_mode):
+            body['ScanMode'] = request.scan_mode
+        body_flat = {}
+        if not DaraCore.is_null(request.scan_path):
+            body_flat['ScanPath'] = request.scan_path
+        if not DaraCore.is_null(request.scan_targets):
+            body_flat['ScanTargets'] = request.scan_targets
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_description):
+            body['StrategyDescription'] = request.strategy_description
+        if not DaraCore.is_null(request.strategy_name):
+            body['StrategyName'] = request.strategy_name
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVirusScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVirusScanScheduledStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_virus_scan_scheduled_strategy_with_options_async(
+        self,
+        request: main_models.CreateVirusScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVirusScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.high_risk_operation):
+            body['HighRiskOperation'] = request.high_risk_operation
+        if not DaraCore.is_null(request.low_risk_operation):
+            body['LowRiskOperation'] = request.low_risk_operation
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.max_cpu_usage):
+            body['MaxCpuUsage'] = request.max_cpu_usage
+        if not DaraCore.is_null(request.mid_risk_operation):
+            body['MidRiskOperation'] = request.mid_risk_operation
+        if not DaraCore.is_null(request.performance_mode):
+            body['PerformanceMode'] = request.performance_mode
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.scan_begin_time):
+            body['ScanBeginTime'] = request.scan_begin_time
+        if not DaraCore.is_null(request.scan_end_time):
+            body['ScanEndTime'] = request.scan_end_time
+        if not DaraCore.is_null(request.scan_frequency):
+            body['ScanFrequency'] = request.scan_frequency
+        if not DaraCore.is_null(request.scan_interval):
+            body['ScanInterval'] = request.scan_interval
+        if not DaraCore.is_null(request.scan_mode):
+            body['ScanMode'] = request.scan_mode
+        body_flat = {}
+        if not DaraCore.is_null(request.scan_path):
+            body_flat['ScanPath'] = request.scan_path
+        if not DaraCore.is_null(request.scan_targets):
+            body_flat['ScanTargets'] = request.scan_targets
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_description):
+            body['StrategyDescription'] = request.strategy_description
+        if not DaraCore.is_null(request.strategy_name):
+            body['StrategyName'] = request.strategy_name
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVirusScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVirusScanScheduledStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_virus_scan_scheduled_strategy(
+        self,
+        request: main_models.CreateVirusScanScheduledStrategyRequest,
+    ) -> main_models.CreateVirusScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.create_virus_scan_scheduled_strategy_with_options(request, runtime)
+
+    async def create_virus_scan_scheduled_strategy_async(
+        self,
+        request: main_models.CreateVirusScanScheduledStrategyRequest,
+    ) -> main_models.CreateVirusScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_virus_scan_scheduled_strategy_with_options_async(request, runtime)
+
+    def create_virus_scan_task_with_options(
+        self,
+        request: main_models.CreateVirusScanTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVirusScanTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.high_risk_operation):
+            body['HighRiskOperation'] = request.high_risk_operation
+        if not DaraCore.is_null(request.low_risk_operation):
+            body['LowRiskOperation'] = request.low_risk_operation
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.max_cpu_usage):
+            body['MaxCpuUsage'] = request.max_cpu_usage
+        if not DaraCore.is_null(request.mid_risk_operation):
+            body['MidRiskOperation'] = request.mid_risk_operation
+        if not DaraCore.is_null(request.performance_mode):
+            body['PerformanceMode'] = request.performance_mode
+        if not DaraCore.is_null(request.scan_mode):
+            body['ScanMode'] = request.scan_mode
+        body_flat = {}
+        if not DaraCore.is_null(request.scan_path):
+            body_flat['ScanPath'] = request.scan_path
+        if not DaraCore.is_null(request.scan_targets):
+            body_flat['ScanTargets'] = request.scan_targets
+        if not DaraCore.is_null(request.task_description):
+            body['TaskDescription'] = request.task_description
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVirusScanTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVirusScanTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_virus_scan_task_with_options_async(
+        self,
+        request: main_models.CreateVirusScanTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVirusScanTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.high_risk_operation):
+            body['HighRiskOperation'] = request.high_risk_operation
+        if not DaraCore.is_null(request.low_risk_operation):
+            body['LowRiskOperation'] = request.low_risk_operation
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.max_cpu_usage):
+            body['MaxCpuUsage'] = request.max_cpu_usage
+        if not DaraCore.is_null(request.mid_risk_operation):
+            body['MidRiskOperation'] = request.mid_risk_operation
+        if not DaraCore.is_null(request.performance_mode):
+            body['PerformanceMode'] = request.performance_mode
+        if not DaraCore.is_null(request.scan_mode):
+            body['ScanMode'] = request.scan_mode
+        body_flat = {}
+        if not DaraCore.is_null(request.scan_path):
+            body_flat['ScanPath'] = request.scan_path
+        if not DaraCore.is_null(request.scan_targets):
+            body_flat['ScanTargets'] = request.scan_targets
+        if not DaraCore.is_null(request.task_description):
+            body['TaskDescription'] = request.task_description
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVirusScanTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVirusScanTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_virus_scan_task(
+        self,
+        request: main_models.CreateVirusScanTaskRequest,
+    ) -> main_models.CreateVirusScanTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_virus_scan_task_with_options(request, runtime)
+
+    async def create_virus_scan_task_async(
+        self,
+        request: main_models.CreateVirusScanTaskRequest,
+    ) -> main_models.CreateVirusScanTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_virus_scan_task_with_options_async(request, runtime)
+
+    def create_vul_scan_scheduled_strategy_with_options(
+        self,
+        request: main_models.CreateVulScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVulScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.scan_begin_time):
+            body['ScanBeginTime'] = request.scan_begin_time
+        if not DaraCore.is_null(request.scan_end_time):
+            body['ScanEndTime'] = request.scan_end_time
+        if not DaraCore.is_null(request.scan_frequency):
+            body['ScanFrequency'] = request.scan_frequency
+        if not DaraCore.is_null(request.scan_interval):
+            body['ScanInterval'] = request.scan_interval
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_description):
+            body['StrategyDescription'] = request.strategy_description
+        if not DaraCore.is_null(request.strategy_name):
+            body['StrategyName'] = request.strategy_name
+        body_flat = {}
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVulScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVulScanScheduledStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vul_scan_scheduled_strategy_with_options_async(
+        self,
+        request: main_models.CreateVulScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVulScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.scan_begin_time):
+            body['ScanBeginTime'] = request.scan_begin_time
+        if not DaraCore.is_null(request.scan_end_time):
+            body['ScanEndTime'] = request.scan_end_time
+        if not DaraCore.is_null(request.scan_frequency):
+            body['ScanFrequency'] = request.scan_frequency
+        if not DaraCore.is_null(request.scan_interval):
+            body['ScanInterval'] = request.scan_interval
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_description):
+            body['StrategyDescription'] = request.strategy_description
+        if not DaraCore.is_null(request.strategy_name):
+            body['StrategyName'] = request.strategy_name
+        body_flat = {}
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVulScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVulScanScheduledStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vul_scan_scheduled_strategy(
+        self,
+        request: main_models.CreateVulScanScheduledStrategyRequest,
+    ) -> main_models.CreateVulScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.create_vul_scan_scheduled_strategy_with_options(request, runtime)
+
+    async def create_vul_scan_scheduled_strategy_async(
+        self,
+        request: main_models.CreateVulScanScheduledStrategyRequest,
+    ) -> main_models.CreateVulScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_vul_scan_scheduled_strategy_with_options_async(request, runtime)
+
+    def create_vul_scan_task_with_options(
+        self,
+        request: main_models.CreateVulScanTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVulScanTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_timestamp):
+            body['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.task_description):
+            body['TaskDescription'] = request.task_description
+        if not DaraCore.is_null(request.task_name):
+            body['TaskName'] = request.task_name
+        body_flat = {}
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVulScanTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVulScanTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vul_scan_task_with_options_async(
+        self,
+        request: main_models.CreateVulScanTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVulScanTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_timestamp):
+            body['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.task_description):
+            body['TaskDescription'] = request.task_description
+        if not DaraCore.is_null(request.task_name):
+            body['TaskName'] = request.task_name
+        body_flat = {}
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVulScanTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVulScanTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vul_scan_task(
+        self,
+        request: main_models.CreateVulScanTaskRequest,
+    ) -> main_models.CreateVulScanTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_vul_scan_task_with_options(request, runtime)
+
+    async def create_vul_scan_task_async(
+        self,
+        request: main_models.CreateVulScanTaskRequest,
+    ) -> main_models.CreateVulScanTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_vul_scan_task_with_options_async(request, runtime)
+
+    def create_vulnerability_fix_task_with_options(
+        self,
+        tmp_req: main_models.CreateVulnerabilityFixTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVulnerabilityFixTaskResponse:
+        tmp_req.validate()
+        request = main_models.CreateVulnerabilityFixTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.wuying_vul_fix_config):
+            request.wuying_vul_fix_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.wuying_vul_fix_config, 'WuyingVulFixConfig', 'json')
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.fix_mode):
+            body['FixMode'] = request.fix_mode
+        if not DaraCore.is_null(request.max_download_speed):
+            body['MaxDownloadSpeed'] = request.max_download_speed
+        if not DaraCore.is_null(request.update_id):
+            body['UpdateId'] = request.update_id
+        if not DaraCore.is_null(request.wuying_vul_fix_config_shrink):
+            body['WuyingVulFixConfig'] = request.wuying_vul_fix_config_shrink
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVulnerabilityFixTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVulnerabilityFixTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vulnerability_fix_task_with_options_async(
+        self,
+        tmp_req: main_models.CreateVulnerabilityFixTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVulnerabilityFixTaskResponse:
+        tmp_req.validate()
+        request = main_models.CreateVulnerabilityFixTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.wuying_vul_fix_config):
+            request.wuying_vul_fix_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.wuying_vul_fix_config, 'WuyingVulFixConfig', 'json')
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.fix_mode):
+            body['FixMode'] = request.fix_mode
+        if not DaraCore.is_null(request.max_download_speed):
+            body['MaxDownloadSpeed'] = request.max_download_speed
+        if not DaraCore.is_null(request.update_id):
+            body['UpdateId'] = request.update_id
+        if not DaraCore.is_null(request.wuying_vul_fix_config_shrink):
+            body['WuyingVulFixConfig'] = request.wuying_vul_fix_config_shrink
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVulnerabilityFixTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVulnerabilityFixTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vulnerability_fix_task(
+        self,
+        request: main_models.CreateVulnerabilityFixTaskRequest,
+    ) -> main_models.CreateVulnerabilityFixTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_vulnerability_fix_task_with_options(request, runtime)
+
+    async def create_vulnerability_fix_task_async(
+        self,
+        request: main_models.CreateVulnerabilityFixTaskRequest,
+    ) -> main_models.CreateVulnerabilityFixTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_vulnerability_fix_task_with_options_async(request, runtime)
 
     def create_wm_base_image_with_options(
         self,
@@ -2131,6 +3909,302 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_client_user_with_options_async(request, runtime)
 
+    def delete_connector_with_options(
+        self,
+        request: main_models.DeleteConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConnector',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_connector_with_options_async(
+        self,
+        request: main_models.DeleteConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConnector',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_connector(
+        self,
+        request: main_models.DeleteConnectorRequest,
+    ) -> main_models.DeleteConnectorResponse:
+        runtime = RuntimeOptions()
+        return self.delete_connector_with_options(request, runtime)
+
+    async def delete_connector_async(
+        self,
+        request: main_models.DeleteConnectorRequest,
+    ) -> main_models.DeleteConnectorResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_connector_with_options_async(request, runtime)
+
+    def delete_connector_client_with_options(
+        self,
+        request: main_models.DeleteConnectorClientRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConnectorClientResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConnectorClient',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConnectorClientResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_connector_client_with_options_async(
+        self,
+        request: main_models.DeleteConnectorClientRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteConnectorClientResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteConnectorClient',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteConnectorClientResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_connector_client(
+        self,
+        request: main_models.DeleteConnectorClientRequest,
+    ) -> main_models.DeleteConnectorClientResponse:
+        runtime = RuntimeOptions()
+        return self.delete_connector_client_with_options(request, runtime)
+
+    async def delete_connector_client_async(
+        self,
+        request: main_models.DeleteConnectorClientRequest,
+    ) -> main_models.DeleteConnectorClientResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_connector_client_with_options_async(request, runtime)
+
+    def delete_device_groups_with_options(
+        self,
+        request: main_models.DeleteDeviceGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDeviceGroupsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.device_group_ids):
+            body_flat['DeviceGroupIds'] = request.device_group_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDeviceGroups',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDeviceGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_device_groups_with_options_async(
+        self,
+        request: main_models.DeleteDeviceGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDeviceGroupsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.device_group_ids):
+            body_flat['DeviceGroupIds'] = request.device_group_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDeviceGroups',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDeviceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_device_groups(
+        self,
+        request: main_models.DeleteDeviceGroupsRequest,
+    ) -> main_models.DeleteDeviceGroupsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_device_groups_with_options(request, runtime)
+
+    async def delete_device_groups_async(
+        self,
+        request: main_models.DeleteDeviceGroupsRequest,
+    ) -> main_models.DeleteDeviceGroupsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_device_groups_with_options_async(request, runtime)
+
+    def delete_devices_vulnerability_with_options(
+        self,
+        request: main_models.DeleteDevicesVulnerabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDevicesVulnerabilityResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.update_id):
+            body['UpdateId'] = request.update_id
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDevicesVulnerability',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDevicesVulnerabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_devices_vulnerability_with_options_async(
+        self,
+        request: main_models.DeleteDevicesVulnerabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDevicesVulnerabilityResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.update_id):
+            body['UpdateId'] = request.update_id
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDevicesVulnerability',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDevicesVulnerabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_devices_vulnerability(
+        self,
+        request: main_models.DeleteDevicesVulnerabilityRequest,
+    ) -> main_models.DeleteDevicesVulnerabilityResponse:
+        runtime = RuntimeOptions()
+        return self.delete_devices_vulnerability_with_options(request, runtime)
+
+    async def delete_devices_vulnerability_async(
+        self,
+        request: main_models.DeleteDevicesVulnerabilityRequest,
+    ) -> main_models.DeleteDevicesVulnerabilityResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_devices_vulnerability_with_options_async(request, runtime)
+
     def delete_domain_meta_with_options(
         self,
         request: main_models.DeleteDomainMetaRequest,
@@ -2422,6 +4496,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEnterpriseAccelerateTargetResponse:
         runtime = RuntimeOptions()
         return await self.delete_enterprise_accelerate_target_with_options_async(request, runtime)
+
+    def delete_forward_strategy_with_options(
+        self,
+        request: main_models.DeleteForwardStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteForwardStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.forward_id):
+            body['ForwardId'] = request.forward_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteForwardStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteForwardStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_forward_strategy_with_options_async(
+        self,
+        request: main_models.DeleteForwardStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteForwardStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.forward_id):
+            body['ForwardId'] = request.forward_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteForwardStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteForwardStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_forward_strategy(
+        self,
+        request: main_models.DeleteForwardStrategyRequest,
+    ) -> main_models.DeleteForwardStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_forward_strategy_with_options(request, runtime)
+
+    async def delete_forward_strategy_async(
+        self,
+        request: main_models.DeleteForwardStrategyRequest,
+    ) -> main_models.DeleteForwardStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_forward_strategy_with_options_async(request, runtime)
 
     def delete_idp_department_with_options(
         self,
@@ -2777,6 +4921,228 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_private_access_tag_with_options_async(request, runtime)
 
+    def delete_prohibited_policies_with_options(
+        self,
+        request: main_models.DeleteProhibitedPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProhibitedPoliciesResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.policy_ids):
+            body_flat['PolicyIds'] = request.policy_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProhibitedPolicies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProhibitedPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_prohibited_policies_with_options_async(
+        self,
+        request: main_models.DeleteProhibitedPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProhibitedPoliciesResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.policy_ids):
+            body_flat['PolicyIds'] = request.policy_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProhibitedPolicies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProhibitedPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_prohibited_policies(
+        self,
+        request: main_models.DeleteProhibitedPoliciesRequest,
+    ) -> main_models.DeleteProhibitedPoliciesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_prohibited_policies_with_options(request, runtime)
+
+    async def delete_prohibited_policies_async(
+        self,
+        request: main_models.DeleteProhibitedPoliciesRequest,
+    ) -> main_models.DeleteProhibitedPoliciesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_prohibited_policies_with_options_async(request, runtime)
+
+    def delete_prohibited_software_with_options(
+        self,
+        request: main_models.DeleteProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProhibitedSoftwareResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.software_ids):
+            body_flat['SoftwareIds'] = request.software_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProhibitedSoftwareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_prohibited_software_with_options_async(
+        self,
+        request: main_models.DeleteProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProhibitedSoftwareResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.software_ids):
+            body_flat['SoftwareIds'] = request.software_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProhibitedSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_prohibited_software(
+        self,
+        request: main_models.DeleteProhibitedSoftwareRequest,
+    ) -> main_models.DeleteProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return self.delete_prohibited_software_with_options(request, runtime)
+
+    async def delete_prohibited_software_async(
+        self,
+        request: main_models.DeleteProhibitedSoftwareRequest,
+    ) -> main_models.DeleteProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_prohibited_software_with_options_async(request, runtime)
+
+    def delete_prohibited_tags_with_options(
+        self,
+        request: main_models.DeleteProhibitedTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProhibitedTagsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProhibitedTags',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProhibitedTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_prohibited_tags_with_options_async(
+        self,
+        request: main_models.DeleteProhibitedTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProhibitedTagsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProhibitedTags',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProhibitedTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_prohibited_tags(
+        self,
+        request: main_models.DeleteProhibitedTagsRequest,
+    ) -> main_models.DeleteProhibitedTagsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_prohibited_tags_with_options(request, runtime)
+
+    async def delete_prohibited_tags_async(
+        self,
+        request: main_models.DeleteProhibitedTagsRequest,
+    ) -> main_models.DeleteProhibitedTagsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_prohibited_tags_with_options_async(request, runtime)
+
     def delete_registration_policies_with_options(
         self,
         request: main_models.DeleteRegistrationPoliciesRequest,
@@ -2994,6 +5360,228 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteUserGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_user_group_with_options_async(request, runtime)
+
+    def delete_virus_file_with_options(
+        self,
+        request: main_models.DeleteVirusFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVirusFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.file_md_5):
+            body['FileMd5'] = request.file_md_5
+        if not DaraCore.is_null(request.file_path):
+            body['FilePath'] = request.file_path
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVirusFile',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVirusFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_virus_file_with_options_async(
+        self,
+        request: main_models.DeleteVirusFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVirusFileResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.file_md_5):
+            body['FileMd5'] = request.file_md_5
+        if not DaraCore.is_null(request.file_path):
+            body['FilePath'] = request.file_path
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVirusFile',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVirusFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_virus_file(
+        self,
+        request: main_models.DeleteVirusFileRequest,
+    ) -> main_models.DeleteVirusFileResponse:
+        runtime = RuntimeOptions()
+        return self.delete_virus_file_with_options(request, runtime)
+
+    async def delete_virus_file_async(
+        self,
+        request: main_models.DeleteVirusFileRequest,
+    ) -> main_models.DeleteVirusFileResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_virus_file_with_options_async(request, runtime)
+
+    def delete_virus_scan_scheduled_strategies_with_options(
+        self,
+        request: main_models.DeleteVirusScanScheduledStrategiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVirusScanScheduledStrategiesResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.strategy_ids):
+            body_flat['StrategyIds'] = request.strategy_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVirusScanScheduledStrategies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVirusScanScheduledStrategiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_virus_scan_scheduled_strategies_with_options_async(
+        self,
+        request: main_models.DeleteVirusScanScheduledStrategiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVirusScanScheduledStrategiesResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.strategy_ids):
+            body_flat['StrategyIds'] = request.strategy_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVirusScanScheduledStrategies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVirusScanScheduledStrategiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_virus_scan_scheduled_strategies(
+        self,
+        request: main_models.DeleteVirusScanScheduledStrategiesRequest,
+    ) -> main_models.DeleteVirusScanScheduledStrategiesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_virus_scan_scheduled_strategies_with_options(request, runtime)
+
+    async def delete_virus_scan_scheduled_strategies_async(
+        self,
+        request: main_models.DeleteVirusScanScheduledStrategiesRequest,
+    ) -> main_models.DeleteVirusScanScheduledStrategiesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_virus_scan_scheduled_strategies_with_options_async(request, runtime)
+
+    def delete_vul_scan_scheduled_strategy_with_options(
+        self,
+        request: main_models.DeleteVulScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVulScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.strategy_id):
+            body['StrategyId'] = request.strategy_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVulScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVulScanScheduledStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vul_scan_scheduled_strategy_with_options_async(
+        self,
+        request: main_models.DeleteVulScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVulScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.strategy_id):
+            body['StrategyId'] = request.strategy_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVulScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVulScanScheduledStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vul_scan_scheduled_strategy(
+        self,
+        request: main_models.DeleteVulScanScheduledStrategyRequest,
+    ) -> main_models.DeleteVulScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_vul_scan_scheduled_strategy_with_options(request, runtime)
+
+    async def delete_vul_scan_scheduled_strategy_async(
+        self,
+        request: main_models.DeleteVulScanScheduledStrategyRequest,
+    ) -> main_models.DeleteVulScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_vul_scan_scheduled_strategy_with_options_async(request, runtime)
 
     def detach_application_2connector_with_options(
         self,
@@ -3475,6 +6063,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_active_idp_config_with_options_async(runtime)
 
+    def get_anti_virus_real_time_defence_strategy_with_options(
+        self,
+        request: main_models.GetAntiVirusRealTimeDefenceStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAntiVirusRealTimeDefenceStrategyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAntiVirusRealTimeDefenceStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAntiVirusRealTimeDefenceStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_anti_virus_real_time_defence_strategy_with_options_async(
+        self,
+        request: main_models.GetAntiVirusRealTimeDefenceStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAntiVirusRealTimeDefenceStrategyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAntiVirusRealTimeDefenceStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAntiVirusRealTimeDefenceStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_anti_virus_real_time_defence_strategy(
+        self,
+        request: main_models.GetAntiVirusRealTimeDefenceStrategyRequest,
+    ) -> main_models.GetAntiVirusRealTimeDefenceStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.get_anti_virus_real_time_defence_strategy_with_options(request, runtime)
+
+    async def get_anti_virus_real_time_defence_strategy_async(
+        self,
+        request: main_models.GetAntiVirusRealTimeDefenceStrategyRequest,
+    ) -> main_models.GetAntiVirusRealTimeDefenceStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_anti_virus_real_time_defence_strategy_with_options_async(request, runtime)
+
     def get_approval_with_options(
         self,
         request: main_models.GetApprovalRequest,
@@ -3789,6 +6437,286 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_client_user_with_options_async(request, runtime)
 
+    def get_connector_with_options(
+        self,
+        request: main_models.GetConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetConnectorResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetConnector',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_connector_with_options_async(
+        self,
+        request: main_models.GetConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetConnectorResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetConnector',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_connector(
+        self,
+        request: main_models.GetConnectorRequest,
+    ) -> main_models.GetConnectorResponse:
+        runtime = RuntimeOptions()
+        return self.get_connector_with_options(request, runtime)
+
+    async def get_connector_async(
+        self,
+        request: main_models.GetConnectorRequest,
+    ) -> main_models.GetConnectorResponse:
+        runtime = RuntimeOptions()
+        return await self.get_connector_with_options_async(request, runtime)
+
+    def get_connector_client_with_options(
+        self,
+        request: main_models.GetConnectorClientRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetConnectorClientResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetConnectorClient',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetConnectorClientResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_connector_client_with_options_async(
+        self,
+        request: main_models.GetConnectorClientRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetConnectorClientResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetConnectorClient',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetConnectorClientResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_connector_client(
+        self,
+        request: main_models.GetConnectorClientRequest,
+    ) -> main_models.GetConnectorClientResponse:
+        runtime = RuntimeOptions()
+        return self.get_connector_client_with_options(request, runtime)
+
+    async def get_connector_client_async(
+        self,
+        request: main_models.GetConnectorClientRequest,
+    ) -> main_models.GetConnectorClientResponse:
+        runtime = RuntimeOptions()
+        return await self.get_connector_client_with_options_async(request, runtime)
+
+    def get_device_group_with_options(
+        self,
+        request: main_models.GetDeviceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDeviceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_group_id):
+            query['DeviceGroupId'] = request.device_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDeviceGroup',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDeviceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_device_group_with_options_async(
+        self,
+        request: main_models.GetDeviceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDeviceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_group_id):
+            query['DeviceGroupId'] = request.device_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDeviceGroup',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDeviceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_device_group(
+        self,
+        request: main_models.GetDeviceGroupRequest,
+    ) -> main_models.GetDeviceGroupResponse:
+        runtime = RuntimeOptions()
+        return self.get_device_group_with_options(request, runtime)
+
+    async def get_device_group_async(
+        self,
+        request: main_models.GetDeviceGroupRequest,
+    ) -> main_models.GetDeviceGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.get_device_group_with_options_async(request, runtime)
+
+    def get_device_online_heatmap_with_options(
+        self,
+        request: main_models.GetDeviceOnlineHeatmapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDeviceOnlineHeatmapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.date):
+            query['Date'] = request.date
+        if not DaraCore.is_null(request.dev_tag):
+            query['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.sase_user_id):
+            query['SaseUserId'] = request.sase_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDeviceOnlineHeatmap',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDeviceOnlineHeatmapResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_device_online_heatmap_with_options_async(
+        self,
+        request: main_models.GetDeviceOnlineHeatmapRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDeviceOnlineHeatmapResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.date):
+            query['Date'] = request.date
+        if not DaraCore.is_null(request.dev_tag):
+            query['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.sase_user_id):
+            query['SaseUserId'] = request.sase_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDeviceOnlineHeatmap',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDeviceOnlineHeatmapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_device_online_heatmap(
+        self,
+        request: main_models.GetDeviceOnlineHeatmapRequest,
+    ) -> main_models.GetDeviceOnlineHeatmapResponse:
+        runtime = RuntimeOptions()
+        return self.get_device_online_heatmap_with_options(request, runtime)
+
+    async def get_device_online_heatmap_async(
+        self,
+        request: main_models.GetDeviceOnlineHeatmapRequest,
+    ) -> main_models.GetDeviceOnlineHeatmapResponse:
+        runtime = RuntimeOptions()
+        return await self.get_device_online_heatmap_with_options_async(request, runtime)
+
     def get_dynamic_route_with_options(
         self,
         request: main_models.GetDynamicRouteRequest,
@@ -3854,6 +6782,72 @@ class Client(OpenApiClient):
     ) -> main_models.GetDynamicRouteResponse:
         runtime = RuntimeOptions()
         return await self.get_dynamic_route_with_options_async(request, runtime)
+
+    def get_forward_strategy_with_options(
+        self,
+        request: main_models.GetForwardStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetForwardStrategyResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetForwardStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetForwardStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_forward_strategy_with_options_async(
+        self,
+        request: main_models.GetForwardStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetForwardStrategyResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetForwardStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetForwardStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_forward_strategy(
+        self,
+        request: main_models.GetForwardStrategyRequest,
+    ) -> main_models.GetForwardStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.get_forward_strategy_with_options(request, runtime)
+
+    async def get_forward_strategy_async(
+        self,
+        request: main_models.GetForwardStrategyRequest,
+    ) -> main_models.GetForwardStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_forward_strategy_with_options_async(request, runtime)
 
     def get_idp_config_with_options(
         self,
@@ -4179,6 +7173,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_private_access_policy_with_options_async(request, runtime)
 
+    def get_prohibited_policy_with_options(
+        self,
+        request: main_models.GetProhibitedPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProhibitedPolicyResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProhibitedPolicy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProhibitedPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prohibited_policy_with_options_async(
+        self,
+        request: main_models.GetProhibitedPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProhibitedPolicyResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProhibitedPolicy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProhibitedPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prohibited_policy(
+        self,
+        request: main_models.GetProhibitedPolicyRequest,
+    ) -> main_models.GetProhibitedPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.get_prohibited_policy_with_options(request, runtime)
+
+    async def get_prohibited_policy_async(
+        self,
+        request: main_models.GetProhibitedPolicyRequest,
+    ) -> main_models.GetProhibitedPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_prohibited_policy_with_options_async(request, runtime)
+
+    def get_prohibited_software_with_options(
+        self,
+        tmp_req: main_models.GetProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProhibitedSoftwareResponse:
+        tmp_req.validate()
+        request = main_models.GetProhibitedSoftwareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.software_id):
+            request.software_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.software_id, 'SoftwareId', 'json')
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProhibitedSoftwareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prohibited_software_with_options_async(
+        self,
+        tmp_req: main_models.GetProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProhibitedSoftwareResponse:
+        tmp_req.validate()
+        request = main_models.GetProhibitedSoftwareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.software_id):
+            request.software_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.software_id, 'SoftwareId', 'json')
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProhibitedSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prohibited_software(
+        self,
+        request: main_models.GetProhibitedSoftwareRequest,
+    ) -> main_models.GetProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return self.get_prohibited_software_with_options(request, runtime)
+
+    async def get_prohibited_software_async(
+        self,
+        request: main_models.GetProhibitedSoftwareRequest,
+    ) -> main_models.GetProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return await self.get_prohibited_software_with_options_async(request, runtime)
+
     def get_registration_policy_with_options(
         self,
         request: main_models.GetRegistrationPolicyRequest,
@@ -4311,6 +7445,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_user_device_with_options_async(request, runtime)
 
+    def get_user_device_workload_trend_with_options(
+        self,
+        request: main_models.GetUserDeviceWorkloadTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserDeviceWorkloadTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_tag):
+            query['DeviceTag'] = request.device_tag
+        if not DaraCore.is_null(request.from_):
+            query['From'] = request.from_
+        if not DaraCore.is_null(request.to):
+            query['To'] = request.to
+        if not DaraCore.is_null(request.workload_type):
+            query['WorkloadType'] = request.workload_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserDeviceWorkloadTrend',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserDeviceWorkloadTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_device_workload_trend_with_options_async(
+        self,
+        request: main_models.GetUserDeviceWorkloadTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserDeviceWorkloadTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_tag):
+            query['DeviceTag'] = request.device_tag
+        if not DaraCore.is_null(request.from_):
+            query['From'] = request.from_
+        if not DaraCore.is_null(request.to):
+            query['To'] = request.to
+        if not DaraCore.is_null(request.workload_type):
+            query['WorkloadType'] = request.workload_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserDeviceWorkloadTrend',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserDeviceWorkloadTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_device_workload_trend(
+        self,
+        request: main_models.GetUserDeviceWorkloadTrendRequest,
+    ) -> main_models.GetUserDeviceWorkloadTrendResponse:
+        runtime = RuntimeOptions()
+        return self.get_user_device_workload_trend_with_options(request, runtime)
+
+    async def get_user_device_workload_trend_async(
+        self,
+        request: main_models.GetUserDeviceWorkloadTrendRequest,
+    ) -> main_models.GetUserDeviceWorkloadTrendResponse:
+        runtime = RuntimeOptions()
+        return await self.get_user_device_workload_trend_with_options_async(request, runtime)
+
     def get_user_group_with_options(
         self,
         request: main_models.GetUserGroupRequest,
@@ -4376,6 +7592,324 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserGroupResponse:
         runtime = RuntimeOptions()
         return await self.get_user_group_with_options_async(request, runtime)
+
+    def get_virus_scan_global_config_with_options(
+        self,
+        request: main_models.GetVirusScanGlobalConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVirusScanGlobalConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetVirusScanGlobalConfig',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVirusScanGlobalConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_virus_scan_global_config_with_options_async(
+        self,
+        request: main_models.GetVirusScanGlobalConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVirusScanGlobalConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetVirusScanGlobalConfig',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVirusScanGlobalConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_virus_scan_global_config(
+        self,
+        request: main_models.GetVirusScanGlobalConfigRequest,
+    ) -> main_models.GetVirusScanGlobalConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_virus_scan_global_config_with_options(request, runtime)
+
+    async def get_virus_scan_global_config_async(
+        self,
+        request: main_models.GetVirusScanGlobalConfigRequest,
+    ) -> main_models.GetVirusScanGlobalConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_virus_scan_global_config_with_options_async(request, runtime)
+
+    def get_virus_scan_scheduled_strategy_with_options(
+        self,
+        request: main_models.GetVirusScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVirusScanScheduledStrategyResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVirusScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVirusScanScheduledStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_virus_scan_scheduled_strategy_with_options_async(
+        self,
+        request: main_models.GetVirusScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVirusScanScheduledStrategyResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVirusScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVirusScanScheduledStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_virus_scan_scheduled_strategy(
+        self,
+        request: main_models.GetVirusScanScheduledStrategyRequest,
+    ) -> main_models.GetVirusScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.get_virus_scan_scheduled_strategy_with_options(request, runtime)
+
+    async def get_virus_scan_scheduled_strategy_async(
+        self,
+        request: main_models.GetVirusScanScheduledStrategyRequest,
+    ) -> main_models.GetVirusScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_virus_scan_scheduled_strategy_with_options_async(request, runtime)
+
+    def get_vul_scan_global_config_with_options(
+        self,
+        request: main_models.GetVulScanGlobalConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVulScanGlobalConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetVulScanGlobalConfig',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVulScanGlobalConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vul_scan_global_config_with_options_async(
+        self,
+        request: main_models.GetVulScanGlobalConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVulScanGlobalConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetVulScanGlobalConfig',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVulScanGlobalConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vul_scan_global_config(
+        self,
+        request: main_models.GetVulScanGlobalConfigRequest,
+    ) -> main_models.GetVulScanGlobalConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_vul_scan_global_config_with_options(request, runtime)
+
+    async def get_vul_scan_global_config_async(
+        self,
+        request: main_models.GetVulScanGlobalConfigRequest,
+    ) -> main_models.GetVulScanGlobalConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_vul_scan_global_config_with_options_async(request, runtime)
+
+    def get_vul_scan_scheduled_strategy_with_options(
+        self,
+        request: main_models.GetVulScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVulScanScheduledStrategyResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVulScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVulScanScheduledStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vul_scan_scheduled_strategy_with_options_async(
+        self,
+        request: main_models.GetVulScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVulScanScheduledStrategyResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVulScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVulScanScheduledStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vul_scan_scheduled_strategy(
+        self,
+        request: main_models.GetVulScanScheduledStrategyRequest,
+    ) -> main_models.GetVulScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.get_vul_scan_scheduled_strategy_with_options(request, runtime)
+
+    async def get_vul_scan_scheduled_strategy_async(
+        self,
+        request: main_models.GetVulScanScheduledStrategyRequest,
+    ) -> main_models.GetVulScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_vul_scan_scheduled_strategy_with_options_async(request, runtime)
+
+    def get_vulnerability_with_options(
+        self,
+        request: main_models.GetVulnerabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVulnerabilityResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVulnerability',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVulnerabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vulnerability_with_options_async(
+        self,
+        request: main_models.GetVulnerabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVulnerabilityResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVulnerability',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVulnerabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vulnerability(
+        self,
+        request: main_models.GetVulnerabilityRequest,
+    ) -> main_models.GetVulnerabilityResponse:
+        runtime = RuntimeOptions()
+        return self.get_vulnerability_with_options(request, runtime)
+
+    async def get_vulnerability_async(
+        self,
+        request: main_models.GetVulnerabilityRequest,
+    ) -> main_models.GetVulnerabilityResponse:
+        runtime = RuntimeOptions()
+        return await self.get_vulnerability_with_options_async(request, runtime)
 
     def get_wm_embed_task_with_options(
         self,
@@ -5176,6 +8710,154 @@ class Client(OpenApiClient):
     ) -> main_models.ListConnectorsResponse:
         runtime = RuntimeOptions()
         return await self.list_connectors_with_options_async(request, runtime)
+
+    def list_device_groups_with_options(
+        self,
+        request: main_models.ListDeviceGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDeviceGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.device_group_ids):
+            query['DeviceGroupIds'] = request.device_group_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDeviceGroups',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDeviceGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_device_groups_with_options_async(
+        self,
+        request: main_models.ListDeviceGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDeviceGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.device_group_ids):
+            query['DeviceGroupIds'] = request.device_group_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDeviceGroups',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDeviceGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_device_groups(
+        self,
+        request: main_models.ListDeviceGroupsRequest,
+    ) -> main_models.ListDeviceGroupsResponse:
+        runtime = RuntimeOptions()
+        return self.list_device_groups_with_options(request, runtime)
+
+    async def list_device_groups_async(
+        self,
+        request: main_models.ListDeviceGroupsRequest,
+    ) -> main_models.ListDeviceGroupsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_device_groups_with_options_async(request, runtime)
+
+    def list_devices_for_vulnerability_with_options(
+        self,
+        request: main_models.ListDevicesForVulnerabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDevicesForVulnerabilityResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDevicesForVulnerability',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDevicesForVulnerabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_devices_for_vulnerability_with_options_async(
+        self,
+        request: main_models.ListDevicesForVulnerabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDevicesForVulnerabilityResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDevicesForVulnerability',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDevicesForVulnerabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_devices_for_vulnerability(
+        self,
+        request: main_models.ListDevicesForVulnerabilityRequest,
+    ) -> main_models.ListDevicesForVulnerabilityResponse:
+        runtime = RuntimeOptions()
+        return self.list_devices_for_vulnerability_with_options(request, runtime)
+
+    async def list_devices_for_vulnerability_async(
+        self,
+        request: main_models.ListDevicesForVulnerabilityRequest,
+    ) -> main_models.ListDevicesForVulnerabilityResponse:
+        runtime = RuntimeOptions()
+        return await self.list_devices_for_vulnerability_with_options_async(request, runtime)
 
     def list_domain_items_with_options(
         self,
@@ -6421,6 +10103,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_pop_traffic_statistics_with_options_async(request, runtime)
 
+    def list_private_access_application_l7switches_with_options(
+        self,
+        request: main_models.ListPrivateAccessApplicationL7SwitchesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPrivateAccessApplicationL7SwitchesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPrivateAccessApplicationL7Switches',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPrivateAccessApplicationL7SwitchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_private_access_application_l7switches_with_options_async(
+        self,
+        request: main_models.ListPrivateAccessApplicationL7SwitchesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPrivateAccessApplicationL7SwitchesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPrivateAccessApplicationL7Switches',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPrivateAccessApplicationL7SwitchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_private_access_application_l7switches(
+        self,
+        request: main_models.ListPrivateAccessApplicationL7SwitchesRequest,
+    ) -> main_models.ListPrivateAccessApplicationL7SwitchesResponse:
+        runtime = RuntimeOptions()
+        return self.list_private_access_application_l7switches_with_options(request, runtime)
+
+    async def list_private_access_application_l7switches_async(
+        self,
+        request: main_models.ListPrivateAccessApplicationL7SwitchesRequest,
+    ) -> main_models.ListPrivateAccessApplicationL7SwitchesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_private_access_application_l7switches_with_options_async(request, runtime)
+
     def list_private_access_applications_with_options(
         self,
         request: main_models.ListPrivateAccessApplicationsRequest,
@@ -6790,6 +10538,252 @@ class Client(OpenApiClient):
     ) -> main_models.ListPrivateAccessTagsForDynamicRouteResponse:
         runtime = RuntimeOptions()
         return await self.list_private_access_tags_for_dynamic_route_with_options_async(request, runtime)
+
+    def list_prohibited_policies_with_options(
+        self,
+        tmp_req: main_models.ListProhibitedPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProhibitedPoliciesResponse:
+        tmp_req.validate()
+        request = main_models.ListProhibitedPoliciesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.software_id):
+            request.software_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.software_id, 'SoftwareId', 'json')
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProhibitedPolicies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProhibitedPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_prohibited_policies_with_options_async(
+        self,
+        tmp_req: main_models.ListProhibitedPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProhibitedPoliciesResponse:
+        tmp_req.validate()
+        request = main_models.ListProhibitedPoliciesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.software_id):
+            request.software_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.software_id, 'SoftwareId', 'json')
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProhibitedPolicies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProhibitedPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_prohibited_policies(
+        self,
+        request: main_models.ListProhibitedPoliciesRequest,
+    ) -> main_models.ListProhibitedPoliciesResponse:
+        runtime = RuntimeOptions()
+        return self.list_prohibited_policies_with_options(request, runtime)
+
+    async def list_prohibited_policies_async(
+        self,
+        request: main_models.ListProhibitedPoliciesRequest,
+    ) -> main_models.ListProhibitedPoliciesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_prohibited_policies_with_options_async(request, runtime)
+
+    def list_prohibited_software_with_options(
+        self,
+        tmp_req: main_models.ListProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProhibitedSoftwareResponse:
+        tmp_req.validate()
+        request = main_models.ListProhibitedSoftwareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag_id):
+            request.tag_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_id, 'TagId', 'json')
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProhibitedSoftwareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_prohibited_software_with_options_async(
+        self,
+        tmp_req: main_models.ListProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProhibitedSoftwareResponse:
+        tmp_req.validate()
+        request = main_models.ListProhibitedSoftwareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag_id):
+            request.tag_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_id, 'TagId', 'json')
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProhibitedSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_prohibited_software(
+        self,
+        request: main_models.ListProhibitedSoftwareRequest,
+    ) -> main_models.ListProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return self.list_prohibited_software_with_options(request, runtime)
+
+    async def list_prohibited_software_async(
+        self,
+        request: main_models.ListProhibitedSoftwareRequest,
+    ) -> main_models.ListProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return await self.list_prohibited_software_with_options_async(request, runtime)
+
+    def list_prohibited_tags_with_options(
+        self,
+        tmp_req: main_models.ListProhibitedTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProhibitedTagsResponse:
+        tmp_req.validate()
+        request = main_models.ListProhibitedTagsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.software_id):
+            request.software_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.software_id, 'SoftwareId', 'json')
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.software_id_shrink):
+            query['SoftwareId'] = request.software_id_shrink
+        if not DaraCore.is_null(request.tag_ids):
+            query['TagIds'] = request.tag_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProhibitedTags',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProhibitedTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_prohibited_tags_with_options_async(
+        self,
+        tmp_req: main_models.ListProhibitedTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProhibitedTagsResponse:
+        tmp_req.validate()
+        request = main_models.ListProhibitedTagsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.software_id):
+            request.software_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.software_id, 'SoftwareId', 'json')
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.software_id_shrink):
+            query['SoftwareId'] = request.software_id_shrink
+        if not DaraCore.is_null(request.tag_ids):
+            query['TagIds'] = request.tag_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProhibitedTags',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProhibitedTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_prohibited_tags(
+        self,
+        request: main_models.ListProhibitedTagsRequest,
+    ) -> main_models.ListProhibitedTagsResponse:
+        runtime = RuntimeOptions()
+        return self.list_prohibited_tags_with_options(request, runtime)
+
+    async def list_prohibited_tags_async(
+        self,
+        request: main_models.ListProhibitedTagsRequest,
+    ) -> main_models.ListProhibitedTagsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_prohibited_tags_with_options_async(request, runtime)
 
     def list_registration_policies_with_options(
         self,
@@ -7855,6 +11849,600 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
+    def list_virus_file_statuses_with_options(
+        self,
+        request: main_models.ListVirusFileStatusesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusFileStatusesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusFileStatuses',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusFileStatusesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_virus_file_statuses_with_options_async(
+        self,
+        request: main_models.ListVirusFileStatusesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusFileStatusesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusFileStatuses',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusFileStatusesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_virus_file_statuses(
+        self,
+        request: main_models.ListVirusFileStatusesRequest,
+    ) -> main_models.ListVirusFileStatusesResponse:
+        runtime = RuntimeOptions()
+        return self.list_virus_file_statuses_with_options(request, runtime)
+
+    async def list_virus_file_statuses_async(
+        self,
+        request: main_models.ListVirusFileStatusesRequest,
+    ) -> main_models.ListVirusFileStatusesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_virus_file_statuses_with_options_async(request, runtime)
+
+    def list_virus_scan_additional_lists_with_options(
+        self,
+        request: main_models.ListVirusScanAdditionalListsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanAdditionalListsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanAdditionalLists',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanAdditionalListsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_virus_scan_additional_lists_with_options_async(
+        self,
+        request: main_models.ListVirusScanAdditionalListsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanAdditionalListsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanAdditionalLists',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanAdditionalListsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_virus_scan_additional_lists(
+        self,
+        request: main_models.ListVirusScanAdditionalListsRequest,
+    ) -> main_models.ListVirusScanAdditionalListsResponse:
+        runtime = RuntimeOptions()
+        return self.list_virus_scan_additional_lists_with_options(request, runtime)
+
+    async def list_virus_scan_additional_lists_async(
+        self,
+        request: main_models.ListVirusScanAdditionalListsRequest,
+    ) -> main_models.ListVirusScanAdditionalListsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_virus_scan_additional_lists_with_options_async(request, runtime)
+
+    def list_virus_scan_scheduled_strategies_with_options(
+        self,
+        request: main_models.ListVirusScanScheduledStrategiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanScheduledStrategiesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanScheduledStrategies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanScheduledStrategiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_virus_scan_scheduled_strategies_with_options_async(
+        self,
+        request: main_models.ListVirusScanScheduledStrategiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanScheduledStrategiesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanScheduledStrategies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanScheduledStrategiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_virus_scan_scheduled_strategies(
+        self,
+        request: main_models.ListVirusScanScheduledStrategiesRequest,
+    ) -> main_models.ListVirusScanScheduledStrategiesResponse:
+        runtime = RuntimeOptions()
+        return self.list_virus_scan_scheduled_strategies_with_options(request, runtime)
+
+    async def list_virus_scan_scheduled_strategies_async(
+        self,
+        request: main_models.ListVirusScanScheduledStrategiesRequest,
+    ) -> main_models.ListVirusScanScheduledStrategiesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_virus_scan_scheduled_strategies_with_options_async(request, runtime)
+
+    def list_virus_scan_task_statuses_with_options(
+        self,
+        request: main_models.ListVirusScanTaskStatusesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanTaskStatusesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanTaskStatuses',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanTaskStatusesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_virus_scan_task_statuses_with_options_async(
+        self,
+        request: main_models.ListVirusScanTaskStatusesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanTaskStatusesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanTaskStatuses',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanTaskStatusesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_virus_scan_task_statuses(
+        self,
+        request: main_models.ListVirusScanTaskStatusesRequest,
+    ) -> main_models.ListVirusScanTaskStatusesResponse:
+        runtime = RuntimeOptions()
+        return self.list_virus_scan_task_statuses_with_options(request, runtime)
+
+    async def list_virus_scan_task_statuses_async(
+        self,
+        request: main_models.ListVirusScanTaskStatusesRequest,
+    ) -> main_models.ListVirusScanTaskStatusesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_virus_scan_task_statuses_with_options_async(request, runtime)
+
+    def list_virus_scan_task_summary_with_options(
+        self,
+        request: main_models.ListVirusScanTaskSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanTaskSummaryResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanTaskSummary',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanTaskSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_virus_scan_task_summary_with_options_async(
+        self,
+        request: main_models.ListVirusScanTaskSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanTaskSummaryResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanTaskSummary',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanTaskSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_virus_scan_task_summary(
+        self,
+        request: main_models.ListVirusScanTaskSummaryRequest,
+    ) -> main_models.ListVirusScanTaskSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.list_virus_scan_task_summary_with_options(request, runtime)
+
+    async def list_virus_scan_task_summary_async(
+        self,
+        request: main_models.ListVirusScanTaskSummaryRequest,
+    ) -> main_models.ListVirusScanTaskSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.list_virus_scan_task_summary_with_options_async(request, runtime)
+
+    def list_virus_scan_tasks_with_options(
+        self,
+        request: main_models.ListVirusScanTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanTasksResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanTasks',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_virus_scan_tasks_with_options_async(
+        self,
+        request: main_models.ListVirusScanTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVirusScanTasksResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVirusScanTasks',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVirusScanTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_virus_scan_tasks(
+        self,
+        request: main_models.ListVirusScanTasksRequest,
+    ) -> main_models.ListVirusScanTasksResponse:
+        runtime = RuntimeOptions()
+        return self.list_virus_scan_tasks_with_options(request, runtime)
+
+    async def list_virus_scan_tasks_async(
+        self,
+        request: main_models.ListVirusScanTasksRequest,
+    ) -> main_models.ListVirusScanTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_virus_scan_tasks_with_options_async(request, runtime)
+
+    def list_vul_scan_scheduled_strategies_with_options(
+        self,
+        request: main_models.ListVulScanScheduledStrategiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVulScanScheduledStrategiesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVulScanScheduledStrategies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVulScanScheduledStrategiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vul_scan_scheduled_strategies_with_options_async(
+        self,
+        request: main_models.ListVulScanScheduledStrategiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVulScanScheduledStrategiesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVulScanScheduledStrategies',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVulScanScheduledStrategiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vul_scan_scheduled_strategies(
+        self,
+        request: main_models.ListVulScanScheduledStrategiesRequest,
+    ) -> main_models.ListVulScanScheduledStrategiesResponse:
+        runtime = RuntimeOptions()
+        return self.list_vul_scan_scheduled_strategies_with_options(request, runtime)
+
+    async def list_vul_scan_scheduled_strategies_async(
+        self,
+        request: main_models.ListVulScanScheduledStrategiesRequest,
+    ) -> main_models.ListVulScanScheduledStrategiesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_vul_scan_scheduled_strategies_with_options_async(request, runtime)
+
+    def list_vul_scan_tasks_with_options(
+        self,
+        request: main_models.ListVulScanTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVulScanTasksResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVulScanTasks',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVulScanTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vul_scan_tasks_with_options_async(
+        self,
+        request: main_models.ListVulScanTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVulScanTasksResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVulScanTasks',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVulScanTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vul_scan_tasks(
+        self,
+        request: main_models.ListVulScanTasksRequest,
+    ) -> main_models.ListVulScanTasksResponse:
+        runtime = RuntimeOptions()
+        return self.list_vul_scan_tasks_with_options(request, runtime)
+
+    async def list_vul_scan_tasks_async(
+        self,
+        request: main_models.ListVulScanTasksRequest,
+    ) -> main_models.ListVulScanTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_vul_scan_tasks_with_options_async(request, runtime)
+
+    def list_vulnerabilities_with_options(
+        self,
+        request: main_models.ListVulnerabilitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVulnerabilitiesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVulnerabilities',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVulnerabilitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vulnerabilities_with_options_async(
+        self,
+        request: main_models.ListVulnerabilitiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVulnerabilitiesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVulnerabilities',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVulnerabilitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vulnerabilities(
+        self,
+        request: main_models.ListVulnerabilitiesRequest,
+    ) -> main_models.ListVulnerabilitiesResponse:
+        runtime = RuntimeOptions()
+        return self.list_vulnerabilities_with_options(request, runtime)
+
+    async def list_vulnerabilities_async(
+        self,
+        request: main_models.ListVulnerabilitiesRequest,
+    ) -> main_models.ListVulnerabilitiesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_vulnerabilities_with_options_async(request, runtime)
+
     def lookup_wm_info_mapping_with_options(
         self,
         request: main_models.LookupWmInfoMappingRequest,
@@ -8031,6 +12619,338 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_enterprise_accelerate_policy_with_options_async(request, runtime)
 
+    def modify_forward_strategy_with_options(
+        self,
+        request: main_models.ModifyForwardStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyForwardStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.destination_id):
+            body['DestinationId'] = request.destination_id
+        if not DaraCore.is_null(request.destination_type):
+            body['DestinationType'] = request.destination_type
+        if not DaraCore.is_null(request.forward_id):
+            body['ForwardId'] = request.forward_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyForwardStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyForwardStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_forward_strategy_with_options_async(
+        self,
+        request: main_models.ModifyForwardStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyForwardStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.destination_id):
+            body['DestinationId'] = request.destination_id
+        if not DaraCore.is_null(request.destination_type):
+            body['DestinationType'] = request.destination_type
+        if not DaraCore.is_null(request.forward_id):
+            body['ForwardId'] = request.forward_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyForwardStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyForwardStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_forward_strategy(
+        self,
+        request: main_models.ModifyForwardStrategyRequest,
+    ) -> main_models.ModifyForwardStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.modify_forward_strategy_with_options(request, runtime)
+
+    async def modify_forward_strategy_async(
+        self,
+        request: main_models.ModifyForwardStrategyRequest,
+    ) -> main_models.ModifyForwardStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_forward_strategy_with_options_async(request, runtime)
+
+    def modify_forward_strategy_binding_items_with_options(
+        self,
+        request: main_models.ModifyForwardStrategyBindingItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyForwardStrategyBindingItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.item_ids):
+            query['ItemIds'] = request.item_ids
+        if not DaraCore.is_null(request.match_mode):
+            query['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        body = {}
+        if not DaraCore.is_null(request.forward_id):
+            body['ForwardId'] = request.forward_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyForwardStrategyBindingItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyForwardStrategyBindingItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_forward_strategy_binding_items_with_options_async(
+        self,
+        request: main_models.ModifyForwardStrategyBindingItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyForwardStrategyBindingItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.item_ids):
+            query['ItemIds'] = request.item_ids
+        if not DaraCore.is_null(request.match_mode):
+            query['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        body = {}
+        if not DaraCore.is_null(request.forward_id):
+            body['ForwardId'] = request.forward_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyForwardStrategyBindingItems',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyForwardStrategyBindingItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_forward_strategy_binding_items(
+        self,
+        request: main_models.ModifyForwardStrategyBindingItemsRequest,
+    ) -> main_models.ModifyForwardStrategyBindingItemsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_forward_strategy_binding_items_with_options(request, runtime)
+
+    async def modify_forward_strategy_binding_items_async(
+        self,
+        request: main_models.ModifyForwardStrategyBindingItemsRequest,
+    ) -> main_models.ModifyForwardStrategyBindingItemsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_forward_strategy_binding_items_with_options_async(request, runtime)
+
+    def remove_device_group_match_devices_with_options(
+        self,
+        request: main_models.RemoveDeviceGroupMatchDevicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveDeviceGroupMatchDevicesResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.device_group_id):
+            body['DeviceGroupId'] = request.device_group_id
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveDeviceGroupMatchDevices',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveDeviceGroupMatchDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_device_group_match_devices_with_options_async(
+        self,
+        request: main_models.RemoveDeviceGroupMatchDevicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveDeviceGroupMatchDevicesResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.device_group_id):
+            body['DeviceGroupId'] = request.device_group_id
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveDeviceGroupMatchDevices',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveDeviceGroupMatchDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_device_group_match_devices(
+        self,
+        request: main_models.RemoveDeviceGroupMatchDevicesRequest,
+    ) -> main_models.RemoveDeviceGroupMatchDevicesResponse:
+        runtime = RuntimeOptions()
+        return self.remove_device_group_match_devices_with_options(request, runtime)
+
+    async def remove_device_group_match_devices_async(
+        self,
+        request: main_models.RemoveDeviceGroupMatchDevicesRequest,
+    ) -> main_models.RemoveDeviceGroupMatchDevicesResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_device_group_match_devices_with_options_async(request, runtime)
+
+    def remove_virus_scan_additional_lists_with_options(
+        self,
+        request: main_models.RemoveVirusScanAdditionalListsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveVirusScanAdditionalListsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.list_ids):
+            body_flat['ListIds'] = request.list_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveVirusScanAdditionalLists',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveVirusScanAdditionalListsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_virus_scan_additional_lists_with_options_async(
+        self,
+        request: main_models.RemoveVirusScanAdditionalListsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveVirusScanAdditionalListsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.list_ids):
+            body_flat['ListIds'] = request.list_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveVirusScanAdditionalLists',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveVirusScanAdditionalListsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_virus_scan_additional_lists(
+        self,
+        request: main_models.RemoveVirusScanAdditionalListsRequest,
+    ) -> main_models.RemoveVirusScanAdditionalListsResponse:
+        runtime = RuntimeOptions()
+        return self.remove_virus_scan_additional_lists_with_options(request, runtime)
+
+    async def remove_virus_scan_additional_lists_async(
+        self,
+        request: main_models.RemoveVirusScanAdditionalListsRequest,
+    ) -> main_models.RemoveVirusScanAdditionalListsResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_virus_scan_additional_lists_with_options_async(request, runtime)
+
     def revoke_user_device_session_with_options(
         self,
         request: main_models.RevokeUserDeviceSessionRequest,
@@ -8178,6 +13098,112 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeUserSessionResponse:
         runtime = RuntimeOptions()
         return await self.revoke_user_session_with_options_async(request, runtime)
+
+    def update_anti_virus_real_time_defence_strategy_with_options(
+        self,
+        request: main_models.UpdateAntiVirusRealTimeDefenceStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAntiVirusRealTimeDefenceStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.high_risk_operation):
+            body['HighRiskOperation'] = request.high_risk_operation
+        if not DaraCore.is_null(request.low_risk_operation):
+            body['LowRiskOperation'] = request.low_risk_operation
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.max_cpu_usage):
+            body['MaxCpuUsage'] = request.max_cpu_usage
+        if not DaraCore.is_null(request.mid_risk_operation):
+            body['MidRiskOperation'] = request.mid_risk_operation
+        body_flat = {}
+        if not DaraCore.is_null(request.scan_targets):
+            body_flat['ScanTargets'] = request.scan_targets
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAntiVirusRealTimeDefenceStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAntiVirusRealTimeDefenceStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_anti_virus_real_time_defence_strategy_with_options_async(
+        self,
+        request: main_models.UpdateAntiVirusRealTimeDefenceStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAntiVirusRealTimeDefenceStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.high_risk_operation):
+            body['HighRiskOperation'] = request.high_risk_operation
+        if not DaraCore.is_null(request.low_risk_operation):
+            body['LowRiskOperation'] = request.low_risk_operation
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.max_cpu_usage):
+            body['MaxCpuUsage'] = request.max_cpu_usage
+        if not DaraCore.is_null(request.mid_risk_operation):
+            body['MidRiskOperation'] = request.mid_risk_operation
+        body_flat = {}
+        if not DaraCore.is_null(request.scan_targets):
+            body_flat['ScanTargets'] = request.scan_targets
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAntiVirusRealTimeDefenceStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAntiVirusRealTimeDefenceStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_anti_virus_real_time_defence_strategy(
+        self,
+        request: main_models.UpdateAntiVirusRealTimeDefenceStrategyRequest,
+    ) -> main_models.UpdateAntiVirusRealTimeDefenceStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.update_anti_virus_real_time_defence_strategy_with_options(request, runtime)
+
+    async def update_anti_virus_real_time_defence_strategy_async(
+        self,
+        request: main_models.UpdateAntiVirusRealTimeDefenceStrategyRequest,
+    ) -> main_models.UpdateAntiVirusRealTimeDefenceStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_anti_virus_real_time_defence_strategy_with_options_async(request, runtime)
 
     def update_approval_process_with_options(
         self,
@@ -8714,6 +13740,252 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateClientUserStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_client_user_status_with_options_async(request, runtime)
+
+    def update_connector_with_options(
+        self,
+        request: main_models.UpdateConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accelerate_status):
+            body['AccelerateStatus'] = request.accelerate_status
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.switch_status):
+            body['SwitchStatus'] = request.switch_status
+        if not DaraCore.is_null(request.vip_cidr):
+            body['VipCidr'] = request.vip_cidr
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConnector',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_connector_with_options_async(
+        self,
+        request: main_models.UpdateConnectorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConnectorResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accelerate_status):
+            body['AccelerateStatus'] = request.accelerate_status
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.switch_status):
+            body['SwitchStatus'] = request.switch_status
+        if not DaraCore.is_null(request.vip_cidr):
+            body['VipCidr'] = request.vip_cidr
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConnector',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_connector(
+        self,
+        request: main_models.UpdateConnectorRequest,
+    ) -> main_models.UpdateConnectorResponse:
+        runtime = RuntimeOptions()
+        return self.update_connector_with_options(request, runtime)
+
+    async def update_connector_async(
+        self,
+        request: main_models.UpdateConnectorRequest,
+    ) -> main_models.UpdateConnectorResponse:
+        runtime = RuntimeOptions()
+        return await self.update_connector_with_options_async(request, runtime)
+
+    def update_connector_client_with_options(
+        self,
+        request: main_models.UpdateConnectorClientRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConnectorClientResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConnectorClient',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConnectorClientResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_connector_client_with_options_async(
+        self,
+        request: main_models.UpdateConnectorClientRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConnectorClientResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.connector_id):
+            body['ConnectorId'] = request.connector_id
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConnectorClient',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConnectorClientResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_connector_client(
+        self,
+        request: main_models.UpdateConnectorClientRequest,
+    ) -> main_models.UpdateConnectorClientResponse:
+        runtime = RuntimeOptions()
+        return self.update_connector_client_with_options(request, runtime)
+
+    async def update_connector_client_async(
+        self,
+        request: main_models.UpdateConnectorClientRequest,
+    ) -> main_models.UpdateConnectorClientResponse:
+        runtime = RuntimeOptions()
+        return await self.update_connector_client_with_options_async(request, runtime)
+
+    def update_device_group_with_options(
+        self,
+        request: main_models.UpdateDeviceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeviceGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.device_group_id):
+            body['DeviceGroupId'] = request.device_group_id
+        if not DaraCore.is_null(request.dynamic_operator):
+            body['DynamicOperator'] = request.dynamic_operator
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeviceGroup',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeviceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_device_group_with_options_async(
+        self,
+        request: main_models.UpdateDeviceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeviceGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.device_group_id):
+            body['DeviceGroupId'] = request.device_group_id
+        if not DaraCore.is_null(request.dynamic_operator):
+            body['DynamicOperator'] = request.dynamic_operator
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeviceGroup',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeviceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_device_group(
+        self,
+        request: main_models.UpdateDeviceGroupRequest,
+    ) -> main_models.UpdateDeviceGroupResponse:
+        runtime = RuntimeOptions()
+        return self.update_device_group_with_options(request, runtime)
+
+    async def update_device_group_async(
+        self,
+        request: main_models.UpdateDeviceGroupRequest,
+    ) -> main_models.UpdateDeviceGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.update_device_group_with_options_async(request, runtime)
 
     def update_domain_meta_with_options(
         self,
@@ -9361,6 +14633,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_private_access_application_with_options_async(request, runtime)
 
+    def update_private_access_application_l7switch_with_options(
+        self,
+        request: main_models.UpdatePrivateAccessApplicationL7SwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePrivateAccessApplicationL7SwitchResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.dev_tag_mark_status):
+            body['DevTagMarkStatus'] = request.dev_tag_mark_status
+        if not DaraCore.is_null(request.download_audit_status):
+            body['DownloadAuditStatus'] = request.download_audit_status
+        body_flat = {}
+        if not DaraCore.is_null(request.port_ranges):
+            body_flat['PortRanges'] = request.port_ranges
+        if not DaraCore.is_null(request.src_ip_mark_status):
+            body['SrcIpMarkStatus'] = request.src_ip_mark_status
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.timeout_sec):
+            body['TimeoutSec'] = request.timeout_sec
+        if not DaraCore.is_null(request.user_mark_status):
+            body['UserMarkStatus'] = request.user_mark_status
+        if not DaraCore.is_null(request.zero_trust_status):
+            body['ZeroTrustStatus'] = request.zero_trust_status
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePrivateAccessApplicationL7Switch',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePrivateAccessApplicationL7SwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_private_access_application_l7switch_with_options_async(
+        self,
+        request: main_models.UpdatePrivateAccessApplicationL7SwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePrivateAccessApplicationL7SwitchResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.dev_tag_mark_status):
+            body['DevTagMarkStatus'] = request.dev_tag_mark_status
+        if not DaraCore.is_null(request.download_audit_status):
+            body['DownloadAuditStatus'] = request.download_audit_status
+        body_flat = {}
+        if not DaraCore.is_null(request.port_ranges):
+            body_flat['PortRanges'] = request.port_ranges
+        if not DaraCore.is_null(request.src_ip_mark_status):
+            body['SrcIpMarkStatus'] = request.src_ip_mark_status
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.timeout_sec):
+            body['TimeoutSec'] = request.timeout_sec
+        if not DaraCore.is_null(request.user_mark_status):
+            body['UserMarkStatus'] = request.user_mark_status
+        if not DaraCore.is_null(request.zero_trust_status):
+            body['ZeroTrustStatus'] = request.zero_trust_status
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePrivateAccessApplicationL7Switch',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePrivateAccessApplicationL7SwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_private_access_application_l7switch(
+        self,
+        request: main_models.UpdatePrivateAccessApplicationL7SwitchRequest,
+    ) -> main_models.UpdatePrivateAccessApplicationL7SwitchResponse:
+        runtime = RuntimeOptions()
+        return self.update_private_access_application_l7switch_with_options(request, runtime)
+
+    async def update_private_access_application_l7switch_async(
+        self,
+        request: main_models.UpdatePrivateAccessApplicationL7SwitchRequest,
+    ) -> main_models.UpdatePrivateAccessApplicationL7SwitchResponse:
+        runtime = RuntimeOptions()
+        return await self.update_private_access_application_l7switch_with_options_async(request, runtime)
+
     def update_private_access_policy_with_options(
         self,
         request: main_models.UpdatePrivateAccessPolicyRequest,
@@ -9518,6 +14896,340 @@ class Client(OpenApiClient):
     ) -> main_models.UpdatePrivateAccessPolicyResponse:
         runtime = RuntimeOptions()
         return await self.update_private_access_policy_with_options_async(request, runtime)
+
+    def update_prohibited_policy_with_options(
+        self,
+        request: main_models.UpdateProhibitedPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProhibitedPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allow_report):
+            body['AllowReport'] = request.allow_report
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.force_kill):
+            body['ForceKill'] = request.force_kill
+        if not DaraCore.is_null(request.main_button_text_ch):
+            body['MainButtonTextCh'] = request.main_button_text_ch
+        if not DaraCore.is_null(request.main_button_text_en):
+            body['MainButtonTextEn'] = request.main_button_text_en
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.minor_button_text_ch):
+            body['MinorButtonTextCh'] = request.minor_button_text_ch
+        if not DaraCore.is_null(request.minor_button_text_en):
+            body['MinorButtonTextEn'] = request.minor_button_text_en
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.object_type):
+            body['ObjectType'] = request.object_type
+        if not DaraCore.is_null(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.prompt_ch):
+            body['PromptCh'] = request.prompt_ch
+        if not DaraCore.is_null(request.prompt_en):
+            body['PromptEn'] = request.prompt_en
+        body_flat = {}
+        if not DaraCore.is_null(request.software_ids):
+            body_flat['SoftwareIds'] = request.software_ids
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.title_ch):
+            body['TitleCh'] = request.title_ch
+        if not DaraCore.is_null(request.title_en):
+            body['TitleEn'] = request.title_en
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProhibitedPolicy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProhibitedPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_prohibited_policy_with_options_async(
+        self,
+        request: main_models.UpdateProhibitedPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProhibitedPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.allow_report):
+            body['AllowReport'] = request.allow_report
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.force_kill):
+            body['ForceKill'] = request.force_kill
+        if not DaraCore.is_null(request.main_button_text_ch):
+            body['MainButtonTextCh'] = request.main_button_text_ch
+        if not DaraCore.is_null(request.main_button_text_en):
+            body['MainButtonTextEn'] = request.main_button_text_en
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.minor_button_text_ch):
+            body['MinorButtonTextCh'] = request.minor_button_text_ch
+        if not DaraCore.is_null(request.minor_button_text_en):
+            body['MinorButtonTextEn'] = request.minor_button_text_en
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.object_type):
+            body['ObjectType'] = request.object_type
+        if not DaraCore.is_null(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.prompt_ch):
+            body['PromptCh'] = request.prompt_ch
+        if not DaraCore.is_null(request.prompt_en):
+            body['PromptEn'] = request.prompt_en
+        body_flat = {}
+        if not DaraCore.is_null(request.software_ids):
+            body_flat['SoftwareIds'] = request.software_ids
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.title_ch):
+            body['TitleCh'] = request.title_ch
+        if not DaraCore.is_null(request.title_en):
+            body['TitleEn'] = request.title_en
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProhibitedPolicy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProhibitedPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_prohibited_policy(
+        self,
+        request: main_models.UpdateProhibitedPolicyRequest,
+    ) -> main_models.UpdateProhibitedPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.update_prohibited_policy_with_options(request, runtime)
+
+    async def update_prohibited_policy_async(
+        self,
+        request: main_models.UpdateProhibitedPolicyRequest,
+    ) -> main_models.UpdateProhibitedPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_prohibited_policy_with_options_async(request, runtime)
+
+    def update_prohibited_software_with_options(
+        self,
+        request: main_models.UpdateProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProhibitedSoftwareResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        body_flat = {}
+        if not DaraCore.is_null(request.linux_processes):
+            body_flat['LinuxProcesses'] = request.linux_processes
+        if not DaraCore.is_null(request.mac_osprocesses):
+            body_flat['MacOSProcesses'] = request.mac_osprocesses
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.software_id):
+            body['SoftwareId'] = request.software_id
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.windows_processes):
+            body_flat['WindowsProcesses'] = request.windows_processes
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProhibitedSoftwareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_prohibited_software_with_options_async(
+        self,
+        request: main_models.UpdateProhibitedSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProhibitedSoftwareResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        body_flat = {}
+        if not DaraCore.is_null(request.linux_processes):
+            body_flat['LinuxProcesses'] = request.linux_processes
+        if not DaraCore.is_null(request.mac_osprocesses):
+            body_flat['MacOSProcesses'] = request.mac_osprocesses
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.software_id):
+            body['SoftwareId'] = request.software_id
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        if not DaraCore.is_null(request.windows_processes):
+            body_flat['WindowsProcesses'] = request.windows_processes
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProhibitedSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProhibitedSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_prohibited_software(
+        self,
+        request: main_models.UpdateProhibitedSoftwareRequest,
+    ) -> main_models.UpdateProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return self.update_prohibited_software_with_options(request, runtime)
+
+    async def update_prohibited_software_async(
+        self,
+        request: main_models.UpdateProhibitedSoftwareRequest,
+    ) -> main_models.UpdateProhibitedSoftwareResponse:
+        runtime = RuntimeOptions()
+        return await self.update_prohibited_software_with_options_async(request, runtime)
+
+    def update_prohibited_tag_with_options(
+        self,
+        request: main_models.UpdateProhibitedTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProhibitedTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.tag_id):
+            body['TagId'] = request.tag_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProhibitedTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProhibitedTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_prohibited_tag_with_options_async(
+        self,
+        request: main_models.UpdateProhibitedTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProhibitedTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.tag_id):
+            body['TagId'] = request.tag_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProhibitedTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProhibitedTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_prohibited_tag(
+        self,
+        request: main_models.UpdateProhibitedTagRequest,
+    ) -> main_models.UpdateProhibitedTagResponse:
+        runtime = RuntimeOptions()
+        return self.update_prohibited_tag_with_options(request, runtime)
+
+    async def update_prohibited_tag_async(
+        self,
+        request: main_models.UpdateProhibitedTagRequest,
+    ) -> main_models.UpdateProhibitedTagResponse:
+        runtime = RuntimeOptions()
+        return await self.update_prohibited_tag_with_options_async(request, runtime)
 
     def update_registration_policy_with_options(
         self,
@@ -10128,3 +15840,525 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateUsersStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_users_status_with_options_async(request, runtime)
+
+    def update_virus_file_status_with_options(
+        self,
+        request: main_models.UpdateVirusFileStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVirusFileStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.file_md_5):
+            body['FileMd5'] = request.file_md_5
+        if not DaraCore.is_null(request.file_path):
+            body['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.operation):
+            body['Operation'] = request.operation
+        if not DaraCore.is_null(request.virus_type):
+            body['VirusType'] = request.virus_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVirusFileStatus',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVirusFileStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_virus_file_status_with_options_async(
+        self,
+        request: main_models.UpdateVirusFileStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVirusFileStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.dev_tag):
+            body['DevTag'] = request.dev_tag
+        if not DaraCore.is_null(request.file_md_5):
+            body['FileMd5'] = request.file_md_5
+        if not DaraCore.is_null(request.file_path):
+            body['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.operation):
+            body['Operation'] = request.operation
+        if not DaraCore.is_null(request.virus_type):
+            body['VirusType'] = request.virus_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVirusFileStatus',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVirusFileStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_virus_file_status(
+        self,
+        request: main_models.UpdateVirusFileStatusRequest,
+    ) -> main_models.UpdateVirusFileStatusResponse:
+        runtime = RuntimeOptions()
+        return self.update_virus_file_status_with_options(request, runtime)
+
+    async def update_virus_file_status_async(
+        self,
+        request: main_models.UpdateVirusFileStatusRequest,
+    ) -> main_models.UpdateVirusFileStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.update_virus_file_status_with_options_async(request, runtime)
+
+    def update_virus_scan_global_config_with_options(
+        self,
+        request: main_models.UpdateVirusScanGlobalConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVirusScanGlobalConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.upload_file_max_size):
+            body['UploadFileMaxSize'] = request.upload_file_max_size
+        if not DaraCore.is_null(request.upload_file_max_speed):
+            body['UploadFileMaxSpeed'] = request.upload_file_max_speed
+        body_flat = {}
+        if not DaraCore.is_null(request.upload_file_suffix_blacklist):
+            body_flat['UploadFileSuffixBlacklist'] = request.upload_file_suffix_blacklist
+        if not DaraCore.is_null(request.virus_file_upload):
+            body['VirusFileUpload'] = request.virus_file_upload
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVirusScanGlobalConfig',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVirusScanGlobalConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_virus_scan_global_config_with_options_async(
+        self,
+        request: main_models.UpdateVirusScanGlobalConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVirusScanGlobalConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.upload_file_max_size):
+            body['UploadFileMaxSize'] = request.upload_file_max_size
+        if not DaraCore.is_null(request.upload_file_max_speed):
+            body['UploadFileMaxSpeed'] = request.upload_file_max_speed
+        body_flat = {}
+        if not DaraCore.is_null(request.upload_file_suffix_blacklist):
+            body_flat['UploadFileSuffixBlacklist'] = request.upload_file_suffix_blacklist
+        if not DaraCore.is_null(request.virus_file_upload):
+            body['VirusFileUpload'] = request.virus_file_upload
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVirusScanGlobalConfig',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVirusScanGlobalConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_virus_scan_global_config(
+        self,
+        request: main_models.UpdateVirusScanGlobalConfigRequest,
+    ) -> main_models.UpdateVirusScanGlobalConfigResponse:
+        runtime = RuntimeOptions()
+        return self.update_virus_scan_global_config_with_options(request, runtime)
+
+    async def update_virus_scan_global_config_async(
+        self,
+        request: main_models.UpdateVirusScanGlobalConfigRequest,
+    ) -> main_models.UpdateVirusScanGlobalConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.update_virus_scan_global_config_with_options_async(request, runtime)
+
+    def update_virus_scan_scheduled_strategy_with_options(
+        self,
+        request: main_models.UpdateVirusScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVirusScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.high_risk_operation):
+            body['HighRiskOperation'] = request.high_risk_operation
+        if not DaraCore.is_null(request.low_risk_operation):
+            body['LowRiskOperation'] = request.low_risk_operation
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.max_cpu_usage):
+            body['MaxCpuUsage'] = request.max_cpu_usage
+        if not DaraCore.is_null(request.mid_risk_operation):
+            body['MidRiskOperation'] = request.mid_risk_operation
+        if not DaraCore.is_null(request.performance_mode):
+            body['PerformanceMode'] = request.performance_mode
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.scan_begin_time):
+            body['ScanBeginTime'] = request.scan_begin_time
+        if not DaraCore.is_null(request.scan_end_time):
+            body['ScanEndTime'] = request.scan_end_time
+        if not DaraCore.is_null(request.scan_frequency):
+            body['ScanFrequency'] = request.scan_frequency
+        if not DaraCore.is_null(request.scan_interval):
+            body['ScanInterval'] = request.scan_interval
+        if not DaraCore.is_null(request.scan_mode):
+            body['ScanMode'] = request.scan_mode
+        body_flat = {}
+        if not DaraCore.is_null(request.scan_path):
+            body_flat['ScanPath'] = request.scan_path
+        if not DaraCore.is_null(request.scan_targets):
+            body_flat['ScanTargets'] = request.scan_targets
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_description):
+            body['StrategyDescription'] = request.strategy_description
+        if not DaraCore.is_null(request.strategy_id):
+            body['StrategyId'] = request.strategy_id
+        if not DaraCore.is_null(request.strategy_name):
+            body['StrategyName'] = request.strategy_name
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVirusScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVirusScanScheduledStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_virus_scan_scheduled_strategy_with_options_async(
+        self,
+        request: main_models.UpdateVirusScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVirusScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.high_risk_operation):
+            body['HighRiskOperation'] = request.high_risk_operation
+        if not DaraCore.is_null(request.low_risk_operation):
+            body['LowRiskOperation'] = request.low_risk_operation
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.max_cpu_usage):
+            body['MaxCpuUsage'] = request.max_cpu_usage
+        if not DaraCore.is_null(request.mid_risk_operation):
+            body['MidRiskOperation'] = request.mid_risk_operation
+        if not DaraCore.is_null(request.performance_mode):
+            body['PerformanceMode'] = request.performance_mode
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.scan_begin_time):
+            body['ScanBeginTime'] = request.scan_begin_time
+        if not DaraCore.is_null(request.scan_end_time):
+            body['ScanEndTime'] = request.scan_end_time
+        if not DaraCore.is_null(request.scan_frequency):
+            body['ScanFrequency'] = request.scan_frequency
+        if not DaraCore.is_null(request.scan_interval):
+            body['ScanInterval'] = request.scan_interval
+        if not DaraCore.is_null(request.scan_mode):
+            body['ScanMode'] = request.scan_mode
+        body_flat = {}
+        if not DaraCore.is_null(request.scan_path):
+            body_flat['ScanPath'] = request.scan_path
+        if not DaraCore.is_null(request.scan_targets):
+            body_flat['ScanTargets'] = request.scan_targets
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_description):
+            body['StrategyDescription'] = request.strategy_description
+        if not DaraCore.is_null(request.strategy_id):
+            body['StrategyId'] = request.strategy_id
+        if not DaraCore.is_null(request.strategy_name):
+            body['StrategyName'] = request.strategy_name
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVirusScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVirusScanScheduledStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_virus_scan_scheduled_strategy(
+        self,
+        request: main_models.UpdateVirusScanScheduledStrategyRequest,
+    ) -> main_models.UpdateVirusScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.update_virus_scan_scheduled_strategy_with_options(request, runtime)
+
+    async def update_virus_scan_scheduled_strategy_async(
+        self,
+        request: main_models.UpdateVirusScanScheduledStrategyRequest,
+    ) -> main_models.UpdateVirusScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_virus_scan_scheduled_strategy_with_options_async(request, runtime)
+
+    def update_vul_scan_global_config_with_options(
+        self,
+        tmp_req: main_models.UpdateVulScanGlobalConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVulScanGlobalConfigResponse:
+        tmp_req.validate()
+        request = main_models.UpdateVulScanGlobalConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.wuying_vul_fix_config):
+            request.wuying_vul_fix_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.wuying_vul_fix_config, 'WuyingVulFixConfig', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_download_speed):
+            body['MaxDownloadSpeed'] = request.max_download_speed
+        if not DaraCore.is_null(request.wuying_vul_fix_config_shrink):
+            body['WuyingVulFixConfig'] = request.wuying_vul_fix_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVulScanGlobalConfig',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVulScanGlobalConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_vul_scan_global_config_with_options_async(
+        self,
+        tmp_req: main_models.UpdateVulScanGlobalConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVulScanGlobalConfigResponse:
+        tmp_req.validate()
+        request = main_models.UpdateVulScanGlobalConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.wuying_vul_fix_config):
+            request.wuying_vul_fix_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.wuying_vul_fix_config, 'WuyingVulFixConfig', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_download_speed):
+            body['MaxDownloadSpeed'] = request.max_download_speed
+        if not DaraCore.is_null(request.wuying_vul_fix_config_shrink):
+            body['WuyingVulFixConfig'] = request.wuying_vul_fix_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVulScanGlobalConfig',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVulScanGlobalConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_vul_scan_global_config(
+        self,
+        request: main_models.UpdateVulScanGlobalConfigRequest,
+    ) -> main_models.UpdateVulScanGlobalConfigResponse:
+        runtime = RuntimeOptions()
+        return self.update_vul_scan_global_config_with_options(request, runtime)
+
+    async def update_vul_scan_global_config_async(
+        self,
+        request: main_models.UpdateVulScanGlobalConfigRequest,
+    ) -> main_models.UpdateVulScanGlobalConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.update_vul_scan_global_config_with_options_async(request, runtime)
+
+    def update_vul_scan_scheduled_strategy_with_options(
+        self,
+        request: main_models.UpdateVulScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVulScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.scan_begin_time):
+            body['ScanBeginTime'] = request.scan_begin_time
+        if not DaraCore.is_null(request.scan_end_time):
+            body['ScanEndTime'] = request.scan_end_time
+        if not DaraCore.is_null(request.scan_frequency):
+            body['ScanFrequency'] = request.scan_frequency
+        if not DaraCore.is_null(request.scan_interval):
+            body['ScanInterval'] = request.scan_interval
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_description):
+            body['StrategyDescription'] = request.strategy_description
+        if not DaraCore.is_null(request.strategy_id):
+            body['StrategyId'] = request.strategy_id
+        if not DaraCore.is_null(request.strategy_name):
+            body['StrategyName'] = request.strategy_name
+        body_flat = {}
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVulScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVulScanScheduledStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_vul_scan_scheduled_strategy_with_options_async(
+        self,
+        request: main_models.UpdateVulScanScheduledStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateVulScanScheduledStrategyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.priority):
+            body['Priority'] = request.priority
+        if not DaraCore.is_null(request.scan_begin_time):
+            body['ScanBeginTime'] = request.scan_begin_time
+        if not DaraCore.is_null(request.scan_end_time):
+            body['ScanEndTime'] = request.scan_end_time
+        if not DaraCore.is_null(request.scan_frequency):
+            body['ScanFrequency'] = request.scan_frequency
+        if not DaraCore.is_null(request.scan_interval):
+            body['ScanInterval'] = request.scan_interval
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.strategy_description):
+            body['StrategyDescription'] = request.strategy_description
+        if not DaraCore.is_null(request.strategy_id):
+            body['StrategyId'] = request.strategy_id
+        if not DaraCore.is_null(request.strategy_name):
+            body['StrategyName'] = request.strategy_name
+        body_flat = {}
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.whitelist):
+            body_flat['Whitelist'] = request.whitelist
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateVulScanScheduledStrategy',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateVulScanScheduledStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_vul_scan_scheduled_strategy(
+        self,
+        request: main_models.UpdateVulScanScheduledStrategyRequest,
+    ) -> main_models.UpdateVulScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.update_vul_scan_scheduled_strategy_with_options(request, runtime)
+
+    async def update_vul_scan_scheduled_strategy_async(
+        self,
+        request: main_models.UpdateVulScanScheduledStrategyRequest,
+    ) -> main_models.UpdateVulScanScheduledStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_vul_scan_scheduled_strategy_with_options_async(request, runtime)

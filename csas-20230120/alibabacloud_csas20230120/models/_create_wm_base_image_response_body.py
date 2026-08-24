@@ -11,9 +11,9 @@ class CreateWmBaseImageResponseBody(DaraModel):
         data: main_models.CreateWmBaseImageResponseBodyData = None,
         request_id: str = None,
     ):
-        # Transparent image information.
+        # The transparent image information.
         self.data = data
-        # ID of the current request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,11 +51,11 @@ class CreateWmBaseImageResponseBodyData(DaraModel):
         image_url: str = None,
         image_url_exp: int = None,
     ):
-        # ID of the transparent image. Images with the same ID have identical content.
+        # The transparent image ID. The same ID indicates that the image content is identical.
         self.image_id = image_id
-        # Temporary URL for downloading the image.
+        # The temporary URL for downloading the image.
         self.image_url = image_url
-        # Expiration time of the temporary image URL, in seconds as a UNIX timestamp.
+        # The expiration time of the temporary image URL, in UNIX timestamp format. Unit: seconds.
         self.image_url_exp = image_url_exp
 
     def validate(self):

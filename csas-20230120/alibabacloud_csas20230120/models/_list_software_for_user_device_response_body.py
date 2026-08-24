@@ -16,9 +16,9 @@ class ListSoftwareForUserDeviceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # A list of software applications.
+        # The list of software installed on the endpoint device.
         self.software = software
-        # The total number of software applications.
+        # The total number of software installed on the endpoint device.
         self.total_num = total_num
 
     def validate(self):
@@ -69,13 +69,13 @@ class ListSoftwareForUserDeviceResponseBodySoftware(DaraModel):
         name: str = None,
         versions: List[str] = None,
     ):
-        # The publisher of the software.
+        # The software publisher.
         self.inc = inc
-        # The time when the software was installed.
+        # The software installation time.
         self.install_time = install_time
-        # The name of the software.
+        # The software name.
         self.name = name
-        # The versions of the software.
+        # The collection of software versions.
         self.versions = versions
 
     def validate(self):

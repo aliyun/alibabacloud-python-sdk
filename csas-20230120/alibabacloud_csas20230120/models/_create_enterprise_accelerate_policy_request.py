@@ -17,39 +17,34 @@ class CreateEnterpriseAcceleratePolicyRequest(DaraModel):
         upstream_type: str = None,
         user_attribute_group: str = None,
     ):
-        # Acceleration pattern:
-        # 
-        # - **whitelist**: Whitelist acceleration
-        # 
-        # - **global**: Global acceleration
-        # 
-        # - **build-in-list**: Built-in application acceleration
+        # The acceleration mode. Valid values:
+        # - **whiltelist**: whitelist-based acceleration.
+        # - **global**: global acceleration.
+        # - **build-in-list**: built-in application acceleration.
         self.acceleration_type = acceleration_type
-        # Policy description. Length: 1 to 512 characters.
+        # The description of the enterprise management policy. The description must be 1 to 512 characters in length.
         self.description = description
-        # Policy Name.
+        # The policy name.
         self.name = name
-        # Priority.
+        # The priority.
         self.priority = priority
-        # Whether to display this policy in the client:
-        # 
-        # - **0**: Do not display
-        # 
-        # - **1**: Display
+        # Specifies whether to display the policy in the client. Valid values:
+        # - **0**: not displayed.
+        # - **1**: displayed.
         self.show_in_client = show_in_client
-        # The IP address or domain name of the acceleration instance.
+        # The address (IP address or domain name) of the acceleration instance.
         # 
         # This parameter is required.
         self.upstream_host = upstream_host
-        # Port for the accelerated instance. The port must be between 1000 and 60000.
+        # The port of the acceleration instance. Valid values: 1000 to 60000.
         # 
         # This parameter is required.
         self.upstream_port = upstream_port
-        # Accelerated instance.
+        # The acceleration instance.
         # 
         # This parameter is required.
         self.upstream_type = upstream_type
-        # User group for acceleration.
+        # The acceleration user group.
         # 
         # This parameter is required.
         self.user_attribute_group = user_attribute_group

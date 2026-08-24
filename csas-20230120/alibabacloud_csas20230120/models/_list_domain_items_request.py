@@ -13,13 +13,22 @@ class ListDomainItemsRequest(DaraModel):
         list_type: str = None,
         page_size: int = None,
     ):
+        # The current page number in paging.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The domain name value filter. Fuzzy match is supported.
         self.item_value = item_value
+        # The list ID. This is a unique business identifier used for policy references and CRUD operations.
+        # 
         # This parameter is required.
         self.list_id = list_id
+        # The list type (Blacklist/Whitelist).
+        # 
         # This parameter is required.
         self.list_type = list_type
+        # The number of entries per page in paging. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

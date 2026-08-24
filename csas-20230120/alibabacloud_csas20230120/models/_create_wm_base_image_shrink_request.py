@@ -18,31 +18,31 @@ class CreateWmBaseImageShrinkRequest(DaraModel):
         wm_type: str = None,
         comment: str = None,
     ):
-        # Height of the watermark image, in pixels. Valid values: 100 to 5000.
+        # The height of the watermark image, in pixels. Valid values: 100 to 5000.
         # 
         # This parameter is required.
         self.height = height
-        # Image watermark control parameters.
+        # The image watermark control parameters.
         self.image_control_shrink = image_control_shrink
-        # Opacity of the watermark image. Valid values: 1 to 255. Higher values mean lower transparency.
+        # The opacity of the watermark image. Valid values: 1 to 255. A larger value indicates lower transparency.
         # 
         # This parameter is required.
         self.opacity = opacity
-        # Scaling factor of the watermark image.
+        # The scaling ratio of the watermark image.
         # 
         # This parameter is required.
         self.scale = scale
-        # Width of the watermark image, in pixels. Valid values: 100 to 5000.
+        # The width of the watermark image, in pixels. Valid values: 100 to 5000.
         # 
         # This parameter is required.
         self.width = width
-        # Base64-encoded watermark information. Length: 1 to 300 characters. Do not set this parameter if you set WmInfoUint.
+        # The watermark information in Base64-encoded string format. The length is 1 to 300 characters. If this parameter is set, the WmInfoUint parameter cannot be set.
         self.wm_info_bytes_b64 = wm_info_bytes_b64
-        # Bit width of the watermark information. Default value: 32. This value must be the same during embedding and extraction. For example, if you use a 40-bit SDK to embed the watermark, set this value to 40 when extracting it.
+        # The bit width of the watermark information capacity. Default value: 32. This parameter must be consistent between embedding and extraction. For example, if the SDK used for embedding is 40-bit, set this parameter to 40 during extraction as well.
         self.wm_info_size = wm_info_size
-        # Decimal-form watermark information. Do not set this parameter if you set WmInfoBytesB64.
+        # The watermark information in decimal number format. If this parameter is set, WmInfoBytesB64 cannot be set.
         # 
-        # The valid range depends on the WmInfoSize value:
+        # The valid range depends on the WmInfoSize parameter:
         # 
         # - If WmInfoSize is **32**, the valid range is 1 to 4294967295.
         # 
@@ -50,23 +50,17 @@ class CreateWmBaseImageShrinkRequest(DaraModel):
         # 
         # - If WmInfoSize is **64**, the valid range is 1 to 18446744073709551615.
         self.wm_info_uint = wm_info_uint
-        # Watermark type. Valid values:
-        # 
-        # - **PureWebappInvisible**: Web watermark.
-        # 
+        # The watermark type. Valid values:
+        # - **PureWebappInvisible**: web watermark.
         # - **PureAppInvisible**: App watermark.
-        # 
-        # - **PureScreenInvisible**: Screen watermark.
-        # 
+        # - **PureScreenInvisible**: screen watermark.
         # - **AigcWebappInvisible**: AIGC web watermark.
-        # 
-        # - **AigcAppInvisible**: AIGC app watermark.
-        # 
+        # - **AigcAppInvisible**: AIGC App watermark.
         # - **AigcScreenInvisible**: AIGC screen watermark.
         # 
         # This parameter is required.
         self.wm_type = wm_type
-        # Comments.
+        # The remarks.
         self.comment = comment
 
     def validate(self):
