@@ -101,13 +101,13 @@ class DescribeBudgetsResponseBodyData(DaraModel):
         self.budget_name = budget_name
         # The budget type.
         self.budget_type = budget_type
-        # The remarks.
+        # The comment.
         self.comment = comment
-        # The end period.
+        # The end period of the budget cycle.
         self.cycle_end_period = cycle_end_period
-        # The specified quota per cycle.
+        # The specified quota for each cycle.
         self.cycle_quota = cycle_quota
-        # The start period.
+        # The start period of the budget cycle.
         self.cycle_start_period = cycle_start_period
         # The cycle type.
         self.cycle_type = cycle_type
@@ -266,9 +266,9 @@ class DescribeBudgetsResponseBodyDataWarnConfs(DaraModel):
         threshold_value: str = None,
         warn_target: str = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
-        # Indicates whether EventBridge is enabled.
+        # Specifies whether EventBridge is enabled.
         self.event_bridge = event_bridge
         # The list of message center notification channels.
         self.msc_channels = msc_channels
@@ -276,7 +276,7 @@ class DescribeBudgetsResponseBodyDataWarnConfs(DaraModel):
         self.msc_contacts = msc_contacts
         # The alert name. This parameter is user-defined and optional. If not specified, the backend automatically generates a name.
         self.name = name
-        # The sort sequence number. This parameter is present only in responses. Alerts are numbered in ascending order by alert ID, starting from 1.
+        # The sequence number. This field is present only in responses and is numbered starting from 1 in ascending order of alert ID.
         self.sequence = sequence
         # The threshold type.
         self.threshold_type = threshold_type
@@ -364,7 +364,7 @@ class DescribeBudgetsResponseBodyDataQueryFilter(DaraModel):
         self.code = code
         # The selection mode.
         self.select_type = select_type
-        # The filter value list.
+        # The list of filter values.
         self.values = values
 
     def validate(self):
@@ -405,7 +405,7 @@ class DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # The member account IDs.
+        # The IDs of the member accounts.
         self.account_ids = account_ids
         # The enterprise entity ID.
         self.ec_id = ec_id

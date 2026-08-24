@@ -72,6 +72,7 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
         report_source_type: str = None,
         report_task_id: int = None,
         report_type: str = None,
+        selected_fields: List[str] = None,
         subscribe_create_time: str = None,
     ):
         # The start billing cycle for push. After the subscription is created, the system automatically pushes data from the start billing cycle to the current time. This parameter does not take effect for monthly bill PDF subscriptions, and historical data is not re-pushed. Data within the last year can be pushed.
@@ -93,6 +94,7 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
         # - InstanceDetailForBillingPeriod: instance consumption details.
         # - BillingItemDetailMonthly: billable item consumption summary by billing cycle.
         self.report_type = report_type
+        self.selected_fields = selected_fields
         # The time when the subscription was created.
         self.subscribe_create_time = subscribe_create_time
 
@@ -128,6 +130,9 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
         if self.report_type is not None:
             result['ReportType'] = self.report_type
 
+        if self.selected_fields is not None:
+            result['SelectedFields'] = self.selected_fields
+
         if self.subscribe_create_time is not None:
             result['SubscribeCreateTime'] = self.subscribe_create_time
 
@@ -158,6 +163,9 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
 
         if m.get('ReportType') is not None:
             self.report_type = m.get('ReportType')
+
+        if m.get('SelectedFields') is not None:
+            self.selected_fields = m.get('SelectedFields')
 
         if m.get('SubscribeCreateTime') is not None:
             self.subscribe_create_time = m.get('SubscribeCreateTime')

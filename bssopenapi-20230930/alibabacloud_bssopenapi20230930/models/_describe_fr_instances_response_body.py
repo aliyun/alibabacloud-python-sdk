@@ -84,6 +84,7 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self,
         account_id: int = None,
         account_name: str = None,
+        auto_purchase: main_models.DescribeFrInstancesResponseBodyDataAutoPurchase = None,
         capacitiy_type_name: str = None,
         capacity_type: main_models.DescribeFrInstancesResponseBodyDataCapacityType = None,
         capacity_type_code: str = None,
@@ -98,6 +99,7 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         cycle_type_code: str = None,
         cycle_type_name: str = None,
         deduct_regions: List[main_models.DescribeFrInstancesResponseBodyDataDeductRegions] = None,
+        enable_deduct_rule: bool = None,
         enable_exchange: bool = None,
         enable_renew: bool = None,
         enable_upgrade: bool = None,
@@ -132,6 +134,7 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.account_id = account_id
         # The account name.
         self.account_name = account_name
+        self.auto_purchase = auto_purchase
         # The capacity type name.
         self.capacitiy_type_name = capacitiy_type_name
         # The capacity type.
@@ -144,9 +147,9 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.commodity_code = commodity_code
         # The commodity name.
         self.commodity_name = commodity_name
-        # The current capacity baseline unit.
+        # The current capacity base unit.
         self.curr_capacity_base_unit = curr_capacity_base_unit
-        # The current capacity baseline value.
+        # The current capacity base value.
         self.curr_capacity_base_value = curr_capacity_base_value
         # The current capacity display unit.
         self.curr_capacity_view_unit = curr_capacity_view_unit
@@ -160,19 +163,20 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.cycle_type_name = cycle_type_name
         # The list of deductible regions.
         self.deduct_regions = deduct_regions
-        # Indicates whether the resource plan can be exchanged.
+        self.enable_deduct_rule = enable_deduct_rule
+        # Indicates whether exchange is supported.
         self.enable_exchange = enable_exchange
-        # Indicates whether the resource plan can be renewed.
+        # Indicates whether renewal is supported.
         self.enable_renew = enable_renew
-        # Indicates whether the resource plan can be upgraded.
+        # Indicates whether upgrade is supported.
         self.enable_upgrade = enable_upgrade
         # The expiration time.
         self.end_time = end_time
-        # The commodity code for exchange.
+        # The exchange commodity code.
         self.exchange_commodity_code = exchange_commodity_code
-        # The initial capacity baseline unit.
+        # The initial capacity base unit.
         self.init_capacity_base_unit = init_capacity_base_unit
-        # The initial capacity baseline value.
+        # The initial capacity base value.
         self.init_capacity_base_value = init_capacity_base_value
         # The initial capacity display unit.
         self.init_capacity_view_unit = init_capacity_view_unit
@@ -214,12 +218,14 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.template_code = template_code
         # The template name.
         self.template_name = template_name
-        # The period capacity baseline unit.
+        # The periodic capacity base unit.
         self.period_capacity_base_unit = period_capacity_base_unit
-        # The period capacity baseline value.
+        # The periodic capacity base value.
         self.period_capacity_base_value = period_capacity_base_value
 
     def validate(self):
+        if self.auto_purchase:
+            self.auto_purchase.validate()
         if self.capacity_type:
             self.capacity_type.validate()
         if self.commodity:
@@ -247,6 +253,9 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
 
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+
+        if self.auto_purchase is not None:
+            result['AutoPurchase'] = self.auto_purchase.to_map()
 
         if self.capacitiy_type_name is not None:
             result['CapacitiyTypeName'] = self.capacitiy_type_name
@@ -291,6 +300,9 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         if self.deduct_regions is not None:
             for k1 in self.deduct_regions:
                 result['DeductRegions'].append(k1.to_map() if k1 else None)
+
+        if self.enable_deduct_rule is not None:
+            result['EnableDeductRule'] = self.enable_deduct_rule
 
         if self.enable_exchange is not None:
             result['EnableExchange'] = self.enable_exchange
@@ -389,6 +401,10 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
 
+        if m.get('AutoPurchase') is not None:
+            temp_model = main_models.DescribeFrInstancesResponseBodyDataAutoPurchase()
+            self.auto_purchase = temp_model.from_map(m.get('AutoPurchase'))
+
         if m.get('CapacitiyTypeName') is not None:
             self.capacitiy_type_name = m.get('CapacitiyTypeName')
 
@@ -436,6 +452,9 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
             for k1 in m.get('DeductRegions'):
                 temp_model = main_models.DescribeFrInstancesResponseBodyDataDeductRegions()
                 self.deduct_regions.append(temp_model.from_map(k1))
+
+        if m.get('EnableDeductRule') is not None:
+            self.enable_deduct_rule = m.get('EnableDeductRule')
 
         if m.get('EnableExchange') is not None:
             self.enable_exchange = m.get('EnableExchange')
@@ -785,6 +804,49 @@ class DescribeFrInstancesResponseBodyDataCapacityType(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        return self
+
+class DescribeFrInstancesResponseBodyDataAutoPurchase(DaraModel):
+    def __init__(
+        self,
+        already_auto_purchase: bool = None,
+        setting_auto_purchase: bool = None,
+        support_auto_purchase: bool = None,
+    ):
+        self.already_auto_purchase = already_auto_purchase
+        self.setting_auto_purchase = setting_auto_purchase
+        self.support_auto_purchase = support_auto_purchase
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.already_auto_purchase is not None:
+            result['AlreadyAutoPurchase'] = self.already_auto_purchase
+
+        if self.setting_auto_purchase is not None:
+            result['SettingAutoPurchase'] = self.setting_auto_purchase
+
+        if self.support_auto_purchase is not None:
+            result['SupportAutoPurchase'] = self.support_auto_purchase
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlreadyAutoPurchase') is not None:
+            self.already_auto_purchase = m.get('AlreadyAutoPurchase')
+
+        if m.get('SettingAutoPurchase') is not None:
+            self.setting_auto_purchase = m.get('SettingAutoPurchase')
+
+        if m.get('SupportAutoPurchase') is not None:
+            self.support_auto_purchase = m.get('SupportAutoPurchase')
 
         return self
 

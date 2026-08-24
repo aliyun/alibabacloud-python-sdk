@@ -21,7 +21,7 @@ class QueryMonthlySlaListResponseBody(DaraModel):
         self.current_page = current_page
         # The data list.
         self.data = data
-        # The response metadata.
+        # The response struct metadata.
         self.metadata = metadata
         # The number of entries per page.
         self.page_size = page_size
@@ -104,23 +104,26 @@ class QueryMonthlySlaListResponseBodyData(DaraModel):
     ):
         # The service availability.
         self.available_rate = available_rate
-        # The unique identifier of the damage record, which is used for targeted compensation application.
+        # The unique ID of the damage record, used for targeted claims.
         self.damaged_id = damaged_id
         # The instance ID.
         self.instance_id = instance_id
         # The month in yyyyMM format.
         self.month = month
-        # The monthly service charge.
+        # The monthly service fee.
         self.monthly_service_charge = monthly_service_charge
         # The compensation description.
         self.pay_description = pay_description
-        # The compensation ratio. Unit: %.
+        # The compensation ratio, in percentage (%).
         self.pay_rate = pay_rate
-        # The compensation status. Valid values: 0 (uncompensated) and 1 (compensated).
+        # The compensation status. Valid values:
+        # - 0: not compensated.
+        # - 1: compensated.
+        # - 2: no compensation required.
         self.pay_status = pay_status
         # The product code.
         self.product_code = product_code
-        # The compensation amount.
+        # The compensation amount that should be paid.
         self.should_pay_sum = should_pay_sum
 
     def validate(self):

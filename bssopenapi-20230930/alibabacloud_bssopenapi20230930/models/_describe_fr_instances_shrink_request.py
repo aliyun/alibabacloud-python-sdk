@@ -32,17 +32,17 @@ class DescribeFrInstancesShrinkRequest(DaraModel):
         self.commodity_code = commodity_code
         # The cycle type.
         self.cycle_type = cycle_type
-        # The enterprise and account list. If this parameter is empty, the current account is queried.
+        # The enterprise and account list. If empty, the current account is queried.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
         # The end time.
         self.end_time = end_time
-        # The resource dimension to query.
+        # The resource dimension for the query.
         self.group = group
         # The instance name.
         self.instance_id = instance_id
-        # The instance label value of the resource plan.
+        # The instance tag label value of the resource plan instance.
         self.instance_tag = instance_tag
-        # The primary marketplace ID. If this parameter is empty, the marketplace ID of the current user is used by default.
+        # The primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
         # The current page number.
         self.page_num = page_num
@@ -52,7 +52,7 @@ class DescribeFrInstancesShrinkRequest(DaraModel):
         self.product_code = product_code
         # The sort field.
         self.sort_field = sort_field
-        # The sorting rule.
+        # The collation for sorting.
         self.sort_rule = sort_rule
         # The specification.
         self.spec = spec

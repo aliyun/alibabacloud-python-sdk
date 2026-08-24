@@ -1,3 +1,8 @@
+2026-08-24 Version: 1.11.2
+- Update API CreateReportDefinition: add request parameters SelectedFields.
+- Update API ListReportDefinitions: add response parameters Body.ReportDefinitions.$.SelectedFields.
+
+
 2026-07-09 Version: 1.11.0
 - Support API DescribeDeductLogs.
 - Support API DescribeFrInstances.

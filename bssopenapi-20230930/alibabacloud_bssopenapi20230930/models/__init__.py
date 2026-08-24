@@ -49,6 +49,7 @@ from ._create_invoice_shrink_request import CreateInvoiceShrinkRequest
 from ._create_invoice_response_body import CreateInvoiceResponseBody
 from ._create_invoice_response import CreateInvoiceResponse
 from ._create_report_definition_request import CreateReportDefinitionRequest
+from ._create_report_definition_shrink_request import CreateReportDefinitionShrinkRequest
 from ._create_report_definition_response_body import CreateReportDefinitionResponseBody
 from ._create_report_definition_response import CreateReportDefinitionResponse
 from ._delete_budget_request import DeleteBudgetRequest
@@ -251,6 +252,7 @@ from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyD
 from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyDataTemplate
 from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyData
 from ._describe_fr_instances_request import DescribeFrInstancesRequestEcIdAccountIds
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataAutoPurchase
 from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataCapacityType
 from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataCommodity
 from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataCycleType
@@ -380,6 +382,7 @@ __all__ = [
     CreateInvoiceResponseBody,
     CreateInvoiceResponse,
     CreateReportDefinitionRequest,
+    CreateReportDefinitionShrinkRequest,
     CreateReportDefinitionResponseBody,
     CreateReportDefinitionResponse,
     DeleteBudgetRequest,
@@ -582,6 +585,7 @@ __all__ = [
     DescribeDeductLogsResponseBodyDataTemplate,
     DescribeDeductLogsResponseBodyData,
     DescribeFrInstancesRequestEcIdAccountIds,
+    DescribeFrInstancesResponseBodyDataAutoPurchase,
     DescribeFrInstancesResponseBodyDataCapacityType,
     DescribeFrInstancesResponseBodyDataCommodity,
     DescribeFrInstancesResponseBodyDataCycleType,

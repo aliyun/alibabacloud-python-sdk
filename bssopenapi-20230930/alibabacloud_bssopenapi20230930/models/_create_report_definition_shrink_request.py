@@ -2,11 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class CreateReportDefinitionRequest(DaraModel):
+class CreateReportDefinitionShrinkRequest(DaraModel):
     def __init__(
         self,
         begin_billing_cycle: str = None,
@@ -20,7 +18,7 @@ class CreateReportDefinitionRequest(DaraModel):
         oss_bucket_path: str = None,
         report_source_type: str = None,
         report_type: str = None,
-        selected_fields: List[str] = None,
+        selected_fields_shrink: str = None,
         send_with_attach: str = None,
         split_file_on_user_id: str = None,
     ):
@@ -54,7 +52,7 @@ class CreateReportDefinitionRequest(DaraModel):
         # This parameter is required.
         self.report_type = report_type
         # The user-specified subscription fields.
-        self.selected_fields = selected_fields
+        self.selected_fields_shrink = selected_fields_shrink
         # Email subscription configuration. Specifies whether to include bill attachments in emails.
         self.send_with_attach = send_with_attach
         # Email subscription configuration. Specifies whether to split attachments by user ID.
@@ -101,8 +99,8 @@ class CreateReportDefinitionRequest(DaraModel):
         if self.report_type is not None:
             result['ReportType'] = self.report_type
 
-        if self.selected_fields is not None:
-            result['SelectedFields'] = self.selected_fields
+        if self.selected_fields_shrink is not None:
+            result['SelectedFields'] = self.selected_fields_shrink
 
         if self.send_with_attach is not None:
             result['SendWithAttach'] = self.send_with_attach
@@ -148,7 +146,7 @@ class CreateReportDefinitionRequest(DaraModel):
             self.report_type = m.get('ReportType')
 
         if m.get('SelectedFields') is not None:
-            self.selected_fields = m.get('SelectedFields')
+            self.selected_fields_shrink = m.get('SelectedFields')
 
         if m.get('SendWithAttach') is not None:
             self.send_with_attach = m.get('SendWithAttach')

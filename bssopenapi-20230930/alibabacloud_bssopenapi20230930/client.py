@@ -1148,10 +1148,14 @@ class Client(OpenApiClient):
 
     def create_report_definition_with_options(
         self,
-        request: main_models.CreateReportDefinitionRequest,
+        tmp_req: main_models.CreateReportDefinitionRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateReportDefinitionResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateReportDefinitionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.selected_fields):
+            request.selected_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_fields, 'SelectedFields', 'json')
         query = {}
         if not DaraCore.is_null(request.begin_billing_cycle):
             query['BeginBillingCycle'] = request.begin_billing_cycle
@@ -1169,6 +1173,8 @@ class Client(OpenApiClient):
             query['OssBucketPath'] = request.oss_bucket_path
         if not DaraCore.is_null(request.report_type):
             query['ReportType'] = request.report_type
+        if not DaraCore.is_null(request.selected_fields_shrink):
+            query['SelectedFields'] = request.selected_fields_shrink
         if not DaraCore.is_null(request.send_with_attach):
             query['SendWithAttach'] = request.send_with_attach
         if not DaraCore.is_null(request.split_file_on_user_id):
@@ -1202,10 +1208,14 @@ class Client(OpenApiClient):
 
     async def create_report_definition_with_options_async(
         self,
-        request: main_models.CreateReportDefinitionRequest,
+        tmp_req: main_models.CreateReportDefinitionRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateReportDefinitionResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateReportDefinitionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.selected_fields):
+            request.selected_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_fields, 'SelectedFields', 'json')
         query = {}
         if not DaraCore.is_null(request.begin_billing_cycle):
             query['BeginBillingCycle'] = request.begin_billing_cycle
@@ -1223,6 +1233,8 @@ class Client(OpenApiClient):
             query['OssBucketPath'] = request.oss_bucket_path
         if not DaraCore.is_null(request.report_type):
             query['ReportType'] = request.report_type
+        if not DaraCore.is_null(request.selected_fields_shrink):
+            query['SelectedFields'] = request.selected_fields_shrink
         if not DaraCore.is_null(request.send_with_attach):
             query['SendWithAttach'] = request.send_with_attach
         if not DaraCore.is_null(request.split_file_on_user_id):
