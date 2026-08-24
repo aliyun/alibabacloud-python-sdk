@@ -289,7 +289,6 @@ class NodeTemplateDataDisks(DaraModel):
         # 
         # Default value: true.
         self.delete_with_instance = delete_with_instance
-        # Device
         self.device = device
         # The performance level of the ESSD that is used as a data disk. Valid values:
         # 
@@ -313,7 +312,6 @@ class NodeTemplateDataDisks(DaraModel):
         #     *   PL2: 461 to 65,536
         #     *   PL3: 1,261 to 65,536
         self.size = size
-        # SnapshotId
         self.snapshot_id = snapshot_id
 
     def validate(self):

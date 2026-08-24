@@ -80,6 +80,9 @@ from ._get_job_log_response import GetJobLogResponse
 from ._get_queue_request import GetQueueRequest
 from ._get_queue_response_body import GetQueueResponseBody
 from ._get_queue_response import GetQueueResponse
+from ._get_user_request import GetUserRequest
+from ._get_user_response_body import GetUserResponseBody
+from ._get_user_response import GetUserResponse
 from ._install_addon_request import InstallAddonRequest
 from ._install_addon_response_body import InstallAddonResponseBody
 from ._install_addon_response import InstallAddonResponse
@@ -210,6 +213,7 @@ from ._get_job_response_body import GetJobResponseBodyJobInfoResourcesUsed
 from ._get_job_response_body import GetJobResponseBodyJobInfoVariables
 from ._get_job_response_body import GetJobResponseBodyJobInfo
 from ._get_queue_response_body import GetQueueResponseBodyQueue
+from ._get_user_response_body import GetUserResponseBodyUser
 from ._install_softwares_request import InstallSoftwaresRequestAdditionalPackages
 from ._list_addon_templates_response_body import ListAddonTemplatesResponseBodyAddons
 from ._list_addons_response_body import ListAddonsResponseBodyAddons
@@ -343,6 +347,9 @@ __all__ = [
     GetQueueRequest,
     GetQueueResponseBody,
     GetQueueResponse,
+    GetUserRequest,
+    GetUserResponseBody,
+    GetUserResponse,
     InstallAddonRequest,
     InstallAddonResponseBody,
     InstallAddonResponse,
@@ -473,6 +480,7 @@ __all__ = [
     GetJobResponseBodyJobInfoVariables,
     GetJobResponseBodyJobInfo,
     GetQueueResponseBodyQueue,
+    GetUserResponseBodyUser,
     InstallSoftwaresRequestAdditionalPackages,
     ListAddonTemplatesResponseBodyAddons,
     ListAddonsResponseBodyAddons,

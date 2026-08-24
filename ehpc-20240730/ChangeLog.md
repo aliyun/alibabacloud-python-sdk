@@ -1,3 +1,7 @@
+2026-08-24 Version: 2.4.0
+- Support API GetUser.
+
+
 2026-08-07 Version: 2.3.3
 - Update API ListNodes: add response parameters Body.Nodes.$.Reason.
 

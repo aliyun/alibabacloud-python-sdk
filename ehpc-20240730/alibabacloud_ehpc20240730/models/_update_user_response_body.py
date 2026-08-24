@@ -12,10 +12,11 @@ class UpdateUserResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The request result. Valid values:
+        # The result of the request. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

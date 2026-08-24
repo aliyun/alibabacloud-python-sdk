@@ -22,8 +22,6 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'me-east-1': 'ehpc.me-east-1.aliyuncs.com',
-            'eu-central-1': 'ehpc.eu-central-1.aliyuncs.com',
             'cn-zhangjiakou': 'ehpc.cn-zhangjiakou.aliyuncs.com',
             'cn-wulanchabu': 'ehpc.cn-wulanchabu.aliyuncs.com',
             'cn-wuhan-lr': 'ehpc.cn-wuhan-lr.aliyuncs.com',
@@ -39,7 +37,9 @@ class Client(OpenApiClient):
             'cn-beijing': 'ehpc.cn-beijing.aliyuncs.com',
             'ap-southeast-5': 'ehpc.ap-southeast-5.aliyuncs.com',
             'ap-southeast-1': 'ehpc.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'ehpc.ap-northeast-1.aliyuncs.com'
+            'ap-northeast-1': 'ehpc.ap-northeast-1.aliyuncs.com',
+            'eu-central-1': 'ehpc.eu-central-1.aliyuncs.com',
+            'me-east-1': 'ehpc.me-east-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ehpc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1913,6 +1913,72 @@ class Client(OpenApiClient):
     ) -> main_models.GetQueueResponse:
         runtime = RuntimeOptions()
         return await self.get_queue_with_options_async(request, runtime)
+
+    def get_user_with_options(
+        self,
+        request: main_models.GetUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUser',
+            version = '2024-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_with_options_async(
+        self,
+        request: main_models.GetUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUser',
+            version = '2024-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user(
+        self,
+        request: main_models.GetUserRequest,
+    ) -> main_models.GetUserResponse:
+        runtime = RuntimeOptions()
+        return self.get_user_with_options(request, runtime)
+
+    async def get_user_async(
+        self,
+        request: main_models.GetUserRequest,
+    ) -> main_models.GetUserResponse:
+        runtime = RuntimeOptions()
+        return await self.get_user_with_options_async(request, runtime)
 
     def install_addon_with_options(
         self,

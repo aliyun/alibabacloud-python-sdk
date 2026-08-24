@@ -16,17 +16,18 @@ class UpdateUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The user group attribute of the user that you want to update. Valid values:
+        # The user group property to update. Valid values:
         # 
-        # *   users: ordinary permissions, which are suitable for ordinary users that need only to submit and debug jobs.
-        # *   wheel: sudo permissions, which are suitable for administrators who need to manage clusters. In addition to submitting and debugging jobs, you can also run sudo commands to install software and restart nodes.
+        # - users: ordinary permission group. This group is suitable for regular users who only need to submit and debug jobs.
+        # 
+        # - wheel: sudo permission group. This group is suitable for administrators who need cluster management. In addition to submitting and debugging jobs, users in this group can execute sudo commands to install software, restart nodes, and perform other operations.
         self.group = group
-        # The password attribute of the user that you want to update. The password must be 6 to 30 characters in length and must contain three of the following four character types:
+        # The user password property to update. The password must be 8 to 30 characters in length and must contain at least three of the following four character types:
         # 
-        # *   Uppercase letters
-        # *   Lowercase letters
-        # *   Digits
-        # *   Special characters ()~!@#$%^&\\*-_+=|{}[]:;\\"/<>,.?/
+        # - Uppercase letters
+        # - Lowercase letters
+        # - Digits
+        # - Special characters: ()~!@#$%^&*-_+=|{}[]:;\\"/<>,.?/
         self.password = password
         # The username.
         # 
