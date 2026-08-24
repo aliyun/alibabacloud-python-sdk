@@ -196,13 +196,13 @@ class DeployHttpApiRequestRestApiConfigEnvironment(DaraModel):
         environment_id: str = None,
         service_configs: List[main_models.DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs] = None,
     ):
-        # The API publish scenario. Backend configurations cannot be specified during publishing. Use UpdateHttpApi or UpdateHttpApiOperation to configure the backend before publishing.
+        # The API publish scenario. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
         self.backend_scene = backend_scene
         # The list of custom domain names.
         self.custom_domain_ids = custom_domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The existing service configurations. In the single service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Use UpdateHttpApi or UpdateHttpApiOperation to configure the backend before publishing.
+        # The existing service configurations. In the single service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
         self.service_configs = service_configs
 
     def validate(self):
@@ -265,7 +265,7 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         self.match = match
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
-        # The service protocol:
+        # The service protocol. Valid values:
         # - HTTP.
         # - HTTPS.
         self.protocol = protocol

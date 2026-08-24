@@ -29,13 +29,13 @@ class CreateGatewayRequest(DaraModel):
         # 
         # - Professional: standard instance.
         # 
-        # - Serverless: Serverless instance.
+        # - Serverless: Serverless.
         # 
-        # - MultiTenantServerless: multi-tenant Serverless instance.
+        # - MultiTenantServerless: multi-tenant Serverless.
         # 
         # - Unknown: unknown.
         self.gateway_edition = gateway_edition
-        # The running mode for AI multi-tenant V2. Default value: ENTERPRISE. Only allowed when the gateway type is AI and the edition is MultiTenantServerless.
+        # The running mode for AI multi-tenant V2. Default value: ENTERPRISE. This parameter can be specified only when gatewayType is AI and gatewayEdition is MultiTenantServerless.
         self.gateway_mode = gateway_mode
         # The gateway type. Must be explicitly set to AI for AI Serverless or multi-tenant editions.
         self.gateway_type = gateway_type
@@ -170,7 +170,7 @@ class CreateGatewayRequestZoneConfig(DaraModel):
         self.select_option = select_option
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The list of supported zones.
+        # The list of supported zones. At least two zones are required.
         self.zones = zones
 
     def validate(self):
@@ -350,7 +350,7 @@ class CreateGatewayRequestLogConfigSls(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to enable log collection.
+        # Specifies whether to enable SLS log collection.
         self.enable = enable
 
     def validate(self):

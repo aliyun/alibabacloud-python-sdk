@@ -14,11 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token for the next query. An empty NextToken indicates that no more results exist.
+        # The token for the next query start position. An empty NextToken indicates that there are no more results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The list of resources.
+        # The resources.
         self.tag_resources = tag_resources
 
     def validate(self):

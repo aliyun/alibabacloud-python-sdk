@@ -18,25 +18,25 @@ class GetDashboardShrinkRequest(DaraModel):
         upstream_cluster: str = None,
     ):
         # The language. Valid values:
-        # - zh: Chinese
-        # - en: English
+        # - zh: Chinese.
+        # - en: English.
         self.accept_language = accept_language
         # The unique ID of the API.
         self.api_id = api_id
         # The filter configuration.
         self.filter_shrink = filter_shrink
         # The dashboard name. Valid values:
-        # - LOG: access log
-        # - PLUGIN: plug-in log
+        # - LOG: access log.
+        # - PLUGIN: plugin log.
         self.name = name
-        # The plug-in type ID.
+        # The plugin type ID.
         self.plugin_class_id = plugin_class_id
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
         # The route ID.
         self.route_id = route_id
         # The dashboard source. Valid values:
-        # - SLS: log dashboard
+        # - SLS: log dashboard.
         self.source = source
         # The AI service identifier.
         self.upstream_cluster = upstream_cluster

@@ -590,8 +590,8 @@ from ._http_api_publish_revision_info import HttpApiPublishRevisionInfoServiceCo
 from ._http_api_publish_revision_info import HttpApiPublishRevisionInfoVipConfigs
 from ._http_api_request_contract import HttpApiRequestContractBody
 from ._http_api_response_contract import HttpApiResponseContractItems
-from ._http_dubbo_transcoder import HttpDubboTranscoderMothedMapListParamMapsList
-from ._http_dubbo_transcoder import HttpDubboTranscoderMothedMapList
+from ._http_dubbo_transcoder import HttpDubboTranscoderMethodMapListParamMapsList
+from ._http_dubbo_transcoder import HttpDubboTranscoderMethodMapList
 from ._http_route import HttpRouteDomainInfos
 from ._http_route import HttpRouteEnvironmentInfoGatewayInfo
 from ._http_route import HttpRouteEnvironmentInfoSubDomains
@@ -1485,8 +1485,8 @@ __all__ = [
     HttpApiPublishRevisionInfoVipConfigs,
     HttpApiRequestContractBody,
     HttpApiResponseContractItems,
-    HttpDubboTranscoderMothedMapListParamMapsList,
-    HttpDubboTranscoderMothedMapList,
+    HttpDubboTranscoderMethodMapListParamMapsList,
+    HttpDubboTranscoderMethodMapList,
     HttpRouteDomainInfos,
     HttpRouteEnvironmentInfoGatewayInfo,
     HttpRouteEnvironmentInfoSubDomains,

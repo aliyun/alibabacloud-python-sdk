@@ -13,16 +13,20 @@ class HttpDubboTranscoder(DaraModel):
         dubbo_service_group: str = None,
         dubbo_service_name: str = None,
         dubbo_service_version: str = None,
-        mothed_map_list: List[main_models.HttpDubboTranscoderMothedMapList] = None,
+        method_map_list: List[main_models.HttpDubboTranscoderMethodMapList] = None,
     ):
+        # The Dubbo service group.
         self.dubbo_service_group = dubbo_service_group
+        # The Dubbo service name.
         self.dubbo_service_name = dubbo_service_name
+        # The Dubbo service version.
         self.dubbo_service_version = dubbo_service_version
-        self.mothed_map_list = mothed_map_list
+        # The method mapping list.
+        self.method_map_list = method_map_list
 
     def validate(self):
-        if self.mothed_map_list:
-            for v1 in self.mothed_map_list:
+        if self.method_map_list:
+            for v1 in self.method_map_list:
                  if v1:
                     v1.validate()
 
@@ -40,10 +44,10 @@ class HttpDubboTranscoder(DaraModel):
         if self.dubbo_service_version is not None:
             result['dubboServiceVersion'] = self.dubbo_service_version
 
-        result['mothedMapList'] = []
-        if self.mothed_map_list is not None:
-            for k1 in self.mothed_map_list:
-                result['mothedMapList'].append(k1.to_map() if k1 else None)
+        result['methodMapList'] = []
+        if self.method_map_list is not None:
+            for k1 in self.method_map_list:
+                result['methodMapList'].append(k1.to_map() if k1 else None)
 
         return result
 
@@ -58,29 +62,35 @@ class HttpDubboTranscoder(DaraModel):
         if m.get('dubboServiceVersion') is not None:
             self.dubbo_service_version = m.get('dubboServiceVersion')
 
-        self.mothed_map_list = []
-        if m.get('mothedMapList') is not None:
-            for k1 in m.get('mothedMapList'):
-                temp_model = main_models.HttpDubboTranscoderMothedMapList()
-                self.mothed_map_list.append(temp_model.from_map(k1))
+        self.method_map_list = []
+        if m.get('methodMapList') is not None:
+            for k1 in m.get('methodMapList'):
+                temp_model = main_models.HttpDubboTranscoderMethodMapList()
+                self.method_map_list.append(temp_model.from_map(k1))
 
         return self
 
-class HttpDubboTranscoderMothedMapList(DaraModel):
+class HttpDubboTranscoderMethodMapList(DaraModel):
     def __init__(
         self,
-        dubbo_mothed_name: str = None,
-        http_mothed: str = None,
-        mothedpath: str = None,
-        param_maps_list: List[main_models.HttpDubboTranscoderMothedMapListParamMapsList] = None,
+        dubbo_method_name: str = None,
+        http_method: str = None,
+        method_path: str = None,
+        param_maps_list: List[main_models.HttpDubboTranscoderMethodMapListParamMapsList] = None,
         pass_through_all_headers: str = None,
         pass_through_list: List[str] = None,
     ):
-        self.dubbo_mothed_name = dubbo_mothed_name
-        self.http_mothed = http_mothed
-        self.mothedpath = mothedpath
+        # The Dubbo method name.
+        self.dubbo_method_name = dubbo_method_name
+        # The HTTP method. Valid values: ALL_GET. ALL_POST. ALL_PUT. ALL_DELETE. ALL_PATCH.
+        self.http_method = http_method
+        # The method matching path.
+        self.method_path = method_path
+        # The parameter mapping list.
         self.param_maps_list = param_maps_list
+        # The header pass-through type. Valid values: PASS_ALL: passes through all headers. PASS_NOT: does not pass through any headers. PASS_ASSIGN: passes through specified headers.
         self.pass_through_all_headers = pass_through_all_headers
+        # The list of specified pass-through headers.
         self.pass_through_list = pass_through_list
 
     def validate(self):
@@ -94,14 +104,14 @@ class HttpDubboTranscoderMothedMapList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.dubbo_mothed_name is not None:
-            result['dubboMothedName'] = self.dubbo_mothed_name
+        if self.dubbo_method_name is not None:
+            result['dubboMethodName'] = self.dubbo_method_name
 
-        if self.http_mothed is not None:
-            result['httpMothed'] = self.http_mothed
+        if self.http_method is not None:
+            result['httpMethod'] = self.http_method
 
-        if self.mothedpath is not None:
-            result['mothedpath'] = self.mothedpath
+        if self.method_path is not None:
+            result['methodPath'] = self.method_path
 
         result['paramMapsList'] = []
         if self.param_maps_list is not None:
@@ -118,19 +128,19 @@ class HttpDubboTranscoderMothedMapList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('dubboMothedName') is not None:
-            self.dubbo_mothed_name = m.get('dubboMothedName')
+        if m.get('dubboMethodName') is not None:
+            self.dubbo_method_name = m.get('dubboMethodName')
 
-        if m.get('httpMothed') is not None:
-            self.http_mothed = m.get('httpMothed')
+        if m.get('httpMethod') is not None:
+            self.http_method = m.get('httpMethod')
 
-        if m.get('mothedpath') is not None:
-            self.mothedpath = m.get('mothedpath')
+        if m.get('methodPath') is not None:
+            self.method_path = m.get('methodPath')
 
         self.param_maps_list = []
         if m.get('paramMapsList') is not None:
             for k1 in m.get('paramMapsList'):
-                temp_model = main_models.HttpDubboTranscoderMothedMapListParamMapsList()
+                temp_model = main_models.HttpDubboTranscoderMethodMapListParamMapsList()
                 self.param_maps_list.append(temp_model.from_map(k1))
 
         if m.get('passThroughAllHeaders') is not None:
@@ -141,15 +151,18 @@ class HttpDubboTranscoderMothedMapList(DaraModel):
 
         return self
 
-class HttpDubboTranscoderMothedMapListParamMapsList(DaraModel):
+class HttpDubboTranscoderMethodMapListParamMapsList(DaraModel):
     def __init__(
         self,
         extract_key: str = None,
         extract_key_spec: str = None,
         mapping_type: str = None,
     ):
+        # The key used to extract the input parameter.
         self.extract_key = extract_key
+        # The input parameter location. Valid values: ALL_QUERY_PARAMETER: request parameter. ALL_HEADER: request header. ALL_PATH: URI of the request. ALL_BODY: request body.
         self.extract_key_spec = extract_key_spec
+        # The backend parameter type.
         self.mapping_type = mapping_type
 
     def validate(self):

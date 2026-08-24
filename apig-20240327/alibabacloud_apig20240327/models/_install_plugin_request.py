@@ -12,9 +12,9 @@ class InstallPluginRequest(DaraModel):
         gateway_ids: List[str] = None,
         plugin_class_id: str = None,
     ):
-        # The list of gateway IDs.
+        # The list of gateway IDs. This parameter is required. If this parameter is not specified, the service returns InvalidParameter.IsEmpty. This field must be included in the body object.
         self.gateway_ids = gateway_ids
-        # The plug-in type ID.
+        # The plug-in type ID. This parameter is required. If this parameter is not specified, the service returns InvalidParameter.IsEmpty. This field must be included in the body object.
         self.plugin_class_id = plugin_class_id
 
     def validate(self):

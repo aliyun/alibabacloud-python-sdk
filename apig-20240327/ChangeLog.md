@@ -1,3 +1,14 @@
+2026-08-24 Version: 11.0.4
+- Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.groupName.
+- Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.httpDubboTranscoder.
+- Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.namespace.
+- Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.sourceType.
+- Update API UpdateHttpApiRoute: add request parameters body.backendConfig.services.$.groupName.
+- Update API UpdateHttpApiRoute: add request parameters body.backendConfig.services.$.httpDubboTranscoder.
+- Update API UpdateHttpApiRoute: add request parameters body.backendConfig.services.$.namespace.
+- Update API UpdateHttpApiRoute: add request parameters body.backendConfig.services.$.sourceType.
+
+
 2026-08-21 Version: 11.0.3
 - Update API CreateDomain: add request parameters clientToken.
 

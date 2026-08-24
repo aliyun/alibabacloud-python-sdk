@@ -15,13 +15,13 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token for the next query.
+        # The token for the next query start position.
         self.next_token = next_token
-        # The resource ID. You can specify up to 50 subkeys.
+        # The resource ID. Up to 50 subkeys are supported. At least one of ResourceId and Tag must be provided. If both are empty, the API returns InvalidParameter.BothEmpty (400).
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # The list of labels to add. You can specify up to 20 subkeys.
+        # The label list. Up to 20 subkeys are supported. At least one of ResourceId and Tag must be provided. If both are empty, the API returns InvalidParameter.BothEmpty (400).
         self.tag = tag
 
     def validate(self):

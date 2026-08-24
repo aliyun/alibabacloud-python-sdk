@@ -22,7 +22,7 @@ class CreateHttpApiRouteRequest(DaraModel):
     ):
         # The backend service configuration of the route.
         self.backend_config = backend_config
-        # The API deployment configurations.
+        # The API deployment configuration.
         self.deploy_configs = deploy_configs
         # The route description.
         self.description = description
@@ -30,7 +30,7 @@ class CreateHttpApiRouteRequest(DaraModel):
         self.domain_ids = domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The route match rules.
+        # The route match rule.
         self.match = match
         # The MCP route configuration.
         self.mcp_route_config = mcp_route_config
@@ -145,9 +145,9 @@ class CreateHttpApiRouteRequestMcpRouteConfig(DaraModel):
         # Specifies whether to enable MCP observability. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
         # The service protocol. Valid values:
-        # - TCP
-        # - HTTP
-        # - DUBBO
+        # - TCP.
+        # - HTTP.
+        # - DUBBO.
         self.protocol = protocol
 
     def validate(self):
@@ -189,10 +189,10 @@ class CreateHttpApiRouteRequestBackendConfig(DaraModel):
         services: List[main_models.CreateHttpApiRouteRequestBackendConfigServices] = None,
     ):
         # The backend service scenario. Valid values:
-        # - SingleService: Single service.
-        # - MultiServiceByRatio: Multiple services with ratio-based canary release.
-        # - Mock: Mock service.
-        # - Redirect: Redirect service.
+        # - SingleService: single service.
+        # - MultiServiceByRatio: multiple services with ratio-based canary release.
+        # - Mock: mock service.
+        # - Redirect: redirect service.
         self.scene = scene
         # The list of backend services.
         self.services = services
@@ -234,38 +234,60 @@ class CreateHttpApiRouteRequestBackendConfig(DaraModel):
 class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
     def __init__(
         self,
+        group_name: str = None,
+        http_dubbo_transcoder: main_models.HttpDubboTranscoder = None,
         model_name: str = None,
+        namespace: str = None,
         port: int = None,
         protocol: str = None,
         service_id: str = None,
+        source_type: str = None,
         version: str = None,
         weight: int = None,
     ):
-        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
+        # The service group. Used in the HTTP-to-Dubbo conversion scenario.
+        self.group_name = group_name
+        # The HTTP-to-Dubbo protocol conversion configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+        self.http_dubbo_transcoder = http_dubbo_transcoder
+        # The target model name. This field is shared by multiple model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
+        # The service namespace. Used in the HTTP-to-Dubbo conversion scenario.
+        self.namespace = namespace
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
-        # - HTTP
-        # - HTTPS
+        # - HTTP.
+        # - HTTPS.
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
-        # The service version. This parameter is valid only in the by-tag scenario.
+        # The service source type. Used in the HTTP-to-Dubbo conversion scenario.
+        self.source_type = source_type
+        # The service version. This parameter is valid only in the tag-based scenario.
         self.version = version
-        # The percentage value of the traffic ratio.
+        # The traffic ratio percentage value.
         self.weight = weight
 
     def validate(self):
-        pass
+        if self.http_dubbo_transcoder:
+            self.http_dubbo_transcoder.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.group_name is not None:
+            result['groupName'] = self.group_name
+
+        if self.http_dubbo_transcoder is not None:
+            result['httpDubboTranscoder'] = self.http_dubbo_transcoder.to_map()
+
         if self.model_name is not None:
             result['modelName'] = self.model_name
+
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
 
         if self.port is not None:
             result['port'] = self.port
@@ -275,6 +297,9 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
 
         if self.service_id is not None:
             result['serviceId'] = self.service_id
+
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
 
         if self.version is not None:
             result['version'] = self.version
@@ -286,8 +311,18 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('groupName') is not None:
+            self.group_name = m.get('groupName')
+
+        if m.get('httpDubboTranscoder') is not None:
+            temp_model = main_models.HttpDubboTranscoder()
+            self.http_dubbo_transcoder = temp_model.from_map(m.get('httpDubboTranscoder'))
+
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
+
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
 
         if m.get('port') is not None:
             self.port = m.get('port')
@@ -297,6 +332,9 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
 
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
+
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
 
         if m.get('version') is not None:
             self.version = m.get('version')
