@@ -1,3 +1,6 @@
+2026-08-25 Version: 10.0.2
+- Generated python 2019-01-15 for Qualitycheck.
+
 2026-07-28 Version: 10.0.0
 - Delete API DeletePrecisionTask.
 - Delete API GetPrecisionTask.

@@ -5357,6 +5357,8 @@ class Client(OpenApiClient):
             body['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
+        if not DaraCore.is_null(request.target_type):
+            body['TargetType'] = request.target_type
         if not DaraCore.is_null(request.type):
             body['Type'] = request.type
         if not DaraCore.is_null(request.type_name):
@@ -5437,6 +5439,8 @@ class Client(OpenApiClient):
             body['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
+        if not DaraCore.is_null(request.target_type):
+            body['TargetType'] = request.target_type
         if not DaraCore.is_null(request.type):
             body['Type'] = request.type
         if not DaraCore.is_null(request.type_name):

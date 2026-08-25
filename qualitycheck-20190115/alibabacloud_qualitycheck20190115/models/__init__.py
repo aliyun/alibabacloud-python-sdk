@@ -354,6 +354,8 @@ from ._agent_info import AgentInfoInstructionTypeParamServiceInspectionParamDime
 from ._agent_info import AgentInfoInstructionTypeParamServiceInspectionParam
 from ._agent_info import AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList
 from ._agent_info import AgentInfoInstructionTypeParamTagCategoryParam
+from ._agent_info import AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels
+from ._agent_info import AgentInfoInstructionTypeParamTagTreeLevelParam
 from ._agent_info import AgentInfoInstructionTypeParam
 from ._condition_basic_info import ConditionBasicInfoCheckRangeAnchor
 from ._condition_basic_info import ConditionBasicInfoCheckRangeRange
@@ -1017,6 +1019,8 @@ __all__ = [
     AgentInfoInstructionTypeParamServiceInspectionParam,
     AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList,
     AgentInfoInstructionTypeParamTagCategoryParam,
+    AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels,
+    AgentInfoInstructionTypeParamTagTreeLevelParam,
     AgentInfoInstructionTypeParam,
     ConditionBasicInfoCheckRangeAnchor,
     ConditionBasicInfoCheckRangeRange,

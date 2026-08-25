@@ -91,11 +91,13 @@ class AgentInfoInstructionTypeParam(DaraModel):
         fields_param: main_models.AgentInfoInstructionTypeParamFieldsParam = None,
         service_inspection_param: main_models.AgentInfoInstructionTypeParamServiceInspectionParam = None,
         tag_category_param: main_models.AgentInfoInstructionTypeParamTagCategoryParam = None,
+        tag_tree_level_param: main_models.AgentInfoInstructionTypeParamTagTreeLevelParam = None,
     ):
         self.custom_prompt_param = custom_prompt_param
         self.fields_param = fields_param
         self.service_inspection_param = service_inspection_param
         self.tag_category_param = tag_category_param
+        self.tag_tree_level_param = tag_tree_level_param
 
     def validate(self):
         if self.custom_prompt_param:
@@ -106,6 +108,8 @@ class AgentInfoInstructionTypeParam(DaraModel):
             self.service_inspection_param.validate()
         if self.tag_category_param:
             self.tag_category_param.validate()
+        if self.tag_tree_level_param:
+            self.tag_tree_level_param.validate()
 
     def to_map(self):
         result = dict()
@@ -123,6 +127,9 @@ class AgentInfoInstructionTypeParam(DaraModel):
 
         if self.tag_category_param is not None:
             result['TagCategoryParam'] = self.tag_category_param.to_map()
+
+        if self.tag_tree_level_param is not None:
+            result['TagTreeLevelParam'] = self.tag_tree_level_param.to_map()
 
         return result
 
@@ -143,6 +150,88 @@ class AgentInfoInstructionTypeParam(DaraModel):
         if m.get('TagCategoryParam') is not None:
             temp_model = main_models.AgentInfoInstructionTypeParamTagCategoryParam()
             self.tag_category_param = temp_model.from_map(m.get('TagCategoryParam'))
+
+        if m.get('TagTreeLevelParam') is not None:
+            temp_model = main_models.AgentInfoInstructionTypeParamTagTreeLevelParam()
+            self.tag_tree_level_param = temp_model.from_map(m.get('TagTreeLevelParam'))
+
+        return self
+
+class AgentInfoInstructionTypeParamTagTreeLevelParam(DaraModel):
+    def __init__(
+        self,
+        tag_ids: List[int] = None,
+        tag_tree_levels: List[main_models.AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels] = None,
+    ):
+        self.tag_ids = tag_ids
+        self.tag_tree_levels = tag_tree_levels
+
+    def validate(self):
+        if self.tag_tree_levels:
+            for v1 in self.tag_tree_levels:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_ids is not None:
+            result['TagIds'] = self.tag_ids
+
+        result['TagTreeLevels'] = []
+        if self.tag_tree_levels is not None:
+            for k1 in self.tag_tree_levels:
+                result['TagTreeLevels'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagIds') is not None:
+            self.tag_ids = m.get('TagIds')
+
+        self.tag_tree_levels = []
+        if m.get('TagTreeLevels') is not None:
+            for k1 in m.get('TagTreeLevels'):
+                temp_model = main_models.AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels()
+                self.tag_tree_levels.append(temp_model.from_map(k1))
+
+        return self
+
+class AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels(DaraModel):
+    def __init__(
+        self,
+        prompt: str = None,
+        tag_tree_ids: List[int] = None,
+    ):
+        self.prompt = prompt
+        self.tag_tree_ids = tag_tree_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+
+        if self.tag_tree_ids is not None:
+            result['TagTreeIds'] = self.tag_tree_ids
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+
+        if m.get('TagTreeIds') is not None:
+            self.tag_tree_ids = m.get('TagTreeIds')
 
         return self
 

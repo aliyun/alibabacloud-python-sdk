@@ -30,6 +30,7 @@ class ListRulesV4Request(DaraModel):
         source_type: int = None,
         start_time: str = None,
         status: int = None,
+        target_type: str = None,
         type: int = None,
         type_name: str = None,
         update_end_time: str = None,
@@ -78,6 +79,7 @@ class ListRulesV4Request(DaraModel):
         self.start_time = start_time
         # Rule status.
         self.status = status
+        self.target_type = target_type
         # Type value of the rule category that the rule belongs to.
         self.type = type
         # Name of the rule category that the rule belongs to.
@@ -160,6 +162,9 @@ class ListRulesV4Request(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -241,6 +246,9 @@ class ListRulesV4Request(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
