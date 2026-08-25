@@ -13,10 +13,15 @@ class DeleteClientsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call failed.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the call failed.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

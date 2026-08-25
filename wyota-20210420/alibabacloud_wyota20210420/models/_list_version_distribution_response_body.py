@@ -2,26 +2,28 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_wyota20210420 import models as main_models
 from darabonba.model import DaraModel
 
-class GetOrCreateInvitationCodeResponseBody(DaraModel):
+class ListVersionDistributionResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.GetOrCreateInvitationCodeResponseBodyData = None,
+        data: List[main_models.ListVersionDistributionResponseBodyData] = None,
         http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned when the call fails.
+        # The status code. A value of 200 is returned if the call is successful. An error code is returned if the call fails.
         self.code = code
-        # The data returned when the call is successful.
+        # The list of version distribution information.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned when the call fails.
+        # The error message. This parameter is empty if the call is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -30,7 +32,9 @@ class GetOrCreateInvitationCodeResponseBody(DaraModel):
 
     def validate(self):
         if self.data:
-            self.data.validate()
+            for v1 in self.data:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -40,8 +44,10 @@ class GetOrCreateInvitationCodeResponseBody(DaraModel):
         if self.code is not None:
             result['Code'] = self.code
 
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            for k1 in self.data:
+                result['Data'].append(k1.to_map() if k1 else None)
 
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
@@ -62,9 +68,11 @@ class GetOrCreateInvitationCodeResponseBody(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
+        self.data = []
         if m.get('Data') is not None:
-            temp_model = main_models.GetOrCreateInvitationCodeResponseBodyData()
-            self.data = temp_model.from_map(m.get('Data'))
+            for k1 in m.get('Data'):
+                temp_model = main_models.ListVersionDistributionResponseBodyData()
+                self.data.append(temp_model.from_map(k1))
 
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
@@ -80,19 +88,19 @@ class GetOrCreateInvitationCodeResponseBody(DaraModel):
 
         return self
 
-class GetOrCreateInvitationCodeResponseBodyData(DaraModel):
+class ListVersionDistributionResponseBodyData(DaraModel):
     def __init__(
         self,
-        auth_code: str = None,
-        expire_time: str = None,
-        expired: bool = None,
+        device_count: int = None,
+        percentage: float = None,
+        version: str = None,
     ):
-        # The authentication code for device enrollment.
-        self.auth_code = auth_code
-        # The expiration time of the compute group.
-        self.expire_time = expire_time
-        # Indicates whether the invitation code has expired.
-        self.expired = expired
+        # The number of terminals corresponding to this version.
+        self.device_count = device_count
+        # The version percentage. Valid values: 0 to 1.
+        self.percentage = percentage
+        # The version number.
+        self.version = version
 
     def validate(self):
         pass
@@ -102,27 +110,27 @@ class GetOrCreateInvitationCodeResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.auth_code is not None:
-            result['AuthCode'] = self.auth_code
+        if self.device_count is not None:
+            result['DeviceCount'] = self.device_count
 
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
 
-        if self.expired is not None:
-            result['Expired'] = self.expired
+        if self.version is not None:
+            result['Version'] = self.version
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AuthCode') is not None:
-            self.auth_code = m.get('AuthCode')
+        if m.get('DeviceCount') is not None:
+            self.device_count = m.get('DeviceCount')
 
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
 
-        if m.get('Expired') is not None:
-            self.expired = m.get('Expired')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
 
         return self
 

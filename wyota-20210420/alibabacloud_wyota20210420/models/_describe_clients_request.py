@@ -25,22 +25,40 @@ class DescribeClientsRequest(DaraModel):
         uuids: List[str] = None,
         with_bind_user: bool = None,
     ):
-        # aliuid
+        # The Alibaba Cloud account ID.
         self.caller_ali_uid = caller_ali_uid
+        # The client type.
+        # 
         # This parameter is required.
         self.client_type = client_type
+        # The custom task ID.
         self.custom_resource_id = custom_resource_id
+        # The effective status of the custom task. Valid values:
+        # - true: effective.
+        # - false: ineffective.
+        # - null: all.
         self.custom_resource_status = custom_resource_status
+        # Specifies whether the client is managed.
         self.in_manage = in_manage
+        # Specifies whether to include subgroups.
         self.include_sub_groups = include_sub_groups
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The device model.
         self.model = model
+        # The token for the next page.
         self.next_token = next_token
+        # The soft client status.
         self.online_status = online_status
+        # The soft client platform.
         self.platform = platform
+        # The fuzzy search parameter. Supports fuzzy search by SN, alias, or IP address. This parameter is incompatible with exact search parameters.
         self.search_keyword = search_keyword
+        # The group ID.
         self.terminal_group_id = terminal_group_id
+        # The UUIDs of the servers to query. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
+        # Specifies whether to return bound users.
         self.with_bind_user = with_bind_user
 
     def validate(self):

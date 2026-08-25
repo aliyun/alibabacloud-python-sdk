@@ -19,13 +19,21 @@ class DescribeClientsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The error code returned when the call fails.
         self.code = code
+        # The data returned when the call is successful.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned when the call fails.
         self.message = message
+        # The token for the next query. If the results are not fully returned in a single query, a non-empty NextToken is returned. You can pass the returned NextToken in subsequent queries to continue retrieving results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -148,48 +156,87 @@ class DescribeClientsResponseBodyData(DaraModel):
     ):
         # aliUid
         self.ali_uid = ali_uid
+        # The alias.
         self.alias = alias
+        # The area site.
         self.area_site = area_site
+        # The number of bound logon users.
         self.bind_user_count = bind_user_count
+        # The password-free logon user.
         self.bind_user_id = bind_user_id
+        # The system version number.
         self.build_id = build_id
+        # The client type.
         self.client_type = client_type
+        # The client version.
         self.client_version = client_version
+        # The currently used desktop.
         self.current_connect_desktop = current_connect_desktop
+        # The currently logged-on user.
         self.current_login_user = current_login_user
+        # The reason why the custom resource is invalid.
         self.custom_res_invalid_reason = custom_res_invalid_reason
+        # The custom resource ID.
         self.custom_resource_id = custom_resource_id
+        # The custom resource name.
         self.custom_resource_name = custom_resource_name
+        # The custom resource status.
         self.custom_resource_status = custom_resource_status
+        # The currently used desktop.
         self.desktop_id = desktop_id
+        # The desktop region.
         self.desktop_region_id = desktop_region_id
+        # The device operating system.
         self.device_os = device_os
+        # The features and support information.
         self.function_support = function_support
+        # The hardware information.
         self.hardware_info = hardware_info
+        # The host operating system information.
         self.host_os_info = host_os_info
+        # Indicates whether the client is managed.
         self.in_manage = in_manage
+        # The geolocation of the public IP address.
         self.ip_geo_location = ip_geo_location
         # ipv4
         self.ipv_4 = ipv_4
+        # The most recently logged-on user.
         self.last_login_user = last_login_user
+        # The on-premises device SN.
         self.local_device_sn = local_device_sn
+        # The location remarks.
         self.location_info = location_info
+        # The currently logged-on user.
         self.login_user = login_user
+        # The main business type.
         self.main_biz_type = main_biz_type
+        # The time when the client was managed.
         self.manage_time = manage_time
+        # The timestamp when the client was managed.
         self.manage_timestamp = manage_timestamp
+        # The device model.
         self.model = model
+        # The preview image URL of the device type.
         self.model_preview_url = model_preview_url
+        # Indicates whether the client is online.
         self.online = online
+        # Indicates whether the client is online.
         self.online_status = online_status
+        # The password-free logon user.
         self.password_free_login_user = password_free_login_user
+        # The device type.
         self.platform = platform
         # productName
         self.product_name = product_name
+        # The public IP address.
         self.public_ipv_4 = public_ipv_4
+        # The time when the password-free logon user was set.
         self.set_password_free_login_user_time = set_password_free_login_user_time
+        # The terminal group ID.
         self.terminal_group_id = terminal_group_id
+        # The upgrade type. Valid values: internet and lan.
         self.upgrade_download_type = upgrade_download_type
+        # The number of users bound to this device.
         self.user_bind_count = user_bind_count
         # uuid
         self.uuid = uuid
@@ -490,12 +537,17 @@ class DescribeClientsResponseBodyDataHardwareInfo(DaraModel):
         storage: str = None,
         wlan: str = None,
     ):
+        # The Bluetooth MAC address.
         self.bluetooth = bluetooth
         # chipId
         self.chip_id = chip_id
+        # The CPU information.
         self.cpu = cpu
+        # The Ethernet MAC address.
         self.mac = mac
+        # The memory information.
         self.memory = memory
+        # The storage information.
         self.storage = storage
         # wifi mac
         self.wlan = wlan
@@ -579,24 +631,43 @@ class DescribeClientsResponseBodyDataFunctionSupport(DaraModel):
         version_supported: bool = None,
         version_too_low: bool = None,
     ):
+        # Indicates whether standalone policy is supported.
         self.enable_policy = enable_policy
+        # The reason why password-free logon is forbidden.
         self.password_free_login_forbidden_reason = password_free_login_forbidden_reason
+        # Indicates whether assisted logon is supported.
         self.support_assist_login = support_assist_login
+        # Indicates whether remote diagnostics is supported.
         self.support_diagnose = support_diagnose
+        # Indicates whether restricting logon users is supported.
         self.support_limit_login_user = support_limit_login_user
+        # Indicates whether localDeviceSn is supported.
         self.support_local_device_sn = support_local_device_sn
+        # Indicates whether management is supported.
         self.support_manage = support_manage
+        # Indicates whether policy modification is supported.
         self.support_modify_policy = support_modify_policy
+        # Indicates whether password-free logon is supported.
         self.support_password_free_login = support_password_free_login
+        # Indicates whether restart is supported.
         self.support_reboot = support_reboot
+        # Indicates whether factory reset is supported.
         self.support_reset = support_reset
+        # Indicates whether the clear PIN button is grayed out.
         self.support_reset_pin = support_reset_pin
+        # Indicates whether shutdown is supported.
         self.support_stop = support_stop
+        # Indicates whether remote upgrade is supported.
         self.support_upgrade = support_upgrade
+        # The reason why assisted logon is forbidden.
         self.unsupport_assist_login_reason = unsupport_assist_login_reason
+        # The reason why management is forbidden.
         self.unsupport_manage_reason = unsupport_manage_reason
+        # The reason why localDeviceSn is forbidden.
         self.unsupported_local_device_sn_reason = unsupported_local_device_sn_reason
+        # Indicates whether the version is supported (V7.12.0 or later).
         self.version_supported = version_supported
+        # Indicates whether the version is too low and an upgrade is recommended.
         self.version_too_low = version_too_low
 
     def validate(self):

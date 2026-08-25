@@ -13,10 +13,14 @@ class DeleteClientsRequest(DaraModel):
         in_manage: bool = None,
         uuids: List[str] = None,
     ):
-        # aliuid
+        # The Alibaba Cloud account ID.
         self.caller_ali_uid = caller_ali_uid
+        # Specifies whether the device is managed.
+        # 
         # This parameter is required.
         self.in_manage = in_manage
+        # The UUIDs of the asset instances. Separate multiple UUIDs with commas (,).
+        # 
         # This parameter is required.
         self.uuids = uuids
 

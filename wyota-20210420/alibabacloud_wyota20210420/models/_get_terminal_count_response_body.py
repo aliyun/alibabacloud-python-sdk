@@ -5,23 +5,23 @@ from __future__ import annotations
 from alibabacloud_wyota20210420 import models as main_models
 from darabonba.model import DaraModel
 
-class GetOrCreateInvitationCodeResponseBody(DaraModel):
+class GetTerminalCountResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.GetOrCreateInvitationCodeResponseBodyData = None,
+        data: main_models.GetTerminalCountResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned when the call fails.
+        # The status code. 200 is returned if the call is successful. An error code is returned if the call fails.
         self.code = code
-        # The data returned when the call is successful.
+        # The terminal count statistics information.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned when the call fails.
+        # The error message. This parameter is empty if the call is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -63,7 +63,7 @@ class GetOrCreateInvitationCodeResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.GetOrCreateInvitationCodeResponseBodyData()
+            temp_model = main_models.GetTerminalCountResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('HttpStatusCode') is not None:
@@ -80,19 +80,22 @@ class GetOrCreateInvitationCodeResponseBody(DaraModel):
 
         return self
 
-class GetOrCreateInvitationCodeResponseBodyData(DaraModel):
+class GetTerminalCountResponseBodyData(DaraModel):
     def __init__(
         self,
-        auth_code: str = None,
-        expire_time: str = None,
-        expired: bool = None,
+        bind_user_count: int = None,
+        in_manage_count: int = None,
+        not_in_manage_count: int = None,
+        total_count: int = None,
     ):
-        # The authentication code for device enrollment.
-        self.auth_code = auth_code
-        # The expiration time of the compute group.
-        self.expire_time = expire_time
-        # Indicates whether the invitation code has expired.
-        self.expired = expired
+        # The number of hardware terminals that are bound to users. This parameter is returned only when ClientType is set to 1.
+        self.bind_user_count = bind_user_count
+        # The number of managed terminals.
+        self.in_manage_count = in_manage_count
+        # The number of unmanaged terminals.
+        self.not_in_manage_count = not_in_manage_count
+        # The total number of terminals.
+        self.total_count = total_count
 
     def validate(self):
         pass
@@ -102,27 +105,33 @@ class GetOrCreateInvitationCodeResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.auth_code is not None:
-            result['AuthCode'] = self.auth_code
+        if self.bind_user_count is not None:
+            result['BindUserCount'] = self.bind_user_count
 
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
+        if self.in_manage_count is not None:
+            result['InManageCount'] = self.in_manage_count
 
-        if self.expired is not None:
-            result['Expired'] = self.expired
+        if self.not_in_manage_count is not None:
+            result['NotInManageCount'] = self.not_in_manage_count
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AuthCode') is not None:
-            self.auth_code = m.get('AuthCode')
+        if m.get('BindUserCount') is not None:
+            self.bind_user_count = m.get('BindUserCount')
 
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
+        if m.get('InManageCount') is not None:
+            self.in_manage_count = m.get('InManageCount')
 
-        if m.get('Expired') is not None:
-            self.expired = m.get('Expired')
+        if m.get('NotInManageCount') is not None:
+            self.not_in_manage_count = m.get('NotInManageCount')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
 
         return self
 

@@ -21,7 +21,7 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('wyota', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -589,6 +589,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_clients_with_options_async(request, runtime)
 
+    def get_custom_resource_stats_with_options(
+        self,
+        request: main_models.GetCustomResourceStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomResourceStatsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomResourceStats',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomResourceStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_resource_stats_with_options_async(
+        self,
+        request: main_models.GetCustomResourceStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomResourceStatsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomResourceStats',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomResourceStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_resource_stats(
+        self,
+        request: main_models.GetCustomResourceStatsRequest,
+    ) -> main_models.GetCustomResourceStatsResponse:
+        runtime = RuntimeOptions()
+        return self.get_custom_resource_stats_with_options(request, runtime)
+
+    async def get_custom_resource_stats_async(
+        self,
+        request: main_models.GetCustomResourceStatsRequest,
+    ) -> main_models.GetCustomResourceStatsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_custom_resource_stats_with_options_async(request, runtime)
+
     def get_or_create_invitation_code_with_options(
         self,
         request: main_models.GetOrCreateInvitationCodeRequest,
@@ -670,6 +740,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetOrCreateInvitationCodeResponse:
         runtime = RuntimeOptions()
         return await self.get_or_create_invitation_code_with_options_async(request, runtime)
+
+    def get_terminal_count_with_options(
+        self,
+        request: main_models.GetTerminalCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTerminalCountResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTerminalCount',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTerminalCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_terminal_count_with_options_async(
+        self,
+        request: main_models.GetTerminalCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTerminalCountResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTerminalCount',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTerminalCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_terminal_count(
+        self,
+        request: main_models.GetTerminalCountRequest,
+    ) -> main_models.GetTerminalCountResponse:
+        runtime = RuntimeOptions()
+        return self.get_terminal_count_with_options(request, runtime)
+
+    async def get_terminal_count_async(
+        self,
+        request: main_models.GetTerminalCountRequest,
+    ) -> main_models.GetTerminalCountResponse:
+        runtime = RuntimeOptions()
+        return await self.get_terminal_count_with_options_async(request, runtime)
 
     def list_terminal_with_options(
         self,
@@ -789,6 +929,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_terminal_with_options_async(request, runtime)
 
+    def list_version_distribution_with_options(
+        self,
+        request: main_models.ListVersionDistributionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVersionDistributionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.in_manage):
+            body['InManage'] = request.in_manage
+        if not DaraCore.is_null(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.version_type):
+            body['VersionType'] = request.version_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVersionDistribution',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVersionDistributionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_version_distribution_with_options_async(
+        self,
+        request: main_models.ListVersionDistributionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVersionDistributionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.in_manage):
+            body['InManage'] = request.in_manage
+        if not DaraCore.is_null(request.main_biz_type):
+            body['MainBizType'] = request.main_biz_type
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.version_type):
+            body['VersionType'] = request.version_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVersionDistribution',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVersionDistributionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_version_distribution(
+        self,
+        request: main_models.ListVersionDistributionRequest,
+    ) -> main_models.ListVersionDistributionResponse:
+        runtime = RuntimeOptions()
+        return self.list_version_distribution_with_options(request, runtime)
+
+    async def list_version_distribution_async(
+        self,
+        request: main_models.ListVersionDistributionRequest,
+    ) -> main_models.ListVersionDistributionResponse:
+        runtime = RuntimeOptions()
+        return await self.list_version_distribution_with_options_async(request, runtime)
+
     def send_ops_message_to_terminals_with_options(
         self,
         request: main_models.SendOpsMessageToTerminalsRequest,
@@ -801,6 +1027,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.msg):
             body['Msg'] = request.msg
+        if not DaraCore.is_null(request.op_domain):
+            body['OpDomain'] = request.op_domain
         if not DaraCore.is_null(request.ops_action):
             body['OpsAction'] = request.ops_action
         body_flat = {}
@@ -841,6 +1069,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.msg):
             body['Msg'] = request.msg
+        if not DaraCore.is_null(request.op_domain):
+            body['OpDomain'] = request.op_domain
         if not DaraCore.is_null(request.ops_action):
             body['OpsAction'] = request.ops_action
         body_flat = {}

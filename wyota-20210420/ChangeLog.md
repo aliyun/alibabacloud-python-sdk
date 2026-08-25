@@ -1,3 +1,10 @@
+2026-08-25 Version: 3.1.0
+- Support API GetCustomResourceStats.
+- Support API GetTerminalCount.
+- Support API ListVersionDistribution.
+- Update API SendOpsMessageToTerminals: add request parameters OpDomain.
+
+
 2026-06-02 Version: 3.0.0
 - Support API DeleteClients.
 - Support API DescribeClients.

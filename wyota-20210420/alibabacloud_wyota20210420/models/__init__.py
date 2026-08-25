@@ -20,12 +20,21 @@ from ._delete_clients_response import DeleteClientsResponse
 from ._describe_clients_request import DescribeClientsRequest
 from ._describe_clients_response_body import DescribeClientsResponseBody
 from ._describe_clients_response import DescribeClientsResponse
+from ._get_custom_resource_stats_request import GetCustomResourceStatsRequest
+from ._get_custom_resource_stats_response_body import GetCustomResourceStatsResponseBody
+from ._get_custom_resource_stats_response import GetCustomResourceStatsResponse
 from ._get_or_create_invitation_code_request import GetOrCreateInvitationCodeRequest
 from ._get_or_create_invitation_code_response_body import GetOrCreateInvitationCodeResponseBody
 from ._get_or_create_invitation_code_response import GetOrCreateInvitationCodeResponse
+from ._get_terminal_count_request import GetTerminalCountRequest
+from ._get_terminal_count_response_body import GetTerminalCountResponseBody
+from ._get_terminal_count_response import GetTerminalCountResponse
 from ._list_terminal_request import ListTerminalRequest
 from ._list_terminal_response_body import ListTerminalResponseBody
 from ._list_terminal_response import ListTerminalResponse
+from ._list_version_distribution_request import ListVersionDistributionRequest
+from ._list_version_distribution_response_body import ListVersionDistributionResponseBody
+from ._list_version_distribution_response import ListVersionDistributionResponse
 from ._send_ops_message_to_terminals_request import SendOpsMessageToTerminalsRequest
 from ._send_ops_message_to_terminals_response_body import SendOpsMessageToTerminalsResponseBody
 from ._send_ops_message_to_terminals_response import SendOpsMessageToTerminalsResponse
@@ -40,8 +49,11 @@ from ._add_terminals_response_body import AddTerminalsResponseBodyData
 from ._describe_clients_response_body import DescribeClientsResponseBodyDataFunctionSupport
 from ._describe_clients_response_body import DescribeClientsResponseBodyDataHardwareInfo
 from ._describe_clients_response_body import DescribeClientsResponseBodyData
+from ._get_custom_resource_stats_response_body import GetCustomResourceStatsResponseBodyData
 from ._get_or_create_invitation_code_response_body import GetOrCreateInvitationCodeResponseBodyData
+from ._get_terminal_count_response_body import GetTerminalCountResponseBodyData
 from ._list_terminal_response_body import ListTerminalResponseBodyData
+from ._list_version_distribution_response_body import ListVersionDistributionResponseBodyData
 from ._send_ops_message_to_terminals_response_body import SendOpsMessageToTerminalsResponseBodyData
 
 __all__ = [
@@ -63,12 +75,21 @@ __all__ = [
     DescribeClientsRequest,
     DescribeClientsResponseBody,
     DescribeClientsResponse,
+    GetCustomResourceStatsRequest,
+    GetCustomResourceStatsResponseBody,
+    GetCustomResourceStatsResponse,
     GetOrCreateInvitationCodeRequest,
     GetOrCreateInvitationCodeResponseBody,
     GetOrCreateInvitationCodeResponse,
+    GetTerminalCountRequest,
+    GetTerminalCountResponseBody,
+    GetTerminalCountResponse,
     ListTerminalRequest,
     ListTerminalResponseBody,
     ListTerminalResponse,
+    ListVersionDistributionRequest,
+    ListVersionDistributionResponseBody,
+    ListVersionDistributionResponse,
     SendOpsMessageToTerminalsRequest,
     SendOpsMessageToTerminalsResponseBody,
     SendOpsMessageToTerminalsResponse,
@@ -83,7 +104,10 @@ __all__ = [
     DescribeClientsResponseBodyDataFunctionSupport,
     DescribeClientsResponseBodyDataHardwareInfo,
     DescribeClientsResponseBodyData,
+    GetCustomResourceStatsResponseBodyData,
     GetOrCreateInvitationCodeResponseBodyData,
+    GetTerminalCountResponseBodyData,
     ListTerminalResponseBodyData,
+    ListVersionDistributionResponseBodyData,
     SendOpsMessageToTerminalsResponseBodyData
 ]

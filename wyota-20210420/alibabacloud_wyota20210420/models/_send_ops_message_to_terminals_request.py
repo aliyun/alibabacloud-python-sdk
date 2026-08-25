@@ -11,12 +11,14 @@ class SendOpsMessageToTerminalsRequest(DaraModel):
         self,
         delay: bool = None,
         msg: str = None,
+        op_domain: str = None,
         ops_action: str = None,
         uuids: List[str] = None,
         wait_for_ack: bool = None,
     ):
         self.delay = delay
         self.msg = msg
+        self.op_domain = op_domain
         self.ops_action = ops_action
         self.uuids = uuids
         self.wait_for_ack = wait_for_ack
@@ -34,6 +36,9 @@ class SendOpsMessageToTerminalsRequest(DaraModel):
 
         if self.msg is not None:
             result['Msg'] = self.msg
+
+        if self.op_domain is not None:
+            result['OpDomain'] = self.op_domain
 
         if self.ops_action is not None:
             result['OpsAction'] = self.ops_action
@@ -53,6 +58,9 @@ class SendOpsMessageToTerminalsRequest(DaraModel):
 
         if m.get('Msg') is not None:
             self.msg = m.get('Msg')
+
+        if m.get('OpDomain') is not None:
+            self.op_domain = m.get('OpDomain')
 
         if m.get('OpsAction') is not None:
             self.ops_action = m.get('OpsAction')
