@@ -1,3 +1,7 @@
+2026-08-25 Version: 5.7.0
+- Support API GetFileUploadInfo.
+
+
 2026-08-16 Version: 5.6.4
 - Update API CreateModelTemplate: add request parameters RefScope.
 - Update API GetRuntimeModelConfig: add response parameters Body.Data.ModelProviderList.$.LlmInfoList.$.CreditMultiplier.

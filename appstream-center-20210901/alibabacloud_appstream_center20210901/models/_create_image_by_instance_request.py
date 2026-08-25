@@ -12,6 +12,7 @@ class CreateImageByInstanceRequest(DaraModel):
         self,
         auto_clean_userdata: bool = None,
         biz_type: int = None,
+        copy_profile: bool = None,
         description: str = None,
         disk_type: str = None,
         image_name: str = None,
@@ -21,10 +22,11 @@ class CreateImageByInstanceRequest(DaraModel):
         sub_instance_id: str = None,
         tag_list: List[main_models.CreateImageByInstanceRequestTagList] = None,
     ):
-        # This parameter applies only to Cloud Desktop instances. Specifies whether to clear user personal data. If set to true, the created image clears data in all directories under C:\\Users except Administrator and Public.
+        # This parameter applies only to Cloud Desktop scenarios. Specifies whether to clear user personal data. If set to true, the created image clears data in all directories under C:\\Users except Administrator and Public.
         self.auto_clean_userdata = auto_clean_userdata
         # This parameter is not publicly available.
         self.biz_type = biz_type
+        self.copy_profile = copy_profile
         # The image description.
         self.description = description
         # The type of disk data included in the image. By default, both the system cloud disk and data cloud disk of the instance are included.
@@ -57,6 +59,9 @@ class CreateImageByInstanceRequest(DaraModel):
 
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+
+        if self.copy_profile is not None:
+            result['CopyProfile'] = self.copy_profile
 
         if self.description is not None:
             result['Description'] = self.description
@@ -93,6 +98,9 @@ class CreateImageByInstanceRequest(DaraModel):
 
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+
+        if m.get('CopyProfile') is not None:
+            self.copy_profile = m.get('CopyProfile')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')

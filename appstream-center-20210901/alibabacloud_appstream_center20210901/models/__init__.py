@@ -82,6 +82,9 @@ from ._get_connection_ticket_response import GetConnectionTicketResponse
 from ._get_debug_app_instance_request import GetDebugAppInstanceRequest
 from ._get_debug_app_instance_response_body import GetDebugAppInstanceResponseBody
 from ._get_debug_app_instance_response import GetDebugAppInstanceResponse
+from ._get_file_upload_info_request import GetFileUploadInfoRequest
+from ._get_file_upload_info_response_body import GetFileUploadInfoResponseBody
+from ._get_file_upload_info_response import GetFileUploadInfoResponse
 from ._get_model_provider_template_request import GetModelProviderTemplateRequest
 from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBody
 from ._get_model_provider_template_response import GetModelProviderTemplateResponse
@@ -281,6 +284,7 @@ from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBo
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModels
+from ._get_file_upload_info_response_body import GetFileUploadInfoResponseBodyData
 from ._get_model_provider_template_response_body import GetModelProviderTemplateResponseBodyData
 from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListPricePromotions
 from ._get_resource_price_response_body import GetResourcePriceResponseBodyPriceListPrice
@@ -363,6 +367,7 @@ from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRe
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyClientTypes
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy
+from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyVideoPolicy
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy
 from ._modify_browser_instance_group_request import ModifyBrowserInstanceGroupRequestPolicy
@@ -464,6 +469,9 @@ __all__ = [
     GetDebugAppInstanceRequest,
     GetDebugAppInstanceResponseBody,
     GetDebugAppInstanceResponse,
+    GetFileUploadInfoRequest,
+    GetFileUploadInfoResponseBody,
+    GetFileUploadInfoResponse,
     GetModelProviderTemplateRequest,
     GetModelProviderTemplateResponseBody,
     GetModelProviderTemplateResponse,
@@ -663,6 +671,7 @@ __all__ = [
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModels,
+    GetFileUploadInfoResponseBodyData,
     GetModelProviderTemplateResponseBodyData,
     GetResourcePriceResponseBodyPriceListPricePromotions,
     GetResourcePriceResponseBodyPriceListPrice,
@@ -745,6 +754,7 @@ __all__ = [
     ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules,
     ModifyBrowserInstanceGroupRequestPolicyClientTypes,
     ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy,
+    ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules,
     ModifyBrowserInstanceGroupRequestPolicyVideoPolicy,
     ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy,
     ModifyBrowserInstanceGroupRequestPolicy,

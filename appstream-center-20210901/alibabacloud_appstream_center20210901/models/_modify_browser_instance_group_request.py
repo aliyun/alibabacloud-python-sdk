@@ -230,6 +230,7 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         no_operation_disconnect_time: int = None,
         policy_id: str = None,
         policy_version: str = None,
+        revoke_access_policy_rules: List[main_models.ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules] = None,
         video_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyVideoPolicy = None,
         watermark_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy = None,
     ):
@@ -239,7 +240,7 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         self.authorize_access_policy_rules = authorize_access_policy_rules
         # The logon client type control settings.
         self.client_types = client_types
-        # The clipboard-related policy.
+        # The clipboard policy.
         self.clipboard_policy = clipboard_policy
         # The data retention policy upon disconnection.
         self.disconnect_keep_session = disconnect_keep_session
@@ -251,13 +252,15 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         self.html_5file_transfer = html_5file_transfer
         # The policy for disconnecting sessions when no operation is performed.
         self.no_operation_disconnect = no_operation_disconnect
-        # The time in seconds before a session is disconnected when no operation is performed.
+        # The no-operation disconnect time, in seconds.
         self.no_operation_disconnect_time = no_operation_disconnect_time
         # The policy ID.
         self.policy_id = policy_id
         # The policy version.
         self.policy_version = policy_version
-        # The display policy.
+        # The server-side access IP address whitelist rules to revoke in this request.
+        self.revoke_access_policy_rules = revoke_access_policy_rules
+        # The video policy.
         self.video_policy = video_policy
         # The watermark configuration.
         self.watermark_policy = watermark_policy
@@ -273,6 +276,10 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
                     v1.validate()
         if self.clipboard_policy:
             self.clipboard_policy.validate()
+        if self.revoke_access_policy_rules:
+            for v1 in self.revoke_access_policy_rules:
+                 if v1:
+                    v1.validate()
         if self.video_policy:
             self.video_policy.validate()
         if self.watermark_policy:
@@ -322,6 +329,11 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
 
         if self.policy_version is not None:
             result['PolicyVersion'] = self.policy_version
+
+        result['RevokeAccessPolicyRules'] = []
+        if self.revoke_access_policy_rules is not None:
+            for k1 in self.revoke_access_policy_rules:
+                result['RevokeAccessPolicyRules'].append(k1.to_map() if k1 else None)
 
         if self.video_policy is not None:
             result['VideoPolicy'] = self.video_policy.to_map()
@@ -376,6 +388,12 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         if m.get('PolicyVersion') is not None:
             self.policy_version = m.get('PolicyVersion')
 
+        self.revoke_access_policy_rules = []
+        if m.get('RevokeAccessPolicyRules') is not None:
+            for k1 in m.get('RevokeAccessPolicyRules'):
+                temp_model = main_models.ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules()
+                self.revoke_access_policy_rules.append(temp_model.from_map(k1))
+
         if m.get('VideoPolicy') is not None:
             temp_model = main_models.ModifyBrowserInstanceGroupRequestPolicyVideoPolicy()
             self.video_policy = temp_model.from_map(m.get('VideoPolicy'))
@@ -392,7 +410,7 @@ class ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy(DaraModel):
         watermark_switch: str = None,
         watermark_types: List[str] = None,
     ):
-        # The watermark switch.
+        # Specifies whether to enable the watermark.
         self.watermark_switch = watermark_switch
         # The list of watermark types.
         self.watermark_types = watermark_types
@@ -451,6 +469,43 @@ class ModifyBrowserInstanceGroupRequestPolicyVideoPolicy(DaraModel):
 
         return self
 
+class ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules(DaraModel):
+    def __init__(
+        self,
+        cidr_ip: str = None,
+        description: str = None,
+    ):
+        # The IPv4 address or CIDR block to revoke.
+        self.cidr_ip = cidr_ip
+        # The description of the access IP address whitelist rule to revoke.
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cidr_ip is not None:
+            result['CidrIp'] = self.cidr_ip
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrIp') is not None:
+            self.cidr_ip = m.get('CidrIp')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        return self
+
 class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
     def __init__(
         self,
@@ -489,25 +544,25 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         self.rich_text_clipboard = rich_text_clipboard
         # The rich text clipboard limit.
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
-        # The maximum size of rich text that can be downloaded from the cloud via the clipboard.
+        # The maximum size of rich text that can be downloaded from the cloud browser through the clipboard.
         self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
-        # The size unit for rich text clipboard downloads from the cloud.
+        # The size unit for rich text downloaded from the cloud browser through the clipboard.
         self.rich_text_clipboard_read_size_unit = rich_text_clipboard_read_size_unit
         # The rich text clipboard size unit.
         self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
-        # The maximum size of rich text that can be uploaded to the cloud via the clipboard.
+        # The maximum size of rich text that can be uploaded to the cloud browser through the clipboard.
         self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
-        # The size unit for rich text clipboard uploads to the cloud.
+        # The size unit for rich text uploaded to the cloud browser through the clipboard.
         self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
         # The text clipboard policy.
         self.text_clipboard = text_clipboard
-        # The maximum size of text that can be downloaded from the cloud via the clipboard.
+        # The maximum size of text that can be downloaded from the cloud browser through the clipboard.
         self.text_clipboard_read_limit = text_clipboard_read_limit
-        # The size unit for text clipboard downloads from the cloud.
+        # The size unit for text downloaded from the cloud browser through the clipboard.
         self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
-        # The maximum size of text that can be uploaded to the cloud via the clipboard.
+        # The maximum size of text that can be uploaded to the cloud browser through the clipboard.
         self.text_clipboard_write_limit = text_clipboard_write_limit
-        # The size unit for text clipboard uploads to the cloud.
+        # The size unit for text uploaded to the cloud browser through the clipboard.
         self.text_clipboard_write_size_unit = text_clipboard_write_size_unit
 
     def validate(self):

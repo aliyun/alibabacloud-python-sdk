@@ -18,7 +18,7 @@ class ListModelProviderTemplatesResponseBody(DaraModel):
     ):
         # The list of returned data objects.
         self.data = data
-        # The page number of the current query results.
+        # The current page number of the query results.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -89,6 +89,7 @@ class ListModelProviderTemplatesResponseBodyData(DaraModel):
         provider_name: str = None,
         provider_template_id: str = None,
         provider_type: str = None,
+        wuying_provider_key: str = None,
     ):
         # The model provider configuration JSON object.
         self.config = config
@@ -104,6 +105,8 @@ class ListModelProviderTemplatesResponseBodyData(DaraModel):
         self.provider_template_id = provider_template_id
         # The model provider type.
         self.provider_type = provider_type
+        # The WUYING secure gateway proxy ProviderKey.
+        self.wuying_provider_key = wuying_provider_key
 
     def validate(self):
         pass
@@ -134,6 +137,9 @@ class ListModelProviderTemplatesResponseBodyData(DaraModel):
         if self.provider_type is not None:
             result['ProviderType'] = self.provider_type
 
+        if self.wuying_provider_key is not None:
+            result['WuyingProviderKey'] = self.wuying_provider_key
+
         return result
 
     def from_map(self, m: dict = None):
@@ -158,6 +164,9 @@ class ListModelProviderTemplatesResponseBodyData(DaraModel):
 
         if m.get('ProviderType') is not None:
             self.provider_type = m.get('ProviderType')
+
+        if m.get('WuyingProviderKey') is not None:
+            self.wuying_provider_key = m.get('WuyingProviderKey')
 
         return self
 

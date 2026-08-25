@@ -879,6 +879,8 @@ class Client(OpenApiClient):
             body['AutoCleanUserdata'] = request.auto_clean_userdata
         if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.copy_profile):
+            body['CopyProfile'] = request.copy_profile
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.disk_type):
@@ -927,6 +929,8 @@ class Client(OpenApiClient):
             body['AutoCleanUserdata'] = request.auto_clean_userdata
         if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.copy_profile):
+            body['CopyProfile'] = request.copy_profile
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.disk_type):
@@ -2432,6 +2436,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetDebugAppInstanceResponse:
         runtime = RuntimeOptions()
         return await self.get_debug_app_instance_with_options_async(request, runtime)
+
+    def get_file_upload_info_with_options(
+        self,
+        request: main_models.GetFileUploadInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileUploadInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFileUploadInfo',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileUploadInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_upload_info_with_options_async(
+        self,
+        request: main_models.GetFileUploadInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileUploadInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetFileUploadInfo',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFileUploadInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_upload_info(
+        self,
+        request: main_models.GetFileUploadInfoRequest,
+    ) -> main_models.GetFileUploadInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_file_upload_info_with_options(request, runtime)
+
+    async def get_file_upload_info_async(
+        self,
+        request: main_models.GetFileUploadInfoRequest,
+    ) -> main_models.GetFileUploadInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_file_upload_info_with_options_async(request, runtime)
 
     def get_model_provider_template_with_options(
         self,

@@ -18,7 +18,7 @@ class ListModelProviderTemplatesShrinkRequest(DaraModel):
     ):
         # The Agent platform.
         self.agent_platform = agent_platform
-        # The name of the Agent provider.
+        # The Agent provider name.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
