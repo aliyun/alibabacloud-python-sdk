@@ -1,3 +1,20 @@
+2026-08-25 Version: 1.6.4
+- Update API CreateAccessAssignment: add request parameters OriginTargetId.
+- Update API CreateAccessAssignment: add response parameters Body.Task.OriginTargetId.
+- Update API DeleteAccessAssignment: add request parameters OriginTargetId.
+- Update API DeleteAccessAssignment: add response parameters Body.Task.OriginTargetId.
+- Update API DeprovisionAccessConfiguration: add request parameters OriginTargetId.
+- Update API DeprovisionAccessConfiguration: add response parameters Body.Tasks.$.OriginTargetId.
+- Update API GetTask: add response parameters Body.Task.OriginTargetId.
+- Update API ListAccessAssignments: add request parameters OriginTargetId.
+- Update API ListAccessAssignments: add response parameters Body.AccessAssignments.$.OriginTargetId.
+- Update API ListAccessConfigurationProvisionings: add request parameters OriginTargetId.
+- Update API ListAccessConfigurationProvisionings: add response parameters Body.AccessConfigurationProvisionings.$.OriginTargetId.
+- Update API ListTasks: add response parameters Body.Tasks.$.OriginTargetId.
+- Update API ProvisionAccessConfiguration: add request parameters OriginTargetId.
+- Update API ProvisionAccessConfiguration: add response parameters Body.Tasks.$.OriginTargetId.
+
+
 2025-06-11 Version: 1.6.2
 - Update API CreateAccessConfiguration: add request parameters Tags.
 - Update API CreateAccessConfiguration: add response parameters Body.AccessConfiguration.Tags.

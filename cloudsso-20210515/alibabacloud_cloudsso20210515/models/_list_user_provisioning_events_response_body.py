@@ -1,0 +1,315 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_cloudsso20210515 import models as main_models
+from darabonba.model import DaraModel
+
+class ListUserProvisioningEventsResponseBody(DaraModel):
+    def __init__(
+        self,
+        is_truncated: bool = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_counts: int = None,
+        user_provisioning_events: List[main_models.ListUserProvisioningEventsResponseBodyUserProvisioningEvents] = None,
+    ):
+        # Indicates whether the queried entries are truncated. Valid values:
+        # 
+        # - true
+        # 
+        # - false
+        self.is_truncated = is_truncated
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
+        self.max_results = max_results
+        # The token that is used to initiate the next request.
+        # 
+        # > This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_counts = total_counts
+        # The RAM user provisioning events.
+        self.user_provisioning_events = user_provisioning_events
+
+    def validate(self):
+        if self.user_provisioning_events:
+            for v1 in self.user_provisioning_events:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.is_truncated is not None:
+            result['IsTruncated'] = self.is_truncated
+
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.total_counts is not None:
+            result['TotalCounts'] = self.total_counts
+
+        result['UserProvisioningEvents'] = []
+        if self.user_provisioning_events is not None:
+            for k1 in self.user_provisioning_events:
+                result['UserProvisioningEvents'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsTruncated') is not None:
+            self.is_truncated = m.get('IsTruncated')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('TotalCounts') is not None:
+            self.total_counts = m.get('TotalCounts')
+
+        self.user_provisioning_events = []
+        if m.get('UserProvisioningEvents') is not None:
+            for k1 in m.get('UserProvisioningEvents'):
+                temp_model = main_models.ListUserProvisioningEventsResponseBodyUserProvisioningEvents()
+                self.user_provisioning_events.append(temp_model.from_map(k1))
+
+        return self
+
+class ListUserProvisioningEventsResponseBodyUserProvisioningEvents(DaraModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        deletion_strategy: str = None,
+        directory_id: str = None,
+        duplication_strategy: str = None,
+        error_count: int = None,
+        error_info: str = None,
+        event_id: str = None,
+        latest_async_time: str = None,
+        principal_id: str = None,
+        principal_name: str = None,
+        principal_type: str = None,
+        source_type: str = None,
+        target_id: str = None,
+        target_name: str = None,
+        target_path: str = None,
+        target_type: str = None,
+        update_time: str = None,
+        user_provisioning_id: str = None,
+    ):
+        # The creation time. The time is displayed in UTC.
+        self.create_time = create_time
+        # The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+        # 
+        # - Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+        # 
+        # - Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+        self.deletion_strategy = deletion_strategy
+        # The ID of the resource directory.
+        self.directory_id = directory_id
+        # The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+        # 
+        # - KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+        # 
+        # - TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+        self.duplication_strategy = duplication_strategy
+        # The number of execution failures.
+        self.error_count = error_count
+        # The error message that is displayed when the last execution of the RAM user provisioning event failed.
+        self.error_info = error_info
+        # The ID of the RAM user provisioning event.
+        self.event_id = event_id
+        # The time at which the RAM user provisioning event was last executed. The time is displayed in UTC.
+        self.latest_async_time = latest_async_time
+        # The identity ID of the RAM user provisioning. Valid values:
+        # 
+        # - If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # 
+        # - If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+        self.principal_id = principal_id
+        # The identity name of the RAM user provisioning. Valid values:
+        # 
+        # - If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+        # 
+        # - If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+        self.principal_name = principal_name
+        # The identity type of the RAM user provisioning. Valid values:
+        # 
+        # - User: The identity of the RAM user provisioning is a CloudSSO user.
+        # 
+        # - Group: The identity of the RAM user provisioning is a CloudSSO user group.
+        self.principal_type = principal_type
+        # The type of the source operation. Valid values:
+        # 
+        # - StartProvisioning: enables the RAM user provisioning.
+        # 
+        # - DeleteProvisioning: deletes the RAM user provisioning.
+        # 
+        # - AddUserToGroup: adds a user to a user group.
+        # 
+        # - RemoveUserFromGroup: removes a user from a user group.
+        # 
+        # - UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
+        self.source_type = source_type
+        # The ID of the object for which you create the RAM user provisioning.
+        # 
+        # The value is fixed as the ID of the account in the resource directory.\\`\\`\\`\\`
+        self.target_id = target_id
+        # The name of the object for which you create the RAM user provisioning.
+        # 
+        # If `RD-Account` is returned, the value of this parameter is the name of the account that is used to access the instance.\\`\\`
+        self.target_name = target_name
+        # The path of the resource directory in which you create the RAM user provisioning for the member.
+        self.target_path = target_path
+        # The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+        self.target_type = target_type
+        # The modification time. The time is displayed in UTC.
+        self.update_time = update_time
+        # The ID of the RAM user provisioning.
+        self.user_provisioning_id = user_provisioning_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
+        if self.deletion_strategy is not None:
+            result['DeletionStrategy'] = self.deletion_strategy
+
+        if self.directory_id is not None:
+            result['DirectoryId'] = self.directory_id
+
+        if self.duplication_strategy is not None:
+            result['DuplicationStrategy'] = self.duplication_strategy
+
+        if self.error_count is not None:
+            result['ErrorCount'] = self.error_count
+
+        if self.error_info is not None:
+            result['ErrorInfo'] = self.error_info
+
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+
+        if self.latest_async_time is not None:
+            result['LatestAsyncTime'] = self.latest_async_time
+
+        if self.principal_id is not None:
+            result['PrincipalId'] = self.principal_id
+
+        if self.principal_name is not None:
+            result['PrincipalName'] = self.principal_name
+
+        if self.principal_type is not None:
+            result['PrincipalType'] = self.principal_type
+
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+
+        if self.target_name is not None:
+            result['TargetName'] = self.target_name
+
+        if self.target_path is not None:
+            result['TargetPath'] = self.target_path
+
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+
+        if self.user_provisioning_id is not None:
+            result['UserProvisioningId'] = self.user_provisioning_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
+        if m.get('DeletionStrategy') is not None:
+            self.deletion_strategy = m.get('DeletionStrategy')
+
+        if m.get('DirectoryId') is not None:
+            self.directory_id = m.get('DirectoryId')
+
+        if m.get('DuplicationStrategy') is not None:
+            self.duplication_strategy = m.get('DuplicationStrategy')
+
+        if m.get('ErrorCount') is not None:
+            self.error_count = m.get('ErrorCount')
+
+        if m.get('ErrorInfo') is not None:
+            self.error_info = m.get('ErrorInfo')
+
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+
+        if m.get('LatestAsyncTime') is not None:
+            self.latest_async_time = m.get('LatestAsyncTime')
+
+        if m.get('PrincipalId') is not None:
+            self.principal_id = m.get('PrincipalId')
+
+        if m.get('PrincipalName') is not None:
+            self.principal_name = m.get('PrincipalName')
+
+        if m.get('PrincipalType') is not None:
+            self.principal_type = m.get('PrincipalType')
+
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
+
+        if m.get('TargetName') is not None:
+            self.target_name = m.get('TargetName')
+
+        if m.get('TargetPath') is not None:
+            self.target_path = m.get('TargetPath')
+
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+
+        if m.get('UserProvisioningId') is not None:
+            self.user_provisioning_id = m.get('UserProvisioningId')
+
+        return self
+
