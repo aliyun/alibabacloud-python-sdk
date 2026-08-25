@@ -1,3 +1,7 @@
+2026-08-25 Version: 5.1.2
+- Update API DescribeAllDBInstanceClass: add request parameters DBInstanceId.
+
+
 2026-08-03 Version: 5.1.1
 - Update API CreateDBInstance: add request parameters FEClassCode.
 - Update API CreateDBInstance: add request parameters FENodeCount.

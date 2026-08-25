@@ -20,9 +20,9 @@ class DescribeDBClusterConfigChangeLogsResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
-        # The dynamic code. This parameter is not used. Ignore this parameter.
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not used. Ignore this parameter.
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
         # The request ID.
         self.request_id = request_id
@@ -88,7 +88,7 @@ class DescribeDBClusterConfigChangeLogsResponseBodyData(DaraModel):
         self.db_instance_id = db_instance_id
         # The instance ID.
         self.db_instance_name = db_instance_name
-        # The parameter change logs.
+        # The parameter change records.
         self.param_change_logs = param_change_logs
         # The task ID.
         self.task_id = task_id
@@ -156,9 +156,9 @@ class DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs(DaraModel
         new_value: str = None,
         old_value: str = None,
     ):
-        # The time when the task was created. The time is in GMT.
+        # The task creation time (GMT).
         self.gmt_created = gmt_created
-        # The time when the task was last modified. The time is in GMT.
+        # The task modification time (GMT).
         self.gmt_modified = gmt_modified
         # The ID of the change record.
         self.id = id
@@ -168,7 +168,7 @@ class DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs(DaraModel
         self.name = name
         # The new parameter value.
         self.new_value = new_value
-        # The original parameter value.
+        # The old parameter value.
         self.old_value = old_value
 
     def validate(self):

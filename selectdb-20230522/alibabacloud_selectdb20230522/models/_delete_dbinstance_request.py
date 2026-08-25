@@ -11,11 +11,11 @@ class DeleteDBInstanceRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

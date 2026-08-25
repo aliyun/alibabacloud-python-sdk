@@ -11,9 +11,9 @@ class CreateVirtualClusterResponseBody(DaraModel):
         data: main_models.CreateVirtualClusterResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

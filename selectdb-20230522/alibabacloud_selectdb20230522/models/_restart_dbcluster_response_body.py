@@ -11,7 +11,7 @@ class RestartDBClusterResponseBody(DaraModel):
         data: main_models.RestartDBClusterResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned information.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -52,7 +52,7 @@ class RestartDBClusterResponseBodyData(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):

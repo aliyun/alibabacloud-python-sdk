@@ -13,7 +13,7 @@ class GetCreateBEClusterInquiryResponseBody(DaraModel):
         data: main_models.GetCreateBEClusterInquiryResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -58,7 +58,7 @@ class GetCreateBEClusterInquiryResponseBodyData(DaraModel):
         self.currency = currency
         self.optional_promotions = optional_promotions
         self.pricing_rules = pricing_rules
-        # The amount.
+        # The trade amount.
         self.trade_amount = trade_amount
 
     def validate(self):

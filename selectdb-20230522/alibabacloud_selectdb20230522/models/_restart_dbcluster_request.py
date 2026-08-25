@@ -22,13 +22,13 @@ class RestartDBClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to restart the cluster nodes in parallel.
+        # Specifies whether to perform operations on cluster nodes in parallel.
         self.parallel_operation = parallel_operation
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 

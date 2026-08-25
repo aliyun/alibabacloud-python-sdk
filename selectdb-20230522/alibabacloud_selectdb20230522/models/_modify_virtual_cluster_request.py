@@ -13,7 +13,7 @@ class ModifyVirtualClusterRequest(DaraModel):
         region_id: str = None,
         standby_cluster_id: str = None,
     ):
-        # The ID of the primary cluster.
+        # The primary cluster ID.
         self.active_cluster_id = active_cluster_id
         # The virtual cluster ID.
         # 
@@ -27,7 +27,7 @@ class ModifyVirtualClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the standby cluster.
+        # The secondary cluster ID.
         self.standby_cluster_id = standby_cluster_id
 
     def validate(self):

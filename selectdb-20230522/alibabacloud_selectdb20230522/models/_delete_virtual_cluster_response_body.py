@@ -13,7 +13,7 @@ class DeleteVirtualClusterResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

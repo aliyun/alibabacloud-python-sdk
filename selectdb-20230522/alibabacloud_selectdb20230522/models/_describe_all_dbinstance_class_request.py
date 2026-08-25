@@ -7,10 +7,12 @@ from darabonba.model import DaraModel
 class DescribeAllDBInstanceClassRequest(DaraModel):
     def __init__(
         self,
+        dbinstance_id: str = None,
         region_id: str = None,
         resource_owner_id: int = None,
     ):
-        # Region ID.
+        self.dbinstance_id = dbinstance_id
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -24,6 +26,9 @@ class DescribeAllDBInstanceClassRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -34,6 +39,9 @@ class DescribeAllDBInstanceClassRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 

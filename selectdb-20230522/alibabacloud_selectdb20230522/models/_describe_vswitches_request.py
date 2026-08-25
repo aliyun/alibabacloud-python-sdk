@@ -15,15 +15,15 @@ class DescribeVSwitchesRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The number of entries to return on each page.
-        # >Warning: This is a reserved parameter and is not supported.
+        # The number of entries per page for a paged query.
+        # >Warning: This is a reserved parameter and is not supported.</warning>
         self.max_results = max_results
-        # The token that is used to start the next query.
-        # >Warning: This is a reserved parameter and is not supported.
+        # The token for the next query.
+        # >Warning: This is a reserved parameter and is not supported.</warning>
         self.next_token = next_token
-        # The page number to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         # 

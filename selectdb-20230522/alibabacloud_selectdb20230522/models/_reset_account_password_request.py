@@ -19,8 +19,10 @@ class ResetAccountPasswordRequest(DaraModel):
         self.account_name = account_name
         # The password of the database account. The password must meet the following requirements:
         # 
-        # - The password must consist of at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # - The special characters are !@#$%^&\\*()_+-=.
+        # - Contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # - The special characters are !@#$%^&*()_+-=.
+        # 
         # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.

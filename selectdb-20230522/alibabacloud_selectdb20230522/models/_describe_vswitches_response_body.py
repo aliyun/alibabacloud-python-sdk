@@ -18,17 +18,17 @@ class DescribeVSwitchesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # The list of results.
+        # The result list.
         self.items = items
-        # The number of entries returned per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # The token that is used to start the next query. If this parameter is empty, all results have been returned.
+        # The token for the next query. An empty value of NextToken indicates that no more results exist.
         self.next_token = next_token
         # The current page number.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The total number of records.
         self.total_record_count = total_record_count

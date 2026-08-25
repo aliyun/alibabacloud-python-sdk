@@ -14,7 +14,7 @@ class DescribeDBClusterConfigChangeLogsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The configuration file that was modified. The value is \\`be.conf\\` for a compute cluster and \\`fe.conf\\` for an FE cluster.
+        # The configuration file that was modified. For compute clusters, this value is fixed as be.conf. For FE clusters, this value is fixed as fe.conf.
         self.config_key = config_key
         # The cluster ID.
         # 
@@ -24,7 +24,7 @@ class DescribeDBClusterConfigChangeLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end time to query change logs. The format is \\`yyyy-MM-dd HH:mm:ss\\`.
+        # The end time for querying change records. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -32,7 +32,7 @@ class DescribeDBClusterConfigChangeLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time to query change logs. The format is \\`yyyy-MM-dd HH:mm:ss\\`.
+        # The start time for querying change records. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time
