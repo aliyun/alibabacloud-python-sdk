@@ -1,3 +1,6 @@
+2026-08-25 Version: 7.1.3
+- Generated python 2015-12-15 for CS.
+
 2026-08-25 Version: 7.1.2
 - Update API CreateClusterNodePool: add request parameters body.node_components.$.config.envs.
 - Update API CreateNodePoolComponentInstances: add request parameters body.components.$.config.envs.
