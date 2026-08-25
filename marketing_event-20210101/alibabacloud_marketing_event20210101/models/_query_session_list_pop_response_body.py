@@ -100,14 +100,10 @@ class QuerySessionListPopResponseBodyData(DaraModel):
         name: str = None,
         start_time: str = None,
     ):
-        # code
         self.code = code
         self.end_time = end_time
-        # id
         self.id = id
-        # location
         self.location = location
-        # name
         self.name = name
         self.start_time = start_time
 

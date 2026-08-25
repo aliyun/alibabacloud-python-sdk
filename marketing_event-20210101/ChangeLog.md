@@ -1,3 +1,8 @@
+2026-08-25 Version: 1.2.1
+- Update API FindGuestTicketRecord: add response parameters Body.Data.$.FaceFeature.
+- Update API FindGuestTicketRecord: add response parameters Body.Data.$.FaceFeatureWriteTime.
+
+
 2026-05-08 Version: 1.2.0
 - Support API QueryQwenConferenceSgTicketPop.
 - Support API QueryQwenConferenceSgTicketSearchPop.

@@ -16,7 +16,6 @@ class QueryQwenConferenceSgTicketSearchPopResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Id of the request
         self.code = code
         self.data = data
         self.message = message

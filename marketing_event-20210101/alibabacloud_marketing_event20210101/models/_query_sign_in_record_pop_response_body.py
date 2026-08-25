@@ -99,9 +99,7 @@ class QuerySignInRecordPopResponseBodyData(DaraModel):
         time: str = None,
     ):
         self.event = event
-        # nfcid
         self.rfid = rfid
-        # sessionId
         self.session_id = session_id
         self.time = time
 

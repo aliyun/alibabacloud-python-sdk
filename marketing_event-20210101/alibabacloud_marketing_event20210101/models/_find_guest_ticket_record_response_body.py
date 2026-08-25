@@ -80,6 +80,8 @@ class FindGuestTicketRecordResponseBodyData(DaraModel):
         channel_level_info: main_models.FindGuestTicketRecordResponseBodyDataChannelLevelInfo = None,
         company_name: str = None,
         equity_dates: str = None,
+        face_feature: str = None,
+        face_feature_write_time: str = None,
         health_commitment_status: int = None,
         id_number: str = None,
         id_type: str = None,
@@ -93,6 +95,8 @@ class FindGuestTicketRecordResponseBodyData(DaraModel):
         self.channel_level_info = channel_level_info
         self.company_name = company_name
         self.equity_dates = equity_dates
+        self.face_feature = face_feature
+        self.face_feature_write_time = face_feature_write_time
         self.health_commitment_status = health_commitment_status
         self.id_number = id_number
         self.id_type = id_type
@@ -120,6 +124,12 @@ class FindGuestTicketRecordResponseBodyData(DaraModel):
 
         if self.equity_dates is not None:
             result['EquityDates'] = self.equity_dates
+
+        if self.face_feature is not None:
+            result['FaceFeature'] = self.face_feature
+
+        if self.face_feature_write_time is not None:
+            result['FaceFeatureWriteTime'] = self.face_feature_write_time
 
         if self.health_commitment_status is not None:
             result['HealthCommitmentStatus'] = self.health_commitment_status
@@ -161,6 +171,12 @@ class FindGuestTicketRecordResponseBodyData(DaraModel):
 
         if m.get('EquityDates') is not None:
             self.equity_dates = m.get('EquityDates')
+
+        if m.get('FaceFeature') is not None:
+            self.face_feature = m.get('FaceFeature')
+
+        if m.get('FaceFeatureWriteTime') is not None:
+            self.face_feature_write_time = m.get('FaceFeatureWriteTime')
 
         if m.get('HealthCommitmentStatus') is not None:
             self.health_commitment_status = m.get('HealthCommitmentStatus')
