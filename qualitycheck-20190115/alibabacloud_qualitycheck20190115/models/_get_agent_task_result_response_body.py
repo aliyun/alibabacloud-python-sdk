@@ -247,6 +247,7 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
         self,
         customer_prompt_response: main_models.GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse = None,
         field_response: main_models.GetAgentTaskResultResponseBodyDataResponseFieldResponse = None,
+        multi_level_tag_response: main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse = None,
         service_inspection_response: main_models.GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse = None,
         tag_category_response: main_models.GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse = None,
         voiceprint_response: main_models.GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse = None,
@@ -255,6 +256,7 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
         self.customer_prompt_response = customer_prompt_response
         # The property extraction result.
         self.field_response = field_response
+        self.multi_level_tag_response = multi_level_tag_response
         # The service quality inspection result.
         self.service_inspection_response = service_inspection_response
         # The tag categorization result.
@@ -266,6 +268,8 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
             self.customer_prompt_response.validate()
         if self.field_response:
             self.field_response.validate()
+        if self.multi_level_tag_response:
+            self.multi_level_tag_response.validate()
         if self.service_inspection_response:
             self.service_inspection_response.validate()
         if self.tag_category_response:
@@ -283,6 +287,9 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
 
         if self.field_response is not None:
             result['FieldResponse'] = self.field_response.to_map()
+
+        if self.multi_level_tag_response is not None:
+            result['MultiLevelTagResponse'] = self.multi_level_tag_response.to_map()
 
         if self.service_inspection_response is not None:
             result['ServiceInspectionResponse'] = self.service_inspection_response.to_map()
@@ -304,6 +311,10 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
         if m.get('FieldResponse') is not None:
             temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseFieldResponse()
             self.field_response = temp_model.from_map(m.get('FieldResponse'))
+
+        if m.get('MultiLevelTagResponse') is not None:
+            temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse()
+            self.multi_level_tag_response = temp_model.from_map(m.get('MultiLevelTagResponse'))
 
         if m.get('ServiceInspectionResponse') is not None:
             temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse()
@@ -746,6 +757,280 @@ class GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseService
 
         if m.get('Remarks') is not None:
             self.remarks = m.get('Remarks')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse(DaraModel):
+    def __init__(
+        self,
+        tag_list: List[main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList] = None,
+    ):
+        self.tag_list = tag_list
+
+    def validate(self):
+        if self.tag_list:
+            for v1 in self.tag_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['TagList'] = []
+        if self.tag_list is not None:
+            for k1 in self.tag_list:
+                result['TagList'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_list = []
+        if m.get('TagList') is not None:
+            for k1 in m.get('TagList'):
+                temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList()
+                self.tag_list.append(temp_model.from_map(k1))
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList(DaraModel):
+    def __init__(
+        self,
+        children: List[main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren] = None,
+        remarks: str = None,
+        tag_name: str = None,
+    ):
+        self.children = children
+        self.remarks = remarks
+        self.tag_name = tag_name
+
+    def validate(self):
+        if self.children:
+            for v1 in self.children:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Children'] = []
+        if self.children is not None:
+            for k1 in self.children:
+                result['Children'].append(k1.to_map() if k1 else None)
+
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.children = []
+        if m.get('Children') is not None:
+            for k1 in m.get('Children'):
+                temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren()
+                self.children.append(temp_model.from_map(k1))
+
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren(DaraModel):
+    def __init__(
+        self,
+        children: List[main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren] = None,
+        remarks: str = None,
+        tag_name: str = None,
+    ):
+        self.children = children
+        self.remarks = remarks
+        self.tag_name = tag_name
+
+    def validate(self):
+        if self.children:
+            for v1 in self.children:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Children'] = []
+        if self.children is not None:
+            for k1 in self.children:
+                result['Children'].append(k1.to_map() if k1 else None)
+
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.children = []
+        if m.get('Children') is not None:
+            for k1 in m.get('Children'):
+                temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren()
+                self.children.append(temp_model.from_map(k1))
+
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren(DaraModel):
+    def __init__(
+        self,
+        children: List[main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren] = None,
+        remarks: str = None,
+        tag_name: str = None,
+    ):
+        self.children = children
+        self.remarks = remarks
+        self.tag_name = tag_name
+
+    def validate(self):
+        if self.children:
+            for v1 in self.children:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Children'] = []
+        if self.children is not None:
+            for k1 in self.children:
+                result['Children'].append(k1.to_map() if k1 else None)
+
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.children = []
+        if m.get('Children') is not None:
+            for k1 in m.get('Children'):
+                temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren()
+                self.children.append(temp_model.from_map(k1))
+
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren(DaraModel):
+    def __init__(
+        self,
+        children: List[main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren] = None,
+        remarks: str = None,
+        tag_name: str = None,
+    ):
+        self.children = children
+        self.remarks = remarks
+        self.tag_name = tag_name
+
+    def validate(self):
+        if self.children:
+            for v1 in self.children:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Children'] = []
+        if self.children is not None:
+            for k1 in self.children:
+                result['Children'].append(k1.to_map() if k1 else None)
+
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.children = []
+        if m.get('Children') is not None:
+            for k1 in m.get('Children'):
+                temp_model = main_models.GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren()
+                self.children.append(temp_model.from_map(k1))
+
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+
+        return self
+
+class GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren(DaraModel):
+    def __init__(
+        self,
+        remarks: str = None,
+        tag_name: str = None,
+    ):
+        self.remarks = remarks
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
 
         return self
 
