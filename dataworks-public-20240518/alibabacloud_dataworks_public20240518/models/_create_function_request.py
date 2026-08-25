@@ -10,11 +10,11 @@ class CreateFunctionRequest(DaraModel):
         project_id: int = None,
         spec: str = None,
     ):
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to view the ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The FlowSpec field information about the UDF. For more information, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
+        # The FlowSpec information that describes the UDF function. For more information about the specifications, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
         # 
         # This parameter is required.
         self.spec = spec

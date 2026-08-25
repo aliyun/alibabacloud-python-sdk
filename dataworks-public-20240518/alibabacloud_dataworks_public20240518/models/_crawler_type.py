@@ -14,26 +14,11 @@ class CrawlerType(DaraModel):
         supported_entity_types: List[main_models.CrawlerTypeSupportedEntityTypes] = None,
         type: str = None,
     ):
-        # The display name of the metadata crawler.
+        # The display name.
         self.display_name = display_name
-        # The supported entity types. The entity types are sorted based on the declaration order.
+        # The list of supported entity types. The entity types have a top-down hierarchical relationship based on their declaration order.
         self.supported_entity_types = supported_entity_types
-        # The identifier of the metadata crawler type. Valid values:
-        # 
-        # *   `maxcompute`
-        # *   `dlf`
-        # *   `hms`: This type of crawler can be used to collect metadata from E-MapReduce (EMR) and CDH Hive clusters.
-        # *   `holo`
-        # *   `mysql`
-        # *   `oracle`
-        # *   `postgresql`
-        # *   `sqlserver`
-        # *   `analyticdb_for_mysql`
-        # *   `ads`
-        # *   `hybriddb_for_postgresql`
-        # *   `ots`
-        # *   `clickhouse`
-        # *   `starrocks`: This type of crawler can be used to query metadata entities only in internal catalogs.
+        # The type identifier.
         self.type = type
 
     def validate(self):
@@ -84,15 +69,13 @@ class CrawlerTypeSupportedEntityTypes(DaraModel):
         sub_type: str = None,
         type: str = None,
     ):
-        # Specifies whether the entity type is optional.
-        # 
-        # For example, whether the schema level of the MaxCompute crawler type is optional depends on whether the three-layer model is enabled for a MaxCompute project.
+        # Indicates whether the entity type is optional.
         self.optional = optional
-        # The subtype of the parent entity. If the subtype does not exist, null is returned.
+        # The entity subtype of the parent level. The value is null if no parent level exists.
         self.parent_sub_type = parent_sub_type
-        # The identifier of the entity subtype. Valid values: `catalog, database, schema, table, and column`.
+        # The entity subtype identifier.
         self.sub_type = sub_type
-        # The identifier of the entity type. The value of this parameter varies based on the type of the metadata crawler. Configure this parameter in the `${Crawler type}-${Subtype}` format.
+        # The entity type identifier, which is related to the crawler type. The format is (CrawlerType)-{SubType}.
         self.type = type
 
     def validate(self):

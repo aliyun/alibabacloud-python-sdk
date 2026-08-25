@@ -19,9 +19,9 @@ class CreateDIAlarmRuleRequest(DaraModel):
         notification_settings: main_models.CreateDIAlarmRuleRequestNotificationSettings = None,
         trigger_conditions: List[main_models.CreateDIAlarmRuleRequestTriggerConditions] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The idempotency parameter.
         self.client_token = client_token
-        # The ID of the synchronization task with which the alert rule is associated.
+        # The task ID associated with the alert rule.
         # 
         # This parameter is required.
         self.dijob_id = dijob_id
@@ -29,17 +29,12 @@ class CreateDIAlarmRuleRequest(DaraModel):
         self.description = description
         # Specifies whether to enable the alert rule. By default, the alert rule is disabled.
         self.enabled = enabled
-        # The metric type in the alert rule. Valid values:
-        # 
-        # - Heartbeat
-        # 
-        # - FailoverCount
-        # 
-        # - Delay
-        # 
-        # - DdlReport
-        # 
-        # - ResourceUtilization
+        # The alert metric type. Valid values:
+        # - Heartbeat: task status alert.
+        # - FailoverCount: failover count alert.
+        # - Delay: task latency alert.
+        # - DdlReport: DDL notification.
+        # - ResourceUtilization: resource group utilization.
         # 
         # This parameter is required.
         self.metric_type = metric_type
@@ -51,7 +46,7 @@ class CreateDIAlarmRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.notification_settings = notification_settings
-        # The conditions that can trigger the alert rule.
+        # The list of alert trigger conditions. Multiple conditions are supported.
         # 
         # This parameter is required.
         self.trigger_conditions = trigger_conditions
@@ -138,25 +133,20 @@ class CreateDIAlarmRuleRequestTriggerConditions(DaraModel):
         severity: str = None,
         threshold: int = None,
     ):
-        # This parameter is deprecated and replaced by the DdlTypes parameter.
+        # **[Deprecated]** Use the DdlTypes parameter instead.
         self.ddl_report_tags = ddl_report_tags
-        # The types of DDL operations for which the alert rule takes effect.
+        # The list of DDL types that take effect. This parameter takes effect only when the metric type is DDL notification.
         self.ddl_types = ddl_types
-        # The time interval for alert calculation. Unit: minutes.
+        # The time window for alert calculation. Unit: minutes.
         self.duration = duration
         # The severity level. Valid values:
-        # 
         # - Warning
-        # 
         # - Critical
         self.severity = severity
         # The alert threshold.
-        # 
-        # - If the alert rule is for task status, you do not need to specify a threshold.
-        # 
-        # - If the alert rule is for failovers, you must specify the number of failovers.
-        # 
-        # - If the alert rule is for latency, you must specify the latency duration, in seconds.
+        # - Task status alert: no threshold is required.
+        # - Failover count alert: the threshold is the number of failovers.
+        # - Task latency alert: the threshold is the latency duration. Unit: seconds.
         self.threshold = threshold
 
     def validate(self):
@@ -211,13 +201,13 @@ class CreateDIAlarmRuleRequestNotificationSettings(DaraModel):
         notification_channels: List[main_models.CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels] = None,
         notification_receivers: List[main_models.CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers] = None,
     ):
-        # This parameter is deprecated and replaced by the MuteInterval parameter.
+        # **[Deprecated]** Use the MuteInterval parameter instead.
         self.inhibition_interval = inhibition_interval
-        # The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+        # The alert mute interval. Unit: minutes. Default value: 5.
         self.mute_interval = mute_interval
-        # The alert notification methods.
+        # The alert notification channels.
         self.notification_channels = notification_channels
-        # The settings of alert notification recipients.
+        # The alert notification receivers.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -281,13 +271,11 @@ class CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers(DaraMode
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The recipient type. Valid values: AliyunUid, DingToken, FeishuToken, and WebHookUrl.
+        # The receiver type. Valid values: AliyunUid, DingToken, FeishuToken, and WebHookUrl.
         self.receiver_type = receiver_type
-        # The recipient.
-        # 
-        # - If the ReceiverType parameter is set to AliyunUid, set this parameter to the Alibaba Cloud account ID of a user.
-        # 
-        # - If the ReceiverType parameter is set to DingToken, set this parameter to the token of a DingTalk chatbot.
+        # The receiver values.
+        # - If the receiver type is AliyunUid, the value is the Alibaba Cloud account ID.
+        # - If the receiver type is DingToken, the value is the DingTalk token.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -322,20 +310,14 @@ class CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels(DaraModel
         channels: List[str] = None,
         severity: str = None,
     ):
-        # The alert notification method. Valid values:
-        # 
-        # - Mail
-        # 
-        # - Phone
-        # 
-        # - Sms
-        # 
-        # - Ding
+        # The notification channel. Valid values:
+        # - Mail: email.
+        # - Phone: phone call.
+        # - Sms: text message.
+        # - Ding: DingTalk.
         self.channels = channels
         # The severity level. Valid values:
-        # 
         # - Warning
-        # 
         # - Critical
         self.severity = severity
 

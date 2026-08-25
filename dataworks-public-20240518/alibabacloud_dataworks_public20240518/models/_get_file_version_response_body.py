@@ -15,21 +15,19 @@ class GetFileVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Version details of the file.
+        # The version details of the file.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The unique ID of this request. If an error occurs, you can troubleshoot the issue using this ID.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the API call succeeded.
-        # 
-        # - true: Succeeded.
-        # 
-        # - false: Failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -101,59 +99,45 @@ class GetFileVersionResponseBodyData(DaraModel):
         status: str = None,
         use_type: str = None,
     ):
-        # The change type of this file version, including CREATE, UPDATE, and DELETE.
+        # The change type of this file version. Valid values: CREATE, UPDATE, and DELETE.
         self.change_type = change_type
-        # Description of this file version.
+        # The description of this file version.
         self.comment = comment
-        # UNIX timestamp (in milliseconds) when the file version was generated.
+        # The timestamp when the file version was generated, in milliseconds.
         self.commit_time = commit_time
-        # User ID of the Alibaba Cloud user who generated this file version.
+        # The Alibaba Cloud user ID that generated this file version.
         self.commit_user = commit_user
-        # The code of the file for this version.
+        # The file code that generated this file version.
         self.file_content = file_content
-        # File name used to generate this file version.
+        # The name of the file that generated this file version.
         self.file_name = file_name
-        # Basic information of the file used to generate this file version.
+        # The basic file information when this file version was generated.
         self.file_property_content = file_property_content
         # The version of the file.
         self.file_version = file_version
-        # Indicates whether this file version is the latest version in the current production environment.
-        # 
-        # - true: It is the latest version.
-        # 
-        # - false: It is not the latest version.
+        # Indicates whether this file version is the latest version in the production environment. Valid values:
+        # - true: The version is the latest version.
+        # - false: The version is not the latest version.
         self.is_current_prod = is_current_prod
-        # The scan configuration at the time this file version was generated.
+        # The scheduling configuration when this file version was generated.
         self.node_content = node_content
-        # The ID of the scheduling task corresponding to the generation of this file version.
+        # The ID of the scheduling node associated with the file version when it was generated.
         self.node_id = node_id
-        # Current status of the file version. Valid values:
-        # 
-        # - COMMITTING (Submitting)
-        # 
-        # - COMMITTED or CHECK_OK (Submitted)
-        # 
-        # - PACKAGED (Preparing for publish)
-        # 
-        # - DEPLOYING (In Publish)
-        # 
-        # - DEPLOYED (Published)
-        # 
-        # - CANCELLED (Publish canceled)
+        # The current status of the file version. Valid values:
+        # - COMMITTING: The version is being committed.
+        # - COMMITTED or CHECK_OK: The version has been committed.
+        # - PACKAGED: The version is ready for deployment.
+        # - DEPLOYING: The version is being deployed.
+        # - DEPLOYED: The version has been deployed.
+        # - CANCELLED: The deployment has been canceled.
         self.status = status
-        # Function module to which the file belongs. Valid values:
-        # 
-        # - 0: NORMAL (Data Development)
-        # 
-        # - 1: MANUAL (one-time task)
-        # 
-        # - 2: MANUAL_BIZ (manual pipeline)
-        # 
-        # - 3: SKIP (Dry-Run scheduling in Data Development)
-        # 
-        # - 10: ADHOCQUERY (Ad Hoc Query)
-        # 
-        # - 30: COMPONENT (widget Management)
+        # The functional module to which the file belongs. Valid values:
+        # - 0: NORMAL (DataStudio)
+        # - 1: MANUAL (manual node)
+        # - 2: MANUAL_BIZ (manual workflow)
+        # - 3: SKIP (dry-run scheduling in DataStudio)
+        # - 10: ADHOCQUERY (ad hoc query)
+        # - 30: COMPONENT (component management)
         self.use_type = use_type
 
     def validate(self):

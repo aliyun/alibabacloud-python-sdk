@@ -14,11 +14,17 @@ class RunCrawlerResponseBody(DaraModel):
         success: bool = None,
         task_instance_id: int = None,
     ):
+        # The ID of the metadata crawler.
         self.id = id
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
+        # Indicates whether the run request was accepted. A value of true indicates that the request was accepted, but does not indicate that the collection task is complete.
         self.run_accepted = run_accepted
+        # The initial run status after submission. The value is WAITING when the run request is successfully accepted. To query the final status, call ListCrawlerRuns.
         self.run_status = run_status
+        # Indicates whether the request was successful.
         self.success = success
+        # The associated DataWorks task instance ID. This field may be empty. To query the final run record, call ListCrawlerRuns.
         self.task_instance_id = task_instance_id
 
     def validate(self):

@@ -15,13 +15,13 @@ class CreateDataQualityScanRunRequest(DaraModel):
         project_id: int = None,
         runtime_resource: main_models.CreateDataQualityScanRunRequestRuntimeResource = None,
     ):
-        # The data quality scan ID.
+        # The ID of the data quality monitoring task.
         self.data_quality_scan_id = data_quality_scan_id
-        # The parameters for the run. The `triggerTime` parameter is required.
+        # The parameter settings used during the actual run. The `triggerTime` parameter is required.
         self.parameters = parameters
         # The project ID.
         self.project_id = project_id
-        # Specifies the scheduling resource group used to run the data quality scan. This object uses the same data structure as the scheduling API.
+        # The schedule resource group used when the data quality monitoring task runs. This shares the same data structure as the scheduling API.
         self.runtime_resource = runtime_resource
 
     def validate(self):
@@ -80,11 +80,11 @@ class CreateDataQualityScanRunRequestRuntimeResource(DaraModel):
         id: str = None,
         image: str = None,
     ):
-        # The number of compute units (CUs) to reserve from the resource group for the data quality scan.
+        # The CU configuration reserved for the resource group when running the data quality monitoring task.
         self.cu = cu
         # The resource group ID.
         self.id = id
-        # The image configuration for running the data quality scan on the resource group.
+        # The image settings used when running the data quality monitoring task on the resource group.
         self.image = image
 
     def validate(self):
@@ -125,15 +125,13 @@ class CreateDataQualityScanRunRequestParameters(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the parameter. The only supported value is:
-        # 
+        # The parameter name. Currently supported parameter:
         # - triggerTime
         # 
-        # No other scheduling parameters are currently supported.
+        # Other scheduling parameters are not supported.
         self.name = name
-        # The parameter value.
-        # 
-        # - If the parameter name is triggerTime, this value must be the trigger time as a timestamp.
+        # The parameter value:
+        # - If the parameter name is triggerTime, the value must be the timestamp of the scheduling time.
         self.value = value
 
     def validate(self):

@@ -14,15 +14,13 @@ class ExecuteAdhocWorkflowInstanceShrinkRequest(DaraModel):
         project_id: int = None,
         tasks_shrink: str = None,
     ):
-        # The data timestamp.
+        # The business date. The value is a timestamp.
         self.biz_date = biz_date
-        # The environment of the workspace. Valid values:
-        # 
-        # - Prod: production environment
-        # 
-        # - Dev: development environment
+        # The project environment. Valid values:
+        # - Prod: production
+        # - Dev: development
         self.env_type = env_type
-        # The name of the workflow instance.
+        # The name.
         # 
         # This parameter is required.
         self.name = name
@@ -30,11 +28,11 @@ class ExecuteAdhocWorkflowInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The workspace ID.
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The tasks.
+        # The list of tasks.
         # 
         # This parameter is required.
         self.tasks_shrink = tasks_shrink

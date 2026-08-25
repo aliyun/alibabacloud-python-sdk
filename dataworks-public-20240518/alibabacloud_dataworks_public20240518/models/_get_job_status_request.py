@@ -9,7 +9,7 @@ class GetJobStatusRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the asynchronous task that is generated after you call an asynchronous operation.
+        # The task ID returned after calling an asynchronous API.
         # 
         # This parameter is required.
         self.job_id = job_id

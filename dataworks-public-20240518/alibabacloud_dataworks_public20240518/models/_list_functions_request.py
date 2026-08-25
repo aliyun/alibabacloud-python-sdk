@@ -14,35 +14,30 @@ class ListFunctionsRequest(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
-        # Filter criteria: UDF name. Supports fuzzy search.
+        # The filter condition: the UDF function name. Fuzzy match is supported.
         self.name = name
-        # The ID of the owner of the UDF. This parameter specifies a filter condition.
+        # The filter condition: the ID of the UDF function owner.
         self.owner = owner
         # The page number. Default value: 1. Minimum value: 1.
         self.page_number = page_number
-        # The page number. Default value: 1. Minimum value: 1.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Storage Management page to obtain the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter specifies the DataWorks workspace for this API call operation.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The user-defined function (UDF) type. This parameter specifies a filter condition.
+        # The filter condition: the function type.
         # 
         # Valid values:
         # 
         # - Math: mathematical operation function
-        # 
-        # - Aggregate: aggregate function
-        # 
-        # - String: string processing function
-        # 
+        # - Aggregate: aggregate functions
+        # - String: character string processing function
         # - Date: date function
-        # 
         # - Analytic: window function
-        # 
-        # - Other: other functions
+        # - Other: other function
         self.type = type
 
     def validate(self):

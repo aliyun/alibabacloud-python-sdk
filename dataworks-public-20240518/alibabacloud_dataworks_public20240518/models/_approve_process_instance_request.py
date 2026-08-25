@@ -15,9 +15,9 @@ class ApproveProcessInstanceRequest(DaraModel):
     ):
         # The approval action. Valid values:
         # 
-        # - Agree: Approved.
+        # - Agree: approves the request.
         # 
-        # - Deny: Rejected.
+        # - Deny: rejects the request.
         # 
         # This parameter is required.
         self.approval_action = approval_action
@@ -27,9 +27,9 @@ class ApproveProcessInstanceRequest(DaraModel):
         self.approval_comment = approval_comment
         # The idempotency token. We recommend that you use a UUID.
         self.client_token = client_token
-        # The new authorization expiration time. Unit: milliseconds (UNIX timestamp).
+        # The modified authorization expiration time. The value is a millisecond-level timestamp.
         self.new_expiration = new_expiration
-        # The process instance ID. Both new and legacy Security Center approval forms are supported.
+        # The flow instance ID. Both new and legacy Security Center approval orders are supported.
         # 
         # This parameter is required.
         self.process_instance_id = process_instance_id

@@ -15,62 +15,35 @@ class CreateDatasetShrinkRequest(DaraModel):
         project_id: int = None,
         storage_type: str = None,
     ):
-        # The description of the dataset. It must not exceed 1,024 characters in length.
+        # The description of the dataset. The value can be up to 1024 characters in length.
         self.comment = comment
         # The data type. Valid values:
-        # 
-        # - COMMON: Common (Default)
-        # 
-        # - PIC
-        # 
-        # - TEXT
-        # 
-        # - TABLE
-        # 
-        # - VIDEO
-        # 
-        # - AUDIO
-        # 
-        # - INDEX
+        # - COMMON: general-purpose (default).
+        # - PIC: image.
+        # - TEXT: text.
+        # - TABLE: table.
+        # - VIDEO: video.
+        # - AUDIO: audio.
+        # - INDEX: index.
         self.data_type = data_type
         # The initial version of the dataset.
         # 
         # This parameter is required.
         self.init_version_shrink = init_version_shrink
-        # The name of the dataset. It cannot be an empty string and must not exceed 128 characters in length.
+        # The name of the dataset. The value must be a non-empty string that is up to 128 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The source of the dataset. Currently, only DataWorks is supported.
+        # The origin of the dataset. Only DataWorks is supported.
         self.origin = origin
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The storage type. Currently supported values:
-        # 
-        # - OSS
-        # 
-        # - NAS: General-purpose NAS file systems
-        # 
-        # - EXTREMENAS: Extreme NAS file systems
-        # 
-        # - DLF_LANCE: Data Lake Formation
-        # 
-        # Valid values:
-        # 
-        # - NAS: General-purpose NAS file systems
-        # 
-        # - MAXCOMPUTE: MaxCompute table
-        # 
-        # - CPFS: Cloud Parallel File Storage
-        # 
-        # - BMCPFS: CPFS for Lingjun
-        # 
-        # - EXTREMENAS: Extreme NAS file systems
-        # 
-        # - OSS: Object Storage Service
-        # 
+        # The storage type. Valid values:
+        # - OSS: Object Storage Service.
+        # - NAS: general-purpose NAS file storage.
+        # - EXTREMENAS: extreme NAS file storage.
         # - DLF_LANCE: Data Lake Formation.
         # 
         # This parameter is required.

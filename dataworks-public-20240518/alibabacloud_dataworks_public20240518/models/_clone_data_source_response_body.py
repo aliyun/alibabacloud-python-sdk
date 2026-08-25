@@ -10,9 +10,9 @@ class CloneDataSourceResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The ID of the cloned data source.
+        # The ID of the cloned data source. This is the unique identifier of the data source.
         self.id = id
-        # The request ID. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

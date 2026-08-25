@@ -10,9 +10,9 @@ class CreateDataSourceResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The data source ID.
+        # The ID of the created data source. This is the unique identifier of the data source.
         self.id = id
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

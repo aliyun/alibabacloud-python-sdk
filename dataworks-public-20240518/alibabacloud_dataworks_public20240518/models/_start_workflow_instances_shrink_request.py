@@ -12,7 +12,7 @@ class StartWorkflowInstancesShrinkRequest(DaraModel):
     ):
         # The remarks.
         self.comment = comment
-        # The IDs of workflow instances.
+        # The list of workflow instance IDs.
         # 
         # This parameter is required.
         self.ids_shrink = ids_shrink

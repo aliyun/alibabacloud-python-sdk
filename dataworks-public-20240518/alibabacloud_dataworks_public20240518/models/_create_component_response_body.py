@@ -10,7 +10,7 @@ class CreateComponentResponseBody(DaraModel):
         component_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the dataset acceleration component. To obtain the component ID, see [ListComponents](https://help.aliyun.com/document_detail/2979566.html).
+        # The component ID. For information about how to obtain the component ID, see [ListComponents](https://help.aliyun.com/document_detail/2979566.html).
         self.component_id = component_id
         # Id of the request
         self.request_id = request_id

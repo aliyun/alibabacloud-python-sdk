@@ -12,9 +12,9 @@ class StopTaskInstancesRequest(DaraModel):
         comment: str = None,
         ids: List[int] = None,
     ):
-        # Remarks.
+        # The remarks.
         self.comment = comment
-        # The ID list of the task instance.
+        # The list of instance IDs.
         self.ids = ids
 
     def validate(self):

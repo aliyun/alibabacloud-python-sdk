@@ -15,7 +15,7 @@ class ListUpstreamTaskInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size

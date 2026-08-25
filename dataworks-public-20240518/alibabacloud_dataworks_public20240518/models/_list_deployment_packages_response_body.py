@@ -15,7 +15,7 @@ class ListDeploymentPackagesResponseBody(DaraModel):
     ):
         # The list of deployment packages that meet the query conditions.
         self.data = data
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDeploymentPackagesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The returned list of deployment packages.
+        # The list of deployment packages.
         self.deployments = deployments
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of records that meet the conditions.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -123,27 +123,24 @@ class ListDeploymentPackagesResponseBodyDataDeployments(DaraModel):
     ):
         # The timestamp when the deployment package was created.
         self.create_time = create_time
-        # The Alibaba Cloud account ID of the deployment package creator.
+        # The Alibaba Cloud user ID of the deployment package creator.
         self.creator = creator
-        # When the deployment package fails to execute, this parameter is used to record the error message.
+        # The error message recorded when the deployment package fails to be executed.
         self.error_message = error_message
         # The timestamp when the deployment package was executed.
         self.execute_time = execute_time
-        # The Alibaba Cloud account ID of the deployment package executor.
+        # The Alibaba Cloud user ID of the deployment package executor.
         self.executor = executor
-        # The ID of the deployment package. You can use this ID to call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to get the deployment package details.
+        # The ID of the deployment package. You can use this ID to call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to obtain the details of the deployment package.
         self.id = id
         # The name of the deployment package.
         self.name = name
-        # The status of the deployment package. Valid values:
+        # The current status of the deployment package. Valid values:
         # 
-        # - 0: It is ready.
-        # 
-        # - 1: It was successfully deployed.
-        # 
-        # - 2: It failed to be deployed.
-        # 
-        # - 6: It was rejected.
+        # - 0: The deployment package is ready.
+        # - 1: The deployment package is published.
+        # - 2: The deployment package failed to be published.
+        # - 6: The deployment package is rejected.
         self.status = status
 
     def validate(self):

@@ -11,17 +11,17 @@ class RevokeMemberProjectRolesShrinkRequest(DaraModel):
         role_codes_shrink: str = None,
         user_id: str = None,
     ):
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the workspace settings page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) operation to query the codes of all roles in the workspace.
+        # The list of workspace role codes. You can call [ListProjectRoles](https://help.aliyun.com/document_detail/2853930.html) to obtain the role codes. 
         # 
-        # You must configure this parameter to specify the roles that you want to revoke from the member in the workspace.
+        # This parameter specifies the workspace roles to be revoked by this API call.
         # 
         # This parameter is required.
         self.role_codes_shrink = role_codes_shrink
-        # The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+        # The ID of the DataWorks account. You can log on to the [DataWorks console - Management Center](https://dataworks.console.aliyun.com/product/ms_menu), select the workspace that you want to manage, go to the Tenant Members and Roles page, and view the account ID of the member whose roles you want to revoke.
         # 
         # This parameter is required.
         self.user_id = user_id

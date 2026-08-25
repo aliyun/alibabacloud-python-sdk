@@ -14,8 +14,11 @@ class GetCrawlerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The metadata crawler details.
         self.crawler = crawler
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -75,24 +78,43 @@ class GetCrawlerResponseBodyCrawler(DaraModel):
         task_id: int = None,
         type: str = None,
     ):
+        # The creation time, in millisecond-level UNIX timestamp.
         self.create_time = create_time
+        # The data source ID.
         self.data_source_id = data_source_id
+        # Indicates whether AI metadata description is enabled.
         self.enable_ai_comment = enable_ai_comment
+        # The DataWorks environment type. Valid values: Dev, Prod.
         self.env_type = env_type
+        # The crawler ID.
         self.id = id
+        # The latest run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN. This value may be empty if the crawler has not been run.
         self.last_run_status = last_run_status
+        # The DataWorks task instance ID associated with the latest run. This value may be empty if the crawler has not been run.
         self.last_run_task_instance_id = last_run_task_instance_id
+        # The meta entity ID associated with the crawler, which can be used to connect to metadata query APIs.
         self.meta_entity_id = meta_entity_id
+        # The modification time, in millisecond-level UNIX timestamp.
         self.modify_time = modify_time
+        # The crawler name.
         self.name = name
+        # The extended configuration for the crawler type.
         self.options = options
+        # The DataWorks user ID of the crawler owner.
         self.owner = owner
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The Serverless 2.0 resource group ID used to run the collection task.
         self.resource_group_id = resource_group_id
+        # The schedule configuration.
         self.schedule_config = schedule_config
+        # The collection scope configuration.
         self.scope = scope
+        # The crawler status. The value is VALID if the crawler configuration is valid and the associated data source exists. Otherwise, the value is INVALID.
         self.status = status
+        # The DataWorks scheduling task ID associated with the crawler, which can be used to call GetTask to query the task definition.
         self.task_id = task_id
+        # The crawler type.
         self.type = type
 
     def validate(self):
@@ -235,8 +257,11 @@ class GetCrawlerResponseBodyCrawlerScope(DaraModel):
         items: List[str] = None,
         unit: str = None,
     ):
+        # The exclusion regular expression for the collection scope.
         self.exclude_regex = exclude_regex
+        # The collection scope entries.
         self.items = items
+        # The collection scope granularity. Valid values: PROJECT, DATABASE, INSTANCE, CATALOG.
         self.unit = unit
 
     def validate(self):
@@ -277,7 +302,9 @@ class GetCrawlerResponseBodyCrawlerScheduleConfig(DaraModel):
         cron_express: str = None,
         type: str = None,
     ):
+        # The cron expression.
         self.cron_express = cron_express
+        # The schedule type. Valid values: MANUAL, NORMAL.
         self.type = type
 
     def validate(self):

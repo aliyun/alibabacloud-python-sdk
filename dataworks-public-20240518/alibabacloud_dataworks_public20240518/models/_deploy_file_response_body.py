@@ -14,7 +14,7 @@ class DeployFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The deployment package ID. You must specify this ID as a parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to query the details of the deployment.
+        # The ID of the deployment package. You must pass this ID as a parameter when you call the [GetDeployment](https://help.aliyun.com/document_detail/173950.html) operation to obtain the details of this deployment.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -26,9 +26,8 @@ class DeployFileResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
         # 
-        # - true: success.
-        # 
-        # - false: failure.
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

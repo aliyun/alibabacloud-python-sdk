@@ -13,9 +13,9 @@ class ListDataQualityEvaluationTasksResponseBody(DaraModel):
         paging_info: main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # 质量校验任务分页查询结果
+        # The paged query result of quality evaluation nodes.
         self.paging_info = paging_info
-        # API请求ID
+        # The API request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfo(DaraModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # 质量校验任务
+        # The quality evaluation tasks.
         self.data_quality_evaluation_tasks = data_quality_evaluation_tasks
-        # 页码
+        # The page number.
         self.page_number = page_number
-        # 页大小
+        # The page size.
         self.page_size = page_size
-        # 总条数
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -124,23 +124,23 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         trigger: main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger = None,
     ):
         self.data_source_id = data_source_id
-        # 数据质量校验任务描述，最长65535个字符
+        # The description of the data quality evaluation task. The description can be up to 65,535 characters in length.
         self.description = description
-        # 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+        # The callback settings during the epoch of data quality evaluation task instances. Currently, only one hook that blocks a scheduling node instance is supported.
         self.hooks = hooks
-        # 数据质量校验任务ID
+        # The ID of the data quality evaluation task.
         self.id = id
-        # 数据质量校验任务名称，数字、英文字母、汉字、半角全角标点符号组合，最长255个字符。
+        # The name of the data quality evaluation task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
         self.name = name
-        # 告警配置
+        # The alert configuration.
         self.notifications = notifications
-        # DataWorks工作空间ID
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时SQL引擎指定为SPARK_SQL|KYUUBI|PRESTO_SQL|HIVE_SQL
+        # The runtime settings for data sources. Currently, only specifying the EMR YARN queue and the SQL engine for collecting EMR tables is supported. Valid SQL engine values: SPARK_SQL, KYUUBI, PRESTO_SQL, and HIVE_SQL.
         self.runtime_conf = runtime_conf
-        # 数据质量校验任务的监控对象
+        # The monitored object of the data quality evaluation task.
         self.target = target
-        # 数据质量校验任务的触发配置
+        # The trigger configuration of the data quality evaluation task.
         self.trigger = trigger
 
     def validate(self):
@@ -240,12 +240,11 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         task_ids: List[int] = None,
         type: str = None,
     ):
-        # type=ByScheduledTaskInstance时生效
-        # ,具体指明哪些调度节点的实例执行成功后可以触发
+        # This parameter takes effect when type is set to ByScheduledTaskInstance. Specifies the scheduled node IDs whose successful instance execution can trigger the task.
         self.task_ids = task_ids
-        # 何种事件可以触发质量校验任务执行
+        # The type of event that triggers the quality evaluation task. Valid values:
         # 
-        # - ByScheduledTaskInstance：调度实例运行成功
+        # - ByScheduledTaskInstance: Triggered when a scheduled node instance runs successfully.
         self.type = type
 
     def validate(self):
@@ -282,7 +281,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         table_guid: str = None,
         type: str = None,
     ):
-        # 表类型的数据集，表所属的数据库类型
+        # The database type of the table dataset. Valid values:
         # - maxcompute
         # - emr
         # - cdh
@@ -291,11 +290,11 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         # - analyticdb_for_mysql
         # - starrocks
         self.database_type = database_type
-        # 分区表的分区设置
+        # The partition settings of the partitioned table.
         self.partition_spec = partition_spec
-        # 表在数据地图中的唯一ID
+        # The unique ID of the table in DataWorks Data Map.
         self.table_guid = table_guid
-        # 监控对象类型
+        # The monitored object type. Valid values:
         # 
         # - Table
         self.type = type
@@ -344,9 +343,9 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         condition: str = None,
         notifications: List[main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications] = None,
     ):
-        # Notification触发条件
+        # The cause that triggers the notification.
         self.condition = condition
-        # 具体的告警设置
+        # The alert settings.
         self.notifications = notifications
 
     def validate(self):
@@ -389,9 +388,9 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         notification_channels: List[main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers] = None,
     ):
-        # 告警方式配置
+        # The alert channel configurations.
         self.notification_channels = notification_channels
-        # 告警接收人配置
+        # The alert recipient configurations.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -444,16 +443,16 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+        # The extension information in JSON format. For example, DingTalk chatbots support mentioning all members.
         self.extension = extension
-        # 告警接收人类型
-        # - AliUid - 阿里云账号Uid
-        # - WebhookUrl - 自定义 webhook URL
-        # - DingdingUrl - 钉钉机器人Url
-        # - FeishuUrl - 飞书机器人Url
-        # - WeixinUrl - 企微机器人Url
+        # The type of the alert recipient. Valid values:
+        # - AliUid: Alibaba Cloud account UID.
+        # - WebhookUrl: custom webhook URL.
+        # - DingdingUrl: DingTalk chatbot URL.
+        # - FeishuUrl: Lark chatbot URL.
+        # - WeixinUrl: WeCom chatbot URL.
         self.receiver_type = receiver_type
-        # 告警接收人具体值
+        # The specific values of the alert recipients.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -493,7 +492,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         self,
         channels: List[str] = None,
     ):
-        # 告警方式
+        # The alert channel.
         self.channels = channels
 
     def validate(self):
@@ -522,10 +521,10 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         condition: str = None,
         type: str = None,
     ):
-        # Hook触发条件
+        # The cause that triggers the hook.
         self.condition = condition
-        # 后续处理动作类型
-        # - BlockTaskInstance：阻塞DataWorks任务实例执行
+        # The type of the follow-up action. Valid values:
+        # - BlockTaskInstance: Blocks the execution of a DataWorks node instance.
         self.type = type
 
     def validate(self):

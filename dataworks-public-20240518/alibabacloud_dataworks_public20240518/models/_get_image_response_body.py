@@ -86,11 +86,9 @@ class GetImageResponseBodyImage(DaraModel):
         supported: main_models.GetImageResponseBodyImageSupported = None,
         version: str = None,
     ):
-        # The image visibility:
-        # 
-        # - Public: Visible to all users.
-        # 
-        # - Private: Visible only to the creator.
+        # The image visibility. Valid values:
+        # - Public: visible to all users.
+        # - Private: visible only to the creator.
         self.accessibility = accessibility
         # The VPC ID associated with the ACR instance.
         self.acr_associated_vpc_id = acr_associated_vpc_id
@@ -106,7 +104,7 @@ class GetImageResponseBodyImage(DaraModel):
         self.creator = creator
         # The image description.
         self.description = description
-        # Indicates whether synchronization to MaxCompute is enabled.
+        # Indicates whether synchronization with MaxCompute is enabled.
         self.enable_sync_max_compute = enable_sync_max_compute
         # The image ID.
         self.id = id
@@ -128,55 +126,36 @@ class GetImageResponseBodyImage(DaraModel):
         self.namespace = namespace
         # Indicates whether the image is an official image.
         self.official = official
-        # The image ID assigned by the provider.
+        # The image ID from the image provider.
         self.provider_image_id = provider_image_id
-        # The image provider type:
-        # 
+        # The image reference data type. Valid values:
         # - ACR: ACR image repository.
-        # 
         # - DataWorks: DataWorks official image.
         self.provider_type = provider_type
-        # The publish stage:
-        # 
-        # - Untest: Not tested.
-        # 
-        # - Testing: Being tested.
-        # 
-        # - TestFailed: Test failed.
-        # 
-        # - Unpublished: Not published.
-        # 
-        # - Publishing: Being published.
-        # 
-        # - Published: Published.
-        # 
-        # - PublishFailed: Publish failed.
-        # 
-        # - Building: Being built.
-        # 
-        # - BuildSuccess: Build succeeded.
-        # 
-        # - BuildFailed: Build failed.
-        # 
-        # - Accelerating: Being accelerated.
-        # 
-        # - AccelerateSuccess: Acceleration succeeded.
-        # 
-        # - AccelerateFailed: Acceleration failed.
+        # The publish status. Valid values:
+        # - Untest: not tested.
+        # - Testing: being tested.
+        # - TestFailed: test failed.
+        # - Unpublished: not published.
+        # - Publishing: being published.
+        # - Published: published.
+        # - PublishFailed: publish failed.
+        # - Building: being built.
+        # - BuildSuccess: build succeeded.
+        # - BuildFailed: build failed.
+        # - Accelerating: being accelerated.
+        # - AccelerateSuccess: acceleration succeeded.
+        # - AccelerateFailed: acceleration failed.
         self.publish_stage = publish_stage
         # The repository name.
         self.repository_name = repository_name
         # The image size.
         self.size = size
-        # The image status:
-        # 
-        # - Disabled: The image is disabled.
-        # 
-        # - Expired: The image has expired.
-        # 
-        # - Available: The image is available.
-        # 
-        # - ReadOnly: The image is read-only.
+        # The image status. Valid values:
+        # - Disabled: disabled.
+        # - Expired: expired.
+        # - Available: active.
+        # - ReadOnly: read-only.
         self.status = status
         # The supported modules and task types.
         self.supported = supported
@@ -370,9 +349,8 @@ class GetImageResponseBodyImageSupported(DaraModel):
         module: str = None,
         task_types: List[str] = None,
     ):
-        # The supported module:
-        # 
-        # - Scheduler: Scheduling.
+        # The supported module. Valid values:
+        # - Scheduler: scheduling.
         self.module = module
         # The list of supported task types.
         self.task_types = task_types
@@ -454,7 +432,7 @@ class GetImageResponseBodyImageBuildConfigPackageInstallationScripts(DaraModel):
         content: str = None,
         type: str = None,
     ):
-        # The script content. If the content consists of package names, separate them with commas (,).
+        # The script content. If the content contains package names, separate them with commas (,).
         self.content = content
         # The script type.
         self.type = type

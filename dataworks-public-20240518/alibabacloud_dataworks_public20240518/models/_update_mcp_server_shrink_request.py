@@ -14,7 +14,7 @@ class UpdateMcpServerShrinkRequest(DaraModel):
         visibility: str = None,
         visibility_scope_shrink: str = None,
     ):
-        # The new custom request headers, specified as key-value pairs.
+        # The new custom request headers (key-value pairs).
         self.custom_headers_shrink = custom_headers_shrink
         # The name of the MCP Server to update.
         # 
@@ -22,11 +22,11 @@ class UpdateMcpServerShrinkRequest(DaraModel):
         self.name = name
         # The new transport protocol.
         self.transport = transport
-        # The new service address. The address must start with`https://`.
+        # The new service URL. The URL must start with `https://`.
         self.url = url
         # The new visibility level.
         self.visibility = visibility
-        # The new visibility scope. The fields in this object depend on the value of the `Visibility` parameter.
+        # The new visibility scope. Provide the corresponding field based on the Visibility setting.
         self.visibility_scope_shrink = visibility_scope_shrink
 
     def validate(self):

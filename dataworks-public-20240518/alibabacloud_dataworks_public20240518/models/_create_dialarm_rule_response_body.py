@@ -11,11 +11,11 @@ class CreateDIAlarmRuleResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # This parameter is deprecated and is replaced by the Id parameter.
+        # **[Deprecated]** Use the Id parameter instead.
         self.dialarm_rule_id = dialarm_rule_id
         # The ID of the alert rule.
         self.id = id
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
 
     def validate(self):

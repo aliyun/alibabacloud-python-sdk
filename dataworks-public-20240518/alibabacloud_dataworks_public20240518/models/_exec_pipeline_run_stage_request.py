@@ -11,15 +11,15 @@ class ExecPipelineRunStageRequest(DaraModel):
         id: str = None,
         project_id: int = None,
     ):
-        # The code of the stage in the process. You can call the GetDeployment operation to query the code.
+        # The code of the publish flow stage. For the specific value, see the response of the GetPipelineRun operation.
         # 
         # This parameter is required.
         self.code = code
-        # The ID of the process.
+        # The unique identifier of the publish flow.
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace settings page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id

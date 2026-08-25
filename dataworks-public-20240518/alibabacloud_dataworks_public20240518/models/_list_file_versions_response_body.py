@@ -17,7 +17,7 @@ class ListFileVersionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of file versions.
+        # The version list of the file.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -27,11 +27,10 @@ class ListFileVersionsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -96,11 +95,11 @@ class ListFileVersionsResponseBodyData(DaraModel):
     ):
         # The list of file version details.
         self.file_versions = file_versions
-        # The current page number.
+        # The page number of the current page.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The size of the current page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -166,35 +165,34 @@ class ListFileVersionsResponseBodyDataFileVersions(DaraModel):
         status: str = None,
         use_type: str = None,
     ):
-        # The change type for this file version. Valid values: CREATE, UPDATE, and DELETE.
+        # The change type of this file version. Valid values: CREATE, UPDATE, and DELETE.
         self.change_type = change_type
         # The description of this file version.
         self.comment = comment
-        # The timestamp (in milliseconds) when the file version was created.
+        # The timestamp in milliseconds when the file version was generated.
         self.commit_time = commit_time
-        # The Alibaba Cloud account ID of the user who created this file version.
+        # The Alibaba Cloud user ID that generated this file version.
         self.commit_user = commit_user
-        # The file code for this version.
+        # The file code that generated this file version.
         self.file_content = file_content
-        # The file name for this file version.
+        # The file name that generated this file version.
         self.file_name = file_name
-        # The text information for this file version.
+        # The basic text information that generated this file version.
         self.file_property_content = file_property_content
-        # The file version.
+        # The version of the file.
         self.file_version = file_version
         # Indicates whether this file version is the latest version in the production environment.
         # 
-        # - true
-        # 
-        # - false
+        # - true: The version is the latest version.
+        # - false: The version is not the latest version.
         self.is_current_prod = is_current_prod
-        # The scheduling configuration for this file version.
+        # The scheduling configuration that generated this file version.
         self.node_content = node_content
-        # The scheduling task ID associated with this file version.
+        # The ID of the scheduling node associated with the file version.
         self.node_id = node_id
         # The current status of the file version. Valid values: COMMITTING (committing), COMMITTED or CHECK_OK (committed), PACKAGED (ready for deployment), DEPLOYING (deploying), DEPLOYED (deployed), and CANCELLED (deployment canceled).
         self.status = status
-        # The functional module to which the file belongs. Valid values: NORMAL (Data Studio), MANUAL (manual task), MANUAL_BIZ (manual workflow), SKIP (dry-run scheduling in Data Studio), ADHOCQUERY (ad hoc query), and COMPONENT (component management).
+        # The functional module to which the file belongs. Valid values: NORMAL (DataStudio), MANUAL (manual node), MANUAL_BIZ (manual workflow), SKIP (dry-run scheduling in DataStudio), ADHOCQUERY (ad hoc query), and COMPONENT (component management).
         self.use_type = use_type
 
     def validate(self):

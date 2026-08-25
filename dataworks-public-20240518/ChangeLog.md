@@ -1,3 +1,24 @@
+2026-08-25 Version: 9.3.0
+- Support API BuildImage.
+- Support API CancelImageTest.
+- Support API CreateImage.
+- Support API DeleteServerIdeInstance.
+- Support API DisableImage.
+- Support API EnableImage.
+- Support API GetImageTestResult.
+- Support API GetServerIdeInstance.
+- Support API ListImageTestResults.
+- Support API ListServerIdeEcsSpecs.
+- Support API ListServerIdeImages.
+- Support API ListServerIdeInstances.
+- Support API PublishImage.
+- Support API RollbackImage.
+- Support API RunImageTest.
+- Support API StartServerIdeInstance.
+- Support API StopServerIdeInstance.
+- Support API UpdateImage.
+
+
 2026-08-07 Version: 9.1.1
 - Update API ListLineages: add request parameters RecentDays.
 

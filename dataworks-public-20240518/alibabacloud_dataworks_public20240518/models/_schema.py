@@ -15,27 +15,19 @@ class Schema(DaraModel):
         parent_meta_entity_id: str = None,
         type: str = None,
     ):
-        # 注释。
+        # The comment.
         self.comment = comment
-        # 创建时间（毫秒级时间戳）。
+        # The creation time (millisecond-level timestamp).
         self.create_time = create_time
-        # ID，可参考[元数据实体相关概念说明](https://help.aliyun.com/document_detail/2880092.html)。
-        # 
-        # 格式为`${EntityType}:${实例ID或转义后的URL}:${数据目录名称}:${数据库名称}:${模式名称}`，对于不存在的层级置空。
-        # 
-        # > 对于MaxCompute类型，此处的实例ID即为主账号ID，数据库名称即为MaxCompute项目名称。
+        # ID
         self.id = id
-        # 更新时间（毫秒级时间戳）。
+        # The update time (millisecond-level timestamp).
         self.modify_time = modify_time
-        # 名称。
+        # The name.
         self.name = name
-        # 父层级元数据实体ID，父层级实体类型取值参考ListCrawlerTypes接口。
-        # 
-        # 格式为`${EntityType}:${实例ID或转义后的URL}:${数据目录名称}:${数据库名称}`，对于不存在的层级置空。
-        # 
-        # > 对于MaxCompute类型，此处的实例ID即为主账号ID，数据库名称即为MaxCompute项目名称。
+        # The parent metadata entity ID.
         self.parent_meta_entity_id = parent_meta_entity_id
-        # 类型。
+        # The type.
         self.type = type
 
     def validate(self):

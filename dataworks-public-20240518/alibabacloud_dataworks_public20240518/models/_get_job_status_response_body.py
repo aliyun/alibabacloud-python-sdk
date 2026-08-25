@@ -11,7 +11,7 @@ class GetJobStatusResponseBody(DaraModel):
         job_status: main_models.GetJobStatusResponseBodyJobStatus = None,
         request_id: str = None,
     ):
-        # The real-time status information of the asynchronous task.
+        # The real-time result of the task status.
         self.job_status = job_status
         # The request ID.
         self.request_id = request_id
@@ -54,31 +54,31 @@ class GetJobStatusResponseBodyJobStatus(DaraModel):
         job_type: str = None,
         status: str = None,
     ):
-        # Indicates whether the asynchronous task is complete. Valid values: True False
+        # Indicates whether the operation is complete. Valid values:
+        # - True: The current job has been completed.
+        # - False: The current job is still running.
         self.completed = completed
-        # The time when the asynchronous task was created.
+        # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1729063449802`.
         self.create_time = create_time
-        # The error message returned if the asynchronous task fails.
+        # The task failure information.
         self.error = error
-        # The ID of the asynchronous task.
+        # The asynchronous task ID.
         self.job_id = job_id
-        # The type of the asynchronous task. Valid values:
+        # The task type.
         # 
-        # - **Create**: The asynchronous task is used to create an object.
+        # - **Create**: A creation task.
         # 
-        # - **Update**: The asynchronous task is used to update an object.
+        # - **Update**: An update task.
         # 
-        # - **Cancel**: The asynchronous task is used to cancel an operation.
+        # - **Cancel**: A cancellation task.
         self.job_type = job_type
-        # The status of the asynchronous task. Valid values:
-        # 
-        # - **Success**
-        # 
-        # - **Fail**
-        # 
-        # - **Cancel**
-        # 
-        # - **Running**
+        # The task status. Valid values:
+        # - **Success**: succeeded.
+        # - **Fail**: failed.
+        # - **Cancel**: canceled.
+        # - **Running**: running.
         self.status = status
 
     def validate(self):

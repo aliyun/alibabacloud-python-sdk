@@ -133,22 +133,28 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(DaraModel):
         workflow_task_instance_id: int = None,
     ):
         # The business date.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.biz_date = biz_date
         # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
         # The account ID of the user who created the instance.
         self.create_user = create_user
-        # The project environment.
-        # 
+        # The project environment. Valid values:
         # - Prod (production)
-        # 
         # - Dev (development)
         self.env_type = env_type
-        # The time when the instance finished running.
+        # The finish time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.finished_time = finished_time
         # The unique identifier of the workflow instance.
         self.id = id
         # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
         # The account ID of the user who last modified the instance.
         self.modify_user = modify_user
@@ -158,43 +164,31 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(DaraModel):
         self.owner = owner
         # The project ID.
         self.project_id = project_id
-        # The time when the instance started running.
+        # The start time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.started_time = started_time
-        # The running status of the workflow instance.
-        # 
-        # - NotRun: Not run
-        # 
-        # - Running: Running
-        # 
-        # - WaitTime: Waiting for TriggerTime
-        # 
-        # - CheckingCondition: Checking branch conditions
-        # 
-        # - WaitResource: Waiting for resources
-        # 
-        # - Failure: Failed
-        # 
-        # - Success: Succeeded
-        # 
-        # - Checking: Submitted for Data Quality check
+        # The running status of the workflow instance. Valid values:
+        # - NotRun: not run
+        # - Running: running
+        # - WaitTime: waiting for TriggerTime
+        # - CheckingCondition: checking branch conditions
+        # - WaitResource: waiting for resources
+        # - Failure: failed
+        # - Success: succeeded
+        # - Checking: submitted for data quality check
         self.status = status
-        # The task tags.
+        # The node tags.
         self.tags = tags
-        # The type of the workflow instance.
-        # 
-        # - Normal: Periodic scheduling
-        # 
-        # - Manual: Manual task
-        # 
-        # - SmokeTest: Testing
-        # 
-        # - SupplementData: Backfill data
-        # 
-        # - ManualWorkflow: Manual workflow
-        # 
-        # - TriggerWorkflow: Trigger-based workflow
+        # The type of the workflow instance. Valid values:
+        # - Normal: periodic scheduling
+        # - Manual: manual task
+        # - SmokeTest: test
+        # - SupplementData: data backfill
+        # - ManualWorkflow: manual workflow
+        # - TriggerWorkflow: trigger-based workflow
         self.type = type
-        # The unified workflow instance ID. All workflow instances within the same business date of a single trigger share the same value for this field.
+        # The unified workflow instance ID. All workflow instances within the same business date under a specific trigger share the same value for this field.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id

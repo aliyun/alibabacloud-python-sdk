@@ -14,8 +14,11 @@ class GetCrawlerTypeCapabilitiesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of crawler types and capabilities supported in the current region.
         self.crawler_types = crawler_types
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -73,16 +76,27 @@ class GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypes(DaraModel):
         supported_scope_units: List[str] = None,
         type: str = None,
     ):
+        # The default collection scope granularity.
         self.default_scope_unit = default_scope_unit
+        # The display name.
         self.display_name = display_name
+        # Indicates whether a resource group must be specified when creating this type of crawler.
         self.require_resource_group = require_resource_group
+        # Indicates whether AI metadata description is supported.
         self.support_ai_comment = support_ai_comment
+        # Indicates whether schema or table exclusion regular expressions are supported.
         self.support_exclude_regex = support_exclude_regex
+        # Indicates whether periodic scheduling is supported.
         self.support_schedule = support_schedule
+        # The list of supported data source types.
         self.supported_datasource_types = supported_datasource_types
+        # The metadata entity levels that the crawler type supports for collection.
         self.supported_entity_types = supported_entity_types
+        # The supported crawler extension configuration items.
         self.supported_option_keys = supported_option_keys
+        # The list of supported collection scope granularities.
         self.supported_scope_units = supported_scope_units
+        # The crawler type.
         self.type = type
 
     def validate(self):
@@ -191,10 +205,15 @@ class GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedOptionKeys(Dara
         required: bool = None,
         value_type: str = None,
     ):
+        # The list of allowed values for the extension configuration item.
         self.allowed_values = allowed_values
+        # The default value of the extension configuration item.
         self.default_value = default_value
+        # The name of the extension configuration item.
         self.key = key
+        # Indicates whether the extension configuration item is required.
         self.required = required
+        # The value type of the extension configuration item, such as BOOLEAN.
         self.value_type = value_type
 
     def validate(self):
@@ -249,9 +268,13 @@ class GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedEntityTypes(Dar
         sub_type: str = None,
         type: str = None,
     ):
+        # Indicates whether the metadata entity level is optional.
         self.optional = optional
+        # The parent-level metadata entity subtype.
         self.parent_sub_type = parent_sub_type
+        # The metadata entity subtype.
         self.sub_type = sub_type
+        # The metadata entity type identifier.
         self.type = type
 
     def validate(self):

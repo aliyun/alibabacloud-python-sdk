@@ -9,6 +9,8 @@ class GetCrawlerRequest(DaraModel):
         self,
         id: int = None,
     ):
+        # The metadata crawler ID. You can call ListCrawlers to query this ID.
+        # 
         # This parameter is required.
         self.id = id
 

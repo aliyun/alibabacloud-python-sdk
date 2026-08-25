@@ -16,7 +16,7 @@ class UpdateSkillShrinkRequest(DaraModel):
         version_note: str = None,
         visibility_scope_shrink: str = None,
     ):
-        # The downloadable URL (HTTP/HTTPS) of the bundle.zip file. Mutually exclusive with SkillMdOverride. If specified, the bundle is replaced.
+        # The downloadable URL (HTTP/HTTPS) of the bundle.zip file. Mutually exclusive with SkillMdOverride. If provided, the bundle is replaced.
         self.bundle_url = bundle_url
         # The Skill description.
         self.description = description

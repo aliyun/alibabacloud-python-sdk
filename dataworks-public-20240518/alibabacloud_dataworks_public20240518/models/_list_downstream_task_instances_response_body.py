@@ -15,7 +15,7 @@ class ListDownstreamTaskInstancesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -55,15 +55,15 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfo(DaraModel):
         task_instances: List[main_models.ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances] = None,
         total_count: int = None,
     ):
-        # The descendant instances.
+        # The list of downstream task instances.
         self.downstream_task_instances = downstream_task_instances
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The instances. This parameter is deprecated and replaced by the DownstreamTaskInstances parameter.
+        # **[Deprecated]** The list of task instances. This field is deprecated. Use DownstreamTaskInstances instead.
         self.task_instances = task_instances
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -167,133 +167,69 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
     ):
         # The baseline ID.
         self.baseline_id = baseline_id
-        # The data timestamp.
+        # The business date.
         self.bizdate = bizdate
         # The creation time.
         self.create_time = create_time
-        # The account ID of the creator.
+        # The account ID of the user who created the instance.
         self.create_user = create_user
-        # The information about the associated data source.
+        # The data source information associated with the instance.
         self.data_source = data_source
         # The description.
         self.description = description
-        # The environment in which the data source is used. Valid values:
-        # 
-        # - Dev
-        # 
-        # - Prod
+        # The environment of the target data source. Valid values:
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
-        # The instance ID.
+        # The unique identifier of the task instance.
         self.id = id
         # The modification time.
         self.modify_time = modify_time
-        # The account ID of the modifier.
+        # The account ID of the user who last modified the instance.
         self.modify_user = modify_user
-        # The account ID of the task owner.
+        # The account ID of the node owner.
         self.owner = owner
-        # The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
+        # The period number. Indicates which scheduling cycle of the day the instance is in.
         self.period_number = period_number
-        # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+        # The run priority of the node. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter. Valid values:
+        # **[Deprecated]** The project environment. This field is deprecated. Use EnvType instead.
         self.project_env = project_env
-        # The workspace ID.
+        # The project ID.
         self.project_id = project_id
-        # The rerun mode.
-        # 
-        # Valid values:
-        # 
-        # - AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
-        # 
-        # - FailureAllowed: The task can be rerun only after it fails to run.
-        # 
-        # - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # The rerun configuration of the node.
         self.rerun_mode = rerun_mode
-        # The number of times the instance is run. By default, the value starts from 1.
+        # The current run number. The default value starts from 1.
         self.run_number = run_number
-        # The runtime information about the instance.
+        # The runtime information of the instance.
         self.runtime = runtime
-        # The information about the resource group with which the instance is associated.
+        # The resource group information associated with the instance.
         self.runtime_resource = runtime_resource
-        # The time when the instance started to run.
+        # The time when the instance started running.
         self.started_time = started_time
-        # The status of the instance. Valid values:
-        # 
-        # - NotRun: The instance is not run.
-        # 
-        # - Running: The instance is running.
-        # 
-        # - WaitTime: The instance is waiting for the scheduling time to arrive.
-        # 
-        # - CheckingCondition: Branch conditions are being checked for the instance.
-        # 
-        # - WaitResource: The instance is waiting for resources.
-        # 
-        # - Failure: The instance fails to be run.
-        # 
-        # - Success: The instance is successfully run.
-        # 
-        # - Checking: Data quality is being checked for the instance.
-        # 
-        # - WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
+        # The run status of the instance.
         self.status = status
-        # The scheduling dependency type. Valid values:
-        # 
-        # - Normal: same-cycle scheduling dependency
-        # 
-        # - CrossCycle: cross-cycle scheduling dependency
+        # The dependency type.
         self.step_type = step_type
-        # The ID of the task for which the instance is generated.
+        # The ID of the corresponding node.
         self.task_id = task_id
-        # The name of the task for which the instance is generated.
+        # The name of the corresponding node.
         self.task_name = task_name
-        # The type of the task for which the instance is generated.
+        # The type of the corresponding node.
         self.task_type = task_type
-        # The timeout period of task running. Unit: seconds.
-        # 
-        # Note: The value of this parameter is rounded up by hour.
+        # The timeout period for node execution. Unit: seconds.
         self.timeout = timeout
-        # The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
-        # 
-        # Valid values:
-        # 
-        # - Pause
-        # 
-        # - Skip
-        # 
-        # - Normal
+        # The run mode at the time of triggering. This parameter takes effect when TriggerType is set to Scheduler.
         self.trigger_recurrence = trigger_recurrence
-        # The scheduling time.
+        # The scheduled trigger time.
         self.trigger_time = trigger_time
-        # The method to trigger instance scheduling.
-        # 
-        # Valid values:
-        # 
-        # - Scheduler: scheduling cycle-based trigger
-        # 
-        # - Manual: manual trigger
+        # The trigger type.
         self.trigger_type = trigger_type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
-        # The workflow instance ID.
+        # The ID of the workflow instance to which the instance belongs.
         self.workflow_instance_id = workflow_instance_id
-        # The type of the workflow instance.
-        # 
-        # Valid values:
-        # 
-        # - SmokeTest
-        # 
-        # - SupplementData
-        # 
-        # - Manual
-        # 
-        # - ManualWorkflow
-        # 
-        # - Normal
-        # 
-        # - ManualFlow
+        # The type of the workflow instance to which the instance belongs.
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name
@@ -531,11 +467,11 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResou
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of compute units (CUs) configured for task running.
+        # The compute unit (CU) consumption configured for the node.
         self.cu = cu
-        # The ID of the image configured for task running.
+        # The image ID configured for the node.
         self.image = image
-        # The ID of the resource group for scheduling configured for task running.
+        # The identifier of the schedule resource group configured for the node.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -576,9 +512,9 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime(Dara
         gateway: str = None,
         process_id: str = None,
     ):
-        # The host for running.
+        # The machine on which the instance runs.
         self.gateway = gateway
-        # The instance run ID.
+        # The unique run ID.
         self.process_id = process_id
 
     def validate(self):
@@ -612,7 +548,7 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource(D
         self,
         name: str = None,
     ):
-        # The name of the data source.
+        # The data source name.
         self.name = name
 
     def validate(self):
@@ -641,13 +577,9 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances(D
         dependency_type: str = None,
         task_instance: main_models.ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance = None,
     ):
-        # The scheduling dependency type. Valid values:
-        # 
-        # - Normal
-        # 
-        # - CrossCycle
+        # The dependency type.
         self.dependency_type = dependency_type
-        # The information about a task instance.
+        # The task instance.
         self.task_instance = task_instance
 
     def validate(self):
@@ -716,109 +648,68 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
     ):
         # The baseline ID.
         self.baseline_id = baseline_id
-        # The data timestamp.
+        # The business date.
         self.bizdate = bizdate
         # The creation time.
         self.create_time = create_time
-        # The account ID of the creator.
+        # The account ID of the user who created the instance.
         self.create_user = create_user
-        # The information about the associated data source.
+        # The data source information associated with the instance.
         self.data_source = data_source
         # The description.
         self.description = description
-        # The environment in which the data source is used. Valid values:
-        # 
-        # - Dev
-        # 
-        # - Prod
+        # The environment of the target data source. Valid values:
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
-        # The instance ID.
+        # The unique identifier of the task instance.
         self.id = id
         # The modification time.
         self.modify_time = modify_time
-        # The account ID of the modifier.
+        # The account ID of the user who last modified the instance.
         self.modify_user = modify_user
-        # The account ID of the task owner.
+        # The account ID of the node owner.
         self.owner = owner
-        # The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
+        # The period number. Indicates which scheduling cycle of the day the instance is in.
         self.period_number = period_number
-        # The priority of the task. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
+        # The run priority of the node. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The workspace ID.
+        # The project ID.
         self.project_id = project_id
-        # The rerun mode.
+        # The rerun configuration of the node.
         self.rerun_mode = rerun_mode
-        # The number of times the instance is run. By default, the value starts from 1.
+        # The current run number. The default value starts from 1.
         self.run_number = run_number
-        # The runtime information about the instance.
+        # The runtime information of the instance.
         self.runtime = runtime
-        # The configurations of the runtime environment, such as the resource group information.
+        # The runtime environment configuration, such as resource group information.
         self.runtime_resource = runtime_resource
-        # The time when the instance started to run.
+        # The time when the instance started running.
         self.started_time = started_time
-        # The status of the instance. Valid values:
-        # 
-        # - NotRun: The instance is not run.
-        # 
-        # - Running: The instance is running.
-        # 
-        # - WaitTime: The instance is waiting for the scheduling time to arrive.
-        # 
-        # - CheckingCondition: Branch conditions are being checked for the instance.
-        # 
-        # - WaitResource: The instance is waiting for resources.
-        # 
-        # - Failure: The instance fails to be run.
-        # 
-        # - Success: The instance is successfully run.
-        # 
-        # - Checking: Data quality is being checked for the instance.
-        # 
-        # - WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
+        # The run status of the instance.
         self.status = status
-        # The ID of the task for which the instance is generated.
+        # The ID of the corresponding node.
         self.task_id = task_id
-        # The name of the task for which the instance is generated.
+        # The name of the corresponding node.
         self.task_name = task_name
-        # The type of the task for which the instance is generated.
+        # The type of the corresponding node.
         self.task_type = task_type
-        # The timeout period of task running. Unit: seconds.
-        # 
-        # Note: The value of this parameter is rounded up by hour.
+        # The timeout period for node execution. Unit: seconds.
         self.timeout = timeout
-        # The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
-        # 
-        # - Pause
-        # 
-        # - Skip
-        # 
-        # - Normal
+        # The run mode when triggered. This parameter takes effect when TriggerType is set to Scheduler. Valid values:
+        # - Pause: paused.
+        # - Skip: dry run.
+        # - Normal: normal execution.
         self.trigger_recurrence = trigger_recurrence
-        # The scheduling time.
+        # The scheduled trigger time.
         self.trigger_time = trigger_time
-        # The trigger type. Valid values:
-        # 
-        # - Scheduler: scheduling cycle-based trigger
-        # 
-        # - Manual: manual trigger
+        # The trigger type.
         self.trigger_type = trigger_type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
-        # The workflow instance ID.
+        # The ID of the workflow instance to which the instance belongs.
         self.workflow_instance_id = workflow_instance_id
-        # The type of the workflow instance. Valid values:
-        # 
-        # - Normal
-        # 
-        # - Manual
-        # 
-        # - SmokeTest
-        # 
-        # - SupplementData
-        # 
-        # - ManualWorkflow
+        # The type of the workflow instance to which the instance belongs.
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name
@@ -1044,11 +935,11 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of compute units (CUs) configured for task running.
+        # The compute unit (CU) consumption configured for the node.
         self.cu = cu
-        # The ID of the image configured for task running.
+        # The image ID configured for the node.
         self.image = image
-        # The ID of the resource group for scheduling configured for task running.
+        # The identifier of the schedule resource group configured for the node.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1089,9 +980,9 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         gateway: str = None,
         process_id: str = None,
     ):
-        # The host for running.
+        # The machine on which the instance runs.
         self.gateway = gateway
-        # The instance run ID.
+        # The unique run ID.
         self.process_id = process_id
 
     def validate(self):
@@ -1125,7 +1016,7 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         self,
         name: str = None,
     ):
-        # The name of the data source.
+        # The data source name.
         self.name = name
 
     def validate(self):

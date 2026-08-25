@@ -13,8 +13,9 @@ class AttachDataQualityRulesToEvaluationTaskResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # Indicates whether the association is successful. Valid values:
-        # - true: The call is successful.
-        # - false: The call fails.
+        # 
+        # - true: The call succeeded.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

@@ -14,17 +14,17 @@ class ListDataQualityRulesRequest(DaraModel):
         project_id: int = None,
         table_guid: str = None,
     ):
-        # ID of the associated data quality evaluation task.
+        # The ID of the associated quality check task.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
-        # Rule name for fuzzy matching.
+        # The rule name for fuzzy matching.
         self.name = name
-        # Page number for paginated query. Default value: 1.
+        # The page number for paging. Default value: 1.
         self.page_number = page_number
-        # Number of entries per page. Default value: 10. Maximum value: 200.
+        # The number of entries per page. Default value: 10. Maximum value: 200.
         self.page_size = page_size
-        # DataWorks workspace ID.
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # The unique identifier of the table to which the rule applies in Data Map.
+        # The unique identifier of the table that the rule applies to in DataWorks Data Map.
         self.table_guid = table_guid
 
     def validate(self):

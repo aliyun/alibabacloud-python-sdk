@@ -13,9 +13,9 @@ class ListDeploymentPackageFilesResponseBody(DaraModel):
         paging_info: main_models.ListDeploymentPackageFilesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination details.
+        # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDeploymentPackageFilesResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of files pending deployment.
+        # The list of file versions pending deployment.
         self.deployment_package_files = deployment_package_files
-        # The page number. Pages start from page 1.
+        # The page number, starting from 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The page size. Default value: 10.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -131,87 +131,66 @@ class ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles(Dar
         tenant_id: int = None,
         use_type: str = None,
     ):
-        # The change type, which is an integer. Valid values:
-        # 
-        # - 0: addition
-        # 
-        # - 1: update
-        # 
-        # - 2: deletion
+        # The change type. Valid values: 
+        # - 0: added.
+        # - 1: updated.
+        # - 2: deleted.
         self.change_type = change_type
-        # The comment for committing.
+        # The comment provided at the time of commit.
         self.comment = comment
-        # The time for committing.
+        # The commit time.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, for example, `2025-04-10 15:55:47`. This example does not include a time zone identifier.
         self.commit_time = commit_time
-        # The ID of the Alibaba Cloud account used by the user who committed the file.
+        # The Alibaba Cloud account ID of the committer.
         self.commit_user = commit_user
-        # The name of the Alibaba Cloud account used by the user who committed the file.
+        # The Alibaba Cloud account name of the committer.
         self.commit_user_name = commit_user_name
-        # The file ID.
+        # The ID of the file.
         self.file_id = file_id
-        # The name of the file of the current version.
+        # The name of the file that generated this file version.
         self.file_name = file_name
-        # The file type. The code for files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+        # The file type. Different file types have different codes. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
-        # The file version.
+        # The version number of the file.
         self.file_version = file_version
-        # The unique ID.
+        # The unique identifier.
         self.id = id
-        # Indicates whether the version is a version in the production environment of the scheduling system.
+        # Indicates whether this version is the same as the current production version in scheduling.
         self.is_same_as_production_version = is_same_as_production_version
-        # The scheduling property configurations of the node that corresponds to the file, which is a JSON string.
+        # The scheduling property configuration of the scheduling node to which this file belongs, stored as a JSON string.
         self.node_configuration = node_configuration
-        # The ID of the auto triggered node that corresponds to the file.
+        # The node ID in scheduling that corresponds to this file.
         self.node_id = node_id
         # The workspace ID.
         self.project_id = project_id
-        # The test status in the development environment.
+        # The testing status in the development environment.
         self.smoke_test_status = smoke_test_status
-        # The status of the code file of the current version. Valid values:
-        # 
-        # - 2: Commit check in progress.
-        # 
-        # - 3: Commit check passed.
-        # 
-        # - 4: Commit check failed.
-        # 
-        # - 10: Committing.
-        # 
-        # - 11: Committed.
-        # 
-        # - 20: Approved.
-        # 
-        # - 21: Rejected.
-        # 
-        # - 22: Warning detected during checking.
-        # 
-        # - 23: Under code review.
-        # 
-        # - 24: Code review rejected.
-        # 
-        # - 80: Deployment package created.
-        # 
-        # - 100: Deploying.
-        # 
-        # - 101: Deployed to the production environment.
-        # 
-        # - 200: Cancelled.
+        # The status of the code file for this version. Valid values: 
+        # - 2: commit check in progress.
+        # - 3: commit check succeeded.
+        # - 4: commit check rejected.
+        # - 10: committing. 
+        # - 11: committed to the scheduling development environment. 
+        # - 20: review approved.
+        # - 21: review failed.
+        # - 22: check has warnings.
+        # - 23: code review in progress.
+        # - 24: code review rejected.
+        # - 80: deployment package created. 
+        # - 100: deploying. 
+        # - 101: deployed to production. 
+        # - 200: canceled.
         self.status = status
         # The DataWorks tenant ID.
         self.tenant_id = tenant_id
-        # The module to which the file belongs. Valid values:
-        # 
-        # - NORMAL: The file is used for DataStudio.
-        # 
-        # - MANUAL: The file is used for a manually triggered node.
-        # 
-        # - MANUAL_BIZ: The file is used for a manually triggered workflow.
-        # 
-        # - SKIP: The file is used for a dry-run node in DataStudio.
-        # 
-        # - ADHOCQUERY: The file is used for an ad hoc query.
-        # 
-        # - COMPONENT: The file is used for a script template.
+        # The functional module to which the file belongs. Valid values:
+        # - NORMAL: data development.
+        # - MANUAL: manual task.
+        # - MANUAL_BIZ: manual workflow.
+        # - SKIP: dry-run scheduling in data development.
+        # - ADHOCQUERY: ad hoc query.
+        # - COMPONENT: component management.
         self.use_type = use_type
 
     def validate(self):

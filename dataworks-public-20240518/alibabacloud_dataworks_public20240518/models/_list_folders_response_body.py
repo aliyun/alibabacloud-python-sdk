@@ -17,21 +17,20 @@ class ListFoldersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of folders that meet the conditions.
+        # The list of folders that meet the specified conditions.
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message
+        # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. Used to troubleshoot errors.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - true: success.
-        # 
-        # - false: failure.
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -96,11 +95,11 @@ class ListFoldersResponseBodyData(DaraModel):
     ):
         # The list of folders.
         self.folders = folders
-        # The current page number.
+        # The page number of the current page.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_size = page_size
-        # The total number of records that meet the query conditions.
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -155,9 +154,9 @@ class ListFoldersResponseBodyDataFolders(DaraModel):
         folder_id: str = None,
         folder_path: str = None,
     ):
-        # The folder ID.
+        # The ID of the folder.
         self.folder_id = folder_id
-        # The folder path.
+        # The path of the folder.
         self.folder_path = folder_path
 
     def validate(self):

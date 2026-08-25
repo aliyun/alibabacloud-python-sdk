@@ -10,9 +10,9 @@ class CreateWorkflowInstancesResponseBody(DaraModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the operation. You can use this field to query the results of the creation operation through the GetCreateWorkflowInstancesResult interface.
+        # The operation ID. You can use this value to call the GetCreateWorkflowInstancesResult operation to query the result of the creation operation.
         self.operation_id = operation_id
-        # The ID of the request. It is used to locate logs and troubleshoot problems.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

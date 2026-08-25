@@ -9,7 +9,7 @@ class GetDataSourceRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The data source ID.
+        # The data source ID, which is the unique identifier of the data source.
         # 
         # This parameter is required.
         self.id = id

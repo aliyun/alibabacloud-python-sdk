@@ -12,39 +12,38 @@ class CreateNodeRequest(DaraModel):
         scene: str = None,
         spec: str = None,
     ):
-        # Specify this parameter if you want to create the node inside a container. This parameter represents the unique identifier of the container, which can be a workflow or a container node.
+        # The unique identifier of a container in which you want to create the node. The container can be a workflow or a container node. Specify this parameter when you need to create the node inside a container.
         # 
-        # > If this parameter is specified, the path field defined in FlowSpec is ignored.
+        # >Notice: If this parameter is specified, the path field defined in FlowSpec becomes invalid.
         # 
-        # > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
         self.container_id = container_id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter specifies the DataWorks workspace for this API call operation.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Specify this parameter if you want to create the node inside a container. This parameter represents the unique identifier of the container, which can be a workflow or a container node.
+        # The scenario in which the node is created. This parameter determines whether the node is created in the manual node area or the data development area. DATAWORKS_MANUAL_WORKFLOW can be used only when ContainerId is specified and the container is a manual workflow.
         # 
-        # > If this parameter is specified, the path field defined in FlowSpec is ignored.
+        # Valid values:
         # 
-        # > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # - DATAWORKS_PROJECT: project directory.
+        # - DATAWORKS_MANUAL_WORKFLOW: manual workflow.
+        # - DATAWORKS_MANUAL_TASK: manual task.
         # 
         # This parameter is required.
         self.scene = scene
-        # The FlowSpec information that describes the node. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
+        # The FlowSpec information that describes the node. For more information about the specification, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         # 
-        # > How do I quickly obtain a FlowSpec template?
+        # > How to quickly obtain a FlowSpec template?
+        # > - In DataStudio, open a node, click Versions on the right side, view the latest version, and then view the scheduling configuration. This provides the FlowSpec description for the current node. You can use the FlowSpec description in the version to quickly build a template that meets your requirements.
         # 
-        # - Go to Data Studio, open a node, click Version on the right side, find the latest version, and then click Scheduling Settings to obtain the FlowSpec description of the current node. You can use the FlowSpec description in the version to quickly build a template that meets your requirements.
+        # > How to specify the node content?
+        # > - Specify the node content in the $.spec.nodes[*].script.content field.
         # 
-        # > How do I configure the node content?
-        # 
-        # - Enter the code for the node in the $.spec.nodes[].script.content field.
-        # 
-        # > How do I configure a batch synchronization node?
-        # 
-        # - Write the script by referring to Step 4 in [Configure an offline sync task in the code editor](https://help.aliyun.com/zh/dataworks/user-guide/configure-a-batch-synchronization-node-by-using-the-code-editor), and then enter the script content in the $.spec.nodes[\\*].script.content field. Alternatively, you can create a batch synchronization node in the console and view its version information to obtain the script content.
+        # > How to configure the content of a batch synchronization node?
+        # > - Write a script by following Step 4 in [Configure a batch synchronization node by using the code editor](https://www.alibabacloud.com/help/en/dataworks/user-guide/configure-a-batch-synchronization-node-by-using-the-code-editor), and specify the content in the $.spec.nodes[*].script.content field. Alternatively, create a batch synchronization node on the page and obtain the script content by viewing the version.
         # 
         # This parameter is required.
         self.spec = spec

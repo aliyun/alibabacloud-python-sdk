@@ -10,9 +10,9 @@ class CreateDataQualityRuleTemplateResponseBody(DaraModel):
         code: str = None,
         request_id: str = None,
     ):
-        # The rule template Code.
+        # The code of the rule template.
         self.code = code
-        # The API request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

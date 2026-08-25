@@ -14,8 +14,11 @@ class ListCrawlersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -60,9 +63,13 @@ class ListCrawlersResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of metadata crawlers.
         self.crawlers = crawlers
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of records that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -130,20 +137,35 @@ class ListCrawlersResponseBodyPagingInfoCrawlers(DaraModel):
         task_id: int = None,
         type: str = None,
     ):
+        # The creation time, expressed as a millisecond-precision UNIX timestamp.
         self.create_time = create_time
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The DataWorks environment type. Valid values: Dev, Prod.
         self.env_type = env_type
+        # The crawler ID.
         self.id = id
+        # The most recent run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN. This field may be empty if the crawler has not run yet.
         self.last_run_status = last_run_status
+        # The meta entity ID associated with the crawler. You can use this ID to connect to metadata query APIs.
         self.meta_entity_id = meta_entity_id
+        # The modification time, expressed as a millisecond-precision UNIX timestamp.
         self.modify_time = modify_time
+        # The crawler name.
         self.name = name
+        # The DataWorks user ID of the crawler owner.
         self.owner = owner
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The ID of the Serverless 2.0 resource group used to run the crawl task.
         self.resource_group_id = resource_group_id
+        # The schedule configuration.
         self.schedule_config = schedule_config
+        # The crawler status. The value is VALID when the crawler configuration is valid and the associated data source exists. Otherwise, the value is INVALID.
         self.status = status
+        # The DataWorks scheduling node ID associated with the crawler. You can use this ID to call GetTask to query the node definition.
         self.task_id = task_id
+        # The crawler type.
         self.type = type
 
     def validate(self):
@@ -258,7 +280,9 @@ class ListCrawlersResponseBodyPagingInfoCrawlersScheduleConfig(DaraModel):
         cron_express: str = None,
         type: str = None,
     ):
+        # The cron expression.
         self.cron_express = cron_express
+        # The schedule type. Valid values: MANUAL, NORMAL.
         self.type = type
 
     def validate(self):

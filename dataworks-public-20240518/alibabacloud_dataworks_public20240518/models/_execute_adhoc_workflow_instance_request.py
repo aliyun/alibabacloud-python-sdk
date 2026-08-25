@@ -17,15 +17,13 @@ class ExecuteAdhocWorkflowInstanceRequest(DaraModel):
         project_id: int = None,
         tasks: List[main_models.ExecuteAdhocWorkflowInstanceRequestTasks] = None,
     ):
-        # The data timestamp.
+        # The business date. The value is a timestamp.
         self.biz_date = biz_date
-        # The environment of the workspace. Valid values:
-        # 
-        # - Prod: production environment
-        # 
-        # - Dev: development environment
+        # The project environment. Valid values:
+        # - Prod: production
+        # - Dev: development
         self.env_type = env_type
-        # The name of the workflow instance.
+        # The name.
         # 
         # This parameter is required.
         self.name = name
@@ -33,11 +31,11 @@ class ExecuteAdhocWorkflowInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The workspace ID.
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The tasks.
+        # The list of tasks.
         # 
         # This parameter is required.
         self.tasks = tasks
@@ -115,11 +113,11 @@ class ExecuteAdhocWorkflowInstanceRequestTasks(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The unique code of the client. This code uniquely identifies a task.
+        # The client unique code of the task, which is used to uniquely identify a task.
         # 
         # This parameter is required.
         self.client_unique_code = client_unique_code
-        # The information about the associated data source.
+        # The associated data source information.
         self.data_source = data_source
         # The dependency information.
         self.dependencies = dependencies
@@ -135,15 +133,15 @@ class ExecuteAdhocWorkflowInstanceRequestTasks(DaraModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The configurations of the runtime environment, such as the resource group information.
+        # The runtime environment configuration, such as resource group information.
         # 
         # This parameter is required.
         self.runtime_resource = runtime_resource
-        # The script information.
+        # The script information for running the task.
         self.script = script
-        # The timeout period of task running. Unit: seconds.
+        # The timeout period for task execution. Unit: seconds.
         self.timeout = timeout
-        # The type of the task.
+        # The task type.
         # 
         # This parameter is required.
         self.type = type
@@ -259,7 +257,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksScript(DaraModel):
     ):
         # The script content.
         self.content = content
-        # The script parameters.
+        # The list of script parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -295,11 +293,11 @@ class ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of compute units (CUs) configured for task running.
+        # The compute unit (CU) consumption configured for the task.
         self.cu = cu
-        # The ID of the image configured for task running.
+        # The image ID configured for the task.
         self.image = image
-        # The ID of the resource group for scheduling configured for task running.
+        # The identifier of the schedule resource group configured for the task.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
@@ -342,9 +340,9 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputs(DaraModel):
         task_outputs: List[main_models.ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs] = None,
         variables: List[main_models.ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables] = None,
     ):
-        # The task outputs.
+        # The list of task output definitions.
         self.task_outputs = task_outputs
-        # The variables.
+        # The list of variable definitions.
         self.variables = variables
 
     def validate(self):
@@ -397,19 +395,15 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The name of the variable.
+        # The variable name.
         self.name = name
         # The type. Valid values:
-        # 
         # - System
-        # 
         # - Constant
-        # 
         # - NodeOutput
-        # 
         # - PassThrough
         self.type = type
-        # The value of the variable.
+        # The variable value.
         self.value = value
 
     def validate(self):
@@ -449,7 +443,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs(DaraModel):
         self,
         output: str = None,
     ):
-        # The identifier of the output.
+        # The output identifier.
         self.output = output
 
     def validate(self):
@@ -477,7 +471,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksInputs(DaraModel):
         self,
         variables: List[main_models.ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables] = None,
     ):
-        # The variables.
+        # The list of variable definitions.
         self.variables = variables
 
     def validate(self):
@@ -514,9 +508,9 @@ class ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the variable.
+        # The variable name.
         self.name = name
-        # The value of the variable. You must configure this parameter in the `The ancestor output: The output variable name of the ancestor task` format.
+        # The variable value. Specify the value in the format of `Upstream task Output:Upstream task output variable name`.
         self.value = value
 
     def validate(self):
@@ -550,7 +544,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksDependencies(DaraModel):
         self,
         upstream_output: str = None,
     ):
-        # The identifier of the output of the ancestor task.
+        # The output identifier of the dependent task.
         self.upstream_output = upstream_output
 
     def validate(self):
@@ -578,7 +572,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksDataSource(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the data source.
+        # The data source name.
         self.name = name
 
     def validate(self):

@@ -10,9 +10,9 @@ class DeleteCertificateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID. Use this ID to locate logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the certificate file was successfully deleted.
+        # Indicates whether the certificate file was deleted successfully.
         self.success = success
 
     def validate(self):

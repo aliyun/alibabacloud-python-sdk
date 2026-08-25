@@ -13,29 +13,30 @@ class CreateDatasetVersionShrinkRequest(DaraModel):
         mount_path: str = None,
         url: str = None,
     ):
-        # The description for this dataset version. Maximum length: 1,024 characters.
+        # The description of the dataset version. The description can be up to 1024 characters in length.
         self.comment = comment
-        # The dataset ID. Currently supports DataWorks datasets only.
+        # The dataset ID. Currently, only DataWorks datasets are supported.
         # 
         # This parameter is required.
         self.dataset_id = dataset_id
-        # The storage import configuration for the dataset. Required configuration varies by storage type.
-        # 
-        # **NAS**
-        # 
-        # For valid values, see the response from the file storage API DescribeFileSystems.
+        # The storage import configuration for the dataset. The required configuration varies depending on the storage type.
+        # <details>
+        # <summary>NAS</summary>
+        # The values can be obtained from the response of the File Storage API DescribeFileSystems operation.
         # 
         # ```JSON
         # {
-        # "fileSystemId": "3b6XXX89c9", // The file system ID.
-        # "fileSystemStorageType":  "Performance" // The file system storage type.
-        # "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID for the mount point.
+        #   "fileSystemId": "3b6XXX89c9", // The file system ID.
+        #   "fileSystemStorageType": "Performance", // The storage specification of the file system.
+        #   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount target.
         # }
         # ```
+        # 
+        # </details>
         self.import_info_shrink = import_info_shrink
-        # The mount path, which must start with /mnt/. Default value: /mnt/data.
+        # The mount path. The path must start with /mnt/. Default value: /mnt/data.
         self.mount_path = mount_path
-        # URL
+        # The URL.
         # 
         # This parameter is required.
         self.url = url

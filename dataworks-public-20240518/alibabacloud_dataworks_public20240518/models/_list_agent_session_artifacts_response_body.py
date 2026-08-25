@@ -15,7 +15,7 @@ class ListAgentSessionArtifactsResponseBody(DaraModel):
     ):
         # The JSON-RPC response.
         self.json_rpc_response = json_rpc_response
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class ListAgentSessionArtifactsResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult = None,
     ):
-        # The ID passed by the caller. The value is returned as-is in the response.
+        # The ID passed in by the requester. The value is returned as-is.
         self.id = id
         # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
-        # The paginated information of artifacts.
+        # The pagination information of model artifacts.
         self.result = result
 
     def validate(self):
@@ -101,11 +101,11 @@ class ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The list of artifacts.
+        # The list of model artifacts.
         self.artifacts = artifacts
-        # The actual number of entries returned per page.
+        # The actual number of entries per page.
         self.max_results = max_results
-        # The token for the next page. The value is null if there are no more pages.
+        # The token for the next page. The value is null for the last page.
         self.next_token = next_token
 
     def validate(self):
@@ -155,11 +155,11 @@ class ListAgentSessionArtifactsResponseBodyJsonRpcResponseResultArtifacts(DaraMo
         artifact_path: str = None,
         artifact_type: str = None,
     ):
-        # The name of the artifact.
+        # The name of the model artifact.
         self.artifact_name = artifact_name
-        # The path of the artifact.
+        # The path of the model artifact.
         self.artifact_path = artifact_path
-        # The type of the artifact, which is typically the file extension.
+        # The type of the model artifact, typically a file extension.
         self.artifact_type = artifact_type
 
     def validate(self):

@@ -15,7 +15,7 @@ class CreateDataQualityAlertRuleRequest(DaraModel):
         project_id: int = None,
         target: main_models.CreateDataQualityAlertRuleRequestTarget = None,
     ):
-        # The alert condition of the data quality monitoring rule.
+        # The alert condition of the data quality monitoring alert rule.
         # 
         # This parameter is required.
         self.condition = condition
@@ -27,7 +27,7 @@ class CreateDataQualityAlertRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The monitored target of the data quality monitoring rule.
+        # The monitored target of the data quality monitoring alert rule.
         # 
         # This parameter is required.
         self.target = target
@@ -81,11 +81,11 @@ class CreateDataQualityAlertRuleRequestTarget(DaraModel):
         ids: List[int] = None,
         type: str = None,
     ):
-        # The list of monitored target IDs. Currently, only one ID can be set.
+        # The list of monitored target IDs. Currently, only one ID can be specified.
         # 
         # This parameter is required.
         self.ids = ids
-        # The type of the monitored target. Only DataQualityScan is supported.
+        # The type of the monitored object. Only DataQualityScan is supported.
         # 
         # This parameter is required.
         self.type = type
@@ -122,7 +122,7 @@ class CreateDataQualityAlertRuleRequestNotification(DaraModel):
         channels: List[str] = None,
         receivers: List[main_models.CreateDataQualityAlertRuleRequestNotificationReceivers] = None,
     ):
-        # The list of alert channels. You can set both `Email` and `Sms` at the same time. In other cases, only one channel can be set.
+        # The list of channels. You can set both `Email` and `Sms` at the same time. In other cases, only one channel can be set.
         # 
         # This parameter is required.
         self.channels = channels
@@ -172,29 +172,21 @@ class CreateDataQualityAlertRuleRequestNotificationReceivers(DaraModel):
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # Additional configurations required for the alert recipients. When ReceiverType is DingdingUrl, you can set `{"atAll":true}` to mention all members.
+        # The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to @ all members.
         self.extension = extension
-        # The type of alert recipients.
-        # 
+        # The object type of the alerting accept object.
         # - AliUid
-        # 
         # - WebhookUrl
-        # 
         # - DingdingUrl
-        # 
         # - WeixinUrl
-        # 
         # - FeishuUrl
-        # 
         # - TaskOwner
-        # 
         # - DataQualityScanOwner
-        # 
         # - ShiftSchedule
         # 
         # This parameter is required.
         self.receiver_type = receiver_type
-        # The value of alert recipients.
+        # The values of the alert recipients.
         self.receiver_values = receiver_values
 
     def validate(self):

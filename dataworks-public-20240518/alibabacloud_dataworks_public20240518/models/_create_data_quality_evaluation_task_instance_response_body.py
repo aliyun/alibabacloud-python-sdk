@@ -10,7 +10,7 @@ class CreateDataQualityEvaluationTaskInstanceResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The ID of the data quality monitoring instance.
+        # The data quality monitoring instance ID.
         self.id = id
         # Id of the request
         self.request_id = request_id

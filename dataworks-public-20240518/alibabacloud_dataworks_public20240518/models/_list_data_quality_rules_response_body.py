@@ -13,9 +13,9 @@ class ListDataQualityRulesResponseBody(DaraModel):
         paging_info: main_models.ListDataQualityRulesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # Paginated query result of the rule list.
+        # The paginated query result of the rule list.
         self.paging_info = paging_info
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataQualityRulesResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Specific rule list.
+        # The list of rules.
         self.data_quality_rules = data_quality_rules
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Total number of entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -124,29 +124,29 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRules(DaraModel):
         target: main_models.ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget = None,
         template_code: str = None,
     ):
-        # Sample validation settings.
+        # The sample check settings.
         self.checking_config = checking_config
-        # Rule description. Maximum length: 500 characters.
+        # The rule description. Maximum length: 500 characters.
         self.description = description
-        # Whether the data quality rule is enabled.
+        # Indicates whether the quality rule is enabled.
         self.enabled = enabled
-        # List of issue handlers for data quality rule validation.
+        # The list of quality rule check error handlers.
         self.error_handlers = error_handlers
-        # Rule ID.
+        # The rule ID.
         self.id = id
-        # Rule name.
+        # The rule name.
         self.name = name
-        # DataWorks workspace ID.
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # Settings required for sample collection.
+        # The settings required for sample collection.
         self.sampling_config = sampling_config
-        # Severity level of the rule for the business (corresponding to strong/weak rules on the page). Valid enumerated values:
+        # The severity level of the rule for business (corresponding to strong/weak rules on the page). Valid values:
         # - Normal
         # - High
         self.severity = severity
-        # Object monitored by the rule.
+        # The object monitored by the rule.
         self.target = target
-        # Unique identifier of the rule template referenced by the rule.
+        # The unique identifier of the rule template referenced by the rule.
         self.template_code = template_code
 
     def validate(self):
@@ -253,7 +253,7 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget(DaraModel
         table_guid: str = None,
         type: str = None,
     ):
-        # For table-type datasets, the database type to which the table belongs.
+        # The database type of the table for table-type datasets. Valid values:
         # - maxcompute
         # - emr
         # - cdh
@@ -262,9 +262,9 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesTarget(DaraModel
         # - analyticdb_for_mysql
         # - starrocks
         self.database_type = database_type
-        # Unique ID of the table to which the rule applies in Data Map.
+        # The unique ID of the table that the rule applies to in DataWorks Data Map.
         self.table_guid = table_guid
-        # Type of the monitored object.
+        # The monitored object type.
         # 
         # - Table
         self.type = type
@@ -309,28 +309,28 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesSamplingConfig(D
         sampling_filter: str = None,
         setting_config: str = None,
     ):
-        # Sampling metric name.
-        # - Count: number of table rows.
-        # - Min: minimum value of the field.
-        # - Max: maximum value of the field.
-        # - Avg: average value of the field.
-        # - DistinctCount: number of distinct values of the field.
-        # - DistinctPercent: ratio of the number of distinct values of the field to the number of data rows.
-        # - DuplicatedCount: number of duplicate values of the field.
-        # - DuplicatedPercent: ratio of the number of duplicate values of the field to the number of data rows.
-        # - TableSize: table size.
-        # - NullValueCount: number of rows where the field value is null.
-        # - NullValuePercent: percentage of rows where the field value is null.
-        # - GroupCount: each value and its corresponding number of data rows after aggregation by field value.
-        # - CountNotIn: number of rows whose enumerated values do not match.
-        # - CountDistinctNotIn: number of distinct values whose enumerated values do not match.
-        # - UserDefinedSql: sample collection via custom SQL.
+        # The metric name for sampling. Valid values:
+        # - Count: the number of table rows.
+        # - Min: the minimum value of a field.
+        # - Max: the maximum value of a field.
+        # - Avg: the average value of a field.
+        # - DistinctCount: the number of unique values in a field.
+        # - DistinctPercent: the ratio of unique values to the total number of rows.
+        # - DuplicatedCount: the number of duplicate values in a field.
+        # - DuplicatedPercent: the ratio of duplicate values to the total number of rows.
+        # - TableSize: the table size.
+        # - NullValueCount: the number of rows where the field is null.
+        # - NullValuePercent: the ratio of null values in a field.
+        # - GroupCount: the number of rows for each value after aggregation by field value.
+        # - CountNotIn: the number of rows with mismatched enumeration values.
+        # - CountDistinctNotIn: the number of unique values with mismatched enumeration values.
+        # - UserDefinedSql: sample collection through custom SQL.
         self.metric = metric
-        # Parameters required during sample collection.
+        # The parameters required for sample collection.
         self.metric_parameters = metric_parameters
-        # Condition for the secondary filtering of data that is not of concern during sampling. Maximum length: 16,777,215 characters.
+        # The filter condition for secondary filtering of irrelevant data during sampling. Maximum length: 16,777,215 characters.
         self.sampling_filter = sampling_filter
-        # Runtime parameter setting statements inserted and executed before the sampling statement is actually executed. Maximum length: 1,000 characters. Currently only MaxCompute is supported.
+        # The runtime parameter setting statements to execute before the sampling statement. Maximum length: 1000 characters. Currently, only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -377,9 +377,9 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesErrorHandlers(Da
         error_data_filter: str = None,
         type: str = None,
     ):
-        # For custom SQL rules, the user needs to specify SQL to filter problem data.
+        # For custom SQL rules, the SQL statement specified by the user to filter error data.
         self.error_data_filter = error_data_filter
-        # Handler type:
+        # The handler type. Valid values:
         # - SaveErrorData
         self.type = type
 
@@ -416,11 +416,11 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig(D
         thresholds: main_models.ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # Some types of thresholds require querying some reference samples, then aggregating the values of the reference samples to obtain the threshold for comparison. An expression is used here to represent the query method for the reference samples.
+        # An expression that specifies how to query reference samples. Some threshold types require querying reference samples and aggregating their values to derive the comparison threshold.
         self.referenced_samples_filter = referenced_samples_filter
-        # Threshold settings.
+        # The threshold settings.
         self.thresholds = thresholds
-        # Threshold calculation method.
+        # The threshold calculation method. Valid values:
         # - Fixed
         # - Fluctation
         # - FluctationDiscreate
@@ -470,11 +470,11 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         expected: main_models.ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected = None,
         warned: main_models.ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned = None,
     ):
-        # Threshold settings for critical warnings.
+        # The threshold settings for critical warnings.
         self.critical = critical
-        # Expected threshold settings.
+        # The expected threshold settings.
         self.expected = expected
-        # Threshold settings for normal warnings.
+        # The threshold settings for normal warnings.
         self.warned = warned
 
     def validate(self):
@@ -524,17 +524,17 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         operator: str = None,
         value: str = None,
     ):
-        # Threshold expression.
+        # The threshold expression.
         # 
-        # Fluctuation rate type rules must use the expression method to indicate the fluctuation threshold. Examples:
+        # For fluctuation-type rules, you must use an expression to represent the fluctuation threshold. Examples:
         # 
         # - Fluctuation increase greater than 0.01: $checkValue > 0.01 
         # - Fluctuation decrease greater than 0.01: $checkValue < -0.01 
-        # - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
+        # - Absolute value of fluctuation rate: abs($checkValue) > 0.01
         # 
-        # Fixed value type rules can also configure thresholds using expressions. If both are configured, the expression takes precedence over Operator and Value.
+        # For fixed-value-type rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # Comparison operator.
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - <
@@ -542,7 +542,7 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         # - !=
         # - =
         self.operator = operator
-        # Threshold value.
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -584,17 +584,17 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         operator: str = None,
         value: str = None,
     ):
-        # Threshold expression.
+        # The threshold expression.
         # 
-        # Fluctuation rate type rules must use the expression method to indicate the fluctuation threshold. Examples:
+        # For fluctuation-type rules, you must use an expression to represent the fluctuation threshold. Examples:
         # 
         # - Fluctuation increase greater than 0.01: $checkValue > 0.01 
         # - Fluctuation decrease greater than 0.01: $checkValue < -0.01 
-        # - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
+        # - Absolute value of fluctuation rate: abs($checkValue) > 0.01
         # 
-        # Fixed value type rules can also configure thresholds using expressions. If both are configured, the expression takes precedence over Operator and Value.
+        # For fixed-value-type rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # Comparison operator.
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - <
@@ -602,7 +602,7 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         # - !=
         # - =
         self.operator = operator
-        # Threshold value.
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -644,17 +644,17 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         operator: str = None,
         value: str = None,
     ):
-        # Threshold expression.
+        # The threshold expression.
         # 
-        # Fluctuation rate type rules must use the expression method to indicate the fluctuation threshold. Examples:
+        # For fluctuation-type rules, you must use an expression to represent the fluctuation threshold. Examples:
         # 
         # - Fluctuation increase greater than 0.01: $checkValue > 0.01 
         # - Fluctuation decrease greater than 0.01: $checkValue < -0.01 
-        # - Absolute value of the fluctuation rate: abs($checkValue) > 0.01
+        # - Absolute value of fluctuation rate: abs($checkValue) > 0.01
         # 
-        # Fixed value type rules can also configure thresholds using expressions. If both are configured, the expression takes precedence over Operator and Value.
+        # For fixed-value-type rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # Comparison operator.
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - <
@@ -662,7 +662,7 @@ class ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigTh
         # - !=
         # - =
         self.operator = operator
-        # Threshold value.
+        # The threshold value.
         self.value = value
 
     def validate(self):

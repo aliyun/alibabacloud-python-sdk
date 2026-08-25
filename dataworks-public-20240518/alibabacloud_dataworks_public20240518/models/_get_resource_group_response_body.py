@@ -14,9 +14,9 @@ class GetResourceGroupResponseBody(DaraModel):
         resource_group: main_models.GetResourceGroupResponseBodyResourceGroup = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The ID of the request, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The details about the resource group.
+        # The detailed information of the resource group.
         self.resource_group = resource_group
         # Indicates whether the request was successful.
         self.success = success
@@ -73,65 +73,54 @@ class GetResourceGroupResponseBodyResourceGroup(DaraModel):
         spec: main_models.GetResourceGroupResponseBodyResourceGroupSpec = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the Alibaba Cloud resource group to which the resource group belongs.
         self.aliyun_resource_group_id = aliyun_resource_group_id
-        # The tags.
+        # The list of Alibaba Cloud tags.
         self.aliyun_resource_tags = aliyun_resource_tags
-        # The time when the resource group was created. The value is a 64-bit timestamp.
+        # The creation time, represented as a 64-bit timestamp.
         self.create_time = create_time
-        # The ID of the account that is used to create the resource group.
+        # The ID of the user who created the resource group.
         self.create_user = create_user
-        # The ID of the virtual private cloud (VPC) with which the resource group is associated by default.
+        # The ID of the default VPC bound to the resource group.
         self.default_vpc_id = default_vpc_id
-        # The ID of the vSwitch with which the resource group is associated by default.
+        # The ID of the default vSwitch bound to the resource group.
         self.default_vswitch_id = default_vswitch_id
-        # The ID of the resource group.
+        # The unique identifier of the resource group.
         self.id = id
         # The name of the resource group.
         self.name = name
-        # The instance ID of the order that is used to create the resource group.
+        # The order instance ID of the resource group.
         self.order_instance_id = order_instance_id
-        # The billing method of the resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+        # The billing method of the resource group. Valid values:
+        # 
+        # - PrePaid: subscription.
+        # - PostPaid: pay-as-you-go.
         self.payment_type = payment_type
-        # The description of the resource group.
+        # The remarks of the resource group.
         self.remark = remark
         # The type of the resource group. Valid values:
         # 
-        # - CommonV2: Serverless resource group.
-        # 
-        # - ExclusiveDataIntegration: Exclusive resource group for Data Integration.
-        # 
-        # - ExclusiveScheduler: Exclusive resource group for scheduling.
-        # 
-        # - ExclusiveDataService: Exclusive resource group for DataService Studio.
+        # - CommonV2: new-version resource group.
+        # - ExclusiveDataIntegration: exclusive data integration resource group.
+        # - ExclusiveScheduler: exclusive scheduling resource group.
+        # - ExclusiveDataService: exclusive data service resource group.
         self.resource_group_type = resource_group_type
         # The specifications of the resource group.
         self.spec = spec
         # The status of the resource group. Valid values:
         # 
-        # - Normal: The resource group is running or in use.
-        # 
-        # - Stop: The resource group is expired.
-        # 
-        # - Deleted: The resource group is released or destroyed.
-        # 
-        # - Creating: The resource group is being created.
-        # 
-        # - CreateFailed: The resource group fails to be created.
-        # 
-        # - Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
-        # 
-        # - UpdateFailed: The resource group fails to be scaled out or upgraded.
-        # 
-        # - Deleting: The resource group is being released or destroyed.
-        # 
-        # - DeleteFailed: The resource group fails to be released or destroyed.
-        # 
-        # - Timeout: The operations that are performed on the resource group time out.
-        # 
-        # - Freezed: The resource group is frozen.
-        # 
-        # - Starting: The resource group is being started.
+        # - Normal: normal (running/in service).
+        # - Stop: frozen (expired).
+        # - Deleted: deleted (released/destroyed).
+        # - Creating: being created.
+        # - CreateFailed: creation failed.
+        # - Updating: being updated (scaling out/scaling in/specification change in progress).
+        # - UpdateFailed: update failed (scale-out failed/upgrade failed).
+        # - Deleting: being deleted (being released/being destroyed).
+        # - DeleteFailed: deletion failed (release failed/destruction failed).
+        # - Timeout: operation timed out.
+        # - Freezed: frozen.
+        # - Starting: starting.
         self.status = status
 
     def validate(self):
@@ -249,9 +238,9 @@ class GetResourceGroupResponseBodyResourceGroupSpec(DaraModel):
         amount: int = None,
         standard: str = None,
     ):
-        # The number of resources in the resource group.
+        # The resource count.
         self.amount = amount
-        # The number of compute units (CUs) in the resource group.
+        # The specification details.
         self.standard = standard
 
     def validate(self):

@@ -15,7 +15,7 @@ class UpdateSkillResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # -
+        # The Skill details.
         self.skill = skill
 
     def validate(self):

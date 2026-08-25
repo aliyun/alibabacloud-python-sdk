@@ -16,45 +16,41 @@ class ListNodesRequest(DaraModel):
         rerun_mode: str = None,
         scene: str = None,
     ):
-        # The ID of the container. If you specify this parameter, only nodes in the specified container are returned. This parameter is independent of the resource group (ResourceGroupId).
-        # 
-        # >Notice: 
-        # 
-        # This parameter is of the Long type in SDK versions earlier than 8.0.0 and of the String type in SDK 8.0.0 and later. **This change does not affect SDK usage. The parameter is returned in the type defined for your SDK version.** The type change may cause compilation errors only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.
+        # Leave this parameter empty if not specified. The filter condition: within the specified container. Specify the container ID. This parameter is not related to the resource group (ResourceGroupId).
         self.container_id = container_id
-        # The node name. Fuzzy search is supported.
+        # The node name. Fuzzy match is supported.
         self.name = name
-        # The page number of the results to return.
+        # The page number for pagination.
         self.page_number = page_number
-        # The number of entries per page. Default: 10. Maximum: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the DataWorks workspace. To find this ID, log in to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Filters nodes by their scheduling type. Valid values:
+        # Filter condition: scheduling type. Valid values:
         # 
-        # - Normal: The node runs as scheduled.
+        # - Normal: The node is executed normally.
         # 
-        # - Pause: The node is paused and blocks its dependent downstream nodes.
+        # - Pause: The node status is set to paused, and downstream nodes that depend on the current node are blocked from execution.
         # 
-        # - Skip: The node is skipped, and the system immediately returns a success status with a 0-second execution time. This action does not block downstream nodes or consume resources.
+        # - Skip: The node status is set to dry run. The system directly returns a success result (with an execution duration of 0 seconds), does not block downstream node execution, and does not consume resources.
         self.recurrence = recurrence
-        # The rerun mode. Valid values:
+        # The rerun property. If not specified, this parameter is left empty. Valid values:
         # 
-        # - Allowed: The node can be rerun regardless of whether it succeeded or failed.
+        # - Allowed: The node can be rerun regardless of whether it runs successfully or fails.
         # 
-        # - FailureAllowed: The node can be rerun only if its previous run failed.
+        # - FailureAllowed: The node can be rerun only after a failed run, not after a successful run.
         # 
-        # - Denied: The node cannot be rerun regardless of whether it succeeded or failed.
+        # - Denied: The node cannot be rerun regardless of whether it runs successfully or fails.
         self.rerun_mode = rerun_mode
-        # The context for filtering nodes. In data development, this corresponds to the sections in the directory tree on the left. If you omit this parameter, no filtering is applied. Valid values:
+        # The scene in which the node resides. Leave this parameter empty if not specified. This parameter corresponds to the partition of the left-side navigation pane in DataStudio. Valid values:
         # 
-        # - DataworksProject: Nodes in the project directory.
+        # - DataworksProject: project folder.
         # 
-        # - DataworksManualWorkflow: manual workflow
+        # - DataworksManualWorkflow: manual workflow.
         # 
-        # - DataworksManualTask: manual task
+        # - DataworksManualTask: manual node.
         self.scene = scene
 
     def validate(self):

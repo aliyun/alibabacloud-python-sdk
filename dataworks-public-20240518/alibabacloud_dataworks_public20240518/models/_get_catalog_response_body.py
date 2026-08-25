@@ -12,7 +12,7 @@ class GetCatalogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Catalog information.
+        # The data catalog information.
         self.catalog = catalog
         # The request ID.
         self.request_id = request_id

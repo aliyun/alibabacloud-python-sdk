@@ -13,7 +13,7 @@ class LineageEntity(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The additional properties.
+        # The other properties.
         self.attributes = attributes
         # The entity ID.
         self.id = id

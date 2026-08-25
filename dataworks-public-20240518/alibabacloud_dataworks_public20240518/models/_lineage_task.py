@@ -13,11 +13,11 @@ class LineageTask(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # The properties of the task.
+        # The task attributes.
         self.attributes = attributes
         # The task ID.
         self.id = id
-        # The type of the task.
+        # The task type.
         self.type = type
 
     def validate(self):

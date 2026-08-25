@@ -62,10 +62,16 @@ from ._batch_update_tasks_request import BatchUpdateTasksRequest
 from ._batch_update_tasks_shrink_request import BatchUpdateTasksShrinkRequest
 from ._batch_update_tasks_response_body import BatchUpdateTasksResponseBody
 from ._batch_update_tasks_response import BatchUpdateTasksResponse
+from ._build_image_request import BuildImageRequest
+from ._build_image_response_body import BuildImageResponseBody
+from ._build_image_response import BuildImageResponse
 from ._cancel_agent_session_request import CancelAgentSessionRequest
 from ._cancel_agent_session_shrink_request import CancelAgentSessionShrinkRequest
 from ._cancel_agent_session_response_body import CancelAgentSessionResponseBody
 from ._cancel_agent_session_response import CancelAgentSessionResponse
+from ._cancel_image_test_request import CancelImageTestRequest
+from ._cancel_image_test_response_body import CancelImageTestResponseBody
+from ._cancel_image_test_response import CancelImageTestResponse
 from ._clone_data_source_request import CloneDataSourceRequest
 from ._clone_data_source_response_body import CloneDataSourceResponseBody
 from ._clone_data_source_response import CloneDataSourceResponse
@@ -168,6 +174,10 @@ from ._create_identify_credential_request import CreateIdentifyCredentialRequest
 from ._create_identify_credential_shrink_request import CreateIdentifyCredentialShrinkRequest
 from ._create_identify_credential_response_body import CreateIdentifyCredentialResponseBody
 from ._create_identify_credential_response import CreateIdentifyCredentialResponse
+from ._create_image_request import CreateImageRequest
+from ._create_image_shrink_request import CreateImageShrinkRequest
+from ._create_image_response_body import CreateImageResponseBody
+from ._create_image_response import CreateImageResponse
 from ._create_lineage_relationship_request import CreateLineageRelationshipRequest
 from ._create_lineage_relationship_shrink_request import CreateLineageRelationshipShrinkRequest
 from ._create_lineage_relationship_response_body import CreateLineageRelationshipResponseBody
@@ -371,6 +381,9 @@ from ._delete_security_strategy_response import DeleteSecurityStrategyResponse
 from ._delete_semantic_job_request import DeleteSemanticJobRequest
 from ._delete_semantic_job_response_body import DeleteSemanticJobResponseBody
 from ._delete_semantic_job_response import DeleteSemanticJobResponse
+from ._delete_server_ide_instance_request import DeleteServerIdeInstanceRequest
+from ._delete_server_ide_instance_response_body import DeleteServerIdeInstanceResponseBody
+from ._delete_server_ide_instance_response import DeleteServerIdeInstanceResponse
 from ._delete_skill_request import DeleteSkillRequest
 from ._delete_skill_response_body import DeleteSkillResponseBody
 from ._delete_skill_response import DeleteSkillResponse
@@ -390,6 +403,9 @@ from ._detach_data_quality_rules_from_evaluation_task_request import DetachDataQ
 from ._detach_data_quality_rules_from_evaluation_task_shrink_request import DetachDataQualityRulesFromEvaluationTaskShrinkRequest
 from ._detach_data_quality_rules_from_evaluation_task_response_body import DetachDataQualityRulesFromEvaluationTaskResponseBody
 from ._detach_data_quality_rules_from_evaluation_task_response import DetachDataQualityRulesFromEvaluationTaskResponse
+from ._disable_image_request import DisableImageRequest
+from ._disable_image_response_body import DisableImageResponseBody
+from ._disable_image_response import DisableImageResponse
 from ._disable_process_definition_request import DisableProcessDefinitionRequest
 from ._disable_process_definition_response_body import DisableProcessDefinitionResponseBody
 from ._disable_process_definition_response import DisableProcessDefinitionResponse
@@ -402,6 +418,9 @@ from ._dissociate_project_from_resource_group_response import DissociateProjectF
 from ._download_semantic_results_request import DownloadSemanticResultsRequest
 from ._download_semantic_results_response_body import DownloadSemanticResultsResponseBody
 from ._download_semantic_results_response import DownloadSemanticResultsResponse
+from ._enable_image_request import EnableImageRequest
+from ._enable_image_response_body import EnableImageResponseBody
+from ._enable_image_response import EnableImageResponse
 from ._enable_process_definition_request import EnableProcessDefinitionRequest
 from ._enable_process_definition_response_body import EnableProcessDefinitionResponseBody
 from ._enable_process_definition_response import EnableProcessDefinitionResponse
@@ -531,6 +550,9 @@ from ._get_ideevent_detail_response import GetIDEEventDetailResponse
 from ._get_image_request import GetImageRequest
 from ._get_image_response_body import GetImageResponseBody
 from ._get_image_response import GetImageResponse
+from ._get_image_test_result_request import GetImageTestResultRequest
+from ._get_image_test_result_response_body import GetImageTestResultResponseBody
+from ._get_image_test_result_response import GetImageTestResultResponse
 from ._get_job_status_request import GetJobStatusRequest
 from ._get_job_status_response_body import GetJobStatusResponseBody
 from ._get_job_status_response import GetJobStatusResponse
@@ -603,9 +625,15 @@ from ._get_semantic_job_detail_response import GetSemanticJobDetailResponse
 from ._get_semantic_job_log_request import GetSemanticJobLogRequest
 from ._get_semantic_job_log_response_body import GetSemanticJobLogResponseBody
 from ._get_semantic_job_log_response import GetSemanticJobLogResponse
+from ._get_server_ide_instance_request import GetServerIdeInstanceRequest
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBody
+from ._get_server_ide_instance_response import GetServerIdeInstanceResponse
 from ._get_skill_request import GetSkillRequest
 from ._get_skill_response_body import GetSkillResponseBody
 from ._get_skill_response import GetSkillResponse
+from ._get_snapshot_request import GetSnapshotRequest
+from ._get_snapshot_response_body import GetSnapshotResponseBody
+from ._get_snapshot_response import GetSnapshotResponse
 from ._get_table_request import GetTableRequest
 from ._get_table_response_body import GetTableResponseBody
 from ._get_table_response import GetTableResponse
@@ -792,6 +820,9 @@ from ._list_functions_response import ListFunctionsResponse
 from ._list_image_associated_projects_request import ListImageAssociatedProjectsRequest
 from ._list_image_associated_projects_response_body import ListImageAssociatedProjectsResponseBody
 from ._list_image_associated_projects_response import ListImageAssociatedProjectsResponse
+from ._list_image_test_results_request import ListImageTestResultsRequest
+from ._list_image_test_results_response_body import ListImageTestResultsResponseBody
+from ._list_image_test_results_response import ListImageTestResultsResponse
 from ._list_image_versions_request import ListImageVersionsRequest
 from ._list_image_versions_response_body import ListImageVersionsResponseBody
 from ._list_image_versions_response import ListImageVersionsResponse
@@ -900,10 +931,22 @@ from ._list_semantic_job_runs_response import ListSemanticJobRunsResponse
 from ._list_semantic_jobs_request import ListSemanticJobsRequest
 from ._list_semantic_jobs_response_body import ListSemanticJobsResponseBody
 from ._list_semantic_jobs_response import ListSemanticJobsResponse
+from ._list_server_ide_ecs_specs_request import ListServerIdeEcsSpecsRequest
+from ._list_server_ide_ecs_specs_response_body import ListServerIdeEcsSpecsResponseBody
+from ._list_server_ide_ecs_specs_response import ListServerIdeEcsSpecsResponse
+from ._list_server_ide_images_request import ListServerIdeImagesRequest
+from ._list_server_ide_images_response_body import ListServerIdeImagesResponseBody
+from ._list_server_ide_images_response import ListServerIdeImagesResponse
+from ._list_server_ide_instances_request import ListServerIdeInstancesRequest
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBody
+from ._list_server_ide_instances_response import ListServerIdeInstancesResponse
 from ._list_skills_request import ListSkillsRequest
 from ._list_skills_shrink_request import ListSkillsShrinkRequest
 from ._list_skills_response_body import ListSkillsResponseBody
 from ._list_skills_response import ListSkillsResponse
+from ._list_snapshots_request import ListSnapshotsRequest
+from ._list_snapshots_response_body import ListSnapshotsResponseBody
+from ._list_snapshots_response import ListSnapshotsResponse
 from ._list_tables_request import ListTablesRequest
 from ._list_tables_shrink_request import ListTablesShrinkRequest
 from ._list_tables_response_body import ListTablesResponseBody
@@ -962,6 +1005,9 @@ from ._prompt_agent_session_request import PromptAgentSessionRequest
 from ._prompt_agent_session_shrink_request import PromptAgentSessionShrinkRequest
 from ._prompt_agent_session_response_body import PromptAgentSessionResponseBody
 from ._prompt_agent_session_response import PromptAgentSessionResponse
+from ._publish_image_request import PublishImageRequest
+from ._publish_image_response_body import PublishImageResponseBody
+from ._publish_image_response import PublishImageResponse
 from ._remove_entity_from_meta_collection_request import RemoveEntityFromMetaCollectionRequest
 from ._remove_entity_from_meta_collection_response_body import RemoveEntityFromMetaCollectionResponseBody
 from ._remove_entity_from_meta_collection_response import RemoveEntityFromMetaCollectionResponse
@@ -997,12 +1043,18 @@ from ._revoke_member_project_roles_request import RevokeMemberProjectRolesReques
 from ._revoke_member_project_roles_shrink_request import RevokeMemberProjectRolesShrinkRequest
 from ._revoke_member_project_roles_response_body import RevokeMemberProjectRolesResponseBody
 from ._revoke_member_project_roles_response import RevokeMemberProjectRolesResponse
+from ._rollback_image_request import RollbackImageRequest
+from ._rollback_image_response_body import RollbackImageResponseBody
+from ._rollback_image_response import RollbackImageResponse
 from ._rollback_parameter_request import RollbackParameterRequest
 from ._rollback_parameter_response_body import RollbackParameterResponseBody
 from ._rollback_parameter_response import RollbackParameterResponse
 from ._run_crawler_request import RunCrawlerRequest
 from ._run_crawler_response_body import RunCrawlerResponseBody
 from ._run_crawler_response import RunCrawlerResponse
+from ._run_image_test_request import RunImageTestRequest
+from ._run_image_test_response_body import RunImageTestResponseBody
+from ._run_image_test_response import RunImageTestResponse
 from ._run_semantic_job_request import RunSemanticJobRequest
 from ._run_semantic_job_response_body import RunSemanticJobResponseBody
 from ._run_semantic_job_response import RunSemanticJobResponse
@@ -1014,6 +1066,9 @@ from ._start_dijob_request import StartDIJobRequest
 from ._start_dijob_shrink_request import StartDIJobShrinkRequest
 from ._start_dijob_response_body import StartDIJobResponseBody
 from ._start_dijob_response import StartDIJobResponse
+from ._start_server_ide_instance_request import StartServerIdeInstanceRequest
+from ._start_server_ide_instance_response_body import StartServerIdeInstanceResponseBody
+from ._start_server_ide_instance_response import StartServerIdeInstanceResponse
 from ._start_workflow_instances_request import StartWorkflowInstancesRequest
 from ._start_workflow_instances_shrink_request import StartWorkflowInstancesShrinkRequest
 from ._start_workflow_instances_response_body import StartWorkflowInstancesResponseBody
@@ -1027,6 +1082,9 @@ from ._stop_dijob_response import StopDIJobResponse
 from ._stop_process_instance_request import StopProcessInstanceRequest
 from ._stop_process_instance_response_body import StopProcessInstanceResponseBody
 from ._stop_process_instance_response import StopProcessInstanceResponse
+from ._stop_server_ide_instance_request import StopServerIdeInstanceRequest
+from ._stop_server_ide_instance_response_body import StopServerIdeInstanceResponseBody
+from ._stop_server_ide_instance_response import StopServerIdeInstanceResponse
 from ._stop_task_instances_request import StopTaskInstancesRequest
 from ._stop_task_instances_shrink_request import StopTaskInstancesShrinkRequest
 from ._stop_task_instances_response_body import StopTaskInstancesResponseBody
@@ -1137,6 +1195,10 @@ from ._update_function_response import UpdateFunctionResponse
 from ._update_ideevent_result_request import UpdateIDEEventResultRequest
 from ._update_ideevent_result_response_body import UpdateIDEEventResultResponseBody
 from ._update_ideevent_result_response import UpdateIDEEventResultResponse
+from ._update_image_request import UpdateImageRequest
+from ._update_image_shrink_request import UpdateImageShrinkRequest
+from ._update_image_response_body import UpdateImageResponseBody
+from ._update_image_response import UpdateImageResponse
 from ._update_mcp_server_request import UpdateMcpServerRequest
 from ._update_mcp_server_shrink_request import UpdateMcpServerShrinkRequest
 from ._update_mcp_server_response_body import UpdateMcpServerResponseBody
@@ -1267,9 +1329,11 @@ from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksRuntimeReso
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksTags
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasksTrigger
 from ._batch_update_tasks_request import BatchUpdateTasksRequestTasks
+from ._build_image_response_body import BuildImageResponseBodyData
 from ._cancel_agent_session_request import CancelAgentSessionRequestParams
 from ._cancel_agent_session_response_body import CancelAgentSessionResponseBodyJsonRpcResponseResult
 from ._cancel_agent_session_response_body import CancelAgentSessionResponseBodyJsonRpcResponse
+from ._cancel_image_test_response_body import CancelImageTestResponseBodyData
 from ._create_agent_request import CreateAgentRequestCallableAgents
 from ._create_agent_request import CreateAgentRequestSkills
 from ._create_agent_request import CreateAgentRequestTools
@@ -1357,6 +1421,9 @@ from ._create_data_quality_scan_request import CreateDataQualityScanRequestTrigg
 from ._create_data_quality_scan_run_request import CreateDataQualityScanRunRequestParameters
 from ._create_data_quality_scan_run_request import CreateDataQualityScanRunRequestRuntimeResource
 from ._create_dataset_request import CreateDatasetRequestInitVersion
+from ._create_image_request import CreateImageRequestBuildConfigPackageInstallationScripts
+from ._create_image_request import CreateImageRequestBuildConfig
+from ._create_image_request import CreateImageRequestSupported
 from ._create_mcp_server_request import CreateMcpServerRequestConfig
 from ._create_mcp_server_request import CreateMcpServerRequestVisibilityScope
 from ._create_mcp_server_response_body import CreateMcpServerResponseBodyMcpServer
@@ -1549,6 +1616,7 @@ from ._get_image_response_body import GetImageResponseBodyImageBuildConfigPackag
 from ._get_image_response_body import GetImageResponseBodyImageBuildConfig
 from ._get_image_response_body import GetImageResponseBodyImageSupported
 from ._get_image_response_body import GetImageResponseBodyImage
+from ._get_image_test_result_response_body import GetImageTestResultResponseBodyTestResult
 from ._get_job_status_response_body import GetJobStatusResponseBodyJobStatus
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyMcpServerConfig
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyMcpServer
@@ -1588,8 +1656,18 @@ from ._get_security_strategy_response_body import GetSecurityStrategyResponseBod
 from ._get_security_strategy_response_body import GetSecurityStrategyResponseBodySecurityStrategy
 from ._get_semantic_job_detail_response_body import GetSemanticJobDetailResponseBodyData
 from ._get_semantic_job_log_response_body import GetSemanticJobLogResponseBodyData
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBodyInstanceCredentialConfigConfigsRolesUserInfo
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBodyInstanceCredentialConfigConfigsRoles
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBodyInstanceCredentialConfigConfigs
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBodyInstanceCredentialConfig
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBodyInstanceDatasets
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBodyInstanceUserVpcForwardInfos
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBodyInstanceUserVpc
+from ._get_server_ide_instance_response_body import GetServerIdeInstanceResponseBodyInstance
 from ._get_skill_response_body import GetSkillResponseBodySkillVisibilityScope
 from ._get_skill_response_body import GetSkillResponseBodySkill
+from ._get_snapshot_response_body import GetSnapshotResponseBodySnapshotContent
+from ._get_snapshot_response_body import GetSnapshotResponseBodySnapshot
 from ._get_task_response_body import GetTaskResponseBodyTaskDataSource
 from ._get_task_response_body import GetTaskResponseBodyTaskDependencies
 from ._get_task_response_body import GetTaskResponseBodyTaskInputsVariables
@@ -1811,6 +1889,8 @@ from ._list_functions_response_body import ListFunctionsResponseBodyPagingInfoFu
 from ._list_functions_response_body import ListFunctionsResponseBodyPagingInfoFunctionsScript
 from ._list_functions_response_body import ListFunctionsResponseBodyPagingInfoFunctions
 from ._list_functions_response_body import ListFunctionsResponseBodyPagingInfo
+from ._list_image_test_results_response_body import ListImageTestResultsResponseBodyPagingInfoTestResultList
+from ._list_image_test_results_response_body import ListImageTestResultsResponseBodyPagingInfo
 from ._list_image_versions_response_body import ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfigPackageInstallationScripts
 from ._list_image_versions_response_body import ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfig
 from ._list_image_versions_response_body import ListImageVersionsResponseBodyPagingInfoImageVersionsSupported
@@ -1940,8 +2020,22 @@ from ._list_semantic_job_runs_response_body import ListSemanticJobRunsResponseBo
 from ._list_semantic_job_runs_response_body import ListSemanticJobRunsResponseBodyData
 from ._list_semantic_jobs_response_body import ListSemanticJobsResponseBodyDataSemanticJobs
 from ._list_semantic_jobs_response_body import ListSemanticJobsResponseBodyData
+from ._list_server_ide_ecs_specs_response_body import ListServerIdeEcsSpecsResponseBodyEcsSpecs
+from ._list_server_ide_images_response_body import ListServerIdeImagesResponseBodyPagingInfoImages
+from ._list_server_ide_images_response_body import ListServerIdeImagesResponseBodyPagingInfo
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRolesUserInfo
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRoles
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigs
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfig
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpcForwardInfos
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpc
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfoInstances
+from ._list_server_ide_instances_response_body import ListServerIdeInstancesResponseBodyPagingInfo
 from ._list_skills_response_body import ListSkillsResponseBodyPagingInfoSkills
 from ._list_skills_response_body import ListSkillsResponseBodyPagingInfo
+from ._list_snapshots_response_body import ListSnapshotsResponseBodyPagingInfoSnapshots
+from ._list_snapshots_response_body import ListSnapshotsResponseBodyPagingInfo
 from ._list_tables_response_body import ListTablesResponseBodyPagingInfo
 from ._list_task_instance_operation_logs_response_body import ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs
 from ._list_task_instance_operation_logs_response_body import ListTaskInstanceOperationLogsResponseBodyPagingInfo
@@ -1995,7 +2089,9 @@ from ._prompt_agent_session_request import PromptAgentSessionRequestParamsMeta
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPromptMeta
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPrompt
 from ._prompt_agent_session_request import PromptAgentSessionRequestParams
+from ._publish_image_response_body import PublishImageResponseBodyData
 from ._rerun_workflow_instances_request import RerunWorkflowInstancesRequestFilter
+from ._run_image_test_response_body import RunImageTestResponseBodyData
 from ._run_semantic_job_response_body import RunSemanticJobResponseBodyData
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettingsFailoverSettings
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettings
@@ -2068,6 +2164,9 @@ from ._update_data_quality_scan_request import UpdateDataQualityScanRequestHooks
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestParameters
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestRuntimeResource
 from ._update_data_quality_scan_request import UpdateDataQualityScanRequestTrigger
+from ._update_image_request import UpdateImageRequestBuildConfigPackageInstallationScripts
+from ._update_image_request import UpdateImageRequestBuildConfig
+from ._update_image_request import UpdateImageRequestSupported
 from ._update_mcp_server_request import UpdateMcpServerRequestVisibilityScope
 from ._update_mcp_server_response_body import UpdateMcpServerResponseBodyMcpServer
 from ._update_meta_entity_response_body import UpdateMetaEntityResponseBodyResult
@@ -2174,10 +2273,16 @@ __all__ = [
     BatchUpdateTasksShrinkRequest,
     BatchUpdateTasksResponseBody,
     BatchUpdateTasksResponse,
+    BuildImageRequest,
+    BuildImageResponseBody,
+    BuildImageResponse,
     CancelAgentSessionRequest,
     CancelAgentSessionShrinkRequest,
     CancelAgentSessionResponseBody,
     CancelAgentSessionResponse,
+    CancelImageTestRequest,
+    CancelImageTestResponseBody,
+    CancelImageTestResponse,
     CloneDataSourceRequest,
     CloneDataSourceResponseBody,
     CloneDataSourceResponse,
@@ -2280,6 +2385,10 @@ __all__ = [
     CreateIdentifyCredentialShrinkRequest,
     CreateIdentifyCredentialResponseBody,
     CreateIdentifyCredentialResponse,
+    CreateImageRequest,
+    CreateImageShrinkRequest,
+    CreateImageResponseBody,
+    CreateImageResponse,
     CreateLineageRelationshipRequest,
     CreateLineageRelationshipShrinkRequest,
     CreateLineageRelationshipResponseBody,
@@ -2483,6 +2592,9 @@ __all__ = [
     DeleteSemanticJobRequest,
     DeleteSemanticJobResponseBody,
     DeleteSemanticJobResponse,
+    DeleteServerIdeInstanceRequest,
+    DeleteServerIdeInstanceResponseBody,
+    DeleteServerIdeInstanceResponse,
     DeleteSkillRequest,
     DeleteSkillResponseBody,
     DeleteSkillResponse,
@@ -2502,6 +2614,9 @@ __all__ = [
     DetachDataQualityRulesFromEvaluationTaskShrinkRequest,
     DetachDataQualityRulesFromEvaluationTaskResponseBody,
     DetachDataQualityRulesFromEvaluationTaskResponse,
+    DisableImageRequest,
+    DisableImageResponseBody,
+    DisableImageResponse,
     DisableProcessDefinitionRequest,
     DisableProcessDefinitionResponseBody,
     DisableProcessDefinitionResponse,
@@ -2514,6 +2629,9 @@ __all__ = [
     DownloadSemanticResultsRequest,
     DownloadSemanticResultsResponseBody,
     DownloadSemanticResultsResponse,
+    EnableImageRequest,
+    EnableImageResponseBody,
+    EnableImageResponse,
     EnableProcessDefinitionRequest,
     EnableProcessDefinitionResponseBody,
     EnableProcessDefinitionResponse,
@@ -2643,6 +2761,9 @@ __all__ = [
     GetImageRequest,
     GetImageResponseBody,
     GetImageResponse,
+    GetImageTestResultRequest,
+    GetImageTestResultResponseBody,
+    GetImageTestResultResponse,
     GetJobStatusRequest,
     GetJobStatusResponseBody,
     GetJobStatusResponse,
@@ -2715,9 +2836,15 @@ __all__ = [
     GetSemanticJobLogRequest,
     GetSemanticJobLogResponseBody,
     GetSemanticJobLogResponse,
+    GetServerIdeInstanceRequest,
+    GetServerIdeInstanceResponseBody,
+    GetServerIdeInstanceResponse,
     GetSkillRequest,
     GetSkillResponseBody,
     GetSkillResponse,
+    GetSnapshotRequest,
+    GetSnapshotResponseBody,
+    GetSnapshotResponse,
     GetTableRequest,
     GetTableResponseBody,
     GetTableResponse,
@@ -2904,6 +3031,9 @@ __all__ = [
     ListImageAssociatedProjectsRequest,
     ListImageAssociatedProjectsResponseBody,
     ListImageAssociatedProjectsResponse,
+    ListImageTestResultsRequest,
+    ListImageTestResultsResponseBody,
+    ListImageTestResultsResponse,
     ListImageVersionsRequest,
     ListImageVersionsResponseBody,
     ListImageVersionsResponse,
@@ -3012,10 +3142,22 @@ __all__ = [
     ListSemanticJobsRequest,
     ListSemanticJobsResponseBody,
     ListSemanticJobsResponse,
+    ListServerIdeEcsSpecsRequest,
+    ListServerIdeEcsSpecsResponseBody,
+    ListServerIdeEcsSpecsResponse,
+    ListServerIdeImagesRequest,
+    ListServerIdeImagesResponseBody,
+    ListServerIdeImagesResponse,
+    ListServerIdeInstancesRequest,
+    ListServerIdeInstancesResponseBody,
+    ListServerIdeInstancesResponse,
     ListSkillsRequest,
     ListSkillsShrinkRequest,
     ListSkillsResponseBody,
     ListSkillsResponse,
+    ListSnapshotsRequest,
+    ListSnapshotsResponseBody,
+    ListSnapshotsResponse,
     ListTablesRequest,
     ListTablesShrinkRequest,
     ListTablesResponseBody,
@@ -3074,6 +3216,9 @@ __all__ = [
     PromptAgentSessionShrinkRequest,
     PromptAgentSessionResponseBody,
     PromptAgentSessionResponse,
+    PublishImageRequest,
+    PublishImageResponseBody,
+    PublishImageResponse,
     RemoveEntityFromMetaCollectionRequest,
     RemoveEntityFromMetaCollectionResponseBody,
     RemoveEntityFromMetaCollectionResponse,
@@ -3109,12 +3254,18 @@ __all__ = [
     RevokeMemberProjectRolesShrinkRequest,
     RevokeMemberProjectRolesResponseBody,
     RevokeMemberProjectRolesResponse,
+    RollbackImageRequest,
+    RollbackImageResponseBody,
+    RollbackImageResponse,
     RollbackParameterRequest,
     RollbackParameterResponseBody,
     RollbackParameterResponse,
     RunCrawlerRequest,
     RunCrawlerResponseBody,
     RunCrawlerResponse,
+    RunImageTestRequest,
+    RunImageTestResponseBody,
+    RunImageTestResponse,
     RunSemanticJobRequest,
     RunSemanticJobResponseBody,
     RunSemanticJobResponse,
@@ -3126,6 +3277,9 @@ __all__ = [
     StartDIJobShrinkRequest,
     StartDIJobResponseBody,
     StartDIJobResponse,
+    StartServerIdeInstanceRequest,
+    StartServerIdeInstanceResponseBody,
+    StartServerIdeInstanceResponse,
     StartWorkflowInstancesRequest,
     StartWorkflowInstancesShrinkRequest,
     StartWorkflowInstancesResponseBody,
@@ -3139,6 +3293,9 @@ __all__ = [
     StopProcessInstanceRequest,
     StopProcessInstanceResponseBody,
     StopProcessInstanceResponse,
+    StopServerIdeInstanceRequest,
+    StopServerIdeInstanceResponseBody,
+    StopServerIdeInstanceResponse,
     StopTaskInstancesRequest,
     StopTaskInstancesShrinkRequest,
     StopTaskInstancesResponseBody,
@@ -3249,6 +3406,10 @@ __all__ = [
     UpdateIDEEventResultRequest,
     UpdateIDEEventResultResponseBody,
     UpdateIDEEventResultResponse,
+    UpdateImageRequest,
+    UpdateImageShrinkRequest,
+    UpdateImageResponseBody,
+    UpdateImageResponse,
     UpdateMcpServerRequest,
     UpdateMcpServerShrinkRequest,
     UpdateMcpServerResponseBody,
@@ -3379,9 +3540,11 @@ __all__ = [
     BatchUpdateTasksRequestTasksTags,
     BatchUpdateTasksRequestTasksTrigger,
     BatchUpdateTasksRequestTasks,
+    BuildImageResponseBodyData,
     CancelAgentSessionRequestParams,
     CancelAgentSessionResponseBodyJsonRpcResponseResult,
     CancelAgentSessionResponseBodyJsonRpcResponse,
+    CancelImageTestResponseBodyData,
     CreateAgentRequestCallableAgents,
     CreateAgentRequestSkills,
     CreateAgentRequestTools,
@@ -3469,6 +3632,9 @@ __all__ = [
     CreateDataQualityScanRunRequestParameters,
     CreateDataQualityScanRunRequestRuntimeResource,
     CreateDatasetRequestInitVersion,
+    CreateImageRequestBuildConfigPackageInstallationScripts,
+    CreateImageRequestBuildConfig,
+    CreateImageRequestSupported,
     CreateMcpServerRequestConfig,
     CreateMcpServerRequestVisibilityScope,
     CreateMcpServerResponseBodyMcpServer,
@@ -3661,6 +3827,7 @@ __all__ = [
     GetImageResponseBodyImageBuildConfig,
     GetImageResponseBodyImageSupported,
     GetImageResponseBodyImage,
+    GetImageTestResultResponseBodyTestResult,
     GetJobStatusResponseBodyJobStatus,
     GetMcpServerResponseBodyMcpServerConfig,
     GetMcpServerResponseBodyMcpServer,
@@ -3700,8 +3867,18 @@ __all__ = [
     GetSecurityStrategyResponseBodySecurityStrategy,
     GetSemanticJobDetailResponseBodyData,
     GetSemanticJobLogResponseBodyData,
+    GetServerIdeInstanceResponseBodyInstanceCredentialConfigConfigsRolesUserInfo,
+    GetServerIdeInstanceResponseBodyInstanceCredentialConfigConfigsRoles,
+    GetServerIdeInstanceResponseBodyInstanceCredentialConfigConfigs,
+    GetServerIdeInstanceResponseBodyInstanceCredentialConfig,
+    GetServerIdeInstanceResponseBodyInstanceDatasets,
+    GetServerIdeInstanceResponseBodyInstanceUserVpcForwardInfos,
+    GetServerIdeInstanceResponseBodyInstanceUserVpc,
+    GetServerIdeInstanceResponseBodyInstance,
     GetSkillResponseBodySkillVisibilityScope,
     GetSkillResponseBodySkill,
+    GetSnapshotResponseBodySnapshotContent,
+    GetSnapshotResponseBodySnapshot,
     GetTaskResponseBodyTaskDataSource,
     GetTaskResponseBodyTaskDependencies,
     GetTaskResponseBodyTaskInputsVariables,
@@ -3923,6 +4100,8 @@ __all__ = [
     ListFunctionsResponseBodyPagingInfoFunctionsScript,
     ListFunctionsResponseBodyPagingInfoFunctions,
     ListFunctionsResponseBodyPagingInfo,
+    ListImageTestResultsResponseBodyPagingInfoTestResultList,
+    ListImageTestResultsResponseBodyPagingInfo,
     ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfigPackageInstallationScripts,
     ListImageVersionsResponseBodyPagingInfoImageVersionsBuildConfig,
     ListImageVersionsResponseBodyPagingInfoImageVersionsSupported,
@@ -4052,8 +4231,22 @@ __all__ = [
     ListSemanticJobRunsResponseBodyData,
     ListSemanticJobsResponseBodyDataSemanticJobs,
     ListSemanticJobsResponseBodyData,
+    ListServerIdeEcsSpecsResponseBodyEcsSpecs,
+    ListServerIdeImagesResponseBodyPagingInfoImages,
+    ListServerIdeImagesResponseBodyPagingInfo,
+    ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRolesUserInfo,
+    ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRoles,
+    ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigs,
+    ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfig,
+    ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets,
+    ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpcForwardInfos,
+    ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpc,
+    ListServerIdeInstancesResponseBodyPagingInfoInstances,
+    ListServerIdeInstancesResponseBodyPagingInfo,
     ListSkillsResponseBodyPagingInfoSkills,
     ListSkillsResponseBodyPagingInfo,
+    ListSnapshotsResponseBodyPagingInfoSnapshots,
+    ListSnapshotsResponseBodyPagingInfo,
     ListTablesResponseBodyPagingInfo,
     ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs,
     ListTaskInstanceOperationLogsResponseBodyPagingInfo,
@@ -4107,7 +4300,9 @@ __all__ = [
     PromptAgentSessionRequestParamsPromptMeta,
     PromptAgentSessionRequestParamsPrompt,
     PromptAgentSessionRequestParams,
+    PublishImageResponseBodyData,
     RerunWorkflowInstancesRequestFilter,
+    RunImageTestResponseBodyData,
     RunSemanticJobResponseBodyData,
     StartDIJobRequestRealtimeStartSettingsFailoverSettings,
     StartDIJobRequestRealtimeStartSettings,
@@ -4180,6 +4375,9 @@ __all__ = [
     UpdateDataQualityScanRequestParameters,
     UpdateDataQualityScanRequestRuntimeResource,
     UpdateDataQualityScanRequestTrigger,
+    UpdateImageRequestBuildConfigPackageInstallationScripts,
+    UpdateImageRequestBuildConfig,
+    UpdateImageRequestSupported,
     UpdateMcpServerRequestVisibilityScope,
     UpdateMcpServerResponseBodyMcpServer,
     UpdateMetaEntityResponseBodyResult,

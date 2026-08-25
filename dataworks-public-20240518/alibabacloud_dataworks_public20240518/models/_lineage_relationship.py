@@ -18,11 +18,11 @@ class LineageRelationship(DaraModel):
         self.create_time = create_time
         # The destination entity.
         self.dst_entity = dst_entity
-        # The ID.
+        # ID
         self.id = id
         # The source entity.
         self.src_entity = src_entity
-        # The task.
+        # The node.
         self.task = task
 
     def validate(self):

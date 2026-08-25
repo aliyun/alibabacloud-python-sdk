@@ -12,13 +12,13 @@ class CreateDataQualityScanRunShrinkRequest(DaraModel):
         project_id: int = None,
         runtime_resource_shrink: str = None,
     ):
-        # The data quality scan ID.
+        # The ID of the data quality monitoring task.
         self.data_quality_scan_id = data_quality_scan_id
-        # The parameters for the run. The `triggerTime` parameter is required.
+        # The parameter settings used during the actual run. The `triggerTime` parameter is required.
         self.parameters_shrink = parameters_shrink
         # The project ID.
         self.project_id = project_id
-        # Specifies the scheduling resource group used to run the data quality scan. This object uses the same data structure as the scheduling API.
+        # The schedule resource group used when the data quality monitoring task runs. This shares the same data structure as the scheduling API.
         self.runtime_resource_shrink = runtime_resource_shrink
 
     def validate(self):

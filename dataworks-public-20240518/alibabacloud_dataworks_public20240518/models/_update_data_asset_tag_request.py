@@ -14,15 +14,15 @@ class UpdateDataAssetTagRequest(DaraModel):
         managers: List[str] = None,
         values: List[str] = None,
     ):
-        # The description of the tag.
+        # The label description.
         self.description = description
-        # The tag key.
+        # The label key.
         # 
         # This parameter is required.
         self.key = key
-        # The tag administrators.
+        # The list of label administrators.
         self.managers = managers
-        # The tag values.
+        # The list of label values.
         self.values = values
 
     def validate(self):

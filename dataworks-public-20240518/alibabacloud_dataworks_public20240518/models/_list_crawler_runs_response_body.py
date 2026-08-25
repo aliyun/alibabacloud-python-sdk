@@ -14,8 +14,11 @@ class ListCrawlerRunsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -60,9 +63,13 @@ class ListCrawlerRunsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of metadata crawler run records.
         self.crawler_runs = crawler_runs
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of records that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -121,11 +128,17 @@ class ListCrawlerRunsResponseBodyPagingInfoCrawlerRuns(DaraModel):
         task_instance_id: int = None,
         total_table_count: int = None,
     ):
+        # The run duration, in seconds.
         self.duration = duration
+        # The end time, in millisecond-level UNIX timestamp.
         self.finished_time = finished_time
+        # The start time, in millisecond-level UNIX timestamp.
         self.started_time = started_time
+        # The run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN.
         self.status = status
+        # The DataWorks task instance ID associated with this run.
         self.task_instance_id = task_instance_id
+        # The total number of tables involved in this run.
         self.total_table_count = total_table_count
 
     def validate(self):

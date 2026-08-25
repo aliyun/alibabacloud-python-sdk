@@ -10,11 +10,11 @@ class CreateWorkflowDefinitionResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The unique identifier of the workflow.
+        # The unique identifier of the DataStudio workflow.
         # 
-        # > This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
         self.id = id
-        # The request ID.
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
 
     def validate(self):

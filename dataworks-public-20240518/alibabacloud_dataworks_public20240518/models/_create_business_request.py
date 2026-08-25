@@ -14,26 +14,22 @@ class CreateBusinessRequest(DaraModel):
         project_identifier: str = None,
         use_type: str = None,
     ):
-        # Name of the Business Process.<br>
-        # The name must be unique within the same project space.
+        # The name of the business process. The name must be unique within the same workspace.
         # 
         # This parameter is required.
         self.business_name = business_name
-        # Description of the Business Process.
+        # The description of the business process.
         self.description = description
-        # The Alibaba Cloud account ID of the owner responsible for the Business Process.<br>
-        # You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console), move the mouse pointer over the profile picture in the upper-right corner of the menu bar, and view the Account ID. If this parameter is empty, the Alibaba Cloud account ID of the invoker is used by default.
+        # The Alibaba Cloud account ID of the owner of the business process. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and hover over the profile picture in the upper-right corner of the top navigation bar to view the account ID. If this parameter is left empty, the Alibaba Cloud account ID of the caller is used by default.
         self.owner = owner
-        # The ID of the DataWorks workspace.<br>
-        # You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the Workspace Management page, and view the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to view the ID.
         self.project_id = project_id
-        # The unique identifier of the DataWorks workspace, which is the English identifier displayed when you switch workspaces at the top of the Data Development page. You must specify either this parameter or the projectid parameter to identify the DataWorks project for this API call.
+        # The unique identifier of the DataWorks workspace, which is the English identifier displayed in the workspace switcher at the top of the DataStudio page. You must specify either this parameter or ProjectId to determine the DataWorks workspace on which the API operation is performed.
         self.project_identifier = project_identifier
-        # Function module to which the Business Process belongs. Valid values:
+        # The functional module to which the business process belongs. Valid values:
         # 
-        # - NORMAL (Data Development)
-        # 
-        # - MANUAL_BIZ (manually triggered workflow)
+        # - NORMAL: DataStudio.
+        # - MANUAL_BIZ: Manual business process.
         self.use_type = use_type
 
     def validate(self):

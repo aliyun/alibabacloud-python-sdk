@@ -9,7 +9,7 @@ class GetAlertRuleRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The rule ID.
+        # The ID of the custom alert rule.
         self.id = id
 
     def validate(self):

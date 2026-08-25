@@ -13,23 +13,21 @@ class ListRoutesRequest(DaraModel):
         resource_group_id: str = None,
         sort_by: str = None,
     ):
-        # The network ID.
+        # The ID of the network resource.
         self.network_id = network_id
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the resource group.
+        # The unique identifier of the general quota.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # The list of sort fields. Fields such as scheduled time and start time are supported. The format is "sort field + sort order (Desc/Asc)" (Asc is the default if omitted). Valid values:
         # 
-        # - Id (Desc/Asc): the route ID
-        # 
-        # - DestinationCidr (Desc/Asc): the destination CIDR block of the route
-        # 
-        # - CreateTime (Desc/Asc): the time when the route is created
+        # - Id (Desc/Asc): route ID
+        # - DestinationCidr (Desc/Asc): destination CIDR
+        # - CreateTime (Desc/Asc): creation time
         # 
         # Default value: CreateTime Asc.
         self.sort_by = sort_by

@@ -14,9 +14,9 @@ class ListRoutesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The pagination information.
+        # The paging information.
         self.paging_info = paging_info
-        # The ID of the request. It is used to locate logs and troubleshoot problems.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -67,9 +67,9 @@ class ListRoutesResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The routes of the network resource.
+        # The list of network resource routes.
         self.route_list = route_list
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -128,17 +128,17 @@ class ListRoutesResponseBodyPagingInfoRouteList(DaraModel):
         resource_group_id: str = None,
         resource_id: str = None,
     ):
-        # The creation time, which is a 64-bit timestamp.
+        # The creation time, represented as a 64-bit timestamp.
         self.create_time = create_time
-        # The destination CIDR block of the route.
+        # The destination CIDR of the route.
         self.destination_cidr = destination_cidr
         # The route ID.
         self.id = id
-        # The network resource ID.
+        # The ID of the network resource to which the route belongs.
         self.network_id = network_id
-        # The ID of the resource group.
+        # The unique identifier of the resource group to which the route belongs.
         self.resource_group_id = resource_group_id
-        # The ID of the network resource.
+        # The unique identifier of the network resource.
         self.resource_id = resource_id
 
     def validate(self):

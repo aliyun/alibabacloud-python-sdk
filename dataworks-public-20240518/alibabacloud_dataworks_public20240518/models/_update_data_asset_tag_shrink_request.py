@@ -12,15 +12,15 @@ class UpdateDataAssetTagShrinkRequest(DaraModel):
         managers_shrink: str = None,
         values_shrink: str = None,
     ):
-        # The description of the tag.
+        # The label description.
         self.description = description
-        # The tag key.
+        # The label key.
         # 
         # This parameter is required.
         self.key = key
-        # The tag administrators.
+        # The list of label administrators.
         self.managers_shrink = managers_shrink
-        # The tag values.
+        # The list of label values.
         self.values_shrink = values_shrink
 
     def validate(self):

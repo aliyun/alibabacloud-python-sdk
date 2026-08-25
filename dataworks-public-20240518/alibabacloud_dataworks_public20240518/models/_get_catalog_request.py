@@ -9,16 +9,18 @@ class GetCatalogRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The catalog entity ID. Currently supports dlf and starrocks types. You can refer to the results returned by the ListCatalogs operation and the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID of the data catalog entity. Currently, DLF and StarRocks types are supported. You can obtain the ID from the response of the ListCatalogs operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # 
         # 
         # - For the DLF type, the format is `dlf-catalog::catalog_id`.
         # 
         # - For the StarRocks type, the format is `starrocks-catalog:(instance_id|encoded_jdbc_url):catalog_name`.
         # 
-        # > <br>`catalog_id`: The ID of the DLF catalog.<br>
-        # > `instance_id`: The instance ID, required if the data source is registered in instance mode.<br>
-        # > `encoded_jdbc_url`: The URL-encoded JDBC connection string. Required if the data source is registered in connection string mode.<br>
-        # > `catalog_name`: The name of the StarRocks catalog.
+        # > Where  
+        # `catalog_id`: the ID of the DLF catalog.  
+        # `instance_id`: the instance ID, which is required when the data source is registered in instance mode.  
+        # `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered in connection string mode.  
+        # `catalog_name`: the name of the StarRocks catalog.
         # 
         # This parameter is required.
         self.id = id

@@ -14,12 +14,19 @@ class ListCrawlerRunsRequest(DaraModel):
         start_time_to: int = None,
         status: str = None,
     ):
+        # The ID of the metadata crawler. You can call ListCrawlers to obtain the ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The lower bound of the run start time, in millisecond-level UNIX timestamp. The value must be within the last 30 days. If not specified, the default value is 30 days before the current time.
         self.start_time_from = start_time_from
+        # The upper bound of the run start time, in millisecond-level UNIX timestamp. The value must be within the last 30 days. If not specified, the default value is the current time.
         self.start_time_to = start_time_to
+        # The run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN.
         self.status = status
 
     def validate(self):

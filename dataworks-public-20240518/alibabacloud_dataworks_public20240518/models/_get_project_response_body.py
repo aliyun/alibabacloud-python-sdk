@@ -13,9 +13,9 @@ class GetProjectResponseBody(DaraModel):
         project: main_models.GetProjectResponseBodyProject = None,
         request_id: str = None,
     ):
-        # The information about the workspace.
+        # The details of the workspace.
         self.project = project
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -69,49 +69,41 @@ class GetProjectResponseBodyProject(DaraModel):
         self.description = description
         # Indicates whether the development environment is enabled. Valid values:
         # 
-        # - true: The development environment is enabled. In this case, the development environment is isolated from the production environment in the workspace.
+        # - true: The development environment is enabled for the workspace, which supports isolation between the development and production environments.
         # 
-        # - false: The development environment is disabled. In this case, only the production environment is used in the workspace.
+        # - false: Only the production environment is used.
         self.dev_environment_enabled = dev_environment_enabled
-        # Indicates whether the Develop role is disabled. Valid values:
+        # Indicates whether the development role is disabled. Valid values:
         # 
-        # - false
+        # - false: The development role is enabled.
         # 
-        # - true
+        # - true: The development role is disabled.
         self.dev_role_disabled = dev_role_disabled
         # The display name of the workspace.
         self.display_name = display_name
         # The workspace ID.
         self.id = id
-        # The name of the workspace.
+        # The workspace name.
         self.name = name
-        # The ID of the Alibaba Cloud account to which the workspace belongs.
+        # The user ID of the workspace owner, which is the Alibaba Cloud account ID.
         self.owner = owner
-        # Indicates whether scheduling of PAI tasks is enabled. Valid values:
+        # Indicates whether PAI task scheduling is enabled. Valid values:
         # 
-        # - true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+        # - true: You can create Machine Learning Platform for AI (PAI) nodes in the DataWorks workspace and run them on a periodic schedule based on the node configurations.
         # 
-        # - false: Scheduling of PAI tasks is disabled.
+        # - false: PAI task scheduling is disabled.
         self.pai_task_enabled = pai_task_enabled
-        # The status of the workspace. Valid values:
+        # The workspace status. Valid values:
         # 
-        # - Available
-        # 
-        # - Initializing
-        # 
-        # - InitFailed
-        # 
-        # - Forbidden
-        # 
-        # - Deleting
-        # 
-        # - DeleteFailed
-        # 
-        # - Frozen
-        # 
-        # - Updating
-        # 
-        # - UpdateFailed
+        # - Available: The workspace is running normally.
+        # - Initializing: The workspace is being initialized.
+        # - InitFailed: The workspace failed to be initialized.
+        # - Forbidden: The workspace is manually disabled.
+        # - Deleting: The workspace is being deleted.
+        # - DeleteFailed: The workspace failed to be deleted.
+        # - Frozen: The workspace is frozen due to overdue payment.
+        # - Updating: The workspace is being updated.
+        # - UpdateFailed: The workspace failed to be updated.
         self.status = status
 
     def validate(self):

@@ -14,28 +14,24 @@ class CreateBusinessResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Business Process ID.
+        # The ID of the business process.
         self.business_id = business_id
-        # Error code. The value is as follows:
+        # The error code. Description:
+        # - If the request was successful, this parameter is not returned.
+        # - If the request failed, this parameter is returned.
         # 
-        # - If the request succeeds, the ErrorCode field is not returned.
-        # 
-        # - If the request fails, the ErrorCode field is returned.
-        # 
-        # For more information, see the error code list in this topic.
+        # For more information, see the error codes in this topic.
         self.error_code = error_code
-        # Error message.
+        # The error message.
         self.error_message = error_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The unique ID of this request.<br>
-        # If an error occurs, you can use this ID to troubleshoot the issue.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the invocation succeeded. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: The invocation succeeded.
-        # 
-        # - false: The invocation failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

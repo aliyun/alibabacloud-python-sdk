@@ -11,9 +11,9 @@ class CreateMcpServerResponseBody(DaraModel):
         mcp_server: main_models.CreateMcpServerResponseBodyMcpServer = None,
         request_id: str = None,
     ):
-        # The created MCP Server.
+        # The registered MCP Server.
         self.mcp_server = mcp_server
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,6 +51,8 @@ class CreateMcpServerResponseBodyMcpServer(DaraModel):
         name: str = None,
     ):
         # The time when the MCP Server was created.
+        # 
+        # The value is a 13-digit number, such as `1780555634000`.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time

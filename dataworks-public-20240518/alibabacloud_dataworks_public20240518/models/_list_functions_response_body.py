@@ -15,7 +15,7 @@ class ListFunctionsResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID. Used for troubleshooting when an error occurs.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListFunctionsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The function list.
+        # The list of functions.
         self.functions = functions
-        # The page number.
+        # The page number of the returned data. Used for pagination.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -137,81 +137,73 @@ class ListFunctionsResponseBodyPagingInfoFunctions(DaraModel):
     ):
         # The list of resource files for the ARM cluster.
         self.arm_resource = arm_resource
-        # The fully qualified class name of the UDF.
+        # The fully qualified class name of the UDF function.
         self.class_name = class_name
         # The command description.
         self.command_description = command_description
-        # The timestamp when the UDF was created.
+        # The timestamp when the UDF function was created.
         self.create_time = create_time
-        # Data source information of the UDF.
+        # The data source information of the UDF function.
         self.data_source = data_source
-        # The database name. This parameter is used only when the function type is EMR Function.
+        # The database name. This field is used only when the function type is EMR Function.
         self.database_name = database_name
-        # The general description of the function.
+        # The overall description of the function.
         self.description = description
-        # Content of the nested function code
+        # The embedded function code content.
         self.embedded_code = embedded_code
-        # The nested code type.
+        # The embedded code type.
         # 
         # Valid values:
         # 
         # - Python2
-        # 
         # - Python3
-        # 
         # - Java8
-        # 
         # - Java11
-        # 
         # - Java17
         self.embedded_code_type = embedded_code_type
-        # The nested resource type.
+        # The embedded resource type.
         # 
         # Valid values:
         # 
-        # - File: General resource file.
-        # 
-        # - Embedded: Embedded resource.
+        # - File: common resource file
+        # - Embedded: embedded resource
         self.embedded_resource_type = embedded_resource_type
         # The example description.
         self.example_description = example_description
-        # The implementation code of the function and the list of resource files.
+        # The implementation code of the function. The list of resource files.
         self.file_resource = file_resource
-        # The unique identifier of the UDF.
+        # The unique identifier of the UDF function.
         # 
-        # > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
         self.id = id
         # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1655953028000`.
         self.modify_time = modify_time
-        # The UDF name.
+        # The name of the UDF function.
         self.name = name
-        # The owner of the UDF.
+        # The owner of the UDF function.
         self.owner = owner
         # The parameter description.
         self.parameter_description = parameter_description
-        # The ID of the project to which the UDF belongs.
+        # The ID of the project to which the UDF function belongs.
         self.project_id = project_id
         # The return value description.
         self.return_value_description = return_value_description
         # The runtime resource group information.
         self.runtime_resource = runtime_resource
-        # Script information of the UDF.
+        # The script information of the UDF function.
         self.script = script
-        # The UDF type.
+        # The type of the UDF function.
         # 
         # Valid values:
         # 
-        # - Math: Mathematical operation functions
-        # 
-        # - Aggregate: Aggregation functions
-        # 
-        # - String: String processing functions
-        # 
-        # - Date: Date functions
-        # 
-        # - Analytic: Window functions
-        # 
-        # - Other: Other functions
+        # - Math: mathematical operation function
+        # - Aggregate: aggregate functions
+        # - String: character string processing function
+        # - Date: date function
+        # - Analytic: window function
+        # - Other: other function
         self.type = type
 
     def validate(self):
@@ -375,13 +367,13 @@ class ListFunctionsResponseBodyPagingInfoFunctionsScript(DaraModel):
         path: str = None,
         runtime: main_models.ListFunctionsResponseBodyPagingInfoFunctionsScriptRuntime = None,
     ):
-        # The ID of the script.
+        # The script ID.
         # 
-        # > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
         self.id = id
         # The script path.
         self.path = path
-        # Runtime
+        # The runtime.
         self.runtime = runtime
 
     def validate(self):
@@ -423,7 +415,7 @@ class ListFunctionsResponseBodyPagingInfoFunctionsScriptRuntime(DaraModel):
         self,
         command: str = None,
     ):
-        # Command
+        # The command.
         self.command = command
 
     def validate(self):
@@ -451,7 +443,7 @@ class ListFunctionsResponseBodyPagingInfoFunctionsRuntimeResource(DaraModel):
         self,
         resource_group_id: str = None,
     ):
-        # The runtime resource group ID.
+        # The ID of the runtime resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

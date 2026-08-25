@@ -16,9 +16,9 @@ class CreateDIAlarmRuleShrinkRequest(DaraModel):
         notification_settings_shrink: str = None,
         trigger_conditions_shrink: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The idempotency parameter.
         self.client_token = client_token
-        # The ID of the synchronization task with which the alert rule is associated.
+        # The task ID associated with the alert rule.
         # 
         # This parameter is required.
         self.dijob_id = dijob_id
@@ -26,17 +26,12 @@ class CreateDIAlarmRuleShrinkRequest(DaraModel):
         self.description = description
         # Specifies whether to enable the alert rule. By default, the alert rule is disabled.
         self.enabled = enabled
-        # The metric type in the alert rule. Valid values:
-        # 
-        # - Heartbeat
-        # 
-        # - FailoverCount
-        # 
-        # - Delay
-        # 
-        # - DdlReport
-        # 
-        # - ResourceUtilization
+        # The alert metric type. Valid values:
+        # - Heartbeat: task status alert.
+        # - FailoverCount: failover count alert.
+        # - Delay: task latency alert.
+        # - DdlReport: DDL notification.
+        # - ResourceUtilization: resource group utilization.
         # 
         # This parameter is required.
         self.metric_type = metric_type
@@ -48,7 +43,7 @@ class CreateDIAlarmRuleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.notification_settings_shrink = notification_settings_shrink
-        # The conditions that can trigger the alert rule.
+        # The list of alert trigger conditions. Multiple conditions are supported.
         # 
         # This parameter is required.
         self.trigger_conditions_shrink = trigger_conditions_shrink

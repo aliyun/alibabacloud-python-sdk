@@ -16,13 +16,21 @@ class ListCrawlersShrinkRequest(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
+        # The list of data source IDs. Up to 10 IDs are supported.
         self.data_source_ids_shrink = data_source_ids_shrink
+        # The DataWorks environment type. Dev indicates the development environment. Prod indicates the production environment.
         self.env_type = env_type
+        # The metadata crawler name. Supports fuzzy match.
         self.name = name
+        # The DataWorks user ID of the crawler owner.
         self.owner = owner
+        # The page number. Starts from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The crawler type. Call GetCrawlerTypeCapabilities to query the valid values supported in the current region.
         self.type = type
 
     def validate(self):

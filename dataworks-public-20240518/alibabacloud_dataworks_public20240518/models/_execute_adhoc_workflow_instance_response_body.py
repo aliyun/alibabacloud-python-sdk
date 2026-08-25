@@ -10,7 +10,7 @@ class ExecuteAdhocWorkflowInstanceResponseBody(DaraModel):
         request_id: str = None,
         workflow_instance_id: int = None,
     ):
-        # The request ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # The workflow instance ID.
         self.workflow_instance_id = workflow_instance_id

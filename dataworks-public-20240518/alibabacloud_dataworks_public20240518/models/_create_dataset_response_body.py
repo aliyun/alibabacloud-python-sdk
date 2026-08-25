@@ -15,7 +15,7 @@ class CreateDatasetResponseBody(DaraModel):
         self.id = id
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the creation was successful.
+        # Indicates whether the dataset is created.
         self.success = success
 
     def validate(self):

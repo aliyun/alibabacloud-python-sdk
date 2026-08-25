@@ -10,9 +10,9 @@ class GetDIJobLogResponseBody(DaraModel):
         log: str = None,
         request_id: str = None,
     ):
-        # The log.
+        # The task logs.
         self.log = log
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

@@ -12,7 +12,7 @@ class GetFileVersionRequest(DaraModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
-        # The ID of the file. You can obtain the ID of the desired file by calling [ListFiles](https://help.aliyun.com/document_detail/173942.html).
+        # The ID of the file. You can call [ListFiles](https://help.aliyun.com/document_detail/173942.html) to query the file ID.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -20,11 +20,11 @@ class GetFileVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_version = file_version
-        # The ID of the DataWorks workspace. You can click the wrench icon in the upper-right corner of the page to go to the Workspace Management page and view it.
+        # The ID of the DataWorks workspace. You can click the small wrench icon in the upper-right corner of the page to go to the storage management page and view the ID.
         self.project_id = project_id
-        # The unique identifier of the DataWorks workspace, which is the English identifier displayed at the top of the Data Development page when you switch workspaces.
+        # The unique identifier of the DataWorks workspace, which is the English identifier displayed at the top of the DataStudio page for switching workspaces.
         # 
-        # You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace for this API call.
+        # You must set either this parameter or ProjectId to determine the DataWorks workspace for this API call.
         self.project_identifier = project_identifier
 
     def validate(self):

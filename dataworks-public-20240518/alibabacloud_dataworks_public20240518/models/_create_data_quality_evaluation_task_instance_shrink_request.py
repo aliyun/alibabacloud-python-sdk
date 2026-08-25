@@ -12,22 +12,22 @@ class CreateDataQualityEvaluationTaskInstanceShrinkRequest(DaraModel):
         project_id: int = None,
         runtime_resource_shrink: str = None,
     ):
-        # The ID of the data quality evaluation task.
+        # The ID of the data quality check task.
         # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
-        # The execution parameters of the data quality evaluation in the JSON format. The following keys are available:
-        # - triggerTime: the millisecond timestamp of the trigger time. This is the base time for the $[yyyymmdd] expression in the data range of data quality monitoring. This key is required.
+        # The execution parameters of the data quality check in JSON format. The following keys are available:
+        # - triggerTime: the timestamp in milliseconds of the trigger time. This value is used as the base time for the $[yyyymmdd] expression in the data range of the data quality monitoring task. This key is required.
         # 
         # This parameter is required.
         self.parameters = parameters
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
+        # The ID of the DataWorks workspace. You can logon to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Storage Management page to obtain the ID.
         # 
-        # This parameter specifies the DataWorks workspace in which this API operation is performed.
+        # This parameter specifies the DataWorks workspace for this API invoke operation.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The resource group information. This parameter is required when you run a data quality evaluation on a non-MaxCompute data source.
+        # The resource group information. This parameter is required when running data quality checks on non-MaxCompute data.
         self.runtime_resource_shrink = runtime_resource_shrink
 
     def validate(self):

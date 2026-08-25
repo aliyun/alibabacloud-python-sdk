@@ -11,8 +11,11 @@ class UpdateCrawlerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the updated metadata crawler.
         self.id = id
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

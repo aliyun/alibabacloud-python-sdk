@@ -13,7 +13,7 @@ class CancelAgentSessionResponseBody(DaraModel):
     ):
         # The JSON-RPC response.
         self.json_rpc_response = json_rpc_response
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class CancelAgentSessionResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.CancelAgentSessionResponseBodyJsonRpcResponseResult = None,
     ):
-        # The ID passed by the requester. The value is returned as-is in the response.
+        # The ID passed in by the requester, returned as-is in the response.
         self.id = id
         # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc

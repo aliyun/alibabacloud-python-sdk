@@ -10,7 +10,7 @@ class SuccessInfoValue(DaraModel):
         success: bool = None,
         message: str = None,
     ):
-        # Indicates whether the request was successful.
+        # Indicates whether the operation is successful.
         self.success = success
         # The error message.
         self.message = message

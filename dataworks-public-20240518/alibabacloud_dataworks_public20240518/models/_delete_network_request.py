@@ -9,7 +9,7 @@ class DeleteNetworkRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The ID of the network that you want to delete.
+        # The ID of the network resource to delete.
         # 
         # This parameter is required.
         self.id = id

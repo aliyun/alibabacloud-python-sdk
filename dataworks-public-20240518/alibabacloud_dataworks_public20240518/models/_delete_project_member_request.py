@@ -10,11 +10,11 @@ class DeleteProjectMemberRequest(DaraModel):
         project_id: int = None,
         user_id: str = None,
     ):
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the **Tenant Members and Roles** page, view the ID of the account used by the member in the workspace.
+        # The ID of the DataWorks account. You can log on to the [DataWorks console - Management Center](https://dataworks.console.aliyun.com/product/ms_menu), select the workspace from which you want to remove the member, go to the **Tenant Members and Roles** page, and view the account ID of the member to be removed from the workspace.
         # 
         # This parameter is required.
         self.user_id = user_id

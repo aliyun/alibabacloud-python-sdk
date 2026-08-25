@@ -12,9 +12,9 @@ class CreateResourceGroupResponseBody(DaraModel):
         resource_group_order: main_models.CreateResourceGroupResponseBodyResourceGroupOrder = None,
         success: bool = None,
     ):
-        # The request ID. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID, which is used for locating logs and troubleshooting.
         self.request_id = request_id
-        # Information about the resource group creation order.
+        # The order information of the created common resource group.
         self.resource_group_order = resource_group_order
         # Indicates whether the request was successful.
         self.success = success
@@ -60,11 +60,11 @@ class CreateResourceGroupResponseBodyResourceGroupOrder(DaraModel):
         order_id: int = None,
         order_instance_id: str = None,
     ):
-        # The unique identifier of the general-purpose resource group.
+        # The unique identifier of the created common resource group.
         self.id = id
-        # The ID of the resource group creation order.
+        # The order ID of the created common resource group.
         self.order_id = order_id
-        # The instance ID of the resource group creation order.
+        # The order instance ID of the created common resource group.
         self.order_instance_id = order_instance_id
 
     def validate(self):

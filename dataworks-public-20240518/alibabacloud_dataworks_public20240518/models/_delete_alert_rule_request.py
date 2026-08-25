@@ -9,7 +9,7 @@ class DeleteAlertRuleRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The rule ID.
+        # The ID of the custom rule.
         self.id = id
 
     def validate(self):

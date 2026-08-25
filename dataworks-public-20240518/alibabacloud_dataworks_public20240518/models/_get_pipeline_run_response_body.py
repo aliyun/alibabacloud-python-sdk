@@ -13,9 +13,9 @@ class GetPipelineRunResponseBody(DaraModel):
         pipeline: main_models.GetPipelineRunResponseBodyPipeline = None,
         request_id: str = None,
     ):
-        # The details of the pipeline run.
+        # The information about the deployment process.
         self.pipeline = pipeline
-        # The ID of the request. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -59,37 +59,34 @@ class GetPipelineRunResponseBodyPipeline(DaraModel):
         stages: List[main_models.GetPipelineRunResponseBodyPipelineStages] = None,
         status: str = None,
     ):
-        # The time when the pipeline run was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp when the deployment package was created.
         self.create_time = create_time
-        # The ID of the user who created the pipeline run.
+        # The creator of the deployment process.
         self.creator = creator
-        # The description of the pipeline run.
+        # The description of the deployment process.
         self.description = description
-        # The ID of the pipeline run.
+        # The ID of the deployment process.
         self.id = id
-        # The error message returned if the pipeline run fails.
+        # The error message returned when the deployment fails.
         self.message = message
-        # The time when the pipeline run was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1724984066000`.
         self.modify_time = modify_time
         # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The stages in the pipeline run.
+        # The stage details.
         self.stages = stages
-        # The status of the pipeline run.
+        # The status of the deployment process.
         # 
         # Valid values:
         # 
-        # - `Init`: The pipeline run is being initialized.
-        # 
-        # - `Running`: The pipeline run is in progress.
-        # 
-        # - `Success`: The pipeline run succeeded.
-        # 
-        # - `Fail`: The pipeline run failed.
-        # 
-        # - `Terminated`: The pipeline run was terminated.
-        # 
-        # - `Canceled`: The pipeline run was canceled.
+        # - Init: Initialization.
+        # - Running: Running.
+        # - Success: Succeeded.
+        # - Fail: Failed.
+        # - Termination: Terminated.
+        # - Cancel: Canceled.
         self.status = status
 
     def validate(self):
@@ -180,47 +177,38 @@ class GetPipelineRunResponseBodyPipelineStages(DaraModel):
         step: int = None,
         type: str = None,
     ):
-        # The code that identifies the stage.
+        # The code of the deployment stage.
         self.code = code
         # The description of the stage.
         self.description = description
-        # Detailed information about the stage.
+        # The detailed information about the stage.
         self.detail = detail
-        # The exception message returned if the stage fails.
+        # The exception message of the deployment stage.
         self.message = message
         # The name of the stage.
         self.name = name
-        # The status of the stage.
+        # The status of the deployment stage.
         # 
         # Valid values:
         # 
-        # - `Init`: The stage is being initialized.
-        # 
-        # - `Running`: The stage is in progress.
-        # 
-        # - `Success`: The stage succeeded.
-        # 
-        # - `Fail`: The stage failed.
-        # 
-        # - `Terminated`: The stage was terminated.
-        # 
-        # - `Canceled`: The stage was canceled.
+        # - Init: Initialization.
+        # - Running: Running.
+        # - Success: Succeeded.
+        # - Fail: Failed.
+        # - Termination: Terminated.
+        # - Cancel: Canceled.
         self.status = status
-        # The sequence number of the stage within the pipeline.
+        # The step number of the deployment stage.
         self.step = step
-        # The type of the stage.
+        # The type of the deployment stage.
         # 
         # Valid values:
         # 
-        # - `Deploy`: A deployment operation.
-        # 
-        # - `Check`: A check operation.
-        # 
-        # - `Offline`: An offline operation.
-        # 
-        # - `Build`: A build operation.
-        # 
-        # - `Delete`: A delete operation.
+        # - Deploy: deploy operation
+        # - Check: check operation
+        # - Offline: offline operation
+        # - Build: build operation
+        # - Delete: delete operation
         self.type = type
 
     def validate(self):

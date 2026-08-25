@@ -12,9 +12,13 @@ class StopCrawlerResponseBody(DaraModel):
         stop_accepted: bool = None,
         success: bool = None,
     ):
+        # The ID of the metadata crawler.
         self.id = id
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the stop request was accepted. A value of true indicates that the request was accepted. Call ListCrawlerRuns to confirm the final run status.
         self.stop_accepted = stop_accepted
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

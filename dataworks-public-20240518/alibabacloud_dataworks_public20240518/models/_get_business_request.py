@@ -11,13 +11,13 @@ class GetBusinessRequest(DaraModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
-        # The workflow ID. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to obtain the folder ID.
+        # The ID of the business process. You can call the [ListBusiness](https://help.aliyun.com/document_detail/173945.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.business_id = business_id
-        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
+        # The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the workspace configuration page to obtain the workspace ID. You must specify either this parameter or the ProjectIdentifier parameter to determine the DataWorks workspace for this API call.
         self.project_id = project_id
-        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the workspace configuration page to obtain the workspace name. You must specify either this parameter or the ProjectId parameter to determine the DataWorks workspace for this API call.
         self.project_identifier = project_identifier
 
     def validate(self):

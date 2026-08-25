@@ -10,13 +10,13 @@ class AbolishPipelineRunRequest(DaraModel):
         id: str = None,
         project_id: int = None,
     ):
-        # The ID of the process.
+        # The unique identifier of the deployment process.
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can logon to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the storage management page to obtain the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter specifies the DataWorks workspace for this API invoke operation.
         # 
         # This parameter is required.
         self.project_id = project_id

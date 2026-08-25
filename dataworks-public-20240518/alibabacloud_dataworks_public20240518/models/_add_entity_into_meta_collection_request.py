@@ -11,15 +11,15 @@ class AddEntityIntoMetaCollectionRequest(DaraModel):
         meta_collection_id: str = None,
         remark: str = None,
     ):
-        # The entity ID. Currently, only table entities are supported. You can call the ListTables operation to obtain the ID.
+        # The ID of the entity. Currently, only the table type is supported. You can obtain the ID from the response of the ListTables operation.
         # 
         # This parameter is required.
         self.id = id
-        # The collection ID. You can refer to the return result of the ListMetaCollections operation.
+        # The ID of the collection object. You can obtain the ID from the response of the ListMetaCollections operation.
         # 
         # This parameter is required.
         self.meta_collection_id = meta_collection_id
-        # Remarks added when adding the entity to a collection. This parameter is currently valid only for album collections.
+        # The remarks when adding the entity to the collection. Currently, this parameter takes effect only for the album type.
         self.remark = remark
 
     def validate(self):

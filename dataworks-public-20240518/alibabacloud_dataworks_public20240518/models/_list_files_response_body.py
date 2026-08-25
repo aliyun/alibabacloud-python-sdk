@@ -17,7 +17,7 @@ class ListFilesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response details.
+        # The returned data details.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,13 +25,12 @@ class ListFilesResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. Use this ID to troubleshoot issues.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call succeeded. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -96,11 +95,11 @@ class ListFilesResponseBodyData(DaraModel):
     ):
         # The file details.
         self.files = files
-        # The page number.
+        # The page number of the returned data.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -175,69 +174,62 @@ class ListFilesResponseBodyDataFiles(DaraModel):
         parent_id: int = None,
         use_type: str = None,
     ):
-        # The path to the folder where the file is located.
+        # The path of the folder where the file is stored.
         self.absolute_folder_path = absolute_folder_path
-        # Specifies whether automatic parsing is enabled for the file. Valid values:
+        # Indicates whether the automatic parsing feature is enabled for the file. Valid values:
         # 
         # - true: The file automatically parses code.
-        # 
         # - false: The file does not automatically parse code.
         # 
-        # This parameter corresponds to Analyze Code when you set Dependencies to Same Cycle in the scheduling configuration of a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the "Code Parsing" option when you select "Same Cycle" in "Scheduling Configuration > Scheduling Dependencies" for a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.auto_parsing = auto_parsing
-        # The ID of the workflow to which the file belongs. This parameter is deprecated. Use the BusinessId parameter instead.
+        # **[Deprecated]** The ID of the workflow to which the file belongs. This field is deprecated. Use the BusinessId field instead.
         self.biz_id = biz_id
         # The ID of the workflow to which the file belongs.
         self.business_id = business_id
-        # The current commit status of the file. Valid values: 0 (the latest code is not committed) and 1 (the latest code is committed).
+        # The current commit status of the file. Valid values: 0 (the latest code has not been committed) and 1 (the latest code has been committed).
         self.commit_status = commit_status
-        # The data source name used by the task.
+        # The name of the data source used when the task corresponding to the file is executed.
         self.connection_name = connection_name
-        # This parameter is deprecated. You can call the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation to query this information.
+        # **[Deprecated]** This parameter is deprecated. You can call the [GetFile](https://help.aliyun.com/document_detail/173954.html) operation to query file content.
         self.content = content
-        # The timestamp (in milliseconds) when the file was created.
+        # The timestamp when the file was created, in milliseconds.
         self.create_time = create_time
-        # The Alibaba Cloud account ID of the file creator.
+        # The Alibaba Cloud user ID of the file creator.
         self.create_user = create_user
         # The latest version of the file.
         self.current_version = current_version
         # The description of the file.
         self.file_description = file_description
-        # The ID of the folder where the file is located.
+        # The ID of the folder where the file is stored.
         self.file_folder_id = file_folder_id
-        # The file ID.
+        # The ID of the file.
         self.file_id = file_id
-        # The file name.
+        # The name of the file.
         self.file_name = file_name
-        # The file type. Different file types have different code. For more information, see [DataWorks node types](https://help.aliyun.com/document_detail/600169.html).
+        # The file type. Different file types have different codes. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
-        # If the current file is a MaxCompute resource file, this parameter specifies whether the resource file needs to be uploaded to MaxCompute.
+        # If the current file is a MaxCompute resource file, this field indicates whether the resource file needs to be uploaded to MaxCompute.
         # 
-        # You only need to configure this parameter when the file is a MaxCompute resource file.
+        # This parameter needs to be configured only when the file is a MaxCompute resource file.
         self.is_max_compute = is_max_compute
-        # The timestamp (in milliseconds) when the file was last modified.
+        # The timestamp of the last file edit, in milliseconds.
         self.last_edit_time = last_edit_time
-        # The Alibaba Cloud account ID of the user who last updated the file.
+        # The Alibaba Cloud ID of the user who last updated the file.
         self.last_edit_user = last_edit_user
         # The ID of the scheduling task generated in the scheduling system after the file is committed.
         self.node_id = node_id
-        # The Alibaba Cloud account ID of the file owner.
+        # The Alibaba Cloud user ID of the file owner.
         self.owner = owner
-        # If the current file is an internal file of a combined node, this parameter specifies the ID of the corresponding combined node file.
+        # If the current file is an internal file of a combined node, this field indicates the ID of the corresponding combined node file.
         self.parent_id = parent_id
         # The functional module to which the file belongs. Valid values:
-        # 
-        # - NORMAL: Data Studio
-        # 
-        # - MANUAL: Manually triggered node
-        # 
-        # - MANUAL_BIZ: Manually triggered workflow
-        # 
-        # - SKIP: Dry-run scheduling in Data Studio
-        # 
-        # - ADHOCQUERY: Ad hoc query
-        # 
-        # - COMPONENT: Component management
+        # - NORMAL: DataStudio.
+        # - MANUAL: manual node.
+        # - MANUAL_BIZ: manual workflow.
+        # - SKIP: dry-run scheduling in DataStudio.
+        # - ADHOCQUERY: ad hoc query.
+        # - COMPONENT: component management.
         self.use_type = use_type
 
     def validate(self):

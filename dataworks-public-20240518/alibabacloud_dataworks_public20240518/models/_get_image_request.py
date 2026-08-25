@@ -14,7 +14,7 @@ class GetImageRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The image version. If you do not specify this parameter, the latest version is returned.
+        # The image version. If this parameter is not specified, the latest version is returned.
         self.image_version = image_version
 
     def validate(self):

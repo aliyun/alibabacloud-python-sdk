@@ -17,12 +17,19 @@ class UpdateCrawlerRequest(DaraModel):
         schedule_config: main_models.UpdateCrawlerRequestScheduleConfig = None,
         scope: main_models.UpdateCrawlerRequestScope = None,
     ):
+        # Specifies whether to enable AI metadata description. This parameter is supported only when SupportAiComment returned by GetCrawlerTypeCapabilities is set to true. If this parameter is not specified, the existing value remains unchanged.
         self.enable_ai_comment = enable_ai_comment
+        # The ID of the metadata crawler. You can call ListCrawlers to query crawler IDs.
+        # 
         # This parameter is required.
         self.id = id
+        # The extension configurations for the crawler type. Only the specified configuration items are updated. Unspecified configuration items remain unchanged. The supported keys and values are determined by the SupportedOptionKeys returned by GetCrawlerTypeCapabilities.
         self.options = options
+        # The ID of the Serverless 2.0 resource group used to run the collection task. Whether this parameter is supported and whether it is required depend on the capabilities returned by GetCrawlerTypeCapabilities. If this parameter is not specified, the existing value remains unchanged.
         self.resource_group_id = resource_group_id
+        # The scheduling configuration. If this parameter is specified, the scheduling method is updated. If this parameter is not specified, the existing value remains unchanged.
         self.schedule_config = schedule_config
+        # The collection scope configuration. If this parameter is specified, the collection scope is updated. If this parameter is not specified, the existing value remains unchanged.
         self.scope = scope
 
     def validate(self):
@@ -87,8 +94,12 @@ class UpdateCrawlerRequestScope(DaraModel):
         items: List[str] = None,
         unit: str = None,
     ):
+        # The regular expression used to exclude objects from the collection scope. This parameter is supported only when SupportExcludeRegex returned by GetCrawlerTypeCapabilities is set to true.
         self.exclude_regex = exclude_regex
+        # The list of database names. This parameter is supported only when Unit is set to DATABASE. A maximum of 1,000 entries are allowed. Names cannot be empty or duplicate.
         self.items = items
+        # The collection scope granularity. Valid values are determined by the SupportedScopeUnits returned by GetCrawlerTypeCapabilities.
+        # 
         # This parameter is required.
         self.unit = unit
 
@@ -130,7 +141,10 @@ class UpdateCrawlerRequestScheduleConfig(DaraModel):
         cron_express: str = None,
         type: str = None,
     ):
+        # The six-field cron expression for periodic scheduling. This parameter is required when Type is set to NORMAL. The seconds field must be 0, and the scheduling frequency cannot exceed once per hour.
         self.cron_express = cron_express
+        # The scheduling type. MANUAL indicates manual execution. NORMAL indicates periodic scheduling. Data sources in the development environment support only MANUAL. Whether NORMAL is available depends on the SupportSchedule value returned by GetCrawlerTypeCapabilities.
+        # 
         # This parameter is required.
         self.type = type
 

@@ -9,7 +9,7 @@ class DeleteProjectMemberResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

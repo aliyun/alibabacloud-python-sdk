@@ -11,11 +11,11 @@ class CreateDIJobResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # This field is deprecated. Use the `Id` field instead.
+        # **[Deprecated]** Use the Id response parameter instead.
         self.dijob_id = dijob_id
-        # The data integration job ID.
+        # The ID of the data integration task.
         self.id = id
-        # The request ID. Use this ID to locate logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

@@ -14,21 +14,20 @@ class GetDIJobLogRequest(DaraModel):
         node_type: str = None,
         page_number: int = None,
     ):
-        # This parameter is deprecated. Use the Id parameter instead.
+        # **[Deprecated]** This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
         # The failover ID.
         self.failover_id = failover_id
-        # The ID of the synchronization task.
+        # The node ID.
         self.id = id
         # The instance ID.
         self.instance_id = instance_id
-        # The type of the node. This parameter is applicable only to the tasks that are run on serverless resource groups. Valid values:
+        # The node type. This parameter is applicable only to tasks that run on resource group 2.0. Valid values:
         # 
-        # - **MASTER**: the master node, which is used to query the logs of JobManagers.
-        # 
-        # - **WORKER**: the worker node, which is used to query the logs of TaskManagers.
+        # * **MASTER**: retrieves the JobManager logs.
+        # * **WORKER**: retrieves the TaskManager logs.
         self.node_type = node_type
-        # The page number of the pagination query. The value is a positive integer greater than or equal to 1.
+        # The page number for paging. The value must be a positive integer greater than or equal to 1.
         self.page_number = page_number
 
     def validate(self):

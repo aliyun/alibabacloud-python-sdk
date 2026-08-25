@@ -11,15 +11,14 @@ class CreateResourceRequest(DaraModel):
         resource_file: str = None,
         spec: str = None,
     ):
-        # The ID of the DataWorks workspace. To obtain the workspace ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The specific file stream or OSS download link contained in the resource.
-        # 
-        # > This field allows users to provide a file stream or an OSS download link. When providing an OSS download link, ensure that the OSS link is publicly accessible. A presigned URL is recommended.
+        # The file stream or Object Storage Service (OSS) download URL of the resource file.
+        # >Notice: This field allows you to specify a file stream or an OSS download URL. If you specify an OSS download URL, make sure that the URL is publicly accessible. A pre-signed URL is recommended.
         self.resource_file = resource_file
-        # The ID of the DataWorks workspace. To obtain the workspace ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and navigate to the workspace configuration page.
+        # The FlowSpec information that describes the resource file. For more information about the specification, see [FlowSpec](https://github.com/aliyun/dataworks-spec/blob/master/README_zh_CN.md).
         # 
         # This parameter is required.
         self.spec = spec

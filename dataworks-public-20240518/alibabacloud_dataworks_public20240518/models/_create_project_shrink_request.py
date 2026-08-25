@@ -16,47 +16,47 @@ class CreateProjectShrinkRequest(DaraModel):
         name: str = None,
         pai_task_enabled: bool = None,
     ):
-        # The ID of the Alibaba Cloud resource group to which the workspace belongs. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
+        # The ID of the Alibaba Cloud resource group to which the workspace belongs. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the resource group list page to obtain the ID.
         # 
-        # You must configure this parameter to specify an Alibaba Cloud resource group for the workspace that you want to create.
+        # This parameter is used to manage the DataWorks workspace that you create within the specified Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
-        # The tags.
+        # The list of tags.
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
         # The description of the workspace.
         self.description = description
         # Specifies whether to enable the development environment. Valid values:
         # 
-        # - true : enables the development environment. In this case, the development environment is isolated from the production environment in the workspace.
+        # - true: The development environment is enabled for the workspace, which supports isolation between the development and production environments.
         # 
-        # - false: disables the development environment. In this case, only the production environment is used in the workspace.
+        # - false: Only the production environment is used.
         self.dev_environment_enabled = dev_environment_enabled
-        # Specifies whether to disable the Develop role. Valid values:
+        # Specifies whether to disable the development role. Valid values:
         # 
-        # - false (default)
+        # - false: The development role is enabled. This is the default value.
         # 
-        # - true
+        # - true: The development role is disabled.
         self.dev_role_disabled = dev_role_disabled
         # The display name of the workspace.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The name of the workspace.
+        # The workspace name.
         # 
-        # Limits:
+        # Constraints:
         # 
-        # - The workspace name must be unqiue in a region.
+        # - The workspace name must be unique within the region.
         # 
-        # - The workspace name can contain letters, digits, and underscores (_), and must start with a letter.
+        # - The name must start with a letter and can contain only letters, digits, and underscores (_).
         # 
-        # - The workspace name must be 3 to 28 characters in length.
+        # - The name must be 3 to 28 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether to enable scheduling of Platform for AI (PAI) tasks. Valid values:
+        # Specifies whether to enable PAI task scheduling. Valid values:
         # 
-        # - true: enables scheduling of PAI tasks. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+        # - true: You can create Machine Learning Platform for AI (PAI) nodes in the DataWorks workspace and run them on a periodic schedule based on the node configurations.
         # 
-        # - false: disables scheduling of PAI tasks.
+        # - false: PAI task scheduling is disabled.
         self.pai_task_enabled = pai_task_enabled
 
     def validate(self):

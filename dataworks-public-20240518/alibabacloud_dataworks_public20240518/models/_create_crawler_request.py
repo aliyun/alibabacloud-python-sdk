@@ -19,15 +19,26 @@ class CreateCrawlerRequest(DaraModel):
         scope: main_models.CreateCrawlerRequestScope = None,
         type: str = None,
     ):
+        # The ID of the data source associated with the crawler. The data source must be bound to a DataWorks workspace, and the data source type must match the Type value.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # Specifies whether to enable AI metadata descriptions. This parameter is supported only when the SupportAiComment value returned by GetCrawlerTypeCapabilities is true.
         self.enable_ai_comment = enable_ai_comment
+        # The name of the metadata crawler. The name can be up to 128 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The extended configuration for the crawler type. The key names, value types, required fields, default values, and valid values are determined by the SupportedOptionKeys value returned by GetCrawlerTypeCapabilities.
         self.options = options
+        # The ID of the Serverless 2.0 resource group used to run the collection task. Whether this parameter is required depends on the RequireResourceGroup value returned by GetCrawlerTypeCapabilities.
         self.resource_group_id = resource_group_id
+        # The scheduling configuration. If this parameter is not specified, manual scheduling is used.
         self.schedule_config = schedule_config
+        # The collection scope configuration. If this parameter is not specified, the DefaultScopeUnit value returned by GetCrawlerTypeCapabilities is used.
         self.scope = scope
+        # The crawler type. Call GetCrawlerTypeCapabilities to query the valid values supported in the current region.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -105,8 +116,12 @@ class CreateCrawlerRequestScope(DaraModel):
         items: List[str] = None,
         unit: str = None,
     ):
+        # The regular expression used to exclude objects from the collection scope. This parameter is supported only when the SupportExcludeRegex value returned by GetCrawlerTypeCapabilities is true.
         self.exclude_regex = exclude_regex
+        # The list of database names. This parameter is supported only when Unit is set to DATABASE. A maximum of 1000 entries are allowed. Names cannot be empty or duplicated.
         self.items = items
+        # The collection scope granularity. Valid values are determined by the SupportedScopeUnits value returned by GetCrawlerTypeCapabilities.
+        # 
         # This parameter is required.
         self.unit = unit
 
@@ -148,7 +163,10 @@ class CreateCrawlerRequestScheduleConfig(DaraModel):
         cron_express: str = None,
         type: str = None,
     ):
+        # The six-field cron expression for periodic scheduling. This parameter is required when Type is set to NORMAL. The seconds field must be 0, and the scheduling frequency cannot exceed once per hour.
         self.cron_express = cron_express
+        # The scheduling type. MANUAL indicates manual execution, and NORMAL indicates periodic scheduling. Data sources in the development environment support only MANUAL. Whether NORMAL is available depends on the SupportSchedule value returned by GetCrawlerTypeCapabilities.
+        # 
         # This parameter is required.
         self.type = type
 

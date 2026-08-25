@@ -12,7 +12,7 @@ class CreateDataQualityAlertRuleShrinkRequest(DaraModel):
         project_id: int = None,
         target_shrink: str = None,
     ):
-        # The alert condition of the data quality monitoring rule.
+        # The alert condition of the data quality monitoring alert rule.
         # 
         # This parameter is required.
         self.condition = condition
@@ -24,7 +24,7 @@ class CreateDataQualityAlertRuleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The monitored target of the data quality monitoring rule.
+        # The monitored target of the data quality monitoring alert rule.
         # 
         # This parameter is required.
         self.target_shrink = target_shrink

@@ -10,9 +10,9 @@ class CreateComputeResourceResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # Returns the ID of the created computing resource.
+        # The ID of the created compute resource.
         self.id = id
-        # The request ID. You can use the request ID to locate logs and troubleshoot issues.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

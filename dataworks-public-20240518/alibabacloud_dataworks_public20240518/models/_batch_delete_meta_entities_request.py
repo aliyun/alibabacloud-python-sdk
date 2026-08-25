@@ -11,7 +11,7 @@ class BatchDeleteMetaEntitiesRequest(DaraModel):
         self,
         ids: List[str] = None,
     ):
-        # An array of IDs for the meta entities to delete. You can specify up to 10 IDs in a single request. All entities in the batch must have the same EntityType.
+        # The list of entity IDs to delete. A maximum of 10 IDs are supported. All entities in the same batch must be of the same entityType.
         # 
         # This parameter is required.
         self.ids = ids

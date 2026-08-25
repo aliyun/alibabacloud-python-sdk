@@ -10,9 +10,9 @@ class CreateAlertRuleResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The rule ID.
+        # The ID of the custom rule.
         self.id = id
-        # The request ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

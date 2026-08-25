@@ -10,13 +10,11 @@ class AbolishPipelineRunResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

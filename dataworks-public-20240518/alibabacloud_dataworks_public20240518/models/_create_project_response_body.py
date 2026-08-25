@@ -11,11 +11,12 @@ class CreateProjectResponseBody(DaraModel):
         project_id: int = None,
         request_id: str = None,
     ):
-        # The workspace ID.
+        # The ID of the DataWorks workspace created by this operation.
         self.id = id
-        # The workspace ID. Note: This parameter is deprecated and is replaced by the Id parameter.
+        # The ID of the DataWorks workspace created by this operation.
+        # Note: This field is deprecated. Use the Id field instead.
         self.project_id = project_id
-        # The request ID.
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
 
     def validate(self):

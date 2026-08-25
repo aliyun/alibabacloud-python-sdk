@@ -90,8 +90,8 @@ class Client(OpenApiClient):
             'rus-west-1-pop': 'dataworks.aliyuncs.com',
             'us-east-1': 'dataworks.us-east-1.aliyuncs.com',
             'us-west-1': 'dataworks.us-west-1.aliyuncs.com',
-            'me-central-1': 'dataworks.me-central-1.aliyuncs.com',
-            'ap-northeast-2': 'dataworks.ap-northeast-2.aliyuncs.com'
+            'ap-northeast-2': 'dataworks.ap-northeast-2.aliyuncs.com',
+            'me-central-1': 'dataworks.me-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dataworks-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1064,6 +1064,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_update_tasks_with_options_async(request, runtime)
 
+    def build_image_with_options(
+        self,
+        request: main_models.BuildImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BuildImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cu):
+            body['Cu'] = request.cu
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            body['ProcessId'] = request.process_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BuildImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BuildImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def build_image_with_options_async(
+        self,
+        request: main_models.BuildImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BuildImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cu):
+            body['Cu'] = request.cu
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            body['ProcessId'] = request.process_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BuildImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BuildImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def build_image(
+        self,
+        request: main_models.BuildImageRequest,
+    ) -> main_models.BuildImageResponse:
+        runtime = RuntimeOptions()
+        return self.build_image_with_options(request, runtime)
+
+    async def build_image_async(
+        self,
+        request: main_models.BuildImageRequest,
+    ) -> main_models.BuildImageResponse:
+        runtime = RuntimeOptions()
+        return await self.build_image_with_options_async(request, runtime)
+
     def cancel_agent_session_with_options(
         self,
         tmp_req: main_models.CancelAgentSessionRequest,
@@ -1149,6 +1231,80 @@ class Client(OpenApiClient):
     ) -> main_models.CancelAgentSessionResponse:
         runtime = RuntimeOptions()
         return await self.cancel_agent_session_with_options_async(request, runtime)
+
+    def cancel_image_test_with_options(
+        self,
+        request: main_models.CancelImageTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelImageTestResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            body['ProcessId'] = request.process_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelImageTest',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelImageTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_image_test_with_options_async(
+        self,
+        request: main_models.CancelImageTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelImageTestResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            body['ProcessId'] = request.process_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelImageTest',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelImageTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_image_test(
+        self,
+        request: main_models.CancelImageTestRequest,
+    ) -> main_models.CancelImageTestResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_image_test_with_options(request, runtime)
+
+    async def cancel_image_test_async(
+        self,
+        request: main_models.CancelImageTestRequest,
+    ) -> main_models.CancelImageTestResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_image_test_with_options_async(request, runtime)
 
     def clone_data_source_with_options(
         self,
@@ -4017,6 +4173,140 @@ class Client(OpenApiClient):
     ) -> main_models.CreateIdentifyCredentialResponse:
         runtime = RuntimeOptions()
         return await self.create_identify_credential_with_options_async(request, runtime)
+
+    def create_image_with_options(
+        self,
+        tmp_req: main_models.CreateImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateImageResponse:
+        tmp_req.validate()
+        request = main_models.CreateImageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.build_config):
+            request.build_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.build_config, 'BuildConfig', 'json')
+        if not DaraCore.is_null(tmp_req.supported):
+            request.supported_shrink = Utils.array_to_string_with_specified_style(tmp_req.supported, 'Supported', 'json')
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.acr_associated_vpc_id):
+            body['AcrAssociatedVpcId'] = request.acr_associated_vpc_id
+        if not DaraCore.is_null(request.acr_instance_id):
+            body['AcrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.build_config_shrink):
+            body['BuildConfig'] = request.build_config_shrink
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enable_sync_max_compute):
+            body['EnableSyncMaxCompute'] = request.enable_sync_max_compute
+        if not DaraCore.is_null(request.image_uri):
+            body['ImageUri'] = request.image_uri
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.provider_image_id):
+            body['ProviderImageId'] = request.provider_image_id
+        if not DaraCore.is_null(request.provider_type):
+            body['ProviderType'] = request.provider_type
+        if not DaraCore.is_null(request.repository_name):
+            body['RepositoryName'] = request.repository_name
+        if not DaraCore.is_null(request.supported_shrink):
+            body['Supported'] = request.supported_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_with_options_async(
+        self,
+        tmp_req: main_models.CreateImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateImageResponse:
+        tmp_req.validate()
+        request = main_models.CreateImageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.build_config):
+            request.build_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.build_config, 'BuildConfig', 'json')
+        if not DaraCore.is_null(tmp_req.supported):
+            request.supported_shrink = Utils.array_to_string_with_specified_style(tmp_req.supported, 'Supported', 'json')
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.acr_associated_vpc_id):
+            body['AcrAssociatedVpcId'] = request.acr_associated_vpc_id
+        if not DaraCore.is_null(request.acr_instance_id):
+            body['AcrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.build_config_shrink):
+            body['BuildConfig'] = request.build_config_shrink
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.enable_sync_max_compute):
+            body['EnableSyncMaxCompute'] = request.enable_sync_max_compute
+        if not DaraCore.is_null(request.image_uri):
+            body['ImageUri'] = request.image_uri
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.provider_image_id):
+            body['ProviderImageId'] = request.provider_image_id
+        if not DaraCore.is_null(request.provider_type):
+            body['ProviderType'] = request.provider_type
+        if not DaraCore.is_null(request.repository_name):
+            body['RepositoryName'] = request.repository_name
+        if not DaraCore.is_null(request.supported_shrink):
+            body['Supported'] = request.supported_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image(
+        self,
+        request: main_models.CreateImageRequest,
+    ) -> main_models.CreateImageResponse:
+        runtime = RuntimeOptions()
+        return self.create_image_with_options(request, runtime)
+
+    async def create_image_async(
+        self,
+        request: main_models.CreateImageRequest,
+    ) -> main_models.CreateImageResponse:
+        runtime = RuntimeOptions()
+        return await self.create_image_with_options_async(request, runtime)
 
     def create_lineage_relationship_with_options(
         self,
@@ -9398,6 +9688,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_semantic_job_with_options_async(request, runtime)
 
+    def delete_server_ide_instance_with_options(
+        self,
+        request: main_models.DeleteServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServerIdeInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServerIdeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_server_ide_instance_with_options_async(
+        self,
+        request: main_models.DeleteServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServerIdeInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServerIdeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_server_ide_instance(
+        self,
+        request: main_models.DeleteServerIdeInstanceRequest,
+    ) -> main_models.DeleteServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_server_ide_instance_with_options(request, runtime)
+
+    async def delete_server_ide_instance_async(
+        self,
+        request: main_models.DeleteServerIdeInstanceRequest,
+    ) -> main_models.DeleteServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_server_ide_instance_with_options_async(request, runtime)
+
     def delete_skill_with_options(
         self,
         request: main_models.DeleteSkillRequest,
@@ -9870,6 +10230,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.detach_data_quality_rules_from_evaluation_task_with_options_async(request, runtime)
 
+    def disable_image_with_options(
+        self,
+        request: main_models.DisableImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_image_with_options_async(
+        self,
+        request: main_models.DisableImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_image(
+        self,
+        request: main_models.DisableImageRequest,
+    ) -> main_models.DisableImageResponse:
+        runtime = RuntimeOptions()
+        return self.disable_image_with_options(request, runtime)
+
+    async def disable_image_async(
+        self,
+        request: main_models.DisableImageRequest,
+    ) -> main_models.DisableImageResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_image_with_options_async(request, runtime)
+
     def disable_process_definition_with_options(
         self,
         request: main_models.DisableProcessDefinitionRequest,
@@ -10165,6 +10595,76 @@ class Client(OpenApiClient):
     ) -> main_models.DownloadSemanticResultsResponse:
         runtime = RuntimeOptions()
         return await self.download_semantic_results_with_options_async(request, runtime)
+
+    def enable_image_with_options(
+        self,
+        request: main_models.EnableImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_image_with_options_async(
+        self,
+        request: main_models.EnableImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_image(
+        self,
+        request: main_models.EnableImageRequest,
+    ) -> main_models.EnableImageResponse:
+        runtime = RuntimeOptions()
+        return self.enable_image_with_options(request, runtime)
+
+    async def enable_image_async(
+        self,
+        request: main_models.EnableImageRequest,
+    ) -> main_models.EnableImageResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_image_with_options_async(request, runtime)
 
     def enable_process_definition_with_options(
         self,
@@ -13212,6 +13712,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_image_with_options_async(request, runtime)
 
+    def get_image_test_result_with_options(
+        self,
+        request: main_models.GetImageTestResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetImageTestResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            query['ProcessId'] = request.process_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetImageTestResult',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetImageTestResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_image_test_result_with_options_async(
+        self,
+        request: main_models.GetImageTestResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetImageTestResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            query['ProcessId'] = request.process_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetImageTestResult',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetImageTestResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_image_test_result(
+        self,
+        request: main_models.GetImageTestResultRequest,
+    ) -> main_models.GetImageTestResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_image_test_result_with_options(request, runtime)
+
+    async def get_image_test_result_async(
+        self,
+        request: main_models.GetImageTestResultRequest,
+    ) -> main_models.GetImageTestResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_image_test_result_with_options_async(request, runtime)
+
     def get_job_status_with_options(
         self,
         request: main_models.GetJobStatusRequest,
@@ -14860,6 +15434,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_semantic_job_log_with_options_async(request, runtime)
 
+    def get_server_ide_instance_with_options(
+        self,
+        request: main_models.GetServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServerIdeInstanceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServerIdeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_server_ide_instance_with_options_async(
+        self,
+        request: main_models.GetServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServerIdeInstanceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServerIdeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_server_ide_instance(
+        self,
+        request: main_models.GetServerIdeInstanceRequest,
+    ) -> main_models.GetServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.get_server_ide_instance_with_options(request, runtime)
+
+    async def get_server_ide_instance_async(
+        self,
+        request: main_models.GetServerIdeInstanceRequest,
+    ) -> main_models.GetServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_server_ide_instance_with_options_async(request, runtime)
+
     def get_skill_with_options(
         self,
         request: main_models.GetSkillRequest,
@@ -14929,6 +15573,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetSkillResponse:
         runtime = RuntimeOptions()
         return await self.get_skill_with_options_async(request, runtime)
+
+    def get_snapshot_with_options(
+        self,
+        request: main_models.GetSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSnapshot',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_snapshot_with_options_async(
+        self,
+        request: main_models.GetSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSnapshot',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_snapshot(
+        self,
+        request: main_models.GetSnapshotRequest,
+    ) -> main_models.GetSnapshotResponse:
+        runtime = RuntimeOptions()
+        return self.get_snapshot_with_options(request, runtime)
+
+    async def get_snapshot_async(
+        self,
+        request: main_models.GetSnapshotRequest,
+    ) -> main_models.GetSnapshotResponse:
+        runtime = RuntimeOptions()
+        return await self.get_snapshot_with_options_async(request, runtime)
 
     def get_table_with_options(
         self,
@@ -19618,6 +20332,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_image_associated_projects_with_options_async(request, runtime)
 
+    def list_image_test_results_with_options(
+        self,
+        request: main_models.ListImageTestResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListImageTestResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListImageTestResults',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListImageTestResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_image_test_results_with_options_async(
+        self,
+        request: main_models.ListImageTestResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListImageTestResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListImageTestResults',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListImageTestResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_image_test_results(
+        self,
+        request: main_models.ListImageTestResultsRequest,
+    ) -> main_models.ListImageTestResultsResponse:
+        runtime = RuntimeOptions()
+        return self.list_image_test_results_with_options(request, runtime)
+
+    async def list_image_test_results_async(
+        self,
+        request: main_models.ListImageTestResultsRequest,
+    ) -> main_models.ListImageTestResultsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_image_test_results_with_options_async(request, runtime)
+
     def list_image_versions_with_options(
         self,
         request: main_models.ListImageVersionsRequest,
@@ -22378,6 +23170,280 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_semantic_jobs_with_options_async(request, runtime)
 
+    def list_server_ide_ecs_specs_with_options(
+        self,
+        request: main_models.ListServerIdeEcsSpecsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServerIdeEcsSpecsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accelerator_type):
+            body['AcceleratorType'] = request.accelerator_type
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServerIdeEcsSpecs',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServerIdeEcsSpecsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_server_ide_ecs_specs_with_options_async(
+        self,
+        request: main_models.ListServerIdeEcsSpecsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServerIdeEcsSpecsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accelerator_type):
+            body['AcceleratorType'] = request.accelerator_type
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServerIdeEcsSpecs',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServerIdeEcsSpecsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_server_ide_ecs_specs(
+        self,
+        request: main_models.ListServerIdeEcsSpecsRequest,
+    ) -> main_models.ListServerIdeEcsSpecsResponse:
+        runtime = RuntimeOptions()
+        return self.list_server_ide_ecs_specs_with_options(request, runtime)
+
+    async def list_server_ide_ecs_specs_async(
+        self,
+        request: main_models.ListServerIdeEcsSpecsRequest,
+    ) -> main_models.ListServerIdeEcsSpecsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_server_ide_ecs_specs_with_options_async(request, runtime)
+
+    def list_server_ide_images_with_options(
+        self,
+        request: main_models.ListServerIdeImagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServerIdeImagesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.labels):
+            body['Labels'] = request.labels
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServerIdeImages',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServerIdeImagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_server_ide_images_with_options_async(
+        self,
+        request: main_models.ListServerIdeImagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServerIdeImagesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.labels):
+            body['Labels'] = request.labels
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServerIdeImages',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServerIdeImagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_server_ide_images(
+        self,
+        request: main_models.ListServerIdeImagesRequest,
+    ) -> main_models.ListServerIdeImagesResponse:
+        runtime = RuntimeOptions()
+        return self.list_server_ide_images_with_options(request, runtime)
+
+    async def list_server_ide_images_async(
+        self,
+        request: main_models.ListServerIdeImagesRequest,
+    ) -> main_models.ListServerIdeImagesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_server_ide_images_with_options_async(request, runtime)
+
+    def list_server_ide_instances_with_options(
+        self,
+        request: main_models.ListServerIdeInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServerIdeInstancesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.related_user_id):
+            body['RelatedUserId'] = request.related_user_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.sub_type):
+            body['SubType'] = request.sub_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServerIdeInstances',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServerIdeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_server_ide_instances_with_options_async(
+        self,
+        request: main_models.ListServerIdeInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServerIdeInstancesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.related_user_id):
+            body['RelatedUserId'] = request.related_user_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.sub_type):
+            body['SubType'] = request.sub_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServerIdeInstances',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServerIdeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_server_ide_instances(
+        self,
+        request: main_models.ListServerIdeInstancesRequest,
+    ) -> main_models.ListServerIdeInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.list_server_ide_instances_with_options(request, runtime)
+
+    async def list_server_ide_instances_async(
+        self,
+        request: main_models.ListServerIdeInstancesRequest,
+    ) -> main_models.ListServerIdeInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_server_ide_instances_with_options_async(request, runtime)
+
     def list_skills_with_options(
         self,
         tmp_req: main_models.ListSkillsRequest,
@@ -22471,6 +23537,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListSkillsResponse:
         runtime = RuntimeOptions()
         return await self.list_skills_with_options_async(request, runtime)
+
+    def list_snapshots_with_options(
+        self,
+        request: main_models.ListSnapshotsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSnapshots',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_snapshots_with_options_async(
+        self,
+        request: main_models.ListSnapshotsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSnapshots',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_snapshots(
+        self,
+        request: main_models.ListSnapshotsRequest,
+    ) -> main_models.ListSnapshotsResponse:
+        runtime = RuntimeOptions()
+        return self.list_snapshots_with_options(request, runtime)
+
+    async def list_snapshots_async(
+        self,
+        request: main_models.ListSnapshotsRequest,
+    ) -> main_models.ListSnapshotsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_snapshots_with_options_async(request, runtime)
 
     def list_tables_with_options(
         self,
@@ -24154,6 +25306,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.prompt_agent_session_with_options_async(request, runtime)
 
+    def publish_image_with_options(
+        self,
+        request: main_models.PublishImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            body['ProcessId'] = request.process_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_image_with_options_async(
+        self,
+        request: main_models.PublishImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            body['ProcessId'] = request.process_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_image(
+        self,
+        request: main_models.PublishImageRequest,
+    ) -> main_models.PublishImageResponse:
+        runtime = RuntimeOptions()
+        return self.publish_image_with_options(request, runtime)
+
+    async def publish_image_async(
+        self,
+        request: main_models.PublishImageRequest,
+    ) -> main_models.PublishImageResponse:
+        runtime = RuntimeOptions()
+        return await self.publish_image_with_options_async(request, runtime)
+
     def remove_entity_from_meta_collection_with_options(
         self,
         request: main_models.RemoveEntityFromMetaCollectionRequest,
@@ -25006,6 +26232,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.revoke_member_project_roles_with_options_async(request, runtime)
 
+    def rollback_image_with_options(
+        self,
+        request: main_models.RollbackImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RollbackImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.image_version):
+            body['ImageVersion'] = request.image_version
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RollbackImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RollbackImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_image_with_options_async(
+        self,
+        request: main_models.RollbackImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RollbackImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.image_version):
+            body['ImageVersion'] = request.image_version
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RollbackImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RollbackImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_image(
+        self,
+        request: main_models.RollbackImageRequest,
+    ) -> main_models.RollbackImageResponse:
+        runtime = RuntimeOptions()
+        return self.rollback_image_with_options(request, runtime)
+
+    async def rollback_image_async(
+        self,
+        request: main_models.RollbackImageRequest,
+    ) -> main_models.RollbackImageResponse:
+        runtime = RuntimeOptions()
+        return await self.rollback_image_with_options_async(request, runtime)
+
     def rollback_parameter_with_options(
         self,
         request: main_models.RollbackParameterRequest,
@@ -25149,6 +26449,88 @@ class Client(OpenApiClient):
     ) -> main_models.RunCrawlerResponse:
         runtime = RuntimeOptions()
         return await self.run_crawler_with_options_async(request, runtime)
+
+    def run_image_test_with_options(
+        self,
+        request: main_models.RunImageTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunImageTestResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cu):
+            body['Cu'] = request.cu
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            body['ProcessId'] = request.process_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunImageTest',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunImageTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_image_test_with_options_async(
+        self,
+        request: main_models.RunImageTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunImageTestResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cu):
+            body['Cu'] = request.cu
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.process_id):
+            body['ProcessId'] = request.process_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunImageTest',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunImageTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_image_test(
+        self,
+        request: main_models.RunImageTestRequest,
+    ) -> main_models.RunImageTestResponse:
+        runtime = RuntimeOptions()
+        return self.run_image_test_with_options(request, runtime)
+
+    async def run_image_test_async(
+        self,
+        request: main_models.RunImageTestRequest,
+    ) -> main_models.RunImageTestResponse:
+        runtime = RuntimeOptions()
+        return await self.run_image_test_with_options_async(request, runtime)
 
     def run_semantic_job_with_options(
         self,
@@ -25375,6 +26757,76 @@ class Client(OpenApiClient):
     ) -> main_models.StartDIJobResponse:
         runtime = RuntimeOptions()
         return await self.start_dijob_with_options_async(request, runtime)
+
+    def start_server_ide_instance_with_options(
+        self,
+        request: main_models.StartServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartServerIdeInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartServerIdeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_server_ide_instance_with_options_async(
+        self,
+        request: main_models.StartServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartServerIdeInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartServerIdeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_server_ide_instance(
+        self,
+        request: main_models.StartServerIdeInstanceRequest,
+    ) -> main_models.StartServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.start_server_ide_instance_with_options(request, runtime)
+
+    async def start_server_ide_instance_async(
+        self,
+        request: main_models.StartServerIdeInstanceRequest,
+    ) -> main_models.StartServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.start_server_ide_instance_with_options_async(request, runtime)
 
     def start_workflow_instances_with_options(
         self,
@@ -25667,6 +27119,76 @@ class Client(OpenApiClient):
     ) -> main_models.StopProcessInstanceResponse:
         runtime = RuntimeOptions()
         return await self.stop_process_instance_with_options_async(request, runtime)
+
+    def stop_server_ide_instance_with_options(
+        self,
+        request: main_models.StopServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopServerIdeInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopServerIdeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_server_ide_instance_with_options_async(
+        self,
+        request: main_models.StopServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopServerIdeInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopServerIdeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_server_ide_instance(
+        self,
+        request: main_models.StopServerIdeInstanceRequest,
+    ) -> main_models.StopServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.stop_server_ide_instance_with_options(request, runtime)
+
+    async def stop_server_ide_instance_async(
+        self,
+        request: main_models.StopServerIdeInstanceRequest,
+    ) -> main_models.StopServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.stop_server_ide_instance_with_options_async(request, runtime)
 
     def stop_task_instances_with_options(
         self,
@@ -28685,6 +30207,136 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateIDEEventResultResponse:
         runtime = RuntimeOptions()
         return await self.update_ideevent_result_with_options_async(request, runtime)
+
+    def update_image_with_options(
+        self,
+        tmp_req: main_models.UpdateImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateImageResponse:
+        tmp_req.validate()
+        request = main_models.UpdateImageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.build_config):
+            request.build_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.build_config, 'BuildConfig', 'json')
+        if not DaraCore.is_null(tmp_req.supported):
+            request.supported_shrink = Utils.array_to_string_with_specified_style(tmp_req.supported, 'Supported', 'json')
+        query = {}
+        if not DaraCore.is_null(request.acr_associated_vpc_id):
+            query['AcrAssociatedVpcId'] = request.acr_associated_vpc_id
+        if not DaraCore.is_null(request.acr_instance_id):
+            query['AcrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.image_uri):
+            query['ImageUri'] = request.image_uri
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.repository_name):
+            query['RepositoryName'] = request.repository_name
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.build_config_shrink):
+            body['BuildConfig'] = request.build_config_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.provider_image_id):
+            body['ProviderImageId'] = request.provider_image_id
+        if not DaraCore.is_null(request.supported_shrink):
+            body['Supported'] = request.supported_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_image_with_options_async(
+        self,
+        tmp_req: main_models.UpdateImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateImageResponse:
+        tmp_req.validate()
+        request = main_models.UpdateImageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.build_config):
+            request.build_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.build_config, 'BuildConfig', 'json')
+        if not DaraCore.is_null(tmp_req.supported):
+            request.supported_shrink = Utils.array_to_string_with_specified_style(tmp_req.supported, 'Supported', 'json')
+        query = {}
+        if not DaraCore.is_null(request.acr_associated_vpc_id):
+            query['AcrAssociatedVpcId'] = request.acr_associated_vpc_id
+        if not DaraCore.is_null(request.acr_instance_id):
+            query['AcrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.image_uri):
+            query['ImageUri'] = request.image_uri
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.repository_name):
+            query['RepositoryName'] = request.repository_name
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.build_config_shrink):
+            body['BuildConfig'] = request.build_config_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.provider_image_id):
+            body['ProviderImageId'] = request.provider_image_id
+        if not DaraCore.is_null(request.supported_shrink):
+            body['Supported'] = request.supported_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_image(
+        self,
+        request: main_models.UpdateImageRequest,
+    ) -> main_models.UpdateImageResponse:
+        runtime = RuntimeOptions()
+        return self.update_image_with_options(request, runtime)
+
+    async def update_image_async(
+        self,
+        request: main_models.UpdateImageRequest,
+    ) -> main_models.UpdateImageResponse:
+        runtime = RuntimeOptions()
+        return await self.update_image_with_options_async(request, runtime)
 
     def update_mcp_server_with_options(
         self,

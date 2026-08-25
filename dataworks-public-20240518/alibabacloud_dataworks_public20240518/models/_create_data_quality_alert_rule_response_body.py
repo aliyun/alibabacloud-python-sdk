@@ -10,7 +10,7 @@ class CreateDataQualityAlertRuleResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The user-defined rule ID returned after the monitoring rule is successfully created.
+        # The ID of the custom monitoring rule returned after the rule is created.
         self.id = id
         # The request ID.
         self.request_id = request_id

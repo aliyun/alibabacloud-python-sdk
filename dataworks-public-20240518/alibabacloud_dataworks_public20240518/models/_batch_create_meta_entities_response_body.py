@@ -14,11 +14,11 @@ class BatchCreateMetaEntitiesResponseBody(DaraModel):
         results: List[main_models.MetaEntityWriteResult] = None,
         success: bool = None,
     ):
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # A list of results for the batch creation operation. This list provides the success status and any error messages for each individual entity in the request.
+        # The list of entity creation results. Each entry indicates whether the creation is successful and the failure reason.
         self.results = results
-        # Indicates whether the request was successful. This parameter returns `true` even if creating some entities fails. To determine the outcome for each entity, check the `Success` and `ErrorMessage` fields in the `Results` array.
+        # Indicates whether the request is successful. If some entities fail, the value is still true. Check Results[].Success and Results[].ErrorMessage for individual results.
         self.success = success
 
     def validate(self):

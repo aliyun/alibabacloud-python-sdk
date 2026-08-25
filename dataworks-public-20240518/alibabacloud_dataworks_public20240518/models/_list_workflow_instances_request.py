@@ -24,20 +24,23 @@ class ListWorkflowInstancesRequest(DaraModel):
         unified_workflow_instance_id: int = None,
         workflow_id: int = None,
     ):
-        # The business date. This is generally 00:00:00 of the day before the scheduled instance trigger time, in millisecond-level timestamp format, such as 1743350400000.
+        # The business date. This is typically 00:00:00 of the day before the scheduled time of the periodic instance. The value is a millisecond-level timestamp, such as 1743350400000.
         # 
         # This parameter is required.
         self.biz_date = biz_date
+        # The project environment. Valid values:
+        # - Prod: production
+        # - Dev: development
         self.env_type = env_type
-        # The filter. In JSON format, multiple filter conditions have an AND relationship. Currently supported fields are: `status, executionDate`.
+        # The filter. The value is in JSON format. Multiple filter conditions have an AND relationship. Currently supported fields: `status, executionDate`.
         self.filter = filter
-        # The list of workflow instance IDs. You can use this parameter to query multiple workflow instances at a time.
+        # The list of workflow instance IDs. You can use this parameter to query information about multiple workflow instances in a batch.
         self.ids = ids
         # The name. Fuzzy match is supported.
         self.name = name
         # The account ID of the owner.
         self.owner = owner
-        # The page number, starting from 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
@@ -45,37 +48,26 @@ class ListWorkflowInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The list of sort fields. Sorting by trigger time, start time, and other fields is supported. The format is "sort field + sort order (Desc/Asc)" (Asc can be omitted). Valid values of the sort field:
-        # 
+        # The list of sort fields. Sorting by scheduled time, start time, and other fields is supported. The format is "sort field + sort order (Desc/Asc)". Asc is the default if omitted. Valid values for the sort field:
         # - TriggerTime (Desc/Asc)
-        # 
         # - StartedTime (Desc/Asc)
-        # 
         # - FinishedTime (Desc/Asc)
-        # 
         # - CreateTime (Desc/Asc)
-        # 
         # - Id (Desc/Asc)
         # 
-        # Default value: Id Desc
+        # Default value: Id Desc.
         self.sort_by = sort_by
-        # The list of tags. Results are returned if any one of the specified tags is matched.
+        # The list of tags. Results are returned if any one of the specified tags matches.
         self.tags = tags
-        # The type of the workflow instance.
-        # 
-        # - Normal: Periodic scheduling
-        # 
-        # - Manual: Manual task
-        # 
-        # - SmokeTest: Testing
-        # 
-        # - SupplementData: Backfill data
-        # 
-        # - ManualWorkflow: Manual workflow
-        # 
-        # - TriggerWorkflow: Trigger-based workflow
+        # The type of the workflow instance. Valid values:
+        # - Normal: periodic scheduling
+        # - Manual: manual task
+        # - SmokeTest: test
+        # - SupplementData: data backfill
+        # - ManualWorkflow: manual workflow
+        # - TriggerWorkflow: trigger-based workflow
         self.type = type
-        # The unified workflow instance ID. All workflow instances within the same business date of a single trigger share the same value for this field.
+        # The unified workflow instance ID. All workflow instances within the same business date under a specific trigger share the same value for this field.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id

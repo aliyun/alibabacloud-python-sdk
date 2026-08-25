@@ -11,7 +11,7 @@ class AttachDataQualityRulesToEvaluationTaskShrinkRequest(DaraModel):
         data_quality_rule_ids_shrink: str = None,
         project_id: int = None,
     ):
-        # The ID of the associated data quality monitoring task.
+        # The ID of the associated quality check task.
         # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
@@ -19,8 +19,9 @@ class AttachDataQualityRulesToEvaluationTaskShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_quality_rule_ids_shrink = data_quality_rule_ids_shrink
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
-        # This parameter specifies the DataWorks workspace in which the API operation is performed.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+        # 
+        # This parameter specifies the DataWorks workspace for this API call.
         # 
         # This parameter is required.
         self.project_id = project_id

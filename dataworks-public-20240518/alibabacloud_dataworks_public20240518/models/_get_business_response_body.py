@@ -15,7 +15,7 @@ class GetBusinessResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details of the workflow.
+        # The details of the business process.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -23,13 +23,12 @@ class GetBusinessResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. Used for troubleshooting when an error occurs.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
         # 
-        # - true: success.
-        # 
-        # - false: failure.
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -94,17 +93,17 @@ class GetBusinessResponseBodyData(DaraModel):
         project_id: str = None,
         use_type: str = None,
     ):
-        # The workflow ID.
+        # The ID of the business process.
         self.business_id = business_id
-        # The name of the workflow. Workflow names must be unique within the same workspace.
+        # The name of the business process. The name must be unique within the same workspace.
         self.business_name = business_name
-        # The description of the workflow.
+        # The description of the business process.
         self.description = description
-        # The Alibaba Cloud account ID of the workflow owner.
+        # The Alibaba Cloud user ID of the business process owner.
         self.owner = owner
-        # The ID of the workspace where the workflow resides.
+        # The ID of the DataWorks workspace to which the business process belongs.
         self.project_id = project_id
-        # The functional module to which the workflow belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (Manually Triggered Workflow)
+        # The functional module to which the business process belongs. Valid values: NORMAL (DataStudio) and MANUAL_BIZ (manual business process).
         self.use_type = use_type
 
     def validate(self):
