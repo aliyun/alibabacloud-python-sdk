@@ -10,6 +10,7 @@ class GetKnowledgeRecallRequest(DaraModel):
         dbcluster_id: str = None,
         question: str = None,
         topk: int = None,
+        user: str = None,
     ):
         # The ID of the AnalyticDB for MySQL cluster.
         # 
@@ -21,6 +22,8 @@ class GetKnowledgeRecallRequest(DaraModel):
         self.question = question
         # The top K number of related files to recall.
         self.topk = topk
+        # The username. Only files that this user has permission to access are recalled.
+        self.user = user
 
     def validate(self):
         pass
@@ -39,6 +42,9 @@ class GetKnowledgeRecallRequest(DaraModel):
         if self.topk is not None:
             result['Topk'] = self.topk
 
+        if self.user is not None:
+            result['User'] = self.user
+
         return result
 
     def from_map(self, m: dict = None):
@@ -51,6 +57,9 @@ class GetKnowledgeRecallRequest(DaraModel):
 
         if m.get('Topk') is not None:
             self.topk = m.get('Topk')
+
+        if m.get('User') is not None:
+            self.user = m.get('User')
 
         return self
 

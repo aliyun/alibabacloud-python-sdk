@@ -2,20 +2,18 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict, Any
-
 from alibabacloud_adb20211201 import models as main_models
 from darabonba.model import DaraModel
 
-class GetKnowledgeRecallResponseBody(DaraModel):
+class GetLogSyncToSLSResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.GetKnowledgeRecallResponseBodyData = None,
+        data: main_models.GetLogSyncToSLSResponseBodyData = None,
         request_id: str = None,
     ):
         # The returned data.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -38,7 +36,7 @@ class GetKnowledgeRecallResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
-            temp_model = main_models.GetKnowledgeRecallResponseBodyData()
+            temp_model = main_models.GetLogSyncToSLSResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('RequestId') is not None:
@@ -46,22 +44,21 @@ class GetKnowledgeRecallResponseBody(DaraModel):
 
         return self
 
-class GetKnowledgeRecallResponseBodyData(DaraModel):
+class GetLogSyncToSLSResponseBodyData(DaraModel):
     def __init__(
         self,
-        count: int = None,
-        message: str = None,
-        results: List[Dict[str, Any]] = None,
-        trace_id: str = None,
+        status: str = None,
+        target_log_store: str = None,
+        target_project: str = None,
     ):
-        # The total number of entries.
-        self.count = count
-        # The prompt message.
-        self.message = message
-        # The recall results.
-        self.results = results
-        # The Tracing Analysis ID.
-        self.trace_id = trace_id
+        # The log synchronization status. Valid values:
+        # - on: Synchronization is enabled.
+        # - off: Synchronization is disabled.
+        self.status = status
+        # The Simple Log Service Logstore.
+        self.target_log_store = target_log_store
+        # The Simple Log Service project.
+        self.target_project = target_project
 
     def validate(self):
         pass
@@ -71,33 +68,27 @@ class GetKnowledgeRecallResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.count is not None:
-            result['Count'] = self.count
+        if self.status is not None:
+            result['Status'] = self.status
 
-        if self.message is not None:
-            result['Message'] = self.message
+        if self.target_log_store is not None:
+            result['TargetLogStore'] = self.target_log_store
 
-        if self.results is not None:
-            result['Results'] = self.results
-
-        if self.trace_id is not None:
-            result['TraceId'] = self.trace_id
+        if self.target_project is not None:
+            result['TargetProject'] = self.target_project
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
+        if m.get('TargetLogStore') is not None:
+            self.target_log_store = m.get('TargetLogStore')
 
-        if m.get('Results') is not None:
-            self.results = m.get('Results')
-
-        if m.get('TraceId') is not None:
-            self.trace_id = m.get('TraceId')
+        if m.get('TargetProject') is not None:
+            self.target_project = m.get('TargetProject')
 
         return self
 

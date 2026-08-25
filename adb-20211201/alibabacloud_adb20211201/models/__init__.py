@@ -71,6 +71,9 @@ from ._check_formation_schema_exists_response import CheckFormationSchemaExistsR
 from ._check_sample_data_set_request import CheckSampleDataSetRequest
 from ._check_sample_data_set_response_body import CheckSampleDataSetResponseBody
 from ._check_sample_data_set_response import CheckSampleDataSetResponse
+from ._close_log_sync_to_slsrequest import CloseLogSyncToSLSRequest
+from ._close_log_sync_to_slsresponse_body import CloseLogSyncToSLSResponseBody
+from ._close_log_sync_to_slsresponse import CloseLogSyncToSLSResponse
 from ._configure_result_export_request import ConfigureResultExportRequest
 from ._configure_result_export_shrink_request import ConfigureResultExportShrinkRequest
 from ._configure_result_export_response_body import ConfigureResultExportResponseBody
@@ -528,6 +531,9 @@ from ._get_knowledge_recall_response import GetKnowledgeRecallResponse
 from ._get_lake_storage_request import GetLakeStorageRequest
 from ._get_lake_storage_response_body import GetLakeStorageResponseBody
 from ._get_lake_storage_response import GetLakeStorageResponse
+from ._get_log_sync_to_slsrequest import GetLogSyncToSLSRequest
+from ._get_log_sync_to_slsresponse_body import GetLogSyncToSLSResponseBody
+from ._get_log_sync_to_slsresponse import GetLogSyncToSLSResponse
 from ._get_semantic_view_request import GetSemanticViewRequest
 from ._get_semantic_view_response_body import GetSemanticViewResponseBody
 from ._get_semantic_view_response import GetSemanticViewResponse
@@ -729,6 +735,9 @@ from ._modify_sql_template_position_response import ModifySqlTemplatePositionRes
 from ._modify_user_eni_vswitch_options_request import ModifyUserEniVswitchOptionsRequest
 from ._modify_user_eni_vswitch_options_response_body import ModifyUserEniVswitchOptionsResponseBody
 from ._modify_user_eni_vswitch_options_response import ModifyUserEniVswitchOptionsResponse
+from ._open_log_sync_to_slsrequest import OpenLogSyncToSLSRequest
+from ._open_log_sync_to_slsresponse_body import OpenLogSyncToSLSResponseBody
+from ._open_log_sync_to_slsresponse import OpenLogSyncToSLSResponse
 from ._preload_spark_app_metrics_request import PreloadSparkAppMetricsRequest
 from ._preload_spark_app_metrics_response_body import PreloadSparkAppMetricsResponseBody
 from ._preload_spark_app_metrics_response import PreloadSparkAppMetricsResponse
@@ -844,6 +853,7 @@ from ._create_dbcluster_request import CreateDBClusterRequestTag
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestAtmConfig
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestGpuElasticPlanRules
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestGpuElasticPlan
+from ._create_dbresource_group_request import CreateDBResourceGroupRequestRayConfigStorageMounts
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestRayConfigWorkerGroups
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestRayConfig
 from ._create_dbresource_group_request import CreateDBResourceGroupRequestRules
@@ -1041,6 +1051,7 @@ from ._get_database_objects_response_body import GetDatabaseObjectsResponseBodyD
 from ._get_knowledge_recall_response_body import GetKnowledgeRecallResponseBodyData
 from ._get_lake_storage_response_body import GetLakeStorageResponseBodyDataPermissions
 from ._get_lake_storage_response_body import GetLakeStorageResponseBodyData
+from ._get_log_sync_to_slsresponse_body import GetLogSyncToSLSResponseBodyData
 from ._get_spark_app_attempt_log_response_body import GetSparkAppAttemptLogResponseBodyData
 from ._get_spark_app_log_response_body import GetSparkAppLogResponseBodyData
 from ._get_spark_app_metrics_response_body import GetSparkAppMetricsResponseBodyDataScanMetrics
@@ -1174,6 +1185,9 @@ __all__ = [
     CheckSampleDataSetRequest,
     CheckSampleDataSetResponseBody,
     CheckSampleDataSetResponse,
+    CloseLogSyncToSLSRequest,
+    CloseLogSyncToSLSResponseBody,
+    CloseLogSyncToSLSResponse,
     ConfigureResultExportRequest,
     ConfigureResultExportShrinkRequest,
     ConfigureResultExportResponseBody,
@@ -1631,6 +1645,9 @@ __all__ = [
     GetLakeStorageRequest,
     GetLakeStorageResponseBody,
     GetLakeStorageResponse,
+    GetLogSyncToSLSRequest,
+    GetLogSyncToSLSResponseBody,
+    GetLogSyncToSLSResponse,
     GetSemanticViewRequest,
     GetSemanticViewResponseBody,
     GetSemanticViewResponse,
@@ -1832,6 +1849,9 @@ __all__ = [
     ModifyUserEniVswitchOptionsRequest,
     ModifyUserEniVswitchOptionsResponseBody,
     ModifyUserEniVswitchOptionsResponse,
+    OpenLogSyncToSLSRequest,
+    OpenLogSyncToSLSResponseBody,
+    OpenLogSyncToSLSResponse,
     PreloadSparkAppMetricsRequest,
     PreloadSparkAppMetricsResponseBody,
     PreloadSparkAppMetricsResponse,
@@ -1947,6 +1967,7 @@ __all__ = [
     CreateDBResourceGroupRequestAtmConfig,
     CreateDBResourceGroupRequestGpuElasticPlanRules,
     CreateDBResourceGroupRequestGpuElasticPlan,
+    CreateDBResourceGroupRequestRayConfigStorageMounts,
     CreateDBResourceGroupRequestRayConfigWorkerGroups,
     CreateDBResourceGroupRequestRayConfig,
     CreateDBResourceGroupRequestRules,
@@ -2144,6 +2165,7 @@ __all__ = [
     GetKnowledgeRecallResponseBodyData,
     GetLakeStorageResponseBodyDataPermissions,
     GetLakeStorageResponseBodyData,
+    GetLogSyncToSLSResponseBodyData,
     GetSparkAppAttemptLogResponseBodyData,
     GetSparkAppLogResponseBodyData,
     GetSparkAppMetricsResponseBodyDataScanMetrics,

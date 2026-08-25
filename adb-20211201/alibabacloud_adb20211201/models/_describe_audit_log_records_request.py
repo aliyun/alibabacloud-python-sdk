@@ -18,6 +18,7 @@ class DescribeAuditLogRecordsRequest(DaraModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        process_id: str = None,
         proxy_user: str = None,
         query_keyword: str = None,
         region_id: str = None,
@@ -29,19 +30,24 @@ class DescribeAuditLogRecordsRequest(DaraModel):
         user: str = None,
     ):
         # <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
-        # <props="intl">The ID of the Data Lakehouse Edition cluster.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster IDs of all clusters in a region.
+        # <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster IDs of all clusters in a specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The name of the database on which the SQL statement was executed.
+        # The name of the database on which the SQL statement is executed.
         self.dbname = dbname
         # The end of the time range to query. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ format.
         # > - The end time must be later than the start time.
         # > - The interval between the start time and the end time cannot exceed 24 hours.
         self.end_time = end_time
+        # The engine type. Valid values:
+        # - XIHE: audit logs of the default compute engine.
+        # - AGENT_SERVERLESS: audit logs of the Serverless analytics feature.
+        # 
+        # If this parameter is not specified, the default value is XIHE.
         self.engine_type = engine_type
-        # The IP address and port number of the client that executed the SQL statement.
+        # The IP address and port number of the client that executes the SQL statement.
         self.host_address = host_address
         # The sorting order based on specified fields. The value is in JSON format and is an ordered JSON array. Compound sorting is performed in the order of the input array. The array contains the `Field` and `Type` fields. Example: `[{"Field":"ExecutionStartTime","Type":"Desc"},{"Field":"ScanRows","Type":"Asc"}]`.
         # * `Field` specifies the field name for sorting. Valid values:
@@ -50,7 +56,7 @@ class DescribeAuditLogRecordsRequest(DaraModel):
         #     * **ExecutionStartTime**: the execution start time of the SQL statement.
         #     * **QueryTime**: the execution duration of the SQL statement.
         #     * **PeakMemoryUsage**: the peak memory usage during the execution of the SQL statement.
-        #     * **ScanRows**: the number of rows scanned by the task with a data source.
+        #     * **ScanRows**: the number of rows scanned by tasks with data sources.
         #     * **ScanSize**: the amount of scanned data.
         #     * **ScanTime**: the total time consumed for scanning data.
         #     * **PlanningTime**: the time consumed for generating the execution plan.
@@ -75,9 +81,10 @@ class DescribeAuditLogRecordsRequest(DaraModel):
         # - **50**
         # - **100**
         self.page_size = page_size
+        self.process_id = process_id
         # A reserved parameter.
         self.proxy_user = proxy_user
-        # The keyword used to filter the returned results.
+        # The keyword used to search the returned results.
         self.query_keyword = query_keyword
         # The region ID.
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of the cluster.
@@ -95,16 +102,16 @@ class DescribeAuditLogRecordsRequest(DaraModel):
         # - **DROP**
         # - **CREATE**
         # 
-        # > Only one type can be specified per request. If this parameter is left empty, all types are queried by default.
+        # > Only one type can be specified per request. If this parameter is not specified, all types are queried by default.
         self.sql_type = sql_type
         # The beginning of the time range to query. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ format.
-        # > SQL Audit Log entries can be queried only when SQL audit is enabled, and only entries from the last 30 days are supported. If SQL audit is disabled and then re-enabled, only entries recorded after re-enabling are available.
+        # > SQL audit logs can be queried only when SQL audit is enabled, and only logs from the last 30 days are supported. If SQL audit is disabled and then re-enabled, only logs generated after re-enabling can be queried.
         self.start_time = start_time
-        # Specifies whether the SQL statement was executed successfully. Valid values:
-        # * **true**: The SQL statement was executed successfully.
-        # * **false**: The SQL statement failed to be executed.
+        # Specifies whether the SQL statement is executed successfully. Valid values:
+        # * **true**: Executed successfully.
+        # * **false**: Execution failed.
         self.succeed = succeed
-        # The username that executed the SQL statement.
+        # The username that executes the SQL statement.
         self.user = user
 
     def validate(self):
@@ -147,6 +154,9 @@ class DescribeAuditLogRecordsRequest(DaraModel):
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
 
         if self.proxy_user is not None:
             result['ProxyUser'] = self.proxy_user
@@ -211,6 +221,9 @@ class DescribeAuditLogRecordsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
 
         if m.get('ProxyUser') is not None:
             self.proxy_user = m.get('ProxyUser')

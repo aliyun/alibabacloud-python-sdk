@@ -33,77 +33,67 @@ class ModifyDBResourceGroupRequest(DaraModel):
         status: str = None,
         target_resource_group_name: str = None,
     ):
+        # The PromQL resource group configuration.
         self.atm_config = atm_config
-        # The idle duration after which the resource group is automatically stopped.
+        # The automatic stop interval.
         self.auto_stop_interval = auto_stop_interval
-        # This parameter is reserved.
+        # A reserved parameter (not applicable).
         self.cluster_mode = cluster_mode
-        # This parameter is reserved.
+        # A reserved parameter (not applicable).
         self.cluster_size_resource = cluster_size_resource
-        # <props="china">The ID of the Data Lakehouse Edition, Enterprise Edition, or Basic Edition cluster.
-        # <props="intl">The ID of the Data Lakehouse Edition cluster.
+        # <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the spot instance feature for the resource group. This feature provides resources at a lower unit price, but they can be reclaimed at any time. Only `Job` resource groups support this feature. Valid values:
-        # 
-        # - **True**: enables the spot instance feature.
-        # 
-        # - **False**: disables the spot instance feature.
+        # Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
+        # - **True**: Enables the spot instance feature.
+        # - **False**: Disables the spot instance feature.
         self.enable_spot = enable_spot
         # The engine configuration.
         self.engine_params = engine_params
-        # The time-based scaling plan for GPUs.
+        # The GPU time-sharing elastic plan.
         self.gpu_elastic_plan = gpu_elastic_plan
-        # The name of the resource group.
-        # 
-        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group name for a specific cluster.
+        # The resource group name.
+        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group names of a specified cluster.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The type of the resource group. Valid values:
-        # 
+        # The resource group type. Valid values:
         # - **Interactive**
-        # 
         # - **Job**
-        # 
-        # > For more information about resource groups in Data Lakehouse Edition clusters, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
-        # This parameter is reserved.
+        # A reserved parameter (not applicable).
         self.max_cluster_count = max_cluster_count
-        # The maximum amount of reserved computing resources. The value cannot exceed the unallocated computing resources of the cluster.
-        # 
-        # - If the resource group type is `Interactive`, the value is specified in increments of 16 ACU.
-        # 
-        # - If the resource group type is `Job`, the value is specified in increments of 8 ACU.
+        # The maximum reserved computing resources.
+        # - If the resource group type is Interactive, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 16 ACUs.
+        # - If the resource group type is Job, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 8 ACUs.
         self.max_compute_resource = max_compute_resource
-        # This parameter is reserved.
+        # A reserved parameter (not applicable).
         self.max_gpu_quantity = max_gpu_quantity
-        # This parameter is reserved.
+        # A reserved parameter (not applicable).
         self.min_cluster_count = min_cluster_count
-        # The minimum amount of reserved computing resources.
-        # 
-        # - If the resource group type is `Interactive`, the minimum amount of reserved computing resources is 16 ACU.
-        # 
-        # - If the resource group type is `Job`, the minimum amount of reserved computing resources is 0 ACU.
+        # The minimum reserved computing resources.
+        # - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
+        # - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
         self.min_compute_resource = min_compute_resource
-        # This parameter is reserved.
+        # A reserved parameter (not applicable).
         self.min_gpu_quantity = min_gpu_quantity
-        # The Ray configuration. This parameter is required if the resource group is an AI group and uses a Ray cluster as its engine.
+        # The Ray configuration. This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
         self.ray_config = ray_config
-        # The region ID of the cluster.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query available regions.
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
         self.region_id = region_id
-        # The job submission rules.
+        # The job routing rules.
         self.rules = rules
-        # This parameter is reserved.
+        # A reserved parameter (not applicable).
         self.spec_name = spec_name
-        # The desired state of the resource group. Specify **starting** to start the resource group or **stopping** to stop it.
+        # The resource group status. **starting** indicates that the resource group is being started. **stopping** indicates that the resource group is being stopped.
         self.status = status
-        # This parameter is reserved.
+        # A reserved parameter (not applicable).
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
@@ -276,11 +266,11 @@ class ModifyDBResourceGroupRequestRules(DaraModel):
         query_time: str = None,
         target_group_name: str = None,
     ):
-        # The name of the resource group.
+        # The resource group name.
         self.group_name = group_name
-        # The query execution time threshold, in milliseconds (ms).
+        # The query execution time threshold. Unit: milliseconds (ms).
         self.query_time = query_time
-        # The name of the target resource group.
+        # The target resource group name.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -331,26 +321,26 @@ class ModifyDBResourceGroupRequestRayConfig(DaraModel):
     ):
         # The Ray application configuration.
         self.app_config = app_config
-        # The type of the Ray cluster. Valid values:
+        # The Ray cluster type. Valid values:
         # 
-        # - **BASIC**: A basic, non-high-availability cluster.
+        # - BASIC: basic type, non-high-availability
         # 
-        # - **HIGH_AVAILABILITY**: A high-availability cluster.
+        # - HIGH_AVAILABILITY: high-availability type
         self.category = category
-        # Specifies whether to enable the ENI.
+        # Specifies whether to enable ENI.
         self.enable_user_eni = enable_user_eni
         # The allocation unit of the head node.
         self.head_allocate_unit = head_allocate_unit
         # The disk size of the head node.
         self.head_disk_capacity = head_disk_capacity
-        # The specifications of the head node.
+        # The node specifications of the head node.
         self.head_spec = head_spec
         # The resource type of the head node.
         self.head_spec_type = head_spec_type
-        # A list of storage mounts.
+        # The storage mount list.
         self.storage_mounts = storage_mounts
         self.user_defined_requirements = user_defined_requirements
-        # A list of configurations for Ray worker groups.
+        # The list of Ray worker group configurations.
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -460,17 +450,17 @@ class ModifyDBResourceGroupRequestRayConfigWorkerGroups(DaraModel):
     ):
         # The allocation unit.
         self.allocate_unit = allocate_unit
-        # The name of the worker group.
+        # The worker group name.
         self.group_name = group_name
-        # The maximum number of worker nodes.
+        # The maximum number of workers.
         self.max_worker_quantity = max_worker_quantity
-        # The minimum number of worker nodes.
+        # The minimum number of workers.
         self.min_worker_quantity = min_worker_quantity
-        # The disk size of a worker node.
+        # The disk size of the worker node.
         self.worker_disk_capacity = worker_disk_capacity
-        # The specifications of a worker node.
+        # The node specifications of the worker node.
         self.worker_spec_name = worker_spec_name
-        # The resource type of a worker node.
+        # The resource type of the worker node.
         self.worker_spec_type = worker_spec_type
 
     def validate(self):
@@ -534,11 +524,13 @@ class ModifyDBResourceGroupRequestRayConfigStorageMounts(DaraModel):
         self,
         mount_path: str = None,
         storage_id: int = None,
+        storage_name: str = None,
     ):
         # The mount path.
         self.mount_path = mount_path
         # The storage ID.
         self.storage_id = storage_id
+        self.storage_name = storage_name
 
     def validate(self):
         pass
@@ -554,6 +546,9 @@ class ModifyDBResourceGroupRequestRayConfigStorageMounts(DaraModel):
         if self.storage_id is not None:
             result['StorageId'] = self.storage_id
 
+        if self.storage_name is not None:
+            result['StorageName'] = self.storage_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -563,6 +558,9 @@ class ModifyDBResourceGroupRequestRayConfigStorageMounts(DaraModel):
 
         if m.get('StorageId') is not None:
             self.storage_id = m.get('StorageId')
+
+        if m.get('StorageName') is not None:
+            self.storage_name = m.get('StorageName')
 
         return self
 
@@ -625,7 +623,7 @@ class ModifyDBResourceGroupRequestRayConfigAppConfigImageSelector(DaraModel):
         self.image = image
         # The inference engine.
         self.inference_engine = inference_engine
-        # The large language model (LLM).
+        # The LLM model.
         self.llm_model = llm_model
 
     def validate(self):
@@ -666,14 +664,11 @@ class ModifyDBResourceGroupRequestGpuElasticPlan(DaraModel):
         enabled: bool = None,
         rules: List[main_models.ModifyDBResourceGroupRequestGpuElasticPlanRules] = None,
     ):
-        # Specifies whether to enable the scaling plan immediately upon creation.
-        # Valid values:
-        # 
-        # - **true**: The plan is enabled.
-        # 
-        # - **false**: The plan is disabled.
+        # Specifies whether to enable the elastic plan immediately after creation. Valid values:
+        # - **true**: Enables the elastic plan immediately.
+        # - **false**: Does not enable the elastic plan.
         self.enabled = enabled
-        # A list of rules.
+        # The list of rules.
         self.rules = rules
 
     def validate(self):
@@ -716,9 +711,9 @@ class ModifyDBResourceGroupRequestGpuElasticPlanRules(DaraModel):
         end_cron_expression: str = None,
         start_cron_expression: str = None,
     ):
-        # The end time of the scaling window, specified as a cron expression.
+        # The end time, specified as a cron expression. The interval must be at least 1 hour.
         self.end_cron_expression = end_cron_expression
-        # The start time of the scaling window, specified as a cron expression. The duration between the start and end times must be at least one hour.
+        # The start time, specified as a cron expression. The interval must be at least 1 hour.
         self.start_cron_expression = start_cron_expression
 
     def validate(self):
@@ -762,16 +757,27 @@ class ModifyDBResourceGroupRequestAtmConfig(DaraModel):
         storage_node_num: int = None,
         storage_node_spec: str = None,
     ):
+        # The number of authentication nodes.
         self.auth_node_num = auth_node_num
+        # The authentication node specifications in ACU ([0-9+]ACU).
         self.auth_node_spec = auth_node_spec
+        # The number of insert nodes.
         self.insert_node_num = insert_node_num
+        # The insert node specifications in ACU ([0-9+]ACU).
         self.insert_node_spec = insert_node_spec
+        # The query node cache size in GB.
         self.select_node_cache_size = select_node_cache_size
+        # The number of query nodes.
         self.select_node_num = select_node_num
+        # The query node specifications ([0-9+]ACU).
         self.select_node_spec = select_node_spec
+        # The disk size of storage nodes.
         self.storage_node_disk_size = storage_node_disk_size
+        # The disk type of storage nodes (essd_pl1, essd_pl2).
         self.storage_node_disk_type = storage_node_disk_type
+        # The number of storage nodes.
         self.storage_node_num = storage_node_num
+        # The storage node specifications in ACU ([0-9+]ACU).
         self.storage_node_spec = storage_node_spec
 
     def validate(self):

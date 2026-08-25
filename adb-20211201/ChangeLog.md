@@ -1,3 +1,9 @@
+2026-08-25 Version: 4.1.2
+- Update API CreateDBResourceGroup: add request parameters RayConfig.StorageMounts.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.StorageMounts.$.StorageName.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.StorageMounts.$.StorageName.
+
+
 2026-08-03 Version: 4.0.2
 - Update API DescribeAuditLogRecords: add request parameters EngineType.
 

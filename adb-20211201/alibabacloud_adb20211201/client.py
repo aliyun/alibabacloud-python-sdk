@@ -66,21 +66,21 @@ class Client(OpenApiClient):
             'eu-west-1-oxs': 'adb.ap-northeast-1.aliyuncs.com',
             'me-east-1': 'adb.ap-northeast-1.aliyuncs.com',
             'rus-west-1-pop': 'adb.ap-northeast-1.aliyuncs.com',
-            'na-south-1': 'adb.na-south-1.aliyuncs.com',
-            'me-central-1': 'adb.me-central-1.aliyuncs.com',
+            'cn-chengdu': 'adb.cn-chengdu.aliyuncs.com',
+            'cn-wulanchabu': 'adb.cn-wulanchabu.aliyuncs.com',
+            'cn-zhangjiakou': 'adb.cn-zhangjiakou.aliyuncs.com',
+            'ap-northeast-2': 'adb.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'adb.ap-northeast-1.aliyuncs.com',
+            'cn-guangzhou': 'adb.cn-guangzhou.aliyuncs.com',
+            'ap-southeast-3': 'adb.ap-southeast-3.aliyuncs.com',
+            'cn-huhehaote': 'adb.cn-huhehaote.aliyuncs.com',
+            'ap-southeast-5': 'adb.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'adb.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'adb.ap-southeast-7.aliyuncs.com',
             'eu-west-1': 'adb.eu-west-1.aliyuncs.com',
             'eu-central-1': 'adb.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'adb.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'adb.cn-wulanchabu.aliyuncs.com',
-            'cn-huhehaote': 'adb.cn-huhehaote.aliyuncs.com',
-            'cn-guangzhou': 'adb.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'adb.cn-chengdu.aliyuncs.com',
-            'ap-southeast-7': 'adb.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'adb.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'adb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'adb.ap-southeast-3.aliyuncs.com',
-            'ap-northeast-2': 'adb.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'adb.ap-northeast-1.aliyuncs.com'
+            'na-south-1': 'adb.na-south-1.aliyuncs.com',
+            'me-central-1': 'adb.me-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('adb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1072,6 +1072,84 @@ class Client(OpenApiClient):
     ) -> main_models.CheckSampleDataSetResponse:
         runtime = RuntimeOptions()
         return await self.check_sample_data_set_with_options_async(request, runtime)
+
+    def close_log_sync_to_slswith_options(
+        self,
+        request: main_models.CloseLogSyncToSLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseLogSyncToSLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloseLogSyncToSLS',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloseLogSyncToSLSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_log_sync_to_slswith_options_async(
+        self,
+        request: main_models.CloseLogSyncToSLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseLogSyncToSLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloseLogSyncToSLS',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloseLogSyncToSLSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_log_sync_to_sls(
+        self,
+        request: main_models.CloseLogSyncToSLSRequest,
+    ) -> main_models.CloseLogSyncToSLSResponse:
+        runtime = RuntimeOptions()
+        return self.close_log_sync_to_slswith_options(request, runtime)
+
+    async def close_log_sync_to_sls_async(
+        self,
+        request: main_models.CloseLogSyncToSLSRequest,
+    ) -> main_models.CloseLogSyncToSLSResponse:
+        runtime = RuntimeOptions()
+        return await self.close_log_sync_to_slswith_options_async(request, runtime)
 
     def configure_result_export_with_options(
         self,
@@ -6702,6 +6780,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.process_id):
+            query['ProcessId'] = request.process_id
         if not DaraCore.is_null(request.proxy_user):
             query['ProxyUser'] = request.proxy_user
         if not DaraCore.is_null(request.query_keyword):
@@ -6768,6 +6848,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.process_id):
+            query['ProcessId'] = request.process_id
         if not DaraCore.is_null(request.proxy_user):
             query['ProxyUser'] = request.proxy_user
         if not DaraCore.is_null(request.query_keyword):
@@ -14652,6 +14734,8 @@ class Client(OpenApiClient):
             query['Question'] = request.question
         if not DaraCore.is_null(request.topk):
             query['Topk'] = request.topk
+        if not DaraCore.is_null(request.user):
+            query['User'] = request.user
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14684,6 +14768,8 @@ class Client(OpenApiClient):
             query['Question'] = request.question
         if not DaraCore.is_null(request.topk):
             query['Topk'] = request.topk
+        if not DaraCore.is_null(request.user):
+            query['User'] = request.user
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14798,6 +14884,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetLakeStorageResponse:
         runtime = RuntimeOptions()
         return await self.get_lake_storage_with_options_async(request, runtime)
+
+    def get_log_sync_to_slswith_options(
+        self,
+        request: main_models.GetLogSyncToSLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLogSyncToSLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLogSyncToSLS',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLogSyncToSLSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_log_sync_to_slswith_options_async(
+        self,
+        request: main_models.GetLogSyncToSLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLogSyncToSLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLogSyncToSLS',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLogSyncToSLSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_log_sync_to_sls(
+        self,
+        request: main_models.GetLogSyncToSLSRequest,
+    ) -> main_models.GetLogSyncToSLSResponse:
+        runtime = RuntimeOptions()
+        return self.get_log_sync_to_slswith_options(request, runtime)
+
+    async def get_log_sync_to_sls_async(
+        self,
+        request: main_models.GetLogSyncToSLSRequest,
+    ) -> main_models.GetLogSyncToSLSResponse:
+        runtime = RuntimeOptions()
+        return await self.get_log_sync_to_slswith_options_async(request, runtime)
 
     def get_semantic_view_with_options(
         self,
@@ -20464,6 +20628,92 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyUserEniVswitchOptionsResponse:
         runtime = RuntimeOptions()
         return await self.modify_user_eni_vswitch_options_with_options_async(request, runtime)
+
+    def open_log_sync_to_slswith_options(
+        self,
+        request: main_models.OpenLogSyncToSLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenLogSyncToSLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_log_store):
+            query['TargetLogStore'] = request.target_log_store
+        if not DaraCore.is_null(request.target_project):
+            query['TargetProject'] = request.target_project
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenLogSyncToSLS',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenLogSyncToSLSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_log_sync_to_slswith_options_async(
+        self,
+        request: main_models.OpenLogSyncToSLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenLogSyncToSLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_log_store):
+            query['TargetLogStore'] = request.target_log_store
+        if not DaraCore.is_null(request.target_project):
+            query['TargetProject'] = request.target_project
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenLogSyncToSLS',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenLogSyncToSLSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_log_sync_to_sls(
+        self,
+        request: main_models.OpenLogSyncToSLSRequest,
+    ) -> main_models.OpenLogSyncToSLSResponse:
+        runtime = RuntimeOptions()
+        return self.open_log_sync_to_slswith_options(request, runtime)
+
+    async def open_log_sync_to_sls_async(
+        self,
+        request: main_models.OpenLogSyncToSLSRequest,
+    ) -> main_models.OpenLogSyncToSLSResponse:
+        runtime = RuntimeOptions()
+        return await self.open_log_sync_to_slswith_options_async(request, runtime)
 
     def preload_spark_app_metrics_with_options(
         self,
