@@ -11,6 +11,8 @@ class ListVirusScanTaskSummaryRequest(DaraModel):
         self,
         task_ids: List[str] = None,
     ):
+        # The collection of virus scan task IDs. The collection must contain at least one ID. Duplicate IDs are not allowed.
+        # 
         # This parameter is required.
         self.task_ids = task_ids
 

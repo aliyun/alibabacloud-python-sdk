@@ -1,3 +1,10 @@
+2026-08-25 Version: 1.20.0
+- Support API CreateSoftwarelibDistributeTask.
+- Support API CreateSoftwarelibVersion.
+- Support API ListOperationAuditLogs.
+- Support API ListSoftwarelibSoftware.
+
+
 2026-08-24 Version: 1.19.0
 - Support API AddVirusScanAdditionalLists.
 - Support API CancelVirusScanTasks.

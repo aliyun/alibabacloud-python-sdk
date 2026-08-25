@@ -2637,6 +2637,250 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_registration_policy_with_options_async(request, runtime)
 
+    def create_softwarelib_distribute_task_with_options(
+        self,
+        request: main_models.CreateSoftwarelibDistributeTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSoftwarelibDistributeTaskResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.device_group_ids):
+            body_flat['DeviceGroupIds'] = request.device_group_ids
+        if not DaraCore.is_null(request.execute_mode):
+            body['ExecuteMode'] = request.execute_mode
+        if not DaraCore.is_null(request.execute_parameters):
+            body['ExecuteParameters'] = request.execute_parameters
+        if not DaraCore.is_null(request.execute_period):
+            body['ExecutePeriod'] = request.execute_period
+        if not DaraCore.is_null(request.expire_mode):
+            body['ExpireMode'] = request.expire_mode
+        if not DaraCore.is_null(request.gmt_expired):
+            body['GmtExpired'] = request.gmt_expired
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.retry_times):
+            body['RetryTimes'] = request.retry_times
+        if not DaraCore.is_null(request.run_as_account):
+            body['RunAsAccount'] = request.run_as_account
+        if not DaraCore.is_null(request.software_id):
+            body['SoftwareId'] = request.software_id
+        if not DaraCore.is_null(request.software_name):
+            body['SoftwareName'] = request.software_name
+        if not DaraCore.is_null(request.support_os):
+            body['SupportOs'] = request.support_os
+        if not DaraCore.is_null(request.task_type):
+            body['TaskType'] = request.task_type
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.version_id):
+            body['VersionId'] = request.version_id
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSoftwarelibDistributeTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSoftwarelibDistributeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_softwarelib_distribute_task_with_options_async(
+        self,
+        request: main_models.CreateSoftwarelibDistributeTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSoftwarelibDistributeTaskResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.dev_tags):
+            body_flat['DevTags'] = request.dev_tags
+        if not DaraCore.is_null(request.device_group_ids):
+            body_flat['DeviceGroupIds'] = request.device_group_ids
+        if not DaraCore.is_null(request.execute_mode):
+            body['ExecuteMode'] = request.execute_mode
+        if not DaraCore.is_null(request.execute_parameters):
+            body['ExecuteParameters'] = request.execute_parameters
+        if not DaraCore.is_null(request.execute_period):
+            body['ExecutePeriod'] = request.execute_period
+        if not DaraCore.is_null(request.expire_mode):
+            body['ExpireMode'] = request.expire_mode
+        if not DaraCore.is_null(request.gmt_expired):
+            body['GmtExpired'] = request.gmt_expired
+        if not DaraCore.is_null(request.match_mode):
+            body['MatchMode'] = request.match_mode
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.retry_times):
+            body['RetryTimes'] = request.retry_times
+        if not DaraCore.is_null(request.run_as_account):
+            body['RunAsAccount'] = request.run_as_account
+        if not DaraCore.is_null(request.software_id):
+            body['SoftwareId'] = request.software_id
+        if not DaraCore.is_null(request.software_name):
+            body['SoftwareName'] = request.software_name
+        if not DaraCore.is_null(request.support_os):
+            body['SupportOs'] = request.support_os
+        if not DaraCore.is_null(request.task_type):
+            body['TaskType'] = request.task_type
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.user_group_ids):
+            body_flat['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.version_id):
+            body['VersionId'] = request.version_id
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSoftwarelibDistributeTask',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSoftwarelibDistributeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_softwarelib_distribute_task(
+        self,
+        request: main_models.CreateSoftwarelibDistributeTaskRequest,
+    ) -> main_models.CreateSoftwarelibDistributeTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_softwarelib_distribute_task_with_options(request, runtime)
+
+    async def create_softwarelib_distribute_task_async(
+        self,
+        request: main_models.CreateSoftwarelibDistributeTaskRequest,
+    ) -> main_models.CreateSoftwarelibDistributeTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_softwarelib_distribute_task_with_options_async(request, runtime)
+
+    def create_softwarelib_version_with_options(
+        self,
+        request: main_models.CreateSoftwarelibVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSoftwarelibVersionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.md_5):
+            body['Md5'] = request.md_5
+        if not DaraCore.is_null(request.os):
+            body['Os'] = request.os
+        if not DaraCore.is_null(request.publisher_type):
+            body['PublisherType'] = request.publisher_type
+        if not DaraCore.is_null(request.software_id):
+            body['SoftwareId'] = request.software_id
+        if not DaraCore.is_null(request.software_name):
+            body['SoftwareName'] = request.software_name
+        if not DaraCore.is_null(request.software_pkg_name):
+            body['SoftwarePkgName'] = request.software_pkg_name
+        if not DaraCore.is_null(request.software_pkg_size):
+            body['SoftwarePkgSize'] = request.software_pkg_size
+        if not DaraCore.is_null(request.software_url):
+            body['SoftwareUrl'] = request.software_url
+        if not DaraCore.is_null(request.software_version):
+            body['SoftwareVersion'] = request.software_version
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSoftwarelibVersion',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSoftwarelibVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_softwarelib_version_with_options_async(
+        self,
+        request: main_models.CreateSoftwarelibVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSoftwarelibVersionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.md_5):
+            body['Md5'] = request.md_5
+        if not DaraCore.is_null(request.os):
+            body['Os'] = request.os
+        if not DaraCore.is_null(request.publisher_type):
+            body['PublisherType'] = request.publisher_type
+        if not DaraCore.is_null(request.software_id):
+            body['SoftwareId'] = request.software_id
+        if not DaraCore.is_null(request.software_name):
+            body['SoftwareName'] = request.software_name
+        if not DaraCore.is_null(request.software_pkg_name):
+            body['SoftwarePkgName'] = request.software_pkg_name
+        if not DaraCore.is_null(request.software_pkg_size):
+            body['SoftwarePkgSize'] = request.software_pkg_size
+        if not DaraCore.is_null(request.software_url):
+            body['SoftwareUrl'] = request.software_url
+        if not DaraCore.is_null(request.software_version):
+            body['SoftwareVersion'] = request.software_version
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSoftwarelibVersion',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSoftwarelibVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_softwarelib_version(
+        self,
+        request: main_models.CreateSoftwarelibVersionRequest,
+    ) -> main_models.CreateSoftwarelibVersionResponse:
+        runtime = RuntimeOptions()
+        return self.create_softwarelib_version_with_options(request, runtime)
+
+    async def create_softwarelib_version_async(
+        self,
+        request: main_models.CreateSoftwarelibVersionRequest,
+    ) -> main_models.CreateSoftwarelibVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_softwarelib_version_with_options_async(request, runtime)
+
     def create_user_group_with_options(
         self,
         request: main_models.CreateUserGroupRequest,
@@ -9839,6 +10083,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_nac_user_cert_with_options_async(request, runtime)
 
+    def list_operation_audit_logs_with_options(
+        self,
+        request: main_models.ListOperationAuditLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOperationAuditLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.event_type):
+            query['EventType'] = request.event_type
+        if not DaraCore.is_null(request.operation_func):
+            query['OperationFunc'] = request.operation_func
+        if not DaraCore.is_null(request.operation_status):
+            query['OperationStatus'] = request.operation_status
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.operator_id):
+            query['OperatorId'] = request.operator_id
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOperationAuditLogs',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOperationAuditLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_audit_logs_with_options_async(
+        self,
+        request: main_models.ListOperationAuditLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOperationAuditLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.event_type):
+            query['EventType'] = request.event_type
+        if not DaraCore.is_null(request.operation_func):
+            query['OperationFunc'] = request.operation_func
+        if not DaraCore.is_null(request.operation_status):
+            query['OperationStatus'] = request.operation_status
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.operator_id):
+            query['OperatorId'] = request.operator_id
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOperationAuditLogs',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOperationAuditLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_audit_logs(
+        self,
+        request: main_models.ListOperationAuditLogsRequest,
+    ) -> main_models.ListOperationAuditLogsResponse:
+        runtime = RuntimeOptions()
+        return self.list_operation_audit_logs_with_options(request, runtime)
+
+    async def list_operation_audit_logs_async(
+        self,
+        request: main_models.ListOperationAuditLogsRequest,
+    ) -> main_models.ListOperationAuditLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_operation_audit_logs_with_options_async(request, runtime)
+
     def list_polices_for_private_access_application_with_options(
         self,
         request: main_models.ListPolicesForPrivateAccessApplicationRequest,
@@ -11088,6 +11434,104 @@ class Client(OpenApiClient):
     ) -> main_models.ListSoftwareForUserDeviceResponse:
         runtime = RuntimeOptions()
         return await self.list_software_for_user_device_with_options_async(request, runtime)
+
+    def list_softwarelib_software_with_options(
+        self,
+        request: main_models.ListSoftwarelibSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSoftwarelibSoftwareResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify_id):
+            query['ClassifyId'] = request.classify_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.os):
+            query['Os'] = request.os
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.software_name):
+            query['SoftwareName'] = request.software_name
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSoftwarelibSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSoftwarelibSoftwareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_softwarelib_software_with_options_async(
+        self,
+        request: main_models.ListSoftwarelibSoftwareRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSoftwarelibSoftwareResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify_id):
+            query['ClassifyId'] = request.classify_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.os):
+            query['Os'] = request.os
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.software_name):
+            query['SoftwareName'] = request.software_name
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSoftwarelibSoftware',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSoftwarelibSoftwareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_softwarelib_software(
+        self,
+        request: main_models.ListSoftwarelibSoftwareRequest,
+    ) -> main_models.ListSoftwarelibSoftwareResponse:
+        runtime = RuntimeOptions()
+        return self.list_softwarelib_software_with_options(request, runtime)
+
+    async def list_softwarelib_software_async(
+        self,
+        request: main_models.ListSoftwarelibSoftwareRequest,
+    ) -> main_models.ListSoftwarelibSoftwareResponse:
+        runtime = RuntimeOptions()
+        return await self.list_softwarelib_software_with_options_async(request, runtime)
 
     def list_tags_for_private_access_application_with_options(
         self,

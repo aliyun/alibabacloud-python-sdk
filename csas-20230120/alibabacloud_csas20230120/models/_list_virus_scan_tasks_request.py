@@ -19,16 +19,31 @@ class ListVirusScanTasksRequest(DaraModel):
         task_ids: List[str] = None,
         user_group_id: str = None,
     ):
+        # The page number of the current page in paging. Valid values: 1 to 10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The end point for filtering by task expiration time. The value is a UNIX timestamp in seconds. The value must be greater than StartTime.
         self.end_time = end_time
+        # The number of entries per page in paging. Valid values: 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The collection of scan performance modes. Duplicate values are not allowed.
         self.performance_modes = performance_modes
+        # The collection of scan path scopes. Duplicate values are not allowed.
         self.scan_modes = scan_modes
+        # The start point for filtering by task expiration time. The value is a UNIX timestamp in seconds. This parameter must be specified together with EndTime. Specifying this parameter alone does not take effect.
         self.start_time = start_time
+        # The task status. Valid values:
+        # - **0**: Not canceled. This is the default value.
+        # - **1**: Canceled.
+        # - **-1**: No status filter. All tasks are returned.
         self.status = status
+        # The collection of virus scan task IDs. Duplicate values are not allowed.
         self.task_ids = task_ids
+        # The user group ID, used to filter tasks whose effective scope includes the specified user group. You can obtain the value from:
+        # - [ListUserGroups](~~ListUserGroups~~): Lists user groups.
         self.user_group_id = user_group_id
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListVirusScanTaskStatusesResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.ListVirusScanTaskStatusesResponseBodyTasks] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of execution progress for virus scan tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListVirusScanTaskStatusesResponseBodyTasks(DaraModel):
         task_id: str = None,
         task_status: main_models.ListVirusScanTaskStatusesResponseBodyTasksTaskStatus = None,
     ):
+        # The virus scan task ID.
         self.task_id = task_id
+        # The execution progress measured by device count.
         self.task_status = task_status
 
     def validate(self):
@@ -95,9 +99,13 @@ class ListVirusScanTaskStatusesResponseBodyTasksTaskStatus(DaraModel):
         device_result_success_count: int = None,
         device_start_count: int = None,
     ):
+        # The number of user terminal devices that have received the task.
         self.device_ack_count = device_ack_count
+        # The number of user terminal devices on which the scan execution failed.
         self.device_result_fail_count = device_result_fail_count
+        # The number of user terminal devices on which the scan was executed successfully.
         self.device_result_success_count = device_result_success_count
+        # The number of user terminal devices that are currently executing the scan.
         self.device_start_count = device_start_count
 
     def validate(self):

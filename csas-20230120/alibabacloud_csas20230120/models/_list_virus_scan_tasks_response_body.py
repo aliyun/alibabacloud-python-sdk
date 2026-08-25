@@ -14,8 +14,11 @@ class ListVirusScanTasksResponseBody(DaraModel):
         tasks: List[main_models.ListVirusScanTasksResponseBodyTasks] = None,
         total_num: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of virus scan tasks.
         self.tasks = tasks
+        # The total number of virus scan tasks.
         self.total_num = total_num
 
     def validate(self):
@@ -79,22 +82,56 @@ class ListVirusScanTasksResponseBodyTasks(DaraModel):
         task_id: str = None,
         whitelist: List[str] = None,
     ):
+        # The time when the task was created, in the yyyy-MM-dd HH:mm:ss format. The time is in the UTC+8 time zone.
         self.create_time = create_time
+        # The effective scope specified by organizational structure.
         self.custom_match_group = custom_match_group
+        # The time when the task expires, in seconds-level UNIX timestamp format.
         self.end_time = end_time
+        # The action to take on high-risk virus files. Valid values:
+        # - **Quarantine**: Quarantine quarantined file.
+        # - **Notify**: Report an alert only without taking action on quarantined file.
         self.high_risk_operation = high_risk_operation
+        # The action to take on low-risk virus files. Valid values:
+        # - **Quarantine**: Quarantine quarantined file.
+        # - **Notify**: Report an alert only without taking action on quarantined file.
+        # - **None**: Take no action.
         self.low_risk_operation = low_risk_operation
+        # The matching mode for the effective scope. Valid values:
+        # - **UserGroupAll**: Applies to all users under the current Alibaba Cloud account.
+        # - **UserGroupNormal**: Applies only to users in specified user groups.
         self.match_mode = match_mode
+        # The collection of user groups to which the task applies.
         self.match_target_infos = match_target_infos
+        # The maximum percentage of endpoint CPU usage allowed during scanning.
         self.max_cpu_usage = max_cpu_usage
+        # The action to take on medium-risk virus files. Valid values:
+        # - **Quarantine**: Quarantine quarantined file.
+        # - **Notify**: Report an alert only without taking action on quarantined file.
         self.mid_risk_operation = mid_risk_operation
+        # The scan performance schema pattern. Valid values:
+        # - **SecurityFirst**: Security first. The default CPU usage upper limit is 50%.
+        # - **Balance**: Balanced. The default CPU usage upper limit is 30%.
+        # - **ExperienceFirst**: Experience first. The default CPU usage upper limit is 15%.
         self.performance_mode = performance_mode
+        # The scan path scope. Valid values:
+        # - **Quick**: Quick scan. Only scans critical system directories and common risk locations.
+        # - **Full**: Full scan.
+        # - **Custom**: Custom path scan.
         self.scan_mode = scan_mode
+        # The collection of custom scan paths.
         self.scan_path = scan_path
+        # The collection of virus types to be handled in this scan.
         self.scan_targets = scan_targets
+        # The task status. Valid values:
+        # - **0**: Not canceled.
+        # - **1**: Canceled.
         self.status = status
+        # The description of the task.
         self.task_description = task_description
+        # The ID of the virus scan task.
         self.task_id = task_id
+        # The list of exempted users.
         self.whitelist = whitelist
 
     def validate(self):
@@ -236,7 +273,9 @@ class ListVirusScanTasksResponseBodyTasksMatchTargetInfos(DaraModel):
         target_id: str = None,
         target_name: str = None,
     ):
+        # The ID of the user group.
         self.target_id = target_id
+        # The name of the user group.
         self.target_name = target_name
 
     def validate(self):
@@ -271,7 +310,9 @@ class ListVirusScanTasksResponseBodyTasksCustomMatchGroup(DaraModel):
         group: List[str] = None,
         idp_id: str = None,
     ):
+        # The collection of organizational structure nodes.
         self.group = group
+        # The ID of the identity provider.
         self.idp_id = idp_id
 
     def validate(self):

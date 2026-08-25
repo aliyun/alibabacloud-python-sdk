@@ -128,6 +128,12 @@ from ._create_registration_policy_request import CreateRegistrationPolicyRequest
 from ._create_registration_policy_shrink_request import CreateRegistrationPolicyShrinkRequest
 from ._create_registration_policy_response_body import CreateRegistrationPolicyResponseBody
 from ._create_registration_policy_response import CreateRegistrationPolicyResponse
+from ._create_softwarelib_distribute_task_request import CreateSoftwarelibDistributeTaskRequest
+from ._create_softwarelib_distribute_task_response_body import CreateSoftwarelibDistributeTaskResponseBody
+from ._create_softwarelib_distribute_task_response import CreateSoftwarelibDistributeTaskResponse
+from ._create_softwarelib_version_request import CreateSoftwarelibVersionRequest
+from ._create_softwarelib_version_response_body import CreateSoftwarelibVersionResponseBody
+from ._create_softwarelib_version_response import CreateSoftwarelibVersionResponse
 from ._create_user_group_request import CreateUserGroupRequest
 from ._create_user_group_response_body import CreateUserGroupResponseBody
 from ._create_user_group_response import CreateUserGroupResponse
@@ -422,6 +428,9 @@ from ._list_idp_departments_response import ListIdpDepartmentsResponse
 from ._list_nac_user_cert_request import ListNacUserCertRequest
 from ._list_nac_user_cert_response_body import ListNacUserCertResponseBody
 from ._list_nac_user_cert_response import ListNacUserCertResponse
+from ._list_operation_audit_logs_request import ListOperationAuditLogsRequest
+from ._list_operation_audit_logs_response_body import ListOperationAuditLogsResponseBody
+from ._list_operation_audit_logs_response import ListOperationAuditLogsResponse
 from ._list_polices_for_private_access_application_request import ListPolicesForPrivateAccessApplicationRequest
 from ._list_polices_for_private_access_application_response_body import ListPolicesForPrivateAccessApplicationResponseBody
 from ._list_polices_for_private_access_application_response import ListPolicesForPrivateAccessApplicationResponse
@@ -476,6 +485,9 @@ from ._list_risk_items_response import ListRiskItemsResponse
 from ._list_software_for_user_device_request import ListSoftwareForUserDeviceRequest
 from ._list_software_for_user_device_response_body import ListSoftwareForUserDeviceResponseBody
 from ._list_software_for_user_device_response import ListSoftwareForUserDeviceResponse
+from ._list_softwarelib_software_request import ListSoftwarelibSoftwareRequest
+from ._list_softwarelib_software_response_body import ListSoftwarelibSoftwareResponseBody
+from ._list_softwarelib_software_response import ListSoftwarelibSoftwareResponse
 from ._list_tags_for_private_access_application_request import ListTagsForPrivateAccessApplicationRequest
 from ._list_tags_for_private_access_application_response_body import ListTagsForPrivateAccessApplicationResponseBody
 from ._list_tags_for_private_access_application_response import ListTagsForPrivateAccessApplicationResponse
@@ -727,6 +739,7 @@ from ._create_registration_policy_request import CreateRegistrationPolicyRequest
 from ._create_registration_policy_response_body import CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount
 from ._create_registration_policy_response_body import CreateRegistrationPolicyResponseBodyPolicyLimitDetail
 from ._create_registration_policy_response_body import CreateRegistrationPolicyResponseBodyPolicy
+from ._create_softwarelib_distribute_task_response_body import CreateSoftwarelibDistributeTaskResponseBodyTask
 from ._create_user_group_request import CreateUserGroupRequestAttributes
 from ._create_vul_scan_scheduled_strategy_response_body import CreateVulScanScheduledStrategyResponseBodyCustomMatchGroup
 from ._create_vulnerability_fix_task_request import CreateVulnerabilityFixTaskRequestWuyingVulFixConfig
@@ -896,6 +909,7 @@ from ._list_idp_configs_response_body import ListIdpConfigsResponseBodyData
 from ._list_idp_departments_response_body import ListIdpDepartmentsResponseBodyDataDataList
 from ._list_idp_departments_response_body import ListIdpDepartmentsResponseBodyData
 from ._list_nac_user_cert_response_body import ListNacUserCertResponseBodyDataList
+from ._list_operation_audit_logs_response_body import ListOperationAuditLogsResponseBodyLogs
 from ._list_polices_for_private_access_application_response_body import ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes
 from ._list_polices_for_private_access_application_response_body import ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies
 from ._list_polices_for_private_access_application_response_body import ListPolicesForPrivateAccessApplicationResponseBodyApplications
@@ -941,6 +955,8 @@ from ._list_registration_policies_for_user_group_response_body import ListRegist
 from ._list_registration_policies_for_user_group_response_body import ListRegistrationPoliciesForUserGroupResponseBodyUserGroups
 from ._list_risk_items_response_body import ListRiskItemsResponseBodyRiskItems
 from ._list_software_for_user_device_response_body import ListSoftwareForUserDeviceResponseBodySoftware
+from ._list_softwarelib_software_response_body import ListSoftwarelibSoftwareResponseBodyDataListVersions
+from ._list_softwarelib_software_response_body import ListSoftwarelibSoftwareResponseBodyDataList
 from ._list_tags_for_private_access_application_response_body import ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags
 from ._list_tags_for_private_access_application_response_body import ListTagsForPrivateAccessApplicationResponseBodyApplications
 from ._list_tags_for_private_access_policy_response_body import ListTagsForPrivateAccessPolicyResponseBodyPolicesTags
@@ -1201,6 +1217,12 @@ __all__ = [
     CreateRegistrationPolicyShrinkRequest,
     CreateRegistrationPolicyResponseBody,
     CreateRegistrationPolicyResponse,
+    CreateSoftwarelibDistributeTaskRequest,
+    CreateSoftwarelibDistributeTaskResponseBody,
+    CreateSoftwarelibDistributeTaskResponse,
+    CreateSoftwarelibVersionRequest,
+    CreateSoftwarelibVersionResponseBody,
+    CreateSoftwarelibVersionResponse,
     CreateUserGroupRequest,
     CreateUserGroupResponseBody,
     CreateUserGroupResponse,
@@ -1495,6 +1517,9 @@ __all__ = [
     ListNacUserCertRequest,
     ListNacUserCertResponseBody,
     ListNacUserCertResponse,
+    ListOperationAuditLogsRequest,
+    ListOperationAuditLogsResponseBody,
+    ListOperationAuditLogsResponse,
     ListPolicesForPrivateAccessApplicationRequest,
     ListPolicesForPrivateAccessApplicationResponseBody,
     ListPolicesForPrivateAccessApplicationResponse,
@@ -1549,6 +1574,9 @@ __all__ = [
     ListSoftwareForUserDeviceRequest,
     ListSoftwareForUserDeviceResponseBody,
     ListSoftwareForUserDeviceResponse,
+    ListSoftwarelibSoftwareRequest,
+    ListSoftwarelibSoftwareResponseBody,
+    ListSoftwarelibSoftwareResponse,
     ListTagsForPrivateAccessApplicationRequest,
     ListTagsForPrivateAccessApplicationResponseBody,
     ListTagsForPrivateAccessApplicationResponse,
@@ -1800,6 +1828,7 @@ __all__ = [
     CreateRegistrationPolicyResponseBodyPolicyLimitDetailLimitCount,
     CreateRegistrationPolicyResponseBodyPolicyLimitDetail,
     CreateRegistrationPolicyResponseBodyPolicy,
+    CreateSoftwarelibDistributeTaskResponseBodyTask,
     CreateUserGroupRequestAttributes,
     CreateVulScanScheduledStrategyResponseBodyCustomMatchGroup,
     CreateVulnerabilityFixTaskRequestWuyingVulFixConfig,
@@ -1969,6 +1998,7 @@ __all__ = [
     ListIdpDepartmentsResponseBodyDataDataList,
     ListIdpDepartmentsResponseBodyData,
     ListNacUserCertResponseBodyDataList,
+    ListOperationAuditLogsResponseBodyLogs,
     ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes,
     ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies,
     ListPolicesForPrivateAccessApplicationResponseBodyApplications,
@@ -2014,6 +2044,8 @@ __all__ = [
     ListRegistrationPoliciesForUserGroupResponseBodyUserGroups,
     ListRiskItemsResponseBodyRiskItems,
     ListSoftwareForUserDeviceResponseBodySoftware,
+    ListSoftwarelibSoftwareResponseBodyDataListVersions,
+    ListSoftwarelibSoftwareResponseBodyDataList,
     ListTagsForPrivateAccessApplicationResponseBodyApplicationsTags,
     ListTagsForPrivateAccessApplicationResponseBodyApplications,
     ListTagsForPrivateAccessPolicyResponseBodyPolicesTags,

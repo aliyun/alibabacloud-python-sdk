@@ -13,7 +13,9 @@ class ListVirusScanTaskSummaryResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.ListVirusScanTaskSummaryResponseBodyTasks] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of detection statistics for virus scan tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListVirusScanTaskSummaryResponseBodyTasks(DaraModel):
         task_id: str = None,
         virus_file_count: int = None,
     ):
+        # The virus scan task ID.
         self.task_id = task_id
+        # The number of virus files detected by the task.
         self.virus_file_count = virus_file_count
 
     def validate(self):
