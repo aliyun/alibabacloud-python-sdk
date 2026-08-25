@@ -15,12 +15,23 @@ class ListVolumesRequest(DaraModel):
         user_id: str = None,
         volume_name: str = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
         self.next_token = next_token
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The status of the volume. Valid values:
+        # - CREATING
+        # - AVAILABLE
+        # - ERROR
+        # - DELETING
         self.status = status
+        # The unique identifier of the team.
         self.team_id = team_id
+        # The UID of the creator.
         self.user_id = user_id
+        # The name of the volume. The name must be unique within the team.
         self.volume_name = volume_name
 
     def validate(self):

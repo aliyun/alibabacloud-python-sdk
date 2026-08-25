@@ -10,6 +10,7 @@ class UpdateVolumeRequest(DaraModel):
         self,
         body: main_models.UpdateVolumeInput = None,
     ):
+        # The parameters for updating the volume.
         self.body = body
 
     def validate(self):

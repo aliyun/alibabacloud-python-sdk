@@ -13,9 +13,13 @@ class GetVolumeResponseBody(DaraModel):
         request_id: str = None,
         volume: main_models.E2BVolume = None,
     ):
+        # The error code.
         self.code = code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The storage configuration.
         self.volume = volume
 
     def validate(self):

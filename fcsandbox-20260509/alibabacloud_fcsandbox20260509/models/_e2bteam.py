@@ -11,6 +11,7 @@ class E2BTeam(DaraModel):
         created_time: str = None,
         description: str = None,
         plan: str = None,
+        read_only: bool = None,
         resource_group_id: str = None,
         status: str = None,
         team_id: str = None,
@@ -24,6 +25,7 @@ class E2BTeam(DaraModel):
         # The description.
         self.description = description
         self.plan = plan
+        self.read_only = read_only
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The status of the team.
@@ -55,6 +57,9 @@ class E2BTeam(DaraModel):
         if self.plan is not None:
             result['plan'] = self.plan
 
+        if self.read_only is not None:
+            result['readOnly'] = self.read_only
+
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
 
@@ -85,6 +90,9 @@ class E2BTeam(DaraModel):
 
         if m.get('plan') is not None:
             self.plan = m.get('plan')
+
+        if m.get('readOnly') is not None:
+            self.read_only = m.get('readOnly')
 
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')

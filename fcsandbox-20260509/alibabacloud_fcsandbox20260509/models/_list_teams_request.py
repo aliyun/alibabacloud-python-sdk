@@ -17,6 +17,11 @@ class ListTeamsRequest(DaraModel):
         self.page_number = page_number
         # The number of teams displayed per page.
         self.page_size = page_size
+        # The subscription plan of the team. Valid values:
+        # 
+        # - eco
+        # - std
+        # - pro
         self.plan = plan
         # The resource group ID.
         self.resource_group_id = resource_group_id

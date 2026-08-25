@@ -94,6 +94,7 @@ from ._update_team_response import UpdateTeamResponse
 from ._update_volume_request import UpdateVolumeRequest
 from ._update_volume_response_body import UpdateVolumeResponseBody
 from ._update_volume_response import UpdateVolumeResponse
+from ._container_configuration import ContainerConfigurationRegistryCredential
 
 __all__ = [
     AgenticFSVolumeConfig,
@@ -187,5 +188,6 @@ __all__ = [
     UpdateTeamResponse,
     UpdateVolumeRequest,
     UpdateVolumeResponseBody,
-    UpdateVolumeResponse
+    UpdateVolumeResponse,
+    ContainerConfigurationRegistryCredential
 ]

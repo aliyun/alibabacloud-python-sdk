@@ -17,11 +17,17 @@ class ListVolumesResponseBody(DaraModel):
         request_id: str = None,
         volumes: List[main_models.E2BVolume] = None,
     ):
+        # The error code.
         self.code = code
+        # The number of entries per page.
         self.max_results = max_results
+        # The response message.
         self.message = message
+        # The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The list of volumes.
         self.volumes = volumes
 
     def validate(self):

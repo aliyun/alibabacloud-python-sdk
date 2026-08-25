@@ -9,6 +9,7 @@ class DeleteVolumeRequest(DaraModel):
         self,
         team_id: str = None,
     ):
+        # The unique identifier of the Team.
         self.team_id = team_id
 
     def validate(self):
