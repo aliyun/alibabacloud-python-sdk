@@ -254,7 +254,7 @@ class GetAgentTaskResultResponseBodyDataResponse(DaraModel):
     ):
         # The result of the custom prompt.
         self.customer_prompt_response = customer_prompt_response
-        # The property extraction result.
+        # The attribute extraction result.
         self.field_response = field_response
         self.multi_level_tag_response = multi_level_tag_response
         # The service quality inspection result.
@@ -574,7 +574,7 @@ class GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse(DaraModel):
         self,
         tag_category_vo_list: List[main_models.GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList] = None,
     ):
-        # The list of labels.
+        # The list of tags.
         self.tag_category_vo_list = tag_category_vo_list
 
     def validate(self):
@@ -614,9 +614,9 @@ class GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVo
         remarks: str = None,
         result_labels: List[str] = None,
     ):
-        # The label dimension.
+        # The tag dimension.
         self.dimension = dimension
-        # Indicates whether the label is matched.
+        # Indicates whether the tag is matched.
         self.is_match = is_match
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
@@ -715,7 +715,7 @@ class GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseService
     ):
         # The inspection dimension.
         self.dimension = dimension
-        # Indicates whether the label is matched.
+        # Indicates whether the tag is matched.
         self.is_match = is_match
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
@@ -1039,7 +1039,7 @@ class GetAgentTaskResultResponseBodyDataResponseFieldResponse(DaraModel):
         self,
         field_vo_list: List[main_models.GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList] = None,
     ):
-        # The list of properties.
+        # The list of attributes.
         self.field_vo_list = field_vo_list
 
     def validate(self):
@@ -1078,13 +1078,13 @@ class GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList(DaraMod
         remarks: str = None,
         value: str = None,
     ):
-        # The property name.
+        # The attribute name.
         self.name = name
         # The sentences referenced in the reasoning.
         self.original_utterances = original_utterances
         # The reasoning for the judgment.
         self.remarks = remarks
-        # The property value.
+        # The attribute value.
         self.value = value
 
     def validate(self):
