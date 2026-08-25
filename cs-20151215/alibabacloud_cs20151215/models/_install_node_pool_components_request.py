@@ -16,7 +16,7 @@ class InstallNodePoolComponentsRequest(DaraModel):
     ):
         # The list of node components.
         self.components = components
-        # The list of node names for the rolling operation. Default value: all nodes.
+        # The list of node names for the rolling operation. By default, all nodes are included.
         self.node_names = node_names
         # The rolling policy configuration.
         self.rolling_policy = rolling_policy
@@ -74,7 +74,7 @@ class InstallNodePoolComponentsRequestRollingPolicy(DaraModel):
     ):
         # The upgrade interval between batches. Unit: seconds.
         self.batch_interval = batch_interval
-        # The maximum number of nodes that are allowed to fail during the rolling process. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+        # The maximum number of nodes that are allowed to fail during the rolling process. Default value: 0, which indicates that the task is considered failed if any node fails. If the value is greater than 0, the task is considered failed and stops when the cumulative number of failed nodes exceeds this value.
         self.max_failed_nodes = max_failed_nodes
         # The maximum number of parallel operations per batch. Default value: 1.
         self.max_parallelism = max_parallelism
@@ -173,12 +173,18 @@ class InstallNodePoolComponentsRequestComponentsConfig(DaraModel):
     def __init__(
         self,
         custom_config: Dict[str, Any] = None,
+        envs: List[main_models.InstallNodePoolComponentsRequestComponentsConfigEnvs] = None,
     ):
         # The custom configuration of the component.
         self.custom_config = custom_config
+        # The environment variables of the node component.
+        self.envs = envs
 
     def validate(self):
-        pass
+        if self.envs:
+            for v1 in self.envs:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -188,12 +194,60 @@ class InstallNodePoolComponentsRequestComponentsConfig(DaraModel):
         if self.custom_config is not None:
             result['customConfig'] = self.custom_config
 
+        result['envs'] = []
+        if self.envs is not None:
+            for k1 in self.envs:
+                result['envs'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('customConfig') is not None:
             self.custom_config = m.get('customConfig')
+
+        self.envs = []
+        if m.get('envs') is not None:
+            for k1 in m.get('envs'):
+                temp_model = main_models.InstallNodePoolComponentsRequestComponentsConfigEnvs()
+                self.envs.append(temp_model.from_map(k1))
+
+        return self
+
+class InstallNodePoolComponentsRequestComponentsConfigEnvs(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        # The name of the environment variable.
+        self.name = name
+        # The value of the environment variable.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

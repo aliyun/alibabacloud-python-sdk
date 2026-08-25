@@ -396,6 +396,7 @@ from ._nodepool import NodepoolManagementAutoUpgradePolicy
 from ._nodepool import NodepoolManagementAutoVulFixPolicy
 from ._nodepool import NodepoolManagementUpgradeConfig
 from ._nodepool import NodepoolManagement
+from ._nodepool import NodepoolNodeComponentsConfigEnvs
 from ._nodepool import NodepoolNodeComponentsConfig
 from ._nodepool import NodepoolNodeComponents
 from ._nodepool import NodepoolNodeConfig
@@ -436,6 +437,7 @@ from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestManag
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestManagementAutoVulFixPolicy
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestManagementUpgradeConfig
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestManagement
+from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeComponentsConfigEnvs
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeComponentsConfig
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeComponents
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeConfig
@@ -447,6 +449,7 @@ from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScali
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroupTags
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroup
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestTeeConfig
+from ._create_node_pool_component_instances_request import CreateNodePoolComponentInstancesRequestComponentsConfigEnvs
 from ._create_node_pool_component_instances_request import CreateNodePoolComponentInstancesRequestComponentsConfig
 from ._create_node_pool_component_instances_request import CreateNodePoolComponentInstancesRequestComponents
 from ._create_node_pool_component_instances_request import CreateNodePoolComponentInstancesRequestRollingPolicy
@@ -485,6 +488,7 @@ from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNod
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyManagement
+from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfigEnvs
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyNodeComponents
 from ._describe_cluster_node_pool_detail_response_body import DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig
@@ -508,6 +512,7 @@ from ._describe_cluster_node_pools_response_body import DescribeClusterNodePools
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsManagement
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponentsConfigEnvs
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponentsConfig
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponents
 from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig
@@ -584,6 +589,7 @@ from ._get_kubernetes_trigger_response import GetKubernetesTriggerResponseBody
 from ._get_upgrade_status_response_body import GetUpgradeStatusResponseBodyUpgradeTask
 from ._grant_permissions_request import GrantPermissionsRequestBody
 from ._install_cluster_addons_request import InstallClusterAddonsRequestBody
+from ._install_node_pool_components_request import InstallNodePoolComponentsRequestComponentsConfigEnvs
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequestComponentsConfig
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequestComponents
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequestRollingPolicy
@@ -604,6 +610,7 @@ from ._list_cluster_inspect_reports_response_body import ListClusterInspectRepor
 from ._list_cluster_kubeconfig_states_response_body import ListClusterKubeconfigStatesResponseBodyPage
 from ._list_cluster_kubeconfig_states_response_body import ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles
 from ._list_cluster_kubeconfig_states_response_body import ListClusterKubeconfigStatesResponseBodyStates
+from ._list_node_pool_component_instances_response_body import ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs
 from ._list_node_pool_component_instances_response_body import ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig
 from ._list_node_pool_component_instances_response_body import ListNodePoolComponentInstancesResponseBodyComponentInstances
 from ._list_node_pool_components_response_body import ListNodePoolComponentsResponseBodyComponents
@@ -647,8 +654,10 @@ from ._modify_node_pool_node_config_request import ModifyNodePoolNodeConfigReque
 from ._repair_cluster_node_pool_request import RepairClusterNodePoolRequestOperations
 from ._scale_out_cluster_request import ScaleOutClusterRequestWorkerDataDisks
 from ._un_install_cluster_addons_request import UnInstallClusterAddonsRequestAddons
+from ._update_node_pool_component_request import UpdateNodePoolComponentRequestConfigEnvs
 from ._update_node_pool_component_request import UpdateNodePoolComponentRequestConfig
 from ._update_node_pool_component_request import UpdateNodePoolComponentRequestRollingPolicy
+from ._update_node_pool_component_instance_request import UpdateNodePoolComponentInstanceRequestConfigEnvs
 from ._update_node_pool_component_instance_request import UpdateNodePoolComponentInstanceRequestConfig
 from ._update_node_pool_component_instance_request import UpdateNodePoolComponentInstanceRequestRollingPolicy
 from ._update_user_permissions_request import UpdateUserPermissionsRequestBody
@@ -1051,6 +1060,7 @@ __all__ = [
     NodepoolManagementAutoVulFixPolicy,
     NodepoolManagementUpgradeConfig,
     NodepoolManagement,
+    NodepoolNodeComponentsConfigEnvs,
     NodepoolNodeComponentsConfig,
     NodepoolNodeComponents,
     NodepoolNodeConfig,
@@ -1091,6 +1101,7 @@ __all__ = [
     CreateClusterNodePoolRequestManagementAutoVulFixPolicy,
     CreateClusterNodePoolRequestManagementUpgradeConfig,
     CreateClusterNodePoolRequestManagement,
+    CreateClusterNodePoolRequestNodeComponentsConfigEnvs,
     CreateClusterNodePoolRequestNodeComponentsConfig,
     CreateClusterNodePoolRequestNodeComponents,
     CreateClusterNodePoolRequestNodeConfig,
@@ -1102,6 +1113,7 @@ __all__ = [
     CreateClusterNodePoolRequestScalingGroupTags,
     CreateClusterNodePoolRequestScalingGroup,
     CreateClusterNodePoolRequestTeeConfig,
+    CreateNodePoolComponentInstancesRequestComponentsConfigEnvs,
     CreateNodePoolComponentInstancesRequestComponentsConfig,
     CreateNodePoolComponentInstancesRequestComponents,
     CreateNodePoolComponentInstancesRequestRollingPolicy,
@@ -1140,6 +1152,7 @@ __all__ = [
     DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy,
     DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig,
     DescribeClusterNodePoolDetailResponseBodyManagement,
+    DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfigEnvs,
     DescribeClusterNodePoolDetailResponseBodyNodeComponentsConfig,
     DescribeClusterNodePoolDetailResponseBodyNodeComponents,
     DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig,
@@ -1163,6 +1176,7 @@ __all__ = [
     DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy,
     DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig,
     DescribeClusterNodePoolsResponseBodyNodepoolsManagement,
+    DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponentsConfigEnvs,
     DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponentsConfig,
     DescribeClusterNodePoolsResponseBodyNodepoolsNodeComponents,
     DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig,
@@ -1239,6 +1253,7 @@ __all__ = [
     GetUpgradeStatusResponseBodyUpgradeTask,
     GrantPermissionsRequestBody,
     InstallClusterAddonsRequestBody,
+    InstallNodePoolComponentsRequestComponentsConfigEnvs,
     InstallNodePoolComponentsRequestComponentsConfig,
     InstallNodePoolComponentsRequestComponents,
     InstallNodePoolComponentsRequestRollingPolicy,
@@ -1259,6 +1274,7 @@ __all__ = [
     ListClusterKubeconfigStatesResponseBodyPage,
     ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles,
     ListClusterKubeconfigStatesResponseBodyStates,
+    ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs,
     ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig,
     ListNodePoolComponentInstancesResponseBodyComponentInstances,
     ListNodePoolComponentsResponseBodyComponents,
@@ -1302,8 +1318,10 @@ __all__ = [
     RepairClusterNodePoolRequestOperations,
     ScaleOutClusterRequestWorkerDataDisks,
     UnInstallClusterAddonsRequestAddons,
+    UpdateNodePoolComponentRequestConfigEnvs,
     UpdateNodePoolComponentRequestConfig,
     UpdateNodePoolComponentRequestRollingPolicy,
+    UpdateNodePoolComponentInstanceRequestConfigEnvs,
     UpdateNodePoolComponentInstanceRequestConfig,
     UpdateNodePoolComponentInstanceRequestRollingPolicy,
     UpdateUserPermissionsRequestBody,

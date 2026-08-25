@@ -1,3 +1,14 @@
+2026-08-25 Version: 7.1.2
+- Update API CreateClusterNodePool: add request parameters body.node_components.$.config.envs.
+- Update API CreateNodePoolComponentInstances: add request parameters body.components.$.config.envs.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.node_components.$.config.envs.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.node_components.$.config.envs.
+- Update API InstallNodePoolComponents: add request parameters body.components.$.config.envs.
+- Update API ListNodePoolComponentInstances: add response parameters Body.component_instances.$.config.envs.
+- Update API UpdateNodePoolComponent: add request parameters body.config.envs.
+- Update API UpdateNodePoolComponentInstance: add request parameters body.config.envs.
+
+
 2026-08-18 Version: 7.1.0
 - Support API CreateNodePoolComponentInstances.
 - Support API DeleteNodePoolComponentInstance.

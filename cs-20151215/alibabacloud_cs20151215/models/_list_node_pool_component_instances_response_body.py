@@ -123,11 +123,16 @@ class ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig(DaraMod
     def __init__(
         self,
         custom_config: Dict[str, Any] = None,
+        envs: List[main_models.ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs] = None,
     ):
         self.custom_config = custom_config
+        self.envs = envs
 
     def validate(self):
-        pass
+        if self.envs:
+            for v1 in self.envs:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -137,12 +142,58 @@ class ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig(DaraMod
         if self.custom_config is not None:
             result['custom_config'] = self.custom_config
 
+        result['envs'] = []
+        if self.envs is not None:
+            for k1 in self.envs:
+                result['envs'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('custom_config') is not None:
             self.custom_config = m.get('custom_config')
+
+        self.envs = []
+        if m.get('envs') is not None:
+            for k1 in m.get('envs'):
+                temp_model = main_models.ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs()
+                self.envs.append(temp_model.from_map(k1))
+
+        return self
+
+class ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 
