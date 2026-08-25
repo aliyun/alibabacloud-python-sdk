@@ -55,6 +55,9 @@ from ._create_stack_response import CreateStackResponse
 from ._create_task_request import CreateTaskRequest
 from ._create_task_response_body import CreateTaskResponseBody
 from ._create_task_response import CreateTaskResponse
+from ._create_task_from_resource_import_request import CreateTaskFromResourceImportRequest
+from ._create_task_from_resource_import_response_body import CreateTaskFromResourceImportResponseBody
+from ._create_task_from_resource_import_response import CreateTaskFromResourceImportResponse
 from ._delete_detect_config_request import DeleteDetectConfigRequest
 from ._delete_detect_config_response_body import DeleteDetectConfigResponseBody
 from ._delete_detect_config_response import DeleteDetectConfigResponse
@@ -121,6 +124,9 @@ from ._generate_module_response import GenerateModuleResponse
 from ._get_detect_config_request import GetDetectConfigRequest
 from ._get_detect_config_response_body import GetDetectConfigResponseBody
 from ._get_detect_config_response import GetDetectConfigResponse
+from ._get_encryption_config_request import GetEncryptionConfigRequest
+from ._get_encryption_config_response_body import GetEncryptionConfigResponseBody
+from ._get_encryption_config_response import GetEncryptionConfigResponse
 from ._get_execute_state_request import GetExecuteStateRequest
 from ._get_execute_state_response_body import GetExecuteStateResponseBody
 from ._get_execute_state_response import GetExecuteStateResponse
@@ -265,6 +271,9 @@ from ._remove_shared_accounts_request import RemoveSharedAccountsRequest
 from ._remove_shared_accounts_shrink_request import RemoveSharedAccountsShrinkRequest
 from ._remove_shared_accounts_response_body import RemoveSharedAccountsResponseBody
 from ._remove_shared_accounts_response import RemoveSharedAccountsResponse
+from ._set_encryption_config_request import SetEncryptionConfigRequest
+from ._set_encryption_config_response_body import SetEncryptionConfigResponseBody
+from ._set_encryption_config_response import SetEncryptionConfigResponse
 from ._trigger_stack_execution_request import TriggerStackExecutionRequest
 from ._trigger_stack_execution_response_body import TriggerStackExecutionResponseBody
 from ._trigger_stack_execution_response import TriggerStackExecutionResponse
@@ -322,6 +331,7 @@ from ._create_task_request import CreateTaskRequestTags
 from ._create_task_request import CreateTaskRequestTaskBackend
 from ._get_detect_config_response_body import GetDetectConfigResponseBodyDetectConfigAlarmConfigs
 from ._get_detect_config_response_body import GetDetectConfigResponseBodyDetectConfig
+from ._get_encryption_config_response_body import GetEncryptionConfigResponseBodyConfig
 from ._get_group_response_body import GetGroupResponseBodyGroupNotifyConfig
 from ._get_group_response_body import GetGroupResponseBodyGroupTriggerConfig
 from ._get_group_response_body import GetGroupResponseBodyGroup
@@ -488,6 +498,9 @@ __all__ = [
     CreateTaskRequest,
     CreateTaskResponseBody,
     CreateTaskResponse,
+    CreateTaskFromResourceImportRequest,
+    CreateTaskFromResourceImportResponseBody,
+    CreateTaskFromResourceImportResponse,
     DeleteDetectConfigRequest,
     DeleteDetectConfigResponseBody,
     DeleteDetectConfigResponse,
@@ -554,6 +567,9 @@ __all__ = [
     GetDetectConfigRequest,
     GetDetectConfigResponseBody,
     GetDetectConfigResponse,
+    GetEncryptionConfigRequest,
+    GetEncryptionConfigResponseBody,
+    GetEncryptionConfigResponse,
     GetExecuteStateRequest,
     GetExecuteStateResponseBody,
     GetExecuteStateResponse,
@@ -698,6 +714,9 @@ __all__ = [
     RemoveSharedAccountsShrinkRequest,
     RemoveSharedAccountsResponseBody,
     RemoveSharedAccountsResponse,
+    SetEncryptionConfigRequest,
+    SetEncryptionConfigResponseBody,
+    SetEncryptionConfigResponse,
     TriggerStackExecutionRequest,
     TriggerStackExecutionResponseBody,
     TriggerStackExecutionResponse,
@@ -755,6 +774,7 @@ __all__ = [
     CreateTaskRequestTaskBackend,
     GetDetectConfigResponseBodyDetectConfigAlarmConfigs,
     GetDetectConfigResponseBodyDetectConfig,
+    GetEncryptionConfigResponseBodyConfig,
     GetGroupResponseBodyGroupNotifyConfig,
     GetGroupResponseBodyGroupTriggerConfig,
     GetGroupResponseBodyGroup,

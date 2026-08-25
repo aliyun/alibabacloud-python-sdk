@@ -17,10 +17,14 @@ class GetStackExecutionResultResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The execution results of the triggered stacks.
+        # The execution results of the triggered Stacks.
         self.stack_results = stack_results
         # The unique ID of the trigger.
         self.trigger_id = trigger_id
+        # The overall execution status of this trigger task. Valid values:
+        # - Waiting: Processing.
+        # - Success: Processing succeeded.
+        # - Errored: Processing failed.
         self.triggered_status = triggered_status
 
     def validate(self):
@@ -73,24 +77,23 @@ class GetStackExecutionResultResponseBodyStackResults(DaraModel):
     def __init__(
         self,
         deployments: List[main_models.GetStackExecutionResultResponseBodyStackResultsDeployments] = None,
+        error_code: str = None,
         message: str = None,
         stack_id: str = None,
         stack_name: str = None,
         stack_status: str = None,
     ):
-        # The deployment results of the stack.
+        # The deployment results of the Stack.
         self.deployments = deployments
+        # Error code of the stack execution
+        self.error_code = error_code
         # The error message.
         self.message = message
-        # The unique identifier of the stack.
+        # The unique identifier of the Stack.
         self.stack_id = stack_id
-        # The stack name.
+        # The Stack name.
         self.stack_name = stack_name
-        # The execution status of the stack. Valid values:
-        # - Deploying: deploying
-        # - Errored: deployment failed
-        # - Deployed: deployment completed
-        # - Waiting: waiting for deployment.
+        # The execution status of the Stack.
         self.stack_status = stack_status
 
     def validate(self):
@@ -108,6 +111,9 @@ class GetStackExecutionResultResponseBodyStackResults(DaraModel):
         if self.deployments is not None:
             for k1 in self.deployments:
                 result['deployments'].append(k1.to_map() if k1 else None)
+
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
 
         if self.message is not None:
             result['message'] = self.message
@@ -130,6 +136,9 @@ class GetStackExecutionResultResponseBodyStackResults(DaraModel):
             for k1 in m.get('deployments'):
                 temp_model = main_models.GetStackExecutionResultResponseBodyStackResultsDeployments()
                 self.deployments.append(temp_model.from_map(k1))
+
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
 
         if m.get('message') is not None:
             self.message = m.get('message')
@@ -159,7 +168,7 @@ class GetStackExecutionResultResponseBodyStackResultsDeployments(DaraModel):
         self.job_result = job_result
         # The deployment status.
         self.status = status
-        # The URL to view the deployment details.
+        # The URL for viewing deployment details.
         self.url = url
 
     def validate(self):

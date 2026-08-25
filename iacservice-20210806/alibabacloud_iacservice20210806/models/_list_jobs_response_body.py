@@ -16,11 +16,11 @@ class ListJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of jobs.
+        # The list of job information.
         self.jobs = jobs
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+        # The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -96,7 +96,7 @@ class ListJobsResponseBodyJobs(DaraModel):
     ):
         # The job configuration.
         self.config = config
-        # The time when the job was created.
+        # The time when the job was created, in UTC in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
         self.create_time = create_time
         # The job description.
         self.description = description
@@ -104,8 +104,8 @@ class ListJobsResponseBodyJobs(DaraModel):
         self.elapsed_time = elapsed_time
         # The execution type. Valid values:
         # 
-        # - Manual: manual execution. This is the default value.
-        # - Auto: automatic execution.
+        # - Manual: Manual execution (default).
+        # - Auto: Automatic execution.
         self.execute_type = execute_type
         # Indicates whether the assertion check passed.
         self.is_pass_assert_check = is_pass_assert_check
@@ -116,18 +116,18 @@ class ListJobsResponseBodyJobs(DaraModel):
         # - Pending: The initial status after the job is created.
         # - PlanQueued: After the job is created, if no workflow is available, the job is queued.
         # - Planning: The resource job is in the Plan execution phase.
-        # - ConfigProactiveInProgress: Compliance pre-check is in progress. The compliance pre-check feature must be enabled for the account.
-        # - ConfigProactiveSuccess: Compliance pre-check succeeded. The compliance pre-check feature must be enabled for the account.
-        # - Planned: The resource job has completed the Plan execution.
-        # - PlannedAndFinished: After the Plan execution is complete, no diff is found. This is a final status.
-        # - Confirmed: The resource job is waiting for confirmation after the Plan execution is complete.
+        # - ConfigProactiveInProgress: Compliance pre-check is in progress. The account must have the compliance pre-check feature enabled.
+        # - ConfigProactiveSuccess: Compliance pre-check succeeded. The account must have the compliance pre-check feature enabled.
+        # - Planned: The resource job has completed Plan execution.
+        # - PlannedAndFinished: After Plan execution is completed, no diff is found. This is a final status.
+        # - Confirmed: The resource job is waiting for confirmation after Plan execution is completed.
         # - ApplyQueued: During job execution, if no workflow is available, the job is queued.
         # - Applying: The resource job is in the Apply execution phase.
-        # - Applied: The resource job has completed the Apply execution. This is a final status.
+        # - Applied: The resource job has completed Apply execution. This is a final status.
         # - Errored: The job execution encountered an error. This is a final status.
         # - Canceled: The job execution was canceled. This is a final status.
         # - Discarded: The plan of the resource job was discarded. This is a final status.
-        # - ConfigProactiveFailure: Compliance pre-check failed. The compliance pre-check feature must be enabled for the account.
+        # - ConfigProactiveFailure: Compliance pre-check failed. The account must have the compliance pre-check feature enabled.
         self.status = status
         # The status details.
         self.status_detail = status_detail
@@ -242,7 +242,7 @@ class ListJobsResponseBodyJobsConfig(DaraModel):
         self.module_description = module_description
         # The template version.
         self.module_version = module_version
-        # The resource change details.
+        # The resource change content.
         self.resources_changed = resources_changed
         # The operation command.
         self.sub_command = sub_command

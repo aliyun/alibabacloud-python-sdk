@@ -18,13 +18,13 @@ class ListTasksResponseBody(DaraModel):
     ):
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+        # The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The list of tasks.
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -99,30 +99,30 @@ class ListTasksResponseBodyTasks(DaraModel):
     ):
         # Indicates whether the task is automatically executed.
         self.auto_apply = auto_apply
-        # The time when the task was created.
+        # The time when the task was created, in UTC in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
         self.create_time = create_time
         # The job ID of the current task.
         self.current_job_id = current_job_id
-        # The current job status.
+        # The status of the current job.
         self.current_job_status = current_job_status
-        # Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when managed resources are included.
+        # Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when managed resources exist.
         self.deletion_protection = deletion_protection
         # The task group information.
         self.group_info = group_info
-        # The latest version of the module.
+        # The latest version number of the template.
         self.latest_module_version = latest_module_version
-        # The module ID.
+        # The template ID.
         self.module_id = module_id
-        # The module name.
+        # The template name.
         self.module_name = module_name
-        # The module version.
+        # The template version.
         self.module_version = module_version
         # The task name.
         self.name = name
         # The task status. Valid values:
         # 
-        # - Available: The task is available, and no job is running.
-        # - Running: The task is running, and the current job is in progress.
+        # - Available: The task is in an available state with no job running.
+        # - Running: The task is in a running state with a current job in progress.
         self.status = status
         # The list of task tags.
         self.tags = tags
@@ -246,13 +246,13 @@ class ListTasksResponseBodyTasksTags(DaraModel):
         tag_value: str = None,
         value: str = None,
     ):
-        # The tag key of the task.
+        # The task tag key.
         self.key = key
-        # The tag key of the module.
+        # The tag key of the template.
         self.tag_key = tag_key
         # The tag value of the task.
         self.tag_value = tag_value
-        # The tag value of the task.
+        # The task tag value.
         self.value = value
 
     def validate(self):

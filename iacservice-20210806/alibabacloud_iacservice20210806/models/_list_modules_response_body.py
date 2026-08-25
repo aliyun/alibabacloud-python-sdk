@@ -93,11 +93,11 @@ class ListModulesResponseBodyModules(DaraModel):
         status: str = None,
         tags: List[main_models.ListModulesResponseBodyModulesTags] = None,
     ):
-        # The time when the template was created.
+        # The creation time in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
         self.create_time = create_time
-        # Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when the template is associated with a node, which prevents the template from being deleted.
+        # Indicates whether deletion protection is enabled. When the template is associated with a task, deletion protection is enabled and the template cannot be deleted.
         self.deletion_protection = deletion_protection
-        # The description of the template.
+        # The template description.
         self.description = description
         # The group information.
         self.group_info = group_info
@@ -114,12 +114,12 @@ class ListModulesResponseBodyModules(DaraModel):
         # - ExportTask: exported from a resource export task.
         # - Upload: uploaded as a file.
         # - Shared: cloned from a shared template.
-        # - Editor: created by using the online editor.
+        # - Editor: created using the online editor.
         self.source = source
         # The template status. Valid values:
         # 
         # - Creating: the template is being created.
-        # - Created: the template has been created. You can publish a version after the template is created.
+        # - Created: the template has been created. A version can be published after the template is created.
         self.status = status
         # The list of template tags.
         self.tags = tags

@@ -23,14 +23,15 @@ class ListTasksRequest(DaraModel):
     ):
         # The group ID.
         self.group_id = group_id
-        # The keyword for fuzzy search by task ID or task name.
+        # The keyword used to perform a fuzzy search by task ID or task name.
         self.keyword = keyword
+        # The key ID.
         self.kms_key_id = kms_key_id
-        # The module ID.
+        # The template ID.
         self.module_id = module_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+        # The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
         # The project ID.
         self.project_id = project_id
@@ -38,10 +39,10 @@ class ListTasksRequest(DaraModel):
         # 
         # - Planning: The job is in the Plan execution phase.
         # - Planned: The job has completed the Plan execution.
-        # - PlannedAndFinished: After the Plan execution is completed, no diff is found, and the job enters the final state.
+        # - PlannedAndFinished: After the Plan execution is complete, no diff is found. The job is in a final state.
         # - Applying: The job is in the Apply execution phase.
         # - Applied: The job has completed the Apply execution.
-        # - Errored: The job execution encountered errors and entered the final state.
+        # - Errored: The job execution encountered an error and entered a final state.
         self.status = status
         # The list of task tags.
         self.tag = tag

@@ -11,16 +11,16 @@ class DissociateDetectConfigRequest(DaraModel):
         target_id: str = None,
         target_type: str = None,
     ):
-        # Drift detection configuration ID
+        # The ID of the drift detection configuration.
         self.detect_config_id = detect_config_id
-        # ID of the association target. StackId or TaskId
+        # The ID of the association target. The value is a StackId or TaskId.
         # 
         # This parameter is required.
         self.target_id = target_id
-        # Type of the association target
+        # The type of the association target. Valid values:
         # 
-        # - Task: Orchestration job  
-        # - Stack: Resource stack
+        # - Task: orchestration task.
+        # - Stack: resource stack.
         # 
         # This parameter is required.
         self.target_type = target_type

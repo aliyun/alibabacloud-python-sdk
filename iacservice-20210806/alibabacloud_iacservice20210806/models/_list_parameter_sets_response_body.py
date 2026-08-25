@@ -18,7 +18,7 @@ class ListParameterSetsResponseBody(DaraModel):
     ):
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+        # The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 200.
         self.page_size = page_size
         # The parameter sets.
         self.parameter_sets = parameter_sets
@@ -90,7 +90,7 @@ class ListParameterSetsResponseBodyParameterSets(DaraModel):
         parameters: List[main_models.ListParameterSetsResponseBodyParameterSetsParameters] = None,
         relation_list: List[main_models.ListParameterSetsResponseBodyParameterSetsRelationList] = None,
     ):
-        # The creation time.
+        # The creation time in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
         self.create_time = create_time
         # Indicates whether deletion protection is enabled.
         self.deletion_protection = deletion_protection
@@ -102,7 +102,7 @@ class ListParameterSetsResponseBodyParameterSets(DaraModel):
         self.parameter_set_id = parameter_set_id
         # The parameters in the parameter set.
         self.parameters = parameters
-        # The relationships associated with the parameter set.
+        # The associated resources.
         self.relation_list = relation_list
 
     def validate(self):
@@ -185,14 +185,14 @@ class ListParameterSetsResponseBodyParameterSetsRelationList(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The creation time.
+        # The creation time in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
         self.create_time = create_time
-        # The resource ID. When the resource type is ModuleVersion, the value is a concatenation of <moduleId>-<moduleversion>, such as mod-34535345df123fr-v3.
+        # The resource ID. When the resource type is ModuleVersion, the ID is composed of <moduleId>-<moduleversion>, such as mod-34535345df123fr-v3.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
-        # - Module: template
-        # - ModuleVersion: template version
+        # - Module: template.
+        # - ModuleVersion: template version.
         # - Task: task.
         self.resource_type = resource_type
 
@@ -237,18 +237,19 @@ class ListParameterSetsResponseBodyParameterSetsParameters(DaraModel):
         type: str = None,
         value: Any = None,
     ):
-        # The parameter name.
+        # The name of the parameter.
         self.name = name
+        # Specifies whether the parameter is a secret parameter. Secret parameters are hidden in API responses and console displays, and are stored with encryption.
         self.secret = secret
         # The parameter set status. Valid values:
         # 
-        # HAS_VALUE (default): A specific value is defined.
+        # - HAS_VALUE (default): A specific value is defined.
         # 
-        # EXPLICIT_NULL: The value is explicitly set to null.
+        # - EXPLICIT_NULL: Explicitly set to null.
         self.status = status
         # The parameter type (string/number/bool/map(string)/list(string)).
         self.type = type
-        # The parameter value.
+        # The value of the parameter.
         self.value = value
 
     def validate(self):

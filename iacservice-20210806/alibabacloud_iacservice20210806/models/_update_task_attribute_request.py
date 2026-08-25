@@ -27,7 +27,7 @@ class UpdateTaskAttributeRequest(DaraModel):
         terraform_version: str = None,
         trigger_strategy: str = None,
     ):
-        # Specifies whether to automatically execute the task. Default value: false.
+        # Specifies whether to automatically execute the node. Default value: false.
         # - true: After the preview is complete (terraform plan), the execution (terraform apply) is automatically performed without manual confirmation.
         # - false: After the preview is complete (terraform plan), manual confirmation is required before the execution (terraform apply) starts.
         self.auto_apply = auto_apply
@@ -35,44 +35,46 @@ class UpdateTaskAttributeRequest(DaraModel):
         # - true: After the execution is complete (terraform apply), the destroy operation (terraform destroy) is automatically performed without manual confirmation.
         # - false: After the execution is complete (terraform apply), no further action is taken.
         self.auto_destroy = auto_destroy
-        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The description of the task.
+        # The description.
         self.description = description
         # The project group information.
         self.group_info = group_info
-        # Specifies whether to use a state file. Default value: false. This parameter is applicable when the template originates from resource export. Only one task can use this parameter.
+        # Specifies whether to use a state file. Default value: false. This parameter applies to templates that originate from resource export. Only one node can use this parameter.
         self.init_module_state = init_module_state
         # The template version.
         self.module_version = module_version
-        # The task name. The name must meet the following requirements:
+        # The node name. The name must meet the following requirements:
         # 
         # - The name must be 2 to 128 characters in length.
-        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
-        # - The name must be unique among all tasks under the current account.
+        # - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+        # - The name must be unique among all node resources within the current account.
         self.name = name
         # The list of resource protection strategies.
         self.protection_strategy = protection_strategy
         # The RAM role. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
         self.ram_role = ram_role
-        # Specifies whether to skip enum value validation. Default value: false.
+        # Specifies whether to skip enumeration value validation. Default value: false.
         self.skip_property_validation = skip_property_validation
+        # Specifies whether to skip region validation. Valid values: true indicates skipping, false indicates not skipping.
         self.skip_region_validation = skip_region_validation
-        # The list of tags for the task.
+        # The list of tags for the node.
         self.tags = tags
+        # The Terraform Provider version. Use the **ListTerraformProviderVersions** API to query the list of supported versions.
         self.terraform_provider_version = terraform_provider_version
-        # The Terraform version. Call the **ListAvailableTerraformVersions** operation to obtain the list of supported versions. Default value: 1.5.7.
+        # The Terraform version. Use the **ListAvailableTerraformVersions** API to obtain the list of supported versions. Default value: 1.5.7.
         self.terraform_version = terraform_version
-        # The job trigger method. Valid values:
+        # The job trigger method.
         # 
-        # - Manual: manually triggered (default).
+        # - Manual: manual trigger (default).
         # - NewVersion: triggered when a new template version is published.
         # - ParameterSetUpdated: triggered when the parameter set content changes or the parameter set attach relationship changes.
-        # - Auto: automatically triggered when the task\\"s own properties change, such as task creation, execution version change, or job trigger policy change (when changed from another value to Auto).
+        # - Auto: automatically triggered when the node properties change, such as creating a node, changing the execution version, or changing the job trigger policy (when changed from another method to Auto).
         # 
-        # The **ramRole** parameter is required when the trigger method is not manual.
+        # The **ramRole** parameter is required for non-manual triggers.
         self.trigger_strategy = trigger_strategy
 
     def validate(self):
@@ -202,9 +204,9 @@ class UpdateTaskAttributeRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the task.
+        # The tag key of the node.
         self.tag_key = tag_key
-        # The tag value of the task.
+        # The tag value of the node.
         self.tag_value = tag_value
 
     def validate(self):

@@ -1,3 +1,10 @@
+2026-08-25 Version: 2.11.0
+- Support API CreateTaskFromResourceImport.
+- Update API DeleteTask: add request parameters resourceRetentionPolicy.
+- Update API GetStackDeployments: add response parameters Body.deployments.$.logOutputPath.
+- Update API ListResourceExportTaskVersions: add response parameters Body.exportTasks.$.managedTaskId.
+
+
 2026-08-05 Version: 2.9.1
 - Generated python 2021-08-06 for IaCService.
 

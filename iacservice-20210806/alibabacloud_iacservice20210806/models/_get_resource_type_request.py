@@ -12,14 +12,15 @@ class GetResourceTypeRequest(DaraModel):
         terraform_provider_version: str = None,
     ):
         # The language of the response. Valid values:
+        # 
         # - zh-CN: Chinese.
         # - en-US: English.
         # 
         # Default value: zh-CN.
         self.accept_language = accept_language
-        # Specifies whether to filter out read-only properties.
+        # Specifies whether to filter read-only properties.
         self.filter_read_only = filter_read_only
-        # The Terraform provider version. If left empty, the latest version is used by default.
+        # The Terraform provider version. If this parameter is left empty, the latest version is used by default.
         self.terraform_provider_version = terraform_provider_version
 
     def validate(self):

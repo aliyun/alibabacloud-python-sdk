@@ -79,7 +79,7 @@ class GetTaskResponseBodyTask(DaraModel):
         self.auto_apply = auto_apply
         # Indicates whether automatic deletion is enabled. When enabled, resources are automatically destroyed after the task is completed.
         self.auto_destroy = auto_destroy
-        # The time when the task was created.
+        # The time when the task was created, in UTC in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
         self.create_time = create_time
         # The job ID of the current task.
         self.current_job_id = current_job_id
@@ -87,11 +87,11 @@ class GetTaskResponseBodyTask(DaraModel):
         self.current_job_status = current_job_status
         # Indicates whether deletion protection is enabled.
         self.deletion_protection = deletion_protection
-        # The description of the task.
+        # The description.
         self.description = description
         # The group information.
         self.group_info = group_info
-        # Specifies whether to use a state file. Default value: false. This parameter is applicable to templates that originate from resource export. Only one task can use this parameter at a time.
+        # Specifies whether to use a state file. Default value: false. This parameter applies to templates that originate from resource export. Only one task can use this parameter at a time.
         self.init_module_state = init_module_state
         # The latest version number of the template.
         self.latest_module_version = latest_module_version
@@ -109,11 +109,12 @@ class GetTaskResponseBodyTask(DaraModel):
         self.ram_role = ram_role
         # Specifies whether to skip enumeration value validation. Default value: false.
         self.skip_property_validation = skip_property_validation
+        # Specifies whether to skip region validation. Valid values: true and false.
         self.skip_region_validation = skip_region_validation
         # The task status. Valid values:
         # 
         # - Available: the task is available and no job is running.
-        # - Running: a job is currently running.
+        # - Running: the task is running and a job is in progress.
         self.status = status
         # The list of task tags.
         self.tags = tags

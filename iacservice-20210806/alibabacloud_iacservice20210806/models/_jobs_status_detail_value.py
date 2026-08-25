@@ -11,11 +11,11 @@ class JobsStatusDetailValue(DaraModel):
         job_result: str = None,
         time_stamps: str = None,
     ):
-        # 备注
+        # The comment.
         self.comment = comment
-        # 作业执行结果
+        # The job execution result.
         self.job_result = job_result
-        # 到达状态时间
+        # The time when the status was reached, in the format of YYYY-MM-DD HH:mm:ss. The returned value does not include a time zone identifier.
         self.time_stamps = time_stamps
 
     def validate(self):

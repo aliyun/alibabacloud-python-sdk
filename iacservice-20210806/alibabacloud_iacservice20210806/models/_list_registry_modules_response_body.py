@@ -22,7 +22,7 @@ class ListRegistryModulesResponseBody(DaraModel):
         self.max_results = max_results
         # The token for the next page. A value of null indicates that no more pages are available.
         self.next_token = next_token
-        # The list of registry modules.
+        # The list of Registry modules.
         self.registry_modules = registry_modules
         # The request ID.
         self.request_id = request_id
@@ -95,21 +95,21 @@ class ListRegistryModulesResponseBodyRegistryModules(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The permission. A value of private indicates that the module is private.
+        # The permission. private: private.
         self.acl = acl
-        # The creation time.
+        # The creation time in the format of YYYY-MM-DD HH:mm:ss. The returned value does not include a time zone identifier.
         self.create_time = create_time
-        # The description of the registry module.
+        # The description of the Registry module.
         self.description = description
         # The number of downloads.
         self.downloads = downloads
-        # The name of the registry module.
+        # The name of the Registry module.
         self.module_name = module_name
         # The workspace name.
         self.namespace_name = namespace_name
-        # The provider type. A value of alicloud indicates Alibaba Cloud.
+        # The provider type. alicloud: Alibaba Cloud.
         self.provider = provider
-        # The list of accounts with which the registry module is shared.
+        # The list of accounts with which the Registry module is shared.
         self.shared_accounts = shared_accounts
         # The module source.
         self.source = source

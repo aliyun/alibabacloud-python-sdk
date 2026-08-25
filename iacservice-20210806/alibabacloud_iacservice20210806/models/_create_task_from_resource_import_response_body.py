@@ -4,15 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateTaskResponseBody(DaraModel):
+class CreateTaskFromResourceImportResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
         task_id: str = None,
     ):
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The task ID.
         self.task_id = task_id
 
     def validate(self):

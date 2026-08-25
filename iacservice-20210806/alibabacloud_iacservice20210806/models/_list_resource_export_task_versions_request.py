@@ -15,7 +15,7 @@ class ListResourceExportTaskVersionsRequest(DaraModel):
     ):
         # The export version number.
         self.export_version = export_version
-        # The search keyword. Fuzzy match is supported for export version names.
+        # The search keyword. Fuzzy search on export version names is supported.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -27,7 +27,7 @@ class ListResourceExportTaskVersionsRequest(DaraModel):
         # - Pending: preparing to run
         # - Success: succeeded
         # - Errored: failed
-        # - Canceled: canceled.
+        # - Canceled: canceled
         self.status = status
 
     def validate(self):

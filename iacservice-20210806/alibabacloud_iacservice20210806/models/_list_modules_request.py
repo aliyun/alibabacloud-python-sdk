@@ -20,8 +20,9 @@ class ListModulesRequest(DaraModel):
     ):
         # The group ID.
         self.group_id = group_id
-        # The search keyword. Fuzzy match is supported for template names.
+        # The search keyword. Supports fuzzy match on template names.
         self.keyword = keyword
+        # The template name.
         self.module_name = module_name
         # The page number. Default value: 1.
         self.page_number = page_number

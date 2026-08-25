@@ -82,6 +82,7 @@ class GetResourceTypeResponseBodyResourceType(DaraModel):
         self.resource_detail_page_url = resource_detail_page_url
         # The URL of the resources page.
         self.resource_list_page_url = resource_list_page_url
+        # The Alibaba Cloud resource type, in the format of ALIYUN::<cloud service>::<resource type>.
         self.resource_type = resource_type
         # The resource status.
         self.status = status

@@ -17,6 +17,7 @@ class ListStacksRequest(DaraModel):
     ):
         # The keyword used to perform a fuzzy search by stack name.
         self.keyword = keyword
+        # The key ID.
         self.kms_key_id = kms_key_id
         # The maximum number of results to return. Default value: 100. Maximum value: 200.
         self.max_results = max_results
@@ -24,21 +25,21 @@ class ListStacksRequest(DaraModel):
         self.next_token = next_token
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+        # The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 200.
         self.page_size = page_size
         # The stack status.
         # | Name | Description |
         # |------|------|
-        # | Creating | Being created |
-        # | Created | Creation complete |
-        # | Waiting | Waiting for deployment |
-        # | Deploying | Being deployed |
-        # | Deployed | Deployment complete |
-        # | Errored | Deployment failed |
-        # | Deleting | Being deleted |
-        # | Deleted | Deleted |
-        # | DeleteFailed | Deletion failed |
-        # | DetectTriggered | Drift detection triggered |.
+        # | Creating | Being created. |
+        # | Created | Created. |
+        # | Waiting | Waiting for deployment. |
+        # | Deploying | Being deployed. |
+        # | Deployed | Deployed. |
+        # | Errored | Deployment failed. |
+        # | Deleting | Being deleted. |
+        # | Deleted | Deleted. |
+        # | DeleteFailed | Deletion failed. |
+        # | DetectTriggered | Drift detection triggered. |
         self.status = status
 
     def validate(self):

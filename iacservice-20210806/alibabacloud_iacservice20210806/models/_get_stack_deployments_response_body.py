@@ -74,6 +74,7 @@ class GetStackDeploymentsResponseBodyDeployments(DaraModel):
         execute_type: str = None,
         failed_reason: str = None,
         job_id: str = None,
+        log_output_path: str = None,
         outputs: List[main_models.GetStackDeploymentsResponseBodyDeploymentsOutputs] = None,
         parameters: List[main_models.GetStackDeploymentsResponseBodyDeploymentsParameters] = None,
         plan_outputs: List[main_models.GetStackDeploymentsResponseBodyDeploymentsPlanOutputs] = None,
@@ -84,11 +85,11 @@ class GetStackDeploymentsResponseBodyDeployments(DaraModel):
         self.config = config
         # The configuration version, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
         self.config_version = config_version
-        # The creation time.
+        # The creation time in UTC, in the format of YYYY-MM-DDTHH:mm:ssZ (ISO 8601).
         self.create_time = create_time
         # The deployment name.
         self.deployment_name = deployment_name
-        # The deployment number. The deployment number of each stack starts from 1 and increments each time a deployment is triggered.
+        # The deployment number. The deployment number for each stack starts from 1 and increments each time a deployment is successfully triggered.
         self.deployment_no = deployment_no
         # Deprecated field.
         self.deployment_version = deployment_version
@@ -96,14 +97,16 @@ class GetStackDeploymentsResponseBodyDeployments(DaraModel):
         self.elapsed_time = elapsed_time
         # The execution type.
         # 
-        # Manual: manual execution (default).
+        # Manual: Manual execution (default).
         # 
-        # Auto: automatic execution.
+        # Auto: Automatic execution.
         self.execute_type = execute_type
         # The failure reason.
         self.failed_reason = failed_reason
         # The job ID.
         self.job_id = job_id
+        # OSS object key prefix for deployment logs
+        self.log_output_path = log_output_path
         # The outputs.
         self.outputs = outputs
         # The parameter set content.
@@ -113,29 +116,29 @@ class GetStackDeploymentsResponseBodyDeployments(DaraModel):
         # The deployment status.
         # | Name | Description |
         # |------|------|
-        # | Pending | The initial status after a deployment is created. |
-        # | PriorityQueued | The deployment is queued by priority. |
-        # | PlanQueued | The deployment is queued because no workflow is available after the deployment is created. |
-        # | ApplyQueued | The deployment is queued because no workflow is available during execution. |
+        # | Pending | The initial status after the deployment is created. |
+        # | PriorityQueued | Priority queuing in progress. |
+        # | PlanQueued | The deployment is queuing because no workflow is available after creation. |
+        # | ApplyQueued | The deployment is queuing because no workflow is available during execution. |
         # | Planning | The resource deployment is in the Plan phase. |
         # | Planned | The resource deployment has completed the Plan phase. |
-        # | ConfigProactiveInProgress | A compliance pre-check is in progress. |
-        # | ConfigProactiveSuccess | The compliance pre-check succeeded. |
-        # | DetectInProgress | Drift detection is in progress. |
-        # | ImportQueued | The deployment is queued because no workflow is available during the Import phase. |
+        # | ConfigProactiveInProgress | Compliance pre-check in progress. |
+        # | ConfigProactiveSuccess | Compliance pre-check succeeded. |
+        # | DetectInProgress | Drift detection in progress. |
+        # | ImportQueued | The deployment is queuing because no workflow is available during Import execution. |
         # | Importing | The resource deployment is in the Import phase. |
         # | Imported | The resource deployment has completed the Import phase. |
-        # | StateQueued | The deployment is queued because no workflow is available during the state command execution. |
+        # | StateQueued | The deployment is queuing because no workflow is available during state command execution. |
         # | Stating | The resource deployment is executing the state command. |
         # | Stated | The resource deployment has completed the state command execution. |
         # | Confirmed | The resource deployment has been confirmed after the Plan phase. |
-        # | PlannedAndFinished | No differences were found after the Plan phase. The deployment is in a final status. |
+        # | PlannedAndFinished | No diff was found after the Plan phase. The deployment is in a final status. |
         # | Applying | The resource deployment is in the Apply phase. |
         # | Applied | The resource deployment has completed the Apply phase. |
         # | Discarded | The resource deployment has been discarded and is in a final status. |
-        # | Errored | The deployment encountered an error and is in a final status. |
-        # | ConfigProactiveFailure | The compliance pre-check failed. |
-        # | Canceled | The deployment has been canceled and is in a final status. |.
+        # | Errored | The deployment execution encountered an error and is in a final status. |
+        # | ConfigProactiveFailure | Compliance pre-check failed. |
+        # | Canceled | The deployment execution has been canceled and is in a final status. |
         self.status = status
         # The task ID.
         self.task_id = task_id
@@ -190,6 +193,9 @@ class GetStackDeploymentsResponseBodyDeployments(DaraModel):
 
         if self.job_id is not None:
             result['jobId'] = self.job_id
+
+        if self.log_output_path is not None:
+            result['logOutputPath'] = self.log_output_path
 
         result['outputs'] = []
         if self.outputs is not None:
@@ -247,6 +253,9 @@ class GetStackDeploymentsResponseBodyDeployments(DaraModel):
         if m.get('jobId') is not None:
             self.job_id = m.get('jobId')
 
+        if m.get('logOutputPath') is not None:
+            self.log_output_path = m.get('logOutputPath')
+
         self.outputs = []
         if m.get('outputs') is not None:
             for k1 in m.get('outputs'):
@@ -282,12 +291,12 @@ class GetStackDeploymentsResponseBodyDeploymentsPlanOutputs(DaraModel):
         stack_module_name: str = None,
     ):
         # The change type of the component. Valid values:
-        # - create: all resource changes in the component are additions.
-        # - delete: all resource changes in the component are deletions.
-        # - read: all resource changes in the component are read operations.
-        # - update: resource changes in the component include two or more types among additions, deletions, and read operations.
+        # - create: All resource changes in the component are creations.
+        # - delete: All resource changes in the component are deletions.
+        # - read: All resource changes in the component are reads.
+        # - update: Resource changes in the component include two or more types among creation, deletion, and read.
         self.module_action = module_action
-        # The number of resources to be added, updated, and destroyed in this deployment.
+        # The number of resources to be created, updated, and destroyed in this deployment.
         self.module_action_detail = module_action_detail
         # The resource change information.
         self.resource_changes = resource_changes
@@ -350,7 +359,7 @@ class GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges(DaraM
         resource_actions: List[str] = None,
         resource_identifier: str = None,
     ):
-        # The difference information of the resource change.
+        # The diff information of the resource change.
         self.change = change
         # The types of resource change actions included in this resource change.
         self.resource_actions = resource_actions
@@ -451,6 +460,9 @@ class GetStackDeploymentsResponseBodyDeploymentsParameters(DaraModel):
         self.description = description
         # The parameter name.
         self.name = name
+        # Specifies whether the parameter is sensitive. Sensitive parameter values are not visible in the console or API. Valid values:
+        # - true: Sensitive.
+        # - false: Not sensitive.
         self.sensitive = sensitive
         # The parameter type.
         self.type = type
@@ -518,7 +530,7 @@ class GetStackDeploymentsResponseBodyDeploymentsOutputs(DaraModel):
     ):
         # The description.
         self.description = description
-        # The expression, which can reference component outputs. Format: component.{component name}.{component output name}.
+        # The expression that can reference component outputs, in the format: component.{component name}.{component output name}.
         self.expression = expression
         # The name.
         self.name = name
@@ -581,7 +593,7 @@ class GetStackDeploymentsResponseBodyDeploymentsConfig(DaraModel):
         # - **false**: No.
         # - **true**: Yes.
         self.auto_apply = auto_apply
-        # Specifies whether this is a destroy job.
+        # Indicates whether this is a destroy job.
         self.is_destroy = is_destroy
 
     def validate(self):

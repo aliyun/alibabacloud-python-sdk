@@ -22,7 +22,7 @@ class ListResourceTypesResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The resources.
+        # The list of resources.
         self.resource_types = resource_types
         # The total number of entries.
         self.total_count = total_count
@@ -106,6 +106,7 @@ class ListResourceTypesResponseBodyResourceTypes(DaraModel):
         self.resource_detail_page_url = resource_detail_page_url
         # The URL of the resources page.
         self.resource_list_page_url = resource_list_page_url
+        # The Alibaba Cloud resource type in the format of ALIYUN::\\<cloud service>::\\<resource type>.
         self.resource_type = resource_type
         # The resource status.
         self.status = status
@@ -115,7 +116,7 @@ class ListResourceTypesResponseBodyResourceTypes(DaraModel):
         self.subcategory = subcategory
         # Specifies whether Terraformer is supported.
         self.support_terraformer = support_terraformer
-        # The Terraform provider version.
+        # The Terraform Provider version.
         self.terraform_provider_version = terraform_provider_version
         # The resource type in Terraform.
         self.terraform_resource_type = terraform_resource_type

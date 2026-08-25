@@ -1883,6 +1883,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_task_with_options_async(request, headers, runtime)
 
+    def create_task_from_resource_import_with_options(
+        self,
+        request: main_models.CreateTaskFromResourceImportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTaskFromResourceImportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.export_task_id):
+            body['exportTaskId'] = request.export_task_id
+        if not DaraCore.is_null(request.export_version):
+            body['exportVersion'] = request.export_version
+        if not DaraCore.is_null(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTaskFromResourceImport',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/tasks/operations/createTaskFromResourceImport',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTaskFromResourceImportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_task_from_resource_import_with_options_async(
+        self,
+        request: main_models.CreateTaskFromResourceImportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTaskFromResourceImportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.export_task_id):
+            body['exportTaskId'] = request.export_task_id
+        if not DaraCore.is_null(request.export_version):
+            body['exportVersion'] = request.export_version
+        if not DaraCore.is_null(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTaskFromResourceImport',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/tasks/operations/createTaskFromResourceImport',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTaskFromResourceImportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_task_from_resource_import(
+        self,
+        request: main_models.CreateTaskFromResourceImportRequest,
+    ) -> main_models.CreateTaskFromResourceImportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_task_from_resource_import_with_options(request, headers, runtime)
+
+    async def create_task_from_resource_import_async(
+        self,
+        request: main_models.CreateTaskFromResourceImportRequest,
+    ) -> main_models.CreateTaskFromResourceImportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_task_from_resource_import_with_options_async(request, headers, runtime)
+
     def delete_detect_config_with_options(
         self,
         detect_config_id: str,
@@ -2631,8 +2719,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DeleteTaskResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_retention_policy):
+            query['resourceRetentionPolicy'] = request.resource_retention_policy
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'DeleteTask',
@@ -2658,8 +2750,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DeleteTaskResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_retention_policy):
+            query['resourceRetentionPolicy'] = request.resource_retention_policy
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'DeleteTask',
@@ -3626,6 +3722,74 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_detect_config_with_options_async(detect_config_id, request, headers, runtime)
+
+    def get_encryption_config_with_options(
+        self,
+        request: main_models.GetEncryptionConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEncryptionConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEncryptionConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/encryption/config',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEncryptionConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_encryption_config_with_options_async(
+        self,
+        request: main_models.GetEncryptionConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEncryptionConfigResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEncryptionConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/encryption/config',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEncryptionConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_encryption_config(
+        self,
+        request: main_models.GetEncryptionConfigRequest,
+    ) -> main_models.GetEncryptionConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_encryption_config_with_options(request, headers, runtime)
+
+    async def get_encryption_config_async(
+        self,
+        request: main_models.GetEncryptionConfigRequest,
+    ) -> main_models.GetEncryptionConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_encryption_config_with_options_async(request, headers, runtime)
 
     def get_execute_state_with_options(
         self,
@@ -7663,6 +7827,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.remove_shared_accounts_with_options_async(request, headers, runtime)
 
+    def set_encryption_config_with_options(
+        self,
+        request: main_models.SetEncryptionConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SetEncryptionConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.kms_key_id):
+            body['kmsKeyId'] = request.kms_key_id
+        if not DaraCore.is_null(request.kms_region_id):
+            body['kmsRegionId'] = request.kms_region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetEncryptionConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/encryption/config',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetEncryptionConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_encryption_config_with_options_async(
+        self,
+        request: main_models.SetEncryptionConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SetEncryptionConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.kms_key_id):
+            body['kmsKeyId'] = request.kms_key_id
+        if not DaraCore.is_null(request.kms_region_id):
+            body['kmsRegionId'] = request.kms_region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetEncryptionConfig',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/encryption/config',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetEncryptionConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_encryption_config(
+        self,
+        request: main_models.SetEncryptionConfigRequest,
+    ) -> main_models.SetEncryptionConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.set_encryption_config_with_options(request, headers, runtime)
+
+    async def set_encryption_config_async(
+        self,
+        request: main_models.SetEncryptionConfigRequest,
+    ) -> main_models.SetEncryptionConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.set_encryption_config_with_options_async(request, headers, runtime)
+
     def trigger_stack_execution_with_options(
         self,
         request: main_models.TriggerStackExecutionRequest,
@@ -7681,6 +7929,8 @@ class Client(OpenApiClient):
             body['codePackagePath'] = request.code_package_path
         if not DaraCore.is_null(request.code_version_id):
             body['codeVersionId'] = request.code_version_id
+        if not DaraCore.is_null(request.source_trigger_id):
+            body['sourceTriggerId'] = request.source_trigger_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -7719,6 +7969,8 @@ class Client(OpenApiClient):
             body['codePackagePath'] = request.code_package_path
         if not DaraCore.is_null(request.code_version_id):
             body['codeVersionId'] = request.code_version_id
+        if not DaraCore.is_null(request.source_trigger_id):
+            body['sourceTriggerId'] = request.source_trigger_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

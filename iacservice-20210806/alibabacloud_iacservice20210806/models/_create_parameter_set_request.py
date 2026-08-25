@@ -15,11 +15,11 @@ class CreateParameterSetRequest(DaraModel):
         name: str = None,
         parameters: List[main_models.CreateParameterSetRequestParameters] = None,
     ):
-        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+        # The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The description of the parameter set. Maximum length: 1024 characters.
+        # The description of the parameter set. Maximum length: 1,024 characters.
         self.description = description
         # The name of the parameter set. Maximum length: 128 characters.
         # 
@@ -85,13 +85,15 @@ class CreateParameterSetRequestParameters(DaraModel):
     ):
         # The parameter name.
         self.name = name
+        # Specifies whether the parameter is a secret parameter. Secret parameters are hidden in API responses and on the console, and are stored with encryption.
         self.secret = secret
-        # The parameter set status. Valid values:
+        # The parameter status. Valid values:
         # 
-        # - HAS_VALUE (default): Defines a specific value.
-        # - EXPLICIT_NULL: Explicitly sets the value to null.
+        # HAS_VALUE (default): Defines a specific value.
+        # 
+        # EXPLICIT_NULL: Explicitly sets the value to null.
         self.status = status
-        # The parameter type. Valid values: string, number, bool, map(string), and list(string).
+        # The parameter type (string/number/bool/map(string)/list(string)).
         self.type = type
         # The parameter value. Use JSON for complex types.
         self.value = value
