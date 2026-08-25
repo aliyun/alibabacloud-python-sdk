@@ -4,20 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeEapDeviceResourceAllocationRequest(DaraModel):
+class DeleteMultiModalKnowledgeBaseRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
-        device_count: int = None,
         region_id: str = None,
     ):
-        # The cluster ID of the instance.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The total number of devices.
-        self.device_count = device_count
-        # The region ID of the instance.
+        # The region ID.
         # 
         # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
         # 
@@ -35,9 +32,6 @@ class DescribeEapDeviceResourceAllocationRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
-        if self.device_count is not None:
-            result['DeviceCount'] = self.device_count
-
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -47,9 +41,6 @@ class DescribeEapDeviceResourceAllocationRequest(DaraModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
-
-        if m.get('DeviceCount') is not None:
-            self.device_count = m.get('DeviceCount')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -24,12 +24,15 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-shenzhen': 'adbai.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'adbai.cn-shanghai.aliyuncs.com',
-            'cn-hangzhou': 'adbai.cn-hangzhou.aliyuncs.com',
-            'cn-beijing': 'adbai.cn-beijing.aliyuncs.com',
+            'ap-northeast-1': 'adbai.ap-northeast-1.aliyuncs.com',
             'ap-southeast-1': 'adbai.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'adbai.ap-northeast-1.aliyuncs.com'
+            'cn-beijing': 'adbai.cn-beijing.aliyuncs.com',
+            'cn-hangzhou': 'adbai.cn-hangzhou.aliyuncs.com',
+            'cn-shanghai': 'adbai.cn-shanghai.aliyuncs.com',
+            'cn-shenzhen': 'adbai.cn-shenzhen.aliyuncs.com',
+            'cn-guangzhou': 'adbai.cn-guangzhou.aliyuncs.com',
+            'cn-wulanchabu': 'adbai.cn-wulanchabu.aliyuncs.com',
+            'us-west-1': 'adbai.us-west-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('adbai', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -246,6 +249,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_embodied_aiplatform_with_options_async(request, runtime)
 
+    def create_multi_model_knowledge_base_with_options(
+        self,
+        request: main_models.CreateMultiModelKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMultiModelKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMultiModelKnowledgeBase',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMultiModelKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_multi_model_knowledge_base_with_options_async(
+        self,
+        request: main_models.CreateMultiModelKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMultiModelKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMultiModelKnowledgeBase',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMultiModelKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_multi_model_knowledge_base(
+        self,
+        request: main_models.CreateMultiModelKnowledgeBaseRequest,
+    ) -> main_models.CreateMultiModelKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.create_multi_model_knowledge_base_with_options(request, runtime)
+
+    async def create_multi_model_knowledge_base_async(
+        self,
+        request: main_models.CreateMultiModelKnowledgeBaseRequest,
+    ) -> main_models.CreateMultiModelKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.create_multi_model_knowledge_base_with_options_async(request, runtime)
+
     def delete_agent_platform_with_options(
         self,
         request: main_models.DeleteAgentPlatformRequest,
@@ -401,6 +478,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEmbodiedAIPlatformResponse:
         runtime = RuntimeOptions()
         return await self.delete_embodied_aiplatform_with_options_async(request, runtime)
+
+    def delete_multi_modal_knowledge_base_with_options(
+        self,
+        request: main_models.DeleteMultiModalKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMultiModalKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMultiModalKnowledgeBase',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMultiModalKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_multi_modal_knowledge_base_with_options_async(
+        self,
+        request: main_models.DeleteMultiModalKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMultiModalKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMultiModalKnowledgeBase',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMultiModalKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_multi_modal_knowledge_base(
+        self,
+        request: main_models.DeleteMultiModalKnowledgeBaseRequest,
+    ) -> main_models.DeleteMultiModalKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.delete_multi_modal_knowledge_base_with_options(request, runtime)
+
+    async def delete_multi_modal_knowledge_base_async(
+        self,
+        request: main_models.DeleteMultiModalKnowledgeBaseRequest,
+    ) -> main_models.DeleteMultiModalKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_multi_modal_knowledge_base_with_options_async(request, runtime)
 
     def describe_chat_message_with_sse(
         self,

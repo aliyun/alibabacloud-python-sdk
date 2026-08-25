@@ -13,7 +13,7 @@ class DescribeEapDeviceResourceAllocationResponseBody(DaraModel):
         items: List[main_models.DescribeEapDeviceResourceAllocationResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # List of specification recommendations.
+        # The list of specification recommendations.
         self.items = items
         # Id of the request
         self.request_id = request_id
@@ -70,33 +70,33 @@ class DescribeEapDeviceResourceAllocationResponseBodyItems(DaraModel):
         worker_cpu: int = None,
         worker_spec_name: str = None,
     ):
-        # Total number of devices
+        # The total number of devices.
         self.device_count = device_count
-        # Total ACU count for the Ray Cluster Head of the Embodied Intelligence platform
+        # The total number of ACUs for the Ray Cluster Head of the embodied intelligence platform.
         self.head_acu = head_acu
-        # Number of vCPU cores for the Ray Cluster Head node on the Intelligent Embodiment platform
+        # The number of vCPU cores for the Ray Cluster Head of the embodied intelligence platform.
         self.head_cpu = head_cpu
-        # Ray Cluster Head specification of the Embodied Intelligence platform
+        # The Ray Cluster Head specification of the embodied intelligence platform.
         self.head_spec_name = head_spec_name
-        # Total number of ACUs actually deployed on the Intelligent Embodiment platform
+        # The total number of actually deployed ACUs on the embodied intelligence platform.
         self.total_acu = total_acu
-        # Total number of vCPU cores actually deployed on the Intelligent Embodiment platform
+        # The total number of actually deployed vCPU cores on the embodied intelligence platform.
         self.total_deployed_cpu = total_deployed_cpu
-        # Total target number of vCPU cores
+        # The total number of target vCPU cores.
         self.total_target_cpu = total_target_cpu
-        # Total ACU count for the Embodied Intelligence platform
+        # The total number of ACUs for the embodied intelligence platform.
         self.webserver_acu = webserver_acu
-        # Total number of vCPU cores for the Embodied Intelligence platform
+        # The total number of vCPU cores for the embodied intelligence platform.
         self.webserver_cpu = webserver_cpu
-        # Webserver specification of the Embodied Intelligence platform.
+        # The Webserver specification of the embodied intelligence platform.
         self.webserver_spec_name = webserver_spec_name
-        # Total ACU count per Ray Cluster Worker of the Embodied Intelligence platform
+        # The total number of ACUs for a single Ray Cluster Worker of the embodied intelligence platform.
         self.worker_acu = worker_acu
-        # Total number of Ray Cluster Worker nodes on the Intelligent Embodiment platform
+        # The total number of Ray Cluster Workers of the embodied intelligence platform.
         self.worker_count = worker_count
-        # Number of vCPU cores per Ray Cluster Worker of the Embodied Intelligence platform
+        # The number of vCPU cores for a single Ray Cluster Worker of the embodied intelligence platform.
         self.worker_cpu = worker_cpu
-        # Ray Cluster Worker specification of the Embodied Intelligence platform
+        # The Ray Cluster Worker specification of the embodied intelligence platform.
         self.worker_spec_name = worker_spec_name
 
     def validate(self):
