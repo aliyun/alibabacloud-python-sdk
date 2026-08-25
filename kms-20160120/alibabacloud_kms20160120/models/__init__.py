@@ -125,6 +125,9 @@ from ._generate_data_key_without_plaintext_response import GenerateDataKeyWithou
 from ._generate_mac_request import GenerateMacRequest
 from ._generate_mac_response_body import GenerateMacResponseBody
 from ._generate_mac_response import GenerateMacResponse
+from ._get_challenge_request import GetChallengeRequest
+from ._get_challenge_response_body import GetChallengeResponseBody
+from ._get_challenge_response import GetChallengeResponse
 from ._get_client_key_request import GetClientKeyRequest
 from ._get_client_key_response_body import GetClientKeyResponseBody
 from ._get_client_key_response import GetClientKeyResponse
@@ -455,6 +458,9 @@ __all__ = [
     GenerateMacRequest,
     GenerateMacResponseBody,
     GenerateMacResponse,
+    GetChallengeRequest,
+    GetChallengeResponseBody,
+    GetChallengeResponse,
     GetClientKeyRequest,
     GetClientKeyResponseBody,
     GetClientKeyResponse,

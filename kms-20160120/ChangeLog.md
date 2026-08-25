@@ -1,3 +1,11 @@
+2026-08-25 Version: 3.3.0
+- Support API GetChallenge.
+- Update API AsymmetricDecrypt: add request parameters Recipient.
+- Update API AsymmetricDecrypt: add response parameters Body.CiphertextForRecipient.
+- Update API GetSecretValue: add request parameters Recipient.
+- Update API GetSecretValue: add response parameters Body.CiphertextForRecipient.
+
+
 2026-08-05 Version: 3.2.0
 - Support API BatchGetSecretValue.
 

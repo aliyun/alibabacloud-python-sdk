@@ -26,40 +26,40 @@ class Client(OpenApiClient):
         self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'us-west-1': 'kms.us-west-1.aliyuncs.com',
-            'us-east-1': 'kms.us-east-1.aliyuncs.com',
-            'na-south-1': 'kms.na-south-1.aliyuncs.com',
-            'me-east-1': 'kms.me-east-1.aliyuncs.com',
-            'me-central-1': 'kms.me-central-1.aliyuncs.com',
-            'eu-west-1': 'kms.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'kms.eu-central-1.aliyuncs.com',
-            'cn-zhengzhou-jva': 'kms.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-zhangjiakou': 'kms.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'kms.cn-wulanchabu.aliyuncs.com',
-            'cn-wuhan-lr': 'kms.cn-wuhan-lr.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'kms.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'kms.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'kms.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'kms.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'kms.cn-qingdao.aliyuncs.com',
-            'cn-huhehaote': 'kms.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'kms.cn-hongkong.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'kms.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-heyuan': 'kms.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou-finance': 'kms.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'kms.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'kms.cn-guangzhou.aliyuncs.com',
-            'cn-fuzhou': 'kms.cn-fuzhou.aliyuncs.com',
-            'cn-chengdu': 'kms.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'kms.cn-beijing-finance-1.aliyuncs.com',
-            'cn-beijing': 'kms.cn-beijing.aliyuncs.com',
+            'ap-northeast-1': 'kms.ap-northeast-1.aliyuncs.com',
+            'ap-northeast-2': 'kms.ap-northeast-2.aliyuncs.com',
             'ap-southeast-7': 'kms.ap-southeast-7.aliyuncs.com',
             'ap-southeast-6': 'kms.ap-southeast-6.aliyuncs.com',
             'ap-southeast-5': 'kms.ap-southeast-5.aliyuncs.com',
             'ap-southeast-3': 'kms.ap-southeast-3.aliyuncs.com',
             'ap-southeast-1': 'kms.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'kms.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'kms.ap-northeast-1.aliyuncs.com'
+            'cn-hongkong': 'kms.cn-hongkong.aliyuncs.com',
+            'cn-chengdu': 'kms.cn-chengdu.aliyuncs.com',
+            'cn-wulanchabu': 'kms.cn-wulanchabu.aliyuncs.com',
+            'cn-huhehaote': 'kms.cn-huhehaote.aliyuncs.com',
+            'cn-zhangjiakou': 'kms.cn-zhangjiakou.aliyuncs.com',
+            'cn-beijing': 'kms.cn-beijing.aliyuncs.com',
+            'cn-qingdao': 'kms.cn-qingdao.aliyuncs.com',
+            'cn-guangzhou': 'kms.cn-guangzhou.aliyuncs.com',
+            'cn-heyuan': 'kms.cn-heyuan.aliyuncs.com',
+            'cn-shenzhen': 'kms.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'kms.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou': 'kms.cn-hangzhou.aliyuncs.com',
+            'cn-fuzhou': 'kms.cn-fuzhou.aliyuncs.com',
+            'cn-wuhan-lr': 'kms.cn-wuhan-lr.aliyuncs.com',
+            'cn-zhengzhou-jva': 'kms.cn-zhengzhou-jva.aliyuncs.com',
+            'na-south-1': 'kms.na-south-1.aliyuncs.com',
+            'eu-central-1': 'kms.eu-central-1.aliyuncs.com',
+            'eu-west-1': 'kms.eu-west-1.aliyuncs.com',
+            'us-west-1': 'kms.us-west-1.aliyuncs.com',
+            'us-east-1': 'kms.us-east-1.aliyuncs.com',
+            'me-central-1': 'kms.me-central-1.aliyuncs.com',
+            'me-east-1': 'kms.me-east-1.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'kms.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-hangzhou-finance': 'kms.cn-hangzhou-finance.aliyuncs.com',
+            'cn-shanghai-finance-1': 'kms.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'kms.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-beijing-finance-1': 'kms.cn-beijing-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('kms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -97,8 +97,12 @@ class Client(OpenApiClient):
             query['KeyId'] = request.key_id
         if not DaraCore.is_null(request.key_version_id):
             query['KeyVersionId'] = request.key_version_id
+        body = {}
+        if not DaraCore.is_null(request.recipient):
+            body['Recipient'] = request.recipient
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'AsymmetricDecrypt',
@@ -133,8 +137,12 @@ class Client(OpenApiClient):
             query['KeyId'] = request.key_id
         if not DaraCore.is_null(request.key_version_id):
             query['KeyVersionId'] = request.key_version_id
+        body = {}
+        if not DaraCore.is_null(request.recipient):
+            body['Recipient'] = request.recipient
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'AsymmetricDecrypt',
@@ -1395,10 +1403,12 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
+        body = {}
         if not DaraCore.is_null(request.recipient):
-            query['Recipient'] = request.recipient
+            body['Recipient'] = request.recipient
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'Decrypt',
@@ -1433,10 +1443,12 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
+        body = {}
         if not DaraCore.is_null(request.recipient):
-            query['Recipient'] = request.recipient
+            body['Recipient'] = request.recipient
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'Decrypt',
@@ -2949,10 +2961,12 @@ class Client(OpenApiClient):
             query['KeySpec'] = request.key_spec
         if not DaraCore.is_null(request.number_of_bytes):
             query['NumberOfBytes'] = request.number_of_bytes
+        body = {}
         if not DaraCore.is_null(request.recipient):
-            query['Recipient'] = request.recipient
+            body['Recipient'] = request.recipient
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'GenerateDataKey',
@@ -2991,10 +3005,12 @@ class Client(OpenApiClient):
             query['KeySpec'] = request.key_spec
         if not DaraCore.is_null(request.number_of_bytes):
             query['NumberOfBytes'] = request.number_of_bytes
+        body = {}
         if not DaraCore.is_null(request.recipient):
-            query['Recipient'] = request.recipient
+            body['Recipient'] = request.recipient
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'GenerateDataKey',
@@ -3201,6 +3217,66 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateMacResponse:
         runtime = RuntimeOptions()
         return await self.generate_mac_with_options_async(request, runtime)
+
+    def get_challenge_with_options(
+        self,
+        request: main_models.GetChallengeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetChallengeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetChallenge',
+            version = '2016-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetChallengeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_challenge_with_options_async(
+        self,
+        request: main_models.GetChallengeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetChallengeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetChallenge',
+            version = '2016-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetChallengeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_challenge(
+        self,
+        request: main_models.GetChallengeRequest,
+    ) -> main_models.GetChallengeResponse:
+        runtime = RuntimeOptions()
+        return self.get_challenge_with_options(request, runtime)
+
+    async def get_challenge_async(
+        self,
+        request: main_models.GetChallengeRequest,
+    ) -> main_models.GetChallengeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_challenge_with_options_async(request, runtime)
 
     def get_client_key_with_options(
         self,
@@ -3955,8 +4031,12 @@ class Client(OpenApiClient):
             query['VersionId'] = request.version_id
         if not DaraCore.is_null(request.version_stage):
             query['VersionStage'] = request.version_stage
+        body = {}
+        if not DaraCore.is_null(request.recipient):
+            body['Recipient'] = request.recipient
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'GetSecretValue',
@@ -3991,8 +4071,12 @@ class Client(OpenApiClient):
             query['VersionId'] = request.version_id
         if not DaraCore.is_null(request.version_stage):
             query['VersionStage'] = request.version_stage
+        body = {}
+        if not DaraCore.is_null(request.recipient):
+            body['Recipient'] = request.recipient
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'GetSecretValue',

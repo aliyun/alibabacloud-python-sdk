@@ -7,11 +7,13 @@ from darabonba.model import DaraModel
 class AsymmetricDecryptResponseBody(DaraModel):
     def __init__(
         self,
+        ciphertext_for_recipient: str = None,
         key_id: str = None,
         key_version_id: str = None,
         plaintext: str = None,
         request_id: str = None,
     ):
+        self.ciphertext_for_recipient = ciphertext_for_recipient
         # The ID of the key. If the KeyId parameter in the request is a key alias or key ARN, the key ID is also returned in the response.
         self.key_id = key_id
         # The version of the master key that was used to encrypt the plaintext.
@@ -29,6 +31,9 @@ class AsymmetricDecryptResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ciphertext_for_recipient is not None:
+            result['CiphertextForRecipient'] = self.ciphertext_for_recipient
+
         if self.key_id is not None:
             result['KeyId'] = self.key_id
 
@@ -45,6 +50,9 @@ class AsymmetricDecryptResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CiphertextForRecipient') is not None:
+            self.ciphertext_for_recipient = m.get('CiphertextForRecipient')
+
         if m.get('KeyId') is not None:
             self.key_id = m.get('KeyId')
 

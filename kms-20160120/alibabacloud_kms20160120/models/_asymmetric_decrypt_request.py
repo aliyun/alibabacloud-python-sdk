@@ -12,6 +12,7 @@ class AsymmetricDecryptRequest(DaraModel):
         dry_run: str = None,
         key_id: str = None,
         key_version_id: str = None,
+        recipient: str = None,
     ):
         # The decryption algorithm.
         # 
@@ -47,6 +48,7 @@ class AsymmetricDecryptRequest(DaraModel):
         # 
         # This parameter is required.
         self.key_version_id = key_version_id
+        self.recipient = recipient
 
     def validate(self):
         pass
@@ -71,6 +73,9 @@ class AsymmetricDecryptRequest(DaraModel):
         if self.key_version_id is not None:
             result['KeyVersionId'] = self.key_version_id
 
+        if self.recipient is not None:
+            result['Recipient'] = self.recipient
+
         return result
 
     def from_map(self, m: dict = None):
@@ -89,6 +94,9 @@ class AsymmetricDecryptRequest(DaraModel):
 
         if m.get('KeyVersionId') is not None:
             self.key_version_id = m.get('KeyVersionId')
+
+        if m.get('Recipient') is not None:
+            self.recipient = m.get('Recipient')
 
         return self
 
