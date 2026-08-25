@@ -13,18 +13,19 @@ class ExecuteBackupPlanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates success.
         self.code = code
         # The ID of the backup job.
         self.job_id = job_id
-        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+        # The returned message. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   true
-        # *   false
+        # - true: successful
+        # 
+        # - false: failed
         self.success = success
 
     def validate(self):

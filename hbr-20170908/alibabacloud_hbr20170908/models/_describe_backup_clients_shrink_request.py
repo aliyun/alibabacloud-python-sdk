@@ -22,34 +22,34 @@ class DescribeBackupClientsShrinkRequest(DaraModel):
         page_size: int = None,
         tag: List[main_models.DescribeBackupClientsShrinkRequestTag] = None,
     ):
-        # The IDs of HBR clients.
+        # The list of backup client IDs.
         self.client_ids_shrink = client_ids_shrink
-        # The type of the HBR client. Valid values:
-        # 
-        # *   **ECS_CLIENT**: HBR client for Elastic Compute Service (ECS) file backup
-        # *   **CONTAINER_CLIENT**: HBR client for container backup
+        # The type of the backup client. Valid values:
+        # - **ECS_CLIENT**: ECS File Backup client.
+        # - **CONTAINER_CLIENT**: container backup client.
+        # - **LOCAL_CLIENT**: local NAS backup, CPFS backup, archive, or data synchronization client.
         # 
         # This parameter is required.
         self.client_type = client_type
-        # The ID of the cluster for the backup.
+        # The ID of the backup cluster.
         self.cluster_id = cluster_id
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The name of the RAM role created in the source account for cross-account backup.
         self.cross_account_role_name = cross_account_role_name
-        # Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-        # 
-        # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+        # The type of cross-account backup. Valid values: 
+        # - SELF_ACCOUNT: backup within the current account. 
+        # - CROSS_ACCOUNT: cross-account backup.
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The ID of the source account used for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        # The query filters.
         self.filters = filters
-        # The IDs of ECS instances.
+        # The list of ECS instance IDs.
         self.instance_ids_shrink = instance_ids_shrink
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
         self.page_size = page_size
-        # The tags.
+        # The tag information to return.
         self.tag = tag
 
     def validate(self):
@@ -157,15 +157,15 @@ class DescribeBackupClientsShrinkRequestTag(DaraModel):
     ):
         # The tag key of the backup vault. Valid values of N: 1 to 20.
         # 
-        # *   The tag key cannot start with `aliyun` or `acs:`.
-        # *   The tag key cannot contain `http://` or `https://`.
-        # *   The tag key cannot be an empty string.
+        # - The tag key cannot start with `aliyun` or `acs:`. 
+        # - The tag key cannot contain `http://` or `https://`.
+        # - The tag key cannot be an empty string.
         self.key = key
         # The tag value of the backup vault. Valid values of N: 1 to 20.
         # 
-        # *   The tag value cannot start with `aliyun` or `acs:`.
-        # *   The tag value cannot contain `http://` or `https://`.
-        # *   The tag value cannot be an empty string.
+        # - The tag value cannot start with `aliyun` or `acs:`. 
+        # - The tag value cannot contain `http://` or `https://`.
+        # - The tag value cannot be an empty string.
         self.value = value
 
     def validate(self):
@@ -200,7 +200,9 @@ class DescribeBackupClientsShrinkRequestFilters(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
+        # The key of the query filter.
         self.key = key
+        # The values to match in the query filter.
         self.values = values
 
     def validate(self):

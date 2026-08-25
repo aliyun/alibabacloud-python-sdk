@@ -11,9 +11,14 @@ class DeleteVaultReplicationRequest(DaraModel):
         replication_source_vault_id: str = None,
         replication_target_vault_id: str = None,
     ):
+        # The ID of the source region. If you leave this parameter empty, the region where you call the API is used.
         self.replication_source_region_id = replication_source_region_id
+        # The ID of the source backup vault.
+        # 
         # This parameter is required.
         self.replication_source_vault_id = replication_source_vault_id
+        # The ID of the destination backup vault.
+        # 
         # This parameter is required.
         self.replication_target_vault_id = replication_target_vault_id
 

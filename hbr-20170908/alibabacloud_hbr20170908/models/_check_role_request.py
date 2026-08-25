@@ -11,22 +11,21 @@ class CheckRoleRequest(DaraModel):
         cross_account_role_name: str = None,
         cross_account_user_id: int = None,
     ):
-        # The type of the role. Valid values:
-        # 
-        # *   EcsRole: a role with the permissions to access Elastic Compute Service (ECS) resources
-        # *   CsgRole: a role with the permissions to perform Cloud Storage Gateway (CSG) backup
-        # *   NasRole: a role with the permissions to perform NAS backup
-        # *   OssRole: a role with the permissions to perform Object Storage Service (OSS) backup
-        # *   UdmRole: a role with the permissions to perform ECS instance backup
-        # *   VMwareLocalRole: a role with the permissions to back up on-premises VMware virtual machines (VMs)
-        # *   VMwareCloudRole: a role with the permissions to back up VMs deployed on Alibaba Cloud VMware Service (ACVS)
-        # *   EcsBackupRole: a role with the permissions to perform ECS backup
-        # *   OtsRole: a role with the permissions to perform Tablestore backup
-        # *   CrossAccountRole: a role with the permissions to perform cross-account backup
+        # The role type. Valid values:
+        # - EcsRole: access permissions for ECS resources
+        # - CsgRole: permissions to back up Cloud Storage Gateway resources
+        # - NasRole: permissions to back up NAS resources
+        # - OssRole: permissions to back up OSS resources
+        # - UdmRole: permissions to back up entire ECS instances
+        # - VMwareLocalRole: permissions to back up on-premises VMware virtual machines
+        # - VMwareCloudRole: permissions to back up cloud-based VMware virtual machines
+        # - EcsBackupRole: permissions for ECS backup
+        # - OtsRole: permissions to back up OTS resources
+        # - CrossAccountRole: permissions for cross-account backup
         self.check_role_type = check_role_type
-        # The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The name of the RAM role created in the source account for cross-account backup managed by the current account.
         self.cross_account_role_name = cross_account_role_name
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The ID of the source account for cross-account backup managed by the current account.
         self.cross_account_user_id = cross_account_user_id
 
     def validate(self):

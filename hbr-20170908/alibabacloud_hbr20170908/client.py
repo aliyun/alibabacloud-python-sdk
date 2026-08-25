@@ -53,7 +53,40 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'hbr.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'hbr.aliyuncs.com',
             'eu-west-1-oxs': 'hbr.aliyuncs.com',
-            'rus-west-1-pop': 'hbr.aliyuncs.com'
+            'rus-west-1-pop': 'hbr.aliyuncs.com',
+            'cn-wulanchabu': 'hbr.cn-wulanchabu.aliyuncs.com',
+            'cn-beijing': 'hbr.cn-beijing.aliyuncs.com',
+            'cn-qingdao': 'hbr.cn-qingdao.aliyuncs.com',
+            'cn-shanghai': 'hbr.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'hbr.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'hbr.cn-heyuan.aliyuncs.com',
+            'cn-zhangjiakou': 'hbr.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'hbr.cn-shenzhen.aliyuncs.com',
+            'ap-northeast-2': 'hbr.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'hbr.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'hbr.cn-chengdu.aliyuncs.com',
+            'cn-guangzhou': 'hbr.cn-guangzhou.aliyuncs.com',
+            'ap-southeast-1': 'hbr.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'hbr.ap-southeast-3.aliyuncs.com',
+            'cn-huhehaote': 'hbr.cn-huhehaote.aliyuncs.com',
+            'ap-southeast-5': 'hbr.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'hbr.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'hbr.ap-southeast-7.aliyuncs.com',
+            'cn-hangzhou': 'hbr.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-8': 'hbr.ap-southeast-8.aliyuncs.com',
+            'cn-zhongwei': 'hbr.cn-zhongwei.aliyuncs.com',
+            'us-southeast-1': 'hbr.us-southeast-1.aliyuncs.com',
+            'na-south-1': 'hbr.na-south-1.aliyuncs.com',
+            'eu-central-1': 'hbr.eu-central-1.aliyuncs.com',
+            'us-west-1': 'hbr.us-west-1.aliyuncs.com',
+            'eu-west-1': 'hbr.eu-west-1.aliyuncs.com',
+            'us-east-1': 'hbr.us-east-1.aliyuncs.com',
+            'me-central-1': 'hbr.me-central-1.aliyuncs.com',
+            'me-east-1': 'hbr.me-east-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'hbr.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-beijing-finance-1': 'hbr.cn-beijing-finance-1.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'hbr.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-hangzhou-finance': 'hbr.cn-hangzhou-finance.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('hbr', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -5106,17 +5139,27 @@ class Client(OpenApiClient):
 
     def describe_policies_v2with_options(
         self,
-        request: main_models.DescribePoliciesV2Request,
+        tmp_req: main_models.DescribePoliciesV2Request,
         runtime: RuntimeOptions,
     ) -> main_models.DescribePoliciesV2Response:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DescribePoliciesV2ShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.accounts):
+            request.accounts_shrink = Utils.array_to_string_with_specified_style(tmp_req.accounts, 'Accounts', 'json')
         body = {}
+        if not DaraCore.is_null(request.account_scope):
+            body['AccountScope'] = request.account_scope
+        if not DaraCore.is_null(request.accounts_shrink):
+            body['Accounts'] = request.accounts_shrink
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.policy_id):
             body['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.rule_scope):
+            body['RuleScope'] = request.rule_scope
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -5138,17 +5181,27 @@ class Client(OpenApiClient):
 
     async def describe_policies_v2with_options_async(
         self,
-        request: main_models.DescribePoliciesV2Request,
+        tmp_req: main_models.DescribePoliciesV2Request,
         runtime: RuntimeOptions,
     ) -> main_models.DescribePoliciesV2Response:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DescribePoliciesV2ShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.accounts):
+            request.accounts_shrink = Utils.array_to_string_with_specified_style(tmp_req.accounts, 'Accounts', 'json')
         body = {}
+        if not DaraCore.is_null(request.account_scope):
+            body['AccountScope'] = request.account_scope
+        if not DaraCore.is_null(request.accounts_shrink):
+            body['Accounts'] = request.accounts_shrink
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.policy_id):
             body['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.rule_scope):
+            body['RuleScope'] = request.rule_scope
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )

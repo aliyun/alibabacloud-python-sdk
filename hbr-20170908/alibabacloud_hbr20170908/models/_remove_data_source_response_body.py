@@ -12,9 +12,17 @@ class RemoveDataSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.code = code
+        # The message returned. If the request was successful, `successful` is returned. Otherwise, an error message is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

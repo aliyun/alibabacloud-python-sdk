@@ -20,22 +20,23 @@ class DescribeBackupJobs2ResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.backup_jobs = backup_jobs
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The message that is returned. If the request was successful, successful is returned. If the request failed, an error message is returned.
         self.message = message
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries returned per page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. The default value is 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful.
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
-        # The total number of returned backup jobs that meet the specified conditions.
+        # The total number of backup jobs that meet the specified criteria.
         self.total_count = total_count
 
     def validate(self):

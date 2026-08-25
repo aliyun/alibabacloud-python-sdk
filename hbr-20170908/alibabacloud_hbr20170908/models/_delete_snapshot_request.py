@@ -15,25 +15,26 @@ class DeleteSnapshotRequest(DaraModel):
         token: str = None,
         vault_id: str = None,
     ):
-        # The ID of the Cloud Backup client. If you delete a backup snapshot for Elastic Compute Service (ECS) instances, you must specify one of the ClientId and **InstanceId** parameters.
+        # The client ID. When deleting a backup snapshot of ECS File Backup Essential Edition, you must specify either this parameter or **InstanceId**.
         self.client_id = client_id
-        # This parameter is deprecated.
+        # Deprecated.
         self.force = force
-        # The ID of the ECS instance. If you delete a backup snapshot for ECS instances, you must specify one of the InstanceId and **ClientId** parameters.
+        # The ECS instance ID. When deleting a backup snapshot of ECS File Backup Essential Edition, you must specify either this parameter or **ClientId**.
         self.instance_id = instance_id
-        # The ID of the backup snapshot.
+        # The backup snapshot ID.
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id
-        # The type of the backup source. Valid values:
+        # The backup source type. Valid values:
         # 
-        # *   **ECS_FILE**: backup snapshots for ECS files
-        # *   **OSS**: backup snapshots for Object Storage Service (OSS) buckets
-        # *   **NAS**: backup snapshots for Apsara File Storage NAS (NAS) file systems
+        # * **ECS_FILE**: backup snapshot of ECS File Backup Essential Edition.
+        # * **OSS**: backup snapshot of Alibaba Cloud OSS.
+        # * **NAS**: backup snapshot of Alibaba Cloud NAS.
+        # * **UDM_ECS**: backup snapshot of an entire ECS instance.
         self.source_type = source_type
-        # The token that you want to delete.
+        # The token for the deletion.
         self.token = token
-        # The ID of the backup vault.
+        # The backup vault ID.
         self.vault_id = vault_id
 
     def validate(self):

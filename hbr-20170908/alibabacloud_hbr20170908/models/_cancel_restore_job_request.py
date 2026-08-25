@@ -11,12 +11,13 @@ class CancelRestoreJobRequest(DaraModel):
         restore_id: str = None,
         vault_id: str = None,
     ):
+        # The edition. Valid values: BASIC and STANDARD. The default value is STANDARD.
         self.edition = edition
         # The ID of the restore job.
         # 
         # This parameter is required.
         self.restore_id = restore_id
-        # The ID of the backup vault.
+        # The ID of the backup repository.
         self.vault_id = vault_id
 
     def validate(self):

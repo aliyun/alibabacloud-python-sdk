@@ -13,18 +13,18 @@ class CreatePolicyV2ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. 200 indicates success.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
         self.message = message
-        # The ID of the backup policy.
+        # The policy ID.
         self.policy_id = policy_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true
+        # - false
         self.success = success
 
     def validate(self):

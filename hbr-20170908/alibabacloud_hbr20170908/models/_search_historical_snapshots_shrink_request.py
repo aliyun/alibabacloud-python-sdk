@@ -15,69 +15,89 @@ class SearchHistoricalSnapshotsShrinkRequest(DaraModel):
         sort_by: str = None,
         source_type: str = None,
     ):
+        # The edition. Valid values are BASIC and STANDARD. The default value is STANDARD.
         self.edition = edition
-        # The maximum number of rows that you want the current query to return. To query only the number of matched rows without the need to return specific data, you can set the Limit parameter to `0`. Then, the operation returns only the number of matched rows.
+        # The maximum number of results to return.
+        # To retrieve only the number of rows without any data, set Limit to `0`.
         self.limit = limit
-        # The token that is required to obtain the next page of backup snapshots.
+        # The token that is required to obtain the next page of snapshots.
         self.next_token = next_token
-        # The ordering mode. Valid values:
+        # The sort order. The default value is ASC.
         # 
-        # *   ASC (default): ascending order
-        # *   DESC: descending order
+        # - ASC: ascending
+        # 
+        # - DESC: descending
         self.order = order
-        # The query conditions. Example:
+        # The query conditions. For example:
         # 
-        #     [
-        #       {
-        #         "field": "VaultId",
-        #         "value": "v-0003rf9m*****qx5",
-        #         "operation": "MATCH_TERM"
-        #       },
-        #       {
-        #         "field": "InstanceId",
-        #         "value": "i-bp1i20zq2*****e9368m",
-        #         "operation": "MATCH_TERM"
-        #       },
-        #       {
-        #         "field": "PlanId",
-        #         "value": "plan-0005vk*****gkd1iu4f",
-        #         "operation": "MATCH_TERM"
-        #       },
-        #       {
-        #         "field": "CompleteTime",
-        #         "value": "1626769913",
-        #         "operation": "GREATER_THAN_OR_EQUAL"
-        #       }
-        #     ]
+        # ```
+        # [
+        #   {
+        #     "field": "VaultId",
+        #     "value": "v-0003rf9m*****qx5",
+        #     "operation": "MATCH_TERM"
+        #   },
+        #   {
+        #     "field": "InstanceId",
+        #     "value": "i-bp1i20zq2*****e9368m",
+        #     "operation": "MATCH_TERM"
+        #   },
+        #   {
+        #     "field": "PlanId",
+        #     "value": "plan-0005vk*****gkd1iu4f",
+        #     "operation": "MATCH_TERM"
+        #   },
+        #   {
+        #     "field": "CompleteTime",
+        #     "value": "1626769913",
+        #     "operation": "GREATER_THAN_OR_EQUAL"
+        #   }
+        # ]
+        # ```
         # 
-        # *   The following fields are supported:
+        # - Supported fields:
         # 
-        #     *   VaultId: specifies the ID of the backup vault. This field is required.
-        #     *   InstanceId: specifies the ID of the Elastic Compute Service (ECS) instance. If the SourceType parameter is set to ECS_FILE, this field is required.
-        #     *   Bucket: specifies the name of the Object Storage Service (OSS) bucket. If the SourceType parameter is set to OSS, this field is required.
-        #     *   FileSystemId: specifies the ID of the File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
-        #     *   CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
-        #     *   CompleteTime: specifies the time when the backup snapshot was completed.
-        #     *   PlanId: the ID of a backup plan.
+        #   - VaultId: This parameter is required. The ID of the backup vault.
         # 
-        # *   The following operations are supported:
+        #   - InstanceId: This parameter is required only when SourceType is set to ECS_FILE. The ID of the ECS instance.
         # 
-        #     *   MATCH_TERM: exact match.
-        #     *   GREATER_THAN: greater than.
-        #     *   GREATER_THAN_OR_EQUAL: greater than or equal to.
-        #     *   LESS_THAN: less than.
-        #     *   LESS_THAN_OR_EQUAL: less than or equal to.
-        #     *   BETWEEN: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
-        #     *   IN: specifies an array as a collection. The results must fall within the collection.
-        #     *   NOT_IN: specifies an array as a collection. The results cannot fall within the collection.
+        #   - Bucket: This parameter is required only when SourceType is set to OSS. The name of the OSS bucket.
+        # 
+        #   - FileSystemId: This parameter is required only when SourceType is set to NAS. The ID of the NAS file system.
+        # 
+        #   - CreateTime: This parameter is required only when SourceType is set to NAS. The time when the NAS file system was created.
+        # 
+        #   - CompleteTime: The time when the snapshot was completed.
+        # 
+        #   - PlanId: The ID of the backup plan.
+        # 
+        # - Supported operations:
+        # 
+        #   - MATCH_TERM: exact match.
+        # 
+        #   - GREATER_THAN: greater than.
+        # 
+        #   - GREATER_THAN_OR_EQUAL: greater than or equal to.
+        # 
+        #   - LESS_THAN: less than.
+        # 
+        #   - LESS_THAN_OR_EQUAL: less than or equal to.
+        # 
+        #   - BETWEEN: a range. The value is a JSON array in the `[lower bound,upper bound]` format.
+        # 
+        #   - IN: in a collection. The value is an array.
+        # 
+        #   - NOT_IN: not in a collection. The value is an array.
         self.query_shrink = query_shrink
-        # The field that is used to sort data.
+        # The field to sort by.
         self.sort_by = sort_by
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: backup snapshots for Elastic Compute Service (ECS) files
-        # *   **OSS**: backup snapshots for Object Storage Service (OSS) buckets
-        # *   **NAS**: backup snapshots for Apsara File Storage NAS file systems
+        # - **ECS_FILE**: a backup snapshot of ECS files.
+        # 
+        # - **OSS**: a backup snapshot of Alibaba Cloud OSS.
+        # 
+        # - **NAS**: a backup snapshot of Alibaba Cloud NAS.
         self.source_type = source_type
 
     def validate(self):

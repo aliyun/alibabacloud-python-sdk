@@ -10,8 +10,11 @@ class DeleteContainerClusterRequest(DaraModel):
         cluster_id: str = None,
         force: bool = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to forcibly delete active container backup clients.
         self.force = force
 
     def validate(self):

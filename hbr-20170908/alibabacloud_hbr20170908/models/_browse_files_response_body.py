@@ -21,15 +21,28 @@ class BrowseFilesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.code = code
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # The response message. The value `successful` is returned if the request was successful. An error message is returned if the request failed.
         self.message = message
+        # The pagination token for the next page of results. An empty value indicates that no more pages are available.
         self.next_token = next_token
         self.nodes = nodes
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

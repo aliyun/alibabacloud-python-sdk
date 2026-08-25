@@ -11,15 +11,22 @@ class DeletePolicyBindingShrinkRequest(DaraModel):
         policy_id: str = None,
         source_type: str = None,
     ):
-        # The IDs of the data sources that you want to disassociate from the backup policy.
+        # The list of data source IDs to dissociate from the policy.
         self.data_source_ids_shrink = data_source_ids_shrink
-        # The ID of the backup policy.
+        # The policy ID.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The type of the data source. Valid values:
+        # The data source type. Valid values:
         # 
-        # *   **UDM_ECS**: ECS instance backup
+        # - **UDM_ECS**: ECS instance backup.
+        # - **OSS**: OSS backup.
+        # - **NAS**: Alibaba Cloud NAS backup.
+        # - **COMMON_NAS**: On-premises NAS backup.
+        # - **ECS_FILE**: ECS File Backup Essential Edition.
+        # - **File**: On-premises file backup.
+        # - **COMMON_FILE_SYSTEM**: CPFS backup.
+        # - **OTS**: Tablestore backup.
         self.source_type = source_type
 
     def validate(self):

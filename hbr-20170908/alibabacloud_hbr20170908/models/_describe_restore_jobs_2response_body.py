@@ -19,23 +19,25 @@ class DescribeRestoreJobs2ResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The response status code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The response message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+        # The response message. If the request is successful, "successful" is returned. Otherwise, an error message is returned.
         self.message = message
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the returned page. Pages start from 1. Default: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. Default: 10.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        # A container for the restore job details.
         self.restore_jobs = restore_jobs
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):

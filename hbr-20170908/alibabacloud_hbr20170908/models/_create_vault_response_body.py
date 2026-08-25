@@ -14,18 +14,19 @@ class CreateVaultResponseBody(DaraModel):
         task_id: str = None,
         vault_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, \\`successful\\` is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
-        # The ID of the initialization task used to initialize the backup vault. You can call the DescribeTask operation to query the status of an initialization task.
+        # The ID of the backup vault initialization task. Use the DescribeTask operation to query the task status.
         self.task_id = task_id
         # The ID of the backup vault.
         self.vault_id = vault_id

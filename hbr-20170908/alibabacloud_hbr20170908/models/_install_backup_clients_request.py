@@ -14,16 +14,17 @@ class InstallBackupClientsRequest(DaraModel):
         cross_account_user_id: int = None,
         instance_ids: Dict[str, Any] = None,
     ):
-        # The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The name of the RAM role that is created in the source account for cross-account backup.
         self.cross_account_role_name = cross_account_role_name
-        # Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+        # The type of cross-account backup. Valid values:
         # 
-        # *   SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+        # - SELF_ACCOUNT: Backs up data within the current account.
+        # 
+        # - CROSS_ACCOUNT: Backs up data across accounts.
         self.cross_account_type = cross_account_type
-        # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+        # The ID of the source account that is used for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
-        # The IDs of the ECS instances. You can specify up to 20 IDs.
+        # The IDs of the ECS instances. You can specify a maximum of 20 instance IDs.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

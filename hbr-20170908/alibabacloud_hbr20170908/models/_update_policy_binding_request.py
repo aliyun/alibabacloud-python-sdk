@@ -23,39 +23,49 @@ class UpdatePolicyBindingRequest(DaraModel):
     ):
         # The advanced options.
         self.advanced_options = advanced_options
-        # The ID of the data source.
+        # The data source ID.
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # Specifies whether to disable the backup policy for the data source. Valid values:
-        # 
-        # *   true: disables the backup policy for the data source
-        # *   false: enables the backup policy for the data source
+        # Specifies whether the policy is suspended for the data source.
+        # - true: Suspended.
+        # - false: Not suspended.
         self.disabled = disabled
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+        # This parameter is valid only when **SourceType** is set to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. Specifies the file types to back up. All files of these types are backed up. The value can be up to 255 characters in length.
         self.exclude = exclude
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+        # This parameter is valid only when **SourceType** is set to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. Specifies the file types to back up. All files of these types are backed up. The value can be up to 255 characters in length.
         self.include = include
-        # The description of the association.
+        # The description of the policy binding.
         self.policy_binding_description = policy_binding_description
-        # The ID of the backup policy.
+        # The policy ID.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # *   If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
-        # *   If the SourceType parameter is set to **ECS_FILE** or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
+        # The meaning varies depending on the SourceType value:
+        # - **OSS**: The prefix to back up. If not specified, the entire root directory of the bucket is backed up. Only a single prefix is supported. To back up /backup, set this parameter to /backup.
+        # - **ECS_FILE**: The file directories to back up. If not specified, all directories are backed up. Multiple directories are supported. To back up files in /a and /b, set this parameter to ["/a", "/b"].
+        # - **File**: The file directories to back up. If not specified, all directories are backed up. Multiple directories are supported. To back up files in /a and /b, set this parameter to ["/a", "/b"].
+        # - **COMMON_FILE_SYSTEM**: Required. The source paths to back up. Multiple paths are supported. To back up /a and /b, set this parameter to ["/a", "/b"]. To back up the root path, set this parameter to ["/"].
+        # - **COMMON_NAS**: Required. The source path to back up. Only a single path is supported. To back up /a, set this parameter to ["/a"]. To back up the root path, set this parameter to ["/"].
+        # - **OTS**: The list of data tables to back up. If not specified, all data tables are backed up. Multiple data tables are supported. To back up data tables a and b, set this parameter to ["a", "b"].
         self.source = source
-        # The type of the data source. Valid values:
-        # 
-        # *   **UDM_ECS**: ECS instance backup
+        # The data source type. Valid values:
+        # - **UDM_ECS**: ECS instance backup.
+        # - **OSS**: OSS backup.
+        # - **NAS**: Alibaba Cloud NAS backup.
+        # - **COMMON_NAS**: On-premises NAS backup.
+        # - **ECS_FILE**: ECS File Backup Essential Edition.
+        # - **File**: On-premises file backup.
+        # - **COMMON_FILE_SYSTEM**: CPFS backup.
+        # - **OTS**: Tablestore backup.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # This parameter is required only if you set the **SourceType** parameter to **ECS_FILE** or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+        # This parameter is required only when **SourceType** is set to **ECS_FILE** or **File**. Specifies the backup traffic control. The format is `{start}{end}{bandwidth}`. Multiple traffic control configurations are separated by delimiters, and the time ranges cannot overlap.
         # 
-        # *   **start**: the start hour.
-        # *   **end**: the end hour.
-        # *   **bandwidth**: the bandwidth. Unit: KB/s.
+        # - **start**: The start hour.
+        # - **end**: The end hour.
+        # - **bandwidth**: The rate limit, in KB/s.
         self.speed_limit = speed_limit
 
     def validate(self):
@@ -141,11 +151,11 @@ class UpdatePolicyBindingRequestAdvancedOptions(DaraModel):
         oss_detail: main_models.UpdatePolicyBindingRequestAdvancedOptionsOssDetail = None,
         udm_detail: main_models.UpdatePolicyBindingRequestAdvancedOptionsUdmDetail = None,
     ):
-        # The details about large-scale file system backup.
+        # The large-scale file system backup details.
         self.common_file_system_detail = common_file_system_detail
-        # The details about Object Storage Service (OSS) backup.
+        # The OSS backup details.
         self.oss_detail = oss_detail
-        # The details about Elastic Compute Service (ECS) instance backup.
+        # The ECS instance backup details.
         self.udm_detail = udm_detail
 
     def validate(self):
@@ -202,30 +212,29 @@ class UpdatePolicyBindingRequestAdvancedOptionsUdmDetail(DaraModel):
         snapshot_group: bool = None,
         timeout_in_seconds: int = None,
     ):
-        # Specifies whether to enable application consistency. You can enable application consistency only if all disks are ESSDs.
+        # Specifies whether to create an application-consistent snapshot. Application-consistent snapshots are supported only when all cloud disk types are ESSD.
         self.app_consistent = app_consistent
-        # The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
+        # The list of cloud disk IDs that need to be protected. This value is empty when all cloud disks are protected.
         self.disk_id_list = disk_id_list
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+        # This parameter is required only when **AppConsistent** is set to **true**. Specifies whether to use the Linux FsFreeze mechanism to ensure the file system is in read consistency before creating an application-consistent snapshot. Default value: true.
         self.enable_fs_freeze = enable_fs_freeze
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
-        # 
-        # *   true: creates application-consistent snapshots
-        # *   false: creates file system-consistent snapshots
+        # This parameter is required only when **AppConsistent** is set to **true**. Specifies whether to create an application-consistent snapshot:
+        # - true: Creates an application-consistent snapshot.
+        # - false: Creates a file system-consistent snapshot.
         # 
         # Default value: true.
         self.enable_writers = enable_writers
-        # The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
+        # The list of cloud disk IDs that do not need to be protected. This parameter is ignored when DiskIdList is not empty.
         self.exclude_disk_id_list = exclude_disk_id_list
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+        # This parameter is required only when **AppConsistent** is set to **true**. The path of the post-thaw script to run after creating an application-consistent snapshot.
         self.post_script_path = post_script_path
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+        # This parameter is required only when **AppConsistent** is set to **true**. The path of the pre-freeze script to run before creating an application-consistent snapshot.
         self.pre_script_path = pre_script_path
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the name of the Resource Access Management (RAM) role that is required to create application-consistent snapshots.
+        # This parameter is required only when **AppConsistent** is set to **true**. The RAM role name required for creating application-consistent snapshots.
         self.ram_role_name = ram_role_name
-        # Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are Enterprise SSDs (ESSDs).
+        # Specifies whether to create a snapshot-consistent group. Snapshot-consistent groups are supported only when all cloud disk types are ESSD.
         self.snapshot_group = snapshot_group
-        # This parameter is required only if you set the **AppConsistent** parameter to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+        # This parameter is required only when **AppConsistent** is set to **true**. The I/O freeze timeout period. Unit: seconds. Default value: 30.
         self.timeout_in_seconds = timeout_in_seconds
 
     def validate(self):
@@ -309,18 +318,16 @@ class UpdatePolicyBindingRequestAdvancedOptionsOssDetail(DaraModel):
         inventory_cleanup_policy: str = None,
         inventory_id: str = None,
     ):
-        # Do not prompt for archival type objects in task statistics and failed file lists.
+        # Specifies whether to exclude archive objects from job statistics and failed file lists.
         self.ignore_archive_object = ignore_archive_object
-        # Specifies whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
-        # 
-        # *   **NO_CLEANUP**: does not delete inventory lists.
-        # *   **DELETE_CURRENT**: deletes the current inventory list.
-        # *   **DELETE_CURRENT_AND_PREVIOUS**: deletes all inventory lists.
+        # Specifies whether to delete inventory files after backup. This parameter is valid only when OSS inventory is used. Valid values:
+        # - **NO_CLEANUP**: Do not delete.
+        # - **DELETE_CURRENT**: Delete the current file.
+        # - **DELETE_CURRENT_AND_PREVIOUS**: Delete all files.
         self.inventory_cleanup_policy = inventory_cleanup_policy
-        # The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
-        # 
-        # *   If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
-        # *   A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+        # The OSS inventory name. When this value is not empty, the OSS inventory is used for performance optimization.
+        # - For more than 100 million OSS objects, use an inventory to improve incremental performance. Storage fees generated by inventory files are charged separately by OSS.
+        # - OSS inventory files take time to generate. Backup jobs may fail before the inventory files are generated. Wait for the next cycle to execute.
         self.inventory_id = inventory_id
 
     def validate(self):
@@ -361,12 +368,11 @@ class UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail(DaraModel)
         fetch_slice_size: int = None,
         full_on_increment_fail: bool = None,
     ):
-        # The size of backup shards (the number of files).
+        # The sub-task slice size (number of files).
         self.fetch_slice_size = fetch_slice_size
-        # Specifies whether the system performs full backup if incremental backup fails. Valid values:
-        # 
-        # *   **true**: The system performs full backup if incremental backup fails.
-        # *   **false**: The system does not perform full backup if incremental backup fails.
+        # Specifies whether to switch to a full backup when an incremental backup fails. Valid values:
+        # - **true**: Switches to a full backup upon failure.
+        # - **false**: Does not switch to a full backup upon failure.
         self.full_on_increment_fail = full_on_increment_fail
 
     def validate(self):

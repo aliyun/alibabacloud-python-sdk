@@ -17,20 +17,21 @@ class DescribeUdmSnapshotsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The message that is returned. If the request was successful, **successful** is returned. If the request failed, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details about snapshots.
+        # The details of the snapshots.
         self.snapshots = snapshots
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
-        # The total number of backup snapshots.
+        # The total number of snapshots.
         self.total_count = total_count
 
     def validate(self):
@@ -123,70 +124,79 @@ class DescribeUdmSnapshotsResponseBodySnapshots(DaraModel):
         status: str = None,
         updated_time: int = None,
     ):
-        # The size of the backup snapshot. Unit: bytes.
+        # The actual size of the snapshot. Unit: bytes.
         self.actual_bytes = actual_bytes
-        # The special retention type, which is valid only for special backups. Valid values:
+        # The special retention type. This parameter is valid only for special retention backups. Valid values:
         # 
-        # *   **WEEKLY**: weekly backups
-        # *   **MONTHLY**: monthly backups
-        # *   **YEARLY**: yearly backups
+        # - **WEEKLY**: weekly special retention backup
+        # 
+        # - **MONTHLY**: monthly special retention backup
+        # 
+        # - **YEARLY**: yearly special retention backup
         self.advanced_retention_type = advanced_retention_type
+        # The error message that is returned if the archiving fails.
         self.archive_error_message = archive_error_message
+        # The archiving status.
         self.archive_status = archive_status
+        # The time when the archiving was triggered.
         self.archive_trigger_time = archive_trigger_time
-        # The backup type. Valid value: **COMPLETE**, which indicates full backup.
+        # The backup type. The value **COMPLETE** indicates a full backup.
         self.backup_type = backup_type
-        # The total amount of data. Unit: bytes.
+        # The total size of the data source. Unit: bytes.
         self.bytes_total = bytes_total
-        # Indicates whether the disk backup point can be deleted. This parameter is valid only if the value of SourceType is UDM_ECS_DISK.
+        # Indicates whether the disk backup point can be deleted. This parameter is valid only if **SourceType** is set to **UDM_ECS_DISK**.
         self.can_be_deleted = can_be_deleted
-        # The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the backup snapshot was completed. This value is a UNIX timestamp in seconds.
         self.complete_time = complete_time
         # The time when the backup snapshot was created.
         self.create_time = create_time
-        # The time when the backup snapshot was created. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the backup snapshot was created. This value is a UNIX timestamp in seconds.
         self.created_time = created_time
-        # The snapshot details.
+        # The details of the snapshot.
         self.detail = detail
-        # The ID of the cloud disk or local disk.
+        # The ID of the disk. The disk can be a cloud disk or a local disk.
         self.disk_id = disk_id
-        # The expiration time of the backup.
+        # The time when the backup expires.
         self.expire_time = expire_time
         # The ID of the ECS instance.
         self.instance_id = instance_id
         # The ID of the backup job.
         self.job_id = job_id
-        # The ID of the backup snapshot.
+        # The ID of the native snapshot.
         self.native_snapshot_id = native_snapshot_id
-        # The snapshot information.
+        # The information about the native snapshot.
         self.native_snapshot_info = native_snapshot_info
-        # The hash value of the parent backup snapshot.
+        # The hash value of the parent snapshot.
         self.parent_snapshot_hash = parent_snapshot_hash
-        # The prefix of the backup snapshot.
+        # The prefix of the snapshot.
         self.prefix = prefix
-        # The timestamp of the backup snapshot. The value is a UNIX timestamp. Unit: seconds.
+        # The timestamp of the snapshot. This value is a UNIX timestamp in seconds.
         self.real_snapshot_time = real_snapshot_time
-        # The retention period of the backup snapshot. Unit: days.
+        # The retention period of the snapshot in days.
         self.retention = retention
-        # The hash value of the backup snapshot.
+        # The hash value of the snapshot.
         self.snapshot_hash = snapshot_hash
         # The ID of the backup snapshot.
         self.snapshot_id = snapshot_id
         # The type of the data source. Valid values:
         # 
-        # *   **UDM_ECS**: ECS instance backup
-        # *   **UDM_ECS_DISK**: disk backup subtask of ECS instance backup
-        # *   **UDM_DISK**: disk backup
-        self.source_type = source_type
-        # The time when the backup snapshot was created. The value is a UNIX timestamp. Unit: seconds.
-        self.start_time = start_time
-        # The status of the backup job. Valid values:
+        # - **UDM_ECS**: ECS instance backup
         # 
-        # *   **COMPLETE**: The backup job is completed.
-        # *   **PARTIAL_COMPLETE**: The backup job is partially completed.
-        # *   **FAILED**: The backup job has failed.
+        # - **UDM_ECS_DISK**: a disk backup subtask of an ECS instance backup
+        # 
+        # - **UDM_DISK**: disk backup
+        self.source_type = source_type
+        # The time when the snapshot was started. This value is a UNIX timestamp in seconds.
+        self.start_time = start_time
+        # The status of the backup snapshot. Valid values:
+        # 
+        # - **COMPLETE**: The backup is successful.
+        # 
+        # - **PARTIAL_COMPLETE**: The backup is partially successful.
+        # 
+        # - **FAILED**: The backup failed.
         self.status = status
-        # The time when the backup snapshot was updated. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the backup snapshot was updated. This value is a UNIX timestamp in seconds.
         self.updated_time = updated_time
 
     def validate(self):
@@ -405,25 +415,25 @@ class DescribeUdmSnapshotsResponseBodySnapshotsDetail(DaraModel):
         self.contain_os_disk = contain_os_disk
         # The type of the source disk.
         self.disk_category = disk_category
-        # The name of the disk.
+        # The name of the disk device.
         self.disk_dev_name = disk_dev_name
-        # The mapping between the device and the recovery point ID.
+        # The mapping between devices and backup point IDs.
         self.disk_hbr_snapshot_id_with_device_map = disk_hbr_snapshot_id_with_device_map
-        # The IDs of the disks that are backed up at the recovery point.
+        # The list of disk IDs that are included in the backup point.
         self.disk_id_list = disk_id_list
         # The reason for the downgrade.
         self.downgrade_reason = downgrade_reason
         # The hostname.
         self.host_name = host_name
-        # The mapping between the instance ID and the disk ID.
+        # The mapping between instance IDs and disk IDs.
         self.instance_id_with_disk_id_list_map = instance_id_with_disk_id_list_map
         # The name of the instance.
         self.instance_name = instance_name
-        # The specifications of the source instance.
+        # The instance type of the source instance.
         self.instance_type = instance_type
-        # Indicates whether the backup is created by the instant clone feature.
+        # Indicates whether the backup is created for the instant clone feature.
         self.instant_access = instant_access
-        # The list of snapshot IDs, corresponding to DiskIdList.
+        # The list of native snapshot IDs. The native snapshot IDs in this list have a one-to-one correspondence with the disk IDs in the DiskIdList.
         self.native_snapshot_id_list = native_snapshot_id_list
         # The ID of the system disk.
         self.os_disk_id = os_disk_id
@@ -431,11 +441,11 @@ class DescribeUdmSnapshotsResponseBodySnapshotsDetail(DaraModel):
         self.os_name = os_name
         # The English name of the operating system.
         self.os_name_en = os_name_en
-        # The type of the operating system. Valid values: linux and windows.
+        # The type of the operating system. Valid values: linux, windows.
         self.os_type = os_type
         # The performance level of the source disk.
         self.performance_level = performance_level
-        # The system platform.
+        # The operating system.
         self.platform = platform
         # The ID of the snapshot group.
         self.snapshot_group_id = snapshot_group_id

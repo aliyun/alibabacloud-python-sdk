@@ -12,6 +12,7 @@ class EnableBackupPlanRequest(DaraModel):
         source_type: str = None,
         vault_id: str = None,
     ):
+        # The edition. Valid values are BASIC and STANDARD. The default value is STANDARD.
         self.edition = edition
         # The ID of the backup plan.
         # 
@@ -19,9 +20,11 @@ class EnableBackupPlanRequest(DaraModel):
         self.plan_id = plan_id
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: ECS files
-        # *   **OSS**: Object Storage Service (OSS) buckets
-        # *   **NAS**: Apsara File Storage NAS (NAS) file systems
+        # - **ECS_FILE**: Backs up ECS files.
+        # 
+        # - **OSS**: Backs up Alibaba Cloud OSS.
+        # 
+        # - **NAS**: Backs up Alibaba Cloud NAS.
         self.source_type = source_type
         # The ID of the backup vault.
         self.vault_id = vault_id

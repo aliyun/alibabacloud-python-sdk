@@ -15,7 +15,7 @@ class DeleteClientRequest(DaraModel):
         self.client_id = client_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the backup vault.
+        # The ID of the backup repository.
         self.vault_id = vault_id
 
     def validate(self):

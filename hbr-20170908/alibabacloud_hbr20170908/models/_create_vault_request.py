@@ -17,37 +17,43 @@ class CreateVaultRequest(DaraModel):
         vault_type: str = None,
         worm_enabled: bool = None,
     ):
-        # The description of the backup vault. The description must be 0 to 255 characters in length.
+        # The description of the backup vault. The description can be 0 to 255 characters in length.
         self.description = description
-        # The method that is used to encrypt the source data. This parameter is valid only if you set the VaultType parameter to STANDARD or OTS_BACKUP. Valid values:
+        # The encryption type of the source data. This parameter is valid only if you set VaultType to STANDARD or OTS_BACKUP. Valid values:
         # 
-        # *   **HBR_PRIVATE**: The source data is encrypted by using the built-in encryption method of Hybrid Backup Recovery (HBR).
-        # *   **KMS**: The source data is encrypted by using Key Management Service (KMS).
+        # - **HBR_PRIVATE**: The backup vault is encrypted using the built-in encryption method of Cloud Backup.
+        # 
+        # - **KMS**: The backup vault is encrypted using a customer master key (CMK) from Key Management Service (KMS).
         self.encrypt_type = encrypt_type
-        # The customer master key (CMK) created in KMS or the alias of the key. This parameter is required only if you set the EncryptType parameter to KMS.
+        # The ID or alias of the KMS key. This parameter is required only if you set EncryptType to KMS.
         self.kms_key_id = kms_key_id
+        # Specifies whether to create a replication vault.
         self.replication = replication
         # The name of the backup vault. The name must be 1 to 64 characters in length.
         # 
         # This parameter is required.
         self.vault_name = vault_name
-        # The ID of the region where the backup vault resides.
+        # The region ID of the backup vault.
         # 
         # This parameter is required.
         self.vault_region_id = vault_region_id
-        # The storage type of the backup vault.
+        # The storage class of the backup vault.
         # 
-        # *   **STANDARD**: standard storage.
-        # *   **ARCHIVE**: This parameter is deprecated.
-        # *   **COLD_ARCHIVE**: This parameter is deprecated.
-        # *   **IA**: This parameter is deprecated.
+        # - **STANDARD**: Standard.
+        # 
+        # - **ARCHIVE**: This value is deprecated.
+        # 
+        # - **COLD_ARCHIVE**: This value is deprecated.
+        # 
+        # - **IA**: This value is deprecated.
         self.vault_storage_class = vault_storage_class
         # The type of the backup vault. Valid values:
         # 
-        # *   **STANDARD**: standard backup vault
-        # *   **OTS_BACKUP**: backup vault for Tablestore
+        # - **STANDARD**: a standard backup vault.
+        # 
+        # - **OTS_BACKUP**: a Tablestore backup vault.
         self.vault_type = vault_type
-        # Specifies whether to enable the immutable backup feature.
+        # Specifies whether to enable backup locking.
         self.worm_enabled = worm_enabled
 
     def validate(self):

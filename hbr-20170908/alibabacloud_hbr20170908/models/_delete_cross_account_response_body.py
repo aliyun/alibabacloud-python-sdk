@@ -12,9 +12,17 @@ class DeleteCrossAccountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code. A value of 200 indicates that the request is successful.
         self.code = code
+        # The message returned. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request is successful.
+        # 
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

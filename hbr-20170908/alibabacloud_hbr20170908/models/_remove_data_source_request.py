@@ -9,6 +9,8 @@ class RemoveDataSourceRequest(DaraModel):
         self,
         data_source_id: str = None,
     ):
+        # The ID of the data source.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
 

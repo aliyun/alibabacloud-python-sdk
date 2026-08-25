@@ -21,8 +21,9 @@ class DetachNasFileSystemResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         # 
-        # *   true: The request is successful.
-        # *   false: The request fails.
+        # - true: The request is successful.
+        # 
+        # - false: The request fails.
         self.success = success
         # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of the asynchronous job.
         self.task_id = task_id

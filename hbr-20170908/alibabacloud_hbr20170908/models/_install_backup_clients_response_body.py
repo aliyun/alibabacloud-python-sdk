@@ -17,20 +17,21 @@ class InstallBackupClientsResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The return code. A value of 200 indicates that the operation is successful.
         self.code = code
-        # The status of the ECS instance.
+        # The status of the ECS instances.
         self.instance_statuses = instance_statuses
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The message that is returned. If the request is successful, successful is returned. If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request is successful.
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: The request is successful.
+        # 
+        # - false: The request failed.
         self.success = success
-        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        # The ID of the asynchronous task. Call the DescribeTask operation to query the task result.
         self.task_id = task_id
 
     def validate(self):
@@ -98,19 +99,23 @@ class InstallBackupClientsResponseBodyInstanceStatuses(DaraModel):
         instance_id: str = None,
         valid_instance: bool = None,
     ):
-        # The error code that is returned. Valid values:
+        # The error code. Valid values:
         # 
-        # *   If the value is empty, the call is successful.
-        # *   **InstanceNotExists**: The ECS instance does not exist.
-        # *   **InstanceNotRunning**: The ECS instance is not running.
-        # *   **CloudAssistNotRunningOnInstance**: Cloud Assistant is unavailable.
+        # - An empty value indicates that the operation is successful.
+        # 
+        # - **InstanceNotExists**: The ECS instance does not exist.
+        # 
+        # - **InstanceNotRunning**: The ECS instance is not in the Running state.
+        # 
+        # - **CloudAssistNotRunningOnInstance**: Cloud Assistant is not available.
         self.error_code = error_code
         # The ID of the ECS instance.
         self.instance_id = instance_id
-        # Indicates whether an HBR client can be installed on the ECS instance. Valid values:
+        # Indicates whether a backup client can be installed on the ECS instance.
         # 
-        # *   true: An HBR client can be installed on the ECS instance.
-        # *   false: An HBR client cannot be installed on the ECS instance.
+        # - true: The backup client can be installed.
+        # 
+        # - false: The backup client cannot be installed.
         self.valid_instance = valid_instance
 
     def validate(self):

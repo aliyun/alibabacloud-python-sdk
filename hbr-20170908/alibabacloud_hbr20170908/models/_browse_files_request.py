@@ -22,19 +22,42 @@ class BrowseFilesRequest(DaraModel):
         token: str = None,
         vault_id: str = None,
     ):
+        # The absolute path of the directory. Specify `/` to browse the root directory of the backup.
         self.absolute_path = absolute_path
+        # The backup client ID.
         self.client_id = client_id
+        # The Cloud Backup edition. Valid values:
+        # 
+        # - **STANDARD**: Standard Edition. This is the default value.
+        # 
+        # - **BASIC**: Basic Edition. Only ECS file backup is supported in Basic Edition.
         self.edition = edition
+        # The maximum number of results to return per request.
+        # 
+        # Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
+        # The token that is required to retrieve the next page of results. If this parameter is not specified, the first page of results is returned.
         self.next_token = next_token
+        # Deprecated. Use MaxResults and NextToken for pagination instead.
         self.page_number = page_number
+        # Deprecated. Use MaxResults and NextToken for pagination instead.
         self.page_size = page_size
+        # The hash value of the directory. If this parameter is not specified, the root directory of the backup is browsed.
         self.path = path
+        # Deprecated.
         self.restore_id = restore_id
         self.security_token = security_token
+        # The hash value of the backup snapshot.
         self.snapshot_hash = snapshot_hash
+        # The storage class of the backup data. Valid values:
+        # 
+        # - **STANDARD**: Standard.
+        # 
+        # - **ARCHIVE**: Archive.
         self.storage_class = storage_class
+        # Deprecated. Do not use.
         self.token = token
+        # The backup vault ID.
         self.vault_id = vault_id
 
     def validate(self):

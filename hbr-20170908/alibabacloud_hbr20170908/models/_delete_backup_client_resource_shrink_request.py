@@ -9,7 +9,7 @@ class DeleteBackupClientResourceShrinkRequest(DaraModel):
         self,
         client_ids_shrink: str = None,
     ):
-        # The IDs of HBR clients. The value can be a JSON array that consists of up to 100 client IDs. Separate the IDs with commas (,).
+        # A list of client IDs. The list can contain up to 100 client IDs.
         # 
         # This parameter is required.
         self.client_ids_shrink = client_ids_shrink

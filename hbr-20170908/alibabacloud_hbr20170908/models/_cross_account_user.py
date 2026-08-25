@@ -4,26 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteCrossAccountRequest(DaraModel):
+class CrossAccountUser(DaraModel):
     def __init__(
         self,
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
     ):
-        # The name of the RAM role of the account to back up. This parameter is required when you configure cross-account backup by assuming a RAM role.
-        # 
-        # This parameter is required.
         self.cross_account_role_name = cross_account_role_name
-        # The type of cross-account backup. Valid values:
-        # 
-        # - **CROSS_ACCOUNT**: Cross-account backup is configured by assuming a RAM role.
-        # 
-        # - **CROSS_ACCOUNT_BY_RD**: Cross-account backup is configured based on a resource directory.
         self.cross_account_type = cross_account_type
-        # The UID of the account to back up.
-        # 
-        # This parameter is required.
         self.cross_account_user_id = cross_account_user_id
 
     def validate(self):

@@ -33,8 +33,9 @@ class DescribeContainerClusterResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: The call is successful.
+        # 
+        # - false: The call fails.
         self.success = success
         # The total number of returned entries.
         self.total_count = total_count
@@ -123,9 +124,11 @@ class DescribeContainerClusterResponseBodyClusters(DaraModel):
     ):
         # The status of the client. Valid values:
         # 
-        # *   **MISS**: The client is disconnected.
-        # *   **UNKNOWN**: The client is in an unknown state.
-        # *   **READY**: The client is ready.
+        # - **MISS**: The client is disconnected.
+        # 
+        # - **UNKNOWN**: The client is in an unknown state.
+        # 
+        # - **READY**: The client is ready.
         self.agent_status = agent_status
         # The ID of the cluster.
         self.cluster_id = cluster_id
@@ -135,12 +138,13 @@ class DescribeContainerClusterResponseBodyClusters(DaraModel):
         self.description = description
         # The identifier of the cluster.
         self.identifier = identifier
-        # The name of the instance.
+        # The cluster name.
         self.name = name
         # The network type of the cluster. Valid values:
         # 
-        # *   **CLASSIC**: the classic network
-        # *   **VPC**: virtual private cloud (VPC)
+        # - **CLASSIC**: the classic network
+        # 
+        # - **VPC**: virtual private cloud (VPC)
         self.network_type = network_type
         # The token that is used to register the Hybrid Backup Recovery (HBR) client in the cluster.
         self.token = token

@@ -20,22 +20,19 @@ class DescribeBackupPlansResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.backup_plans = backup_plans
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The return code. A value of 200 indicates success.
         self.code = code
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. If the request was successful, "successful" is returned. If the request failed, the corresponding error message is returned.
         self.message = message
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # Indicates whether the request was successful.
         self.success = success
-        # The total number of returned backup plans that meet the specified conditions.
+        # The total number of backup plans that meet the specified conditions.
         self.total_count = total_count
 
     def validate(self):

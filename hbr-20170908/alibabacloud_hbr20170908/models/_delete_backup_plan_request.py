@@ -13,20 +13,25 @@ class DeleteBackupPlanRequest(DaraModel):
         source_type: str = None,
         vault_id: str = None,
     ):
+        # The edition type. Valid values are BASIC and STANDARD. The default value is STANDARD.
         self.edition = edition
         # The ID of the backup plan.
         # 
         # This parameter is required.
         self.plan_id = plan_id
-        # Specifies whether no running jobs are required.
+        # Specifies whether to prevent the deletion of the backup plan if backup jobs are running.
         self.require_no_running_jobs = require_no_running_jobs
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
-        # *   **OSS**: Object Storage Service (OSS) buckets
-        # *   **NAS**: Apsara File Storage NAS file systems
-        # *   **UDM_ECS**: ECS instances
-        # *   **OTS**: Tablestore instances
+        # - **ECS_FILE**: Backs up Elastic Compute Service (ECS) files.
+        # 
+        # - **OSS**: Backs up Object Storage Service (OSS) buckets.
+        # 
+        # - **NAS**: Backs up Network Attached Storage (NAS) file systems.
+        # 
+        # - **UDM_ECS**: Backs up entire ECS instances.
+        # 
+        # - **OTS**: Backs up Tablestore instances.
         self.source_type = source_type
         # The ID of the backup vault. This parameter is required if the SourceType parameter is not set to UDM_ECS.
         self.vault_id = vault_id

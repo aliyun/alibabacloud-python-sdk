@@ -19,13 +19,25 @@ class DescribeContainerResourceResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The return code. A value of 200 indicates success.
         self.code = code
+        # The response message. Returns "successful" on success or an error message on failure.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page in a paged query.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The list of resources.
         self.resources = resources
+        # Indicates whether the request succeeded.
+        # 
+        # - true: succeeded
+        # 
+        # - false: failed
         self.success = success
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -107,10 +119,15 @@ class DescribeContainerResourceResponseBodyResources(DaraModel):
         resource_info: str = None,
         resource_type: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster identifier.
         self.cluster_identifier = cluster_identifier
+        # The resource ID.
         self.resource_id = resource_id
+        # Resource details.
         self.resource_info = resource_info
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

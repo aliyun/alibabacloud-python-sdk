@@ -13,10 +13,19 @@ class DescribeContainerResourceRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The page number for paged queries. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
         self.page_size = page_size
+        # The resource ID.
+        # 
+        # - **ResourceType=PV**: The persistent volume ID.
         self.resource_id = resource_id
+        # The resource type. Valid value:
+        # 
+        # - **PV**: persistent volume (PV).
         self.resource_type = resource_type
 
     def validate(self):

@@ -20,7 +20,7 @@ class DescribeUdmSnapshotsRequest(DaraModel):
     ):
         # The ID of the disk.
         self.disk_id = disk_id
-        # The end of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. This value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -28,21 +28,23 @@ class DescribeUdmSnapshotsRequest(DaraModel):
         self.instance_id = instance_id
         # The ID of the backup job.
         self.job_id = job_id
-        # The list of backup snapshots.
+        # The list of snapshot IDs.
         self.snapshot_ids = snapshot_ids
         # The type of the data source. Valid values:
         # 
-        # *   **UDM_ECS**: ECS instance backup
-        # *   **UDM_ECS_DISK**: disk backup subtask of ECS instance backup
-        # *   **UDM_DISK**: disk backup
+        # - **UDM_ECS**: ECS instance backup
+        # 
+        # - **UDM_ECS_DISK**: a disk backup subtask of an ECS instance backup
+        # 
+        # - **UDM_DISK**: disk backup
         # 
         # This parameter is required.
         self.source_type = source_type
-        # The beginning of the time range to query. The value must be a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The ID of the region where the ECS instance resides.
+        # The region ID of the ECS instance.
         # 
         # This parameter is required.
         self.udm_region_id = udm_region_id

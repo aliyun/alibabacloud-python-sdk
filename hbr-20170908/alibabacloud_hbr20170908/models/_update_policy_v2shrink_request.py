@@ -12,13 +12,13 @@ class UpdatePolicyV2ShrinkRequest(DaraModel):
         policy_name: str = None,
         rules_shrink: str = None,
     ):
-        # The description of the backup policy.
+        # The policy description.
         self.policy_description = policy_description
-        # The ID of the backup policy.
+        # The policy ID.
         self.policy_id = policy_id
-        # The name of the backup policy.
+        # The policy name.
         self.policy_name = policy_name
-        # The rules in the backup policy.
+        # The list of policy rules.
         self.rules_shrink = rules_shrink
 
     def validate(self):

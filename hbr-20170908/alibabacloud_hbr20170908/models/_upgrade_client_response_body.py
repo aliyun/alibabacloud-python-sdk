@@ -21,8 +21,9 @@ class UpgradeClientResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
         self.task_id = task_id

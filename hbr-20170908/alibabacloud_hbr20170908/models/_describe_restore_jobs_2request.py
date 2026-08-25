@@ -16,20 +16,27 @@ class DescribeRestoreJobs2Request(DaraModel):
         page_size: int = None,
         restore_type: str = None,
     ):
+        # The edition. Valid values: `BASIC` and `STANDARD`. Default value: `STANDARD`.
         self.edition = edition
-        # The keys in the filter.
+        # The filter conditions.
         self.filters = filters
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
-        # The type of the data source. Valid values:
+        # The data source type. Valid values:
         # 
-        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
-        # *   **OSS**: Object Storage Service (OSS) buckets
-        # *   **NAS**: Apsara File Storage NAS file systems
-        # *   **OTS_TABLE**: Tablestore instances
-        # *   **UDM_ECS_ROLLBACK**: ECS instances
+        # - **ECS_FILE**: Restores ECS files.
+        # 
+        # - **OSS**: Restores OSS objects.
+        # 
+        # - **NAS**: Restores NAS files.
+        # 
+        # - **COMMON_FILE_SYSTEM**: Restores data to a CPFS file system.
+        # 
+        # - **OTS_TABLE**: Restores an OTS table.
+        # 
+        # - **UDM_ECS_ROLLBACK**: Restores an entire ECS instance.
         self.restore_type = restore_type
 
     def validate(self):
@@ -91,32 +98,47 @@ class DescribeRestoreJobs2RequestFilters(DaraModel):
         operator: str = None,
         values: List[str] = None,
     ):
-        # The key in the filter. Valid values:
+        # The filter key. Valid values:
         # 
-        # *   **RegionId**: the region ID
-        # *   **PlanId**: the ID of a backup plan
-        # *   **JobId**: the ID of a backup job
-        # *   **VaultId**: the ID of a backup vault
-        # *   **InstanceId**: the ID of an ECS instance
-        # *   **Bucket**: the name of an OSS bucket
-        # *   **FileSystemId**: the ID of a file system
-        # *   **Status**: the status of a backup job
-        # *   **CompleteTime**: the end time of a backup job
+        # - **RegionId**: region ID
+        # 
+        # - **PlanId**: backup plan ID
+        # 
+        # - **JobId**: backup job ID
+        # 
+        # - **VaultId**: vault ID
+        # 
+        # - **InstanceId**: ECS instance ID
+        # 
+        # - **Bucket**: OSS bucket name
+        # 
+        # - **FileSystemId**: file system ID
+        # 
+        # - **Status**: job status
+        # 
+        # - **CompleteTime**: completion time
         self.key = key
-        # The matching method. Default value: IN. This parameter specifies the operator that you want to use to match a key and a value in the filter. Valid values:
+        # The matching method. The default value is IN. Valid values:
         # 
-        # *   **EQUAL**: equal to
-        # *   **NOT_EQUAL**: not equal to
-        # *   **GREATER_THAN**: greater than
-        # *   **GREATER_THAN_OR_EQUAL**: greater than or equal to
-        # *   **LESS_THAN**: less than
-        # *   **LESS_THAN_OR_EQUAL**: less than or equal to
-        # *   **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
-        # *   **IN**: specifies an array as a collection. The results must fall within the collection.
+        # - **EQUAL**: Equal to
         # 
-        # > If you specify the **CompleteTime** parameter as a key to query backup jobs, you cannot use the IN operator to perform a match.
+        # - **NOT_EQUAL**: Not equal to
+        # 
+        # - **GREATER_THAN**: Greater than
+        # 
+        # - **GREATER_THAN_OR_EQUAL**: Greater than or equal to
+        # 
+        # - **LESS_THAN**: Less than
+        # 
+        # - **LESS_THAN_OR_EQUAL**: Less than or equal to
+        # 
+        # - **BETWEEN**: The value is within a specified range. The `Values` parameter must be a JSON array in the `[min, max]` format.
+        # 
+        # - **IN**: The value is in a specified set. The `Values` parameter must be an array.
+        # 
+        # > The IN operator is not supported when `Key` is **CompleteTime**.
         self.operator = operator
-        # The values that you want to match in the filter.
+        # An array of values for the specified filter key.
         self.values = values
 
     def validate(self):

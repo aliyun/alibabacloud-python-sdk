@@ -19,23 +19,24 @@ class DescribeCrossAccountsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates success.
         self.code = code
         self.cross_accounts = cross_accounts
-        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+        # A description of the response. Successful requests return "successful". Failed requests return an error message.
         self.message = message
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number for paging. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded.
         # 
-        # *   true
-        # *   false
+        # - true: succeeded
+        # 
+        # - false: failed
         self.success = success
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

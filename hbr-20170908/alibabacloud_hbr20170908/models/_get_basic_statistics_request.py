@@ -9,6 +9,10 @@ class GetBasicStatisticsRequest(DaraModel):
         self,
         source_type: str = None,
     ):
+        # The data source type. The valid value is:
+        # 
+        # - **ECS_FILE**: ECS File Backup.
+        # 
         # This parameter is required.
         self.source_type = source_type
 

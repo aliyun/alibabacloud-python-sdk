@@ -22,19 +22,70 @@ class AddDataSourceRequest(DaraModel):
         schedule: str = None,
         speed_limit: str = None,
     ):
+        # The ID of the client group used to access the data source.
         self.cluster_id = cluster_id
+        # The connection information for the data source. Examples:
+        # 
+        # - Local NAS data source:
+        #   {
+        #   "dataServerAddresses": [
+        #   {
+        #   "host": "123.123.123.123",
+        #   "port": "8080"
+        #   }
+        #   ],
+        #   "sharePath": "/share",
+        #   "mountOptions": "vers=3",
+        #   "fileSystemType": "nfs"
+        #   }
+        # 
+        # - CPFS AI-Computing Edition data source:
+        #   {"vpcMountTarget":"cpfs-010wn\\*\\*\\*wy-vpc-ta\\*\\*\\*8.cn-shanghai.cpfs.aliyuncs.com","sharePath":"/"}
+        # 
+        # - Other large-scale file system data source:
+        #   {"path":"/mnt"}
         self.connection_info = connection_info
+        # The access credential for the data source. This parameter is required for local NAS (SMB) data sources and for OSS- or S3-compatible data sources. Examples:
+        # 
+        # - Local NAS data source (SMB protocol):
+        #   {
+        #   "mountUsername": "\\*\\*\\*\\*\\*",
+        #   "mountPassword": "\\*\\*\\*\\*\\*"
+        #   }
+        # 
+        # - OSS-compatible or S3-compatible data source:
+        #   {
+        #   "accessKeyId": "\\*\\*\\*\\*\\*",
+        #   "accessKeySecret": "\\*\\*\\*\\*\\*"
+        #   }
         self.credential = credential
+        # The name of the data source.
+        # 
         # This parameter is required.
         self.data_source_name = data_source_name
+        # The type of the data source.
+        # 
         # This parameter is required.
         self.data_source_type = data_source_type
+        # A filter that specifies the files to exclude. This parameter applies only to data source analysis with the archive feature.
         self.exclude = exclude
+        # A filter that specifies the files to include. This parameter applies only to data source analysis with the archive feature.
         self.include = include
+        # The index level. This parameter applies only to data source analysis with the archive feature.
+        # 
+        # - `OFF`: No index is created.
+        # 
+        # - `META`: A metadata index is created.
+        # 
+        # - `ALL`: A full-text index is created. (Deprecated)
         self.index_level = index_level
+        # The options for data source analysis. This parameter applies only to data source analysis with the archive feature.
         self.options = options
+        # A list of paths for data source analysis. This parameter applies only to data source analysis with the archive feature.
         self.path = path
+        # The execution schedule. This parameter applies only to data source analysis with the archive feature. The format `I|{startTime}|{interval}` specifies a task that runs at a defined interval starting from `{startTime}`. `{interval}` is an ISO 8601 duration. For example, `PT1H` specifies a one-hour interval, and `P1D` specifies a one-day interval.
         self.schedule = schedule
+        # The rate limiting settings. This parameter applies only to data source analysis with the archive feature.
         self.speed_limit = speed_limit
 
     def validate(self):

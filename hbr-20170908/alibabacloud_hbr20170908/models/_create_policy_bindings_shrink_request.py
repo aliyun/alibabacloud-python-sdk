@@ -10,9 +10,9 @@ class CreatePolicyBindingsShrinkRequest(DaraModel):
         policy_binding_list_shrink: str = None,
         policy_id: str = None,
     ):
-        # The data sources that you want to bind to the backup policy.
+        # The list of policy bindings.
         self.policy_binding_list_shrink = policy_binding_list_shrink
-        # The ID of the backup policy.
+        # The policy ID.
         self.policy_id = policy_id
 
     def validate(self):

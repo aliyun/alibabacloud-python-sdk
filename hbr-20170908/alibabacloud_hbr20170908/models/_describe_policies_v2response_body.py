@@ -19,26 +19,26 @@ class DescribePoliciesV2ResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The response code. 200 indicates success.
         self.code = code
-        # The number of results for each query.
+        # The number of results per query.
         # 
         # Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
-        # The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+        # The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
         self.message = message
-        # The token that is used to obtain the next page of backup policies.
+        # The token required to retrieve the next page of policies.
         self.next_token = next_token
-        # The backup policies.
+        # The list of policies.
         self.policies = policies
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -124,25 +124,25 @@ class DescribePoliciesV2ResponseBodyPolicies(DaraModel):
         rules: List[main_models.DescribePoliciesV2ResponseBodyPoliciesRules] = None,
         updated_time: int = None,
     ):
+        # The user business status.
         self.business_status = business_status
-        # The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
+        # The creation time. UNIX timestamp, in seconds.
         self.created_time = created_time
-        # The number of data sources that are bound to the backup policy.
+        # The number of data sources bound to the policy.
         self.policy_binding_count = policy_binding_count
-        # The description of the backup policy.
+        # The policy description.
         self.policy_description = policy_description
-        # The ID of the backup policy.
+        # The policy ID.
         self.policy_id = policy_id
-        # The name of the backup policy.
+        # The policy name.
         self.policy_name = policy_name
         # The policy type. Valid values:
-        # 
-        # *   **STANDARD**: the general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
-        # *   **UDM_ECS_ONLY**: the ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        # - **STANDARD**: general backup policy. Supports backing up data sources other than ECS instance backup.
+        # - **UDM_ECS_ONLY**: ECS instance backup policy. Supports backing up only ECS instances.
         self.policy_type = policy_type
-        # The rules in the backup policy.
+        # The list of policy rules.
         self.rules = rules
-        # The time when the backup policy was updated. The value is a UNIX timestamp. Unit: seconds.
+        # The update time. UNIX timestamp, in seconds.
         self.updated_time = updated_time
 
     def validate(self):
@@ -238,44 +238,41 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(DaraModel):
         tag_filters: List[main_models.DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters] = None,
         vault_id: str = None,
     ):
-        # This parameter is returned only if the value of the **RuleType** parameter is **TRANSITION**. This parameter indicates the time when data is dumped from a backup vault to an archive vault. Unit: days.
+        # This parameter is required only when **RuleType** is set to **TRANSITION**. The number of days after which the backup is converted to archive storage. Unit: days.
         self.archive_days = archive_days
-        # This parameter is returned only if the value of the **RuleType** parameter is **BACKUP**. This parameter indicates the backup type. Valid value: **COMPLETE**, which indicates full backup.
+        # This parameter is required only when **RuleType** is set to **BACKUP**. The backup type. The value is **COMPLETE**, which indicates a full backup.
         self.backup_type = backup_type
-        # This parameter is required only when **RuleType** is set to **TAG**. It defines the data source filtering rule.
+        # This parameter is required only when **RuleType** is set to **TAG**. The data source filter rules.
         self.data_source_filters = data_source_filters
-        # This parameter is returned only if the **PolicyType** is **UDM_ECS_ONLY**. This parameter indicates whether the immutable backup feature is enabled.
+        # This parameter is valid only when **PolicyType** is set to **UDM_ECS_ONLY**. Specifies whether to enable backup locking.
         self.immutable = immutable
-        # Indicates whether the feature of keeping at least one backup version is enabled. Valid values:
-        # 
-        # *   **0**: The feature is disabled.
-        # *   **1**: The feature is enabled.
+        # Specifies whether to retain at least one backup version. Valid values:
+        # - **0**: Do not retain.
+        # - **1**: Retain.
         self.keep_latest_snapshots = keep_latest_snapshots
-        # This parameter is returned only if the value of the **RuleType** parameter is **REPLICATION**. This parameter indicates the ID of the destination region.
+        # This parameter is required only when **RuleType** is set to **REPLICATION**. The destination region ID for replication.
         self.replication_region_id = replication_region_id
-        # This parameter is returned only if the value of the **RuleType** parameter is **TRANSITION** or **REPLICATION**.
-        # 
-        # *   If the value of the **RuleType** parameter is **TRANSITION**, this parameter indicates the retention period of the backup data. Minimum value: 1. Unit: days.
-        # *   If the value of the **RuleType** parameter is **REPLICATION**, this parameter indicates the retention period of remote backups. Minimum value: 1. Unit: days.
+        # This parameter is required only when **RuleType** is set to **TRANSITION** or **REPLICATION**.
+        # - **RuleType** is set to **TRANSITION**: the retention period of the backup. Minimum value: 1. Unit: days.
+        # - **RuleType** is set to **REPLICATION**: the retention period of the geo-redundancy backup. Minimum value: 1. Unit: days.
         self.retention = retention
-        # This parameter is returned only if the value of the **RuleType** parameter is **TRANSITION**. This parameter indicates the special retention rules.
+        # This parameter is required only when **RuleType** is set to **TRANSITION**. The list of special retention rules.
         self.retention_rules = retention_rules
         # The rule ID.
         self.rule_id = rule_id
-        # The type of the rule. Each backup policy must have at least one rule of the **BACKUP** type and only one rule of the **TRANSITION** type. Valid values:
-        # 
-        # *   **BACKUP**: backup rule
-        # *   **TRANSITION**: lifecycle rule
-        # *   **REPLICATION**: replication rule
+        # The rule type. Each policy must have at least one **BACKUP** rule and exactly one **TRANSITION** rule. Valid values:
+        # - **BACKUP**: backup rule.
+        # - **TRANSITION**: lifecycle rule.
+        # - **REPLICATION**: replication rule.
         self.rule_type = rule_type
-        # This parameter is returned only if the value of the **RuleType** parameter is **BACKUP**. This parameter indicates the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+        # This parameter is required only when **RuleType** is set to **BACKUP**. The backup schedule. Optional format: `I|{startTime}|{interval}`. This indicates that a backup job is executed at every {interval} starting from {startTime}. Backup jobs for past time periods are not compensated. If the previous backup job is not completed, the next backup job is not triggered. For example, `I|1631685600|P1D` indicates that a backup is performed once a day starting from 2021-09-15 14:00:00.
         # 
-        # *   startTime: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
-        # *   interval: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
+        # * startTime: the start time of the backup. UNIX timestamp, in seconds.
+        # * interval: the ISO 8601 time interval. For example, PT1H indicates an interval of one hour. P1D indicates an interval of one day.
         self.schedule = schedule
-        # This parameter is required only when **RuleType** is set to **TAG**. It defines the resource tag filtering rule.
+        # This parameter is required only when **RuleType** is set to **TAG**. The resource tag filter rules.
         self.tag_filters = tag_filters
-        # This parameter is returned only if the value of the RuleType parameter is BACKUP. The ID of the backup vault.
+        # This parameter is required only when RuleType is set to BACKUP. The backup vault ID.
         self.vault_id = vault_id
 
     def validate(self):
@@ -403,11 +400,13 @@ class DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # Tag key
+        # The tag key.
         self.key = key
-        # Tag matching rules, supporting: - **EQUAL**: Matches both the tag key and tag value. - **NOT**: Matches the tag key but not the tag value.
+        # The tag matching rule. Valid values:
+        # - **EQUAL**: matches both the tag key and the tag value.
+        # - **NOT**: matches the tag key but not the tag value.
         self.operator = operator
-        # Tag value.
+        # The tag value. An empty value indicates any value.
         self.value = value
 
     def validate(self):
@@ -450,14 +449,13 @@ class DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules(DaraModel):
         which_snapshot: int = None,
     ):
         # The type of the special retention rule. Valid values:
-        # 
-        # *   **WEEKLY**: weekly backups
-        # *   **MONTHLY**: monthly backups
-        # *   **YEARLY**: yearly backups
+        # - **WEEKLY**: weekly backup.
+        # - **MONTHLY**: monthly backup.
+        # - **YEARLY**: yearly backup.
         self.advanced_retention_type = advanced_retention_type
-        # The special retention period of backups. Minimum value: 1. Unit: days.
+        # The special retention period of the backup. Minimum value: 1. Unit: days.
         self.retention = retention
-        # Indicates which backup is retained based on the special retention rule. Only the first backup can be retained.
+        # The backup to which the rule applies. Currently, only the first backup is supported. The value is 1.
         self.which_snapshot = which_snapshot
 
     def validate(self):
@@ -495,27 +493,42 @@ class DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules(DaraModel):
 class DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters(DaraModel):
     def __init__(
         self,
+        account_scope: str = None,
+        accounts: List[main_models.DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFiltersAccounts] = None,
         data_source_ids: List[str] = None,
         source_type: str = None,
     ):
+        self.account_scope = account_scope
+        self.accounts = accounts
         # Deprecated.
         self.data_source_ids = data_source_ids
-        # Data source type. The value range is as follows: 
-        # - **UDM_ECS**: Indicates ECS server backup. 
-        # - **OSS**: Indicates OSS backup. 
-        # - **NAS**: Indicates Alibaba Cloud NAS backup. 
-        # - **ECS_FILE**: Indicates ECS file backup. 
-        # - **OTS**: Indicates Tablestore backup.
+        # The data source type. Valid values:
+        # - **UDM_ECS**: ECS instance backup.
+        # - **OSS**: OSS backup.
+        # - **NAS**: Alibaba Cloud NAS backup.
+        # - **ECS_FILE**: ECS File Backup Essential Edition.
+        # - **OTS**: Tablestore backup.
         self.source_type = source_type
 
     def validate(self):
-        pass
+        if self.accounts:
+            for v1 in self.accounts:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.account_scope is not None:
+            result['AccountScope'] = self.account_scope
+
+        result['Accounts'] = []
+        if self.accounts is not None:
+            for k1 in self.accounts:
+                result['Accounts'].append(k1.to_map() if k1 else None)
+
         if self.data_source_ids is not None:
             result['DataSourceIds'] = self.data_source_ids
 
@@ -526,11 +539,63 @@ class DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountScope') is not None:
+            self.account_scope = m.get('AccountScope')
+
+        self.accounts = []
+        if m.get('Accounts') is not None:
+            for k1 in m.get('Accounts'):
+                temp_model = main_models.DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFiltersAccounts()
+                self.accounts.append(temp_model.from_map(k1))
+
         if m.get('DataSourceIds') is not None:
             self.data_source_ids = m.get('DataSourceIds')
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+
+        return self
+
+class DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFiltersAccounts(DaraModel):
+    def __init__(
+        self,
+        cross_account_role_name: str = None,
+        cross_account_type: str = None,
+        cross_account_user_id: int = None,
+    ):
+        self.cross_account_role_name = cross_account_role_name
+        self.cross_account_type = cross_account_type
+        self.cross_account_user_id = cross_account_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cross_account_role_name is not None:
+            result['CrossAccountRoleName'] = self.cross_account_role_name
+
+        if self.cross_account_type is not None:
+            result['CrossAccountType'] = self.cross_account_type
+
+        if self.cross_account_user_id is not None:
+            result['CrossAccountUserId'] = self.cross_account_user_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccountRoleName') is not None:
+            self.cross_account_role_name = m.get('CrossAccountRoleName')
+
+        if m.get('CrossAccountType') is not None:
+            self.cross_account_type = m.get('CrossAccountType')
+
+        if m.get('CrossAccountUserId') is not None:
+            self.cross_account_user_id = m.get('CrossAccountUserId')
 
         return self
 

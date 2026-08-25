@@ -17,26 +17,39 @@ class DescribeBackupJobs2Request(DaraModel):
         sort_direction: str = None,
         source_type: str = None,
     ):
+        # The edition. Valid values: BASIC and STANDARD. The default value is STANDARD.
         self.edition = edition
-        # The keys that you want to match in the filter.
+        # The key-value pairs of the filter.
         self.filters = filters
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from page 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 99. The default value is 10.
         self.page_size = page_size
-        # The order in which you want to sort the results. Valid values:
+        # The sort direction. Valid values:
         # 
-        # *   **ASCEND**: sorts the results in ascending order
-        # *   **DESCEND** (default value): sorts the results in descending order
+        # - **ASCEND**: Ascending order.
+        # 
+        # - **DESCEND** (Default): Descending order.
         self.sort_direction = sort_direction
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
-        # *   **OSS**: Object Storage Service (OSS) buckets
-        # *   **NAS**: Apsara File Storage NAS file systems
-        # *   **OTS**: Tablestore instances
-        # *   **UDM_ECS**: ECS instances
-        # *   **UDM_ECS_DISK**: ECS disks
+        # - **ECS_FILE**: Backs up Elastic Compute Service (ECS) files.
+        # 
+        # - **OSS**: Backs up Alibaba Cloud Object Storage Service (OSS) buckets.
+        # 
+        # - **NAS**: Backs up Alibaba Cloud Apsara File Storage NAS (NAS) file systems.
+        # 
+        # - **OTS**: Backs up Alibaba Cloud Tablestore instances.
+        # 
+        # - **UDM_ECS**: Backs up entire ECS instances.
+        # 
+        # - **UDM_ECS_DISK**: A sub-task for disk backup in an ECS instance backup job.
+        # 
+        # - **COMMON_NAS**: A generic NAS data source. This includes archive NAS and on-premises NAS data sources. Use the Values parameter of Filters to specify the data source type.
+        # 
+        # - **File**: Backs up on-premises files.
+        # 
+        # - **SYNC**: Data synchronization.
         self.source_type = source_type
 
     def validate(self):
@@ -104,34 +117,55 @@ class DescribeBackupJobs2RequestFilters(DaraModel):
         operator: str = None,
         values: List[str] = None,
     ):
-        # The keys in the filter. Valid values:
+        # The key of the filter. Valid values:
         # 
-        # *   **RegionId**: the ID of a region
-        # *   **PlanId**: the ID of a backup plan
-        # *   **JobId**: the ID of a backup job
-        # *   **VaultId**: the ID of a backup vault
-        # *   **InstanceId**: the ID of an ECS instance
-        # *   **Bucket**: the name of an OSS bucket
-        # *   **FileSystemId**: the ID of a file system
-        # *   **Status**: the status of a backup job
-        # *   **CreatedTime**: the start time of a backup job
-        # *   **CompleteTime**: the end time of a backup job
-        # *   **instanceName**: the name of a Tablestore instance
+        # - **RegionId**: The region ID.
+        # 
+        # - **PlanId**: The backup plan ID.
+        # 
+        # - **JobId**: The backup job ID.
+        # 
+        # - **VaultId**: The repository ID.
+        # 
+        # - **InstanceId**: The ECS instance ID.
+        # 
+        # - **Bucket**: The name of the OSS bucket.
+        # 
+        # - **FileSystemId**: The file system ID.
+        # 
+        # - **Status**: The job status.
+        # 
+        # - **CreatedTime**: The start time of the job.
+        # 
+        # - **CompleteTime**: The end time of the job.
+        # 
+        # - **InstanceName**: The name of the Tablestore instance.
+        # 
+        # - **BackupType**: The backup job. This parameter is required only when SourceType is set to COMMON_NAS.
+        # 
+        # - **ParentId**: The ID of the parent job. This parameter is required when you query sub-tasks. For example, if you set SourceType to UDM_ECS_DISK, you must specify the ID of the UDM_ECS job.
         self.key = key
-        # The matching method. Default value: IN. This parameter specifies the operator that you want to use to match a key and a value in the filter. Valid values:
+        # The matching operator. The default value is IN. This parameter specifies the operator to use for matching the Key and Value. Valid values:
         # 
-        # *   **EQUAL**: equal to
-        # *   **NOT_EQUAL**: not equal to
-        # *   **GREATER_THAN**: greater than
-        # *   **GREATER_THAN_OR_EQUAL**: greater than or equal to
-        # *   **LESS_THAN**: less than
-        # *   **LESS_THAN_OR_EQUAL**: less than or equal to
-        # *   **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,maximum value]` format.
-        # *   **IN**: specifies an array as a collection. The results must fall within the collection.
+        # - **EQUAL**: Equal to.
         # 
-        # >  If you specify **CompleteTime** as a key to query backup jobs, you cannot use the IN operator to perform a match.
+        # - **NOT_EQUAL**: Not equal to.
+        # 
+        # - **GREATER_THAN**: Greater than.
+        # 
+        # - **GREATER_THAN_OR_EQUAL**: Greater than or equal to.
+        # 
+        # - **LESS_THAN**: Less than.
+        # 
+        # - **LESS_THAN_OR_EQUAL**: Less than or equal to.
+        # 
+        # - **BETWEEN**: The value is a JSON array in the format of `[start,end]`.
+        # 
+        # - **IN**: The value is an array.
+        # 
+        # > The IN operator is not supported when you use **CompleteTime** as the key for a query.
         self.operator = operator
-        # The values that you want to match in the filter.
+        # The value of the filter.
         self.values = values
 
     def validate(self):

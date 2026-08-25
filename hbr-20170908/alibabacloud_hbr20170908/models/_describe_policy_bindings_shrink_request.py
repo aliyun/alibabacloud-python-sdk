@@ -17,20 +17,27 @@ class DescribePolicyBindingsShrinkRequest(DaraModel):
         policy_id: str = None,
         source_type: str = None,
     ):
-        # List of data source IDs.
+        # The list of data source IDs.
         self.data_source_ids_shrink = data_source_ids_shrink
-        # Query filters.
+        # The query filters.
         self.filters = filters
-        # Number of results per query.
+        # The number of results for each query.
         # 
-        # Range: 10~100. Default: 10.
+        # Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
-        # Token required to fetch the next page of policy and data source associations.
+        # The token required to obtain the next page of policy-data source associations.
         self.next_token = next_token
-        # Policy ID.
+        # The policy ID.
         self.policy_id = policy_id
-        # Data source type. Possible values:
-        # * **UDM_ECS**: Indicates ECS full machine backup.
+        # The data source type. Valid values:
+        # - **UDM_ECS**: ECS instance backup.
+        # - **OSS**: OSS backup.
+        # - **NAS**: Alibaba Cloud NAS backup.
+        # - **COMMON_NAS**: On-premises NAS backup.
+        # - **ECS_FILE**: ECS File Backup Essential Edition.
+        # - **File**: On-premises file backup.
+        # - **COMMON_FILE_SYSTEM**: CPFS backup.
+        # - **OTS**: Tablestore backup.
         self.source_type = source_type
 
     def validate(self):
@@ -98,24 +105,24 @@ class DescribePolicyBindingsShrinkRequestFilters(DaraModel):
         operator: str = None,
         values: List[str] = None,
     ):
-        # Key in the query filter. Possible values include:
+        # The key in the query filter. Valid values:
         # 
-        # - **PolicyId**: Backup policy ID
+        # - **PolicyId**: backup policy ID
         # - **DataSourceId**: ECS instance ID
-        # - **DataSourceType**: Data source type
+        # - **DataSourceType**: data source type
         self.key = key
-        # Matching method. Default is IN. This refers to the matching operation (Operator) supported by the Key and Value in the filter. Possible values include:
+        # The matching method. Default value: IN. The matching operation (Operator) supported by the Key and Value in the filter. Valid values:
         # 
-        # - **EQUAL**: Equal to
-        # - **NOT_EQUAL**: Not equal to
-        # - **GREATER_THAN**: Greater than
-        # - **GREATER_THAN_OR_EQUAL**: Greater than or equal to
-        # - **LESS_THAN**: Less than
-        # - **LESS_THAN_OR_EQUAL**: Less than or equal to
-        # - **BETWEEN**: Range, where value is a JSON array `[lower_bound, upper_bound]`.
-        # - **IN**: In the set, where value is an array.
+        # - **EQUAL**: equal to
+        # - **NOT_EQUAL**: not equal to
+        # - **GREATER_THAN**: greater than
+        # - **GREATER_THAN_OR_EQUAL**: greater than or equal to
+        # - **LESS_THAN**: less than
+        # - **LESS_THAN_OR_EQUAL**: less than or equal to
+        # - **BETWEEN**: range. The value is a JSON array `[lower bound, upper bound]`.
+        # - **IN**: in a set. The value is an array.
         self.operator = operator
-        # Values to be matched in the query filter.
+        # The values to match in the query filter.
         self.values = values
 
     def validate(self):

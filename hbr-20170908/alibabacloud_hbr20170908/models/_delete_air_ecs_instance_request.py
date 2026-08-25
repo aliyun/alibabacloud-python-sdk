@@ -12,9 +12,9 @@ class DeleteAirEcsInstanceRequest(DaraModel):
         ecs_instance_id: str = None,
         uninstall_client_source_types: List[str] = None,
     ):
-        # The ID of the Elastic Compute Service (ECS) instance.
+        # The instance ID of the ECS instance.
         self.ecs_instance_id = ecs_instance_id
-        # The data sources for which the client needs to be uninstalled.
+        # The list of data sources for which the client needs to be uninstalled.
         self.uninstall_client_source_types = uninstall_client_source_types
 
     def validate(self):

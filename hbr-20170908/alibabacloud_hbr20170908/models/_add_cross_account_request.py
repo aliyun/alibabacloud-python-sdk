@@ -12,9 +12,17 @@ class AddCrossAccountRequest(DaraModel):
         cross_account_type: str = None,
         cross_account_user_id: int = None,
     ):
+        # The alias. The maximum length is 32 characters. This parameter is not required for cross-account backups that are configured based on a resource directory.
         self.alias = alias
+        # The name of the RAM role for the account to back up. This parameter is used when you configure a cross-account backup by assuming a RAM role.
         self.cross_account_role_name = cross_account_role_name
+        # The type of cross-account backup. Valid values:
+        # 
+        # - **CROSS_ACCOUNT**: Configures a cross-account backup by assuming a RAM role.
+        # 
+        # - **CROSS_ACCOUNT_BY_RD**: Configures a cross-account backup based on a resource directory.
         self.cross_account_type = cross_account_type
+        # The UID of the account to back up.
         self.cross_account_user_id = cross_account_user_id
 
     def validate(self):

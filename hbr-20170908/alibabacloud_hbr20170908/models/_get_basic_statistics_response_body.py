@@ -18,12 +18,25 @@ class GetBasicStatisticsResponseBody(DaraModel):
         source_type: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.code = code
+        # The Backup statistics for all regions.
         self.global_statistics = global_statistics
+        # The response message. If the request is successful, `successful` is returned. If the request fails, an error message is returned.
         self.message = message
+        # The Backup statistics for each region.
         self.region_statistics = region_statistics
+        # The Request ID.
         self.request_id = request_id
+        # The data source type. The valid value is:
+        # 
+        # - **ECS_FILE**: ECS File Backup.
         self.source_type = source_type
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -100,8 +113,15 @@ class GetBasicStatisticsResponseBodyRegionStatistics(DaraModel):
         protected_resource_count: int = None,
         region_id: str = None,
     ):
+        # The backed-up data size, in bytes.
+        # 
+        # - When `SourceType` is set to `ECS_FILE`, this parameter represents the total capacity of backed-up Cloud Disks.
         self.protected_data_size = protected_data_size
+        # The number of backed-up resources.
+        # 
+        # - When `SourceType` is set to `ECS_FILE`, this parameter represents the number of backed-up ECS instances.
         self.protected_resource_count = protected_resource_count
+        # The Region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -142,7 +162,13 @@ class GetBasicStatisticsResponseBodyGlobalStatistics(DaraModel):
         protected_data_size: int = None,
         protected_resource_count: int = None,
     ):
+        # The backed-up data size, in bytes.
+        # 
+        # - When `SourceType` is set to `ECS_FILE`, this parameter represents the total capacity of backed-up Cloud Disks.
         self.protected_data_size = protected_data_size
+        # The number of backed-up resources.
+        # 
+        # - When `SourceType` is set to `ECS_FILE`, this parameter represents the number of backed-up ECS instances.
         self.protected_resource_count = protected_resource_count
 
     def validate(self):

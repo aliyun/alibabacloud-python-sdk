@@ -19,13 +19,25 @@ class DescribeDataSourcesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The HTTP status code. A value of 200 indicates success.
         self.code = code
+        # The data sources.
         self.data_sources = data_sources
+        # The response message. The value is "successful" if the request was successful, or an error message if the request failed.
         self.message = message
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The page size. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
+        # The total number of returned data sources.
         self.total_count = total_count
 
     def validate(self):
@@ -120,23 +132,47 @@ class DescribeDataSourcesResponseBodyDataSources(DaraModel):
         speed_limit: str = None,
         updated_time: int = None,
     ):
+        # The client group ID used to access the data source.
         self.cluster_id = cluster_id
+        # The connection information of the data source, which describes how to access the data source.
         self.connection_info = connection_info
+        # The time when the data source was created. UNIX timestamp in seconds.
         self.created_time = created_time
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The data source name.
         self.data_source_name = data_source_name
+        # The data source type.
         self.data_source_type = data_source_type
+        # The paths excluded from analysis. Archiving feature only.
         self.exclude = exclude
+        # The paths included in the analysis. Archiving feature only.
         self.include = include
+        # Whether the index is available. Archiving feature only.
         self.index_available = index_available
+        # The index level. Valid values:
+        # 
+        # - OFF: No index is created.
+        # 
+        # - META: A metadata index is created.
+        # 
+        # - ALL: A full-text index is created. This value is deprecated.
         self.index_level = index_level
+        # The time when the index was last updated. UNIX timestamp in seconds. Archiving feature only.
         self.index_update_time = index_update_time
+        # Whether an index is being built. Archiving feature only.
         self.indexing = indexing
+        # The analysis options. Archiving feature only.
         self.options = options
+        # The analysis paths. Archiving feature only.
         self.paths = paths
+        # The analysis plan ID. Archiving feature only.
         self.plan_id = plan_id
+        # The analysis schedule. Archiving feature only. Format: `I|{startTime}|{interval}`. `{startTime}` is the start time as a UNIX timestamp in seconds. `{interval}` is the execution interval in ISO 8601 format. Example: PT1H for one hour, P1D for one day.
         self.schedule = schedule
+        # The rate limit configuration. Archiving feature only.
         self.speed_limit = speed_limit
+        # The time when the data source was last updated. UNIX timestamp in seconds.
         self.updated_time = updated_time
 
     def validate(self):

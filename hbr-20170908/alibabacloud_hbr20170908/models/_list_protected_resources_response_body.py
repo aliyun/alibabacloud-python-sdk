@@ -19,13 +19,26 @@ class ListProtectedResourcesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The return code. A value of 200 indicates success.
         self.code = code
+        # The number of results per query.
+        # 
+        # Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
+        # The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
         self.message = message
+        # The pagination token for the next page. If this parameter is empty, no more pages are available.
         self.next_token = next_token
+        # The list of protected resources.
         self.protected_resources = protected_resources
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
+        # The total number of protected resources.
         self.total_count = total_count
 
     def validate(self):
@@ -111,14 +124,38 @@ class ListProtectedResourcesResponseBodyProtectedResources(DaraModel):
         snapshot_count: int = None,
         source_type: str = None,
     ):
+        # The number of backup plans.
         self.backup_plan_count = backup_plan_count
+        # The product capability to which the resource belongs. Valid values:
+        # - **HBR**: Cloud Backup standard capability.
+        # - **BASIC**: ECS File Backup Essential Edition.
         self.created_by_product = created_by_product
+        # The amount of protected data, in bytes. Currently, only ECS File Backup Essential Edition is supported.
+        # - **SourceType=ECS_FILE**: the backed-up block storage capacity.
         self.protected_data_size = protected_data_size
+        # The ID of the protected resource.
         self.protected_resource_id = protected_resource_id
+        # The resource ID.
+        # - **SourceType=ECS_FILE**: the ECS instance ID.
+        # - **SourceType=COMMON_FILE_SYSTEM**: the CPFS data source ID.
+        # - **SourceType=COMMON_NAS**: the on-premises NAS data source ID.
+        # - **SourceType=File**: the local service client ID.
+        # - **SourceType=NAS**: the Alibaba Cloud NAS file system ID.
+        # - **SourceType=OSS**: the OSS bucket.
         self.resource_id = resource_id
+        # The UID of the user who owns the resource.
         self.resource_owner_id = resource_owner_id
+        # The region ID of the resource.
         self.resource_region_id = resource_region_id
+        # The number of backups.
         self.snapshot_count = snapshot_count
+        # The backup feature type. Valid values:
+        # - **ECS_FILE**: ECS file backup.
+        # - **COMMON_FILE_SYSTEM**: Cloud Parallel File Storage (CPFS) backup.
+        # - **COMMON_NAS**: on-premises NAS backup.
+        # - **File**: on-premises file backup.
+        # - **NAS**: Alibaba Cloud NAS backup.
+        # - **OSS**: OSS backup.
         self.source_type = source_type
 
     def validate(self):

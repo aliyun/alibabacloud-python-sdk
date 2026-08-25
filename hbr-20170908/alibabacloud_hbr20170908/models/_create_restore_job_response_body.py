@@ -13,17 +13,17 @@ class CreateRestoreJobResponseBody(DaraModel):
         restore_id: str = None,
         success: bool = None,
     ):
-        # Return code, 200 indicates success.
+        # The response code. The value 200 indicates success.
         self.code = code
-        # Description of the return message, usually \\"successful\\" when successful, and corresponding error messages when there is an error.
+        # The response message. The value "successful" is returned for a success. An error message is returned for a failure.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Restore job ID.
+        # The ID of the restore job.
         self.restore_id = restore_id
-        # Whether the request was successful.
-        #   - true: Success
-        #   - false: Failure
+        # Indicates whether the request was successful.
+        #   - true: The request was successful.
+        #   - false: The request failed.
         self.success = success
 
     def validate(self):

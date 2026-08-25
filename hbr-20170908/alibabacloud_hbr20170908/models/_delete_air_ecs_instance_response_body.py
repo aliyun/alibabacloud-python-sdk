@@ -13,18 +13,18 @@ class DeleteAirEcsInstanceResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates success.
         self.code = code
-        # The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+        # The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
-        # The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+        # The asynchronous task ID. You can call DescribeTask to obtain the task result.
         self.task_id = task_id
 
     def validate(self):

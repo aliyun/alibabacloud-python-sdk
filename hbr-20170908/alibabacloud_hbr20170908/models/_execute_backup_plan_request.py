@@ -13,6 +13,7 @@ class ExecuteBackupPlanRequest(DaraModel):
         source_type: str = None,
         vault_id: str = None,
     ):
+        # The edition. Valid values: BASIC and STANDARD. Default value: STANDARD.
         self.edition = edition
         # The ID of the backup plan.
         # 
@@ -22,9 +23,11 @@ class ExecuteBackupPlanRequest(DaraModel):
         self.rule_id = rule_id
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: Elastic Compute Service (ECS) files
-        # *   **OSS**: Object Storage Service (OSS) buckets
-        # *   **NAS**: Apsara File Storage NAS (NAS) file systems
+        # - **ECS_FILE**: Backs up ECS files.
+        # 
+        # - **OSS**: Backs up Alibaba Cloud OSS.
+        # 
+        # - **NAS**: Backs up Alibaba Cloud NAS.
         self.source_type = source_type
         # The ID of the backup vault.
         self.vault_id = vault_id

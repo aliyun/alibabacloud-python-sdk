@@ -9,7 +9,7 @@ class DeletePolicyV2Request(DaraModel):
         self,
         policy_id: str = None,
     ):
-        # The ID of the backup policy.
+        # The policy ID.
         self.policy_id = policy_id
 
     def validate(self):

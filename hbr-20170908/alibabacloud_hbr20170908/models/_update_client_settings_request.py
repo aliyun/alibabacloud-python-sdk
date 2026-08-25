@@ -22,46 +22,44 @@ class UpdateClientSettingsRequest(DaraModel):
         use_https: bool = None,
         vault_id: str = None,
     ):
-        # Specifies whether to generate alert for partially completed jobs. This parameter is valid only for on-premises file backup and ECS file backup.
+        # Specifies whether to trigger an alert for partially completed jobs. This parameter takes effect only for local File Backup and ECS File Backup Essential Edition.
         self.alert_on_partial_complete = alert_on_partial_complete
-        # The ID of the HBR client.
+        # The backup client ID.
         # 
         # This parameter is required.
         self.client_id = client_id
-        # The type of the endpoint on the data plane. Valid values:
-        # 
-        # *   **PUBLIC**: Internet
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **CLASSIC**: classic network
+        # The data plane access point type. Valid values:
+        # * **PUBLIC**: public network
+        # * **VPC**: VPC network
+        # * **CLASSIC**: classic network
         self.data_network_type = data_network_type
-        # The proxy configuration on the data plane. Valid values:
-        # 
-        # *   **DISABLE**: The proxy is not used.
-        # *   **USE_CONTROL_PROXY** (default): The configuration is the same as that on the control plane.
-        # *   **CUSTOM**: The configuration is customized (HTTP).
+        # The data plane proxy setting. Valid values:
+        # * **DISABLE**: does not use a proxy.
+        # * **USE_CONTROL_PROXY** (default): uses the same configuration as the control plane.
+        # * **CUSTOM**: uses a custom configuration (HTTP protocol).
         self.data_proxy_setting = data_proxy_setting
-        # The number of CPU cores used by a single backup job. The value 0 indicates that the number is unlimited.
+        # The number of CPU cores used by a single backup job. A value of 0 indicates no limit.
         self.max_cpu_core = max_cpu_core
-        # The maximum memory that can be used by the client. Unit: bytes. Only V2.13.0 and later are supported.
+        # The maximum memory that the client can use, in bytes. Only version 2.13.0 and later are supported.
         self.max_memory = max_memory
-        # The number of concurrent backup jobs. The value 0 indicates that the number is unlimited.
+        # The number of concurrent workers for a single backup job. A value of 0 indicates no limit.
         self.max_worker = max_worker
-        # The custom host IP address of the proxy server on the data plane.
+        # The IP address of the custom data plane proxy server host.
         self.proxy_host = proxy_host
-        # The custom password of the proxy server on the data plane.
+        # The password of the custom data plane proxy server.
         self.proxy_password = proxy_password
-        # The custom host port of the proxy server on the data plane.
+        # The port of the custom data plane proxy server host.
         self.proxy_port = proxy_port
-        # The custom username of the proxy server on the data plane.
+        # The username of the custom data plane proxy server.
         self.proxy_user = proxy_user
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Specifies whether to transmit the data on the data plane over HTTPS. Valid values:
+        # Specifies whether to use HTTPS to transmit data plane data.
         # 
-        # *   true: Data is transmitted over HTTPS.
-        # *   false: Data is transmitted over HTTP.
+        # - true: Uses HTTPS for transmission.
+        # - false: Uses HTTP for transmission.
         self.use_https = use_https
-        # The ID of the backup vault. This parameter is required for the old HBR client.
+        # The backup vault ID. This parameter is required for legacy clients.
         self.vault_id = vault_id
 
     def validate(self):

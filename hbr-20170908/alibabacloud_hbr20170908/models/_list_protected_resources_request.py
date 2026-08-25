@@ -15,12 +15,36 @@ class ListProtectedResourcesRequest(DaraModel):
         skip: int = None,
         source_type: str = None,
     ):
+        # The product capability to which the resource belongs. Valid values:
+        # - **HBR**: Cloud Backup standard capability.
+        # - **BASIC**: ECS File Backup Essential Edition.
         self.created_by_product = created_by_product
+        # Specifies whether the resource has backup points.
         self.has_snapshot = has_snapshot
+        # The number of results per query.
+        # 
+        # Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token for the next page. If this parameter is empty, no more pages are available.
         self.next_token = next_token
+        # The resource ID.
+        # - **SourceType=ECS_FILE**: the ECS instance ID.
+        # - **SourceType=COMMON_FILE_SYSTEM**: the CPFS data source ID.
+        # - **SourceType=COMMON_NAS**: the on-premises NAS data source ID.
+        # - **SourceType=File**: the local service client ID.
+        # - **SourceType=NAS**: the Alibaba Cloud NAS file system ID.
+        # - **SourceType=OSS**: the OSS bucket.
         self.resource_id = resource_id
+        # The number of entries to skip for paging.
+        # If the number of skipped entries exceeds the total number of conditional entries, an empty list is returned. The number of skipped entries must be a multiple of MaxResults.
         self.skip = skip
+        # The backup feature type. Valid values:
+        # - **ECS_FILE**: ECS file backup.
+        # - **COMMON_FILE_SYSTEM**: Cloud Parallel File Storage (CPFS) backup.
+        # - **COMMON_NAS**: on-premises NAS backup.
+        # - **File**: on-premises file backup.
+        # - **NAS**: Alibaba Cloud NAS backup.
+        # - **OSS**: OSS backup.
         self.source_type = source_type
 
     def validate(self):

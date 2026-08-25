@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._cross_account_user import CrossAccountUser
 from ._ots_detail import OtsDetail
 from ._ots_table_restore_detail import OtsTableRestoreDetail
 from ._report import Report
@@ -175,6 +176,7 @@ from ._describe_ots_table_snapshots_request import DescribeOtsTableSnapshotsRequ
 from ._describe_ots_table_snapshots_response_body import DescribeOtsTableSnapshotsResponseBody
 from ._describe_ots_table_snapshots_response import DescribeOtsTableSnapshotsResponse
 from ._describe_policies_v2request import DescribePoliciesV2Request
+from ._describe_policies_v2shrink_request import DescribePoliciesV2ShrinkRequest
 from ._describe_policies_v2response_body import DescribePoliciesV2ResponseBody
 from ._describe_policies_v2response import DescribePoliciesV2Response
 from ._describe_policy_bindings_request import DescribePolicyBindingsRequest
@@ -317,6 +319,7 @@ from ._create_policy_bindings_request import CreatePolicyBindingsRequestPolicyBi
 from ._create_policy_bindings_request import CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail
 from ._create_policy_bindings_request import CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions
 from ._create_policy_bindings_request import CreatePolicyBindingsRequestPolicyBindingList
+from ._create_policy_v2request import CreatePolicyV2RequestRulesDataSourceFiltersAccounts
 from ._create_policy_v2request import CreatePolicyV2RequestRulesDataSourceFilters
 from ._create_policy_v2request import CreatePolicyV2RequestRulesRetentionRules
 from ._create_policy_v2request import CreatePolicyV2RequestRulesTagFilters
@@ -371,6 +374,8 @@ from ._describe_hana_restores_response_body import DescribeHanaRestoresResponseB
 from ._describe_hana_restores_response_body import DescribeHanaRestoresResponseBodyHanaRestore
 from ._describe_ots_table_snapshots_request import DescribeOtsTableSnapshotsRequestOtsInstances
 from ._describe_ots_table_snapshots_response_body import DescribeOtsTableSnapshotsResponseBodySnapshots
+from ._describe_policies_v2request import DescribePoliciesV2RequestAccounts
+from ._describe_policies_v2response_body import DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFiltersAccounts
 from ._describe_policies_v2response_body import DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters
 from ._describe_policies_v2response_body import DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules
 from ._describe_policies_v2response_body import DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters
@@ -421,6 +426,7 @@ from ._update_policy_binding_request import UpdatePolicyBindingRequestAdvancedOp
 from ._update_policy_binding_request import UpdatePolicyBindingRequestAdvancedOptionsOssDetail
 from ._update_policy_binding_request import UpdatePolicyBindingRequestAdvancedOptionsUdmDetail
 from ._update_policy_binding_request import UpdatePolicyBindingRequestAdvancedOptions
+from ._update_policy_v2request import UpdatePolicyV2RequestRulesDataSourceFiltersAccounts
 from ._update_policy_v2request import UpdatePolicyV2RequestRulesDataSourceFilters
 from ._update_policy_v2request import UpdatePolicyV2RequestRulesRetentionRules
 from ._update_policy_v2request import UpdatePolicyV2RequestRulesTagFilters
@@ -428,6 +434,7 @@ from ._update_policy_v2request import UpdatePolicyV2RequestRules
 from ._upgrade_backup_clients_response_body import UpgradeBackupClientsResponseBodyInstanceStatuses
 
 __all__ = [
+    CrossAccountUser,
     OtsDetail,
     OtsTableRestoreDetail,
     Report,
@@ -601,6 +608,7 @@ __all__ = [
     DescribeOtsTableSnapshotsResponseBody,
     DescribeOtsTableSnapshotsResponse,
     DescribePoliciesV2Request,
+    DescribePoliciesV2ShrinkRequest,
     DescribePoliciesV2ResponseBody,
     DescribePoliciesV2Response,
     DescribePolicyBindingsRequest,
@@ -743,6 +751,7 @@ __all__ = [
     CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail,
     CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions,
     CreatePolicyBindingsRequestPolicyBindingList,
+    CreatePolicyV2RequestRulesDataSourceFiltersAccounts,
     CreatePolicyV2RequestRulesDataSourceFilters,
     CreatePolicyV2RequestRulesRetentionRules,
     CreatePolicyV2RequestRulesTagFilters,
@@ -797,6 +806,8 @@ __all__ = [
     DescribeHanaRestoresResponseBodyHanaRestore,
     DescribeOtsTableSnapshotsRequestOtsInstances,
     DescribeOtsTableSnapshotsResponseBodySnapshots,
+    DescribePoliciesV2RequestAccounts,
+    DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFiltersAccounts,
     DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters,
     DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules,
     DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters,
@@ -847,6 +858,7 @@ __all__ = [
     UpdatePolicyBindingRequestAdvancedOptionsOssDetail,
     UpdatePolicyBindingRequestAdvancedOptionsUdmDetail,
     UpdatePolicyBindingRequestAdvancedOptions,
+    UpdatePolicyV2RequestRulesDataSourceFiltersAccounts,
     UpdatePolicyV2RequestRulesDataSourceFilters,
     UpdatePolicyV2RequestRulesRetentionRules,
     UpdatePolicyV2RequestRulesTagFilters,

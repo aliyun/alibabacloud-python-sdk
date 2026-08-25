@@ -18,9 +18,9 @@ class DescribeHanaBackupPlansRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The database name.
+        # The name of the database.
         self.database_name = database_name
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value must be a number that starts from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 99. Default value: 10.
         self.page_size = page_size

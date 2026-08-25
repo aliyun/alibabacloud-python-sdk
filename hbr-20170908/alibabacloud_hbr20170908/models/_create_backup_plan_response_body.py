@@ -13,18 +13,18 @@ class CreateBackupPlanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Return code, 200 indicates success.
+        # The response code. The value 200 indicates success.
         self.code = code
-        # Description of the return message, usually returns \\"successful\\" upon success, and corresponding error messages in case of failure.
+        # The returned message. The value "successful" is returned for a success response. An error message is returned for a failure response.
         self.message = message
-        # Backup plan ID.
+        # The backup plan ID.
         self.plan_id = plan_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         # 
-        # - true: Success.
-        # - false: Failure.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

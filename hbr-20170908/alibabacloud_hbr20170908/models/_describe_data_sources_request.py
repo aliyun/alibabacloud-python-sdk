@@ -14,11 +14,17 @@ class DescribeDataSourcesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The client group ID used to access the data source.
         self.cluster_id = cluster_id
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The data source name.
         self.data_source_name = data_source_name
+        # The data source type.
         self.data_source_type = data_source_type
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of data sources to return on each page.
         self.page_size = page_size
 
     def validate(self):

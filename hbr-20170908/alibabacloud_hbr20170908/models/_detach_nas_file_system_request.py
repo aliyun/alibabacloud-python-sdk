@@ -21,8 +21,9 @@ class DetachNasFileSystemRequest(DaraModel):
         self.cross_account_role_name = cross_account_role_name
         # Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
         # 
-        # *   SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
-        # *   CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+        # - SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+        # 
+        # - CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
         self.cross_account_type = cross_account_type
         # The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
         self.cross_account_user_id = cross_account_user_id

@@ -13,10 +13,19 @@ class CreateVaultReplicationResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
+        # The returned message. If the request is successful, `successful` is returned. If the request fails, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
+        # The ID of the backup vault initialization task. Use DescribeTask to query the task status.
         self.task_id = task_id
 
     def validate(self):
