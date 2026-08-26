@@ -1,3 +1,15 @@
+2026-08-26 Version: 3.12.1
+- Update API GetAIMediaAuditJob: add response parameters Body.MediaAuditJob.Data.VideoResult.GreenEnhancedResult.
+- Update API GetMediaAuditResult: add response parameters Body.MediaAuditResult.VideoResult.GreenEnhancedResult.
+- Update API SubmitAIImageAuditJob: add request parameters CensorProvider.
+- Update API SubmitAIImageAuditJob: add request parameters ImageService.
+- Update API SubmitAIImageAuditJob: add request parameters ServiceParameters.
+- Update API SubmitAIMediaAuditJob: add request parameters CensorProvider.
+- Update API SubmitAIMediaAuditJob: add request parameters ServiceParameters.
+- Update API SubmitAIMediaAuditJob: add request parameters VideoService.
+- Update API SubmitAIMediaAuditJob: add request parameters VoiceService.
+
+
 2026-08-21 Version: 3.12.0
 - Support API GetMediaAiAnalysis.
 

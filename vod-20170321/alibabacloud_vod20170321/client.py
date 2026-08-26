@@ -13442,6 +13442,10 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitAIImageAuditJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.censor_provider):
+            query['CensorProvider'] = request.censor_provider
+        if not DaraCore.is_null(request.image_service):
+            query['ImageService'] = request.image_service
         if not DaraCore.is_null(request.media_audit_configuration):
             query['MediaAuditConfiguration'] = request.media_audit_configuration
         if not DaraCore.is_null(request.media_id):
@@ -13454,6 +13458,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
@@ -13482,6 +13488,10 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitAIImageAuditJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.censor_provider):
+            query['CensorProvider'] = request.censor_provider
+        if not DaraCore.is_null(request.image_service):
+            query['ImageService'] = request.image_service
         if not DaraCore.is_null(request.media_audit_configuration):
             query['MediaAuditConfiguration'] = request.media_audit_configuration
         if not DaraCore.is_null(request.media_id):
@@ -13494,6 +13504,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
@@ -13732,16 +13744,24 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitAIMediaAuditJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.censor_provider):
+            query['CensorProvider'] = request.censor_provider
         if not DaraCore.is_null(request.media_audit_configuration):
             query['MediaAuditConfiguration'] = request.media_audit_configuration
         if not DaraCore.is_null(request.media_id):
             query['MediaId'] = request.media_id
         if not DaraCore.is_null(request.media_type):
             query['MediaType'] = request.media_type
+        if not DaraCore.is_null(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.user_data):
             query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.video_service):
+            query['VideoService'] = request.video_service
+        if not DaraCore.is_null(request.voice_service):
+            query['VoiceService'] = request.voice_service
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13768,16 +13788,24 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitAIMediaAuditJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.censor_provider):
+            query['CensorProvider'] = request.censor_provider
         if not DaraCore.is_null(request.media_audit_configuration):
             query['MediaAuditConfiguration'] = request.media_audit_configuration
         if not DaraCore.is_null(request.media_id):
             query['MediaId'] = request.media_id
         if not DaraCore.is_null(request.media_type):
             query['MediaType'] = request.media_type
+        if not DaraCore.is_null(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.user_data):
             query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.video_service):
+            query['VideoService'] = request.video_service
+        if not DaraCore.is_null(request.voice_service):
+            query['VoiceService'] = request.voice_service
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
