@@ -482,6 +482,10 @@ from ._list_registration_policies_for_user_group_response import ListRegistratio
 from ._list_risk_items_request import ListRiskItemsRequest
 from ._list_risk_items_response_body import ListRiskItemsResponseBody
 from ._list_risk_items_response import ListRiskItemsResponse
+from ._list_sase_user_tags_request import ListSaseUserTagsRequest
+from ._list_sase_user_tags_shrink_request import ListSaseUserTagsShrinkRequest
+from ._list_sase_user_tags_response_body import ListSaseUserTagsResponseBody
+from ._list_sase_user_tags_response import ListSaseUserTagsResponse
 from ._list_software_for_user_device_request import ListSoftwareForUserDeviceRequest
 from ._list_software_for_user_device_response_body import ListSoftwareForUserDeviceResponseBody
 from ._list_software_for_user_device_response import ListSoftwareForUserDeviceResponse
@@ -954,6 +958,7 @@ from ._list_registration_policies_for_user_group_response_body import ListRegist
 from ._list_registration_policies_for_user_group_response_body import ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies
 from ._list_registration_policies_for_user_group_response_body import ListRegistrationPoliciesForUserGroupResponseBodyUserGroups
 from ._list_risk_items_response_body import ListRiskItemsResponseBodyRiskItems
+from ._list_sase_user_tags_response_body import ListSaseUserTagsResponseBodyDataList
 from ._list_software_for_user_device_response_body import ListSoftwareForUserDeviceResponseBodySoftware
 from ._list_softwarelib_software_response_body import ListSoftwarelibSoftwareResponseBodyDataListVersions
 from ._list_softwarelib_software_response_body import ListSoftwarelibSoftwareResponseBodyDataList
@@ -1571,6 +1576,10 @@ __all__ = [
     ListRiskItemsRequest,
     ListRiskItemsResponseBody,
     ListRiskItemsResponse,
+    ListSaseUserTagsRequest,
+    ListSaseUserTagsShrinkRequest,
+    ListSaseUserTagsResponseBody,
+    ListSaseUserTagsResponse,
     ListSoftwareForUserDeviceRequest,
     ListSoftwareForUserDeviceResponseBody,
     ListSoftwareForUserDeviceResponse,
@@ -2043,6 +2052,7 @@ __all__ = [
     ListRegistrationPoliciesForUserGroupResponseBodyUserGroupsPolicies,
     ListRegistrationPoliciesForUserGroupResponseBodyUserGroups,
     ListRiskItemsResponseBodyRiskItems,
+    ListSaseUserTagsResponseBodyDataList,
     ListSoftwareForUserDeviceResponseBodySoftware,
     ListSoftwarelibSoftwareResponseBodyDataListVersions,
     ListSoftwarelibSoftwareResponseBodyDataList,

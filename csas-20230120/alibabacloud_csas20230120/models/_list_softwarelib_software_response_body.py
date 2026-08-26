@@ -97,6 +97,7 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
         mac_intel_version: str = None,
         match_mode: str = None,
         official_download_url: str = None,
+        run_as_account: str = None,
         software_id: str = None,
         software_name: str = None,
         source_removed: bool = None,
@@ -141,11 +142,13 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
         self.match_mode = match_mode
         # The official download URL of the software.
         self.official_download_url = official_download_url
+        # The execution account (only supported on Windows).
+        self.run_as_account = run_as_account
         # The software ID.
         self.software_id = software_id
         # The software name.
         self.software_name = software_name
-        # Indicates whether the built-in library source has been removed.
+        # Indicates whether the built-in library source has been deleted.
         self.source_removed = source_removed
         # The software source. Valid values:
         # - **custom**: custom software.
@@ -213,6 +216,9 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
 
         if self.official_download_url is not None:
             result['OfficialDownloadUrl'] = self.official_download_url
+
+        if self.run_as_account is not None:
+            result['RunAsAccount'] = self.run_as_account
 
         if self.software_id is not None:
             result['SoftwareId'] = self.software_id
@@ -286,6 +292,9 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
         if m.get('OfficialDownloadUrl') is not None:
             self.official_download_url = m.get('OfficialDownloadUrl')
 
+        if m.get('RunAsAccount') is not None:
+            self.run_as_account = m.get('RunAsAccount')
+
         if m.get('SoftwareId') is not None:
             self.software_id = m.get('SoftwareId')
 
@@ -346,7 +355,7 @@ class ListSoftwarelibSoftwareResponseBodyDataListVersions(DaraModel):
         # - **local**: locally uploaded.
         # - **thirdparty**: third-party link.
         self.publisher_type = publisher_type
-        # The ID of the software to which the version belongs.
+        # The ID of the software to which this version belongs.
         self.software_id = software_id
         # The name of the software package.
         self.software_pkg_name = software_pkg_name
@@ -355,8 +364,8 @@ class ListSoftwarelibSoftwareResponseBodyDataListVersions(DaraModel):
         # The download URL of the software package.
         self.software_url = software_url
         # The version publish status. Valid values:
-        # - **published**: Published.
-        # - **unpublished**: Not published.
+        # - **published**: published.
+        # - **unpublished**: not published.
         self.status = status
         # The software version number.
         self.version = version

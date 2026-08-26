@@ -16,7 +16,7 @@ class ListSoftwarelibSoftwareRequest(DaraModel):
         software_name: str = None,
         source_type: str = None,
     ):
-        # The software classification ID. You can obtain the value from [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~).
+        # The software classification ID. You can call [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~) to obtain the value.
         self.classify_id = classify_id
         # The page number of the current page in a paging query. Valid values: 1 to 10000.
         # 

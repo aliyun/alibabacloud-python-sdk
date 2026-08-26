@@ -1,3 +1,8 @@
+2026-08-26 Version: 1.21.0
+- Support API ListSaseUserTags.
+- Update API ListSoftwarelibSoftware: add response parameters Body.DataList.$.RunAsAccount.
+
+
 2026-08-25 Version: 1.20.0
 - Support API CreateSoftwarelibDistributeTask.
 - Support API CreateSoftwarelibVersion.

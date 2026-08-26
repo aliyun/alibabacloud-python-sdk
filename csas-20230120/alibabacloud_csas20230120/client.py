@@ -11369,6 +11369,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_risk_items_with_options_async(request, runtime)
 
+    def list_sase_user_tags_with_options(
+        self,
+        tmp_req: main_models.ListSaseUserTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSaseUserTagsResponse:
+        tmp_req.validate()
+        request = main_models.ListSaseUserTagsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag_ids):
+            request.tag_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tag_ids_shrink):
+            body['TagIds'] = request.tag_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSaseUserTags',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSaseUserTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sase_user_tags_with_options_async(
+        self,
+        tmp_req: main_models.ListSaseUserTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSaseUserTagsResponse:
+        tmp_req.validate()
+        request = main_models.ListSaseUserTagsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tag_ids):
+            request.tag_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tag_ids_shrink):
+            body['TagIds'] = request.tag_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSaseUserTags',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSaseUserTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sase_user_tags(
+        self,
+        request: main_models.ListSaseUserTagsRequest,
+    ) -> main_models.ListSaseUserTagsResponse:
+        runtime = RuntimeOptions()
+        return self.list_sase_user_tags_with_options(request, runtime)
+
+    async def list_sase_user_tags_async(
+        self,
+        request: main_models.ListSaseUserTagsRequest,
+    ) -> main_models.ListSaseUserTagsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_sase_user_tags_with_options_async(request, runtime)
+
     def list_software_for_user_device_with_options(
         self,
         request: main_models.ListSoftwareForUserDeviceRequest,
