@@ -18,9 +18,9 @@ class ListAuthorizationResourcesResponseBody(DaraModel):
     ):
         # The list of authorization resources.
         self.authorization_resources = authorization_resources
-        # The number of entries per page in a paged query. This parameter is used for paging.
+        # The number of rows per page in a paging query.
         self.max_results = max_results
-        # The token returned for the next page query.
+        # The pagination token returned by this call, used for the next page query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -92,10 +92,10 @@ class ListAuthorizationResourcesResponseBodyAuthorizationResources(DaraModel):
         instance_id: str = None,
         update_time: int = None,
     ):
-        # The ID of the resource entity associated with the authorization resource.
+        # The resource entity ID associated with the authorization resource.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # The type of the resource entity associated with the authorization resource. Valid values:
-        # - cloud_account_role: cloud role.
+        # The resource entity type associated with the authorization resource. Valid values:
+        # - cloud_account_role: cloud role
         self.authorization_resource_entity_type = authorization_resource_entity_type
         # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id

@@ -1,3 +1,13 @@
+2026-08-26 Version: 2.19.0
+- Support API CreateTrustedOrigin.
+- Support API DeleteTrustedOrigin.
+- Support API DisableTrustedOrigin.
+- Support API EnableTrustedOrigin.
+- Support API GetTrustedOrigin.
+- Support API ListTrustedOrigins.
+- Support API UpdateTrustedOrigin.
+
+
 2026-08-22 Version: 2.18.3
 - Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.PamLicenseStatus.
 

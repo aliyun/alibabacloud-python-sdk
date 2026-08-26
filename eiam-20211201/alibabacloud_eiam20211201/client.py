@@ -4219,6 +4219,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_resource_server_scope_with_options_async(request, runtime)
 
+    def create_trusted_origin_with_options(
+        self,
+        request: main_models.CreateTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.origin):
+            query['Origin'] = request.origin
+        if not DaraCore.is_null(request.trust_origin_name):
+            query['TrustOriginName'] = request.trust_origin_name
+        if not DaraCore.is_null(request.trusted_origin_scene):
+            query['TrustedOriginScene'] = request.trusted_origin_scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTrustedOriginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_trusted_origin_with_options_async(
+        self,
+        request: main_models.CreateTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.origin):
+            query['Origin'] = request.origin
+        if not DaraCore.is_null(request.trust_origin_name):
+            query['TrustOriginName'] = request.trust_origin_name
+        if not DaraCore.is_null(request.trusted_origin_scene):
+            query['TrustedOriginScene'] = request.trusted_origin_scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTrustedOriginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_trusted_origin(
+        self,
+        request: main_models.CreateTrustedOriginRequest,
+    ) -> main_models.CreateTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return self.create_trusted_origin_with_options(request, runtime)
+
+    async def create_trusted_origin_async(
+        self,
+        request: main_models.CreateTrustedOriginRequest,
+    ) -> main_models.CreateTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return await self.create_trusted_origin_with_options_async(request, runtime)
+
     def create_user_with_options(
         self,
         request: main_models.CreateUserRequest,
@@ -6378,6 +6464,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteResourceServerScopeResponse:
         runtime = RuntimeOptions()
         return await self.delete_resource_server_scope_with_options_async(request, runtime)
+
+    def delete_trusted_origin_with_options(
+        self,
+        request: main_models.DeleteTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTrustedOriginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_trusted_origin_with_options_async(
+        self,
+        request: main_models.DeleteTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTrustedOriginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_trusted_origin(
+        self,
+        request: main_models.DeleteTrustedOriginRequest,
+    ) -> main_models.DeleteTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return self.delete_trusted_origin_with_options(request, runtime)
+
+    async def delete_trusted_origin_async(
+        self,
+        request: main_models.DeleteTrustedOriginRequest,
+    ) -> main_models.DeleteTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_trusted_origin_with_options_async(request, runtime)
 
     def delete_user_with_options(
         self,
@@ -8569,6 +8733,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_resource_server_custom_subject_with_options_async(request, runtime)
 
+    def disable_trusted_origin_with_options(
+        self,
+        request: main_models.DisableTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableTrustedOriginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_trusted_origin_with_options_async(
+        self,
+        request: main_models.DisableTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableTrustedOriginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_trusted_origin(
+        self,
+        request: main_models.DisableTrustedOriginRequest,
+    ) -> main_models.DisableTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return self.disable_trusted_origin_with_options(request, runtime)
+
+    async def disable_trusted_origin_async(
+        self,
+        request: main_models.DisableTrustedOriginRequest,
+    ) -> main_models.DisableTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_trusted_origin_with_options_async(request, runtime)
+
     def disable_user_with_options(
         self,
         request: main_models.DisableUserRequest,
@@ -10606,6 +10844,80 @@ class Client(OpenApiClient):
     ) -> main_models.EnableResourceServerCustomSubjectResponse:
         runtime = RuntimeOptions()
         return await self.enable_resource_server_custom_subject_with_options_async(request, runtime)
+
+    def enable_trusted_origin_with_options(
+        self,
+        request: main_models.EnableTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableTrustedOriginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_trusted_origin_with_options_async(
+        self,
+        request: main_models.EnableTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableTrustedOriginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_trusted_origin(
+        self,
+        request: main_models.EnableTrustedOriginRequest,
+    ) -> main_models.EnableTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return self.enable_trusted_origin_with_options(request, runtime)
+
+    async def enable_trusted_origin_async(
+        self,
+        request: main_models.EnableTrustedOriginRequest,
+    ) -> main_models.EnableTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_trusted_origin_with_options_async(request, runtime)
 
     def enable_user_with_options(
         self,
@@ -14996,6 +15308,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetSynchronizationJobResponse:
         runtime = RuntimeOptions()
         return await self.get_synchronization_job_with_options_async(request, runtime)
+
+    def get_trusted_origin_with_options(
+        self,
+        request: main_models.GetTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTrustedOriginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_trusted_origin_with_options_async(
+        self,
+        request: main_models.GetTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTrustedOriginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_trusted_origin(
+        self,
+        request: main_models.GetTrustedOriginRequest,
+    ) -> main_models.GetTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return self.get_trusted_origin_with_options(request, runtime)
+
+    async def get_trusted_origin_async(
+        self,
+        request: main_models.GetTrustedOriginRequest,
+    ) -> main_models.GetTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return await self.get_trusted_origin_with_options_async(request, runtime)
 
     def get_user_with_options(
         self,
@@ -20160,6 +20546,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListSynchronizationJobsResponse:
         runtime = RuntimeOptions()
         return await self.list_synchronization_jobs_with_options_async(request, runtime)
+
+    def list_trusted_origins_with_options(
+        self,
+        request: main_models.ListTrustedOriginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTrustedOriginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.origin):
+            query['Origin'] = request.origin
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.trust_origin_name):
+            query['TrustOriginName'] = request.trust_origin_name
+        if not DaraCore.is_null(request.trusted_origin_scene):
+            query['TrustedOriginScene'] = request.trusted_origin_scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTrustedOrigins',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTrustedOriginsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_trusted_origins_with_options_async(
+        self,
+        request: main_models.ListTrustedOriginsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTrustedOriginsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.origin):
+            query['Origin'] = request.origin
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.trust_origin_name):
+            query['TrustOriginName'] = request.trust_origin_name
+        if not DaraCore.is_null(request.trusted_origin_scene):
+            query['TrustedOriginScene'] = request.trusted_origin_scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTrustedOrigins',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTrustedOriginsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_trusted_origins(
+        self,
+        request: main_models.ListTrustedOriginsRequest,
+    ) -> main_models.ListTrustedOriginsResponse:
+        runtime = RuntimeOptions()
+        return self.list_trusted_origins_with_options(request, runtime)
+
+    async def list_trusted_origins_async(
+        self,
+        request: main_models.ListTrustedOriginsRequest,
+    ) -> main_models.ListTrustedOriginsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_trusted_origins_with_options_async(request, runtime)
 
     def list_user_authn_source_mappings_with_options(
         self,
@@ -28142,6 +28622,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateResourceServerScopeResponse:
         runtime = RuntimeOptions()
         return await self.update_resource_server_scope_with_options_async(request, runtime)
+
+    def update_trusted_origin_with_options(
+        self,
+        request: main_models.UpdateTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trust_origin_name):
+            query['TrustOriginName'] = request.trust_origin_name
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        if not DaraCore.is_null(request.trusted_origin_scene):
+            query['TrustedOriginScene'] = request.trusted_origin_scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTrustedOriginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_trusted_origin_with_options_async(
+        self,
+        request: main_models.UpdateTrustedOriginRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTrustedOriginResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.trust_origin_name):
+            query['TrustOriginName'] = request.trust_origin_name
+        if not DaraCore.is_null(request.trusted_origin_id):
+            query['TrustedOriginId'] = request.trusted_origin_id
+        if not DaraCore.is_null(request.trusted_origin_scene):
+            query['TrustedOriginScene'] = request.trusted_origin_scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTrustedOrigin',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTrustedOriginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_trusted_origin(
+        self,
+        request: main_models.UpdateTrustedOriginRequest,
+    ) -> main_models.UpdateTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return self.update_trusted_origin_with_options(request, runtime)
+
+    async def update_trusted_origin_async(
+        self,
+        request: main_models.UpdateTrustedOriginRequest,
+    ) -> main_models.UpdateTrustedOriginResponse:
+        runtime = RuntimeOptions()
+        return await self.update_trusted_origin_with_options_async(request, runtime)
 
     def update_user_with_options(
         self,

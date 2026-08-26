@@ -143,6 +143,9 @@ from ._create_organizational_unit_response import CreateOrganizationalUnitRespon
 from ._create_resource_server_scope_request import CreateResourceServerScopeRequest
 from ._create_resource_server_scope_response_body import CreateResourceServerScopeResponseBody
 from ._create_resource_server_scope_response import CreateResourceServerScopeResponse
+from ._create_trusted_origin_request import CreateTrustedOriginRequest
+from ._create_trusted_origin_response_body import CreateTrustedOriginResponseBody
+from ._create_trusted_origin_response import CreateTrustedOriginResponse
 from ._create_user_request import CreateUserRequest
 from ._create_user_response_body import CreateUserResponseBody
 from ._create_user_response import CreateUserResponse
@@ -227,6 +230,9 @@ from ._delete_organizational_unit_children_response import DeleteOrganizationalU
 from ._delete_resource_server_scope_request import DeleteResourceServerScopeRequest
 from ._delete_resource_server_scope_response_body import DeleteResourceServerScopeResponseBody
 from ._delete_resource_server_scope_response import DeleteResourceServerScopeResponse
+from ._delete_trusted_origin_request import DeleteTrustedOriginRequest
+from ._delete_trusted_origin_response_body import DeleteTrustedOriginResponseBody
+from ._delete_trusted_origin_response import DeleteTrustedOriginResponse
 from ._delete_user_request import DeleteUserRequest
 from ._delete_user_response_body import DeleteUserResponseBody
 from ._delete_user_response import DeleteUserResponse
@@ -314,6 +320,9 @@ from ._disable_internal_authentication_source_response import DisableInternalAut
 from ._disable_resource_server_custom_subject_request import DisableResourceServerCustomSubjectRequest
 from ._disable_resource_server_custom_subject_response_body import DisableResourceServerCustomSubjectResponseBody
 from ._disable_resource_server_custom_subject_response import DisableResourceServerCustomSubjectResponse
+from ._disable_trusted_origin_request import DisableTrustedOriginRequest
+from ._disable_trusted_origin_response_body import DisableTrustedOriginResponseBody
+from ._disable_trusted_origin_response import DisableTrustedOriginResponse
 from ._disable_user_request import DisableUserRequest
 from ._disable_user_response_body import DisableUserResponseBody
 from ._disable_user_response import DisableUserResponse
@@ -395,6 +404,9 @@ from ._enable_internal_authentication_source_response import EnableInternalAuthe
 from ._enable_resource_server_custom_subject_request import EnableResourceServerCustomSubjectRequest
 from ._enable_resource_server_custom_subject_response_body import EnableResourceServerCustomSubjectResponseBody
 from ._enable_resource_server_custom_subject_response import EnableResourceServerCustomSubjectResponse
+from ._enable_trusted_origin_request import EnableTrustedOriginRequest
+from ._enable_trusted_origin_response_body import EnableTrustedOriginResponseBody
+from ._enable_trusted_origin_response import EnableTrustedOriginResponse
 from ._enable_user_request import EnableUserRequest
 from ._enable_user_response_body import EnableUserResponseBody
 from ._enable_user_response import EnableUserResponse
@@ -572,6 +584,9 @@ from ._get_service_quota_response import GetServiceQuotaResponse
 from ._get_synchronization_job_request import GetSynchronizationJobRequest
 from ._get_synchronization_job_response_body import GetSynchronizationJobResponseBody
 from ._get_synchronization_job_response import GetSynchronizationJobResponse
+from ._get_trusted_origin_request import GetTrustedOriginRequest
+from ._get_trusted_origin_response_body import GetTrustedOriginResponseBody
+from ._get_trusted_origin_response import GetTrustedOriginResponse
 from ._get_user_request import GetUserRequest
 from ._get_user_response_body import GetUserResponseBody
 from ._get_user_response import GetUserResponse
@@ -755,6 +770,9 @@ from ._list_resource_servers_for_user_response import ListResourceServersForUser
 from ._list_synchronization_jobs_request import ListSynchronizationJobsRequest
 from ._list_synchronization_jobs_response_body import ListSynchronizationJobsResponseBody
 from ._list_synchronization_jobs_response import ListSynchronizationJobsResponse
+from ._list_trusted_origins_request import ListTrustedOriginsRequest
+from ._list_trusted_origins_response_body import ListTrustedOriginsResponseBody
+from ._list_trusted_origins_response import ListTrustedOriginsResponse
 from ._list_user_authn_source_mappings_request import ListUserAuthnSourceMappingsRequest
 from ._list_user_authn_source_mappings_response_body import ListUserAuthnSourceMappingsResponseBody
 from ._list_user_authn_source_mappings_response import ListUserAuthnSourceMappingsResponse
@@ -1040,6 +1058,9 @@ from ._update_organizational_unit_parent_id_response import UpdateOrganizational
 from ._update_resource_server_scope_request import UpdateResourceServerScopeRequest
 from ._update_resource_server_scope_response_body import UpdateResourceServerScopeResponseBody
 from ._update_resource_server_scope_response import UpdateResourceServerScopeResponse
+from ._update_trusted_origin_request import UpdateTrustedOriginRequest
+from ._update_trusted_origin_response_body import UpdateTrustedOriginResponseBody
+from ._update_trusted_origin_response import UpdateTrustedOriginResponse
 from ._update_user_request import UpdateUserRequest
 from ._update_user_response_body import UpdateUserResponseBody
 from ._update_user_response import UpdateUserResponse
@@ -1287,6 +1308,7 @@ from ._get_synchronization_job_response_body import GetSynchronizationJobRespons
 from ._get_synchronization_job_response_body import GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics
 from ._get_synchronization_job_response_body import GetSynchronizationJobResponseBodySynchronizationJobResult
 from ._get_synchronization_job_response_body import GetSynchronizationJobResponseBodySynchronizationJob
+from ._get_trusted_origin_response_body import GetTrustedOriginResponseBodyTrustedOrigin
 from ._get_user_response_body import GetUserResponseBodyUserCustomFields
 from ._get_user_response_body import GetUserResponseBodyUserGroups
 from ._get_user_response_body import GetUserResponseBodyUserOrganizationalUnits
@@ -1465,6 +1487,7 @@ from ._list_synchronization_jobs_response_body import ListSynchronizationJobsRes
 from ._list_synchronization_jobs_response_body import ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
 from ._list_synchronization_jobs_response_body import ListSynchronizationJobsResponseBodySynchronizationJobsResult
 from ._list_synchronization_jobs_response_body import ListSynchronizationJobsResponseBodySynchronizationJobs
+from ._list_trusted_origins_response_body import ListTrustedOriginsResponseBodyTrustedOrigins
 from ._list_user_authn_source_mappings_response_body import ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings
 from ._list_users_response_body import ListUsersResponseBodyUsers
 from ._list_users_for_application_response_body import ListUsersForApplicationResponseBodyUsersApplicationRoles
@@ -1694,6 +1717,9 @@ __all__ = [
     CreateResourceServerScopeRequest,
     CreateResourceServerScopeResponseBody,
     CreateResourceServerScopeResponse,
+    CreateTrustedOriginRequest,
+    CreateTrustedOriginResponseBody,
+    CreateTrustedOriginResponse,
     CreateUserRequest,
     CreateUserResponseBody,
     CreateUserResponse,
@@ -1778,6 +1804,9 @@ __all__ = [
     DeleteResourceServerScopeRequest,
     DeleteResourceServerScopeResponseBody,
     DeleteResourceServerScopeResponse,
+    DeleteTrustedOriginRequest,
+    DeleteTrustedOriginResponseBody,
+    DeleteTrustedOriginResponse,
     DeleteUserRequest,
     DeleteUserResponseBody,
     DeleteUserResponse,
@@ -1865,6 +1894,9 @@ __all__ = [
     DisableResourceServerCustomSubjectRequest,
     DisableResourceServerCustomSubjectResponseBody,
     DisableResourceServerCustomSubjectResponse,
+    DisableTrustedOriginRequest,
+    DisableTrustedOriginResponseBody,
+    DisableTrustedOriginResponse,
     DisableUserRequest,
     DisableUserResponseBody,
     DisableUserResponse,
@@ -1946,6 +1978,9 @@ __all__ = [
     EnableResourceServerCustomSubjectRequest,
     EnableResourceServerCustomSubjectResponseBody,
     EnableResourceServerCustomSubjectResponse,
+    EnableTrustedOriginRequest,
+    EnableTrustedOriginResponseBody,
+    EnableTrustedOriginResponse,
     EnableUserRequest,
     EnableUserResponseBody,
     EnableUserResponse,
@@ -2123,6 +2158,9 @@ __all__ = [
     GetSynchronizationJobRequest,
     GetSynchronizationJobResponseBody,
     GetSynchronizationJobResponse,
+    GetTrustedOriginRequest,
+    GetTrustedOriginResponseBody,
+    GetTrustedOriginResponse,
     GetUserRequest,
     GetUserResponseBody,
     GetUserResponse,
@@ -2306,6 +2344,9 @@ __all__ = [
     ListSynchronizationJobsRequest,
     ListSynchronizationJobsResponseBody,
     ListSynchronizationJobsResponse,
+    ListTrustedOriginsRequest,
+    ListTrustedOriginsResponseBody,
+    ListTrustedOriginsResponse,
     ListUserAuthnSourceMappingsRequest,
     ListUserAuthnSourceMappingsResponseBody,
     ListUserAuthnSourceMappingsResponse,
@@ -2591,6 +2632,9 @@ __all__ = [
     UpdateResourceServerScopeRequest,
     UpdateResourceServerScopeResponseBody,
     UpdateResourceServerScopeResponse,
+    UpdateTrustedOriginRequest,
+    UpdateTrustedOriginResponseBody,
+    UpdateTrustedOriginResponse,
     UpdateUserRequest,
     UpdateUserResponseBody,
     UpdateUserResponse,
@@ -2838,6 +2882,7 @@ __all__ = [
     GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics,
     GetSynchronizationJobResponseBodySynchronizationJobResult,
     GetSynchronizationJobResponseBodySynchronizationJob,
+    GetTrustedOriginResponseBodyTrustedOrigin,
     GetUserResponseBodyUserCustomFields,
     GetUserResponseBodyUserGroups,
     GetUserResponseBodyUserOrganizationalUnits,
@@ -3016,6 +3061,7 @@ __all__ = [
     ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics,
     ListSynchronizationJobsResponseBodySynchronizationJobsResult,
     ListSynchronizationJobsResponseBodySynchronizationJobs,
+    ListTrustedOriginsResponseBodyTrustedOrigins,
     ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings,
     ListUsersResponseBodyUsers,
     ListUsersForApplicationResponseBodyUsersApplicationRoles,
