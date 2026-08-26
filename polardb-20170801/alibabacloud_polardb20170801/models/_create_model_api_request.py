@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateModelApiRequest(DaraModel):
     def __init__(
         self,
+        config: str = None,
         force_model: str = None,
         gw_cluster_id: str = None,
         model_category: str = None,
@@ -18,19 +19,18 @@ class CreateModelApiRequest(DaraModel):
         region_id: str = None,
         route_rules: str = None,
     ):
-        # The model to which requests are forcibly routed.
+        # The gateway retry configuration.
+        self.config = config
+        # The forced model.
         self.force_model = force_model
         # The gateway instance ID.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The model API category. Valid values:
-        # 
-        # - **text**
-        # 
-        # - **embedding**
-        # 
-        # - **rerank**
+        # The category. Valid values:
+        # * **text**
+        # * **embedding**
+        # * **rerank**
         # 
         # This parameter is required.
         self.model_category = model_category
@@ -38,29 +38,26 @@ class CreateModelApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The path prefix.
+        # The API path prefix.
         # 
         # This parameter is required.
         self.path_prefix = path_prefix
-        # The model API protocol. Valid values:
+        # The protocol. Valid values:
         # 
-        # - **OpenAI**
-        # 
-        # - **Anthropic**
-        # 
-        # - **Model Studio**
-        # 
-        # - **vLLM**
+        # * **openai**
+        # * **anthropic**
+        # * **bailian**
+        # * **vllm**
         # 
         # This parameter is required.
         self.protocol = protocol
-        # Specifies whether to record input for billing.
+        # The number of input points.
         self.record_input = record_input
-        # Specifies whether to record output for billing.
+        # The number of output points.
         self.record_output = record_output
         # The region ID.
         self.region_id = region_id
-        # A list of routing rules, provided as a JSON array string.
+        # The list of routing rules (JSON array string).
         # 
         # This parameter is required.
         self.route_rules = route_rules
@@ -73,6 +70,9 @@ class CreateModelApiRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config is not None:
+            result['Config'] = self.config
+
         if self.force_model is not None:
             result['ForceModel'] = self.force_model
 
@@ -107,6 +107,9 @@ class CreateModelApiRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+
         if m.get('ForceModel') is not None:
             self.force_model = m.get('ForceModel')
 

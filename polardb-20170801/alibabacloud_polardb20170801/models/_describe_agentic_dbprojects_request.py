@@ -15,14 +15,23 @@ class DescribeAgenticDBProjectsRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
+        # The AgenticDB cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 30. Maximum value: 100.
         self.page_size = page_size
+        # The project ID for exact match.
         self.project_id = project_id
+        # The project name for fuzzy match.
         self.project_name = project_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The tenant ID to which the project belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

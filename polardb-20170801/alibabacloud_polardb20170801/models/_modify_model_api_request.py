@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyModelApiRequest(DaraModel):
     def __init__(
         self,
+        config: str = None,
         gw_cluster_id: str = None,
         model_api_id: str = None,
         model_category: str = None,
@@ -17,6 +18,8 @@ class ModifyModelApiRequest(DaraModel):
         region_id: str = None,
         route_rules: str = None,
     ):
+        # The gateway retry configuration.
+        self.config = config
         # The gateway instance ID.
         # 
         # This parameter is required.
@@ -25,13 +28,10 @@ class ModifyModelApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.model_api_id = model_api_id
-        # The model category. Valid values:
-        # 
-        # - `text`
-        # 
-        # - `embedding`
-        # 
-        # - `rerank`
+        # The category. Valid values:
+        # * **text**
+        # * **embedding**
+        # * **rerank**
         # 
         # This parameter is required.
         self.model_category = model_category
@@ -41,23 +41,20 @@ class ModifyModelApiRequest(DaraModel):
         self.path_prefix = path_prefix
         # The protocol. Valid values:
         # 
-        # - `openai`
-        # 
-        # - `anthropic`
-        # 
-        # - `Model Studio`
-        # 
-        # - `vllm`
+        # * **openai**
+        # * **anthropic**
+        # * **bailian**
+        # * **vllm**
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The number of input units.
+        # The number of input points.
         self.record_input = record_input
-        # The number of output units.
+        # The number of output points.
         self.record_output = record_output
         # The region ID.
         self.region_id = region_id
-        # A JSON array of routing rules, provided as a string.
+        # The list of routing rules (JSON array string).
         # 
         # This parameter is required.
         self.route_rules = route_rules
@@ -70,6 +67,9 @@ class ModifyModelApiRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.config is not None:
+            result['Config'] = self.config
+
         if self.gw_cluster_id is not None:
             result['GwClusterId'] = self.gw_cluster_id
 
@@ -101,6 +101,9 @@ class ModifyModelApiRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+
         if m.get('GwClusterId') is not None:
             self.gw_cluster_id = m.get('GwClusterId')
 

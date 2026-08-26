@@ -12,11 +12,17 @@ class AddPolarOSSAuthorizedAccountRequest(DaraModel):
         pfs_instance_id: str = None,
         region_id: str = None,
     ):
+        # The list of authorized accounts to add, separated by commas. You can pass in UIDs and RAM role ARNs in mixed parameter notation.
+        # 
         # This parameter is required.
         self.authorized_user_ids = authorized_user_ids
+        # The ID of the PolarDB cluster.
         self.dbcluster_id = dbcluster_id
+        # The cold storage instance ID.
+        # 
         # This parameter is required.
         self.pfs_instance_id = pfs_instance_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

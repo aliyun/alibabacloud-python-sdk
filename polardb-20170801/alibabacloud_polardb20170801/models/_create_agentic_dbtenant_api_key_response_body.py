@@ -15,12 +15,19 @@ class CreateAgenticDBTenantApiKeyResponseBody(DaraModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
+        # The plaintext of the API key. This value is returned only in this response.
         self.api_key = api_key
+        # The resource ID of the API key.
         self.api_key_id = api_key_id
+        # The time when the API key was created.
         self.create_time = create_time
+        # The expiration time of the API key. This value is empty if the API key never expires.
         self.expire_time = expire_time
+        # The request ID.
         self.request_id = request_id
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The tenant name.
         self.tenant_name = tenant_name
 
     def validate(self):

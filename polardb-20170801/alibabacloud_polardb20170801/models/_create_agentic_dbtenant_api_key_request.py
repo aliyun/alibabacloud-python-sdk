@@ -13,12 +13,20 @@ class CreateAgenticDBTenantApiKeyRequest(DaraModel):
         region_id: str = None,
         tenant_name: str = None,
     ):
+        # The AgenticDB cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The description of the API key usage.
         self.description = description
+        # The expiration time in ISO 8601 format. If this parameter is not specified, the API key never expires.
         self.expire_time = expire_time
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The tenant name. The name must be unique within the cluster and contain 2 to 64 characters.
+        # 
         # This parameter is required.
         self.tenant_name = tenant_name
 

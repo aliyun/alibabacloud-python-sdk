@@ -16,7 +16,7 @@ class CreateAIDBClusterResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The order ID.
         self.order_id = order_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id

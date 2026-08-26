@@ -51,65 +51,62 @@ class CreateAIDBClusterRequest(DaraModel):
         # Specifies whether to enable auto-renewal. Valid values:
         # 
         # - **true**: Auto-renewal is enabled.
-        # 
-        # - **false**: Auto-renewal is disabled.
+        # - **false**: Auto-renewal is not enabled.
         # 
         # Default value: **false**.
         # 
         # > This parameter takes effect only when **PayType** is set to **Prepaid**.
         self.auto_renew = auto_renew
-        # Specifies whether to automatically use a coupon. Valid values:
+        # Specifies whether to automatically use coupons. Valid values:
+        # * true (default): Use coupons.
+        # * false: Do not use coupons.
         self.auto_use_coupon = auto_use_coupon
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to create a public endpoint.
         self.create_public_endpoint = create_public_endpoint
-        # The description of the cluster. You can use the description to perform a fuzzy search.
+        # The cluster description. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
-        # The ID of the PolarDB cluster that the application depends on.
+        # The instance ID of the PolarDB instance on which the application depends.
         self.dbcluster_id = dbcluster_id
-        # The node specification.
+        # The node specifications.
         self.dbnode_class = dbnode_class
         # The extension.
         self.extension = extension
         # The inference engine.
         self.inference_engine = inference_engine
-        # The Container Service for Kubernetes (ACK) cluster ID.
+        # The ACK cluster ID.
         self.kube_cluster_id = kube_cluster_id
         # The Kubernetes configuration.
         self.kube_config = kube_config
-        # The management mode of the Kubernetes cluster.
+        # The Kubernetes cluster management mode.
         self.kube_management = kube_management
-        # The type of the Kubernetes deployment.
+        # aideploy
         self.kube_type = kube_type
         # The Kubernetes configuration.
         self.kubernetes_config = kubernetes_config
         # The management mode.
         self.management_mode = management_mode
+        # The model name.
         self.model_name = model_name
+        # The model operator space.
         self.model_space = model_space
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The password.
         self.password = password
-        # The billing method. Valid values:
+        # The billing method. Valid values: 
         # 
         # - **Postpaid**: pay-as-you-go.
-        # 
         # - **Prepaid**: subscription.
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The unit of the subscription duration. This parameter is required if **PayType** is set to **Prepaid**. Valid values:
+        # This parameter is required to pass parameter when **PayType** is set to **Prepaid**. Specifies the unit of the upfront payment duration for the subscription cluster. 
         # 
-        # - **Year**
-        # 
-        # - **Month**
+        # - **Year**: The subscription duration is measured in years.
+        # - **Month**: The subscription duration is measured in months.
         self.period = period
-        # The coupon code. If you do not specify this parameter, the default coupon is used.
-        # 
-        # - true (default): Use a coupon.
-        # 
-        # - false: Do not use a coupon.
+        # The coupon code. If this parameter is not specified, the default coupon is used.
         self.promotion_code = promotion_code
         # The region ID.
         # 
@@ -119,19 +116,17 @@ class CreateAIDBClusterRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The storage space. Unit: GB.
+        # The storage space.
         self.storage_space = storage_space
         # The storage type.
         self.storage_type = storage_type
-        # The billing intervals for the pay-as-you-go cluster.
+        # The pay-as-you-go time intervals.
         self.time_slices = time_slices
-        # The subscription duration. This parameter is required if **PayType** is set to **Prepaid**.
-        # 
-        # - If **Period** is set to **Month**, the value of **UsedTime** must be an integer from `[1-9]`.
-        # 
-        # - If **Period** is set to **Year**, the value of **UsedTime** must be an integer from `[1-3]`.
+        # This parameter is required when **PayType** is set to **Prepaid**.
+        # - If **Period** is set to **Month**, the valid values of **UsedTime** are integers in the range of `[1-9]`.
+        # - If **Period** is set to **Year**, the valid values of **UsedTime** are integers in the range of `[1-3]`.
         self.used_time = used_time
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         # 
         # This parameter is required.
         self.vpcid = vpcid
@@ -139,7 +134,7 @@ class CreateAIDBClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The availability zone ID.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -380,9 +375,9 @@ class CreateAIDBClusterRequestTimeSlices(DaraModel):
         begin_time: int = None,
         end_time: int = None,
     ):
-        # The start time of the billing interval. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The start time of the task. The time is in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
         self.begin_time = begin_time
-        # The end time of the billing interval, which must be later than the start time. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The end time of the query. The end time must be later than the start time. The time is in the `YYYY-MM-DDThh:mmZ` format (UTC).
         self.end_time = end_time
 
     def validate(self):

@@ -53,7 +53,7 @@ class CreateAIDBClusterApiKeyResponseBodyApiKey(DaraModel):
         id: str = None,
         status: str = None,
     ):
-        # The API key of the model service.
+        # The API key for model serving.
         self.api_key = api_key
         # The creation time.
         self.create_time = create_time

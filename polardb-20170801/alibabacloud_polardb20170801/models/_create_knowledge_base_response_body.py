@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteAIDBClusterResponseBody(DaraModel):
+class CreateKnowledgeBaseResponseBody(DaraModel):
     def __init__(
         self,
-        dbcluster_id: str = None,
+        knowledge_base_id: str = None,
         request_id: str = None,
     ):
-        # The AI cluster ID.
-        self.dbcluster_id = dbcluster_id
+        # The unique identifier of the knowledge base.
+        self.knowledge_base_id = knowledge_base_id
         # Id of the request
         self.request_id = request_id
 
@@ -23,8 +23,8 @@ class DeleteAIDBClusterResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
+        if self.knowledge_base_id is not None:
+            result['KnowledgeBaseId'] = self.knowledge_base_id
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33,8 +33,8 @@ class DeleteAIDBClusterResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('KnowledgeBaseId') is not None:
+            self.knowledge_base_id = m.get('KnowledgeBaseId')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

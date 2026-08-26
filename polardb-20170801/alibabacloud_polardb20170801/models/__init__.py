@@ -207,6 +207,12 @@ from ._create_global_security_ipgroup_response import CreateGlobalSecurityIPGrou
 from ._create_gw_consumer_order_request import CreateGwConsumerOrderRequest
 from ._create_gw_consumer_order_response_body import CreateGwConsumerOrderResponseBody
 from ._create_gw_consumer_order_response import CreateGwConsumerOrderResponse
+from ._create_knowledge_base_request import CreateKnowledgeBaseRequest
+from ._create_knowledge_base_response_body import CreateKnowledgeBaseResponseBody
+from ._create_knowledge_base_response import CreateKnowledgeBaseResponse
+from ._create_knowledge_space_request import CreateKnowledgeSpaceRequest
+from ._create_knowledge_space_response_body import CreateKnowledgeSpaceResponseBody
+from ._create_knowledge_space_response import CreateKnowledgeSpaceResponse
 from ._create_lakebase_s3account_request import CreateLakebaseS3AccountRequest
 from ._create_lakebase_s3account_response_body import CreateLakebaseS3AccountResponseBody
 from ._create_lakebase_s3account_response import CreateLakebaseS3AccountResponse
@@ -356,6 +362,9 @@ from ._delete_global_database_network_response import DeleteGlobalDatabaseNetwor
 from ._delete_global_security_ipgroup_request import DeleteGlobalSecurityIPGroupRequest
 from ._delete_global_security_ipgroup_response_body import DeleteGlobalSecurityIPGroupResponseBody
 from ._delete_global_security_ipgroup_response import DeleteGlobalSecurityIPGroupResponse
+from ._delete_knowledge_base_request import DeleteKnowledgeBaseRequest
+from ._delete_knowledge_base_response_body import DeleteKnowledgeBaseResponseBody
+from ._delete_knowledge_base_response import DeleteKnowledgeBaseResponse
 from ._delete_lakebase_s3account_request import DeleteLakebaseS3AccountRequest
 from ._delete_lakebase_s3account_response_body import DeleteLakebaseS3AccountResponseBody
 from ._delete_lakebase_s3account_response import DeleteLakebaseS3AccountResponse
@@ -736,6 +745,12 @@ from ._describe_history_tasks_response import DescribeHistoryTasksResponse
 from ._describe_history_tasks_stat_request import DescribeHistoryTasksStatRequest
 from ._describe_history_tasks_stat_response_body import DescribeHistoryTasksStatResponseBody
 from ._describe_history_tasks_stat_response import DescribeHistoryTasksStatResponse
+from ._describe_knowledge_base_attribute_request import DescribeKnowledgeBaseAttributeRequest
+from ._describe_knowledge_base_attribute_response_body import DescribeKnowledgeBaseAttributeResponseBody
+from ._describe_knowledge_base_attribute_response import DescribeKnowledgeBaseAttributeResponse
+from ._describe_knowledge_bases_request import DescribeKnowledgeBasesRequest
+from ._describe_knowledge_bases_response_body import DescribeKnowledgeBasesResponseBody
+from ._describe_knowledge_bases_response import DescribeKnowledgeBasesResponse
 from ._describe_lakebase_s3account_request import DescribeLakebaseS3AccountRequest
 from ._describe_lakebase_s3account_response_body import DescribeLakebaseS3AccountResponseBody
 from ._describe_lakebase_s3account_response import DescribeLakebaseS3AccountResponse
@@ -1453,6 +1468,7 @@ from ._describe_accounts_zonal_response_body import DescribeAccountsZonalRespons
 from ._describe_activation_codes_response_body import DescribeActivationCodesResponseBodyItems
 from ._describe_active_operation_maintain_conf_response_body import DescribeActiveOperationMaintainConfResponseBodyConfig
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBodyItems
+from ._describe_agentic_dbbranch_endpoints_response_body import DescribeAgenticDBBranchEndpointsResponseBodyItemsAddressItems
 from ._describe_agentic_dbbranch_endpoints_response_body import DescribeAgenticDBBranchEndpointsResponseBodyItems
 from ._describe_agentic_dbbranch_lineage_response_body import DescribeAgenticDBBranchLineageResponseBodyItems
 from ._describe_agentic_dbbranches_response_body import DescribeAgenticDBBranchesResponseBodyItems
@@ -1654,6 +1670,7 @@ from ._describe_history_events_response_body import DescribeHistoryEventsRespons
 from ._describe_history_events_response_body import DescribeHistoryEventsResponseBodyItems
 from ._describe_history_tasks_response_body import DescribeHistoryTasksResponseBodyItems
 from ._describe_history_tasks_stat_response_body import DescribeHistoryTasksStatResponseBodyItems
+from ._describe_knowledge_bases_response_body import DescribeKnowledgeBasesResponseBodyItems
 from ._describe_license_orders_response_body import DescribeLicenseOrdersResponseBodyItems
 from ._describe_log_backup_policy_response_body import DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy
 from ._describe_log_backup_policy_response_body import DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies
@@ -1995,6 +2012,12 @@ __all__ = [
     CreateGwConsumerOrderRequest,
     CreateGwConsumerOrderResponseBody,
     CreateGwConsumerOrderResponse,
+    CreateKnowledgeBaseRequest,
+    CreateKnowledgeBaseResponseBody,
+    CreateKnowledgeBaseResponse,
+    CreateKnowledgeSpaceRequest,
+    CreateKnowledgeSpaceResponseBody,
+    CreateKnowledgeSpaceResponse,
     CreateLakebaseS3AccountRequest,
     CreateLakebaseS3AccountResponseBody,
     CreateLakebaseS3AccountResponse,
@@ -2144,6 +2167,9 @@ __all__ = [
     DeleteGlobalSecurityIPGroupRequest,
     DeleteGlobalSecurityIPGroupResponseBody,
     DeleteGlobalSecurityIPGroupResponse,
+    DeleteKnowledgeBaseRequest,
+    DeleteKnowledgeBaseResponseBody,
+    DeleteKnowledgeBaseResponse,
     DeleteLakebaseS3AccountRequest,
     DeleteLakebaseS3AccountResponseBody,
     DeleteLakebaseS3AccountResponse,
@@ -2524,6 +2550,12 @@ __all__ = [
     DescribeHistoryTasksStatRequest,
     DescribeHistoryTasksStatResponseBody,
     DescribeHistoryTasksStatResponse,
+    DescribeKnowledgeBaseAttributeRequest,
+    DescribeKnowledgeBaseAttributeResponseBody,
+    DescribeKnowledgeBaseAttributeResponse,
+    DescribeKnowledgeBasesRequest,
+    DescribeKnowledgeBasesResponseBody,
+    DescribeKnowledgeBasesResponse,
     DescribeLakebaseS3AccountRequest,
     DescribeLakebaseS3AccountResponseBody,
     DescribeLakebaseS3AccountResponse,
@@ -3241,6 +3273,7 @@ __all__ = [
     DescribeActivationCodesResponseBodyItems,
     DescribeActiveOperationMaintainConfResponseBodyConfig,
     DescribeActiveOperationTasksResponseBodyItems,
+    DescribeAgenticDBBranchEndpointsResponseBodyItemsAddressItems,
     DescribeAgenticDBBranchEndpointsResponseBodyItems,
     DescribeAgenticDBBranchLineageResponseBodyItems,
     DescribeAgenticDBBranchesResponseBodyItems,
@@ -3442,6 +3475,7 @@ __all__ = [
     DescribeHistoryEventsResponseBodyItems,
     DescribeHistoryTasksResponseBodyItems,
     DescribeHistoryTasksStatResponseBodyItems,
+    DescribeKnowledgeBasesResponseBodyItems,
     DescribeLicenseOrdersResponseBodyItems,
     DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy,
     DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies,

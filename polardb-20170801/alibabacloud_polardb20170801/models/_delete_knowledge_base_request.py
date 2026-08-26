@@ -4,21 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteAIDBClusterApiKeyRequest(DaraModel):
+class DeleteKnowledgeBaseRequest(DaraModel):
     def __init__(
         self,
-        api_key: str = None,
-        model_space_name: str = None,
+        knowledge_base_id: str = None,
         region_id: str = None,
     ):
-        # The API key of the model service.
+        # The unique ID of the knowledge base.
         # 
         # This parameter is required.
-        self.api_key = api_key
-        # The model space ID.
-        self.model_space_name = model_space_name
+        self.knowledge_base_id = knowledge_base_id
         # The region ID.
-        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -31,11 +27,8 @@ class DeleteAIDBClusterApiKeyRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.api_key is not None:
-            result['ApiKey'] = self.api_key
-
-        if self.model_space_name is not None:
-            result['ModelSpaceName'] = self.model_space_name
+        if self.knowledge_base_id is not None:
+            result['KnowledgeBaseId'] = self.knowledge_base_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -44,11 +37,8 @@ class DeleteAIDBClusterApiKeyRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ApiKey') is not None:
-            self.api_key = m.get('ApiKey')
-
-        if m.get('ModelSpaceName') is not None:
-            self.model_space_name = m.get('ModelSpaceName')
+        if m.get('KnowledgeBaseId') is not None:
+            self.knowledge_base_id = m.get('KnowledgeBaseId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

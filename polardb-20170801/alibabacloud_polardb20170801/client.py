@@ -63,28 +63,28 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'polardb.aliyuncs.com',
             'eu-west-1-oxs': 'polardb.aliyuncs.com',
             'rus-west-1-pop': 'polardb.aliyuncs.com',
-            'us-west-1': 'polardb.us-west-1.aliyuncs.com',
-            'us-east-1': 'polardb.us-east-1.aliyuncs.com',
-            'na-south-1': 'polardb.na-south-1.aliyuncs.com',
-            'me-east-1': 'polardb.me-east-1.aliyuncs.com',
-            'eu-west-1': 'polardb.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'polardb.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'polardb.cn-zhangjiakou.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'polardb.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'polardb.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'polardb.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-huhehaote': 'polardb.cn-huhehaote.aliyuncs.com',
             'cn-hongkong': 'polardb.cn-hongkong.aliyuncs.com',
-            'cn-guangzhou': 'polardb.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'polardb.cn-chengdu.aliyuncs.com',
-            'ap-southeast-8': 'polardb.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'polardb.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'polardb.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'polardb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'polardb.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'polardb.ap-southeast-1.aliyuncs.com',
+            'cn-zhangjiakou': 'polardb.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'polardb.cn-shenzhen.aliyuncs.com',
             'ap-northeast-2': 'polardb.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'polardb.ap-northeast-1.aliyuncs.com'
+            'ap-northeast-1': 'polardb.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'polardb.cn-chengdu.aliyuncs.com',
+            'cn-guangzhou': 'polardb.cn-guangzhou.aliyuncs.com',
+            'ap-southeast-1': 'polardb.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'polardb.ap-southeast-3.aliyuncs.com',
+            'cn-huhehaote': 'polardb.cn-huhehaote.aliyuncs.com',
+            'ap-southeast-5': 'polardb.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'polardb.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'polardb.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-8': 'polardb.ap-southeast-8.aliyuncs.com',
+            'na-south-1': 'polardb.na-south-1.aliyuncs.com',
+            'eu-central-1': 'polardb.eu-central-1.aliyuncs.com',
+            'us-west-1': 'polardb.us-west-1.aliyuncs.com',
+            'eu-west-1': 'polardb.eu-west-1.aliyuncs.com',
+            'us-east-1': 'polardb.us-east-1.aliyuncs.com',
+            'me-east-1': 'polardb.me-east-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'polardb.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'polardb.cn-shenzhen-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('polardb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -7111,6 +7111,234 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_gw_consumer_order_with_options_async(request, runtime)
 
+    def create_knowledge_base_with_options(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_base_type):
+            query['KnowledgeBaseType'] = request.knowledge_base_type
+        if not DaraCore.is_null(request.knowledge_space_id):
+            query['KnowledgeSpaceId'] = request.knowledge_space_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_knowledge_base_with_options_async(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_base_type):
+            query['KnowledgeBaseType'] = request.knowledge_base_type
+        if not DaraCore.is_null(request.knowledge_space_id):
+            query['KnowledgeSpaceId'] = request.knowledge_space_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_knowledge_base(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.create_knowledge_base_with_options(request, runtime)
+
+    async def create_knowledge_base_async(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.create_knowledge_base_with_options_async(request, runtime)
+
+    def create_knowledge_space_with_options(
+        self,
+        request: main_models.CreateKnowledgeSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.embedding_dimension):
+            query['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.embedding_model):
+            query['EmbeddingModel'] = request.embedding_model
+        if not DaraCore.is_null(request.enforce_acl):
+            query['EnforceAcl'] = request.enforce_acl
+        if not DaraCore.is_null(request.llmmodel):
+            query['LLMModel'] = request.llmmodel
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ossaccess_key):
+            query['OSSAccessKey'] = request.ossaccess_key
+        if not DaraCore.is_null(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not DaraCore.is_null(request.osssecret_key):
+            query['OSSSecretKey'] = request.osssecret_key
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rerank_model):
+            query['RerankModel'] = request.rerank_model
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.sharding_size):
+            query['ShardingSize'] = request.sharding_size
+        if not DaraCore.is_null(request.sharding_strategy):
+            query['ShardingStrategy'] = request.sharding_strategy
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeSpace',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_knowledge_space_with_options_async(
+        self,
+        request: main_models.CreateKnowledgeSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.embedding_dimension):
+            query['EmbeddingDimension'] = request.embedding_dimension
+        if not DaraCore.is_null(request.embedding_model):
+            query['EmbeddingModel'] = request.embedding_model
+        if not DaraCore.is_null(request.enforce_acl):
+            query['EnforceAcl'] = request.enforce_acl
+        if not DaraCore.is_null(request.llmmodel):
+            query['LLMModel'] = request.llmmodel
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.ossaccess_key):
+            query['OSSAccessKey'] = request.ossaccess_key
+        if not DaraCore.is_null(request.ossbucket):
+            query['OSSBucket'] = request.ossbucket
+        if not DaraCore.is_null(request.osssecret_key):
+            query['OSSSecretKey'] = request.osssecret_key
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rerank_model):
+            query['RerankModel'] = request.rerank_model
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.sharding_size):
+            query['ShardingSize'] = request.sharding_size
+        if not DaraCore.is_null(request.sharding_strategy):
+            query['ShardingStrategy'] = request.sharding_strategy
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeSpace',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_knowledge_space(
+        self,
+        request: main_models.CreateKnowledgeSpaceRequest,
+    ) -> main_models.CreateKnowledgeSpaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_knowledge_space_with_options(request, runtime)
+
+    async def create_knowledge_space_async(
+        self,
+        request: main_models.CreateKnowledgeSpaceRequest,
+    ) -> main_models.CreateKnowledgeSpaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_knowledge_space_with_options_async(request, runtime)
+
     def create_lakebase_s3account_with_options(
         self,
         request: main_models.CreateLakebaseS3AccountRequest,
@@ -7204,6 +7432,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateModelApiResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.force_model):
             query['ForceModel'] = request.force_model
         if not DaraCore.is_null(request.gw_cluster_id):
@@ -7250,6 +7480,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateModelApiResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.force_model):
             query['ForceModel'] = request.force_model
         if not DaraCore.is_null(request.gw_cluster_id):
@@ -9356,12 +9588,18 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAgenticDBComputeClusterResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
         if not DaraCore.is_null(request.compute_cluster_id):
             query['ComputeClusterId'] = request.compute_cluster_id
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9388,12 +9626,18 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAgenticDBComputeClusterResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
         if not DaraCore.is_null(request.compute_cluster_id):
             query['ComputeClusterId'] = request.compute_cluster_id
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11588,6 +11832,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteGlobalSecurityIPGroupResponse:
         runtime = RuntimeOptions()
         return await self.delete_global_security_ipgroup_with_options_async(request, runtime)
+
+    def delete_knowledge_base_with_options(
+        self,
+        request: main_models.DeleteKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_knowledge_base_with_options_async(
+        self,
+        request: main_models.DeleteKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_knowledge_base(
+        self,
+        request: main_models.DeleteKnowledgeBaseRequest,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.delete_knowledge_base_with_options(request, runtime)
+
+    async def delete_knowledge_base_async(
+        self,
+        request: main_models.DeleteKnowledgeBaseRequest,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_knowledge_base_with_options_async(request, runtime)
 
     def delete_lakebase_s3account_with_options(
         self,
@@ -15730,7 +16048,7 @@ class Client(OpenApiClient):
         request = main_models.DescribeApplicationPerformanceShrinkRequest()
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.filter):
-            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
@@ -15744,6 +16062,8 @@ class Client(OpenApiClient):
             query['EndStep'] = request.end_step
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
         if not DaraCore.is_null(request.interval):
             query['Interval'] = request.interval
         if not DaraCore.is_null(request.key):
@@ -15756,8 +16076,6 @@ class Client(OpenApiClient):
             query['StartStep'] = request.start_step
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        if not DaraCore.is_null(request.filter_shrink):
-            query['filter'] = request.filter_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15786,7 +16104,7 @@ class Client(OpenApiClient):
         request = main_models.DescribeApplicationPerformanceShrinkRequest()
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.filter):
-            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
@@ -15800,6 +16118,8 @@ class Client(OpenApiClient):
             query['EndStep'] = request.end_step
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
         if not DaraCore.is_null(request.interval):
             query['Interval'] = request.interval
         if not DaraCore.is_null(request.key):
@@ -15812,8 +16132,6 @@ class Client(OpenApiClient):
             query['StartStep'] = request.start_step
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        if not DaraCore.is_null(request.filter_shrink):
-            query['filter'] = request.filter_shrink
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -23346,6 +23664,170 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeHistoryTasksStatResponse:
         runtime = RuntimeOptions()
         return await self.describe_history_tasks_stat_with_options_async(request, runtime)
+
+    def describe_knowledge_base_attribute_with_options(
+        self,
+        request: main_models.DescribeKnowledgeBaseAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_knowledge_base_attribute_with_options_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_knowledge_base_attribute(
+        self,
+        request: main_models.DescribeKnowledgeBaseAttributeRequest,
+    ) -> main_models.DescribeKnowledgeBaseAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_knowledge_base_attribute_with_options(request, runtime)
+
+    async def describe_knowledge_base_attribute_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseAttributeRequest,
+    ) -> main_models.DescribeKnowledgeBaseAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_knowledge_base_attribute_with_options_async(request, runtime)
+
+    def describe_knowledge_bases_with_options(
+        self,
+        request: main_models.DescribeKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.knowledge_space_id):
+            query['KnowledgeSpaceId'] = request.knowledge_space_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBases',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_knowledge_bases_with_options_async(
+        self,
+        request: main_models.DescribeKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.knowledge_space_id):
+            query['KnowledgeSpaceId'] = request.knowledge_space_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBases',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_knowledge_bases(
+        self,
+        request: main_models.DescribeKnowledgeBasesRequest,
+    ) -> main_models.DescribeKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_knowledge_bases_with_options(request, runtime)
+
+    async def describe_knowledge_bases_async(
+        self,
+        request: main_models.DescribeKnowledgeBasesRequest,
+    ) -> main_models.DescribeKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_knowledge_bases_with_options_async(request, runtime)
 
     def describe_lakebase_s3account_with_options(
         self,
@@ -37738,6 +38220,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyModelApiResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.model_api_id):
@@ -37782,6 +38266,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyModelApiResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.model_api_id):

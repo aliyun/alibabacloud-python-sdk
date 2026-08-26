@@ -4,14 +4,20 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteAIDBClusterResponseBody(DaraModel):
+class CreateKnowledgeSpaceResponseBody(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        knowledge_space_id: str = None,
+        order_id: str = None,
         request_id: str = None,
     ):
-        # The AI cluster ID.
+        # The ID of the PolarDB instance created by automatic creation.
         self.dbcluster_id = dbcluster_id
+        # The unique identifier of the knowledge space.
+        self.knowledge_space_id = knowledge_space_id
+        # The order ID.
+        self.order_id = order_id
         # Id of the request
         self.request_id = request_id
 
@@ -26,6 +32,12 @@ class DeleteAIDBClusterResponseBody(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.knowledge_space_id is not None:
+            result['KnowledgeSpaceId'] = self.knowledge_space_id
+
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -35,6 +47,12 @@ class DeleteAIDBClusterResponseBody(DaraModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('KnowledgeSpaceId') is not None:
+            self.knowledge_space_id = m.get('KnowledgeSpaceId')
+
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

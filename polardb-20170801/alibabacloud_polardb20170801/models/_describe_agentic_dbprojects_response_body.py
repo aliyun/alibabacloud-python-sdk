@@ -16,10 +16,15 @@ class DescribeAgenticDBProjectsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of projects.
         self.items = items
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -87,14 +92,22 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The associated AgenticDB cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The default branch ID.
         self.default_branch_id = default_branch_id
+        # The default branch name.
         self.default_branch_name = default_branch_name
+        # The description of the project.
         self.description = description
+        # Project ID
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
         self.status = status
+        # The tenant ID to which the project belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

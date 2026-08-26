@@ -10,6 +10,7 @@ class DescribeAIDBClusterApiKeysRequest(DaraModel):
         model_space_name: str = None,
         region_id: str = None,
     ):
+        # The model space ID.
         self.model_space_name = model_space_name
         # The region ID.
         # 

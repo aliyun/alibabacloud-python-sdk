@@ -12,9 +12,13 @@ class AddPolarOSSAuthorizedAccountResponseBody(DaraModel):
         pfs_instance_id: str = None,
         request_id: str = None,
     ):
+        # The updated list of RAM role ARNs, separated by commas.
         self.authorized_user_arn_ids = authorized_user_arn_ids
+        # The updated list of UIDs, separated by commas.
         self.authorized_user_ids = authorized_user_ids
+        # The cold storage instance ID.
         self.pfs_instance_id = pfs_instance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

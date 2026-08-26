@@ -15,13 +15,13 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         downsample: str = None,
         end_step: int = None,
         end_time: str = None,
+        filter: Dict[str, Any] = None,
         interval: str = None,
         key: str = None,
         max_points: int = None,
         model_service: str = None,
         start_step: int = None,
         start_time: str = None,
-        filter: Dict[str, Any] = None,
     ):
         # The application cluster ID.
         # 
@@ -39,6 +39,7 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.filter = filter
         # The data granularity of performance data. Valid values:
         # - 5
         # - 30
@@ -50,7 +51,7 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         self.interval = interval
         # The performance metrics to query. Separate multiple values with commas (,).
         # 
-        # > **Note** You can specify up to 5 performance metrics.
+        # >  You can specify up to 5 performance metrics.
         # 
         # This parameter is required.
         self.key = key
@@ -64,7 +65,6 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        self.filter = filter
 
     def validate(self):
         pass
@@ -92,6 +92,9 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
+        if self.filter is not None:
+            result['Filter'] = self.filter
+
         if self.interval is not None:
             result['Interval'] = self.interval
 
@@ -109,9 +112,6 @@ class DescribeApplicationPerformanceRequest(DaraModel):
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-
-        if self.filter is not None:
-            result['filter'] = self.filter
 
         return result
 
@@ -135,6 +135,9 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
 
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
 
@@ -152,9 +155,6 @@ class DescribeApplicationPerformanceRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-
-        if m.get('filter') is not None:
-            self.filter = m.get('filter')
 
         return self
 

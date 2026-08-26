@@ -17,19 +17,19 @@ class DescribeModelApisResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # A list of Model API objects.
+        # The list of model APIs.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of records returned on the current page.
+        # The number of records on the current page.
         self.page_record_count = page_record_count
-        # The number of records to return on each page. Valid values: **30**, **50**, and **100**.
+        # The number of entries per page. Valid values: **30**, **50**, or **100**.
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The total number of records that match the query.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -94,6 +94,7 @@ class DescribeModelApisResponseBodyItems(DaraModel):
     def __init__(
         self,
         category: str = None,
+        config: str = None,
         gmt_created: str = None,
         model_api_id: str = None,
         name: str = None,
@@ -105,38 +106,33 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         status: str = None,
     ):
         # The model category. Valid values:
-        # 
-        # - **text**
-        # 
-        # - **embedding**
-        # 
-        # - **rerank**
+        # * **text**
+        # * **embedding**
+        # * **rerank**
         self.category = category
+        self.config = config
         # The creation time.
         self.gmt_created = gmt_created
-        # The Model API ID.
+        # The model API IDs.
         self.model_api_id = model_api_id
-        # The Model API name.
+        # The model API name.
         self.name = name
         # The API path prefix.
         self.path_prefix = path_prefix
         # The protocol. Valid values:
         # 
-        # - **openai**
-        # 
-        # - **anthropic**
-        # 
-        # - **bailian**
-        # 
-        # - **vllm**
+        # * **openai**
+        # * **anthropic**
+        # * **bailian**
+        # * **vllm**
         self.protocol = protocol
-        # The number of input records.
+        # The number of input tokens.
         self.record_input = record_input
-        # The number of output records.
+        # The number of output tokens.
         self.record_output = record_output
-        # A JSON array of routing rules, formatted as a string.
+        # The routing rules list (JSON array string).
         self.route_rules = route_rules
-        # The Model API status.
+        # The model API status.
         self.status = status
 
     def validate(self):
@@ -149,6 +145,9 @@ class DescribeModelApisResponseBodyItems(DaraModel):
             result = _map
         if self.category is not None:
             result['Category'] = self.category
+
+        if self.config is not None:
+            result['Config'] = self.config
 
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
@@ -183,6 +182,9 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
 
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')

@@ -10,10 +10,11 @@ class DeleteAIDBClusterRequest(DaraModel):
         dbcluster_id: str = None,
         model_space: str = None,
     ):
-        # The ID of the AI cluster.
+        # The AI cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The model operator space.
         self.model_space = model_space
 
     def validate(self):

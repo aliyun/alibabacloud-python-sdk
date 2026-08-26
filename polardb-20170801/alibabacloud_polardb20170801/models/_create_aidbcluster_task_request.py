@@ -67,13 +67,13 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The running parameters in JSON string format.
+        # The running parameters in a JSON string.
         # 
         # This parameter is required.
         self.running_parameter = running_parameter
         # The security group ID.
         self.security_group_id = security_group_id
-        # The description of the model service.
+        # The model service description.
         self.task_name = task_name
         self.tune_arch = tune_arch
         # The virtual private cloud (VPC) ID.

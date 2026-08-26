@@ -13,13 +13,13 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
         downsample: str = None,
         end_step: int = None,
         end_time: str = None,
+        filter_shrink: str = None,
         interval: str = None,
         key: str = None,
         max_points: int = None,
         model_service: str = None,
         start_step: int = None,
         start_time: str = None,
-        filter_shrink: str = None,
     ):
         # The application cluster ID.
         # 
@@ -37,6 +37,7 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.filter_shrink = filter_shrink
         # The data granularity of performance data. Valid values:
         # - 5
         # - 30
@@ -48,7 +49,7 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
         self.interval = interval
         # The performance metrics to query. Separate multiple values with commas (,).
         # 
-        # > **Note** You can specify up to 5 performance metrics.
+        # >  You can specify up to 5 performance metrics.
         # 
         # This parameter is required.
         self.key = key
@@ -62,7 +63,6 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        self.filter_shrink = filter_shrink
 
     def validate(self):
         pass
@@ -90,6 +90,9 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+
         if self.interval is not None:
             result['Interval'] = self.interval
 
@@ -107,9 +110,6 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-
-        if self.filter_shrink is not None:
-            result['filter'] = self.filter_shrink
 
         return result
 
@@ -133,6 +133,9 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
 
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
 
@@ -150,9 +153,6 @@ class DescribeApplicationPerformanceShrinkRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-
-        if m.get('filter') is not None:
-            self.filter_shrink = m.get('filter')
 
         return self
 

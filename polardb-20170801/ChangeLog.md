@@ -1,3 +1,22 @@
+2026-08-26 Version: 8.0.0
+- Support API CreateKnowledgeBase.
+- Support API CreateKnowledgeSpace.
+- Support API DeleteKnowledgeBase.
+- Support API DescribeKnowledgeBaseAttribute.
+- Support API DescribeKnowledgeBases.
+- Update API CreateModelApi: add request parameters Config.
+- Update API DeleteAgenticDBComputeCluster: add request parameters BranchId.
+- Update API DeleteAgenticDBComputeCluster: add request parameters ProjectId.
+- Update API DeleteAgenticDBComputeCluster: add request parameters TenantId.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.DedicatedHostModel.
+- Update API DescribeAgenticDBBranchEndpoints: add response parameters Body.Items.$.AddressItems.
+- Update API DescribeApplicationPerformance: add request parameters Filter.
+- Update API DescribeApplicationPerformance: delete request parameters filter.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.DedicatedHostModel.
+- Update API DescribeModelApis: add response parameters Body.Items.$.Config.
+- Update API ModifyModelApi: add request parameters Config.
+
+
 2026-08-07 Version: 7.13.0
 - Support API AddPolarOSSAuthorizedAccount.
 - Support API DeletePolarOSSAuthorizedAccount.

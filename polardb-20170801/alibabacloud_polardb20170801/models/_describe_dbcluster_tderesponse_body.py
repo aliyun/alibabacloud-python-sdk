@@ -17,47 +17,40 @@ class DescribeDBClusterTDEResponseBody(DaraModel):
         tderegion: str = None,
         tdestatus: str = None,
     ):
-        # Indicates whether automatic key rotation is allowed. Valid values:
+        # Indicates whether automatic key rotation is enabled. Valid values:
         # 
-        # - **Enabled**: Automatic key rotation is allowed.
-        # 
-        # - **Disabled**: Automatic key rotation is not allowed.
-        # 
-        # > This parameter is returned only when the database engine is compatible with PostgreSQL or Oracle syntax.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # > This parameter is returned only when the database engine is PostgreSQL-compatible or Oracle-syntax-compatible.
         self.automatic_rotation = automatic_rotation
-        # The unique ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether automatic encryption is enabled for all newly created tables. Valid values:
+        # Indicates whether automatic encryption of all newly created tables is enabled. Valid values:
         # 
-        # - **ON**: Automatic encryption is enabled.
+        # - **ON**: Enabled.
         # 
-        # - **OFF**: Automatic encryption is disabled.
-        # 
-        # > This parameter is returned only when the database engine is compatible with MySQL.
+        # - **OFF**: Disabled.
+        # > This parameter is returned only when the database engine is MySQL-compatible.
         self.encrypt_new_tables = encrypt_new_tables
-        # The ID of the custom key.
+        # The custom key ID.
         self.encryption_key = encryption_key
         # The status of the key. Valid values:
-        # 
-        # - **Enabled**: The key is enabled.
-        # 
-        # - **Disabled**: The key is disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.encryption_key_status = encryption_key_status
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The automatic key rotation interval configured in KMS. If no automatic key rotation interval is set, 0 s is returned. Unit: s.
+        # The automatic key rotation interval configured in Key Management Service (KMS). If no automatic key rotation interval is configured, 0 s is returned. Unit: s.
         # 
         # For example, if the rotation interval is 7 days, 604800 s is returned.
         # 
-        # > This parameter is returned only when the database engine is compatible with PostgreSQL or Oracle syntax, and the value of `AutomaticRotation` is `Enabled`.
+        # > This parameter is returned only when the database engine is PostgreSQL-compatible or Oracle-syntax-compatible and the value of AutomaticRotation is Enabled.
         self.rotation_interval = rotation_interval
-        # The region where the TDE key is located.
+        # The region where the TDE key resides.
         self.tderegion = tderegion
-        # Indicates whether TDE encryption is enabled. Valid values:
-        # 
-        # - **Enabled**: TDE encryption is enabled.
-        # 
-        # - **Disabled**: TDE encryption is disabled.
+        # Indicates whether TDE is enabled. Valid values:
+        # * **Enabled**: Enabled.
+        # * **Disabled**: Disabled.
         self.tdestatus = tdestatus
 
     def validate(self):

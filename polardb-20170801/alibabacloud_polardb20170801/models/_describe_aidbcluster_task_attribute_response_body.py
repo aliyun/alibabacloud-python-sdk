@@ -72,21 +72,21 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
         self.kind_code = kind_code
         # The lock mode. Valid values:
         # 
-        # * **0**: Locked.
-        # * **1**: Unlocked.
+        # * **0**: locked.
+        # * **1**: unlocked.
         self.lock_mode = lock_mode
         # The maintenance end time.
         self.maintain_end_time = maintain_end_time
         # The maintenance start time.
         self.maintain_start_time = maintain_start_time
-        # The list of output model paths in the model fine-tuning scenario.
+        # The list of model paths output in the model fine-tuning scenario.
         self.model_path = model_path
         # Id of the request
         self.request_id = request_id
         # The task information.
         self.task_info = task_info
         self.tune_arch = tune_arch
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -286,13 +286,13 @@ class DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo(DaraModel):
         self.start_time = start_time
         # The task type. Valid values:
         # 
-        # * **sft**: SFT-efficient training.
-        # * **grpo**: GRPO-reinforcement learning.
+        # * **sft**: SFT efficient training.
+        # * **grpo**: GRPO reinforcement learning.
         self.train_mode = train_mode
         # The training method. Valid values:
         # 
         # * **lora**
-        # * **full**: full-parameter training.
+        # * **full**: full-parameter fine-tuning.
         self.train_type = train_type
 
     def validate(self):
@@ -369,7 +369,7 @@ class DescribeAIDBClusterTaskAttributeResponseBodyDataSets(DaraModel):
         self.dataset_name = dataset_name
         # The dataset path.
         self.path = path
-        # The ratio of data split from the training set.
+        # The ratio split from the training set.
         self.split_dataset_ratio = split_dataset_ratio
         # The type. Valid values:
         # 

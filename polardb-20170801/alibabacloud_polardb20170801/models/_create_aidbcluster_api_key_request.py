@@ -13,10 +13,11 @@ class CreateAIDBClusterApiKeyRequest(DaraModel):
     ):
         # The description.
         self.description = description
+        # The model space ID.
         self.model_space_name = model_space_name
         # The region ID.
-        # > * You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters under the specified account.
-        # > * If you leave this parameter empty, scheduled tasks across all regions under the current account are queried.
+        # > * You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information of all clusters under the specified account.
+        # > * If this parameter is left empty, scheduled tasks in all regions under the current account are queried by default.
         # 
         # This parameter is required.
         self.region_id = region_id
