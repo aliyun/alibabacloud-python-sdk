@@ -8216,6 +8216,10 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
@@ -8262,6 +8266,10 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):

@@ -172,7 +172,7 @@ class ListAppTemplatesResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to the pagination limit, the server processes a maximum of 1000 recent records per query. If the results exceed 1000 records, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of 1000 recent records for the current query. If the result exceeds 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -272,6 +272,7 @@ class ListAppTemplatesResponseBodyModuleNext(DaraModel):
         id: int = None,
         industry: str = None,
         industry_name: str = None,
+        is_recommended: bool = None,
         last_modifier: str = None,
         like_count: int = None,
         liked: bool = None,
@@ -289,11 +290,11 @@ class ListAppTemplatesResponseBodyModuleNext(DaraModel):
     ):
         # The application type.
         self.app_type = app_type
-        # The BizId of the associated application instance.
+        # The bizId of the associated application instance.
         self.biz_id = biz_id
-        # The color.
+        # The color scheme.
         self.color_scheme = color_scheme
-        # The color name.
+        # The color scheme name.
         self.color_scheme_name = color_scheme_name
         # The actual amount of data copied from the original table during a DMS lock-free schema change.
         self.copy_count = copy_count
@@ -313,26 +314,27 @@ class ListAppTemplatesResponseBodyModuleNext(DaraModel):
         self.industry = industry
         # The industry name.
         self.industry_name = industry_name
-        # The ID of the last modifier.
+        self.is_recommended = is_recommended
+        # The ID of the user who last modified the resource.
         self.last_modifier = last_modifier
         # The number of likes.
         self.like_count = like_count
-        # Indicates whether the current user has liked this template.
+        # Indicates whether the current user has liked this item.
         self.liked = liked
-        # The remediation content.
+        # The fix content.
         self.metadata = metadata
         # The preview URL.
         self.preview_url = preview_url
-        # The product version. Valid values:
-        # - **BasicVersion**: Basic edition.
-        # - **EnterpriseVersion**: Enterprise edition.
+        # The product edition. Valid values:
+        # - **BasicVersion**: Basic Edition.
+        # - **EnterpriseVersion**: Enterprise Edition.
         # > This parameter is required only when ProductForm is set to IntegrationForm.
         self.product_version = product_version
-        # The Edition name.
+        # The product edition name.
         self.product_version_name = product_version_name
         # The number of shares.
         self.share_count = share_count
-        # Valid values: unknown, init, testing, online.
+        # The status. Valid values: unknown, init, testing, online.
         self.status = status
         # The template ID.
         self.template_id = template_id
@@ -385,6 +387,9 @@ class ListAppTemplatesResponseBodyModuleNext(DaraModel):
 
         if self.industry_name is not None:
             result['IndustryName'] = self.industry_name
+
+        if self.is_recommended is not None:
+            result['IsRecommended'] = self.is_recommended
 
         if self.last_modifier is not None:
             result['LastModifier'] = self.last_modifier
@@ -465,6 +470,9 @@ class ListAppTemplatesResponseBodyModuleNext(DaraModel):
         if m.get('IndustryName') is not None:
             self.industry_name = m.get('IndustryName')
 
+        if m.get('IsRecommended') is not None:
+            self.is_recommended = m.get('IsRecommended')
+
         if m.get('LastModifier') is not None:
             self.last_modifier = m.get('LastModifier')
 
@@ -523,6 +531,7 @@ class ListAppTemplatesResponseBodyModuleData(DaraModel):
         id: int = None,
         industry: str = None,
         industry_name: str = None,
+        is_recommended: bool = None,
         last_modifier: str = None,
         like_count: int = None,
         liked: bool = None,
@@ -542,9 +551,9 @@ class ListAppTemplatesResponseBodyModuleData(DaraModel):
         self.app_type = app_type
         # The application instance ID.
         self.biz_id = biz_id
-        # The color.
+        # The color scheme.
         self.color_scheme = color_scheme
-        # The color name.
+        # The color scheme name.
         self.color_scheme_name = color_scheme_name
         # The actual amount of data copied from the original table during a DMS lock-free schema change.
         self.copy_count = copy_count
@@ -560,28 +569,29 @@ class ListAppTemplatesResponseBodyModuleData(DaraModel):
         self.gmt_modified_time = gmt_modified_time
         # The primary key.
         self.id = id
-        # The industry of the file to be analyzed. Default value: **common** (general industry). Select an appropriate industry so that the backend matches the applicable algorithm combination. Valid values: 
+        # The industry of the file to be analyzed. Default value: **common** (general industry). Select an appropriate industry so that the backend matches the algorithm combination applicable to the industry. Valid values: 
         # 
         # - **microVideo**: short video industry.
         # - **common**: general industry.
         self.industry = industry
         # The industry name.
         self.industry_name = industry_name
+        self.is_recommended = is_recommended
         # The ID of the last modifier.
         self.last_modifier = last_modifier
         # The number of likes.
         self.like_count = like_count
-        # Indicates whether the current user has liked this template.
+        # Indicates whether the current user has liked this item.
         self.liked = liked
-        # The remediation action.
+        # The repair action.
         self.metadata = metadata
         # The preview URL.
         self.preview_url = preview_url
         # The product version. Valid values:
-        # - **BasicVersion**: Basic edition.
-        # - **EnterpriseVersion**: Enterprise edition.
+        # - **BasicVersion**: Basic Edition.
+        # - **EnterpriseVersion**: Enterprise Edition.
         self.product_version = product_version
-        # The Edition name.
+        # The edition name.
         self.product_version_name = product_version_name
         # The number of shares.
         self.share_count = share_count
@@ -639,6 +649,9 @@ class ListAppTemplatesResponseBodyModuleData(DaraModel):
 
         if self.industry_name is not None:
             result['IndustryName'] = self.industry_name
+
+        if self.is_recommended is not None:
+            result['IsRecommended'] = self.is_recommended
 
         if self.last_modifier is not None:
             result['LastModifier'] = self.last_modifier
@@ -718,6 +731,9 @@ class ListAppTemplatesResponseBodyModuleData(DaraModel):
 
         if m.get('IndustryName') is not None:
             self.industry_name = m.get('IndustryName')
+
+        if m.get('IsRecommended') is not None:
+            self.is_recommended = m.get('IsRecommended')
 
         if m.get('LastModifier') is not None:
             self.last_modifier = m.get('LastModifier')

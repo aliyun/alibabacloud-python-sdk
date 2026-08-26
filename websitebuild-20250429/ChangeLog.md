@@ -1,3 +1,10 @@
+2026-08-26 Version: 2.37.3
+- Update API ListAppTemplates: add request parameters OrderColumn.
+- Update API ListAppTemplates: add request parameters OrderType.
+- Update API ListAppTemplates: add response parameters Body.Module.Data.$.IsRecommended.
+- Update API ListAppTemplates: add response parameters Body.Module.Next.IsRecommended.
+
+
 2026-08-13 Version: 2.37.2
 - Update API BindAppDomain: add request parameters DomainType.
 - Update API ListAppInstanceDomains: add request parameters DomainType.
