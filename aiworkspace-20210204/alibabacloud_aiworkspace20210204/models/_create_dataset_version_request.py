@@ -13,6 +13,7 @@ class CreateDatasetVersionRequest(DaraModel):
         data_count: int = None,
         data_size: int = None,
         data_source_type: str = None,
+        dataset_task_ram_role: str = None,
         description: str = None,
         import_info: str = None,
         labels: List[main_models.Label] = None,
@@ -21,141 +22,112 @@ class CreateDatasetVersionRequest(DaraModel):
         source_id: str = None,
         source_type: str = None,
         uri: str = None,
+        user_metrics_endpoints: List[main_models.UserMetricsEndpoint] = None,
     ):
-        # The number of files in the dataset.
+        # The number of dataset files.
         self.data_count = data_count
-        # The size of the space occupied by the dataset files. Unit: bytes.
+        # The size of space occupied by dataset files. Unit: bytes.
         self.data_size = data_size
-        # The type of the data source. If you specify multiple types, separate them with commas (,). Valid values:
+        # The data source type. Separate multiple values with commas (,). Valid values:
         # 
-        # - NAS: The data is stored in Alibaba Cloud File Storage (NAS).
+        # - NAS: Alibaba Cloud Network Attached Storage (NAS).
         # 
-        # - OSS: The data is stored in Alibaba Cloud Object Storage Service (OSS).
+        # - OSS: Alibaba Cloud Object Storage Service (OSS).
         # 
         # - CPFS
         # 
-        # Note: The DataSourceType of the version must be the same as the DataSourceType of the dataset. The system verifies this consistency when you create the version.
+        # > The DataSourceType of the version must be consistent with the DataSourceType of the dataset. Validation is performed against the dataset when a version is created.
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
-        # A custom description for the dataset version. This helps distinguish different dataset versions.
+        # UserMetricsEndpoints
+        self.dataset_task_ram_role = dataset_task_ram_role
+        # The custom description of the dataset version, used to distinguish different dataset versions.
         self.description = description
-        # The storage import configuration of the dataset. Supported storage types include OSS, NAS, and CPFS.
+        # The storage import configuration of the dataset. OSS, NAS, and CPFS are supported.
         # 
         # <details>
-        # 
-        # <summary>
-        # 
-        # OSS
-        # 
-        # </summary>
-        # 
-        # {<br>
-        # "region": "${region}",// The region ID.<br>
-        # "bucket": "${bucket}",// The bucket name.<br>
-        # "path": "${path}" // The file path.<br>
-        # }
-        # 
+        # <summary>OSS</summary>
+        # {<BR>
+        #   "region": "${region}",//Region ID<BR>
+        #   "bucket": "${bucket}",//Bucket name<BR>
+        #   "path": "${path}" //File path<BR>
+        # }<BR>
         # </details>
         # 
         # <details>
+        # <summary>NAS</summary>
+        # {<BR>
+        #   "region": "${region}",//Region ID<BR>
+        #   "fileSystemId": "${file_system_id}", //File system ID<BR>
+        #   "path": "${path}", //File system path<BR>
+        #   "mountTarget": "${mount_target}" //File system mount target<BR>
+        # }<BR>
+        # </details>
         # 
-        # <summary>
         # 
-        # NAS
-        # 
-        # </summary>
-        # 
-        # {<br>
-        # "region": "${region}",// The region ID.<br>
-        # "fileSystemId": "${file_system_id}", // The file system ID.<br>
-        # "path": "${path}", // The file system path.<br>
-        # "mountTarget": "${mount_target}" // The mount target of the file system.<br>
-        # }
-        # 
+        # <details>
+        # <summary>CPFS</summary>
+        # {<BR>
+        #   "region": "${region}",//Region ID<BR>
+        #   "fileSystemId": "${file_system_id}", //File system ID<BR>
+        #   "protocolServiceId":"${protocol_service_id}", //File system protocol service<BR>
+        #   "exportId": "${export_id}", //File system export directory<BR>
+        #   "path": "${path}",  //File system path<BR>
+        # }<BR>
         # </details>
         # 
         # <details>
-        # 
-        # <summary>
-        # 
-        # CPFS
-        # 
-        # </summary>
-        # 
-        # {<br>
-        # "region": "${region}",// The region ID.<br>
-        # "fileSystemId": "${file_system_id}", // The file system ID.<br>
-        # "protocolServiceId":"${protocol_service_id}", // The protocol service of the file system.<br>
-        # "exportId": "${export_id}", // The exported directory of the file system.<br>
-        # "path": "${path}", // The file system path.<br>
-        # }
-        # 
-        # </details>
-        # 
-        # <details>
-        # 
-        # <summary>
-        # 
-        # Intelligent Computing CPFS
-        # 
-        # </summary>
-        # 
-        # {<br>
-        # "region": "${region}",// The region ID.<br>
-        # "fileSystemId": "${file_system_id}", // The file system ID.<br>
-        # "path": "${path}", // The file system path.<br>
-        # "mountTarget": "${mount_target}", // The mount target of the file system. This parameter is specific to the Intelligent Computing edition.<br>
-        # "isVpcMount": boolean, // Specifies whether the mount target is in a VPC. This parameter is specific to the Intelligent Computing edition.<br>
-        # }
-        # 
+        # <summary>Lingjun CPFS</summary>
+        # {<BR>
+        #   "region": "${region}",//Region ID<BR>
+        #   "fileSystemId": "${file_system_id}", //File system ID<BR>
+        #   "path": "${path}",  //File system path<BR>
+        #   "mountTarget": "${mount_target}" //File system mount target, specific to Lingjun edition<BR>
+        #   "isVpcMount": boolean, //Whether it is a VPC mount target, specific to Lingjun edition<BR>
+        # }<BR>
         # </details>
         self.import_info = import_info
-        # A list of tags for the dataset version.
+        # The list of dataset version labels.
         self.labels = labels
-        # The extended field, which is a JSON string.
-        # When DLC uses the dataset, you can configure the mountPath field to specify the default mount path for the dataset.
+        # The extended field in JsonString format.
+        # When DLC uses a dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
         self.options = options
         # The property of the dataset. Valid values:
-        # 
-        # - FILE: A file.
-        # 
-        # - DIRECTORY: A folder.
+        # - FILE: file.
+        # - DIRECTORY: folder.
         # 
         # This parameter is required.
         self.property = property
-        # The ID of the data source.
-        # 
-        # - If SourceType is set to USER, you can customize the SourceId.
-        # 
-        # - If SourceType is set to ITAG, which indicates a dataset generated from the annotation results of the iTAG module, SourceId is the task ID from iTAG.
-        # 
-        # - If SourceType is set to PAI_PUBLIC_DATASET, which indicates a dataset created from a public PAI dataset, SourceId is empty by default.
+        # The data source ID.
+        # - If SourceType is USER, SourceId can be customized.
+        # - If SourceType is ITAG, which indicates a dataset generated from iTAG annotation results, SourceId is the iTAG task ID.
+        # - If SourceType is PAI_PUBLIC_DATASET, which indicates a dataset created from a PAI public dataset, SourceId is empty by default.
         self.source_id = source_id
-        # The type of the data source. The default value is USER. Valid values:
-        # 
-        # - PAI-PUBLIC-DATASET: a public dataset from PAI.
-        # 
-        # - ITAG: a dataset generated from the annotation results of the iTAG module.
-        # 
-        # - USER: a dataset registered by a user.
+        # The data source type. Default value: USER. Valid values:
+        # - PAI-PUBLIC-DATASET: PAI public dataset.
+        # - ITAG: dataset generated from iTAG annotation results.
+        # - USER: user-registered dataset.
         self.source_type = source_type
-        # The following examples show how to configure the URI:
-        # 
+        # Examples of Uri configurations:
         # - If the data source type is OSS: `oss://bucket.endpoint/object`
-        # 
         # - If the data source type is NAS:
-        #   The format for a general-purpose NAS file system is `nas://<nasfisid>.region/subpath/to/dir/`.
-        #   CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`.
-        #   CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
-        #   CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid. The format for CPFS 1.0 is cpfs-<8 ASCII characters>. The format for CPFS 2.0 is cpfs-<16 ASCII characters>.
+        # General-purpose NAS format: `nas://<nasfisid>.region/subpath/to/dir/`;
+        # CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`;
+        # CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
+        # CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid: CPFS 1.0 format is cpfs-<8 ASCII characters>; CPFS 2.0 format is cpfs-<16 ASCII characters>.
         # 
         # This parameter is required.
         self.uri = uri
+        self.user_metrics_endpoints = user_metrics_endpoints
 
     def validate(self):
         if self.labels:
             for v1 in self.labels:
+                 if v1:
+                    v1.validate()
+        if self.user_metrics_endpoints:
+            for v1 in self.user_metrics_endpoints:
                  if v1:
                     v1.validate()
 
@@ -172,6 +144,9 @@ class CreateDatasetVersionRequest(DaraModel):
 
         if self.data_source_type is not None:
             result['DataSourceType'] = self.data_source_type
+
+        if self.dataset_task_ram_role is not None:
+            result['DatasetTaskRamRole'] = self.dataset_task_ram_role
 
         if self.description is not None:
             result['Description'] = self.description
@@ -199,6 +174,11 @@ class CreateDatasetVersionRequest(DaraModel):
         if self.uri is not None:
             result['Uri'] = self.uri
 
+        result['UserMetricsEndpoints'] = []
+        if self.user_metrics_endpoints is not None:
+            for k1 in self.user_metrics_endpoints:
+                result['UserMetricsEndpoints'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -211,6 +191,9 @@ class CreateDatasetVersionRequest(DaraModel):
 
         if m.get('DataSourceType') is not None:
             self.data_source_type = m.get('DataSourceType')
+
+        if m.get('DatasetTaskRamRole') is not None:
+            self.dataset_task_ram_role = m.get('DatasetTaskRamRole')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -238,6 +221,12 @@ class CreateDatasetVersionRequest(DaraModel):
 
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
+
+        self.user_metrics_endpoints = []
+        if m.get('UserMetricsEndpoints') is not None:
+            for k1 in m.get('UserMetricsEndpoints'):
+                temp_model = main_models.UserMetricsEndpoint()
+                self.user_metrics_endpoints.append(temp_model.from_map(k1))
 
         return self
 

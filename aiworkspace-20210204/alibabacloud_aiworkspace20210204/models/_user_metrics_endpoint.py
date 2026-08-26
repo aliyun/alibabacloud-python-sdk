@@ -4,13 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateDatasetVersionResponseBody(DaraModel):
+class UserMetricsEndpoint(DaraModel):
     def __init__(
         self,
-        request_id: str = None,
+        path: str = None,
+        port: int = None,
     ):
-        # Id of the request
-        self.request_id = request_id
+        self.path = path
+        self.port = port
 
     def validate(self):
         pass
@@ -20,15 +21,21 @@ class UpdateDatasetVersionResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.path is not None:
+            result['Path'] = self.path
+
+        if self.port is not None:
+            result['Port'] = self.port
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
 
         return self
 

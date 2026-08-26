@@ -12,7 +12,7 @@ class CreateDatasetVersionResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The name of the dataset version.
+        # The dataset version name.
         self.version_name = version_name
 
     def validate(self):

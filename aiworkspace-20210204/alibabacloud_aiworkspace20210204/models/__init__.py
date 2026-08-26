@@ -34,6 +34,7 @@ from ._run_metric import RunMetric
 from ._run_param import RunParam
 from ._trial import Trial
 from ._trial_label import TrialLabel
+from ._user_metrics_endpoint import UserMetricsEndpoint
 from ._accept_dataworks_event_request import AcceptDataworksEventRequest
 from ._accept_dataworks_event_response_body import AcceptDataworksEventResponseBody
 from ._accept_dataworks_event_response import AcceptDataworksEventResponse
@@ -528,6 +529,7 @@ __all__ = [
     RunParam,
     Trial,
     TrialLabel,
+    UserMetricsEndpoint,
     AcceptDataworksEventRequest,
     AcceptDataworksEventResponseBody,
     AcceptDataworksEventResponse,

@@ -788,6 +788,8 @@ class Client(OpenApiClient):
             body['DataSourceType'] = request.data_source_type
         if not DaraCore.is_null(request.data_type):
             body['DataType'] = request.data_type
+        if not DaraCore.is_null(request.dataset_task_ram_role):
+            body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.edition):
@@ -820,6 +822,8 @@ class Client(OpenApiClient):
             body['Uri'] = request.uri
         if not DaraCore.is_null(request.user_id):
             body['UserId'] = request.user_id
+        if not DaraCore.is_null(request.user_metrics_endpoints):
+            body['UserMetricsEndpoints'] = request.user_metrics_endpoints
         if not DaraCore.is_null(request.version_description):
             body['VersionDescription'] = request.version_description
         if not DaraCore.is_null(request.version_labels):
@@ -866,6 +870,8 @@ class Client(OpenApiClient):
             body['DataSourceType'] = request.data_source_type
         if not DaraCore.is_null(request.data_type):
             body['DataType'] = request.data_type
+        if not DaraCore.is_null(request.dataset_task_ram_role):
+            body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.edition):
@@ -898,6 +904,8 @@ class Client(OpenApiClient):
             body['Uri'] = request.uri
         if not DaraCore.is_null(request.user_id):
             body['UserId'] = request.user_id
+        if not DaraCore.is_null(request.user_metrics_endpoints):
+            body['UserMetricsEndpoints'] = request.user_metrics_endpoints
         if not DaraCore.is_null(request.version_description):
             body['VersionDescription'] = request.version_description
         if not DaraCore.is_null(request.version_labels):
@@ -1315,6 +1323,8 @@ class Client(OpenApiClient):
             body['DataSize'] = request.data_size
         if not DaraCore.is_null(request.data_source_type):
             body['DataSourceType'] = request.data_source_type
+        if not DaraCore.is_null(request.dataset_task_ram_role):
+            body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.import_info):
@@ -1331,6 +1341,8 @@ class Client(OpenApiClient):
             body['SourceType'] = request.source_type
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.user_metrics_endpoints):
+            body['UserMetricsEndpoints'] = request.user_metrics_endpoints
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -1366,6 +1378,8 @@ class Client(OpenApiClient):
             body['DataSize'] = request.data_size
         if not DaraCore.is_null(request.data_source_type):
             body['DataSourceType'] = request.data_source_type
+        if not DaraCore.is_null(request.dataset_task_ram_role):
+            body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.import_info):
@@ -1382,6 +1396,8 @@ class Client(OpenApiClient):
             body['SourceType'] = request.source_type
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.user_metrics_endpoints):
+            body['UserMetricsEndpoints'] = request.user_metrics_endpoints
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -10790,10 +10806,14 @@ class Client(OpenApiClient):
             body['DataCount'] = request.data_count
         if not DaraCore.is_null(request.data_size):
             body['DataSize'] = request.data_size
+        if not DaraCore.is_null(request.dataset_task_ram_role):
+            body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.options):
             body['Options'] = request.options
+        if not DaraCore.is_null(request.user_metrics_endpoints):
+            body['UserMetricsEndpoints'] = request.user_metrics_endpoints
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -10828,10 +10848,14 @@ class Client(OpenApiClient):
             body['DataCount'] = request.data_count
         if not DaraCore.is_null(request.data_size):
             body['DataSize'] = request.data_size
+        if not DaraCore.is_null(request.dataset_task_ram_role):
+            body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.options):
             body['Options'] = request.options
+        if not DaraCore.is_null(request.user_metrics_endpoints):
+            body['UserMetricsEndpoints'] = request.user_metrics_endpoints
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

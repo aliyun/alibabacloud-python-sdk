@@ -10,7 +10,7 @@ class CreateWorkspaceRoleResponseBody(DaraModel):
         instance_job_id: str = None,
         request_id: str = None,
     ):
-        # The job ID for the request.
+        # The task ID corresponding to the request.
         self.instance_job_id = instance_job_id
         # The request ID.
         self.request_id = request_id

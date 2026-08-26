@@ -18,7 +18,7 @@ class ListDatasetsResponseBody(DaraModel):
         self.datasets = datasets
         # The request ID.
         self.request_id = request_id
-        # The total count of datasets.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

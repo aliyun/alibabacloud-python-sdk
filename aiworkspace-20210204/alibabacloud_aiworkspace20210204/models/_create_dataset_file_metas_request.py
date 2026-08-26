@@ -14,15 +14,15 @@ class CreateDatasetFileMetasRequest(DaraModel):
         dataset_version: str = None,
         workspace_id: str = None,
     ):
-        # A list of file metadata content.
+        # The list of file metadata entries.
         # 
         # This parameter is required.
         self.dataset_file_metas = dataset_file_metas
-        # The name of the dataset version.
+        # The dataset version name.
         # 
         # This parameter is required.
         self.dataset_version = dataset_version
-        # The ID of the workspace where the dataset is located. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The ID of the workspace where the dataset resides. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

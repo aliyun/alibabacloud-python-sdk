@@ -13,6 +13,7 @@ class DatasetVersion(DaraModel):
         data_count: int = None,
         data_size: int = None,
         data_source_type: str = None,
+        dataset_task_ram_role: str = None,
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -24,42 +25,51 @@ class DatasetVersion(DaraModel):
         source_id: str = None,
         source_type: str = None,
         uri: str = None,
+        user_metrics_endpoints: List[main_models.UserMetricsEndpoint] = None,
         version_name: str = None,
     ):
-        # The total number of data items in the version.
+        # DataCount
         self.data_count = data_count
-        # The total size of the data in the version, in bytes.
+        # DataSize
         self.data_size = data_size
-        # The data source type. For example, the value `OSS` indicates Object Storage Service.
+        # DataSourceType
         self.data_source_type = data_source_type
-        # A custom description for the dataset version.
+        # DatasetTaskRamRole
+        self.dataset_task_ram_role = dataset_task_ram_role
+        # Description
         self.description = description
-        # The creation time of the dataset version, in UTC.
+        # create time
         self.gmt_create_time = gmt_create_time
-        # The time the dataset version was last modified, in UTC.
+        # modify time
         self.gmt_modified_time = gmt_modified_time
-        # Information about the import source, in JSON format.
+        # ImportInfo
         self.import_info = import_info
-        # A list of labels applied to the dataset version.
+        # Labels
         self.labels = labels
-        # The access permission for the mounted dataset. For example, `RO` means read-only.
+        # MountAccess
         self.mount_access = mount_access
-        # Additional configurations for the dataset version, in JSON format.
+        # Options
         self.options = options
-        # The data format of the dataset.
+        # property
         self.property = property
-        # The ID of the source from which the version was created.
+        # SourceId
         self.source_id = source_id
-        # The method used to create the dataset version.
+        # SourceType
         self.source_type = source_type
-        # The URI of the data source.
+        # Uri
         self.uri = uri
-        # The name of the dataset version.
+        # UserMetricsEndpoints
+        self.user_metrics_endpoints = user_metrics_endpoints
+        # version name
         self.version_name = version_name
 
     def validate(self):
         if self.labels:
             for v1 in self.labels:
+                 if v1:
+                    v1.validate()
+        if self.user_metrics_endpoints:
+            for v1 in self.user_metrics_endpoints:
                  if v1:
                     v1.validate()
 
@@ -76,6 +86,9 @@ class DatasetVersion(DaraModel):
 
         if self.data_source_type is not None:
             result['DataSourceType'] = self.data_source_type
+
+        if self.dataset_task_ram_role is not None:
+            result['DatasetTaskRamRole'] = self.dataset_task_ram_role
 
         if self.description is not None:
             result['Description'] = self.description
@@ -112,6 +125,11 @@ class DatasetVersion(DaraModel):
         if self.uri is not None:
             result['Uri'] = self.uri
 
+        result['UserMetricsEndpoints'] = []
+        if self.user_metrics_endpoints is not None:
+            for k1 in self.user_metrics_endpoints:
+                result['UserMetricsEndpoints'].append(k1.to_map() if k1 else None)
+
         if self.version_name is not None:
             result['VersionName'] = self.version_name
 
@@ -127,6 +145,9 @@ class DatasetVersion(DaraModel):
 
         if m.get('DataSourceType') is not None:
             self.data_source_type = m.get('DataSourceType')
+
+        if m.get('DatasetTaskRamRole') is not None:
+            self.dataset_task_ram_role = m.get('DatasetTaskRamRole')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -163,6 +184,12 @@ class DatasetVersion(DaraModel):
 
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
+
+        self.user_metrics_endpoints = []
+        if m.get('UserMetricsEndpoints') is not None:
+            for k1 in m.get('UserMetricsEndpoints'):
+                temp_model = main_models.UserMetricsEndpoint()
+                self.user_metrics_endpoints.append(temp_model.from_map(k1))
 
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')

@@ -1,3 +1,14 @@
+2026-08-26 Version: 8.3.2
+- Update API CreateDataset: add request parameters body.DatasetTaskRamRole.
+- Update API CreateDataset: add request parameters body.UserMetricsEndpoints.
+- Update API CreateDatasetVersion: add request parameters body.DatasetTaskRamRole.
+- Update API CreateDatasetVersion: add request parameters body.UserMetricsEndpoints.
+- Update API GetDatasetVersion: add response parameters Body.DatasetTaskRamRole.
+- Update API GetDatasetVersion: add response parameters Body.UserMetricsEndpoints.
+- Update API UpdateDatasetVersion: add request parameters body.DatasetTaskRamRole.
+- Update API UpdateDatasetVersion: add request parameters body.UserMetricsEndpoints.
+
+
 2026-08-15 Version: 8.3.1
 - Update API AddImage: add request parameters body.UserId.
 - Update API CreateWorkspaceRole: add request parameters body.UserId.

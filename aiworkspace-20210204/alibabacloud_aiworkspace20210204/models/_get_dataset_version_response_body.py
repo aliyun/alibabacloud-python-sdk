@@ -14,6 +14,7 @@ class GetDatasetVersionResponseBody(DaraModel):
         data_size: int = None,
         data_source_type: str = None,
         dataset_id: str = None,
+        dataset_task_ram_role: str = None,
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -26,106 +27,87 @@ class GetDatasetVersionResponseBody(DaraModel):
         source_id: str = None,
         source_type: str = None,
         uri: str = None,
+        user_metrics_endpoints: List[main_models.UserMetricsEndpoint] = None,
         version_name: str = None,
     ):
-        # The number of data entries.
+        # The data volume.
         self.data_count = data_count
-        # The size of the dataset.
+        # The dataset size.
         self.data_size = data_size
-        # The type of the data source.
+        # The data source type.
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
-        # The ID of the dataset.
+        # The primary resource ID.
         self.dataset_id = dataset_id
-        # The description of the version.
+        # DatasetTaskRamRole
+        self.dataset_task_ram_role = dataset_task_ram_role
+        # The version description.
         self.description = description
-        # The time when the dataset version was created.
+        # The creation time.
         self.gmt_create_time = gmt_create_time
-        # The time when the dataset version was last modified.
+        # The last modification time.
         self.gmt_modified_time = gmt_modified_time
-        # The storage import configuration of the dataset. Supported storage services include OSS, NAS, and CPFS.
+        # The storage import configuration of the dataset. OSS, NAS, and CPFS are supported.
         # 
         # <details>
-        # 
-        # <summary>
-        # 
-        # OSS
-        # 
-        # </summary>
-        # 
+        # <summary>OSS</summary>
         # {
-        # "region": "${region}",// Region ID
-        # "bucket": "${bucket}",// Bucket name
-        # "path": "${path}" // File path
+        # "region": "${region}",//The region ID.
+        # "bucket": "${bucket}",//The bucket name.
+        # "path": "${path}" //The file path.
         # }
+        # </details>
+        # 
+        # <details>
+        # <summary>NAS</summary>
         # 
         # </details>
         # 
         # <details>
-        # 
-        # <summary>
-        # 
-        # NAS
-        # 
-        # </summary>
-        # 
-        # </details>
-        # 
-        # <details>
-        # 
-        # <summary>
-        # 
-        # CPFS
-        # 
-        # </summary>
-        # 
+        # <summary>CPFS</summary>
         # Block content
-        # 
         # </details>
         # 
+        # 
         # <details>
-        # 
-        # <summary>
-        # 
-        # AI Computing CPFS
-        # 
-        # </summary>
-        # 
+        # <summary>Intelligent computing CPFS</summary>
         # Block content
-        # 
         # </details>
         self.import_info = import_info
-        # The tags of the resource.
+        # The resource labels.
         self.labels = labels
-        # The access permissions when the dataset is mounted.
-        # 
-        # - RO: Read-only mount
-        # 
-        # - RW: Read-write mount
+        # The permission when the dataset is mounted. Valid values:
+        # - RO: read-only mount
+        # - RW: read and write mount
         self.mount_access = mount_access
-        # Additional options.
+        # The extension field.
         self.options = options
         # The property of the dataset.
         # 
         # This parameter is required.
         self.property = property
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The ID of the dataset source.
+        # The dataset source ID.
         self.source_id = source_id
-        # The source type.
+        # The data source type.
         self.source_type = source_type
-        # The URI of the dataset version.
+        # The URI configuration example.
         # 
         # This parameter is required.
         self.uri = uri
-        # The name of the dataset version.
+        self.user_metrics_endpoints = user_metrics_endpoints
+        # The dataset version.
         self.version_name = version_name
 
     def validate(self):
         if self.labels:
             for v1 in self.labels:
+                 if v1:
+                    v1.validate()
+        if self.user_metrics_endpoints:
+            for v1 in self.user_metrics_endpoints:
                  if v1:
                     v1.validate()
 
@@ -145,6 +127,9 @@ class GetDatasetVersionResponseBody(DaraModel):
 
         if self.dataset_id is not None:
             result['DatasetId'] = self.dataset_id
+
+        if self.dataset_task_ram_role is not None:
+            result['DatasetTaskRamRole'] = self.dataset_task_ram_role
 
         if self.description is not None:
             result['Description'] = self.description
@@ -184,6 +169,11 @@ class GetDatasetVersionResponseBody(DaraModel):
         if self.uri is not None:
             result['Uri'] = self.uri
 
+        result['UserMetricsEndpoints'] = []
+        if self.user_metrics_endpoints is not None:
+            for k1 in self.user_metrics_endpoints:
+                result['UserMetricsEndpoints'].append(k1.to_map() if k1 else None)
+
         if self.version_name is not None:
             result['VersionName'] = self.version_name
 
@@ -202,6 +192,9 @@ class GetDatasetVersionResponseBody(DaraModel):
 
         if m.get('DatasetId') is not None:
             self.dataset_id = m.get('DatasetId')
+
+        if m.get('DatasetTaskRamRole') is not None:
+            self.dataset_task_ram_role = m.get('DatasetTaskRamRole')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -241,6 +234,12 @@ class GetDatasetVersionResponseBody(DaraModel):
 
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
+
+        self.user_metrics_endpoints = []
+        if m.get('UserMetricsEndpoints') is not None:
+            for k1 in m.get('UserMetricsEndpoints'):
+                temp_model = main_models.UserMetricsEndpoint()
+                self.user_metrics_endpoints.append(temp_model.from_map(k1))
 
         if m.get('VersionName') is not None:
             self.version_name = m.get('VersionName')
