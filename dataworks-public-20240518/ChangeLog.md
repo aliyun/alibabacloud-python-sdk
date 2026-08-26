@@ -1,3 +1,8 @@
+2026-08-26 Version: 9.4.0
+- Support API CreateServerIdeInstance.
+- Support API UpdateServerIdeInstance.
+
+
 2026-08-25 Version: 9.3.0
 - Support API BuildImage.
 - Support API CancelImageTest.

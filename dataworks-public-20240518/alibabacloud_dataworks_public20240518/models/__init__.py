@@ -246,6 +246,10 @@ from ._create_semantic_job_request import CreateSemanticJobRequest
 from ._create_semantic_job_shrink_request import CreateSemanticJobShrinkRequest
 from ._create_semantic_job_response_body import CreateSemanticJobResponseBody
 from ._create_semantic_job_response import CreateSemanticJobResponse
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequest
+from ._create_server_ide_instance_shrink_request import CreateServerIdeInstanceShrinkRequest
+from ._create_server_ide_instance_response_body import CreateServerIdeInstanceResponseBody
+from ._create_server_ide_instance_response import CreateServerIdeInstanceResponse
 from ._create_skill_request import CreateSkillRequest
 from ._create_skill_shrink_request import CreateSkillShrinkRequest
 from ._create_skill_response_body import CreateSkillResponseBody
@@ -1247,6 +1251,10 @@ from ._update_security_strategy_request import UpdateSecurityStrategyRequest
 from ._update_security_strategy_shrink_request import UpdateSecurityStrategyShrinkRequest
 from ._update_security_strategy_response_body import UpdateSecurityStrategyResponseBody
 from ._update_security_strategy_response import UpdateSecurityStrategyResponse
+from ._update_server_ide_instance_request import UpdateServerIdeInstanceRequest
+from ._update_server_ide_instance_shrink_request import UpdateServerIdeInstanceShrinkRequest
+from ._update_server_ide_instance_response_body import UpdateServerIdeInstanceResponseBody
+from ._update_server_ide_instance_response import UpdateServerIdeInstanceResponse
 from ._update_skill_request import UpdateSkillRequest
 from ._update_skill_shrink_request import UpdateSkillShrinkRequest
 from ._update_skill_response_body import UpdateSkillResponseBody
@@ -1438,6 +1446,15 @@ from ._create_resource_group_response_body import CreateResourceGroupResponseBod
 from ._create_security_strategy_request import CreateSecurityStrategyRequestContentControllers
 from ._create_security_strategy_request import CreateSecurityStrategyRequestContent
 from ._create_semantic_job_response_body import CreateSemanticJobResponseBodyData
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestCredentialConfigConfigsRolesUserInfo
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestCredentialConfigConfigsRoles
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestCredentialConfigConfigs
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestCredentialConfig
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestDatasets
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestUserCommandOnStart
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestUserCommand
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestUserVpcForwardInfos
+from ._create_server_ide_instance_request import CreateServerIdeInstanceRequestUserVpc
 from ._create_skill_request import CreateSkillRequestVisibilityScope
 from ._create_skill_response_body import CreateSkillResponseBodySkillVisibilityScope
 from ._create_skill_response_body import CreateSkillResponseBodySkill
@@ -2177,6 +2194,13 @@ from ._update_process_definition_request import UpdateProcessDefinitionRequestRu
 from ._update_project_role_request import UpdateProjectRoleRequestModulePermissions
 from ._update_security_strategy_request import UpdateSecurityStrategyRequestContentControllers
 from ._update_security_strategy_request import UpdateSecurityStrategyRequestContent
+from ._update_server_ide_instance_request import UpdateServerIdeInstanceRequestCredentialConfigConfigsRolesUserInfo
+from ._update_server_ide_instance_request import UpdateServerIdeInstanceRequestCredentialConfigConfigsRoles
+from ._update_server_ide_instance_request import UpdateServerIdeInstanceRequestCredentialConfigConfigs
+from ._update_server_ide_instance_request import UpdateServerIdeInstanceRequestCredentialConfig
+from ._update_server_ide_instance_request import UpdateServerIdeInstanceRequestDatasets
+from ._update_server_ide_instance_request import UpdateServerIdeInstanceRequestUserVpcForwardInfos
+from ._update_server_ide_instance_request import UpdateServerIdeInstanceRequestUserVpc
 from ._update_skill_request import UpdateSkillRequestVisibilityScope
 from ._update_skill_response_body import UpdateSkillResponseBodySkillVisibilityScope
 from ._update_skill_response_body import UpdateSkillResponseBodySkill
@@ -2457,6 +2481,10 @@ __all__ = [
     CreateSemanticJobShrinkRequest,
     CreateSemanticJobResponseBody,
     CreateSemanticJobResponse,
+    CreateServerIdeInstanceRequest,
+    CreateServerIdeInstanceShrinkRequest,
+    CreateServerIdeInstanceResponseBody,
+    CreateServerIdeInstanceResponse,
     CreateSkillRequest,
     CreateSkillShrinkRequest,
     CreateSkillResponseBody,
@@ -3458,6 +3486,10 @@ __all__ = [
     UpdateSecurityStrategyShrinkRequest,
     UpdateSecurityStrategyResponseBody,
     UpdateSecurityStrategyResponse,
+    UpdateServerIdeInstanceRequest,
+    UpdateServerIdeInstanceShrinkRequest,
+    UpdateServerIdeInstanceResponseBody,
+    UpdateServerIdeInstanceResponse,
     UpdateSkillRequest,
     UpdateSkillShrinkRequest,
     UpdateSkillResponseBody,
@@ -3649,6 +3681,15 @@ __all__ = [
     CreateSecurityStrategyRequestContentControllers,
     CreateSecurityStrategyRequestContent,
     CreateSemanticJobResponseBodyData,
+    CreateServerIdeInstanceRequestCredentialConfigConfigsRolesUserInfo,
+    CreateServerIdeInstanceRequestCredentialConfigConfigsRoles,
+    CreateServerIdeInstanceRequestCredentialConfigConfigs,
+    CreateServerIdeInstanceRequestCredentialConfig,
+    CreateServerIdeInstanceRequestDatasets,
+    CreateServerIdeInstanceRequestUserCommandOnStart,
+    CreateServerIdeInstanceRequestUserCommand,
+    CreateServerIdeInstanceRequestUserVpcForwardInfos,
+    CreateServerIdeInstanceRequestUserVpc,
     CreateSkillRequestVisibilityScope,
     CreateSkillResponseBodySkillVisibilityScope,
     CreateSkillResponseBodySkill,
@@ -4388,6 +4429,13 @@ __all__ = [
     UpdateProjectRoleRequestModulePermissions,
     UpdateSecurityStrategyRequestContentControllers,
     UpdateSecurityStrategyRequestContent,
+    UpdateServerIdeInstanceRequestCredentialConfigConfigsRolesUserInfo,
+    UpdateServerIdeInstanceRequestCredentialConfigConfigsRoles,
+    UpdateServerIdeInstanceRequestCredentialConfigConfigs,
+    UpdateServerIdeInstanceRequestCredentialConfig,
+    UpdateServerIdeInstanceRequestDatasets,
+    UpdateServerIdeInstanceRequestUserVpcForwardInfos,
+    UpdateServerIdeInstanceRequestUserVpc,
     UpdateSkillRequestVisibilityScope,
     UpdateSkillResponseBodySkillVisibilityScope,
     UpdateSkillResponseBodySkill,

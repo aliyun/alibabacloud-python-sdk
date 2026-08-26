@@ -6376,6 +6376,136 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_semantic_job_with_options_async(request, runtime)
 
+    def create_server_ide_instance_with_options(
+        self,
+        tmp_req: main_models.CreateServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServerIdeInstanceResponse:
+        tmp_req.validate()
+        request = main_models.CreateServerIdeInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.credential_config):
+            request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.datasets):
+            request.datasets_shrink = Utils.array_to_string_with_specified_style(tmp_req.datasets, 'Datasets', 'json')
+        if not DaraCore.is_null(tmp_req.user_command):
+            request.user_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_command, 'UserCommand', 'json')
+        if not DaraCore.is_null(tmp_req.user_vpc):
+            request.user_vpc_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_vpc, 'UserVpc', 'json')
+        body = {}
+        if not DaraCore.is_null(request.credential_config_shrink):
+            body['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.cu):
+            body['Cu'] = request.cu
+        if not DaraCore.is_null(request.datasets_shrink):
+            body['Datasets'] = request.datasets_shrink
+        if not DaraCore.is_null(request.image_id):
+            body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.user_command_shrink):
+            body['UserCommand'] = request.user_command_shrink
+        if not DaraCore.is_null(request.user_vpc_shrink):
+            body['UserVpc'] = request.user_vpc_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServerIdeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_server_ide_instance_with_options_async(
+        self,
+        tmp_req: main_models.CreateServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServerIdeInstanceResponse:
+        tmp_req.validate()
+        request = main_models.CreateServerIdeInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.credential_config):
+            request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.datasets):
+            request.datasets_shrink = Utils.array_to_string_with_specified_style(tmp_req.datasets, 'Datasets', 'json')
+        if not DaraCore.is_null(tmp_req.user_command):
+            request.user_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_command, 'UserCommand', 'json')
+        if not DaraCore.is_null(tmp_req.user_vpc):
+            request.user_vpc_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_vpc, 'UserVpc', 'json')
+        body = {}
+        if not DaraCore.is_null(request.credential_config_shrink):
+            body['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.cu):
+            body['Cu'] = request.cu
+        if not DaraCore.is_null(request.datasets_shrink):
+            body['Datasets'] = request.datasets_shrink
+        if not DaraCore.is_null(request.image_id):
+            body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.user_command_shrink):
+            body['UserCommand'] = request.user_command_shrink
+        if not DaraCore.is_null(request.user_vpc_shrink):
+            body['UserVpc'] = request.user_vpc_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServerIdeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_server_ide_instance(
+        self,
+        request: main_models.CreateServerIdeInstanceRequest,
+    ) -> main_models.CreateServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.create_server_ide_instance_with_options(request, runtime)
+
+    async def create_server_ide_instance_async(
+        self,
+        request: main_models.CreateServerIdeInstanceRequest,
+    ) -> main_models.CreateServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_server_ide_instance_with_options_async(request, runtime)
+
     def create_skill_with_options(
         self,
         tmp_req: main_models.CreateSkillRequest,
@@ -31689,6 +31819,128 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateSecurityStrategyResponse:
         runtime = RuntimeOptions()
         return await self.update_security_strategy_with_options_async(request, runtime)
+
+    def update_server_ide_instance_with_options(
+        self,
+        tmp_req: main_models.UpdateServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServerIdeInstanceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateServerIdeInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.credential_config):
+            request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.datasets):
+            request.datasets_shrink = Utils.array_to_string_with_specified_style(tmp_req.datasets, 'Datasets', 'json')
+        if not DaraCore.is_null(tmp_req.user_vpc):
+            request.user_vpc_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_vpc, 'UserVpc', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.credential_config_shrink):
+            body['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.cu):
+            body['Cu'] = request.cu
+        if not DaraCore.is_null(request.datasets_shrink):
+            body['Datasets'] = request.datasets_shrink
+        if not DaraCore.is_null(request.image_id):
+            body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.user_vpc_shrink):
+            body['UserVpc'] = request.user_vpc_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServerIdeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_server_ide_instance_with_options_async(
+        self,
+        tmp_req: main_models.UpdateServerIdeInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServerIdeInstanceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateServerIdeInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.credential_config):
+            request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.datasets):
+            request.datasets_shrink = Utils.array_to_string_with_specified_style(tmp_req.datasets, 'Datasets', 'json')
+        if not DaraCore.is_null(tmp_req.user_vpc):
+            request.user_vpc_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_vpc, 'UserVpc', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.credential_config_shrink):
+            body['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.cu):
+            body['Cu'] = request.cu
+        if not DaraCore.is_null(request.datasets_shrink):
+            body['Datasets'] = request.datasets_shrink
+        if not DaraCore.is_null(request.image_id):
+            body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.user_vpc_shrink):
+            body['UserVpc'] = request.user_vpc_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServerIdeInstance',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServerIdeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_server_ide_instance(
+        self,
+        request: main_models.UpdateServerIdeInstanceRequest,
+    ) -> main_models.UpdateServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.update_server_ide_instance_with_options(request, runtime)
+
+    async def update_server_ide_instance_async(
+        self,
+        request: main_models.UpdateServerIdeInstanceRequest,
+    ) -> main_models.UpdateServerIdeInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_server_ide_instance_with_options_async(request, runtime)
 
     def update_skill_with_options(
         self,
