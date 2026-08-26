@@ -14,6 +14,10 @@ from ._create_identity_provider_request import CreateIdentityProviderRequest
 from ._create_identity_provider_shrink_request import CreateIdentityProviderShrinkRequest
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBody
 from ._create_identity_provider_response import CreateIdentityProviderResponse
+from ._create_managed_agent_request import CreateManagedAgentRequest
+from ._create_managed_agent_shrink_request import CreateManagedAgentShrinkRequest
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBody
+from ._create_managed_agent_response import CreateManagedAgentResponse
 from ._create_model_request import CreateModelRequest
 from ._create_model_shrink_request import CreateModelShrinkRequest
 from ._create_model_response_body import CreateModelResponseBody
@@ -30,6 +34,10 @@ from ._create_user_request import CreateUserRequest
 from ._create_user_shrink_request import CreateUserShrinkRequest
 from ._create_user_response_body import CreateUserResponseBody
 from ._create_user_response import CreateUserResponse
+from ._create_workspace_request import CreateWorkspaceRequest
+from ._create_workspace_shrink_request import CreateWorkspaceShrinkRequest
+from ._create_workspace_response_body import CreateWorkspaceResponseBody
+from ._create_workspace_response import CreateWorkspaceResponse
 from ._debug_model_request import DebugModelRequest
 from ._debug_model_shrink_request import DebugModelShrinkRequest
 from ._debug_model_response_body import DebugModelResponseBody
@@ -40,6 +48,9 @@ from ._delete_credential_response import DeleteCredentialResponse
 from ._delete_identity_provider_request import DeleteIdentityProviderRequest
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBody
 from ._delete_identity_provider_response import DeleteIdentityProviderResponse
+from ._delete_managed_agent_request import DeleteManagedAgentRequest
+from ._delete_managed_agent_response_body import DeleteManagedAgentResponseBody
+from ._delete_managed_agent_response import DeleteManagedAgentResponse
 from ._delete_model_request import DeleteModelRequest
 from ._delete_model_response_body import DeleteModelResponseBody
 from ._delete_model_response import DeleteModelResponse
@@ -52,12 +63,18 @@ from ._delete_team_response import DeleteTeamResponse
 from ._delete_user_request import DeleteUserRequest
 from ._delete_user_response_body import DeleteUserResponseBody
 from ._delete_user_response import DeleteUserResponse
+from ._delete_workspace_request import DeleteWorkspaceRequest
+from ._delete_workspace_response_body import DeleteWorkspaceResponseBody
+from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._get_credential_request import GetCredentialRequest
 from ._get_credential_response_body import GetCredentialResponseBody
 from ._get_credential_response import GetCredentialResponse
 from ._get_identity_provider_request import GetIdentityProviderRequest
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBody
 from ._get_identity_provider_response import GetIdentityProviderResponse
+from ._get_managed_agent_request import GetManagedAgentRequest
+from ._get_managed_agent_response_body import GetManagedAgentResponseBody
+from ._get_managed_agent_response import GetManagedAgentResponse
 from ._get_model_request import GetModelRequest
 from ._get_model_response_body import GetModelResponseBody
 from ._get_model_response import GetModelResponse
@@ -70,12 +87,18 @@ from ._get_team_response import GetTeamResponse
 from ._get_user_request import GetUserRequest
 from ._get_user_response_body import GetUserResponseBody
 from ._get_user_response import GetUserResponse
+from ._get_workspace_request import GetWorkspaceRequest
+from ._get_workspace_response_body import GetWorkspaceResponseBody
+from ._get_workspace_response import GetWorkspaceResponse
 from ._list_credentials_request import ListCredentialsRequest
 from ._list_credentials_response_body import ListCredentialsResponseBody
 from ._list_credentials_response import ListCredentialsResponse
 from ._list_identity_providers_request import ListIdentityProvidersRequest
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBody
 from ._list_identity_providers_response import ListIdentityProvidersResponse
+from ._list_managed_agents_request import ListManagedAgentsRequest
+from ._list_managed_agents_response_body import ListManagedAgentsResponseBody
+from ._list_managed_agents_response import ListManagedAgentsResponse
 from ._list_model_connections_request import ListModelConnectionsRequest
 from ._list_model_connections_response_body import ListModelConnectionsResponseBody
 from ._list_model_connections_response import ListModelConnectionsResponse
@@ -94,6 +117,9 @@ from ._list_teams_response import ListTeamsResponse
 from ._list_users_request import ListUsersRequest
 from ._list_users_response_body import ListUsersResponseBody
 from ._list_users_response import ListUsersResponse
+from ._list_workspaces_request import ListWorkspacesRequest
+from ._list_workspaces_response_body import ListWorkspacesResponseBody
+from ._list_workspaces_response import ListWorkspacesResponse
 from ._reset_user_password_request import ResetUserPasswordRequest
 from ._reset_user_password_shrink_request import ResetUserPasswordShrinkRequest
 from ._reset_user_password_response_body import ResetUserPasswordResponseBody
@@ -106,6 +132,10 @@ from ._update_identity_provider_request import UpdateIdentityProviderRequest
 from ._update_identity_provider_shrink_request import UpdateIdentityProviderShrinkRequest
 from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBody
 from ._update_identity_provider_response import UpdateIdentityProviderResponse
+from ._update_managed_agent_request import UpdateManagedAgentRequest
+from ._update_managed_agent_shrink_request import UpdateManagedAgentShrinkRequest
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBody
+from ._update_managed_agent_response import UpdateManagedAgentResponse
 from ._update_model_request import UpdateModelRequest
 from ._update_model_shrink_request import UpdateModelShrinkRequest
 from ._update_model_response_body import UpdateModelResponseBody
@@ -122,6 +152,10 @@ from ._update_user_request import UpdateUserRequest
 from ._update_user_shrink_request import UpdateUserShrinkRequest
 from ._update_user_response_body import UpdateUserResponseBody
 from ._update_user_response import UpdateUserResponse
+from ._update_workspace_request import UpdateWorkspaceRequest
+from ._update_workspace_shrink_request import UpdateWorkspaceShrinkRequest
+from ._update_workspace_response_body import UpdateWorkspaceResponseBody
+from ._update_workspace_response import UpdateWorkspaceResponse
 from ._batch_delete_models_request import BatchDeleteModelsRequestBody
 from ._batch_delete_models_response_body import BatchDeleteModelsResponseBodyData
 from ._create_credential_request import CreateCredentialRequestBody
@@ -129,6 +163,38 @@ from ._create_credential_response_body import CreateCredentialResponseBodyData
 from ._create_identity_provider_request import CreateIdentityProviderRequestBodyMetadata
 from ._create_identity_provider_request import CreateIdentityProviderRequestBody
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBodyData
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironmentCredentialReferences
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironmentVariables
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironment
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyModel
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyNetworkAccessInternet
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyNetworkAccessVpc
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyNetwork
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeCompute
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeSessionPolicy
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntime
+from ._create_managed_agent_request import CreateManagedAgentRequestBodySkills
+from ._create_managed_agent_request import CreateManagedAgentRequestBodySubAgents
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyTemplateAiRegistry
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyTemplate
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyTools
+from ._create_managed_agent_request import CreateManagedAgentRequestBody
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataEnvironmentCredentialReferences
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataEnvironmentVariables
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataEnvironment
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataModel
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataNetworkAccessInternet
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataNetworkAccessVpc
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataNetwork
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntimeCompute
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntimeSessionPolicy
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntime
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSkills
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSubAgents
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataTemplateAiRegistry
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataTemplate
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataTools
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyData
 from ._create_model_request import CreateModelRequestBodyCapabilities
 from ._create_model_request import CreateModelRequestBody
 from ._create_model_response_body import CreateModelResponseBodyDataCapabilities
@@ -143,18 +209,42 @@ from ._create_team_response_body import CreateTeamResponseBodyDataUsers
 from ._create_team_response_body import CreateTeamResponseBodyData
 from ._create_user_request import CreateUserRequestBody
 from ._create_user_response_body import CreateUserResponseBodyData
+from ._create_workspace_request import CreateWorkspaceRequestBodyNetworkConfigurationVpc
+from ._create_workspace_request import CreateWorkspaceRequestBodyNetworkConfiguration
+from ._create_workspace_request import CreateWorkspaceRequestBody
+from ._create_workspace_response_body import CreateWorkspaceResponseBodyDataNetworkConfigurationVpc
+from ._create_workspace_response_body import CreateWorkspaceResponseBodyDataNetworkConfiguration
+from ._create_workspace_response_body import CreateWorkspaceResponseBodyData
 from ._debug_model_request import DebugModelRequestBody
 from ._debug_model_response_body import DebugModelResponseBodyData
 from ._delete_credential_response_body import DeleteCredentialResponseBodyData
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBodyData
+from ._delete_managed_agent_response_body import DeleteManagedAgentResponseBodyData
 from ._delete_model_response_body import DeleteModelResponseBodyData
 from ._delete_model_connection_response_body import DeleteModelConnectionResponseBodyData
 from ._delete_team_response_body import DeleteTeamResponseBodyData
 from ._delete_user_response_body import DeleteUserResponseBodyData
+from ._delete_workspace_response_body import DeleteWorkspaceResponseBodyData
 from ._get_credential_response_body import GetCredentialResponseBodyDataBoundAgents
 from ._get_credential_response_body import GetCredentialResponseBodyData
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyDataMetadata
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyData
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataEnvironmentCredentialReferences
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataEnvironmentVariables
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataEnvironment
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataModel
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataNetworkAccessInternet
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataNetworkAccessVpc
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataNetwork
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntimeCompute
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntimeSessionPolicy
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntime
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSkills
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSubAgents
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataTemplateAiRegistry
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataTemplate
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataTools
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyData
 from ._get_model_response_body import GetModelResponseBodyDataCapabilities
 from ._get_model_response_body import GetModelResponseBodyData
 from ._get_model_connection_response_body import GetModelConnectionResponseBodyData
@@ -162,9 +252,13 @@ from ._get_team_response_body import GetTeamResponseBodyDataAgents
 from ._get_team_response_body import GetTeamResponseBodyDataUsers
 from ._get_team_response_body import GetTeamResponseBodyData
 from ._get_user_response_body import GetUserResponseBodyData
+from ._get_workspace_response_body import GetWorkspaceResponseBodyDataNetworkConfigurationVpc
+from ._get_workspace_response_body import GetWorkspaceResponseBodyDataNetworkConfiguration
+from ._get_workspace_response_body import GetWorkspaceResponseBodyData
 from ._list_credentials_response_body import ListCredentialsResponseBodyItems
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItemsMetadata
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItems
+from ._list_managed_agents_response_body import ListManagedAgentsResponseBodyItems
 from ._list_model_connections_response_body import ListModelConnectionsResponseBodyItemsModels
 from ._list_model_connections_response_body import ListModelConnectionsResponseBodyItems
 from ._list_models_response_body import ListModelsResponseBodyItemsCapabilities
@@ -176,6 +270,9 @@ from ._list_teams_response_body import ListTeamsResponseBodyItemsAgents
 from ._list_teams_response_body import ListTeamsResponseBodyItemsUsers
 from ._list_teams_response_body import ListTeamsResponseBodyItems
 from ._list_users_response_body import ListUsersResponseBodyItems
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsNetworkConfigurationVpc
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsNetworkConfiguration
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItems
 from ._reset_user_password_request import ResetUserPasswordRequestBody
 from ._reset_user_password_response_body import ResetUserPasswordResponseBodyData
 from ._update_credential_request import UpdateCredentialRequestBody
@@ -183,6 +280,38 @@ from ._update_credential_response_body import UpdateCredentialResponseBodyData
 from ._update_identity_provider_request import UpdateIdentityProviderRequestBodyMetadata
 from ._update_identity_provider_request import UpdateIdentityProviderRequestBody
 from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBodyData
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironmentCredentialReferences
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironmentVariables
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironment
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyModel
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyNetworkAccessInternet
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyNetworkAccessVpc
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyNetwork
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeCompute
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeSessionPolicy
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntime
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodySkills
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodySubAgents
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyTemplateAiRegistry
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyTemplate
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyTools
+from ._update_managed_agent_request import UpdateManagedAgentRequestBody
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataEnvironmentCredentialReferences
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataEnvironmentVariables
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataEnvironment
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataModel
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataNetworkAccessInternet
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataNetworkAccessVpc
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataNetwork
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntimeCompute
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntime
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSkills
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSubAgents
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataTemplateAiRegistry
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataTemplate
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataTools
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyData
 from ._update_model_request import UpdateModelRequestBody
 from ._update_model_response_body import UpdateModelResponseBodyDataCapabilities
 from ._update_model_response_body import UpdateModelResponseBodyData
@@ -196,6 +325,12 @@ from ._update_team_response_body import UpdateTeamResponseBodyDataUsers
 from ._update_team_response_body import UpdateTeamResponseBodyData
 from ._update_user_request import UpdateUserRequestBody
 from ._update_user_response_body import UpdateUserResponseBodyData
+from ._update_workspace_request import UpdateWorkspaceRequestBodyNetworkConfigurationVpc
+from ._update_workspace_request import UpdateWorkspaceRequestBodyNetworkConfiguration
+from ._update_workspace_request import UpdateWorkspaceRequestBody
+from ._update_workspace_response_body import UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc
+from ._update_workspace_response_body import UpdateWorkspaceResponseBodyDataNetworkConfiguration
+from ._update_workspace_response_body import UpdateWorkspaceResponseBodyData
 
 __all__ = [
     BatchDeleteModelsRequest,
@@ -210,6 +345,10 @@ __all__ = [
     CreateIdentityProviderShrinkRequest,
     CreateIdentityProviderResponseBody,
     CreateIdentityProviderResponse,
+    CreateManagedAgentRequest,
+    CreateManagedAgentShrinkRequest,
+    CreateManagedAgentResponseBody,
+    CreateManagedAgentResponse,
     CreateModelRequest,
     CreateModelShrinkRequest,
     CreateModelResponseBody,
@@ -226,6 +365,10 @@ __all__ = [
     CreateUserShrinkRequest,
     CreateUserResponseBody,
     CreateUserResponse,
+    CreateWorkspaceRequest,
+    CreateWorkspaceShrinkRequest,
+    CreateWorkspaceResponseBody,
+    CreateWorkspaceResponse,
     DebugModelRequest,
     DebugModelShrinkRequest,
     DebugModelResponseBody,
@@ -236,6 +379,9 @@ __all__ = [
     DeleteIdentityProviderRequest,
     DeleteIdentityProviderResponseBody,
     DeleteIdentityProviderResponse,
+    DeleteManagedAgentRequest,
+    DeleteManagedAgentResponseBody,
+    DeleteManagedAgentResponse,
     DeleteModelRequest,
     DeleteModelResponseBody,
     DeleteModelResponse,
@@ -248,12 +394,18 @@ __all__ = [
     DeleteUserRequest,
     DeleteUserResponseBody,
     DeleteUserResponse,
+    DeleteWorkspaceRequest,
+    DeleteWorkspaceResponseBody,
+    DeleteWorkspaceResponse,
     GetCredentialRequest,
     GetCredentialResponseBody,
     GetCredentialResponse,
     GetIdentityProviderRequest,
     GetIdentityProviderResponseBody,
     GetIdentityProviderResponse,
+    GetManagedAgentRequest,
+    GetManagedAgentResponseBody,
+    GetManagedAgentResponse,
     GetModelRequest,
     GetModelResponseBody,
     GetModelResponse,
@@ -266,12 +418,18 @@ __all__ = [
     GetUserRequest,
     GetUserResponseBody,
     GetUserResponse,
+    GetWorkspaceRequest,
+    GetWorkspaceResponseBody,
+    GetWorkspaceResponse,
     ListCredentialsRequest,
     ListCredentialsResponseBody,
     ListCredentialsResponse,
     ListIdentityProvidersRequest,
     ListIdentityProvidersResponseBody,
     ListIdentityProvidersResponse,
+    ListManagedAgentsRequest,
+    ListManagedAgentsResponseBody,
+    ListManagedAgentsResponse,
     ListModelConnectionsRequest,
     ListModelConnectionsResponseBody,
     ListModelConnectionsResponse,
@@ -290,6 +448,9 @@ __all__ = [
     ListUsersRequest,
     ListUsersResponseBody,
     ListUsersResponse,
+    ListWorkspacesRequest,
+    ListWorkspacesResponseBody,
+    ListWorkspacesResponse,
     ResetUserPasswordRequest,
     ResetUserPasswordShrinkRequest,
     ResetUserPasswordResponseBody,
@@ -302,6 +463,10 @@ __all__ = [
     UpdateIdentityProviderShrinkRequest,
     UpdateIdentityProviderResponseBody,
     UpdateIdentityProviderResponse,
+    UpdateManagedAgentRequest,
+    UpdateManagedAgentShrinkRequest,
+    UpdateManagedAgentResponseBody,
+    UpdateManagedAgentResponse,
     UpdateModelRequest,
     UpdateModelShrinkRequest,
     UpdateModelResponseBody,
@@ -318,6 +483,10 @@ __all__ = [
     UpdateUserShrinkRequest,
     UpdateUserResponseBody,
     UpdateUserResponse,
+    UpdateWorkspaceRequest,
+    UpdateWorkspaceShrinkRequest,
+    UpdateWorkspaceResponseBody,
+    UpdateWorkspaceResponse,
     BatchDeleteModelsRequestBody,
     BatchDeleteModelsResponseBodyData,
     CreateCredentialRequestBody,
@@ -325,6 +494,38 @@ __all__ = [
     CreateIdentityProviderRequestBodyMetadata,
     CreateIdentityProviderRequestBody,
     CreateIdentityProviderResponseBodyData,
+    CreateManagedAgentRequestBodyEnvironmentCredentialReferences,
+    CreateManagedAgentRequestBodyEnvironmentVariables,
+    CreateManagedAgentRequestBodyEnvironment,
+    CreateManagedAgentRequestBodyModel,
+    CreateManagedAgentRequestBodyNetworkAccessInternet,
+    CreateManagedAgentRequestBodyNetworkAccessVpc,
+    CreateManagedAgentRequestBodyNetwork,
+    CreateManagedAgentRequestBodyRuntimeCompute,
+    CreateManagedAgentRequestBodyRuntimeSessionPolicy,
+    CreateManagedAgentRequestBodyRuntime,
+    CreateManagedAgentRequestBodySkills,
+    CreateManagedAgentRequestBodySubAgents,
+    CreateManagedAgentRequestBodyTemplateAiRegistry,
+    CreateManagedAgentRequestBodyTemplate,
+    CreateManagedAgentRequestBodyTools,
+    CreateManagedAgentRequestBody,
+    CreateManagedAgentResponseBodyDataEnvironmentCredentialReferences,
+    CreateManagedAgentResponseBodyDataEnvironmentVariables,
+    CreateManagedAgentResponseBodyDataEnvironment,
+    CreateManagedAgentResponseBodyDataModel,
+    CreateManagedAgentResponseBodyDataNetworkAccessInternet,
+    CreateManagedAgentResponseBodyDataNetworkAccessVpc,
+    CreateManagedAgentResponseBodyDataNetwork,
+    CreateManagedAgentResponseBodyDataRuntimeCompute,
+    CreateManagedAgentResponseBodyDataRuntimeSessionPolicy,
+    CreateManagedAgentResponseBodyDataRuntime,
+    CreateManagedAgentResponseBodyDataSkills,
+    CreateManagedAgentResponseBodyDataSubAgents,
+    CreateManagedAgentResponseBodyDataTemplateAiRegistry,
+    CreateManagedAgentResponseBodyDataTemplate,
+    CreateManagedAgentResponseBodyDataTools,
+    CreateManagedAgentResponseBodyData,
     CreateModelRequestBodyCapabilities,
     CreateModelRequestBody,
     CreateModelResponseBodyDataCapabilities,
@@ -339,18 +540,42 @@ __all__ = [
     CreateTeamResponseBodyData,
     CreateUserRequestBody,
     CreateUserResponseBodyData,
+    CreateWorkspaceRequestBodyNetworkConfigurationVpc,
+    CreateWorkspaceRequestBodyNetworkConfiguration,
+    CreateWorkspaceRequestBody,
+    CreateWorkspaceResponseBodyDataNetworkConfigurationVpc,
+    CreateWorkspaceResponseBodyDataNetworkConfiguration,
+    CreateWorkspaceResponseBodyData,
     DebugModelRequestBody,
     DebugModelResponseBodyData,
     DeleteCredentialResponseBodyData,
     DeleteIdentityProviderResponseBodyData,
+    DeleteManagedAgentResponseBodyData,
     DeleteModelResponseBodyData,
     DeleteModelConnectionResponseBodyData,
     DeleteTeamResponseBodyData,
     DeleteUserResponseBodyData,
+    DeleteWorkspaceResponseBodyData,
     GetCredentialResponseBodyDataBoundAgents,
     GetCredentialResponseBodyData,
     GetIdentityProviderResponseBodyDataMetadata,
     GetIdentityProviderResponseBodyData,
+    GetManagedAgentResponseBodyDataEnvironmentCredentialReferences,
+    GetManagedAgentResponseBodyDataEnvironmentVariables,
+    GetManagedAgentResponseBodyDataEnvironment,
+    GetManagedAgentResponseBodyDataModel,
+    GetManagedAgentResponseBodyDataNetworkAccessInternet,
+    GetManagedAgentResponseBodyDataNetworkAccessVpc,
+    GetManagedAgentResponseBodyDataNetwork,
+    GetManagedAgentResponseBodyDataRuntimeCompute,
+    GetManagedAgentResponseBodyDataRuntimeSessionPolicy,
+    GetManagedAgentResponseBodyDataRuntime,
+    GetManagedAgentResponseBodyDataSkills,
+    GetManagedAgentResponseBodyDataSubAgents,
+    GetManagedAgentResponseBodyDataTemplateAiRegistry,
+    GetManagedAgentResponseBodyDataTemplate,
+    GetManagedAgentResponseBodyDataTools,
+    GetManagedAgentResponseBodyData,
     GetModelResponseBodyDataCapabilities,
     GetModelResponseBodyData,
     GetModelConnectionResponseBodyData,
@@ -358,9 +583,13 @@ __all__ = [
     GetTeamResponseBodyDataUsers,
     GetTeamResponseBodyData,
     GetUserResponseBodyData,
+    GetWorkspaceResponseBodyDataNetworkConfigurationVpc,
+    GetWorkspaceResponseBodyDataNetworkConfiguration,
+    GetWorkspaceResponseBodyData,
     ListCredentialsResponseBodyItems,
     ListIdentityProvidersResponseBodyItemsMetadata,
     ListIdentityProvidersResponseBodyItems,
+    ListManagedAgentsResponseBodyItems,
     ListModelConnectionsResponseBodyItemsModels,
     ListModelConnectionsResponseBodyItems,
     ListModelsResponseBodyItemsCapabilities,
@@ -372,6 +601,9 @@ __all__ = [
     ListTeamsResponseBodyItemsUsers,
     ListTeamsResponseBodyItems,
     ListUsersResponseBodyItems,
+    ListWorkspacesResponseBodyItemsNetworkConfigurationVpc,
+    ListWorkspacesResponseBodyItemsNetworkConfiguration,
+    ListWorkspacesResponseBodyItems,
     ResetUserPasswordRequestBody,
     ResetUserPasswordResponseBodyData,
     UpdateCredentialRequestBody,
@@ -379,6 +611,38 @@ __all__ = [
     UpdateIdentityProviderRequestBodyMetadata,
     UpdateIdentityProviderRequestBody,
     UpdateIdentityProviderResponseBodyData,
+    UpdateManagedAgentRequestBodyEnvironmentCredentialReferences,
+    UpdateManagedAgentRequestBodyEnvironmentVariables,
+    UpdateManagedAgentRequestBodyEnvironment,
+    UpdateManagedAgentRequestBodyModel,
+    UpdateManagedAgentRequestBodyNetworkAccessInternet,
+    UpdateManagedAgentRequestBodyNetworkAccessVpc,
+    UpdateManagedAgentRequestBodyNetwork,
+    UpdateManagedAgentRequestBodyRuntimeCompute,
+    UpdateManagedAgentRequestBodyRuntimeSessionPolicy,
+    UpdateManagedAgentRequestBodyRuntime,
+    UpdateManagedAgentRequestBodySkills,
+    UpdateManagedAgentRequestBodySubAgents,
+    UpdateManagedAgentRequestBodyTemplateAiRegistry,
+    UpdateManagedAgentRequestBodyTemplate,
+    UpdateManagedAgentRequestBodyTools,
+    UpdateManagedAgentRequestBody,
+    UpdateManagedAgentResponseBodyDataEnvironmentCredentialReferences,
+    UpdateManagedAgentResponseBodyDataEnvironmentVariables,
+    UpdateManagedAgentResponseBodyDataEnvironment,
+    UpdateManagedAgentResponseBodyDataModel,
+    UpdateManagedAgentResponseBodyDataNetworkAccessInternet,
+    UpdateManagedAgentResponseBodyDataNetworkAccessVpc,
+    UpdateManagedAgentResponseBodyDataNetwork,
+    UpdateManagedAgentResponseBodyDataRuntimeCompute,
+    UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy,
+    UpdateManagedAgentResponseBodyDataRuntime,
+    UpdateManagedAgentResponseBodyDataSkills,
+    UpdateManagedAgentResponseBodyDataSubAgents,
+    UpdateManagedAgentResponseBodyDataTemplateAiRegistry,
+    UpdateManagedAgentResponseBodyDataTemplate,
+    UpdateManagedAgentResponseBodyDataTools,
+    UpdateManagedAgentResponseBodyData,
     UpdateModelRequestBody,
     UpdateModelResponseBodyDataCapabilities,
     UpdateModelResponseBodyData,
@@ -391,5 +655,11 @@ __all__ = [
     UpdateTeamResponseBodyDataUsers,
     UpdateTeamResponseBodyData,
     UpdateUserRequestBody,
-    UpdateUserResponseBodyData
+    UpdateUserResponseBodyData,
+    UpdateWorkspaceRequestBodyNetworkConfigurationVpc,
+    UpdateWorkspaceRequestBodyNetworkConfiguration,
+    UpdateWorkspaceRequestBody,
+    UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc,
+    UpdateWorkspaceResponseBodyDataNetworkConfiguration,
+    UpdateWorkspaceResponseBodyData
 ]

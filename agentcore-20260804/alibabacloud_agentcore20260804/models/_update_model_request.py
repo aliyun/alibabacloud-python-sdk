@@ -11,7 +11,9 @@ class UpdateModelRequest(DaraModel):
         body: main_models.UpdateModelRequestBody = None,
         client_token: str = None,
     ):
+        # The request body.
         self.body = body
+        # The client token for idempotence. Not currently supported.
         self.client_token = client_token
 
     def validate(self):
@@ -47,6 +49,8 @@ class UpdateModelRequestBody(DaraModel):
         self,
         description: str = None,
     ):
+        # The model description. Maximum length: 255 characters.
+        # 
         # This parameter is required.
         self.description = description
 

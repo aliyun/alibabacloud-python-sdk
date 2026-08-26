@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateModelShrinkRequest(DaraModel):
+class UpdateWorkspaceShrinkRequest(DaraModel):
     def __init__(
         self,
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The request body.
+        # The request body for updating a workspace.
         self.body_shrink = body_shrink
-        # The client token for idempotence. Not currently supported.
+        # The client idempotency token.
         self.client_token = client_token
 
     def validate(self):

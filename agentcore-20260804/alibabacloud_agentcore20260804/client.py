@@ -321,6 +321,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_identity_provider_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_managed_agent_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.CreateManagedAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateManagedAgentResponse:
+        tmp_req.validate()
+        request = main_models.CreateManagedAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateManagedAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateManagedAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_managed_agent_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.CreateManagedAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateManagedAgentResponse:
+        tmp_req.validate()
+        request = main_models.CreateManagedAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateManagedAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateManagedAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_managed_agent(
+        self,
+        workspace_id: str,
+        request: main_models.CreateManagedAgentRequest,
+    ) -> main_models.CreateManagedAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_managed_agent_with_options(workspace_id, request, headers, runtime)
+
+    async def create_managed_agent_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateManagedAgentRequest,
+    ) -> main_models.CreateManagedAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_managed_agent_with_options_async(workspace_id, request, headers, runtime)
+
     def create_model_with_options(
         self,
         workspace_id: str,
@@ -705,6 +801,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_user_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_workspace_with_options(
+        self,
+        tmp_req: main_models.CreateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkspaceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspace',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        tmp_req: main_models.CreateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkspaceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspace',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+    ) -> main_models.CreateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_workspace_with_options(request, headers, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+    ) -> main_models.CreateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_workspace_with_options_async(request, headers, runtime)
+
     def debug_model_with_options(
         self,
         workspace_id: str,
@@ -964,6 +1152,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_identity_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
+    def delete_managed_agent_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.DeleteManagedAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteManagedAgentResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteManagedAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteManagedAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_managed_agent_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.DeleteManagedAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteManagedAgentResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteManagedAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteManagedAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_managed_agent(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.DeleteManagedAgentRequest,
+    ) -> main_models.DeleteManagedAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_managed_agent_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def delete_managed_agent_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.DeleteManagedAgentRequest,
+    ) -> main_models.DeleteManagedAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_managed_agent_with_options_async(workspace_id, agent_id, request, headers, runtime)
 
     def delete_model_with_options(
         self,
@@ -1301,6 +1565,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_user_with_options_async(workspace_id, agent_core_user_id, request, headers, runtime)
 
+    def delete_workspace_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspace',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspace',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRequest,
+    ) -> main_models.DeleteWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_workspace_with_options(workspace_id, request, headers, runtime)
+
+    async def delete_workspace_async(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRequest,
+    ) -> main_models.DeleteWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_workspace_with_options_async(workspace_id, request, headers, runtime)
+
     def get_credential_with_options(
         self,
         workspace_id: str,
@@ -1452,6 +1788,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_identity_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
+    def get_managed_agent_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetManagedAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetManagedAgentResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetManagedAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetManagedAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_managed_agent_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetManagedAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetManagedAgentResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetManagedAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetManagedAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_managed_agent(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetManagedAgentRequest,
+    ) -> main_models.GetManagedAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_managed_agent_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def get_managed_agent_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetManagedAgentRequest,
+    ) -> main_models.GetManagedAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_managed_agent_with_options_async(workspace_id, agent_id, request, headers, runtime)
 
     def get_model_with_options(
         self,
@@ -1757,6 +2169,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_user_with_options_async(workspace_id, agent_core_user_id, request, headers, runtime)
 
+    def get_workspace_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspace',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspace',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceRequest,
+    ) -> main_models.GetWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workspace_with_options(workspace_id, request, headers, runtime)
+
+    async def get_workspace_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceRequest,
+    ) -> main_models.GetWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workspace_with_options_async(workspace_id, request, headers, runtime)
+
     def list_credentials_with_options(
         self,
         workspace_id: str,
@@ -1932,6 +2416,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_identity_providers_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_managed_agents_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListManagedAgentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListManagedAgentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListManagedAgents',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListManagedAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_managed_agents_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListManagedAgentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListManagedAgentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListManagedAgents',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListManagedAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_managed_agents(
+        self,
+        workspace_id: str,
+        request: main_models.ListManagedAgentsRequest,
+    ) -> main_models.ListManagedAgentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_managed_agents_with_options(workspace_id, request, headers, runtime)
+
+    async def list_managed_agents_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListManagedAgentsRequest,
+    ) -> main_models.ListManagedAgentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_managed_agents_with_options_async(workspace_id, request, headers, runtime)
 
     def list_model_connections_with_options(
         self,
@@ -2445,6 +3013,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_users_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_workspaces_with_options(
+        self,
+        request: main_models.ListWorkspacesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.skip):
+            query['skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaces',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspaces_with_options_async(
+        self,
+        request: main_models.ListWorkspacesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.skip):
+            query['skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaces',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspaces(
+        self,
+        request: main_models.ListWorkspacesRequest,
+    ) -> main_models.ListWorkspacesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_workspaces_with_options(request, headers, runtime)
+
+    async def list_workspaces_async(
+        self,
+        request: main_models.ListWorkspacesRequest,
+    ) -> main_models.ListWorkspacesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_workspaces_with_options_async(request, headers, runtime)
+
     def reset_user_password_with_options(
         self,
         workspace_id: str,
@@ -2724,6 +3376,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_identity_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
+    def update_managed_agent_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        tmp_req: main_models.UpdateManagedAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateManagedAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdateManagedAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateManagedAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateManagedAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_managed_agent_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        tmp_req: main_models.UpdateManagedAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateManagedAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdateManagedAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateManagedAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateManagedAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_managed_agent(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.UpdateManagedAgentRequest,
+    ) -> main_models.UpdateManagedAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_managed_agent_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def update_managed_agent_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.UpdateManagedAgentRequest,
+    ) -> main_models.UpdateManagedAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_managed_agent_with_options_async(workspace_id, agent_id, request, headers, runtime)
 
     def update_model_with_options(
         self,
@@ -3124,3 +3876,99 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_user_with_options_async(workspace_id, agent_core_user_id, request, headers, runtime)
+
+    def update_workspace_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.UpdateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWorkspaceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspace',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.UpdateWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWorkspaceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspace',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workspace(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceRequest,
+    ) -> main_models.UpdateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_workspace_with_options(workspace_id, request, headers, runtime)
+
+    async def update_workspace_async(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateWorkspaceRequest,
+    ) -> main_models.UpdateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_workspace_with_options_async(workspace_id, request, headers, runtime)

@@ -15,11 +15,17 @@ class UpdateModelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code. The value SUCCESS indicates success.
         self.code = code
+        # The updated model information.
         self.data = data
+        # The HTTP status code. The value 200 indicates success.
         self.http_status_code = http_status_code
+        # The message of the request processing result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,15 +94,25 @@ class UpdateModelResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
+        # The model capability configurations.
         self.capabilities = capabilities
+        # The model connection ID.
         self.connection_id = connection_id
+        # The model context window size, in tokens. Must be a positive integer.
         self.context_size = context_size
+        # The time when the resource was created, in RFC 3339 UTC format.
         self.created_at = created_at
+        # The model description. Maximum length: 255 characters.
         self.description = description
+        # The maximum number of output tokens supported per model generation.
         self.max_tokens = max_tokens
+        # The model ID.
         self.model_id = model_id
+        # The upstream model name.
         self.model_name = model_name
+        # The time when the resource was last updated, in RFC 3339 UTC format.
         self.updated_at = updated_at
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -187,13 +203,21 @@ class UpdateModelResponseBodyDataCapabilities(DaraModel):
         video: bool = None,
         vision: bool = None,
     ):
+        # Indicates whether the model supports audio input or output.
         self.audio = audio
+        # Indicates whether the model supports document input.
         self.document = document
+        # Indicates whether the model is able to invoke multiple tool calling requests in a single response.
         self.multi_tool_call = multi_tool_call
+        # Indicates whether the model supports reasoning capabilities.
         self.reasoning = reasoning
+        # Indicates whether the model supports streaming tool calling.
         self.stream_tool_call = stream_tool_call
+        # Indicates whether the model supports tool calling.
         self.tool_call = tool_call
+        # Indicates whether the model supports video input.
         self.video = video
+        # Indicates whether the model supports image input.
         self.vision = vision
 
     def validate(self):

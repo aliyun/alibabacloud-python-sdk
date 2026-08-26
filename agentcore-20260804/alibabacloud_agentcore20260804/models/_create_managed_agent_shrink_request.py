@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateModelShrinkRequest(DaraModel):
+class CreateManagedAgentShrinkRequest(DaraModel):
     def __init__(
         self,
         body_shrink: str = None,
@@ -12,7 +12,7 @@ class UpdateModelShrinkRequest(DaraModel):
     ):
         # The request body.
         self.body_shrink = body_shrink
-        # The client token for idempotence. Not currently supported.
+        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
         self.client_token = client_token
 
     def validate(self):
