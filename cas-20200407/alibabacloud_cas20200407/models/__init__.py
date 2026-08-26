@@ -111,6 +111,9 @@ from ._get_cert_warehouse_quota_response import GetCertWarehouseQuotaResponse
 from ._get_certificate_detail_request import GetCertificateDetailRequest
 from ._get_certificate_detail_response_body import GetCertificateDetailResponseBody
 from ._get_certificate_detail_response import GetCertificateDetailResponse
+from ._get_certificate_package_count_request import GetCertificatePackageCountRequest
+from ._get_certificate_package_count_response_body import GetCertificatePackageCountResponseBody
+from ._get_certificate_package_count_response import GetCertificatePackageCountResponse
 from ._get_company_request import GetCompanyRequest
 from ._get_company_response_body import GetCompanyResponseBody
 from ._get_company_response import GetCompanyResponse
@@ -177,6 +180,15 @@ from ._list_deployment_job_resource_response import ListDeploymentJobResourceRes
 from ._list_instances_request import ListInstancesRequest
 from ._list_instances_response_body import ListInstancesResponseBody
 from ._list_instances_response import ListInstancesResponse
+from ._list_tag_keys_request import ListTagKeysRequest
+from ._list_tag_keys_response_body import ListTagKeysResponseBody
+from ._list_tag_keys_response import ListTagKeysResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_trustee_order_request import ListTrusteeOrderRequest
+from ._list_trustee_order_response_body import ListTrusteeOrderResponseBody
+from ._list_trustee_order_response import ListTrusteeOrderResponse
 from ._list_user_certificate_order_request import ListUserCertificateOrderRequest
 from ._list_user_certificate_order_response_body import ListUserCertificateOrderResponseBody
 from ._list_user_certificate_order_response import ListUserCertificateOrderResponse
@@ -205,6 +217,12 @@ from ._revoke_whclient_certificate_response import RevokeWHClientCertificateResp
 from ._sign_request import SignRequest
 from ._sign_response_body import SignResponseBody
 from ._sign_response import SignResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
 from ._update_company_request import UpdateCompanyRequest
 from ._update_company_response_body import UpdateCompanyResponseBody
 from ._update_company_response import UpdateCompanyResponse
@@ -264,10 +282,15 @@ from ._list_deployment_job_response_body import ListDeploymentJobResponseBodyDat
 from ._list_deployment_job_cert_response_body import ListDeploymentJobCertResponseBodyData
 from ._list_deployment_job_resource_response_body import ListDeploymentJobResourceResponseBodyData
 from ._list_instances_response_body import ListInstancesResponseBodyInstanceList
+from ._list_tag_keys_response_body import ListTagKeysResponseBodyTagKeys
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_user_certificate_order_response_body import ListUserCertificateOrderResponseBodyCertificateOrderList
 from ._list_warehouse_response_body import ListWarehouseResponseBodyData
 from ._list_worker_resource_response_body import ListWorkerResourceResponseBodyData
 from ._renew_certificate_order_for_package_request_request import RenewCertificateOrderForPackageRequestRequestTags
+from ._tag_resources_request import TagResourcesRequestTag
 from ._update_instance_request import UpdateInstanceRequestTags
 from ._upload_user_certificate_request import UploadUserCertificateRequestTags
 
@@ -381,6 +404,9 @@ __all__ = [
     GetCertificateDetailRequest,
     GetCertificateDetailResponseBody,
     GetCertificateDetailResponse,
+    GetCertificatePackageCountRequest,
+    GetCertificatePackageCountResponseBody,
+    GetCertificatePackageCountResponse,
     GetCompanyRequest,
     GetCompanyResponseBody,
     GetCompanyResponse,
@@ -447,6 +473,15 @@ __all__ = [
     ListInstancesRequest,
     ListInstancesResponseBody,
     ListInstancesResponse,
+    ListTagKeysRequest,
+    ListTagKeysResponseBody,
+    ListTagKeysResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ListTrusteeOrderRequest,
+    ListTrusteeOrderResponseBody,
+    ListTrusteeOrderResponse,
     ListUserCertificateOrderRequest,
     ListUserCertificateOrderResponseBody,
     ListUserCertificateOrderResponse,
@@ -475,6 +510,12 @@ __all__ = [
     SignRequest,
     SignResponseBody,
     SignResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
     UpdateCompanyRequest,
     UpdateCompanyResponseBody,
     UpdateCompanyResponse,
@@ -534,10 +575,15 @@ __all__ = [
     ListDeploymentJobCertResponseBodyData,
     ListDeploymentJobResourceResponseBodyData,
     ListInstancesResponseBodyInstanceList,
+    ListTagKeysResponseBodyTagKeys,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResourcesTagResource,
+    ListTagResourcesResponseBodyTagResources,
     ListUserCertificateOrderResponseBodyCertificateOrderList,
     ListWarehouseResponseBodyData,
     ListWorkerResourceResponseBodyData,
     RenewCertificateOrderForPackageRequestRequestTags,
+    TagResourcesRequestTag,
     UpdateInstanceRequestTags,
     UploadUserCertificateRequestTags
 ]

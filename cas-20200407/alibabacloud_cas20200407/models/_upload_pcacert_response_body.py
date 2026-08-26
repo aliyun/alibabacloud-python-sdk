@@ -10,9 +10,9 @@ class UploadPCACertResponseBody(DaraModel):
         identifier: str = None,
         request_id: str = None,
     ):
-        # The unique identifier for the certificate.
+        # The certificate identifier.
         self.identifier = identifier
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -73,8 +73,13 @@ class Client(OpenApiClient):
             'rus-west-1-pop': 'cas.aliyuncs.com',
             'us-east-1': 'cas.aliyuncs.com',
             'us-west-1': 'cas.aliyuncs.com',
+            'ap-southeast-2': 'cas.ap-southeast-2.aliyuncs.com',
+            'ap-northeast-1': 'cas.ap-northeast-1.aliyuncs.com',
+            'ap-southeast-1': 'cas.ap-southeast-1.aliyuncs.com',
             'eu-central-1': 'cas.eu-central-1.aliyuncs.com',
-            'ap-southeast-1': 'cas.ap-southeast-1.aliyuncs.com'
+            'me-central-1': 'cas.me-central-1.aliyuncs.com',
+            'ap-south-1': 'cas.ap-south-1.aliyuncs.com',
+            'me-east-1': 'cas.me-east-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1954,6 +1959,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -1982,6 +1989,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -2096,6 +2105,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cert_id):
             query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2124,6 +2135,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cert_id):
             query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2980,6 +2993,66 @@ class Client(OpenApiClient):
     ) -> main_models.GetCertificateDetailResponse:
         runtime = RuntimeOptions()
         return await self.get_certificate_detail_with_options_async(request, runtime)
+
+    def get_certificate_package_count_with_options(
+        self,
+        request: main_models.GetCertificatePackageCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCertificatePackageCountResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetCertificatePackageCount',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCertificatePackageCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_certificate_package_count_with_options_async(
+        self,
+        request: main_models.GetCertificatePackageCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCertificatePackageCountResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetCertificatePackageCount',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCertificatePackageCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_certificate_package_count(
+        self,
+        request: main_models.GetCertificatePackageCountRequest,
+    ) -> main_models.GetCertificatePackageCountResponse:
+        runtime = RuntimeOptions()
+        return self.get_certificate_package_count_with_options(request, runtime)
+
+    async def get_certificate_package_count_async(
+        self,
+        request: main_models.GetCertificatePackageCountRequest,
+    ) -> main_models.GetCertificatePackageCountResponse:
+        runtime = RuntimeOptions()
+        return await self.get_certificate_package_count_with_options_async(request, runtime)
 
     def get_company_with_options(
         self,
@@ -4721,6 +4794,272 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
+    def list_tag_keys_with_options(
+        self,
+        request: main_models.ListTagKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagKeys',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_keys_with_options_async(
+        self,
+        request: main_models.ListTagKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagKeys',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_keys(
+        self,
+        request: main_models.ListTagKeysRequest,
+    ) -> main_models.ListTagKeysResponse:
+        runtime = RuntimeOptions()
+        return self.list_tag_keys_with_options(request, runtime)
+
+    async def list_tag_keys_async(
+        self,
+        request: main_models.ListTagKeysRequest,
+    ) -> main_models.ListTagKeysResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tag_keys_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def list_trustee_order_with_options(
+        self,
+        request: main_models.ListTrusteeOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTrusteeOrderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_id):
+            query['OrderId'] = request.order_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTrusteeOrder',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTrusteeOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_trustee_order_with_options_async(
+        self,
+        request: main_models.ListTrusteeOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTrusteeOrderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_id):
+            query['OrderId'] = request.order_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTrusteeOrder',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTrusteeOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_trustee_order(
+        self,
+        request: main_models.ListTrusteeOrderRequest,
+    ) -> main_models.ListTrusteeOrderResponse:
+        runtime = RuntimeOptions()
+        return self.list_trustee_order_with_options(request, runtime)
+
+    async def list_trustee_order_async(
+        self,
+        request: main_models.ListTrusteeOrderRequest,
+    ) -> main_models.ListTrusteeOrderResponse:
+        runtime = RuntimeOptions()
+        return await self.list_trustee_order_with_options_async(request, runtime)
+
     def list_user_certificate_order_with_options(
         self,
         request: main_models.ListUserCertificateOrderRequest,
@@ -5454,6 +5793,174 @@ class Client(OpenApiClient):
     ) -> main_models.SignResponse:
         runtime = RuntimeOptions()
         return await self.sign_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['All'] = request.all
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['All'] = request.all
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
 
     def update_company_with_options(
         self,
@@ -6274,6 +6781,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cert):
             query['Cert'] = request.cert
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.encrypt_cert):
             query['EncryptCert'] = request.encrypt_cert
         if not DaraCore.is_null(request.encrypt_private_key):
@@ -6318,6 +6827,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cert):
             query['Cert'] = request.cert
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.encrypt_cert):
             query['EncryptCert'] = request.encrypt_cert
         if not DaraCore.is_null(request.encrypt_private_key):

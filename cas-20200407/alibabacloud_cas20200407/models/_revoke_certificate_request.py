@@ -10,8 +10,9 @@ class RevokeCertificateRequest(DaraModel):
         certificate_id: int = None,
         instance_id: str = None,
     ):
+        # The ID of the certificate to revoke.
         self.certificate_id = certificate_id
-        # The ID of the instance.
+        # The ID of the instance. This parameter accepts only V2.0 subscription certificate instances (certificates purchased from a CA such as DigiCert or GeoTrust, with an InstanceId in the format of cas-cn-*). Uploaded certificates (cas-upload-*) are not supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id

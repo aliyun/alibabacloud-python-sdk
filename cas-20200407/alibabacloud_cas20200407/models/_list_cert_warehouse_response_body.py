@@ -16,15 +16,15 @@ class ListCertWarehouseResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # The certificate application repositories.
+        # The list of certificate repositories.
         self.cert_warehouse_list = cert_warehouse_list
-        # The page number of the returned page. Default value: 1.
+        # The page number. Default value: 1.
         self.current_page = current_page
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned per page. Default value: 50.
+        # The number of entries per page. Default value: 50.
         self.show_size = show_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,35 +91,28 @@ class ListCertWarehouseResponseBodyCertWarehouseList(DaraModel):
         type: str = None,
         wh_id: int = None,
     ):
-        # The timestamp when the certificate application repository expires. Unit: milliseconds.
+        # The expiration time, in timestamp format. Unit: milliseconds.
         self.end_time = end_time
-        # The instance ID of the certificate application repository.
+        # The sales instance.
         self.instance_id = instance_id
-        # Indicates whether the certificate application repository has expired. Valid values:
+        # Indicates whether the repository has expired. Valid values:
         # 
         # - **true**
-        # 
         # - **false**
         self.is_expired = is_expired
-        # The name of the certificate application repository.
+        # The repository name.
         self.name = name
-        # The instance ID of the private CA.
+        # The PCA instance.
         self.pca_instance_id = pca_instance_id
-        # The queries per second (QPS).
+        # Qps。
         self.qps = qps
-        # The type of the certificate application repository. Valid values:
+        # The repository type. Valid values:
         # 
-        # - **ssl**: certificate application repository of SSL certificates
-        # 
-        # - **uploadPCA**: certificate application repository of uploaded private certificates
-        # 
-        # - **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
-        # 
-        # - **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud PCA, available only on the China site (aliyun.com)
-        # 
-        # - **disable**: disabled certificate application repository
+        # - **uploadCA**: an uploaded CA certificate that contains a complete certificate chain.
+        # - **uploadPCA**: an uploaded certificate, including a self-signed certificate, a certificate issued by a third party, or a certificate issued by Alibaba Cloud.
+        # - **aliyunPCA**: an Alibaba Cloud PCA certificate.
         self.type = type
-        # The ID of the certificate application repository.
+        # The repository ID.
         self.wh_id = wh_id
 
     def validate(self):

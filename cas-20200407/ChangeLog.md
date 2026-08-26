@@ -1,3 +1,9 @@
+2026-08-26 Version: 3.8.1
+- Update API DeleteInstance: add request parameters ClientToken.
+- Update API DeleteUserCertificate: add request parameters ClientToken.
+- Update API UploadUserCertificate: add request parameters ClientToken.
+
+
 2026-07-30 Version: 3.6.2
 - Generated python 2020-04-07 for cas.
 

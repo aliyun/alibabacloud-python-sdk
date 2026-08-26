@@ -11,11 +11,11 @@ class UploadUserCertificateResponseBody(DaraModel):
         request_id: str = None,
         resource_id: str = None,
     ):
-        # The ID of the certificate.
+        # The certificate ID.
         self.cert_id = cert_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the certificate instance.
+        # The instance ID of the certificate to operate on.
         self.resource_id = resource_id
 
     def validate(self):

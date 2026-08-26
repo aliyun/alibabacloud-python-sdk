@@ -11,6 +11,7 @@ class UploadUserCertificateRequest(DaraModel):
     def __init__(
         self,
         cert: str = None,
+        client_token: str = None,
         encrypt_cert: str = None,
         encrypt_private_key: str = None,
         key: str = None,
@@ -20,27 +21,28 @@ class UploadUserCertificateRequest(DaraModel):
         sign_private_key: str = None,
         tags: List[main_models.UploadUserCertificateRequestTags] = None,
     ):
-        # The content of a non-SM certificate in PEM format.
+        # The non-China SM certificate content in PEM format.
         self.cert = cert
-        # The content of the SM encryption certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
+        # The client token that is used to ensure the idempotence of the request.
+        self.client_token = client_token
+        # The encryption certificate content of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
         self.encrypt_cert = encrypt_cert
-        # The content of the private key of the SM encryption certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
+        # The private key content of the encryption certificate of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
         self.encrypt_private_key = encrypt_private_key
-        # The private key of a non-SM certificate in PEM format.
+        # The private key content of the non-China SM certificate in PEM format.
         self.key = key
-        # The custom name of the certificate. The name can be up to 63 characters long and can contain letters, digits, and underscores (_).
-        # 
-        # > Certificate names must be unique for each user.
+        # The custom certificate name. Maximum length: 63 characters. All character types are supported, including letters, digits, and underscores.
+        # > Certificate names must be unique within the same user account.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The content of the SM signing certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
+        # The signing certificate content of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
         self.sign_cert = sign_cert
-        # The content of the private key of the SM signing certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
+        # The private key content of the signing certificate of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
         self.sign_private_key = sign_private_key
-        # A list of tags.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -56,6 +58,9 @@ class UploadUserCertificateRequest(DaraModel):
             result = _map
         if self.cert is not None:
             result['Cert'] = self.cert
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.encrypt_cert is not None:
             result['EncryptCert'] = self.encrypt_cert
@@ -89,6 +94,9 @@ class UploadUserCertificateRequest(DaraModel):
         m = m or dict()
         if m.get('Cert') is not None:
             self.cert = m.get('Cert')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('EncryptCert') is not None:
             self.encrypt_cert = m.get('EncryptCert')

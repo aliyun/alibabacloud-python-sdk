@@ -2,19 +2,14 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Any
-
 from darabonba.model import DaraModel
 
-class UpdateWorkerResourceStatusResponseBody(DaraModel):
+class TagResourcesResponseBody(DaraModel):
     def __init__(
         self,
-        data: Any = None,
         request_id: str = None,
     ):
-        # The data returned by the request.
-        self.data = data
-        # The request ID. Alibaba Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25,9 +20,6 @@ class UpdateWorkerResourceStatusResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.data is not None:
-            result['Data'] = self.data
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -35,9 +27,6 @@ class UpdateWorkerResourceStatusResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 

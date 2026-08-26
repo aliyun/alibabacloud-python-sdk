@@ -4,16 +4,9 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetContactRequest(DaraModel):
-    def __init__(
-        self,
-        contact_id: int = None,
-    ):
-        # The contact ID.
-        # 
-        # This parameter is required.
-        self.contact_id = contact_id
-
+class GetCertificatePackageCountRequest(DaraModel):
+    def __init__(self):
+        pass
     def validate(self):
         pass
 
@@ -22,15 +15,9 @@ class GetContactRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.contact_id is not None:
-            result['ContactId'] = self.contact_id
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ContactId') is not None:
-            self.contact_id = m.get('ContactId')
-
         return self
 

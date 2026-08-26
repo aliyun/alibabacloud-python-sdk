@@ -37,78 +37,70 @@ class GetCertificateDetailResponseBody(DaraModel):
     ):
         # The certificate algorithm. Valid values:
         # 
-        # - **RSA**: The RSA algorithm.
-        # 
-        # - **ECC**: The ECC algorithm.
-        # 
-        # - **SM2**: The SM2 algorithm.
+        # - **RSA**: RSA algorithm.
+        # - **ECC**: ECC algorithm.
+        # - **SM2**: SM2 encryption algorithm.
         self.algorithm = algorithm
-        # The global ID of the certificate, which is used in various Alibaba Cloud services. The format of the ID is `<Certificate ID>-<Region ID>`. The region ID is `cn-hangzhou` for the China site and `ap-southeast-1` for the International site. For example, if a certificate ID is `123`, its `CertIdentifier` is `123-cn-hangzhou` for the China site and `123-ap-southeast-1` for the International site.
+        # The global certificate ID in the format of certificate ID + "-" + site region ID. This is commonly used across Alibaba Cloud services.
+        #   --For the China site, the format is certificate ID + "-cn-hangzhou".
+        # For the China site, the format is certificate ID + "-ap-southeast-1".
+        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
         self.cert_identifier = cert_identifier
-        # The information about the certificate chain.
+        # The certificate chain information list.
         self.certificate_chain_list = certificate_chain_list
         # The certificate ID.
         self.certificate_id = certificate_id
         # The certificate name.
         self.certificate_name = certificate_name
-        # The source of the certificate. Valid values:
-        # 
-        # - **BUY**: a purchased certificate.
-        # 
-        # - **TEST**: a test certificate.
-        # 
-        # - Upload the certificate.
+        # The certificate source. Valid values:
+        # - BUY: purchased certificate.
+        # - TEST: test certificate.
+        # - UPLOAD: uploaded certificate.
         self.certificate_source = certificate_source
-        # The status of the certificate. Valid values:
-        # 
-        # - **issued**: The certificate is issued.
-        # 
-        # - **revoked**: The certificate is revoked.
-        # 
-        # - **willExpire**: The certificate is about to expire.
-        # 
-        # - **expired**: The certificate has expired.
+        # The certificate status. Valid values:
+        # - **issued**: issued.
+        # - **revoked**: revoked.
+        # - **willExpire**: about to expire.
+        # - **expired**: expired.
         self.certificate_status = certificate_status
-        # The common name.
+        # The common domain name.
         self.common_name = common_name
-        # The ID of the company profile that is associated with the certificate application. This parameter is empty for DV certificates.
+        # The company information ID associated with the certificate application. This field is empty for DV certificates.
         self.company_id = company_id
-        # The ID of the contact.
+        # The contact ID.
         self.contact_id = contact_id
+        # The certificate signing request (CSR) used to issue the certificate.
         self.csr = csr
-        # The domain names that are bound to the certificate. Multiple domain names are separated by commas (,).
+        # All domain names contained in the certificate. Multiple domain names are separated by commas.
         self.domain = domain
-        # Indicates whether a private key is available. Valid values:
+        # Indicates whether a private key exists on the backend for the current certificate. Valid values:
         # 
         # - **true**
-        # 
         # - **false**
         self.exist_private_key = exist_private_key
-        # The fingerprint of the public key.
+        # The public key fingerprint.
         self.finger_print = finger_print
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The issuer of the certificate.
+        # The entity that issued the certificate.
         self.issuer = issuer
-        # The key size.
-        # 
-        # - For RSA algorithms, the key size is typically 2,048, 3,072, or 4,096 bits.
-        # 
-        # - For ECC and SM2 algorithms, the key size is typically 256 bits.
+        # The key algorithm length.
+        # - The RSA algorithm length is typically 2048, 3072, or 4096.
+        # - The ECC and SM2 algorithm length is typically 256.
         self.key_size = key_size
-        # The end of the validity period of the certificate.
+        # The end time of the certificate validity period.
         self.not_after = not_after
-        # The beginning of the validity period of the certificate.
+        # The start time of the certificate validity period.
         self.not_before = not_before
-        # The ID of the request.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial = serial
-        # The subject alternative names (SANs) of the certificate.
+        # The list of Subject Alternative Names (SANs) of the certificate, returned in array format. This corresponds to the `Subject Alternative Name` field of the certificate.
         self.subject_alternative_names = subject_alternative_names
-        # The list of tags.
+        # The tag list.
         self.tags = tags
-        # The list of cloud services in which the certificate is deployed.
+        # The list of cloud services to which the current certificate is deployed.
         self.using_product_list = using_product_list
 
     def validate(self):
@@ -292,9 +284,9 @@ class GetCertificateDetailResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance. You can specify 1 to 20 tag keys. The value cannot be an empty string.
+        # The tag key of the instance. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
         # 
-        # The value can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.tag_key = tag_key
         # The tag value.
         self.tag_value = tag_value
@@ -334,15 +326,15 @@ class GetCertificateDetailResponseBodyCertificateChainList(DaraModel):
         remain_day: int = None,
         subject: str = None,
     ):
-        # The issuer of the certificate chain.
+        # The issuer name in the certificate chain.
         self.issuer = issuer
-        # The end of the validity period.
+        # The end time of the certificate validity period.
         self.not_after = not_after
-        # The beginning of the validity period.
+        # The start time of the certificate validity period.
         self.not_before = not_before
-        # The remaining validity period of the certificate chain.
+        # The remaining days of the certificate chain validity period.
         self.remain_day = remain_day
-        # The common name of the certificate chain.
+        # The common name in the certificate chain.
         self.subject = subject
 
     def validate(self):

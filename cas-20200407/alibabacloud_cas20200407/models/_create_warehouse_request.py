@@ -11,11 +11,11 @@ class CreateWarehouseRequest(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The use case of the certificate warehouse.
+        # The scenarios of the repository.
         self.biz = biz
-        # The name of the certificate warehouse.
+        # The name of the certificate repository.
         self.name = name
-        # The type of the certificate warehouse. Valid values:
+        # The type of the certificate repository.
         self.type = type
 
     def validate(self):

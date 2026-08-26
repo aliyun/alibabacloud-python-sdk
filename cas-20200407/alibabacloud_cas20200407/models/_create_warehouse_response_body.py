@@ -12,7 +12,7 @@ class CreateWarehouseResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The instance ID of the certificate warehouse.
+        # The instance ID of the certificate application repository.
         self.warehouse_instance_id = warehouse_instance_id
 
     def validate(self):
