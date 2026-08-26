@@ -337,6 +337,9 @@ from ._delete_folder_response import DeleteFolderResponse
 from ._delete_function_request import DeleteFunctionRequest
 from ._delete_function_response_body import DeleteFunctionResponseBody
 from ._delete_function_response import DeleteFunctionResponse
+from ._delete_image_request import DeleteImageRequest
+from ._delete_image_response_body import DeleteImageResponseBody
+from ._delete_image_response import DeleteImageResponse
 from ._delete_lineage_relationship_request import DeleteLineageRelationshipRequest
 from ._delete_lineage_relationship_response_body import DeleteLineageRelationshipResponseBody
 from ._delete_lineage_relationship_response import DeleteLineageRelationshipResponse
@@ -2572,6 +2575,9 @@ __all__ = [
     DeleteFunctionRequest,
     DeleteFunctionResponseBody,
     DeleteFunctionResponse,
+    DeleteImageRequest,
+    DeleteImageResponseBody,
+    DeleteImageResponse,
     DeleteLineageRelationshipRequest,
     DeleteLineageRelationshipResponseBody,
     DeleteLineageRelationshipResponse,

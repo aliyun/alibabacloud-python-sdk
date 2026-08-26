@@ -8678,6 +8678,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_function_with_options_async(request, runtime)
 
+    def delete_image_with_options(
+        self,
+        request: main_models.DeleteImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_image_with_options_async(
+        self,
+        request: main_models.DeleteImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteImage',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_image(
+        self,
+        request: main_models.DeleteImageRequest,
+    ) -> main_models.DeleteImageResponse:
+        runtime = RuntimeOptions()
+        return self.delete_image_with_options(request, runtime)
+
+    async def delete_image_async(
+        self,
+        request: main_models.DeleteImageRequest,
+    ) -> main_models.DeleteImageResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_image_with_options_async(request, runtime)
+
     def delete_lineage_relationship_with_options(
         self,
         request: main_models.DeleteLineageRelationshipRequest,
