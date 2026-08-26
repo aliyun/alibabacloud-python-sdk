@@ -15,12 +15,12 @@ class DescribeLivePushProxyUsageDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The end time.
+        # The end time. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is in UTC.
         self.end_time = end_time
         self.push_proxy_data = push_proxy_data
         # The request ID.
         self.request_id = request_id
-        # The start time.
+        # The start time. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is in UTC.
         self.start_time = start_time
 
     def validate(self):

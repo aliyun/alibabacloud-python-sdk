@@ -18,34 +18,36 @@ class AddCasterLayoutRequest(DaraModel):
         region_id: str = None,
         video_layer: List[main_models.AddCasterLayoutRequestVideoLayer] = None,
     ):
-        # Audio layout.
+        # The audio layouts.
         # 
         # This parameter is required.
         self.audio_layer = audio_layer
-        # The element represents the location ID of the video resource, i.e., LocationId. Refer to [Adding Video Source](https://help.aliyun.com/document_detail/60250.html) for LocationId, which corresponds in order with the VideoLayers elements.
+        # The location IDs of the video sources. The order of the location IDs corresponds to the order of the video layers specified in the **VideoLayer** parameter. For more information about location IDs, see [AddCasterVideoResource](https://help.aliyun.com/document_detail/2848020.html).
+        # 
+        # For LocationId, see [Add a video source](https://help.aliyun.com/document_detail/2848020.html). This ID corresponds to the order of the VideoLayers elements.
         # 
         # This parameter is required.
         self.blend_list = blend_list
         # The ID of the production studio.
         # 
-        # If you create a production studio through the [CreateCaster](~~69338#doc-api-live-CreateCaster~~ "Creates a production studio.") interface, check the value of the CasterId parameter in the response.
+        # - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, the CasterId is returned in the response.
         # 
-        # If you create a production studio through the ApsaraVideo Live Console, log in to the console, then check the ID of the production studio through the following path:
+        # - If you create a production studio in the LIVE console, go to **Production Studio** > **Cloud Production Studio** to view the name of the production studio.
         # 
-        # Production Studios > Production Studio Management
-        # 
-        # >  The CasterId is reflected in the Name column on the Production Studio Management page.
+        # > The name of the production studio on the Cloud Production Studio page is the ID of the production studio.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The element represents the location ID of the audio resource, i.e., LocationId.
-        # LocationId is referred to in [Adding Video Source](https://help.aliyun.com/document_detail/60250.html), and corresponds in order with the AudioLayers elements.
+        # The location IDs of the audio sources. The order of the location IDs corresponds to the order of the audio layers specified in the **AudioLayer** parameter. For more information about location IDs, see [AddCasterVideoResource](https://help.aliyun.com/document_detail/2848020.html).
+        # 
+        # For \\`LocationId\\`, see [Add a video source](https://help.aliyun.com/document_detail/2848020.html). It corresponds to the order of the \\`AudioLayers\\` elements.
         # 
         # This parameter is required.
         self.mix_list = mix_list
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # Video layout.
+        # The video layouts.
         # 
         # This parameter is required.
         self.video_layer = video_layer
@@ -133,38 +135,49 @@ class AddCasterLayoutRequestVideoLayer(DaraModel):
         position_refer: str = None,
         width_normalized: float = None,
     ):
-        # The scaling mode of video layer N. Valid values:
+        # The fill mode of the element. Valid values:
         # 
-        # *   **none**: The image is not scaled to fill in the specified layout section. Set video layer N based on the image size of the video resource. This is the default value.
-        # *   **fit**: The image is scaled with the original aspect ratio to fill in the specified layout section. Set video layer N based on the section size. The image is centered in the layout section with the long side of the image equaling that of the section. If the aspect ratio of the image is inconsistent with that of the section, the short side of the image may be shorter than that of the section. The area outside the image displays the next video layer or the background if no next video layer exists. By default, the background color is black.
+        # - **none** (default): No scaling. The video is displayed in its original size.
+        # 
+        # - **fit**: The video is scaled to fit the fill area while maintaining its aspect ratio. The video is centered in the fill area. If the aspect ratio of the fill area is different from that of the video, the area along the shorter edge is not filled. This area displays the video of the underlying layer. If no underlying layer is configured, this area is black.
         self.fill_mode = fill_mode
-        # The fixed delay of video layer N. You can use this parameter to synchronize the video with subtitles. Unit: milliseconds. Valid values: **0 to 5000**. Default value: **0**.
+        # The fixed latency for the video layer. Use this parameter to synchronize the video with captions. Unit: milliseconds. Default value: 0. Valid values: **0** to **5000**.
         self.fixed_delay_duration = fixed_delay_duration
-        # The normalized value of the height of the image of video layer N.
+        # The normalized height of the layer.
         # 
-        # *   If the FillMode parameter of video layer N is set to none, the width of the video image is scaled based on this parameter. The default value is **0**, which indicates that the video image is displayed in the original size.
-        # *   If the FillMode parameter of video layer N is set to fit, you must set this parameter to a value greater than **0**. In this case, the video image is scaled with the original aspect ratio to fill in the specified layout section based on this parameter.
+        # - If you set FillMode to none, the width of the layer is scaled in proportion to the height. The default value is **0**. A value of 0 indicates that the video is displayed in its original size.
+        # 
+        # - If you set FillMode to fit, this parameter is required and its value must be greater than **0**. The value specifies the normalized height of the fill area.
         self.height_normalized = height_normalized
-        # The normalized value of the `[x,y]` coordinates of video layer N in the production studio. The default coordinates are `[0,0]`.
+        # The position of the video layer. The value is a normalized coordinate `[x,y]`. Default value: `[0,0]`.
         # 
-        # >  The coordinates indicate the location of video layer N in the production studio. Set this parameter to the normalized value of the coordinates.
+        # Note: The x and y coordinates must be normalized.
         self.position_normalized = position_normalized
-        # The reference coordinates of video layer N in the production studio. Valid values:
+        # The reference point for the position of the layer. Valid values:
         # 
-        # *   **topLeft**: the upper-left corner. This is the default value.
-        # *   **topRight**: the upper-right corner.
-        # *   **bottomLeft**: the lower-left corner.
-        # *   **bottomRight**: the lower-right corner.
-        # *   **center**: the center position.
-        # *   **topCenter**: the upper center position.
-        # *   **bottomCenter**: the lower center position.
-        # *   **leftCenter**: the left center position.
-        # *   **rightCenter**: the right center position.
+        # - **topLeft** (default): Top-left.
+        # 
+        # - **topRight**: Top-right.
+        # 
+        # - **bottomLeft**: Bottom-left.
+        # 
+        # - **bottomRight**: Bottom-right.
+        # 
+        # - **center**: Center.
+        # 
+        # - **topCenter**: Top-center.
+        # 
+        # - **bottomCenter**: Bottom-center.
+        # 
+        # - **leftCenter**: Left-center.
+        # 
+        # - **rightCenter**: Right-center.
         self.position_refer = position_refer
-        # The normalized value of the width of the image of video layer N.
+        # The normalized width of the layer.
         # 
-        # *   If the FillMode parameter of video layer N is set to none, the height of the video image is scaled based on this parameter. The default value is **0**, which indicates that the video image is displayed in the original size.
-        # *   If the FillMode parameter of video layer N is set to fit, you must set this parameter to a value greater than **0**. In this case, the video image is scaled with the original aspect ratio to fill in the specified layout section based on this parameter.
+        # - If you set FillMode to none, the height of the layer is scaled in proportion to the width. The default value is **0**. A value of 0 indicates that the video is displayed in its original size.
+        # 
+        # - If you set FillMode to fit, this parameter is required and its value must be greater than **0**. The value specifies the normalized width of the fill area.
         self.width_normalized = width_normalized
 
     def validate(self):
@@ -224,19 +237,23 @@ class AddCasterLayoutRequestAudioLayer(DaraModel):
         valid_channel: str = None,
         volume_rate: float = None,
     ):
-        # The fixed delay of audio layer N. You can use this parameter to synchronize the audio with subtitles. Unit: milliseconds. Valid values: **0 to 5000**. Default value: **0**.
+        # The fixed latency for the audio layer. Use this parameter to synchronize the audio with captions. Unit: milliseconds. Default value: 0. Valid values: **0** to **5000**.
         self.fixed_delay_duration = fixed_delay_duration
-        # The valid voice channels of audio layer N. Valid values:
+        # The sound channels that are used for audio input. Valid values:
         # 
-        # *   **leftChannel**: the left channel.
-        # *   **rightChannel**: the right channel.
-        # *   **all**: both the left and right channels. This is the default value.
+        # - **leftChannel**: Left channel.
+        # 
+        # - **rightChannel**: Right channel.
+        # 
+        # - **all** (default): Both channels.
         self.valid_channel = valid_channel
-        # The multiples of the original volume at which audio layer N plays audio streams. Valid values: **0 to 10.0**.
+        # The volume multiplication factor for the audio stream. Valid values: 0 to **10.0**.
         # 
-        # *   The default value **1.0** indicates that audio layer N plays audio streams at the original volume.
-        # *   A value smaller than **1.0** indicates that audio layer N plays audio streams at a lower volume than the original one.
-        # *   A value greater than **1.0** indicates that audio layer N plays audio streams at a higher volume than the original one.
+        # - **1.0** (default): The original volume is used.
+        # 
+        # - A value less than **1** decreases the volume.
+        # 
+        # - A value greater than **1** increases the volume.
         self.volume_rate = volume_rate
 
     def validate(self):

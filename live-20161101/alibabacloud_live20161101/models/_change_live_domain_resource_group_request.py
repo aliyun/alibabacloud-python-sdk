@@ -12,15 +12,16 @@ class ChangeLiveDomainResourceGroupRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The ingest domain or streaming domain.
+        # The ingest or streaming domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The ID of the resource group to which the domain name is moved.
+        # The ID of the destination resource group.
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

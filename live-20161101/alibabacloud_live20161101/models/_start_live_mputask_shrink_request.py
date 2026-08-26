@@ -19,52 +19,56 @@ class StartLiveMPUTaskShrinkRequest(DaraModel):
         task_id: str = None,
         transcode_params_shrink: str = None,
     ):
-        # The application ID. You can specify only one application ID. The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # The application ID. Only one ID is supported. It can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The channel ID. You can specify only one channel ID. The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # The channel ID. Only one ID is supported. It can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
         # 
         # This parameter is required.
         self.channel_id = channel_id
-        # The timeout period of an idle connection. Unit: seconds. Valid values: [10,86400].
+        # The idle timeout period. Unit: seconds. The value must be in the range of [10, 86400].
         # 
-        # >  If the task is idle for a period of time longer than the duration specified by the MaxIdleTime parameter, the task is automatically stopped. If the parameter is not specified, the task is stopped after the channel is closed.
+        # > If you set this parameter, the task is automatically stopped when it has been idle for a period longer than MaxIdleTime. If you do not set this parameter, the task is stopped immediately after the channel is closed.
         self.max_idle_time = max_idle_time
         # The stream mixing mode. Valid values:
         # 
-        # *   **0**: the single-stream relay mode. In this mode, the service only relays the original single stream, but does not transcode mixed streams. You do not need to set parameters for mixed-stream transcoding.
-        # *   **1** (default): the mixed-stream relay mode.
+        # - **0**: Single-stream ingest. The original single stream is ingested without stream mixing or transcoding. You do not need to configure stream mixing and transcoding parameters.
+        # 
+        # - **1** (default): Stream mixing and transcoding.
         # 
         # This parameter is required.
         self.mix_mode = mix_mode
-        # The multiple ingest URLs to relay. This parameter allows you to specify multiple ingest URLs.
+        # The parameters for ingesting to multiple URLs. You can specify multiple live ingest URLs.
         # 
-        # >  The StreamURL and MultiStreamURL parameters are mutually exclusive. You must specify one of the two parameters.
+        # > When you set the ingest URL for a task, you must configure either the StreamURL parameter or the MultiStreamURL parameter, but not both.
         self.multi_stream_urlshrink = multi_stream_urlshrink
-        # The region in which the streams are mixed. Valid values:
+        # The region where the stream mixing service is located. Valid values:
         # 
-        # *   **CN-Shanghai**
-        # *   **AP-Singapore** (default)
-        # *   **EMAA-Saudi**
+        # - **CN-Shanghai<props="china">(default)**: Shanghai.
+        # 
+        # - **AP-Singapore<props="intl">(default)**: Singapore.
+        # 
+        # - **EMAA-Saudi**: Saudi Arabia.
         self.region = region
-        # The supplemental enhancement information (SEI) parameters.
+        # The SEI configuration parameters.
         self.sei_params_shrink = sei_params_shrink
-        # The single-stream relay parameters. These parameters are required if you set MixMode to 0. Leave these parameters empty in the mixed-stream relay mode.
+        # The parameters for single-stream ingest. This parameter is required when MixMode is set to 0. Do not set this parameter for stream mixing and transcoding.
         self.single_sub_params_shrink = single_sub_params_shrink
-        # The ingest URL. You can specify only one ingest URL in the Real-Time Messaging Protocol (RTMP) format. The URL can be up to 2,048 characters in length. For information about the generation rules of ingest URLs, see [Ingest and streaming URLs](https://help.aliyun.com/document_detail/199339.html).
+        # The live ingest URL. Only the RTMP protocol is supported. Only one URL is supported. The maximum length is 2048 characters. For information about how to generate the URL, see [Ingest URLs and playback URLs](https://help.aliyun.com/document_detail/199339.html).
         # 
-        # > 
+        # > - For domain names with hotlink protection enabled, the ingest URL must include an access token.
         # 
-        # *   If the ingest URL is under a domain name for which hotlink protection is enabled, you must include an access token in the URL.
-        # *   You cannot use the same ingest URL in different tasks.
-        # *   You cannot use the same ingest URL within 10 seconds after a task is stopped.
+        # - Do not use the same StreamURL in different tasks at the same time.
+        # 
+        # - Do not use the same StreamURL within 10 seconds after a task stops.
         self.stream_url = stream_url
-        # The task ID. You can specify only one task ID. The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The ID must be unique.
+        # The task ID. Only one ID is supported. It can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 55 characters. This ID is the unique identifier for the bypass ingest task.
+        # If a task with the same ID still exists and has not been cleared when you start a new task, \\`InvalidParam\\` is returned.
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The mixed-stream relay parameters. These parameters are required if you set MixMode to 1. Leave these parameters empty if you use the single-stream relay mode.
+        # The parameters for stream mixing and transcoding. This parameter is required when MixMode is set to 1. Do not set this parameter for single-stream ingest.
         self.transcode_params_shrink = transcode_params_shrink
 
     def validate(self):

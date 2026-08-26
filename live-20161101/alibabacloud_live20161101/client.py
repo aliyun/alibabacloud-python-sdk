@@ -78,7 +78,8 @@ class Client(OpenApiClient):
             'me-east-1': 'live.aliyuncs.com',
             'rus-west-1-pop': 'live.aliyuncs.com',
             'us-east-1': 'live.aliyuncs.com',
-            'us-west-1': 'live.aliyuncs.com'
+            'us-west-1': 'live.aliyuncs.com',
+            'me-central-1': 'live.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('live', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -4100,6 +4101,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domain_names):
             query['DomainNames'] = request.domain_names
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.functions):
             query['Functions'] = request.functions
         if not DaraCore.is_null(request.owner_account):
@@ -4136,6 +4139,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domain_names):
             query['DomainNames'] = request.domain_names
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.functions):
             query['Functions'] = request.functions
         if not DaraCore.is_null(request.owner_account):
@@ -5786,6 +5791,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.source_urls):
             request.source_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_urls, 'SourceUrls', 'json')
         query = {}
+        if not DaraCore.is_null(request.auth_key):
+            query['AuthKey'] = request.auth_key
         if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
         if not DaraCore.is_null(request.dst_url):
@@ -5794,6 +5801,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.file_index):
             query['FileIndex'] = request.file_index
+        if not DaraCore.is_null(request.notify_item_switch):
+            query['NotifyItemSwitch'] = request.notify_item_switch
         if not DaraCore.is_null(request.offset):
             query['Offset'] = request.offset
         if not DaraCore.is_null(request.owner_id):
@@ -5804,6 +5813,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.repeat_number):
             query['RepeatNumber'] = request.repeat_number
+        if not DaraCore.is_null(request.req_auth):
+            query['ReqAuth'] = request.req_auth
         if not DaraCore.is_null(request.retry_count):
             query['RetryCount'] = request.retry_count
         if not DaraCore.is_null(request.retry_interval):
@@ -5848,6 +5859,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.source_urls):
             request.source_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_urls, 'SourceUrls', 'json')
         query = {}
+        if not DaraCore.is_null(request.auth_key):
+            query['AuthKey'] = request.auth_key
         if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
         if not DaraCore.is_null(request.dst_url):
@@ -5856,6 +5869,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.file_index):
             query['FileIndex'] = request.file_index
+        if not DaraCore.is_null(request.notify_item_switch):
+            query['NotifyItemSwitch'] = request.notify_item_switch
         if not DaraCore.is_null(request.offset):
             query['Offset'] = request.offset
         if not DaraCore.is_null(request.owner_id):
@@ -5866,6 +5881,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.repeat_number):
             query['RepeatNumber'] = request.repeat_number
+        if not DaraCore.is_null(request.req_auth):
+            query['ReqAuth'] = request.req_auth
         if not DaraCore.is_null(request.retry_count):
             query['RetryCount'] = request.retry_count
         if not DaraCore.is_null(request.retry_interval):
@@ -32732,6 +32749,8 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.force_set):
             query['ForceSet'] = request.force_set
         if not DaraCore.is_null(request.owner_id):
@@ -32776,6 +32795,8 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.force_set):
             query['ForceSet'] = request.force_set
         if not DaraCore.is_null(request.owner_id):

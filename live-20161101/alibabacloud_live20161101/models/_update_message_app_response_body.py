@@ -11,9 +11,9 @@ class UpdateMessageAppResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateMessageAppResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -51,8 +51,8 @@ class UpdateMessageAppResponseBodyResult(DaraModel):
     ):
         # Indicates whether the update is successful. Valid values:
         # 
-        # *   true: The update is successful.
-        # *   false: The update failed.
+        # - true: successful.
+        # - false: unsuccessful.
         self.success = success
 
     def validate(self):

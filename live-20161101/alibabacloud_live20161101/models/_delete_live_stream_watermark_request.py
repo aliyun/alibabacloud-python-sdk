@@ -12,10 +12,11 @@ class DeleteLiveStreamWatermarkRequest(DaraModel):
         template_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         # The ID of the watermark template.
         # 
-        # >  You can obtain the template ID by checking the value of the TemplateId parameter that is returned by the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/410759.html) operation.
+        # > The template ID is returned in the response of the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
         # 
         # This parameter is required.
         self.template_id = template_id

@@ -14,9 +14,9 @@ class DescribeMixStreamListResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Details about the stream mixing tasks.
+        # The list of stream mixing tasks.
         self.mix_stream_list = mix_stream_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of tasks.
         self.total = total
@@ -74,23 +74,23 @@ class DescribeMixStreamListResponseBodyMixStreamList(DaraModel):
         mixstream_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application.
+        # The app name.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streaming domain.
         self.domain_name = domain_name
-        # The time when the stream mixing task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the stream mixing task was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
         self.gmt_create = gmt_create
-        # The time when the stream mixing task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the stream mixing task was last modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
         self.gmt_modified = gmt_modified
-        # The number of input streams.
+        # The number of input sources.
         self.input_stream_number = input_stream_number
-        # The ID of the layout.
+        # The layout ID.
         self.layout_id = layout_id
         # The stream mixing template.
         self.mix_stream_template = mix_stream_template
-        # The ID of the stream mixing task. You can specify this parameter in a request to delete the steam mixing task.
+        # The ID of the stream mixing task. You can use this ID to delete the task.
         self.mixstream_id = mixstream_id
-        # The name of the output stream.
+        # The stream name of the stream mixing task.
         self.stream_name = stream_name
 
     def validate(self):

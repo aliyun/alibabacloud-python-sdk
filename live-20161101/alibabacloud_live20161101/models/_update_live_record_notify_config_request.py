@@ -16,34 +16,37 @@ class UpdateLiveRecordNotifyConfigRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The main streaming domain.
+        # The streaming domain of the streamer.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether to enable callbacks for recording status. Valid values:
+        # Specifies whether recording task status callbacks are required. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Recording task status callbacks are required.
+        # - **false** (default): Recording task status callbacks are not required.
         self.need_status_notify = need_status_notify
+        # The callback authentication key. The key is 16 to 32 characters in length and can contain only letters and digits.
+        # >This parameter is required when the NotifyReqAuth parameter is set to **true**.
         self.notify_auth_key = notify_auth_key
+        # Specifies whether to enable callback authentication. Valid values:
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
+        # 
+        # >Default value: **false**. If this parameter is set to **true**, the NotifyAuthKey parameter is required.
         self.notify_req_auth = notify_req_auth
-        # The callback URL that is used to receive notifications about recording events and status.
+        # The callback URL for recording events, including event callbacks and status callbacks.
         # 
-        # > 
-        # 
-        # *   The URL must start with `http://` or `https://`.
-        # 
-        # *   You must use URLEncoder for encoding. This way, the system can identify Chinese characters, spaces, and special characters.
+        # > - The URL must start with `http://` or `https://`.
+        # > - To properly identify Chinese characters, spaces, and other special characters in the input, perform URL encoding.
         # 
         # This parameter is required.
         self.notify_url = notify_url
-        # The callback URL for on-demand recordings.
+        # The on-demand recording callback URL.
         # 
-        # > 
-        # 
-        # *   The URL must start with `http://` or `https://`.
-        # 
-        # *   You must use URLEncoder for encoding. This way, the system can identify Chinese characters, spaces, and special characters.
+        # > - The URL must start with `http://` or `https://`.
+        # > - To properly identify Chinese characters, spaces, and other special characters in the input, perform URL encoding.
         self.on_demand_url = on_demand_url
         self.owner_id = owner_id
         self.security_token = security_token

@@ -12,7 +12,7 @@ class ModifyCasterProgramResponseBody(DaraModel):
     ):
         # The ID of the production studio.
         self.caster_id = caster_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

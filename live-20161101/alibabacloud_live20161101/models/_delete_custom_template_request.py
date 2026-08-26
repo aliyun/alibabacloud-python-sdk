@@ -12,8 +12,9 @@ class DeleteCustomTemplateRequest(DaraModel):
         template: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the template that you want to delete. The value is a string.
+        # The name of the template to delete.
         # 
         # This parameter is required.
         self.template = template

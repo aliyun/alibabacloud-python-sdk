@@ -29,103 +29,98 @@ class SetCasterConfigRequest(DaraModel):
         urgent_live_stream_url: str = None,
         urgent_material_id: str = None,
     ):
-        # The configuration for automatic switchover to the standby resource.
-        # 
-        # The `eofThres` field specifies the duration after which the production studio automatically switches to the standby resource if a stream interruption occurs. Unit: seconds.
+        # The automatic standby switchover configuration.
+        # `eofThres`: the duration of stream interruption after which the system automatically switches to the standby video, in seconds.
         self.auto_switch_urgent_config = auto_switch_urgent_config
-        # Specifies whether the production studio automatically switches to the standby resource in case of a stream interruption.
-        # 
-        # *   **true**
-        # *   **false**
+        # Specifies whether to enable automatic switchover to the standby video when the stream is interrupted.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.auto_switch_urgent_on = auto_switch_urgent_on
-        # The callback URL. Enter a valid HTTP address for receiving callback notifications. If you do not specify this parameter, the production studio does not send callback notifications.
-        # 
-        # >  For more information about production studio callbacks, see [Production studio callbacks](https://help.aliyun.com/document_detail/213633.html).
+        # The callback URL. To receive callback notifications, enter a valid receiving address that accepts the HTTP protocol. If this parameter is set to empty, callback notifications for the production studio are canceled by default.
+        # > For more information about production studio callbacks, see [Cloud production studio callback information](https://help.aliyun.com/document_detail/213633.html).
         self.callback_url = callback_url
-        # The ID of the production studio.
+        # The production studio ID.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the CasterId value returned by the CreateCaster operation.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you created the production studio in the ApsaraVideo Live console, go to **ApsaraVideo Live console** > **Production Studio** > **Cloud Production Studio** to view the ID.
+        # 
+        # > The production studio name in the production studio list on the Cloud Production Studio page of the ApsaraVideo Live console is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
         # The name of the production studio.
         self.caster_name = caster_name
-        # Specifies whether to enable channels. Valid values:
+        # Specifies whether to enable Channel. If Channel was previously enabled (ChannelEnable=1), you must explicitly pass ChannelEnable=1 in each call to maintain the channel status. Otherwise, the error InvalidCaster.ChannelDisableUnsupported is returned.
+        #          
+        # - **0** (default): disabled.
+        # - **1**: enabled. 
         # 
-        # *   **0** (default): disables channels.
-        # *   **1**: enables channels.
-        # 
-        # > You cannot disable channels after you enable them. If you set this parameter to 0, the production studio references video resources in a layout without using channels. If you enable channels for the first time, make sure that the production studio is in the idle state. After you enable channels, a new layout that references video resources by using channels is generated to replace the original one. Therefore, you must specify video resources for channels. You can use the channels to change the playback progress or status. If the video resource, preview, and program modules of the production studio use the same video source, the three modules display the same content.
+        # > Channel is disabled by default and cannot be disabled after it is enabled. When Channel is disabled, resources are directly referenced by layouts. To enable Channel for the first time, the production studio must be stopped. Existing layouts are discarded. Resources must first be assigned to a Channel, and new layouts directly reference the Channel. Through Channel, you can adjust the playback progress and status of video sources. In this mode, if the video source, PVW, and PGM areas reference the same resource, the corresponding views remain synchronized.
         self.channel_enable = channel_enable
-        # Specifies whether to enable stream delay. Unit: seconds. Valid values:
+        # The stream delay, in seconds.
         # 
-        # *   **0** (default): disables stream delay.
-        # 
-        # *   **A value greater than 0**: enables stream delay.
-        # 
-        # *   **Empty**: clears the stream delay configuration.
-        # 
-        #     **
-        # 
-        #     **Note **The maximum value can be 300 seconds.
+        # - **0** (default): disables stream delay.
+        # - Greater than **0**: enables stream delay.
+        # - **Empty**: clears the stream delay configuration by default.
+        # > The maximum value is 300 seconds.
         self.delay = delay
-        # The main streaming domain.
+        # The primary streaming domain.
         # 
-        # Complete the configuration of the domain name before the production studio is started. If you do not specify this parameter, the domain configuration for the production studio is cleared.
+        # Complete the domain name configuration before starting the production studio. If this parameter is empty, the domain name configuration of the production studio is cleared by default.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # Specifies whether to enable the carousel playback feature. Valid values:
+        # Specifies whether the program list takes effect. 
         # 
-        # *   **0**: disables carousel playback.
-        # *   **1**: enables carousel playback.
+        # - **0**: does not take effect.
+        # - **1**: takes effect.
         self.program_effect = program_effect
-        # The name of the playlist for carousel playback. You can specify this parameter if you enable the carousel playback feature.
+        # The name of the program list. This parameter can be configured when the program list feature is used.
         self.program_name = program_name
-        # The recording configuration. The value is a JSON string. You can configure the following fields:
+        # The recording configuration in JSON format. The configuration elements are as follows:
         # 
-        # *   **endpoint**: the API server address of an Alibaba Cloud service.
-        # *   **ossBucket**: the name of the Object Storage Service (OSS) bucket.
-        # *   **videoFormat**: the format in which the video file can be exported. Example: `[{\\"OssObjectPrefix\\":\\"record/{AppName}/{StreamName}/{StartTime}_{EndTime}\\",\\"Format\\":\\"m3u8\\",\\"CycleDuration\\":21600,\\"SliceOssObjectPrefix\\":\\"record/{AppName}/{StreamName}/{UnixTimestamp}\\"},{\\"OssObjectPrefix\\":\\"record/{AppName}/{StreamName}/{StartTime}_{EndTime}\\",\\"Format\\":\\"flv\\",\\"CycleDuration\\":21600}]`.
-        # *   **interval**: the interval between recordings. Unit: milliseconds.
+        # - **endpoint**: the API endpoint of the Alibaba Cloud service.
+        # - **ossBucket**: the name of the OSS bucket.
+        # - **videoFormat**: the video file formats supported for export. Example: `[{\\"OssObjectPrefix\\":\\"record/{AppName}/{StreamName}/{StartTime}_{EndTime}\\",\\"Format\\":\\"m3u8\\",\\"CycleDuration\\":21600,\\"SliceOssObjectPrefix\\":\\"record/{AppName}/{StreamName}/{UnixTimestamp}\\"},{\\"OssObjectPrefix\\":\\"record/{AppName}/{StreamName}/{StartTime}_{EndTime}\\",\\"Format\\":\\"flv\\",\\"CycleDuration\\":21600}]`.
+        # - **interval**: the time interval, in milliseconds (ms).
         # 
-        # > If you do not specify this parameter, the recording feature is disabled and the recording configuration for the production studio is cleared.
+        # >If this parameter is set to empty, the recording feature is not enabled. If this parameter is set to empty, the recording configuration is cleared by default.
         self.record_config = record_config
+        # The region ID.
         self.region_id = region_id
-        # The custom stream redirect URL.
-        # 
-        # If you do not specify this parameter, the production studio uses the redirect URL generated by the system.
-        # 
-        # > Redirect URLs support only the Real-Time Messaging Protocol (RTMP) protocol.
+        # The ingest URL that corresponds to the custom bypass output address of the production studio. 
+        # If this parameter is empty, the ingest URL that corresponds to the output address automatically generated by Alibaba Cloud is used by default.
+        # > Currently, SideOutputUrl supports only the RTMP protocol for stream ingest.
         self.side_output_url = side_output_url
-        # The stream relay URLs. A relay URL can be an Alibaba Cloud URL or a URL from a third-party CDN provider. You can specify up to 20 relay URLs over the RTMP protocol.
+        # The list of multi-destination relay streaming addresses. The addresses can be CDN ingest URLs from Alibaba Cloud or third-party providers. A maximum of 20 RTMP relay addresses can be added to a production studio.
         # 
-        # > Use the following format to specify multiple relay URLs: "rtmp://domain/app1/stream1","rtmp://domain/app2/stream2".
+        # 
+        # > Specify multiple addresses in the array format: ["rtmp://domain/app1/stream1","rtmp://domain/app2/stream2"].
         self.side_output_url_list = side_output_url_list
-        # The multi-view synchronization configuration. You can specify this parameter to synchronize multiple video sources.
+        # The multi-view synchronization configuration that synchronizes multiple video sources.
+        # Multi-view synchronization has two modes:
         # 
-        # There are two modes of multi-view synchronization.
+        # - mode: 0 (streamer mode. Multiple video sources are synchronized based on the specified mode.)
         # 
-        # *   A value of 0 for the mode field specifies the streamer mode. In this mode, multiple video sources are synchronized based on the settings by the streamer.
-        # *   A value of 1 for the mode field specifies the conference mode. In this mode, all video sources are synchronized.
+        # - mode: 1 (conference mode. There is no concept of a streamer video. All video sources are synchronized with each other.)
         # 
-        # In the streamer mode, the hostResourceId field specifies the video source on the streamer side.
         # 
-        # In the conference mode, the hostResourceId field is not available. You need to provide only resource IDs that are required.
+        # 
+        # Streamer mode: hostResourceId: the streamer video source in streamer mode.
+        # 
+        # Conference mode: the hostResourceId field is not required. Only the resource IDs in resourceIds need to be provided.
         self.sync_groups_config = sync_groups_config
-        # The transcoding configuration.
+        # The transcoding configuration. 
         # 
-        # The value is a JSON string. Use upper camel case for fields of the string. If you do not specify this parameter, the transcoding configuration is cleared. If no transcoding template is available, an error occurs when the production studio is started.
+        # A JSON-formatted string. Use upper camel case for internal fields of the struct. If this parameter is set to empty, the transcoding configuration is cleared by default. If the transcoding template is empty, an error is returned when the production studio starts.
         self.transcode_config = transcode_config
-        # The ID of the standby image from the media library.
+        # The media asset ID of the standby image in the media library.
         self.urgent_image_id = urgent_image_id
         # The URL of the standby image.
         self.urgent_image_url = urgent_image_url
         # The URL of the standby live stream.
         self.urgent_live_stream_url = urgent_live_stream_url
-        # The ID of the standby video from the media library. If you do not specify this parameter, the standby video configuration for the production studio is cleared.
+        # The media asset ID of the standby video in the media library. If this parameter is set to empty, the standby configuration is cleared by default.
         self.urgent_material_id = urgent_material_id
 
     def validate(self):

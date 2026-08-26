@@ -18,42 +18,46 @@ class ModifyStudioLayoutRequest(DaraModel):
         region_id: str = None,
         screen_input_config_list: str = None,
     ):
-        # The background material configurations. The value is a JSON string. For more information, see **BgImageConfig**.
+        # The configuration of the background resource. This parameter is a JSON string. For more information, see **BgImageConfig**.
         # 
-        # >  This parameter is required only if you set LayoutType to studio.
+        # >Notice: 
+        # 
+        # This parameter is required only when LayoutType is set to studio.
         self.bg_image_config = bg_image_config
-        # The ID of the production studio.
+        # The ID of the production studio. >Notice: The production studio must be created in advance and must be of the virtual studio type.
         # 
-        # >  The production studio must be a virtual studio that you create in advance.
+        # - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value returned in the response.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you create a production studio in the ApsaraVideo Live console, go to the **ApsaraVideo Live console** > **Production Studio** > **Cloud Production Studio** page to view the ID.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # > The name of the production studio in the list on the Cloud Production Studio page is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The common layout configurations. The value is a JSON string. For more information, see **CommonConfig**.
-        # 
-        # >  This parameter is required only if you set LayoutType to common.
+        # The configuration of the common layout. This parameter is a JSON string. For more information, see **CommonConfig**. >Notice: This parameter is required only when LayoutType is set to common.
         self.common_config = common_config
-        # The layer sorting configurations. The value is a JSON string. For more information, see **layerOrderConfig**. You can sort layers of background and multimedia materials. The chroma key layer cannot be sorted. A layer that is in the front of the code is placed behind other layers in the layout.
+        # The layer order settings. This parameter is a JSON string. For more information, see **layerOrderConfig**. You can sort background and multimedia materials. Chroma keying layers are not supported. The earlier an item appears in the list, the lower its layer.
         self.layer_order_config_list = layer_order_config_list
-        # The ID of the layout. If the layout was added by calling the [AddStudioLayout](https://help.aliyun.com/document_detail/2848062.html) operation, check the value of the response parameter LayoutId to obtain the ID.
+        # The ID of the layout. If you add a layout for a production studio by calling the [AddStudioLayout](https://help.aliyun.com/document_detail/2848062.html) operation, use the LayoutId value returned in the response.
         # 
         # This parameter is required.
         self.layout_id = layout_id
-        # The name of the layout.
+        # The name of the production studio layout.
         self.layout_name = layout_name
-        # The multimedia input configurations. The value is a JSON string. For more information, see **MediaInputConfig**.
+        # The settings for the multimedia input resource. This parameter is a JSON string. For more information, see **MediaInputConfig**.
         # 
-        # >  This parameter is optional and takes effect only if you set LayoutType to studio.
+        # >Notice: 
+        # 
+        # This parameter is valid and optional only when LayoutType is set to studio.
         self.media_input_config_list = media_input_config_list
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
-        # The input configurations for chroma key. The value is a JSON string. For more information, see **ScreenInputConfig**.
+        # The settings for the chroma keying input. This parameter is a JSON string. For more information, see **ScreenInputConfig**.
         # 
-        # >  This parameter is required only if you set LayoutType to studio.
+        # >Notice: 
+        # 
+        # This parameter is required only when LayoutType is set to studio.
         self.screen_input_config_list = screen_input_config_list
 
     def validate(self):

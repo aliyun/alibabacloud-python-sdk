@@ -15,28 +15,34 @@ class UpdateLiveStreamTranscodeRequest(DaraModel):
         region_id: str = None,
         template: str = None,
     ):
-        # The name of the application to which the stream belongs, and it cannot be modified.
+        # The AppName of the live stream. This parameter cannot be modified.
         # 
         # This parameter is required.
         self.app = app
-        # Streamer domain name, not modifiable.
+        # The streaming domain. This parameter cannot be modified.
         # 
         # This parameter is required.
         self.domain = domain
-        # The encryption configuration. The value is a JSON string. The following fields are included in the syntax:
+        # The encryption settings, formatted as a JSON string.
         # 
-        # *   EncryptType: the type of the encryption. Set the value to **aliyun**.
-        # *   KmsKeyID: the ID of the CMK in KMS.
-        # *   KmsKeyExpireInterval: the validity period of the CMK. Valid values: **60 to 3600**. Unit: seconds.
+        # - **EncryptType**: The encryption type. Set the value to aliyun.
+        # 
+        # - **KmsKeyID**: The ID of the customer master key (CMK) in Key Management Service (KMS).
+        # 
+        # - **KmsKeyExpireInterval**: The key rotation period. Unit: seconds. Valid values: **60 to 3600.**
+        # 
+        # > When you use Digital Rights Management (DRM) encryption, you cannot modify **KmsKeyID**.
         self.encrypt_parameters = encrypt_parameters
-        # Specifies whether to enable triggered transcoding. Valid values:
+        # Specifies whether to enable on-demand transcoding. Valid values:
         # 
-        # *   **yes**: enables triggered transcoding.
-        # *   **no**: disables triggered transcoding.
+        # - **yes**: Transcoding only starts when the first viewer requests this transcoded stream.
+        # 
+        # - **no**: Transcoding starts immediately after the stream is published.
         self.lazy = lazy
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # Transcoding template, not modifiable.
+        # The transcoding template name. This parameter cannot be modified.
         # 
         # This parameter is required.
         self.template = template

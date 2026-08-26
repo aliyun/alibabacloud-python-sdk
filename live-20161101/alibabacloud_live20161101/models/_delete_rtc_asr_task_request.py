@@ -12,8 +12,9 @@ class DeleteRtcAsrTaskRequest(DaraModel):
         task_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The task ID. You can obtain the ID from the response to the [CreateRtcAsrTask](https://help.aliyun.com/document_detail/2848217.html) operation.
+        # The ID of the task. Call the [CreateRtcAsrTask](https://help.aliyun.com/document_detail/2848217.html) operation to obtain the task ID.
         # 
         # This parameter is required.
         self.task_id = task_id

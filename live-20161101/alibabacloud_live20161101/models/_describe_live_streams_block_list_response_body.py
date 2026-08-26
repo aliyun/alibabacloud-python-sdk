@@ -22,14 +22,14 @@ class DescribeLiveStreamsBlockListResponseBody(DaraModel):
         self.domain_name = domain_name
         # The page number of the returned page.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries returned on the current page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
         self.stream_urls = stream_urls
-        # The total number of live stream URLs that meet the specified conditions.
+        # The total number of entries that meet the specified conditions.
         self.total_num = total_num
-        # The total number of returned pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):

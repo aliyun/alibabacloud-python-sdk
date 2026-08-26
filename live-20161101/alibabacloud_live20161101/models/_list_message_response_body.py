@@ -13,9 +13,9 @@ class ListMessageResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListMessageResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -52,12 +52,13 @@ class ListMessageResponseBodyResult(DaraModel):
         has_more: bool = None,
         message_list: List[main_models.ListMessageResponseBodyResultMessageList] = None,
     ):
-        # Indicates whether the current page is followed by another page. Valid values:
+        # Indicates whether there is a next page. Valid values:
         # 
-        # *   true: The current page is followed by another page.
-        # *   false: The current page is not followed by another page.
+        # - true: There is a next page.
+        # 
+        # - false: There is no next page.
         self.has_more = has_more
-        # Details about the messages.
+        # The message list.
         self.message_list = message_list
 
     def validate(self):
@@ -103,15 +104,15 @@ class ListMessageResponseBodyResultMessageList(DaraModel):
         sender_id: str = None,
         type: int = None,
     ):
-        # The message body. The value is a JSON string.
+        # The message body, in JSONString format.
         self.data = data
-        # The ID of the message group.
+        # The message group ID.
         self.group_id = group_id
-        # The ID of the message.
+        # The message ID.
         self.message_id = message_id
-        # The ID of the user who sent the message.
+        # The message sender ID.
         self.sender_id = sender_id
-        # The type of the message.
+        # The message type.
         self.type = type
 
     def validate(self):

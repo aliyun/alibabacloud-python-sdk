@@ -12,7 +12,7 @@ class CreateLiveAIStudioResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the virtual studio template.
+        # The studio template ID.
         self.studio_id = studio_id
 
     def validate(self):

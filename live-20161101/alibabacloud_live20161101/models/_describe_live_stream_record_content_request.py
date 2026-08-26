@@ -15,25 +15,25 @@ class DescribeLiveStreamRecordContentRequest(DaraModel):
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The main streaming domain.
+        # The AppName of the live stream.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The operation that you want to perform. Set the value to **DescribeLiveStreamRecordContent**.
+        # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The beginning of the time range to query. You can only query the recordings in the last 6 months. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time for the query. The time range between StartTime and EndTime cannot exceed 4 days. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
         self.security_token = security_token
-        # The name of the live stream.
+        # The start time for the query. You can query records from the last 6 months. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The name of the application to which the live stream belongs.
+        # The name of the live stream.
         # 
         # This parameter is required.
         self.stream_name = stream_name

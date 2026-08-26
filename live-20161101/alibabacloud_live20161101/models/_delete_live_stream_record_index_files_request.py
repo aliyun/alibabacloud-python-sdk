@@ -17,28 +17,30 @@ class DeleteLiveStreamRecordIndexFilesRequest(DaraModel):
         remove_file: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The name of the main streaming domain.
+        # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The index file IDs.
+        # The array of index file IDs.
         # 
         # This parameter is required.
         self.record_id = record_id
+        # The region ID.
         self.region_id = region_id
-        # Specifies whether to delete the corresponding file in Object Storage Service (OSS) synchronously. Valid values:
+        # Specifies whether to delete the associated OSS objects at the same time. Valid values:
         # 
-        # *   **true**: The corresponding file in OSS is deleted.
-        # *   **false**: The corresponding file in OSS is not deleted.
+        # - **true**: Deletes.
+        # 
+        # - **false**: Does not delete.
         # 
         # This parameter is required.
         self.remove_file = remove_file
-        # The name of the live stream.
+        # The stream name.
         # 
         # This parameter is required.
         self.stream_name = stream_name

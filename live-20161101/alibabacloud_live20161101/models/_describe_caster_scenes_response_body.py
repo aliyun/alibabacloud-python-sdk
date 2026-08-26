@@ -17,7 +17,7 @@ class DescribeCasterScenesResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.scene_list = scene_list
-        # The total number of entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):

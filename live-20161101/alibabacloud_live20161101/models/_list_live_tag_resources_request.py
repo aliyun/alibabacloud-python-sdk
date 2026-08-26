@@ -19,14 +19,22 @@ class ListLiveTagResourcesRequest(DaraModel):
         tag_owner_bid: str = None,
         tag_owner_uid: str = None,
     ):
+        # The token for the next query.
         self.next_token = next_token
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The list of resource IDs. ResourceId and Tag cannot both be empty.
         self.resource_id = resource_id
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The list of tags. ResourceId and Tag cannot both be empty.
         self.tag = tag
+        # The Bid of the tag owner.
         self.tag_owner_bid = tag_owner_bid
+        # The Alibaba Cloud account ID to which the tag belongs.
         self.tag_owner_uid = tag_owner_uid
 
     def validate(self):
@@ -105,7 +113,9 @@ class ListLiveTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource.
         self.key = key
+        # The tag value that corresponds to the tag key.
         self.value = value
 
     def validate(self):

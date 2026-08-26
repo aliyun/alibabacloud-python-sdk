@@ -15,20 +15,22 @@ class AddCasterProgramRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the production studio.
+        # The production studio ID.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster operation](https://help.aliyun.com/document_detail/2848009.html), check the CasterId value returned by the CreateCaster operation.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you created the production studio in the ApsaraVideo Live console, navigate to **ApsaraVideo Live console** > **Production Studio** > **Cloud Production Studio** to view the production studio name.
+        # 
+        # > The production studio name in the production studio list on the Cloud Production Studio page is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The information about episodes in the episode list.
+        # The program list information.
         # 
         # This parameter is required.
         self.episode = episode
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -88,38 +90,40 @@ class AddCasterProgramRequestEpisode(DaraModel):
         start_time: str = None,
         switch_type: str = None,
     ):
-        # The components. Components in the production studio are listed from the bottom to the top in an array.
+        # The component list. Elements are arranged from bottom to top in order.
+        # >Notice: This parameter is valid and required when Episode.N.EpisodeType is set to **Component**.
         # 
-        # >  This parameter is required and takes effect when the Episode.N.EpisodeType parameter is set to Component.
         # 
-        # This parameter is optional when the Episode.N.EpisodeType parameter is set to **Resource**. In this case, if this parameter is specified, the components are bound to and switched together with video resources.
+        #  When the node type is **Resource**, this indicates that the component is bound to the video source and switches synchronously.
         self.component_id = component_id
-        # The end time of the episode. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC). This parameter is required. If not specified, MissingParameter is returned.
         self.end_time = end_time
-        # The name of the episode.
+        # The program name.
         self.episode_name = episode_name
-        # The type of the episode.
+        # The node type. Valid values: 
+        #          
+        # - **Resource**: video source. If you select Resource, you must also set the request parameters Episode.N.ResourceId and Episode.N.SwitchType.
+        # - **Component**: component. If you select Component, you must also set the request parameter Episode.N.ComponentId.N.
         # 
-        # *   **Resource**: a video resource If you set this parameter to Resource, you must specify the Episode.N.ResourceId and Episode.N.SwitchType parameters.
-        # *   **Component**: a component If you set this parameter to Component, you must specify the Episode.N.ComponentId.N parameter.
+        # 
+        # > 
+        # > - When Resource is selected and the referenced resource contains a VodUrl (video-on-demand file), EndTime - StartTime cannot exceed the actual playback duration (in seconds) of the VOD file. Otherwise, InvalidParameter.EndTime is returned.
         self.episode_type = episode_type
-        # The ID of the video resource.
+        # The video source ID.
+        # >Notice: This parameter is valid and required when Episode.N.EpisodeType is set to **Resource**.
+        #   
+        #  This parameter is not applicable when Episode.N.EpisodeType is set to **Component**.
         # 
-        # >  This parameter takes effect and is required when the Episode.N.EpisodeType parameter is set to Resource.
-        # 
-        # \\
-        # This parameter is invalid if you set the Episode.N.EpisodeType parameter to **Component**.
-        # 
-        # If the video resource was added by calling the [AddCasterVideoResource](https://help.aliyun.com/document_detail/60250.html) operation, check the value of the response parameter ResourceId to obtain the ID.
+        # If you added the video source by calling the [AddCasterVideoResource operation](https://help.aliyun.com/document_detail/60250.html), check the ResourceId value returned by the AddCasterVideoResource operation.
         self.resource_id = resource_id
-        # The start time of the episode. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC). This parameter is required. If not specified, MissingParameter is returned.
         self.start_time = start_time
-        # The policy for switching episodes. Valid values:
+        # The switch policy. Valid values:
+        # >Notice: This parameter is valid only when Episode.N.EpisodeType is set to **Resource**.
         # 
-        # >  This parameter takes effect only when the Episode.N.EpisodeType parameter is set to Resource.
-        # 
-        # *   **TimeFirst**: The episode starts when the previous episode ends and ends when the next episode starts. If no next episode exists, the episode keeps repeating until a new episode is added or the production studio stops. This value is required for live video resources.
-        # *   **ContentFirst**: The episode starts and ends as scheduled.
+        #          
+        # - **TimeFirst**: time first. Live video sources can only use the time first policy. 
+        # - **ContentFirst**: content first.
         self.switch_type = switch_type
 
     def validate(self):

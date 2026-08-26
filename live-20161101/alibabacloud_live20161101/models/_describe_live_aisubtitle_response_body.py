@@ -13,7 +13,7 @@ class DescribeLiveAISubtitleResponseBody(DaraModel):
         request_id: str = None,
         subtitle_configs: main_models.DescribeLiveAISubtitleResponseBodySubtitleConfigs = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.subtitle_configs = subtitle_configs
 

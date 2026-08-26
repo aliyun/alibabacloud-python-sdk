@@ -18,20 +18,22 @@ class UpdateLiveSnapshotNotifyConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The callback authentication key. The key can be 16 to 32 characters in length and can contain only letters and digits.
+        # The callback authentication key. The key must be 16 to 32 characters in length and can contain letters and digits.
         # 
-        # >  This parameter is required if you set the NotifyReqAuth parameter to **yes**.
+        # > This parameter is required when NotifyReqAuth is set to **yes**.
         self.notify_auth_key = notify_auth_key
-        # Specifies whether to enable callback authentication. Valid values:
+        # Specifies whether to enable authentication for callback notifications. Valid values:
         # 
-        # *   **yes**: enables callback authentication
-        # *   **no**: disables callback authentication
+        # - **yes**: Enables
         # 
-        # >  Default value: **no**. If you set this parameter to **yes**, the NotifyAuthKey parameter is required.
+        # - **no**: Disables
+        # 
+        # > The default value is **no**. If you set this parameter to **yes**, NotifyAuthKey is required.
         self.notify_req_auth = notify_req_auth
-        # The callback URL. Specify a valid URL that is up to 500 characters in length.
+        # The callback URL. The URL must be valid and cannot exceed 500 characters.
         self.notify_url = notify_url
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

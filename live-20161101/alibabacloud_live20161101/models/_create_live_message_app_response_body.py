@@ -13,13 +13,13 @@ class CreateLiveMessageAppResponseBody(DaraModel):
         data_center: str = None,
         request_id: str = None,
     ):
-        # The application ID. The ID is used in subsequent operations, such as joining a group.
+        # The application ID, which is used for subsequent operations such as joining groups.
         self.app_id = app_id
-        # The AppKey for authentication of this application.
+        # The AppKey, which is used to generate authentication for various operations related to the AppId.
         self.app_key = app_key
-        # The application signature. The signature is required when you use the interactive messaging SDK.
+        # The application signature. The interactive messaging service SDK requires this information.
         self.app_sign = app_sign
-        # The data center in which the interactive messaging application was created.
+        # The data center.
         self.data_center = data_center
         # The request ID.
         self.request_id = request_id

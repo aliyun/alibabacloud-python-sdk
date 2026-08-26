@@ -14,28 +14,29 @@ class ListMessageRequest(DaraModel):
         sort_type: int = None,
         type: int = None,
     ):
-        # The ID of the interactive messaging application.
+        # The interactive message application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the message group.
+        # The message group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The number of the page to return. Default value: 1. Valid values: 1 to 100000.
+        # The page number. Default value: 1. Valid values: 1 to 100000.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20. Valid values: 1 to 50.
+        # The number of users displayed per page. Default value: 20. Valid values: 1 to 50.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The sort order. Valid values:
+        # The sorting method. Valid values:
         # 
-        # *   0: ascending order by time
-        # *   1: descending order by time
+        # - 0: ascending order by time.
+        # 
+        # - 1: descending order by time.
         self.sort_type = sort_type
-        # The type of the custom message. Valid values: integers greater than 10000.
+        # The user-defined message type. The value must be greater than 10000.
         self.type = type
 
     def validate(self):

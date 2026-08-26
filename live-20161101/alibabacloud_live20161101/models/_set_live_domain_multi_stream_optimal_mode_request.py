@@ -17,19 +17,18 @@ class SetLiveDomainMultiStreamOptimalModeRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The main streaming domain.
+        # The primary streaming domain.
         # 
         # This parameter is required.
         self.domain = domain
-        # Specifies whether to enable the auto mode of dual-stream disaster recovery. Valid values:
-        # 
-        # *   **on**: enables the auto mode.
-        # *   **off**: disables the auto mode.
+        # The automatic mode switch. Valid values:
+        # - **on**: enabled
+        # - **off**: disabled.
         # 
         # This parameter is required.
         self.optimal_mode = optimal_mode
         self.owner_id = owner_id
-        # The name of the live stream.
+        # The live stream name.
         # 
         # This parameter is required.
         self.stream_name = stream_name

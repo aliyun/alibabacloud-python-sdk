@@ -10,8 +10,12 @@ class StopRtcCloudTranscodeRequest(DaraModel):
         app_id: str = None,
         task_id: str = None,
     ):
+        # The application ID. The ID can be up to 64 characters long and can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the cloud transcoding job. The ID can be up to 64 characters long and can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.task_id = task_id
 

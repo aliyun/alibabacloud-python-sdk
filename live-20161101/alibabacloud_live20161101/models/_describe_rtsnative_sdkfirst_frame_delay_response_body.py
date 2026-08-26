@@ -18,13 +18,13 @@ class DescribeRTSNativeSDKFirstFrameDelayResponseBody(DaraModel):
     ):
         # The time granularity.
         self.data_interval = data_interval
-        # The end of the time range for which the data was queried.
+        # The end time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The average latency of first frames at each interval. Unit: milliseconds.
+        # The average first frame delay for each time interval. Unit: milliseconds.
         self.frame_delay_data = frame_delay_data
-        # The ID of the request.
+        # Id
         self.request_id = request_id
-        # The beginning of the time range for which the data was queried.
+        # The start time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -85,9 +85,9 @@ class DescribeRTSNativeSDKFirstFrameDelayResponseBodyFrameDelayData(DaraModel):
         frame_delay: str = None,
         time_stamp: str = None,
     ):
-        # The average latency of first frames within the period of time.
+        # The average first frame delay during the time interval.
         self.frame_delay = frame_delay
-        # The timestamp of the returned data.
+        # The beginning of the time interval. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

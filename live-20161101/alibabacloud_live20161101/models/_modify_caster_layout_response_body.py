@@ -10,7 +10,7 @@ class ModifyCasterLayoutResponseBody(DaraModel):
         layout_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the layout. You can use this ID to query information about the layout.
+        # The layout ID. This can be used as a request parameter to query the list of production studio layouts.
         self.layout_id = layout_id
         # The request ID.
         self.request_id = request_id

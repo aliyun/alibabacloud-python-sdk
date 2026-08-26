@@ -15,21 +15,26 @@ class DescribeLiveStreamBitRateDataRequest(DaraModel):
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the application to which the stream belongs. You can view AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         # 
         # This parameter is required.
         self.app_name = app_name
         # The ingest domain.
+        # > - When you specify DomainName, make sure that the domain name is a live streaming domain name and that the user calling this operation has the required permissions on the domain name.
+        # > - You can call the DescribeLiveUserDomains operation to query available domain names.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # 
+        # > 
+        # > - EndTime must be later than StartTime, and the interval between EndTime and StartTime cannot exceed 30 days.
         self.end_time = end_time
         self.owner_id = owner_id
         self.security_token = security_token
-        # The beginning of the time range to query. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.start_time = start_time
-        # The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the stream. You can view StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         # 
         # This parameter is required.
         self.stream_name = stream_name

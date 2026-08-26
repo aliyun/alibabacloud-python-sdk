@@ -13,18 +13,19 @@ class DescribeLiveDomainRealtimeLogDeliveryResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The name of the Logstore to which log entries are delivered.
+        # The name of the Logstore in Simple Log Service (SLS) for real-time log delivery.
         self.logstore = logstore
-        # The name of the Log Service project that is used for real-time log delivery.
+        # The name of the SLS project for real-time log delivery.
         self.project = project
-        # The ID of the region where the Log Service project is deployed.
+        # The region where the SLS project is located.
         self.region = region
         # The request ID.
         self.request_id = request_id
         # The status of real-time log delivery. Valid values:
         # 
-        # *   online: Real-time log delivery is enabled.
-        # *   offline: Real-time log delivery is disabled.
+        # - online: Real-time log delivery is enabled.
+        # 
+        # - offline: Real-time log delivery is disabled.
         self.status = status
 
     def validate(self):

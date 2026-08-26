@@ -18,15 +18,15 @@ class DescribeLiveDomainPushBpsDataResponseBody(DaraModel):
         start_time: str = None,
     ):
         self.bps_data_per_interval = bps_data_per_interval
-        # The time granularity of the query.
+        # The time granularity of the queried data.
         self.data_interval = data_interval
-        # The ingest domain.
+        # The ingest domain that was queried.
         self.domain_name = domain_name
-        # The end of the time range during which the data was queried.
+        # The end of the time range. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.end_time = end_time
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which the data was queried.
+        # The beginning of the time range. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.start_time = start_time
 
     def validate(self):

@@ -10,13 +10,15 @@ class EditShowAndReplaceResponseBody(DaraModel):
         job_info: str = None,
         request_id: str = None,
     ):
-        # The information about the editing task. The following fields are included:
+        # The task information, which contains:
         # 
-        # *   **vodId**: the ID of the VOD file.
-        # *   **mediaid**: the ID of the media file.
-        # *   **jobId**: the ID of the editing task.
+        # - **vodId**: the video-on-demand file ID.
+        # 
+        # - **mediaid**: the media file ID.
+        # 
+        # - **jobId**: the task ID.
         self.job_info = job_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

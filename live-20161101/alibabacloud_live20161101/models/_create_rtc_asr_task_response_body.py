@@ -12,13 +12,13 @@ class CreateRtcAsrTaskResponseBody(DaraModel):
         ret_code: int = None,
         task_id: str = None,
     ):
-        # The result of the request. If success is returned, the request is successful. If an error message is returned, the request failed.
+        # The result description. The value success indicates a successful operation. An error message is returned if a fault occurs.
         self.description = description
-        # The ID of the request.
+        # The gateway request ID.
         self.request_id = request_id
-        # The returned HTTP status code. HTTP status code 2000 indicates that the request is successful. If another HTTP status code is returned, the request failed.
+        # The status code. A value of 2000 indicates success. Other values indicate exceptions.
         self.ret_code = ret_code
-        # The ID of the task.
+        # The generated task ID.
         self.task_id = task_id
 
     def validate(self):

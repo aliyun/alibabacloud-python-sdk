@@ -11,9 +11,9 @@ class SendMessageToGroupResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.SendMessageToGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The data returned.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -49,7 +49,7 @@ class SendMessageToGroupResponseBodyResult(DaraModel):
         self,
         message_id: str = None,
     ):
-        # The ID of the message.
+        # Message ID.
         self.message_id = message_id
 
     def validate(self):

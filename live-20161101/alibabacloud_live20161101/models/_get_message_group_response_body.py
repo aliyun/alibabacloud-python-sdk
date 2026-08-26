@@ -13,9 +13,9 @@ class GetMessageGroupResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.GetMessageGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -56,20 +56,20 @@ class GetMessageGroupResponseBodyResult(DaraModel):
         is_mute_all: bool = None,
         status: int = None,
     ):
-        # The time when the message group was created. The time is displayed in UTC.
+        # UTC timestamp when the message group was created.
         self.create_time = create_time
-        # The ID of the creator.
+        # Creator ID.
         self.creator_id = creator_id
-        # The extended field.
+        # Extension field.
         self.extension = extension
-        # The ID of the message group.
+        # Message group ID.
         self.group_id = group_id
-        # Indicates whether the message group is muted.
+        # Indicates whether all members in this message group are muted.
         # 
-        # *   true: The message group is muted.
-        # *   false: The message group is not muted.
+        # - true: All members are muted.
+        # - false: All members are not muted.
         self.is_mute_all = is_mute_all
-        # The status of the message group. The default value is **1**, which indicates that the message group is normal.
+        # Message group status. The default value is **1**, which indicates that the message group status is normal.
         self.status = status
 
     def validate(self):

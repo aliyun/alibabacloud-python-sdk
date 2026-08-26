@@ -24,36 +24,35 @@ class DescribeLiveMessageGroupResponseBody(DaraModel):
         super_large_group: bool = None,
         total_times: int = None,
     ):
-        # The list of the group administrators.
+        # The list of administrators.
         self.admin_list = admin_list
-        # The time when the group was created. The value is a UNIX timestamp. Unit: seconds.
+        # The creation time. This value is a UNIX timestamp in seconds.
         self.createtime = createtime
-        # The ID of the group creator.
+        # The creator ID.
         self.creator_id = creator_id
-        # The time when the group was deleted. This parameter is returned only if the group was deleted.
+        # The deletion time. This parameter is returned only when the group has been deleted. This value is a UNIX timestamp in seconds.
         self.deletatime = deletatime
-        # Indicates whether the group was deleted.
+        # Indicates whether the group has been deleted.
         self.delete = delete
-        # The ID of the user who deleted the group. This parameter is returned only if the group was deleted.
+        # The user who deleted the group. This parameter is returned only when the group has been deleted.
         self.deletor = deletor
         # The group ID.
         self.group_id = group_id
-        # Additional information about the group.
+        # The extended information of the group.
         self.group_info = group_info
-        # The name of the group.
+        # The group name.
         self.group_name = group_name
-        # The categorized message statistics. This parameter is returned only if the group exists.
+        # The message count statistics by category. This parameter is returned only when the group exists.
         self.msg_amount = msg_amount
-        # The number of online users in the group. This parameter is returned only if the group exists.
+        # The number of online users in the group. This parameter is returned only when the group exists.
         self.online_user_counts = online_user_counts
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the group is a super group. Valid values:
-        # 
-        # *   True
-        # *   False
+        # Indicates whether the group is a super large group. Valid values:
+        # - True: The group is a super large group.
+        # - False: The group is not a super large group.
         self.super_large_group = super_large_group
-        # The total number of sessions. This parameter is returned only if the group exists.
+        # The total number of sessions. This parameter is returned only when the group exists.
         self.total_times = total_times
 
     def validate(self):

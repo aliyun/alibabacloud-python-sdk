@@ -11,14 +11,13 @@ class ListLiveMessageAppsRequest(DaraModel):
         next_page_token: int = None,
         sort_type: int = None,
     ):
-        # The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+        # The data center. The value must be the same as the data center specified in [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html). Valid values: cn-shanghai (China (Shanghai)) and ap-southeast-1 (Singapore).
         self.data_center = data_center
-        # The starting page number for the query. If you leave this parameter empty or set this parameter to -1, the query starts from the first page.
+        # The starting position of the query page. If this parameter is left empty or set to -1, the first page is returned by default.
         self.next_page_token = next_page_token
-        # The sort order based on the creation time. Valid values:
-        # 
-        # *   1: ascending order
-        # *   2: descending order
+        # The sort type by creation time. Valid values:
+        # - 1: ascending order.
+        # - 2: descending order.
         # 
         # This parameter is required.
         self.sort_type = sort_type

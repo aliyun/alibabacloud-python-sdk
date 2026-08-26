@@ -15,7 +15,7 @@ class ListMuteGroupUserResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -53,10 +53,10 @@ class ListMuteGroupUserResponseBodyResult(DaraModel):
         total: int = None,
         user_list: List[main_models.ListMuteGroupUserResponseBodyResultUserList] = None,
     ):
-        # Indicates whether the current page is followed by another page. Valid values:
+        # Indicates whether there is a next page. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: There is a next page.
+        # - false: There is no next page.
         self.has_more = has_more
         # The total number of muted members.
         self.total = total

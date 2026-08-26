@@ -14,7 +14,7 @@ class DynamicUpdateWaterMarkStreamRuleRequest(DaraModel):
         stream: str = None,
         template_id: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         # 
         # This parameter is required.
         self.app = app
@@ -23,14 +23,15 @@ class DynamicUpdateWaterMarkStreamRuleRequest(DaraModel):
         # This parameter is required.
         self.domain = domain
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the stream that contains the watermark.
+        # The name of the watermarked stream.
         # 
         # This parameter is required.
         self.stream = stream
-        # The watermark template ID. You can call the [DescribeLiveStreamWatermarks](https://help.aliyun.com/document_detail/2848102.html) operation to obtain available watermark template IDs.
+        # The ID of the watermark template. Call the [DescribeLiveStreamWatermarks](https://help.aliyun.com/document_detail/2848102.html) operation to get the IDs of available watermark templates.
         # 
-        # >  The TemplateId parameter is used to replace the watermark template ID during live streaming.
+        # > The TemplateId parameter is used to replace the watermark template ID during a live stream.
         # 
         # This parameter is required.
         self.template_id = template_id

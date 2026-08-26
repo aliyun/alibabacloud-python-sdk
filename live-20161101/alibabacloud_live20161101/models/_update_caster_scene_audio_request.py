@@ -22,23 +22,26 @@ class UpdateCasterSceneAudioRequest(DaraModel):
         self.audio_layer = audio_layer
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, you can obtain the ID from the CasterId parameter in the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you create a production studio in the LIVE console, go to the **LIVE Console** > **Production Studio** > **Cloud Production Studio** page to view the ID.
+        # 
+        # > The name of the production studio in the list on the Cloud Production Studio page is the ID of the production studio.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The audio mode. By default, the AFV mode is used. If you do not specify this parameter, the scene retains the last configuration. Valid values:
+        # Specifies whether to enable the AFV mode. If you leave this parameter empty, the last configuration is retained. Valid values:
         # 
-        # *   **0**: the audio mixing mode.
-        # *   **1**: the AFV mode.
+        # - **0**: audio mixing mode.
+        # 
+        # - **1**: audio-follows-video mode.
         self.follow_enable = follow_enable
-        # The location IDs of the audio layers, which are in the same order as the audio layers.
+        # The list of associated location IDs. The order of the location IDs must be the same as the order of the audio layers.
         self.mix_list = mix_list
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
-        # The ID of the scene. If you call the [DescribeCasterScenes](https://help.aliyun.com/document_detail/2848039.html) operation to query scenes of the production studio, check the value of the response parameter ComponentId to obtain the ID.
+        # The ID of the scene. If you query the list of scenes in a production studio by calling the [DescribeCasterScenes](https://help.aliyun.com/document_detail/2848039.html) operation, you can obtain the ID from the ComponentId parameter in the response.
         # 
         # This parameter is required.
         self.scene_id = scene_id
@@ -115,32 +118,39 @@ class UpdateCasterSceneAudioRequestAudioLayer(DaraModel):
         valid_channel: str = None,
         volume_rate: float = None,
     ):
-        # Specifies whether to enable the features provided by the audio 3A algorithms. This parameter consists of the following fields:
+        # Specifies whether to enable the features provided by the 3A audio algorithm. This parameter consists of the following fields:
         # 
-        # *   **enableAgc**: specifies whether to enable automatic gain control (AGC). This field is optional. Valid values: 0 and 1. **0** is the default value, which specifies that AGC is disabled. **1** specifies that AGC is enabled.
-        # *   **enableAns**: specifies whether to enable active noise suppression (ANS). This field is optional. Valid values: 0 and 1. **0** is the default value, which specifies that ANS is disabled. **1** specifies that ANS is enabled.
-        # *   **ansMode**: specifies the mode for ANS. This field is optional and takes effect only if you set **enableAns** to **1**. Valid values: 0 and 1. **0** is the default value, which specifies the speech noise reduction mode. **1** specifies the music noise reduction mode.
+        # - **enableAgc**: (Optional) Specifies whether to enable the automatic gain control (AGC) feature of the 3A algorithm. Valid values: **0** (disabled, default) and **1** (enabled).
         # 
-        # >  To ensure a better noise reduction effect, we recommend that you set ansMode to 1.
+        # - **enableAns**: (Optional) Specifies whether to enable the intelligent noise reduction feature of the 3A algorithm. Valid values: **0** (disabled, default) and **1** (enabled).
         # 
-        # *   **enableBeautify**: specifies whether to enable voice change. This field is optional. Valid values: 0 and 1. **0** is the default value, which specifies that voice change is disabled. **1** specifies that voice change is enabled.
-        # *   **voiceBeautifyMode**: specifies the mode for voice change. This field is optional and takes effect only if you set **enableBeautify** to **1**. Valid values: 0 and 1. **0** is the default value, which specifies the magnetic male voice mode. **1** specifies the fresh female voice mode.
+        # - **ansMode**: (Optional) The mode of the intelligent noise reduction feature. This field is active only when **enableAns** is set to **1**. Valid values: **0** (speech noise reduction, default) and **1** (music noise reduction).
+        # 
+        # > For better noise reduction, set ansMode to 1.
+        # 
+        # - **enableBeautify**: (Optional) Specifies whether to enable voice beautification. Valid values: **0** (disabled, default) and **1** (enabled).
+        # 
+        # - **voiceBeautifyMode**: (Optional) The voice beautification mode. This field is active only when **enableBeautify** is set to **1**. Valid values: **0** (magnetic male voice, default) and **1** (fresh female voice).
         self.filter = filter
-        # The fixed delay of the audio layer. This parameter is used to synchronize the audio with subtitles.
+        # The fixed latency of the audio layer. This parameter is used to synchronize the audio with captions.
         # 
-        # Unit: milliseconds. Valid values: **0 to 5000**. Default value: **0**.
+        # Unit: milliseconds. Valid values: 0 to **5000**. Default value: **0**.
         self.fixed_delay_duration = fixed_delay_duration
-        # The sound channels that are used for volume input in the audio layer. Valid values:
+        # The sound channels that are used for volume input. Valid values:
         # 
-        # *   **leftChannel**: the left channel
-        # *   **rightChannel**: the right channel
-        # *   **all** (default): both the left and right channels
+        # - **leftChannel**: the left sound channel.
+        # 
+        # - **rightChannel**: the right sound channel.
+        # 
+        # - **all** (default): both sound channels.
         self.valid_channel = valid_channel
-        # The multiple of the original volume at which the audio layer plays audio. Valid values: **0 to 10.0**. Default value: **1.0**.
+        # The volume multiplier for the audio stream. Valid values: 0 to **10.0**. Default value: **1.0**.
         # 
-        # *   **1.0**: specifies that the audio layer plays audio at the original volume.
-        # *   A value smaller than **1**: specifies that the audio layer plays audio at a volume that is less than the original volume.
-        # *   A value greater than **1**: specifies that the audio layer plays audio at a volume that is more than the original volume.
+        # - **1.0**: The original volume is used.
+        # 
+        # - A value less than **1** decreases the volume.
+        # 
+        # - A value greater than **1** increases the volume.
         self.volume_rate = volume_rate
 
     def validate(self):

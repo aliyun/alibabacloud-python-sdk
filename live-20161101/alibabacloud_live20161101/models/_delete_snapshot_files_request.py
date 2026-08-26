@@ -17,30 +17,32 @@ class DeleteSnapshotFilesRequest(DaraModel):
         remove_file: bool = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The timestamps when the snapshots that you want to delete were captured.
+        # A list of timestamps of the snapshots to delete.
         # 
         # This parameter is required.
         self.create_timestamp_list = create_timestamp_list
-        # The main streaming domain.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # Specifies whether to also delete the corresponding file in Object Storage Service (OSS) at the same time. Value values:
+        # Specifies whether to also delete the snapshot files from OSS. Valid values:
         # 
-        # *   **true**: deletes the corresponding file in OSS.
-        # *   **false**: does not delete the corresponding file in OSS.
+        # - **true**: Deletes.
         # 
-        # >  To delete the corresponding file in OSS, you must have the permissions on the OSS bucket.
+        # - **false**: Does not delete.
+        # 
+        # > To delete files from OSS, you must have the required permissions for OSS file operations.
         # 
         # This parameter is required.
         self.remove_file = remove_file
-        # The name of the live stream.
+        # The stream name.
         # 
         # This parameter is required.
         self.stream_name = stream_name

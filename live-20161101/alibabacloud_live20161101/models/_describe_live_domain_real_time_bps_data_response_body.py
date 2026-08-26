@@ -17,16 +17,16 @@ class DescribeLiveDomainRealTimeBpsDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The interval at which data was queried.
+        # The time granularity of the queried data.
         self.data_interval = data_interval
-        # The streaming domain name or names that was queried.
+        # The streaming domain name.
         self.domain_name = domain_name
-        # The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end of the time range. The format is *yyyy-MM-dd*T*HH:mm:ss*Z (UTC).
         self.end_time = end_time
         self.real_time_bps_data_per_interval = real_time_bps_data_per_interval
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start of the time range. The format is *yyyy-MM-dd*T*HH:mm:ss*Z (UTC).
         self.start_time = start_time
 
     def validate(self):

@@ -17,25 +17,26 @@ class AddLiveAudioAuditConfigRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. The value of this parameter must be the same as the application name in the ingest URL. Otherwise, the configuration does not take effect. The application name is case-sensitive.
+        # The AppName of the live stream. The AppName must match that in the ingest URL for the template to take effect. The value is case-sensitive.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The business type. You can specify a model. The default value is the domain name.
+        # The business type. This parameter can be used to select a model. The default value is the domain name.
         self.biz_type = biz_type
         # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The name of the OSS bucket in which the recording is stored.
+        # The name of the OSS bucket.
         self.oss_bucket = oss_bucket
-        # The endpoint of OSS.
+        # The endpoint of the OSS bucket.
         self.oss_endpoint = oss_endpoint
-        # The name of the recording stored in OSS.
+        # The name of the recording file stored in OSS.
         self.oss_object = oss_object
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. The value of this parameter must be the same as the stream name in the ingest URL. Otherwise, the configuration does not take effect. The stream name is case-sensitive.
+        # The name of the live stream. The StreamName must match that in the ingest URL for the template to take effect. The value is case-sensitive.
         # 
         # This parameter is required.
         self.stream_name = stream_name

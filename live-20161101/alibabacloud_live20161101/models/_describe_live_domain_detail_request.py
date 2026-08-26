@@ -11,7 +11,7 @@ class DescribeLiveDomainDetailRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The streaming domain or ingest domain.
+        # The ingest domain or streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name

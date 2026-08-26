@@ -13,21 +13,21 @@ class ListMuteGroupUserRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
-        # The ID of the interactive messaging application.
+        # The ID of the interactive message application.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the messaging group.
+        # The ID of the message group.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ID of the user who performs the operation.
+        # The user ID of the operator. This user must be the creator of the group.
         self.operator_user_id = operator_user_id
         # The page number. Default value: 1. Valid values: 1 to 100000.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries per page. Default value: 20. Valid values: 1 to 50.
+        # The number of users to display on each page. Default value: 20. Valid values: 1 to 50.
         # 
         # This parameter is required.
         self.page_size = page_size

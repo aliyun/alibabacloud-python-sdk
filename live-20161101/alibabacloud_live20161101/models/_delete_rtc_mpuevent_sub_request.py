@@ -11,7 +11,7 @@ class DeleteRtcMPUEventSubRequest(DaraModel):
     ):
         # The ID of the application.
         # 
-        # >  The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # > The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.app_id = app_id

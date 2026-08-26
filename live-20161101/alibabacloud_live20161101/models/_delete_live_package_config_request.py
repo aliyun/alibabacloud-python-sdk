@@ -13,17 +13,18 @@ class DeleteLivePackageConfigRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # App name, `*` matches all names.
+        # The AppName of all live streams. An asterisk (\\*) matches all AppNames.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # Live streaming domain (primary playback domain).
+        # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # Live stream name, `*` matches all streams under AppName.
+        # The stream name. An asterisk (\\*) matches all streams under the specified AppName.
         # 
         # This parameter is required.
         self.stream_name = stream_name

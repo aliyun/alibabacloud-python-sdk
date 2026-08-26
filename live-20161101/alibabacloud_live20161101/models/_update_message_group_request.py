@@ -13,13 +13,13 @@ class UpdateMessageGroupRequest(DaraModel):
         extension: Dict[str, str] = None,
         group_id: str = None,
     ):
-        # The ID of the interactive messaging application.
+        # The interactive message application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The extended field.
+        # The extension field.
         self.extension = extension
-        # The ID of the message group.
+        # The message group ID.
         # 
         # This parameter is required.
         self.group_id = group_id

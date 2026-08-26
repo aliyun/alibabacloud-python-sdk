@@ -16,28 +16,28 @@ class DescribeLiveDomainRealTimeHttpCodeDataRequest(DaraModel):
         start_time: str = None,
     ):
         # The streaming domain.
-        # 
-        # Separate multiple domain names with commas (,).
+        # > - When you specify DomainName, make sure that the domain name is a live streaming domain and that the caller has the required permissions on the domain name.
+        # > - Separate multiple domain names with commas (,).
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # >  If you specify neither the StartTime parameter nor the EndTime parameter, the data of the last **1** hour is returned.
+        # The end time. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # > If both StartTime and EndTime are left empty, data within the last **1** hour from the current time is returned by default.
         self.end_time = end_time
-        # The name of the Internet service provider (ISP).
+        # The name of the Internet service provider (ISP) in English.
         # 
-        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/448109.html) operation to query a list of available ISPs.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/448109.html) operation to obtain the ISP name.
         self.isp_name_en = isp_name_en
-        # The name of the region.
+        # The name of the region in English.
         # 
-        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/448109.html) operation to query a list of available regions.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/448109.html) operation to obtain the region name.
         self.location_name_en = location_name_en
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         # 
-        # >  If you specify neither the StartTime parameter nor the EndTime parameter, the data of the last **1** hour is returned.
+        # > If both StartTime and EndTime are left empty, data within the last **1** hour from the current time is returned by default.
         self.start_time = start_time
 
     def validate(self):

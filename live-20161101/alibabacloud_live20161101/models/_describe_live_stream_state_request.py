@@ -13,17 +13,18 @@ class DescribeLiveStreamStateRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The AppName of the live stream. View AppNames on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The streaming domain or ingest domain.
+        # The ingest domain or the streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the live stream. View StreamNames on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         # 
         # This parameter is required.
         self.stream_name = stream_name

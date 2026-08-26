@@ -14,7 +14,7 @@ class DescribeLiveStreamMergeResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.live_stream_merge_list = live_stream_merge_list
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

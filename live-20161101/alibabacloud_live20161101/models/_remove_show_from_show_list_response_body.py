@@ -12,13 +12,13 @@ class RemoveShowFromShowListResponseBody(DaraModel):
         failed_list: str = None,
         successful_show_ids: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the episode.
+        # The show ID.
         self.show_id = show_id
-        # The IDs of episodes that failed to be removed and the relevant failure information.
+        # A list of IDs of the shows that failed to be deleted and the failure information.
         self.failed_list = failed_list
-        # The IDs of episodes that were removed.
+        # The IDs of the shows that were successfully deleted.
         self.successful_show_ids = successful_show_ids
 
     def validate(self):

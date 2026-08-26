@@ -17,7 +17,7 @@ class DescribeCasterChannelsResponseBody(DaraModel):
         self.channels = channels
         # The request ID.
         self.request_id = request_id
-        # The total number of channels.
+        # The total number of entries.
         self.total = total
 
     def validate(self):

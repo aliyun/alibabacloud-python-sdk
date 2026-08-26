@@ -19,29 +19,31 @@ class SetLiveStreamsNotifyUrlConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Exception event callback URL.
+        # The callback URL for exception events.
         self.exception_notify_url = exception_notify_url
         # The authentication key.
         # 
-        # >  This parameter is required if you set the NotifyReqAuth parameter to **yes**.
+        # > This parameter is required when the NotifyReqAuth request parameter is set to **yes**.
         # 
         # Value requirements:
         # 
-        # *   The key must be 16 to 64 characters in length.
-        # *   The key can contain letters and digits.
+        # - 16 to 64 characters in length.
+        # 
+        # - Supports uppercase letters, lowercase letters, and digits.
         self.notify_auth_key = notify_auth_key
-        # Specifies whether to enable callback authentication. Valid values:
+        # Specifies whether to enable authentication. Valid values:
         # 
-        # *   **yes**: enables callback authentication. If you set this parameter to **yes**, you must also specify the NotifyAuthKey parameter.
-        # *   **no**: disables callback authentication.
+        # - **yes**: Enabled. If you set this parameter to **yes**, you must also set the NotifyAuthKey request parameter.
+        # - **no**: Disabled.
         # 
-        # >  If you do not specify this parameter, the default value **no** is used.
+        # > If this parameter is not specified, the default value is **no**.
         # 
-        # For information about the authentication logic, see **Authentication for stream ingest callbacks**.
+        # For the authentication logic, see **Stream ingest callback authentication description** below.
         self.notify_req_auth = notify_req_auth
-        # The URL to which the stream ingest callbacks are sent.
+        # The URL to which live stream information is pushed.
         self.notify_url = notify_url
         self.owner_id = owner_id
+        # The callback URL for stream switching information.
         self.switch_notify_url = switch_notify_url
 
     def validate(self):

@@ -7,110 +7,79 @@ from darabonba.model import DaraModel
 class UpdateLivePullToPushShrinkRequest(DaraModel):
     def __init__(
         self,
+        auth_key: str = None,
         callback_url: str = None,
         end_time: str = None,
         file_index: int = None,
+        notify_item_switch: str = None,
         offset: int = None,
         owner_id: int = None,
         region: str = None,
         region_id: str = None,
         repeat_number: int = None,
+        req_auth: str = None,
         source_urls_shrink: str = None,
         start_time: str = None,
         task_id: str = None,
     ):
-        # The callback URL. By default, this parameter is left empty.
-        # 
-        # > 
-        # 
-        # *   The URL is used to receive callbacks related to the task.
-        # 
-        # *   The URL can be up to 2,000 characters in length.
-        # 
-        # *   If you do not specify this parameter, no callbacks are returned for events related to the task.
-        # 
-        # *   The update takes effect for subsequent events that occur.
+        self.auth_key = auth_key
+        # The callback URL. Default value: empty.
+        # > - The URL that receives task-related callbacks.
+        # > - Maximum length: 2000 characters.
+        # > - If this parameter is not specified, task events are not sent as callbacks.
+        # > - The update takes effect only when the next event is triggered.
         self.callback_url = callback_url
         # The end time of the task.
-        # 
-        # > 
-        # 
-        # *   Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # *   The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
-        # 
-        # *   The end time must be later than the start time.
-        # 
-        # *   The end time must be later than the current time.
-        # 
-        # *   If the task has ended, the update does not take effect.
+        # > - Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # > - EndTime must be later than StartTime.
+        # > - EndTime must be later than the current time.
+        # > - If the task has ended, the update does not take effect.
         self.end_time = end_time
-        # The file index. Default value: 0.
-        # 
-        # >  You can modify this parameter only if the task is stopped. The update takes effect after you restart the task.
+        # The video index. Default value: 0.
+        # > The update must be performed when the task is stopped and takes effect after the task is restarted.
         self.file_index = file_index
-        # The offset of the position where the system starts to read the video resource. Unit: seconds. Valid values: positive numbers.
-        # 
-        # > 
-        # 
-        # *   This parameter indicates an offset from the first frame.
-        # 
-        # *   This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
-        # 
-        # *   The update takes effect only for the first video in a video list.
-        # 
-        # *   You can modify this parameter only if the task is stopped. The update takes effect immediately.
+        self.notify_item_switch = notify_item_switch
+        # The start offset of the video file, in seconds. Valid values: greater than 0.
+        # > - Specifies the position to start reading from, relative to the first frame.
+        # > - This parameter applies only to video-on-demand or third-party video streams.
+        # > - This parameter takes effect only when the first video in the playlist is played.
+        # > - The update must be performed when the task is stopped and takes effect after the task is restarted.
         self.offset = offset
         self.owner_id = owner_id
         # The region where the task is started. Valid values:
         # 
-        # *   ap-southeast-1: Singapore
-        # *   ap-southeast-5: Indonesia (Jakarta)
-        # *   cn-beijing: China (Beijing)
-        # *   cn-shanghai: China (Shanghai)
+        # - ap-southeast-1 (Singapore)
+        # - ap-southeast-5 (Indonesia)
+        # - cn-beijing (Beijing)
+        # - cn-shanghai (Shanghai)
         # 
         # This parameter is required.
         self.region = region
+        # The region ID.
         self.region_id = region_id
-        # The number of playbacks after the first playback is complete. Valid values:
+        # The number of times playback repeats after the playlist finishes. Valid values:
         # 
-        # *   0 (default): specifies that the video list is played only once.
-        # *   \\-1: specifies that the video list is played in loop mode.
-        # *   Positive integer: specifies the number of times the video list repeats after the first playback is complete.
+        # - 0 (default): No repeat playback.
+        # - -1: Loops indefinitely.
+        # - Other positive integers: The number of times playback repeats after the playlist finishes.
         # 
-        # > 
-        # 
-        # *   This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
-        # 
-        # *   The update can take effect immediately.
+        # > - This parameter applies only to video-on-demand or third-party video streams.
+        # > - The update takes effect immediately.
         self.repeat_number = repeat_number
-        # The source URLs.
+        self.req_auth = req_auth
+        # The list of source stream URLs.
         # 
-        # > 
-        # 
-        # *   If SourceType is set to live, you can specify only one streaming URL.
-        # 
-        # *   If SourceType is set to vod or url, you can specify up to 30 IDs or URLs.
-        # 
-        # *   If SourceType is set to live, the supported protocols for URLs are Real-Time Messaging Protocol (RTMP), Real-Time Streaming Protocol (RTSP), Secure Reliable Transport Protocol (SRT), and HTTP-FLV.
-        # 
-        # *   If SourceType is set to vod, specify the IDs of media assets from ApsaraVideo VOD.
-        # 
-        # *   If SourceType is set to url, the supported protocols for URLs are MP4 and HTTP-FLV.
-        # 
-        # *   If the source is a live stream, the update takes effect immediately. If the source is a list of video resources from ApsaraVideo VOD or a third party, the update does not take effect until the playback of the current video ends. After the update takes effect, the video list starts to play from the beginning.
-        # 
-        # *   You can modify this parameter only if the task is stopped. The update takes effect immediately.
+        # > - For the live type, only one complete live streaming URL is supported.
+        # > - For the vod and url types, up to 30 URLs can be specified.
+        # > - The live type supports RTMP, SRT, and HTTP-FLV protocols.
+        # > - For the vod type, specify ApsaraVideo VOD media asset IDs.
+        # > - The url type supports MP4 and HTTP-FLV protocols.
+        # > - For live source streams, the update takes effect immediately. For video file source streams, the update takes effect after the currently playing video ends, and playback restarts from the beginning of the updated video list.
+        # > - The update must be performed when the task is stopped and takes effect after the task is restarted.
         self.source_urls_shrink = source_urls_shrink
         # The start time of the task.
-        # 
-        # > 
-        # 
-        # *   Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # *   The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
-        # 
-        # *   If the task has already started, the update does not take effect.
+        # > - Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # > - If the task has already started running, the update does not take effect.
         self.start_time = start_time
         # The task ID.
         # 
@@ -125,6 +94,9 @@ class UpdateLivePullToPushShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_key is not None:
+            result['AuthKey'] = self.auth_key
+
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
 
@@ -133,6 +105,9 @@ class UpdateLivePullToPushShrinkRequest(DaraModel):
 
         if self.file_index is not None:
             result['FileIndex'] = self.file_index
+
+        if self.notify_item_switch is not None:
+            result['NotifyItemSwitch'] = self.notify_item_switch
 
         if self.offset is not None:
             result['Offset'] = self.offset
@@ -149,6 +124,9 @@ class UpdateLivePullToPushShrinkRequest(DaraModel):
         if self.repeat_number is not None:
             result['RepeatNumber'] = self.repeat_number
 
+        if self.req_auth is not None:
+            result['ReqAuth'] = self.req_auth
+
         if self.source_urls_shrink is not None:
             result['SourceUrls'] = self.source_urls_shrink
 
@@ -162,6 +140,9 @@ class UpdateLivePullToPushShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthKey') is not None:
+            self.auth_key = m.get('AuthKey')
+
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
 
@@ -170,6 +151,9 @@ class UpdateLivePullToPushShrinkRequest(DaraModel):
 
         if m.get('FileIndex') is not None:
             self.file_index = m.get('FileIndex')
+
+        if m.get('NotifyItemSwitch') is not None:
+            self.notify_item_switch = m.get('NotifyItemSwitch')
 
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
@@ -185,6 +169,9 @@ class UpdateLivePullToPushShrinkRequest(DaraModel):
 
         if m.get('RepeatNumber') is not None:
             self.repeat_number = m.get('RepeatNumber')
+
+        if m.get('ReqAuth') is not None:
+            self.req_auth = m.get('ReqAuth')
 
         if m.get('SourceUrls') is not None:
             self.source_urls_shrink = m.get('SourceUrls')

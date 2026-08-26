@@ -17,13 +17,19 @@ class TagLiveResourcesRequest(DaraModel):
         tag: List[main_models.TagLiveResourcesRequestTag] = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The type of the resources. Set the value to **DOMAIN**.
+        # The resource ID. Set this parameter to a live streaming domain name.
+        # Valid values of N: **1 to 50**.
         # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Set this parameter to **DOMAIN**.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The list of labels.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -85,8 +91,11 @@ class TagLiveResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The label key. Valid values of N: **1 to 20**.
+        # 
         # This parameter is required.
         self.key = key
+        # The label value. Valid values of N: **1 to 20**.
         self.value = value
 
     def validate(self):

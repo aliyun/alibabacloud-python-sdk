@@ -27,62 +27,66 @@ class AddLiveAISubtitleShrinkRequest(DaraModel):
         width: str = None,
         word_per_line: int = None,
     ):
-        # The background color of the subtitles, which is an RGBA value.
+        # The background color of the subtitle. Specify the value in RGBA format.
         self.bg_color = bg_color
-        # The background size of the subtitles. Valid values: [0,1].
+        # The background size of the subtitle. Valid values: [0, 1].
         self.bg_width_normalized = bg_width_normalized
-        # The font weight. Valid values: [0,1].
+        # The font weight. Valid values: [0, 1].
         self.border_width_normalized = border_width_normalized
-        # The subtitle template that you copy. Set the value to the name of the subtitle template.
+        # The subtitle template to copy from. Set this parameter to the value of SubtitleName.
         self.copy_from = copy_from
-        # The custom description of the subtitle template. The description can be up to 128 characters in length and can contain letters, digits, and special characters.
+        # The custom description of the subtitle. The description can contain Chinese characters, letters, digits, and special characters, and can be up to 128 characters in length.
         self.description = description
-        # The target language. Valid values:
-        #  - en-US: English 
-        # - zh-CN: Chinese 
-        # - es-ES: Spanish 
-        # - ru-RU: Russian
+        # The target language for translation. Valid values:
+        # - English: en-US
+        # - Chinese: zh-CN
+        # - Spanish: es-ES
+        # - Russian: ru-RU.
         self.dst_language = dst_language
-        # The font color, which is an RGBA value.
+        # The font color. Specify the value in RGBA format.
         self.font_color = font_color
         # The font. Valid values:
-        # - KaiTi (default)
-        # - AlibabaPuHuiTi-Regular
-        # - AlibabaPuHuiTi-Bold
-        # - AlibabaPuHuiTi-Light
-        # - NotoSansHans-Regular
-        # - NotoSansHans-Bold
-        # - NotoSansHans-Light
+        # - KaiTi: KaiTi (default)
+        # - AlibabaPuHuiTi-Regular: Alibaba PuHuiTi Regular
+        # - AlibabaPuHuiTi-Bold: Alibaba PuHuiTi Bold
+        # - AlibabaPuHuiTi-Light: Alibaba PuHuiTi Light
+        # - NotoSansHans-Regular: Noto Sans SC Regular
+        # - NotoSansHans-Bold: Noto Sans SC Bold
+        # - NotoSansHans-Light: Noto Sans SC Light.
         self.font_name = font_name
-        # The font size. Valid values: [0,1].
+        # The font size. Valid values: [0, 1].
         # 
         # This parameter is required.
         self.font_size_normalized = font_size_normalized
-        # The preview height. Unit: pixels.
-        # The following specifications of preview width × preview height are supported: 
-        # - Landscape low definition 360p (640×360) 
-        # - Portrait low definition 360p (360×640)
-        # - Landscape standard definition 480p (854×480)
-        # - Portrait standard definition 480p (480×854)
-        # - Landscape high definition 720p (1280×720)
-        # - Portrait high definition 720p (720×1280)
-        # - Landscape ultra-high definition 1080p (1920×1080)
-        # - Portrait ultra-high definition 1080p (1080×1920)
+        # The height of the preview screen. Unit: px.
+        # 
+        # The width × height of the preview screen supports only the following specifications:          
+        # - Landscape low definition 360P: 640 × 360 
+        # - Portrait low definition 360P: 360 × 640
+        # - Landscape standard definition 480P: 854 × 480
+        # - Portrait standard definition 480P: 480 × 854
+        # - Landscape high definition 720P: 1280 × 720
+        # - Portrait high definition 720P: 720 × 1280
+        # - Landscape ultra-high definition 1080P: 1920 × 1080
+        # - Portrait ultra-high definition 1080P: 1080 × 1920.
         self.height = height
-        # The number of displayed lines.
+        # The number of lines to display.
         self.max_lines = max_lines
         self.owner_id = owner_id
-        # The position of the subtitles. The value is a pair of coordinates for which the origin of the x and y axes is the lower-left corner of the screen.
+        # The position of the subtitle. The value is the x,y coordinates with the bottom-left corner of the screen as the origin.
+        # 
+        # > The x and y values must be normalized. The actual values are multiplied by the video height. For example, if the video height is 720p and PositionNormalized is set to [0.1, 0.5], the actual position of the subtitle is x = 72 and y = 360.
         # 
         # This parameter is required.
         self.position_normalized_shrink = position_normalized_shrink
+        # The region ID.
         self.region_id = region_id
         # Specifies whether to display the source language. Default value: false.
         self.show_source_lan = show_source_lan
         # The source language. Valid values:
-        #  - en-US: English 
-        # - zh-CN: Chinese 
-        # - ru-RU: Russian
+        # - English: en-US
+        # - Chinese: zh-CN
+        # - Russian: ru-RU.
         # 
         # This parameter is required.
         self.src_language = src_language
@@ -90,9 +94,9 @@ class AddLiveAISubtitleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.subtitle_name = subtitle_name
-        # The preview width. Unit: pixels.
+        # The width of the preview screen. Unit: px.
         self.width = width
-        # The number of words displayed per line. Valid values: integers from 1 to 500.
+        # The number of characters per line. Valid values: integers in the range of [1, 500].
         # 
         # This parameter is required.
         self.word_per_line = word_per_line

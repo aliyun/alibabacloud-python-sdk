@@ -17,16 +17,11 @@ class DescribeLiveStreamTranscodeStreamNumRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The grouping method.
-        # 
-        # *   Domain name (default)
-        # *   Template
-        # 
-        # Valid values:
-        # 
-        # *   domain
-        # *   template
+        # The grouping type. Valid values:
+        # * domain (default)
+        # * template.
         self.split_type = split_type
 
     def validate(self):

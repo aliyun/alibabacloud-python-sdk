@@ -13,7 +13,7 @@ class DescribeDomainWithIntegrityResponseBody(DaraModel):
         content: List[main_models.DescribeDomainWithIntegrityResponseBodyContent] = None,
         request_id: str = None,
     ):
-        # The verification information.
+        # The verification content.
         self.content = content
         # The request ID.
         self.request_id = request_id
@@ -63,7 +63,7 @@ class DescribeDomainWithIntegrityResponseBodyContent(DaraModel):
         self.columns = columns
         # The table name.
         self.name = name
-        # The subpoints.
+        # The data points.
         self.points = points
 
     def validate(self):

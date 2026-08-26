@@ -13,18 +13,18 @@ class QueryMessageAppRequest(DaraModel):
         page_size: int = None,
         sort_type: int = None,
     ):
-        # The ID of the interactive messaging application.
+        # Interactive message application ID.
         self.app_id = app_id
-        # The name of the interactive messaging application.
+        # Interactive message application name.
         self.app_name = app_name
-        # The number of the page to return. Default value: 1. Valid values: 1 to 100000.
+        # Page number. Default value: 1. Valid values: 1 to 100000.
         self.page_num = page_num
-        # The number of applications to return on each page. Default value: 20. Valid values: 1 to 50.
+        # Number of applications displayed per page. Default value: 20. Valid values: 1 to 50.
         self.page_size = page_size
-        # The sort order. Valid values:
+        # Sorting method. Valid values:
         # 
-        # *   0: ascending order by time
-        # *   1: descending order by time
+        # - 0: Ascending order by time.
+        # - 1: Descending order by time.
         self.sort_type = sort_type
 
     def validate(self):

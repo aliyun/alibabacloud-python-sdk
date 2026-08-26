@@ -20,25 +20,28 @@ class MuteGroupUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The mode in which system messages are broadcasted. Valid values:
+        # The system message broadcast type. Valid values:
         # 
-        # *   0: specifies that system messages are not broadcasted. This is the default value.
-        # *   1: specifies that system messages are broadcasted to specified users.
-        # *   2: specifies that system messages are broadcasted to the message group.
+        # - 0: no broadcast.
+        # 
+        # - 1: broadcast to specified users.
+        # 
+        # - 2: broadcast to the group.
         self.broad_cast_type = broad_cast_type
-        # The ID of the message group.
+        # The message group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The duration of the mute. Unit: seconds.
+        # The mute duration. Unit: seconds.
         # 
-        # > If you do not specify this parameter or set the value to 0, the default duration of 86,400 seconds is used.
+        # >If this parameter is not specified or is set to 0, the default mute duration (86400 seconds) is used.
         self.mute_time = mute_time
-        # Details about the mute.
+        # The mute details.
         # 
         # This parameter is required.
         self.mute_user_list = mute_user_list
-        # The ID of the user who performs the operation.
+        # The user ID of the operator.
+        # > This parameter is required, and the user must be the creator of the group.
         self.operator_user_id = operator_user_id
 
     def validate(self):

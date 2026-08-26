@@ -14,21 +14,22 @@ class DescribeLiveStreamsControlHistoryRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The application name. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The application name. View AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.app_name = app_name
         # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # >  The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
+        # > The interval between EndTime and StartTime cannot exceed 7 days.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

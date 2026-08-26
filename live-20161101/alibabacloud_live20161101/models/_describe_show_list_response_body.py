@@ -14,13 +14,11 @@ class DescribeShowListResponseBody(DaraModel):
         show_list: str = None,
         show_list_info: main_models.DescribeShowListResponseBodyShowListInfo = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # ****Details of the episode list.
-        # 
-        # Show indicates the information about a specific episode. For more information, see the **Show** parameter.
+        # The details of the playlist. `Show` contains the details of a show in the playlist.
         self.show_list = show_list
-        # The information about the episode list.
+        # The playlist.
         self.show_list_info = show_list_info
 
     def validate(self):
@@ -68,22 +66,22 @@ class DescribeShowListResponseBodyShowListInfo(DaraModel):
         show_list_repeat_times: int = None,
         total_show_list_repeat_times: int = None,
     ):
-        # The background of the episode list.
+        # The background of the playlist.
         self.background = background
-        # The ID of the episode that is playing.
+        # The ID of the show that is being played.
         self.current_show_id = current_show_id
-        # The episode of the highest priority.
+        # The highest-priority show.
         # 
-        # > You can configure this parameter only before the episode list starts playing.
+        # > You can configure this parameter only before the playlist starts.
         self.high_priority_show_id = high_priority_show_id
-        # The time at which the episode of the highest priority is played. Format: yyyy-MM-dd\\"T\\"HH:mm:ss.
+        # The time when the highest-priority show is played. The format is yyyy-MM-dd\\"T\\"HH:mm:ss.
         # 
-        # > You can configure this parameter only before the episode list starts playing. After you configure this parameter, when the specified point in time is reached, any episode that is playing stops and the episode of the highest priority in the episode list starts to play.
+        # > You can configure this parameter only before the playlist starts. After the configuration is complete, the system switches to the highest-priority show at the specified time.
         self.high_priority_show_start_time = high_priority_show_start_time
         self.show_list = show_list
-        # The number of additional times the episode list is played by default. The value is 0.
+        # The default number of loops for the playlist. This value is always 0.
         self.show_list_repeat_times = show_list_repeat_times
-        # The number of additional times the episode list is played.
+        # The number of times the entire playlist is looped.
         self.total_show_list_repeat_times = total_show_list_repeat_times
 
     def validate(self):

@@ -14,27 +14,27 @@ class ListEventSubEventRequest(DaraModel):
         start_time: int = None,
         subscribe_id: str = None,
     ):
-        # The application ID.
+        # The ID of the subscribed application.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time, expressed as a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The page number.
+        # The page number. Valid values: 1 and greater.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The number of callback records to return on each page. Valid values: 1 to 100.
+        # The number of records per page. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time, expressed as a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The subscription ID. You can obtain the ID from the response to the [CreateEventSub](https://help.aliyun.com/document_detail/2848209.html) operation.
+        # The subscribe ID. You can obtain the subscribe ID from the response parameters of the [CreateEventSub](https://help.aliyun.com/document_detail/2848209.html) operation by using a parameter query.
         self.subscribe_id = subscribe_id
 
     def validate(self):

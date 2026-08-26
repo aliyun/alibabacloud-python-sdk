@@ -18,27 +18,30 @@ class RemoveShowFromShowListRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value that is returned in the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you created the production studio in the LIVE console, find the production studio name in the LIVE console by choosing **LIVE Console** > **Production Studio** > **Cloud Production Studio**.
+        # 
+        # > The name of the production studio in the list on the Cloud Production Studio page is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The ID of the episode.
+        # The show ID.
         # 
-        # >  You can obtain the ID by checking the value of the response parameter ShowId of the [AddShowIntoShowList](https://help.aliyun.com/document_detail/370861.html) operation.
+        # > Obtain the ShowId from the response of the [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html) operation.
         self.show_id = show_id
-        # Specifies whether to remove multiple episodes at a time. Valid values:
+        # Specifies whether to delete shows in a batch. Valid values:
         # 
-        # *   true: removes multiple episodes at a time.
-        # *   false: removes a single episode.
+        # - true: Deletes shows in a batch.
         # 
-        # >  If you do not configure this parameter or this parameter is left empty, a single episode is to be removed.
+        # - false: Deletes a single show.
+        # 
+        # > If you do not specify this parameter or leave it empty, a single show is deleted.
         self.is_batch_mode = is_batch_mode
-        # The IDs of episodes that you want to remove.
+        # The IDs of the shows to delete.
         self.show_id_list = show_id_list
 
     def validate(self):

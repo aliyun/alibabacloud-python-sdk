@@ -26,7 +26,7 @@ class SetLiveDomainMultiStreamMasterRequest(DaraModel):
         # 
         # This parameter is required.
         self.stream_name = stream_name
-        # The unique identifier of the stream ingest.
+        # The unique identifier of the stream ingest. You can obtain this identifier by calling the [QueryLiveDomainMultiStreamList](https://help.aliyun.com/document_detail/2871872.html) operation.
         # 
         # This parameter is required.
         self.upstream_sequence = upstream_sequence

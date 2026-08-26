@@ -17,7 +17,7 @@ class ListLiveDelayConfigResponseBody(DaraModel):
         self.delay_config_list = delay_config_list
         # The request ID.
         self.request_id = request_id
-        # The number of stream delay configurations.
+        # The total number of stream delay configurations.
         self.total = total
 
     def validate(self):

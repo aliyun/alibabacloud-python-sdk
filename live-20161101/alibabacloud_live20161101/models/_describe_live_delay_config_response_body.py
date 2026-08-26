@@ -14,21 +14,21 @@ class DescribeLiveDelayConfigResponseBody(DaraModel):
         stream: str = None,
         task_trigger_mode: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The application name.
         self.app = app
-        # The duration for which the playback of the live stream is delayed.
+        # The playback latency of the stream.
         self.delay_time = delay_time
-        # The main streaming domain.
+        # The streaming domain.
         self.domain = domain
         # The request ID.
         self.request_id = request_id
-        # The name of the live stream.
+        # The stream name.
         self.stream = stream
-        # The trigger mode. Valid values:
+        # The trigger mode for the task. Valid values:
         # 
-        # *   **PUBLISH_ONLY**: Stream delay can be triggered only by specifying the stream delay parameter in the ingest URL.
-        # *   **CONFIG_ONLY**: Stream delay can be triggered only by the stream delay configuration.
-        # *   **PUBLISH_CONFIG**: Stream delay can be triggered by the stream delay parameter in the ingest URL or the stream delay configuration. The stream delay parameter takes precedence over the stream delay configuration.
+        # - **PUBLISH_ONLY**: The task is triggered only when stream ingest parameters for delayed playback are specified.
+        # - **CONFIG_ONLY**: The task is triggered only by the configuration. Stream ingest parameters are ignored.
+        # - **PUBLISH_CONFIG**: The task can be triggered by both stream ingest parameters and the configuration. Stream ingest parameters have a higher priority than the configuration.
         self.task_trigger_mode = task_trigger_mode
 
     def validate(self):

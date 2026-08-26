@@ -17,7 +17,7 @@ class DescribeCasterComponentsResponseBody(DaraModel):
         self.components = components
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):

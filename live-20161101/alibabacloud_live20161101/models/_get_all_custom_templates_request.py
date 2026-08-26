@@ -12,8 +12,9 @@ class GetAllCustomTemplatesRequest(DaraModel):
         user_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

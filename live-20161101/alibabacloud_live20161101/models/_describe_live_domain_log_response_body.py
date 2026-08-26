@@ -17,7 +17,7 @@ class DescribeLiveDomainLogResponseBody(DaraModel):
         self.domain_log_details = domain_log_details
         # The streaming domain or ingest domain.
         self.domain_name = domain_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

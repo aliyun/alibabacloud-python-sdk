@@ -18,7 +18,7 @@ class DescribeLiveStreamMonitorListResponseBody(DaraModel):
         self.live_stream_monitor_list = live_stream_monitor_list
         # The request ID.
         self.request_id = request_id
-        # The number of monitoring sessions.
+        # The total number of monitoring sessions.
         self.total = total
 
     def validate(self):
@@ -81,47 +81,55 @@ class DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList(DaraModel):
     ):
         # The audio source in the layout.
         self.audio_from = audio_from
-        # The callback URL that sends monitoring alerts.
+        # The webhook address for monitoring alert notifications.
         self.callback_url = callback_url
         # The URL of the DingTalk chatbot.
         self.ding_talk_web_hook_url = ding_talk_web_hook_url
-        # The domain name.
+        # The output domain name for monitoring.
         self.domain = domain
-        # The list of monitored input streams.
+        # The list of input streams for monitoring.
         self.input_list = input_list
-        # The monitoring alert thresholds. The following fields are included:
+        # The settings for monitoring alert thresholds. The value is a JSON string that includes the following fields:
         # 
-        # *   fpsLowThres: the video frame rate alert threshold. The value is a floating-point number.
-        # *   brHighThres: the audio/video bitrate alert threshold. The value is a floating-point number.
-        # *   eofDurationThresSec: the interruption duration alert threshold. The value is a floating-point number.
+        # - fpsLowThres: the alert threshold for the video frame rate. This is a float.
+        # 
+        # - brHighThres: the alert threshold for the audio and video bitrate. This is a float.
+        # 
+        # - eofDurationThresSec: the alert threshold for the stream interruption duration. This is a float.
         self.monitor_config = monitor_config
         # The ID of the monitoring session.
         self.monitor_id = monitor_id
         # The name of the monitoring session.
         self.monitor_name = monitor_name
-        # The output resolution template. Valid values:
+        # The template for the output resolution. Valid values:
         # 
-        # *   **lp_ld**: low definition
-        # *   **lp_sd**: standard definition
-        # *   **lp_hd**: high definition
-        # *   **lp_ud**: ultra-high definition
+        # - **lp_ld**: low definition
+        # 
+        # - **lp_sd**: standard definition
+        # 
+        # - **lp_hd**: high definition
+        # 
+        # - **lp_ud**: ultra-high definition
         self.output_template = output_template
-        # The output URLs.
+        # The output URLs for monitoring.
         self.output_urls = output_urls
-        # The ID of the region. Valid values:
+        # The region. Valid values:
         # 
-        # *   cn-shanghai: China (Shanghai)
-        # *   cn-beijing: China (Beijing)
-        # *   ap-southeast-1: Singapore
+        # - cn-shanghai: China (Shanghai)
+        # 
+        # - cn-beijing: China (Beijing)
+        # 
+        # - ap-southeast-1: Singapore
         self.region = region
-        # The start time of live monitoring. The time is displayed in UTC.
+        # The time when monitoring starts. The time is in UTC format.
         self.start_time = start_time
         # The status of the monitoring session. Valid values:
         # 
-        # *   1: Monitoring
-        # *   0: Unmonitored
+        # - 1: The session is being monitored.
+        # 
+        # - 0: The session is not being monitored.
         self.status = status
-        # The end time of live monitoring. The time is displayed in UTC.
+        # The time when monitoring stops. The time is in UTC format.
         self.stop_time = stop_time
 
     def validate(self):
@@ -239,9 +247,9 @@ class DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListOutputUrls(D
         flv_url: str = None,
         rtmp_url: str = None,
     ):
-        # The output URL in the Flash Video (FLV) format.
+        # The output URL in FLV format.
         self.flv_url = flv_url
-        # The output URL in the Real-Time Messaging Protocol (RTMP) format.
+        # The output URL in RTMP format.
         self.rtmp_url = rtmp_url
 
     def validate(self):
@@ -280,17 +288,17 @@ class DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList(Da
         play_config: main_models.DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputListPlayConfig = None,
         stream_name: str = None,
     ):
-        # The index.
+        # The index. This parameter is used by the frontend.
         self.index = index
         # The URL of the input stream.
         self.input_url = input_url
         # The layout information.
         self.layout_config = layout_config
-        # The layout ID, which must start from 1.
+        # The layout ID. The value must start from 1.
         self.layout_id = layout_id
-        # The playback configurations.
+        # The playback configuration.
         self.play_config = play_config
-        # The display name of the monitored stream.
+        # The display name of the stream for monitoring.
         self.stream_name = stream_name
 
     def validate(self):
@@ -353,7 +361,7 @@ class DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputListPla
         self,
         volume_rate: float = None,
     ):
-        # The volume. Valid values: 0 to 1. The value is rounded to two decimal places.
+        # The volume. The value must be between 0 and 1, inclusive, with up to two decimal places.
         self.volume_rate = volume_rate
 
     def validate(self):
@@ -384,18 +392,21 @@ class DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputListLay
         position_refer: str = None,
         size_normalized: List[float] = None,
     ):
-        # The fill type. Set this value to none.
+        # The fill mode. For frontend development, set this parameter to none.
         self.fill_mode = fill_mode
-        # The position of the layer, in the format of [unk][x,y][unk]. The values of x and y need to be normalized.
+        # The normalized coordinates of the element\\"s position, in the format of [x,y]. The default value is [0,0]. The values of x and y must be normalized.
         self.position_normalized = position_normalized
-        # The reference position of the element. Valid values:
+        # The reference point for the element\\"s position. Valid values:
         # 
-        # *   topLeft
-        # *   topRight
-        # *   bottomLeft
-        # *   bottomRight
+        # - topLeft
+        # 
+        # - topRight
+        # 
+        # - bottomLeft
+        # 
+        # - bottomRight
         self.position_refer = position_refer
-        # The size of the layer. Unit: bytes.
+        # The normalized size of the element\\"s fill area, in the format of [w,h].
         self.size_normalized = size_normalized
 
     def validate(self):

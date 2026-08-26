@@ -9,7 +9,7 @@ class DeleteMessageAppRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of the interactive messaging application that you want to delete. You can specify only one ID.
+        # The ID of the interactive message application to be deleted. Only one application ID can be specified.
         # 
         # This parameter is required.
         self.app_id = app_id

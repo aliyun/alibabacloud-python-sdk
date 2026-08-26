@@ -18,48 +18,59 @@ class AddLivePackageConfigRequest(DaraModel):
         segment_num: int = None,
         stream_name: str = None,
     ):
-        # The application name. The value of this parameter must be the same as the application name that is specified in the ingest URL. Otherwise, the configuration does not take effect. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). The name cannot start with a hyphen (-) or underscore (_). You can also specify an asterisk (\\*) as the value to match all applications.
+        # The AppName must match the AppName in the ingest URL for the template to take effect. The AppName can be up to 255 characters in length and can contain digits, uppercase letters, lowercase letters, hyphens (-), and underscores (_). A hyphen or an underscore cannot be the first character. You can also set this parameter to a single asterisk (\\*) to match all AppNames.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The main streaming domain.
+        # The live streaming domain name. This is the primary playback domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether to ignore the transcoded stream. Valid values:
+        # Specifies whether to ignore transcoded streams. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true** (default): Ignore transcoded streams.
+        # 
+        # - **false**: Do not ignore transcoded streams.
         self.ignore_transcode = ignore_transcode
         self.owner_id = owner_id
-        # The part length. Unit: milliseconds.
+        # The length of the part segment, in milliseconds.
         # 
-        # *   If the value of SegmentDuration is 1, the valid values of this parameter are 100 to 500 and the default value of this parameter is 350.
-        # *   If the value of SegmentDuration is 2, the valid values of this parameter are 100 to 1000 and the default value of this parameter is 700.
-        # *   This parameter takes effect only if Protocol is set to LLHLS_TS or LLHLS_CMAF.
+        # - If SegmentDuration is 1 s, the valid values are 100 to 500. The default value is 350.
+        # 
+        # - If SegmentDuration is 2 s, the valid values are 100 to 1000. The default value is 700.
+        # 
+        # - This parameter is valid only when you set Protocol to LLHLS_\\*.
         self.part_duration = part_duration
-        # The streaming protocol and encapsulation format. Valid values:
+        # The live streaming protocol and container format. Valid values:
         # 
-        # *   **HLS_CMAF**
-        # *   **LLHLS_TS** (low latency)
-        # *   **LLHLS_CMAF** (low latency)
-        # *   **DASH_CMAF**
-        # *   **HLSDASH_CMAF**
+        # - **HLS_CMAF**
+        # 
+        # - **LLHLS_TS**
+        #   (low latency)
+        # 
+        # - **LLHLS_CMAF** (low latency)
+        # 
+        # - **DASH_CMAF**
+        # 
+        # - **HLSDASH_CMAF**
         # 
         # This parameter is required.
         self.protocol = protocol
+        # The region ID.
         self.region_id = region_id
-        # The segment length. Unit: seconds.
+        # The segment length, in seconds.
         # 
-        # *   If Protocol is set to HLS_CMAF: Valid values: 1 to 10. Default value: 5.
-        # *   If Protocol is set to LLHLS_TS or LLHLS_CMAF: Valid values: 1 to 2. Default value: 1.
+        # - If you set Protocol to HLS_CMAF, the valid values are 1 to 10. The default value is 5.
+        # 
+        # - If you set Protocol to LLHLS_\\*, the valid values are 1 to 2. The default value is 1.
         self.segment_duration = segment_duration
-        # The number of segments.
+        # The number of M3U8 segments for live streaming.
         # 
-        # *   Valid values: 3 to 10.
-        # *   Default value: 3.
+        # - Valid values: 3 to 10.
+        # 
+        # - Default value: 3.
         self.segment_num = segment_num
-        # The stream name. The value of this parameter must be the same as the stream name that is specified in the ingest URL. Otherwise, the configuration does not take effect. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). The name cannot start with a hyphen (-) or underscore (_). You can also specify an asterisk (\\*) as the value to match all streams.
+        # The StreamName must match the StreamName in the ingest URL for the template to take effect. The StreamName can be up to 255 characters in length and can contain digits, uppercase letters, lowercase letters, hyphens (-), and underscores (_). A hyphen or an underscore cannot be the first character. You can also set this parameter to a single asterisk (\\*) to match all StreamNames.
         # 
         # This parameter is required.
         self.stream_name = stream_name

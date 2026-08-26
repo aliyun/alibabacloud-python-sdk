@@ -10,7 +10,7 @@ class AddStudioLayoutResponseBody(DaraModel):
         layout_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the layout. You can use the ID as a request parameter in the following operations: DeleteStudioLayout, ModifyStudioLayout, and DescribeStudioLayouts.
+        # The layout ID. Use this ID to delete, modify, or query a virtual production studio layout.
         self.layout_id = layout_id
         # The request ID.
         self.request_id = request_id

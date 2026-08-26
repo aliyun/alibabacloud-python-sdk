@@ -22,24 +22,27 @@ class AddLiveStreamWatermarkRequest(DaraModel):
         xoffset: float = None,
         yoffset: float = None,
     ):
-        # The description of the watermark.
+        # A custom description for the watermark.
         self.description = description
         # The streaming domain.
         self.domain = domain
-        # The height of the watermark. Unit: pixels. The height of the watermark is scaled in proportion to the height of the background video.
+        # The height of the watermark image, in pixels. This value is relative to `RefHeight` and will be scaled proportionally with the actual video resolution.
         # 
         # This parameter is required.
         self.height = height
-        # The name of the watermark.
+        # The name of the watermark template.
         # 
         # This parameter is required.
         self.name = name
-        # The location of the watermark. Valid values:
+        # The anchor point for the watermark\\"s position. Valid values:
         # 
-        # *   TopLeft: the upper-left corner.
-        # *   TopRight: the upper-right corner.
-        # *   BottomLeft: the lower-left corner.
-        # *   BottomRight: the lower-right corner.
+        # - TopLeft
+        # 
+        # - TopRight
+        # 
+        # - BottomLeft
+        # 
+        # - BottomRight
         # 
         # This parameter is required.
         self.offset_corner = offset_corner
@@ -48,35 +51,35 @@ class AddLiveStreamWatermarkRequest(DaraModel):
         # 
         # This parameter is required.
         self.picture_url = picture_url
-        # The height of the background video. Unit: pixels.
+        # The reference height of the video background, in pixels.
         # 
         # This parameter is required.
         self.ref_height = ref_height
-        # The width of the background video. Unit: pixels.
+        # The reference width of the video background, in pixels.
         # 
         # This parameter is required.
         self.ref_width = ref_width
+        # The region ID.
         self.region_id = region_id
-        # The transparency of the watermark. A smaller value indicates a more transparent watermark. Valid values: 0 to 255.
+        # The opacity of the watermark. Value range: `0` (fully transparent) to `255` (fully opaque).
         # 
         # This parameter is required.
         self.transparency = transparency
-        # The type of the watermark. Valid values:
+        # The type of the watermark. Valid value:
         # 
-        # *   **0**: image.
-        # *   **1**: text. Only image watermarks are supported.
+        # - **0**: image.
         # 
         # This parameter is required.
         self.type = type
-        # The offset of the watermark along the x-axis. Unit: pixels.
+        # The X-axis offset of the watermark, in pixels.
         # 
-        # >  In this case, the value of the RefWidth parameter is used as the reference. If the OffsetCorner parameter is set to TopLeft, the value of the XOffset parameter indicates the x-axis offset of the upper-left corner of the watermark relative to that of the background video. The directions from the coordinate axes to the center of the background video are positive. In other words, the x-axis is positive toward the right.
+        # > Relative to RefWidth. If OffsetCorner is TopLeft, XOffset is the horizontal distance between the top‑left corner of the watermark and the top‑left corner of the background video. Positive X points to the right.
         # 
         # This parameter is required.
         self.xoffset = xoffset
-        # The offset of the watermark along the y-axis. Unit: pixels.
+        # The Y-axis offset of the watermark, in pixels.
         # 
-        # >  In this case, the value of the RefHeight parameter is used as the reference. If the OffsetCorner parameter is set to TopLeft, the value of the YOffset parameter indicates the y-axis offset of the upper-left corner of the watermark relative to that of the background video. The directions from the coordinate axes to the center of the background video are positive. In other words, the y-axis is positive downward.
+        # > Relative to RefHeight. If OffsetCorner is TopLeft, YOffset is the vertical distance between the top‑left corner of the watermark and the top‑left corner of the background video. Positive Y points downward.
         # 
         # This parameter is required.
         self.yoffset = yoffset

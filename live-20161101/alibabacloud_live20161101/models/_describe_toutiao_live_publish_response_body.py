@@ -14,7 +14,7 @@ class DescribeToutiaoLivePublishResponseBody(DaraModel):
         description: str = None,
         request_id: str = None,
     ):
-        # The stream ingest details.
+        # The details of the stream ingest information.
         self.content = content
         # The description of the response status.
         self.description = description
@@ -74,13 +74,13 @@ class DescribeToutiaoLivePublishResponseBodyContent(DaraModel):
         stream_name: str = None,
         timestamp: int = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         self.app = app
-        # The bitrate. Unit: bit/s.
+        # The bitrate in bit/s.
         self.bitrate = bitrate
         # The bitrate difference.
         self.bw_diff = bw_diff
-        # The name of the content delivery network (CDN) service.
+        # The CDN name.
         self.cdn_name = cdn_name
         # The ingest domain.
         self.domain = domain
@@ -88,7 +88,7 @@ class DescribeToutiaoLivePublishResponseBodyContent(DaraModel):
         self.flr = flr
         # The frame rate.
         self.fps = fps
-        # The name of the ingested stream.
+        # The stream name.
         self.stream_name = stream_name
         # The timestamp.
         self.timestamp = timestamp

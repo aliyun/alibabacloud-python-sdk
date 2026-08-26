@@ -17,15 +17,15 @@ class DescribeLiveDomainPushTrafficDataResponseBody(DaraModel):
         start_time: str = None,
         traffic_data_per_interval: main_models.DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerInterval = None,
     ):
-        # The time granularity.
+        # The data time granularity.
         self.data_interval = data_interval
         # The ingest domain.
         self.domain_name = domain_name
-        # The end of the time range during which the data was queried.
+        # The end time. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.end_time = end_time
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which the data was queried.
+        # The start time. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.start_time = start_time
         self.traffic_data_per_interval = traffic_data_per_interval
 

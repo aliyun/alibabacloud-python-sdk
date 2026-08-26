@@ -13,15 +13,16 @@ class DescribeLiveAudioAuditConfigRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         self.app_name = app_name
         # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream.
+        # The name of the stream.
         self.stream_name = stream_name
 
     def validate(self):

@@ -13,7 +13,9 @@ class DescribeRtcCloudRecordingFilesResponseBody(DaraModel):
         request_id: str = None,
         task_info: main_models.DescribeRtcCloudRecordingFilesResponseBodyTaskInfo = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The task information.
         self.task_info = task_info
 
     def validate(self):
@@ -51,8 +53,15 @@ class DescribeRtcCloudRecordingFilesResponseBodyTaskInfo(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The list of recording files.
         self.record_file_list = record_file_list
+        # The task status. Valid values:
+        # - RUNNING
+        # - RECOVERING
+        # - STOPPING
+        # - STOPPED.
         self.status = status
+        # The task ID passed in the request.
         self.task_id = task_id
 
     def validate(self):
@@ -97,9 +106,13 @@ class DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList(DaraModel
         mp_4file_list: List[str] = None,
         vod_media_list: List[main_models.DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList] = None,
     ):
+        # The array of HLS recording file names.
         self.hls_file_list = hls_file_list
+        # The array of MP3 recording file names.
         self.mp_3file_list = mp_3file_list
+        # The array of MP4 recording file names.
         self.mp_4file_list = mp_4file_list
+        # The array of VOD media resources. When recording to VOD, this is the collection of recording files for each subscribed stream, where each item corresponds to a subscribed stream.
         self.vod_media_list = vod_media_list
 
     def validate(self):
@@ -155,8 +168,18 @@ class DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaLi
         merged_ids: List[str] = None,
         stream: str = None,
     ):
+        # The array of media resource IDs generated during recording.
         self.media_ids = media_ids
+        # The array of automatically merged media resource IDs generated after recording ends.
         self.merged_ids = merged_ids
+        # The subscribed stream.
+        #  - For stream mixing recording, the value is always Mix.
+        #  - For single-stream recording, the value is Single::{UserId}::{Suffix}.
+        #    - UserId is the UserId corresponding to this stream.
+        #    - Suffix depends on the StreamType and SourceType specified during subscription.
+        #      - When StreamType is 0: if SourceType is 0, Suffix is AV::C. If SourceType is 1, Suffix is AV::S.
+        #      - When StreamType is 1: Suffix can only be A.
+        #      - When StreamType is 2 (not supported for single-stream recording): if SourceType is 0, Suffix is V::C. If SourceType is 1, Suffix is V::S.
         self.stream = stream
 
     def validate(self):

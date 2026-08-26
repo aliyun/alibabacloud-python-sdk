@@ -22,48 +22,48 @@ class AddLiveDomainRequest(DaraModel):
         tag: List[main_models.AddLiveDomainRequestTag] = None,
         top_level_domain: str = None,
     ):
-        # The URL that is used for health checks.
+        # The health check URL.
         self.check_url = check_url
-        # The ingest domain or streaming domain that you want to add. Wildcard domain names that start with a period (.) are supported.
+        # The ingest domain or streaming domain to be connected to ApsaraVideo Live. Wildcard domain names are supported and must start with a period (.).
         # 
         # This parameter is required.
         self.domain_name = domain_name
         # The type of the domain name. Valid values:
         # 
-        # *   **liveVideo**: streaming domain. This value is required if you set the DomainName parameter to a streaming domain.
-        # *   **liveEdge**: ingest domain. This value is required if you set the DomainName parameter to an ingest domain.
+        # - **liveVideo**: streaming domain. If you set DomainName (the domain name to be connected to ApsaraVideo Live) to a streaming domain, you must set this parameter to liveVideo.
+        # - **liveEdge**: edge ingest domain. If you set DomainName (the domain name to be connected to ApsaraVideo Live) to an ingest domain, you must set this parameter to liveEdge.
         # 
         # This parameter is required.
         self.live_domain_type = live_domain_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region in which the domain name resides. Valid values:
+        # The unit information of the live streaming domain name. Valid values:
         # 
-        # *   **cn-beijing**: China (Beijing)
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-shenzhen**: China (Shenzhen)
-        # *   **cn-qingdao**: China (Qingdao)
-        # *   **ap-southeast-1**: Singapore
-        # *   **eu-central-1**: Germany (Frankfurt)
-        # *   **ap-northeast-1**: Japan (Tokyo)
-        # *   **ap-southeast-5**: Indonesia (Jakarta)
+        # - **cn-beijing**: Beijing.
+        # - **cn-shanghai**: Shanghai.
+        # - **cn-shenzhen**: Shenzhen.
+        # - **cn-qingdao**: Qingdao.
+        # - **ap-southeast-1**: Singapore.
+        # - **eu-central-1**: Germany.
+        # - **ap-northeast-1**: Tokyo.
+        # - **ap-southeast-5**: Jakarta.
         # 
-        # >  Make sure that the settings of the Region and Scope parameters do not conflict with each other.
+        # >Region (unit information of the live streaming domain name) and Scope (acceleration region) do not restrict each other.
         # 
         # This parameter is required.
         self.region = region
-        # The ID of the resource group. For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/2381067.html).
+        # The resource group ID. For more information about resource groups, see [What is a resource group](https://help.aliyun.com/document_detail/2381067.html).
         self.resource_group_id = resource_group_id
-        # The edge group. This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+        # The acceleration region. This parameter takes effect for international users and China site users at L3 or above. Valid values:
         # 
-        # *   **domestic**: mainland China. This is the default value.
-        # *   **overseas**: outside mainland China.
-        # *   **global**: regions in and outside mainland China.
+        # - **domestic** (default): the Chinese mainland.
+        # - **overseas**: outside the Chinese mainland, including Hong Kong (China), Macao (China), and Taiwan (China).
+        # - **global**: global acceleration.
         self.scope = scope
         self.security_token = security_token
-        # The tags.
+        # The list of tags.
         self.tag = tag
-        # The top-level domain name.
+        # The top-level domain name for access.
         self.top_level_domain = top_level_domain
 
     def validate(self):
@@ -160,9 +160,9 @@ class AddLiveDomainRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

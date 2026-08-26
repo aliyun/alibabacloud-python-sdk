@@ -12,9 +12,9 @@ class DeleteLiveLazyPullStreamInfoConfigRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application.
         # 
-        # >  If you want to delete configurations of triggered stream pulling for all applications, set the value to **ali_all_app**.
+        # > To delete configurations of triggered stream pulling for all applications, set it to **ali_all_app**.
         # 
         # This parameter is required.
         self.app_name = app_name
@@ -23,6 +23,7 @@ class DeleteLiveLazyPullStreamInfoConfigRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

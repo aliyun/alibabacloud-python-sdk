@@ -16,17 +16,34 @@ class DescribeLiveUserStreamMetricDataRequest(DaraModel):
         start_time: str = None,
         stream_name: str = None,
     ):
+        # The application name. Specify the application name to query stream-level data for the corresponding application. If `StreamName` is specified, `AppName` must also be specified.
         self.app_name = app_name
+        # The streaming domain to query.
+        # 
+        # 
+        # > Only a single domain name is supported. An error is returned if multiple domain names are specified. If the domain name is empty, aggregate data for all streaming domains under the user is queried. If `AppName` and `StreamName` are not specified, stream-level data for all streams under the domain is returned.
         self.domain_name = domain_name
+        # The end of the time range to query. The end time must be later than the start time and the difference cannot exceed 1 day. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: 5000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The stream protocol name. Specify the protocol name to query data for the corresponding protocol. Supported protocols: `flv`, `hls`, `rtmp`, `rts`, `p2p`. You can query data for multiple protocols by separating them with commas (,). Data for multiple protocols is not aggregated and is output at the stream level.
+        # > The **rts** option queries Real-Time Streaming (RTS) streams using the ARTC protocol.
+        # > - When using rts, you may need to additionally count the xxx_AliRTS-opus transcoding stream. This is because when playing an RTS stream on the web, a transcoding stream with the _AliRTS-opus suffix appended to the stream name is automatically generated, producing transcoding stream data. For more information, see [RTS sub-second latency automatic transcoding](https://help.aliyun.com/document_detail/2948703.html).
         self.protocol = protocol
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The stream name. If `StreamName` is specified, stream-level data for the specified `StreamName` under the specified `AppName` is returned. If `StreamName` is specified, `AppName` must also be specified.
         self.stream_name = stream_name
 
     def validate(self):

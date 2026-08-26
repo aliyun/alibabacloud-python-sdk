@@ -16,11 +16,12 @@ class PublishLiveStagingConfigToProductionRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The name of the feature. For more information about how to obtain the feature name, see [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html).
+        # The name of the feature. To obtain the feature name, call the [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html) operation.
         # 
         # This parameter is required.
         self.function_name = function_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

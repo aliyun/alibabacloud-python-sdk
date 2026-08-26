@@ -16,22 +16,24 @@ class DescribeStreamLocationBlockRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         self.app_name = app_name
-        # The blocking type. Valid values:
+        # The blocking method. Valid values:
         # 
-        # *   blacklist
-        # *   whitelist
+        # - blacklist
+        # 
+        # - whitelist
         self.block_type = block_type
         # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The page number. Default value: 1.
+        # The number of the page to return. Default value: 1.
         self.page_num = page_num
-        # The number of entries per page. Valid values: integers from 1 to 100.
+        # The number of entries to return on each page. Valid values: integers from 1 to 100.
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
         # The name of the live stream.
         self.stream_name = stream_name

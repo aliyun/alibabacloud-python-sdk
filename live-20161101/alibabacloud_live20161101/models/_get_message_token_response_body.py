@@ -11,9 +11,9 @@ class GetMessageTokenResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.GetMessageTokenResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return results.
         self.result = result
 
     def validate(self):
@@ -51,11 +51,11 @@ class GetMessageTokenResponseBodyResult(DaraModel):
         access_token_expired_time: int = None,
         refresh_token: str = None,
     ):
-        # The token used to establish a persistent connection.
+        # Token used for establishing persistent connections.
         self.access_token = access_token
-        # Indicates how long until the token expires. Unit: milliseconds.
+        # Logon token expiration time in milliseconds.
         self.access_token_expired_time = access_token_expired_time
-        # The updated token. If a token expires, you can call RefreshToken to obtain a new token.
+        # Refresh token. If the AccessToken expires, you can use the RefreshToken to obtain a new token.
         self.refresh_token = refresh_token
 
     def validate(self):

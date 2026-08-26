@@ -14,7 +14,7 @@ class ResumeLiveStreamRequest(DaraModel):
         security_token: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the application to which the ingest stream belongs. You can set this parameter to * to indicate all AppName values (no restriction on AppName). You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         # 
         # This parameter is required.
         self.app_name = app_name
@@ -22,13 +22,13 @@ class ResumeLiveStreamRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether the live stream is ingested by a streamer or played by a client. Set the value to **publisher**, which specifies that the live stream is ingested by a streamer.
+        # Specifies whether the stream is a streamer ingest stream or a client playback stream. Currently supported value: **publisher** (streamer ingest).
         # 
         # This parameter is required.
         self.live_stream_type = live_stream_type
         self.owner_id = owner_id
         self.security_token = security_token
-        # The name of the ingested stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the ingest stream. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         # 
         # This parameter is required.
         self.stream_name = stream_name

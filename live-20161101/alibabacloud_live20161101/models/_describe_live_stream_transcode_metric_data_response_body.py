@@ -20,17 +20,17 @@ class DescribeLiveStreamTranscodeMetricDataResponseBody(DaraModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.end_time = end_time
-        # A pagination token. When you call this operation, up to 5,000 rows of data can be returned per query. If the number of rows exceeds 5,000, the response includes a pagination token that is used in the next request to retrieve a new page of results.
+        # The paged query token. Each query returns a maximum of 5,000 rows of data. If the data to be queried exceeds 5,000 rows, the response provides the start index for the next query.
         # 
-        # When you specify the token in the next query, data continues to be obtained from the end of the previous query.
+        # Pass this token in the request to continue querying data from the row after the last row returned in the previous query. This token is used for paging.
         self.next_page_token = next_page_token
-        # The number of rows returned.
+        # The number of returned data rows.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.start_time = start_time
         self.stream_detail_data = stream_detail_data
 

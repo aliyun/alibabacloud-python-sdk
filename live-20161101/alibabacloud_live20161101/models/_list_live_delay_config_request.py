@@ -13,15 +13,16 @@ class ListLiveDelayConfigRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The main streaming domain.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain = domain
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries per page. Valid values: 5 to 30. Default value: 10.
+        # The number of entries to return on each page. Valid values: 5 to 30. Default value: 10.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

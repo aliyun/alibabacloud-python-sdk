@@ -7,15 +7,18 @@ from darabonba.model import DaraModel
 class CreateLivePullToPushShrinkRequest(DaraModel):
     def __init__(
         self,
+        auth_key: str = None,
         callback_url: str = None,
         dst_url: str = None,
         end_time: str = None,
         file_index: int = None,
+        notify_item_switch: str = None,
         offset: int = None,
         owner_id: int = None,
         region: str = None,
         region_id: str = None,
         repeat_number: int = None,
+        req_auth: str = None,
         retry_count: int = None,
         retry_interval: int = None,
         source_protocol: str = None,
@@ -24,120 +27,96 @@ class CreateLivePullToPushShrinkRequest(DaraModel):
         start_time: str = None,
         task_name: str = None,
     ):
-        # The HTTP callback URL. By default, this parameter is left empty.
+        self.auth_key = auth_key
+        # HTTP callback URL. Default value: empty.
         # 
-        # > 
-        # 
-        # *   The URL is used to receive callbacks related to the task.
-        # 
-        # *   The URL can be up to 2,000 characters in length.
-        # 
-        # *   If you do not specify this parameter, no callbacks are returned for events related to the task.
+        # > - The URL that receives task-related callbacks.
+        # > - Maximum length is 2000 characters.
+        # > - If this parameter is not specified, no task event callbacks will be sent.
         self.callback_url = callback_url
-        # The destination URL to which the stream is relayed.
+        # Destination URL address for pushing the stream.
         # 
-        # > 
-        # 
-        # *   The supported protocol for the URL is RTMP.
-        # 
-        # *   The URL can be up to 2,000 characters in length.
+        # > - The rtmp protocol is supported.
+        # > - Maximum length is 2000 characters.
         # 
         # This parameter is required.
         self.dst_url = dst_url
-        # The end time of the task.
+        # Task end time.
         # 
-        # > 
-        # 
-        # *   Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # *   The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
-        # 
-        # *   The end time must be later than the start time.
-        # 
-        # *   The end time must be later than the current time.
+        # > - Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
+        # > - EndTime must be later than StartTime.
+        # > - EndTime must be later than the current time.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The file index, which specifies the sequence of the file where the playback starts.
+        # File index. Starts playback from the nth file.
         self.file_index = file_index
-        # The offset of the position where the system starts to read the video resource. Unit: seconds. Valid values: positive numbers.
+        self.notify_item_switch = notify_item_switch
+        # Start offset. The offset value from the beginning of the video file. Unit: seconds. Valid values: greater than 0.
         # 
-        # > 
-        # 
-        # *   This parameter indicates an offset from the first frame of the first video resource in the list.
-        # 
-        # *   This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+        # > - Indicates the position to start reading from, relative to the first frame (applies to the first video).
+        # > - This parameter applies only to VOD or third-party video streams.
         self.offset = offset
         self.owner_id = owner_id
-        # The region where the task is started. Valid values:
+        # Specifies the region where the task is launched. Valid values:
         # 
-        # *   ap-southeast-1: Singapore
-        # *   ap-southeast-5: Indonesia (Jakarta)
-        # *   cn-beijing: China (Beijing)
-        # *   cn-shanghai: China (Shanghai)
+        # - ap-southeast-1 (Singapore)
+        # - ap-southeast-5 (Indonesia)
+        # - cn-beijing (Beijing)
+        # - cn-shanghai (Shanghai)
+        # - cn-shenzhen (Shenzhen)
         # 
         # This parameter is required.
         self.region = region
+        # Region ID.
         self.region_id = region_id
-        # The number of playbacks after the first playback is complete. Valid values:
+        # Number of times to repeat playback after the initial playback is complete. Valid values:
         # 
-        # *   0 (default): specifies that the video list is played only once.
-        # *   \\-1: specifies that the video list is played in loop mode.
-        # *   Positive integer: specifies the number of times the video list repeats after the first playback is complete.
+        # - 0 (default): no repeat playback.
+        # - -1: loop indefinitely.
+        # - Other positive integers: number of times to repeat playback after the initial playback is complete.
         # 
-        # >  This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+        # > This parameter applies only to VOD or third-party video streams.
         self.repeat_number = repeat_number
-        # The number of retries allowed. Default value: 3.
+        self.req_auth = req_auth
+        # Number of retries. Default value: 3.
         self.retry_count = retry_count
-        # The retry interval. Unit: seconds. Valid values: [60,300]. Default value: 60.
+        # Retry interval, in seconds. Valid values: [60, 300]. Default value: 60 seconds.
         self.retry_interval = retry_interval
-        # The protocol of the source stream.
+        # Source stream protocol name.
         # 
         # Valid values:
-        # 
-        # *   rtmp
-        # *   rtsp
-        # *   srt
-        # *   http-flv
-        # *   flv
-        # 
-        # >  This parameter is required if you set the **SourceType** parameter to live, but does not take effect if you set the SourceType parameter to vod or url.
+        # - rtmp
+        # - srt
+        # - http-flv
+        # - hls
+        # > This parameter is **required only when the SourceType parameter is set to live**, and is invalid when the value is vod or url.
         self.source_protocol = source_protocol
-        # The type of the source stream. Valid values:
+        # Source stream type. Valid values:
         # 
-        # *   live: a live stream
-        # *   vod: a list of ApsaraVideo VOD resources
-        # *   url: a list of video resources from a third party
+        # - live: live stream.
+        # - vod: ApsaraVideo VOD resource.
+        # - url: third-party video file resource.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # The source URLs.
+        # List of source stream URL addresses.
         # 
-        # > 
-        # 
-        # *   If SourceType is set to live, you can specify only one streaming URL.
-        # 
-        # *   If SourceType is set to vod or url, you can specify up to 30 IDs or URLs.
-        # 
-        # *   If SourceType is set to live, the supported protocols for URLs are Real-Time Messaging Protocol (RTMP), Real-Time Streaming Protocol (RTSP), Secure Reliable Transport Protocol (SRT), and HTTP-FLV.
-        # 
-        # *   If SourceType is set to vod, specify the IDs of media assets from ApsaraVideo VOD.
-        # 
-        # *   If SourceType is set to url, the supported protocols for URLs are MP4 and HTTP-FLV.
+        # > - For the live type, only one complete live playback URL is supported.
+        # > - For the vod and url types, a maximum of 30 URLs can be specified.
+        # > - The live type supports: rtmp, srt, and http-flv protocols.
+        # > - For the vod type, specify ApsaraVideo VOD media asset IDs.
+        # > - The url type supports: mp4 and http-flv protocols.
         # 
         # This parameter is required.
         self.source_urls_shrink = source_urls_shrink
-        # The start time of the task.
+        # Task start time.
         # 
-        # > 
-        # 
-        # *   Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # *   The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
+        # > - Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The name of the task. Default value: "". Fuzzy search for task names is supported.
+        # Task name, used to support fuzzy query. Default value: "".
         self.task_name = task_name
 
     def validate(self):
@@ -148,6 +127,9 @@ class CreateLivePullToPushShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_key is not None:
+            result['AuthKey'] = self.auth_key
+
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
 
@@ -159,6 +141,9 @@ class CreateLivePullToPushShrinkRequest(DaraModel):
 
         if self.file_index is not None:
             result['FileIndex'] = self.file_index
+
+        if self.notify_item_switch is not None:
+            result['NotifyItemSwitch'] = self.notify_item_switch
 
         if self.offset is not None:
             result['Offset'] = self.offset
@@ -174,6 +159,9 @@ class CreateLivePullToPushShrinkRequest(DaraModel):
 
         if self.repeat_number is not None:
             result['RepeatNumber'] = self.repeat_number
+
+        if self.req_auth is not None:
+            result['ReqAuth'] = self.req_auth
 
         if self.retry_count is not None:
             result['RetryCount'] = self.retry_count
@@ -200,6 +188,9 @@ class CreateLivePullToPushShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthKey') is not None:
+            self.auth_key = m.get('AuthKey')
+
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
 
@@ -211,6 +202,9 @@ class CreateLivePullToPushShrinkRequest(DaraModel):
 
         if m.get('FileIndex') is not None:
             self.file_index = m.get('FileIndex')
+
+        if m.get('NotifyItemSwitch') is not None:
+            self.notify_item_switch = m.get('NotifyItemSwitch')
 
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
@@ -226,6 +220,9 @@ class CreateLivePullToPushShrinkRequest(DaraModel):
 
         if m.get('RepeatNumber') is not None:
             self.repeat_number = m.get('RepeatNumber')
+
+        if m.get('ReqAuth') is not None:
+            self.req_auth = m.get('ReqAuth')
 
         if m.get('RetryCount') is not None:
             self.retry_count = m.get('RetryCount')

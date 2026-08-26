@@ -11,9 +11,9 @@ class MuteAllGroupUserResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.MuteAllGroupUserResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -49,10 +49,10 @@ class MuteAllGroupUserResponseBodyResult(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the mute was successful. Valid values:
+        # Indicates whether the muting was successful. Valid values:
         # 
-        # *   true: The mute was successful.
-        # *   false: The mute failed.
+        # - true: Successful.
+        # - false: Unsuccessful.
         self.success = success
 
     def validate(self):

@@ -15,26 +15,21 @@ class DescribeLiveSnapshotDetectPornConfigRequest(DaraModel):
         page_size: int = None,
         security_token: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streamer streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The order in which the entries are sorted based on creation time. Valid values:
+        # The order in which entries are sorted by creation time. Valid values:
         # 
-        # *   **Asc** (default): ascending order
-        # *   **Desc**: descending order
-        # 
-        # Enumerated values:
-        # 
-        # *   asc
-        # *   desc
+        # - **Asc** (default): ascending order.
+        # - **Desc**: descending order.
         self.order = order
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_num = page_num
-        # The number of entries per page. Valid values: **5 to 30**. Default value: **10**.
+        # The number of entries per page. Default value: **10**. Valid values: **5 to 30**.
         self.page_size = page_size
         self.security_token = security_token
 

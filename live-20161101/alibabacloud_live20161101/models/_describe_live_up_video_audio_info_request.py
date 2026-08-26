@@ -13,13 +13,14 @@ class DescribeLiveUpVideoAudioInfoRequest(DaraModel):
         start_time: str = None,
         stream: str = None,
     ):
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time. The format is \\`yyyy-MM-ddTHH:mm:ssZ\\` in UTC.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the stream that you want to query. Specify this parameter in the following format: `rtmp://Ingest domain/Application name/Stream name`.
+        # The start time. The format is \\`yyyy-MM-ddTHH:mm:ssZ\\` in UTC.
         self.start_time = start_time
-        # The operation that you want to perform. Set the value to **DescribeLiveUpVideoAudioInfo**.
+        # The full name of the stream to query. The format is `rtmp://<ingest domain>/<AppName>/<StreamName>`
         # 
         # This parameter is required.
         self.stream = stream

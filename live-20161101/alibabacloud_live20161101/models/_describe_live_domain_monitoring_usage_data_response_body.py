@@ -20,16 +20,16 @@ class DescribeLiveDomainMonitoringUsageDataResponseBody(DaraModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The end of the time range.
+        # The end time of the query. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is in UTC.
         self.end_time = end_time
-        # The ID of the monitoring session.
+        # The monitoring session ID.
         self.instance_id = instance_id
         self.monitoring_data = monitoring_data
-        # The region of the live center.
+        # The live center region.
         self.region = region
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range.
+        # The start time of the query. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is in UTC.
         self.start_time = start_time
 
     def validate(self):

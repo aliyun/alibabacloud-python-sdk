@@ -10,9 +10,9 @@ class AddCasterVideoResourceResponseBody(DaraModel):
         request_id: str = None,
         resource_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource. This parameter can be used as a request parameter in the API operation that you can call to delete the video source in the production studio or modify the video source in the production studio.
+        # The resource ID. This ID can be used as a request parameter for deleting or modifying a video source in the production studio.
         self.resource_id = resource_id
 
     def validate(self):

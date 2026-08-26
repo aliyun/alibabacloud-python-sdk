@@ -9,7 +9,7 @@ class GetMessageAppRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of the interactive messaging application.
+        # The ID of the interactive message application.
         # 
         # This parameter is required.
         self.app_id = app_id

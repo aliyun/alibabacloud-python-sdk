@@ -20,16 +20,17 @@ class DescribeCasterProgramResponseBody(DaraModel):
         # The ID of the production studio.
         self.caster_id = caster_id
         self.episodes = episodes
-        # Indicates whether carousel playback is enabled.
+        # Indicates whether the program list is enabled.
         # 
-        # *   **0**: Carousel playback is disabled.
-        # *   **1**: Carousel playback is enabled.
+        # - **0**: disabled
+        # 
+        # - **1**: enabled
         self.program_effect = program_effect
-        # The name of the episode list.
+        # The name of the program list.
         self.program_name = program_name
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):

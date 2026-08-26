@@ -11,7 +11,7 @@ class CreateMessageAppResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CreateMessageAppResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -49,7 +49,7 @@ class CreateMessageAppResponseBodyResult(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of the interactive messaging application.
+        # The ID of the interactive message application.
         self.app_id = app_id
 
     def validate(self):

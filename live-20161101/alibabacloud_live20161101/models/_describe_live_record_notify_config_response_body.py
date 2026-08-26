@@ -11,7 +11,7 @@ class DescribeLiveRecordNotifyConfigResponseBody(DaraModel):
         live_record_notify_config: main_models.DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig = None,
         request_id: str = None,
     ):
-        # The configuration of callbacks for live stream recording.
+        # The recording callback configuration for the domain name.
         self.live_record_notify_config = live_record_notify_config
         # The request ID.
         self.request_id = request_id
@@ -54,16 +54,23 @@ class DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig(DaraModel
         notify_url: str = None,
         on_demand_url: str = None,
     ):
-        # The main streaming domain.
+        # The streaming domain name.
         self.domain_name = domain_name
-        # Indicates whether recording status callbacks are enabled. Valid values:
+        # Specifies whether to receive callbacks for the status of recording tasks. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Yes.
+        # 
+        # - **false** (default): No.
         self.need_status_notify = need_status_notify
+        # The authentication key for the callback.
         self.notify_auth_key = notify_auth_key
+        # Specifies whether to enable callback authentication. Valid values:
+        # 
+        # - **yes**: enabled.
+        # 
+        # - **no**: disabled.
         self.notify_req_auth = notify_req_auth
-        # The recording callback URL.
+        # The webhook address for recording callbacks.
         self.notify_url = notify_url
         # The callback URL for on-demand recording.
         self.on_demand_url = on_demand_url

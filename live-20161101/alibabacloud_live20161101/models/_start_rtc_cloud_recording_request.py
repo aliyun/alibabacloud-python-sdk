@@ -22,20 +22,36 @@ class StartRtcCloudRecordingRequest(DaraModel):
         storage_params: main_models.StartRtcCloudRecordingRequestStorageParams = None,
         subscribe_params: main_models.StartRtcCloudRecordingRequestSubscribeParams = None,
     ):
+        # The ID of the app to which the channel to be recorded belongs. The app must belong to the primary account associated with the current API caller\\"s account.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the channel to be recorded. Make sure that the channel has active users when you call this operation. Otherwise, the recording task fails to be created.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The idle timeout period. When the task remains idle for longer than MaxIdleTime, the task is automatically stopped. Unit: seconds. The value must be within [10,14400], which is a maximum of 4 hours. Default value: 300.
         self.max_idle_time = max_idle_time
+        # The layout parameters. This parameter is not required in single-stream recording mode and is required in stream mixing recording mode when the output is not audio-only.
         self.mix_layout_params = mix_layout_params
+        # The transcoding parameters. This parameter is not required in single-stream recording mode and is required in stream mixing recording mode.
         self.mix_transcode_params = mix_transcode_params
+        # The authentication key for callback messages. Leave this parameter empty to skip authentication. If specified, the key must be 16 to 64 characters in length and consist of only uppercase and lowercase letters and digits.
         self.notify_auth_key = notify_auth_key
+        # The specified formats for which a callback message is sent when the recording file upload event (RecordFileUploaded) is triggered.
         self.notify_file_uploaded_format = notify_file_uploaded_format
+        # The URL for receiving callback messages. Task status messages are pushed to this URL in JSON format by using the POST method. The maximum length is 2048 characters.
         self.notify_url = notify_url
+        # The recording parameters.
+        # 
         # This parameter is required.
         self.record_params = record_params
+        # The storage parameters.
+        # 
         # This parameter is required.
         self.storage_params = storage_params
+        # The subscription parameters.
+        # 
         # This parameter is required.
         self.subscribe_params = subscribe_params
 
@@ -138,6 +154,8 @@ class StartRtcCloudRecordingRequestSubscribeParams(DaraModel):
         self,
         subscribe_user_id_list: List[main_models.StartRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList] = None,
     ):
+        # The list of subscribed UserId entries. In single-stream recording mode, each UserId is recorded separately. In stream mixing recording mode, the audio and video of all UserIds are mixed into a single set of audio and video.
+        # 
         # This parameter is required.
         self.subscribe_user_id_list = subscribe_user_id_list
 
@@ -176,8 +194,12 @@ class StartRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList(DaraModel)
         stream_type: int = None,
         user_id: str = None,
     ):
+        # The video input stream type of the UserId. This parameter takes effect only when the subscription is not audio-only (StreamType != 1). Valid values:
         self.source_type = source_type
+        # The media type of the subscribed UserId. Valid values:
         self.stream_type = stream_type
+        # The subscribed UserId.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -221,10 +243,15 @@ class StartRtcCloudRecordingRequestStorageParams(DaraModel):
         storage_type: int = None,
         vod_params: main_models.StartRtcCloudRecordingRequestStorageParamsVodParams = None,
     ):
+        # The file storage information, which specifies the format, storage location, and naming of recording files. This parameter takes effect only when StorageType is set to OSS.
         self.file_info = file_info
+        # The OSS storage configuration. This parameter is required when the storage method is OSS and is invalid when the storage method is VOD.
         self.ossparams = ossparams
+        # The storage method. Valid values:
+        # 
         # This parameter is required.
         self.storage_type = storage_type
+        # The VOD storage configuration. This parameter is required when the storage method is VOD and is invalid when the storage method is OSS.
         self.vod_params = vod_params
 
     def validate(self):
@@ -287,9 +314,13 @@ class StartRtcCloudRecordingRequestStorageParamsVodParams(DaraModel):
         storage_location: str = None,
         vod_transcode_group_id: str = None,
     ):
+        # Specifies whether to enable automatic composition. Valid values:
         self.auto_compose = auto_compose
+        # The ID of the VOD transcoding template group used to transcode the automatically composed video in the VOD service.
         self.compose_vod_transcode_group_id = compose_vod_transcode_group_id
+        # The storage address configured in the ApsaraVideo VOD console under Media Asset Management > Storage Management. Recording files are first saved to this location and then uploaded to VOD.
         self.storage_location = storage_location
+        # The ID of the VOD transcoding template group.
         self.vod_transcode_group_id = vod_transcode_group_id
 
     def validate(self):
@@ -336,8 +367,12 @@ class StartRtcCloudRecordingRequestStorageParamsOSSParams(DaraModel):
         ossbucket: str = None,
         ossendpoint: str = None,
     ):
+        # The name of the OSS bucket. The bucket must belong to the primary account associated with the current API caller\\"s account.
+        # 
         # This parameter is required.
         self.ossbucket = ossbucket
+        # The endpoint of the OSS storage. The corresponding region ID must be consistent with the selected service registration endpoint.
+        # 
         # This parameter is required.
         self.ossendpoint = ossendpoint
 
@@ -376,11 +411,17 @@ class StartRtcCloudRecordingRequestStorageParamsFileInfo(DaraModel):
         slice_duration: int = None,
         slice_name_pattern: str = None,
     ):
+        # The file naming format. You can select and combine the following variables in any order:
         self.file_name_pattern = file_name_pattern
+        # The file storage path. Each element in the array corresponds to a directory level. For example, if the value is ["dir1","dir2"], the xxx.m3u8 file is saved as dir1/dir2/TaskId/xxx.m3u8. If this parameter is empty, the file is saved as TaskId/xxx.m3u8.
         self.file_path_prefix = file_path_prefix
+        # The file storage format. Valid values:
+        # 
         # This parameter is required.
         self.format = format
+        # The segment length in seconds. This parameter takes effect only in HLS format. The value must be in the range of [10, 30]. Default value: 30.
         self.slice_duration = slice_duration
+        # The segment naming format. This parameter takes effect only in HLS format. Similar to FileNamePattern, but with an additional variable Sequence:
         self.slice_name_pattern = slice_name_pattern
 
     def validate(self):
@@ -434,9 +475,13 @@ class StartRtcCloudRecordingRequestRecordParams(DaraModel):
         record_mode: int = None,
         stream_type: int = None,
     ):
+        # The maximum duration of a recording file, in seconds. A recording file that exceeds this duration is split. The value must be in the range of [180, 7200], which means a maximum of 2 hours. If this parameter is not specified, the default value is 7200 (2 hours).
         self.max_file_duration = max_file_duration
+        # The recording mode. Valid values:
+        # 
         # This parameter is required.
         self.record_mode = record_mode
+        # The media type of the output recording stream. Valid values:
         self.stream_type = stream_type
 
     def validate(self):
@@ -485,18 +530,31 @@ class StartRtcCloudRecordingRequestMixTranscodeParams(DaraModel):
         video_height: int = None,
         video_width: int = None,
     ):
+        # The audio bitrate in kbps. The value must be in the range of [8, 500]. This parameter is required in stream mixing mode.
+        # 
         # This parameter is required.
         self.audio_bitrate = audio_bitrate
+        # The number of audio channels. Valid values:
+        # 
         # This parameter is required.
         self.audio_channels = audio_channels
+        # The audio sample rate in Hz. Valid values:
+        # 
         # This parameter is required.
         self.audio_sample_rate = audio_sample_rate
+        # The frame fill type when a stream is interrupted. Valid values:
         self.frame_fill_type = frame_fill_type
+        # The video bitrate in kbps. The value must be in the range of [1, 10000].
         self.video_bitrate = video_bitrate
+        # The video encoding format. Valid values:
         self.video_codec = video_codec
+        # The video frame rate in fps. The value must be in the range of [1, 60].
         self.video_framerate = video_framerate
+        # The video GOP. An I-frame is inserted every VideoGop frames. The value must be in the range of [1, 60].
         self.video_gop = video_gop
+        # The video height in pixels. The value must be in the range of [0, 1920]. Default value: 0.
         self.video_height = video_height
+        # The video width in pixels. The value must be in the range of [0, 1920]. Default value: 0.
         self.video_width = video_width
 
     def validate(self):
@@ -579,7 +637,9 @@ class StartRtcCloudRecordingRequestMixLayoutParams(DaraModel):
         mix_background: main_models.StartRtcCloudRecordingRequestMixLayoutParamsMixBackground = None,
         user_panes: List[main_models.StartRtcCloudRecordingRequestMixLayoutParamsUserPanes] = None,
     ):
+        # The global background image for stream mixing.
         self.mix_background = mix_background
+        # Specifies the window layout information for subscribed users. Only users whose UserId has layout information configured are included in the video. This parameter is required in stream mixing mode when recording non-audio-only files.
         self.user_panes = user_panes
 
     def validate(self):
@@ -631,13 +691,21 @@ class StartRtcCloudRecordingRequestMixLayoutParamsUserPanes(DaraModel):
         y: str = None,
         zorder: int = None,
     ):
+        # The pane height as a normalized percentage. The value must be within [0,1]. Default value: 0.
         self.height = height
+        # The video input stream type for this UserId. If UserId is not specified, this SourceType setting has no effect. Valid values:
         self.source_type = source_type
+        # The background image for the sub-pane. When a user turns off the camera, has not published a stream after joining, or leaves the channel midway, the corresponding image fills the layout position.
         self.sub_background = sub_background
+        # The UserId corresponding to this window.
         self.user_id = user_id
+        # The pane width as a normalized percentage. The value must be within [0,1]. Default value: 0.
         self.width = width
+        # The X coordinate as a normalized percentage. The value must be within [0,1]. Default value: 0.
         self.x = x
+        # The Y coordinate as a normalized percentage. The value must be within [0,1]. Default value: 0.
         self.y = y
+        # The stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on. Default value: 0.
         self.zorder = zorder
 
     def validate(self):
@@ -710,7 +778,9 @@ class StartRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground(DaraMod
         render_mode: int = None,
         url: str = None,
     ):
+        # The display mode for the sub-pane output. Valid values:
         self.render_mode = render_mode
+        # The URL of the background image. The maximum length is 2048 characters.
         self.url = url
 
     def validate(self):
@@ -745,7 +815,9 @@ class StartRtcCloudRecordingRequestMixLayoutParamsMixBackground(DaraModel):
         render_mode: int = None,
         url: str = None,
     ):
+        # The display mode for the output. Valid values:
         self.render_mode = render_mode
+        # The URL of the background image. The maximum length is 2048 characters.
         self.url = url
 
     def validate(self):

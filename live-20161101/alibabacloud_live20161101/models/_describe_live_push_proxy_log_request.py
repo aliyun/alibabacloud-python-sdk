@@ -15,20 +15,24 @@ class DescribeLivePushProxyLogRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The ingest domain. You can specify only one domain in each request.
+        # The ingest domain. Multi-domain queries are not supported.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Get the log end time.
-        # Date format follows the ISO8601 representation and uses UTC+0 time, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The end of the time range to query logs.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The page number. Default value: 1.
+        # The page number. Default value: 1. Valid values: [1, 9223372036854775807].
         self.page_number = page_number
-        # The number of entries per page. Valid values: [1,1000]. Default value: 300.
+        # The page size. Valid values: [1, 1000\\]. Default value: 300.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # Get the log start time in ISO8601 format with UTC+0 timezone, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The beginning of the time range to query logs.
+        # 
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

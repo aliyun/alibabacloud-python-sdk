@@ -11,11 +11,11 @@ class ModifyCasterVideoResourceResponseBody(DaraModel):
         request_id: str = None,
         resource_id: str = None,
     ):
-        # The ID of the production studio. This parameter is used in the requests of the following operations: DescribeCasterVideoResources, AddCasterLayout, and DescribeCasterLayouts.
+        # The ID of the production studio. You can use this ID to query video sources, add layouts, or query layout lists for the production studio.
         self.caster_id = caster_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

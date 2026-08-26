@@ -13,19 +13,19 @@ class SetLiveMpuTaskSeiRequest(DaraModel):
     ):
         # The application ID.
         # 
-        # >  The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # > The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.app_id = app_id
         # The custom SEI.
         # 
-        # >  The value is a JSON string that can be up to 4,096 characters in length.
+        # > The value is a JSON string that can be up to 4,096 characters in length.
         # 
         # This parameter is required.
         self.custom_sei = custom_sei
         # The task ID.
         # 
-        # >  The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # > The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.task_id = task_id

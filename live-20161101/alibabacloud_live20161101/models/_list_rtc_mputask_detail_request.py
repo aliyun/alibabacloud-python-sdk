@@ -12,25 +12,22 @@ class ListRtcMPUTaskDetailRequest(DaraModel):
         page_size: int = None,
         task_id: str = None,
     ):
-        # The ID of the application.
-        # 
-        # >  The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # The application ID.
+        # > The application ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
         # 
         # This parameter is required.
         self.app_id = app_id
         # The page number.
+        # > If you do not specify a task ID, you must specify the PageSize and PageNo parameters. In this case, the paged query results of all stream mixing and relaying tasks under the specified application ID are returned.
         self.page_no = page_no
-        # The number of entries per page. Valid values: 1 to 100.
-        # 
-        # >  If you do not specify TaskId, you must specify PageSize and PageNo. Then, the parameters of all stream relay tasks for the specified application are returned in pages.
+        # The number of records per page. Valid values: 1 to 100.
+        # > If you do not specify a task ID, you must specify the PageSize and PageNo parameters. In this case, the paged query results of all stream mixing and relaying tasks under the specified application ID are returned.
         self.page_size = page_size
         # The task ID.
         # 
-        # > 
         # 
-        # *   The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
-        # 
-        # *   If you specify TaskId, the parameters of the specified tasks are returned.
+        # >- The task ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 55 characters.
+        # - If you specify a task ID, the query is performed based on the task ID first, and the result contains the parameter details of the stream mixing and relaying task with the specified task ID.
         self.task_id = task_id
 
     def validate(self):

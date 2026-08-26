@@ -18,24 +18,24 @@ class DescribeLivePrivateLineAvailGARequest(DaraModel):
     ):
         # The acceleration channel.
         self.acceleration_area = acceleration_area
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streamer\\"s streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether to query Global Accelerator (GA) instances. Valid values:
-        # 
-        # *   yes: queries the status of GA instances.
-        # *   no: queries the binding information between GA instances and acceleration circuits.
+        # Specifies whether to query the Alibaba Cloud Global Accelerator (GA) instance. Valid values:
+        # - yes: Queries the GA instance status.
+        # - no: Queries the attachment details between the GA instance and the live streaming link.
         # 
         # This parameter is required.
         self.is_ga_instance = is_ga_instance
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream.
+        # The live stream name.
         self.stream_name = stream_name
-        # The live center. Valid values: cn-beijing, cn-shanghai, cn-shenzhen, cn-qingdao, ap-northeast-1, ap-southeast-5, eu-central-1, ap-southeast-1, and ap-south-1. cn-beijing indicates China (Beijing). cn-shanghai indicates China (Shanghai). cn-shenzhen indicates China (Shenzhen). cn-qingdao indicates China (Qingdao). ap-northeast-1 indicates Japan (Tokyo). ap-southeast-5 indicates Indonesia (Jakarta). eu-central-1 indicates Germany (Frankfurt). ap-southeast-1 indicates Singapore.
+        # The live center. Valid values: cn-beijing, cn-shanghai, cn-shenzhen, cn-qingdao, ap-northeast-1, ap-southeast-5, eu-central-1, and ap-southeast-1, ap-south-1, which represent the live centers located in Beijing, Shanghai, Shenzhen, Qingdao, Japan, Indonesia, Germany, and Singapore.
         self.video_center = video_center
 
     def validate(self):

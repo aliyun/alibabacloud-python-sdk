@@ -10,7 +10,7 @@ class AddCasterComponentResponseBody(DaraModel):
         component_id: str = None,
         request_id: str = None,
     ):
-        # The component ID. The value can be used as the value of a request parameter to query, modify, or delete a production studio.
+        # The component ID. Use this ID to query, modify, or delete the component.
         self.component_id = component_id
         # The request ID.
         self.request_id = request_id

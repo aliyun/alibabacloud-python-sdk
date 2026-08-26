@@ -17,15 +17,15 @@ class DescribeLiveDomainTrafficDataResponseBody(DaraModel):
         start_time: str = None,
         traffic_data_per_interval: main_models.DescribeLiveDomainTrafficDataResponseBodyTrafficDataPerInterval = None,
     ):
-        # The time granularity of the query.
+        # The time granularity for querying data.
         self.data_interval = data_interval
         # The streaming domain.
         self.domain_name = domain_name
-        # The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.end_time = end_time
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.start_time = start_time
         self.traffic_data_per_interval = traffic_data_per_interval
 

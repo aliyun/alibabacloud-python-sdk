@@ -19,11 +19,11 @@ class DescribeLiveRecordVodConfigsResponseBody(DaraModel):
         self.live_record_vod_configs = live_record_vod_configs
         # The page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):

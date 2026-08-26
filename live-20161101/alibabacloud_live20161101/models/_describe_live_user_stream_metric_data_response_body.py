@@ -19,14 +19,21 @@ class DescribeLiveUserStreamMetricDataResponseBody(DaraModel):
         stream_detail_data: List[main_models.DescribeLiveUserStreamMetricDataResponseBodyStreamDetailData] = None,
         total_count: int = None,
     ):
+        # The streaming domain information.
         self.domain_name = domain_name
         # YYYY-MM-DDThh:mm:ssZ
         self.end_time = end_time
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The beginning of the time range to query. The time is in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
         self.start_time = start_time
+        # The traffic data for each time interval.
         self.stream_detail_data = stream_detail_data
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -125,27 +132,51 @@ class DescribeLiveUserStreamMetricDataResponseBodyStreamDetailData(DaraModel):
         time_stamp: str = None,
         traffic: float = None,
     ):
+        # The application name. This value is returned regardless of whether it is specified.
         self.app_name = app_name
+        # The total bandwidth per minute for the stream, in bps.
         self.bps = bps
+        # The total number of concurrent connections per minute for the stream.
+        # 
+        # > **Concurrent connections** refers to the count of client process connections to the same stream within a unit of time.
         self.count = count
+        # The bandwidth for the FLV protocol, in bps. This field is not returned if the specified protocol does not match.
         self.flv_bps = flv_bps
+        # The number of concurrent connections for the FLV protocol. This field is not returned if the specified protocol does not match.
         self.flv_count = flv_count
+        # The traffic for the FLV protocol, in bytes. This field is not returned if the specified protocol does not match.
         self.flv_traffic = flv_traffic
+        # The bandwidth for the HLS protocol, in bps. This field is not returned if the specified protocol does not match.
         self.hls_bps = hls_bps
+        # The number of concurrent connections for the HLS protocol. This field is not returned if the specified protocol does not match.
         self.hls_count = hls_count
+        # The traffic for the HLS protocol, in bytes. This field is not returned if the specified protocol does not match.
         self.hls_traffic = hls_traffic
+        # The number of new connections per minute for the stream.
         self.new_conns = new_conns
+        # The bandwidth for the P2P protocol, in bps. This field is not returned if the specified protocol does not match.
         self.p_2p_bps = p_2p_bps
+        # The number of concurrent connections for the P2P protocol. This field is not returned if the specified protocol does not match.
         self.p_2p_count = p_2p_count
+        # The traffic for the P2P protocol, in bytes. This field is not returned if the specified protocol does not match.
         self.p_2p_traffic = p_2p_traffic
+        # The bandwidth for the RTMP protocol, in bps. This field is not returned if the specified protocol does not match.
         self.rtmp_bps = rtmp_bps
+        # The number of concurrent connections for the RTMP protocol. This field is not returned if the specified protocol does not match.
         self.rtmp_count = rtmp_count
+        # The traffic for the RTMP protocol, in bytes. This field is not returned if the specified protocol does not match.
         self.rtmp_traffic = rtmp_traffic
+        # The bandwidth for the RTS protocol, in bps. This field is not returned if the specified protocol does not match.
         self.rts_bps = rts_bps
+        # The number of concurrent connections for the RTS protocol. This field is not returned if the specified protocol does not match.
         self.rts_count = rts_count
+        # The traffic for the RTS protocol, in bytes. This field is not returned if the specified protocol does not match.
         self.rts_traffic = rts_traffic
+        # The stream name. This value is returned regardless of whether it is specified.
         self.stream_name = stream_name
+        # The start time of the time slice. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format in UTC+0.
         self.time_stamp = time_stamp
+        # The total traffic per minute for the stream, in bytes.
         self.traffic = traffic
 
     def validate(self):

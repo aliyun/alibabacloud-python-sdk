@@ -16,13 +16,13 @@ class ListLiveMessageGroupMessagesResponseBody(DaraModel):
         next_page_token: int = None,
         request_id: str = None,
     ):
-        # The ID of the group queried.
+        # The group ID of the group to query.
         self.group_id = group_id
-        # Indicates whether the current page is followed by another page.
+        # Indicates whether there is a next page.
         self.hasmore = hasmore
-        # Details about the messages.
+        # The message list.
         self.message_list = message_list
-        # The starting page number for the next query. A value of 0 indicates that no further pages can be queried.
+        # The start position of the next page. The value is 0 if there is no next page.
         self.next_page_token = next_page_token
         # The request ID.
         self.request_id = request_id
@@ -92,15 +92,15 @@ class ListLiveMessageGroupMessagesResponseBodyMessageList(DaraModel):
     ):
         # The message body.
         self.body = body
-        # The ID of the message.
+        # The message identifier.
         self.msg_tid = msg_tid
-        # The type of the message.
+        # The message type.
         self.msg_type = msg_type
-        # The details about the user who sent the message.
+        # The message sender details.
         self.sender = sender
-        # The sequence number of the message.
+        # The message sequence number.
         self.seq_number = seq_number
-        # The time when the message was sent. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the message was created, expressed as a UNIX timestamp. Unit: seconds.
         self.timestamp = timestamp
         # The total number of messages.
         self.total_messages = total_messages
@@ -171,7 +171,7 @@ class ListLiveMessageGroupMessagesResponseBodyMessageListSender(DaraModel):
     ):
         # The ID of the user who sent the message.
         self.user_id = user_id
-        # The additional information about the user who sent the message.
+        # The extended information of the user who sent the message.
         self.user_info = user_info
 
     def validate(self):

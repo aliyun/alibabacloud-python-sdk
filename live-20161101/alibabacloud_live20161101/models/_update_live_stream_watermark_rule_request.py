@@ -14,21 +14,22 @@ class UpdateLiveStreamWatermarkRuleRequest(DaraModel):
         rule_id: str = None,
         template_id: str = None,
     ):
-        # The description of the custom rule.
+        # The custom description of the rule.
         self.description = description
-        # The name of the custom rule.
+        # The custom name of the rule.
         self.name = name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         # The ID of the watermark rule.
         # 
-        # >  You can obtain the rule ID by checking the value of the RuleId parameter that is returned by the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation.
+        # > Get the rule ID from the response of the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation.
         # 
         # This parameter is required.
         self.rule_id = rule_id
         # The ID of the watermark template.
         # 
-        # >  You can obtain the template ID by checking the value of the TemplateId parameter that is returned by the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
+        # > Get the template ID from the response of the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
         self.template_id = template_id
 
     def validate(self):

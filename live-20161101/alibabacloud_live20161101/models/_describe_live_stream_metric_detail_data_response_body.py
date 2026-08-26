@@ -18,17 +18,17 @@ class DescribeLiveStreamMetricDetailDataResponseBody(DaraModel):
         start_time: str = None,
         stream_detail_data: main_models.DescribeLiveStreamMetricDetailDataResponseBodyStreamDetailData = None,
     ):
-        # The accelerated domain name.
+        # The accelerated domain name queried.
         self.domain_name = domain_name
-        # The end of the time range during which data was queried.
+        # The end time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The token that determines the start point of the next query. This parameter is returned if more data results are available.
+        # The starting index for the next query. This value is returned when the queried data has not been fully retrieved.
         self.next_page_token = next_page_token
-        # The number of rows returned.
+        # The number of returned data rows.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which data was queried.
+        # The start time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
         self.stream_detail_data = stream_detail_data
 

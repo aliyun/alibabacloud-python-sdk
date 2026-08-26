@@ -15,25 +15,24 @@ class DescribeLiveAISubtitleRequest(DaraModel):
         subtitle_id: str = None,
         subtitle_name: str = None,
     ):
-        # Specifies whether to query the default subtitle template. Valid values:
+        # Specifies whether to query the default caption templates. Valid values:
         # 
-        # *   true
+        # - true: queries the default caption templates.
         # 
-        # *   false
+        # - false: does not query the default caption templates.
         # 
-        #     **
-        # 
-        #     **Note **The default template includes the built-in parameter configurations. You can specify the copyFrom parameter when you call the AddLiveAISubtitle operation to use the default template.
+        # > Default templates are built-in parameter sets. You can use them by specifying the copyFrom parameter in the AddLiveAISubtitle operation.
         self.is_default = is_default
         self.owner_id = owner_id
-        # The page number. Valid values: [1,100].
+        # The page number. Valid values: 1 to 100.
         self.page_number = page_number
-        # The number of entries per page. Valid values: [1,100].
+        # The number of templates on each page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # The ID of the subtitle template.
+        # The ID of the caption template.
         self.subtitle_id = subtitle_id
-        # The name of the subtitle template. The name can contain only digits, letters, and hyphens (-). The name cannot start with a hyphen.
+        # The name of the caption template. The name can contain only digits, uppercase letters, lowercase letters, and hyphens (-). The name cannot start with a hyphen.
         self.subtitle_name = subtitle_name
 
     def validate(self):

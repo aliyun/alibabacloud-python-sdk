@@ -10,8 +10,12 @@ class DescribeRtcCloudTranscodeRequest(DaraModel):
         app_id: str = None,
         task_id: str = None,
     ):
+        # The application ID. The value can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The cloud transcoding task ID. The value can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

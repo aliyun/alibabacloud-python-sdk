@@ -10,8 +10,11 @@ class AddLiveStreamMergeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # - A message that indicates the result of the request. If the request fails, this message helps the caller identify the issue.
+        # 
+        # - Valid values: OK, config invalid, degrade to no livemerger.
         self.message = message
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

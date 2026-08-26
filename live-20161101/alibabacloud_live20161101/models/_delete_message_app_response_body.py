@@ -11,9 +11,9 @@ class DeleteMessageAppResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DeleteMessageAppResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -49,10 +49,10 @@ class DeleteMessageAppResponseBodyResult(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the application was deleted. Valid values:
+        # Indicates whether the deletion was successful. Valid values:
         # 
-        # *   true: The application was deleted.
-        # *   false: The application failed to be deleted.
+        # - true: The deletion was successful.
+        # - false: The deletion failed.
         self.success = success
 
     def validate(self):

@@ -12,7 +12,7 @@ class DeleteLiveDomainRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The ingest domain or streaming domain that you want to delete.
+        # The ingest or streaming domain to delete.
         # 
         # This parameter is required.
         self.domain_name = domain_name

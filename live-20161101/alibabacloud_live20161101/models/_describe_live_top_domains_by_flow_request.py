@@ -13,13 +13,14 @@ class DescribeLiveTopDomainsByFlowRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # The maximum number of domain names that you want to retrieve. Valid values: 1 to 100. Default value: 20.
+        # The maximum number of domain names to return. Default value: 20. Valid values: 1 to 100.
         self.limit = limit
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The minimum data granularity is 5 minutes. If you do not specify this parameter, the data of the current month is returned.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. The minimum data granularity is 5 minutes. If you do not specify this parameter, data for the current month is returned by default.
         self.start_time = start_time
 
     def validate(self):

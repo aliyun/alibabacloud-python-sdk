@@ -16,11 +16,11 @@ class DescribeLiveDelayedStreamingUsageResponseBody(DaraModel):
         start_time: str = None,
     ):
         self.delay_data = delay_data
-        # The end of the time range during which the data was queried.
+        # The end time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which the data was queried.
+        # The start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

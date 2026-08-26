@@ -13,9 +13,9 @@ class ListMessageGroupUserResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListMessageGroupUserResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return results.
         self.result = result
 
     def validate(self):
@@ -53,14 +53,14 @@ class ListMessageGroupUserResponseBodyResult(DaraModel):
         total: int = None,
         user_list: List[main_models.ListMessageGroupUserResponseBodyResultUserList] = None,
     ):
-        # Indicates whether the current page is followed by another page. Valid values:
+        # Indicates whether there is a next page. Valid values:
         # 
-        # *   true: The current page is followed by another page.
-        # *   false: The current page is not followed by another page.
+        # - true: There is a next page.
+        # - false: There is no next page.
         self.has_more = has_more
-        # The total number of users in the message group.
+        # Total number of message group users.
         self.total = total
-        # Details about the users.
+        # User list.
         self.user_list = user_list
 
     def validate(self):
@@ -109,9 +109,9 @@ class ListMessageGroupUserResponseBodyResultUserList(DaraModel):
         join_time: int = None,
         user_id: str = None,
     ):
-        # The time when the user joined the message group. The value is a UTC timestamp.
+        # UTC timestamp when the user joined the message group.
         self.join_time = join_time
-        # The ID of the user.
+        # User ID.
         self.user_id = user_id
 
     def validate(self):

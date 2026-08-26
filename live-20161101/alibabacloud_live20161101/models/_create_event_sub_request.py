@@ -15,33 +15,31 @@ class CreateEventSubRequest(DaraModel):
         events: List[str] = None,
         users: List[str] = None,
     ):
-        # The application ID.
+        # The ID of the application to subscribe to. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > ApsaraVideo Real-time Communication > Application Management**. If no application exists, create one by clicking [Create Application].
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The callback URL. For more information about the content of the messages that are sent to the callback URL, see the Callback section in this topic.
+        # The callback URL. For the callback content, see the callback content examples below.
         # 
         # This parameter is required.
         self.callback_url = callback_url
-        # The channel ID. You can call the [ListEventSub](https://help.aliyun.com/document_detail/2628135.html) operation to query the channel ID.
+        # The ID of the channel to subscribe to. You can call the [ListEventSub](https://help.aliyun.com/document_detail/2848210.html) operation to query the subscribed channel IDs.
         # 
-        # > 
-        # 
-        # *   This parameter is required if you specify the Users.N parameter.
-        # 
-        # *   If you set this parameter to \\* or do not specify this parameter, all channels are subscribed to.
-        # 
-        # *   Each application ID allows only one all-channel subscription.
+        # >- If the Users.N parameter is not empty, this parameter is required.
+        # >- If ChannelId is set to \\* or left empty, all channels are subscribed. Each AppId allows only one all-channel subscription.
+        # >- Each AppId allows a maximum of 20 subscriptions at the same time.
         self.channel_id = channel_id
-        # Subscribe to events.
+        # The subscription events.
         # 
         # This parameter is required.
         self.events = events
-        # The user whose events you want to subscribe to. If you leave this parameter empty, the events of all users in the channel are subscribed to, including the events of the streamer and viewers. Specify this parameter in the following format:
+        # The users whose messages you want to subscribe to. If this parameter is empty, all users in the channel (including streamers and viewers) are subscribed. Format:
         # 
-        #     Users.1=****
-        #     Users.2=****
-        #     ......
+        # ```
+        # Users.1=****
+        # Users.2=****
+        # ......
+        # ```
         self.users = users
 
     def validate(self):

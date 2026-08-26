@@ -11,9 +11,9 @@ class JoinMessageGroupResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.JoinMessageGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -49,10 +49,10 @@ class JoinMessageGroupResponseBodyResult(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the users successfully joined the message group. Valid values:
+        # Indicates whether joining the message group was successful. Valid values:
         # 
-        # *   true: The users successfully joined the message group.
-        # *   false: The users failed to join the message group.
+        # - true: Successful.
+        # - false: Unsuccessful.
         self.success = success
 
     def validate(self):

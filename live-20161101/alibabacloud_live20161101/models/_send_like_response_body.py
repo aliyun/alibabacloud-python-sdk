@@ -11,9 +11,9 @@ class SendLikeResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.SendLikeResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -49,7 +49,7 @@ class SendLikeResponseBodyResult(DaraModel):
         self,
         like_count: int = None,
     ):
-        # The number of likes.
+        # Number of likes.
         self.like_count = like_count
 
     def validate(self):

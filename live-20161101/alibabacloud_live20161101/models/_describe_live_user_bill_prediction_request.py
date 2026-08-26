@@ -12,11 +12,12 @@ class DescribeLiveUserBillPredictionRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time. The time must be in UTC and follow the yyyy-MM-ddTHH:mm:ssZ format.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd**THH:mm:ssZ* format. The time must be in UTC.
+        # The start time. The time must be in UTC and follow the *yyyy-mm-dd*T*hh:mm:ss*Z format.
         self.start_time = start_time
 
     def validate(self):

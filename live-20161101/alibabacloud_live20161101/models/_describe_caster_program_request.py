@@ -20,35 +20,40 @@ class DescribeCasterProgramRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value that is returned in the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you create a production studio in the LIVE console, find the ID on the Cloud Production Studio page. To go to this page, choose **LIVE** > **Production Studio** > **Cloud Production Studio**.
+        # 
+        # > The name of the production studio in the list on the Cloud Production Studio page is its ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. The time must be in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
         self.end_time = end_time
-        # The ID of the episode.
+        # The ID of the program.
         self.episode_id = episode_id
-        # The type of the episode. Valid values:
+        # The type of the node. Valid values:
         # 
-        # *   **Resource**: a video resource
-        # *   **Component**: a component
+        # - **Resource**: video source.
+        # 
+        # - **Component**: component.
         self.episode_type = episode_type
         self.owner_id = owner_id
         # The page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The number of programs on each page.
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. The time must be in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
         self.start_time = start_time
-        # The status of the episode. Valid values:
+        # The status of the program. Valid values:
         # 
-        # *   **0**: The episode is not played.
-        # *   **1**: The episode is being played.
-        # *   **2**: The playback of the episode is complete.
+        # - **0**: not started
+        # 
+        # - **1**: playing
+        # 
+        # - **2**: finished
         self.status = status
 
     def validate(self):

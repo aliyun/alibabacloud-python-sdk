@@ -17,47 +17,44 @@ class DescribeLiveDelayedStreamingUsageRequest(DaraModel):
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The main streaming domain to query.
-        # 
-        # *   You can query one or more domain names. If you specify multiple domain names, separate them with commas (,).
-        # *   If you leave this parameter empty, the data of all domain names within your Alibaba Cloud account is returned.
+        # The streaming domain name to query.
+        # - You can specify a single domain name or multiple domain names. Separate multiple domain names with commas (,).
+        # - If this parameter is left empty, the aggregated data of all live streaming domain names is returned by default.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The end time must be later than the start time. We recommend that you specify a time range that is less than or equal to 10 hours.
+        # The end of the time range to query. The end time must be later than the start time. The time span cannot exceed 10 hours. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # The time granularity of the query. Unit: seconds. Valid values:
+        # The time granularity of the queried data. Unit: seconds. Valid values:
+        # - 300
+        # - 3600
+        # - 86400
         # 
-        # *   300
-        # *   3600
-        # *   86400
-        # 
-        # If you specify an invalid value or do not specify this parameter, the default value 3600 is used.
+        # If this parameter is left empty or set to an unsupported value, the default value 3600 is used.
         self.interval = interval
         self.owner_id = owner_id
-        # The ID of the region. Separate multiple region IDs with commas (,). Valid values:
+        # The live center to query. You can specify multiple regions. Separate multiple regions with commas (,). Valid values:
+        # - cn-beijing: Beijing
+        # - cn-shanghai: Shanghai
+        # - cn-shenzhen: Shenzhen
+        # - cn-qingdao: Qingdao
+        # - ap-southeast-1: Singapore
+        # - eu-central-1: Germany
+        # - ap-northeast-1: Tokyo
+        # - ap-southeast-5: Jakarta
         # 
-        # *   cn-beijing: China (Beijing)
-        # *   cn-shanghai: China (Shanghai)
-        # *   cn-shenzhen: China (Shenzhen)
-        # *   cn-qingdao: China (Qingdao)
-        # *   ap-southeast-1: Singapore
-        # *   eu-central-1: Germany (Frankfurt)
-        # *   ap-northeast-1: Japan (Tokyo)
-        # *   ap-southeast-5: Indonesia (Jakarta)
-        # 
-        # If you leave this parameter empty, data of all regions is aggregated and returned by default.
+        # If this parameter is left empty, the aggregated data of all regions is returned by default.
         self.region = region
+        # The region ID.
         self.region_id = region_id
-        # The key that is used to group data. If you leave this parameter empty, data is aggregated and returned. Valid values:
+        # The grouping key. If this parameter is left empty, user data is aggregated. Valid values:
+        # - domain: domain name. If the SplitBy (grouping key) parameter is set to domain, the Domain response parameter takes effect.
+        # - region: live center region. If the SplitBy (grouping key) parameter is set to region, the Region response parameter takes effect.
+        # - stream: stream name. If the SplitBy (grouping key) parameter is set to stream, the stream response parameter takes effect.
         # 
-        # *   domain: The DomainName parameter in the response takes effect only if SplitBy is set to domain.
-        # *   region: The Region parameter in the response takes effect only if SplitBy is set to region.
-        # *   stream: The StreamName parameter in the response takes effect only if SplitBy is set to stream.
-        # 
-        # >  This parameter takes effect only if the parameter corresponding to the value of this parameter is not left empty. Otherwise, an error is returned. For example, you cannot set this parameter to domain if the DomainName parameter is left empty.
+        # > You can query data only when the parameter corresponding to the grouping key is not empty. Otherwise, an error is returned. For example, when DomainName is empty, you cannot specify domain as the grouping key.
         self.split_by = split_by
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. By default, data in the last seven days is returned.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. By default, data of the last seven days is returned.
         self.start_time = start_time
-        # The name of the stream. Separate multiple stream names with commas (,). By default, data of all streams is aggregated and returned.
+        # The stream name. Separate multiple stream names with commas (,). By default, the data of all stream names is aggregated.
         self.stream_name = stream_name
 
     def validate(self):

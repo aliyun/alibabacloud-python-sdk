@@ -13,13 +13,14 @@ class DescribeLiveStreamWatermarkRulesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The main streaming domain.
+        # The streaming domain.
         self.domain = domain
         self.owner_id = owner_id
-        # The page number. If you do not specify this parameter, the default value 1 is used.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. If you do not specify this parameter, the default value 100 is used.
+        # The number of entries to return on each page. The default value is 100.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

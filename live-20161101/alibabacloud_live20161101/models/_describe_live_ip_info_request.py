@@ -16,6 +16,7 @@ class DescribeLiveIpInfoRequest(DaraModel):
         # This parameter is required.
         self.ip = ip
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

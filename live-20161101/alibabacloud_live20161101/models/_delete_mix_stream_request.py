@@ -14,17 +14,18 @@ class DeleteMixStreamRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application.
+        # The name of the app.
         self.app_name = app_name
-        # The main streaming domain.
+        # The domain name of the output stream.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The ID of the stream mixing task. If the task was created by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation, check the value of the response parameter MixStreamId to obtain the ID.
+        # The ID of the stream mixing task. Obtain this ID from the MixStreamId parameter returned by the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation.
         # 
         # This parameter is required.
         self.mix_stream_id = mix_stream_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         # The name of the output stream.
         self.stream_name = stream_name

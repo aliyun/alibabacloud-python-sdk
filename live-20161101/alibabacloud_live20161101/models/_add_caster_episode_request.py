@@ -22,56 +22,68 @@ class AddCasterEpisodeRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the CasterId parameter that is returned.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you create a production studio in the LIVE console, go to the **LIVE Console**> **Production Studio** > **Production Studio** page to view the ID.
+        # 
+        # > The name of the production studio in the production studio list serves as the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The components. Components in the production studio are listed from the bottom to the top in an array.
+        # A list of component IDs. The components are layered from bottom to top in the specified order.
         # 
-        # If a component was added by calling the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation, check the value of the response parameter ComponentId to obtain the component ID.
+        # If you add a component by calling the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation, check the value of the ComponentId parameter that is returned.
         # 
-        # *   This parameter takes effect and is required when the EpisodeType parameter is set to **Component**.
-        # *   This parameter is optional when the EpisodeType parameter is set to **Resource**. In this case, if this parameter is specified, the components are bound to and switched together with video resources.
+        # - This parameter is required and applies only when the resource type is **Component**.
         # 
-        # >  The variable N specifies the sequence number of the component. For example, **ComponentId.1** specifies the ID of the first component and **ComponentId.2** specifies the ID of the second component.
+        # - This parameter is optional when the resource type is **Resource**. If you specify this parameter, the component is attached to the video source and they are switched synchronously.
+        # 
+        # > N specifies the sequence number of a component ID. For example, **ComponentId.1** specifies the first component ID and **ComponentId.2** specifies the second component ID.
         self.component_id = component_id
-        # The time when the episode ends. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The name of the episode.
         self.episode_name = episode_name
-        # The type of the episode. Valid values:
+        # The node type. Valid values:
         # 
-        # *   **Resource**: a video resource.
-        # *   **Component**: a component.
+        # - **Resource**: A video source. If you set this parameter to Resource, you must also specify the ResourceId and SwitchType parameters.
+        # 
+        # - **Component**: A component.
         # 
         # This parameter is required.
         self.episode_type = episode_type
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The ID of the video resource.
+        # The ID of the video source.
         # 
-        # >  This parameter takes effect and is required when the EpisodeType parameter is set to Resource.
+        # >Notice: 
         # 
-        # \\
-        # If the video resource was added by calling the [AddCasterVideoResource](https://help.aliyun.com/document_detail/2848020.html) operation, check the value of the response parameter ResourceId to obtain the ID.
+        # This parameter is required and applies only when EpisodeType is set to Resource.
+        # 
+        # 
+        # 
+        # If you add a video source by calling the [AddCasterVideoResource](https://help.aliyun.com/document_detail/2848020.html) operation, check the value of the ResourceId parameter that is returned.
         self.resource_id = resource_id
-        # The time when the episode starts. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The policy for switching episodes. Valid values:
+        # The switch policy. Valid values:
         # 
-        # *   **TimeFirst**: The episode starts when the preceding episode ends and ends when the next episode starts. If no next episode exists, the episode keeps repeating until a new episode is added or the production studio stops.
-        # *   **ContentFirst**: The episode starts and ends as scheduled.
+        # >Notice: 
         # 
-        # This parameter takes effect only when the EpisodeType parameter is set to Resource.
+        # This parameter applies only when EpisodeType is set to Resource.
         # 
-        # >  This parameter must be set to TimeFirst when the video resource is a live stream.
+        # 
+        # 
+        # - **TimeFirst**: Time first.
+        # 
+        # - **ContentFirst**: Content first.
+        # 
+        # > For more information about video sources, see [Add a video source](https://help.aliyun.com/document_detail/66094.html).
         # 
         # This parameter is required.
         self.switch_type = switch_type

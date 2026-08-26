@@ -20,11 +20,11 @@ class DescribeLiveStreamsNotifyRecordsResponseBody(DaraModel):
         self.notify_records_info = notify_records_info
         # The page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries that meet the specified conditions.
+        # The total number of entries that match the specified conditions.
         self.total_num = total_num
         # The total number of pages.
         self.total_page = total_page

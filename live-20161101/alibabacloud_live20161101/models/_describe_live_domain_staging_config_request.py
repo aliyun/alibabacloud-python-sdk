@@ -16,11 +16,12 @@ class DescribeLiveDomainStagingConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The feature that you want to query. Separate multiple features with commas (,).
+        # The names of the features. Separate multiple feature names with commas (,).
         # 
         # This parameter is required.
         self.function_names = function_names
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

@@ -17,7 +17,7 @@ class ListEdgeTranscodeTemplateResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.template_list = template_list
-        # The total number of templates returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

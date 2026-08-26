@@ -15,20 +15,22 @@ class EffectCasterVideoResourceRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you create a production studio using the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value from the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you create a production studio in the ApsaraVideo Live console, find the ID on the **Production Studio** > **Cloud Production Studio** page.
+        # 
+        # > The name of the production studio in the list is the ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
-        # The resource ID. If you call the [DescribeCasterChannels](https://help.aliyun.com/document_detail/2848046.html) operation to query the channels of the production studio, you can obtain the ID of the resource in a specific channel from the ResourceId parameter in the response.
+        # The ID of the resource. To get this ID, call the [DescribeCasterChannels](https://help.aliyun.com/document_detail/2848046.html) operation and check the ResourceId value in the response.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The ID of the scene. You can call the [DescribeCasterScenes](~~60262#doc-api-live-DescribeCasterScenes~~ "Queries information about the scenes of a production studio.") operation to get the ID.
+        # The ID of the scenario.
         # 
         # This parameter is required.
         self.scene_id = scene_id

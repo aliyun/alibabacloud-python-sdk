@@ -55,16 +55,17 @@ class DescribeLiveStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig(Dara
     ):
         # The ingest domain.
         self.domain_name = domain_name
-        # Exception event callback URL.
+        # The callback URL for receiving notifications about exception events.
         self.exception_notify_url = exception_notify_url
         # The authentication key.
         self.notify_auth_key = notify_auth_key
-        # Indicates whether callback authentication is enabled. Valid values:
+        # Indicates whether authentication is enabled. Valid values:
         # 
-        # *   yes
-        # *   no
+        # - **yes**
+        # 
+        # - **no**
         self.notify_req_auth = notify_req_auth
-        # The callback URL.
+        # The callback URL for receiving live stream information.
         self.notify_url = notify_url
 
     def validate(self):

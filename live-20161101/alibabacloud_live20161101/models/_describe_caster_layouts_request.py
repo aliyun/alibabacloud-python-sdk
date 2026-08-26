@@ -14,18 +14,20 @@ class DescribeCasterLayoutsRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value returned in the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you created the production studio in the LIVE console, find the ID on the **Production Studio** > **Cloud Production Studio** page.
+        # 
+        # > The name of the production studio in the list on the Cloud Production Studio page is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The ID of the layout.
+        # The layout ID.
         # 
-        # If you do not specify a layout ID, all layouts of the production studio are queried.
+        # If you do not provide a value for LayoutId, all layouts of the production studio are returned.
         self.layout_id = layout_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

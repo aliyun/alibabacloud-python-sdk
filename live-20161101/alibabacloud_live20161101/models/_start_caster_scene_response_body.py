@@ -10,9 +10,9 @@ class StartCasterSceneResponseBody(DaraModel):
         request_id: str = None,
         stream_url: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The streaming URL of the scene. It is used for playback, but not for stream relay.
+        # The output stream URL of the current scene. This URL is used for playback in the production studio and is not a bypass output.
         self.stream_url = stream_url
 
     def validate(self):

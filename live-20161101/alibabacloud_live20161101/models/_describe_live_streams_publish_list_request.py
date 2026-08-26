@@ -20,49 +20,50 @@ class DescribeLiveStreamsPublishListRequest(DaraModel):
         stream_name: str = None,
         stream_type: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs. You can view AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.app_name = app_name
-        # The ingest domain or main streaming domain.
+        # The ingest domain or streamer streaming domain.
+        # > - When you specify DomainName, make sure that the domain name is a live streaming domain name and that the user calling this operation has the permissions to operate on the specified domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. The time range specified by the StartTime and EndTime parameters cannot exceed 30 days.
+        # The end time. The interval between EndTime and StartTime cannot exceed 30 days.
         # 
-        # Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
         # The sorting method. Valid values:
         # 
-        # *   **stream_name_desc**: sorts the entries in descending order by stream name.
-        # *   **stream_name_asc**: sorts the entries in ascending order by stream name.
-        # *   **publish_time_desc**: sorts the entries in descending order by stream ingest time.
-        # *   **publish_time_asc** (default): sorts the entries in ascending order by stream ingest time.
+        # - **stream_name_desc**: sorts by live stream name in descending order.
+        # - **stream_name_asc**: sorts by live stream name in ascending order.
+        # - **publish_time_desc**: sorts by stream ingest time in descending order.
+        # - **publish_time_asc** (default): sorts by stream ingest time in ascending order.
         self.order_by = order_by
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 3000**. Default value: **2000**.
+        # The page size. Valid values: **1 to 3000**. Default value: **2000**.
         self.page_size = page_size
-        # The mode in which stream names are matched. Valid values:
-        # 
-        # *   **fuzzy** (default): fuzzy match
-        # *   **strict**: exact match
+        # Specifies whether to use fuzzy match for the stream name. Valid values:
+        # - **fuzzy** (default): fuzzy match.
+        # - **strict**: exact match.
         self.query_type = query_type
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query.
+        # The start time of stream ingest.
         # 
-        # Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The name of the live stream.
+        # The stream name. You can view StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.stream_name = stream_name
-        # The type of the streams to query. Valid values:
+        # The stream type. Valid values:
         # 
-        # *   An empty value****: source streams
-        # *   **all**: all streams
-        # *   **trans**: transcoded streams
+        # - **Not specified**: queries raw streams.
+        # - **all**: queries all streams.
+        # - **trans**: queries transcoded streams.
         self.stream_type = stream_type
 
     def validate(self):

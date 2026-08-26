@@ -18,35 +18,41 @@ class DescribeLiveStreamsOnlineListRequest(DaraModel):
         stream_name: str = None,
         stream_type: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the application to which the stream belongs. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streaming domain of the streamer.
+        # > - When you specify DomainName, make sure that the domain name is a live streaming domain name and that you have the permissions to manage the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether to return only specific parameters. Valid values:
+        # Specifies whether to return only specified fields. Valid values:  
         # 
-        # *   **yes**: returns only the DomainName, AppName, StreamName, and PublishTime parameters.
-        # *   **no**: returns all parameters. This is the default value.
+        # - **yes**: Only the DomainName, AppName, StreamName, and PublishTime fields are returned.  
+        # 
+        # - **no** (default): All fields are returned.
         self.only_stream = only_stream
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Valid values: 1 to 3000. Default value: 2000.
         self.page_size = page_size
-        # The mode in which stream names are matched. Valid values:
+        # Specifies whether to use fuzzy match for the stream name. Valid values:
         # 
-        # *   **fuzzy** (default): fuzzy match
-        # *   **strict**: exact match
+        # - **fuzzy** (default): fuzzy match.
+        # 
+        # - **strict**: exact match.
         self.query_type = query_type
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. You can specify only one live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The stream name. Only a single StreamName can be specified. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.stream_name = stream_name
-        # The type of the streams to query. Valid values:
+        # The stream type. Valid values:  
         # 
-        # *   **all** (default): all streams
-        # *   **raw**: source streams
-        # *   **trans**: transcoded streams
+        # - **all** (default): all streams.
+        #   
+        # - **raw**: raw streams.
+        #   
+        # - **trans**: transcoded streams.
         self.stream_type = stream_type
 
     def validate(self):

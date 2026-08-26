@@ -14,31 +14,33 @@ class AddPlaylistItemsRequest(DaraModel):
         program_items: str = None,
         region_id: str = None,
     ):
-        # The ID of the production studio.
+        # The production studio ID.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster operation](https://help.aliyun.com/document_detail/2848009.html), check the CasterId parameter value returned by the CreateCaster operation.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you created the production studio in the ApsaraVideo Live console, navigate to **ApsaraVideo Live console** > **Production Studios** > **Cloud Production Studio** to view the production studio name.
         # 
-        # The production studio must use the following configurations:
+        # > The production studio name in the production studio list on the Cloud Production Studio page of the ApsaraVideo Live console is the production studio ID.
         # 
-        # *   **NormType**: 3****. You need to call the **CreateCaster** operation to create a production studio for lightweight carousel playback in advance.
-        # *   **CasterTemplate**: lp_noTranscode.
-        # *   **channelEnable**: 0.
-        # *   **programEffect**: 1.
+        # 
+        # The production studio must meet the following configurations:
+        # - **NormType**: **3**. Create a lightweight carousel production studio in advance. You can call the **CreateCaster** operation to create a production studio.
+        # - **CasterTemplate**: lp_noTranscode.
+        # - **channelEnable**: 0.
+        # - **programEffect**: 1.
         # 
         # This parameter is required.
         self.caster_id = caster_id
         self.owner_id = owner_id
-        # The configurations of the episode list. If the episode list is added to the production studio for the first time, specify this parameter to pass in the initial configurations. For more information, see the **ProgramConfig** section of this topic.
+        # The playlist item configuration. If this is the first time you add a playlist item, specify this parameter for initialization. For more information, see **ProgramConfig**.
         self.program_config = program_config
-        # The ID of the episode list. If you do not specify this parameter, an episode list is created by default.
+        # The playlist ID. If the production studio already has a playlist, you must specify the corresponding ProgramId. If no playlist has been created, you can leave this parameter empty, and the system performs automatic creation.
         self.program_id = program_id
-        # The episodes that you want to add to the production studio. The value is a JSON string. For more information, see the **InputProgramItem** section of this topic.
+        # The list of playlist item inputs. The value is a JSON string. For more information, see **InputProgramItem**.
         # 
         # This parameter is required.
         self.program_items = program_items
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

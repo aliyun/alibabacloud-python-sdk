@@ -12,11 +12,12 @@ class GetEdgeTranscodeTemplateRequest(DaraModel):
         region_id: str = None,
         template_id: str = None,
     ):
-        # The ID of the data center.
+        # The data center ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         # The template ID.
         # 

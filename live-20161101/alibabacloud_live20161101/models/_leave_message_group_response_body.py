@@ -11,9 +11,9 @@ class LeaveMessageGroupResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.LeaveMessageGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -49,10 +49,10 @@ class LeaveMessageGroupResponseBodyResult(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the user left the message group. Valid values:
+        # Indicates whether the user successfully left the message group. Valid values:
         # 
-        # *   true: The user left the message group.
-        # *   false: The user failed to leave the message group.
+        # - true: Successful.
+        # - false: Unsuccessful.
         self.success = success
 
     def validate(self):

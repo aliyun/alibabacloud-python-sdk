@@ -16,11 +16,12 @@ class SetLiveDomainStagingConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The list of features. You must specify the ConfigId field when you want to modify the configurations. For more information, see **Features specified by the Functions parameter**.
+        # The list of features. Specify ConfigId only when you modify a configuration. For more information, see **Functions format description**.
         # 
         # This parameter is required.
         self.functions = functions
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

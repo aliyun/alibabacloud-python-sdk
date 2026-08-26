@@ -14,11 +14,11 @@ class AddShowIntoShowListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the episode.
+        # The show ID.
         self.show_id = show_id
-        # The list of resources that failed to be added and the reason for failure.
+        # The list of resources that failed to be added and the failure reasons.
         self.failed_list = failed_list
-        # The IDs of the episodes that were added.
+        # The list of show IDs that were successfully added.
         self.successful_show_ids = successful_show_ids
 
     def validate(self):

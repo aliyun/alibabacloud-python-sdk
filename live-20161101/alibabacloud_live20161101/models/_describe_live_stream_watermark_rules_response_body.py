@@ -17,7 +17,7 @@ class DescribeLiveStreamWatermarkRulesResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.rule_info_list = rule_info_list
-        # The total number of entries that meet the specified conditions.
+        # The total number of matching entries.
         self.total = total
 
     def validate(self):

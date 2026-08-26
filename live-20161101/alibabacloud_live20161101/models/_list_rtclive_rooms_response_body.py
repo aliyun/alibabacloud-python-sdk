@@ -15,7 +15,9 @@ class ListRTCLiveRoomsResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The list of active channels.
         self.rooms = rooms
+        # The total number of query results.
         self.total = total
 
     def validate(self):

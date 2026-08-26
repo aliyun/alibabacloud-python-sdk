@@ -16,15 +16,15 @@ class ListLiveMessageGroupUsersResponseBody(DaraModel):
         request_id: str = None,
         user_list: List[main_models.ListLiveMessageGroupUsersResponseBodyUserList] = None,
     ):
-        # The ID of the group queried.
+        # The group ID of the group to query.
         self.group_id = group_id
-        # Indicates whether the current page is followed by another page.
+        # Indicates whether there is a next page.
         self.hasmore = hasmore
-        # The starting page number for the next query. A value of 0 indicates that no further pages can be queried.
+        # The start position of the next page. A value of 0 indicates that there is no next page.
         self.next_page_token = next_page_token
         # The request ID.
         self.request_id = request_id
-        # Details about the users.
+        # The array of objects.
         self.user_list = user_list
 
     def validate(self):
@@ -85,9 +85,9 @@ class ListLiveMessageGroupUsersResponseBodyUserList(DaraModel):
         user_id: str = None,
         user_info: str = None,
     ):
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
-        # The additional information about the user.
+        # The extended information of the user.
         self.user_info = user_info
 
     def validate(self):

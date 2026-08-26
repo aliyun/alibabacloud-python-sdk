@@ -17,16 +17,16 @@ class DescribeLiveDomainPvUvDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The time interval between the entries returned. Unit: seconds. Default value: 3600.
+        # The time interval for each record. Unit: seconds. The value is fixed at 3600.
         self.data_interval = data_interval
         # The streaming domain.
         self.domain_name = domain_name
-        # The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ* format. The time is displayed in UTC.
+        # The end time. The format is *yyyy-MM-dd*T*HH:mm:ssZ* (UTC).
         self.end_time = end_time
         self.pv_uv_data_infos = pv_uv_data_infos
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ* format. The time is displayed in UTC.
+        # The start time. The format is *yyyy-MM-dd*T*HH:mm:ssZ* (UTC).
         self.start_time = start_time
 
     def validate(self):

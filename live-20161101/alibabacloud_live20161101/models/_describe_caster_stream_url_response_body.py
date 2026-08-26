@@ -20,7 +20,7 @@ class DescribeCasterStreamUrlResponseBody(DaraModel):
         self.caster_streams = caster_streams
         # The ID of the request.
         self.request_id = request_id
-        # The number of streams that were returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):

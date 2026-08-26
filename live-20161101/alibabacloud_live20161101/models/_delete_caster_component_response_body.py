@@ -11,9 +11,9 @@ class DeleteCasterComponentResponseBody(DaraModel):
         component_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the production studio. You can use the ID as a request parameter in the API operation that is called to query the components in the production studio, add an episode list to the production studio, or modify a component in the production studio.
+        # The ID of the production studio. This ID can be used in subsequent API calls to query the component list, add a program, or modify a component of the production studio.
         self.caster_id = caster_id
-        # The component ID. You can use the ID as a request parameter in the API operation that is called to query the component in the production studio or modify the component in the production studio.
+        # The component ID. This ID can be used in subsequent API calls to query or modify the component.
         self.component_id = component_id
         # The request ID.
         self.request_id = request_id

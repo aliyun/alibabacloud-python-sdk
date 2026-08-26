@@ -17,8 +17,9 @@ class DescribeLiveStreamAuthCheckingRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The complete ingest URL or streaming URL. You can use the [URL generator](https://help.aliyun.com/document_detail/197400.html) to generate a URL.
+        # The complete ingest or streaming URL. You can use the [URL generator](https://help.aliyun.com/document_detail/197400.html) to generate a URL.
         # 
         # This parameter is required.
         self.url = url

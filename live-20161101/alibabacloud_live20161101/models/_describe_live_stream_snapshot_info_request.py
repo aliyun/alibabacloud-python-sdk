@@ -17,32 +17,33 @@ class DescribeLiveStreamSnapshotInfoRequest(DaraModel):
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streaming domain of the streamer.
+        # > - When you specify DomainName, make sure that the domain name is a live streaming domain name and that the user who calls this operation has the permissions to operate on the specified domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. The time range specified by the EndTime and StartTime parameters cannot exceed **one** day. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. The interval between EndTime and StartTime cannot exceed **1** day. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The number of snapshots to return per call. Valid values: **1 to 100**. Default value: **10**.
+        # The number of entries to return in a single call. Valid values: **1 to 100**. Default value: **10**.
         self.limit = limit
         # The sort order. Valid values:
         # 
-        # *   **asc** (default): ascending order
-        # *   **desc**: descending order
+        # - **asc** (default): ascending order.
+        # - **desc**: descending order.
         self.order = order
         self.owner_id = owner_id
         self.security_token = security_token
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The name of the live stream.
+        # The name of the stream. Make sure that the specified stream name exists within the query time range.
         # 
         # This parameter is required.
         self.stream_name = stream_name

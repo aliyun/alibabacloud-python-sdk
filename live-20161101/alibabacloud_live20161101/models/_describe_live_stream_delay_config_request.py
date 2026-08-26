@@ -11,11 +11,12 @@ class DescribeLiveStreamDelayConfigRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The streaming domain.
+        # The playback domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

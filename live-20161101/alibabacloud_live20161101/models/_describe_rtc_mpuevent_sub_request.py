@@ -9,9 +9,11 @@ class DescribeRtcMPUEventSubRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of your application.
+        # The ID of the subscribed application. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > ApsaraVideo Real-time Communication > Application Management**.
         # 
-        # > The ID can be up to 64 characters in length and can contain letters, digits, underscores, and hyphens (-).
+        # > 
+        # > - The application ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
+        # > - You must first call CreateRtcMPUEventSub to create a stream mixing and forwarding event subscription for this application ID.
         # 
         # This parameter is required.
         self.app_id = app_id

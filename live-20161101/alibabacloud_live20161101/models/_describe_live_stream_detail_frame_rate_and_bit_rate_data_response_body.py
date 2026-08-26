@@ -13,7 +13,7 @@ class DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBody(DaraModel):
         frame_rate_and_bit_rate_infos: List[main_models.DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos] = None,
         request_id: str = None,
     ):
-        # The audio and video frame rates and bitrates at each time granularity.
+        # The detailed audio and video frame rate and bitrate data for each time interval.
         self.frame_rate_and_bit_rate_infos = frame_rate_and_bit_rate_infos
         # The request ID.
         self.request_id = request_id
@@ -63,19 +63,19 @@ class DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBodyFrameRateAndBit
         video_bit_rate: float = None,
         video_frame_rate: float = None,
     ):
-        # The audio bitrate of the live stream. Unit: bit/s.
+        # The audio bitrate of the live stream. Unit: Bps.
         self.audio_bit_rate = audio_bit_rate
         # The audio frame rate of the live stream. Unit: FPS.
         self.audio_frame_rate = audio_frame_rate
-        # The bitrate of the live stream. Unit: bit/s.
+        # The bitrate of the live stream. Unit: Bps.
         self.bit_rate = bit_rate
         # The URL of the live stream.
         self.stream_url = stream_url
-        # The time when the data was collected. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The statistical time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC+8).
         self.time = time
-        # The video bitrate of the live stream. Unit: bit/s.
+        # The video bitrate of the live stream. Unit: Bps.
         self.video_bit_rate = video_bit_rate
-        # The video frame rate of the live stream. Unit: frames per second (FPS).
+        # The video frame rate of the live stream. Unit: FPS.
         self.video_frame_rate = video_frame_rate
 
     def validate(self):

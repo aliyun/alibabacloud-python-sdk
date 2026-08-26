@@ -19,18 +19,19 @@ class DescribeLiveEdgeTransferResponseBody(DaraModel):
         self.app_name = app_name
         # The ingest domain.
         self.domain_name = domain_name
-        # The HTTPDNS API that is used to obtain the destination URLs.
+        # The URL of the HTTPDNS service used to resolve the addresses of the target domains.
         self.http_dns = http_dns
         # The request ID.
         self.request_id = request_id
-        # The name of the ingested stream.
+        # The name of the ingested live stream.
         self.stream_name = stream_name
-        # The destination domain names to which the ingested stream is relayed. Multiple domain names are separated by commas (,).
+        # A comma-separated list of the target domains where the stream is forwarded.
         self.target_domain_list = target_domain_list
-        # Indicates whether stream ingest parameters are passed through. Valid values:
+        # Indicates whether the query parameters from the original ingest URL are passed through to the target URL.
         # 
-        # *   **yes**: Stream ingest parameters are passed through.
-        # *   **no**: Stream ingest parameters are not passed through.
+        # - **yes**: The parameters are passed through.
+        # 
+        # - **no**: The parameters are not passed through.
         self.transfer_args = transfer_args
 
     def validate(self):

@@ -13,7 +13,7 @@ class DeleteLiveStreamTranscodeRequest(DaraModel):
         security_token: str = None,
         template: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         # 
         # This parameter is required.
         self.app = app
@@ -25,21 +25,27 @@ class DeleteLiveStreamTranscodeRequest(DaraModel):
         self.security_token = security_token
         # The transcoding template ID. Valid values:
         # 
-        # *   Standard transcoding:
+        # - Standard transcoding:
         # 
-        #     *   lld: low definition
-        #     *   lsd: standard definition
-        #     *   lhd: high definition
-        #     *   lud : ultra-high definition
+        #   - lld: low definition
         # 
-        # *   Narrowband HD™ transcoding:
+        #   - lsd: standard definition
         # 
-        #     *   ld: low definition
-        #     *   sd: standard definition
-        #     *   hd: high definition
-        #     *   ud: ultra-high definition
+        #   - lhd: high definition
         # 
-        # *   Custom transcoding: a custom ID
+        #   - lud : ultra-high definition
+        # 
+        # - Narrowband HD™ transcoding:
+        # 
+        #   - ld: low definition
+        # 
+        #   - sd: standard definition
+        # 
+        #   - hd: high definition
+        # 
+        #   - ud: ultra-high definition
+        # 
+        # - Custom transcoding: a custom ID
         # 
         # This parameter is required.
         self.template = template

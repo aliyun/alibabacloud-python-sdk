@@ -11,9 +11,14 @@ class UpdateRtcCloudRecordingShrinkRequest(DaraModel):
         subscribe_params_shrink: str = None,
         task_id: str = None,
     ):
+        # The updated layout parameters. Leave this parameter empty in single-stream recording mode. This parameter is required in stream mixing recording mode when the transcoding output is not audio-only.
         self.mix_layout_params_shrink = mix_layout_params_shrink
+        # The updated subscription parameters.
+        # 
         # This parameter is required.
         self.subscribe_params_shrink = subscribe_params_shrink
+        # The task ID. This ID is returned by StartRtcCloudRecording. Only tasks in the running or abnormal state can be updated.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

@@ -13,9 +13,9 @@ class ListMessageGroupUserByIdResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListMessageGroupUserByIdResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned results.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -53,14 +53,15 @@ class ListMessageGroupUserByIdResponseBodyResult(DaraModel):
         total: int = None,
         user_list: List[main_models.ListMessageGroupUserByIdResponseBodyResultUserList] = None,
     ):
-        # Indicates whether the current page is followed by another page. Valid values:
+        # Indicates whether there is a next page. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: There is a next page.
+        # 
+        # - false: There is no next page.
         self.has_more = has_more
-        # The total number of users returned.
+        # Total number of users queried.
         self.total = total
-        # The list of users.
+        # User list information.
         self.user_list = user_list
 
     def validate(self):
@@ -115,21 +116,23 @@ class ListMessageGroupUserByIdResponseBodyResultUserList(DaraModel):
     ):
         # Indicates whether the user is muted. Valid values:
         # 
-        # *   true: The user is muted.
-        # *   false: The user is not muted.
-        self.is_mute = is_mute
-        # The type of the mute. Valid values:
+        # - true: Muted.
         # 
-        # *   group: All members in the message group are muted.
-        # *   user: Specific members in the message group are muted.
+        # - false: Not muted.
+        self.is_mute = is_mute
+        # Mute type. Valid values:
+        # 
+        # - group: All members in the message group are muted.
+        # 
+        # - user: Individual user is muted.
         self.mute_by = mute_by
-        # The URL of the profile picture of the user.
+        # Profile picture URL.
         self.user_avatar = user_avatar
-        # The custom information about the user.
+        # Custom user information content.
         self.user_extension = user_extension
-        # The ID of the user.
+        # User ID.
         self.user_id = user_id
-        # The nickname of the user.
+        # User nickname.
         self.user_nick = user_nick
 
     def validate(self):

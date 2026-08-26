@@ -13,9 +13,9 @@ class QueryMessageAppResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.QueryMessageAppResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -59,14 +59,14 @@ class QueryMessageAppResponseBodyResult(DaraModel):
         has_more: bool = None,
         total_count: int = None,
     ):
-        # Details about the interactive messaging applications.
+        # Interactive Messages application list.
         self.app_list = app_list
-        # Indicates whether the current page is followed by another page. Valid values:
+        # Indicates whether there is a next page. Valid values:
         # 
-        # *   true: The current page is followed by another page.
-        # *   false: The current page is not followed by another page.
+        # - true: There is a next page.
+        # - false: There is no next page.
         self.has_more = has_more
-        # The total number of applications returned.
+        # Total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -119,17 +119,17 @@ class QueryMessageAppResponseBodyResultAppList(DaraModel):
         extension: Dict[str, str] = None,
         status: int = None,
     ):
-        # The configurations of the application.
+        # Application configuration.
         self.app_config = app_config
-        # The ID of the interactive messaging application.
+        # Interactive Messages application ID.
         self.app_id = app_id
-        # The name of the interactive messaging application.
+        # Interactive Messages application name.
         self.app_name = app_name
-        # The time when the interactive messaging application was created. The time is displayed in UTC.
+        # UTC timestamp when the application was created.
         self.create_time = create_time
-        # The extended field.
+        # Extension field.
         self.extension = extension
-        # The status of the interactive message application. A value of **1** indicates that the application is normal.
+        # Interactive Messages application status. A value of **1** indicates that the application status is Normal.
         self.status = status
 
     def validate(self):

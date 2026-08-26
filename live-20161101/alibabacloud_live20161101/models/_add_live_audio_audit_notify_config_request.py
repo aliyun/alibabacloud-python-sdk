@@ -13,21 +13,26 @@ class AddLiveAudioAuditNotifyConfigRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The callback URL. This URL is used to receive callback notifications about violations in audio.
+        # The URL used to receive callbacks for audio that contains problematic content.
         self.callback = callback
-        # The callback template. Valid values:
+        # The callback template for automated reviews. The value is a JSON string that can contain the following variables:
         # 
-        # *   **{DomainName}**: the streaming domain.
-        # *   **{AppName}**: the name of the application to which the live stream belongs.
-        # *   **{StreamName}**: the name of the live stream.
-        # *   **{Timestamp}**: the time when the callback is returned. The value of this field is a UNIX timestamp. Unit: seconds.
-        # *   **{Result}**: the moderation results.
+        # - **{DomainName}**: The streaming domain.
+        # 
+        # - **{AppName}**: The AppName of the live stream.
+        # 
+        # - **{StreamName}**: The stream name.
+        # 
+        # - **{Timestamp}**: The UNIX timestamp of the callback. Unit: seconds.
+        # 
+        # - **{Result}**: The review result.
         self.callback_template = callback_template
         # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

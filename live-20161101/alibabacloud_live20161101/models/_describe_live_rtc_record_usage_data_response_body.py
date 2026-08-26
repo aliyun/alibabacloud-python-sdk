@@ -20,15 +20,27 @@ class DescribeLiveRtcRecordUsageDataResponseBody(DaraModel):
         v_480summary_duration: float = None,
         v_720summary_duration: float = None,
     ):
+        # The ID of the ApsaraVideo Real-time Communication application that was queried.
         self.app_id = app_id
+        # The audio-only summary duration. Unit: seconds.
         self.audio_summary_duration = audio_summary_duration
+        # The usage statistics information.
         self.data = data
+        # The recording mode. Valid values:
+        # 
+        # - 0: single-stream recording mode.
+        # 
+        # - 1: stream mixing recording mode.
         self.record_mode = record_mode
         # Id of the request
         self.request_id = request_id
+        # The total summary duration. Unit: seconds.
         self.total_summary_duration = total_summary_duration
+        # The summary duration of video above 720p (including 1080p). Unit: seconds.
         self.v_1080summary_duration = v_1080summary_duration
+        # The summary duration of video at 480p or lower. Unit: seconds.
         self.v_480summary_duration = v_480summary_duration
+        # The summary duration of video at 720p or lower. Unit: seconds.
         self.v_720summary_duration = v_720summary_duration
 
     def validate(self):
@@ -117,11 +129,17 @@ class DescribeLiveRtcRecordUsageDataResponseBodyData(DaraModel):
         v_480duration: float = None,
         v_720duration: float = None,
     ):
+        # The audio-only duration. Unit: seconds.
         self.audio_duration = audio_duration
+        # The timestamp of the data point. Format: yyyy-MM-ddTHH:mm:ssZ (UTC time).
         self.timestamp = timestamp
+        # The total duration. Unit: seconds.
         self.total_duration = total_duration
+        # The duration of video above 720p. Unit: seconds.
         self.v_1080duration = v_1080duration
+        # The duration of video at 480p or lower. Unit: seconds.
         self.v_480duration = v_480duration
+        # The duration of video at 720p or lower. Unit: seconds.
         self.v_720duration = v_720duration
 
     def validate(self):

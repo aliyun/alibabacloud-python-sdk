@@ -13,11 +13,12 @@ class StopLiveStreamMonitorRequest(DaraModel):
     ):
         # The ID of the monitoring session.
         # 
-        # >  You can obtain the monitoring session ID**** from the response of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
+        # > Check the response of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation to obtain the **MonitorId**.
         # 
         # This parameter is required.
         self.monitor_id = monitor_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

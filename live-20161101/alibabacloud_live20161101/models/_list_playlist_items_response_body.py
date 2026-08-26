@@ -14,11 +14,11 @@ class ListPlaylistItemsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The episodes.
+        # The list of playlist items.
         self.program_items = program_items
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of episodes.
+        # The number of playlist items.
         self.total = total
 
     def validate(self):
@@ -71,17 +71,17 @@ class ListPlaylistItemsResponseBodyProgramItems(DaraModel):
         resource_type: str = None,
         resource_value: str = None,
     ):
-        # The sequence number of the episode in the query result.
+        # The orchestration index.
         self.index = index
-        # The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to edit the episode list, delete the episode list, query the information about the episode list, start the episode list, or stop the episode list.
+        # The ID of the playlist. You can use this ID as a request parameter when you edit, delete, query, start, or stop the playlist.
         self.program_id = program_id
-        # The ID of the episode.
+        # The ID of the playlist item.
         self.program_item_id = program_item_id
-        # The name of the episode.
+        # The name of the playlist item.
         self.program_item_name = program_item_name
-        # The resource type.
+        # The type of the resource.
         self.resource_type = resource_type
-        # The resource ID.
+        # The ID of the resource.
         self.resource_value = resource_value
 
     def validate(self):

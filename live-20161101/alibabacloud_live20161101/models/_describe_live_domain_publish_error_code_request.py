@@ -14,21 +14,22 @@ class DescribeLiveDomainPublishErrorCodeRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The application name. The data is aggregated based on the application. If you specify this parameter, the DomainName parameter is required.
+        # Filters and aggregates data by AppName. If you specify AppName, you must set DomainName to a specific ingest domain.
         self.app_name = app_name
-        # The ingest domain. If you want to specify multiple ingest domains, separate them with commas (,).
+        # The ingest domain. You can specify multiple ingest domains. Separate multiple domain names with commas (,).
         # 
-        # >  This parameter is required.
+        # > This parameter is required.
         self.domain_name = domain_name
-        # The end time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         # 
-        # >  If you do not configure StartTime, the data within the previous hour is queried.
+        # > If you do not set this parameter, data from the last hour is queried by default.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         # 
-        # >  If you do not configure StartTime, the data within the previous hour is queried.
+        # > If you do not set this parameter, data from the last hour is queried by default.
         self.start_time = start_time
 
     def validate(self):

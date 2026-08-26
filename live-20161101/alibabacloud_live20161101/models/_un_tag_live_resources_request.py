@@ -16,13 +16,25 @@ class UnTagLiveResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to delete all tags. Valid values:
+        # 
+        # - **true**: Yes.
+        # - **false**: No.
+        # 
+        # Default value: **false**.
         self.all = all
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The resource ID. The live streaming domain name. Valid values of N: 1 to 50.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Enumeration type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag key. Valid values of N: **1 to 20**.
         self.tag_key = tag_key
 
     def validate(self):

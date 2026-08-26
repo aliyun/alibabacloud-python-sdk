@@ -10,9 +10,9 @@ class StartEdgeTranscodeJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the edge transcoding task.
+        # The ID of the edge transcoding job.
         self.job_id = job_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

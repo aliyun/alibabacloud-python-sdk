@@ -14,11 +14,11 @@ class StartPlaylistResponseBody(DaraModel):
         request_id: str = None,
         stream_info: main_models.StartPlaylistResponseBodyStreamInfo = None,
     ):
-        # The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to stop playing the episode list.
+        # The ID of the playlist. You can use this ID as a request parameter to stop the playlist.
         self.program_id = program_id
         # The request ID.
         self.request_id = request_id
-        # The information about the live stream.
+        # The information about the stream.
         self.stream_info = stream_info
 
     def validate(self):
@@ -63,11 +63,11 @@ class StartPlaylistResponseBodyStreamInfo(DaraModel):
         stream_name: str = None,
         streams: main_models.StartPlaylistResponseBodyStreamInfoStreams = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streaming domain.
         self.domain_name = domain_name
-        # The name of the live stream.
+        # The stream name.
         self.stream_name = stream_name
         self.streams = streams
 

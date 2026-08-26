@@ -28,121 +28,124 @@ class UpdateRtsLiveStreamTranscodeRequest(DaraModel):
         video_bitrate: int = None,
         width: int = None,
     ):
-        # The name of the application to which the live stream belongs, which cannot be modified.
+        # The AppName of the live stream. This parameter cannot be modified.
         # 
         # This parameter is required.
         self.app = app
-        # The bitrate of the output audio. Unit: Kbit/s. Valid values: 1 to 1000.
+        # The output audio bitrate. Unit: kbps. Valid values: 1 to **1000**.
         # 
-        # >  This parameter is required if you set the TemplateType parameter to audio.
+        # > Required if you set TemplateType to audio.
         self.audio_bitrate = audio_bitrate
-        # The number of sound channels. Valid values:
+        # The number of audio channels. Valid values:
         # 
-        # *   **1**: mono
-        # *   **2**: stereo
+        # - **1**: mono.
+        # 
+        # - **2**: stereo.
         self.audio_channel_num = audio_channel_num
-        # The audio encoder. Valid values:
+        # The audio codec. Valid values:
         # 
-        # *   aac
-        # *   mp3
+        # - aac
         # 
-        # >  To use the Opus encoder, you need only to set the Opus parameter to true.
+        # - mp3
+        # 
+        # > To use the Opus codec, set the Opus parameter to true.
         self.audio_codec = audio_codec
         # The audio codec profile. Valid values:
         # 
-        # *   aac_low
-        # *   aac_he
-        # *   aac_he_v2
-        # *   aac_ld
+        # - aac_low
+        # 
+        # - aac_he
+        # 
+        # - aac_he_v2
+        # 
+        # - aac_ld
         self.audio_profile = audio_profile
-        # The audio sampling rate. Valid values: 22050, 32000, 44100, 48000, and 96000. 44100 is commonly used. Unit: Hz.
+        # The audio sample rate. Valid values: 22050, 32000, 44100, 48000, 96000. Recommended: 44100. Unit: Hz.
         # 
-        # >  If the value of the AudioProfile parameter is aac_ld, the audio sampling rate cannot exceed 44,100.
+        # > If AudioProfile is set to aac_ld, the sample rate cannot exceed 44100.
         self.audio_rate = audio_rate
-        # Specifies whether to remove B frames during transcoding. Valid values:
+        # Controls whether to remove B-frames from the transcoded output video. Valid values:
         # 
-        # *   true: Remove B frames.
-        # *   false (default): Retain B frames.
+        # - **true**: The transcoded video has no B-frames.
         # 
-        # > 
+        # - **false**: The transcoded video contains B-frames. This is the default value.
         # 
-        # *   This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
-        # 
-        # *   If this parameter is not specified, the default value false is used.
+        # > Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
         self.delete_bframes = delete_bframes
-        # The main streaming domain, which cannot be modified.
+        # The streaming domain. This parameter cannot be modified.
         # 
         # This parameter is required.
         self.domain = domain
-        # The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to 60.
+        # The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to **60**.
         # 
-        # >  This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
+        # > Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
         self.fps = fps
-        # The group of pictures (GOP) of the output video. This parameter is used to specify the keyframe interval. Unit: seconds. Valid values: 1 to 3.
+        # The Group of Pictures (GOP) size, which specifies the keyframe interval. Unit: seconds. Valid values: **1** to **3**.
         self.gop = gop
-        # The height of the output video. Unit: pixel.
+        # Output video height in pixels.
         # 
-        # The value must comply with the following rules:
+        # Requirements:
         # 
-        # *   Height ≥ 100: The height of the video is at least 100 pixels.
-        # *   max(Height,Width) ≤ 2560: The larger of the width and height of the video cannot exceed 2,560 pixels.
-        # *   min(Height,Width) ≤ 1440: The smaller of the width and height of the video cannot exceed 1,440 pixels. For example, a resolution of 1560 × 1560 pixels is invalid.
+        # - Height ≥ 100
         # 
-        # > 
+        # - max(Height, Width) ≤ 2560
         # 
-        # *   This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
+        # - min(Height, Width) ≤ 1440
         # 
-        # *   If the TemplateType parameter is set to h264-origin, the highest resolution supported is 4K.
+        # > * Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
+        # >
+        # > * For h264-origin templates, the resolution can be up to 4K to retain the information of the source stream.
         self.height = height
-        # Specifies whether to enable triggered transcoding. Valid values:
+        # Specifies whether to enable on-demand transcoding. Valid values:
         # 
-        # *   **yes**: enables triggered transcoding.
-        # *   **no**: disables triggered transcoding.
+        # - **yes**: Transcoding only starts when the first viewer requests this transcoded stream.
+        # 
+        # - **no**: Transcoding starts immediately after the stream is published.
         self.lazy = lazy
-        # Specifies whether to transcode streams to the Opus format to be compatible with native WebRTC. Valid values:
+        # Specifies whether to use the Opus codec for audio transcoding. This is mainly for compatibility with native WebRTC. Valid values:
         # 
-        # *   true: Transcode streams to the Opus format.
-        # *   false: Do not transcode streams to the Opus format.
+        # - **true**: Transcodes the audio to the Opus format.
         # 
-        # >  If this parameter is not specified, the default value false is used.
+        # - **false**: Does not use the Opus format for transcoding. This is the default value.
         self.opus = opus
         self.owner_id = owner_id
-        # The video encoding profile. The profile defines a set of parameters that are used to encode a video. In most cases, a greater value indicates better image quality and higher resource consumption. Valid values:
+        # The video codec profile. A larger value indicates better video quality and higher resource consumption for encoding and decoding. Valid values:
         # 
-        # *   **1**: baseline. This value is suitable for mobile devices.
-        # *   **2**: main. This value is suitable for standard-definition devices.
-        # *   **3**: high. This value is suitable for high-definition devices.
+        # - **1**: baseline (for mobile devices).
+        # 
+        # - **2**: main (for SD devices).
+        # 
+        # - **3**: high (for HD devices).
         self.profile = profile
+        # The region ID.
         self.region_id = region_id
-        # The ID of the custom transcoding template, which cannot be modified.
+        # The name of the custom transcoding template. This parameter cannot be modified.
         # 
         # This parameter is required.
         self.template = template
-        # The type of the custom transcoding template, which cannot be modified.
+        # The type of the custom transcoding template. This parameter cannot be modified.
         # 
         # This parameter is required.
         self.template_type = template_type
-        # The bitrate of the output video. Unit: Kbit/s. Valid values: 1 to 6000.
+        # The output video bitrate. Unit: kbps. Valid values: 1 to **6000**.
         # 
-        # > 
-        # 
-        # *   This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
-        # 
-        # *   The bitrate of the output video is as close to the value that you specify as possible, but not the same as the value, especially when the value is excessively large or small.
+        # > - Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
+        # >
+        # > - The system tries to transcode the video at the specified bitrate. However, the actual bitrate may not be the same as the specified value, especially when the specified value is too high or too low.
         self.video_bitrate = video_bitrate
-        # The width of the output video. Unit: pixel.
+        # Output video width in pixels.
         # 
-        # The value must comply with the following rules:
+        # Requirements:
         # 
-        # *   Width ≥ 100: The width of the video is at least 100 pixels.
-        # *   max(Height,Width) ≤ 2560: The larger of the width and height of the video cannot exceed 2,560 pixels.
-        # *   min(Height,Width) ≤ 1440: The smaller of the width and height of the video cannot exceed 1,440 pixels. For example, a resolution of 1560 × 1560 pixels is invalid.
+        # - Width ≥ 100
         # 
-        # > 
+        # - max(Height, Width) ≤ 2560
         # 
-        # *   This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
+        # - min(Height, Width) ≤ 1440
         # 
-        # *   If the TemplateType parameter is set to h264-origin, the highest resolution supported is 4K.
+        # > Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
+        # 
+        # For h264-origin templates, the resolution can be up to 4K to retain the information of the source stream.
         self.width = width
 
     def validate(self):

@@ -15,13 +15,13 @@ class ListLiveMessageAppsResponseBody(DaraModel):
         next_page_token: int = None,
         request_id: str = None,
     ):
-        # The interactive messaging applications.
+        # The list of interactive messaging applications.
         self.app_list = app_list
-        # Indicates whether the current page is followed by a page.
+        # Indicates whether there is a next page.
         self.has_more = has_more
-        # The starting page number for the next query. This parameter is returned only if the value of HasMore is true.
+        # The starting position of the next page. This parameter is returned only when HasMore is set to true.
         self.next_page_token = next_page_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,27 +83,27 @@ class ListLiveMessageAppsResponseBodyAppList(DaraModel):
         modify_time: int = None,
         msg_life_cycle: int = None,
     ):
-        # The ID of the interactive messaging application queried.
+        # The ID of the interactive messaging application.
         self.app_id = app_id
-        # The AppKey of the interactive messaging application. It is used to authorize operations related to the application ID.
+        # The AppKey of the interactive messaging application. This value is required for authentication of related operations on this application.
         self.app_key = app_key
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The signature of the interactive messaging application. It is required by the interactive messaging SDK.
+        # The signature of the interactive messaging application. This value is required by the interactive messaging SDK.
         self.app_sign = app_sign
-        # The time when the application was created. The value is a UNIX timestamp. Unit: seconds.
+        # The creation time, represented as a UNIX timestamp. Unit: seconds.
         self.create_time = create_time
-        # The live center.
+        # The data center.
         self.data_center = data_center
         # Indicates whether the interactive messaging application is disabled.
         self.disable = disable
-        # The time when the application was last modified. The value is a UNIX timestamp. Unit: seconds.
+        # The modification time, represented as a UNIX timestamp. Unit: seconds.
         self.modify_time = modify_time
-        # The retention period of group messages in the application. Valid values:
+        # The storage duration tier for group messages within the application. Valid values:
         # 
-        # *   0 (default): 30 days
-        # *   1: 90 days
-        # *   2: 180 days
+        # - 0: Default value. Messages are stored for 30 days.
+        # - 1: Messages are stored for 90 days.
+        # - 2: Messages are stored for 180 days.
         self.msg_life_cycle = msg_life_cycle
 
     def validate(self):

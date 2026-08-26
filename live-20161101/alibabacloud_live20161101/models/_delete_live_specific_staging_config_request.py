@@ -12,7 +12,7 @@ class DeleteLiveSpecificStagingConfigRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the configuration that you want to delete. If you want to specify multiple IDs, separate them with commas (,). You can call the [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html) operation to obtain the configuration ID.
+        # The configuration ID. To specify multiple IDs, separate them with commas (,). To obtain the configuration ID, see [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/2848231.html).
         # 
         # This parameter is required.
         self.config_id = config_id

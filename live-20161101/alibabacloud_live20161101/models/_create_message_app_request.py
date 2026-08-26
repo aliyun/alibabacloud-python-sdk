@@ -13,13 +13,13 @@ class CreateMessageAppRequest(DaraModel):
         app_name: str = None,
         extension: Dict[str, str] = None,
     ):
-        # The configurations of the application.
+        # The application configuration.
         self.app_config = app_config
-        # The name of the interactive message application. The name must be 2 to 16 characters in length.
+        # The name of the interactive message application. The length must be 2 to 16 characters.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The extended fields.
+        # The extension field.
         self.extension = extension
 
     def validate(self):

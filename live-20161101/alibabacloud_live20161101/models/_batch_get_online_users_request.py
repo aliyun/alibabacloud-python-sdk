@@ -15,11 +15,11 @@ class BatchGetOnlineUsersRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the message group.
+        # The message group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The list of user IDs. Separate multiple user IDs with commas (,). You can specify a maximum of 20 user IDs.
+        # The list of user IDs. Separate multiple user IDs with commas (,). You can specify up to 20 user IDs.
         # 
         # This parameter is required.
         self.user_ids = user_ids

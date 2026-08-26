@@ -21,6 +21,7 @@ class AddLiveDomainPlayMappingRequest(DaraModel):
         # 
         # This parameter is required.
         self.pull_domain = pull_domain
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -17,15 +17,15 @@ class DescribeLiveStreamTranscodeStreamNumResponseBody(DaraModel):
         transcoded_number: int = None,
         untranscode_number: int = None,
     ):
-        # The number of streams for which transcoding is triggered by stream pulling.
+        # The number of streams that triggered transcoding.
         self.lazy_transcoded_number = lazy_transcoded_number
         # The request ID.
         self.request_id = request_id
-        # The total number of streams.
+        # The total number of transcoding streams.
         self.total = total
-        # The details about the transcoding templates.
+        # The transcoding template data.
         self.transcode_stream_count_details = transcode_stream_count_details
-        # The number of streams that are transcoded.
+        # The number of transcoded streams.
         self.transcoded_number = transcoded_number
         # The number of streams that are not transcoded.
         self.untranscode_number = untranscode_number
@@ -94,7 +94,7 @@ class DescribeLiveStreamTranscodeStreamNumResponseBodyTranscodeStreamCountDetail
         count: int = None,
         template: str = None,
     ):
-        # The number of streams that use the transcoding template.
+        # The number of streams for the transcoding template.
         self.count = count
         # The name of the transcoding template.
         self.template = template

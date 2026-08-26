@@ -12,15 +12,15 @@ class UpdateMessageAppShrinkRequest(DaraModel):
         app_name: str = None,
         extension_shrink: str = None,
     ):
-        # The configurations of the application.
+        # Application configuration.
         self.app_config_shrink = app_config_shrink
-        # The ID of the interactive messaging application.
+        # Interactive message application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The name of the interactive messaging application.
+        # Interactive message application name.
         self.app_name = app_name
-        # The extended field.
+        # Extension field.
         self.extension_shrink = extension_shrink
 
     def validate(self):

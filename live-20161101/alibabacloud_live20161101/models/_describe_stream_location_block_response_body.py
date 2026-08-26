@@ -17,16 +17,16 @@ class DescribeStreamLocationBlockResponseBody(DaraModel):
         stream_block_list: main_models.DescribeStreamLocationBlockResponseBodyStreamBlockList = None,
         total_page: int = None,
     ):
-        # The total number of entries that meet the specified conditions.
+        # The total number of entries that meet the specified criteria.
         self.count = count
         # The page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The number of entries on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.stream_block_list = stream_block_list
-        # The total number of pages.
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):

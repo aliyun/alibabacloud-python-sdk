@@ -19,45 +19,50 @@ class DescribeLiveDetectPornDataRequest(DaraModel):
         start_time: str = None,
         stream: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         self.app = app
-        # The main streaming domain to query.
+        # The streaming domain to query.
         # 
-        # *   You can query one or more domain names. If you specify multiple domain names, separate them with commas (,).
-        # *   If you do not specify this parameter, the data of all domain names within your Alibaba Cloud account is returned.
+        # - You can query one or more domain names. To query multiple domain names, separate them with commas (,).
+        # 
+        # - If you do not specify this parameter, the service returns the merged data for all streaming domains.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.end_time = end_time
-        # Specifies whether a quota of free image scanning is available. Valid values:
+        # You have a daily free quota for image scans. Valid values:
         # 
-        # *   **free**: specifies that a quota of free image scanning is available.
-        # *   **charge**: specifies that a quota of free image scanning is not available and fees are charged.
+        # - **free**
+        # 
+        # - **charge**
         self.fee = fee
         self.owner_id = owner_id
-        # The ID of the region where the domain name resides.
+        # The region where the domain name is located.
         self.region = region
+        # The region ID.
         self.region_id = region_id
-        # The moderation scenario. Valid values:
+        # The detection scenario. Valid values:
         # 
-        # *   **porn**: pornography detection. This is the default value.
-        # *   **terrorism**: terrorism detection
-        # *   **ad**: ad violation detection
-        # *   **live**: undesirable scene detection
-        # *   **logo**: logo detection
+        # - **porn** (default): pornography detection.
+        # 
+        # - **terrorism**: terrorism and political content detection.
+        # 
+        # - **ad**: ad and text violation detection.
+        # 
+        # - **live**: undesirable live streaming scenario detection.
+        # 
+        # - **logo**: logo detection.
         self.scene = scene
-        # The fields based on which data is grouped. Separate multiple fields with commas (,).
+        # The list of grouping fields. Separate multiple fields with commas (,).
         # 
-        # > If you leave the **SplitBy** parameter empty, only the **TimeStamp** and **Count** parameters are returned.
+        # > If you leave this parameter empty, the service returns only TimeStamp and Count.
         self.split_by = split_by
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > 
+        # > - You can query data from the last 90 days.
         # 
-        # *   You can query data in the last 90 days.
-        # 
-        # *   The minimum data granularity is 5 minutes. If you do not specify this parameter, data in the last 24 hours is queried.
+        # - The minimum data granularity is 5 minutes. If you leave this parameter empty, the service queries data from the last 24 hours by default.
         self.start_time = start_time
-        # The name of the live stream.
+        # The stream name.
         self.stream = stream
 
     def validate(self):

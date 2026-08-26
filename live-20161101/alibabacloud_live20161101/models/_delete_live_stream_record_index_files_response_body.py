@@ -15,12 +15,12 @@ class DeleteLiveStreamRecordIndexFilesResponseBody(DaraModel):
         record_delete_info_list: main_models.DeleteLiveStreamRecordIndexFilesResponseBodyRecordDeleteInfoList = None,
         request_id: str = None,
     ):
-        # The status code. A return value of 500 indicates an error. For details, see the Error codes section of this topic.
+        # The status code. If an error occurs, see the error codes.
         self.code = code
-        # The status description. A return value of 500 indicates an error. For details, see the Error codes section of this topic.
+        # The status message. If an error occurs, see the error codes.
         self.message = message
         self.record_delete_info_list = record_delete_info_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

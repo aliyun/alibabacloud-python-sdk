@@ -16,30 +16,27 @@ class DescribeLivePullToPushListRequest(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The destination URL. Fuzzy search is performed based on the destination URL.
+        # The destination ingest URL. Fuzzy search is performed based on the destination ingest URL.
         self.dst_url = dst_url
         self.owner_id = owner_id
         # The page number.
-        # 
-        # >  The value must be greater than 0 and not greater than the maximum value of the Integer data type. Default value: 1.
+        # > The value of this parameter must be greater than 0 and cannot exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
-        # 
-        # >  Valid values: [1,100]. Default value: 10.
+        # The number of records per page.
+        # > Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
-        # The region of the live center. Valid values:
-        # 
-        # *   ap-southeast-1: Singapore
-        # *   ap-southeast-5: Indonesia (Jakarta)
-        # *   cn-beijing: China (Beijing)
-        # *   cn-shanghai: China (Shanghai)
+        # The live center to query. Valid values:
+        # - ap-southeast-1 (Singapore)
+        # - ap-southeast-5 (Indonesia)
+        # - cn-beijing (Beijing)
+        # - cn-shanghai (Shanghai)
         # 
         # This parameter is required.
         self.region = region
+        # The region ID.
         self.region_id = region_id
         # The task ID. Fuzzy search is performed based on the task ID.
-        # 
-        # >  The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # > The task ID consists of uppercase and lowercase letters, digits, underscores (_), and hyphens (-), with a maximum of 55 characters.
         self.task_id = task_id
         # The task name. Fuzzy search is performed based on the task name.
         self.task_name = task_name

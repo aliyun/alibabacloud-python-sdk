@@ -15,31 +15,35 @@ class DescribeLiveInteractionMetricDataRequest(DaraModel):
         os: str = None,
         terminal_type: str = None,
     ):
-        # The ID of the application.
+        # The ARTC application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start time of the query, specified as a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.begin_ts = begin_ts
+        # The channel ID.
         self.channel_id = channel_id
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end time of the query, specified as a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.end_ts = end_ts
-        # The metric. Valid values:
+        # The metric type. Valid values:
         # 
-        # *   JoinChannelSucRate: the success rate of joining a channel within 5 seconds.
-        # *   VideoStuckRate: the video stuttering rate.
-        # *   AudioStuckRate: the audio stuttering rate.
-        # *   FirstFrameCost: the time to first frame.
+        # - `JoinChannelSucRate`: the success rate of joining a channel within 5 seconds.
+        # 
+        # - `VideoStuckRate`: the video stuttering rate.
+        # 
+        # - `AudioStuckRate`: the audio stuttering rate.
+        # 
+        # - `FirstFrameCost`: the time to first frame.
         # 
         # This parameter is required.
         self.metric_type = metric_type
-        # The operating system. Valid values: iOS and Android.
+        # The operating system. Valid values: `iOS` and `Android`.
         self.os = os
-        # The terminal type. Valid values: web and mobile.
+        # The terminal type. Valid values: `web` and `mobile`.
         self.terminal_type = terminal_type
 
     def validate(self):

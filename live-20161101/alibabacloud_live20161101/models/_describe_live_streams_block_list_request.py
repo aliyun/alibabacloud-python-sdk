@@ -18,7 +18,7 @@ class DescribeLiveStreamsBlockListRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The number of the page to return. Default value: **1**.
         self.page_num = page_num
         # The number of entries to return on each page. Valid values: 1 to 3000. Default value: 2000.
         self.page_size = page_size

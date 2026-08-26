@@ -11,14 +11,15 @@ class DescribeLiveStreamAuthCheckingResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The error message for failed authentication.
+        # The error message returned if authentication failed.
         self.description = description
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the signed URL is valid. Valid values:
+        # Indicates whether the authentication is passed.
         # 
-        # *   pass: valid.
-        # *   false: invalid.
+        # - pass: The authentication is passed.
+        # 
+        # - false: The authentication failed.
         self.status = status
 
     def validate(self):

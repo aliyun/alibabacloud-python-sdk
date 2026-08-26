@@ -11,11 +11,12 @@ class QuerySnapshotCallbackAuthRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The main streaming domain.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -24,55 +24,55 @@ class AddShowIntoShowListRequest(DaraModel):
         is_batch_mode: bool = None,
         show_list: List[main_models.AddShowIntoShowListRequestShowList] = None,
     ):
-        # The ID of the production studio.
+        # The production studio ID.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the CasterId value returned by the CreateCaster operation.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you created the production studio in the ApsaraVideo Live console, navigate to **ApsaraVideo Live console** > **Production Studios** > **Cloud Production Studio** to view the production studio name.
+        # 
+        # > The production studio name in the production studio list on the Cloud Production Studio page of the ApsaraVideo Live console is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The duration of the episode. Unit: seconds.
-        # 
-        # > You can specify only one of the **RepeatTimes** and **Duration** parameters.
+        # The playback duration of a single show. Unit: seconds.
+        # > - You can set only one of **RepeatTimes** and **Duration**.
+        # > - This parameter is required when ResourceType is set to live.
         self.duration = duration
-        # The custom type label.
+        # The custom type tag.
         self.live_input_type = live_input_type
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The number of times the episode repeats after the first playback is complete. The default value is 0.
-        # 
-        # > 
-        # 
-        # *   You can specify only one of the **RepeatTimes** and **Duration** parameters. - The RepeatTimes parameter specifies the number of repetitions. For example, if you set the value to -1, the episode is to be played for infinite times. If you set the value to 0, the episode is to be played once. If you set the value to 1, the episode is to be played twice.
+        # The number of times a single show is repeated. Default value: 0.
+        # > - You can set only one of **RepeatTimes** and **Duration**.- RepeatTimes specifies the number of repetitions. For example, -1 means infinite repetition, 0 means the show is repeated 0 times (played once), 1 means the show is repeated 1 time (played twice), and so on.
         self.repeat_times = repeat_times
-        # The ID of the resource.
+        # The VOD file ID.
         self.resource_id = resource_id
         # The resource type. Valid values:
+        # - live: live streaming resource.
+        # - vod: video-on-demand resource.
+        # - pic: image resource.
         # 
-        # *   live: live stream
-        # *   vod: on-demand video
-        # *   pic: image
-        # 
-        # > 
-        # 
-        # *   When you select media resources from ApsaraVideo VOD, we recommend that you select resources that are stored in hosted OSS buckets. Resources stored in non-hosted OSS buckets have a validity period. Pay attention to the validity if you select resources that are stored in non-hosted OSS buckets. - You can add a live stream from ApsaraVideo Live or by using a third-party URL. - You can add an on-demand video from ApsaraVideo VOD or by using a third-party URL, or add an on-demand image.
+        # >- When using video-on-demand (VOD) resources, use managed Bucket resources first. Resources in your own Bucket may expire. If you use resources in your own Bucket, check the resource validity period.
+        # - Live files support live streaming resources and third-party URLs.
+        # - VOD files support video-on-demand resources, image resources, and third-party URLs.
+        # - When using live streaming resources, you must also specify the Duration parameter.
         self.resource_type = resource_type
-        # The URL of the resource.
+        # The URL of the playback file.
         self.resource_url = resource_url
-        # The name of the episode.
+        # The show name.
         self.show_name = show_name
-        # The position of the episode in the episode list. Position indexes start from 0. By default, the episode is added to the end of the episode list.
+        # The position in the playlist where the show is inserted. Positions start from 0. By default, the show is added to the end of the current playlist.
         self.spot = spot
-        # Specifies whether to add multiple episodes to the episode list at a time. Valid values:
+        # Specifies whether to add shows to the playlist in batch. Valid values:
         # 
-        # *   true: adds multiple episodes to the episode list at a time.
-        # *   false: adds a single episode to the episode list.
+        # - true: Batch addition.
         # 
-        # > If you do not specify this parameter or this parameter is left empty, a single episode is to be added to the episode list.
+        # - false: Single addition.
+        # 
+        # >If this parameter is not specified or left empty, single addition is used.
         self.is_batch_mode = is_batch_mode
-        # The episodes that you want to add to the episode list. Each episode has a unique name and resource URL.
+        # The list of show resources to add. Each resource has independent parameters such as showName and resourceUrl.
         self.show_list = show_list
 
     def validate(self):
@@ -186,38 +186,36 @@ class AddShowIntoShowListRequestShowList(DaraModel):
         resource_url: str = None,
         show_name: str = None,
     ):
-        # The duration of the episode. Unit: seconds.
+        # The playback duration of a single show. Unit: seconds.
         # 
-        # >  You can specify only one of the **RepeatTimes** and **Duration** parameters.
+        # > - You can set only one of **repeatTimes** and **duration**.
+        # > - This parameter is required when resourceType is set to live.
         self.duration = duration
-        # The custom type label.
+        # The custom type tag.
         self.live_input_type = live_input_type
-        # The number of times the episode repeats after the first playback is complete. Default value: 0.
+        # The number of times a single show is repeated. Default value: 0.
         # 
-        # > 
-        # 
-        # *   You can specify only one of the **RepeatTimes** and **Duration** parameters.
-        # 
-        # *   The RepeatTimes parameter specifies the number of repetitions. For example, if you set the value to 0, the episode is to be played once. If you set the value to 1, the episode is to be played twice.
+        # >- You can set only one of **repeatTimes** and **duration**.
+        # - repeatTimes specifies the number of repetitions. For example, 0 means the show is repeated 0 times (played once), 1 means the show is repeated 1 time (played twice), and so on.
         self.repeat_times = repeat_times
-        # The ID of the resource.
+        # The VOD file ID.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
-        # *   live: live stream
-        # *   vod: on-demand video
-        # *   pic: image
+        # - live: live streaming resource.
         # 
-        # > 
+        # - vod: video-on-demand resource.
         # 
-        # *   When you select media resources from ApsaraVideo VOD, we recommend that you select resources that are stored in hosted OSS buckets. Resources stored in non-hosted OSS buckets have a validity period. Pay attention to the validity if you select resources that are stored in non-hosted OSS buckets.
+        # - pic: image resource.
         # 
-        # *   You can add a live stream from ApsaraVideo Live or by using a third-party URL.
-        # *   You can add an on-demand video from ApsaraVideo VOD or by using a third-party URL, or add an on-demand image.
+        # >- When using video-on-demand (VOD) resources, use managed Bucket resources first. Resources in your own Bucket may expire. If you use resources in your own Bucket, check the resource validity period.
+        # - Live files support live streaming resources and third-party URLs.
+        # - VOD files support video-on-demand resources, image resources, and third-party URLs.
+        # - When using live streaming resources, you must also specify the duration parameter.
         self.resource_type = resource_type
-        # The URL of the resource.
+        # The URL of the playback file.
         self.resource_url = resource_url
-        # The name of the episode.
+        # The show name.
         self.show_name = show_name
 
     def validate(self):

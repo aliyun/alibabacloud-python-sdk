@@ -10,7 +10,9 @@ class DescribeLiveRealtimeLogAuthorizedResponseBody(DaraModel):
         authorized_status: str = None,
         request_id: str = None,
     ):
-        # The authorization status. **true**: authorized **false**: not authorized
+        # The authorization status. Valid values:
+        # 
+        # **true****false**
         self.authorized_status = authorized_status
         # The request ID.
         self.request_id = request_id

@@ -11,11 +11,11 @@ class GetCustomTemplateResponseBody(DaraModel):
         request_id: str = None,
         template: str = None,
     ):
-        # The configurations of the template.
+        # The template configuration.
         self.custom_template = custom_template
         # The request ID.
         self.request_id = request_id
-        # The name of the template.
+        # The template name.
         self.template = template
 
     def validate(self):

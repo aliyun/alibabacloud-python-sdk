@@ -23,7 +23,7 @@ class DescribeLiveRecordNotifyRecordsResponseBody(DaraModel):
         self.callback_list = callback_list
         # The error code.
         self.code = code
-        # The returned message.
+        # The prompt message.
         self.msg = msg
         # The page number.
         self.page_num = page_num
@@ -31,7 +31,7 @@ class DescribeLiveRecordNotifyRecordsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries that meet the specified conditions.
+        # The total number of entries that meet the conditions.
         self.total_num = total_num
         # The total number of pages.
         self.total_page = total_page
@@ -122,37 +122,42 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(DaraModel):
         storage_type: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         self.app_name = app_name
-        # The description of the result. A value of success indicates that the request is successful. If the request fails, an error message is returned.
+        # The result description. The value is success if the callback was successful. Otherwise, an error message is returned.
         self.description = description
-        # The main streaming domain.
+        # The streamer\\"s streaming domain.
         self.domain_name = domain_name
-        # The callback content.
+        # The specific content of the callback.
         self.notify_content = notify_content
+        # The callback request header.
         self.notify_header = notify_header
+        # The response returned by the user after receiving the callback.
         self.notify_response = notify_response
         # The callback result. Valid values:
-        # 
-        # *   success
-        # *   failed
+        # - success: The callback was successful.
+        # - failed: The callback failed.
         self.notify_result = notify_result
-        # The time when the callback was returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The callback time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.notify_time = notify_time
         # The callback type. Valid values:
-        # 
-        # *   file_created: The recording file is created.
-        # *   record_error: A recording error occurs.
-        # *   record_started: Recording is started.
-        # *   record_paused: Recording is paused.
-        # *   record_resumed: Recording is resumed.
-        # *   record_force_transcode_fail: The recording task fails to trigger transcoding.
-        # *   transformat_error: An error occurs when the live stream is parsed.
+        # - file_created: The recording was created.
+        # - record_error: A recording error occurred.
+        # - record_started: The recording started.
+        # - record_paused: The recording was paused.
+        # - record_resumed: The recording was resumed.
+        # - record_force_transcode_fail: The recording task failed to trigger transcoding.
+        # - transformat_error: An error occurred while parsing the live stream content.
         self.notify_type = notify_type
         # The recording callback URL.
         self.notify_url = notify_url
+        # The recording storage type. Valid values:
+        # 
+        # - oss: recorded to OSS
+        # - vod: recorded to ApsaraVideo VOD
+        # - all: all storage types
         self.storage_type = storage_type
-        # The name of the live stream.
+        # The stream name.
         self.stream_name = stream_name
 
     def validate(self):

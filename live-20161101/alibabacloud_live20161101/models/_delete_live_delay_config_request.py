@@ -13,17 +13,18 @@ class DeleteLiveDelayConfigRequest(DaraModel):
         region_id: str = None,
         stream: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications that belong to the domain name.
+        # The AppName of the live stream. You can specify an asterisk (\\*) to match all AppNames under the domain name.
         # 
         # This parameter is required.
         self.app = app
-        # The main streaming domain.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain = domain
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. You can use the wildcard (\\*) to specify all streams of the application.
+        # The name of the live stream. You can use the wildcard (\\*) to specify all StreamNames under the AppName.
         # 
         # This parameter is required.
         self.stream = stream

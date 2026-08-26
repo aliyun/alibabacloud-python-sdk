@@ -19,11 +19,12 @@ class CreateEdgeTranscodeJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The task name. The name can contain letters, digits, hyphens (-), and underscores (_). The name must be 255 characters in length.
+        # The job name. The name can contain Chinese characters, letters, digits, hyphens (-), and underscores (_). The name can be up to 255 characters in length.
         # 
         # This parameter is required.
         self.name = name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         # The URL of the input stream.
         # 

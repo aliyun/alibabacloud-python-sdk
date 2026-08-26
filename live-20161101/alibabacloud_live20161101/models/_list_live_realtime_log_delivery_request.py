@@ -11,9 +11,10 @@ class ListLiveRealtimeLogDeliveryRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # This parameter has no practical significance.
+        # This parameter is not used.
         self.live_openapi_reserve = live_openapi_reserve
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

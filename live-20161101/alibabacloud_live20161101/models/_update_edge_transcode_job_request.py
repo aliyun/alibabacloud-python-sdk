@@ -16,21 +16,22 @@ class UpdateEdgeTranscodeJobRequest(DaraModel):
         stream_output: str = None,
         template_id: str = None,
     ):
-        # The ID of the data center.
+        # The data center ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the edge transcoding task.
+        # The ID of the edge transcoding job.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The task name.
+        # The job name.
         self.name = name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The URL of the input stream.
+        # The input stream URL.
         self.stream_input = stream_input
-        # The URL of the output stream.
+        # The output stream URL.
         self.stream_output = stream_output
         # The template ID.
         self.template_id = template_id

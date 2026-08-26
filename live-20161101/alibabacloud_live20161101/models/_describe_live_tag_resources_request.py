@@ -17,16 +17,17 @@ class DescribeLiveTagResourcesRequest(DaraModel):
         tag: List[main_models.DescribeLiveTagResourcesRequestTag] = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The N resources. The resources are domain names in this operation. Valid values of N: **1 to 50**.
+        # The resource IDs. The resources are domain names for live streaming. You can query up to 50 resource IDs at a time.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resources. Set the value to **DOMAIN**.
+        # The type of the resource.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The N tags.
+        # A list of tags.
         self.tag = tag
 
     def validate(self):
@@ -87,9 +88,9 @@ class DescribeLiveTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. Valid values of N: **1 to 20**.
+        # The tag key. You can specify up to 20 tag keys.
         self.key = key
-        # The value of the tag. Valid values of N: **1 to 20**.
+        # The tag value. You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):

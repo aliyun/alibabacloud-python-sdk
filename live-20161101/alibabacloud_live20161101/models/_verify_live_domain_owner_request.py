@@ -12,16 +12,18 @@ class VerifyLiveDomainOwnerRequest(DaraModel):
         region_id: str = None,
         verify_type: str = None,
     ):
-        # The domain name for which you want to verify the ownership. You can specify only one domain name in each request.
+        # The domain name to verify. Only one domain name can be verified at a time.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         # The verification method. Valid values:
         # 
-        # *   dnsCheck: DNS record verification
-        # *   fileCheck: file verification
+        # - dnsCheck: DNS record verification
+        # 
+        # - fileCheck: file verification
         # 
         # This parameter is required.
         self.verify_type = verify_type

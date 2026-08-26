@@ -17,7 +17,7 @@ class DescribeCastersResponseBody(DaraModel):
         self.caster_list = caster_list
         # The request ID.
         self.request_id = request_id
-        # The number of production studios.
+        # The total number of production studios.
         self.total = total
 
     def validate(self):

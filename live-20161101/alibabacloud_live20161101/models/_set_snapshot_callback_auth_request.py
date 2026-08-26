@@ -13,14 +13,15 @@ class SetSnapshotCallbackAuthRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The custom key that is used for callback authentication.
+        # The authentication key.
         # 
         # This parameter is required.
         self.callback_auth_key = callback_auth_key
         # Specifies whether to enable callback authentication. Valid values:
         # 
-        # *   **yes**: enables callback authentication.
-        # *   **no**: disables callback authentication.
+        # - **yes**: enables
+        # 
+        # - **no**: disables
         # 
         # This parameter is required.
         self.callback_req_auth = callback_req_auth
@@ -29,6 +30,7 @@ class SetSnapshotCallbackAuthRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

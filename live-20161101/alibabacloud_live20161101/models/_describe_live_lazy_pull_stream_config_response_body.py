@@ -14,7 +14,7 @@ class DescribeLiveLazyPullStreamConfigResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.live_lazy_pull_config_list = live_lazy_pull_config_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

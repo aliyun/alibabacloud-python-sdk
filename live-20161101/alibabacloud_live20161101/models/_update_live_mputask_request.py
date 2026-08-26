@@ -30,8 +30,9 @@ class UpdateLiveMPUTaskRequest(DaraModel):
         self.channel_id = channel_id
         # The stream mixing mode. Valid values:
         # 
-        # *   **0**: the single-stream relay mode. In this mode, the service only relays the original single stream, but does not transcode mixed streams. You do not need to set parameters for mixed-stream transcoding.
-        # *   **1** (default): the mixed-stream relay mode.
+        # - **0**: the single-stream relay mode. In this mode, the service only relays the original single stream, but does not transcode mixed streams. You do not need to set parameters for mixed-stream transcoding.
+        # 
+        # - **1** (default): the mixed-stream relay mode.
         self.mix_mode = mix_mode
         # The multiple ingest URLs to relay. This parameter allows you to specify multiple ingest URLs.
         self.multi_stream_url = multi_stream_url
@@ -41,11 +42,13 @@ class UpdateLiveMPUTaskRequest(DaraModel):
         self.single_sub_params = single_sub_params
         # The ingest URL. You can specify only one ingest URL in the Real-Time Messaging Protocol (RTMP) format. The URL can be up to 2,048 characters in length. For information about the generation rules of ingest URLs, see [Ingest and streaming URLs](https://help.aliyun.com/document_detail/199339.html).
         # 
-        # > 
+        # >
         # 
-        # *   If the ingest URL is under a domain name for which hotlink protection is enabled, you must include an access token in the URL.
-        # *   You cannot use the same ingest URL in different tasks.
-        # *   You cannot use the same ingest URL within 10 seconds after a task is stopped.
+        # - If the ingest URL is under a domain name for which hotlink protection is enabled, you must include an access token in the URL.
+        # 
+        # - You cannot use the same ingest URL in different tasks.
+        # 
+        # - You cannot use the same ingest URL within 10 seconds after a task is stopped.
         self.stream_url = stream_url
         # The task ID. You can specify only one task ID. The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The ID must be unique.
         # 
@@ -153,7 +156,7 @@ class UpdateLiveMPUTaskRequestTranscodeParams(DaraModel):
         self.encode_params = encode_params
         # The video layout information.
         # 
-        # >  If video transcoding is required, you must specify the video layout information, including the x-coordinate and y-coordinate, the width and height, and the layer. For audio-only transcoding, leave the video layout information empty.
+        # > If video transcoding is required, you must specify the video layout information, including the x-coordinate and y-coordinate, the width and height, and the layer. For audio-only transcoding, leave the video layout information empty.
         self.layout = layout
         # The information about the users whose streams are subscribed to. If you leave this parameter empty, streams from all users are mixed.
         self.user_infos = user_infos
@@ -225,14 +228,17 @@ class UpdateLiveMPUTaskRequestTranscodeParamsUserInfos(DaraModel):
         self.channel_id = channel_id
         # The type of the video source that is subscribed to. This parameter is valid only when you set StreamType to 2. Valid values:
         # 
-        # *   **camera** (default)
-        # *   **shareScreen**
+        # - **camera** (default)
+        # 
+        # - **shareScreen**
         self.source_type = source_type
         # The type of the relayed stream that is subscribed to. Valid values:
         # 
-        # *   **0** (default): original stream
-        # *   **1**: only the audio track
-        # *   **2**: only the video track
+        # - **0** (default): original stream
+        # 
+        # - **1**: only the audio track
+        # 
+        # - **2**: only the video track
         self.stream_type = stream_type
         # The ID of the subscribed user.
         # 
@@ -331,16 +337,17 @@ class UpdateLiveMPUTaskRequestTranscodeParamsLayoutUserPanes(DaraModel):
         self.height = height
         # The display mode of the pane. Valid values:
         # 
-        # *   **0**: scales the video proportionally to fit the view, with black bars displayed.
-        # *   **1 (default)**: crops the video to fit the view.
+        # - **0**: scales the video proportionally to fit the view, with black bars displayed.
+        # 
+        # - **1 (default)**: crops the video to fit the view.
         self.render_mode = render_mode
         # The information about the user whose stream is played in the pane. If you leave this parameter empty, the system automatically sets this parameter based on the order in which streamers join the channel.
         # 
-        # > 
+        # >
         # 
-        # *   If you specify the information about a user by using this parameter, the information about the user must also be specified by using the TranscodeParams.UserInfos parameter.
+        # - If you specify the information about a user by using this parameter, the information about the user must also be specified by using the TranscodeParams.UserInfos parameter.
         # 
-        # *   This parameter is valid only when you set StreamType to 0 or 2.
+        # - This parameter is valid only when you set StreamType to 0 or 2.
         self.user_info = user_info
         # The width of the pane. The value is normalized.
         self.width = width
@@ -426,8 +433,9 @@ class UpdateLiveMPUTaskRequestTranscodeParamsLayoutUserPanesUserInfo(DaraModel):
         self.channel_id = channel_id
         # The type of the video source. This parameter is valid only when you set StreamType to 2. Valid values:
         # 
-        # *   **camera** (default)
-        # *   **shareScreen**
+        # - **camera** (default)
+        # 
+        # - **shareScreen**
         self.source_type = source_type
         # The user ID.
         self.user_id = user_id
@@ -485,24 +493,27 @@ class UpdateLiveMPUTaskRequestTranscodeParamsEncodeParams(DaraModel):
         self.audio_channels = audio_channels
         # Specifies whether the output stream is an audio-only stream. Valid values:
         # 
-        # *   **true**: The output stream is an audio-only stream. If you set this parameter to true, you need to configure only audio-related parameters under EncodeParams.
-        # *   **false** (default): The output stream is not an audio-only stream. If you set this parameter to false, you need to configure all parameters under EncodeParams, except the VideoCodec and EnhancedParam parameters.
+        # - **true**: The output stream is an audio-only stream. If you set this parameter to true, you need to configure only audio-related parameters under EncodeParams.
+        # 
+        # - **false** (default): The output stream is not an audio-only stream. If you set this parameter to false, you need to configure all parameters under EncodeParams, except the VideoCodec and EnhancedParam parameters.
         self.audio_only = audio_only
         # The audio sampling rate. Valid values: 8000, 16000, 32000, 44100, and 48000. Unit: Hz.
         self.audio_sample_rate = audio_sample_rate
         # The parameter used for encoding enhancement, which is a JSON string. The parameter includes the optional profile and preset fields.
         # 
-        # *   profile: the encoding level. If the video codec is H.264, the valid values of this field are baseline, main, and high. If the video codec is H.265, the valid value of this field is main.
-        # *   preset: adjusts the trade-off between encoding speed and video quality. The valid values of this field are ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow, and placebo. Each value specifies a level of trade-off between encoding speed and video quality. For example, the ultrafast preset has the fastest encoding speed but the lowest video quality, while the placebo preset sacrifices the encoding speed for the best video quality.
+        # - profile: the encoding level. If the video codec is H.264, the valid values of this field are baseline, main, and high. If the video codec is H.265, the valid value of this field is main.
         # 
-        # >  A value of superfast for the preset field is suitable for real-time communication scenarios. We recommend that you not set the field if you are not a professional encoding engineer.
+        # - preset: adjusts the trade-off between encoding speed and video quality. The valid values of this field are ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow, and placebo. Each value specifies a level of trade-off between encoding speed and video quality. For example, the ultrafast preset has the fastest encoding speed but the lowest video quality, while the placebo preset sacrifices the encoding speed for the best video quality.
+        # 
+        # > A value of superfast for the preset field is suitable for real-time communication scenarios. We recommend that you not set the field if you are not a professional encoding engineer.
         self.enhanced_param = enhanced_param
         # The bitrate of the video. Valid values: [1,10000]. Unit: Kbit/s.
         self.video_bitrate = video_bitrate
         # The video codec. Valid values:
         # 
-        # *   H.264 (default)
-        # *   H.265
+        # - H.264 (default)
+        # 
+        # - H.265
         self.video_codec = video_codec
         # The frame rate of the video. Valid values: [1,60]. Unit: frames per second (FPS).
         self.video_framerate = video_framerate
@@ -601,8 +612,9 @@ class UpdateLiveMPUTaskRequestTranscodeParamsBackground(DaraModel):
     ):
         # The display mode of the global background image.
         # 
-        # *   **0**: scales the background image proportionally to fit the view, with black bars displayed.
-        # *   **1** (default): crops the background image to fit the view.
+        # - **0**: scales the background image proportionally to fit the view, with black bars displayed.
+        # 
+        # - **1** (default): crops the background image to fit the view.
         self.render_mode = render_mode
         # The URL of the global background image.
         self.url = url
@@ -642,14 +654,17 @@ class UpdateLiveMPUTaskRequestSingleSubParams(DaraModel):
     ):
         # The type of the video source. This parameter is valid only when you set StreamType to 2. Valid values:
         # 
-        # *   **camera** (default)
-        # *   **shareScreen**
+        # - **camera** (default)
+        # 
+        # - **shareScreen**
         self.source_type = source_type
         # The type of the stream that you want to relay. Valid values:
         # 
-        # *   **0** (default): original stream
-        # *   **1**: only the audio track
-        # *   **2**: only the video track
+        # - **0** (default): original stream
+        # 
+        # - **1**: only the audio track
+        # 
+        # - **2**: only the video track
         self.stream_type = stream_type
         # The user ID. In the single-stream relay mode, you can relay only one stream in a request.
         # 
@@ -740,8 +755,9 @@ class UpdateLiveMPUTaskRequestSeiParamsPassThrough(DaraModel):
     ):
         # Specifies whether to include the SEI in an IDR frame. Valid values:
         # 
-        # *   **0**: does not include the SEI.
-        # *   **1**: includes the SEI.
+        # - **0**: does not include the SEI.
+        # 
+        # - **1**: includes the SEI.
         self.follow_idr = follow_idr
         # The interval at which the SEI is sent. Valid values: [1000,5000]. Unit: milliseconds.
         self.interval = interval
@@ -796,8 +812,9 @@ class UpdateLiveMPUTaskRequestSeiParamsLayoutVolume(DaraModel):
     ):
         # Specifies whether to include the SEI in an Instantaneous Decoder Refresh (IDR) frame. Valid values:
         # 
-        # *   **0**: does not include the SEI.
-        # *   **1**: includes the SEI.
+        # - **0**: does not include the SEI.
+        # 
+        # - **1**: includes the SEI.
         self.follow_idr = follow_idr
         # The interval at which the SEI is sent. Valid values: [1000,5000]. Unit: milliseconds.
         self.interval = interval
@@ -836,10 +853,11 @@ class UpdateLiveMPUTaskRequestMultiStreamURL(DaraModel):
     ):
         # Specifies whether to perform stream relay by using Alibaba Cloud CDN. Valid values:
         # 
-        # *   false: performs stream relay by using a CDN service that is not Alibaba Cloud CDN.
-        # *   true: performs stream relay by using Alibaba Cloud CDN.
+        # - false: performs stream relay by using a CDN service that is not Alibaba Cloud CDN.
         # 
-        # >  The default value of this parameter is false.
+        # - true: performs stream relay by using Alibaba Cloud CDN.
+        # 
+        # > The default value of this parameter is false.
         self.is_ali_cdn = is_ali_cdn
         # The ingest URL. Only the RTMP format is supported. The URL can be up to 2,048 characters in length. For information about the generation rules of ingest URLs, see [Ingest and streaming URLs](https://help.aliyun.com/document_detail/199339.html).
         self.url = url

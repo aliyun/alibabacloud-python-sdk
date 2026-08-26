@@ -15,12 +15,13 @@ class DescribeLiveAIStudioRequest(DaraModel):
         studio_name: str = None,
     ):
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The current page number. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Valid values: 1 to 50.
+        # The number of entries to return on each page. Default value: 10. Valid values: 1 to 50.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # The ID of the virtual studio template that you want to query. This parameter is optional.
+        # The ID of the template to filter. This parameter is optional.
         self.studio_id = studio_id
         # The name of the virtual studio template.
         self.studio_name = studio_name

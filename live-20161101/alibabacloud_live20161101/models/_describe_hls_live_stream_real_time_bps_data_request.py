@@ -12,12 +12,9 @@ class DescribeHlsLiveStreamRealTimeBpsDataRequest(DaraModel):
         region_id: str = None,
         time: str = None,
     ):
-        # The domain names to query. Separate them with commas (,). A domain name cannot contain double-byte characters.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.region_id = region_id
-        # The timestamp.
-        # 
         # This parameter is required.
         self.time = time
 

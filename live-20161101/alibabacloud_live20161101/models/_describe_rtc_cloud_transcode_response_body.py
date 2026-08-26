@@ -13,7 +13,9 @@ class DescribeRtcCloudTranscodeResponseBody(DaraModel):
         request_id: str = None,
         task_info: main_models.DescribeRtcCloudTranscodeResponseBodyTaskInfo = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The details of the cloud transcoding task.
         self.task_info = task_info
 
     def validate(self):
@@ -55,12 +57,24 @@ class DescribeRtcCloudTranscodeResponseBodyTaskInfo(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The channel ID.
         self.channel_id = channel_id
+        # The subscription input parameters.
         self.input_param = input_param
+        # The idle timeout period. If the task remains idle for longer than the MaxIdleTime value, the task is automatically stopped. Unit: seconds. Valid values: 10 to 14400 (maximum of 4 hours). Default value: 300.
         self.max_idle_time = max_idle_time
+        # The transcoding output parameters.
         self.output_params = output_params
+        # The status of the cloud transcoding task. Valid values:
+        # 
+        # - STARTING
+        # - RUNNING
+        # - RECOVERING
+        # - STOPPED.
         self.status = status
+        # The cloud transcoding task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -138,9 +152,13 @@ class DescribeRtcCloudTranscodeResponseBodyTaskInfoOutputParams(DaraModel):
         user_id: str = None,
         user_token: str = None,
     ):
+        # The channel ID to which the transcoded stream is relayed.
         self.channel_id = channel_id
+        # The transcoding template name.
         self.transcode_template = transcode_template
+        # The user ID in the channel to which the transcoded stream is relayed.
         self.user_id = user_id
+        # The user token required to relay the transcoded stream to the channel.
         self.user_token = user_token
 
     def validate(self):
@@ -186,6 +204,7 @@ class DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParam(DaraModel):
         self,
         single_sub_user_param: main_models.DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParamSingleSubUserParam = None,
     ):
+        # The single-stream subscription input parameters.
         self.single_sub_user_param = single_sub_user_param
 
     def validate(self):
@@ -217,8 +236,11 @@ class DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParamSingleSubUserParam(
         stream_type: int = None,
         user_id: str = None,
     ):
+        # The video input stream type of the subscription.
         self.source_type = source_type
+        # The media type of the subscribed user.
         self.stream_type = stream_type
+        # The user ID of the subscribed user.
         self.user_id = user_id
 
     def validate(self):

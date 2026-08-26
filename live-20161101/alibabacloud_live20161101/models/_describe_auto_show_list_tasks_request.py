@@ -11,11 +11,12 @@ class DescribeAutoShowListTasksRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the production studio for which you want to query scheduled tasks.
+        # The ID of the production studio whose scheduled tasks you want to query.
         # 
-        # >  If the scheduled tasks were created by calling the [InitializeAutoShowListTask](https://help.aliyun.com/document_detail/2848056.html) operation, check the value of the response parameter CasterId to obtain the ID. If you do not specify this parameter, the system queries all the scheduled tasks that belong to the user specified by the OwnerId parameter.
+        # > If you create a scheduled task by calling the [InitializeAutoShowListTask](https://help.aliyun.com/document_detail/2848056.html) operation, use the CasterId value returned by that operation. If you leave this parameter empty, all scheduled tasks under your account are queried by default.
         self.caster_id = caster_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

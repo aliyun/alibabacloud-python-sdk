@@ -11,27 +11,20 @@ class CreateRtcMPUEventSubRequest(DaraModel):
         callback_url: str = None,
         channel_ids: str = None,
     ):
-        # The ID of the application.
-        # 
-        # > The ID can be up to 64 characters in length and can contain letters, digits, underscores, and hyphens (-).
+        # The ID of the application to subscribe to. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > ApsaraVideo Real-time Communication > Application Management**. If no application exists, create one by clicking **Create Application**.
+        # > The application ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The callback URL.
-        # 
-        # > The callback URL can be up to 2,083 characters in length. You can use headers such as HTTP and HTTPS in callback URLs. The URL can contain letters, digits, and the following special characters: - _ ? % = # . / +
+        # The callback URL. For the URL format, refer to the callback content specifications below.
+        # > The callback URL protocol must be HTTP or HTTPS. The URL can contain only the following characters: a-z, A-Z, 0-9, -, _, ?, %, =, #, ., /, and +. The URL cannot exceed 2083 characters.
         # 
         # This parameter is required.
         self.callback_url = callback_url
-        # The ID of the channel to which you want to send mixed-stream relay event callbacks. Separate multiple channel IDs with commas (,).
-        # 
-        # > 
-        # 
-        # *   If you leave this parameter empty, you are subscribed to mixed-stream relay events of all channels in the application.
-        # 
-        # *   You cannot specify duplicate channel IDs. You can specify up to 20 channel IDs in each call.
-        # 
-        # *   The ID can be up to 64 characters in length and contain letters, digits, underscores (_), and hyphens (-).
+        # The channel IDs of the stream mixing tasks for which you want to receive callbacks. You can specify multiple channel IDs separated by commas (,).
+        # >- If you leave this parameter empty, callbacks for all stream mixing and relaying tasks under the specified AppId are received by default.
+        # - When specifying multiple channel IDs, do not include duplicates. You can specify up to 20 channel IDs at a time.
+        # - Each channel ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
         self.channel_ids = channel_ids
 
     def validate(self):

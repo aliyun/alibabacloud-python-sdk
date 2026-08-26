@@ -1,3 +1,18 @@
+2026-08-26 Version: 3.0.2
+- Update API CreateLivePullToPush: add request parameters AuthKey.
+- Update API CreateLivePullToPush: add request parameters NotifyItemSwitch.
+- Update API CreateLivePullToPush: add request parameters ReqAuth.
+- Update API DescribeLivePullToPush: add response parameters Body.TaskInfo.AuthKey.
+- Update API DescribeLivePullToPush: add response parameters Body.TaskInfo.NotifyItemSwitch.
+- Update API DescribeLivePullToPush: add response parameters Body.TaskInfo.ReqAuth.
+- Update API DescribeLivePullToPushList: add response parameters Body.TaskList.$.TaskInfo.AuthKey.
+- Update API DescribeLivePullToPushList: add response parameters Body.TaskList.$.TaskInfo.NotifyItemSwitch.
+- Update API DescribeLivePullToPushList: add response parameters Body.TaskList.$.TaskInfo.ReqAuth.
+- Update API UpdateLivePullToPush: add request parameters AuthKey.
+- Update API UpdateLivePullToPush: add request parameters NotifyItemSwitch.
+- Update API UpdateLivePullToPush: add request parameters ReqAuth.
+
+
 2026-05-26 Version: 3.0.0
 - Update API AddLiveRecordVodConfig: delete request parameters FormatConfig.
 - Update API UpdateLiveRecordVodConfig: delete request parameters FormatConfig.

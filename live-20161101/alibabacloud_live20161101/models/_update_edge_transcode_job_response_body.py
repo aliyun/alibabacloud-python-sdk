@@ -10,7 +10,7 @@ class UpdateEdgeTranscodeJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the edge transcoding task.
+        # The ID of the edge transcoding job.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

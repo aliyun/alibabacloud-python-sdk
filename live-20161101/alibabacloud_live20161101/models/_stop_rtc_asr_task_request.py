@@ -12,8 +12,9 @@ class StopRtcAsrTaskRequest(DaraModel):
         task_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The ID of the task.
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id

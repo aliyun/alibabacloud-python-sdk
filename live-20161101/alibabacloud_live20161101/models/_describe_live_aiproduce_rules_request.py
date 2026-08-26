@@ -16,21 +16,22 @@ class DescribeLiveAIProduceRulesRequest(DaraModel):
         rules_id: str = None,
         suffix_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         self.app = app
-        # The main streaming domain.
+        # The primary playback domain name.
         self.domain = domain
         self.owner_id = owner_id
-        # The page number. Valid values: [1,100].
+        # The page number. Valid values: 1 to 100.
         self.page_number = page_number
-        # The number of entries per page. Valid values: [1,100].
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # The ID of the subtitle rule.
+        # The ID of the caption rule.
         self.rules_id = rules_id
-        # The suffix of the subtitle rule.
+        # The caption suffix.
         # 
-        # > Set the value to the name of the subtitle template.
+        # > Set this parameter to the value of SubtitleName that is specified for the caption template.
         self.suffix_name = suffix_name
 
     def validate(self):

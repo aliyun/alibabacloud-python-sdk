@@ -20,40 +20,44 @@ class UpdateLiveStreamMonitorRequest(DaraModel):
         region_id: str = None,
         stream: str = None,
     ):
-        # The name of the application to which the output stream of the monitoring session belongs. You can specify a name. If you do not specify a name, the system uses **monitor** as the name of the application.
+        # The application name for the output stream of the monitoring session. You can specify a custom name. If you do not specify this parameter, **monitor** is used as the AppName.
         self.app = app
-        # The callback URL. Supported formats include HTTP and HTTPS.
+        # The webhook address. HTTP and HTTPS are supported.
         self.callback_url = callback_url
-        # The URL of the DingTalk chatbot. Specify a DingTalk chatbot that you have configured, and you can receive live monitoring alerts from the chatbot. For more information, see [Configure a custom chatbot](https://open.dingtalk.com/document/robots/custom-robot-access).
+        # The webhook URL of the DingTalk chatbot. Monitoring alerts are sent to a DingTalk group using a chatbot. Set up a chatbot and enter its webhook URL, which must be an HTTP or HTTPS address. For more information, see [Custom robot access](https://open.dingtalk.com/document/robots/custom-robot-access).
         # 
-        # >  Specify "Alert" as the custom keyword of the DingTalk chatbot. Otherwise, you cannot receive messages.
+        # > Set the custom keyword of the DingTalk chatbot to "Alerting". Otherwise, messages cannot be received.
         self.ding_talk_web_hook_url = ding_talk_web_hook_url
-        # The domain name.
+        # The output domain name for the monitoring session.
         self.domain = domain
-        # The list of input streams to monitor. For more information, see the following **InputConfig** table.
+        # The list of input streams to monitor. For more information, see the **InputConfig** table below.
         # 
         # This parameter is required.
         self.input_list = input_list
-        # The monitoring alert thresholds. The value is a JSON string. For more information, see the following MonitorConfig table.
+        # The settings for alert thresholds. The value is a JSON string. For more information, see the MonitorConfig table below.
         self.monitor_config = monitor_config
         # The ID of the monitoring session.
         # 
-        # >  You can obtain the monitoring session ID from the response of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
+        # > Obtain the MonitorId value from the response parameters of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
         # 
         # This parameter is required.
         self.monitor_id = monitor_id
         # The name of the monitoring session.
         self.monitor_name = monitor_name
-        # The output template of the monitoring session. Valid values:
+        # The output template for the monitoring session. Valid values:
         # 
-        # *   **lp_ld**: low definition
-        # *   **lp_sd**: standard definition
-        # *   **lp_hd**: high definition
-        # *   **lp_ud**: ultra-high definition
+        # - **lp_ld**: low definition.
+        # 
+        # - **lp_sd**: standard definition.
+        # 
+        # - **lp_hd**: high definition.
+        # 
+        # - **lp_ud**: ultra-high definition.
         self.output_template = output_template
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the output stream of the monitoring session.
+        # The name of the output stream for the monitoring session.
         self.stream = stream
 
     def validate(self):

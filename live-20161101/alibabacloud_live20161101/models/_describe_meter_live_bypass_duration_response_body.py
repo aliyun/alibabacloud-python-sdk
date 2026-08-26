@@ -20,23 +20,23 @@ class DescribeMeterLiveBypassDurationResponseBody(DaraModel):
         v_480summary_duration: int = None,
         v_720summary_duration: int = None,
     ):
-        # The total audio-only duration. Audio-only is a basic specification. Unit: minutes.
+        # The total audio-only duration at the basic specification. Unit: minutes.
         self.audio_summary_duration = audio_summary_duration
-        # The usage statistics for each time granularity.
+        # The usage statistics information.
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total single-stream relay duration for audio. Unit: minutes.
+        # The total single-stream relay audio duration. Unit: minutes.
         self.single_audio_summary_duration = single_audio_summary_duration
-        # The total single-stream relay duration for video. Unit: minutes.
+        # The total single-stream relay video duration. Unit: minutes.
         self.single_video_summary_duration = single_video_summary_duration
         # The total duration. Unit: minutes.
         self.total_summary_duration = total_summary_duration
-        # The total Full HD duration. The video resolution is 1920 × 1080 or lower. Unit: minutes.
+        # The total full high definition duration, with a video resolution of 1920 × 1080 or lower. Unit: minutes.
         self.v_1080summary_duration = v_1080summary_duration
-        # The total standard definition (SD) duration. The video resolution is 640 × 480 or lower. Unit: minutes.
+        # The total standard definition duration, with a video resolution of 640 × 480 or lower. Unit: minutes.
         self.v_480summary_duration = v_480summary_duration
-        # The total high definition (HD) duration. The video resolution is 1280 × 720 or lower. Unit: minutes.
+        # The total high definition duration, with a video resolution of 1280 × 720 or lower. Unit: minutes.
         self.v_720summary_duration = v_720summary_duration
 
     def validate(self):
@@ -127,21 +127,21 @@ class DescribeMeterLiveBypassDurationResponseBodyData(DaraModel):
         v_480duration: int = None,
         v_720duration: int = None,
     ):
-        # The audio-only duration. Audio-only is a basic specification. Unit: minutes.
+        # The audio-only duration at the basic specification. Unit: minutes.
         self.audio_duration = audio_duration
-        # The single-stream relay duration for audio. Unit: minutes.
+        # The single-stream relay audio duration. Unit: minutes.
         self.single_audio = single_audio
-        # The single-stream relay duration for video. Unit: minutes.
+        # The single-stream relay video duration. Unit: minutes.
         self.single_video = single_video
-        # The timestamp of the data returned.
+        # The start time of the time segment. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format in UTC+0.
         self.timestamp = timestamp
-        # The duration. Unit: minutes.
+        # The total duration. Unit: minutes.
         self.total_duration = total_duration
-        # The Full HD duration. The video resolution is 1920 × 1080 or lower. Unit: minutes.
+        # The full high definition duration, with a video resolution of 1920 × 1080 or lower. Unit: minutes.
         self.v_1080duration = v_1080duration
-        # The SD duration. The video resolution is 640 × 480 or lower. Unit: minutes.
+        # The standard definition duration, with a video resolution of 640 × 480 or lower. Unit: minutes.
         self.v_480duration = v_480duration
-        # The HD duration. The video resolution is 1280 × 720 or lower. Unit: minutes.
+        # The high definition duration, with a video resolution of 1280 × 720 or lower. Unit: minutes.
         self.v_720duration = v_720duration
 
     def validate(self):

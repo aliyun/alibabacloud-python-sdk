@@ -10,9 +10,9 @@ class CreateRtcMPUEventSubResponseBody(DaraModel):
         request_id: str = None,
         sub_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the subscription.
+        # The subscription ID.
         self.sub_id = sub_id
 
     def validate(self):

@@ -11,11 +11,12 @@ class DisableLiveRealtimeLogDeliveryRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The streaming domain for which you want to suspend real-time log delivery. Separate multiple streaming domains with commas (,).
+        # The streaming domain for which to pause real-time log delivery. To specify multiple domain names, separate them with commas (,).
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

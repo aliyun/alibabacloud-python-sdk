@@ -13,14 +13,15 @@ class DeletePlaylistItemsRequest(DaraModel):
         region_id: str = None,
     ):
         self.owner_id = owner_id
-        # The ID of the episode list. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+        # The ID of the playlist. If you add items to the playlist by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, you can obtain this ID from the ProgramId parameter in the response.
         # 
         # This parameter is required.
         self.program_id = program_id
-        # The IDs of the episodes that you want to remove.
+        # A list of playlist item IDs.
         # 
         # This parameter is required.
         self.program_item_ids = program_item_ids
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

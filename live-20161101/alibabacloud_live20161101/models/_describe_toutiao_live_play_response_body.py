@@ -14,7 +14,7 @@ class DescribeToutiaoLivePlayResponseBody(DaraModel):
         description: str = None,
         request_id: str = None,
     ):
-        # The information about the live stream.
+        # The details of the stream information.
         self.content = content
         # The description of the response status.
         self.description = description
@@ -72,17 +72,17 @@ class DescribeToutiaoLivePlayResponseBodyContent(DaraModel):
         stream_name: str = None,
         timestamp: int = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         self.app = app
         # The bandwidth. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The Content Delivery Network (CDN) name.
+        # The CDN name.
         self.cdn_name = cdn_name
         # The streaming domain.
         self.domain = domain
         # The number of viewers.
         self.play_num = play_num
-        # The name of the live stream.
+        # The stream name.
         self.stream_name = stream_name
         # The timestamp.
         self.timestamp = timestamp

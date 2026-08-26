@@ -12,8 +12,9 @@ class DeleteLiveAIStudioRequest(DaraModel):
         studio_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The ID of the template. You can obtain the ID from the response to the CreateLiveAIStudio operation.
+        # The ID of the template. The ID is returned by the CreateLiveAIStudio operation.
         # 
         # This parameter is required.
         self.studio_id = studio_id

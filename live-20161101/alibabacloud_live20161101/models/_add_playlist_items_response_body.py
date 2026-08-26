@@ -14,9 +14,9 @@ class AddPlaylistItemsResponseBody(DaraModel):
         program_id: str = None,
         request_id: str = None,
     ):
-        # The information about the episodes.
+        # The list of added playlist items.
         self.items = items
-        # The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to remove episodes, query episodes, edit an episode list, delete an episode list, query the information about an episode list, start playing an episode list, or stop playing an episode list.
+        # The playlist ID. This value can be used as a request parameter for deleting playlist items, querying playlist items, editing playlists, deleting playlists, querying playlists, starting playlists, and stopping playlists.
         self.program_id = program_id
         # The request ID.
         self.request_id = request_id
@@ -61,9 +61,9 @@ class AddPlaylistItemsResponseBodyItems(DaraModel):
         failed_items: List[main_models.AddPlaylistItemsResponseBodyItemsFailedItems] = None,
         success_items: List[main_models.AddPlaylistItemsResponseBodyItemsSuccessItems] = None,
     ):
-        # The episodes that failed to be added.
+        # The list of playlist items that failed to be added.
         self.failed_items = failed_items
-        # The episodes that were added.
+        # The list of playlist items that were successfully added.
         self.success_items = success_items
 
     def validate(self):
@@ -115,9 +115,9 @@ class AddPlaylistItemsResponseBodyItemsSuccessItems(DaraModel):
         item_id: str = None,
         item_name: str = None,
     ):
-        # The ID of the episode.
+        # The playlist item ID.
         self.item_id = item_id
-        # The name of the episode.
+        # The playlist item name.
         self.item_name = item_name
 
     def validate(self):
@@ -152,9 +152,9 @@ class AddPlaylistItemsResponseBodyItemsFailedItems(DaraModel):
         item_id: str = None,
         item_name: str = None,
     ):
-        # The ID of the episode.
+        # The playlist item ID.
         self.item_id = item_id
-        # The name of the episode.
+        # The playlist item name.
         self.item_name = item_name
 
     def validate(self):

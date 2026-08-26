@@ -10,7 +10,7 @@ class AddCasterEpisodeResponseBody(DaraModel):
         episode_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the episode. You can use the ID as a request parameter in the API operation that is used to query the information about the episode list, modify the configurations of the episode, and delete the episode.
+        # The ID of the episode. This ID can be used as a request parameter to query the episode list, modify an episode, or delete an episode.
         self.episode_id = episode_id
         # The request ID.
         self.request_id = request_id

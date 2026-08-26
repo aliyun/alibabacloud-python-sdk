@@ -11,7 +11,7 @@ class GetEdgeTranscodeJobResponseBody(DaraModel):
         job: main_models.GetEdgeTranscodeJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The details of the edge transcoding task.
+        # The edge transcoding job.
         self.job = job
         # The request ID.
         self.request_id = request_id
@@ -59,34 +59,37 @@ class GetEdgeTranscodeJobResponseBodyJob(DaraModel):
         template_name: str = None,
         type: str = None,
     ):
-        # The time when the task was created.
+        # The time when the job was created.
         self.create_time = create_time
-        # The ID of the task.
+        # The job ID.
         self.job_id = job_id
-        # The time when the task was last started.
+        # The time when the job was last started.
         self.last_start_at = last_start_at
-        # The time when the task was last stopped.
+        # The time when the job was last stopped.
         self.last_stop_at = last_stop_at
-        # The name of the task.
+        # The job name.
         self.name = name
-        # The status of the task. Valid values:
+        # The status of the transcoding job. Valid values:
         # 
-        # *   0: not started
-        # *   1: in progress
+        # - 0: The job is not started.
+        # 
+        # - 1: The job is running.
         self.status = status
-        # The URL of the input stream.
+        # The input stream URL.
         self.stream_input = stream_input
-        # The URL of the output stream.
+        # The output stream URL.
         self.stream_output = stream_output
-        # The ID of the edge transcoding template used by the task.
+        # The ID of the edge transcoding template used by the job.
         self.template_id = template_id
-        # The name of the edge transcoding template used by the task.
+        # The name of the edge transcoding template used by the job.
         self.template_name = template_name
         # The type of edge transcoding. Valid values:
         # 
-        # *   common: standard transcoding and Narrowband HD™ 1.0 transcoding
-        # *   nbhd-2: Narrowband HD™ 2.0 transcoding
-        # *   ultra-hd: ultra-high definition transcoding
+        # - common: standard transcoding and Narrowband HD 1.0.
+        # 
+        # - nbhd-2: Narrowband HD 2.0.
+        # 
+        # - ultra-hd: ultra-high definition.
         self.type = type
 
     def validate(self):

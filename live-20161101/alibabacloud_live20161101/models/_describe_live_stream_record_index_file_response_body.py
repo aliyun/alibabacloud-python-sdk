@@ -11,7 +11,7 @@ class DescribeLiveStreamRecordIndexFileResponseBody(DaraModel):
         record_index_info: main_models.DescribeLiveStreamRecordIndexFileResponseBodyRecordIndexInfo = None,
         request_id: str = None,
     ):
-        # The information about the index file.
+        # Recording configuration.
         self.record_index_info = record_index_info
         # The request ID.
         self.request_id = request_id
@@ -63,31 +63,31 @@ class DescribeLiveStreamRecordIndexFileResponseBodyRecordIndexInfo(DaraModel):
         stream_name: str = None,
         width: int = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         self.app_name = app_name
-        # The time when the index file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.create_time = create_time
         # The main streaming domain.
         self.domain_name = domain_name
-        # The recording length. Unit: seconds.
+        # The recording duration. Unit: seconds.
         self.duration = duration
-        # The end time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.end_time = end_time
         # The video format.
         self.format = format
         # The video height.
         self.height = height
-        # The name of the Object Storage Service (OSS) bucket.
+        # The name of the OSS bucket.
         self.oss_bucket = oss_bucket
         # The endpoint of the OSS bucket.
         self.oss_endpoint = oss_endpoint
         # The name of the storage file in OSS.
         self.oss_object = oss_object
-        # The ID of the index file.
+        # The manifest ID.
         self.record_id = record_id
-        # The URL of the index file.
+        # The URL of the manifest.
         self.record_url = record_url
-        # The start time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.start_time = start_time
         # The name of the live stream.
         self.stream_name = stream_name

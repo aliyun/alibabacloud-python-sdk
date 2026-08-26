@@ -12,10 +12,11 @@ class DeleteCasterEpisodeGroupRequest(DaraModel):
         region_id: str = None,
     ):
         self.owner_id = owner_id
-        # The ID of the episode list. If the episode list was added by calling the [AddCasterEpisodeGroup](https://help.aliyun.com/document_detail/2848071.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+        # The ID of the episode list. To obtain the ID, call the [AddCasterEpisodeGroup](https://help.aliyun.com/document_detail/2848071.html) operation and find the value of the ProgramId parameter in the response.
         # 
         # This parameter is required.
         self.program_id = program_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -20,7 +20,7 @@ class DescribeLiveDomainOnlineUserNumResponseBody(DaraModel):
         self.request_id = request_id
         # The number of streams.
         self.stream_count = stream_count
-        # The total number of online users at the specified point in time for all the live streams under the main streaming domain.
+        # The total number of online users at the specified point in time on the specified domain.
         self.user_count = user_count
 
     def validate(self):

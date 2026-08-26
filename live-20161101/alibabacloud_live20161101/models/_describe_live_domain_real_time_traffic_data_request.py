@@ -15,27 +15,28 @@ class DescribeLiveDomainRealTimeTrafficDataRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The streaming domain.
+        # The streaming domain name.
         # 
-        # Separate multiple streaming domains with commas (,).
+        # To specify multiple domain names, separate them with commas (,).
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.end_time = end_time
-        # The name of the ISP.
+        # The name of the carrier.
         # 
-        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query a list of available ISPs.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to obtain the carrier name.
         self.isp_name_en = isp_name_en
         # The name of the region.
         # 
-        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query a list of available regions.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to obtain the region name.
         self.location_name_en = location_name_en
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # >  If you do not specify this parameter, the data of the last hour is returned.
+        # > If you do not specify this parameter, data in the last hour is queried.
         self.start_time = start_time
 
     def validate(self):

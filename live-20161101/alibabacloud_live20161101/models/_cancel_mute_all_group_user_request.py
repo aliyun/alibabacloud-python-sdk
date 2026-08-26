@@ -12,23 +12,25 @@ class CancelMuteAllGroupUserRequest(DaraModel):
         group_id: str = None,
         operator_user_id: str = None,
     ):
-        # Interactive message application ID.
+        # Interactive Messages application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # 系统消息扩散类型，取值：
+        # System message diffusion type. Valid values:
         # 
-        # - 0：不扩散。
+        # - 0: No diffusion.
         # 
-        # - 1：扩散到指定人。
+        # - 1: Diffusion to specified users.
         # 
-        # - 2：扩散到群组。
+        # - 2: Diffusion to the group.
         self.broad_cast_type = broad_cast_type
-        # Message group ID.
+        # Group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # Operator\\"s UserId. > This parameter is required and the user must be the creator of the group.
+        # User ID of the operator.
+        # 
+        # > This parameter is required. The user must be the creator of the group.
         self.operator_user_id = operator_user_id
 
     def validate(self):

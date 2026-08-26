@@ -13,21 +13,21 @@ class CreateRoomRealTimeStreamAddressRequest(DaraModel):
         expire_time: int = None,
         user_id: str = None,
     ):
-        # The ID of the ARTC application. You can specify only one application ID. The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # The ID of the ApsaraVideo Real-time Communication application. Only a single ID is supported. The value can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > Real-time Communication > Application Management**. If no application exists, create one by clicking **Create Application**.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the channel. You can specify only one ID. The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # The ID of the channel to join. Only a single ID is supported. The value can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
         # 
         # This parameter is required.
         self.channel_id = channel_id
-        # The name of the RTMP stream. The name can be up to 40 characters in length.
+        # The display name of the RTMP stream in the channel. Maximum length: 40 characters.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The validity period of the RTMP URL. Unit: seconds. The default value is 36,000 seconds, which is 10 hours.
+        # The validity period of the RTMP URL. Unit: seconds. Default value: 36000 (10 hours).
         self.expire_time = expire_time
-        # The ID of the user who ingests the stream over RTMP. The user ID must be different from IDs of other users in the channel. The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # The user ID for the RTMP stream ingest. This value must not duplicate any other user ID in the channel. The value can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
         # 
         # This parameter is required.
         self.user_id = user_id

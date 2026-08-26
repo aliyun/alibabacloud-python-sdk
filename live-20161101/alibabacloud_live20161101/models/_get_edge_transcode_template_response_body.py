@@ -13,7 +13,7 @@ class GetEdgeTranscodeTemplateResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the edge transcoding template.
+        # The edge transcoding template.
         self.template = template
 
     def validate(self):
@@ -57,28 +57,26 @@ class GetEdgeTranscodeTemplateResponseBodyTemplate(DaraModel):
         template_id: str = None,
         type: str = None,
     ):
-        # The bitrate. If a numeric value is returned, a fixed bitrate is configured for the output stream. If ws is returned, the output stream maintains the same bitrate as the input stream.
+        # The bitrate configuration. Valid values: a fixed bitrate value or ws (follow source).
         self.bitrate = bitrate
         # The video encoding format. Valid values:
-        # 
-        # *   H.264
-        # *   H.265
+        # - H.264.
+        # - H.265.
         self.codec = codec
-        # The time when the template was created.
+        # The time when the template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.create_time = create_time
-        # The frame rate. If a numeric value is returned, a fixed frame rate is configured for the output stream. If ws is returned, the output stream maintains the same frame rate as the input stream.
+        # The frame rate configuration. Valid values: a fixed frame rate value or ws (follow source).
         self.fps = fps
-        # The group of pictures (GOP) size. The GOP size can be defined by the number of frames or the time interval between I-frames. If ws is returned, the output stream maintains the same GOP size as the input stream.
+        # The keyframe configuration. Valid values: frame-based, second-based, or ws (follow source).
         self.gop = gop
         # The template name.
         self.name = name
-        # The resolution. If width and height values are returned, a fixed resolution is configured for the output stream. If ws is returned, the output stream maintains the same resolution as the input stream.
-        # 
-        # >  If the width value is -1, the width of the output stream is adapted to the height. If the height value is -2, the height of the output stream is adapted to the width.
+        # The resolution configuration. Valid values: a fixed resolution value or ws (follow source).
+        # > When a fixed resolution is used and width or height is set to -1 or -2, the width or height is adaptive.
         self.resolution = resolution
         # The template ID.
         self.template_id = template_id
-        # The type of edge transcoding.
+        # The edge transcoding type.
         self.type = type
 
     def validate(self):

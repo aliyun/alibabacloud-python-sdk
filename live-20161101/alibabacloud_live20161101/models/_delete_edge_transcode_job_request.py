@@ -12,15 +12,16 @@ class DeleteEdgeTranscodeJobRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the data center.
+        # The data center ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the edge transcoding task.
+        # The ID of the edge transcoding job.
         # 
         # This parameter is required.
         self.job_id = job_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

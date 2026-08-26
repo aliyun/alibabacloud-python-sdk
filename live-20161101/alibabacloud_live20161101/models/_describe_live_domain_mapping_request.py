@@ -11,15 +11,18 @@ class DescribeLiveDomainMappingRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The domain name for which you want to query the mappings. The following types of domain names are supported:
+        # The domain that you want to query. Valid types:
         # 
-        # *   Ingest domain
-        # *   Main streaming domain
-        # *   Sub-streaming domain
+        # - Ingest domain
+        # 
+        # - Main streaming domain
+        # 
+        # - Sub-streaming domain
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

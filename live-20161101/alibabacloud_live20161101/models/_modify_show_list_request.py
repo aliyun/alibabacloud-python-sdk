@@ -18,39 +18,39 @@ class ModifyShowListRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value returned in the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you created the production studio in the LIVE console, find the production studio name on the Cloud Production Studio page. To go to the page, choose **LIVE Console** > **Production Studio** > **Cloud Production Studio**.
+        # 
+        # > The name of the production studio on the Cloud Production Studio page is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The episode of the highest priority.
+        # The highest-priority show.
         # 
-        # >  You can configure this parameter only before the playback of the episode list starts.
+        # > This parameter can be configured only before the playlist starts.
         self.high_priority_show_id = high_priority_show_id
-        # The time at which the episode of the highest priority is played. Format: yyyy-MM-dd\\"T\\"HH:mm:ss.
+        # The time to play the highest-priority show. The format is yyyy-MM-dd\\"T\\"HH:mm:ss.
         # 
-        # >  You can configure this parameter only before the episode list starts playing.\\
-        # After you configure this parameter, when the specified point in time is reached, any episode that is playing stops and the episode of the highest priority in the episode list starts to play.
+        # > This parameter can be configured only before the playlist starts.<br>
+        # > After this parameter is configured, the system switches from the currently playing show to the highest-priority show at the specified time.
         self.high_priority_show_start_time = high_priority_show_start_time
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The number of additional times the episode list is played.
+        # The number of times the playlist loops.
         # 
-        # > 
-        # 
-        # *   The RepeatTimes parameter specifies the number of repetitions. For example, if you set the value to **0**, the episode list is played **once**. If you set the value to **1**, the episode list is played **twice**.********
-        # 
-        # *   If you set the value to -1, the episode list is repeated indefinitely.
+        # > - RepeatTimes specifies the number of repetitions. For example, a value of **0** means the playlist is played once without repetition. A value of **1** means the playlist is played twice (one initial playback and one repetition).
+        # >
+        # > - A value of -1 indicates that the playlist loops indefinitely.
         self.repeat_times = repeat_times
-        # The ID of the episode for which you want to change the position in the playlist.
+        # The ID of the show whose position in the playlist you want to modify.
         # 
-        # >  You can call the [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html) or [DescribeShowList](https://help.aliyun.com/document_detail/2848054.html) operation and check the value of the response parameter ShowId to obtain the ID.
+        # > Obtain the ShowId value from the response of the [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html) or [DescribeShowList](https://help.aliyun.com/document_detail/2848054.html) operation.
         self.show_id = show_id
-        # The position of the episode in the episode list. If you want to change the position of an episode in a playlist, place the ID of the episode in **Spot**.
+        # The new position of the show in the playlist. The show specified by ShowId is moved to the position specified by **Spot**.
         # 
-        # >  The value must be greater than or equal to 0 and less than or equal to the total number of episodes in the playlist.
+        # > The value must be greater than or equal to 0 and less than or equal to the total number of shows in the playlist.
         self.spot = spot
 
     def validate(self):

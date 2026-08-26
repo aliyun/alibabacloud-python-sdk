@@ -14,11 +14,11 @@ class ListPlaylistResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The episode lists.
+        # The list of playlists.
         self.program_list = program_list
         # The request ID.
         self.request_id = request_id
-        # The total number of episode lists returned.
+        # The total number of playlists.
         self.total = total
 
     def validate(self):
@@ -71,24 +71,27 @@ class ListPlaylistResponseBodyProgramList(DaraModel):
         repeat_number: int = None,
         status: int = None,
     ):
-        # The ID of the production studio to which the episode list belongs. You can use the ID as a request parameter in the API operation that is used to add a layout to the virtual studio, delete a layout in the virtual studio, modify a layout of the virtual studio, or query layouts of the virtual studio.
+        # The ID of the production studio to which the playlist belongs. Use this ID as a request parameter to add, delete, modify, or query the layout of a virtual studio.
         self.caster_id = caster_id
-        # The main streaming domain.
+        # The streaming domain.
         self.domain_name = domain_name
-        # The ID of the episode list.
+        # The ID of the playlist.
         self.program_id = program_id
-        # The name of the episode list.
+        # The name of the playlist.
         self.program_name = program_name
-        # The number of playbacks after the first playback is complete. Valid values:
+        # The number of times the playlist repeats after the first playback. Valid values:
         # 
-        # *   **0** (default): specifies that the episode list is played only once.
-        # *   **-1**: specifies that the episode list is played in loop mode.
-        # *   Positive integer: specifies the number of times the episode list repeats after the first playback is complete.
+        # - **0** (default): The playlist does not repeat.
+        # 
+        # - **-1**: The playlist plays in a loop.
+        # 
+        # - Other positive integers: The number of times the playlist repeats.
         self.repeat_number = repeat_number
-        # The status of the episode list. Valid values:
+        # The status of the playlist. Valid values:
         # 
-        # *   **0**: stopped
-        # *   **1**: running
+        # - **0**: stopped.
+        # 
+        # - **1**: running.
         self.status = status
 
     def validate(self):

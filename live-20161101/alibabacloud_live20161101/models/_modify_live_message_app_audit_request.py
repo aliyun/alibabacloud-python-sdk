@@ -12,19 +12,18 @@ class ModifyLiveMessageAppAuditRequest(DaraModel):
         audit_url: str = None,
         data_center: str = None,
     ):
-        # The ID of the interactive messaging application whose content moderation settings you want to modify.
+        # The ID of the interactive messaging application to modify.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The content moderation method. Valid values:
-        # 
-        # *   0: disables content moderation.
-        # *   1: uses built-in content moderation.
-        # *   2: uses custom content moderation.
+        # The security audit method. Valid values:
+        # - 0: No security audit.
+        # - 1: Built-in security audit.
+        # - 2: Custom security audit.
         self.audit_type = audit_type
-        # The URL for content moderation. This parameter is required if you set AuditType to 2. The URL must start with http:// or https:// and cannot contain a private IP address or a port number.
+        # The security audit URL required when custom security audit is used (AuditType=2). The URL must start with http:// or https://, must not contain private IP addresses, and must not include port numbers.
         self.audit_url = audit_url
-        # The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+        # The data center. This value must be the same as the data center specified in [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html). Valid values: cn-shanghai (Shanghai) and ap-southeast-1 (Singapore).
         self.data_center = data_center
 
     def validate(self):

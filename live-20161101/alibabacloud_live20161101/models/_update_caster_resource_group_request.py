@@ -21,6 +21,7 @@ class UpdateCasterResourceGroupRequest(DaraModel):
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

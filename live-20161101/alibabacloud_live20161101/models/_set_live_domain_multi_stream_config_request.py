@@ -11,15 +11,14 @@ class SetLiveDomainMultiStreamConfigRequest(DaraModel):
         owner_id: int = None,
         switch: str = None,
     ):
-        # The main streaming domain.
+        # The primary streaming domain.
         # 
         # This parameter is required.
         self.domain = domain
         self.owner_id = owner_id
-        # Specifies whether to enable the dual-stream disaster recovery feature. Valid values:
-        # 
-        # *   **on**: enables the feature.
-        # *   **off**: disables the feature.
+        # The feature switch. Valid values:
+        # - **on**: enabled
+        # - **off**: disabled.
         # 
         # This parameter is required.
         self.switch = switch

@@ -15,27 +15,28 @@ class DescribeLiveDomainRealTimeBpsDataRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The streaming domain name or names.
+        # The streaming domain.
         # 
         # Separate multiple domain names with commas (,).
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. It must be later than the start time. The format is *yyyy-MM-dd*T*HH:mm:ss*Z (UTC).
         # 
-        # >  If you do not set this parameter, the data of the hour following the specified start time is returned.
+        # > If you do not specify this parameter, data within one hour of the start time is queried by default.
         self.end_time = end_time
-        # The name of the Internet service provider (ISP).
+        # The English name of the carrier.
         # 
-        # To query ISPs, call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation.
+        # For more information, see [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html).
         self.isp_name_en = isp_name_en
-        # The name of the region in which you want to query data.
+        # The English name of the region.
         # 
-        # To query regions, call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation.
+        # For more information, see [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html).
         self.location_name_en = location_name_en
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. The format is *yyyy-MM-dd*T*HH:mm:ss*Z (UTC).
         self.start_time = start_time
 
     def validate(self):

@@ -15,9 +15,9 @@ class DescribeLiveRecordVodConfigsRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -26,8 +26,9 @@ class DescribeLiveRecordVodConfigsRequest(DaraModel):
         self.page_num = page_num
         # The number of entries per page. Default value: **10**. Valid values: **5 to 100**.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream.
+        # The stream name.
         self.stream_name = stream_name
 
     def validate(self):

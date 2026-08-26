@@ -13,9 +13,9 @@ class DeleteLiveAudioAuditConfigRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         # 
-        # >  A value of asterisk (\\*) specifies all applications under the domain name.
+        # > Set AppName to an asterisk (\\*) to match all AppNames under the domain.
         # 
         # This parameter is required.
         self.app_name = app_name
@@ -24,10 +24,11 @@ class DeleteLiveAudioAuditConfigRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream.
+        # The stream name.
         # 
-        # >  A value of asterisk (\\*) specifies all live streams in the application.
+        # > Set StreamName to an asterisk (\\*) to match all streams in the AppName.
         # 
         # This parameter is required.
         self.stream_name = stream_name

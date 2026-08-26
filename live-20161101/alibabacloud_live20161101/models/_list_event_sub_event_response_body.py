@@ -17,7 +17,7 @@ class ListEventSubEventResponseBody(DaraModel):
     ):
         # The total number of callback records returned on the current page.
         self.count = count
-        # Indicates whether the current page is followed by a page.
+        # Indicates whether there is a next page.
         self.has_more = has_more
         # The callback records.
         self.logs = logs
@@ -82,19 +82,19 @@ class ListEventSubEventResponseBodyLogs(DaraModel):
         time: str = None,
         url: str = None,
     ):
-        # The application ID.
+        # The ID of the subscribed application.
         self.app_id = app_id
-        # The HTTP status code. A value of 200 indicates that the callback was successful.
+        # The error code. A value of 200 indicates a successful callback.
         self.code = code
         # The callback duration. Unit: milliseconds.
         self.cost = cost
-        # The details about the callback.
+        # The callback content details.
         self.data = data
-        # The ID of the callback record.
+        # The callback record ID.
         self.message_id = message_id
-        # The subscription ID.
+        # The subscription event ID.
         self.sub_id = sub_id
-        # The time when the callback was generated.
+        # The time when the callback record was generated. The time is in the UTC+8 time zone. Format: yyyy-MM-dd hh:mm:ss.SSS.
         self.time = time
         # The callback URL.
         self.url = url

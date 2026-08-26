@@ -13,17 +13,18 @@ class DeleteLivePullStreamInfoConfigRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can call [DescribeLivePullStreamConfig](https://help.aliyun.com/document_detail/2847818.htmll) operation to query the application name.
+        # The name of the application to which the live stream belongs. Call [DescribeLivePullStreamConfig](https://help.aliyun.com/document_detail/2847818.html) to query the application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. You can call [DescribeLivePullStreamConfig](https://help.aliyun.com/document_detail/2847818.htmll) operation to query the stream name.
+        # The name of the stream. Call [DescribeLivePullStreamConfig](https://help.aliyun.com/document_detail/2847818.html) to query the stream name.
         # 
         # This parameter is required.
         self.stream_name = stream_name

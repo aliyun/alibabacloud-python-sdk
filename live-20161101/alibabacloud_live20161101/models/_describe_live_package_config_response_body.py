@@ -19,18 +19,19 @@ class DescribeLivePackageConfigResponseBody(DaraModel):
         total_page: int = None,
     ):
         self.live_package_config_list = live_package_config_list
-        # The sorting order. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   **asc** (default): ascending order
-        # *   **desc**: descending order
+        # - **asc** (default): ascending order.
+        # 
+        # - **desc**: descending order.
         self.order = order
-        # The page number.
+        # The current page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of live stream encapsulation configurations.
+        # The total number of records.
         self.total_num = total_num
         # The total number of pages.
         self.total_page = total_page

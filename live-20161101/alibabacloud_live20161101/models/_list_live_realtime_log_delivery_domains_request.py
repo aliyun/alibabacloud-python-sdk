@@ -13,19 +13,20 @@ class ListLiveRealtimeLogDeliveryDomainsRequest(DaraModel):
         region: str = None,
         region_id: str = None,
     ):
-        # The name of the Logstore to which log entries are delivered.
+        # The name of the SLS Logstore for real-time log delivery.
         # 
         # This parameter is required.
         self.logstore = logstore
         self.owner_id = owner_id
-        # The name of the Log Service project that is used for real-time log delivery.
+        # The name of the SLS project for real-time log delivery.
         # 
         # This parameter is required.
         self.project = project
-        # The ID of the region where the Log Service project is deployed.
+        # The region of the SLS project for real-time log delivery.
         # 
         # This parameter is required.
         self.region = region
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -15,13 +15,12 @@ class DeleteLivePrivateLineRequest(DaraModel):
         stream_name: str = None,
     ):
         # The acceleration type. Valid values:
-        # 
-        # *   play: streaming acceleration
-        # *   publish: stream ingest acceleration
+        # - play: streaming acceleration.
+        # - publish: stream ingest acceleration.
         # 
         # This parameter is required.
         self.acceleration_type = acceleration_type
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
@@ -30,8 +29,9 @@ class DeleteLivePrivateLineRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream.
+        # The live stream name.
         # 
         # This parameter is required.
         self.stream_name = stream_name

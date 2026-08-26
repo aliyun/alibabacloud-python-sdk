@@ -15,44 +15,54 @@ class AddLiveStreamTranscodeRequest(DaraModel):
         region_id: str = None,
         template: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         # 
-        # *   The transcoding template takes effect only if the value of this parameter is the same as the application name that is specified in the ingest URL. The name can be up to 256 characters in length and can contain digits, letters, hyphens (-), and underscores (_).
-        # *   You can also set this parameter to an asterisk (\\*). Asterisks (\\*) can match any string, including an empty string.
+        # - The value of App must be the same as the AppName in the ingest URL for the transcoding template to take effect. The value can be up to 256 characters in length and can contain digits, letters, hyphens (-), and underscores (_).
         # 
-        # >  If you configure a transcoding template for which App is set to an asterisk (\\*), the transcoding template is used only if no transcoding template for which App is set to the same value as AppName in the ingest URL exists.
+        # - App also supports a single asterisk (\\*) as the value, which matches any string including an empty string.
+        # 
+        # > If a transcoding template with App set to a single asterisk (\\*) is configured: when a user pulls a transcoded stream, the system first matches the transcoding template whose App value is the same as the AppName in the ingest URL. If no such template exists, the system matches the transcoding template with App set to a single asterisk (\\*).
         # 
         # This parameter is required.
         self.app = app
-        # The name of the main streaming domain.
+        # The streaming domain of the streamer.
         # 
         # This parameter is required.
         self.domain = domain
-        # The encryption configuration. The value is a JSON string. The following fields are included in the syntax:
+        # The encryption configuration. JSON format. The fields are described as follows:
         # 
-        # *   EncryptType: the type of the encryption. Set the value to **aliyun**.
-        # *   KmsKeyID: the ID of the CMK in KMS.
-        # *   KmsKeyExpireInterval: the validity period of the CMK. Valid values: **60 to 3600**. Unit: seconds.
+        # - EncryptType: the encryption type. Set the value to **aliyun**.
+        # - KmsKeyID: the user KMS master key ID.
+        # - KmsKeyExpireInterval: the key rotation interval. Valid values: **60 to 3600**. Unit: seconds.
         self.encrypt_parameters = encrypt_parameters
-        # Specifies whether to use the load-on-demand mechanism for transcoding. Default value: **yes**.
+        # Specifies whether to enable on-demand transcoding. Valid values:
+        # - **yes**: enables on-demand transcoding.
+        # - **no**: disables on-demand transcoding.
         self.lazy = lazy
         self.owner_id = owner_id
+        # The region ID. When using SDK 2.0, set this parameter to the region ID that corresponds to the service registration endpoint. When using SDK 1.0, ignore this parameter.
         self.region_id = region_id
         # The transcoding template. Valid values:
         # 
-        # *   Standard transcoding template:
+        # - Standard quality templates:
         # 
-        #     *   **lld**: low definition
-        #     *   **lsd**: standard definition
-        #     *   **lhd**: high definition
-        #     *   **lud**: ultra-high definition
+        #     - **lld**: low definition.
         # 
-        # *   Narrowband HD™ transcoding template:
+        #     - **lsd**: standard definition.
         # 
-        #     *   **ld**: low definition
-        #     *   **sd**: standard definition
-        #     *   **hd**: high definition
-        #     *   **ud**: ultra-high definition
+        #     - **lhd**: high definition.
+        # 
+        #     - **lud**: ultra-high definition.
+        #             
+        # - Narrowband HD™ transcoding templates:
+        # 
+        #     - **ld**: low definition.
+        #     
+        #     - **sd**: standard definition.
+        #     
+        #     - **hd**: high definition.
+        #     
+        #     - **ud**: ultra-high definition.
         # 
         # This parameter is required.
         self.template = template

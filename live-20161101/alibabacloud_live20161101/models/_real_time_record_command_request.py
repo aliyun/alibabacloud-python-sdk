@@ -14,28 +14,29 @@ class RealTimeRecordCommandRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the application to which the stream belongs. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The action to be performed. Valid values:
+        # The operation action. Valid values:
         # 
-        # *   **start**: forcibly starts recording.
-        # *   **stop**: forcibly stops recording. If the live stream is interrupted for longer than a specific latency, a recording is generated.
-        # *   **cancel_delay**: resets the latency for stream interruption and completely stops recording. If the recording task is stopped when you perform this action, a recording is generated.
-        # *   **restart**: forcibly restarts recording. If the live stream is being recorded when you perform this action, a recording is generated.
-        # 
-        # >  **stop** forcibly stops recording. By default, a recording is generated after 180 seconds. **cancel_delay** resets the latency for stream interruption from 180 seconds to 0 seconds. This means that a recording is generated immediately.
+        # - **start**: forcibly starts recording. This must be called as the first operation and cannot be called again before stopping.
+        # - **stop**: forcibly pauses recording. After the stream interruption delay (180 seconds by default) elapses, a recording is generated. This can only be called after start or restart. To generate the file immediately after calling stop, call cancel_delay.
+        # - **cancel_delay**: immediately terminates the wait and generates a recording, completely stopping recording. This must be called after stop to generate the file in advance.
+        # - **restart**: forcibly restarts recording. If recording is in progress before restart, a file is immediately generated. This can only be called when the task is in the started or stopped state.
         # 
         # This parameter is required.
         self.command = command
-        # The main streaming domain.
+        # The streamer\\"s streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. Make sure that you specify the correct stream name. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The stream name. Make sure that the StreamName is correct. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
+        # 
+        # > This operation supports only single-stream operations and does not support wildcards.
         # 
         # This parameter is required.
         self.stream_name = stream_name

@@ -10,6 +10,7 @@ class SetLiveDomainCertificateRequest(DaraModel):
         cert_name: str = None,
         cert_type: str = None,
         domain_name: str = None,
+        dry_run: bool = None,
         force_set: str = None,
         owner_id: int = None,
         sslpri: str = None,
@@ -21,31 +22,37 @@ class SetLiveDomainCertificateRequest(DaraModel):
         self.cert_name = cert_name
         # The certificate type. Valid values:
         # 
-        # *   **upload**: a custom certificate
-        # *   **cas**: a certificate that is purchased from Certificate Management Service
-        # *   **free**: a free certificate (for testing)
+        # - **upload**: an uploaded certificate.
+        # - **cas**: a certificate from SSL Certificates Service.
+        # - **free**: a personal test certificate (Free Edition).
         self.cert_type = cert_type
-        # The domain name that is secured by the certificate. The domain name uses `HTTPS`-based acceleration.
+        # The accelerated domain name to which the certificate belongs. The domain name is of the `https` acceleration type.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether to check the certificate name for duplicates. A value of 1 indicates that the system does not perform the check and overwrites the information about the certificate that has the same name. Set the value to **1**.
+        # Specifies whether to perform only a dry run, without actually executing the operation. Valid values:
+        # 
+        # - true: sends a dry run request. If the request passes the check, the operation is not actually executed.
+        # - false (default): sends a normal request. If the request passes the check, the operation is actually executed.
+        # 
+        # The dry run checks parameter validity, RAM permissions, and resource status. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the operation is not actually executed.
+        self.dry_run = dry_run
+        # Ignores the check for duplicate certificate names and overwrites the existing certificate information with the same name. Fixed value: **1**.
         self.force_set = force_set
         self.owner_id = owner_id
-        # The private key.
+        # The private key content.
         # 
-        # >  This parameter is required only if you set the SSLProtocol parameter to on.
+        # > This parameter is required only when SSLProtocol is set to on.
         self.sslpri = sslpri
-        # Specifies whether to enable the HTTPS certificate. Valid values:
-        # 
-        # *   **on**. If you set this parameter to **on**, you must also specify the SSLPub and SSLPri parameters.
-        # *   **off**. This is the default value.
+        # Specifies whether to enable the HTTPS certificate. Valid values: 
+        # - **on**: enabled. If the value is **on**, you must also set the SSLPub and SSLPri request parameters.
+        # - **off** (default): disabled.
         # 
         # This parameter is required.
         self.sslprotocol = sslprotocol
-        # The public key.
+        # The public key content.
         # 
-        # >  This parameter is required only if you set the SSLProtocol parameter to on.
+        # > This parameter is required only when SSLProtocol is set to on.
         self.sslpub = sslpub
         self.security_token = security_token
 
@@ -65,6 +72,9 @@ class SetLiveDomainCertificateRequest(DaraModel):
 
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.force_set is not None:
             result['ForceSet'] = self.force_set
@@ -96,6 +106,9 @@ class SetLiveDomainCertificateRequest(DaraModel):
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('ForceSet') is not None:
             self.force_set = m.get('ForceSet')

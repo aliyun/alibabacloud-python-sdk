@@ -18,13 +18,13 @@ class DescribeRTSNativeSDKVvDataResponseBody(DaraModel):
     ):
         # The time granularity.
         self.data_interval = data_interval
-        # The end of the time range for which the data was queried.
+        # The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The ID of the request.
+        # Id
         self.request_id = request_id
-        # The beginning of the time range for which the data was queried.
+        # The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
-        # The total number of playbacks and the number of successful playbacks at each interval.
+        # The total playback count and total successful playback count for each time interval. Unit: count.
         self.vv_data = vv_data
 
     def validate(self):
@@ -86,11 +86,11 @@ class DescribeRTSNativeSDKVvDataResponseBodyVvData(DaraModel):
         vv_success: str = None,
         vv_total: str = None,
     ):
-        # The timestamp of the returned data.
+        # The start time of the time interval. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The number of successful playbacks within the period of time.
+        # The total number of successful playbacks within the specified time period.
         self.vv_success = vv_success
-        # The total number of playbacks within the period of time.
+        # The total number of playbacks within the specified time period.
         self.vv_total = vv_total
 
     def validate(self):

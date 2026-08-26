@@ -17,38 +17,35 @@ class ListEdgeTranscodeJobRequest(DaraModel):
         status: int = None,
         type: str = None,
     ):
-        # The ID of the data center.
+        # The data center ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The keyword of the query.
-        # 
-        # *   You can specify a task ID for an exact match.
-        # *   You can specify a task name for a fuzzy match.
+        # The search keyword. Valid values:
+        # - Task ID. Exact match is supported.
+        # - Task name. Fuzzy match is supported.
         self.keyword = keyword
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # The sort order of the tasks by creation time. Default value: desc. Valid values:
-        # 
-        # *   desc: descending order
-        # *   asc: ascending order
+        # The collation based on CreateTime. Default value: desc. Valid values:
+        # - desc: descending sorting.
+        # - asc: ascending sorting.
         self.sort_by = sort_by
-        # The task status. Valid values:
-        # 
-        # *   0: not started
-        # *   1: running
+        # The edge transcoding task status. Valid values:
+        # - 0: not started.
+        # - 1: running.
         self.status = status
-        # The type of edge transcoding. Valid values:
+        # The edge transcoding type. Valid values:
+        # - common: default transcoding (standard + Narrowband HD 1.0).
+        # - nbhd-2: Narrowband HD 2.0.
+        # - ultra-hd: ultra-high definition.
         # 
-        # *   common: standard transcoding and Narrowband HD™ 1.0 transcoding.
-        # *   nbhd-2: Narrowband HD™ 2.0 transcoding
-        # *   ultra-hd: ultra-high definition transcoding
-        # 
-        # >  If you do not specify this parameter, the query results are filtered based on the types of edge transcoding on which you are granted permissions.
+        # > If this parameter is not specified, transcoding templates for which the user has the corresponding transcoding type permissions are displayed.
         self.type = type
 
     def validate(self):

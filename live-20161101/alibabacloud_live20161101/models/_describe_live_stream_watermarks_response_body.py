@@ -14,9 +14,9 @@ class DescribeLiveStreamWatermarksResponseBody(DaraModel):
         total: int = None,
         watermark_list: main_models.DescribeLiveStreamWatermarksResponseBodyWatermarkList = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of watermark templates that meet the specified conditions.
+        # The total number of matching entries.
         self.total = total
         self.watermark_list = watermark_list
 

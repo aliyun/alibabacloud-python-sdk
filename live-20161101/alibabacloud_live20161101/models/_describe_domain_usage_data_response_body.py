@@ -19,19 +19,19 @@ class DescribeDomainUsageDataResponseBody(DaraModel):
         type: str = None,
         usage_data_per_interval: main_models.DescribeDomainUsageDataResponseBodyUsageDataPerInterval = None,
     ):
-        # The billable region where the resource usage data was generated.
+        # The usage region.
         self.area = area
-        # The time interval between the returned entries. Unit: seconds.
+        # The time interval of each record. Unit: seconds.
         self.data_interval = data_interval
-        # The domain name.
+        # The streaming domain.
         self.domain_name = domain_name
-        # The end of the time range for which the resource usage data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.end_time = end_time
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The beginning of the time range for which the resource usage data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.start_time = start_time
-        # The type of the resource usage data.
+        # The usage type.
         self.type = type
         self.usage_data_per_interval = usage_data_per_interval
 

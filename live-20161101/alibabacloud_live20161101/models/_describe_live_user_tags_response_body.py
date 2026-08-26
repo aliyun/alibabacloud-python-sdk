@@ -13,7 +13,7 @@ class DescribeLiveUserTagsResponseBody(DaraModel):
         request_id: str = None,
         tags: List[main_models.DescribeLiveUserTagsResponseBodyTags] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The tags.
         self.tags = tags
@@ -58,9 +58,9 @@ class DescribeLiveUserTagsResponseBodyTags(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag values.
         self.value = value
 
     def validate(self):

@@ -20,25 +20,27 @@ class UpdateLivePullStreamInfoConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The domain name used for stream pulling. It is the main streaming domain.
+        # The streaming domain used as the streamer\\"s stream domain.
+        # > - When you specify DomainName, make sure that the domain is a live streaming domain and that the user calling this operation has the permission to operate on the specified domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The time when stream pulling ends.
+        # The end time of stream pulling.
         # 
-        # The time range specified by the StartTime and EndTime parameters cannot exceed seven days. The time specified by the EndTime parameter must be later than the current time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The interval between StartTime and EndTime must be within 7 days, and EndTime must be later than the current time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The complete URL of the origin server of the live stream. You can specify multiple URLs by separating them with semicolons (;).
+        # The full URL of the origin server where the live stream resides. You can specify multiple origin URLs separated by semicolons (;).
         # 
         # This parameter is required.
         self.source_url = source_url
-        # The time when stream pulling starts.
+        # The start time of stream pulling.
         # 
-        # The time range specified by the StartTime and EndTime parameters cannot exceed seven days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The interval between StartTime and EndTime must be within 7 days. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

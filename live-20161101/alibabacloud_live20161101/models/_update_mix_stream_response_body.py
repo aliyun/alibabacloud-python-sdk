@@ -10,9 +10,9 @@ class UpdateMixStreamResponseBody(DaraModel):
         mix_stream_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the stream mixing task. You can specify this parameter in a request to delete the stream mixing task or query stream mixing tasks.
+        # The ID of the stream mix task. You can use this ID to query or delete the task.
         self.mix_stream_id = mix_stream_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

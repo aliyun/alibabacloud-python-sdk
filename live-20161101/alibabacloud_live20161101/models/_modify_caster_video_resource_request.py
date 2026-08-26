@@ -22,59 +22,74 @@ class ModifyCasterVideoResourceRequest(DaraModel):
         resource_name: str = None,
         vod_url: str = None,
     ):
-        # The offset of the position where the system starts to read the video resource.
+        # The start offset of the video file. Unit: milliseconds.
         # 
-        # This parameter takes effect only when the video resource is a video file. Unit: milliseconds.
+        # >Notice: 
         # 
-        # >  A value greater than 0 indicates an offset from the first frame.
+        # This parameter is valid only if the video source is a video file.
+        # 
+        # 
+        # 
+        # > A value greater than 0 specifies the start time to read the file. The time is an offset from the first frame.
         self.begin_offset = begin_offset
         # The ID of the production studio.
         # 
-        # If you create a production studio through the [CreateCaster](~~69338#doc-api-live-CreateCaster~~ "Creates a production studio.") interface, check the value of the CasterId parameter in the response.
+        # - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId returned in the response.
         # 
-        # If you create a production studio through the ApsaraVideo Live Console, log in to the console, then check the ID of the production studio through the following path:
+        # - If you create a production studio in the console, find the ID on the **Cloud Production Studio** page. To go to this page, choose **LIVE Console** > **Production Studio**.
         # 
-        # Production Studios > Production Studio Management
-        # 
-        # >  The CasterId is reflected in the Name column on the Production Studio Management page.
+        # > The name of the production studio in the list on the Cloud Production Studio page is its ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # This parameter takes effect only when the video resource is a video file. Unit: milliseconds.
+        # This parameter is valid only for video files. Unit: milliseconds.
         # 
-        # *   A value greater than **0** indicates an offset from the first frame.
-        # *   A value smaller than **0** indicates an offset from the last frame.
+        # - If the value is greater than **0**, it specifies the end time to read the file. The time is an offset from the first frame.
+        # 
+        # - If the value is less than **0**, it specifies the end time to read the file. The time is an offset from the last frame.
         self.end_offset = end_offset
-        # ID of the media library image material.
-        # > This parameter is only available and must be provided when the video source type is an image.
+        # The ID of the image material in the media asset library.
+        # 
+        # > This parameter is required only if the video source is an image.
         self.image_id = image_id
-        # Image material URL. 
-        # >This parameter is only available when the video source type is an image and the image file has not been imported into the material library. Supports uploading images in jpg, png formats, with a maximum file size of 10MB.
+        # The URL of the image material.
+        # 
+        # > This parameter is available only if the video source is an image that has not been imported to the material library. The image must be in JPG or PNG format, and its size cannot exceed 10 MB.
         self.image_url = image_url
         # The URL of the live stream.
         # 
-        # This parameter takes effect and is required only when the video resource is a live stream.
+        # >Notice: 
+        # 
+        # This parameter is required only if the video source is a live stream.
         self.live_stream_url = live_stream_url
-        # The ID of the material.
+        # The material ID.
         self.material_id = material_id
         self.owner_id = owner_id
-        # The interval between presentation timestamp (PTS) callbacks. Unit: milliseconds. This parameter takes effect only when the video resource is a VOD file.
+        # The Presentation Time Stamp (PTS) callback interval. Unit: milliseconds. This parameter is valid only for VOD materials.
         self.pts_callback_interval = pts_callback_interval
+        # The region ID.
         self.region_id = region_id
-        # The number of playback times after the first playback is complete. This parameter takes effect only when the video resource is a file. Valid values:
+        # This parameter is valid only for video files. It specifies the number of times to loop the video after playback is complete.
         # 
-        # *   **0**: indicates that the video is played only once. This is the default value.
-        # *   **-1**: indicates that the video is played in loop mode.
+        # - **0** (default): The video does not loop.
+        # 
+        # - **-1**: The video loops indefinitely.
         self.repeat_num = repeat_num
-        # The ID of the video resource. It is reflected in the ResourceId parameter when you call the [AddCasterVideoResource](~~60250#doc-api-live-AddCasterVideoResource~~ "Adds a video resource to a production studio.") operation.
+        # The resource ID. If you add a video source to the production studio by calling the [AddCasterVideoResource](https://help.aliyun.com/document_detail/2848020.html) operation, use the ResourceId returned in the response.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The name of the video resource.
+        # The name of the video source.
         self.resource_name = resource_name
-        # The URL of the video-on-demand (VOD) file. This parameter takes effect only when the video resource is a video file that is not from the media library.
+        # The URL of the video on demand (VOD) file.
         # 
-        # >  The VOD file must be in the MP4, FLV, or TS format.
+        # >Notice: 
+        # 
+        # This parameter is available only if the video source is a video file that has not been imported to the material library.
+        # 
+        # 
+        # 
+        # > VOD files must be in MP4, FLV, or TS format.
         self.vod_url = vod_url
 
     def validate(self):

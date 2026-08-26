@@ -13,7 +13,7 @@ class DeleteLiveAppRecordConfigRequest(DaraModel):
         security_token: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         # 
         # This parameter is required.
         self.app_name = app_name

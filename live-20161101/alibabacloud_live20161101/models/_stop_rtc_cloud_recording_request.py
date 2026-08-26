@@ -9,6 +9,8 @@ class StopRtcCloudRecordingRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The ID of the task that is returned when you start an RTC cloud recording.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

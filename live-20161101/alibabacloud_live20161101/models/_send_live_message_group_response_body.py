@@ -10,9 +10,9 @@ class SendLiveMessageGroupResponseBody(DaraModel):
         msg_tid: str = None,
         request_id: str = None,
     ):
-        # The ID of the message, which is a unique identifier that can be used to delete the message. The ID can be up to 64 bytes in length and can contain letters and digits.
+        # The unique identifier of the message, which can be used to delete the message. The ID can contain only letters and digits and can be up to 64 bytes in length.
         self.msg_tid = msg_tid
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

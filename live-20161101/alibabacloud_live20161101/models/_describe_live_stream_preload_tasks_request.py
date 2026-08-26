@@ -18,30 +18,30 @@ class DescribeLiveStreamPreloadTasksRequest(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The streaming domain name.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-06-30T19:00:00Z. The interval between the start time and end time cannot exceed three days.
+        # The end time in ISO 8601 format in UTC. Format: yyyy-MM-ddTHH:mm:ssZ. The interval between EndTime and StartTime cannot exceed 3 days.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The page number. Default value: 1.
+        # The page number to return. Default value: 1.
         self.page_num = page_num
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries per page. Maximum value: 100. Valid values: any integer from 1 to 100.
         self.page_size = page_size
-        # The streaming URL. You can specify up to 100 streaming URLs in a request. Separate multiple streaming URLs with commas (,).
+        # The live streaming URL. You can specify multiple URLs separated by commas (,), up to 100.
         self.play_url = play_url
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-06-29T19:00:00Z. You can query only data in the previous three days.
+        # The start time in ISO 8601 format in UTC. Format: yyyy-MM-ddTHH:mm:ssZ. The start time must be within the last 3 days.
         self.start_time = start_time
-        # The status of the prefetch task. Valid values:
-        # 
-        # *   complete
-        # *   pending
-        # *   preloading
-        # *   failed
+        # The task status. Valid values:
+        # - complete: completed.
+        # - pending: waiting for preload.
+        # - preloading: preloading in progress.
+        # - failed: preload failed.
         self.status = status
-        # The ID of the prefetch task. The task ID is returned when you call the [SetLiveStreamPreloadTasks](https://help.aliyun.com/document_detail/2519938.html) operation to configure the prefetch task.
+        # The task ID. You can obtain the preload task ID by calling the [SetLiveStreamPreloadTasks](https://help.aliyun.com/document_detail/2519938.html) operation.
         self.task_id = task_id
 
     def validate(self):

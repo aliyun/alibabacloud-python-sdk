@@ -22,9 +22,9 @@ class DescribeLiveStreamPreloadTasksResponseBody(DaraModel):
         # The number of entries per page.
         self.page_size = page_size
         self.preload_tasks = preload_tasks
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that match the conditions.
         self.total_num = total_num
         # The total number of pages.
         self.total_page = total_page

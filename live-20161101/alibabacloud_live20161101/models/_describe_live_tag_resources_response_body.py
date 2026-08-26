@@ -13,9 +13,9 @@ class DescribeLiveTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.DescribeLiveTagResourcesResponseBodyTagResources] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The tags of the resource.
+        # A list of resources and their associated tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeLiveTagResourcesResponseBodyTagResources(DaraModel):
         resource_id: str = None,
         tag: List[main_models.DescribeLiveTagResourcesResponseBodyTagResourcesTag] = None,
     ):
-        # The resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The key-value pair of the tag.
+        # The tags bound to the resource.
         self.tag = tag
 
     def validate(self):
@@ -103,9 +103,9 @@ class DescribeLiveTagResourcesResponseBodyTagResourcesTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

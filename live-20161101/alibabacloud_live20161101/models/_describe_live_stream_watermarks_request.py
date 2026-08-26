@@ -14,15 +14,16 @@ class DescribeLiveStreamWatermarksRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The name of the main streaming domain.
+        # The main streaming domain.
         self.domain = domain
-        # The keyword used in the query. You can specify the template ID or name. Fuzzy search is supported for the name.
+        # The keyword for the search. You can specify a template ID or name. Fuzzy search is supported for names.
         self.key_word = key_word
         self.owner_id = owner_id
-        # The page number. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of templates per page. Default value: 100.
+        # The number of templates to return on each page. The default value is 100.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

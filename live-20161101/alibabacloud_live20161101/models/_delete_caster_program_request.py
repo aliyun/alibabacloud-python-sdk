@@ -13,14 +13,16 @@ class DeleteCasterProgramRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value returned in the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you create a production studio in the ApsaraVideo Live console, go to the **Production Studio** > **Cloud Production Studio** page to view the ID.
+        # 
+        # > The name of a production studio in the list on the Cloud Production Studio page is its ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

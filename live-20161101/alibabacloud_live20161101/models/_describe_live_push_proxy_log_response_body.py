@@ -15,9 +15,9 @@ class DescribeLivePushProxyLogResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.domain_log_details = domain_log_details
-        # Push domain.
+        # The ingest domain.
         self.domain_name = domain_name
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

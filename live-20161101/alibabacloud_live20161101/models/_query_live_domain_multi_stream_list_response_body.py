@@ -16,15 +16,15 @@ class QueryLiveDomainMultiStreamListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The online streams returned.
+        # The number of online records.
         self.online_streams = online_streams
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,20 +89,19 @@ class QueryLiveDomainMultiStreamListResponseBodyOnlineStreams(DaraModel):
         stream_name: str = None,
         upstream_list: List[main_models.QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsUpstreamList] = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The switchover records.
+        # The stream switching records.
         self.change_logs = change_logs
-        # The main streaming domain.
+        # The streaming domain of the streamer.
         self.domain = domain
-        # Indicates whether the dual-stream disaster recovery feature is enabled. Valid values:
-        # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # The feature switch. Valid values:
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.optimal_mode = optimal_mode
         # The name of the live stream.
         self.stream_name = stream_name
-        # The standby streams.
+        # The list of all candidate streams.
         self.upstream_list = upstream_list
 
     def validate(self):
@@ -180,20 +179,14 @@ class QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsUpstreamList(DaraMo
         upstream_sequence: str = None,
         upstream_time: str = None,
     ):
-        # The active/standby tag.
-        # 
-        # >  This parameter indicates whether the active or standby stream is being distributed.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # The primary/secondary flag.
+        # > Indicates which stream is currently being used for merged distribution.
         self.master_flag = master_flag
-        # The IP address of the stream ingest client.
+        # The IP address of the ingest client.
         self.upstream_ip = upstream_ip
-        # The unique identifier of the stream ingest.
+        # The unique identifier of the ingest stream.
         self.upstream_sequence = upstream_sequence
-        # The stream ingest time.
+        # The stream ingest time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC+0).
         self.upstream_time = upstream_time
 
     def validate(self):
@@ -243,19 +236,18 @@ class QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsChangeLogs(DaraMode
         upstream_ip: str = None,
         upstream_sequence: str = None,
     ):
-        # The reason for the switchover.
-        # 
-        # *   merge cut manually: You proactively switched the stream.
-        # *   master stream no data: No data is available in the active stream.
-        # *   master stream low quality: The quality of the active stream deteriorated.
+        # The reason for stream switching.
+        # * merge cut manually: The user manually switched the stream.
+        # * master stream no data: The primary stream has no data.
+        # * master stream low quality: The primary stream quality degraded.
         self.change_reason = change_reason
-        # The switchover time.
+        # The stream switching time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC+0).
         self.change_time = change_time
-        # The stream used after the switchover.
+        # The stream that is actually used after the switch.
         self.master_upstream = master_upstream
-        # The IP address used after the switchover.
+        # The IP address used after the stream switch.
         self.upstream_ip = upstream_ip
-        # The identifier of the stream after the switchover.
+        # The stream identifier after the switch.
         self.upstream_sequence = upstream_sequence
 
     def validate(self):

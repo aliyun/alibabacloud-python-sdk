@@ -17,12 +17,13 @@ class DescribeCasterSceneAudioResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.audio_layers = audio_layers
-        # The ID of the production studio. You can specify the ID in a request to start a scene in the production studio.
+        # The ID of the production studio. This ID can be used as a request parameter to start the production studio scenario.
         self.caster_id = caster_id
-        # The audio mode. By default, the audio follows video (AFV) mode is used. Valid values:
+        # Specifies whether to enable audio follow. By default, audio follow is enabled.
         # 
-        # *   **0**: the audio mixing mode
-        # *   **1**: the AFV mode
+        # - **0**: mix mode.
+        # 
+        # - **1**: audio-follows-video mode.
         self.follow_enable = follow_enable
         self.mix_list = mix_list
         # The request ID.

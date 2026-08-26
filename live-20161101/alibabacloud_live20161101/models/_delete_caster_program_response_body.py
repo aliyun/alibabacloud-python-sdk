@@ -10,9 +10,9 @@ class DeleteCasterProgramResponseBody(DaraModel):
         caster_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the production studio. You can specify the ID as a request parameter in the API operation that is used to add, delete, or modify episodes in the production studio.
+        # The ID of the production studio. You can use this ID as a request parameter when you add, delete, or modify episodes for the production studio.
         self.caster_id = caster_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

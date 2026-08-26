@@ -18,34 +18,34 @@ class DescribeLiveStreamsNotifyRecordsRequest(DaraModel):
         status: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the application to which the live stream belongs. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.app_name = app_name
         # The ingest domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20. Maximum value: 500. Valid values: integers from 1 to 500.
+        # The page size. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         # 
-        # >  The start time must be in the last seven days.
+        # > The start time must be within the last 7 days.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # Specifies whether to return the records of successful or failed callbacks. Valid values:
-        # 
-        # *   success
-        # *   failed
+        # Specifies whether the callback is successful. Valid values:
+        # - success: Successful.
+        # - failed: Failed.
         self.status = status
-        # The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the live stream. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.stream_name = stream_name
 
     def validate(self):

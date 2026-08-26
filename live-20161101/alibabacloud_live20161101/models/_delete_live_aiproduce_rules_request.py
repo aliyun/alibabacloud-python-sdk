@@ -14,21 +14,21 @@ class DeleteLiveAIProduceRulesRequest(DaraModel):
         rules_id: str = None,
         suffix_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the live stream application.
         # 
         # This parameter is required.
         self.app = app
-        # The main streaming domain.
+        # The primary streaming domain.
         # 
         # This parameter is required.
         self.domain = domain
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The ID of the subtitle rule.
+        # The subtitle rule ID.
         self.rules_id = rules_id
-        # The suffix of the subtitle rule.
-        # 
-        # >  Set the value to the name of the subtitle template.
+        # The subtitle suffix. This parameter is required. Otherwise, the InvalidParameter error is returned.
+        # > Set this parameter to the value of SubtitleName that is specified in the subtitle template.
         self.suffix_name = suffix_name
 
     def validate(self):

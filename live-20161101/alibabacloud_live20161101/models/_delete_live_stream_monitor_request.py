@@ -13,11 +13,12 @@ class DeleteLiveStreamMonitorRequest(DaraModel):
     ):
         # The ID of the monitoring session.
         # 
-        # >  You can obtain the monitoring session ID from the response parameter **MonitorId** of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
+        # > The **MonitorId** is returned in the response of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
         # 
         # This parameter is required.
         self.monitor_id = monitor_id
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

@@ -16,13 +16,22 @@ class StartRtcCloudTranscodeRequest(DaraModel):
         max_idle_time: int = None,
         output_params: List[main_models.StartRtcCloudTranscodeRequestOutputParams] = None,
     ):
+        # The ID of the application to which the channel belongs. The ID can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the channel to which the user to be transcoded belongs. The ID can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The parameters for the input stream subscription.
+        # 
         # This parameter is required.
         self.input_param = input_param
+        # The idle timeout period in seconds. If a task cannot subscribe to the specified streamer\\"s stream and remains idle for longer than this period, the task automatically stops. The value must be an integer from 10 to 14,400. The default value is 300.
         self.max_idle_time = max_idle_time
+        # The parameters for the transcoded output.
+        # 
         # This parameter is required.
         self.output_params = output_params
 
@@ -89,12 +98,30 @@ class StartRtcCloudTranscodeRequestOutputParams(DaraModel):
         user_id: str = None,
         user_token: str = None,
     ):
+        # The ID of the channel to which the transcoded stream is pushed. The ID can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters. (Pushing streams to a different channel is not supported. This setting is invalid.)
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The name of the transcoding template. Valid values:
+        # 
+        # - alimcopy
+        # 
+        # - lld
+        # 
+        # - lsd
+        # 
+        # - lhd
+        # 
+        # - lud
+        # 
         # This parameter is required.
         self.transcode_template = transcode_template
+        # The user ID for the transcoded stream in the destination channel. This ID must be unique within the channel.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # The token required to push the transcoded stream to the channel. For more information, see [Token-based authentication](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/token-based-authentication).
+        # 
         # This parameter is required.
         self.user_token = user_token
 
@@ -141,6 +168,8 @@ class StartRtcCloudTranscodeRequestInputParam(DaraModel):
         self,
         single_sub_user_param: main_models.StartRtcCloudTranscodeRequestInputParamSingleSubUserParam = None,
     ):
+        # The input parameters for a single-stream subscription.
+        # 
         # This parameter is required.
         self.single_sub_user_param = single_sub_user_param
 
@@ -173,8 +202,22 @@ class StartRtcCloudTranscodeRequestInputParamSingleSubUserParam(DaraModel):
         stream_type: int = None,
         user_id: str = None,
     ):
+        # The type of the video input stream. This parameter is valid only if the subscribed media type includes a video stream. Valid values:
+        # 
+        # - 0 (default): The camera stream.
+        # 
+        # - 1: The screen sharing stream. (This value is not supported. The setting is invalid.)
         self.source_type = source_type
+        # The media type of the subscribed stream. Valid values:
+        # 
+        # - 0 (default): The original stream, which includes both the audio and video streams.
+        # 
+        # - 1: The audio-only stream. (This value is not supported. The setting is invalid.)
+        # 
+        # - 2: The video-only stream. (This value is not supported. The setting is invalid.)
         self.stream_type = stream_type
+        # The ID of the user whose stream you want to subscribe to.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

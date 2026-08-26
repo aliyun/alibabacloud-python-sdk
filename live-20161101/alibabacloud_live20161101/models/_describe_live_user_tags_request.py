@@ -11,6 +11,7 @@ class DescribeLiveUserTagsRequest(DaraModel):
         region_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

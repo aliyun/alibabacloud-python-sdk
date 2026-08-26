@@ -17,11 +17,11 @@ class DescribeLiveIpInfoResponseBody(DaraModel):
         self.isp = isp
         # The English name of the Internet service provider (ISP).
         self.isp_ename = isp_ename
-        # The Chinese name of the region.
+        # The Chinese name of the IP region.
         self.region = region
-        # The English name of the region.
+        # The English name of the IP region.
         self.region_ename = region_ename
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

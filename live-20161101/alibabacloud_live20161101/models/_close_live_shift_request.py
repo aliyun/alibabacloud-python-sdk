@@ -13,15 +13,16 @@ class CloseLiveShiftRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications under the domain name. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the application to which the live stream belongs. Wildcards (*) are supported, which indicates all AppName values under the domain name. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.app_name = app_name
         # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. You can specify an asterisk (\\*) as the value to match all streams in the application. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the live stream. Wildcards (*) are supported, which indicates all StreamName values under the AppName. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         self.stream_name = stream_name
 
     def validate(self):

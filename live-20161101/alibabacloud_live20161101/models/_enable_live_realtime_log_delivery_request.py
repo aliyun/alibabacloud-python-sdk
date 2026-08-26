@@ -13,11 +13,12 @@ class EnableLiveRealtimeLogDeliveryRequest(DaraModel):
     ):
         # The streaming domain for which you want to enable real-time log delivery.
         # 
-        # Separate multiple streaming domains with commas (,).
+        # Separate multiple domain names with commas (,).
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

@@ -18,13 +18,13 @@ class DescribeRTSNativeSDKPlayFailStatusResponseBody(DaraModel):
     ):
         # The time granularity.
         self.data_interval = data_interval
-        # The end of the time range for which the data was queried.
+        # The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The number of error status codes at each interval.
+        # The total number of error status codes for each time interval.
         self.play_fail_status = play_fail_status
-        # The ID of the request.
+        # Id
         self.request_id = request_id
-        # The beginning of the time range for which the data was queried.
+        # The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -90,19 +90,19 @@ class DescribeRTSNativeSDKPlayFailStatusResponseBodyPlayFailStatus(DaraModel):
         v_20013: str = None,
         v_20052: str = None,
     ):
-        # The timestamp of the returned data.
+        # The beginning of the time interval. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The status code that indicates failed DNS resolution.
+        # DNS resolution failure.
         self.v_20001 = v_20001
-        # The status code that indicates failed authentication.
+        # Authentication failure.
         self.v_20002 = v_20002
-        # The status code that indicates a connection signaling timeout.
+        # Connection signaling timeout.
         self.v_20011 = v_20011
-        # The status code that indicates a subscription signaling error.
+        # Subscription signaling error.
         self.v_20012 = v_20012
-        # The status code indicating that the stream to subscribe to does not exist.
+        # Subscribed stream does not exist.
         self.v_20013 = v_20013
-        # The status code that indicates a media packet collection timeout.
+        # Media packet receiving timeout.
         self.v_20052 = v_20052
 
     def validate(self):

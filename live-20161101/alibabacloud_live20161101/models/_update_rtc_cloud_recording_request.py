@@ -14,9 +14,14 @@ class UpdateRtcCloudRecordingRequest(DaraModel):
         subscribe_params: main_models.UpdateRtcCloudRecordingRequestSubscribeParams = None,
         task_id: str = None,
     ):
+        # The updated layout parameters. Leave this parameter empty in single-stream recording mode. This parameter is required in stream mixing recording mode when the transcoding output is not audio-only.
         self.mix_layout_params = mix_layout_params
+        # The updated subscription parameters.
+        # 
         # This parameter is required.
         self.subscribe_params = subscribe_params
+        # The task ID. This ID is returned by StartRtcCloudRecording. Only tasks in the running or abnormal state can be updated.
+        # 
         # This parameter is required.
         self.task_id = task_id
 
@@ -62,6 +67,10 @@ class UpdateRtcCloudRecordingRequestSubscribeParams(DaraModel):
         self,
         subscribe_user_id_list: List[main_models.UpdateRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList] = None,
     ):
+        # The list of subscribed UserId entries. In single-stream recording mode, each UserId is recorded separately. In stream mixing recording mode, the audio and video of all UserIds are mixed into a single set of audio and video.
+        # > 
+        # > - The array supports a maximum of 17 elements.
+        # 
         # This parameter is required.
         self.subscribe_user_id_list = subscribe_user_id_list
 
@@ -100,8 +109,22 @@ class UpdateRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList(DaraModel
         stream_type: int = None,
         user_id: str = None,
     ):
+        # The video input stream type of the UserId. This parameter takes effect only when the video stream is subscribed (StreamType=2). Valid values:
+        # 
+        # - 0: camera. (Default)
+        # 
+        # - 1: screen sharing.
         self.source_type = source_type
+        # The media type of the subscribed UserId. Valid values:
+        # 
+        # - 0: original stream, which includes both audio and video. (Default)
+        # 
+        # - 1: audio-only stream.
+        # 
+        # - 2: video-only stream.
         self.stream_type = stream_type
+        # The subscribed UserId.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -143,7 +166,9 @@ class UpdateRtcCloudRecordingRequestMixLayoutParams(DaraModel):
         mix_background: main_models.UpdateRtcCloudRecordingRequestMixLayoutParamsMixBackground = None,
         user_panes: List[main_models.UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanes] = None,
     ):
+        # The global background image for stream mixing.
         self.mix_background = mix_background
+        # The window layout information of the subscribed users. Only UserIds with layout information configured are placed in the output. This parameter is required in stream mixing mode when recording non-audio-only files.
         self.user_panes = user_panes
 
     def validate(self):
@@ -195,13 +220,28 @@ class UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanes(DaraModel):
         y: str = None,
         zorder: int = None,
     ):
+        # The pane height as a normalized percentage. The value must be in the range of [0, 1]. (Default: 0)
         self.height = height
+        # The video input stream type of the UserId. This parameter is invalid if UserId is not specified. Valid values:
+        # - 0: camera. (Default)
+        # - 1: screen sharing.
+        # 
+        # The combination of UserId and SourceType specified here must be included in SubscribeUserIdList.
         self.source_type = source_type
+        # The sub-pane background image. When a user turns off the camera, has not started stream ingest after joining, or leaves the channel midway, the corresponding image is displayed at the layout position.
         self.sub_background = sub_background
+        # The UserId corresponding to this window.
+        # - If UserId is not specified, windows are filled in the order in which subscribed users join the channel.
+        # - The combination of UserId and SourceType specified here must be included in SubscribeUserIdList.
+        # - Audio-only streams cannot be added to the layout.
         self.user_id = user_id
+        # The pane width as a normalized percentage. The value must be in the range of [0, 1]. (Default: 0)
         self.width = width
+        # The X coordinate as a normalized percentage. The value must be in the range of [0, 1]. (Default: 0)
         self.x = x
+        # The Y coordinate as a normalized percentage. The value must be in the range of [0, 1]. (Default: 0)
         self.y = y
+        # The stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on. (Default: 0)
         self.zorder = zorder
 
     def validate(self):
@@ -274,7 +314,11 @@ class UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground(DaraMo
         render_mode: int = None,
         url: str = None,
     ):
+        # The display mode for the sub-pane output. Valid values:
+        # - 0: crop. (Default)
+        # - 1: scale and display with black borders.
         self.render_mode = render_mode
+        # The URL of the background image. The maximum length is 2048 characters.
         self.url = url
 
     def validate(self):
@@ -309,7 +353,11 @@ class UpdateRtcCloudRecordingRequestMixLayoutParamsMixBackground(DaraModel):
         render_mode: int = None,
         url: str = None,
     ):
+        # The display mode for the output. Valid values:
+        # - 0: crop. (Default)
+        # - 1: scale and display with black borders.
         self.render_mode = render_mode
+        # The URL of the background image. The maximum length is 2048 characters.
         self.url = url
 
     def validate(self):

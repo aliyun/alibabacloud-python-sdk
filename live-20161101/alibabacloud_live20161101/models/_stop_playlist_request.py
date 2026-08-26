@@ -12,10 +12,11 @@ class StopPlaylistRequest(DaraModel):
         region_id: str = None,
     ):
         self.owner_id = owner_id
-        # The ID of the episode list. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+        # The playlist ID. If you add items to a playlist by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the ProgramId parameter that is returned.
         # 
         # This parameter is required.
         self.program_id = program_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

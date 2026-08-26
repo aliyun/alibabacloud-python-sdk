@@ -15,11 +15,11 @@ class EditPlaylistResponseBody(DaraModel):
         program_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the production studio. You can use the ID as a request parameter in the API operation that is used to configure callbacks or add a virtual studio layout.
+        # The ID of the production studio. Use this ID as a request parameter to add a callback or a virtual studio layout.
         self.caster_id = caster_id
-        # The information about the episodes.
+        # The list of added playlist items.
         self.items = items
-        # The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to delete the episode list, query the information about the episode list, start the episode list, or stop the episode list.
+        # The playlist ID. Use this ID as a request parameter to delete, query, start, or stop the playlist.
         self.program_id = program_id
         # The request ID.
         self.request_id = request_id
@@ -70,9 +70,9 @@ class EditPlaylistResponseBodyItems(DaraModel):
         failed_items: List[main_models.EditPlaylistResponseBodyItemsFailedItems] = None,
         success_items: List[main_models.EditPlaylistResponseBodyItemsSuccessItems] = None,
     ):
-        # The episodes that failed to be added.
+        # The list of playlist items that failed to be added.
         self.failed_items = failed_items
-        # The episodes that were added.
+        # The list of playlist items that were successfully added.
         self.success_items = success_items
 
     def validate(self):
@@ -124,9 +124,9 @@ class EditPlaylistResponseBodyItemsSuccessItems(DaraModel):
         item_id: str = None,
         item_name: str = None,
     ):
-        # The ID of the episode.
+        # The ID of the playlist item.
         self.item_id = item_id
-        # The name of the episode.
+        # The name of the playlist item.
         self.item_name = item_name
 
     def validate(self):
@@ -161,9 +161,9 @@ class EditPlaylistResponseBodyItemsFailedItems(DaraModel):
         item_id: str = None,
         item_name: str = None,
     ):
-        # The ID of the episode.
+        # The ID of the playlist item.
         self.item_id = item_id
-        # The name of the episode.
+        # The name of the playlist item.
         self.item_name = item_name
 
     def validate(self):

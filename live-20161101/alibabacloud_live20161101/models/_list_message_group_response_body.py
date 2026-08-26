@@ -13,9 +13,9 @@ class ListMessageGroupResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListMessageGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -53,14 +53,14 @@ class ListMessageGroupResponseBodyResult(DaraModel):
         has_more: bool = None,
         total: int = None,
     ):
-        # The list of message groups.
+        # Message group list.
         self.group_list = group_list
-        # Indicates whether the current page is followed by another page. Valid values:
+        # Indicates whether there is a next page. Valid values:
         # 
-        # *   true: The current page is followed by another page.
-        # *   false: The current page is not followed by another page.
+        # - true: There is a next page.
+        # - false: There is no next page.
         self.has_more = has_more
-        # The total number of message groups.
+        # Total number of message groups.
         self.total = total
 
     def validate(self):
@@ -113,17 +113,17 @@ class ListMessageGroupResponseBodyResultGroupList(DaraModel):
         group_id: str = None,
         status: int = None,
     ):
-        # The ID of the interactive messaging application.
+        # Interactive Messages application ID.
         self.app_id = app_id
-        # The time when the message group was created. The time is displayed in UTC.
+        # UTC timestamp when the message group was created.
         self.create_time = create_time
-        # The ID of the creator.
+        # Creator ID.
         self.creator_id = creator_id
-        # The extended field.
+        # Extension field.
         self.extension = extension
-        # The ID of the message group.
+        # Message group ID.
         self.group_id = group_id
-        # The status of the message group. The default value is **1**, which indicates that the status of the message group is normal.
+        # Message group status. The default value is **1**, indicating that the message group status is normal.
         self.status = status
 
     def validate(self):

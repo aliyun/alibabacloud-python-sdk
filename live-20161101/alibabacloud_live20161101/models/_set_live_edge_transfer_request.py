@@ -16,46 +16,37 @@ class SetLiveEdgeTransferRequest(DaraModel):
         target_domain_list: str = None,
         transfer_args: str = None,
     ):
-        # The name of the application to which the live stream belongs. Regular expressions are supported, with a few limits. For more information, see the **Description about the AppName and StreamName parameters** section. For example, a value of **liveApp\\*\\*\\*\\*[1,2,3]** specifies that stream relay is configured for three applications: liveApp\\*\\*\\*\\*1, liveApp\\*\\*\\*\\*2, and liveApp\\*\\*\\*\\*3.****
+        # The application name to which the live stream belongs. Regular expressions are supported for configuration with exceptions. For more information, see **AppName and StreamName Parameter Configuration Instructions** below. For example: liveApp****[1,2,3] indicates that the three apps liveApp****1, liveApp****2, and liveApp****3 are allowed for stream relay.
         # 
-        # > 
-        # 
-        # *   This parameter takes effect for only destination domain names that are specified by the TargetDomainList parameter.
-        # 
-        # *   You cannot use a caret (^) or a dollar sign ($) in a regular expression to configure the `AppName` parameter. Otherwise, stream relay fails.
+        # > - This parameter only takes effect for the TargetDomainList in the request parameters.
+        # > - When configuring the `AppName` parameter value using regular expressions, the ^ or $ characters cannot be used, otherwise stream relay will fail.
         self.app_name = app_name
-        # The ingest domain. Stream relay is configured based on the ingest domain. Only one stream relay configuration can be set for an ingest domain.
+        # The ingest domain name. Live stream relay is configured at the granularity of the ingest DomainName. Each domain can have only one live stream relay configuration.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The HTTPDNS API that is used to obtain the destination URLs. The request must contain the `TargetDomainList` parameter or the `HttpDns` parameter. The two parameters are mutually exclusive.
+        # The HTTPDNS interface for obtaining the stream relay target address. The request must contain one of the `TargetDomainList` and `HttpDns` parameters, and the two are mutually exclusive.
         # 
-        # >  If the `HttpDns` parameter is configured, you cannot configure the `TargetDomainList` parameter, and the `AppName` and `StreamName` parameters do not take effect.
+        # > If `HttpDns` is set in the request parameters, the `TargetDomainList` parameter cannot be set, and the `AppName` and `StreamName` restrictions do not take effect.
         # 
-        # For information about the requirements on the structure of messages that are returned by the HTTPDNS API, see the **Description about the HTTPDNS API** section.
+        # Live stream relay has requirements for the message structure returned by the HTTPDNS interface. For more information, see **HTTPDNS Instructions** below.
         self.http_dns = http_dns
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the ingested stream. Regular expressions are supported, with a few limits. For more information, see the **Description about the AppName and StreamName parameters** section. For example, a value of **liveStream\\*\\*\\*\\*[1,2,3]** specifies that stream relay is configured for three streams: liveStream\\*\\*\\*\\*1, liveStream\\*\\*\\*\\*2, and liveStream\\*\\*\\*\\*3.****
+        # The stream name. Regular expressions are supported for configuration with exceptions. For more information, see **AppName and StreamName Parameter Configuration Instructions** below. For example: liveStream****[1,2,3] indicates that the three streams liveStream****1, liveStream****2, and liveStream****3 are allowed for stream relay.
         # 
-        # > 
-        # 
-        # *   This parameter takes effect for only destination domain names that are specified by the TargetDomainList parameter.
-        # 
-        # *   You cannot use a caret (^) or a dollar sign ($) in a regular expression to configure the `StreamName` parameter. Otherwise, stream relay fails.
+        # > - This parameter only takes effect for the TargetDomainList in the request parameters.
+        # > - When configuring the `StreamName` parameter value using regular expressions, the ^ or $ characters cannot be used, otherwise stream relay will fail.
         self.stream_name = stream_name
-        # The destination domain names to which you want to relay the ingested stream. Separate multiple domain names with commas (,). The request must contain the `TargetDomainList` parameter or the `HttpDns` parameter. The two parameters are mutually exclusive.
+        # The list of target domains specified by the user for stream relay. Multiple domains are separated by commas (,). The request must contain one of the `TargetDomainList` and `HttpDns` parameters, and the two are mutually exclusive.
         # 
-        # > 
-        # 
-        # *   The `AppName` and `StreamName` parameters take effect only when the `TargetDomainList` parameter is configured.
-        # 
-        # *   If the `TargetDomainList` parameter is configured, you cannot configure the `HttpDns` parameter.
+        # > - When `TargetDomainList` is set in the request parameters, the `AppName` and `StreamName` parameters take effect.
+        # > - When `TargetDomainList` is set in the request parameters, the `HttpDns` parameter cannot be set.
         self.target_domain_list = target_domain_list
-        # Specifies whether to pass through stream ingest parameters. Valid values:
-        # 
-        # *   **yes**: passes through stream ingest parameters.
-        # *   **no**: does not pass through stream ingest parameters.
+        # Specifies whether to pass through ingest parameters. Valid values:
+        # - **yes**: Ingest parameters are passed through.
+        # - **no** (default): Ingest parameters are not passed through.
         self.transfer_args = transfer_args
 
     def validate(self):

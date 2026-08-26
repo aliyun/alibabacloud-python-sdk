@@ -12,13 +12,14 @@ class DescribeLiveStreamTranscodeInfoRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         self.app_name = app_name
         # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_transcode_name = domain_transcode_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

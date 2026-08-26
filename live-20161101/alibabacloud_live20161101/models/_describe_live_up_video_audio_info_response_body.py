@@ -13,7 +13,7 @@ class DescribeLiveUpVideoAudioInfoResponseBody(DaraModel):
         request_id: str = None,
         up_items: main_models.DescribeLiveUpVideoAudioInfoResponseBodyUpItems = None,
     ):
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The request ID.
         self.request_id = request_id
         self.up_items = up_items
 

@@ -10,11 +10,9 @@ class AddCasterLayoutResponseBody(DaraModel):
         layout_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the layout.
-        # 
-        # Record the ID as it can be used to manage the layout being created.
+        # The ID of the layout. You can use this ID as a request parameter when you call operations to manage layouts, such as deleting, modifying, or querying layouts for a production studio or a virtual studio.
         self.layout_id = layout_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

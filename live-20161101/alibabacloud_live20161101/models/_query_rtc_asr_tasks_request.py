@@ -12,8 +12,9 @@ class QueryRtcAsrTasksRequest(DaraModel):
         task_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The ID of the task that you want to query. If you do not specify this parameter, all running tasks under your UID are queried.
+        # The ID of the task to query. If you do not specify this parameter, all running tasks under your user ID are queried.
         self.task_id = task_id
 
     def validate(self):

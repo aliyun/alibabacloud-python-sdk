@@ -13,7 +13,7 @@ class DescribeRtcMPUEventSubResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the subscription.
+        # The event callback information.
         self.sub_info = sub_info
 
     def validate(self):
@@ -53,15 +53,15 @@ class DescribeRtcMPUEventSubResponseBodySubInfo(DaraModel):
         create_time: str = None,
         sub_id: str = None,
     ):
-        # The application ID. You can specify only one application ID.
+        # The ID of the subscribed application.
         self.app_id = app_id
         # The callback URL.
         self.callback_url = callback_url
-        # The ID of the channel to which mixed-stream relay event callbacks are sent. Multiple channel IDs are separated by commas (,). If this parameter is not returned, mixed-stream relay event callbacks are sent to all channels.
+        # The channel IDs of stream mixing tasks that receive callbacks, separated by commas (,). If this field is empty, all channels receive callbacks.
         self.channel_ids = channel_ids
-        # The time when the event callback was fired. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The creation time of the event callback, in the format of yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.create_time = create_time
-        # The ID of the subscription.
+        # The event callback ID.
         self.sub_id = sub_id
 
     def validate(self):

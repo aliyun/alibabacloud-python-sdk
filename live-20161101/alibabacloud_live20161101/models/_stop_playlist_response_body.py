@@ -10,7 +10,7 @@ class StopPlaylistResponseBody(DaraModel):
         program_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the episode list.
+        # The playlist ID.
         self.program_id = program_id
         # The request ID.
         self.request_id = request_id

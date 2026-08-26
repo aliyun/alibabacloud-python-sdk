@@ -22,41 +22,46 @@ class ModifyCasterEpisodeRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value that is returned in the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you created the production studio in the LIVE console, find the ID on the Cloud Production Studio page. To go to the page, choose **LIVE Console** > **Production Studio** > **Cloud Production Studio**.
+        # 
+        # > The name of a production studio in the list on the Cloud Production Studio page is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The components. Components in the production studio are listed from the bottom to the top in an array. When the production studio switches to another video resource, the components are also switched.
+        # The IDs of the components. The components are arranged from bottom to top and are switched in sync with the video source.
         # 
-        # *   This parameter takes effect and is required only when the EpisodeType parameter is set to **Component**.
-        # *   This parameter is optional when the EpisodeType parameter is set to **Resource**. In this case, if this parameter is specified, the components are bound to and switched together with video resources.
+        # - This parameter is required and takes effect only if EpisodeType is set to **Component**.
         # 
-        # >  The variable N specifies the sequence number of the component. For example, ComponentId.1 specifies the ID of the first component and ComponentId.2 specifies the ID of the second component.
+        # - If EpisodeType is set to **Resource**, this parameter specifies the components that are attached to the video source and switched in sync.
+        # 
+        # > N specifies the Nth component ID. For example, ComponentId.1 specifies the first component ID and ComponentId.2 specifies the second component ID.
         self.component_id = component_id
-        # The time when the episode ends. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. The time must be in UTC. The format is *yyyy-MM-dd*T*HH:mm:ss*Z.
         self.end_time = end_time
-        # The ID of the episode. It is included in the response when you call the [AddCasterEpisode](~~94745#doc-api-live-AddCasterEpisode~~ "Adds an episode to a production studio.") operation.
+        # The ID of the episode.
         # 
         # This parameter is required.
         self.episode_id = episode_id
         # The name of the episode.
         self.episode_name = episode_name
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
-        # The ID of the video resource. It is included in the response when you call the [AddCasterVideoResource](~~60250#doc-api-live-AddCasterVideoResource~~ "Adds a video resource to a production studio.") operation.
+        # The ID of the video source.
         # 
-        # *   This parameter takes effect and is required only when the EpisodeType is set to **Resource**.
-        # *   If the EpisodeType parameter is set to **Component**, this parameter is invalid.
+        # - This parameter is required and takes effect only if EpisodeType is set to **Resource**.
+        # 
+        # - This parameter is not available if EpisodeType is set to **Component**.
         self.resource_id = resource_id
-        # The time when the episode starts. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. The time must be in UTC. The format is *yyyy-MM-dd*T*HH:mm:ss*Z.
         self.start_time = start_time
-        # The policy for switching episodes. This parameter takes effect only when the EpisodeType parameter is set to **Resource**. Valid values:
+        # The switch policy. This parameter takes effect only if EpisodeType is set to **Resource**.
         # 
-        # *   **TimeFirst**: The episode starts when the preceding episode ends and ends when the next episode starts. If no next episode exists, the episode keeps repeating until a new episode is added or the production studio stops. This parameter must be set to TimeFirst when the video resource is a live stream.
-        # *   **ContentFirst**: The episode starts and ends as scheduled.
+        # - **TimeFirst**: time-priority. This is the only policy available for live stream video sources.
+        # 
+        # - **ContentFirst**: content-priority.
         self.switch_type = switch_type
 
     def validate(self):

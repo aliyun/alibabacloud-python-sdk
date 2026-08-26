@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class DescribeCasterConfigResponseBody(DaraModel):
     def __init__(
         self,
+        audio_mixer_mode: str = None,
         auto_switch_urgent_config: str = None,
         auto_switch_urgent_on: str = None,
         callback_url: str = None,
@@ -31,56 +32,56 @@ class DescribeCasterConfigResponseBody(DaraModel):
         urgent_live_stream_url: str = None,
         urgent_material_id: str = None,
     ):
-        # The configuration for automatic switchover to the standby resource. The `eofThres` field specifies the duration after which the production studio automatically switches to the standby resource if a stream interruption occurs. Unit: seconds.
+        self.audio_mixer_mode = audio_mixer_mode
+        # The automatic standby video switching configuration. `eofThres`: specifies the duration of stream interruption before automatically switching to the standby video. Unit: seconds.
         self.auto_switch_urgent_config = auto_switch_urgent_config
-        # Indicates whether the production studio automatically switches to the standby resource in case of a stream interruption.
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether automatic switchover to the standby video upon stream interruption is enabled.
+        # - **true**: Enabled.
+        # - **false**: Shutdown.
         self.auto_switch_urgent_on = auto_switch_urgent_on
-        # The callback URL.
+        # The user callback URL.
         self.callback_url = callback_url
-        # The ID of the production studio.
+        # The production studio ID.
         self.caster_id = caster_id
-        # The name of the production studio.
+        # The production studio name.
         self.caster_name = caster_name
-        # Indicates whether channels are enabled for the production studio. Valid values:
-        # 
-        # *   **0**: Channels are disabled.
-        # *   **1**: Channels are enabled.
+        # Indicates whether Channel is enabled. Valid values:
+        #          
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.channel_enable = channel_enable
-        # Indicates whether stream delay is enabled. Unit: seconds.
-        # 
-        # *   **0**: Stream delay is disabled.
-        # *   **A value greater than 0**: Stream delay is enabled.
+        # The stream delay. Unit: seconds. 
+        #          
+        # - **0**: Stream delay is disabled.
+        # - Greater than **0**: Stream delay is enabled.
         self.delay = delay
-        # The main streaming domain.
+        # The primary streaming domain.
         self.domain_name = domain_name
-        # Indicates whether the carousel playback feature is enabled. Valid values:
-        # 
-        # *   **0**: The carousel playback feature is disabled.
-        # *   **1**: The carousel playback feature is enabled.
+        # The playlist effective flag. Valid values:
+        #          
+        # - **0**: Not effective.
+        # - **1**: Effective.
         self.program_effect = program_effect
-        # The name of the playlist for carousel playback.
+        # The playlist name.
         self.program_name = program_name
-        # The recording configuration. If this parameter is empty, the recording feature is disabled.
+        # The recording configuration. If this parameter is empty, the recording feature is not enabled.
         self.record_config = record_config
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The custom stream redirect URL.
+        # The custom side output URL of the production studio.
         self.side_output_url = side_output_url
-        # The list of custom stream redirect URLs.
+        # The list of custom side output URLs of the production studio.
         self.side_output_url_list = side_output_url_list
         self.sync_groups_config = sync_groups_config
         # The transcoding configuration.
         self.transcode_config = transcode_config
-        # Prepared broadcast image media asset ID.
+        # The media library asset ID of the standby image.
         self.urgent_image_id = urgent_image_id
-        # URL of the standby image material.
+        # The URL of the standby image.
         self.urgent_image_url = urgent_image_url
         # The URL of the standby live stream.
         self.urgent_live_stream_url = urgent_live_stream_url
-        # The ID of the material that is used as the standby video from the media library.
+        # The media library asset ID of the standby video.
         self.urgent_material_id = urgent_material_id
 
     def validate(self):
@@ -96,6 +97,9 @@ class DescribeCasterConfigResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.audio_mixer_mode is not None:
+            result['AudioMixerMode'] = self.audio_mixer_mode
+
         if self.auto_switch_urgent_config is not None:
             result['AutoSwitchUrgentConfig'] = self.auto_switch_urgent_config
 
@@ -160,6 +164,9 @@ class DescribeCasterConfigResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AudioMixerMode') is not None:
+            self.audio_mixer_mode = m.get('AudioMixerMode')
+
         if m.get('AutoSwitchUrgentConfig') is not None:
             self.auto_switch_urgent_config = m.get('AutoSwitchUrgentConfig')
 
@@ -232,18 +239,18 @@ class DescribeCasterConfigResponseBodyTranscodeConfig(DaraModel):
         custom_params: main_models.DescribeCasterConfigResponseBodyTranscodeConfigCustomParams = None,
         live_template_ids: main_models.DescribeCasterConfigResponseBodyTranscodeConfigLiveTemplateIds = None,
     ):
-        # The transcoding template of the production studio. Valid values:
+        # The production studio transcoding template. Valid values:
         # 
-        # *   **lp_ld**: low definition
-        # *   **lp_sd**: standard definition
-        # *   **lp_hd**: high definition
-        # *   **lp_ud**: ultra high definition
-        # *   **lp_ld_v**: low definition (portrait mode)
-        # *   **lp_sd_v**: standard definition (portrait mode)
-        # *   **lp_hd_v**: high definition (portrait mode)
-        # *   **lp_ud_v**: ultra high definition (portrait mode)
+        # - **lp_ld**: low definition.
+        # - **lp_sd**: standard definition.
+        # - **lp_hd**: high definition.
+        # - **lp_ud**: ultra-high definition.
+        # - **lp_ld_v**: portrait low definition.
+        # - **lp_sd_v**: portrait standard definition.
+        # - **lp_hd_v**: portrait high definition.
+        # - **lp_ud_v**: portrait ultra-high definition.
         self.caster_template = caster_template
-        # The custom settings.
+        # The custom configuration.
         self.custom_params = custom_params
         self.live_template_ids = live_template_ids
 
@@ -353,9 +360,9 @@ class DescribeCasterConfigResponseBodyTranscodeConfigCustomParamsVideo(DaraModel
         self.bitrate = bitrate
         # The video frame rate.
         self.fps = fps
-        # The video height. Unit: pixels.
+        # The video height. Unit: pixels (px).
         self.height = height
-        # The video width. Unit: pixels.
+        # The video width. Unit: pixels (px).
         self.width = width
 
     def validate(self):
@@ -511,15 +518,19 @@ class DescribeCasterConfigResponseBodyRecordConfig(DaraModel):
         oss_endpoint: str = None,
         record_format: main_models.DescribeCasterConfigResponseBodyRecordConfigRecordFormat = None,
     ):
-        # On-demand recording. Values:
-        # - 0: Off. 
-        # - 1: Via HTTP callback. 
-        # - 2: Parse streaming parameters for on-demand recording. 
-        # - 7: Default to not record.
+        # The on-demand recording mode. Valid values:
+        # 
+        # - 0: Disabled.
+        # 
+        # - 1: HTTP callback-based.
+        # 
+        # - 2: On-demand recording by parsing stream ingest parameters.
+        # 
+        # - 7: Not recorded by default.
         self.on_demand = on_demand
-        # The OSS bucket for storage.
+        # The storage location.
         self.oss_bucket = oss_bucket
-        # The Object Storage Service (OSS) endpoint.
+        # The OSS endpoint of the storage location.
         self.oss_endpoint = oss_endpoint
         self.record_format = record_format
 

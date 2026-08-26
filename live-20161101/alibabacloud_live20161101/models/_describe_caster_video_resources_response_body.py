@@ -16,7 +16,7 @@ class DescribeCasterVideoResourcesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of records.
         self.total = total
         self.video_resources = video_resources
 

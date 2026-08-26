@@ -18,35 +18,38 @@ class HotLiveRtcStreamRequest(DaraModel):
         stream_name: str = None,
         video_msid: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The application name of the live stream to prefetch.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The audio MSID.
+        # The audio Msid.
         # 
         # This parameter is required.
         self.audio_msid = audio_msid
-        # The duration for which the prefetch connection is maintained. Unit: milliseconds. Default value: 0, which specifies that the prefetch connection is always maintained.
+        # The duration to maintain the prefetch connection. Unit: milliseconds. The default value, 0, means the connection is always maintained.
         self.connection_timeout = connection_timeout
         # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The custom period after which a timeout event is triggered. Unit: milliseconds.
+        # The custom timeout period for a timeout event. Unit: milliseconds.
         self.media_timeout = media_timeout
         self.owner_id = owner_id
-        # The code of the region in which the live stream is prefetched. For more information, see the following tables that list available region codes.
+        # The prefetch area. For more information, see the RegionCode lookup table.
         # 
-        # >  Region codes include provincial codes for China and country codes for all countries.
+        # > For regions within China, specify the corresponding code from the "Region codes for China" table. For all other regions, specify the country code.
+        # >
+        # > - If the CodeRegionHasNoNode error is returned after you specify a RegionCode, the corresponding area is not covered by L1 nodes and cannot be prefetched. In this case, specify a different RegionCode.
         # 
         # This parameter is required.
         self.region_code = region_code
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream that you want to prefetch.
+        # The name of the live stream to prefetch.
         # 
         # This parameter is required.
         self.stream_name = stream_name
-        # The video MSID.
+        # The video Msid.
         # 
         # This parameter is required.
         self.video_msid = video_msid

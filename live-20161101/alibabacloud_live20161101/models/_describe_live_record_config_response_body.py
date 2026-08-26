@@ -19,7 +19,7 @@ class DescribeLiveRecordConfigResponseBody(DaraModel):
         total_page: int = None,
     ):
         self.live_app_record_list = live_app_record_list
-        # The sorting order of recording configurations by creation time.
+        # The sort order.
         self.order = order
         # The page number.
         self.page_num = page_num
@@ -27,7 +27,7 @@ class DescribeLiveRecordConfigResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of recording configurations that meet the specified conditions.
+        # The total number of entries that meet the specified conditions.
         self.total_num = total_num
         # The total number of pages.
         self.total_page = total_page

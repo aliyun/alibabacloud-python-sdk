@@ -13,15 +13,15 @@ class ListMessageGroupUserByIdRequest(DaraModel):
         group_id: str = None,
         user_id_list: List[str] = None,
     ):
-        # The ID of the interactive messaging application.
+        # Interactive message application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the message group.
+        # Message group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The list of users.
+        # User list.
         # 
         # This parameter is required.
         self.user_id_list = user_id_list

@@ -16,10 +16,11 @@ class ListPlaylistRequest(DaraModel):
         self.owner_id = owner_id
         # The page number.
         self.page = page
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The ID of the episode list. If you set this parameter, only the information about the specified episode lists is returned. If you do not set this parameter, the information about all episode lists that belong to the account is returned. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+        # The ID of the playlist. If you specify this parameter, only the information about the specified playlist is returned. If you leave this parameter empty, the information about all playlists that belong to your account is returned. Use the ProgramId value returned by the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation.
         self.program_id = program_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

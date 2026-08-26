@@ -10,7 +10,7 @@ class ModifyCasterComponentResponseBody(DaraModel):
         component_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the component. You can use the ID as a request parameter in the API operation that is called to query components in a production studio.
+        # The component ID. You can use this ID as a request parameter to query the components of the production studio.
         self.component_id = component_id
         # The request ID.
         self.request_id = request_id

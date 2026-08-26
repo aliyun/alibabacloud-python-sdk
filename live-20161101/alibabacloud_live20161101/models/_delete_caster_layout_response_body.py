@@ -11,9 +11,9 @@ class DeleteCasterLayoutResponseBody(DaraModel):
         layout_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the production studio. You can use the ID as a request parameter in the API operation that is used to modify a layout in the production studio, query layouts in the production studio, add a component in the production studio, or query components in the production studio.
+        # The ID of the production studio. Use this ID to modify a layout, query layouts, add a component, or query components.
         self.caster_id = caster_id
-        # The ID of the layout. You can use the ID as a request parameter in the API operation that is used to query layouts in the production studio.
+        # The layout ID. Use this ID to query the list of layouts for the production studio.
         self.layout_id = layout_id
         # The request ID.
         self.request_id = request_id

@@ -13,13 +13,22 @@ class StartRtcCloudTranscodeShrinkRequest(DaraModel):
         max_idle_time: int = None,
         output_params_shrink: str = None,
     ):
+        # The ID of the application to which the channel belongs. The ID can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the channel to which the user to be transcoded belongs. The ID can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The parameters for the input stream subscription.
+        # 
         # This parameter is required.
         self.input_param_shrink = input_param_shrink
+        # The idle timeout period in seconds. If a task cannot subscribe to the specified streamer\\"s stream and remains idle for longer than this period, the task automatically stops. The value must be an integer from 10 to 14,400. The default value is 300.
         self.max_idle_time = max_idle_time
+        # The parameters for the transcoded output.
+        # 
         # This parameter is required.
         self.output_params_shrink = output_params_shrink
 

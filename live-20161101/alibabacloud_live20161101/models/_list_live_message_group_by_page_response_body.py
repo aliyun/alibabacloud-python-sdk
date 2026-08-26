@@ -16,15 +16,15 @@ class ListLiveMessageGroupByPageResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of groups.
+        # The group list.
         self.group_list = group_list
-        # The page number.
+        # The current page number of the returned data.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The page size.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,19 +90,19 @@ class ListLiveMessageGroupByPageResponseBodyGroupList(DaraModel):
         group_info: str = None,
         group_name: str = None,
     ):
-        # The list of administrators.
+        # The list of administrator user IDs.
         self.admin_list = admin_list
-        # The time when the group was created. The value is a UNIX timestamp. Unit: seconds.
+        # The creation time, expressed as a UNIX timestamp. Unit: seconds.
         self.createtime = createtime
-        # The ID of the user who created the group.
+        # The creator ID.
         self.creator_id = creator_id
         # Indicates whether the group is deleted.
         self.delete = delete
-        # The ID of the interactive messaging group.
+        # The group ID.
         self.group_id = group_id
-        # The additional information about the group.
+        # The extended information of the group.
         self.group_info = group_info
-        # The name of the group.
+        # The group name.
         self.group_name = group_name
 
     def validate(self):

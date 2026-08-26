@@ -12,7 +12,7 @@ class PlayChoosenShowResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the episode.
+        # The show ID.
         self.show_id = show_id
 
     def validate(self):

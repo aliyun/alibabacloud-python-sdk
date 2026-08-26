@@ -12,24 +12,27 @@ class GetMessageTokenRequest(DaraModel):
         device_type: str = None,
         user_id: str = None,
     ):
-        # The ID of the interactive messaging application.
+        # Interactive Messages application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the device. Each device has a unique ID. You can specify a custom ID. The ID can be up to 64 characters in length and can contain lowercase letters, digits, underscores (_), and hyphen (-). You can specify multiple device IDs. We recommend that you obtain the IDs from the devices and pass the IDs to the server.
+        # Terminal device ID, uniquely representing a user terminal device, user-defined. It consists of lowercase letters, numbers, underscores (_), and hyphens (-), with a maximum length of 64 characters. Different terminal devices need to use different DeviceIds. We recommend obtaining it from the terminal device and passing it to the server.
         # 
         # This parameter is required.
         self.device_id = device_id
-        # The type of the device. Valid values:
+        # Terminal device type. Valid values:
         # 
-        # *   ios
-        # *   android
-        # *   web
-        # *   pc
+        # - ios
+        # 
+        # - android
+        # 
+        # - web
+        # 
+        # - pc
         # 
         # This parameter is required.
         self.device_type = device_type
-        # The ID of the user. Each user has a unique ID in the application. The ID can be up to 32 characters in length and can contain lowercase letters, digits, underscores (_), and periods (.). You can specify multiple user IDs.
+        # User UserId, user-defined, unique within the AppId. It consists of lowercase letters, numbers, underscores (_), and periods (.), with a maximum length of 32 characters. Different users need to use different UserIds.
         # 
         # This parameter is required.
         self.user_id = user_id

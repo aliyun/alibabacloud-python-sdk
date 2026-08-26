@@ -11,12 +11,12 @@ class DescribeLiveShiftConfigsRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The streaming domain.
+        # The streaming domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The ID of the region where the streaming domain resides.
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

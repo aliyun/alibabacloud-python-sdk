@@ -14,13 +14,11 @@ class StopCasterSceneRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # If you create a production studio through the [CreateCaster](~~69338#doc-api-live-CreateCaster~~ "Creates a production studio.") interface, check the value of the CasterId parameter in the response.
+        # - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value that is returned in the response.
         # 
-        # If you create a production studio through the ApsaraVideo Live Console, log in to the console, then check the ID of the production studio through the following path:
+        # - If you created the production studio in the ApsaraVideo Live console, go to the **Production Studio** > **Cloud Production Studio** page to view the ID.
         # 
-        # Production Studios > Production Studio Management
-        # 
-        # >  The CasterId is reflected in the Name column on the Production Studio Management page.
+        # > The name of the production studio in the list on the Cloud Production Studio page is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
@@ -29,7 +27,7 @@ class StopCasterSceneRequest(DaraModel):
         self.region_id = region_id
         # The ID of the scene.
         # 
-        # This operation is available only when the scene is a preview scene. For more information about the scene types, see [Query the scenes of production studios](https://help.aliyun.com/document_detail/60262.html).
+        # This operation is available only for preview (PVW) scenes. For more information about scene types, see [Query production studio scenes](https://help.aliyun.com/document_detail/2848102.html).
         # 
         # This parameter is required.
         self.scene_id = scene_id

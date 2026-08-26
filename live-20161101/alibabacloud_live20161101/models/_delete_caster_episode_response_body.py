@@ -11,9 +11,9 @@ class DeleteCasterEpisodeResponseBody(DaraModel):
         episode_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the production studio. You can specify the ID as a parameter in the request to modify the episode in the production studio.
+        # The production studio ID. You can use this ID as a request parameter to modify the episode.
         self.caster_id = caster_id
-        # The ID of the episode. You can specify the ID as a parameter in the request to modify the episode in the production studio.
+        # The episode ID. You can use this ID as a request parameter to modify the episode.
         self.episode_id = episode_id
         # The request ID.
         self.request_id = request_id

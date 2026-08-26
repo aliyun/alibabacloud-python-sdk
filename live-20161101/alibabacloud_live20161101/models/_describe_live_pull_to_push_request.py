@@ -14,14 +14,14 @@ class DescribeLivePullToPushRequest(DaraModel):
     ):
         self.owner_id = owner_id
         # The region where the task is started. Valid values:
-        # 
-        # *   ap-southeast-1: Singapore
-        # *   ap-southeast-5: Indonesia (Jakarta)
-        # *   cn-beijing: China (Beijing)
-        # *   cn-shanghai: China (Shanghai)
+        # - ap-southeast-1 (Singapore)
+        # - ap-southeast-5 (Indonesia)
+        # - cn-beijing (Beijing)
+        # - cn-shanghai (Shanghai)
         # 
         # This parameter is required.
         self.region = region
+        # The region ID.
         self.region_id = region_id
         # The task ID.
         # 

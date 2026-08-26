@@ -11,7 +11,7 @@ class UpdateMessageGroupResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateMessageGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -51,8 +51,8 @@ class UpdateMessageGroupResponseBodyResult(DaraModel):
     ):
         # Indicates whether the update was successful. Valid values:
         # 
-        # *   true: The update was successful.
-        # *   false: The update failed.
+        # - true: The update was successful.
+        # - false: The update failed.
         self.success = success
 
     def validate(self):

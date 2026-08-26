@@ -11,15 +11,19 @@ class GetEditingJobInfoResponseBody(DaraModel):
         editing_tasks_info: str = None,
         request_id: str = None,
     ):
-        # The ID of the production studio.
+        # The production studio ID.
         self.caster_id = caster_id
-        # The information about editing tasks. The following fields are returned for each editing task:
+        # The video clip task information. This includes:
         # 
-        # *   **OutputVodId**: the ID of the output video-on-demand (VOD) file.
-        # *   **TaskStatus**: the status of the editing task. Valid values: -1, 0, 1, 2, and 3. A value of -1 indicates that the editing task fails. A value of 0 indicates that the editing task is being initialized. A value of 1 indicates that editing is in progress. A value of 2 indicates that the output VOD file is being uploaded. A value of 3 indicates that the editing task is successful.
-        # *   **StorageLocation**: the storage location in ApsaraVideo VOD.
-        # *   **FileName**: the name of the file that is edited.
-        # *   **ShowId**: the ID of the episode.
+        # - **OutputVodId**: The ID of the output video-on-demand file.
+        # 
+        # - **TaskStatus**: The status of the video clip task. (-1: failed. 0: task initialized. 1: clipping in progress. 2: uploading. 3: task succeeded.)
+        # 
+        # - **StorageLocation**: The video-on-demand storage address.
+        # 
+        # - **FileName**: The name of the clipped file.
+        # 
+        # - **ShowId**: The show ID.
         self.editing_tasks_info = editing_tasks_info
         # The request ID.
         self.request_id = request_id

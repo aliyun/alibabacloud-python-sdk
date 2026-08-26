@@ -17,11 +17,11 @@ class AddTrancodeSEIRequest(DaraModel):
         stream_name: str = None,
         text: str = None,
     ):
-        # The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The AppName of the live stream. View AppNames on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The time period after which the SEI is inserted after the request is received. Unit: milliseconds.
+        # The delay in milliseconds before the SEI is inserted after the command is received.
         # 
         # This parameter is required.
         self.delay = delay
@@ -30,25 +30,27 @@ class AddTrancodeSEIRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # Specifies whether to append the SEI to each keyframe or frame. Valid values:
+        # Specifies the insertion pattern for the SEI.
         # 
-        # *   **keyframe**
-        # *   **frame**
+        # - **keyframe**: Inserts at every keyframe.
+        # 
+        # - **frame**: Inserts at every single frame.
         # 
         # This parameter is required.
         self.pattern = pattern
+        # The region ID.
         self.region_id = region_id
-        # The number of times that the SEI is repeatedly inserted. A value of -1 specifies infinite times.
+        # The number of times to repeat the insertion. A value of -1 means infinite repetitions.
         # 
         # This parameter is required.
         self.repeat = repeat
         # The name of the live stream.
         # 
-        # >  The value of this parameter must be the name of the source stream. This way, the SEI is inserted to all the transcoded streams.
+        # > It must be the name of the source stream. This ensures that SEI is inserted into all transcoded streams.
         # 
         # This parameter is required.
         self.stream_name = stream_name
-        # The SEI text. It can be up to 4,000 bytes in length.
+        # The SEI text. Length limit: 4000 bytes.
         # 
         # This parameter is required.
         self.text = text

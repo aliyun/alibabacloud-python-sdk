@@ -9,6 +9,8 @@ class DescribeRtcCloudRecordingFilesRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The task ID. This ID is returned by StartRtcCloudRecording. Only tasks created within the last 3 days can be queried.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

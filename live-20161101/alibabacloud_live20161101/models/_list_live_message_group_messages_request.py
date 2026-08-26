@@ -17,32 +17,33 @@ class ListLiveMessageGroupMessagesRequest(DaraModel):
         page_size: int = None,
         sort_type: int = None,
     ):
-        # The ID of the interactive messaging application to query.
+        # The ID of the interactive message application to query.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you leave this parameter empty, the earliest available time is used.
+        # The query start time, expressed as a UNIX timestamp. Unit: seconds. If this parameter is left empty, the earliest time is used by default.
         self.begin_time = begin_time
-        # The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+        # The data center. This value must be consistent with the data center specified in [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html). Currently supported data centers are Shanghai (cn-shanghai) and Singapore (ap-southeast-1).
         self.data_center = data_center
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you leave this parameter empty, the latest available time is used.
+        # The query end time, expressed as a UNIX timestamp. Unit: seconds. If this parameter is left empty, the latest time is used by default.
         self.end_time = end_time
-        # The ID of the group to query.
+        # The group ID of the group to query.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The type of messages that you want to query. If you leave this parameter empty, all types of messages are queried.
+        # The message type to query. If this parameter is left empty, all message types are returned by default.
         self.msg_type = msg_type
-        # The starting page number for the query. If you leave this parameter empty, the query starts from the first page.
+        # The start position of the query page. If this parameter is left empty, the first page is returned by default.
         self.next_page_token = next_page_token
-        # The number of entries per page. Valid values: **10 to 50**.
+        # The number of messages to display at a time. Valid values: **[10,50]**.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The sort order based on the time when the messages were sent. Valid values:
+        # The sort type. Messages are sorted by the time they were sent. Valid values:
         # 
-        # *   1: ascending order
-        # *   2: descending order
+        # - 1: ascending order
+        # 
+        # - 2: descending order
         # 
         # This parameter is required.
         self.sort_type = sort_type

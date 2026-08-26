@@ -15,7 +15,7 @@ class DescribeLiveDomainBpsDataByLayerResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.bps_data_interval = bps_data_interval
-        # The time interval between the data entries returned. Unit: seconds.
+        # The time interval between data entries. Unit: seconds.
         self.data_interval = data_interval
         # The request ID.
         self.request_id = request_id

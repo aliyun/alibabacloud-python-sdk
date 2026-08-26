@@ -13,7 +13,7 @@ class DescribeLiveStreamsTotalCountResponseBody(DaraModel):
         request_id: str = None,
         stream_count_list: main_models.DescribeLiveStreamsTotalCountResponseBodyStreamCountList = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.stream_count_list = stream_count_list
 

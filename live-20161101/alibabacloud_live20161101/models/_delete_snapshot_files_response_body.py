@@ -20,7 +20,7 @@ class DeleteSnapshotFilesResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.snapshot_delete_info_list = snapshot_delete_info_list
-        # The number of successful screenshot deletions.
+        # The number of snapshots that were deleted.
         self.success_count = success_count
 
     def validate(self):

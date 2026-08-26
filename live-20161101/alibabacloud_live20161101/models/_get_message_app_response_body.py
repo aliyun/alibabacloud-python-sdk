@@ -13,9 +13,9 @@ class GetMessageAppResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.GetMessageAppResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The result of the request.
         self.result = result
 
     def validate(self):
@@ -56,17 +56,17 @@ class GetMessageAppResponseBodyResult(DaraModel):
         extension: Dict[str, str] = None,
         status: int = None,
     ):
-        # The configurations of the application.
+        # The application configuration.
         self.app_config = app_config
-        # The ID of the interactive messaging application.
+        # The ID of the interactive message application.
         self.app_id = app_id
-        # The name of the interactive messaging application.
+        # The name of the interactive message application.
         self.app_name = app_name
-        # The time when the interactive messaging application was created. The time is displayed in UTC.
+        # The UTC timestamp when the application was created.
         self.create_time = create_time
         # The extended field.
         self.extension = extension
-        # The status of the interactive message application. A value of 1 indicates that the application is normal.
+        # The status of the interactive message application. A value of 1 indicates that the application is in a normal state.
         self.status = status
 
     def validate(self):

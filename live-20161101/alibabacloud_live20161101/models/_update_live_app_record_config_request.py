@@ -24,32 +24,33 @@ class UpdateLiveAppRecordConfigRequest(DaraModel):
         transcode_record_format: List[main_models.UpdateLiveAppRecordConfigRequestTranscodeRecordFormat] = None,
         transcode_templates: List[str] = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The interruption duration for merge. If the stream interruption duration exceeds the specified duration, a new recording is generated. The value of this parameter ranges from 15 to 21600 seconds.
+        # The window in seconds for merging fragmented recording after an interruption. If a stream disconnects and reconnects within this window, the recording will continue in the same file. Valid values: 15 to 21600.
         self.delay_time = delay_time
         # The main streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The recording end time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The recording end time. Format: *yyyy-MM-dd*T*HH:mm:ss*Z (UTC time).
         # 
-        # >  The time range that is specified by the EndTime and StartTime parameters must be less than or equal to seven days. If the value exceeds seven days, ApsaraVideo Live considers seven days as the time range. This parameter takes effect only for the live stream specified by the StreamName parameter. If the StreamName parameter is not specified, this parameter does not take effect.
+        # > This parameter is only effective for stream-level recordings. The interval between EndTime and StartTime cannot exceed 7 days.
         self.end_time = end_time
-        # Specifies whether to enable on-demand recording. Valid values:
+        # Specifies the recording mode. Valid values:
         # 
-        # *   **0**: disables on-demand recording.
-        # *   **1**: enables on-demand recording by using the HTTP callback method.
-        # *   **2**: enables on-demand recording by parsing the stream ingest parameters.
-        # *   **7**: By default, ApsaraVideo Live does not automatically record live streams. You can call the [RealTimeRecordCommand](https://help.aliyun.com/document_detail/2847882.html) operation to manually start or stop recording.
+        # - **0**: disables on-demand recording.
         # 
-        # >  If you set the OnDemand parameter to **1**, you need to call the [AddLiveRecordNotifyConfig](https://help.aliyun.com/document_detail/2847891.html) operation to configure the OnDemandUrl parameter. Otherwise, ApsaraVideo Live does not perform on-demand recording.
+        # - **1**: On-demand recording via HTTP callback.
+        # 
+        # - **2**: On-demand recording by parsing parameters in the ingest URL.
+        # 
+        # - **7**: Manual recording. You can call the [RealTimeRecordCommand](https://help.aliyun.com/document_detail/2847882.html) API to manually start or stop recording.
+        # 
+        # > If you set OnDemand to **1**, you need to call the [AddLiveRecordNotifyConfig](https://help.aliyun.com/document_detail/2847891.html) API to configure the OnDemandUrl parameter. Otherwise, ApsaraVideo Live does not perform on-demand recording.
         self.on_demand = on_demand
-        # The endpoint of the Object Storage Service (OSS) bucket.
-        # 
-        # To store live stream recordings in OSS, you need to create an OSS bucket in advance. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
+        # The endpoint for OSS storage. You must create an OSS bucket before using this feature. See [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
         # 
         # This parameter is required.
         self.oss_endpoint = oss_endpoint
@@ -57,13 +58,13 @@ class UpdateLiveAppRecordConfigRequest(DaraModel):
         # The recording details.
         self.record_format = record_format
         self.security_token = security_token
-        # The recording start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The recording start time. Format: *yyyy-MM-dd*T*HH:mm:ss*Z (UTC time).
         # 
-        # >  The start time must be within seven days after the stream ingest starts. This parameter takes effect only for the live stream specified by the StreamName parameter. If the StreamName parameter is not specified, this parameter does not take effect.
+        # > This parameter is only effective for stream-level recordings (i.e., when `StreamName` is specified). The time must be within 7 days of the actual stream start time.
         self.start_time = start_time
         # The name of the live stream.
         self.stream_name = stream_name
-        # The transcoded stream recording details.
+        # The transcoded stream recording configuration.
         self.transcode_record_format = transcode_record_format
         # The transcoding template group details.
         self.transcode_templates = transcode_templates
@@ -184,20 +185,23 @@ class UpdateLiveAppRecordConfigRequestTranscodeRecordFormat(DaraModel):
         format: str = None,
         slice_duration: int = None,
     ):
-        # The transcoded stream recording cycle. Unit: seconds If you do not specify this parameter, the default value 6 hours is used.
+        # The transcoded stream recording cycle. Unit: seconds. If you do not specify this parameter, the default value 6 hours is used.
         self.cycle_duration = cycle_duration
-        # The format of the transcoded stream recording. Supported formats include M3U8, FLV, MP4, and CMAF. Valid values:
+        # The format of the transcoded stream recording. Valid values:
         # 
-        # >  If you set this parameter to m3u8 or cmaf, you must also specify the TranscodeRecordFormat.N.SliceOssObjectPrefix and TranscodeRecordFormat.N.SliceDuration parameters.
+        # > If you choose m3u8 or cmaf, you must specify the TranscodeRecordFormat.N.SliceOssObjectPrefix and TranscodeRecordFormat.N.SliceDuration parameters.
         # 
-        # *   m3u8
-        # *   flv
-        # *   mp4
-        # *   cmaf
+        # - m3u8
+        # 
+        # - flv
+        # 
+        # - mp4
+        # 
+        # - cmaf
         self.format = format
-        # The duration of a single segment in the transcoded stream recording. Unit: seconds.
+        # The duration of a single segment for transcoded stream recording. Unit: seconds.
         # 
-        # >  This parameter takes effect only if you set the TranscodeRecordFormat.N.Format parameter to m3u8 or cmaf.
+        # > This parameter takes effect only if you set the TranscodeRecordFormat.N.Format parameter to m3u8 or cmaf.
         # 
         # If you do not specify this parameter, the default value 30 seconds is used. Valid values: 5 to 30.
         self.slice_duration = slice_duration
@@ -241,26 +245,29 @@ class UpdateLiveAppRecordConfigRequestRecordFormat(DaraModel):
         format: str = None,
         slice_duration: int = None,
     ):
-        # The recording cycle. Unit: seconds If you do not specify this parameter, the default value 6 hours is used.
+        # The duration of a single recording cycle in seconds. If not specified, the default value is 6 hours
         # 
-        # > 
-        # 
-        # *   If a live stream is interrupted during a recording cycle but is resumed within the interruption duration threshold, the stream is recorded in the same recording before and after the interruption.
-        # 
-        # *   If a live stream is interrupted for longer than the interruption duration threshold, a new recording is generated.
+        # > If a live stream is interrupted during a recording cycle but resumes normal streaming within the merge window, recording will continue in the same file. A recording file is generated only when a live stream is interrupted for longer than the merge window.
         self.cycle_duration = cycle_duration
-        # The recording format. Supported formats include M3U8, Flash Video (FLV), MP4, and Common Media Application Format (CMAF). Valid values:
+        # The recording format. Valid values:
         # 
-        # >  You need to specify at lease one of the RecordFormat and TranscodeRecordFormat parameters. If you set this parameter to m3u8 or cmaf, you must also specify the RecordFormat.N.SliceOssObjectPrefix and RecordFormat.N.SliceDuration parameters.
+        # >Notice: 
         # 
-        # *   m3u8
-        # *   flv
-        # *   mp4
-        # *   cmaf
+        # If you choose m3u8 or cmaf, you must also set SliceOssObjectPrefix and SliceDuration. At least one of RecordFormat or TranscodeRecordFormat must be specified.
+        # 
+        # 
+        # 
+        # - m3u8
+        # 
+        # - flv
+        # 
+        # - mp4
+        # 
+        # - cmaf
         self.format = format
         # The duration of a single segment. Unit: seconds
         # 
-        # >  This parameter takes effect only if you set the RecordFormat.N.Format parameter to m3u8 or cmaf.
+        # > This parameter takes effect only if you set the RecordFormat.N.Format parameter to m3u8 or cmaf.
         # 
         # If you do not specify this parameter, the default value 30 seconds is used. Valid values: 5 to 30.
         self.slice_duration = slice_duration

@@ -14,11 +14,8 @@ class DescribeHlsLiveStreamRealTimeBpsDataResponseBody(DaraModel):
         time: str = None,
         usage_data: List[main_models.DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageData] = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The timestamp for which the data was queried.
         self.time = time
-        # The usage data.
         self.usage_data = usage_data
 
     def validate(self):
@@ -67,9 +64,7 @@ class DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageData(DaraModel):
         domain_name: str = None,
         stream_infos: List[main_models.DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos] = None,
     ):
-        # The domain name.
         self.domain_name = domain_name
-        # Details about the statistics on each HLS stream under the domain name.
         self.stream_infos = stream_infos
 
     def validate(self):
@@ -112,9 +107,7 @@ class DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos(DaraM
         infos: List[main_models.DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfosInfos] = None,
         stream_name: str = None,
     ):
-        # The statistics on the HLS stream.
         self.infos = infos
-        # The name of the stream.
         self.stream_name = stream_name
 
     def validate(self):
@@ -158,11 +151,8 @@ class DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfosInfos(
         online: float = None,
         rate: str = None,
     ):
-        # The bandwidth. Unit: bit/s.
         self.down_flow = down_flow
-        # The number of online users.
         self.online = online
-        # The bitrate.
         self.rate = rate
 
     def validate(self):

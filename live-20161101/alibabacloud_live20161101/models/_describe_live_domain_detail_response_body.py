@@ -11,7 +11,7 @@ class DescribeLiveDomainDetailResponseBody(DaraModel):
         domain_detail: main_models.DescribeLiveDomainDetailResponseBodyDomainDetail = None,
         request_id: str = None,
     ):
-        # The configuration details of the domain name.
+        # The details of the domain configuration.
         self.domain_detail = domain_detail
         # The ID of the request.
         self.request_id = request_id
@@ -63,45 +63,51 @@ class DescribeLiveDomainDetailResponseBodyDomainDetail(DaraModel):
     ):
         # The name of the certificate.
         self.cert_name = cert_name
-        # The CNAME that is assigned to the domain name. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name to the CNAME.
+        # The canonical name (CNAME). A CNAME is generated for the live streaming domain. You must add a CNAME record at your DNS provider to map the live streaming domain to this CNAME.
         # 
-        # >  A time-to-live (TTL) value is specified in the CNAME record of a domain name to indicate how long the CNAME record can be cached on the DNS resolver. If you modify the CNAME record of the domain name, the new settings take effect after the cache expires, which takes about 10 minutes. For more information, see [CNAME resolution](https://help.aliyun.com/document_detail/362010.html).
+        # > Local DNS records are cached. After you add the CNAME record, it may take up to 10 minutes to take effect. For more information, see [FAQ about CNAME records](https://help.aliyun.com/document_detail/362010.html).
         self.cname = cname
         # The description of the domain name.
         self.description = description
-        # The streaming domain or ingest domain.
+        # The ingest domain or streaming domain.
         self.domain_name = domain_name
-        # The status of the domain name. Valid values:
+        # The status of the domain. Valid values:
         # 
-        # *   **online**: The domain name is enabled.
-        # *   **offline**: The domain name is disabled.
-        # *   **configuring**: The domain is being configured.
+        # - **online**: enabled.
+        # 
+        # - **offline**: disabled.
+        # 
+        # - **configuring**: being configured.
         self.domain_status = domain_status
-        # The time when the domain name was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the domain was added. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.gmt_created = gmt_created
-        # The time when the domain name was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the domain was last modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
         # The type of the domain name. Valid values:
         # 
-        # *   **liveVideo**: streaming domain
-        # *   **liveEdge**: ingest domain
+        # - **liveVideo**: streaming domain.
+        # 
+        # - **liveEdge**: ingest domain.
         self.live_domain_type = live_domain_type
-        # The ID of the region where the domain name resides.
+        # The region where the domain name is added.
         self.region = region
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Indicates whether the SSL certificate is enabled. Valid values:
+        # Indicates whether SSL is enabled. Valid values:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on**: enabled.
+        # 
+        # - **off**: disabled.
         self.sslprotocol = sslprotocol
         # The public key of the certificate.
         self.sslpub = sslpub
         # The acceleration region. Valid values:
         # 
-        # *   **domestic**: regions in the Chinese mainland.
-        # *   **overseas**: regions outside the Chinese mainland.
-        # *   **global**: regions in and outside the Chinese mainland.
+        # - **domestic**: the Chinese mainland.
+        # 
+        # - **overseas**: regions outside the Chinese mainland.
+        # 
+        # - **global**: global.
         self.scope = scope
 
     def validate(self):

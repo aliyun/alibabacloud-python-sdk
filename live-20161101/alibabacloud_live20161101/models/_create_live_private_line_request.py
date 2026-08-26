@@ -25,37 +25,37 @@ class CreateLivePrivateLineRequest(DaraModel):
         self.acceleration_area = acceleration_area
         # The acceleration type. Valid values:
         # 
-        # *   play: streaming acceleration
-        # *   publish: stream ingest acceleration
+        # - play: streaming acceleration.
+        # - publish: stream ingest acceleration.
         # 
         # This parameter is required.
         self.acceleration_type = acceleration_type
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streamer streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The acceleration channel that you want to reuse. This parameter is required if Reuse is set to yes.
+        # The ID of the acceleration channel to reuse. This parameter is required when Reuse is set to yes.
         self.instance_id = instance_id
-        # The accelerated bandwidth. Unit: Mbit/s. This parameter is required if Reuse is set to no.
+        # The acceleration bandwidth. Unit: Mbit/s. This parameter is required when Reuse is set to no.
         self.max_bandwidth = max_bandwidth
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         # Specifies whether to reuse an existing acceleration channel. Valid values:
-        # 
-        # *   yes: reuses an existing acceleration channel.
-        # *   no: creates a new acceleration channel.
+        # - yes: Reuse an existing acceleration channel.
+        # - no: Create a new acceleration channel.
         # 
         # This parameter is required.
         self.reuse = reuse
-        # The name of the live stream.
+        # The live stream name.
         # 
         # This parameter is required.
         self.stream_name = stream_name
-        # The live center. Valid values: cn-beijing, cn-shanghai, cn-shenzhen, cn-qingdao, ap-northeast-1, ap-southeast-5, eu-central-1, and ap-southeast-1, which indicate China (Beijing), China (Shanghai), China (Shenzhen), China (Qingdao), Japan (Tokyo), Indonesia (Jakarta), Germany (Frankfurt), and Singapore, respectively.
+        # The live center. Valid values: cn-beijing, cn-shanghai, cn-shenzhen, cn-qingdao, ap-northeast-1, ap-southeast-5, eu-central-1, ap-southeast-1, and ap-south-1, which represent the live centers in Beijing, Shanghai, Shenzhen, Qingdao, Japan, Indonesia, Germany, and Singapore respectively.
         # 
         # This parameter is required.
         self.video_center = video_center

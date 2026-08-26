@@ -13,7 +13,7 @@ class DeleteLiveStreamMergeRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application that generates the output stream. You can view the application name on the [Primary/Secondary Stream Mixing](https://help.aliyun.com/document_detail/606583.html) page of the ApsaraVideo Live console.
+        # The AppName for the merged stream. View the AppName on the [Primary/Secondary Stream Mixing Settings](https://help.aliyun.com/document_detail/606583.html) page.
         # 
         # This parameter is required.
         self.app_name = app_name
@@ -22,8 +22,9 @@ class DeleteLiveStreamMergeRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the output stream. You can view the stream name on the [Primary/Secondary Stream Mixing](https://help.aliyun.com/document_detail/606583.html) page of the ApsaraVideo Live console.
+        # The StreamName for the merged stream. View the StreamName on the [Primary/Secondary Stream Mixing Settings](https://help.aliyun.com/document_detail/606583.html) page.
         # 
         # This parameter is required.
         self.stream_name = stream_name

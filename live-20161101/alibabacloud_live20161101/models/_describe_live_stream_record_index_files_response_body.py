@@ -18,7 +18,7 @@ class DescribeLiveStreamRecordIndexFilesResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
-        # The sort order.
+        # The sorting order.
         self.order = order
         # The page number.
         self.page_num = page_num

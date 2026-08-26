@@ -17,23 +17,33 @@ class DescribeLiveUserBillPredictionResponseBody(DaraModel):
         start_time: str = None,
     ):
         self.bill_prediction_data = bill_prediction_data
-        # The metering method. Valid values:
+        # The billing method. The following billing methods are supported:
         # 
-        # *   hour_flow: pay by hourly data transfer
-        # *   day_bandwidth: pay by daily bandwidth
-        # *   month_95: pay by monthly 95th percentile bandwidth
-        # *   month_avg_day_bandwidth: pay by average daily peak bandwidth per month
-        # *   month_4th_day_bandwidth: pay by 4th peak bandwidth per month
-        # *   month_avg_day_95: pay by average daily 95th percentile bandwidth per month
-        # *   month_95_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00
-        # *   hour_vas: pay by value-added services per hour
-        # *   day_count: pay by daily requests
+        # - hour_flow: Pay-by-traffic on an hourly basis.
+        # 
+        # - day_bandwidth: Pay-by-bandwidth on a daily basis.
+        # 
+        # - month_95: Pay-by-monthly 95th percentile peak bandwidth.
+        # 
+        # - month_avg_day_bandwidth: Pay-by-monthly average of daily peak bandwidth.
+        # 
+        # - month_4th_day_bandwidth: Pay-by-monthly 4th peak bandwidth.
+        # 
+        # - month_avg_day_95: Pay-by-monthly average of daily 95th percentile peak bandwidth.
+        # 
+        # - month_95_night_half: Pay-by-nightly 95th percentile peak bandwidth with a 50% discount.
+        # 
+        # - hour_vas: Pay-for-value-added services on an hourly basis.
+        # 
+        # - day_count: Pay-by-daily request count.
         self.bill_type = bill_type
-        # The end time. If you do not specify the request parameter EndTime, the end time is the current time by default. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The end time of the query. The time is in UTC and follows the ISO 8601 standard.
+        # Format: YYYY-MM-DDThh:mm:ssZ. The default value is the current time.
         self.end_time = end_time
         # The request ID.
         self.request_id = request_id
-        # The start time. If you do not specify the request parameter StartTime, the start time is 00:00 on the first day of the month by default. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time of the query. The time is in UTC and follows the ISO 8601 standard.
+        # Format: YYYY-MM-DDThh:mm:ssZ. The default value is 00:00 on the first day of the month.
         self.start_time = start_time
 
     def validate(self):

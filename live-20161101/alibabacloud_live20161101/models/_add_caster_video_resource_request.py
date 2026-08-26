@@ -23,86 +23,78 @@ class AddCasterVideoResourceRequest(DaraModel):
         resource_name: str = None,
         vod_url: str = None,
     ):
-        # The offset of the position where the system starts to read the video source. Unit: milliseconds.
+        # The start offset of the video file. Unit: milliseconds.
+        # >Notice: This parameter takes effect only when the video source type is file video.
         # 
-        # **
         # 
-        # **Important** This parameter takes effect only if the video source is a file.
-        # 
-        # > A value greater than **0** specifies an offset from the first frame.
+        # > A value greater than **0** indicates that reading starts from the offset time relative to the first frame.
         self.begin_offset = begin_offset
-        # The ID of the production studio.
+        # The production studio ID.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the CasterId parameter value returned by the CreateCaster operation.
         # 
-        # > You can find the ID of the production studio in the Instance Name column.
+        # - If you created the production studio in the ApsaraVideo Live console, navigate to **ApsaraVideo Live console** > **Production Studios** > **Cloud Production Studio** to view the production studio name.
+        # 
+        # > The production studio name in the production studio list on the Cloud Production Studio page of the ApsaraVideo Live console is the production studio ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The offset of the position where the system stops reading the video source. Unit: milliseconds.
+        # The end offset of the video file. Unit: milliseconds.
+        # >Notice: This parameter takes effect only when the video source type is file video.
         # 
-        # **
-        # 
-        # **Important** This parameter takes effect only if the video source is a file.
-        # 
-        # *   A value greater than **0** specifies an offset from the first frame.
-        # *   A value less than **0** specifies an offset from the last frame.
+        #         
+        # - A value greater than **0**: reading ends at the offset time relative to the first frame.
+        # - A value less than **0**: reading ends at the offset time relative to the last frame.
         self.end_offset = end_offset
-        # The fixed delay of the video layer. This parameter is used to synchronize the video with subtitles. Unit: milliseconds. Default value: 0. Valid values: `0 to 5000`.
+        # The fixed delay for the video, which can be used for subtitle synchronization. Unit: ms. Default value: 0. Value range: `[0-5000]`.
         self.fixed_delay_duration = fixed_delay_duration
-        # ID of the media library image material. 
-        # >This parameter is only available and must be provided when the video source type is an image.
+        # The media asset library image material ID.
+        # > This parameter is available and required only when the video source type is image.
         self.image_id = image_id
-        # Image material URL. 
-        # >This parameter is available only when the video source type is an image and the image file has not been imported into the material library. Supports uploading images in jpg, png formats, with a maximum file size of 10MB.
+        # The image material URL.
+        # >This parameter is available only when the video source type is image and the image file has not been imported to the media asset library. JPG and PNG formats are supported. The maximum file size is 10 MB.
         self.image_url = image_url
-        # The streaming URL.
+        # The ApsaraVideo Live streaming URL.
         # 
-        # **
-        # 
-        # **Important** This parameter is required if the video source is a live stream.
-        # 
-        # > Do not specify this parameter in the request if the video source is not a live stream.
+        # >Notice:  
+        #  
+        # -  This parameter is required when the video source type is live stream.
+        #  
+        # -  Do not include this parameter in the request when the video source type is not live stream.
         self.live_stream_url = live_stream_url
-        # The ID that is used to identify the position of the video source.
+        # The location identifier of the video source. This parameter is required. 
         # 
-        # Define the reference numbers in the layout. Each reference number is associated with only one resource. The value of this parameter must be in the RV[Number] format, where Number is `01 to 99`.
+        # Defines the reference number of a scene in the layout. Each location can be associated with at most one resource. The format must match "RV01~RV12", which is RV + a number in the range of `[01~99]`.
         self.location_id = location_id
-        # The ID of the material from the media library.
+        # The media asset library material ID.
+        # >Notice: This parameter is available and required only when the video source type is material.
         # 
-        # **
         # 
-        # **Important** This parameter takes effect and is required only if the video source is a material.
+        # If you call the [DescribeCasterConfig](https://help.aliyun.com/document_detail/2848011.html) operation to query the production studio configuration, check the UrgentMaterialId parameter value returned by the DescribeCasterConfig operation.
         # 
-        # If you query the configurations of the production studio by calling the [DescribeCasterConfig](https://help.aliyun.com/document_detail/60259.html) operation, obtain the value of the response parameter UrgentMaterialId.
-        # 
-        # > The value of the UrgentMaterialId parameter is the ID of the material from the media library.
+        # > The UrgentMaterialId value is the media asset library material ID.
         self.material_id = material_id
         self.owner_id = owner_id
-        # The interval between presentation timestamp (PTS) callbacks. Unit: milliseconds.
+        # The PTS callback interval. Unit: milliseconds.
         self.pts_callback_interval = pts_callback_interval
+        # The region ID.
         self.region_id = region_id
-        # The number of playbacks after the first playback is complete. Valid values:
+        # The number of times the video repeats after playback completes. Valid values:
+        # >Notice: This parameter takes effect only when the video source type is file video.
         # 
-        # **
         # 
-        # **Important** This parameter takes effect only if the video source is a file.
-        # 
-        # *   **0**: specifies that the video source is played only once. This is the default value.
-        # *   **-1**: specifies that the video source is played in loop mode.
+        # - **0** (default): no repeat.
+        # - **-1**: loops indefinitely.
         self.repeat_num = repeat_num
         # The name of the video source.
         # 
         # This parameter is required.
         self.resource_name = resource_name
-        # The URL of the VOD file.
+        # The video-on-demand file URL.
+        # >Notice: This parameter is available only when the video source type is file video and the video file has not been imported to the media asset library.
         # 
-        # **
         # 
-        # **Important** This parameter takes effect only if the video source is a file that is not from the media library.
-        # 
-        # > The VOD file must be in the MP4, FLV, or TS format.
+        # >Video-on-demand files are limited to MP4, FLV, and TS formats.
         self.vod_url = vod_url
 
     def validate(self):

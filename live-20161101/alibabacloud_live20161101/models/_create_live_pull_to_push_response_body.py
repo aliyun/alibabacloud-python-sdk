@@ -12,19 +12,16 @@ class CreateLivePullToPushResponseBody(DaraModel):
         ret_code: int = None,
         task_id: str = None,
     ):
-        # The description of the custom rule.
+        # Error description.
         self.description = description
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The code that is returned for the request.
+        # Return code.
         # 
-        # > 
-        # 
-        # *   0 is returned if the request is normal.
-        # 
-        # *   For information about codes that are returned when exceptions occur, see the following Error codes table.
+        # > - "0" is returned under normal conditions.
+        # > - For abnormal conditions, refer to the error code list below.
         self.ret_code = ret_code
-        # The task ID.
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):

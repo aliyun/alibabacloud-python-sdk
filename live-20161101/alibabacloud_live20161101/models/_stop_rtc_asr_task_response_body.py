@@ -11,11 +11,11 @@ class StopRtcAsrTaskResponseBody(DaraModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # The result of the request. If success is returned, the request is successful. If an error message is returned, the request failed.
+        # The result of the call. The value is \\`success\\` if the call is successful. Otherwise, an error message is returned.
         self.description = description
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned HTTP status code. HTTP status code 2000 indicates that the request is successful. If another HTTP status code is returned, the request failed.
+        # The status code. A value of \\`2000\\` indicates that the call was successful. Other values indicate that the call failed.
         self.ret_code = ret_code
 
     def validate(self):

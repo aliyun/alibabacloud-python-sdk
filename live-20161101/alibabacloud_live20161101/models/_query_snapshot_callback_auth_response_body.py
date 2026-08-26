@@ -12,14 +12,15 @@ class QuerySnapshotCallbackAuthResponseBody(DaraModel):
         domain_name: str = None,
         request_id: str = None,
     ):
-        # The callback authentication key.
+        # The authentication key for callbacks.
         self.callback_auth_key = callback_auth_key
-        # Indicates whether callback authentication is enabled. Valid values:
+        # Indicates whether authentication for callbacks is enabled. Valid values:
         # 
-        # *   **yes**: Callback authentication is enabled.
-        # *   **no**: Callback authentication is disabled.
+        # - **yes**: enabled.
+        # 
+        # - **no**: disabled.
         self.callback_req_auth = callback_req_auth
-        # The main streaming domain.
+        # The streaming domain.
         self.domain_name = domain_name
         # The request ID.
         self.request_id = request_id

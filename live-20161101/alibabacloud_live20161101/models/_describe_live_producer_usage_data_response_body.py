@@ -16,11 +16,11 @@ class DescribeLiveProducerUsageDataResponseBody(DaraModel):
         start_time: str = None,
     ):
         self.bill_producer_data = bill_producer_data
-        # The end of the time range during which data was queried.
+        # The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The start of the time range for which the data was queried.
+        # The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

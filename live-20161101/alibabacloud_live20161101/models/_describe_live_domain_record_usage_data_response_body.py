@@ -15,12 +15,12 @@ class DescribeLiveDomainRecordUsageDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range during which data was queried.
+        # The end time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.end_time = end_time
         self.record_usage_data = record_usage_data
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which data was queried.
+        # The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.start_time = start_time
 
     def validate(self):

@@ -17,7 +17,7 @@ class DescribeCasterLayoutsResponseBody(DaraModel):
         self.layouts = layouts
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):

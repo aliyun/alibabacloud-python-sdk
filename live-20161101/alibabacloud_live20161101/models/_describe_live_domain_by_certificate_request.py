@@ -13,15 +13,15 @@ class DescribeLiveDomainByCertificateRequest(DaraModel):
         sslstatus: bool = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The public key of the SSL certificate. You must Base64-encode the public key before you invoke the encodeURIComponent function to encode a URI component. The public key must be in the PEM format.
+        # The public key of the certificate. The public key must be Base64 encoding and then URL-encoded (encodeURIComponent). The PEM format is supported.
         # 
         # This parameter is required.
         self.sslpub = sslpub
-        # Specifies whether to return only domain names with HTTPS enabled or disabled.
-        # 
-        # *   **true**: returns only domain names with HTTPS enabled.
-        # *   **false**: The rule is disabled.
+        # Specifies whether the returned domain name list includes only domain names with HTTPS enabled or disabled.
+        # - **true**: HTTPS is enabled.
+        # - **false**: HTTPS is disabled.
         self.sslstatus = sslstatus
 
     def validate(self):

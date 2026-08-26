@@ -17,14 +17,14 @@ class DescribeLiveSnapshotConfigRequest(DaraModel):
     ):
         # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         # The sort order. Valid values:
         # 
-        # *   **asc** (default): ascending order
-        # *   **desc**: descending order
+        # - **asc** (default): ascending order.
+        # - **desc**: descending order.
         self.order = order
         self.owner_id = owner_id
         # The page number. Default value: **1**.

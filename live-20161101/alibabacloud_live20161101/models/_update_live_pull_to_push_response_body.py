@@ -15,13 +15,10 @@ class UpdateLivePullToPushResponseBody(DaraModel):
         self.description = description
         # The request ID.
         self.request_id = request_id
-        # The code that is returned for the request.
+        # The return code.
         # 
-        # > 
-        # 
-        # *   0 is returned if the request is normal.
-        # 
-        # *   For information about codes that are returned when exceptions occur, see the following Error codes table.
+        # > - The value "0" is returned if the operation is successful.
+        # > - For exceptions, refer to the error codes listed below.
         self.ret_code = ret_code
 
     def validate(self):

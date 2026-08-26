@@ -18,13 +18,13 @@ class DescribeRTSNativeSDKPlayTimeResponseBody(DaraModel):
     ):
         # The time granularity.
         self.data_interval = data_interval
-        # The end of the time range for which the data was queried.
+        # The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The average playback duration and average stuttering duration at each interval. Unit: milliseconds.
+        # The average playback duration and average stall duration for each time interval. Unit: milliseconds.
         self.play_time_data = play_time_data
-        # The ID of the request.
+        # Id
         self.request_id = request_id
-        # The beginning of the time range for which the data was queried.
+        # The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -86,11 +86,11 @@ class DescribeRTSNativeSDKPlayTimeResponseBodyPlayTimeData(DaraModel):
         stall_time: str = None,
         time_stamp: str = None,
     ):
-        # The average playback duration within the period of time.
+        # The average playback duration during the time interval. Unit: milliseconds.
         self.play_time = play_time
-        # The average stuttering duration within the period of time.
+        # The average stall duration during the time interval. Unit: milliseconds.
         self.stall_time = stall_time
-        # The timestamp of the returned data.
+        # The start time of the time interval. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

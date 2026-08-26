@@ -16,18 +16,19 @@ class DescribeUpPeakPublishStreamDataRequest(DaraModel):
     ):
         # The accelerated domain name.
         self.domain_name = domain_name
-        # Specifies whether to collect statistics at the domain name level. Valid values:
+        # The domain name statistics switch. Valid values:
         # 
-        # *   on: collects statistics at the domain name level.
-        # *   off (default): collects statistics at the user level.
+        # - on: enables domain name-level statistics.
+        # - off: user-level data. User-level data is collected by default.
         self.domain_switch = domain_switch
-        # The end time of stream pulling. The time must be in UTC. The end time must be later than the start time. The maximum time range that can be specified by StartTime and EndTime is 30 days.
+        # The end time of stream pulling in UTC. The interval between StartTime and EndTime must be within 30 days, and EndTime must be later than the current time.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The start time of stream pulling. The time must be in UTC. The maximum time range that can be specified by StartTime and EndTime is 30 days.
+        # The start time of stream pulling in UTC. The interval between StartTime and EndTime must be within 30 days.
         # 
         # This parameter is required.
         self.start_time = start_time

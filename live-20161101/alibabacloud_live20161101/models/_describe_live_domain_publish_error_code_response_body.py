@@ -17,17 +17,17 @@ class DescribeLiveDomainPublishErrorCodeResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The time granularity of the query. Unit: seconds. Default value: 60.
+        # The time granularity of the queried data. Unit: seconds. Default value: 60.
         self.data_interval = data_interval
         # The ingest domain.
         self.domain_name = domain_name
-        # The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.end_time = end_time
-        # The proportions of error codes at each time interval.
+        # The status code distribution data for each time interval.
         self.real_time_code_data = real_time_code_data
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.start_time = start_time
 
     def validate(self):
@@ -94,9 +94,9 @@ class DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeData(DaraModel):
         code_data: List[main_models.DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeDataCodeData] = None,
         time_stamp: str = None,
     ):
-        # The proportions of error codes.
+        # The list of status code distribution data.
         self.code_data = code_data
-        # The timestamp of the data returned.
+        # The start time of the time interval. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.time_stamp = time_stamp
 
     def validate(self):
@@ -141,20 +141,19 @@ class DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeDataCodeData(Dar
         proportion: str = None,
     ):
         # The response code. Valid values:
-        # 
-        # *   3: The data read timed out.
-        # *   4: A data write error occurred.
-        # *   6: The data write timed out.
-        # *   200: The request is successful.
-        # *   500: An unknown internal error occurred.
-        # *   501: The stream ingest failed.
-        # *   502: The signaling operation timed out.
-        # *   401: A stream ingest parameter is invalid.
-        # *   403: The stream ingest authentication failed.
+        # - 3: read data timeout.
+        # - 4: write data error.
+        # - 6: write data timeout.
+        # - 200: success.
+        # - 500: internal system unknown error.
+        # - 501: stream ingest exception.
+        # - 502: signaling took too long.
+        # - 401: stream ingest parameter exception.
+        # - 403: stream ingest authentication failed.
         self.code = code
-        # The number of times the HTTP status code was returned.
+        # The number of responses.
         self.count = count
-        # The proportion of the HTTP status code.
+        # The proportion of responses.
         self.proportion = proportion
 
     def validate(self):

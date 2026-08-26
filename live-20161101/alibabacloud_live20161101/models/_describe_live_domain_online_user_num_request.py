@@ -12,13 +12,14 @@ class DescribeLiveDomainOnlineUserNumRequest(DaraModel):
         query_time: str = None,
         region_id: str = None,
     ):
-        # The main streaming domain.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The point of time to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The point of time to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.query_time = query_time
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -15,16 +15,17 @@ class DescribeLiveSnapshotNotifyConfigResponseBody(DaraModel):
     ):
         # The main streaming domain.
         self.domain_name = domain_name
-        # The callback authentication key.
+        # The authentication key for the callback.
         self.notify_auth_key = notify_auth_key
         # Indicates whether callback authentication is enabled. Valid values:
         # 
-        # *   **yes**: Callback authentication is enabled.
-        # *   **no**: Callback authentication is disabled.
+        # - **yes**: Enabled.
+        # 
+        # - **no**: Disabled.
         self.notify_req_auth = notify_req_auth
         # The callback URL.
         self.notify_url = notify_url
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

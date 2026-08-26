@@ -17,40 +17,37 @@ class ListEdgeTranscodeTemplateRequest(DaraModel):
         type: str = None,
         video_codec: str = None,
     ):
-        # The ID of the data center.
+        # The data center ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The keyword of the query.
-        # 
-        # *   You can specify a template ID for an exact match.
-        # *   You can also specify a template name for a fuzzy match.
+        # The search keyword. Valid values:
+        # - Template ID. Exact match is supported.
+        # - Template name. Fuzzy match is supported.
         self.keyword = keyword
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # The sorting order of the templates by creation time. Default value: desc. Valid values:
-        # 
-        # *   desc: descending order.
-        # *   asc: ascending order.
+        # The sorting rule. Templates are sorted by creation time (CreateTime). Default value: desc. Valid values:
+        # - desc: descending order.
+        # - asc: ascending order.
         self.sort_by = sort_by
-        # The type of edge transcoding. Valid values:
+        # The edge transcoding type. Valid values:
+        # - **common**: default transcoding (standard + Narrowband HD 1.0).
+        # - **nbhd-2**: Narrowband HD 2.0.
+        # - **ultra-hd**: ultra-high definition.
         # 
-        # *   **common**: standard transcoding and Narrowband HD™ 1.0 transcoding.
-        # *   **nbhd-2**: Narrowband HD™ 2.0 transcoding.
-        # *   **ultra-hd**: ultra-high definition transcoding.
-        # 
-        # >  If you do not specify this parameter, the query result is filtered based on the type of edge transcoding on which you are granted permissions.
+        # > If this parameter is not specified, the system displays transcoding templates for the transcoding types that the user has permissions to access.
         self.type = type
         # The video encoding format. Valid values:
+        # - H.264.
+        # - H.265.
         # 
-        # *   H.264
-        # *   H.265
-        # 
-        # >  If you do not specify this parameter, the query result is filtered based on the video encoding format on which you are granted permissions.
+        # > If this parameter is not specified, the system displays transcoding templates for the video encoding formats that the user has permissions to access.
         self.video_codec = video_codec
 
     def validate(self):

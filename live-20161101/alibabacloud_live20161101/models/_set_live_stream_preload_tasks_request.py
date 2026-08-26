@@ -15,27 +15,27 @@ class SetLiveStreamPreloadTasksRequest(DaraModel):
         preloaded_start_time: str = None,
         region_id: str = None,
     ):
-        # The acceleration region where you want to prefetch the live content. Valid values:
-        # 
-        # *   domestic: regions in the Chinese mainland.
-        # *   overseas: regions outside the Chinese mainland.
-        # *   global: regions in and outside the Chinese mainland.
-        # 
-        # If you do not specify this parameter, the acceleration region configured for the domain name is used.
+        # The prefetch area. Valid values:
+        # - domestic: the Chinese mainland.
+        # - overseas: outside the Chinese mainland, including Hong Kong (China), Macao (China), and Taiwan (China).
+        # - global: global acceleration.
+        #  
+        # If you do not specify this parameter, the default prefetch area is the acceleration region configured for your domain name.
         self.area = area
-        # The streaming domain name.
+        # The streaming domain.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The streaming URL. You can specify up to 100 streaming URLs in a request. Separate multiple streaming URLs with commas (,).
+        # The live stream URLs. You can specify multiple URLs separated by commas (,). A maximum of 100 URLs can be specified.
         # 
         # This parameter is required.
         self.play_url = play_url
-        # The end time of the prefetch task. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-06-30T19:00:00Z. The interval between the start time and end time cannot exceed 6 hours.
+        # The end time of the prefetch task in UTC. Example: 2016-06-30T19:00:00Z. The interval between EndTime and StartTime cannot exceed 6 hours.
         self.preloaded_end_time = preloaded_end_time
-        # The start time of the prefetch task. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-06-29T19:00:00Z. If you do not specify this parameter, the prefetch task runs for 1 hour by default.
+        # The start time of the prefetch task in UTC. Example: 2016-06-29T19:00:00Z. If you do not specify this parameter, the default prefetch duration is 1 hour.
         self.preloaded_start_time = preloaded_start_time
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

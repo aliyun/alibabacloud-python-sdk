@@ -13,9 +13,9 @@ class DescribeLiveDomainStagingConfigResponseBody(DaraModel):
         domain_configs: List[main_models.DescribeLiveDomainStagingConfigResponseBodyDomainConfigs] = None,
         request_id: str = None,
     ):
-        # The feature configurations of the accelerated domain name.
+        # The domain name configurations.
         self.domain_configs = domain_configs
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,18 +60,21 @@ class DescribeLiveDomainStagingConfigResponseBodyDomainConfigs(DaraModel):
         function_name: str = None,
         status: str = None,
     ):
-        # The configuration ID.
+        # The ID of the configuration.
         self.config_id = config_id
         # The configurations of the feature.
         self.function_args = function_args
         # The name of the feature.
         self.function_name = function_name
-        # The configuration status. Valid values:
+        # The status of the configuration. Valid values:
         # 
-        # *   **success**
-        # *   **testing**
-        # *   **failed**
-        # *   **configuring**
+        # - **success**: Successful.
+        # 
+        # - **testing**: The configuration is being verified.
+        # 
+        # - **failed**: Failed.
+        # 
+        # - **configuring**: The configuration is in progress.
         self.status = status
 
     def validate(self):
@@ -126,9 +129,9 @@ class DescribeLiveDomainStagingConfigResponseBodyDomainConfigsFunctionArgs(DaraM
         arg_name: str = None,
         arg_value: str = None,
     ):
-        # The name of the parameter.
+        # The name of the configuration parameter.
         self.arg_name = arg_name
-        # The configured value.
+        # The value of the configuration parameter.
         self.arg_value = arg_value
 
     def validate(self):

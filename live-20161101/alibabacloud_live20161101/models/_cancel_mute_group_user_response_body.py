@@ -11,9 +11,9 @@ class CancelMuteGroupUserResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CancelMuteGroupUserResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -49,10 +49,10 @@ class CancelMuteGroupUserResponseBodyResult(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the members are unmuted. Valid values:
+        # Whether unmuting is successful, values:
         # 
-        # *   true: The members are unmuted.
-        # *   false: The members failed to be unmuted.
+        # - true: Successful.
+        # - false: Unsuccessful.
         self.success = success
 
     def validate(self):

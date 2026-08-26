@@ -27,71 +27,68 @@ class UpdateLiveAISubtitleShrinkRequest(DaraModel):
         width: str = None,
         word_per_line: int = None,
     ):
-        # The background color of the subtitles. Color format: RGBA.
+        # The background color of the subtitle. The value is in RGBA format.
         self.bg_color = bg_color
-        # The size of the background box. Valid values: [0,1].
+        # The background size of the subtitle. Valid values: [0, 1].
         self.bg_width_normalized = bg_width_normalized
-        # The font weight. Valid values: [0,1].
+        # The font weight. Valid values: [0, 1].
         self.border_width_normalized = border_width_normalized
-        # The description of the subtitle template. The description can be up to 128 characters in length and can contain letters, digits, and special characters.
+        # The custom description of the subtitle. The description can contain Chinese characters, letters, digits, and special characters, and cannot exceed 128 characters in length.
         self.description = description
-        # The target language. Valid values:
-        # 
-        # *   en-US: English
-        # *   zh-CN: Chinese
-        # *   es-ES: Spanish
-        # *   ru-RU: Russian
+        # The target language for translation. Valid values:
+        # - en-US: English
+        # - zh-CN: Chinese
+        # - es-ES: Spanish
+        # - ru-RU: Russian.
         self.dst_language = dst_language
-        # The font color. Color format: RGBA.
+        # The font color. The value is in RGBA format.
         self.font_color = font_color
         # The font. Valid values:
-        # 
-        # *   KaiTi (default)
-        # *   AlibabaPuHuiTi-Regular
-        # *   AlibabaPuHuiTi-Bold
-        # *   AlibabaPuHuiTi-Light
-        # *   NotoSansHans-Regular
-        # *   NotoSansHans-Bold
-        # *   NotoSansHans-Light
+        # - KaiTi: KaiTi (default)
+        # - AlibabaPuHuiTi-Regular: Alibaba PuHuiTi Regular
+        # - AlibabaPuHuiTi-Bold: Alibaba PuHuiTi Bold
+        # - AlibabaPuHuiTi-Light: Alibaba PuHuiTi Light
+        # - NotoSansHans-Regular: Noto Sans Hans Regular
+        # - NotoSansHans-Bold: Noto Sans Hans Bold
+        # - NotoSansHans-Light: Noto Sans Hans Light.
         self.font_name = font_name
-        # The font size. Valid values: [0,1].
+        # The font size. Valid values: [0, 1].
         self.font_size_normalized = font_size_normalized
-        # The height of the preview. Unit: pixels.
+        # The height of the preview screen. Unit: px.
         # 
-        # The following preview specifications (width x height) are supported:
-        # 
-        # *   360p (640 x 360)
-        # *   360p (360 x 640)
-        # *   480p (854 x 480)
-        # *   480p (480 x 854)
-        # *   720p (1280 x 720)
-        # *   720p (720 x 1280)
-        # *   1080p (1920 x 1080)
-        # *   1080p (1080 x 1920)
+        # The width × height of the preview screen supports only the following specifications:
+        # - Landscape low definition 360P: 640×360
+        # - Portrait low definition 360P: 360×640
+        # - Landscape standard definition 480P: 854×480
+        # - Portrait standard definition 480P: 480×854
+        # - Landscape high definition 720P: 1280×720
+        # - Portrait high definition 720P: 720×1280
+        # - Landscape ultra-high definition 1080P: 1920×1080
+        # - Portrait ultra-high definition 1080P: 1080×1920.
         self.height = height
-        # The number of displayed lines.
+        # The number of lines to display.
         self.max_lines = max_lines
         self.owner_id = owner_id
-        # The position of the subtitles relative to the lower-left corner of the screen. The value is a pair of coordinates.
+        # The position of the subtitle, specified as x and y coordinates with the bottom-left corner of the screen as the origin.
         self.position_normalized_shrink = position_normalized_shrink
+        # The region ID.
         self.region_id = region_id
-        # Specifies whether to display the source language. Valid values: true and false. Default value: false.
+        # Specifies whether to display the source language. Default value: false.
         self.show_source_lan = show_source_lan
         # The source language. Valid values:
-        # 
-        # *   en-US: English
-        # *   zh-CN: Chinese
-        # *   ru-RU: Russian
+        # - en-US: English
+        # - zh-CN: Chinese
+        # - ru-RU: Russian.
         self.src_language = src_language
         # The ID of the subtitle template.
         # 
         # This parameter is required.
         self.subtitle_id = subtitle_id
-        # The name of the subtitle template. The name can contain digits, letters, and hyphens (-) but cannot start with a hyphen (-).
+        # The name of the subtitle template. The name can contain only digits, letters, and hyphens (-). The name cannot start with a hyphen.
         self.subtitle_name = subtitle_name
-        # The width of the preview. Unit: pixels.
+        # The width of the preview screen. Unit: px.
         self.width = width
-        # The number of characters per line. Valid values: 1 to 500.
+        # The number of characters per line. Valid values: integers in the range of [1, 500].
         self.word_per_line = word_per_line
 
     def validate(self):

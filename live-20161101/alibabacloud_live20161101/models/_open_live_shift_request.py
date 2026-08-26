@@ -16,26 +16,28 @@ class OpenLiveShiftRequest(DaraModel):
         stream_name: str = None,
         vision: int = None,
     ):
-        # The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications under the domain name. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the application. The wildcard character (\\*) is supported. An asterisk (\\*) represents all applications under the specified domain name. For more information, see [Stream management](https://help.aliyun.com/document_detail/197397.html).
         self.app_name = app_name
-        # The streaming domain.
+        # The streaming domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The length of a TS segment for HTTP Live Streaming (HLS). Unit: seconds.
+        # The duration of an HTTP Live Streaming (HLS) transport stream (TS) segment. Unit: seconds.
         self.duration = duration
-        # Specifies whether to disable time shifting for the transcoded stream. Valid values:
+        # Specifies whether to enable time shifting for transcoded streams. Valid values:
         # 
-        # *   **true**: disables time shifting for the transcoded stream.
-        # *   **false**: enables time shifting for the transcoded stream.
+        # - **true**: Time shifting is disabled for transcoded streams.
+        # 
+        # - **false**: Time shifting is enabled for transcoded streams.
         # 
         # Default value: true.
         self.ignore_transcode = ignore_transcode
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. You can specify an asterisk (\\*) as the value to match all streams in the application. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the stream. The wildcard character (\\*) is supported. An asterisk (\\*) represents all streams under the specified application. For more information, see [Stream management](https://help.aliyun.com/document_detail/197397.html).
         self.stream_name = stream_name
-        # The duration for which data is retained. Default value: 7. Unit: day.
+        # The data retention period. The default value is 7. Unit: days.
         self.vision = vision
 
     def validate(self):

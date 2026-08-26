@@ -14,13 +14,16 @@ class DescribeLiveDomainFrameRateAndBitRateDataRequest(DaraModel):
     ):
         # The ingest domain.
         # 
+        # > Make sure that the domain name added to ApsaraVideo Live and that you have the permissions to manage the domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The point of time to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The time to query. The time is in UTC. Format: *yyyy-MM-dd*T*HH:mm:ss*Z.
         # 
         # This parameter is required.
         self.query_time = query_time
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

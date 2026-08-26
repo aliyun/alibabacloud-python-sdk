@@ -12,18 +12,16 @@ class SetLiveStreamBlockResponseBody(DaraModel):
         status: str = None,
     ):
         # The result description.
-        # 
-        # *   If the request was successful, ok is returned.
-        # *   If the request failed, the failure detail is returned.
+        # - Success: ok.
+        # - Failure: failure details.
         self.description = description
         # The request ID.
         self.request_id = request_id
-        # The status. Valid values:
+        # The task status. Valid values:
+        # - ok: succeeded.
+        # - fail: failed.
         # 
-        # *   ok: The request was successful.
-        # *   fail: The request failed.
-        # 
-        # >  If any parameter failed to be configured, the request failed.
+        # > The task is considered failed if any single subtask fails to be created.
         self.status = status
 
     def validate(self):

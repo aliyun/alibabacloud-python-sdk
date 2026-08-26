@@ -10,7 +10,9 @@ class CreateRTCWhipStreamAddressResponseBody(DaraModel):
         request_id: str = None,
         whip_address: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The WHIP protocol URL.
         self.whip_address = whip_address
 
     def validate(self):

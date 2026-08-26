@@ -11,9 +11,9 @@ class CancelMuteAllGroupUserResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CancelMuteAllGroupUserResponseBodyResult = None,
     ):
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The returned result.
+        # Actual return result of the service
         self.result = result
 
     def validate(self):
@@ -49,9 +49,11 @@ class CancelMuteAllGroupUserResponseBodyResult(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the cancellation was successful, with values:
-        # - true: Success. 
-        # - false: Not successful.
+        # Indicates whether the cancellation was successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Unsuccessful.
         self.success = success
 
     def validate(self):

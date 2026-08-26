@@ -12,8 +12,9 @@ class GetCustomTemplateRequest(DaraModel):
         template: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the custom template that you want to query. The value is a string.
+        # The name of the custom template that you want to query.
         # 
         # This parameter is required.
         self.template = template

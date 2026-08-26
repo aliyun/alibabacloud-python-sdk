@@ -16,7 +16,7 @@ class AddLiveStreamWatermarkRuleRequest(DaraModel):
         stream: str = None,
         template_id: str = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The AppName of the live stream.
         # 
         # This parameter is required.
         self.app = app
@@ -31,23 +31,25 @@ class AddLiveStreamWatermarkRuleRequest(DaraModel):
         # This parameter is required.
         self.name = name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. The following rules apply:
+        # The stream name. The following rules apply:
         # 
-        # *   A stream name can be exactly matched. Example: liveStreamA.
-        # *   Fuzzy match is also supported. The use of an asterisk (`*`) allows all approximate matches to be found.
-        # *   You can place the asterisk before or after an approximate string.
+        # - To match a specific stream, enter the full stream name. For example, liveStreamA.
         # 
+        # - You can use a wildcard match. The asterisk (`*`) matches all streams.
         # 
+        # - You can perform prefix and suffix matching.
         # 
-        # >*   Fuzzy match: Only one asterisk (`*`) before or after an approximate string is allowed. The approximate string must be enclosed in `()`. Separate multiple strings with vertical bars (`|`).
-        # >*   For example, `*(t1|t2)` matches all streams whose name has the `t1` or `t2` suffix, and `(abc|123)*` matches all streams whose name has the `abc` or `123` prefix.
+        # > * You can use only one asterisk (`*`). The asterisk must be at the beginning or end of the string. The matching items must be enclosed in parentheses (`()`) and separated by a vertical bar (`|`).
+        # >
+        # > * For example, `*(t1|t2)` matches all streams that end with `t1` or `t2`. `(abc|123)*` matches all streams that start with `abc` or `123`.
         # 
         # This parameter is required.
         self.stream = stream
         # The ID of the watermark template.
         # 
-        # >  You can obtain the template ID by checking the value of the TemplateId parameter that is returned by the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/410759.html) operation.
+        # > Get the template ID from the response of the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
         # 
         # This parameter is required.
         self.template_id = template_id

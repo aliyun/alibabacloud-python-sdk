@@ -18,13 +18,13 @@ class DescribeRTSNativeSDKFirstFrameCostResponseBody(DaraModel):
     ):
         # The time granularity.
         self.data_interval = data_interval
-        # The end of the time range for which the data was queried.
+        # The end time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The average latency of first frames at each interval. Unit: milliseconds.
+        # The average first frame latency composition for each time interval. Unit: milliseconds.
         self.first_frame_cost_data = first_frame_cost_data
-        # The ID of the request.
+        # Id
         self.request_id = request_id
-        # The beginning of the time range for which the data was queried.
+        # The start time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -89,17 +89,17 @@ class DescribeRTSNativeSDKFirstFrameCostResponseBodyFirstFrameCostData(DaraModel
         initialized: str = None,
         time_stamp: str = None,
     ):
-        # The time elapsed from initialization to connection establishment.
+        # The time elapsed from successful initialization to successful connection establishment.
         self.connected = connected
-        # The time elapsed from connection establishment to subscription.
+        # The time elapsed from successful connection establishment to successful subscription.
         self.finish_get_stream_info = finish_get_stream_info
-        # The time elapsed from first packet processing to display of the first frame.
+        # The time elapsed from receiving the first packet to rendering the first frame.
         self.first_frame_complete = first_frame_complete
-        # The time elapsed from subscription to first packet processing.
+        # The time elapsed from successful subscription to receiving the first packet.
         self.first_packet = first_packet
-        # The time consumed by initialization.
+        # The initialization duration.
         self.initialized = initialized
-        # The timestamp of the returned data.
+        # The start time of the time interval. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

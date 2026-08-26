@@ -10,7 +10,7 @@ class GetAllCustomTemplatesResponseBody(DaraModel):
         custom_templates: str = None,
         request_id: str = None,
     ):
-        # The template names and template configurations returned.
+        # A list of template names and template configurations.
         self.custom_templates = custom_templates
         # The request ID.
         self.request_id = request_id

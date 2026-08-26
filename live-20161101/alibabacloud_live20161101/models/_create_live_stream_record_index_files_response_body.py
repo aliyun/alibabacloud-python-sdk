@@ -11,9 +11,9 @@ class CreateLiveStreamRecordIndexFilesResponseBody(DaraModel):
         record_info: main_models.CreateLiveStreamRecordIndexFilesResponseBodyRecordInfo = None,
         request_id: str = None,
     ):
-        # The recording configuration.
+        # The recording configuration information.
         self.record_info = record_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,33 +62,33 @@ class CreateLiveStreamRecordIndexFilesResponseBodyRecordInfo(DaraModel):
         stream_name: str = None,
         width: int = None,
     ):
-        # The name of the application to which the live stream belongs.
+        # The name of the application to which the stream belongs.
         self.app_name = app_name
-        # The time when the index file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.create_time = create_time
-        # The main streaming domain.
+        # The streamer streaming domain.
         self.domain_name = domain_name
         # The recording length. Unit: seconds.
         self.duration = duration
-        # The end time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.end_time = end_time
-        # The height of the video.
+        # The video height.
         self.height = height
         # The name of the OSS bucket.
         self.oss_bucket = oss_bucket
         # The endpoint of the OSS bucket.
         self.oss_endpoint = oss_endpoint
-        # The name of the recording that is stored in OSS.
+        # The name of the recording file stored in OSS.
         self.oss_object = oss_object
         # The ID of the index file.
         self.record_id = record_id
-        # The URL of the M3U8 index file.
+        # The URL of the index file.
         self.record_url = record_url
-        # The start time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.start_time = start_time
-        # The name of the live stream.
+        # The stream name.
         self.stream_name = stream_name
-        # The width of the video.
+        # The video width.
         self.width = width
 
     def validate(self):

@@ -18,24 +18,24 @@ class UpdateCasterSceneConfigRequest(DaraModel):
     ):
         # The ID of the production studio.
         # 
-        # *   If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-        # *   If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management** page. To go to the page, log on to the **ApsaraVideo Live console** and click **Production Studios** in the left-side navigation pane.
+        # - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value from the response.
         # 
-        # >  You can find the ID of the production studio in the Instance ID/Name column.
+        # - If you create a production studio in the ApsaraVideo Live console, find the ID on the **Cloud Production Studio** page. Navigate to this page by choosing **Production Studio** > **Cloud Production Studio** in the ApsaraVideo Live console.
+        # 
+        # > The name of the production studio in the list is its ID.
         # 
         # This parameter is required.
         self.caster_id = caster_id
-        # The IDs of the components. Components in the scene are listed from the bottom to the top in an array.
+        # A list of component IDs. The components in the array are layered from bottom to top.
         # 
-        # >  N indicates a sequence number. Examples:\\
-        # ComponentId.1 indicates the ID of the first component.\\
-        # ComponentId.2 indicates the ID of the second component.
+        # > N indicates the sequence number. For example, ComponentId.1 is the ID of the first component and ComponentId.2 is the ID of the second component.
         self.component_id = component_id
-        # The ID of the layout. If you call the [DescribeCasterLayouts](https://help.aliyun.com/document_detail/2848028.html) operation to query the layouts of the production studio, check the value of the response parameter LayoutId to obtain the ID.
+        # The ID of the layout. If you query the layout list for the production studio by calling the [DescribeCasterLayouts](https://help.aliyun.com/document_detail/2848028.html) operation, use the LayoutId value from the response.
         # 
         # This parameter is required.
         self.layout_id = layout_id
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
         # The ID of the scene.
         # 

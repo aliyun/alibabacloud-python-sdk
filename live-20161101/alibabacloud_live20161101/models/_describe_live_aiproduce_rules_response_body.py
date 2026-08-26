@@ -13,7 +13,7 @@ class DescribeLiveAIProduceRulesResponseBody(DaraModel):
         request_id: str = None,
         rule_info_list: main_models.DescribeLiveAIProduceRulesResponseBodyRuleInfoList = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.rule_info_list = rule_info_list
 

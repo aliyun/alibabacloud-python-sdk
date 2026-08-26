@@ -12,7 +12,7 @@ class AddLiveAISubtitleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the subtitle template.
+        # The subtitle template ID.
         self.subtitle_id = subtitle_id
 
     def validate(self):

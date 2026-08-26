@@ -11,11 +11,12 @@ class DeleteLiveEdgeTransferRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The ingest domain. You can set only one stream relay configuration for an ingest domain.
+        # The ingest domain. Each domain name has only one live stream relay configuration.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

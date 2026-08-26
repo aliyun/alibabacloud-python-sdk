@@ -16,10 +16,11 @@ class DescribeLiveHttpsDomainListRequest(DaraModel):
         # The accelerated domain name.
         self.keyword = keyword
         self.owner_id = owner_id
-        # The page number. Valid values: **1 to 10000**.
+        # The page number to return. Valid values: **[1,10000]**.
         self.page_number = page_number
         # The number of entries per page. Default value: **20**.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

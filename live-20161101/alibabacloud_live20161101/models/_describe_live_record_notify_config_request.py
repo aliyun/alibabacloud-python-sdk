@@ -11,7 +11,7 @@ class DescribeLiveRecordNotifyConfigRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The main streaming domain.
+        # The streaming domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name

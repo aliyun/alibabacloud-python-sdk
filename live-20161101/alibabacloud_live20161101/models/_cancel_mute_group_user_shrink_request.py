@@ -13,25 +13,27 @@ class CancelMuteGroupUserShrinkRequest(DaraModel):
         group_id: str = None,
         operator_user_id: str = None,
     ):
-        # The ID of the interactive messaging application.
+        # Interactive Messages application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The mode in which system messages are broadcasted. Valid values:
+        # System message diffusion type, values:
         # 
-        # *   0: specifies that system messages are not broadcasted. This is the default value.
-        # *   1: specifies that system messages are broadcasted to specified users.
-        # *   2: specifies that system messages are broadcasted to the message group.
+        # - 0 (default): No diffusion.
+        # - 1: Diffusion to specified users.
+        # - 2: Diffusion to the group.
         self.broad_cast_type = broad_cast_type
-        # The IDs of the users.
+        # User ID group.
         # 
         # This parameter is required.
         self.cancel_mute_user_list_shrink = cancel_mute_user_list_shrink
-        # The ID of the message group.
+        # Message group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ID of the user who performs the operation.
+        # Operator\\"s user ID.
+        # 
+        # > This parameter must be filled and the user must be the creator of the group.
         self.operator_user_id = operator_user_id
 
     def validate(self):

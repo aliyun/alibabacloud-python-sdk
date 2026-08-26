@@ -14,8 +14,8 @@ class DescribeLiveDomainMultiStreamConfigResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the dual-stream disaster recovery feature is enabled. Valid values:
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # - **on**: enabled
+        # - **off**: disabled
         self.switch = switch
 
     def validate(self):

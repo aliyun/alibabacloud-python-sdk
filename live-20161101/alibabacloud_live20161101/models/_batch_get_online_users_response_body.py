@@ -15,7 +15,7 @@ class BatchGetOnlineUsersResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The returned result
         self.result = result
 
     def validate(self):
@@ -51,7 +51,7 @@ class BatchGetOnlineUsersResponseBodyResult(DaraModel):
         self,
         online_users: List[main_models.BatchGetOnlineUsersResponseBodyResultOnlineUsers] = None,
     ):
-        # The information about users.
+        # The array of objects
         self.online_users = online_users
 
     def validate(self):
@@ -89,14 +89,15 @@ class BatchGetOnlineUsersResponseBodyResultOnlineUsers(DaraModel):
         online: bool = None,
         user_id: str = None,
     ):
-        # The time when the user joined the group. The value is a UTC timestamp. Unit: milliseconds.
+        # The UTC timestamp when the user joined the message group. Unit: milliseconds
         self.join_time = join_time
         # Indicates whether the user is online. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The user is online.
+        # 
+        # - **false**: The user is offline.
         self.online = online
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -11,9 +11,13 @@ class ListRTCLiveRoomsRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The application ID. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > ApsaraVideo Real-time Communication > Application Management**.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The current page number, starting from 1.
         self.page_no = page_no
+        # The page size. Valid values: 10 to 100. Default value: 50.
         self.page_size = page_size
 
     def validate(self):

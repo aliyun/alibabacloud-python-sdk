@@ -16,11 +16,11 @@ class DescribeLiveAIStudioResponseBody(DaraModel):
         studio_configs: main_models.DescribeLiveAIStudioResponseBodyStudioConfigs = None,
         total: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Valid values: 1 to 50.
+        # The number of entries returned on each page. Default value: 10. Valid values: 1 to 50.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         self.studio_configs = studio_configs
         # The total number of templates.

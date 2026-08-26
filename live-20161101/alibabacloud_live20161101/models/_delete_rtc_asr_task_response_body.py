@@ -11,11 +11,11 @@ class DeleteRtcAsrTaskResponseBody(DaraModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # The result of the request. If success is returned, the request is successful. If an error message is returned, the request failed.
+        # The description of the result. If the value is \\`success\\`, the operation is successful. Otherwise, an error message is returned.
         self.description = description
         # The ID of the request.
         self.request_id = request_id
-        # The returned HTTP status code. HTTP status code 2000 indicates that the request is successful. If another HTTP status code is returned, the request failed.
+        # The status code. A value of \\`2000\\` indicates that the operation is successful. Other values indicate that an error occurred.
         self.ret_code = ret_code
 
     def validate(self):

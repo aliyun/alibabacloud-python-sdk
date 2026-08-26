@@ -22,52 +22,46 @@ class DescribeLivePullToPushResponseBody(DaraModel):
         task_invalid_reason: str = None,
         task_status: int = None,
     ):
-        # The current file index.
+        # The current effective playlist sequence offset.
         self.current_file_index = current_file_index
-        # The current offset for video playback.
+        # The current effective video playback offset.
         self.current_offset = current_offset
         # The error description.
         self.description = description
         # The request ID.
         self.request_id = request_id
-        # The code that is returned for the request.
-        # 
-        # > 
-        # 
-        # *   0 is returned if the request is normal.
-        # 
-        # *   For information about codes that are returned when exceptions occur, see the following Error codes table.
+        # The return code.
+        # > - "0" is returned in normal cases.
+        # > - For error cases, refer to the error code list below.
         self.ret_code = ret_code
-        # The reason why the task is stopped.
+        # The reason why the task exited. Valid values:
         # 
-        # *   TriggerByUser: You proactively stopped the task.
-        # *   OverEndTime: The specified end time was exceeded.
+        # - TriggerByUser: The task was actively ended by the user.
+        # - OverEndTime: The preset end time was exceeded.
         # 
-        # >  This parameter is returned only if the task is stopped.
+        # > This parameter is returned only when the task is in the exited state.
         self.task_exit_reason = task_exit_reason
-        # The time when the task was exited. The value is a Unix timestamp in seconds.
-        # 
-        # >  This parameter is returned only if the task status is exited.
+        # The time when the task exited. The value is a UNIX timestamp in seconds.
+        # > This parameter is returned only when the task is in the exited state.
         self.task_exit_time = task_exit_time
-        # The task ID.
+        # The ID of the node returned when you create task.
         self.task_id = task_id
-        # The information about the task.
+        # The task information.
         self.task_info = task_info
-        # The reason why the task was stopped.
+        # The reason why the task stopped running. Valid values:
         # 
-        # *   PullStreamFailed: An exception occurred while pulling the source stream. A retry is in progress.
-        # *   PushStreamFailed: An exception occurred while ingesting the stream. A retry is in progress.
-        # *   UnknownError: An unknown exception occurred.
+        # - PullStreamFailed: Source stream pulling is abnormal. Retrying.
+        # - PushStreamFailed: Destination stream pushing is abnormal. Retrying.
+        # - UnknownError: Unknown error.
         # 
-        # >  This parameter is returned only if the task status is stopped.
+        # > This parameter is returned only when the task is in the stopped state.
         self.task_invalid_reason = task_invalid_reason
-        # The current status of the task.
-        # 
-        # *   0: not started.
-        # *   1: running. Stream pulling and stream relay are normal.
-        # *   2: abnormal.
-        # *   3: stopped. It may be because exceptions occur during stream pulling or stream relay or you proactively call the StopLivePullToPush operation.
-        # *   \\-1: exited.
+        # The current status of the task. Valid values:
+        # - 0: Not started (the start time has not been reached).
+        # - 1: Running normally (stream pulling and pushing are both normal).
+        # - 2: Running abnormally.
+        # - 3: Stopped (stream pulling or pushing is abnormal, or the task was actively stopped by calling an API operation).
+        # - -1: Exited.
         self.task_status = task_status
 
     def validate(self):
@@ -155,12 +149,15 @@ class DescribeLivePullToPushResponseBody(DaraModel):
 class DescribeLivePullToPushResponseBodyTaskInfo(DaraModel):
     def __init__(
         self,
+        auth_key: str = None,
         callback_url: str = None,
         dst_url: str = None,
         end_time: str = None,
         file_index: int = None,
+        notify_item_switch: str = None,
         offset: int = None,
         repeat_number: int = None,
+        req_auth: str = None,
         retry_count: int = None,
         retry_interval: int = None,
         source_protocol: str = None,
@@ -170,45 +167,43 @@ class DescribeLivePullToPushResponseBodyTaskInfo(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        self.auth_key = auth_key
         # The HTTP callback URL.
         self.callback_url = callback_url
-        # The destination URL to which the stream is relayed.
+        # The destination ingest URL.
         self.dst_url = dst_url
-        # The end time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end time of the task. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.end_time = end_time
-        # The file index, which indicates the sequence of the file where the playback starts.
+        # The file index. Playback starts from the nth file.
         self.file_index = file_index
-        # The offset of the position where the system starts to read the video resource. Unit: seconds. Valid values: positive numbers.
-        # 
-        # > 
-        # 
-        # *   This parameter indicates an offset from the first frame.
-        # 
-        # *   This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+        self.notify_item_switch = notify_item_switch
+        # The start offset of the video file. Unit: seconds. The value must be greater than 0.
+        # > - Indicates the position from which reading starts, relative to the first frame.
+        # > - This parameter is valid only for video-on-demand resources or video files.
         self.offset = offset
-        # The number of playbacks after the first playback is complete. Valid values:
+        # The number of times playback repeats after completion. Valid values:
+        # - 0 (default): No repeat playback.
+        # - -1: Infinite loop.
+        # - Other positive integers: the number of times playback repeats after completion.
         # 
-        # *   0 (default): specifies that the video list is played only once.
-        # *   \\-1: specifies that the video list is played in loop mode.
-        # *   Positive integer: specifies the number of times the video list repeats after the first playback is complete.
-        # 
-        # >  This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+        # > This parameter applies only to video-on-demand or third-party video streams.
         self.repeat_number = repeat_number
-        # The number of retries allowed.
+        self.req_auth = req_auth
+        # The number of retries.
         self.retry_count = retry_count
         # The retry interval. Unit: seconds.
         self.retry_interval = retry_interval
-        # The protocol of the source stream.
+        # The source stream protocol name.
         self.source_protocol = source_protocol
-        # The type of the source stream. Valid values:
+        # The source stream type. Valid values:
         # 
-        # *   live: a live stream
-        # *   vod: a list of ApsaraVideo VOD resources
-        # *   url: a list of video resources from a third party
+        # - live: live stream.
+        # - vod: ApsaraVideo VOD resource.
+        # - url: third-party video file resource.
         self.source_type = source_type
-        # The source URLs.
+        # The source stream URL.
         self.source_urls = source_urls
-        # The start time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time of the task. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.start_time = start_time
         # The task ID.
         self.task_id = task_id
@@ -223,6 +218,9 @@ class DescribeLivePullToPushResponseBodyTaskInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_key is not None:
+            result['AuthKey'] = self.auth_key
+
         if self.callback_url is not None:
             result['CallbackURL'] = self.callback_url
 
@@ -235,11 +233,17 @@ class DescribeLivePullToPushResponseBodyTaskInfo(DaraModel):
         if self.file_index is not None:
             result['FileIndex'] = self.file_index
 
+        if self.notify_item_switch is not None:
+            result['NotifyItemSwitch'] = self.notify_item_switch
+
         if self.offset is not None:
             result['Offset'] = self.offset
 
         if self.repeat_number is not None:
             result['RepeatNumber'] = self.repeat_number
+
+        if self.req_auth is not None:
+            result['ReqAuth'] = self.req_auth
 
         if self.retry_count is not None:
             result['RetryCount'] = self.retry_count
@@ -269,6 +273,9 @@ class DescribeLivePullToPushResponseBodyTaskInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthKey') is not None:
+            self.auth_key = m.get('AuthKey')
+
         if m.get('CallbackURL') is not None:
             self.callback_url = m.get('CallbackURL')
 
@@ -281,11 +288,17 @@ class DescribeLivePullToPushResponseBodyTaskInfo(DaraModel):
         if m.get('FileIndex') is not None:
             self.file_index = m.get('FileIndex')
 
+        if m.get('NotifyItemSwitch') is not None:
+            self.notify_item_switch = m.get('NotifyItemSwitch')
+
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
 
         if m.get('RepeatNumber') is not None:
             self.repeat_number = m.get('RepeatNumber')
+
+        if m.get('ReqAuth') is not None:
+            self.req_auth = m.get('ReqAuth')
 
         if m.get('RetryCount') is not None:
             self.retry_count = m.get('RetryCount')

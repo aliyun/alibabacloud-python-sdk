@@ -11,13 +11,13 @@ class CreateMessageAppShrinkRequest(DaraModel):
         app_name: str = None,
         extension_shrink: str = None,
     ):
-        # The configurations of the application.
+        # The application configuration.
         self.app_config_shrink = app_config_shrink
-        # The name of the interactive message application. The name must be 2 to 16 characters in length.
+        # The name of the interactive message application. The length must be 2 to 16 characters.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The extended fields.
+        # The extension field.
         self.extension_shrink = extension_shrink
 
     def validate(self):

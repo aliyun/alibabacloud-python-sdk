@@ -17,21 +17,20 @@ class SetLiveStreamPreloadTasksResponseBody(DaraModel):
         success_url: int = None,
         total_url: int = None,
     ):
-        # The number of URLs for which the prefetch task configuration failed.
+        # The number of URLs for which the prefetch task failed.
         self.failed_url = failed_url
         self.preload_tasks_messages = preload_tasks_messages
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the prefetch task. Valid values:
+        # The task status. Valid values:
+        # - Success: successful.
+        # - Failed: failed.
         # 
-        # *   Success
-        # *   Failed
-        # 
-        # >  Success is returned only if the prefetch task is configured for all specified streaming URLs.
+        # > The status is Failed if any task fails to be created.
         self.status = status
-        # The number of URLs for which the prefetch task is successfully configured.
+        # The number of URLs for which the prefetch task succeeded.
         self.success_url = success_url
-        # The total number of URLs.
+        # The total number of URLs in the prefetch task.
         self.total_url = total_url
 
     def validate(self):

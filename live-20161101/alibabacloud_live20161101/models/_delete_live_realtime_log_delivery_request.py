@@ -14,25 +14,26 @@ class DeleteLiveRealtimeLogDeliveryRequest(DaraModel):
         region: str = None,
         region_id: str = None,
     ):
-        # The streaming domain.
+        # The streaming domain name.
         # 
-        # Separate multiple streaming domains with commas (,).
+        # To specify multiple domain names, separate them with commas (,).
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The name of the Logstore to which log entries are delivered.
+        # The name of the SLS Logstore to which logs are delivered in real time.
         # 
         # This parameter is required.
         self.logstore = logstore
         self.owner_id = owner_id
-        # The name of the Log Service project that is used for real-time log delivery.
+        # The name of the Simple Log Service (SLS) project to which logs are delivered in real time.
         # 
         # This parameter is required.
         self.project = project
-        # The ID of the region where the Log Service project is deployed.
+        # The region where the SLS project is located.
         # 
         # This parameter is required.
         self.region = region
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

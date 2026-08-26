@@ -14,7 +14,7 @@ class DeleteLiveCenterTransferRequest(DaraModel):
         region_id: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs. The value of this parameter must be the same as the application name for the live stream that you want to relay. Otherwise, the configuration does not take effect. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the application. The value must be the same as that of the live stream that you want to relay. View AppName on the [Stream Management](t2019924.xdita#).
         # 
         # This parameter is required.
         self.app_name = app_name
@@ -25,8 +25,9 @@ class DeleteLiveCenterTransferRequest(DaraModel):
         # The third-party URL to which the live stream is relayed.
         self.dst_url = dst_url
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
-        # The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+        # The name of the live stream. View StreamName on the [Stream Management](t2019924.xdita#) page.
         # 
         # This parameter is required.
         self.stream_name = stream_name

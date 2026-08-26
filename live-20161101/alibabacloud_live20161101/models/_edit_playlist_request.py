@@ -14,16 +14,17 @@ class EditPlaylistRequest(DaraModel):
         region_id: str = None,
     ):
         self.owner_id = owner_id
-        # The configurations of the episode list. For more information, see the **ProgramConfig** section of this topic.
+        # The playlist configuration. For more information, see **ProgramConfig**.
         self.program_config = program_config
-        # The ID of the episode list. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+        # The playlist ID. If you add playlist items by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, use the ProgramId value returned by the call.
         # 
         # This parameter is required.
         self.program_id = program_id
-        # The episodes that you want to add to the production studio. The value is a JSON string. For more information, see the **InputProgramItem** section of this topic.
+        # The list of playlist items. This is a JSON string. For more information, see **InputProgramItem**.
         # 
         # This parameter is required.
         self.program_items = program_items
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

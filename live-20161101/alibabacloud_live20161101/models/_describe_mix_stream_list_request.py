@@ -18,23 +18,24 @@ class DescribeMixStreamListRequest(DaraModel):
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The name of the application.
+        # The app name.
         self.app_name = app_name
-        # The main streaming domain.
+        # The streaming domain.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
         self.end_time = end_time
-        # The ID of the stream mixing task. If the task was created by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation, check the value of the response parameter MixStreamId to obtain the ID.
+        # The ID of the stream mixing task. If you create a stream mixing task by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation, use the MixStreamId value that is returned in the response.
         self.mix_stream_id = mix_stream_id
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: an integer that is greater than **0** and does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+        # The page number. The value must be greater than **0** and cannot exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_no = page_no
-        # The number of entries to return on each page. Default value: **1000**.
+        # The number of records to display on each page. Default value: **1000**.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
         self.start_time = start_time
-        # The name of the output stream.
+        # The stream name of the stream mixing task.
         self.stream_name = stream_name
 
     def validate(self):

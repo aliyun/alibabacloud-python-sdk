@@ -12,7 +12,7 @@ class RestartLivePullToPushResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The new task ID.
+        # The node ID returned when you create task.
         self.task_id = task_id
 
     def validate(self):

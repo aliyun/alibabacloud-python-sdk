@@ -15,13 +15,13 @@ class ListRtcMPUEventSubRecordResponseBody(DaraModel):
         logs: List[main_models.ListRtcMPUEventSubRecordResponseBodyLogs] = None,
         request_id: str = None,
     ):
-        # The number of entries per page.
+        # The total number of callback records returned on the current page.
         self.count = count
-        # Indicates whether the current page is followed by a page.
+        # Indicates whether there is a next page.
         self.has_more = has_more
         # The callback records.
         self.logs = logs
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,21 +82,22 @@ class ListRtcMPUEventSubRecordResponseBodyLogs(DaraModel):
         sub_id: str = None,
         time: str = None,
     ):
-        # The ID of the application.
+        # The ID of the subscribed application.
         self.app_id = app_id
         # The callback URL.
         self.callback_url = callback_url
         # The callback duration. Unit: milliseconds.
         self.cost = cost
-        # For more information about the callback, see [CreateRtcMPUEventSub](https://help.aliyun.com/document_detail/2804583.html).
+        # The callback content. For more information, see [Create a stream mixing and forwarding event callback](https://help.aliyun.com/document_detail/2804583.html).
         self.data = data
-        # The HTTP status code. 200 indicates that the callback is successful.
+        # The error code. A value of 200 indicates that the callback was successful.
         self.httpcode = httpcode
-        # The ID of the callback record.
+        # The callback record ID.
         self.msg_id = msg_id
-        # The ID of the subscription.
+        # The event callback ID.
         self.sub_id = sub_id
-        # The time when the callback was invoked. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The time when the callback was invoked.
+        # Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.time = time
 
     def validate(self):

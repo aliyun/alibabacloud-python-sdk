@@ -14,36 +14,44 @@ class UpdateMixStreamRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The main streaming domain.
+        # The streaming domain.
         # 
-        # >  Only domain names that reside in the China (Shanghai) and China (Beijing) regions are supported.
+        # >Notice: 
+        # 
+        # Only domain names in the China (Shanghai) and China (Beijing) regions are supported.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The input streams, in a JSON array.
+        # The list of input streams for the mix. This is a JSON array.
         # 
-        # For more information, see **InputStreamConfig**.
+        # For more information, see **InputStreamConfig** below.
         # 
         # This parameter is required.
         self.input_stream_list = input_stream_list
-        # The ID of the layout. Valid values:
+        # The layout ID. The following values are supported:
         # 
-        # *   **MixStreamLayout-1-1**
-        # *   **MixStreamLayout-2-1**
-        # *   **MixStreamLayout-2-2**
-        # *   **MixStreamLayout-2-3**
-        # *   **MixStreamLayout-3-1**
-        # *   **MixStreamLayout-3-2**
-        # *   **MixStreamLayout-4-1**
-        # *   **USERDEFINED**: If you do not use a preset layout, set this parameter to **USERDEFINED**.
+        # - **MixStreamLayout-1-1**
         # 
-        # >  For more information, see [Preset layouts for stream mixing](https://help.aliyun.com/document_detail/199361.html).
+        # - **MixStreamLayout-2-1**
+        # 
+        # - **MixStreamLayout-2-2**
+        # 
+        # - **MixStreamLayout-2-3**
+        # 
+        # - **MixStreamLayout-3-1**
+        # 
+        # - **MixStreamLayout-3-2**
+        # 
+        # - **MixStreamLayout-4-1**
+        # 
+        # - **USERDEFINED** (If you use a custom layout instead of a preset layout, set this parameter to this value.)
         self.layout_id = layout_id
-        # The ID of the stream mixing task. If the task was created by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation, check the value of the response parameter MixStreamId to obtain the ID.
+        # The ID of the stream mix task. If you created the task by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation, use the MixStreamId value returned in the response.
         # 
         # This parameter is required.
         self.mix_stream_id = mix_stream_id
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
