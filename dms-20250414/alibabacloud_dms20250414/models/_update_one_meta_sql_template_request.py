@@ -16,14 +16,23 @@ class UpdateOneMetaSqlTemplateRequest(DaraModel):
         tag: str = None,
         title: str = None,
     ):
+        # The UUID of the associated folder.
         self.catalog_uuid = catalog_uuid
+        # The UUID of the associated database.
         self.database_uuid = database_uuid
+        # The description of the SQL template.
         self.description = description
+        # The content of the SQL template.
         self.expr = expr
+        # The UUID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_uuid = knowledge_uuid
+        # The custom template parameters.
         self.sql_params = sql_params
+        # The tag of the SQL template.
         self.tag = tag
+        # The title of the SQL template.
         self.title = title
 
     def validate(self):

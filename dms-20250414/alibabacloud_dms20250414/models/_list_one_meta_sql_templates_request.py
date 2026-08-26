@@ -16,14 +16,23 @@ class ListOneMetaSqlTemplatesRequest(DaraModel):
         tag: str = None,
         uuids: str = None,
     ):
+        # The UUID of the associated catalog.
         self.catalog_uuid = catalog_uuid
+        # The UUID of the associated database.
         self.database_uuid = database_uuid
+        # Specifies whether to use semantic search.
         self.enable_vector_search = enable_vector_search
+        # The maximum number of entries to return in this response.
         self.max_results = max_results
+        # The pagination token for the next query.
         self.next_token = next_token
+        # The search keyword.
+        # 
         # This parameter is required.
         self.query = query
+        # The SQL template tag.
         self.tag = tag
+        # The UUIDs of knowledge instances. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):

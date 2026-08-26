@@ -16,17 +16,29 @@ class ImportOneMetaOssieModelRequest(DaraModel):
         tag: str = None,
         title: str = None,
     ):
+        # The UUID of the associated folder.
+        # 
         # This parameter is required.
         self.catalog_uuid = catalog_uuid
+        # The UUID of the associated database.
         self.database_uuid = database_uuid
+        # The semantic description.
         self.description = description
+        # The semantic model document type. Valid values: JSON and YAML.
+        # 
         # This parameter is required.
         self.doc_format = doc_format
+        # The semantic model document definition.
+        # 
         # This parameter is required.
         self.document = document
+        # The source of the semantic model.
+        # 
         # This parameter is required.
         self.source = source
+        # The semantic model tag.
         self.tag = tag
+        # The semantic title. If the value is empty, the title is extracted from the document.
         self.title = title
 
     def validate(self):

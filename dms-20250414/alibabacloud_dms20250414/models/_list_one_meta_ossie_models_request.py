@@ -15,13 +15,21 @@ class ListOneMetaOssieModelsRequest(DaraModel):
         query: str = None,
         tag: str = None,
     ):
+        # The UUID of the associated folder.
         self.catalog_uuid = catalog_uuid
+        # The UUID of the associated database.
         self.database_uuid = database_uuid
+        # Specifies whether to use semantic search.
         self.enable_vector_search = enable_vector_search
+        # The maximum number of records per page.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # The search keyword.
+        # 
         # This parameter is required.
         self.query = query
+        # The semantic model tag.
         self.tag = tag
 
     def validate(self):

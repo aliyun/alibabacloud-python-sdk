@@ -1452,6 +1452,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_data_agent_session_with_options_async(request, runtime)
 
+    def create_data_agent_theme_with_options(
+        self,
+        request: main_models.CreateDataAgentThemeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentThemeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.file_from):
+            query['FileFrom'] = request.file_from
+        if not DaraCore.is_null(request.theme_id):
+            query['ThemeId'] = request.theme_id
+        if not DaraCore.is_null(request.theme_name):
+            query['ThemeName'] = request.theme_name
+        if not DaraCore.is_null(request.theme_type):
+            query['ThemeType'] = request.theme_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentTheme',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentThemeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_agent_theme_with_options_async(
+        self,
+        request: main_models.CreateDataAgentThemeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentThemeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.file_from):
+            query['FileFrom'] = request.file_from
+        if not DaraCore.is_null(request.theme_id):
+            query['ThemeId'] = request.theme_id
+        if not DaraCore.is_null(request.theme_name):
+            query['ThemeName'] = request.theme_name
+        if not DaraCore.is_null(request.theme_type):
+            query['ThemeType'] = request.theme_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentTheme',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentThemeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_agent_theme(
+        self,
+        request: main_models.CreateDataAgentThemeRequest,
+    ) -> main_models.CreateDataAgentThemeResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_agent_theme_with_options(request, runtime)
+
+    async def create_data_agent_theme_async(
+        self,
+        request: main_models.CreateDataAgentThemeRequest,
+    ) -> main_models.CreateDataAgentThemeResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_agent_theme_with_options_async(request, runtime)
+
     def create_data_agent_workspace_with_options(
         self,
         request: main_models.CreateDataAgentWorkspaceRequest,
@@ -3702,6 +3792,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_data_agent_session_with_options_async(request, runtime)
 
+    def describe_data_agent_theme_with_options(
+        self,
+        request: main_models.DescribeDataAgentThemeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataAgentThemeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.theme_id):
+            query['ThemeId'] = request.theme_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataAgentTheme',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataAgentThemeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_agent_theme_with_options_async(
+        self,
+        request: main_models.DescribeDataAgentThemeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDataAgentThemeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.theme_id):
+            query['ThemeId'] = request.theme_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDataAgentTheme',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDataAgentThemeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_agent_theme(
+        self,
+        request: main_models.DescribeDataAgentThemeRequest,
+    ) -> main_models.DescribeDataAgentThemeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_data_agent_theme_with_options(request, runtime)
+
+    async def describe_data_agent_theme_async(
+        self,
+        request: main_models.DescribeDataAgentThemeRequest,
+    ) -> main_models.DescribeDataAgentThemeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_data_agent_theme_with_options_async(request, runtime)
+
     def describe_document_with_options(
         self,
         request: main_models.DescribeDocumentRequest,
@@ -4719,6 +4879,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetDataAgentTaskModelUsageMetricsResponse:
         runtime = RuntimeOptions()
         return await self.get_data_agent_task_model_usage_metrics_with_options_async(request, runtime)
+
+    def get_data_agent_theme_upload_signature_with_options(
+        self,
+        request: main_models.GetDataAgentThemeUploadSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentThemeUploadSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.theme_id):
+            query['ThemeId'] = request.theme_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentThemeUploadSignature',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentThemeUploadSignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_agent_theme_upload_signature_with_options_async(
+        self,
+        request: main_models.GetDataAgentThemeUploadSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentThemeUploadSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.theme_id):
+            query['ThemeId'] = request.theme_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentThemeUploadSignature',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentThemeUploadSignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_agent_theme_upload_signature(
+        self,
+        request: main_models.GetDataAgentThemeUploadSignatureRequest,
+    ) -> main_models.GetDataAgentThemeUploadSignatureResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_agent_theme_upload_signature_with_options(request, runtime)
+
+    async def get_data_agent_theme_upload_signature_async(
+        self,
+        request: main_models.GetDataAgentThemeUploadSignatureRequest,
+    ) -> main_models.GetDataAgentThemeUploadSignatureResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_agent_theme_upload_signature_with_options_async(request, runtime)
 
     def get_data_agent_workspace_info_with_options(
         self,
@@ -6987,6 +7217,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListDataAgentSessionResponse:
         runtime = RuntimeOptions()
         return await self.list_data_agent_session_with_options_async(request, runtime)
+
+    def list_data_agent_theme_with_options(
+        self,
+        request: main_models.ListDataAgentThemeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentThemeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.theme_from):
+            query['ThemeFrom'] = request.theme_from
+        if not DaraCore.is_null(request.theme_type):
+            query['ThemeType'] = request.theme_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentTheme',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentThemeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_theme_with_options_async(
+        self,
+        request: main_models.ListDataAgentThemeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentThemeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.theme_from):
+            query['ThemeFrom'] = request.theme_from
+        if not DaraCore.is_null(request.theme_type):
+            query['ThemeType'] = request.theme_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentTheme',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentThemeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_theme(
+        self,
+        request: main_models.ListDataAgentThemeRequest,
+    ) -> main_models.ListDataAgentThemeResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_theme_with_options(request, runtime)
+
+    async def list_data_agent_theme_async(
+        self,
+        request: main_models.ListDataAgentThemeRequest,
+    ) -> main_models.ListDataAgentThemeResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_theme_with_options_async(request, runtime)
 
     def list_data_agent_workspace_with_options(
         self,
@@ -9261,6 +9585,84 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDataAgentMcpResponse:
         runtime = RuntimeOptions()
         return await self.modify_data_agent_mcp_with_options_async(request, runtime)
+
+    def modify_data_agent_theme_with_options(
+        self,
+        request: main_models.ModifyDataAgentThemeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDataAgentThemeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.theme_id):
+            query['ThemeId'] = request.theme_id
+        if not DaraCore.is_null(request.theme_name):
+            query['ThemeName'] = request.theme_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDataAgentTheme',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDataAgentThemeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_data_agent_theme_with_options_async(
+        self,
+        request: main_models.ModifyDataAgentThemeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDataAgentThemeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.theme_id):
+            query['ThemeId'] = request.theme_id
+        if not DaraCore.is_null(request.theme_name):
+            query['ThemeName'] = request.theme_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDataAgentTheme',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDataAgentThemeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_data_agent_theme(
+        self,
+        request: main_models.ModifyDataAgentThemeRequest,
+    ) -> main_models.ModifyDataAgentThemeResponse:
+        runtime = RuntimeOptions()
+        return self.modify_data_agent_theme_with_options(request, runtime)
+
+    async def modify_data_agent_theme_async(
+        self,
+        request: main_models.ModifyDataAgentThemeRequest,
+    ) -> main_models.ModifyDataAgentThemeResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_data_agent_theme_with_options_async(request, runtime)
 
     def operate_custom_agent_with_options(
         self,

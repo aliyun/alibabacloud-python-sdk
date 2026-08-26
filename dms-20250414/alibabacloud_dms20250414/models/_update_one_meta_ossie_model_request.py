@@ -16,14 +16,26 @@ class UpdateOneMetaOssieModelRequest(DaraModel):
         tag: str = None,
         title: str = None,
     ):
+        # The UUID of the associated folder.
         self.catalog_uuid = catalog_uuid
+        # The UUID of the associated database.
         self.database_uuid = database_uuid
+        # The semantic description.
         self.description = description
+        # The document type of the semantic model. Valid values:
+        # 
+        # - JSON
+        # - YAML
         self.doc_format = doc_format
+        # The document definition of the semantic model.
         self.document = document
+        # The UUID of the knowledge.
+        # 
         # This parameter is required.
         self.knowledge_uuid = knowledge_uuid
+        # The tag of the semantic model.
         self.tag = tag
+        # The semantic title.
         self.title = title
 
     def validate(self):

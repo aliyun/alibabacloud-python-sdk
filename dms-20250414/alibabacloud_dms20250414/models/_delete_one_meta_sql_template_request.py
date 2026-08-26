@@ -9,6 +9,8 @@ class DeleteOneMetaSqlTemplateRequest(DaraModel):
         self,
         knowledge_uuid: str = None,
     ):
+        # The UUID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_uuid = knowledge_uuid
 

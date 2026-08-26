@@ -4,15 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteOneMetaOssieModelRequest(DaraModel):
+class DescribeDataAgentThemeRequest(DaraModel):
     def __init__(
         self,
-        knowledge_uuid: str = None,
+        theme_id: str = None,
     ):
-        # The UUID of the knowledge base.
-        # 
-        # This parameter is required.
-        self.knowledge_uuid = knowledge_uuid
+        # The business ID of the theme.
+        self.theme_id = theme_id
 
     def validate(self):
         pass
@@ -22,15 +20,15 @@ class DeleteOneMetaOssieModelRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.knowledge_uuid is not None:
-            result['KnowledgeUuid'] = self.knowledge_uuid
+        if self.theme_id is not None:
+            result['ThemeId'] = self.theme_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('KnowledgeUuid') is not None:
-            self.knowledge_uuid = m.get('KnowledgeUuid')
+        if m.get('ThemeId') is not None:
+            self.theme_id = m.get('ThemeId')
 
         return self
 

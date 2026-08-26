@@ -10,8 +10,12 @@ class GetOneMetaOssieModelRequest(DaraModel):
         doc_format: str = None,
         knowledge_uuid: str = None,
     ):
+        # The document type of the semantic model. Valid values: JSON and YAML.
+        # 
         # This parameter is required.
         self.doc_format = doc_format
+        # The UUID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_uuid = knowledge_uuid
 

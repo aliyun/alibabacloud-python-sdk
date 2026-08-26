@@ -16,15 +16,26 @@ class CreateOneMetaSqlTemplateRequest(DaraModel):
         tag: str = None,
         title: str = None,
     ):
+        # The UUID of the associated folder.
         self.catalog_uuid = catalog_uuid
+        # The UUID of the associated database.
         self.database_uuid = database_uuid
+        # The description of the SQL template.
         self.description = description
+        # The content of the SQL template.
+        # 
         # This parameter is required.
         self.expr = expr
+        # The knowledge source of the SQL template.
+        # 
         # This parameter is required.
         self.source = source
+        # The custom template parameters.
         self.sql_params = sql_params
+        # The tag of the SQL template.
         self.tag = tag
+        # The title of the SQL template.
+        # 
         # This parameter is required.
         self.title = title
 

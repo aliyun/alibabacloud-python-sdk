@@ -23,11 +23,11 @@ class SendChatMessageShrinkRequest(DaraModel):
         user_oss_bucket: str = None,
         workspace_id: str = None,
     ):
-        # The agent ID. This is a required field. You can obtain the current AgentID from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentID you need to specify may change with each request.
+        # **[Optimized]** This field is now automatically obtained by the backend. You do not need to specify this field.
         self.agent_id = agent_id
-        # The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. Go to the DAS console to view your current Data Management unit. If you are a user of the Alibaba Cloud China Website (www.aliyun.com), enter cn-hangzhou.
+        # **[Optimized]** This field is now automatically obtained by the backend. You do not need to specify this field when calling the API.
         self.dmsunit = dmsunit
-        # The data source information. This parameter can be left empty. Only one data source can be specified for this parameter. Use the DataSources parameter instead.
+        # The data source information. This parameter can be left empty. This parameter supports only one data source. Use the DataSources parameter instead.
         self.data_source_shrink = data_source_shrink
         # The detailed data source information. This parameter can be left empty.
         self.data_sources_shrink = data_sources_shrink
@@ -41,29 +41,32 @@ class SendChatMessageShrinkRequest(DaraModel):
         # 
         # - When the message is a response to the Agent\\"s Human-in-Loop question, the type should be `[additional]`.
         # 
-        # - When the message is to trigger a report generation, the type should be `[report]`.
+        # - When the message is intended to trigger a report generation, the type should be `[report]`.
         # 
-        # - When the message is to cancel the current session, the type should be `[cancel]`.
+        # - When the message is intended to cancel the current session, the type should be `[cancel]`.
         self.message_type = message_type
         # The parent session ID.
         self.parent_session_id = parent_session_id
-        # A required field when the message type is `additional`. Specifies the specific question that the Agent asks the user through Human-in-Loop.
+        # This field is required when the message type is `additional`. Specify the specific question that the Agent asks the user through Human-in-Loop.
         self.question = question
-        # The quoted content, typically used during interactions with the Agent.
+        # The quoted content. This is typically used during interactions with the Agent.
         self.quoted_message = quoted_message
         # **Important**
         # 
-        # When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), reply_to should be set to the exact Checkpoint sequence number carried by that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after analysis is complete, reply_to can be left empty or set to "0".  
+        # When this message is a reply to an Agent message (for example, the Agent asks a clarification question through ASK_HUMAN), reply_to must be set to the exact Checkpoint sequence number carried in that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after the analysis is complete, reply_to can be left empty or set to "0".  
         # 
         # This field affects how the Agent decides to process the message. Passing an incorrect value may result in analysis results that do not meet expectations.
         self.reply_to = reply_to
-        # The special configuration for this session. For the same session, only the configuration passed with the first SendMessage call takes effect.
+        # The special configuration for the current session. For the same session, only the configuration included in the first SendMessage call takes effect.
         self.session_config_shrink = session_config_shrink
-        # The session ID. This is a required field. You can obtain the SessionId by calling CreateAgentSession.
+        # The session ID. This is an optional field used for multi-turn conversations.
+        # - You can start a conversation without specifying this field. The response includes the SessionID for the current session.
+        # - You can also manually create a session ID by calling the CreateDataAgentSession operation and include the ID when initiating a conversation.
+        # - If you need multi-turn conversations (such as follow-up questions or confirming execution plans), include the SessionID returned by the previous SendChatMessage call.
         self.session_id = session_id
         # The configuration items that affect only the current task.
         self.task_config_shrink = task_config_shrink
-        # The user\\"s OSS bucket. If left empty, analysis data is securely stored in the built-in storage.
+        # The user\\"s OSS bucket. If this field is left empty, the analysis results are securely stored in the built-in storage.
         self.user_oss_bucket = user_oss_bucket
         # The workspace ID.
         self.workspace_id = workspace_id

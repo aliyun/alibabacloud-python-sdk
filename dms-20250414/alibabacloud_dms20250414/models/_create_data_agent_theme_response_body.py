@@ -2,19 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
-class ListOneMetaOssieModelsResponseBody(DaraModel):
+class CreateDataAgentThemeResponseBody(DaraModel):
     def __init__(
         self,
-        data: List[main_models.OssieModelView] = None,
+        data: main_models.CreateDataAgentThemeResponseBodyData = None,
         error_code: str = None,
         error_message: str = None,
-        max_results: int = None,
-        next_token: str = None,
         request_id: str = None,
         success: bool = None,
     ):
@@ -22,15 +18,11 @@ class ListOneMetaOssieModelsResponseBody(DaraModel):
         self.data = data
         # The error code returned when the request is abnormal.
         self.error_code = error_code
-        # The error message returned when the call failed.
+        # The error message returned when the call fails.
         self.error_message = error_message
-        # The page size.
-        self.max_results = max_results
-        # The token for the next query.
-        self.next_token = next_token
-        # Id of the request
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
         # - **true**: The request was successful.
         # - **false**: The request failed.
@@ -38,31 +30,21 @@ class ListOneMetaOssieModelsResponseBody(DaraModel):
 
     def validate(self):
         if self.data:
-            for v1 in self.data:
-                 if v1:
-                    v1.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['Data'] = []
         if self.data is not None:
-            for k1 in self.data:
-                result['Data'].append(k1.to_map() if k1 else None)
+            result['Data'] = self.data.to_map()
 
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
 
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
-
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -74,11 +56,9 @@ class ListOneMetaOssieModelsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.data = []
         if m.get('Data') is not None:
-            for k1 in m.get('Data'):
-                temp_model = main_models.OssieModelView()
-                self.data.append(temp_model.from_map(k1))
+            temp_model = main_models.CreateDataAgentThemeResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
@@ -86,17 +66,48 @@ class ListOneMetaOssieModelsResponseBody(DaraModel):
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
 
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         if m.get('Success') is not None:
             self.success = m.get('Success')
+
+        return self
+
+class CreateDataAgentThemeResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        file_path: str = None,
+        theme_id: str = None,
+    ):
+        # The OSS key of the theme file (dart/{uid}/{theme_id}/theme.zip, verified to exist before being stored in the database).
+        self.file_path = file_path
+        # The business identifier of the theme.
+        self.theme_id = theme_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+
+        if self.theme_id is not None:
+            result['ThemeId'] = self.theme_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+
+        if m.get('ThemeId') is not None:
+            self.theme_id = m.get('ThemeId')
 
         return self
 

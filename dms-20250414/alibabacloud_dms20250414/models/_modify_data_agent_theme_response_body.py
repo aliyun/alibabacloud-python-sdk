@@ -4,27 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteOneMetaSqlTemplateResponseBody(DaraModel):
+class ModifyDataAgentThemeResponseBody(DaraModel):
     def __init__(
         self,
-        data: bool = None,
         error_code: str = None,
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The response struct.
-        self.data = data
-        # The error code returned when the request fails.
         self.error_code = error_code
-        # The error message returned when the call fails.
         self.error_message = error_message
-        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # - **true**: The request is successful.                                 
-        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -35,9 +25,6 @@ class DeleteOneMetaSqlTemplateResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.data is not None:
-            result['Data'] = self.data
-
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
 
@@ -54,9 +41,6 @@ class DeleteOneMetaSqlTemplateResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
 

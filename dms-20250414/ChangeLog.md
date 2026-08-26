@@ -1,3 +1,11 @@
+2026-08-26 Version: 1.24.0
+- Support API CreateDataAgentTheme.
+- Support API DescribeDataAgentTheme.
+- Support API GetDataAgentThemeUploadSignature.
+- Support API ListDataAgentTheme.
+- Support API ModifyDataAgentTheme.
+
+
 2026-08-24 Version: 1.23.0
 - Support API CreateOneMetaSqlTemplate.
 - Support API DeleteOneMetaOssieModel.
