@@ -13,27 +13,33 @@ class DatasourceConfigUnified(DaraModel):
         instance_id: str = None,
         legacy_raw: str = None,
         legacy_type: str = None,
+        namespace: str = None,
         product_category: str = None,
         project: str = None,
         region_id: str = None,
         stores: List[main_models.Stores] = None,
+        tenant_id: str = None,
         type: str = None,
     ):
-        # The Prometheus instance ID (required when type=PROMETHEUS; ignored for other types).
+        # The Prometheus instance ID. Required when type is PROMETHEUS or VIRTUAL_PROMETHEUS. Ignored for other types.
         self.instance_id = instance_id
-        # The original V1 datasource JSON string returned as a fallback when type=UNKNOWN and the read path fails to parse the datasource. If the frontend detects that this field is not empty, display it as read-only.
+        # The raw V1 datasource JSON string returned as a fallback when type is UNKNOWN and read-path parsing fails. When the frontend detects that this field is not empty, display it as read-only.
         self.legacy_raw = legacy_raw
-        # Returned when type=UNKNOWN, indicating that this rule cannot be edited through the new API. Submit a ticket to contact the CloudMonitor team.
+        # Returned when type is UNKNOWN. Indicates that this rule cannot be edited through the new API. Submit a ticket to contact the CloudMonitor team.
         self.legacy_type = legacy_type
-        # The Alibaba Cloud service category (optional when type=CLOUD_MONITORING). If the source does not contain this information, the value unknown is returned.
+        # The namespace. Optional when type is VIRTUAL_PROMETHEUS. Identifies the namespace to which the virtual Prometheus instance belongs.
+        self.namespace = namespace
+        # The Alibaba Cloud service category. Optional when type is CLOUD_MONITORING. Returns unknown when the source lacks this information.
         self.product_category = product_category
-        # The Simple Log Service project name (required when type=SLS; all stores share the same project).
+        # The Simple Log Service (SLS) project name. Required when type is SLS. All stores share the same project.
         self.project = project
-        # The region ID (optional for PROMETHEUS / UMODEL / APM / SLS types; defaults to the same region as the rule or gateway. CLOUD_MONITORING does not use this field; use AlertRuleV2.regionId instead).
+        # The region ID. Optional for PROMETHEUS, VIRTUAL_PROMETHEUS, UMODEL, APM, XTRACE, EBPF, RUM, and SLS types. Defaults to the region of the rule or gateway. Not used for CLOUD_MONITORING. Use AlertRuleV2.regionId instead for CLOUD_MONITORING.
         self.region_id = region_id
-        # The list of Simple Log Service stores (used when type=SLS; at least one store is required). Each store contains store and storeType fields. The project and regionId fields have been moved to the top level. The deprecated fields with the same names that remain in stores cause a 400 error if used in write paths.
+        # The list of SLS stores. Used when type is SLS. At least one store is required. Each store contains store and storeType fields. The project and regionId fields have been moved to the top level. The deprecated fields with the same names that remain in stores return a 400 error if used in write paths.
         self.stores = stores
-        # The datasource type. Valid values: PROMETHEUS (instanceId is required; regionId is optional). UMODEL (regionId is optional; other settings are carried in queryConfig/conditionConfig). APM (regionId is optional). CLOUD_MONITORING (regionId and productCategory are optional). UNKNOWN (read-only fallback; do not use in write paths). Do not use non-enumerated values (such as CMS_BASIC_DS or SLS_DS). The backend returns an Invalidtype 400 error.
+        # The tenant ID. Optional when type is VIRTUAL_PROMETHEUS. Identifies the tenant to which the virtual Prometheus instance belongs.
+        self.tenant_id = tenant_id
+        # The data source type. Valid values and associated fields: PROMETHEUS (instanceId required; regionId optional). VIRTUAL_PROMETHEUS (instanceId required; regionId, namespace, and tenantId optional). UMODEL (regionId optional; other fields are carried in queryConfig/conditionConfig). APM (regionId optional). XTRACE (regionId optional). EBPF (regionId optional). RUM (regionId optional). CLOUD_MONITORING (regionId and productCategory optional). SLS (project and stores required). UNKNOWN (read-only fallback; do not use in write paths). Non-enumerated values (such as CMS_BASIC_DS/SLS_DS) are prohibited and the backend returns an Invalidtype 400 error.
         # 
         # This parameter is required.
         self.type = type
@@ -58,6 +64,9 @@ class DatasourceConfigUnified(DaraModel):
         if self.legacy_type is not None:
             result['legacyType'] = self.legacy_type
 
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+
         if self.product_category is not None:
             result['productCategory'] = self.product_category
 
@@ -71,6 +80,9 @@ class DatasourceConfigUnified(DaraModel):
         if self.stores is not None:
             for k1 in self.stores:
                 result['stores'].append(k1.to_map() if k1 else None)
+
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
 
         if self.type is not None:
             result['type'] = self.type
@@ -88,6 +100,9 @@ class DatasourceConfigUnified(DaraModel):
         if m.get('legacyType') is not None:
             self.legacy_type = m.get('legacyType')
 
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+
         if m.get('productCategory') is not None:
             self.product_category = m.get('productCategory')
 
@@ -102,6 +117,9 @@ class DatasourceConfigUnified(DaraModel):
             for k1 in m.get('stores'):
                 temp_model = main_models.Stores()
                 self.stores.append(temp_model.from_map(k1))
+
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
 
         if m.get('type') is not None:
             self.type = m.get('type')

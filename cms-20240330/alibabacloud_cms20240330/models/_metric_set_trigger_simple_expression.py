@@ -14,11 +14,17 @@ class MetricSetTriggerSimpleExpression(DaraModel):
         query_name: str = None,
         threshold: float = None,
     ):
+        # The expression type. Fixed as SIMPLE.
         self.expression_type = expression_type
+        # The upper bound of the range. Required when operator is IN_RANGE or OUT_OF_RANGE. Must be greater than or equal to min.
         self.max = max
+        # The lower bound of the range. Required when operator is IN_RANGE or OUT_OF_RANGE.
         self.min = min
+        # The comparison operator. Valid values: GT (greater than), GE (greater than or equal to), LT (less than), LE (less than or equal to), EQ (equal to), NE (not equal to), IN_RANGE (within range, requires both min and max), OUT_OF_RANGE (outside range, requires both min and max), PRESENT (field exists, does not require threshold/min/max), NOT_PRESENT (field does not exist, does not require threshold/min/max).
         self.operator = operator
+        # The referenced query name, corresponding to QueryConfigUnified.queries[].name.
         self.query_name = query_name
+        # The comparison threshold. Used when operator is GT, GE, LT, LE, EQ, or NE. IN_RANGE and OUT_OF_RANGE use min/max instead. PRESENT and NOT_PRESENT do not require this field.
         self.threshold = threshold
 
     def validate(self):

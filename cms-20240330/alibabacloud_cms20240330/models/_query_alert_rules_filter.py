@@ -13,6 +13,7 @@ class QueryAlertRulesFilter(DaraModel):
         display_name: main_models.DisplayNameFilter = None,
         enabled: main_models.EnabledFilter = None,
         labels: main_models.LabelsFilter = None,
+        migration_status: main_models.MigrationStatusFilter = None,
         notification_channels: main_models.NotificationChannelsFilter = None,
         notify_strategy_id: main_models.NotifyStrategyIdFilter = None,
         observe_resource_config: main_models.ObserveResourceConfigFilter = None,
@@ -30,12 +31,17 @@ class QueryAlertRulesFilter(DaraModel):
         self.display_name = display_name
         self.enabled = enabled
         self.labels = labels
+        # Filters by migration status. isMigrated=true queries migrated rules (migration_status is not 0 or NULL). isMigrated=false queries native rules (migration_status=0).
+        self.migration_status = migration_status
         self.notification_channels = notification_channels
         self.notify_strategy_id = notify_strategy_id
+        # Filters by the observeResourceConfig structure. This takes priority over the standalone observeResourceType / observeResourceGlobalScope / observeResourceList fields below. If both are specified and their semantics conflict, the request is rejected.
         self.observe_resource_config = observe_resource_config
         self.observe_resource_global_scope = observe_resource_global_scope
+        # **[Deprecated]** Filters by a single resource entity ID. This field is retained only for backward compatibility with legacy SDKs. For new integrations, use observeResourceList.contains instead. If this field is not empty and observeResourceList is not specified, it is equivalent to observeResourceList.contains=[observeResourceInstanceId].
         self.observe_resource_instance_id = observe_resource_instance_id
         self.observe_resource_list = observe_resource_list
+        # **[Deprecated]** Filters by observable resource type. For new integrations, use observeResourceConfig.entityType instead.
         self.observe_resource_type = observe_resource_type
         self.partition_key = partition_key
         self.severity_levels = severity_levels
@@ -53,6 +59,8 @@ class QueryAlertRulesFilter(DaraModel):
             self.enabled.validate()
         if self.labels:
             self.labels.validate()
+        if self.migration_status:
+            self.migration_status.validate()
         if self.notification_channels:
             self.notification_channels.validate()
         if self.notify_strategy_id:
@@ -93,6 +101,9 @@ class QueryAlertRulesFilter(DaraModel):
 
         if self.labels is not None:
             result['labels'] = self.labels.to_map()
+
+        if self.migration_status is not None:
+            result['migrationStatus'] = self.migration_status.to_map()
 
         if self.notification_channels is not None:
             result['notificationChannels'] = self.notification_channels.to_map()
@@ -150,6 +161,10 @@ class QueryAlertRulesFilter(DaraModel):
         if m.get('labels') is not None:
             temp_model = main_models.LabelsFilter()
             self.labels = temp_model.from_map(m.get('labels'))
+
+        if m.get('migrationStatus') is not None:
+            temp_model = main_models.MigrationStatusFilter()
+            self.migration_status = temp_model.from_map(m.get('migrationStatus'))
 
         if m.get('notificationChannels') is not None:
             temp_model = main_models.NotificationChannelsFilter()

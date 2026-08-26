@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
 class UpdatePrometheusInstanceRequest(DaraModel):
@@ -17,10 +18,11 @@ class UpdatePrometheusInstanceRequest(DaraModel):
         prometheus_instance_name: str = None,
         status: str = None,
         storage_duration: int = None,
+        store_config: main_models.PrometheusInstanceStoreConfig = None,
         workspace: str = None,
     ):
-        # The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving. Valid values for archiving days:
-        # V1: 1 to 365 days. Supported only for billing by metric write volume.
+        # The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving. Valid values for archive days:
+        # V1: 1 to 365 days. Only supported for billing by metric write volume.
         # V2: 1 to 3650 days (3650 indicates permanent retention).
         self.archive_duration = archive_duration
         # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
@@ -33,23 +35,26 @@ class UpdatePrometheusInstanceRequest(DaraModel):
         self.enable_auth_free_write = enable_auth_free_write
         # Specifies whether to enable access token authentication.
         self.enable_auth_token = enable_auth_token
-        # The billing method. This parameter can be modified only once during the instance lifetime. Valid values:
-        # - POSTPAY: pay-as-you-go by metric reporting volume.
-        # - POSTPAY_GB: pay-as-you-go by metric write volume.
+        # The billing method. This can be modified only once during the instance lifetime:
+        # POSTPAY: pay-as-you-go by metric reporting volume.
+        # POSTPAY_GB: pay-as-you-go by metric write volume.
         self.payment_type = payment_type
         # The instance name.
         self.prometheus_instance_name = prometheus_instance_name
-        # Instance storage database status of the instance. Only RUNNING is supported. If this parameter is left empty, instance storage database status remains unchanged.
+        # Instance storage database status of the instance. Only RUNNING is supported. If left empty, instance storage database status is not changed.
         self.status = status
         # The storage duration (days):
-        # By write volume: 90 or 180.
-        # By metric reporting volume: 15, 30, 60, 90, or 180.
+        # By write volume: 90, 180.
+        # By metric reporting volume: 15, 30, 60, 90, 180.
         self.storage_duration = storage_duration
+        # The Prometheus storage configuration.
+        self.store_config = store_config
         # The workspace to which the instance belongs.
         self.workspace = workspace
 
     def validate(self):
-        pass
+        if self.store_config:
+            self.store_config.validate()
 
     def to_map(self):
         result = dict()
@@ -85,6 +90,9 @@ class UpdatePrometheusInstanceRequest(DaraModel):
 
         if self.storage_duration is not None:
             result['storageDuration'] = self.storage_duration
+
+        if self.store_config is not None:
+            result['storeConfig'] = self.store_config.to_map()
 
         if self.workspace is not None:
             result['workspace'] = self.workspace
@@ -122,6 +130,10 @@ class UpdatePrometheusInstanceRequest(DaraModel):
 
         if m.get('storageDuration') is not None:
             self.storage_duration = m.get('storageDuration')
+
+        if m.get('storeConfig') is not None:
+            temp_model = main_models.PrometheusInstanceStoreConfig()
+            self.store_config = temp_model.from_map(m.get('storeConfig'))
 
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')

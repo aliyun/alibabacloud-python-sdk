@@ -1,3 +1,8 @@
+2026-08-26 Version: 10.4.2
+- Update API GetPrometheusInstance: add response parameters Body.prometheusInstance.storeConfig.
+- Update API UpdatePrometheusInstance: add request parameters body.storeConfig.
+
+
 2026-08-14 Version: 10.4.1
 - Update API GetIntegrationPolicy: add response parameters Body.policy.addonNames.
 - Update API ListIntegrationPolicies: add response parameters Body.policies.$.addonNames.

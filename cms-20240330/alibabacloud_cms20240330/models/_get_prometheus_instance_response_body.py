@@ -85,26 +85,27 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         resource_type: str = None,
         status: str = None,
         storage_duration: int = None,
+        store_config: main_models.PrometheusInstanceStoreConfig = None,
         support_auth_types: List[str] = None,
         tags: List[main_models.GetPrometheusInstanceResponseBodyPrometheusInstanceTags] = None,
         user_id: str = None,
         version: str = None,
         workspace: str = None,
     ):
-        # The access type. Valid values:
+        # The permission type. Valid values:
         # - readWrite
         # - readOnly
         # - httpReadOnly
         self.access_type = access_type
-        # The number of days that data is automatically archived after the storage period expires. A value of 0 indicates that data is not archived. A value of 3650 indicates that data is permanently retained.
+        # The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving, and a value of 3650 indicates permanent retention.
         self.archive_duration = archive_duration
         # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
         # The authentication-free write policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_write_policy = auth_free_write_policy
-        # The authentication token.
+        # The authentication token string.
         self.auth_token = auth_token
-        # The time when the instance was created. The time is in UTC+0 and in the yyyy-MM-ddTHH:mmZ format.
+        # The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
         self.create_time = create_time
         # Indicates whether authentication-free read is enabled.
         self.enable_auth_free_read = enable_auth_free_read
@@ -129,10 +130,10 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         # The Prometheus instance type.
         self.instance_type = instance_type
         # The billing method. Valid values:
-        # - POSTPAY: pay-as-you-go based on the number of reported metrics.
-        # - POSTPAY_GB: pay-as-you-go based on the volume of written metrics.
+        # - POSTPAY: pay-as-you-go by metric reporting volume.
+        # - POSTPAY_GB: pay-as-you-go by metric write volume.
         self.payment_type = payment_type
-        # The time when the billing method of the instance was last modified, in UTC format.
+        # The time when the instance billing method was modified, in UTC format.
         self.payment_type_update_time = payment_type_update_time
         # The product to which the Prometheus instance belongs (arms or cms).
         self.product = product
@@ -162,12 +163,14 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         self.remote_write_intra_url = remote_write_intra_url
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Fixed value: PrometheusInstance.
+        # The fixed value: PrometheusInstance.
         self.resource_type = resource_type
         # The instance status.
         self.status = status
-        # The storage duration, in days.
+        # The storage duration in days.
         self.storage_duration = storage_duration
+        # The Prometheus storage configuration.
+        self.store_config = store_config
         # The supported authentication types.
         self.support_auth_types = support_auth_types
         # The list of tags.
@@ -180,6 +183,8 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         self.workspace = workspace
 
     def validate(self):
+        if self.store_config:
+            self.store_config.validate()
         if self.tags:
             for v1 in self.tags:
                  if v1:
@@ -297,6 +302,9 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
 
         if self.storage_duration is not None:
             result['storageDuration'] = self.storage_duration
+
+        if self.store_config is not None:
+            result['storeConfig'] = self.store_config.to_map()
 
         if self.support_auth_types is not None:
             result['supportAuthTypes'] = self.support_auth_types
@@ -426,6 +434,10 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
 
         if m.get('storageDuration') is not None:
             self.storage_duration = m.get('storageDuration')
+
+        if m.get('storeConfig') is not None:
+            temp_model = main_models.PrometheusInstanceStoreConfig()
+            self.store_config = temp_model.from_map(m.get('storeConfig'))
 
         if m.get('supportAuthTypes') is not None:
             self.support_auth_types = m.get('supportAuthTypes')

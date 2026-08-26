@@ -109,6 +109,7 @@ from ._metric_set_multi_trigger import MetricSetMultiTrigger
 from ._metric_set_named_query_entry import MetricSetNamedQueryEntry
 from ._metric_set_trigger_composite_expression import MetricSetTriggerCompositeExpression
 from ._metric_set_trigger_simple_expression import MetricSetTriggerSimpleExpression
+from ._migration_status_filter import MigrationStatusFilter
 from ._model_parameters import ModelParameters
 from ._notification_channels_filter import NotificationChannelsFilter
 from ._notify_channel import NotifyChannel
@@ -136,6 +137,7 @@ from ._observe_resource_list_filter import ObserveResourceListFilter
 from ._observe_resource_type_filter import ObserveResourceTypeFilter
 from ._pagination import Pagination
 from ._partition_key_filter import PartitionKeyFilter
+from ._prometheus_instance_store_config import PrometheusInstanceStoreConfig
 from ._prometheus_managed_instance import PrometheusManagedInstance
 from ._prometheus_metric_filter_value import PrometheusMetricFilterValue
 from ._prometheus_metric_param_value import PrometheusMetricParamValue
@@ -1229,6 +1231,7 @@ __all__ = [
     MetricSetNamedQueryEntry,
     MetricSetTriggerCompositeExpression,
     MetricSetTriggerSimpleExpression,
+    MigrationStatusFilter,
     ModelParameters,
     NotificationChannelsFilter,
     NotifyChannel,
@@ -1256,6 +1259,7 @@ __all__ = [
     ObserveResourceTypeFilter,
     Pagination,
     PartitionKeyFilter,
+    PrometheusInstanceStoreConfig,
     PrometheusManagedInstance,
     PrometheusMetricFilterValue,
     PrometheusMetricParamValue,

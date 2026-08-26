@@ -7,24 +7,36 @@ from darabonba.model import DaraModel
 class SlsMultiConditionCaseConfig(DaraModel):
     def __init__(
         self,
+        condition: str = None,
+        count_condition: str = None,
         count_operator: str = None,
         count_threshold: int = None,
         match_field: str = None,
         match_operator: str = None,
         match_value: str = None,
+        operator: str = None,
+        raw_condition: str = None,
         severity: str = None,
     ):
-        # The count comparison operator. Valid values: GTE, GT, EQ, LTE, LT.
+        # The match expression (corresponds to V1 condition, preserved as-is without structured parsing).
+        self.condition = condition
+        # The count match expression (corresponds to V1 countCondition, preserved as-is without structured parsing).
+        self.count_condition = count_condition
+        # **[Deprecated]** The write path is disabled. Use countCondition instead.
         self.count_operator = count_operator
-        # The count threshold. The alert is triggered when this threshold is met.
+        # **[Deprecated]** The write path is disabled. Use countCondition instead.
         self.count_threshold = count_threshold
-        # The log field name. Required when matchOperator is set to CONTAINS, EQUALS, or REGEX. Specify the field name when matchOperator is set to PRESENT or NOT_PRESENT.
+        # **[Deprecated]** The write path is disabled. Use condition instead.
         self.match_field = match_field
-        # The log matching operator. Valid values: PRESENT (field exists), NOT_PRESENT (field does not exist), CONTAINS (contains), EQUALS (equals), REGEX (regular expression). If left empty, any data matches.
+        # **[Deprecated]** The write path is disabled. Use condition instead.
         self.match_operator = match_operator
-        # The log match value. Required when matchOperator is set to CONTAINS, EQUALS, or REGEX.
+        # **[Deprecated]** The write path is disabled. Use condition instead.
         self.match_value = match_value
-        # The severity level.
+        # The detection operator (aligned with V1 caseList.type): HAS_DATA / HAS_DATA_COUNT / HAS_DATA_MATCH / HAS_DATA_MATCH_COUNT.
+        self.operator = operator
+        # **[Deprecated]** The write path is disabled. Use condition instead.
+        self.raw_condition = raw_condition
+        # The severity level (corresponds to V1 level).
         self.severity = severity
 
     def validate(self):
@@ -35,6 +47,12 @@ class SlsMultiConditionCaseConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.condition is not None:
+            result['condition'] = self.condition
+
+        if self.count_condition is not None:
+            result['countCondition'] = self.count_condition
+
         if self.count_operator is not None:
             result['countOperator'] = self.count_operator
 
@@ -50,6 +68,12 @@ class SlsMultiConditionCaseConfig(DaraModel):
         if self.match_value is not None:
             result['matchValue'] = self.match_value
 
+        if self.operator is not None:
+            result['operator'] = self.operator
+
+        if self.raw_condition is not None:
+            result['rawCondition'] = self.raw_condition
+
         if self.severity is not None:
             result['severity'] = self.severity
 
@@ -57,6 +81,12 @@ class SlsMultiConditionCaseConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+
+        if m.get('countCondition') is not None:
+            self.count_condition = m.get('countCondition')
+
         if m.get('countOperator') is not None:
             self.count_operator = m.get('countOperator')
 
@@ -71,6 +101,12 @@ class SlsMultiConditionCaseConfig(DaraModel):
 
         if m.get('matchValue') is not None:
             self.match_value = m.get('matchValue')
+
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+
+        if m.get('rawCondition') is not None:
+            self.raw_condition = m.get('rawCondition')
 
         if m.get('severity') is not None:
             self.severity = m.get('severity')

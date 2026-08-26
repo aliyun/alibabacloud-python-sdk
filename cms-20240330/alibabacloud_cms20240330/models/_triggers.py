@@ -11,7 +11,9 @@ class Triggers(DaraModel):
     def __init__(
         self,
         comparison_operator: str = None,
+        condition: str = None,
         conditions: List[main_models.TriggerConditions] = None,
+        count_condition: str = None,
         count_operator: str = None,
         count_threshold: int = None,
         duration_secs: int = None,
@@ -32,47 +34,51 @@ class Triggers(DaraModel):
         threshold: Any = None,
         times: int = None,
     ):
-        # The comparison operator for CLOUD_MONITORING_CONDITION.
+        # The comparison operator. This parameter applies to CLOUD_MONITORING_CONDITION.
         self.comparison_operator = comparison_operator
-        # The list of sub-conditions for UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=COMPOSITE. Each item contains queryName, operator, and threshold.
+        # The match expression for SLS_MULTI_CONDITION. This corresponds to the V1 condition parameter and is preserved as-is without parsing.
+        self.condition = condition
+        # The list of sub-conditions. This parameter applies to UMODEL_METRICSET_MULTI and PROMETHEUS_MULTI with expressionType=COMPOSITE. Each item contains queryName, operator, and threshold.
         self.conditions = conditions
-        # The count comparison operator for SLS_MULTI_CONDITION. Valid values: GTE, GT, EQ, LTE, and LT.
+        # The count match expression for SLS_MULTI_CONDITION. This corresponds to the V1 countCondition parameter and is preserved as-is without parsing.
+        self.count_condition = count_condition
+        # **[Deprecated]** The SLS_MULTI_CONDITION write path is disabled. Use the countCondition parameter instead.
         self.count_operator = count_operator
-        # The count threshold for SLS_MULTI_CONDITION. An alert is triggered when this threshold is met.
+        # **[Deprecated]** The SLS_MULTI_CONDITION write path is disabled. Use the countCondition parameter instead.
         self.count_threshold = count_threshold
-        # The duration in seconds during which data must continuously meet the condition before an alert is triggered. If this parameter is not specified, the value of conditionConfig.durationSecs is inherited. This parameter is used by UMODEL_METRICSET_MULTI_CONDITION and PROMETHEUS_MULTI_CONDITION.
+        # The duration in seconds for which data must continuously meet the condition to trigger an alert. If not specified, the value is inherited from conditionConfig.durationSecs. This parameter is used by UMODEL_METRICSET_MULTI_CONDITION and PROMETHEUS_MULTI_CONDITION.
         self.duration_secs = duration_secs
-        # The expression type. Valid values: SIMPLE and COMPOSITE. This parameter takes effect for UMODEL_METRICSET_MULTI_CONDITION and PROMETHEUS_MULTI_CONDITION.
+        # The expression type. Valid values: SIMPLE and COMPOSITE. This parameter applies to UMODEL_METRICSET_MULTI_CONDITION and PROMETHEUS_MULTI_CONDITION.
         self.expression_type = expression_type
-        # The logical operator for UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=COMPOSITE. Valid values: AND, OR, and UNLESS.
+        # The logical operator. This parameter applies to UMODEL_METRICSET_MULTI and PROMETHEUS_MULTI with expressionType=COMPOSITE. Valid values: AND, OR, and UNLESS.
         self.logic_operator = logic_operator
-        # The log field name for SLS_MULTI_CONDITION. This parameter is required when matchOperator is set to CONTAINS, EQUALS, or REGEX. When matchOperator is set to PRESENT or NOT_PRESENT, specify the field name.
+        # **[Deprecated]** The SLS_MULTI_CONDITION write path is disabled. Use the condition parameter instead.
         self.match_field = match_field
-        # The log match operator for SLS_MULTI_CONDITION. Valid values: PRESENT, NOT_PRESENT, CONTAINS, EQUALS, and REGEX. If this parameter is left empty, any data matches.
+        # **[Deprecated]** The SLS_MULTI_CONDITION write path is disabled. Use the condition parameter instead.
         self.match_operator = match_operator
-        # The log match value for SLS_MULTI_CONDITION. This parameter is required when matchOperator is set to CONTAINS, EQUALS, or REGEX.
+        # **[Deprecated]** The SLS_MULTI_CONDITION write path is disabled. Use the condition parameter instead.
         self.match_value = match_value
-        # The upper bound of the range for UMODEL_METRICSET_MULTI with expressionType=SIMPLE. This parameter is required when operator is set to IN_RANGE or OUT_OF_RANGE. The value must be greater than or equal to min.
+        # The upper bound of the range. This parameter applies to UMODEL_METRICSET_MULTI with expressionType=SIMPLE. This parameter is required when operator is set to IN_RANGE or OUT_OF_RANGE. The value must be greater than or equal to min.
         self.max = max
-        # The metric name. This parameter is used for CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE, the metric name is specified at the conditionConfig level by the metricName parameter.
+        # The metric name. This parameter applies to CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE, the metric name is specified at the conditionConfig level by the metricName parameter.
         self.metric_name = metric_name
-        # The lower bound of the range for UMODEL_METRICSET_MULTI with expressionType=SIMPLE. This parameter is required when operator is set to IN_RANGE or OUT_OF_RANGE.
+        # The lower bound of the range. This parameter applies to UMODEL_METRICSET_MULTI with expressionType=SIMPLE. This parameter is required when operator is set to IN_RANGE or OUT_OF_RANGE.
         self.min = min
-        # The comparison operator for UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=SIMPLE.
+        # The operator. For UMODEL_METRICSET_MULTI and PROMETHEUS_MULTI with expressionType=SIMPLE, this is a comparison operator. Valid values: GT, GE, LT, LE, EQ, NE, IN_RANGE, OUT_OF_RANGE, PRESENT, and NOT_PRESENT. For SLS_MULTI_CONDITION, this is aligned with V1 caseList.type. Valid values: HAS_DATA, HAS_DATA_COUNT, HAS_DATA_MATCH, and HAS_DATA_MATCH_COUNT.
         self.operator = operator
-        # The aggregation period in seconds. This parameter is used for CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE, the period is specified at the conditionConfig level by the period parameter.
+        # The aggregation period in seconds. This parameter applies to CLOUD_MONITORING_CONDITION with expressionType=COMPOSITE. For SIMPLE, the period is specified at the conditionConfig level by the period parameter.
         self.period = period
-        # The precondition for CLOUD_MONITORING_CONDITION.
+        # The precondition. This parameter applies to CLOUD_MONITORING_CONDITION.
         self.pre_condition = pre_condition
-        # The referenced query name for UMODEL_METRICSET_MULTI or PROMETHEUS_MULTI with expressionType=SIMPLE. This corresponds to QueryConfigUnified.queries[].name.
+        # The referenced query name. This parameter applies to UMODEL_METRICSET_MULTI and PROMETHEUS_MULTI with expressionType=SIMPLE. The value corresponds to QueryConfigUnified.queries[].name.
         self.query_name = query_name
-        # The severity level. Priority order: CRITICAL > ERROR > WARN / WARNING > INFO. When multiple triggers exist, they are sorted by this priority, and the first match triggers the alert. This parameter takes effect for SLS_MULTI_CONDITION and CLOUD_MONITORING_CONDITION with expressionType=SIMPLE.
+        # The severity level. Priority order: CRITICAL > ERROR > WARN / WARNING > INFO. Multiple triggers are sorted by this priority, and the first match triggers the alert. This parameter takes effect when the type is SLS_MULTI_CONDITION or CLOUD_MONITORING_CONDITION with expressionType=SIMPLE.
         self.severity = severity
-        # The statistical method for CLOUD_MONITORING_CONDITION.
+        # The statistical method. This parameter applies to CLOUD_MONITORING_CONDITION.
         self.statistics = statistics
         # The threshold value. For CLOUD_MONITORING_CONDITION, this is a string. For UMODEL_METRICSET_MULTI and PROMETHEUS_MULTI, this is a numeric value.
         self.threshold = threshold
-        # The number of consecutive times the condition must be met before an alert is triggered. This parameter is used for CLOUD_MONITORING_CONDITION with expressionType=SIMPLE and is set independently for each entry.
+        # The number of consecutive times the condition must be met to trigger the alert. Each entry has its own setting. This parameter applies to CLOUD_MONITORING_CONDITION with expressionType=SIMPLE.
         self.times = times
 
     def validate(self):
@@ -89,10 +95,16 @@ class Triggers(DaraModel):
         if self.comparison_operator is not None:
             result['comparisonOperator'] = self.comparison_operator
 
+        if self.condition is not None:
+            result['condition'] = self.condition
+
         result['conditions'] = []
         if self.conditions is not None:
             for k1 in self.conditions:
                 result['conditions'].append(k1.to_map() if k1 else None)
+
+        if self.count_condition is not None:
+            result['countCondition'] = self.count_condition
 
         if self.count_operator is not None:
             result['countOperator'] = self.count_operator
@@ -158,11 +170,17 @@ class Triggers(DaraModel):
         if m.get('comparisonOperator') is not None:
             self.comparison_operator = m.get('comparisonOperator')
 
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+
         self.conditions = []
         if m.get('conditions') is not None:
             for k1 in m.get('conditions'):
                 temp_model = main_models.TriggerConditions()
                 self.conditions.append(temp_model.from_map(k1))
+
+        if m.get('countCondition') is not None:
+            self.count_condition = m.get('countCondition')
 
         if m.get('countOperator') is not None:
             self.count_operator = m.get('countOperator')

@@ -13928,6 +13928,8 @@ class Client(OpenApiClient):
             body['status'] = request.status
         if not DaraCore.is_null(request.storage_duration):
             body['storageDuration'] = request.storage_duration
+        if not DaraCore.is_null(request.store_config):
+            body['storeConfig'] = request.store_config
         if not DaraCore.is_null(request.workspace):
             body['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
@@ -13979,6 +13981,8 @@ class Client(OpenApiClient):
             body['status'] = request.status
         if not DaraCore.is_null(request.storage_duration):
             body['storageDuration'] = request.storage_duration
+        if not DaraCore.is_null(request.store_config):
+            body['storeConfig'] = request.store_config
         if not DaraCore.is_null(request.workspace):
             body['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
