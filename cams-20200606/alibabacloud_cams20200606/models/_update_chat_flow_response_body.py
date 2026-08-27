@@ -16,7 +16,7 @@ class UpdateChatFlowResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The status code.
         self.code = code
@@ -24,13 +24,13 @@ class UpdateChatFlowResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The content of the returned data.
+        # The response content.
         self.response = response
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

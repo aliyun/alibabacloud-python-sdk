@@ -14,11 +14,25 @@ class UpdateGroupNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code. Valid values:
+        # 
+        # OK: The request was successful.
+        # 
+        # For other error codes, see the error code list.
         self.code = code
+        # The returned data object.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):

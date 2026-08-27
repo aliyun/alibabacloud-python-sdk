@@ -13,7 +13,9 @@ class PauseMarketingFLowRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The activity code.
         self.activity_code = activity_code
+        # The activity ID (deprecated).
         self.activity_id = activity_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

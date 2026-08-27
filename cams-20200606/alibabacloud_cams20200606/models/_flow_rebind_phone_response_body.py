@@ -20,19 +20,19 @@ class FlowRebindPhoneResponseBody(DaraModel):
         self.code = code
         # The error message.
         self.message = message
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation is successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.model = model
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation is successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

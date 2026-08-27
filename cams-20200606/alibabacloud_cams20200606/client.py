@@ -2283,13 +2283,21 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.biz_extend):
             request.biz_extend_shrink = Utils.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        if not DaraCore.is_null(tmp_req.life_cycle_extend_data):
+            request.life_cycle_extend_data_shrink = Utils.array_to_string_with_specified_style(tmp_req.life_cycle_extend_data, 'LifeCycleExtendData', 'json')
         query = {}
         if not DaraCore.is_null(request.biz_code):
             query['BizCode'] = request.biz_code
         if not DaraCore.is_null(request.biz_extend_shrink):
             query['BizExtend'] = request.biz_extend_shrink
+        if not DaraCore.is_null(request.create_from_flow_code):
+            query['CreateFromFlowCode'] = request.create_from_flow_code
+        if not DaraCore.is_null(request.create_from_flow_version):
+            query['CreateFromFlowVersion'] = request.create_from_flow_version
         if not DaraCore.is_null(request.flow_trigger_type):
             query['FlowTriggerType'] = request.flow_trigger_type
+        if not DaraCore.is_null(request.life_cycle_extend_data_shrink):
+            query['LifeCycleExtendData'] = request.life_cycle_extend_data_shrink
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.remark):
@@ -2329,13 +2337,21 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.biz_extend):
             request.biz_extend_shrink = Utils.array_to_string_with_specified_style(tmp_req.biz_extend, 'BizExtend', 'json')
+        if not DaraCore.is_null(tmp_req.life_cycle_extend_data):
+            request.life_cycle_extend_data_shrink = Utils.array_to_string_with_specified_style(tmp_req.life_cycle_extend_data, 'LifeCycleExtendData', 'json')
         query = {}
         if not DaraCore.is_null(request.biz_code):
             query['BizCode'] = request.biz_code
         if not DaraCore.is_null(request.biz_extend_shrink):
             query['BizExtend'] = request.biz_extend_shrink
+        if not DaraCore.is_null(request.create_from_flow_code):
+            query['CreateFromFlowCode'] = request.create_from_flow_code
+        if not DaraCore.is_null(request.create_from_flow_version):
+            query['CreateFromFlowVersion'] = request.create_from_flow_version
         if not DaraCore.is_null(request.flow_trigger_type):
             query['FlowTriggerType'] = request.flow_trigger_type
+        if not DaraCore.is_null(request.life_cycle_extend_data_shrink):
+            query['LifeCycleExtendData'] = request.life_cycle_extend_data_shrink
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.remark):
@@ -2669,33 +2685,35 @@ class Client(OpenApiClient):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.example):
             request.example_shrink = Utils.array_to_string_with_specified_style(tmp_req.example, 'Example', 'json')
-        body = {}
+        query = {}
         if not DaraCore.is_null(request.allow_category_change):
-            body['AllowCategoryChange'] = request.allow_category_change
+            query['AllowCategoryChange'] = request.allow_category_change
         if not DaraCore.is_null(request.category):
-            body['Category'] = request.category
+            query['Category'] = request.category
         if not DaraCore.is_null(request.category_change_paused):
-            body['CategoryChangePaused'] = request.category_change_paused
+            query['CategoryChangePaused'] = request.category_change_paused
         if not DaraCore.is_null(request.components_shrink):
-            body['Components'] = request.components_shrink
+            query['Components'] = request.components_shrink
         if not DaraCore.is_null(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
         if not DaraCore.is_null(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
+            query['CustWabaId'] = request.cust_waba_id
         if not DaraCore.is_null(request.example_shrink):
-            body['Example'] = request.example_shrink
+            query['Example'] = request.example_shrink
         if not DaraCore.is_null(request.isv_code):
-            body['IsvCode'] = request.isv_code
+            query['IsvCode'] = request.isv_code
         if not DaraCore.is_null(request.language):
-            body['Language'] = request.language
+            query['Language'] = request.language
         if not DaraCore.is_null(request.message_send_ttl_seconds):
-            body['MessageSendTtlSeconds'] = request.message_send_ttl_seconds
+            query['MessageSendTtlSeconds'] = request.message_send_ttl_seconds
         if not DaraCore.is_null(request.name):
-            body['Name'] = request.name
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.product_set_id):
+            query['ProductSetId'] = request.product_set_id
         if not DaraCore.is_null(request.template_type):
-            body['TemplateType'] = request.template_type
+            query['TemplateType'] = request.template_type
         req = open_api_util_models.OpenApiRequest(
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'CreateChatappTemplate',
@@ -2725,33 +2743,35 @@ class Client(OpenApiClient):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.example):
             request.example_shrink = Utils.array_to_string_with_specified_style(tmp_req.example, 'Example', 'json')
-        body = {}
+        query = {}
         if not DaraCore.is_null(request.allow_category_change):
-            body['AllowCategoryChange'] = request.allow_category_change
+            query['AllowCategoryChange'] = request.allow_category_change
         if not DaraCore.is_null(request.category):
-            body['Category'] = request.category
+            query['Category'] = request.category
         if not DaraCore.is_null(request.category_change_paused):
-            body['CategoryChangePaused'] = request.category_change_paused
+            query['CategoryChangePaused'] = request.category_change_paused
         if not DaraCore.is_null(request.components_shrink):
-            body['Components'] = request.components_shrink
+            query['Components'] = request.components_shrink
         if not DaraCore.is_null(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
         if not DaraCore.is_null(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
+            query['CustWabaId'] = request.cust_waba_id
         if not DaraCore.is_null(request.example_shrink):
-            body['Example'] = request.example_shrink
+            query['Example'] = request.example_shrink
         if not DaraCore.is_null(request.isv_code):
-            body['IsvCode'] = request.isv_code
+            query['IsvCode'] = request.isv_code
         if not DaraCore.is_null(request.language):
-            body['Language'] = request.language
+            query['Language'] = request.language
         if not DaraCore.is_null(request.message_send_ttl_seconds):
-            body['MessageSendTtlSeconds'] = request.message_send_ttl_seconds
+            query['MessageSendTtlSeconds'] = request.message_send_ttl_seconds
         if not DaraCore.is_null(request.name):
-            body['Name'] = request.name
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.product_set_id):
+            query['ProductSetId'] = request.product_set_id
         if not DaraCore.is_null(request.template_type):
-            body['TemplateType'] = request.template_type
+            query['TemplateType'] = request.template_type
         req = open_api_util_models.OpenApiRequest(
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'CreateChatappTemplate',
@@ -5329,6 +5349,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.FlowBindPhoneShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.multi_waba_phone_numbers):
+            request.multi_waba_phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.multi_waba_phone_numbers, 'MultiWabaPhoneNumbers', 'json')
         if not DaraCore.is_null(tmp_req.phone_numbers):
             request.phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
         query = {}
@@ -5340,6 +5362,8 @@ class Client(OpenApiClient):
             query['FlowCode'] = request.flow_code
         if not DaraCore.is_null(request.flow_version):
             query['FlowVersion'] = request.flow_version
+        if not DaraCore.is_null(request.multi_waba_phone_numbers_shrink):
+            query['MultiWabaPhoneNumbers'] = request.multi_waba_phone_numbers_shrink
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.phone_numbers_shrink):
@@ -5377,6 +5401,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.FlowBindPhoneShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.multi_waba_phone_numbers):
+            request.multi_waba_phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.multi_waba_phone_numbers, 'MultiWabaPhoneNumbers', 'json')
         if not DaraCore.is_null(tmp_req.phone_numbers):
             request.phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
         query = {}
@@ -5388,6 +5414,8 @@ class Client(OpenApiClient):
             query['FlowCode'] = request.flow_code
         if not DaraCore.is_null(request.flow_version):
             query['FlowVersion'] = request.flow_version
+        if not DaraCore.is_null(request.multi_waba_phone_numbers_shrink):
+            query['MultiWabaPhoneNumbers'] = request.multi_waba_phone_numbers_shrink
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.phone_numbers_shrink):
@@ -5439,6 +5467,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.FlowRebindPhoneShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.multi_waba_phone_numbers):
+            request.multi_waba_phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.multi_waba_phone_numbers, 'MultiWabaPhoneNumbers', 'json')
         if not DaraCore.is_null(tmp_req.phone_numbers):
             request.phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
         query = {}
@@ -5450,6 +5480,8 @@ class Client(OpenApiClient):
             query['FlowCode'] = request.flow_code
         if not DaraCore.is_null(request.flow_version):
             query['FlowVersion'] = request.flow_version
+        if not DaraCore.is_null(request.multi_waba_phone_numbers_shrink):
+            query['MultiWabaPhoneNumbers'] = request.multi_waba_phone_numbers_shrink
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.phone_numbers_shrink):
@@ -5487,6 +5519,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.FlowRebindPhoneShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.multi_waba_phone_numbers):
+            request.multi_waba_phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.multi_waba_phone_numbers, 'MultiWabaPhoneNumbers', 'json')
         if not DaraCore.is_null(tmp_req.phone_numbers):
             request.phone_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.phone_numbers, 'PhoneNumbers', 'json')
         query = {}
@@ -5498,6 +5532,8 @@ class Client(OpenApiClient):
             query['FlowCode'] = request.flow_code
         if not DaraCore.is_null(request.flow_version):
             query['FlowVersion'] = request.flow_version
+        if not DaraCore.is_null(request.multi_waba_phone_numbers_shrink):
+            query['MultiWabaPhoneNumbers'] = request.multi_waba_phone_numbers_shrink
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.phone_numbers_shrink):
@@ -9218,6 +9254,10 @@ class Client(OpenApiClient):
             query['BizCode'] = request.biz_code
         if not DaraCore.is_null(request.biz_extend_shrink):
             query['BizExtend'] = request.biz_extend_shrink
+        if not DaraCore.is_null(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not DaraCore.is_null(request.flow_status):
+            query['FlowStatus'] = request.flow_status
         if not DaraCore.is_null(request.flow_trigger_type):
             query['FlowTriggerType'] = request.flow_trigger_type
         if not DaraCore.is_null(request.keyword):
@@ -9228,6 +9268,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -9236,6 +9278,8 @@ class Client(OpenApiClient):
             query['ReturnWithOnlineVersion'] = request.return_with_online_version
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9270,6 +9314,10 @@ class Client(OpenApiClient):
             query['BizCode'] = request.biz_code
         if not DaraCore.is_null(request.biz_extend_shrink):
             query['BizExtend'] = request.biz_extend_shrink
+        if not DaraCore.is_null(request.flow_code):
+            query['FlowCode'] = request.flow_code
+        if not DaraCore.is_null(request.flow_status):
+            query['FlowStatus'] = request.flow_status
         if not DaraCore.is_null(request.flow_trigger_type):
             query['FlowTriggerType'] = request.flow_trigger_type
         if not DaraCore.is_null(request.keyword):
@@ -9280,6 +9328,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -9288,6 +9338,8 @@ class Client(OpenApiClient):
             query['ReturnWithOnlineVersion'] = request.return_with_online_version
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10854,6 +10906,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.bind_id):
+            query['BindId'] = request.bind_id
         if not DaraCore.is_null(request.channel_type):
             query['ChannelType'] = request.channel_type
         if not DaraCore.is_null(request.filter_str):
@@ -10862,6 +10916,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.is_bind):
+            query['IsBind'] = request.is_bind
         if not DaraCore.is_null(request.page_index):
             query['PageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
@@ -10896,6 +10952,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.bind_id):
+            query['BindId'] = request.bind_id
         if not DaraCore.is_null(request.channel_type):
             query['ChannelType'] = request.channel_type
         if not DaraCore.is_null(request.filter_str):
@@ -10904,6 +10962,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.is_bind):
+            query['IsBind'] = request.is_bind
         if not DaraCore.is_null(request.page_index):
             query['PageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
@@ -11831,33 +11891,35 @@ class Client(OpenApiClient):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.example):
             request.example_shrink = Utils.array_to_string_with_specified_style(tmp_req.example, 'Example', 'json')
-        body = {}
+        query = {}
         if not DaraCore.is_null(request.category):
-            body['Category'] = request.category
+            query['Category'] = request.category
         if not DaraCore.is_null(request.category_change_paused):
-            body['CategoryChangePaused'] = request.category_change_paused
+            query['CategoryChangePaused'] = request.category_change_paused
         if not DaraCore.is_null(request.components_shrink):
-            body['Components'] = request.components_shrink
+            query['Components'] = request.components_shrink
         if not DaraCore.is_null(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
         if not DaraCore.is_null(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
+            query['CustWabaId'] = request.cust_waba_id
         if not DaraCore.is_null(request.example_shrink):
-            body['Example'] = request.example_shrink
+            query['Example'] = request.example_shrink
         if not DaraCore.is_null(request.isv_code):
-            body['IsvCode'] = request.isv_code
+            query['IsvCode'] = request.isv_code
         if not DaraCore.is_null(request.language):
-            body['Language'] = request.language
+            query['Language'] = request.language
         if not DaraCore.is_null(request.message_send_ttl_seconds):
-            body['MessageSendTtlSeconds'] = request.message_send_ttl_seconds
+            query['MessageSendTtlSeconds'] = request.message_send_ttl_seconds
+        if not DaraCore.is_null(request.product_set_id):
+            query['ProductSetId'] = request.product_set_id
         if not DaraCore.is_null(request.template_code):
-            body['TemplateCode'] = request.template_code
+            query['TemplateCode'] = request.template_code
         if not DaraCore.is_null(request.template_name):
-            body['TemplateName'] = request.template_name
+            query['TemplateName'] = request.template_name
         if not DaraCore.is_null(request.template_type):
-            body['TemplateType'] = request.template_type
+            query['TemplateType'] = request.template_type
         req = open_api_util_models.OpenApiRequest(
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'ModifyChatappTemplate',
@@ -11887,33 +11949,35 @@ class Client(OpenApiClient):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.example):
             request.example_shrink = Utils.array_to_string_with_specified_style(tmp_req.example, 'Example', 'json')
-        body = {}
+        query = {}
         if not DaraCore.is_null(request.category):
-            body['Category'] = request.category
+            query['Category'] = request.category
         if not DaraCore.is_null(request.category_change_paused):
-            body['CategoryChangePaused'] = request.category_change_paused
+            query['CategoryChangePaused'] = request.category_change_paused
         if not DaraCore.is_null(request.components_shrink):
-            body['Components'] = request.components_shrink
+            query['Components'] = request.components_shrink
         if not DaraCore.is_null(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
         if not DaraCore.is_null(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
+            query['CustWabaId'] = request.cust_waba_id
         if not DaraCore.is_null(request.example_shrink):
-            body['Example'] = request.example_shrink
+            query['Example'] = request.example_shrink
         if not DaraCore.is_null(request.isv_code):
-            body['IsvCode'] = request.isv_code
+            query['IsvCode'] = request.isv_code
         if not DaraCore.is_null(request.language):
-            body['Language'] = request.language
+            query['Language'] = request.language
         if not DaraCore.is_null(request.message_send_ttl_seconds):
-            body['MessageSendTtlSeconds'] = request.message_send_ttl_seconds
+            query['MessageSendTtlSeconds'] = request.message_send_ttl_seconds
+        if not DaraCore.is_null(request.product_set_id):
+            query['ProductSetId'] = request.product_set_id
         if not DaraCore.is_null(request.template_code):
-            body['TemplateCode'] = request.template_code
+            query['TemplateCode'] = request.template_code
         if not DaraCore.is_null(request.template_name):
-            body['TemplateName'] = request.template_name
+            query['TemplateName'] = request.template_name
         if not DaraCore.is_null(request.template_type):
-            body['TemplateType'] = request.template_type
+            query['TemplateType'] = request.template_type
         req = open_api_util_models.OpenApiRequest(
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'ModifyChatappTemplate',
@@ -13538,6 +13602,8 @@ class Client(OpenApiClient):
             query['BizCode'] = request.biz_code
         if not DaraCore.is_null(request.biz_extend_shrink):
             query['BizExtend'] = request.biz_extend_shrink
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
         if not DaraCore.is_null(request.flow_code):
             query['FlowCode'] = request.flow_code
         if not DaraCore.is_null(request.flow_version):
@@ -13584,6 +13650,8 @@ class Client(OpenApiClient):
             query['BizCode'] = request.biz_code
         if not DaraCore.is_null(request.biz_extend_shrink):
             query['BizExtend'] = request.biz_extend_shrink
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
         if not DaraCore.is_null(request.flow_code):
             query['FlowCode'] = request.flow_code
         if not DaraCore.is_null(request.flow_version):
@@ -15746,6 +15814,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15794,6 +15864,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

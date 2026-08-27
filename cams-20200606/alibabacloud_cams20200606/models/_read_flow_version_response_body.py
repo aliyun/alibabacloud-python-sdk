@@ -24,7 +24,7 @@ class ReadFlowVersionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The response content.
+        # The response data.
         self.response = response
         # Indicates whether the operation was successful. Valid values:
         # 

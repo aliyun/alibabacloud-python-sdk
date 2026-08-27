@@ -17,11 +17,25 @@ class ListViberServiceMessageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID. This is used for troubleshooting when an error occurs.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -94,13 +108,21 @@ class ListViberServiceMessageResponseBodyData(DaraModel):
         service_id: str = None,
         state: str = None,
     ):
+        # The business account name.
         self.business_account_name = business_account_name
+        # The destination country or region ID.
         self.destination_country_id = destination_country_id
+        # The destination country or region ID.
         self.destination_international_country_id = destination_international_country_id
+        # The industry involved.
         self.industry_involved = industry_involved
+        # The collection of destination countries or regions.
         self.message_destination_country = message_destination_country
+        # The list of international destination countries or regions.
         self.message_destination_international_country = message_destination_international_country
+        # The service ID.
         self.service_id = service_id
+        # The resource status.
         self.state = state
 
     def validate(self):

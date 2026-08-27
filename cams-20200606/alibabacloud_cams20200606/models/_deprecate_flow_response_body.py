@@ -12,9 +12,9 @@ class DeprecateFlowResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The reason why access was denied.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # OK indicates that the request was successful.
+        # The response code. OK indicates success.
         self.code = code
         # The error message.
         self.message = message

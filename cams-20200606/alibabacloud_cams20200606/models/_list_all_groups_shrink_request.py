@@ -13,7 +13,9 @@ class ListAllGroupsShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

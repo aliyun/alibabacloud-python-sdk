@@ -16,7 +16,7 @@ class ReadChatFlowResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # The detailed reason why the access was denied.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
         # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -24,13 +24,13 @@ class ReadChatFlowResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The returned data.
+        # The response content.
         self.response = response
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation is successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

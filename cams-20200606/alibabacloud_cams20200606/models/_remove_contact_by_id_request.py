@@ -13,8 +13,12 @@ class RemoveContactByIdRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The contact ID.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # The contact group ID.
+        # 
         # This parameter is required.
         self.group_id = group_id
         self.owner_id = owner_id

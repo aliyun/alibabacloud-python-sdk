@@ -13,11 +13,11 @@ class GetChatFlowTemplateRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The code of the business tenant. The default value is ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         # 
         # This parameter is required.
         self.biz_code = biz_code
-        # The ID of the template. You can call the [ListChatFlowTemplate](https://help.aliyun.com/document_detail/2937208.html) operation to obtain the template ID.
+        # The template ID. You can obtain the template ID by calling the [ListChatFlowTemplate](https://help.aliyun.com/document_detail/2937208.html) operation.
         self.id = id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

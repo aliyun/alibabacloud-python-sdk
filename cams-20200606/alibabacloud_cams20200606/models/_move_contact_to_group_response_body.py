@@ -16,11 +16,23 @@ class MoveContactToGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned object.
         self.data = data
+        # The message returned with the result.
         self.message = message
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

@@ -23,19 +23,17 @@ class ListChatGroupParticipantsResponseBody(DaraModel):
         # 
         # - OK: The request was successful.
         # 
-        # - For other values, see the [error code list](https://help.aliyun.com/document_detail/196974.html).
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -98,7 +96,7 @@ class ListChatGroupParticipantsResponseBodyData(DaraModel):
     ):
         # The list of group members.
         self.list = list
-        # The total number of participants.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -140,7 +138,7 @@ class ListChatGroupParticipantsResponseBodyDataList(DaraModel):
         self,
         participant_number: str = None,
     ):
-        # The phone number of the group member.
+        # The group member number.
         self.participant_number = participant_number
 
     def validate(self):

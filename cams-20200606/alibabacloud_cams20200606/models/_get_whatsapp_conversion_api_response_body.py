@@ -17,11 +17,25 @@ class GetWhatsappConversionApiResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -89,8 +103,11 @@ class GetWhatsappConversionApiResponseBodyData(DaraModel):
         page_id: str = None,
         page_name: str = None,
     ):
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The PageId of Messenger.
         self.page_id = page_id
+        # The page name.
         self.page_name = page_name
 
     def validate(self):

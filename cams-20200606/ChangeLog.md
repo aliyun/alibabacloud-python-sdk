@@ -1,3 +1,25 @@
+2026-08-27 Version: 5.3.1
+- Update API CreateChatFlow: add request parameters CreateFromFlowCode.
+- Update API CreateChatFlow: add request parameters CreateFromFlowVersion.
+- Update API CreateChatFlow: add request parameters LifeCycleExtendData.
+- Update API CreateChatappTemplate: add request parameters ProductSetId.
+- Update API CreateChatappTemplate: add response parameters Body.Success.
+- Update API FlowBindPhone: add request parameters MultiWabaPhoneNumbers.
+- Update API FlowRebindPhone: add request parameters MultiWabaPhoneNumbers.
+- Update API GetChatappTemplateDetail: add response parameters Body.Success.
+- Update API GetChatappTemplateDetail: add response parameters Body.Data.ProductSetId.
+- Update API ListChatFlow: add request parameters FlowCode.
+- Update API ListChatFlow: add request parameters FlowStatus.
+- Update API ListChatFlow: add request parameters PhoneNumber.
+- Update API ListChatFlow: add request parameters Title.
+- Update API ListInstance: add request parameters BindId.
+- Update API ListInstance: add request parameters IsBind.
+- Update API ModifyChatappTemplate: add request parameters ProductSetId.
+- Update API ModifyChatappTemplate: add response parameters Body.Success.
+- Update API ReadFlowVersion: add request parameters DraftVersion.
+- Update API UpdateFlowVersion: add request parameters Type.
+
+
 2026-07-14 Version: 5.3.0
 - Support API ArchiveChatappTemplate.
 - Support API DeleteWhatsappUserName.

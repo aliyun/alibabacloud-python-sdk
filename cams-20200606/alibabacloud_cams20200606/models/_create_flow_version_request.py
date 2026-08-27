@@ -18,16 +18,16 @@ class CreateFlowVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The business tenant code. The default value is ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # The business extension information. The default value is an empty collection.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend = biz_extend
-        # The code of the flow. You can view the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+        # The flow code. You can view the flow code on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         self.flow_code = flow_code
-        # The version of the flow to copy. To view the historical versions of a flow, go to the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) and click a flow name to open the orchestration canvas.
+        # The flow version to copy. Click a flow name on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to enter the canvas orchestration page and view historical flow versions.
         self.flow_version_copy_from = flow_version_copy_from
         self.owner_id = owner_id
-        # The remarks for the version.
+        # The version remarks.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

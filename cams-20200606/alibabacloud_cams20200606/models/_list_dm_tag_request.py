@@ -14,9 +14,12 @@ class ListDmTagRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The search keyword.
         self.keyword = keyword
         self.owner_id = owner_id
+        # The page number.
         self.page_index = page_index
+        # The number of entries to return on each page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

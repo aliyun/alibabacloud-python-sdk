@@ -16,8 +16,12 @@ class GetGroupExistRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The business extension information. Default value: "{}".
         self.biz_extend = biz_extend
+        # The group name.
+        # 
         # This parameter is required.
         self.group_name = group_name
         self.owner_id = owner_id

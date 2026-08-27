@@ -19,28 +19,24 @@ class ListFlowVersionRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
-        # The business tenant code. The default value is ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # Business extension information. The default value is an empty collection.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend = biz_extend
-        # The flow code. Find the flow code in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+        # The flow code. You can query the flow code on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         self.flow_code = flow_code
         self.owner_id = owner_id
-        # The page number.
+        # The current page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the flow version. Valid values:
-        # 
-        # - DRAFT: The flow is a draft.
-        # 
-        # - DELETED: The flow is deleted.
-        # 
-        # - ONLINE: The flow is published.
-        # 
-        # - OFFLINE: The flow is unpublished.
+        # The flow version status. Valid values:
+        # - DRAFT: draft.
+        # - DELETED: deleted.
+        # - ONLINE: online.
+        # - OFFLINE: offline.
         self.status = status
 
     def validate(self):

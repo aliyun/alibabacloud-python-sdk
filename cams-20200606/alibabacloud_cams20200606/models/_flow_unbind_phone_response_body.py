@@ -14,22 +14,22 @@ class FlowUnbindPhoneResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The request status code.
         self.code = code
         # The error message.
         self.message = message
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: The operation is successful.
         # 
         # - false: The operation failed.
         self.model = model
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: The operation is successful.
         # 
         # - false: The operation failed.
         self.success = success

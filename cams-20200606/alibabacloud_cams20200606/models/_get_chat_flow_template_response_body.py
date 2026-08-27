@@ -25,13 +25,13 @@ class GetChatFlowTemplateResponseBody(DaraModel):
         self.data = data
         # The error message.
         self.message = message
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

@@ -18,16 +18,16 @@ class OnlineFlowVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The business tenant code. The default value is ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # Business extension information. The default value is an empty object.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend = biz_extend
-        # The flow code. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+        # The flow code. You can view the flow code on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         self.flow_code = flow_code
-        # The flow version. In the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the flow name to open the orchestration canvas and view the flow version.
+        # The flow version. You can click a flow name on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to go to the canvas page and view the flow version.
         self.flow_version = flow_version
         self.owner_id = owner_id
-        # The remarks for the flow. You can view the remarks in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+        # The flow remark. You can view the flow remark on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

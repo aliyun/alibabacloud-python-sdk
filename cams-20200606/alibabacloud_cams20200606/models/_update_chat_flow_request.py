@@ -18,18 +18,18 @@ class UpdateChatFlowRequest(DaraModel):
         resource_owner_id: int = None,
         title: str = None,
     ):
-        # The business tenant code. The default value is ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # The business extension information. The default value is an empty collection.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend = biz_extend
-        # The flow code. You can view the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+        # The flow code. View the flow code in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder).
         self.flow_code = flow_code
         self.owner_id = owner_id
-        # The updated remarks for the flow.
+        # The updated flow remark.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The updated name of the flow.
+        # The updated flow name.
         self.title = title
 
     def validate(self):

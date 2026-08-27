@@ -610,6 +610,8 @@ from ._create_flow_response_body import CreateFlowResponseBodyData
 from ._create_instance_response_body import CreateInstanceResponseBodyData
 from ._create_phone_message_qrdl_response_body import CreatePhoneMessageQrdlResponseBodyData
 from ._delete_chat_group_participants_request import DeleteChatGroupParticipantsRequestList
+from ._flow_bind_phone_request import FlowBindPhoneRequestMultiWabaPhoneNumbers
+from ._flow_rebind_phone_request import FlowRebindPhoneRequestMultiWabaPhoneNumbers
 from ._generate_presigned_url_response_body import GeneratePresignedUrlResponseBodyData
 from ._get_audit_request_by_type_un_audit_response_body import GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyAddress
 from ._get_audit_request_by_type_un_audit_response_body import GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyTel
@@ -1344,6 +1346,8 @@ __all__ = [
     CreateInstanceResponseBodyData,
     CreatePhoneMessageQrdlResponseBodyData,
     DeleteChatGroupParticipantsRequestList,
+    FlowBindPhoneRequestMultiWabaPhoneNumbers,
+    FlowRebindPhoneRequestMultiWabaPhoneNumbers,
     GeneratePresignedUrlResponseBodyData,
     GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyAddress,
     GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecordCompanyTel,

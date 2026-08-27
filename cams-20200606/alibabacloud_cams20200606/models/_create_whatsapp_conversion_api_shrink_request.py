@@ -14,9 +14,12 @@ class CreateWhatsappConversionApiShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The embedded code.
         self.code = code
+        # The instance ID.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The list of embedded permissions.
         self.permissions_shrink = permissions_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

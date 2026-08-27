@@ -15,11 +15,11 @@ class GetChatappTemplateDetailRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The SpaceId of the ISV sub-customer or the instance ID of a direct customer.
+        # The SpaceId of the ISV sub-customer or the instance ID of the direct customer.
         self.cust_space_id = cust_space_id
         # The WabaId of the ISV customer.
         # 
-        # > This parameter is deprecated. Use CustSpaceId instead.
+        # > Deprecated parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
         # The ISV verification code, which is used to verify whether the sub-account is authorized by the ISV.
         self.isv_code = isv_code
@@ -31,7 +31,7 @@ class GetChatappTemplateDetailRequest(DaraModel):
         self.template_code = template_code
         # The name of the template.
         self.template_name = template_name
-        # The templatetype.
+        # The templatetype. Valid values:
         # 
         # - **WHATSAPP**
         # 

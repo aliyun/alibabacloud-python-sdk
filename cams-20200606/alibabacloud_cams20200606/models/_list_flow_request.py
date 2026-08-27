@@ -15,9 +15,12 @@ class ListFlowRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The SpaceId of the ISV sub-customer.
         self.cust_space_id = cust_space_id
+        # The Flow name.
         self.flow_name = flow_name
         self.owner_id = owner_id
+        # The pagination information.
         self.page = page
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -80,7 +83,9 @@ class ListFlowRequestPage(DaraModel):
         index: int = None,
         size: int = None,
     ):
+        # The page number.
         self.index = index
+        # The number of entries per page.
         self.size = size
 
     def validate(self):

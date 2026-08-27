@@ -21,28 +21,29 @@ class ListChatappTemplateShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         template_type: str = None,
     ):
-        # The review state of the template. Valid values:
+        # The review status. Valid values:
         # 
-        # - **pass**: The template is approved.
+        # - **pass**: Approved.
         # 
-        # - **fail**: The template is rejected.
+        # - **fail**: Rejected.
         # 
-        # - **auditing**: The template is being reviewed.
+        # - **auditing**: Under review.
         # 
-        # - **unaudit**: The review is suspended.
+        # - **unaudit**: Review suspended.
         self.audit_status = audit_status
+        # The category of the template.
         self.category = category
-        # The code of the message template.
+        # The code of the template.
         self.code = code
-        # The space ID of the RAM user within the ISV account.
+        # The space ID of the ISV sub-customer, or the instance ID of a direct customer.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+        # The WabaId of the ISV customer.
         # 
-        # > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+        # > This is a deprecated parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
+        # The ISV verification code, which is used to verify whether the RAM user is authorized by the ISV.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The language of the template. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         # The name of the template.
         self.name = name
@@ -51,7 +52,7 @@ class ListChatappTemplateShrinkRequest(DaraModel):
         self.page_shrink = page_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the message template.
+        # The templatetype. Valid values:
         # 
         # - **WHATSAPP**
         # 

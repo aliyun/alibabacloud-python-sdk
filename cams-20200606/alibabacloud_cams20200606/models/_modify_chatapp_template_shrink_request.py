@@ -16,38 +16,41 @@ class ModifyChatappTemplateShrinkRequest(DaraModel):
         isv_code: str = None,
         language: str = None,
         message_send_ttl_seconds: int = None,
+        product_set_id: str = None,
         template_code: str = None,
         template_name: str = None,
         template_type: str = None,
     ):
         # The templatetype cannot be modified.
         self.category = category
-        # Specifies whether to pause sending when a Utility template is changed to Marketing type.
+        # When a Utility template is changed to Marketing type, the template is paused for sending.
         self.category_change_paused = category_change_paused
         # The list of message template components.
         # 
-        # > When Category is set to AUTHENTICATION, Components cannot contain a node with Type set to HEADER. When Type is set to BODY or FOOTER and the Text content is empty, the content is automatically generated.
+        # > When Category is AUTHENTICATION, Components cannot contain a node with Type set to HEADER. When Type is BODY/FOOTER, the Text content is empty and is automatically generated.
         # 
         # This parameter is required.
         self.components_shrink = components_shrink
-        # The SpaceId of the ISV sub-customer or the instance ID of a direct customer.
+        # The SpaceId of the ISV sub-customer or the instance ID of the direct customer.
         self.cust_space_id = cust_space_id
         # The ISV customer WabaId.
         # 
-        # > Deprecated parameter. Use CustSpaceId instead.
+        # > This parameter is deprecated. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The examples for creating the template.
+        # The example for creating a template.
         self.example_shrink = example_shrink
-        # The ISV verification code used to verify whether the RAM user is authorized by the ISV.
+        # The ISV verification code used to verify whether the sub-account is authorized by the ISV.
         self.isv_code = isv_code
-        # The template language. For detailed language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The template language. For language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         # 
         # This parameter is required.
         self.language = language
         # The validity period for sending template messages in WhatsApp.
-        # - AUTHENTICATION: valid values are 30 to 900. 
-        # - UTILITY: valid values are 30 to 43200.
+        # - AUTHENTICATION: valid values range from 30 to 900. 
+        # - UTILITY: valid values range from 30 to 43200.
         self.message_send_ttl_seconds = message_send_ttl_seconds
+        # productSetId
+        self.product_set_id = product_set_id
         # The message template code.
         self.template_code = template_code
         # The template name.
@@ -92,6 +95,9 @@ class ModifyChatappTemplateShrinkRequest(DaraModel):
         if self.message_send_ttl_seconds is not None:
             result['MessageSendTtlSeconds'] = self.message_send_ttl_seconds
 
+        if self.product_set_id is not None:
+            result['ProductSetId'] = self.product_set_id
+
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
 
@@ -131,6 +137,9 @@ class ModifyChatappTemplateShrinkRequest(DaraModel):
 
         if m.get('MessageSendTtlSeconds') is not None:
             self.message_send_ttl_seconds = m.get('MessageSendTtlSeconds')
+
+        if m.get('ProductSetId') is not None:
+            self.product_set_id = m.get('ProductSetId')
 
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')

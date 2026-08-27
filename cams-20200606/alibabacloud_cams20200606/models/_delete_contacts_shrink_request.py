@@ -17,11 +17,17 @@ class DeleteContactsShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business code.
         self.biz_code = biz_code
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
+        # The contact details.
         self.contact_details = contact_details
+        # The contact name.
         self.contact_name = contact_name
+        # The country.
         self.country = country
+        # The file path.
         self.file_path = file_path
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

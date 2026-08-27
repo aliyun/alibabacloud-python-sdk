@@ -20,7 +20,7 @@ class CreatePhoneMessageQrdlRequest(DaraModel):
         # <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)
         # page.
         self.cust_space_id = cust_space_id
-        # The type of the generated image. Valid values:
+        # The type of image to generate. Valid values:
         # 
         # - PNG
         # 
@@ -29,9 +29,9 @@ class CreatePhoneMessageQrdlRequest(DaraModel):
         # This parameter is required.
         self.generate_qr_image = generate_qr_image
         self.owner_id = owner_id
-        # The phone number. You can view the phone number on the
+        # The phone number. You can view it on the
         # <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)
-        # <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)> **Manage** > **WABA Management** > **Number Management** page.
+        # <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)>**Manage**>**WABA Management**>**Number Management** page.
         # 
         # This parameter is required.
         self.phone_number = phone_number

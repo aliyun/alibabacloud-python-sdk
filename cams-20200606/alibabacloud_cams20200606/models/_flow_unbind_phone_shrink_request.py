@@ -23,18 +23,16 @@ class FlowUnbindPhoneShrinkRequest(DaraModel):
         # 
         # - MESSENGER
         # 
-        # <props="intl">
-        # 
-        # - VIBER
+        # <props="intl">- VIBER
         self.channel_type = channel_type
-        # The flow code. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+        # The flow code. You can view the flow code on the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         # 
         # This parameter is required.
         self.flow_code = flow_code
-        # The flow version. In the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the flow name to go to the orchestration canvas and view the flow version.
+        # The flow version. You can view the flow version by going to the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, clicking the flow name, and entering the flow editor canvas page.
         self.flow_version = flow_version
         self.owner_id = owner_id
-        # A list of phone numbers, Page IDs, Account IDs, or Service IDs for the channel instance.
+        # The list of phone numbers, PageIds, AccountIds,<props="intl"> or ServiceIds under the channel instance.
         self.phone_numbers_shrink = phone_numbers_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

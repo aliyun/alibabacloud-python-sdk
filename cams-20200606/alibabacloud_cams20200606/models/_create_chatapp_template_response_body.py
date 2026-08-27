@@ -13,14 +13,15 @@ class CreateChatappTemplateResponseBody(DaraModel):
         data: main_models.CreateChatappTemplateResponseBodyData = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
-        # The details about the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The status code of the request.
+        # The request status code.
         # 
-        # - An \\`OK\\` response indicates that the request was successful.
+        # - OK indicates that the request was successful.
         # 
-        # - For other error codes, see [API error codes](https://www.alibabacloud.com/help/en/cams/latest/api-error-codes).
+        # - For other error codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
         self.code = code
         # The returned data.
         self.data = data
@@ -28,6 +29,7 @@ class CreateChatappTemplateResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -53,6 +55,9 @@ class CreateChatappTemplateResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.success is not None:
+            result['Success'] = self.success
+
         return result
 
     def from_map(self, m: dict = None):
@@ -72,6 +77,9 @@ class CreateChatappTemplateResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
 
         return self
 

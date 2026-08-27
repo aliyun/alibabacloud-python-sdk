@@ -12,7 +12,7 @@ class SyncFlowRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # 通道实例
+        # The channel instance.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id

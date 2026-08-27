@@ -14,11 +14,23 @@ class GetDownloadExcelListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code. Valid values:
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [API error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The result message.
         self.message = message
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

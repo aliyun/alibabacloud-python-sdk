@@ -13,8 +13,12 @@ class GetFbMessengerPagesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The token of the Meta public page.
+        # 
         # This parameter is required.
         self.access_token = access_token
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id

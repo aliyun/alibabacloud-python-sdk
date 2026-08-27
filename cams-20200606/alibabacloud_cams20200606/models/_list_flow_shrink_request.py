@@ -14,9 +14,12 @@ class ListFlowShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The SpaceId of the ISV sub-customer.
         self.cust_space_id = cust_space_id
+        # The Flow name.
         self.flow_name = flow_name
         self.owner_id = owner_id
+        # The pagination information.
         self.page_shrink = page_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

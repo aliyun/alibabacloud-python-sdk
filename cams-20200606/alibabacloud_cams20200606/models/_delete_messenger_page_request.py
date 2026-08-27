@@ -13,9 +13,13 @@ class DeleteMessengerPageRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The PageId of the Messenger page.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account

@@ -16,18 +16,18 @@ class CreateChatFlowByImportShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         title: str = None,
     ):
-        # The business tenant code. The default value is ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # The business extension information. The default value is an empty collection.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
-        # The flow DSL data to import. This is a block of data in JSON format. To obtain this data, arrange the components on the canvas in the Flow Editor, save the flow, and then click **Settings** > **Export** in the upper-right corner of the canvas. The flow is exported as a JSON data file.
+        # The imported flow DSL data, which is a JSON-formatted string. You can arrange flow components on the canvas in the flow orchestration console in advance, save the flow, and then click **Settings** > **Export** in the upper-right corner of the canvas to export a JSON data file for viewing.
         self.flow_view_model = flow_view_model
         self.owner_id = owner_id
-        # The remarks for the flow.
+        # The flow remarks.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The title of the flow.
+        # The flow title.
         self.title = title
 
     def validate(self):

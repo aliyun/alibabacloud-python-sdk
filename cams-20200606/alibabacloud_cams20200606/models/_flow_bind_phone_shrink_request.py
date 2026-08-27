@@ -11,48 +11,42 @@ class FlowBindPhoneShrinkRequest(DaraModel):
         channel_type: str = None,
         flow_code: str = None,
         flow_version: str = None,
+        multi_waba_phone_numbers_shrink: str = None,
         owner_id: int = None,
         phone_numbers_shrink: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         waba_id: str = None,
     ):
-        # The message channel code. This is the channel ID. View the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
-        # 
-        # This parameter is required.
+        # The message channel code, which is the channel ID. View the channel ID in the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
         self.channel_code = channel_code
         # The message channel type. Valid values:
-        # 
         # - INSTAGRAM
-        # 
         # - WHATSAPP
-        # 
         # - MESSENGER
         # 
-        # <props="intl">
-        # 
-        # - VIBER
+        # <props="intl">- VIBER
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # The flow code. View the flow code on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
+        # The flow code. View the flow code in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         # 
         # This parameter is required.
         self.flow_code = flow_code
-        # The flow version. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to go to the flow editor canvas and view the flow version.
+        # The flow version. Click the flow name in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to enter the flow builder canvas and view the flow version.
         self.flow_version = flow_version
+        # The multi-WABA binding configuration.
+        self.multi_waba_phone_numbers_shrink = multi_waba_phone_numbers_shrink
         self.owner_id = owner_id
-        # A list of phone numbers, PageIds, AccountIds<props="intl">, or ServiceIds for the channel instance.
+        # The list of phone numbers, PageIds, or AccountIds<props="intl">, or ServiceIds under the channel instance.
         self.phone_numbers_shrink = phone_numbers_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The WABA account ID, PageId, AccountId<props="intl">, or ServiceId.
+        # The WABA account ID, PageId, or AccountId<props="intl">, or ServiceId.
         # 
-        # - If \\`ChannelType\\` is \\`WHATSAPP\\`, pass the WABA account ID. View the WABA account ID on the **WABA Management** page by navigating to **Channel Management** > **Manage**.
+        # - If the ChannelType parameter is set to WHATSAPP, specify the WABA account ID. View the WABA account ID in [**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement) > **Manage** > **WABA Management**.
         # 
-        # - If \\`ChannelType\\` is not \\`WHATSAPP\\`, pass the PageId for \\`MESSENGER\\` or the AccountId for \\`INSTAGRAM\\`<props="intl">. For \\`VIBER\\`, pass the ServiceId.
-        # 
-        # This parameter is required.
+        # - If the ChannelType parameter is not set to WHATSAPP, specify the PageId for MESSENGER, the AccountId for INSTAGRAM<props="intl">, or the ServiceId for VIBER.
         self.waba_id = waba_id
 
     def validate(self):
@@ -74,6 +68,9 @@ class FlowBindPhoneShrinkRequest(DaraModel):
 
         if self.flow_version is not None:
             result['FlowVersion'] = self.flow_version
+
+        if self.multi_waba_phone_numbers_shrink is not None:
+            result['MultiWabaPhoneNumbers'] = self.multi_waba_phone_numbers_shrink
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -105,6 +102,9 @@ class FlowBindPhoneShrinkRequest(DaraModel):
 
         if m.get('FlowVersion') is not None:
             self.flow_version = m.get('FlowVersion')
+
+        if m.get('MultiWabaPhoneNumbers') is not None:
+            self.multi_waba_phone_numbers_shrink = m.get('MultiWabaPhoneNumbers')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')

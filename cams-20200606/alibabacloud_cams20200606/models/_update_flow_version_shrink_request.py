@@ -16,22 +16,25 @@ class UpdateFlowVersionShrinkRequest(DaraModel):
         remark: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        type: str = None,
     ):
-        # The tenant code. Default value: ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # The extended business information. The default value is an empty collection.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
-        # The code of the flow. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+        # The flow code. You can view the flow code on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         self.flow_code = flow_code
-        # The version of the flow. In the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the flow name to open the canvas and view the flow version.
+        # The flow version. You can click a flow name on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to go to the flow editor canvas page and view the flow version.
         self.flow_version = flow_version
-        # The DSL data of the flow version, in JSON format. To obtain this data, orchestrate the components on the canvas in the Flow Editor. After you save the flow, click **Settings** > **Export** in the upper-right corner of the canvas to export the flow as a JSON data file.
+        # The DSL data of the flow version. This is a JSON-formatted data string. You can orchestrate flow components on the flow editor canvas in advance, save the flow, and then click **Settings** > **Export** in the upper-right corner of the canvas orchestration page to export a JSON-formatted data file for viewing.
         self.flow_view_model = flow_view_model
         self.owner_id = owner_id
-        # The remarks for the version.
+        # The version remarks.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The save type.
+        self.type = type
 
     def validate(self):
         pass
@@ -68,6 +71,9 @@ class UpdateFlowVersionShrinkRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -98,6 +104,9 @@ class UpdateFlowVersionShrinkRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

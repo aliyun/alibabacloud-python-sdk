@@ -12,6 +12,7 @@ class GetWhatsappConversionApiRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

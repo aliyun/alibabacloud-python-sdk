@@ -20,20 +20,23 @@ class ListChatappTemplateResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The response code.
         # 
-        # - A value of OK indicates that the call is successful.
+        # - A value of OK indicates that the request was successful.
         # 
-        # - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The message templates.
+        # The list data.
         self.list_template = list_template
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
-        # The total number of returned entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -112,55 +115,43 @@ class ListChatappTemplateResponseBodyListTemplate(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The review state of the template. Valid values:
+        # The review status. Valid values:
         # 
-        # - **pass**: The template is approved.
+        # - **pass**: Approved.
         # 
-        # - **fail**: The template is rejected.
+        # - **fail**: Rejected.
         # 
-        # - **auditing**: The template is being reviewed.
+        # - **auditing**: Under review.
         # 
-        # - **unaudit**: The review is suspended.
+        # - **unaudit**: Review suspended.
         self.audit_status = audit_status
-        # The category of the WhatsApp message template. Valid values:
+        # The WhatsApp template category. Valid values:
         # 
-        # - **UTILITY**
+        # - **UTILITY**: Transaction-related.
         # 
-        # - **MARKETING**
+        # - **MARKETING**: Marketing template.
         # 
-        # - **AUTHENTICATION**
+        # - **AUTHENTICATION**: Identity verification.
         # 
-        # The category of the Viber template. Valid values:
+        # Viber template category. Valid values:
         # 
-        # - **text**: template that contains only text
+        # - **UTILITY**: Transaction-related.
         # 
-        # - **image**: template that contains only images
+        # - **MARKETING**: Marketing template.
         # 
-        # - **text_image_button**: template that contains text, images, and buttons
-        # 
-        # - **text_button**: template that contains text and buttons
-        # 
-        # - **document**: template that contains only documents
-        # 
-        # - **video**: template that contains only videos
-        # 
-        # - **text_video**: template that contains text and videos
-        # 
-        # - **text_video_button**: template that contains text, videos, and buttons
-        # 
-        # - **text_image**: template that contains text and images
+        # - **AUTHENTICATION**: Identity verification.
         self.category = category
-        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The language of the template. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
-        # The time when the template was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the template was last updated.
         self.last_update_time = last_update_time
-        # The reason why the template was rejected.
+        # The reason why the template was rejected during review.
         self.reason = reason
-        # The code of the message template.
+        # The code of the template.
         self.template_code = template_code
-        # The name of the message template.
+        # The name of the template.
         self.template_name = template_name
-        # The type of the template. Valid values: WHATSAPP and VIBER.
+        # The templatetype. Valid values: WHATSAPP and VIBER.
         self.template_type = template_type
 
     def validate(self):

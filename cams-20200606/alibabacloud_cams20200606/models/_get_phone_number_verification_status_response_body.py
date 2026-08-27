@@ -18,7 +18,7 @@ class GetPhoneNumberVerificationStatusResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The request status code.
         # 
-        # - A value of OK indicates that the request was successful.
+        # - OK: The request was successful.
         # 
         # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -82,9 +82,12 @@ class GetPhoneNumberVerificationStatusResponseBodyData(DaraModel):
         id: str = None,
         phone_number: str = None,
     ):
-        # The verification status.
+        # The verification status of the phone number. Valid values:
+        # - NOT_VERIFIED: Not verified.
+        # - VERIFIED: Verified.
+        # - EXPIRED: Verification expired.
         self.code_verification_status = code_verification_status
-        # The ID of the phone number.
+        # The phone number ID.
         self.id = id
         # The phone number.
         self.phone_number = phone_number

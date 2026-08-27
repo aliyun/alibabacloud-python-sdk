@@ -21,16 +21,24 @@ class GetDownloadExcelListRequest(DaraModel):
         resource_owner_id: int = None,
         start_date: str = None,
     ):
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The business extension information. Default value: "{}".
         self.biz_extend = biz_extend
+        # The query conditions.
         self.condition = condition
+        # The country names.
         self.country_names = country_names
+        # The end time.
         self.end_date = end_date
+        # The group ID.
         self.group_id = group_id
+        # The contact group IDs.
         self.group_ids = group_ids
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The start time.
         self.start_date = start_date
 
     def validate(self):

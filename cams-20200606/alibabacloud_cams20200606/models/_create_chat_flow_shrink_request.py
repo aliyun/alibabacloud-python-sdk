@@ -9,35 +9,39 @@ class CreateChatFlowShrinkRequest(DaraModel):
         self,
         biz_code: str = None,
         biz_extend_shrink: str = None,
+        create_from_flow_code: str = None,
+        create_from_flow_version: str = None,
         flow_trigger_type: str = None,
+        life_cycle_extend_data_shrink: str = None,
         owner_id: int = None,
         remark: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         title: str = None,
     ):
-        # The business tenant code. The default value is ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # Business extension information. The default value is an empty collection.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
-        # The trigger type for the flow. Valid values:
-        # 
-        # - TriggeredManually
-        # 
+        # The source flowCode for creation.
+        self.create_from_flow_code = create_from_flow_code
+        # The source flowVersion for creation.
+        self.create_from_flow_version = create_from_flow_version
+        # The flow trigger type. Valid values:
+        #  - TriggeredManually
         # - TriggeredByWhatsApp
-        # 
         # - TriggeredByMessenger
-        # 
         # - TriggeredByInstagram
-        # 
         # - TriggeredByViber
         self.flow_trigger_type = flow_trigger_type
+        # The lifecycle extension input parameters.
+        self.life_cycle_extend_data_shrink = life_cycle_extend_data_shrink
         self.owner_id = owner_id
-        # The remarks for the flow.
+        # The flow remarks.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The title of the flow.
+        # The flow title.
         self.title = title
 
     def validate(self):
@@ -54,8 +58,17 @@ class CreateChatFlowShrinkRequest(DaraModel):
         if self.biz_extend_shrink is not None:
             result['BizExtend'] = self.biz_extend_shrink
 
+        if self.create_from_flow_code is not None:
+            result['CreateFromFlowCode'] = self.create_from_flow_code
+
+        if self.create_from_flow_version is not None:
+            result['CreateFromFlowVersion'] = self.create_from_flow_version
+
         if self.flow_trigger_type is not None:
             result['FlowTriggerType'] = self.flow_trigger_type
+
+        if self.life_cycle_extend_data_shrink is not None:
+            result['LifeCycleExtendData'] = self.life_cycle_extend_data_shrink
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -82,8 +95,17 @@ class CreateChatFlowShrinkRequest(DaraModel):
         if m.get('BizExtend') is not None:
             self.biz_extend_shrink = m.get('BizExtend')
 
+        if m.get('CreateFromFlowCode') is not None:
+            self.create_from_flow_code = m.get('CreateFromFlowCode')
+
+        if m.get('CreateFromFlowVersion') is not None:
+            self.create_from_flow_version = m.get('CreateFromFlowVersion')
+
         if m.get('FlowTriggerType') is not None:
             self.flow_trigger_type = m.get('FlowTriggerType')
+
+        if m.get('LifeCycleExtendData') is not None:
+            self.life_cycle_extend_data_shrink = m.get('LifeCycleExtendData')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')

@@ -13,9 +13,13 @@ class GetAuditRequestByTypeUnAuditRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID of the ISV sub-customer or the instance ID of the direct customer. You can view the Space ID on the [China-China interconnection](https://chatapp.console.aliyun.com/CustomerList) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The request type.
+        # 
         # This parameter is required.
         self.request_type = request_type
         self.resource_owner_account = resource_owner_account

@@ -16,7 +16,7 @@ class ListFlowVersionResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -24,13 +24,13 @@ class ListFlowVersionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The response data.
+        # The response content.
         self.response = response
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: successful.
         # 
-        # - false: The operation failed.
+        # - false: failed.
         self.success = success
 
     def validate(self):

@@ -13,8 +13,12 @@ class UpdateGroupNameRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The group ID.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The group name.
+        # 
         # This parameter is required.
         self.group_name = group_name
         self.owner_id = owner_id

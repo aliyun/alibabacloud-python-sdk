@@ -19,18 +19,30 @@ class UpdateContactByIdShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business code.
         self.biz_code = biz_code
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
+        # The description of the contact.
+        # 
         # This parameter is required.
         self.contact_details = contact_details
+        # The ID of the contact.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # The name of the contact.
+        # 
         # This parameter is required.
         self.contact_name = contact_name
+        # The country code.
+        # 
         # This parameter is required.
         self.country = country
+        # The email address.
         self.email = email
         self.owner_id = owner_id
+        # The remarks.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

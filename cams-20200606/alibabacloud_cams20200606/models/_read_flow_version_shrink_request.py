@@ -9,6 +9,7 @@ class ReadFlowVersionShrinkRequest(DaraModel):
         self,
         biz_code: str = None,
         biz_extend_shrink: str = None,
+        draft_version: str = None,
         flow_code: str = None,
         flow_version: str = None,
         owner_id: int = None,
@@ -20,6 +21,8 @@ class ReadFlowVersionShrinkRequest(DaraModel):
         self.biz_code = biz_code
         # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
+        # The draft version.
+        self.draft_version = draft_version
         # The flow code. You can view the flow code on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         self.flow_code = flow_code
         # The flow version. You can click a flow name on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to go to the canvas orchestration page and view the flow version, or call [ListFlowVersion](https://help.aliyun.com/document_detail/2937202.html) to retrieve the flow version.
@@ -48,6 +51,9 @@ class ReadFlowVersionShrinkRequest(DaraModel):
         if self.biz_extend_shrink is not None:
             result['BizExtend'] = self.biz_extend_shrink
 
+        if self.draft_version is not None:
+            result['DraftVersion'] = self.draft_version
+
         if self.flow_code is not None:
             result['FlowCode'] = self.flow_code
 
@@ -75,6 +81,9 @@ class ReadFlowVersionShrinkRequest(DaraModel):
 
         if m.get('BizExtend') is not None:
             self.biz_extend_shrink = m.get('BizExtend')
+
+        if m.get('DraftVersion') is not None:
+            self.draft_version = m.get('DraftVersion')
 
         if m.get('FlowCode') is not None:
             self.flow_code = m.get('FlowCode')

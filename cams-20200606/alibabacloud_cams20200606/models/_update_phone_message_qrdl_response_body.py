@@ -14,7 +14,7 @@ class UpdatePhoneMessageQrdlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The access denial details.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -89,7 +89,7 @@ class UpdatePhoneMessageQrdlResponseBodyData(DaraModel):
         self.phone_number = phone_number
         # The message content.
         self.prefilled_message = prefilled_message
-        # The QR code image URL.
+        # The URL of the QR code image.
         self.qr_image_url = qr_image_url
         # The QR code encoding.
         self.qrdl_code = qrdl_code

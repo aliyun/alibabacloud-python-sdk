@@ -78,7 +78,7 @@ class GetFlowPreviewUrlResponseBodyData(DaraModel):
         preview_url: str = None,
         preview_url_expires: int = None,
     ):
-        # The flow ID.
+        # Flow ID。
         self.flow_id = flow_id
         # The temporary preview URL.
         self.preview_url = preview_url

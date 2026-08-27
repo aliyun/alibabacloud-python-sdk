@@ -18,11 +18,17 @@ class MoveContactToGroupRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The business extension information. Default value: an empty collection.
         self.biz_extend = biz_extend
+        # The list of contacts whose group associations are to be modified.
+        # 
         # This parameter is required.
         self.contacts = contacts
+        # The list of existing group IDs to associate with.
         self.link_exist_groups = link_exist_groups
+        # The list of new group names to associate with.
         self.link_new_groups = link_new_groups
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

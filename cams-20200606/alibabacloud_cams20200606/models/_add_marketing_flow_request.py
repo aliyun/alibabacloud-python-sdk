@@ -26,23 +26,41 @@ class AddMarketingFlowRequest(DaraModel):
         resource_owner_id: int = None,
         start_date: str = None,
     ):
+        # The description of the campaign.
         self.activity_desc = activity_desc
+        # The name of the node instance.
+        # 
         # This parameter is required.
         self.activity_name = activity_name
+        # The business code.
         self.biz_code = biz_code
+        # The business extension information. Default value: an empty collection.
         self.biz_extend = biz_extend
+        # The cron expression.
         self.cron_expression = cron_expression
+        # The end time.
         self.end_date = end_date
+        # The trigger method of the baseline scan. Valid values:
+        # 
+        # - **Schedule**: Triggered by a periodic configuration task.
+        # - **Manual**: Manually triggered.
+        # 
         # This parameter is required.
         self.execution_type = execution_type
         self.owner_id = owner_id
+        # The parameter flag.
         self.param_flag = param_flag
+        # The API parameters.
         self.params = params
+        # The code of the associated flow.
         self.related_flow_code = related_flow_code
+        # The name of the associated flow.
         self.related_flow_name = related_flow_name
+        # The ID of the related group.
         self.related_group_id = related_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The start time.
         self.start_date = start_date
 
     def validate(self):

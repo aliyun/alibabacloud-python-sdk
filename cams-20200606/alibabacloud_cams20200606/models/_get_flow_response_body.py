@@ -16,6 +16,7 @@ class GetFlowResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -87,20 +88,24 @@ class GetFlowResponseBodyData(DaraModel):
     ):
         # The list of categories.
         self.categories = categories
-        # The API version.
+        # The API version information.
         self.data_api_version = data_api_version
+        # The URL of the WA Flow Endpoint
         self.endpoint_uri = endpoint_uri
-        # The flow ID.
+        # Flow ID。
         self.flow_id = flow_id
-        # The flow name.
+        # The Flow name.
         self.flow_name = flow_name
-        # The JSON version.
+        # The JSON version information.
         self.jsonversion = jsonversion
         # The temporary preview URL.
         self.preview_url = preview_url
         # The expiration time of the preview URL.
         self.preview_url_expires = preview_url_expires
-        # The status of the flow.
+        # The status of the Flow. Valid values:
+        # - PUBLISHED: Published.
+        # - DRAFT: Draft.
+        # - DEPRECATED: Deprecated.
         self.status = status
 
     def validate(self):

@@ -13,8 +13,13 @@ class GetFbInstagramPagesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The personal access token.
+        # This field is not required if you use Alibaba Cloud AccessKey pair (AK+SK) or STS temporary authorization.
+        # 
         # This parameter is required.
         self.access_token = access_token
+        # The instance ID. The unique identifier of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id

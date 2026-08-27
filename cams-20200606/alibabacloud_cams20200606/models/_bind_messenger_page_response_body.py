@@ -17,11 +17,19 @@ class BindMessengerPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -89,8 +97,11 @@ class BindMessengerPageResponseBodyData(DaraModel):
         page_id: str = None,
         page_name: str = None,
     ):
+        # The connection status.
         self.connection_status = connection_status
+        # The current page ID.
         self.page_id = page_id
+        # The page name.
         self.page_name = page_name
 
     def validate(self):

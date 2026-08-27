@@ -9,20 +9,28 @@ class ListChatFlowShrinkRequest(DaraModel):
         self,
         biz_code: str = None,
         biz_extend_shrink: str = None,
+        flow_code: str = None,
+        flow_status: str = None,
         flow_trigger_type: str = None,
         keyword: str = None,
         owner_id: int = None,
         page_no: int = None,
         page_size: int = None,
+        phone_number: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         return_with_online_version: bool = None,
         status: str = None,
+        title: str = None,
     ):
         # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
         # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
+        # flowCode
+        self.flow_code = flow_code
+        # The flow status.
+        self.flow_status = flow_status
         # The flow trigger type. Valid values:
         # - TriggeredManually
         # - TriggeredByWhatsApp
@@ -37,6 +45,8 @@ class ListChatFlowShrinkRequest(DaraModel):
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
+        # The phone number.
+        self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to return the online status. Valid values:
@@ -47,6 +57,8 @@ class ListChatFlowShrinkRequest(DaraModel):
         self.return_with_online_version = return_with_online_version
         # The flow status. Default value: NORMAL.
         self.status = status
+        # The title.
+        self.title = title
 
     def validate(self):
         pass
@@ -61,6 +73,12 @@ class ListChatFlowShrinkRequest(DaraModel):
 
         if self.biz_extend_shrink is not None:
             result['BizExtend'] = self.biz_extend_shrink
+
+        if self.flow_code is not None:
+            result['FlowCode'] = self.flow_code
+
+        if self.flow_status is not None:
+            result['FlowStatus'] = self.flow_status
 
         if self.flow_trigger_type is not None:
             result['FlowTriggerType'] = self.flow_trigger_type
@@ -77,6 +95,9 @@ class ListChatFlowShrinkRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
 
@@ -89,6 +110,9 @@ class ListChatFlowShrinkRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.title is not None:
+            result['Title'] = self.title
+
         return result
 
     def from_map(self, m: dict = None):
@@ -98,6 +122,12 @@ class ListChatFlowShrinkRequest(DaraModel):
 
         if m.get('BizExtend') is not None:
             self.biz_extend_shrink = m.get('BizExtend')
+
+        if m.get('FlowCode') is not None:
+            self.flow_code = m.get('FlowCode')
+
+        if m.get('FlowStatus') is not None:
+            self.flow_status = m.get('FlowStatus')
 
         if m.get('FlowTriggerType') is not None:
             self.flow_trigger_type = m.get('FlowTriggerType')
@@ -114,6 +144,9 @@ class ListChatFlowShrinkRequest(DaraModel):
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
 
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
 
@@ -125,6 +158,9 @@ class ListChatFlowShrinkRequest(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
 
         return self
 

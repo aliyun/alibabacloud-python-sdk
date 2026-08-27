@@ -17,7 +17,7 @@ class ListFlowNodePrototypeV2ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -25,13 +25,13 @@ class ListFlowNodePrototypeV2ResponseBody(DaraModel):
         self.data = data
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The call was successful.
+        # - true: The operation was successful.
         # 
-        # - false: The call failed.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -91,7 +91,7 @@ class ListFlowNodePrototypeV2ResponseBodyData(DaraModel):
         self,
         model: List[main_models.ListFlowNodePrototypeV2ResponseBodyDataModel] = None,
     ):
-        # A list of the returned data.
+        # The list of request result data.
         self.model = model
 
     def validate(self):
@@ -130,31 +130,31 @@ class ListFlowNodePrototypeV2ResponseBodyDataModel(DaraModel):
         public_extend: str = None,
         status: str = None,
     ):
-        # The code of the component prototype.
+        # The component prototype code.
         self.code = code
-        # The code of the component group.
+        # The component group code.
         self.group_code = group_code
-        # The public extension information. This is a JSON string that contains extension information for the frontend to display the flow component. The fields are described as follows:
+        # The public extension information. This is used by the frontend to display extended information of flow components. The value is a JSON string. The first parameter in the string represents the flow component title. The following section describes the other fields:
         # 
-        # - en: The English information about the flow component.
+        # - en: the English information of the flow component.
         # 
-        # - zh: The Chinese information about the flow component.
+        # - zh: the Chinese information of the flow component.
         # 
-        # - name: The name of the flow component.
+        # - name: the name of the flow component.
         # 
-        # - remark: The remarks on the flow component.
+        # - remark: the remarks of the flow component.
         # 
-        # - order: The display order of the flow component.
+        # - order: the display order of the flow component.
         # 
-        # - style: The style of the flow component.
+        # - style: the style of the flow component.
         # 
-        # - svg: The URL of the flow component icon.
+        # - svg: the icon URL of the flow component.
         # 
-        # - icon: This field is deprecated.
+        # - icon: a deprecated field.
         # 
-        # - bgcolor: The background color of the icon.
+        # - bgcolor: the background color of the icon.
         self.public_extend = public_extend
-        # The status of the component prototype. The default value is NORMAL.
+        # The component prototype status. Default value: NORMAL.
         self.status = status
 
     def validate(self):

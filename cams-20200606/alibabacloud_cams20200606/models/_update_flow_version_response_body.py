@@ -24,7 +24,7 @@ class UpdateFlowVersionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The content of the returned data.
+        # The response content.
         self.response = response
         # Indicates whether the operation was successful. Valid values:
         # 

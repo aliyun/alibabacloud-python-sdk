@@ -13,12 +13,13 @@ class ModifyChatappTemplateResponseBody(DaraModel):
         data: main_models.ModifyChatappTemplateResponseBodyData = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The request status code.
+        # The response code.
         # 
-        # - OK indicates the request was successful.
+        # - OK indicates that the request was successful.
         # 
         # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -28,6 +29,7 @@ class ModifyChatappTemplateResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -53,6 +55,9 @@ class ModifyChatappTemplateResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.success is not None:
+            result['Success'] = self.success
+
         return result
 
     def from_map(self, m: dict = None):
@@ -72,6 +77,9 @@ class ModifyChatappTemplateResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
 
         return self
 

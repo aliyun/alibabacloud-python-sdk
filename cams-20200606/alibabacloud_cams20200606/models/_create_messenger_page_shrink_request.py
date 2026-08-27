@@ -16,15 +16,25 @@ class CreateMessengerPageShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the authorized ad accounts.
+        # 
         # This parameter is required.
         self.ad_account_ids_shrink = ad_account_ids_shrink
+        # The authorization code obtained after the embedded authorization is completed.
+        # 
         # This parameter is required.
         self.authentication_code = authentication_code
+        # The Business platform ID.
+        # 
         # This parameter is required.
         self.business_id = business_id
+        # The SpaceId of the ISV sub-customer or the instance ID of the direct customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The PageId of the messenger.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account

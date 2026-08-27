@@ -18,12 +18,27 @@ class ListDmTagResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response status code.
+        # 
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -97,8 +112,11 @@ class ListDmTagResponseBodyData(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
+        # The tag description.
         self.tag_description = tag_description
+        # The tag ID.
         self.tag_id = tag_id
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):

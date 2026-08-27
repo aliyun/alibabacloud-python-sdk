@@ -14,11 +14,11 @@ class ReadChatFlowShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The business tenant code. The default value is ALICOM_OPAAS.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # The business extension information. The default value is an empty collection.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
-        # The flow code. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+        # The flow code. You can view the flow code in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
         self.flow_code = flow_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
