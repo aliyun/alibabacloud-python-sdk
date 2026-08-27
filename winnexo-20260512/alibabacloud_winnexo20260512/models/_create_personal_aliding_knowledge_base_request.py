@@ -18,19 +18,21 @@ class CreatePersonalAlidingKnowledgeBaseRequest(DaraModel):
         sync_config: main_models.CreatePersonalAlidingKnowledgeBaseRequestSyncConfig = None,
         tenant_id: str = None,
     ):
-        # 目标个人目录 ID；不传时自动绑定到用户默认根目录，传入时必须是当前用户的已有个人目录（PERSONAL）
+        # The directory ID.
         self.directory_id = directory_id
-        # 知识库显示名称；不传时由后台从远程拉取的根节点名称回填
+        # The display name of the knowledge base. If not provided, the name is populated from the root node name pulled from the remote source.
         self.kb_name = kb_name
-        # 阿里钉知识库的可公开访问 URL
+        # The publicly accessible URL of the AliDing knowledge base.
         # 
         # This parameter is required.
         self.kb_url = kb_url
+        # The object bindings.
         self.object_bindings = object_bindings
-        # Agent 命名空间标识，可选
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
+        # The synchronization settings.
         self.sync_config = sync_config
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -106,9 +108,9 @@ class CreatePersonalAlidingKnowledgeBaseRequestSyncConfig(DaraModel):
         cron: str = None,
         enabled: bool = None,
     ):
-        # cron 表达式；enabled=true 时必填，enabled=false 时忽略
+        # The cron expression for timed scheduling.
         self.cron = cron
-        # 是否启用定时同步
+        # Specifies whether to enable synchronization.
         self.enabled = enabled
 
     def validate(self):
@@ -137,17 +139,15 @@ class CreatePersonalAlidingKnowledgeBaseRequestSyncConfig(DaraModel):
 
         return self
 
-
-
 class CreatePersonalAlidingKnowledgeBaseRequestObjectBindings(DaraModel):
     def __init__(
         self,
         object_id: str = None,
         object_type: str = None,
     ):
-        # 绑定对象 ID
+        # The ID of the recommended item, which can be a **feedId** or a micro-application ID.
         self.object_id = object_id
-        # 绑定对象类型，例如 CUSTOMER / OPPORTUNITY
+        # The advanced field type.
         self.object_type = object_type
 
     def validate(self):

@@ -15,13 +15,13 @@ class ListAgentsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 租户全量数字员工列表（含停用，按名称字母序）
+        # The list of skill cards.
         self.items = items
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,13 +78,13 @@ class ListAgentsResponseBodyItems(DaraModel):
         is_active: bool = None,
         operating_object_name: str = None,
     ):
-        # 使用权限授权模式：SPECIFIED_USERS=指定用户 / ALL_USERS=所有用户；未设置时为 null
+        # The authentication mode.
         self.auth_mode = auth_mode
-        # 数字员工显示名称
+        # The display name of the tool.
         self.display_name = display_name
-        # 启用/停用状态
+        # Indicates whether the account is activated.
         self.is_active = is_active
-        # 数字员工名称（唯一标识）
+        # The name of the digital employee.
         self.operating_object_name = operating_object_name
 
     def validate(self):

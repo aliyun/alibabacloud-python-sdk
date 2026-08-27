@@ -16,14 +16,17 @@ class ListUserVisibleKnowledgeBasesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
+        # The result list.
+        # Maximum size:
+        # 	50
         self.items = items
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 知识库总数
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,23 +94,23 @@ class ListUserVisibleKnowledgeBasesResponseBodyItems(DaraModel):
         gmt_modified: int = None,
         name: str = None,
     ):
-        # 知识库创建人用户 ID
+        # The user ID of the creator.
         self.creator_id = creator_id
-        # 知识库创建人名称
+        # The name of the creator.
         self.creator_name = creator_name
-        # 知识库描述
+        # The description of the knowledge base.
         self.description = description
-        # 知识库根目录唯一标识
+        # The directory ID of the enterprise knowledge base.
         self.directory_id = directory_id
-        # 目录归属类型
+        # The directory type.
         self.directory_kind = directory_kind
-        # 目录类型
+        # The directory type.
         self.directory_type = directory_type
-        # 创建时间戳（毫秒）
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳（毫秒）
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 知识库名称
+        # The file name.
         self.name = name
 
     def validate(self):

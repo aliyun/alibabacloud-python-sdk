@@ -12,13 +12,13 @@ class RevokeAgentUsersResponseBody(DaraModel):
         request_id: str = None,
         revoked_count: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
-        # 错误描述，成功时为空
+        # The error description. This is empty when the call succeeds.
         self.message = message
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 本次成功撤销的记录数
+        # The number of records successfully revoked in this call.
         self.revoked_count = revoked_count
 
     def validate(self):

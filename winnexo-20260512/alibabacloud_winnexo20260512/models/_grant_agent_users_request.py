@@ -16,19 +16,19 @@ class GrantAgentUsersRequest(DaraModel):
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # 授权截止时间戳（毫秒），不传表示永不过期
+        # The authorization expiration timestamp in milliseconds. If this parameter is not specified, the authorization never expires.
         self.expire_date = expire_date
-        # 数字员工名称
+        # The name of the digital human.
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # 权限列表：USE（使用权限）和/或 MANAGE（管理权限），不传时默认仅 USE；不得为空列表
+        # The permission items.
         self.permissions = permissions
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
-        # 被授权的用户组 ID 列表（16位 hex 字符串）
+        # The list of user group IDs.
         self.user_group_ids = user_group_ids
-        # 被授权的用户 ID 列表
+        # The list of user IDs to be authorized.
         self.user_ids = user_ids
 
     def validate(self):

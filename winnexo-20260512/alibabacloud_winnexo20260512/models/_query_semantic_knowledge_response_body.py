@@ -12,13 +12,13 @@ class QuerySemanticKnowledgeResponseBody(DaraModel):
         request_id: str = None,
         schema_knowledge: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 与 query 相关的语义知识文本
+        # The semantic knowledge text related to the query.
         # 
         # This parameter is required.
         self.schema_knowledge = schema_knowledge

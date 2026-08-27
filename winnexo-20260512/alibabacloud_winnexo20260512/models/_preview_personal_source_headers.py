@@ -13,7 +13,7 @@ class PreviewPersonalSourceHeaders(DaraModel):
         request_id: str = None,
     ):
         self.common_headers = common_headers
-        # 请求追踪 ID
+        # The request trace ID.
         # 
         # This parameter is required.
         self.request_id = request_id

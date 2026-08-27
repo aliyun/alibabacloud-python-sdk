@@ -11,13 +11,13 @@ class UpdateKnowledgeBaseSourceTagsRequest(DaraModel):
         source_tags: str = None,
         tenant_id: str = None,
     ):
-        # 数据源 ID（租户内唯一）
+        # The unique identifier on the business system side, that is, the business ID.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 资源标签（JSON 字符串列表，如 ["tagA","tagB"]；传 null 表示清空标签）
+        # The resource tags. This is an optional parameter that accepts a JSON string list, such as ["tagA","tagB"].
         self.source_tags = source_tags
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

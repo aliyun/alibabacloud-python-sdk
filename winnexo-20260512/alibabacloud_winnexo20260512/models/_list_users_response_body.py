@@ -18,19 +18,19 @@ class ListUsersResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 成员列表
+        # The user information.
         self.items = items
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 当前页码
+        # The current page number.
         self.page = page
-        # 每页数量
+        # The number of entries per page.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 符合条件的总记录数
+        # The total number of data entries in the project.
         self.total = total
 
     def validate(self):
@@ -108,19 +108,22 @@ class ListUsersResponseBodyItems(DaraModel):
         role_codes: List[str] = None,
         user_id: int = None,
     ):
-        # WINNEXO 登录账号
+        # The account ID.
         self.account_id = account_id
-        # 用户显示名称
+        # The display name of the tool.
         self.display_name = display_name
-        # 加入租户时间
+        # The creation time.
         self.gmt_create = gmt_create
-        # 启用/停用状态
+        # Indicates whether the account is activated:
+        # 
+        # - 1: Activated.
+        # - 0: Not activated.
         self.is_active = is_active
-        # 最后登录时间
+        # The last logon time.
         self.last_login_time = last_login_time
-        # 用户拥有的系统角色 code 列表
+        # The list of new system role codes (full replacement, at least one role must be included). Valid values: SUPER_ADMIN / SYSTEM_ADMIN / SEMANTIC_ADMIN / SKILL_ADMIN / KB_ADMIN / AGENT_ADMIN / APPLICATION_USER.
         self.role_codes = role_codes
-        # 用户ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -16,21 +16,21 @@ class StopChatMessageResponseBody(DaraModel):
         session_id: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 结束原因
+        # The reason for stopping.
         self.finish_reason = finish_reason
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 助手消息ID，由 sendAsyncChatMessage 返回；不属于当前租户时返回 404
+        # The message ID.
         self.message_id = message_id
-        # 已生成的部分内容
+        # The partially generated content.
         self.partial_content = partial_content
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 会话 ID
+        # The session ID.
         self.session_id = session_id
-        # 消息最终状态
+        # The final status of the message.
         self.status = status
 
     def validate(self):

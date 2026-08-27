@@ -13,23 +13,26 @@ class TogglePrimaryObjectFavoriteShrinkRequest(DaraModel):
         operating_object_name: str = None,
         tenant_id: str = None,
     ):
-        # 操作：add-关注，remove-取消关注
+        # The operation type. Valid values:
+        # 
+        # - **1**: Add to whitelist.
+        # - **2**: Remove from whitelist.
         # 
         # This parameter is required.
         self.action = action
-        # 主对象业务ID列表
+        # The list of primary object business IDs.
         # 
         # This parameter is required.
         self.object_ids_shrink = object_ids_shrink
-        # 对象类型（如 customer、project）
+        # The object type, such as customer. This parameter has a value when type is set to mention.
         # 
         # This parameter is required.
         self.object_type = object_type
-        # 运营对象名称（如 customer_1）
+        # The name of the digital employee (operating object name, optional).
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

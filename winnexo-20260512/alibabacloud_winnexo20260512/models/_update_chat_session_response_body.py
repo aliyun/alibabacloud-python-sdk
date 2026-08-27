@@ -15,12 +15,13 @@ class UpdateChatSessionResponseBody(DaraModel):
         request_id: str = None,
         session: main_models.UpdateChatSessionResponseBodySession = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
-        # 错误描述，成功时为空
+        # The error description. This is empty when the request is successful.
         self.message = message
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
+        # The session ID.
         self.session = session
 
     def validate(self):
@@ -77,24 +78,25 @@ class UpdateChatSessionResponseBodySession(DaraModel):
         title: str = None,
         updated_at: int = None,
     ):
-        # 创建时间
+        # The creation time.
         self.created_at = created_at
-        # 消息ID
+        # The message ID.
         self.id = id
-        # 创建时间是否超过30天
+        # Indicates whether the creation time exceeds 30 days.
         self.is_expired = is_expired
-        # 关联对象ID
+        # The associated object ID.
         self.metadata = metadata
-        # 会话使用的抽象模型名（quick/standard/flagship）
+        # The abstract model name used by the session (quick/standard/flagship).
         self.model = model
-        # 类型
+        # The type.
         self.object = object
+        # The associated object ID.
         self.object_id = object_id
-        # operatingObjectName
+        # The operating object name.
         self.operating_object_name = operating_object_name
-        # 标题
+        # The title.
         self.title = title
-        # 更新时间
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

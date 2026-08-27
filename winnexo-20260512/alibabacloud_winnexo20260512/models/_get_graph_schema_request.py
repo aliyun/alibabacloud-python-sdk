@@ -10,11 +10,11 @@ class GetGraphSchemaRequest(DaraModel):
         graph_name: str = None,
         tenant_id: str = None,
     ):
-        # 图谱名称，可先调用 listGraphs 获取
+        # The graph name. Call listGraphs first to obtain this value.
         # 
         # This parameter is required.
         self.graph_name = graph_name
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The effective tenant ID.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

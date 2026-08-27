@@ -13,15 +13,15 @@ class ResetTokenResponseBody(DaraModel):
         token: str = None,
         token_masked: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 新 Token 明文（仅本次返回，请妥善保管）
+        # The new token in plaintext. This value is returned only in this response. Store it securely.
         self.token = token
-        # 脱敏后的新 Token 值
+        # The masked token value.
         self.token_masked = token_masked
 
     def validate(self):

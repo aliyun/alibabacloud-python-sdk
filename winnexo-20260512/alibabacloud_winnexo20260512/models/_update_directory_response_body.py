@@ -13,15 +13,17 @@ class UpdateDirectoryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 目录唯一标识（echo 回入参）
+        # The directory ID.
         self.directory_id = directory_id
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 操作是否成功
+        # Indicates whether the API call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):

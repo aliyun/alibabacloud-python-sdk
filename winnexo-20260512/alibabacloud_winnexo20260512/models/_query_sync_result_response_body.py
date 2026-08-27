@@ -24,35 +24,35 @@ class QuerySyncResultResponseBody(DaraModel):
         summary: str = None,
         task_id: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 任务完成时间（ISO 8601）
+        # The time when the task was completed (ISO 8601 format).
         self.completed_at = completed_at
-        # 企业标识
+        # The enterprise identifier.
         self.corp_id = corp_id
-        # 部门同步统计（完成时有值）
+        # The department synchronization statistics. This field has a value when the task is completed.
         self.dept_stats = dept_stats
-        # 执行时长（秒）
+        # The execution duration, in seconds.
         self.duration_seconds = duration_seconds
-        # 错误信息（失败时有值）
+        # The error message.
         self.error_message = error_message
-        # 成员同步统计（syncMembers=true 且完成时有值）
+        # The member synchronization statistics. This field has a value when syncMembers is set to true and the task is completed.
         self.member_stats = member_stats
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 平台类型
+        # The platform type.
         self.platform_type = platform_type
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 任务开始执行时间（ISO 8601）
+        # The time when the task started (ISO 8601 format).
         self.started_at = started_at
-        # 任务状态: PENDING / RUNNING / COMPLETED / FAILED / TIMEOUT / CANCELED
+        # The task status. Valid values: PENDING, RUNNING, COMPLETED, FAILED, TIMEOUT, and CANCELED.
         self.status = status
-        # 任务提交时间（ISO 8601）
+        # The time when the task was submitted (ISO 8601 format).
         self.submitted_at = submitted_at
-        # 执行摘要（人可读）
+        # The intelligent meeting summary content.
         self.summary = summary
-        # 任务 ID
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -173,15 +173,15 @@ class QuerySyncResultResponseBodyMemberStats(DaraModel):
         total_external: int = None,
         unchanged: int = None,
     ):
-        # 失败的成员数
+        # The number of failed members.
         self.failed = failed
-        # 新增的成员关系数
+        # The number of added member relationships.
         self.relationship_added = relationship_added
-        # 移除的成员关系数
+        # The number of removed member relationships.
         self.relationship_removed = relationship_removed
-        # 外部成员总数
+        # The total number of external members.
         self.total_external = total_external
-        # 未变更的成员关系数
+        # The number of unchanged member relationships.
         self.unchanged = unchanged
 
     def validate(self):
@@ -238,17 +238,17 @@ class QuerySyncResultResponseBodyDeptStats(DaraModel):
         skipped: int = None,
         total_external: int = None,
     ):
-        # 新增的用户组数
+        # The total number of external departments.
         self.created = created
-        # 标记删除的用户组数
+        # The number of user groups marked for deletion.
         self.deleted = deleted
-        # 移动的用户组数
+        # The number of moved user groups.
         self.moved = moved
-        # 更名的用户组数
+        # The number of renamed user groups.
         self.renamed = renamed
-        # 跳过的用户组数
+        # The number of skipped user groups.
         self.skipped = skipped
-        # 外部部门总数
+        # The total number of external departments.
         self.total_external = total_external
 
     def validate(self):

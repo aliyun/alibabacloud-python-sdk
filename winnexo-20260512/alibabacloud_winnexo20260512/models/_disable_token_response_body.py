@@ -12,13 +12,15 @@ class DisableTokenResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 操作是否成功
+        # Indicates whether the token is disabled. Valid values:
+        # - true: Disabled.
+        # - false: Not disabled.
         self.disabled = disabled
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

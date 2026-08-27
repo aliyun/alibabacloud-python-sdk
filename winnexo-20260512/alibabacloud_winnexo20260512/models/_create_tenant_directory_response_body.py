@@ -22,43 +22,43 @@ class CreateTenantDirectoryResponseBody(DaraModel):
         tenant_id: int = None,
         user_id: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 目录描述
+        # The description of the to-do card type.
         self.description = description
-        # 目录唯一标识
+        # The directory ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # 创建时间戳
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 目录内部主键
+        # Id of the request
         # 
         # This parameter is required.
         self.id = id
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 文件名
+        # The name.
         # 
         # This parameter is required.
         self.name = name
-        # 历史运营对象名称
+        # The name of the digital employee (the operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 父目录内部主键
+        # The ID of the parent node.
         self.parent_id = parent_id
-        # 文件 OSS URL
+        # The path of the node.
         # 
         # This parameter is required.
         self.path = path
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 租户 ID
+        # The ID of the effective tenant.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id
-        # 创建人用户 ID
+        # The user ID of the creator.
         # 
         # This parameter is required.
         self.user_id = user_id

@@ -21,24 +21,27 @@ class ListScheduledTasksResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 是否有更多数据
+        # Indicates whether more data is available. Valid values:
+        # - true: More data is available.
+        # - false: No more data is available.
         self.has_more = has_more
+        # The list of skill cards.
         self.items = items
-        # 本次实际生效的单页最大返回数量
+        # The maximum number of entries returned in this request.
         self.max_results = max_results
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 下一页翻页令牌，原样回传即可取下一页；无更多数据时为空字符串
+        # The pagination token.
         self.next_token = next_token
-        # 当前页码（实际生效值）
+        # The page number. Default value: 1.
         self.page = page
-        # 每页条数（实际生效值）
+        # The number of entries per page.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 满足条件的总数
+        # The total number of tasks.
         self.total = total
 
     def validate(self):
@@ -126,37 +129,78 @@ class ListScheduledTasksResponseBody(DaraModel):
 class ListScheduledTasksResponseBodyItems(DaraModel):
     def __init__(
         self,
+        abnormal_reason: str = None,
+        can_delete: bool = None,
+        can_edit: bool = None,
+        can_execute: bool = None,
+        can_toggle: bool = None,
+        collaboration_group_id: str = None,
         creator: str = None,
+        creator_name: str = None,
         cron_expression: str = None,
         description: str = None,
+        digital_employee_name: List[str] = None,
         execution_count: int = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         is_open: bool = None,
+        model: str = None,
         name: str = None,
+        status: str = None,
         task_id: str = None,
         trigger_type: str = None,
+        visibility: str = None,
+        visible_member_user_ids: List[str] = None,
     ):
-        # 创建人
+        # The reason for the abnormality. This field has a value only when status is abnormal.
+        self.abnormal_reason = abnormal_reason
+        # Indicates whether the current caller can delete the task (only the task creator and group owner can do so). Always returns true for personal tasks.
+        self.can_delete = can_delete
+        # Indicates whether the task can be edited or deleted.
+        self.can_edit = can_edit
+        # Indicates whether the current caller can immediately execute the task (anyone with visibility can operate. Returns false for abnormal tasks). Always returns true for personal tasks.
+        self.can_execute = can_execute
+        # Indicates whether the current caller can start or stop the task (only the task creator and group owner can do so. Returns false for abnormal tasks). Always returns true for personal tasks.
+        self.can_toggle = can_toggle
+        # The ID of the collaboration group (such as cg_101). If specified, a group task is created (the caller must be a valid group member). If left empty, a personal task is created.
+        self.collaboration_group_id = collaboration_group_id
+        # The creator.
         self.creator = creator
-        # Cron 表达式
+        # The creator.
+        self.creator_name = creator_name
+        # The cron expression.
         self.cron_expression = cron_expression
-        # 任务简述
+        # The description of the to-do card type.
         self.description = description
-        # 累计执行次数
+        # The list of digital employee names.
+        self.digital_employee_name = digital_employee_name
+        # The cumulative number of executions.
         self.execution_count = execution_count
-        # 创建时间 ISO8601
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间 ISO8601
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 是否公开
+        # Indicates whether public access is enabled.
         self.is_open = is_open
-        # 文件名
+        # The execution model tier. If not specified, the value is not updated.
+        self.model = model
+        # The name.
         self.name = name
-        # 任务 ID
+        # The task status. Running is returned upon submission.
+        self.status = status
+        # The task ID.
         self.task_id = task_id
-        # 触发类型（manual/cron/event）
+        # The trigger type.
         self.trigger_type = trigger_type
+        # The visibility of the group task. Valid values:
+        # - PRIVATE: visible only to the creator and group owner.
+        # - COLLABORATIVE: visible to specified collaborators.
+        # - PUBLIC: visible to all group members.
+        # 
+        # If not specified for a group task, the default value is PRIVATE. This field is ignored for personal tasks.
+        self.visibility = visibility
+        # The list of collaborator user IDs (excluding the task creator and group creator, who are covered by the authentication layer). This field is returned only for group tasks. An empty list is returned for PRIVATE or PUBLIC visibility.
+        self.visible_member_user_ids = visible_member_user_ids
 
     def validate(self):
         pass
@@ -166,14 +210,38 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.abnormal_reason is not None:
+            result['abnormalReason'] = self.abnormal_reason
+
+        if self.can_delete is not None:
+            result['canDelete'] = self.can_delete
+
+        if self.can_edit is not None:
+            result['canEdit'] = self.can_edit
+
+        if self.can_execute is not None:
+            result['canExecute'] = self.can_execute
+
+        if self.can_toggle is not None:
+            result['canToggle'] = self.can_toggle
+
+        if self.collaboration_group_id is not None:
+            result['collaborationGroupId'] = self.collaboration_group_id
+
         if self.creator is not None:
             result['creator'] = self.creator
+
+        if self.creator_name is not None:
+            result['creatorName'] = self.creator_name
 
         if self.cron_expression is not None:
             result['cronExpression'] = self.cron_expression
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.digital_employee_name is not None:
+            result['digitalEmployeeName'] = self.digital_employee_name
 
         if self.execution_count is not None:
             result['executionCount'] = self.execution_count
@@ -187,8 +255,14 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         if self.is_open is not None:
             result['isOpen'] = self.is_open
 
+        if self.model is not None:
+            result['model'] = self.model
+
         if self.name is not None:
             result['name'] = self.name
+
+        if self.status is not None:
+            result['status'] = self.status
 
         if self.task_id is not None:
             result['taskId'] = self.task_id
@@ -196,18 +270,48 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         if self.trigger_type is not None:
             result['triggerType'] = self.trigger_type
 
+        if self.visibility is not None:
+            result['visibility'] = self.visibility
+
+        if self.visible_member_user_ids is not None:
+            result['visibleMemberUserIds'] = self.visible_member_user_ids
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('abnormalReason') is not None:
+            self.abnormal_reason = m.get('abnormalReason')
+
+        if m.get('canDelete') is not None:
+            self.can_delete = m.get('canDelete')
+
+        if m.get('canEdit') is not None:
+            self.can_edit = m.get('canEdit')
+
+        if m.get('canExecute') is not None:
+            self.can_execute = m.get('canExecute')
+
+        if m.get('canToggle') is not None:
+            self.can_toggle = m.get('canToggle')
+
+        if m.get('collaborationGroupId') is not None:
+            self.collaboration_group_id = m.get('collaborationGroupId')
+
         if m.get('creator') is not None:
             self.creator = m.get('creator')
+
+        if m.get('creatorName') is not None:
+            self.creator_name = m.get('creatorName')
 
         if m.get('cronExpression') is not None:
             self.cron_expression = m.get('cronExpression')
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('digitalEmployeeName') is not None:
+            self.digital_employee_name = m.get('digitalEmployeeName')
 
         if m.get('executionCount') is not None:
             self.execution_count = m.get('executionCount')
@@ -221,14 +325,26 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         if m.get('isOpen') is not None:
             self.is_open = m.get('isOpen')
 
+        if m.get('model') is not None:
+            self.model = m.get('model')
+
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
 
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
 
         if m.get('triggerType') is not None:
             self.trigger_type = m.get('triggerType')
+
+        if m.get('visibility') is not None:
+            self.visibility = m.get('visibility')
+
+        if m.get('visibleMemberUserIds') is not None:
+            self.visible_member_user_ids = m.get('visibleMemberUserIds')
 
         return self
 

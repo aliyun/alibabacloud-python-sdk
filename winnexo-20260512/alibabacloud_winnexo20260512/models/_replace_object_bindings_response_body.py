@@ -16,14 +16,15 @@ class ReplaceObjectBindingsResponseBody(DaraModel):
         request_id: str = None,
         source_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
+        # The object binding.
         self.object_bindings = object_bindings
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 数据源 ID
+        # The ID of the personal FILE data source to be replaced (unique within the tenant).
         self.source_id = source_id
 
     def validate(self):
@@ -85,11 +86,11 @@ class ReplaceObjectBindingsResponseBodyObjectBindings(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # 绑定对象归属的语义图谱名（object_id 在该 graph 下唯一，必填）
+        # The semantic graph name to which the binding object belongs (object_id is unique within this graph. Required).
         self.graph_name = graph_name
-        # 绑定对象 ID
+        # The binding object ID.
         self.object_id = object_id
-        # 绑定对象类型（如 customer / project）
+        # The binding object type (such as customer or project).
         self.object_type = object_type
 
     def validate(self):

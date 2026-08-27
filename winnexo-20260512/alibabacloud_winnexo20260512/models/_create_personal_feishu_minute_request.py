@@ -15,25 +15,25 @@ class CreatePersonalFeishuMinuteRequest(DaraModel):
         operating_object_name: str = None,
         tenant_id: str = None,
     ):
-        # 凭证 ID（关联 rbj_credential 表，必填）
+        # The credential ID.
         # 
         # This parameter is required.
         self.credential_id = credential_id
-        # 资源描述（可选）
+        # The resource description.
         self.description = description
-        # 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前用户在当前数字员工下的已有个人目录
+        # The directory ID.
         self.directory_id = directory_id
-        # 飞书妙记 token（妙记唯一标识符，必填）
+        # The Lark Minutes token (unique identifier of the minutes record, required).
         # 
         # This parameter is required.
         self.minute_token = minute_token
-        # 资源显示名称
+        # The resource name.
         # 
         # This parameter is required.
         self.name = name
-        # 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

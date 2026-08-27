@@ -11,15 +11,15 @@ class RenameKnowledgeBaseSourceRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 新的数据源名称
+        # The new name of the data source.
         # 
         # This parameter is required.
         self.new_name = new_name
-        # 数据源 ID（租户内唯一）
+        # The data source ID, which is unique within the tenant.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

@@ -16,21 +16,21 @@ class RunSkillResponseBody(DaraModel):
         skill_name: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 任务创建时间，ISO8601 UTC 格式
+        # The task creation time in ISO 8601 UTC format.
         self.created_at = created_at
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 异步任务 ID，用于 getSkillRun 查询
+        # The asynchronous task ID, used for querying with getSkillRun.
         self.run_id = run_id
-        # 实际执行的技能编码
+        # The skill code that was actually executed.
         self.skill_code = skill_code
-        # 技能名称
+        # The skill name.
         self.skill_name = skill_name
-        # 任务状态：提交即返回 Running
+        # The task status. Returns Running immediately upon submission.
         self.status = status
 
     def validate(self):

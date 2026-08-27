@@ -18,18 +18,19 @@ class ListOutputFilesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
+        # The output list.
         self.items = items
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 当前页码
+        # The current page number.
         self.page = page
-        # 每页数量
+        # The number of entries per page.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 符合条件的产出总数
+        # The total number of outputs that match the specified conditions.
         self.total = total
 
     def validate(self):
@@ -111,26 +112,27 @@ class ListOutputFilesResponseBodyItems(DaraModel):
         skill_output_id: str = None,
         task_id: str = None,
     ):
-        # 会话 ID
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # 创建时间(ISO8601)
+        # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # 更新时间(ISO8601)
+        # The update time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 文件名
+        # The output name.
         self.name = name
-        # 数字员工（运营对象）名称
+        # The name of the digital employee (operating object).
         self.operating_object_name = operating_object_name
-        # 产出 ID
+        # The output ID.
         self.output_id = output_id
+        # The output detail list.
         self.output_items = output_items
-        # 产出类型: conversation/skill/task
+        # The output type: `conversation/skill/task`.
         self.output_type = output_type
-        # 产出类型国际化展示名称
+        # The internationalized display name of the output type.
         self.output_type_display_name = output_type_display_name
-        # 技能产出 ID
+        # The skill output ID.
         self.skill_output_id = skill_output_id
-        # 任务 ID
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -240,32 +242,35 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
         slides_info: main_models.ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo = None,
         task_execution_id: str = None,
     ):
-        # 创建时间(ISO8601)
+        # The creation time in ISO 8601 format.
         self.create_time = create_time
+        # The email information. This field is present when the output type is email.
         self.email_info = email_info
+        # The file information. This field is present when the output type is file.
         self.file_info = file_info
-        # 数据库创建时间(ISO8601)
+        # The database creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # 数据库更新时间(ISO8601)
+        # The database update time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 产出名称
+        # The output name.
         self.item_name = item_name
-        # 产出明细类型: ppt/html/document/picture/slides/video/audio/email/others
+        # The type of the output item. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
         self.item_type = item_type
-        # 产出明细类型国际化展示名称
+        # The internationalized display name of the output detail type.
         self.item_type_display_name = item_type_display_name
-        # 助手消息ID，由 sendAsyncChatMessage 返回；不属于当前租户时返回 404
+        # The message ID.
         self.message_id = message_id
-        # 产出明细 ID
+        # The output detail ID.
         self.output_item_id = output_item_id
-        # 是否开启分享
+        # Indicates whether sharing is enabled.
         self.share_enabled = share_enabled
-        # 分享令牌
+        # The share token, which is present when sharing is enabled. You can use this token to access the public share preview API.
         self.share_token = share_token
-        # 技能产出 ID
+        # The skill output ID.
         self.skill_output_id = skill_output_id
+        # The slides information. This field is present when the output type is slides.
         self.slides_info = slides_info
-        # 任务执行 ID
+        # The task execution ID.
         self.task_execution_id = task_execution_id
 
     def validate(self):
@@ -388,13 +393,13 @@ class ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo(DaraModel):
         ppt_name: str = None,
         total_slides: int = None,
     ):
-        # 已完成幻灯片数
+        # The number of completed slides.
         self.completed_slides = completed_slides
         # PPT ID
         self.ppt_id = ppt_id
-        # PPT 名称
+        # The PPT name.
         self.ppt_name = ppt_name
-        # 总幻灯片数
+        # The total number of slides.
         self.total_slides = total_slides
 
     def validate(self):
@@ -443,13 +448,13 @@ class ListOutputFilesResponseBodyItemsOutputItemsFileInfo(DaraModel):
         path: str = None,
         type: str = None,
     ):
-        # 文件描述
+        # The file description.
         self.description = description
-        # 文件名
+        # The file name.
         self.name = name
-        # 文件 OSS URL
+        # The file path (OSS object key).
         self.path = path
-        # 文件类型，如 .pdf, .md
+        # The file type, such as .pdf or .md.
         self.type = type
 
     def validate(self):
@@ -498,13 +503,13 @@ class ListOutputFilesResponseBodyItemsOutputItemsEmailInfo(DaraModel):
         recipients: List[str] = None,
         subject: str = None,
     ):
-        # 邮件内容
+        # The email body.
         self.body = body
-        # 内容类型，如 MARKDOWN/JSONML/HTML
+        # The content type, such as MARKDOWN/JSONML/HTML.
         self.content_type = content_type
-        # recipients
+        # The recipient list.
         self.recipients = recipients
-        # 邮件主题
+        # The email subject.
         self.subject = subject
 
     def validate(self):

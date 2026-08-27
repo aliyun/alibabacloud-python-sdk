@@ -11,13 +11,13 @@ class ReparseSourceRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 是否同步等待重新解析完成；默认 false，异步入队
+        # Specifies whether to synchronously wait for the re-parsing to complete. Default value: false, which indicates asynchronous queuing.
         self.force_sync = force_sync
-        # 待重新解析的数据源 ID（租户内唯一）
+        # The ID of the data source to re-parse. This ID is unique within the tenant.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

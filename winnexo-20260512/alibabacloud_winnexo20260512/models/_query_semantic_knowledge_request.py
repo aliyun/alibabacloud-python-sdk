@@ -12,19 +12,19 @@ class QuerySemanticKnowledgeRequest(DaraModel):
         query: str = None,
         tenant_id: str = None,
     ):
-        # 数字员工名称，可先调用 listAuthorizedAgents 获取 USE 权限列表
+        # The digital human name. Call listAuthorizedAgents first to retrieve the list of USE permissions.
         # 
         # This parameter is required.
         self.agent_name = agent_name
-        # 图谱名称，可先调用 listGraphs 获取
+        # The knowledge graph name. Call listGraphs first to retrieve available graphs.
         # 
         # This parameter is required.
         self.graph_name = graph_name
-        # 自然语言查询问题
+        # The natural language query question.
         # 
         # This parameter is required.
         self.query = query
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

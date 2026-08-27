@@ -23,35 +23,43 @@ class GetKnowledgeBaseSourceResponseBody(DaraModel):
         status: str = None,
         status_message: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 知识描述
+        # The description of the to-do card type.
         self.description = description
-        # 所属分类 ID
+        # The folder ID.
         self.directory_id = directory_id
-        # 所属分类完整路径
+        # The full path of the category to which the knowledge item belongs.
         self.directory_path = directory_path
-        # 创建时间戳（毫秒）
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳（毫秒）
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 文件名
+        # The name.
         self.name = name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 知识 ID
+        # The unique identifier on the business system side, that is, the business ID.
         self.source_id = source_id
-        # 知识 KB 归属类型：aliding_kb_doc（阿里钉知识库文档）/ normal（普通知识）
+        # The knowledge base ownership type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
         self.source_kind = source_kind
-        # 知识标签（JSON 字符串列表）
+        # The resource tags. This is optional and is a JSON string list, such as ["tagA","tagB"].
         self.source_tags = source_tags
-        # 知识类型（TEXT / FILE / ONLINE_DOC 等）
+        # The type of the resource source. Valid values:
+        # 
+        # - ExportTaskId: the resource export ID.
+        # 
+        # - TaskId: the Module execution task ID.
+        # 
+        # - StatePath: the OSS path where the resource state is stored.
         self.source_type = source_type
-        # 处理状态（READY / RUNNING / FAILED 等）
+        # The data source status. Valid values:
+        # - **1**: online.
+        # - **0**: offline.
         self.status = status
-        # 状态附加信息（如失败原因）
+        # The status message.
         self.status_message = status_message
 
     def validate(self):

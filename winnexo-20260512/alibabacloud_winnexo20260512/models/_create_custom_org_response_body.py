@@ -14,17 +14,17 @@ class CreateCustomOrgResponseBody(DaraModel):
         platform_type: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 注册成功的组织标识
+        # The enterprise ID.
         self.corp_id = corp_id
-        # 组织展示名称
+        # The organization name.
         self.corp_name = corp_name
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 平台类型，固定为 custom
+        # The platform type.
         self.platform_type = platform_type
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

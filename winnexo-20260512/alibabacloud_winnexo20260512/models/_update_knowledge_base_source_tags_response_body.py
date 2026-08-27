@@ -14,17 +14,17 @@ class UpdateKnowledgeBaseSourceTagsResponseBody(DaraModel):
         source_id: str = None,
         source_tags: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 最近修改时间，ISO8601 格式
+        # The last modified time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 数据源 ID
+        # The source ID.
         self.source_id = source_id
-        # 更新后的资源标签
+        # The updated resource tags.
         self.source_tags = source_tags
 
     def validate(self):

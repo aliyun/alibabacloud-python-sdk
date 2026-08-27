@@ -15,19 +15,30 @@ class UploadChatFileAdvanceRequest(DaraModel):
         operating_object_name: str = None,
         tenant_id: str = None,
     ):
-        # 文件 MIME 类型（可选，不传时按 application/octet-stream 处理）
+        # The content type of the file. Valid values:
+        # 
+        # - **image**: image
+        # - **document**: general document
+        # - **alidoc**: Alibaba document
+        # - **text**: text
+        # - **video**: video
+        # - **audio**: audio
+        # - **archive**: archive
+        # - **app**: application
+        # - **link**: shortcut
+        # - **other**: other
         self.content_type = content_type
-        # 原始文件名（含后缀，如 report.pdf）。中转生成的 OSS 地址不携带原始文件名，后端据此确定文件后缀与展示名
+        # The full path name of the file.
         # 
         # This parameter is required.
         self.file_name = file_name
-        # 文件的 OSS 地址。使用 SDK 的 UploadChatFileAdvance 方法时由 SDK 中转上传后自动回填；直接调用本 API 时需自行传入可被服务端访问的 OSS 地址
+        # The attachment address.
         # 
         # This parameter is required.
         self.file_url_object = file_url_object
-        # Agent 命名空间标识
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

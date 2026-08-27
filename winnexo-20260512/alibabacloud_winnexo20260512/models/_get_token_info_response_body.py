@@ -14,17 +14,17 @@ class GetTokenInfoResponseBody(DaraModel):
         request_id: str = None,
         token_masked: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # Token 是否开启（存在 ACTIVE 状态的 Token）
+        # Indicates whether the token is enabled.
         self.enabled = enabled
-        # Token 创建时间（ISO 8601）
+        # The creation time.
         self.gmt_create = gmt_create
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 脱敏后的 Token 值
+        # The masked token value.
         self.token_masked = token_masked
 
     def validate(self):

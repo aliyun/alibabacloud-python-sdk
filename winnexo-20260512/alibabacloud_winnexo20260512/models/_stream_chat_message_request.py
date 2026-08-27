@@ -10,9 +10,9 @@ class StreamChatMessageRequest(DaraModel):
         last_event_id: str = None,
         tenant_id: str = None,
     ):
-        # 上次接收到的 SSE event id，用于断线续推；不传则从头全量回放
+        # The last received SSE event ID, used for resuming delivery after a disconnection. If not specified, the full stream is replayed from the beginning.
         self.last_event_id = last_event_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

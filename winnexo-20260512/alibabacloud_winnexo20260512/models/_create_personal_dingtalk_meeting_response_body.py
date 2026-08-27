@@ -17,23 +17,23 @@ class CreatePersonalDingtalkMeetingResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 绑定的目录 ID
+        # The directory ID.
         self.directory_id = directory_id
-        # 创建时间 ISO8601
+        # The creation time.
         self.gmt_create = gmt_create
-        # 错误描述，成功时为空
+        # The response message.
         self.message = message
-        # 文件名
+        # The skill name.
         self.name = name
-        # 请求追踪 ID
+        # Id of the request
         self.request_id = request_id
-        # 资源 scope，固定为 PERSONAL
+        # The permission scope.
         self.scope = scope
-        # 新建资源 ID
+        # The unique identifier on the business system side, which is the business ID.
         self.source_id = source_id
-        # 资源状态
+        # The task running status.
         self.status = status
 
     def validate(self):

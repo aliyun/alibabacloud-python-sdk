@@ -16,21 +16,25 @@ class GetInstanceExpireTimeResponseBody(DaraModel):
         request_id: str = None,
         tenant_id: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 是否找到标准包实例
+        # Indicates whether a standard package instance is found.
         self.found = found
-        # 实例过期时间（ISO格式）
+        # The expiration time of the instance in ISO format.
         self.instance_expire_time = instance_expire_time
-        # 实例ID
+        # The instance ID. This parameter is required.
         self.instance_id = instance_id
-        # 实例状态
+        # The instance status. Valid values:
+        # - RUNNING: Running.
+        # - TERMINATED: Terminated.
+        # - COMPLETED: Completed.
+        # - ERROR: Error.
         self.instance_status = instance_status
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 系统租户ID
+        # The effective tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

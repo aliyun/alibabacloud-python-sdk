@@ -11,13 +11,13 @@ class CreateCustomOrgRequest(DaraModel):
         corp_name: str = None,
         tenant_id: str = None,
     ):
-        # 自定义组织标识，格式：^[a-z0-9][a-z0-9\-]{2,63}$
+        # The corpId of the activated enterprise.
         # 
         # This parameter is required.
         self.corp_id = corp_id
-        # 组织展示名称（可选，不传则与 corpId 相同）
+        # The organization name.
         self.corp_name = corp_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

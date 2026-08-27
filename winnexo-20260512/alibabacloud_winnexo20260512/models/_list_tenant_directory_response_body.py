@@ -18,18 +18,19 @@ class ListTenantDirectoryResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
+        # The file information.
         self.items = items
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 当前页码
+        # The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
-        # 每页数量
+        # The number of entries per page. Default value: 100. Maximum value: 500.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 内容总数
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -113,30 +114,31 @@ class ListTenantDirectoryResponseBodyItems(DaraModel):
         source_total_count: int = None,
         source_type: str = None,
     ):
-        # 创建人名称
+        # The nickname of the creator.
         self.creator_name = creator_name
-        # 目录描述
+        # The description of the to-do card type.
         self.description = description
-        # 创建时间戳
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 目录 ID 或资源 ID
+        # The signing record ID.
         self.item_id = item_id
-        # 内容类型：directory 或 resource
+        # The data type (group, user, or role).
         self.item_type = item_type
-        # 文件名
+        # The name.
         self.name = name
+        # The object bindings.
         self.object_bindings = object_bindings
-        # 根知识库下失败资源数
+        # The number of resources with the FAILED status. This field is returned only when the top-level directory list of the knowledge base is queried.
         self.source_failed_count = source_failed_count
-        # 根知识库下成功资源数
+        # The number of resources with the READY status. This field is returned only when the top-level directory list of the knowledge base is queried.
         self.source_ready_count = source_ready_count
-        # 资源解析状态
+        # The resource status. This field has a value only when itemType is set to resource.
         self.source_status = source_status
-        # 根知识库下资源总数
+        # The total number of resources in the directory and its subdirectories. This field is returned only when the top-level directory list of the knowledge base is queried.
         self.source_total_count = source_total_count
-        # 资源类型
+        # The data source type.
         self.source_type = source_type
 
     def validate(self):

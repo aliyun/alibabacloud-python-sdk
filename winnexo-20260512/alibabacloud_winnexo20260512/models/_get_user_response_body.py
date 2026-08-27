@@ -21,27 +21,29 @@ class GetUserResponseBody(DaraModel):
         user_group_ids: List[str] = None,
         wn_user_id: str = None,
     ):
-        # WINNEXO 登录账号
+        # The account ID.
         self.account_id = account_id
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 用户显示名称
+        # The display name of the account.
         self.display_name = display_name
-        # 加入租户时间
+        # The creation time.
         self.gmt_create = gmt_create
-        # 启用/停用状态
+        # Indicates whether the account is activated. Valid values:
+        #  - **true**: Activated.
+        # - **false**: Not activated.
         self.is_active = is_active
-        # 最后登录时间
+        # The last logon time.
         self.last_login_time = last_login_time
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 用户拥有的系统角色 code 列表
+        # The list of system role codes (full replacement, must contain at least one role). Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
         self.role_codes = role_codes
-        # 用户所属用户组ID列表
+        # The list of user group IDs to which the user belongs.
         self.user_group_ids = user_group_ids
-        # WINNEXO 平台用户ID
+        # The WINNEXO platform user ID.
         self.wn_user_id = wn_user_id
 
     def validate(self):

@@ -14,17 +14,17 @@ class DeleteChatSessionResponseBody(DaraModel):
         request_id: str = None,
         session_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 是否删除成功
+        # Indicates whether the session is deleted.
         self.deleted = deleted
-        # 是否硬删除
+        # Indicates whether the session is hard-deleted.
         self.hard_delete = hard_delete
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 会话 ID
+        # The unique identifier of the function session.
         self.session_id = session_id
 
     def validate(self):

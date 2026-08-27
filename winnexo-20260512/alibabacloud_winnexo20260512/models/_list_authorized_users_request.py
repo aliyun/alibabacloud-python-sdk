@@ -13,17 +13,17 @@ class ListAuthorizedUsersRequest(DaraModel):
         permission: str = None,
         tenant_id: str = None,
     ):
-        # 筛选类型：USER / USER_GROUP / 不传则返回全部
+        # The filter type. Valid values: USER, USER_GROUP. If not specified, all types are returned.
         self.grantee_type = grantee_type
-        # 搜索关键词，按用户名或组名模糊匹配
+        # The search keyword.
         self.keyword = keyword
-        # 数字员工名称
+        # The name of the digital employee.
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # 权限类型过滤：USE=使用权限 / MANAGE=管理权限
+        # Permission
         self.permission = permission
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

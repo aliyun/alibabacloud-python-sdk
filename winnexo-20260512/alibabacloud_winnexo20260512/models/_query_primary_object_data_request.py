@@ -14,19 +14,19 @@ class QueryPrimaryObjectDataRequest(DaraModel):
         page_size: int = None,
         tenant_id: str = None,
     ):
-        # 关键字搜索（固定匹配 name；若 schema 定义 description，则同时匹配 description）
+        # The keyword for search. The keyword is matched against the name field. If the schema defines a description field, the keyword is also matched against the description field.
         self.keyword = keyword
-        # 仅返回关注的主对象；false 或不传则返回全部对象（包含 isFavorited 标识）
+        # Specifies whether to return only favorited primary objects. If this parameter is set to false or not specified, all objects are returned with the isFavorited flag.
         self.only_favorites = only_favorites
-        # 运营对象名称（如 customer_1）
+        # The operating object name (such as customer_1).
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # 页码（从 1 开始）
+        # The page number (starting from 1).
         self.page = page
-        # 每页数量，范围 1-100
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

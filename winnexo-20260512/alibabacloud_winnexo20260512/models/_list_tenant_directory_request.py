@@ -15,19 +15,23 @@ class ListTenantDirectoryRequest(DaraModel):
         source_types: str = None,
         tenant_id: str = None,
     ):
-        # 目录唯一标识；不传或传 root 时查询知识库根目录列表
+        # The folder ID.
         self.directory_id = directory_id
-        # 页码
+        # The current page number.
         self.page = page
-        # 每页数量
+        # The number of entries per page. Default value: 100. Maximum value: 500.
         self.page_size = page_size
-        # 排序字段
+        # The field by which the results are sorted. Valid values:
+        # 
+        # - event_time: the event creation time.
+        # - event_execute_start_time: the event execution time.
+        # - event_execute_finish_time: the event completion time.
         self.sort_field = sort_field
-        # 排序方向
+        # The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
         self.sort_order = sort_order
-        # 资源类型过滤，多个类型使用逗号分隔；传入后只返回资源
+        # The list of source types.
         self.source_types = source_types
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

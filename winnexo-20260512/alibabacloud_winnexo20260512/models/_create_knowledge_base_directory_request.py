@@ -12,15 +12,15 @@ class CreateKnowledgeBaseDirectoryRequest(DaraModel):
         parent_directory_id: str = None,
         tenant_id: str = None,
     ):
-        # 分类描述（可选）
+        # The description of the AI assistant.
         self.description = description
-        # 分类名称（企业知识库目录名称）
+        # The image name.
         # 
         # This parameter is required.
         self.name = name
-        # 父分类 ID；不传时新分类挂在企业知识库根目录下，传入时必须是当前租户下已存在的企业知识库目录 ID
+        # The directory ID.
         self.parent_directory_id = parent_directory_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

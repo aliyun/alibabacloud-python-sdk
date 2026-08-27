@@ -18,19 +18,19 @@ class ListSkillsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 技能列表
+        # The list of skill cards.
         self.items = items
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 当前页码
+        # The page number.
         self.page = page
-        # 每页数量
+        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 符合条件的技能总数
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -114,31 +114,31 @@ class ListSkillsResponseBodyItems(DaraModel):
         updated_time: str = None,
         version_number: str = None,
     ):
-        # 创建时间，ISO8601 格式
+        # The creation time.
         self.created_time = created_time
-        # 技能描述（已 i18n 解析）
+        # The description of the to-do card type.
         self.description = description
-        # 执行模式：CODE_AGENT / SYSTEM 等
+        # The execution mode, such as CODE_AGENT or SYSTEM.
         self.execute_mode = execute_mode
-        # 是否全局可访问
+        # Indicates whether the skill is globally accessible.
         self.global_access = global_access
-        # 是否存在未发布的草稿修改
+        # Indicates whether unpublished draft modifications exist.
         self.has_draft_changes = has_draft_changes
-        # 技能名称（已 i18n 解析）
+        # The file name.
         self.name = name
-        # 技能编码（全局唯一）
+        # The actual skill code for execution.
         self.skill_code = skill_code
-        # 技能定义 ID
+        # The skill definition ID.
         self.skill_hub_definition_id = skill_hub_definition_id
-        # 来源类型：BUILTIN / CUSTOM
+        # The data source type. Fixed value: FILE.
         self.source_type = source_type
-        # 技能状态：ACTIVE / DRAFT
+        # The task status. Returns Running upon submission.
         self.status = status
-        # 标签列表（已 i18n 解析）
+        # The keys.
         self.tags = tags
-        # 修改时间，ISO8601 格式
+        # The update timestamp, in milliseconds.
         self.updated_time = updated_time
-        # 版本号
+        # The workflow definition version number.
         self.version_number = version_number
 
     def validate(self):

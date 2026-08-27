@@ -15,15 +15,15 @@ class ListKnowledgeBaseDirectoriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # directories
+        # The directory titles.
         self.directories = directories
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 分类总数
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):

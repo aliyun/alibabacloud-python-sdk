@@ -13,15 +13,15 @@ class DeleteSourceResponseBody(DaraModel):
         request_id: str = None,
         source_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 是否已删除
+        # Indicates whether the deletion is successful.
         self.deleted = deleted
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 被删除的数据源 ID
+        # The source ID.
         self.source_id = source_id
 
     def validate(self):

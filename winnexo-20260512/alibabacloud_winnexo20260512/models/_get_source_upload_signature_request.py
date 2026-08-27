@@ -14,19 +14,19 @@ class GetSourceUploadSignatureRequest(DaraModel):
         scope: str = None,
         tenant_id: str = None,
     ):
-        # 文件 Content-Type（可选，不传则自动推断）
+        # The content type. Valid values: Text and Markdown.
         self.content_type = content_type
-        # 签名 URL 过期时间（秒），默认 3600
+        # The expiration time of the signed URL, in seconds. Default value: 3600.
         self.expires = expires
-        # 文件名（含后缀，如 report.pdf）
+        # The file name.
         # 
         # This parameter is required.
         self.filename = filename
-        # Agent 命名空间标识（数字员工名称）
+        # The name of the digital employee (operating object name). This parameter is optional.
         self.operating_object_name = operating_object_name
-        # 数据源归属范围: source（个人数据源，映射 PERSONAL）/ knowledge（企业知识库，映射 TENANT）
+        # The permission scope.
         self.scope = scope
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID to which the task belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

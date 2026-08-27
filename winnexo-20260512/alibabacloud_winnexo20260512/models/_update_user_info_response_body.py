@@ -15,12 +15,13 @@ class UpdateUserInfoResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.UpdateUserInfoResponseBodyUser = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
+        # The user information.
         self.user = user
 
     def validate(self):
@@ -82,34 +83,35 @@ class UpdateUserInfoResponseBodyUser(DaraModel):
         user_code: str = None,
         user_id: int = None,
     ):
-        # 用户头像URL
+        # The user profile picture URL.
         self.avatar = avatar
-        # 是否为超级管理员
+        # Indicates whether the user is a super administrator.
         self.is_admin = is_admin
-        # 当前登录租户是否为系统租户
+        # Indicates whether the current logged-in tenant is a system tenant.
         self.is_system_tenant = is_system_tenant
-        # 用户语言偏好
+        # The user language preference.
         self.language_preference = language_preference
-        # 文件名
+        # The username.
         self.name = name
-        # 用户服务描述
+        # The user service description.
         self.offering = offering
-        # 用户服务解析结果（JSON格式）
+        # The parsed user service result in JSON format.
         self.parsed_offering = parsed_offering
-        # 用户角色
+        # The user role.
         self.profile_role = profile_role
-        # 用户角色描述
+        # The user role description.
         self.profile_role_info = profile_role_info
-        # 用户自我介绍
+        # The user self-introduction.
         self.self_introduction = self_introduction
-        # 当前租户ID
+        # The current tenant ID.
         self.tenant_id = tenant_id
+        # The list of tenants to which the user belongs.
         self.tenant_list = tenant_list
-        # 当前租户名称
+        # The current tenant name.
         self.tenant_name = tenant_name
-        # 用户代码
+        # The user code.
         self.user_code = user_code
-        # 用户ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -230,9 +232,9 @@ class UpdateUserInfoResponseBodyUserTenantList(DaraModel):
         tenant_id: int = None,
         tenant_name: str = None,
     ):
-        # 租户ID
+        # The tenant ID.
         self.tenant_id = tenant_id
-        # 租户名称
+        # The tenant name.
         self.tenant_name = tenant_name
 
     def validate(self):

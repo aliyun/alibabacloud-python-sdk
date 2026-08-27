@@ -27,36 +27,39 @@ class GetSkillRunResponseBody(DaraModel):
         status: str = None,
         usage: Dict[str, Any] = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 任务创建时间，ISO8601
+        # The task creation time in ISO 8601 format.
         self.created_at = created_at
-        # 错误码，仅 Failed 时返回
+        # The error code. This parameter is returned only when the status is Failed.
         self.error_code = error_code
-        # 错误描述，仅 Failed 时返回
+        # The error description. This parameter is returned only when the status is Failed.
         self.error_message = error_message
-        # 任务结束时间，ISO8601；仅终态（Succeeded/Failed/Cancelled）有值
+        # The task end time in ISO 8601 format. This parameter has a value only in desired states (Succeeded, Failed, or Cancelled).
         self.finished_at = finished_at
+        # The execution log list. This parameter is returned only when IncludeLogs is set to true.
         self.logs = logs
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 进度百分比（仅 Running 时有意义）
+        # The progress percentage. This parameter is meaningful only when the status is Running.
         self.progress = progress
-        # 进度描述
+        # The progress description.
         self.progress_message = progress_message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
+        # The execution result. This parameter is returned only when the status is Succeeded. It contains a content list.
         self.result = result
-        # 异步任务 ID
+        # The asynchronous task ID.
         self.run_id = run_id
-        # 技能编码
+        # The skill code.
         self.skill_code = skill_code
-        # 技能名称
+        # The skill name.
         self.skill_name = skill_name
-        # 任务开始执行时间，ISO8601
+        # The task execution start time in ISO 8601 format.
         self.started_at = started_at
-        # 执行状态：Running / Succeeded / Failed / Cancelled
+        # The execution status. Valid values: Running, Succeeded, Failed, and Cancelled.
         self.status = status
+        # The LLM token usage statistics. This parameter is returned only when the status is Succeeded.
         self.usage = usage
 
     def validate(self):

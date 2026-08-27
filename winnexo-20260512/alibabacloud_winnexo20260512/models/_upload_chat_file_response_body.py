@@ -18,25 +18,36 @@ class UploadChatFileResponseBody(DaraModel):
         request_id: str = None,
         upload_signature_url: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 文件 MIME 类型
+        # The content type of the file. Valid values:
+        # 
+        # - **image**: image
+        # - **document**: general document
+        # - **alidoc**: Alibaba document
+        # - **text**: text
+        # - **video**: video
+        # - **audio**: audio
+        # - **archive**: archive
+        # - **app**: application
+        # - **link**: shortcut
+        # - **other**: other
         self.content_type = content_type
-        # 文件名
+        # The full path name of the file.
         self.file_name = file_name
-        # 文件公开访问 URL（有效期 1 小时）
+        # The publicly accessible URL of the online document.
         self.file_public_url = file_public_url
-        # 文件记录 ID
+        # The file record ID (optional, corresponding to settings.file_record_id).
         self.file_record_id = file_record_id
-        # 文件 remote_url（入库路径）
+        # The attachment address.
         self.file_url = file_url
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # OSS 对象路径
+        # The object name.
         self.object_name = object_name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 签名上传 URL（本接口为后端直传，该字段为空）
+        # The signature URL.
         self.upload_signature_url = upload_signature_url
 
     def validate(self):

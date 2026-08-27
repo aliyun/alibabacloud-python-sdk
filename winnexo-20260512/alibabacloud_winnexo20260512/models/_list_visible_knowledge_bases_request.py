@@ -10,11 +10,11 @@ class ListVisibleKnowledgeBasesRequest(DaraModel):
         operating_object_name: str = None,
         tenant_id: str = None,
     ):
-        # 数字员工名称（运营对象 name）
+        # The name of the digital employee (operating object name).
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

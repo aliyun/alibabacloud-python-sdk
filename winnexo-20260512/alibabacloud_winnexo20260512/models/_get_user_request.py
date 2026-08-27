@@ -11,11 +11,11 @@ class GetUserRequest(DaraModel):
         wn_account_id: str = None,
         wn_user_id: str = None,
     ):
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
-        # WINNEXO 登录账号（与 wnUserId 二选一）
+        # The WINNEXO logon account. This is a unique identifier and cannot be empty.
         self.wn_account_id = wn_account_id
-        # WINNEXO 平台用户ID（与 accountId 二选一）
+        # The WINNEXO platform user ID. Specify either this parameter or accountId.
         self.wn_user_id = wn_user_id
 
     def validate(self):

@@ -10,18 +10,24 @@ class SendChatMessageResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
+        content: str = None,
         data: Any = None,
         message: str = None,
         request_id: str = None,
+        type: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 响应数据负载
+        # The streaming response content.
+        self.content = content
+        # The SSE event stream payload. On success, the response is a text/event-stream raw frame that must be consumed frame by frame in streaming mode.
         self.data = data
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
+        # The event type.
+        self.type = type
 
     def validate(self):
         pass
@@ -34,6 +40,9 @@ class SendChatMessageResponseBody(DaraModel):
         if self.code is not None:
             result['code'] = self.code
 
+        if self.content is not None:
+            result['content'] = self.content
+
         if self.data is not None:
             result['data'] = self.data
 
@@ -43,12 +52,18 @@ class SendChatMessageResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
+        if self.type is not None:
+            result['type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('code') is not None:
             self.code = m.get('code')
+
+        if m.get('content') is not None:
+            self.content = m.get('content')
 
         if m.get('data') is not None:
             self.data = m.get('data')
@@ -58,6 +73,9 @@ class SendChatMessageResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 

@@ -10,11 +10,11 @@ class QuerySyncResultRequest(DaraModel):
         task_id: int = None,
         tenant_id: str = None,
     ):
-        # 同步任务 ID（由 syncOrgStructure 返回）
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

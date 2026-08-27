@@ -12,13 +12,13 @@ class UpdateAgentAuthModeResponseBody(DaraModel):
         request_id: str = None,
         updated: bool = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 是否更新成功
+        # The updated item.
         self.updated = updated
 
     def validate(self):

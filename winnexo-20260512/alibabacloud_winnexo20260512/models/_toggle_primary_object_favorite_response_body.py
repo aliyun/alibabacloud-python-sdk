@@ -16,14 +16,15 @@ class TogglePrimaryObjectFavoriteResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.TogglePrimaryObjectFavoriteResponseBodyResults] = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 该用户的关注总数（针对该对象类型）
+        # The total number of follows by the user for the specified object type.
         self.favorite_count = favorite_count
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
+        # The list of results.
         self.results = results
 
     def validate(self):
@@ -86,13 +87,13 @@ class TogglePrimaryObjectFavoriteResponseBodyResults(DaraModel):
         object_id: str = None,
         success: bool = None,
     ):
-        # 操作后是否已关注
+        # Indicates whether the object is followed after the operation.
         self.is_favorited = is_favorited
-        # 失败原因（成功时为 null）
+        # The description of the status code.
         self.message = message
-        # 主对象业务ID
+        # The ID of the aligned object: target ID or KR ID.
         self.object_id = object_id
-        # 操作是否成功
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

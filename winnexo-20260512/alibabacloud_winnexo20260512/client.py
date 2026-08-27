@@ -32,7 +32,12 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'winnexo.cn-shanghai.aliyuncs.com',
+            'cn-zhangjiakou': 'winnexo.cn-zhangjiakou.aliyuncs.com',
+            'cn-hangzhou': 'winnexo.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('winnexo', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -208,6 +213,102 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_user_group_members_with_options(
+        self,
+        tmp_req: main_models.AddUserGroupMembersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserGroupMembersResponse:
+        tmp_req.validate()
+        request = main_models.AddUserGroupMembersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.user_ids):
+            request.user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_ids, 'userIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.user_group_id):
+            body['userGroupId'] = request.user_group_id
+        if not DaraCore.is_null(request.user_ids_shrink):
+            body['userIds'] = request.user_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUserGroupMembers',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/addUserGroupMembers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUserGroupMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_user_group_members_with_options_async(
+        self,
+        tmp_req: main_models.AddUserGroupMembersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserGroupMembersResponse:
+        tmp_req.validate()
+        request = main_models.AddUserGroupMembersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.user_ids):
+            request.user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_ids, 'userIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.user_group_id):
+            body['userGroupId'] = request.user_group_id
+        if not DaraCore.is_null(request.user_ids_shrink):
+            body['userIds'] = request.user_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUserGroupMembers',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/addUserGroupMembers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUserGroupMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_user_group_members(
+        self,
+        request: main_models.AddUserGroupMembersRequest,
+    ) -> main_models.AddUserGroupMembersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_user_group_members_with_options(request, headers, runtime)
+
+    async def add_user_group_members_async(
+        self,
+        request: main_models.AddUserGroupMembersRequest,
+    ) -> main_models.AddUserGroupMembersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_user_group_members_with_options_async(request, headers, runtime)
+
     def check_health_with_options(
         self,
         request: main_models.CheckHealthRequest,
@@ -283,6 +384,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.check_health_with_options_async(request, headers, runtime)
+
+    def create_announcement_with_options(
+        self,
+        tmp_req: main_models.CreateAnnouncementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAnnouncementResponse:
+        tmp_req.validate()
+        request = main_models.CreateAnnouncementShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_role_codes):
+            request.target_role_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_role_codes, 'targetRoleCodes', 'json')
+        if not DaraCore.is_null(tmp_req.target_tenant_ids):
+            request.target_tenant_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_tenant_ids, 'targetTenantIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.display_page):
+            body['displayPage'] = request.display_page
+        if not DaraCore.is_null(request.display_type):
+            body['displayType'] = request.display_type
+        if not DaraCore.is_null(request.effective_end):
+            body['effectiveEnd'] = request.effective_end
+        if not DaraCore.is_null(request.effective_start):
+            body['effectiveStart'] = request.effective_start
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.publish_now):
+            body['publishNow'] = request.publish_now
+        if not DaraCore.is_null(request.target_role_codes_shrink):
+            body['targetRoleCodes'] = request.target_role_codes_shrink
+        if not DaraCore.is_null(request.target_role_mode):
+            body['targetRoleMode'] = request.target_role_mode
+        if not DaraCore.is_null(request.target_tenant_ids_shrink):
+            body['targetTenantIds'] = request.target_tenant_ids_shrink
+        if not DaraCore.is_null(request.target_tenant_mode):
+            body['targetTenantMode'] = request.target_tenant_mode
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAnnouncement',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createAnnouncement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAnnouncementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_announcement_with_options_async(
+        self,
+        tmp_req: main_models.CreateAnnouncementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAnnouncementResponse:
+        tmp_req.validate()
+        request = main_models.CreateAnnouncementShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_role_codes):
+            request.target_role_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_role_codes, 'targetRoleCodes', 'json')
+        if not DaraCore.is_null(tmp_req.target_tenant_ids):
+            request.target_tenant_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_tenant_ids, 'targetTenantIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.display_page):
+            body['displayPage'] = request.display_page
+        if not DaraCore.is_null(request.display_type):
+            body['displayType'] = request.display_type
+        if not DaraCore.is_null(request.effective_end):
+            body['effectiveEnd'] = request.effective_end
+        if not DaraCore.is_null(request.effective_start):
+            body['effectiveStart'] = request.effective_start
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.publish_now):
+            body['publishNow'] = request.publish_now
+        if not DaraCore.is_null(request.target_role_codes_shrink):
+            body['targetRoleCodes'] = request.target_role_codes_shrink
+        if not DaraCore.is_null(request.target_role_mode):
+            body['targetRoleMode'] = request.target_role_mode
+        if not DaraCore.is_null(request.target_tenant_ids_shrink):
+            body['targetTenantIds'] = request.target_tenant_ids_shrink
+        if not DaraCore.is_null(request.target_tenant_mode):
+            body['targetTenantMode'] = request.target_tenant_mode
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAnnouncement',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createAnnouncement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAnnouncementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_announcement(
+        self,
+        request: main_models.CreateAnnouncementRequest,
+    ) -> main_models.CreateAnnouncementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_announcement_with_options(request, headers, runtime)
+
+    async def create_announcement_async(
+        self,
+        request: main_models.CreateAnnouncementRequest,
+    ) -> main_models.CreateAnnouncementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_announcement_with_options_async(request, headers, runtime)
 
     def create_conversation_with_options(
         self,
@@ -471,6 +712,394 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_custom_org_with_options_async(request, headers, runtime)
+
+    def create_group_ali_ding_chat_with_options(
+        self,
+        tmp_req: main_models.CreateGroupAliDingChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupAliDingChatResponse:
+        tmp_req.validate()
+        request = main_models.CreateGroupAliDingChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.chat_name):
+            body['chatName'] = request.chat_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupAliDingChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupAliDingChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupAliDingChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_ali_ding_chat_with_options_async(
+        self,
+        tmp_req: main_models.CreateGroupAliDingChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupAliDingChatResponse:
+        tmp_req.validate()
+        request = main_models.CreateGroupAliDingChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.chat_name):
+            body['chatName'] = request.chat_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupAliDingChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupAliDingChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupAliDingChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_ali_ding_chat(
+        self,
+        request: main_models.CreateGroupAliDingChatRequest,
+    ) -> main_models.CreateGroupAliDingChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_ali_ding_chat_with_options(request, headers, runtime)
+
+    async def create_group_ali_ding_chat_async(
+        self,
+        request: main_models.CreateGroupAliDingChatRequest,
+    ) -> main_models.CreateGroupAliDingChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_ali_ding_chat_with_options_async(request, headers, runtime)
+
+    def create_group_dingtalk_chat_with_options(
+        self,
+        tmp_req: main_models.CreateGroupDingtalkChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupDingtalkChatResponse:
+        tmp_req.validate()
+        request = main_models.CreateGroupDingtalkChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.chat_name):
+            body['chatName'] = request.chat_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupDingtalkChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupDingtalkChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupDingtalkChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_dingtalk_chat_with_options_async(
+        self,
+        tmp_req: main_models.CreateGroupDingtalkChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupDingtalkChatResponse:
+        tmp_req.validate()
+        request = main_models.CreateGroupDingtalkChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.chat_name):
+            body['chatName'] = request.chat_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupDingtalkChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupDingtalkChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupDingtalkChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_dingtalk_chat(
+        self,
+        request: main_models.CreateGroupDingtalkChatRequest,
+    ) -> main_models.CreateGroupDingtalkChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_dingtalk_chat_with_options(request, headers, runtime)
+
+    async def create_group_dingtalk_chat_async(
+        self,
+        request: main_models.CreateGroupDingtalkChatRequest,
+    ) -> main_models.CreateGroupDingtalkChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_dingtalk_chat_with_options_async(request, headers, runtime)
+
+    def create_group_feishu_doc_with_options(
+        self,
+        tmp_req: main_models.CreateGroupFeishuDocRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupFeishuDocResponse:
+        tmp_req.validate()
+        request = main_models.CreateGroupFeishuDocShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_bindings):
+            request.object_bindings_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_bindings, 'objectBindings', 'json')
+        if not DaraCore.is_null(tmp_req.sync_config):
+            request.sync_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sync_config, 'syncConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.doc_url):
+            body['docUrl'] = request.doc_url
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.object_bindings_shrink):
+            body['objectBindings'] = request.object_bindings_shrink
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.sync_config_shrink):
+            body['syncConfig'] = request.sync_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupFeishuDoc',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupFeishuDoc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupFeishuDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_feishu_doc_with_options_async(
+        self,
+        tmp_req: main_models.CreateGroupFeishuDocRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupFeishuDocResponse:
+        tmp_req.validate()
+        request = main_models.CreateGroupFeishuDocShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_bindings):
+            request.object_bindings_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_bindings, 'objectBindings', 'json')
+        if not DaraCore.is_null(tmp_req.sync_config):
+            request.sync_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sync_config, 'syncConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.doc_url):
+            body['docUrl'] = request.doc_url
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.object_bindings_shrink):
+            body['objectBindings'] = request.object_bindings_shrink
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.sync_config_shrink):
+            body['syncConfig'] = request.sync_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupFeishuDoc',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupFeishuDoc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupFeishuDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_feishu_doc(
+        self,
+        request: main_models.CreateGroupFeishuDocRequest,
+    ) -> main_models.CreateGroupFeishuDocResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_feishu_doc_with_options(request, headers, runtime)
+
+    async def create_group_feishu_doc_async(
+        self,
+        request: main_models.CreateGroupFeishuDocRequest,
+    ) -> main_models.CreateGroupFeishuDocResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_feishu_doc_with_options_async(request, headers, runtime)
 
     def create_knowledge_base_ali_ding_doc_with_options(
         self,
@@ -671,6 +1300,134 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_knowledge_base_directory_with_options_async(request, headers, runtime)
+
+    def create_knowledge_base_feishu_doc_with_options(
+        self,
+        tmp_req: main_models.CreateKnowledgeBaseFeishuDocRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBaseFeishuDocResponse:
+        tmp_req.validate()
+        request = main_models.CreateKnowledgeBaseFeishuDocShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_bindings):
+            request.object_bindings_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_bindings, 'objectBindings', 'json')
+        if not DaraCore.is_null(tmp_req.sync_config):
+            request.sync_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sync_config, 'syncConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.doc_url):
+            body['docUrl'] = request.doc_url
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.object_bindings_shrink):
+            body['objectBindings'] = request.object_bindings_shrink
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.sync_config_shrink):
+            body['syncConfig'] = request.sync_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBaseFeishuDoc',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createKnowledgeBaseFeishuDoc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBaseFeishuDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_knowledge_base_feishu_doc_with_options_async(
+        self,
+        tmp_req: main_models.CreateKnowledgeBaseFeishuDocRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBaseFeishuDocResponse:
+        tmp_req.validate()
+        request = main_models.CreateKnowledgeBaseFeishuDocShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_bindings):
+            request.object_bindings_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_bindings, 'objectBindings', 'json')
+        if not DaraCore.is_null(tmp_req.sync_config):
+            request.sync_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sync_config, 'syncConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.doc_url):
+            body['docUrl'] = request.doc_url
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.object_bindings_shrink):
+            body['objectBindings'] = request.object_bindings_shrink
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.sync_config_shrink):
+            body['syncConfig'] = request.sync_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBaseFeishuDoc',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createKnowledgeBaseFeishuDoc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBaseFeishuDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_knowledge_base_feishu_doc(
+        self,
+        request: main_models.CreateKnowledgeBaseFeishuDocRequest,
+    ) -> main_models.CreateKnowledgeBaseFeishuDocResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_knowledge_base_feishu_doc_with_options(request, headers, runtime)
+
+    async def create_knowledge_base_feishu_doc_async(
+        self,
+        request: main_models.CreateKnowledgeBaseFeishuDocRequest,
+    ) -> main_models.CreateKnowledgeBaseFeishuDocResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_knowledge_base_feishu_doc_with_options_async(request, headers, runtime)
 
     def create_knowledge_base_file_with_options(
         self,
@@ -903,6 +1660,130 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_knowledge_base_text_with_options_async(request, headers, runtime)
+
+    def create_personal_ali_ding_chat_with_options(
+        self,
+        tmp_req: main_models.CreatePersonalAliDingChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalAliDingChatResponse:
+        tmp_req.validate()
+        request = main_models.CreatePersonalAliDingChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.chat_name):
+            body['chatName'] = request.chat_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalAliDingChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalAliDingChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalAliDingChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_personal_ali_ding_chat_with_options_async(
+        self,
+        tmp_req: main_models.CreatePersonalAliDingChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalAliDingChatResponse:
+        tmp_req.validate()
+        request = main_models.CreatePersonalAliDingChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.chat_name):
+            body['chatName'] = request.chat_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalAliDingChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalAliDingChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalAliDingChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_personal_ali_ding_chat(
+        self,
+        request: main_models.CreatePersonalAliDingChatRequest,
+    ) -> main_models.CreatePersonalAliDingChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_personal_ali_ding_chat_with_options(request, headers, runtime)
+
+    async def create_personal_ali_ding_chat_async(
+        self,
+        request: main_models.CreatePersonalAliDingChatRequest,
+    ) -> main_models.CreatePersonalAliDingChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_personal_ali_ding_chat_with_options_async(request, headers, runtime)
 
     def create_personal_ali_ding_meeting_with_options(
         self,
@@ -1224,6 +2105,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_personal_aliding_knowledge_base_with_options_async(request, headers, runtime)
 
+    def create_personal_dingtalk_chat_with_options(
+        self,
+        tmp_req: main_models.CreatePersonalDingtalkChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalDingtalkChatResponse:
+        tmp_req.validate()
+        request = main_models.CreatePersonalDingtalkChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.chat_name):
+            body['chatName'] = request.chat_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalDingtalkChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalDingtalkChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalDingtalkChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_personal_dingtalk_chat_with_options_async(
+        self,
+        tmp_req: main_models.CreatePersonalDingtalkChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalDingtalkChatResponse:
+        tmp_req.validate()
+        request = main_models.CreatePersonalDingtalkChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.chat_name):
+            body['chatName'] = request.chat_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalDingtalkChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalDingtalkChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalDingtalkChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_personal_dingtalk_chat(
+        self,
+        request: main_models.CreatePersonalDingtalkChatRequest,
+    ) -> main_models.CreatePersonalDingtalkChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_personal_dingtalk_chat_with_options(request, headers, runtime)
+
+    async def create_personal_dingtalk_chat_async(
+        self,
+        request: main_models.CreatePersonalDingtalkChatRequest,
+    ) -> main_models.CreatePersonalDingtalkChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_personal_dingtalk_chat_with_options_async(request, headers, runtime)
+
     def create_personal_dingtalk_meeting_with_options(
         self,
         request: main_models.CreatePersonalDingtalkMeetingRequest,
@@ -1332,6 +2337,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_personal_dingtalk_meeting_with_options_async(request, headers, runtime)
 
+    def create_personal_dingtalk_minutes_with_options(
+        self,
+        request: main_models.CreatePersonalDingtalkMinutesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalDingtalkMinutesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.shanji_url):
+            body['shanjiUrl'] = request.shanji_url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalDingtalkMinutes',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalDingtalkMinutes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalDingtalkMinutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_personal_dingtalk_minutes_with_options_async(
+        self,
+        request: main_models.CreatePersonalDingtalkMinutesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalDingtalkMinutesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.shanji_url):
+            body['shanjiUrl'] = request.shanji_url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalDingtalkMinutes',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalDingtalkMinutes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalDingtalkMinutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_personal_dingtalk_minutes(
+        self,
+        request: main_models.CreatePersonalDingtalkMinutesRequest,
+    ) -> main_models.CreatePersonalDingtalkMinutesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_personal_dingtalk_minutes_with_options(request, headers, runtime)
+
+    async def create_personal_dingtalk_minutes_async(
+        self,
+        request: main_models.CreatePersonalDingtalkMinutesRequest,
+    ) -> main_models.CreatePersonalDingtalkMinutesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_personal_dingtalk_minutes_with_options_async(request, headers, runtime)
+
     def create_personal_directory_with_options(
         self,
         request: main_models.CreatePersonalDirectoryRequest,
@@ -1427,6 +2536,254 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_personal_directory_with_options_async(request, headers, runtime)
+
+    def create_personal_feishu_chat_with_options(
+        self,
+        tmp_req: main_models.CreatePersonalFeishuChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalFeishuChatResponse:
+        tmp_req.validate()
+        request = main_models.CreatePersonalFeishuChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalFeishuChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalFeishuChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalFeishuChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_personal_feishu_chat_with_options_async(
+        self,
+        tmp_req: main_models.CreatePersonalFeishuChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalFeishuChatResponse:
+        tmp_req.validate()
+        request = main_models.CreatePersonalFeishuChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalFeishuChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalFeishuChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalFeishuChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_personal_feishu_chat(
+        self,
+        request: main_models.CreatePersonalFeishuChatRequest,
+    ) -> main_models.CreatePersonalFeishuChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_personal_feishu_chat_with_options(request, headers, runtime)
+
+    async def create_personal_feishu_chat_async(
+        self,
+        request: main_models.CreatePersonalFeishuChatRequest,
+    ) -> main_models.CreatePersonalFeishuChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_personal_feishu_chat_with_options_async(request, headers, runtime)
+
+    def create_personal_feishu_doc_with_options(
+        self,
+        tmp_req: main_models.CreatePersonalFeishuDocRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalFeishuDocResponse:
+        tmp_req.validate()
+        request = main_models.CreatePersonalFeishuDocShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_bindings):
+            request.object_bindings_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_bindings, 'objectBindings', 'json')
+        if not DaraCore.is_null(tmp_req.sync_config):
+            request.sync_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sync_config, 'syncConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.doc_url):
+            body['docUrl'] = request.doc_url
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.object_bindings_shrink):
+            body['objectBindings'] = request.object_bindings_shrink
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.sync_config_shrink):
+            body['syncConfig'] = request.sync_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalFeishuDoc',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalFeishuDoc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalFeishuDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_personal_feishu_doc_with_options_async(
+        self,
+        tmp_req: main_models.CreatePersonalFeishuDocRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalFeishuDocResponse:
+        tmp_req.validate()
+        request = main_models.CreatePersonalFeishuDocShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_bindings):
+            request.object_bindings_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_bindings, 'objectBindings', 'json')
+        if not DaraCore.is_null(tmp_req.sync_config):
+            request.sync_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sync_config, 'syncConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.doc_url):
+            body['docUrl'] = request.doc_url
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.object_bindings_shrink):
+            body['objectBindings'] = request.object_bindings_shrink
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.sync_config_shrink):
+            body['syncConfig'] = request.sync_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalFeishuDoc',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalFeishuDoc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalFeishuDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_personal_feishu_doc(
+        self,
+        request: main_models.CreatePersonalFeishuDocRequest,
+    ) -> main_models.CreatePersonalFeishuDocResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_personal_feishu_doc_with_options(request, headers, runtime)
+
+    async def create_personal_feishu_doc_async(
+        self,
+        request: main_models.CreatePersonalFeishuDocRequest,
+    ) -> main_models.CreatePersonalFeishuDocResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_personal_feishu_doc_with_options_async(request, headers, runtime)
 
     def create_personal_feishu_minute_with_options(
         self,
@@ -1877,6 +3234,8 @@ class Client(OpenApiClient):
             request.task_detail_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_detail, 'taskDetail', 'json')
         if not DaraCore.is_null(tmp_req.trigger_config):
             request.trigger_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.trigger_config, 'triggerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.visible_member_user_ids):
+            request.visible_member_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.visible_member_user_ids, 'visibleMemberUserIds', 'json')
         query = {}
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
@@ -1899,6 +3258,10 @@ class Client(OpenApiClient):
             body['taskDetail'] = request.task_detail_shrink
         if not DaraCore.is_null(request.trigger_config_shrink):
             body['triggerConfig'] = request.trigger_config_shrink
+        if not DaraCore.is_null(request.visibility):
+            body['visibility'] = request.visibility
+        if not DaraCore.is_null(request.visible_member_user_ids_shrink):
+            body['visibleMemberUserIds'] = request.visible_member_user_ids_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -1939,6 +3302,8 @@ class Client(OpenApiClient):
             request.task_detail_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_detail, 'taskDetail', 'json')
         if not DaraCore.is_null(tmp_req.trigger_config):
             request.trigger_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.trigger_config, 'triggerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.visible_member_user_ids):
+            request.visible_member_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.visible_member_user_ids, 'visibleMemberUserIds', 'json')
         query = {}
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
@@ -1961,6 +3326,10 @@ class Client(OpenApiClient):
             body['taskDetail'] = request.task_detail_shrink
         if not DaraCore.is_null(request.trigger_config_shrink):
             body['triggerConfig'] = request.trigger_config_shrink
+        if not DaraCore.is_null(request.visibility):
+            body['visibility'] = request.visibility
+        if not DaraCore.is_null(request.visible_member_user_ids_shrink):
+            body['visibleMemberUserIds'] = request.visible_member_user_ids_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -2197,6 +3566,210 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_user_with_options_async(request, headers, runtime)
+
+    def create_user_group_with_options(
+        self,
+        request: main_models.CreateUserGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
+        if not DaraCore.is_null(request.user_group_name):
+            body['userGroupName'] = request.user_group_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUserGroup',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createUserGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_user_group_with_options_async(
+        self,
+        request: main_models.CreateUserGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
+        if not DaraCore.is_null(request.user_group_name):
+            body['userGroupName'] = request.user_group_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUserGroup',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createUserGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_user_group(
+        self,
+        request: main_models.CreateUserGroupRequest,
+    ) -> main_models.CreateUserGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_user_group_with_options(request, headers, runtime)
+
+    async def create_user_group_async(
+        self,
+        request: main_models.CreateUserGroupRequest,
+    ) -> main_models.CreateUserGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_user_group_with_options_async(request, headers, runtime)
+
+    def create_user_with_groups_with_options(
+        self,
+        tmp_req: main_models.CreateUserWithGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserWithGroupsResponse:
+        tmp_req.validate()
+        request = main_models.CreateUserWithGroupsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.role_codes):
+            request.role_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.role_codes, 'roleCodes', 'json')
+        if not DaraCore.is_null(tmp_req.user_group_ids):
+            request.user_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_group_ids, 'userGroupIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.password_encrypted):
+            body['passwordEncrypted'] = request.password_encrypted
+        if not DaraCore.is_null(request.role_codes_shrink):
+            body['roleCodes'] = request.role_codes_shrink
+        if not DaraCore.is_null(request.user_group_ids_shrink):
+            body['userGroupIds'] = request.user_group_ids_shrink
+        if not DaraCore.is_null(request.wn_account_id):
+            body['wnAccountId'] = request.wn_account_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUserWithGroups',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createUserWithGroups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserWithGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_user_with_groups_with_options_async(
+        self,
+        tmp_req: main_models.CreateUserWithGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserWithGroupsResponse:
+        tmp_req.validate()
+        request = main_models.CreateUserWithGroupsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.role_codes):
+            request.role_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.role_codes, 'roleCodes', 'json')
+        if not DaraCore.is_null(tmp_req.user_group_ids):
+            request.user_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_group_ids, 'userGroupIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.password_encrypted):
+            body['passwordEncrypted'] = request.password_encrypted
+        if not DaraCore.is_null(request.role_codes_shrink):
+            body['roleCodes'] = request.role_codes_shrink
+        if not DaraCore.is_null(request.user_group_ids_shrink):
+            body['userGroupIds'] = request.user_group_ids_shrink
+        if not DaraCore.is_null(request.wn_account_id):
+            body['wnAccountId'] = request.wn_account_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUserWithGroups',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createUserWithGroups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserWithGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_user_with_groups(
+        self,
+        request: main_models.CreateUserWithGroupsRequest,
+    ) -> main_models.CreateUserWithGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_user_with_groups_with_options(request, headers, runtime)
+
+    async def create_user_with_groups_async(
+        self,
+        request: main_models.CreateUserWithGroupsRequest,
+    ) -> main_models.CreateUserWithGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_user_with_groups_with_options_async(request, headers, runtime)
 
     def delete_chat_session_with_options(
         self,
@@ -3036,10 +4609,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.collaboration_group_id):
             query['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.initiator_user_id):
+            query['initiatorUserId'] = request.initiator_user_id
         if not DaraCore.is_null(request.page):
             query['page'] = request.page
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
@@ -3072,10 +4651,16 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.collaboration_group_id):
             query['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.initiator_user_id):
+            query['initiatorUserId'] = request.initiator_user_id
         if not DaraCore.is_null(request.page):
             query['page'] = request.page
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         req = open_api_util_models.OpenApiRequest(
@@ -3113,6 +4698,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_scheduled_task_execution_records_with_options_async(request, headers, runtime)
+
+    def get_scheduled_task_push_options_with_options(
+        self,
+        request: main_models.GetScheduledTaskPushOptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScheduledTaskPushOptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.digital_employee_name):
+            body['digitalEmployeeName'] = request.digital_employee_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScheduledTaskPushOptions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getScheduledTaskPushOptions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScheduledTaskPushOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scheduled_task_push_options_with_options_async(
+        self,
+        request: main_models.GetScheduledTaskPushOptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScheduledTaskPushOptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.digital_employee_name):
+            body['digitalEmployeeName'] = request.digital_employee_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScheduledTaskPushOptions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getScheduledTaskPushOptions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScheduledTaskPushOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scheduled_task_push_options(
+        self,
+        request: main_models.GetScheduledTaskPushOptionsRequest,
+    ) -> main_models.GetScheduledTaskPushOptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_scheduled_task_push_options_with_options(request, headers, runtime)
+
+    async def get_scheduled_task_push_options_async(
+        self,
+        request: main_models.GetScheduledTaskPushOptionsRequest,
+    ) -> main_models.GetScheduledTaskPushOptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_scheduled_task_push_options_with_options_async(request, headers, runtime)
 
     def get_scheduled_task_understand_detail_with_options(
         self,
@@ -3590,6 +5263,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_source_upload_signature_with_options_async(request, headers, runtime)
 
+    def get_token_ensure_enable_with_options(
+        self,
+        request: main_models.GetTokenEnsureEnableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTokenEnsureEnableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.wn_user_id):
+            body['wnUserId'] = request.wn_user_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTokenEnsureEnable',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getTokenEnsureEnable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTokenEnsureEnableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_token_ensure_enable_with_options_async(
+        self,
+        request: main_models.GetTokenEnsureEnableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTokenEnsureEnableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.wn_user_id):
+            body['wnUserId'] = request.wn_user_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTokenEnsureEnable',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getTokenEnsureEnable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTokenEnsureEnableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_token_ensure_enable(
+        self,
+        request: main_models.GetTokenEnsureEnableRequest,
+    ) -> main_models.GetTokenEnsureEnableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_token_ensure_enable_with_options(request, headers, runtime)
+
+    async def get_token_ensure_enable_async(
+        self,
+        request: main_models.GetTokenEnsureEnableRequest,
+    ) -> main_models.GetTokenEnsureEnableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_token_ensure_enable_with_options_async(request, headers, runtime)
+
     def get_token_info_with_options(
         self,
         request: main_models.GetTokenInfoRequest,
@@ -3834,6 +5591,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_user_credit_usage_with_options_async(request, headers, runtime)
 
+    def get_user_group_with_options(
+        self,
+        request: main_models.GetUserGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.user_group_id):
+            body['userGroupId'] = request.user_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserGroup',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getUserGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_group_with_options_async(
+        self,
+        request: main_models.GetUserGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.user_group_id):
+            body['userGroupId'] = request.user_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserGroup',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getUserGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_group(
+        self,
+        request: main_models.GetUserGroupRequest,
+    ) -> main_models.GetUserGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_user_group_with_options(request, headers, runtime)
+
+    async def get_user_group_async(
+        self,
+        request: main_models.GetUserGroupRequest,
+    ) -> main_models.GetUserGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_user_group_with_options_async(request, headers, runtime)
+
     def get_user_info_with_options(
         self,
         request: main_models.GetUserInfoRequest,
@@ -4025,6 +5866,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.grant_agent_users_with_options_async(request, headers, runtime)
+
+    def list_active_announcements_with_options(
+        self,
+        request: main_models.ListActiveAnnouncementsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListActiveAnnouncementsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListActiveAnnouncements',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listActiveAnnouncements',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListActiveAnnouncementsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_active_announcements_with_options_async(
+        self,
+        request: main_models.ListActiveAnnouncementsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListActiveAnnouncementsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListActiveAnnouncements',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listActiveAnnouncements',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListActiveAnnouncementsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_active_announcements(
+        self,
+        request: main_models.ListActiveAnnouncementsRequest,
+    ) -> main_models.ListActiveAnnouncementsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_active_announcements_with_options(request, headers, runtime)
+
+    async def list_active_announcements_async(
+        self,
+        request: main_models.ListActiveAnnouncementsRequest,
+    ) -> main_models.ListActiveAnnouncementsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_active_announcements_with_options_async(request, headers, runtime)
 
     def list_admin_knowledge_bases_with_options(
         self,
@@ -5156,14 +7085,20 @@ class Client(OpenApiClient):
 
     def list_scheduled_tasks_with_options(
         self,
-        request: main_models.ListScheduledTasksRequest,
+        tmp_req: main_models.ListScheduledTasksRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListScheduledTasksResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListScheduledTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.visibilities):
+            request.visibilities_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibilities, 'visibilities', 'json')
         query = {}
         if not DaraCore.is_null(request.collaboration_group_id):
             query['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.creator_only):
+            query['creatorOnly'] = request.creator_only
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
@@ -5176,6 +7111,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.visibilities_shrink):
+            query['visibilities'] = request.visibilities_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5198,14 +7135,20 @@ class Client(OpenApiClient):
 
     async def list_scheduled_tasks_with_options_async(
         self,
-        request: main_models.ListScheduledTasksRequest,
+        tmp_req: main_models.ListScheduledTasksRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListScheduledTasksResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListScheduledTasksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.visibilities):
+            request.visibilities_shrink = Utils.array_to_string_with_specified_style(tmp_req.visibilities, 'visibilities', 'json')
         query = {}
         if not DaraCore.is_null(request.collaboration_group_id):
             query['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.creator_only):
+            query['creatorOnly'] = request.creator_only
         if not DaraCore.is_null(request.keyword):
             query['keyword'] = request.keyword
         if not DaraCore.is_null(request.max_results):
@@ -5218,6 +7161,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.visibilities_shrink):
+            query['visibilities'] = request.visibilities_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5473,6 +7418,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_tenant_directory_with_options_async(request, headers, runtime)
+
+    def list_user_groups_with_options(
+        self,
+        request: main_models.ListUserGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserGroups',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listUserGroups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_groups_with_options_async(
+        self,
+        request: main_models.ListUserGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserGroups',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listUserGroups',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_groups(
+        self,
+        request: main_models.ListUserGroupsRequest,
+    ) -> main_models.ListUserGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_user_groups_with_options(request, headers, runtime)
+
+    async def list_user_groups_async(
+        self,
+        request: main_models.ListUserGroupsRequest,
+    ) -> main_models.ListUserGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_user_groups_with_options_async(request, headers, runtime)
 
     def list_user_visible_knowledge_base_contents_with_options(
         self,
@@ -6180,6 +8201,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.move_resource_with_options_async(request, headers, runtime)
 
+    def offline_announcement_with_options(
+        self,
+        request: main_models.OfflineAnnouncementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OfflineAnnouncementResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.announcement_id):
+            body['announcementId'] = request.announcement_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OfflineAnnouncement',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/offlineAnnouncement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OfflineAnnouncementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def offline_announcement_with_options_async(
+        self,
+        request: main_models.OfflineAnnouncementRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OfflineAnnouncementResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.announcement_id):
+            body['announcementId'] = request.announcement_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OfflineAnnouncement',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/offlineAnnouncement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OfflineAnnouncementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def offline_announcement(
+        self,
+        request: main_models.OfflineAnnouncementRequest,
+    ) -> main_models.OfflineAnnouncementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.offline_announcement_with_options(request, headers, runtime)
+
+    async def offline_announcement_async(
+        self,
+        request: main_models.OfflineAnnouncementRequest,
+    ) -> main_models.OfflineAnnouncementResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.offline_announcement_with_options_async(request, headers, runtime)
+
     def preview_knowledge_base_source_with_options(
         self,
         request: main_models.PreviewKnowledgeBaseSourceRequest,
@@ -6634,6 +8739,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_sync_result_with_options_async(request, headers, runtime)
 
+    def recommend_next_actions_with_options(
+        self,
+        request: main_models.RecommendNextActionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RecommendNextActionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.custom_prompt):
+            body['customPrompt'] = request.custom_prompt
+        if not DaraCore.is_null(request.output_type):
+            body['outputType'] = request.output_type
+        if not DaraCore.is_null(request.recent_message_count):
+            body['recentMessageCount'] = request.recent_message_count
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RecommendNextActions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/recommendNextActions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RecommendNextActionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recommend_next_actions_with_options_async(
+        self,
+        request: main_models.RecommendNextActionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RecommendNextActionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.custom_prompt):
+            body['customPrompt'] = request.custom_prompt
+        if not DaraCore.is_null(request.output_type):
+            body['outputType'] = request.output_type
+        if not DaraCore.is_null(request.recent_message_count):
+            body['recentMessageCount'] = request.recent_message_count
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RecommendNextActions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/recommendNextActions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RecommendNextActionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recommend_next_actions(
+        self,
+        request: main_models.RecommendNextActionsRequest,
+    ) -> main_models.RecommendNextActionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.recommend_next_actions_with_options(request, headers, runtime)
+
+    async def recommend_next_actions_async(
+        self,
+        request: main_models.RecommendNextActionsRequest,
+    ) -> main_models.RecommendNextActionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.recommend_next_actions_with_options_async(request, headers, runtime)
+
     def remove_user_with_options(
         self,
         request: main_models.RemoveUserRequest,
@@ -6713,6 +8914,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.remove_user_with_options_async(request, headers, runtime)
+
+    def remove_user_group_members_with_options(
+        self,
+        tmp_req: main_models.RemoveUserGroupMembersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveUserGroupMembersResponse:
+        tmp_req.validate()
+        request = main_models.RemoveUserGroupMembersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.user_ids):
+            request.user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_ids, 'userIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.user_group_id):
+            body['userGroupId'] = request.user_group_id
+        if not DaraCore.is_null(request.user_ids_shrink):
+            body['userIds'] = request.user_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveUserGroupMembers',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/removeUserGroupMembers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveUserGroupMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_user_group_members_with_options_async(
+        self,
+        tmp_req: main_models.RemoveUserGroupMembersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveUserGroupMembersResponse:
+        tmp_req.validate()
+        request = main_models.RemoveUserGroupMembersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.user_ids):
+            request.user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_ids, 'userIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.user_group_id):
+            body['userGroupId'] = request.user_group_id
+        if not DaraCore.is_null(request.user_ids_shrink):
+            body['userIds'] = request.user_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveUserGroupMembers',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/removeUserGroupMembers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveUserGroupMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_user_group_members(
+        self,
+        request: main_models.RemoveUserGroupMembersRequest,
+    ) -> main_models.RemoveUserGroupMembersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.remove_user_group_members_with_options(request, headers, runtime)
+
+    async def remove_user_group_members_async(
+        self,
+        request: main_models.RemoveUserGroupMembersRequest,
+    ) -> main_models.RemoveUserGroupMembersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.remove_user_group_members_with_options_async(request, headers, runtime)
 
     def rename_knowledge_base_source_with_options(
         self,
@@ -7837,6 +10134,214 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.run_skill_with_options_async(request, headers, runtime)
+
+    def save_group_output_file_to_group_resource_with_options(
+        self,
+        tmp_req: main_models.SaveGroupOutputFileToGroupResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveGroupOutputFileToGroupResourceResponse:
+        tmp_req.validate()
+        request = main_models.SaveGroupOutputFileToGroupResourceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.item_ids):
+            request.item_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.item_ids, 'itemIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.item_ids_shrink):
+            body['itemIds'] = request.item_ids_shrink
+        if not DaraCore.is_null(request.mode):
+            body['mode'] = request.mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveGroupOutputFileToGroupResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/saveGroupOutputFileToGroupResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveGroupOutputFileToGroupResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_group_output_file_to_group_resource_with_options_async(
+        self,
+        tmp_req: main_models.SaveGroupOutputFileToGroupResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveGroupOutputFileToGroupResourceResponse:
+        tmp_req.validate()
+        request = main_models.SaveGroupOutputFileToGroupResourceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.item_ids):
+            request.item_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.item_ids, 'itemIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.item_ids_shrink):
+            body['itemIds'] = request.item_ids_shrink
+        if not DaraCore.is_null(request.mode):
+            body['mode'] = request.mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveGroupOutputFileToGroupResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/saveGroupOutputFileToGroupResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveGroupOutputFileToGroupResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_group_output_file_to_group_resource(
+        self,
+        request: main_models.SaveGroupOutputFileToGroupResourceRequest,
+    ) -> main_models.SaveGroupOutputFileToGroupResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.save_group_output_file_to_group_resource_with_options(request, headers, runtime)
+
+    async def save_group_output_file_to_group_resource_async(
+        self,
+        request: main_models.SaveGroupOutputFileToGroupResourceRequest,
+    ) -> main_models.SaveGroupOutputFileToGroupResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.save_group_output_file_to_group_resource_with_options_async(request, headers, runtime)
+
+    def save_group_output_file_to_personal_resource_with_options(
+        self,
+        tmp_req: main_models.SaveGroupOutputFileToPersonalResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveGroupOutputFileToPersonalResourceResponse:
+        tmp_req.validate()
+        request = main_models.SaveGroupOutputFileToPersonalResourceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.item_ids):
+            request.item_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.item_ids, 'itemIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.item_ids_shrink):
+            body['itemIds'] = request.item_ids_shrink
+        if not DaraCore.is_null(request.mode):
+            body['mode'] = request.mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveGroupOutputFileToPersonalResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/saveGroupOutputFileToPersonalResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveGroupOutputFileToPersonalResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_group_output_file_to_personal_resource_with_options_async(
+        self,
+        tmp_req: main_models.SaveGroupOutputFileToPersonalResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveGroupOutputFileToPersonalResourceResponse:
+        tmp_req.validate()
+        request = main_models.SaveGroupOutputFileToPersonalResourceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.item_ids):
+            request.item_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.item_ids, 'itemIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.item_ids_shrink):
+            body['itemIds'] = request.item_ids_shrink
+        if not DaraCore.is_null(request.mode):
+            body['mode'] = request.mode
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveGroupOutputFileToPersonalResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/saveGroupOutputFileToPersonalResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveGroupOutputFileToPersonalResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_group_output_file_to_personal_resource(
+        self,
+        request: main_models.SaveGroupOutputFileToPersonalResourceRequest,
+    ) -> main_models.SaveGroupOutputFileToPersonalResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.save_group_output_file_to_personal_resource_with_options(request, headers, runtime)
+
+    async def save_group_output_file_to_personal_resource_async(
+        self,
+        request: main_models.SaveGroupOutputFileToPersonalResourceRequest,
+    ) -> main_models.SaveGroupOutputFileToPersonalResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.save_group_output_file_to_personal_resource_with_options_async(request, headers, runtime)
 
     def save_output_file_to_resource_with_options(
         self,
@@ -9391,6 +11896,8 @@ class Client(OpenApiClient):
             request.task_detail_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_detail, 'taskDetail', 'json')
         if not DaraCore.is_null(tmp_req.trigger_config):
             request.trigger_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.trigger_config, 'triggerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.visible_member_user_ids):
+            request.visible_member_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.visible_member_user_ids, 'visibleMemberUserIds', 'json')
         query = {}
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
@@ -9413,6 +11920,10 @@ class Client(OpenApiClient):
             body['taskId'] = request.task_id
         if not DaraCore.is_null(request.trigger_config_shrink):
             body['triggerConfig'] = request.trigger_config_shrink
+        if not DaraCore.is_null(request.visibility):
+            body['visibility'] = request.visibility
+        if not DaraCore.is_null(request.visible_member_user_ids_shrink):
+            body['visibleMemberUserIds'] = request.visible_member_user_ids_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -9453,6 +11964,8 @@ class Client(OpenApiClient):
             request.task_detail_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_detail, 'taskDetail', 'json')
         if not DaraCore.is_null(tmp_req.trigger_config):
             request.trigger_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.trigger_config, 'triggerConfig', 'json')
+        if not DaraCore.is_null(tmp_req.visible_member_user_ids):
+            request.visible_member_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.visible_member_user_ids, 'visibleMemberUserIds', 'json')
         query = {}
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
@@ -9475,6 +11988,10 @@ class Client(OpenApiClient):
             body['taskId'] = request.task_id
         if not DaraCore.is_null(request.trigger_config_shrink):
             body['triggerConfig'] = request.trigger_config_shrink
+        if not DaraCore.is_null(request.visibility):
+            body['visibility'] = request.visibility
+        if not DaraCore.is_null(request.visible_member_user_ids_shrink):
+            body['visibleMemberUserIds'] = request.visible_member_user_ids_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -9815,6 +12332,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_user_with_options_async(request, headers, runtime)
+
+    def update_user_group_with_options(
+        self,
+        request: main_models.UpdateUserGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateUserGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.move_to_root):
+            body['moveToRoot'] = request.move_to_root
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
+        if not DaraCore.is_null(request.user_group_id):
+            body['userGroupId'] = request.user_group_id
+        if not DaraCore.is_null(request.user_group_name):
+            body['userGroupName'] = request.user_group_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateUserGroup',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateUserGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateUserGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_user_group_with_options_async(
+        self,
+        request: main_models.UpdateUserGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateUserGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.move_to_root):
+            body['moveToRoot'] = request.move_to_root
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
+        if not DaraCore.is_null(request.user_group_id):
+            body['userGroupId'] = request.user_group_id
+        if not DaraCore.is_null(request.user_group_name):
+            body['userGroupName'] = request.user_group_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateUserGroup',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateUserGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateUserGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_user_group(
+        self,
+        request: main_models.UpdateUserGroupRequest,
+    ) -> main_models.UpdateUserGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_user_group_with_options(request, headers, runtime)
+
+    async def update_user_group_async(
+        self,
+        request: main_models.UpdateUserGroupRequest,
+    ) -> main_models.UpdateUserGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_user_group_with_options_async(request, headers, runtime)
 
     def update_user_info_with_options(
         self,

@@ -19,21 +19,23 @@ class ListChatSessionsResponseBody(DaraModel):
         tenant_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 是否有更多数据
+        # Indicates whether there is a next page.
         self.has_more = has_more
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
+        # The current page number.
         self.page = page
-        # 每页条数
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 响应数据负载
+        # The list of sessions.
         self.sessions = sessions
-        # 租户ID
+        # The effective tenant ID.
         self.tenant_id = tenant_id
+        # The total number of records.
         self.total = total
 
     def validate(self):

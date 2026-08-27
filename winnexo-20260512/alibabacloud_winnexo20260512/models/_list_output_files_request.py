@@ -15,19 +15,19 @@ class ListOutputFilesRequest(DaraModel):
         shared_only: bool = None,
         tenant_id: str = None,
     ):
-        # 产出明细类型: ppt/html/document/picture/slides/video/audio/email/others
+        # The type of the output item. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
         self.item_type = item_type
-        # 关键词搜索，匹配产出标题或明细名称
+        # The keyword for searching. Matches output titles or item names.
         self.keyword = keyword
-        # 数字员工（运营对象）名称，按名称过滤
+        # The name of the digital employee (operating object). Used to filter results by name.
         self.operating_object_name = operating_object_name
-        # 页码，从 1 开始
+        # The page number, starting from 1.
         self.page = page
-        # 每页数量，范围 1-100
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # 是否仅展示开启分享的产出和产出明细
+        # Specifies whether to display only outputs and output items that have sharing enabled.
         self.shared_only = shared_only
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

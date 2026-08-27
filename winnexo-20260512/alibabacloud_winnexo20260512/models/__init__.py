@@ -2,9 +2,17 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_user_group_members_request import AddUserGroupMembersRequest
+from ._add_user_group_members_shrink_request import AddUserGroupMembersShrinkRequest
+from ._add_user_group_members_response_body import AddUserGroupMembersResponseBody
+from ._add_user_group_members_response import AddUserGroupMembersResponse
 from ._check_health_request import CheckHealthRequest
 from ._check_health_response_body import CheckHealthResponseBody
 from ._check_health_response import CheckHealthResponse
+from ._create_announcement_request import CreateAnnouncementRequest
+from ._create_announcement_shrink_request import CreateAnnouncementShrinkRequest
+from ._create_announcement_response_body import CreateAnnouncementResponseBody
+from ._create_announcement_response import CreateAnnouncementResponse
 from ._create_conversation_request import CreateConversationRequest
 from ._create_conversation_shrink_request import CreateConversationShrinkRequest
 from ._create_conversation_response_body import CreateConversationResponseBody
@@ -12,18 +20,38 @@ from ._create_conversation_response import CreateConversationResponse
 from ._create_custom_org_request import CreateCustomOrgRequest
 from ._create_custom_org_response_body import CreateCustomOrgResponseBody
 from ._create_custom_org_response import CreateCustomOrgResponse
+from ._create_group_ali_ding_chat_request import CreateGroupAliDingChatRequest
+from ._create_group_ali_ding_chat_shrink_request import CreateGroupAliDingChatShrinkRequest
+from ._create_group_ali_ding_chat_response_body import CreateGroupAliDingChatResponseBody
+from ._create_group_ali_ding_chat_response import CreateGroupAliDingChatResponse
+from ._create_group_dingtalk_chat_request import CreateGroupDingtalkChatRequest
+from ._create_group_dingtalk_chat_shrink_request import CreateGroupDingtalkChatShrinkRequest
+from ._create_group_dingtalk_chat_response_body import CreateGroupDingtalkChatResponseBody
+from ._create_group_dingtalk_chat_response import CreateGroupDingtalkChatResponse
+from ._create_group_feishu_doc_request import CreateGroupFeishuDocRequest
+from ._create_group_feishu_doc_shrink_request import CreateGroupFeishuDocShrinkRequest
+from ._create_group_feishu_doc_response_body import CreateGroupFeishuDocResponseBody
+from ._create_group_feishu_doc_response import CreateGroupFeishuDocResponse
 from ._create_knowledge_base_ali_ding_doc_request import CreateKnowledgeBaseAliDingDocRequest
 from ._create_knowledge_base_ali_ding_doc_response_body import CreateKnowledgeBaseAliDingDocResponseBody
 from ._create_knowledge_base_ali_ding_doc_response import CreateKnowledgeBaseAliDingDocResponse
 from ._create_knowledge_base_directory_request import CreateKnowledgeBaseDirectoryRequest
 from ._create_knowledge_base_directory_response_body import CreateKnowledgeBaseDirectoryResponseBody
 from ._create_knowledge_base_directory_response import CreateKnowledgeBaseDirectoryResponse
+from ._create_knowledge_base_feishu_doc_request import CreateKnowledgeBaseFeishuDocRequest
+from ._create_knowledge_base_feishu_doc_shrink_request import CreateKnowledgeBaseFeishuDocShrinkRequest
+from ._create_knowledge_base_feishu_doc_response_body import CreateKnowledgeBaseFeishuDocResponseBody
+from ._create_knowledge_base_feishu_doc_response import CreateKnowledgeBaseFeishuDocResponse
 from ._create_knowledge_base_file_request import CreateKnowledgeBaseFileRequest
 from ._create_knowledge_base_file_response_body import CreateKnowledgeBaseFileResponseBody
 from ._create_knowledge_base_file_response import CreateKnowledgeBaseFileResponse
 from ._create_knowledge_base_text_request import CreateKnowledgeBaseTextRequest
 from ._create_knowledge_base_text_response_body import CreateKnowledgeBaseTextResponseBody
 from ._create_knowledge_base_text_response import CreateKnowledgeBaseTextResponse
+from ._create_personal_ali_ding_chat_request import CreatePersonalAliDingChatRequest
+from ._create_personal_ali_ding_chat_shrink_request import CreatePersonalAliDingChatShrinkRequest
+from ._create_personal_ali_ding_chat_response_body import CreatePersonalAliDingChatResponseBody
+from ._create_personal_ali_ding_chat_response import CreatePersonalAliDingChatResponse
 from ._create_personal_ali_ding_meeting_request import CreatePersonalAliDingMeetingRequest
 from ._create_personal_ali_ding_meeting_response_body import CreatePersonalAliDingMeetingResponseBody
 from ._create_personal_ali_ding_meeting_response import CreatePersonalAliDingMeetingResponse
@@ -34,12 +62,27 @@ from ._create_personal_aliding_knowledge_base_request import CreatePersonalAlidi
 from ._create_personal_aliding_knowledge_base_shrink_request import CreatePersonalAlidingKnowledgeBaseShrinkRequest
 from ._create_personal_aliding_knowledge_base_response_body import CreatePersonalAlidingKnowledgeBaseResponseBody
 from ._create_personal_aliding_knowledge_base_response import CreatePersonalAlidingKnowledgeBaseResponse
+from ._create_personal_dingtalk_chat_request import CreatePersonalDingtalkChatRequest
+from ._create_personal_dingtalk_chat_shrink_request import CreatePersonalDingtalkChatShrinkRequest
+from ._create_personal_dingtalk_chat_response_body import CreatePersonalDingtalkChatResponseBody
+from ._create_personal_dingtalk_chat_response import CreatePersonalDingtalkChatResponse
 from ._create_personal_dingtalk_meeting_request import CreatePersonalDingtalkMeetingRequest
 from ._create_personal_dingtalk_meeting_response_body import CreatePersonalDingtalkMeetingResponseBody
 from ._create_personal_dingtalk_meeting_response import CreatePersonalDingtalkMeetingResponse
+from ._create_personal_dingtalk_minutes_request import CreatePersonalDingtalkMinutesRequest
+from ._create_personal_dingtalk_minutes_response_body import CreatePersonalDingtalkMinutesResponseBody
+from ._create_personal_dingtalk_minutes_response import CreatePersonalDingtalkMinutesResponse
 from ._create_personal_directory_request import CreatePersonalDirectoryRequest
 from ._create_personal_directory_response_body import CreatePersonalDirectoryResponseBody
 from ._create_personal_directory_response import CreatePersonalDirectoryResponse
+from ._create_personal_feishu_chat_request import CreatePersonalFeishuChatRequest
+from ._create_personal_feishu_chat_shrink_request import CreatePersonalFeishuChatShrinkRequest
+from ._create_personal_feishu_chat_response_body import CreatePersonalFeishuChatResponseBody
+from ._create_personal_feishu_chat_response import CreatePersonalFeishuChatResponse
+from ._create_personal_feishu_doc_request import CreatePersonalFeishuDocRequest
+from ._create_personal_feishu_doc_shrink_request import CreatePersonalFeishuDocShrinkRequest
+from ._create_personal_feishu_doc_response_body import CreatePersonalFeishuDocResponseBody
+from ._create_personal_feishu_doc_response import CreatePersonalFeishuDocResponse
 from ._create_personal_feishu_minute_request import CreatePersonalFeishuMinuteRequest
 from ._create_personal_feishu_minute_response_body import CreatePersonalFeishuMinuteResponseBody
 from ._create_personal_feishu_minute_response import CreatePersonalFeishuMinuteResponse
@@ -64,6 +107,13 @@ from ._create_user_request import CreateUserRequest
 from ._create_user_shrink_request import CreateUserShrinkRequest
 from ._create_user_response_body import CreateUserResponseBody
 from ._create_user_response import CreateUserResponse
+from ._create_user_group_request import CreateUserGroupRequest
+from ._create_user_group_response_body import CreateUserGroupResponseBody
+from ._create_user_group_response import CreateUserGroupResponse
+from ._create_user_with_groups_request import CreateUserWithGroupsRequest
+from ._create_user_with_groups_shrink_request import CreateUserWithGroupsShrinkRequest
+from ._create_user_with_groups_response_body import CreateUserWithGroupsResponseBody
+from ._create_user_with_groups_response import CreateUserWithGroupsResponse
 from ._delete_chat_session_request import DeleteChatSessionRequest
 from ._delete_chat_session_response_body import DeleteChatSessionResponseBody
 from ._delete_chat_session_response import DeleteChatSessionResponse
@@ -97,6 +147,9 @@ from ._get_scheduled_task_execution_detail_response import GetScheduledTaskExecu
 from ._get_scheduled_task_execution_records_request import GetScheduledTaskExecutionRecordsRequest
 from ._get_scheduled_task_execution_records_response_body import GetScheduledTaskExecutionRecordsResponseBody
 from ._get_scheduled_task_execution_records_response import GetScheduledTaskExecutionRecordsResponse
+from ._get_scheduled_task_push_options_request import GetScheduledTaskPushOptionsRequest
+from ._get_scheduled_task_push_options_response_body import GetScheduledTaskPushOptionsResponseBody
+from ._get_scheduled_task_push_options_response import GetScheduledTaskPushOptionsResponse
 from ._get_scheduled_task_understand_detail_request import GetScheduledTaskUnderstandDetailRequest
 from ._get_scheduled_task_understand_detail_shrink_request import GetScheduledTaskUnderstandDetailShrinkRequest
 from ._get_scheduled_task_understand_detail_response_body import GetScheduledTaskUnderstandDetailResponseBody
@@ -113,6 +166,9 @@ from ._get_source_response import GetSourceResponse
 from ._get_source_upload_signature_request import GetSourceUploadSignatureRequest
 from ._get_source_upload_signature_response_body import GetSourceUploadSignatureResponseBody
 from ._get_source_upload_signature_response import GetSourceUploadSignatureResponse
+from ._get_token_ensure_enable_request import GetTokenEnsureEnableRequest
+from ._get_token_ensure_enable_response_body import GetTokenEnsureEnableResponseBody
+from ._get_token_ensure_enable_response import GetTokenEnsureEnableResponse
 from ._get_token_info_request import GetTokenInfoRequest
 from ._get_token_info_response_body import GetTokenInfoResponseBody
 from ._get_token_info_response import GetTokenInfoResponse
@@ -122,6 +178,9 @@ from ._get_user_response import GetUserResponse
 from ._get_user_credit_usage_request import GetUserCreditUsageRequest
 from ._get_user_credit_usage_response_body import GetUserCreditUsageResponseBody
 from ._get_user_credit_usage_response import GetUserCreditUsageResponse
+from ._get_user_group_request import GetUserGroupRequest
+from ._get_user_group_response_body import GetUserGroupResponseBody
+from ._get_user_group_response import GetUserGroupResponse
 from ._get_user_info_request import GetUserInfoRequest
 from ._get_user_info_response_body import GetUserInfoResponseBody
 from ._get_user_info_response import GetUserInfoResponse
@@ -129,6 +188,9 @@ from ._grant_agent_users_request import GrantAgentUsersRequest
 from ._grant_agent_users_shrink_request import GrantAgentUsersShrinkRequest
 from ._grant_agent_users_response_body import GrantAgentUsersResponseBody
 from ._grant_agent_users_response import GrantAgentUsersResponse
+from ._list_active_announcements_request import ListActiveAnnouncementsRequest
+from ._list_active_announcements_response_body import ListActiveAnnouncementsResponseBody
+from ._list_active_announcements_response import ListActiveAnnouncementsResponse
 from ._list_admin_knowledge_bases_request import ListAdminKnowledgeBasesRequest
 from ._list_admin_knowledge_bases_shrink_request import ListAdminKnowledgeBasesShrinkRequest
 from ._list_admin_knowledge_bases_response_body import ListAdminKnowledgeBasesResponseBody
@@ -168,6 +230,7 @@ from ._list_roles_request import ListRolesRequest
 from ._list_roles_response_body import ListRolesResponseBody
 from ._list_roles_response import ListRolesResponse
 from ._list_scheduled_tasks_request import ListScheduledTasksRequest
+from ._list_scheduled_tasks_shrink_request import ListScheduledTasksShrinkRequest
 from ._list_scheduled_tasks_response_body import ListScheduledTasksResponseBody
 from ._list_scheduled_tasks_response import ListScheduledTasksResponse
 from ._list_skills_request import ListSkillsRequest
@@ -177,6 +240,9 @@ from ._list_skills_response import ListSkillsResponse
 from ._list_tenant_directory_request import ListTenantDirectoryRequest
 from ._list_tenant_directory_response_body import ListTenantDirectoryResponseBody
 from ._list_tenant_directory_response import ListTenantDirectoryResponse
+from ._list_user_groups_request import ListUserGroupsRequest
+from ._list_user_groups_response_body import ListUserGroupsResponseBody
+from ._list_user_groups_response import ListUserGroupsResponse
 from ._list_user_visible_knowledge_base_contents_request import ListUserVisibleKnowledgeBaseContentsRequest
 from ._list_user_visible_knowledge_base_contents_response_body import ListUserVisibleKnowledgeBaseContentsResponseBody
 from ._list_user_visible_knowledge_base_contents_response import ListUserVisibleKnowledgeBaseContentsResponse
@@ -201,6 +267,9 @@ from ._move_knowledge_base_resource_response import MoveKnowledgeBaseResourceRes
 from ._move_resource_request import MoveResourceRequest
 from ._move_resource_response_body import MoveResourceResponseBody
 from ._move_resource_response import MoveResourceResponse
+from ._offline_announcement_request import OfflineAnnouncementRequest
+from ._offline_announcement_response_body import OfflineAnnouncementResponseBody
+from ._offline_announcement_response import OfflineAnnouncementResponse
 from ._preview_knowledge_base_source_request import PreviewKnowledgeBaseSourceRequest
 from ._preview_knowledge_base_source_response_body import PreviewKnowledgeBaseSourceResponseBody
 from ._preview_knowledge_base_source_response import PreviewKnowledgeBaseSourceResponse
@@ -217,9 +286,16 @@ from ._query_semantic_knowledge_response import QuerySemanticKnowledgeResponse
 from ._query_sync_result_request import QuerySyncResultRequest
 from ._query_sync_result_response_body import QuerySyncResultResponseBody
 from ._query_sync_result_response import QuerySyncResultResponse
+from ._recommend_next_actions_request import RecommendNextActionsRequest
+from ._recommend_next_actions_response_body import RecommendNextActionsResponseBody
+from ._recommend_next_actions_response import RecommendNextActionsResponse
 from ._remove_user_request import RemoveUserRequest
 from ._remove_user_response_body import RemoveUserResponseBody
 from ._remove_user_response import RemoveUserResponse
+from ._remove_user_group_members_request import RemoveUserGroupMembersRequest
+from ._remove_user_group_members_shrink_request import RemoveUserGroupMembersShrinkRequest
+from ._remove_user_group_members_response_body import RemoveUserGroupMembersResponseBody
+from ._remove_user_group_members_response import RemoveUserGroupMembersResponse
 from ._rename_knowledge_base_source_request import RenameKnowledgeBaseSourceRequest
 from ._rename_knowledge_base_source_response_body import RenameKnowledgeBaseSourceResponseBody
 from ._rename_knowledge_base_source_response import RenameKnowledgeBaseSourceResponse
@@ -259,6 +335,14 @@ from ._run_skill_request import RunSkillRequest
 from ._run_skill_shrink_request import RunSkillShrinkRequest
 from ._run_skill_response_body import RunSkillResponseBody
 from ._run_skill_response import RunSkillResponse
+from ._save_group_output_file_to_group_resource_request import SaveGroupOutputFileToGroupResourceRequest
+from ._save_group_output_file_to_group_resource_shrink_request import SaveGroupOutputFileToGroupResourceShrinkRequest
+from ._save_group_output_file_to_group_resource_response_body import SaveGroupOutputFileToGroupResourceResponseBody
+from ._save_group_output_file_to_group_resource_response import SaveGroupOutputFileToGroupResourceResponse
+from ._save_group_output_file_to_personal_resource_request import SaveGroupOutputFileToPersonalResourceRequest
+from ._save_group_output_file_to_personal_resource_shrink_request import SaveGroupOutputFileToPersonalResourceShrinkRequest
+from ._save_group_output_file_to_personal_resource_response_body import SaveGroupOutputFileToPersonalResourceResponseBody
+from ._save_group_output_file_to_personal_resource_response import SaveGroupOutputFileToPersonalResourceResponse
 from ._save_output_file_to_resource_request import SaveOutputFileToResourceRequest
 from ._save_output_file_to_resource_shrink_request import SaveOutputFileToResourceShrinkRequest
 from ._save_output_file_to_resource_response_body import SaveOutputFileToResourceResponseBody
@@ -317,6 +401,9 @@ from ._update_user_request import UpdateUserRequest
 from ._update_user_shrink_request import UpdateUserShrinkRequest
 from ._update_user_response_body import UpdateUserResponseBody
 from ._update_user_response import UpdateUserResponse
+from ._update_user_group_request import UpdateUserGroupRequest
+from ._update_user_group_response_body import UpdateUserGroupResponseBody
+from ._update_user_group_response import UpdateUserGroupResponse
 from ._update_user_info_request import UpdateUserInfoRequest
 from ._update_user_info_response_body import UpdateUserInfoResponseBody
 from ._update_user_info_response import UpdateUserInfoResponse
@@ -324,8 +411,19 @@ from ._upload_chat_file_request import UploadChatFileRequest
 from ._upload_chat_file_advance_request import UploadChatFileAdvanceRequest
 from ._upload_chat_file_response_body import UploadChatFileResponseBody
 from ._upload_chat_file_response import UploadChatFileResponse
+from ._create_group_ali_ding_chat_request import CreateGroupAliDingChatRequestUpdateFrequency
+from ._create_group_dingtalk_chat_request import CreateGroupDingtalkChatRequestUpdateFrequency
+from ._create_group_feishu_doc_request import CreateGroupFeishuDocRequestObjectBindings
+from ._create_group_feishu_doc_request import CreateGroupFeishuDocRequestSyncConfig
+from ._create_knowledge_base_feishu_doc_request import CreateKnowledgeBaseFeishuDocRequestObjectBindings
+from ._create_knowledge_base_feishu_doc_request import CreateKnowledgeBaseFeishuDocRequestSyncConfig
+from ._create_personal_ali_ding_chat_request import CreatePersonalAliDingChatRequestUpdateFrequency
 from ._create_personal_aliding_knowledge_base_request import CreatePersonalAlidingKnowledgeBaseRequestObjectBindings
 from ._create_personal_aliding_knowledge_base_request import CreatePersonalAlidingKnowledgeBaseRequestSyncConfig
+from ._create_personal_dingtalk_chat_request import CreatePersonalDingtalkChatRequestUpdateFrequency
+from ._create_personal_feishu_chat_request import CreatePersonalFeishuChatRequestUpdateFrequency
+from ._create_personal_feishu_doc_request import CreatePersonalFeishuDocRequestObjectBindings
+from ._create_personal_feishu_doc_request import CreatePersonalFeishuDocRequestSyncConfig
 from ._create_scheduled_task_request import CreateScheduledTaskRequestDescription
 from ._create_scheduled_task_request import CreateScheduledTaskRequestSegments
 from ._create_scheduled_task_request import CreateScheduledTaskRequestTaskDetailRelatedObjects
@@ -341,6 +439,9 @@ from ._get_scheduled_task_execution_detail_response_body import GetScheduledTask
 from ._get_scheduled_task_execution_detail_response_body import GetScheduledTaskExecutionDetailResponseBodyTriggerInfo
 from ._get_scheduled_task_execution_records_response_body import GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline
 from ._get_scheduled_task_execution_records_response_body import GetScheduledTaskExecutionRecordsResponseBodyTasks
+from ._get_scheduled_task_push_options_response_body import GetScheduledTaskPushOptionsResponseBodyChannelsImGroups
+from ._get_scheduled_task_push_options_response_body import GetScheduledTaskPushOptionsResponseBodyChannelsMethods
+from ._get_scheduled_task_push_options_response_body import GetScheduledTaskPushOptionsResponseBodyChannels
 from ._get_scheduled_task_understand_detail_request import GetScheduledTaskUnderstandDetailRequestSegments
 from ._get_scheduled_task_understand_detail_response_body import GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects
 from ._get_scheduled_task_understand_detail_response_body import GetScheduledTaskUnderstandDetailResponseBodyRelatedSemantics
@@ -349,6 +450,7 @@ from ._get_skill_response_body import GetSkillResponseBodyArguments
 from ._get_source_response_body import GetSourceResponseBodyObjectBindings
 from ._get_source_response_body import GetSourceResponseBodyUnstructuredDocs
 from ._get_user_info_response_body import GetUserInfoResponseBodyTenantList
+from ._list_active_announcements_response_body import ListActiveAnnouncementsResponseBodyItems
 from ._list_admin_knowledge_bases_response_body import ListAdminKnowledgeBasesResponseBodyItemsObjectBindings
 from ._list_admin_knowledge_bases_response_body import ListAdminKnowledgeBasesResponseBodyItems
 from ._list_agents_response_body import ListAgentsResponseBodyItems
@@ -376,10 +478,13 @@ from ._list_visible_knowledge_base_contents_response_body import ListVisibleKnow
 from ._list_visible_knowledge_bases_response_body import ListVisibleKnowledgeBasesResponseBodyItems
 from ._query_sync_result_response_body import QuerySyncResultResponseBodyDeptStats
 from ._query_sync_result_response_body import QuerySyncResultResponseBodyMemberStats
+from ._recommend_next_actions_response_body import RecommendNextActionsResponseBodyNextActions
 from ._replace_object_bindings_request import ReplaceObjectBindingsRequestObjectBindings
 from ._replace_object_bindings_response_body import ReplaceObjectBindingsResponseBodyObjectBindings
 from ._retry_directory_failed_sources_response_body import RetryDirectoryFailedSourcesResponseBodyFailedSources
 from ._retry_knowledge_base_failed_sources_response_body import RetryKnowledgeBaseFailedSourcesResponseBodyFailedSources
+from ._save_group_output_file_to_group_resource_response_body import SaveGroupOutputFileToGroupResourceResponseBodyResults
+from ._save_group_output_file_to_personal_resource_response_body import SaveGroupOutputFileToPersonalResourceResponseBodyResults
 from ._save_output_file_to_resource_response_body import SaveOutputFileToResourceResponseBodyResults
 from ._send_async_chat_message_request import SendAsyncChatMessageRequestFiles
 from ._send_async_chat_message_request import SendAsyncChatMessageRequestTaskExecution
@@ -401,9 +506,17 @@ from ._update_user_info_response_body import UpdateUserInfoResponseBodyUserTenan
 from ._update_user_info_response_body import UpdateUserInfoResponseBodyUser
 
 __all__ = [
+    AddUserGroupMembersRequest,
+    AddUserGroupMembersShrinkRequest,
+    AddUserGroupMembersResponseBody,
+    AddUserGroupMembersResponse,
     CheckHealthRequest,
     CheckHealthResponseBody,
     CheckHealthResponse,
+    CreateAnnouncementRequest,
+    CreateAnnouncementShrinkRequest,
+    CreateAnnouncementResponseBody,
+    CreateAnnouncementResponse,
     CreateConversationRequest,
     CreateConversationShrinkRequest,
     CreateConversationResponseBody,
@@ -411,18 +524,38 @@ __all__ = [
     CreateCustomOrgRequest,
     CreateCustomOrgResponseBody,
     CreateCustomOrgResponse,
+    CreateGroupAliDingChatRequest,
+    CreateGroupAliDingChatShrinkRequest,
+    CreateGroupAliDingChatResponseBody,
+    CreateGroupAliDingChatResponse,
+    CreateGroupDingtalkChatRequest,
+    CreateGroupDingtalkChatShrinkRequest,
+    CreateGroupDingtalkChatResponseBody,
+    CreateGroupDingtalkChatResponse,
+    CreateGroupFeishuDocRequest,
+    CreateGroupFeishuDocShrinkRequest,
+    CreateGroupFeishuDocResponseBody,
+    CreateGroupFeishuDocResponse,
     CreateKnowledgeBaseAliDingDocRequest,
     CreateKnowledgeBaseAliDingDocResponseBody,
     CreateKnowledgeBaseAliDingDocResponse,
     CreateKnowledgeBaseDirectoryRequest,
     CreateKnowledgeBaseDirectoryResponseBody,
     CreateKnowledgeBaseDirectoryResponse,
+    CreateKnowledgeBaseFeishuDocRequest,
+    CreateKnowledgeBaseFeishuDocShrinkRequest,
+    CreateKnowledgeBaseFeishuDocResponseBody,
+    CreateKnowledgeBaseFeishuDocResponse,
     CreateKnowledgeBaseFileRequest,
     CreateKnowledgeBaseFileResponseBody,
     CreateKnowledgeBaseFileResponse,
     CreateKnowledgeBaseTextRequest,
     CreateKnowledgeBaseTextResponseBody,
     CreateKnowledgeBaseTextResponse,
+    CreatePersonalAliDingChatRequest,
+    CreatePersonalAliDingChatShrinkRequest,
+    CreatePersonalAliDingChatResponseBody,
+    CreatePersonalAliDingChatResponse,
     CreatePersonalAliDingMeetingRequest,
     CreatePersonalAliDingMeetingResponseBody,
     CreatePersonalAliDingMeetingResponse,
@@ -433,12 +566,27 @@ __all__ = [
     CreatePersonalAlidingKnowledgeBaseShrinkRequest,
     CreatePersonalAlidingKnowledgeBaseResponseBody,
     CreatePersonalAlidingKnowledgeBaseResponse,
+    CreatePersonalDingtalkChatRequest,
+    CreatePersonalDingtalkChatShrinkRequest,
+    CreatePersonalDingtalkChatResponseBody,
+    CreatePersonalDingtalkChatResponse,
     CreatePersonalDingtalkMeetingRequest,
     CreatePersonalDingtalkMeetingResponseBody,
     CreatePersonalDingtalkMeetingResponse,
+    CreatePersonalDingtalkMinutesRequest,
+    CreatePersonalDingtalkMinutesResponseBody,
+    CreatePersonalDingtalkMinutesResponse,
     CreatePersonalDirectoryRequest,
     CreatePersonalDirectoryResponseBody,
     CreatePersonalDirectoryResponse,
+    CreatePersonalFeishuChatRequest,
+    CreatePersonalFeishuChatShrinkRequest,
+    CreatePersonalFeishuChatResponseBody,
+    CreatePersonalFeishuChatResponse,
+    CreatePersonalFeishuDocRequest,
+    CreatePersonalFeishuDocShrinkRequest,
+    CreatePersonalFeishuDocResponseBody,
+    CreatePersonalFeishuDocResponse,
     CreatePersonalFeishuMinuteRequest,
     CreatePersonalFeishuMinuteResponseBody,
     CreatePersonalFeishuMinuteResponse,
@@ -463,6 +611,13 @@ __all__ = [
     CreateUserShrinkRequest,
     CreateUserResponseBody,
     CreateUserResponse,
+    CreateUserGroupRequest,
+    CreateUserGroupResponseBody,
+    CreateUserGroupResponse,
+    CreateUserWithGroupsRequest,
+    CreateUserWithGroupsShrinkRequest,
+    CreateUserWithGroupsResponseBody,
+    CreateUserWithGroupsResponse,
     DeleteChatSessionRequest,
     DeleteChatSessionResponseBody,
     DeleteChatSessionResponse,
@@ -496,6 +651,9 @@ __all__ = [
     GetScheduledTaskExecutionRecordsRequest,
     GetScheduledTaskExecutionRecordsResponseBody,
     GetScheduledTaskExecutionRecordsResponse,
+    GetScheduledTaskPushOptionsRequest,
+    GetScheduledTaskPushOptionsResponseBody,
+    GetScheduledTaskPushOptionsResponse,
     GetScheduledTaskUnderstandDetailRequest,
     GetScheduledTaskUnderstandDetailShrinkRequest,
     GetScheduledTaskUnderstandDetailResponseBody,
@@ -512,6 +670,9 @@ __all__ = [
     GetSourceUploadSignatureRequest,
     GetSourceUploadSignatureResponseBody,
     GetSourceUploadSignatureResponse,
+    GetTokenEnsureEnableRequest,
+    GetTokenEnsureEnableResponseBody,
+    GetTokenEnsureEnableResponse,
     GetTokenInfoRequest,
     GetTokenInfoResponseBody,
     GetTokenInfoResponse,
@@ -521,6 +682,9 @@ __all__ = [
     GetUserCreditUsageRequest,
     GetUserCreditUsageResponseBody,
     GetUserCreditUsageResponse,
+    GetUserGroupRequest,
+    GetUserGroupResponseBody,
+    GetUserGroupResponse,
     GetUserInfoRequest,
     GetUserInfoResponseBody,
     GetUserInfoResponse,
@@ -528,6 +692,9 @@ __all__ = [
     GrantAgentUsersShrinkRequest,
     GrantAgentUsersResponseBody,
     GrantAgentUsersResponse,
+    ListActiveAnnouncementsRequest,
+    ListActiveAnnouncementsResponseBody,
+    ListActiveAnnouncementsResponse,
     ListAdminKnowledgeBasesRequest,
     ListAdminKnowledgeBasesShrinkRequest,
     ListAdminKnowledgeBasesResponseBody,
@@ -567,6 +734,7 @@ __all__ = [
     ListRolesResponseBody,
     ListRolesResponse,
     ListScheduledTasksRequest,
+    ListScheduledTasksShrinkRequest,
     ListScheduledTasksResponseBody,
     ListScheduledTasksResponse,
     ListSkillsRequest,
@@ -576,6 +744,9 @@ __all__ = [
     ListTenantDirectoryRequest,
     ListTenantDirectoryResponseBody,
     ListTenantDirectoryResponse,
+    ListUserGroupsRequest,
+    ListUserGroupsResponseBody,
+    ListUserGroupsResponse,
     ListUserVisibleKnowledgeBaseContentsRequest,
     ListUserVisibleKnowledgeBaseContentsResponseBody,
     ListUserVisibleKnowledgeBaseContentsResponse,
@@ -600,6 +771,9 @@ __all__ = [
     MoveResourceRequest,
     MoveResourceResponseBody,
     MoveResourceResponse,
+    OfflineAnnouncementRequest,
+    OfflineAnnouncementResponseBody,
+    OfflineAnnouncementResponse,
     PreviewKnowledgeBaseSourceRequest,
     PreviewKnowledgeBaseSourceResponseBody,
     PreviewKnowledgeBaseSourceResponse,
@@ -616,9 +790,16 @@ __all__ = [
     QuerySyncResultRequest,
     QuerySyncResultResponseBody,
     QuerySyncResultResponse,
+    RecommendNextActionsRequest,
+    RecommendNextActionsResponseBody,
+    RecommendNextActionsResponse,
     RemoveUserRequest,
     RemoveUserResponseBody,
     RemoveUserResponse,
+    RemoveUserGroupMembersRequest,
+    RemoveUserGroupMembersShrinkRequest,
+    RemoveUserGroupMembersResponseBody,
+    RemoveUserGroupMembersResponse,
     RenameKnowledgeBaseSourceRequest,
     RenameKnowledgeBaseSourceResponseBody,
     RenameKnowledgeBaseSourceResponse,
@@ -658,6 +839,14 @@ __all__ = [
     RunSkillShrinkRequest,
     RunSkillResponseBody,
     RunSkillResponse,
+    SaveGroupOutputFileToGroupResourceRequest,
+    SaveGroupOutputFileToGroupResourceShrinkRequest,
+    SaveGroupOutputFileToGroupResourceResponseBody,
+    SaveGroupOutputFileToGroupResourceResponse,
+    SaveGroupOutputFileToPersonalResourceRequest,
+    SaveGroupOutputFileToPersonalResourceShrinkRequest,
+    SaveGroupOutputFileToPersonalResourceResponseBody,
+    SaveGroupOutputFileToPersonalResourceResponse,
     SaveOutputFileToResourceRequest,
     SaveOutputFileToResourceShrinkRequest,
     SaveOutputFileToResourceResponseBody,
@@ -716,6 +905,9 @@ __all__ = [
     UpdateUserShrinkRequest,
     UpdateUserResponseBody,
     UpdateUserResponse,
+    UpdateUserGroupRequest,
+    UpdateUserGroupResponseBody,
+    UpdateUserGroupResponse,
     UpdateUserInfoRequest,
     UpdateUserInfoResponseBody,
     UpdateUserInfoResponse,
@@ -723,8 +915,19 @@ __all__ = [
     UploadChatFileAdvanceRequest,
     UploadChatFileResponseBody,
     UploadChatFileResponse,
+    CreateGroupAliDingChatRequestUpdateFrequency,
+    CreateGroupDingtalkChatRequestUpdateFrequency,
+    CreateGroupFeishuDocRequestObjectBindings,
+    CreateGroupFeishuDocRequestSyncConfig,
+    CreateKnowledgeBaseFeishuDocRequestObjectBindings,
+    CreateKnowledgeBaseFeishuDocRequestSyncConfig,
+    CreatePersonalAliDingChatRequestUpdateFrequency,
     CreatePersonalAlidingKnowledgeBaseRequestObjectBindings,
     CreatePersonalAlidingKnowledgeBaseRequestSyncConfig,
+    CreatePersonalDingtalkChatRequestUpdateFrequency,
+    CreatePersonalFeishuChatRequestUpdateFrequency,
+    CreatePersonalFeishuDocRequestObjectBindings,
+    CreatePersonalFeishuDocRequestSyncConfig,
     CreateScheduledTaskRequestDescription,
     CreateScheduledTaskRequestSegments,
     CreateScheduledTaskRequestTaskDetailRelatedObjects,
@@ -740,6 +943,9 @@ __all__ = [
     GetScheduledTaskExecutionDetailResponseBodyTriggerInfo,
     GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline,
     GetScheduledTaskExecutionRecordsResponseBodyTasks,
+    GetScheduledTaskPushOptionsResponseBodyChannelsImGroups,
+    GetScheduledTaskPushOptionsResponseBodyChannelsMethods,
+    GetScheduledTaskPushOptionsResponseBodyChannels,
     GetScheduledTaskUnderstandDetailRequestSegments,
     GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects,
     GetScheduledTaskUnderstandDetailResponseBodyRelatedSemantics,
@@ -748,6 +954,7 @@ __all__ = [
     GetSourceResponseBodyObjectBindings,
     GetSourceResponseBodyUnstructuredDocs,
     GetUserInfoResponseBodyTenantList,
+    ListActiveAnnouncementsResponseBodyItems,
     ListAdminKnowledgeBasesResponseBodyItemsObjectBindings,
     ListAdminKnowledgeBasesResponseBodyItems,
     ListAgentsResponseBodyItems,
@@ -775,10 +982,13 @@ __all__ = [
     ListVisibleKnowledgeBasesResponseBodyItems,
     QuerySyncResultResponseBodyDeptStats,
     QuerySyncResultResponseBodyMemberStats,
+    RecommendNextActionsResponseBodyNextActions,
     ReplaceObjectBindingsRequestObjectBindings,
     ReplaceObjectBindingsResponseBodyObjectBindings,
     RetryDirectoryFailedSourcesResponseBodyFailedSources,
     RetryKnowledgeBaseFailedSourcesResponseBodyFailedSources,
+    SaveGroupOutputFileToGroupResourceResponseBodyResults,
+    SaveGroupOutputFileToPersonalResourceResponseBodyResults,
     SaveOutputFileToResourceResponseBodyResults,
     SendAsyncChatMessageRequestFiles,
     SendAsyncChatMessageRequestTaskExecution,

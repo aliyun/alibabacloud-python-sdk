@@ -13,14 +13,15 @@ class ListChatSessionsRequest(DaraModel):
         page_size: int = None,
         tenant_id: str = None,
     ):
-        # 数字员工名称筛选（逗号分隔，如 sales_agent,service_agent）
+        # The list of digital employee names. A single string can be passed for backward compatibility with the legacy format.
         self.digital_employee_name = digital_employee_name
-        # 标题模糊搜索
+        # The rule name keyword for fuzzy match.
         self.keyword = keyword
-        # 页码，从 1 开始
+        # The page number. Default value: 1. Pages start from page 1.
         self.page = page
+        # The maximum number of data records to read in this request.
         self.page_size = page_size
-        # 租户ID
+        # The tenant ID to which the task belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

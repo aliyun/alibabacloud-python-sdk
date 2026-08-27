@@ -10,11 +10,11 @@ class PreviewPersonalSourceRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 知识 ID（数据源唯一标识）
+        # The data source ID, which is unique within the tenant.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. The winnexo-cli passes this parameter explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

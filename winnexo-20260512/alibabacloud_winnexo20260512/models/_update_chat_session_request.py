@@ -12,15 +12,15 @@ class UpdateChatSessionRequest(DaraModel):
         tenant_id: str = None,
         title: str = None,
     ):
-        # 抽象模型名（模型档位）；不传则不修改会话当前模型
+        # The abstract model name (model tier). If not specified, the current model of the session is not modified.
         self.model = model
-        # 会话 ID
+        # The session ID.
         # 
         # This parameter is required.
         self.session_id = session_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 新的会话标题
+        # The new session title.
         self.title = title
 
     def validate(self):

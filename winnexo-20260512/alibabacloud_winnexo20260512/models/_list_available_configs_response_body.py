@@ -15,13 +15,13 @@ class ListAvailableConfigsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 可用的组织同步配置列表
+        # The list of queried Logtail configurations.
         self.configs = configs
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -79,15 +79,15 @@ class ListAvailableConfigsResponseBodyConfigs(DaraModel):
         sso_settings_id: str = None,
         sso_settings_name: str = None,
     ):
-        # 企业标识（wecom=corpId, saml=idpEntityId, oauth2=clientId, custom=客户自定义）。注意：OAuth2 多 IdP 配置使用相同 clientId 时，需在 syncOrgStructure 中显式传 ssoSettingsId
+        # The enterprise ID.
         self.corp_id = corp_id
-        # 企业展示名称
+        # The organization name.
         self.corp_name = corp_name
-        # 平台类型: wecom / saml / oauth2 / custom
+        # The platform type.
         self.platform_type = platform_type
-        # SSO 配置 ID（仅 SAML/OAuth2/WeCom 有值，custom 为 null）
+        # The SSO configuration ID. This field has a value only for SAML, OAuth2, or WeCom types. The value is null for custom types.
         self.sso_settings_id = sso_settings_id
-        # SSO 配置名称（仅 SAML/OAuth2/WeCom 有值，custom 为 null）
+        # The SSO configuration name. This field has a value only for SAML, OAuth2, or WeCom types. The value is null for custom types.
         self.sso_settings_name = sso_settings_name
 
     def validate(self):

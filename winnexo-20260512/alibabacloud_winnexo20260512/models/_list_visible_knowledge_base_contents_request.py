@@ -18,25 +18,29 @@ class ListVisibleKnowledgeBaseContentsRequest(DaraModel):
         source_types: List[str] = None,
         tenant_id: str = None,
     ):
-        # 目录 ID（必传非空，必须在数字员工 linked_directories 及其子目录范围内）
+        # The directory ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # 数字员工名称（运营对象 name）
+        # The name of the digital employee (operating object name).
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # 页码（从 1 开始）
+        # The page number of the results to return. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
-        # 每页数量，范围 1-100
+        # The page size. Maximum value: 100.
         self.page_size = page_size
-        # 排序字段，可选 name / gmt_create / gmt_modified
+        # The field by which to sort the results. Valid values:
+        # 
+        # - event_time: event creation time
+        # - event_execute_start_time: event execution time
+        # - event_execute_finish_time: event completion time
         self.sort_field = sort_field
-        # 排序方向，可选 asc / desc
+        # The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
         self.sort_order = sort_order
-        # 资源类型筛选列表（有值时仅返回资源，不包含子目录）
+        # The list of service source types.
         self.source_types = source_types
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

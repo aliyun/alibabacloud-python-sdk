@@ -13,23 +13,23 @@ class MoveKnowledgeBaseResourceRequest(DaraModel):
         target_directory_id: str = None,
         tenant_id: str = None,
     ):
-        # 目标知识库 ID
+        # Not supported. This parameter is ignored.
         # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
-        # 源目录 ID（资源当前所在的企业知识库目录）
+        # The source directory ID. This is the enterprise knowledge base directory where the resource currently resides.
         # 
         # This parameter is required.
         self.source_directory_id = source_directory_id
-        # 待移动的资源 ID
+        # The data source ID.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 目标目录 ID（资源即将移动到的企业知识库目录）
+        # The target directory ID.
         # 
         # This parameter is required.
         self.target_directory_id = target_directory_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

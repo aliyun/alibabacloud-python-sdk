@@ -17,23 +17,31 @@ class CreatePersonalTextResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
         self.code = code
-        # 绑定的目录 ID（请求体传入时 echo 回；缺省走默认根目录时为 null）
+        # The folder ID.
         self.directory_id = directory_id
-        # 创建时间 ISO8601
+        # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # 错误描述，成功时为空
+        # The response message.
         self.message = message
-        # 文件名
+        # The updated filter view name.
         self.name = name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 资源 scope，固定为 PERSONAL
+        # The travel scale of the integration partner.
         self.scope = scope
-        # 新建资源 ID
+        # The source ID.
         self.source_id = source_id
-        # 资源状态（创建链路初始多为 PENDING；on_create 失败则为 FAILED）
+        # The filter status.
+        # 
+        # - 0: All
+        # 
+        # - 1: Unconfirmed
+        # 
+        # - 3: Ignored
+        # 
+        # - 4: Rejected
         self.status = status
 
     def validate(self):

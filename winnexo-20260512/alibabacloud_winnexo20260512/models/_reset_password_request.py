@@ -11,13 +11,13 @@ class ResetPasswordRequest(DaraModel):
         tenant_id: str = None,
         wn_user_id: str = None,
     ):
-        # RSA-OAEP-SHA256 加密后的新密码 base64 密文（必填，不可为空）
+        # The base64-encoded password ciphertext encrypted with RSA-OAEP-SHA256. This parameter is required and cannot be empty.
         # 
         # This parameter is required.
         self.password_encrypted = password_encrypted
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
-        # 目标用户ID（WINNEXO 平台用户ID）
+        # The ID of the target user (WINNEXO platform user ID).
         # 
         # This parameter is required.
         self.wn_user_id = wn_user_id

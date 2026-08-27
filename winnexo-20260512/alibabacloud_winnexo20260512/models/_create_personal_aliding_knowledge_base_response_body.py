@@ -17,23 +17,26 @@ class CreatePersonalAlidingKnowledgeBaseResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 新建知识库根目录 ID
+        # The directory ID.
         self.directory_id = directory_id
-        # 创建时间 ISO8601
+        # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # 知识库 URL（echo 回入参，便于调用方对齐）
+        # The knowledge base URL (echoed from the request parameter for caller alignment).
         self.kb_url = kb_url
-        # 错误描述，成功时为空
+        # The response message.
         self.message = message
-        # 文件名
+        # The name of the AI assistant.
         self.name = name
-        # 所属数字员工名称（echo 回入参，可为 null）
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 知识库根目录状态（创建后为 RUNNING；后台同步完成后转 READY 或 FAILED）
+        # The status. Valid values:
+        # 
+        # - 200: Success.
+        # - 500: Failure.
         self.status = status
 
     def validate(self):

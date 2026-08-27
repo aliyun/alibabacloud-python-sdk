@@ -15,25 +15,25 @@ class ReparseSourceResponseBody(DaraModel):
         source_type: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 文件名
+        # The file name.
         # 
         # This parameter is required.
         self.name = name
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 数据源 ID
+        # The data source ID.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 数据源类型
+        # The data source type.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # 重新解析后的数据源状态
+        # The data source status after re-parsing.
         # 
         # This parameter is required.
         self.status = status

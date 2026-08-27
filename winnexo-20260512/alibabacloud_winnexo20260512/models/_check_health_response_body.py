@@ -16,20 +16,21 @@ class CheckHealthResponseBody(DaraModel):
         tenant_id: int = None,
         user_id: int = None,
     ):
-        # 认证来源: bearer / aliyun_gateway
+        # The authentication source: bearer / aliyun_gateway.
         self.auth_source = auth_source
+        # The caller type: user / aliyun_main / aliyun_ram / service.
         self.caller_type = caller_type
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 当前请求生效的数字员工名（运营对象）；未传且租户下无数字员工时为空
+        # The name of the currently effective digital employee. This value is empty if not configured.
         self.digital_employee_name = digital_employee_name
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 生效租户ID
+        # The effective tenant ID.
         self.tenant_id = tenant_id
-        # 平台用户ID
+        # The platform user ID.
         self.user_id = user_id
 
     def validate(self):

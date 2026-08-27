@@ -11,13 +11,13 @@ class GetSourceRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 是否返回大体积明细字段（settings / notes / structuredTables / unstructuredDocs）。默认 False，仅返回元信息。
+        # Specifies whether to return large detail fields (settings / notes / structuredTables / unstructuredDocs). Default value: False, which returns only metadata.
         self.include_details = include_details
-        # 数据源 ID（租户内唯一）
+        # The primary ID of the resource.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID to which the task belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

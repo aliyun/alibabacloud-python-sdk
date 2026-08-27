@@ -11,13 +11,13 @@ class GetSkillRunRequest(DaraModel):
         run_id: str = None,
         tenant_id: str = None,
     ):
-        # 是否附带执行日志（默认 false，仅在排查问题时建议开启）
+        # Specifies whether to include execution logs. Default value: false. Enable this parameter only for troubleshooting.
         self.include_logs = include_logs
-        # runSkill 返回的异步任务 ID
+        # The evaluation run ID.
         # 
         # This parameter is required.
         self.run_id = run_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID to which the task belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

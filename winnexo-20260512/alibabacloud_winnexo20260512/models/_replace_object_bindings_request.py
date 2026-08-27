@@ -14,15 +14,15 @@ class ReplaceObjectBindingsRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 新的对象绑定列表（全量替换；传空列表表示清空所有绑定）
+        # The new list of object bindings (full replacement. Pass an empty list to clear all bindings).
         # 
         # This parameter is required.
         self.object_bindings = object_bindings
-        # 数据源 ID（租户内唯一）
+        # The ID of the personal FILE data source to be replaced (unique within the tenant).
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. Pass it explicitly through winnexo-cli using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class ReplaceObjectBindingsRequestObjectBindings(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # 绑定对象归属的语义图谱名（object_id 在该 graph 下唯一，必填）
+        # The semantic graph name to which the binding object belongs (object_id is unique within this graph. Required).
         self.graph_name = graph_name
-        # 绑定对象 ID
+        # The binding object ID.
         self.object_id = object_id
-        # 绑定对象类型（如 customer / project）
+        # The binding object type (such as customer or project).
         self.object_type = object_type
 
     def validate(self):

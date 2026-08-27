@@ -12,15 +12,15 @@ class RevokeAgentUsersShrinkRequest(DaraModel):
         user_group_ids_shrink: str = None,
         user_ids_shrink: str = None,
     ):
-        # 数字员工名称
+        # The name of the digital human.
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 被撤销的用户组 ID 列表（16位 hex 字符串）
+        # The list of user group IDs to be revoked (16-character hex strings).
         self.user_group_ids_shrink = user_group_ids_shrink
-        # 被撤销的用户 ID 列表
+        # The list of user IDs to be revoked.
         self.user_ids_shrink = user_ids_shrink
 
     def validate(self):

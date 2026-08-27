@@ -18,25 +18,31 @@ class CreateKnowledgeBaseAliDingDocResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The result code.
         self.code = code
-        # 绑定的目录 ID
+        # The directory ID.
         self.directory_id = directory_id
-        # 文档公开 URL（echo 回入参）
+        # The public URL of the document (echoes the input parameter).
         self.file_public_url = file_public_url
-        # 创建时间 ISO8601
+        # The creation time.
         self.gmt_create = gmt_create
-        # 错误描述，成功时为空
+        # The error details.
         self.message = message
-        # 资源显示名称
+        # The name.
         self.name = name
-        # 请求追踪 ID
+        # Id of the request
         self.request_id = request_id
-        # 资源 scope，固定为 TENANT
+        # The permission scope.
         self.scope = scope
-        # 新建资源 ID
+        # The unique identifier on the business system side, which is the business ID.
         self.source_id = source_id
-        # 资源状态
+        # The refund status. Query this field to confirm the refund status during processing. Valid values:
+        # - SUCCESS: All refunds are successful.
+        # - FAIL: The refund failed.
+        # - WAIT_PAY: Waiting for refund.
+        # - EXPIRE: The refund has expired.
+        # - PAYING: The refund is being processed.
+        # - TERMINATE: The refund is terminated.
         self.status = status
 
     def validate(self):

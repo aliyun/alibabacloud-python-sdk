@@ -31,45 +31,52 @@ class GetScheduledTaskExecutionDetailResponseBody(DaraModel):
         title: str = None,
         trigger_info: main_models.GetScheduledTaskExecutionDetailResponseBodyTriggerInfo = None,
         trigger_type: str = None,
+        visibility: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 完成时间 ISO8601
+        # The completion time in ISO 8601 format.
         self.completed_at = completed_at
-        # 执行完整内容
+        # The full execution content.
         self.content = content
-        # 创建人
+        # The creator.
         self.creator = creator
-        # digitalEmployeeName
+        # The list of digital employee names.
         self.digital_employee_name = digital_employee_name
-        # 错误信息
+        # The error message.
         self.error_message = error_message
-        # 执行 ID
+        # The execution ID.
         self.execution_id = execution_id
+        # The list of output files.
         self.files = files
-        # 创建时间 ISO8601
+        # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
+        # The extended metadata.
         self.metadata = metadata
-        # 结构化输出内容
+        # The structured output content.
         self.output_content = output_content
+        # The push status of the execution result.
         self.push_result = push_result
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # skillCodes
+        # The list of associated skill codes.
         self.skill_codes = skill_codes
-        # 开始时间 ISO8601
+        # The start time in ISO 8601 format.
         self.started_at = started_at
-        # 执行状态
+        # The execution status.
         self.status = status
-        # 任务 ID
+        # The task ID.
         self.task_id = task_id
-        # 执行结果标题
+        # The execution result title.
         self.title = title
+        # The trigger information.
         self.trigger_info = trigger_info
-        # 触发类型
+        # The trigger type.
         self.trigger_type = trigger_type
+        # The visibility scope of the execution record, which is always equal to the visibility scope of the associated task. Valid values: PRIVATE, COLLABORATIVE, and PUBLIC. This field is empty for personal task executions.
+        self.visibility = visibility
 
     def validate(self):
         if self.files:
@@ -151,6 +158,9 @@ class GetScheduledTaskExecutionDetailResponseBody(DaraModel):
         if self.trigger_type is not None:
             result['triggerType'] = self.trigger_type
 
+        if self.visibility is not None:
+            result['visibility'] = self.visibility
+
         return result
 
     def from_map(self, m: dict = None):
@@ -223,6 +233,9 @@ class GetScheduledTaskExecutionDetailResponseBody(DaraModel):
         if m.get('triggerType') is not None:
             self.trigger_type = m.get('triggerType')
 
+        if m.get('visibility') is not None:
+            self.visibility = m.get('visibility')
+
         return self
 
 class GetScheduledTaskExecutionDetailResponseBodyTriggerInfo(DaraModel):
@@ -230,7 +243,7 @@ class GetScheduledTaskExecutionDetailResponseBodyTriggerInfo(DaraModel):
         self,
         triggered_by: str = None,
     ):
-        # 触发执行的用户标识
+        # The user identifier that triggered the execution.
         self.triggered_by = triggered_by
 
     def validate(self):
@@ -259,9 +272,9 @@ class GetScheduledTaskExecutionDetailResponseBodyMetadata(DaraModel):
         session_id: str = None,
         usage: Dict[str, Any] = None,
     ):
-        # 会话 ID
+        # The session ID.
         self.session_id = session_id
-        # 执行结果推送状态（多频道时为列表）
+        # The token usage information.
         self.usage = usage
 
     def validate(self):
@@ -296,9 +309,9 @@ class GetScheduledTaskExecutionDetailResponseBodyFiles(DaraModel):
         name: str = None,
         path: str = None,
     ):
-        # 文件名
+        # The file name.
         self.name = name
-        # 文件 OSS URL
+        # The OSS URL of the file.
         self.path = path
 
     def validate(self):

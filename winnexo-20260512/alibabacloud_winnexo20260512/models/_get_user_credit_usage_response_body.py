@@ -19,27 +19,27 @@ class GetUserCreditUsageResponseBody(DaraModel):
         used_credits: str = None,
         user_id: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 用户 credit 限额
+        # The credit limit of the user.
         self.credit_limit = credit_limit
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 剩余 credit（实时，来自 Redis）
+        # The remaining credits in real time.
         self.remaining_credits = remaining_credits
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 影子 credit 限额
+        # The shadow credit limit.
         self.shadow_credit_limit = shadow_credit_limit
-        # 剩余影子 credit（实时，来自 Redis）
+        # The remaining shadow credits in real time.
         self.shadow_remaining_credits = shadow_remaining_credits
-        # 已消耗影子 credit（实时，来自 Redis）
+        # The consumed shadow credits in real time.
         self.shadow_used_credits = shadow_used_credits
-        # 租户ID
+        # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
-        # 已消耗 credit（实时，来自 Redis）
+        # The consumed credits in real time.
         self.used_credits = used_credits
-        # 用户ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

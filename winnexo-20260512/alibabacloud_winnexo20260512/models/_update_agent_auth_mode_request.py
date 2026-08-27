@@ -11,15 +11,15 @@ class UpdateAgentAuthModeRequest(DaraModel):
         operating_object_name: str = None,
         tenant_id: str = None,
     ):
-        # 使用权限授权模式：SPECIFIED_USERS=指定用户（需显式授权），ALL_USERS=所有用户（无需授权即可使用）
+        # The authentication mode.
         # 
         # This parameter is required.
         self.auth_mode = auth_mode
-        # 数字员工名称
+        # The name of the digital employee (operating object name, optional).
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

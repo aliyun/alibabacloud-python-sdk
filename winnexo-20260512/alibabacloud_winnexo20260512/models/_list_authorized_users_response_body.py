@@ -17,17 +17,17 @@ class ListAuthorizedUsersResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 授权模式：SPECIFIED_USERS / ALL_USERS
+        # The authentication mode.
         self.auth_mode = auth_mode
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 已授权对象列表
+        # The details.
         self.items = items
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 授权记录总数
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -105,31 +105,41 @@ class ListAuthorizedUsersResponseBodyItems(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # 授权截止时间戳（毫秒）
+        # The authorization expiration timestamp in milliseconds. If not specified, the authorization never expires.
         self.expire_date = expire_date
-        # 创建时间
+        # The creation time.
         self.gmt_create = gmt_create
-        # 最后修改时间
+        # The last update time.
         self.gmt_modified = gmt_modified
-        # 授权人用户 ID
+        # The user ID of the person who granted the authorization.
         self.granted_by = granted_by
-        # 被授权对象 ID
+        # The ID of the authorized object.
         self.grantee_id = grantee_id
-        # 被授权对象类型：USER / USER_GROUP
+        # The authorization object type. Valid values: USER, USER_GROUP.
         self.grantee_type = grantee_type
-        # 授权记录 ID
+        # The Operation logs ID.
         self.id = id
-        # 用户组成员数
+        # The number of members.
         self.member_count = member_count
-        # 已授权的权限列表
+        # The permission member type. Valid values:
+        # 
+        # - **ORG**: Enterprise.
+        # 
+        # - **DEPT**: Department.
+        # 
+        # - **TAG**: Custom tag.
+        # 
+        # - **CONVERSATION**: Conversation.
+        # 
+        # - **USER**: User.
         self.permissions = permissions
-        # 用户组 ID（granteeType=USER_GROUP 时有值）
+        # The user group ID. This parameter has a value only when granteeType is set to USER_GROUP.
         self.user_group_id = user_group_id
-        # 用户组名
+        # The user group name.
         self.user_group_name = user_group_name
-        # 用户 ID（granteeType=USER 时有值）
+        # The user ID. This parameter has a value only when granteeType is set to USER.
         self.user_id = user_id
-        # 用户名
+        # The username.
         self.user_name = user_name
 
     def validate(self):

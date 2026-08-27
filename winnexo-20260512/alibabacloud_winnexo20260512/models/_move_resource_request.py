@@ -12,19 +12,19 @@ class MoveResourceRequest(DaraModel):
         target_directory_id: str = None,
         tenant_id: str = None,
     ):
-        # 源目录 ID（资源当前所在的个人目录）
+        # The source directory ID, which is the personal directory where the resource currently resides.
         # 
         # This parameter is required.
         self.source_directory_id = source_directory_id
-        # 待移动的资源 ID
+        # The ID of the resource to be moved.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 目标目录 ID（资源即将移动到的个人目录）
+        # The target directory ID, which is the personal directory to which the resource will be moved.
         # 
         # This parameter is required.
         self.target_directory_id = target_directory_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing **Tenant Management** > **Tenant Properties** in the left-side navigation pane.
         self.tenant_id = tenant_id
 
     def validate(self):

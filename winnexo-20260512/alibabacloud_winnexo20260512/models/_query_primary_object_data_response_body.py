@@ -17,18 +17,19 @@ class QueryPrimaryObjectDataResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
+        # The incremental information list.
         self.items = items
-        # 错误描述，成功时为空
+        # The error description. This value is empty when the request succeeds.
         self.message = message
-        # 当前页码
+        # The current page number.
         self.page = page
-        # 每页数量
+        # The number of entries per page.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 总数
+        # The total number of entries.
         self.total = total
 
     def validate(self):

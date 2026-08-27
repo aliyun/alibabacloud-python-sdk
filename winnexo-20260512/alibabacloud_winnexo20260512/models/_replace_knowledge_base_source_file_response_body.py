@@ -18,25 +18,25 @@ class ReplaceKnowledgeBaseSourceFileResponseBody(DaraModel):
         source_type: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 替换后的文件 OSS 持久化地址
+        # The OSS persistent storage address of the replacement file.
         self.file_path = file_path
-        # 替换后的文件公开访问 URL
+        # The OSS persistent storage address of the replacement file.
         self.file_public_url = file_public_url
-        # 替换后的文件记录 ID
+        # The file record ID of the replacement file.
         self.file_record_id = file_record_id
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 文件名
+        # The file name.
         self.name = name
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 数据源 ID
+        # The data source ID.
         self.source_id = source_id
-        # 数据源类型，固定为 FILE
+        # The data source type.
         self.source_type = source_type
-        # 重新解析后的数据源状态
+        # The task status. The value Running is returned upon submission.
         self.status = status
 
     def validate(self):

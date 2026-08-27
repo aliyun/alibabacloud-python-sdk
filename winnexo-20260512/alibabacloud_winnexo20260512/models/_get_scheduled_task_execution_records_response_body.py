@@ -11,17 +11,30 @@ class GetScheduledTaskExecutionRecordsResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
+        has_more: bool = None,
         message: str = None,
+        page: int = None,
+        page_size: int = None,
         request_id: str = None,
         tasks: List[main_models.GetScheduledTaskExecutionRecordsResponseBodyTasks] = None,
+        total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 错误描述，成功时为空
+        # Indicates whether more data is available.
+        self.has_more = has_more
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The current page number.
+        self.page = page
+        # The number of tasks per page.
+        self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The task list.
         self.tasks = tasks
+        # The total number of tasks.
+        self.total = total
 
     def validate(self):
         if self.tasks:
@@ -37,8 +50,17 @@ class GetScheduledTaskExecutionRecordsResponseBody(DaraModel):
         if self.code is not None:
             result['code'] = self.code
 
+        if self.has_more is not None:
+            result['hasMore'] = self.has_more
+
         if self.message is not None:
             result['message'] = self.message
+
+        if self.page is not None:
+            result['page'] = self.page
+
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -48,6 +70,9 @@ class GetScheduledTaskExecutionRecordsResponseBody(DaraModel):
             for k1 in self.tasks:
                 result['tasks'].append(k1.to_map() if k1 else None)
 
+        if self.total is not None:
+            result['total'] = self.total
+
         return result
 
     def from_map(self, m: dict = None):
@@ -55,8 +80,17 @@ class GetScheduledTaskExecutionRecordsResponseBody(DaraModel):
         if m.get('code') is not None:
             self.code = m.get('code')
 
+        if m.get('hasMore') is not None:
+            self.has_more = m.get('hasMore')
+
         if m.get('message') is not None:
             self.message = m.get('message')
+
+        if m.get('page') is not None:
+            self.page = m.get('page')
+
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
@@ -67,34 +101,51 @@ class GetScheduledTaskExecutionRecordsResponseBody(DaraModel):
                 temp_model = main_models.GetScheduledTaskExecutionRecordsResponseBodyTasks()
                 self.tasks.append(temp_model.from_map(k1))
 
+        if m.get('total') is not None:
+            self.total = m.get('total')
+
         return self
 
 class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
     def __init__(
         self,
+        collaboration_group_id: str = None,
         cron_expression: str = None,
         description: str = None,
         is_open: bool = None,
+        model: str = None,
         name: str = None,
         task_id: str = None,
         timeline: List[main_models.GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline] = None,
         timezone: str = None,
         trigger_type: str = None,
     ):
-        # Cron 表达式
+        # The ID of the collaboration group to which the task belongs. If empty, the task is a personal task.
+        self.collaboration_group_id = collaboration_group_id
+        # The cron expression.
         self.cron_expression = cron_expression
-        # 任务简述
+        # The description of the to-do card type.
         self.description = description
-        # 是否公开
+        # Indicates whether public access is enabled.
         self.is_open = is_open
-        # 文件名
+        # The execution model tier. Valid values:
+        # - flagship: flagship.
+        # - standard: standard.
+        # - quick: lightweight.
+        self.model = model
+        # The name.
         self.name = name
-        # 任务 ID
+        # The task ID.
         self.task_id = task_id
+        # The timeline.
         self.timeline = timeline
-        # 时区
+        # The time zone.
+        # 
+        # > Default value: UTC+8.
         self.timezone = timezone
-        # 触发类型 cron/manual/event
+        # The trigger type. Valid values:
+        # - Manual: manually executed.
+        # - Cron: triggered by a schedule.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -108,6 +159,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.collaboration_group_id is not None:
+            result['collaborationGroupId'] = self.collaboration_group_id
+
         if self.cron_expression is not None:
             result['cronExpression'] = self.cron_expression
 
@@ -116,6 +170,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
 
         if self.is_open is not None:
             result['isOpen'] = self.is_open
+
+        if self.model is not None:
+            result['model'] = self.model
 
         if self.name is not None:
             result['name'] = self.name
@@ -138,6 +195,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('collaborationGroupId') is not None:
+            self.collaboration_group_id = m.get('collaborationGroupId')
+
         if m.get('cronExpression') is not None:
             self.cron_expression = m.get('cronExpression')
 
@@ -146,6 +206,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
 
         if m.get('isOpen') is not None:
             self.is_open = m.get('isOpen')
+
+        if m.get('model') is not None:
+            self.model = m.get('model')
 
         if m.get('name') is not None:
             self.name = m.get('name')
@@ -174,23 +237,26 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
         display_name: str = None,
         error_message: str = None,
         execution_id: str = None,
+        is_expired: bool = None,
         output_content: str = None,
         scheduled_time: str = None,
         status: str = None,
     ):
-        # 实际执行时间（仅历史记录）
+        # The actual working hours, in hours.
         self.actual_time = actual_time
-        # 执行记录展示名称
+        # The name of the schedule location.
         self.display_name = display_name
-        # 错误信息（仅失败记录）
+        # The error message.
         self.error_message = error_message
-        # 执行记录 ID（历史记录才有）
+        # The execution record ID.
         self.execution_id = execution_id
-        # 执行输出内容（仅历史记录）
+        # Indicates whether the execution record has been archived due to expiration.
+        self.is_expired = is_expired
+        # The execution output content (historical records only).
         self.output_content = output_content
-        # 计划执行时间 ISO8601
+        # The timed scheduling time.
         self.scheduled_time = scheduled_time
-        # 状态：PENDING/RUNNING/SUCCESS/FAILED/SCHEDULED
+        # The final status of the message.
         self.status = status
 
     def validate(self):
@@ -212,6 +278,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
 
         if self.execution_id is not None:
             result['executionId'] = self.execution_id
+
+        if self.is_expired is not None:
+            result['isExpired'] = self.is_expired
 
         if self.output_content is not None:
             result['outputContent'] = self.output_content
@@ -237,6 +306,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
 
         if m.get('executionId') is not None:
             self.execution_id = m.get('executionId')
+
+        if m.get('isExpired') is not None:
+            self.is_expired = m.get('isExpired')
 
         if m.get('outputContent') is not None:
             self.output_content = m.get('outputContent')

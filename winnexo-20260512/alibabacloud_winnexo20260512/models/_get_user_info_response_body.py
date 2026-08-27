@@ -31,44 +31,48 @@ class GetUserInfoResponseBody(DaraModel):
         user_code: str = None,
         user_id: int = None,
     ):
-        # 用户头像URL
+        # The profile picture URL.
         self.avatar = avatar
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # CRM 类型
+        # The CRM type.
         self.crm_type = crm_type
-        # 是否为超级管理员
+        # Indicates whether the user is an enterprise administrator.
         self.is_admin = is_admin
-        # 当前登录租户是否为系统租户（tenantId=10000）
+        # Indicates whether the current logon tenant is the system tenant (tenantId=10000).
         self.is_system_tenant = is_system_tenant
-        # 用户语言偏好
+        # The language preference.
         self.language_preference = language_preference
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 文件名
+        # The username.
         self.name = name
-        # 用户服务描述
+        # The user service description. Maximum length: 1000 characters.
         self.offering = offering
-        # 用户服务解析结果（JSON格式）
+        # The parsed result of the user service (JSON format).
         self.parsed_offering = parsed_offering
-        # 用户角色
+        # The user role.
         self.profile_role = profile_role
-        # 用户角色描述（当profileRole为Others时使用）
+        # The personal profile.
         self.profile_role_info = profile_role_info
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 用户自我介绍
+        # The user self-introduction. Maximum length: 1000 characters.
         self.self_introduction = self_introduction
-        # 当前租户ID
+        # The effective tenant ID.
         self.tenant_id = tenant_id
+        # The tenant list.
         self.tenant_list = tenant_list
-        # 当前租户名称
+        # The current tenant name.
         self.tenant_name = tenant_name
-        # 租户类型
+        # The tenant type. Valid values:
+        # - user: individual.
+        # - org: enterprise.
+        # - group: group.
         self.tenant_type = tenant_type
-        # 用户代码
+        # The user code.
         self.user_code = user_code
-        # 用户ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -221,13 +225,16 @@ class GetUserInfoResponseBodyTenantList(DaraModel):
         tenant_name: str = None,
         tenant_type: str = None,
     ):
-        # CRM 类型
+        # The CRM type.
         self.crm_type = crm_type
-        # 租户ID
+        # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
-        # 租户名称
+        # The tenant name.
         self.tenant_name = tenant_name
-        # 租户类型
+        # The tenant type. Valid values:
+        # - user: individual.
+        # - org: enterprise.
+        # - group: group.
         self.tenant_type = tenant_type
 
     def validate(self):

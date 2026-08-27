@@ -15,25 +15,25 @@ class UpdateKnowledgeBaseSourceContentResponseBody(DaraModel):
         source_type: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 文件名
+        # The name.
         # 
         # This parameter is required.
         self.name = name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 数据源 ID
+        # The unique identifier on the business system side, that is, the business ID.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 数据源类型
+        # The data source type.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # 重新解析后的数据源状态
+        # The task running status.
         # 
         # This parameter is required.
         self.status = status

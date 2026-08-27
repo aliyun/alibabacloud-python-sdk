@@ -11,24 +11,27 @@ class GetGraphSchemaResponseBody(DaraModel):
         graph_name: str = None,
         message: str = None,
         request_id: str = None,
+        schema_id: str = None,
         schema_version: str = None,
         yaml_edit: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 图谱名称
+        # The graph name.
         # 
         # This parameter is required.
         self.graph_name = graph_name
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 当前 active Graph Schema 版本
+        # The active QueryAgent registered schema ID corresponding to the graph. The value is null if not yet registered.
+        self.schema_id = schema_id
+        # The version.
         # 
         # This parameter is required.
         self.schema_version = schema_version
-        # 按 READ 权限裁剪的 Graph Schema 原始 YAML 文本，保留授权子图内的 $ref
+        # The raw YAML text of the Graph Schema trimmed by READ permissions, retaining $ref references within the authorized subgraph.
         # 
         # This parameter is required.
         self.yaml_edit = yaml_edit
@@ -53,6 +56,9 @@ class GetGraphSchemaResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
+        if self.schema_id is not None:
+            result['schemaId'] = self.schema_id
+
         if self.schema_version is not None:
             result['schemaVersion'] = self.schema_version
 
@@ -74,6 +80,9 @@ class GetGraphSchemaResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('schemaId') is not None:
+            self.schema_id = m.get('schemaId')
 
         if m.get('schemaVersion') is not None:
             self.schema_version = m.get('schemaVersion')

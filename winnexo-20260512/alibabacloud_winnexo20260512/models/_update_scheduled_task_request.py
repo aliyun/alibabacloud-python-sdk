@@ -20,25 +20,35 @@ class UpdateScheduledTaskRequest(DaraModel):
         task_id: str = None,
         tenant_id: str = None,
         trigger_config: main_models.UpdateScheduledTaskRequestTriggerConfig = None,
+        visibility: str = None,
+        visible_member_user_ids: List[str] = None,
     ):
+        # The description information.
         self.description = description
-        # 数字员工名称列表
+        # The list of digital human names.
         self.digital_employee_name = digital_employee_name
-        # 是否公开访问
+        # Specifies whether the task is publicly accessible.
         self.is_open = is_open
-        # 执行模型档位；不传则不更新
+        # The execution model tier. If not specified, the model tier is not updated.
         self.model = model
-        # 文件名
+        # The file name.
         self.name = name
+        # The segments.
         self.segments = segments
+        # The task details.
         self.task_detail = task_detail
-        # 任务 ID
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
+        # The trigger configuration. The configuration varies depending on the trigger type.
         self.trigger_config = trigger_config
+        # The visibility scope for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If not specified, the visibility is not updated. This parameter is ignored for personal tasks.
+        self.visibility = visibility
+        # The full replacement list of collaborator member user IDs. This parameter takes effect only when visibility is set to COLLABORATIVE. The list is cleared when switching away from the COLLABORATIVE tier. A maximum of 1000 members are supported. If not specified, the member list is not updated. The task creator and group creator do not need to be included because they are covered by the authentication layer. This parameter is ignored for personal tasks.
+        self.visible_member_user_ids = visible_member_user_ids
 
     def validate(self):
         if self.description:
@@ -93,6 +103,12 @@ class UpdateScheduledTaskRequest(DaraModel):
         if self.trigger_config is not None:
             result['triggerConfig'] = self.trigger_config.to_map()
 
+        if self.visibility is not None:
+            result['visibility'] = self.visibility
+
+        if self.visible_member_user_ids is not None:
+            result['visibleMemberUserIds'] = self.visible_member_user_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -135,6 +151,12 @@ class UpdateScheduledTaskRequest(DaraModel):
             temp_model = main_models.UpdateScheduledTaskRequestTriggerConfig()
             self.trigger_config = temp_model.from_map(m.get('triggerConfig'))
 
+        if m.get('visibility') is not None:
+            self.visibility = m.get('visibility')
+
+        if m.get('visibleMemberUserIds') is not None:
+            self.visible_member_user_ids = m.get('visibleMemberUserIds')
+
         return self
 
 class UpdateScheduledTaskRequestTriggerConfig(DaraModel):
@@ -146,15 +168,15 @@ class UpdateScheduledTaskRequestTriggerConfig(DaraModel):
         timezone: str = None,
         trigger_mode: str = None,
     ):
-        # Cron 表达式，trigger_mode=scheduled 时必填，如 \"00 09 * * *\"
+        # The cron expression. Required when trigger_mode is set to scheduled. Example: \\"00 09 * * *\\".
         self.cron = cron
-        # 语言如 zh-CN|en-US，由服务端自动注入
+        # The language, such as zh-CN or en-US. Automatically injected by the server.
         self.language = language
-        # 任务推送频道列表；为空或无启用频道时不推送
+        # The list of push channels for the task. No push notifications are sent if the list is empty or no channel is enabled.
         self.push_config = push_config
-        # 时区如 Asia/Shanghai，由服务端自动注入
+        # The time zone, such as Asia/Shanghai. Automatically injected by the server.
         self.timezone = timezone
-        # 触发模式：manual|scheduled
+        # The trigger mode. Valid values: manual and scheduled.
         # 
         # This parameter is required.
         self.trigger_mode = trigger_mode
@@ -222,19 +244,19 @@ class UpdateScheduledTaskRequestTriggerConfigPushConfig(DaraModel):
         operating_object_name: str = None,
         receiver_type: str = None,
     ):
-        # 推送渠道
+        # The push channel type.
         self.channel_type = channel_type
-        # 推送内容范围，默认 all_replies
+        # The scope of push content. Default value: all_replies.
         self.content_scope = content_scope
-        # 推送方式，默认 channel_bot
+        # The push method. Default value: channel_bot.
         self.delivery_method = delivery_method
-        # 是否推送该频道，默认关闭
+        # Specifies whether to push to this channel. Default value: false.
         self.enabled = enabled
-        # 产出文件推送格式，默认 file
+        # The format for pushing output files. Default value: file.
         self.file_format = file_format
-        # 发送机器人所属数字员工，必传且不可为空
+        # The digital human to which the sending bot belongs. This parameter is required and cannot be empty.
         self.operating_object_name = operating_object_name
-        # 接收人，当前仅支持 self
+        # The receiver type. Currently only self is supported.
         self.receiver_type = receiver_type
 
     def validate(self):
@@ -301,12 +323,13 @@ class UpdateScheduledTaskRequestTaskDetail(DaraModel):
         related_skills: List[main_models.UpdateScheduledTaskRequestTaskDetailRelatedSkills] = None,
         task_understand: str = None,
     ):
+        # The related objects.
         self.related_objects = related_objects
+        # The related semantics.
         self.related_semantics = related_semantics
+        # The related skills.
         self.related_skills = related_skills
-        # LLM 润色后的任务理解描述
-        # 
-        # This parameter is required.
+        # The task understanding description polished by the LLM.
         self.task_understand = task_understand
 
     def validate(self):
@@ -381,11 +404,11 @@ class UpdateScheduledTaskRequestTaskDetailRelatedSkills(DaraModel):
         skill_code: str = None,
         source_ids: List[str] = None,
     ):
-        # 技能展示名称
+        # The display name of the skill.
         self.display_name = display_name
-        # 文件名
+        # The file name.
         self.name = name
-        # 技能代码
+        # The skill code.
         self.skill_code = skill_code
         # sourceIds
         self.source_ids = source_ids
@@ -434,9 +457,9 @@ class UpdateScheduledTaskRequestTaskDetailRelatedSemantics(DaraModel):
         attributes: str = None,
         entity: str = None,
     ):
-        # 语义属性（JSON 字符串），用于语义检索时过滤
+        # The semantic attributes (JSON string) used for filtering during semantic retrieval.
         self.attributes = attributes
-        # 语义实体名，如客户/机会
+        # The semantic entity name, such as customer or opportunity.
         self.entity = entity
 
     def validate(self):
@@ -473,13 +496,13 @@ class UpdateScheduledTaskRequestTaskDetailRelatedObjects(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # 提及类型，如 objects
+        # The mention type, such as objects.
         self.mention_type = mention_type
-        # 文件名
+        # The file name.
         self.name = name
-        # 对象 ID（@指定时有值）
+        # The object ID. This parameter has a value when an object is mentioned using @.
         self.object_id = object_id
-        # 对象类型，如 customer、company
+        # The object type, such as customer or company.
         self.object_type = object_type
 
     def validate(self):
@@ -531,19 +554,19 @@ class UpdateScheduledTaskRequestSegments(DaraModel):
         skill_code: str = None,
         type: str = None,
     ):
-        # 文本内容，type=text 时必填
+        # The text content. Required when type is set to text.
         self.content = content
-        # 功能开关，type=web_search 时可选
+        # The feature switch. Optional when type is set to web_search.
         self.enabled = enabled
-        # 文件名
+        # The file name.
         self.name = name
-        # 对象 ID，type=mention 时有值
+        # The object ID. This parameter has a value when type is set to mention.
         self.object_id = object_id
-        # 对象类型如 customer，type=mention 时有值
+        # The object type, such as customer. This parameter has a value when type is set to mention.
         self.object_type = object_type
-        # 技能编码，type=skill 时有值
+        # The skill code. This parameter has a value when type is set to skill.
         self.skill_code = skill_code
-        # 元素类型：text|web_search|mention|skill
+        # The element type. Valid values: text, web_search, mention, and skill.
         # 
         # This parameter is required.
         self.type = type
@@ -615,19 +638,19 @@ class UpdateScheduledTaskRequestDescription(DaraModel):
         skill_code: str = None,
         type: str = None,
     ):
-        # 文本内容，type=text 时必填
+        # The text content. Required when type is set to text.
         self.content = content
-        # 功能开关，type=web_search 时可选
+        # The feature switch. Optional when type is set to web_search.
         self.enabled = enabled
-        # 文件名
+        # The file name.
         self.name = name
-        # 对象 ID，type=mention 时有值
+        # The object ID. This parameter has a value when type is set to mention.
         self.object_id = object_id
-        # 对象类型如 customer，type=mention 时有值
+        # The object type, such as customer. This parameter has a value when type is set to mention.
         self.object_type = object_type
-        # 技能编码，type=skill 时有值
+        # The skill code. This parameter has a value when type is set to skill.
         self.skill_code = skill_code
-        # 元素类型：text|web_search|mention|skill
+        # The element type. Valid values: text, web_search, mention, and skill.
         # 
         # This parameter is required.
         self.type = type

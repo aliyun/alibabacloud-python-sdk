@@ -12,13 +12,13 @@ class GrantAgentUsersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 本次处理的授权记录数（含新增与更新）
+        # The number of authorization records processed in this request, including both newly created and updated records.
         self.granted_count = granted_count
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

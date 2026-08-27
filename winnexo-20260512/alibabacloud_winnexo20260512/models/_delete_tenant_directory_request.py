@@ -11,11 +11,11 @@ class DeleteTenantDirectoryRequest(DaraModel):
         directory_id: str = None,
         tenant_id: str = None,
     ):
-        # 删除模式：reject / recursive / move_to_root
+        # The deletion mode: reject / recursive / move_to_root.
         self.delete_mode = delete_mode
-        # 目录唯一标识
+        # The directory ID.
         self.directory_id = directory_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID that takes effect.
         self.tenant_id = tenant_id
 
     def validate(self):

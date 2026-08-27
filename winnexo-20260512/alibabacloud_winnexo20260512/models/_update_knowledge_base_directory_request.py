@@ -13,17 +13,17 @@ class UpdateKnowledgeBaseDirectoryRequest(DaraModel):
         parent_directory_id: str = None,
         tenant_id: str = None,
     ):
-        # 新分类描述；不传表示不更新
+        # The description of the to-do card type.
         self.description = description
-        # 待修改的分类 ID（必传）
+        # The directory ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # 新分类名称；不传表示不更新
+        # The name.
         self.name = name
-        # 新父分类 ID；不传表示不移动，传入时必须是当前租户下已存在的企业知识库目录 ID
+        # The directory ID.
         self.parent_directory_id = parent_directory_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID to take effect.
         self.tenant_id = tenant_id
 
     def validate(self):

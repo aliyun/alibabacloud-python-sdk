@@ -15,19 +15,19 @@ class MoveKnowledgeBaseResourceResponseBody(DaraModel):
         source_id: str = None,
         target_directory_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response code.
         self.code = code
-        # 目标知识库 ID（echo 回入参）
+        # The target knowledge base ID. This value is echoed from the request parameter.
         self.knowledge_id = knowledge_id
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 源目录 ID（echo 回入参）
+        # The source directory ID. This value is echoed from the request parameter.
         self.source_directory_id = source_directory_id
-        # 资源 ID（echo 回入参）
+        # The unique identifier on the business system side, that is, the business ID.
         self.source_id = source_id
-        # 目标目录 ID（echo 回入参）
+        # The target directory ID. This value is echoed from the request parameter.
         self.target_directory_id = target_directory_id
 
     def validate(self):

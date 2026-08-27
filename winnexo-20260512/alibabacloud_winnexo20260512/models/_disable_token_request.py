@@ -10,9 +10,9 @@ class DisableTokenRequest(DaraModel):
         tenant_id: str = None,
         wn_user_id: str = None,
     ):
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
-        # 目标用户 ID（WINNEXO 平台用户ID，空则操作自身，管理员可传入他人 ID 代操作）
+        # The ID of the target user (WINNEXO platform user ID). If left empty, the operation is performed on the caller. Administrators can specify another user\\"s ID to perform the operation on their behalf.
         self.wn_user_id = wn_user_id
 
     def validate(self):

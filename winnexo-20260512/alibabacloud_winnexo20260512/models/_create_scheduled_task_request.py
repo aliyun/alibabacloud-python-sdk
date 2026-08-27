@@ -20,25 +20,44 @@ class CreateScheduledTaskRequest(DaraModel):
         task_detail: main_models.CreateScheduledTaskRequestTaskDetail = None,
         tenant_id: str = None,
         trigger_config: main_models.CreateScheduledTaskRequestTriggerConfig = None,
+        visibility: str = None,
+        visible_member_user_ids: List[str] = None,
     ):
-        # 所属协作群组 ID（如 cg_101）；传入时创建群空间任务（调用者需为有效群成员），为空创建个人任务
+        # The ID of the collaboration group (such as cg_101). If specified, a group space task is created (the caller must be a valid group member). If empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
+        # The description of the to-do card type.
         self.description = description
-        # 数字员工名称列表
+        # The name of the current effective digital employee. This parameter is empty if not configured.
         self.digital_employee_name = digital_employee_name
-        # 是否公开访问
+        # Specifies whether public access is enabled.
         self.is_open = is_open
-        # 执行模型档位，不传默认 standard
+        # The large model used by the assistant. An empty value indicates that DingTalk automatically selects the model.
         self.model = model
-        # 文件名
+        # The name.
         # 
         # This parameter is required.
         self.name = name
+        # The site ID.
         self.segments = segments
+        # The task details.
         self.task_detail = task_detail
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
+        # The trigger configuration. The configuration varies depending on the trigger type. For the specific format, refer to the following data structures:
+        # 
+        #   - OSS trigger: See [OSSTriggerConfig](https://help.aliyun.com/document_detail/415697.html).
+        #   - Simple Log Service trigger: See [LogTriggerConfig](https://help.aliyun.com/document_detail/415694.html).
+        #   - Time trigger: See [TimeTriggerConfig](https://help.aliyun.com/document_detail/415712.html).
+        #   - HTTP trigger: See [HTTPTriggerConfig](https://help.aliyun.com/document_detail/415685.html).
+        #   - Tablestore trigger: You only need to specify the complete **SourceArn** parameter. No additional configuration is required. Set the value to an empty object {}.
+        #   - CDN event trigger: See [CDNEventsTriggerConfig](https://help.aliyun.com/document_detail/415674.html).
+        #   - MNS topic trigger: See [MnsTopicTriggerConfig](https://help.aliyun.com/document_detail/415695.html).
+        #   - EventBridge trigger: See [EventBridgeTriggerConfig](https://help.aliyun.com/document_detail/2508622.html).
         self.trigger_config = trigger_config
+        # The visibility scope of the group task. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). Default value for group tasks: PRIVATE. This parameter is ignored for personal tasks.
+        self.visibility = visibility
+        # The list of collaborator user IDs. This parameter takes effect only when visibility is set to COLLABORATIVE. It is ignored for other visibility levels. A maximum of 1000 IDs are supported. The task creator and group creator do not need to be included (covered by the authentication layer). This parameter is ignored for personal tasks.
+        self.visible_member_user_ids = visible_member_user_ids
 
     def validate(self):
         if self.description:
@@ -93,6 +112,12 @@ class CreateScheduledTaskRequest(DaraModel):
         if self.trigger_config is not None:
             result['triggerConfig'] = self.trigger_config.to_map()
 
+        if self.visibility is not None:
+            result['visibility'] = self.visibility
+
+        if self.visible_member_user_ids is not None:
+            result['visibleMemberUserIds'] = self.visible_member_user_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -135,6 +160,12 @@ class CreateScheduledTaskRequest(DaraModel):
             temp_model = main_models.CreateScheduledTaskRequestTriggerConfig()
             self.trigger_config = temp_model.from_map(m.get('triggerConfig'))
 
+        if m.get('visibility') is not None:
+            self.visibility = m.get('visibility')
+
+        if m.get('visibleMemberUserIds') is not None:
+            self.visible_member_user_ids = m.get('visibleMemberUserIds')
+
         return self
 
 class CreateScheduledTaskRequestTriggerConfig(DaraModel):
@@ -146,15 +177,28 @@ class CreateScheduledTaskRequestTriggerConfig(DaraModel):
         timezone: str = None,
         trigger_mode: str = None,
     ):
-        # Cron 表达式，trigger_mode=scheduled 时必填，如 \"00 09 * * *\"
+        # The periodic training information in cron syntax (Minutes Hours DayofMonth Month DayofWeek). An empty value indicates that periodic training is not performed (default). In DayofWeek, 0 indicates Sunday.
         self.cron = cron
-        # 语言如 zh-CN|en-US，由服务端自动注入
+        # The language. Valid values:
+        # 
+        # - zh_CN: Chinese (default)
+        # - en_US: English
         self.language = language
-        # 任务推送频道列表；为空或无启用频道时不推送
+        # The list of task push channels. No push is performed if the list is empty or no channel is enabled.
         self.push_config = push_config
-        # 时区如 Asia/Shanghai，由服务端自动注入
+        # The time zone.
         self.timezone = timezone
-        # 触发模式：manual|scheduled
+        # The trigger mode.
+        #  
+        #   1: Manual trigger
+        #    
+        #   2: Scheduled trigger 
+        # 
+        #   3: Code commit trigger
+        #  
+        #   5: Pipeline trigger
+        # 
+        #   6: WEBHOOK trigger
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -220,19 +264,35 @@ class CreateScheduledTaskRequestTriggerConfigPushConfig(DaraModel):
         operating_object_name: str = None,
         receiver_type: str = None,
     ):
-        # 推送渠道
+        # The notification method. Valid values:
+        # 
+        # - **hdm_alarm_sms**: SMS.
+        # - **dingtalk**: DingTalk chatbot.
+        # - **hdm_alarm_sms_and_email**: SMS and email.
+        # - **hdm_alarm_sms,dingtalk**: SMS and DingTalk chatbot.
         self.channel_type = channel_type
-        # 推送内容范围，默认 all_replies
+        # The push content scope. Default value: all_replies.
         self.content_scope = content_scope
-        # 推送方式，默认 channel_bot
+        # The push method. Default value: channel_bot.
         self.delivery_method = delivery_method
-        # 是否推送该频道，默认关闭
+        # Specifies whether the credential is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.enabled = enabled
-        # 产出文件推送格式，默认 file
+        # The file format. Valid values: Excel and CSV.
         self.file_format = file_format
-        # 发送机器人所属数字员工，必传且不可为空
+        # The digital employee name (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 接收人，当前仅支持 self
+        # The file receiver type. Valid values:
+        # 
+        # - 0: One-on-one chat.
+        # 
+        # - 1: Group chat.
+        # 
+        # - 2: DingTalk Drive.
+        # 
+        # - 3: Document.
         self.receiver_type = receiver_type
 
     def validate(self):
@@ -299,10 +359,13 @@ class CreateScheduledTaskRequestTaskDetail(DaraModel):
         related_skills: List[main_models.CreateScheduledTaskRequestTaskDetailRelatedSkills] = None,
         task_understand: str = None,
     ):
+        # The related objects.
         self.related_objects = related_objects
+        # The related semantics.
         self.related_semantics = related_semantics
+        # The related skills.
         self.related_skills = related_skills
-        # LLM 润色后的任务理解描述
+        # The task understanding description polished by the LLM.
         self.task_understand = task_understand
 
     def validate(self):
@@ -377,11 +440,11 @@ class CreateScheduledTaskRequestTaskDetailRelatedSkills(DaraModel):
         skill_code: str = None,
         source_ids: List[str] = None,
     ):
-        # 技能展示名称
+        # The display name.
         self.display_name = display_name
-        # 文件名
+        # The name.
         self.name = name
-        # 技能代码
+        # The skill code.
         self.skill_code = skill_code
         # sourceIds
         self.source_ids = source_ids
@@ -430,9 +493,9 @@ class CreateScheduledTaskRequestTaskDetailRelatedSemantics(DaraModel):
         attributes: str = None,
         entity: str = None,
     ):
-        # 语义属性（JSON 字符串），用于语义检索时过滤
+        # The file extension information.
         self.attributes = attributes
-        # 语义实体名，如客户/机会
+        # The semantic entity name, such as customer or opportunity.
         self.entity = entity
 
     def validate(self):
@@ -469,13 +532,19 @@ class CreateScheduledTaskRequestTaskDetailRelatedObjects(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # 提及类型，如 objects
+        # The mention type, such as objects.
         self.mention_type = mention_type
-        # 文件名
+        # The name.
         self.name = name
-        # 对象 ID（@指定时有值）
+        # The object ID. Pass the project task ID.
+        # 
+        # - For internal enterprise applications, use the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) operation.
+        # 
+        # - For third-party enterprise applications, use the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) operation.
         self.object_id = object_id
-        # 对象类型，如 customer、company
+        # The relationship type. Valid values:
+        # - crm_customer: enterprise customer.
+        # - crm_customer_personal: individual customer.
         self.object_type = object_type
 
     def validate(self):
@@ -527,19 +596,19 @@ class CreateScheduledTaskRequestSegments(DaraModel):
         skill_code: str = None,
         type: str = None,
     ):
-        # 文本内容，type=text 时必填
+        # The card callback content.
         self.content = content
-        # 功能开关，type=web_search 时可选
+        # Specifies whether to enable this feature.
         self.enabled = enabled
-        # 文件名
+        # The name.
         self.name = name
-        # 对象 ID，type=mention 时有值
+        # The ID of the recommended item, which can be a **feedId** or a micro-application ID.
         self.object_id = object_id
-        # 对象类型如 customer，type=mention 时有值
+        # The customer type to save.
         self.object_type = object_type
-        # 技能编码，type=skill 时有值
+        # The skill code. This parameter has a value when type is set to skill.
         self.skill_code = skill_code
-        # 元素类型：text|web_search|mention|skill
+        # The billing type. Only fixed is supported.
         self.type = type
 
     def validate(self):
@@ -609,19 +678,23 @@ class CreateScheduledTaskRequestDescription(DaraModel):
         skill_code: str = None,
         type: str = None,
     ):
-        # 文本内容，type=text 时必填
+        # The streaming output message.
         self.content = content
-        # 功能开关，type=web_search 时可选
+        # Specifies whether the throttling rule is enabled. A value of true indicates enabled, and a value of false indicates disabled.
         self.enabled = enabled
-        # 文件名
+        # The name.
         self.name = name
-        # 对象 ID，type=mention 时有值
+        # The object ID. Pass the project task ID.
+        # 
+        # - For internal enterprise applications, use the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) operation.
+        # 
+        # - For third-party enterprise applications, use the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) operation.
         self.object_id = object_id
-        # 对象类型如 customer，type=mention 时有值
+        # The object type. Fixed value: task, indicating a project task.
         self.object_type = object_type
-        # 技能编码，type=skill 时有值
+        # The skill code. This parameter has a value when type is set to skill.
         self.skill_code = skill_code
-        # 元素类型：text|web_search|mention|skill
+        # The HTTP API type. Valid values: Http (standard HTTP API), Rest (RESTful API), WebSocket (WebSocket API), HttpIngress (HTTP API accessed through Ingress), LLM (large language model API), and Agent (Agent proxy API).
         self.type = type
 
     def validate(self):

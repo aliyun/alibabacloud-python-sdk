@@ -14,13 +14,13 @@ class CreateConversationRequest(DaraModel):
         operating_object_name: List[Any] = None,
         tenant_id: str = None,
     ):
-        # 会话元数据，可含 model 等透传字段（model 需为合法抽象模型名，否则回退默认）
+        # A reserved field.
         self.metadata = metadata
-        # 关联业务对象ID
+        # The primary key ID of the associated variable.
         self.object_id = object_id
-        # operatingObjectName
+        # The operating object name.
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

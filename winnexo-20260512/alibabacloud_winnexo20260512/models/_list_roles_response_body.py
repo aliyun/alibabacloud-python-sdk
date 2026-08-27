@@ -15,13 +15,13 @@ class ListRolesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 系统内置角色列表（固定 7 个）
+        # The MCP card list.
         self.items = items
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,13 +78,13 @@ class ListRolesResponseBodyItems(DaraModel):
         role_name: str = None,
         toggleable: bool = None,
     ):
-        # 角色说明（按请求 Accept-Language 国际化）
+        # The description of the to-do card type.
         self.description = description
-        # 角色标识码，用于 createUser/updateUser 的 roleCodes 参数
+        # The role code.
         self.role_code = role_code
-        # 角色显示名称（按请求 Accept-Language 国际化）
+        # The role name.
         self.role_name = role_name
-        # 是否允许启用/停用操作（超级管理员和应用用户不可切换）
+        # Indicates whether the enable/disable operation is allowed. Super administrators and application users cannot be switched.
         self.toggleable = toggleable
 
     def validate(self):

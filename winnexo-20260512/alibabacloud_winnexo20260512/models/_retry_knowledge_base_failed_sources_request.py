@@ -10,11 +10,11 @@ class RetryKnowledgeBaseFailedSourcesRequest(DaraModel):
         directory_id: str = None,
         tenant_id: str = None,
     ):
-        # 企业知识库目录 ID（递归包含子目录下的失败资源）
+        # The ID of the enterprise knowledge base directory. Failed resources in subdirectories are recursively included.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

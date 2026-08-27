@@ -19,27 +19,27 @@ class GetSourceUploadSignatureResponseBody(DaraModel):
         request_id: str = None,
         upload_signature_url: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 文件 Content-Type
+        # The content type. Valid values: Text and Markdown.
         self.content_type = content_type
-        # 签名 URL 有效时长（秒）
+        # The validity period of the task, in seconds.
         self.expires_in = expires_in
-        # 文件公开访问 URL
+        # The publicly accessible URL of the DingTalk online document.
         self.file_public_url = file_public_url
-        # 文件记录 ID
+        # The file record ID. This parameter is optional and corresponds to settings.file_record_id.
         self.file_record_id = file_record_id
-        # 文件 OSS 内部 URL
+        # The Yida attachment URL.
         self.file_url = file_url
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 上传 HTTP 方法（固定为 PUT）
+        # The method.
         self.method = method
-        # OSS 对象名
+        # The object name.
         self.object_name = object_name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 签名上传 URL（PUT 方式）
+        # The signed URL.
         self.upload_signature_url = upload_signature_url
 
     def validate(self):

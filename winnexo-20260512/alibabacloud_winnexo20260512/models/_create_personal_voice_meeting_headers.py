@@ -13,7 +13,7 @@ class CreatePersonalVoiceMeetingHeaders(DaraModel):
         request_id: str = None,
     ):
         self.common_headers = common_headers
-        # 请求追踪 ID
+        # Id of the request
         # 
         # This parameter is required.
         self.request_id = request_id

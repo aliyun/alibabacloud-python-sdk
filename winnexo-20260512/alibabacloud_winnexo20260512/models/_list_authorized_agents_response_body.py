@@ -14,13 +14,13 @@ class ListAuthorizedAgentsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 有指定权限的数字员工名称列表
+        # The agent names.
         self.agent_names = agent_names
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

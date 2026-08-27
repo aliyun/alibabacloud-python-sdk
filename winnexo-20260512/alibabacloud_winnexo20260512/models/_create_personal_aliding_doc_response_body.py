@@ -18,25 +18,29 @@ class CreatePersonalAlidingDocResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response code.
         self.code = code
-        # 绑定的目录 ID（请求体传入时 echo 回；缺省走默认根目录时为 null）
+        # The folder ID.
         self.directory_id = directory_id
-        # 文档公开 URL（echo 回入参，便于调用方对齐）
+        # The publicly accessible URL of the AliDing online document.
         self.file_public_url = file_public_url
-        # 创建时间 ISO8601
+        # The timestamp when the customer group was created. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # 错误描述，成功时为空
+        # The response message.
         self.message = message
-        # 文件名
+        # The pipeline name.
         self.name = name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 资源 scope，固定为 PERSONAL
+        # The permission scope.
         self.scope = scope
-        # 新建资源 ID
+        # The unique identifier on the business system side, that is, the business ID.
         self.source_id = source_id
-        # 资源状态（创建链路初始多为 PENDING；on_create 失败则为 FAILED）
+        # The call status. Valid values:
+        # - **PENDING**: Waiting for receipt.
+        # - **SUCCESS**: Succeeded.
+        # - **FAILED**: Failed.
+        # - **TIMEOUT**: Timed out.
         self.status = status
 
     def validate(self):

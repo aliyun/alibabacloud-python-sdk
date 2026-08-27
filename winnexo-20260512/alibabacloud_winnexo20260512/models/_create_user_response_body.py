@@ -15,19 +15,19 @@ class CreateUserResponseBody(DaraModel):
         request_id: str = None,
         wn_user_id: str = None,
     ):
-        # WINNEXO 登录账号
+        # The ID of your Alibaba Cloud account.
         self.account_id = account_id
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 用户显示名称
+        # The cluster name.
         self.display_name = display_name
-        # 是否为新创建的用户（false 表示已有用户加入租户）
+        # Indicates whether the user is newly created. A value of false indicates that an existing user is added to the tenant.
         self.is_new_user = is_new_user
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # WINNEXO 平台用户ID
+        # The WINNEXO platform user ID.
         self.wn_user_id = wn_user_id
 
     def validate(self):

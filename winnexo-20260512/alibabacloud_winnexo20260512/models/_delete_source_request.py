@@ -10,11 +10,11 @@ class DeleteSourceRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 待删除的数据源 ID（租户内唯一）
+        # The unique identifier on the business system side, that is, the business ID.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

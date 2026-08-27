@@ -14,17 +14,19 @@ class UpdateUserShrinkRequest(DaraModel):
         user_group_ids_shrink: str = None,
         wn_user_id: str = None,
     ):
-        # 新的显示名称（不传不修改，传则不可为空，最多100字）
+        # The display name of the user.
         self.display_name = display_name
-        # 启用/停用状态（不传不修改）。false=停用，true=启用
+        # Specifies whether the account is activated. Valid values:
+        #  - **true**: Activated.
+        # - **false**: Not activated.
         self.is_active = is_active
-        # 新的系统角色 code 列表（全量替换，至少包含一个角色）。可选值: SUPER_ADMIN / SYSTEM_ADMIN / SEMANTIC_ADMIN / SKILL_ADMIN / KB_ADMIN / AGENT_ADMIN / APPLICATION_USER
+        # The new list of system role codes (full replacement, must contain at least one role). Valid values: SUPER_ADMIN / SYSTEM_ADMIN / SEMANTIC_ADMIN / SKILL_ADMIN / KB_ADMIN / AGENT_ADMIN / APPLICATION_USER.
         self.role_codes_shrink = role_codes_shrink
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
-        # 新的用户组ID列表（全量替换，不传不修改）
+        # The new list of user group IDs (full replacement. If not specified, the value is not modified).
         self.user_group_ids_shrink = user_group_ids_shrink
-        # 目标用户ID（WINNEXO 平台用户ID）
+        # The ID of the target user (WINNEXO platform user ID).
         # 
         # This parameter is required.
         self.wn_user_id = wn_user_id

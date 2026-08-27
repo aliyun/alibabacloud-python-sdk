@@ -18,16 +18,19 @@ class GetScheduledTaskUnderstandDetailResponseBody(DaraModel):
         request_id: str = None,
         task_understand: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
+        # The related objects.
         self.related_objects = related_objects
+        # The related semantics.
         self.related_semantics = related_semantics
+        # The related skills.
         self.related_skills = related_skills
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 润色后的任务理解
+        # The task understanding description polished by the LLM.
         self.task_understand = task_understand
 
     def validate(self):
@@ -120,11 +123,11 @@ class GetScheduledTaskUnderstandDetailResponseBodyRelatedSkills(DaraModel):
         skill_code: str = None,
         source_ids: List[str] = None,
     ):
-        # 技能展示名称
+        # The display name of the MCP service.
         self.display_name = display_name
-        # 文件名
+        # The name.
         self.name = name
-        # 技能代码
+        # The skill code.
         self.skill_code = skill_code
         # sourceIds
         self.source_ids = source_ids
@@ -173,9 +176,9 @@ class GetScheduledTaskUnderstandDetailResponseBodyRelatedSemantics(DaraModel):
         attributes: str = None,
         entity: str = None,
     ):
-        # 语义属性（JSON 字符串），用于语义检索时过滤
+        # The information type.
         self.attributes = attributes
-        # 语义实体名，如客户/机会
+        # The semantic entity name, such as customer or opportunity.
         self.entity = entity
 
     def validate(self):
@@ -212,13 +215,17 @@ class GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # 提及类型
+        # The mention type, such as objects.
         self.mention_type = mention_type
-        # 文件名
+        # The name.
         self.name = name
-        # 对象 ID
+        # The object ID. Pass the project task ID.
+        # 
+        # - For internal enterprise applications, this is the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) operation.
+        # 
+        # - For third-party enterprise applications, this is the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) operation.
         self.object_id = object_id
-        # 对象类型
+        # The object type, such as customer. This parameter has a value when type is set to mention.
         self.object_type = object_type
 
     def validate(self):

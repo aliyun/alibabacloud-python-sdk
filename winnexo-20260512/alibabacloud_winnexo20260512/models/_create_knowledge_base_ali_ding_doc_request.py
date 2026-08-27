@@ -16,25 +16,25 @@ class CreateKnowledgeBaseAliDingDocRequest(DaraModel):
         source_tags: str = None,
         tenant_id: str = None,
     ):
-        # 资源描述（可选）
+        # The description of the alias.
         self.description = description
-        # 目标企业知识库目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前租户下已有的企业知识库目录
+        # The directory ID.
         self.directory_id = directory_id
-        # 阿里钉在线文档的可公开访问 URL
+        # The publicly accessible URL of the AliDing online document.
         # 
         # This parameter is required.
         self.file_public_url = file_public_url
-        # 知识库 ID（可选，透传给 document_agent）
+        # Not supported. This parameter is ignored.
         self.knowledge_id = knowledge_id
-        # 资源显示名称（建议传入钉钉文档标题）
+        # The name.
         # 
         # This parameter is required.
         self.name = name
-        # 数字员工名称（运营对象 name，可选）
+        # The digital employee name (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 资源标签（可选，JSON 字符串列表，如 ["tagA","tagB"]）
+        # The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
         self.source_tags = source_tags
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

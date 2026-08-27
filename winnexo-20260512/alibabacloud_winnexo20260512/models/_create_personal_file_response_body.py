@@ -17,23 +17,25 @@ class CreatePersonalFileResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 绑定的目录 ID
+        # The directory ID.
         self.directory_id = directory_id
-        # 创建时间 ISO8601
+        # The creation time.
         self.gmt_create = gmt_create
-        # 错误描述，成功时为空
+        # The error details.
         self.message = message
-        # 文件名
+        # The updated filter view name.
         self.name = name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 资源 scope，固定为 PERSONAL
+        # The export scope. Valid values:
+        # - ALL: all.
+        # - SELECT: selected rows.
         self.scope = scope
-        # 新建资源 ID
+        # The source ID.
         self.source_id = source_id
-        # 资源状态
+        # The status.
         self.status = status
 
     def validate(self):

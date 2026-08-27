@@ -16,23 +16,27 @@ class ListUserVisibleKnowledgeBaseContentsRequest(DaraModel):
         source_types: str = None,
         tenant_id: str = None,
     ):
-        # 目标知识库根目录或其子目录的唯一标识
+        # The directory ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # 当前目录下的目录或资源名称关键词
+        # The search keyword. Supports fuzzy match on version names.
         self.keyword = keyword
-        # 页码，从 1 开始
+        # The page number.
         self.page = page
-        # 每页数量，范围 1-200
+        # The page size.
         self.page_size = page_size
-        # 排序字段，可选 name / gmt_create / gmt_modified
+        # The field by which the results are sorted. Valid values:
+        # 
+        # - event_time: the event creation time.
+        # - event_execute_start_time: the event execution time.
+        # - event_execute_finish_time: the event completion time.
         self.sort_field = sort_field
-        # 排序方向，可选 asc / desc
+        # The sort order. This parameter takes effect when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
         self.sort_order = sort_order
-        # 资源类型过滤，多个类型使用逗号分隔；传入后只返回资源
+        # The list of service source types.
         self.source_types = source_types
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. Pass it explicitly through --tenant-id in winnexo-cli.
         self.tenant_id = tenant_id
 
     def validate(self):

@@ -19,27 +19,27 @@ class CreateKnowledgeBaseDirectoryResponseBody(DaraModel):
         path: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 分类描述
+        # The description of the to-do card type.
         self.description = description
-        # 新建分类 ID
+        # The directory ID.
         self.directory_id = directory_id
-        # 目录 KB 归属类型：normal / aliding_kb_root / aliding_kb_internal
+        # The directory type.
         self.directory_kind = directory_kind
-        # 创建时间戳（毫秒）
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳（毫秒）
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 文件名
+        # The name.
         self.name = name
-        # 父分类 ID；新分类挂在租户根目录下时返回 null
+        # The directory ID.
         self.parent_directory_id = parent_directory_id
-        # 文件 OSS URL
+        # The path of the node.
         self.path = path
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

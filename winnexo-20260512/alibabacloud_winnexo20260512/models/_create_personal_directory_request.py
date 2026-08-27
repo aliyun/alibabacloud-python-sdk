@@ -13,17 +13,17 @@ class CreatePersonalDirectoryRequest(DaraModel):
         parent_directory_id: str = None,
         tenant_id: str = None,
     ):
-        # 目录描述（可选）
+        # The workspace description.
         self.description = description
-        # 目录名称
+        # The name of the digital human.
         # 
         # This parameter is required.
         self.name = name
-        # 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+        # The name of the digital human (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 父目录 ID；不传时新目录挂在用户的默认根目录下，传入时必须是当前用户的已有个人目录
+        # The folder ID.
         self.parent_directory_id = parent_directory_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

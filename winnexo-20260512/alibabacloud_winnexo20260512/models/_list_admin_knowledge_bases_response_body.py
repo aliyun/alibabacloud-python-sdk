@@ -18,18 +18,19 @@ class ListAdminKnowledgeBasesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
+        # The list of MCP cards.
         self.items = items
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 当前页码
+        # The page number. Default value: 1.
         self.page = page
-        # 每页数量
+        # The page size.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 符合条件的总数（应用 keyword/sourceTypes 后，分页前）
+        # The maximum number of records returned in this request.
         self.total = total
 
     def validate(self):
@@ -115,34 +116,35 @@ class ListAdminKnowledgeBasesResponseBodyItems(DaraModel):
         source_total_count: int = None,
         source_type: str = None,
     ):
-        # 目录创建者姓名（仅 KB 顶层目录列表时返回）
+        # The name of the creator.
         self.creator_name = creator_name
-        # 描述（仅 KB 顶层目录列表时返回）
+        # The description of the to-do card type.
         self.description = description
-        # 目录归属类型（itemType=directory 时有值）：normal / aliding_kb_root / aliding_kb_internal
+        # The directory type.
         self.directory_kind = directory_kind
-        # 创建时间戳（毫秒）
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳（毫秒）
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 唯一标识（itemType=directory 时为 directory_id；itemType=resource 时为 source_id）
+        # The ID of the data item. When tabId and orgId are the same, itemId uniquely identifies a data item. The maximum length is 128 characters.
         self.item_id = item_id
-        # 类型：directory / resource
+        # The data type (group, user, or role).
         self.item_type = item_type
-        # 文件名
+        # The name.
         self.name = name
+        # The object bindings.
         self.object_bindings = object_bindings
-        # 状态为 FAILED 的资源数（仅 KB 顶层目录列表时返回）
+        # The number of resources with FAILED status. This field is returned only for the top-level knowledge base directory list.
         self.source_failed_count = source_failed_count
-        # 资源归属类型（itemType=resource 时有值）：aliding_kb_doc / normal
+        # The knowledge base ownership type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
         self.source_kind = source_kind
-        # 状态为 READY 的资源数（仅 KB 顶层目录列表时返回）
+        # The number of resources with READY status. This field is returned only for the top-level knowledge base directory list.
         self.source_ready_count = source_ready_count
-        # 资源状态（itemType=resource 时有值）
+        # The resource status. This field has a value only when itemType is resource.
         self.source_status = source_status
-        # 目录及子目录下资源总数（仅 KB 顶层目录列表时返回）
+        # The total number of resources in the directory and its subdirectories. This field is returned only for the top-level knowledge base directory list.
         self.source_total_count = source_total_count
-        # 资源类型（itemType=resource 时有值）
+        # The source type.
         self.source_type = source_type
 
     def validate(self):
@@ -266,15 +268,15 @@ class ListAdminKnowledgeBasesResponseBodyItemsObjectBindings(DaraModel):
         object_type: str = None,
         object_type_name: str = None,
     ):
-        # 对象归属的语义图谱名（object_id 在该 graph 下唯一）
+        # The semantic graph name to which the object belongs. The object_id is unique within this graph.
         self.graph_name = graph_name
-        # 对象唯一 ID
+        # The ID of the recommended item, which can be a feedId or a micro-application ID.
         self.object_id = object_id
-        # 对象显示名（如客户名称），由图谱 schema 解析；缓存缺失时为 null
+        # The object name.
         self.object_name = object_name
-        # 对象类型（如 customer / opportunity），对应图谱 schema 中的 object_type
+        # The object type, such as customer. This field has a value only when type is mention.
         self.object_type = object_type
-        # 对象类型显示名（如"客户"），由图谱 schema 解析；缓存缺失时为 null
+        # The display name of the object type (such as "Customer"), parsed from the graph schema. The value is null when the cache is missed.
         self.object_type_name = object_type_name
 
     def validate(self):

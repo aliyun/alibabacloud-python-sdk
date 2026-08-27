@@ -18,18 +18,19 @@ class ListPersonalDirectoryContentsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
+        # The file information.
         self.items = items
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 当前页码
+        # The page number.
         self.page = page
-        # 每页数量
+        # The number of entries returned per page. Default value: 10.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 总数（不分页前的命中行数）
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -115,34 +116,35 @@ class ListPersonalDirectoryContentsResponseBodyItems(DaraModel):
         source_total_count: int = None,
         source_type: str = None,
     ):
-        # 目录创建者姓名（仅 directoryId=\"root\" 列表时返回）
+        # The name of the creator.
         self.creator_name = creator_name
-        # 知识库描述（仅 directoryId=\"root\" 列表时返回）
+        # The description of the to-do card type.
         self.description = description
-        # 目录 KB 归属类型（itemType=directory 时有值）：aliding_kb_root / aliding_kb_internal / normal
+        # The directory type.
         self.directory_kind = directory_kind
-        # 创建时间戳（毫秒）
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳（毫秒）
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 唯一标识（目录为 directoryId，资源为 sourceId）
+        # The signing record ID.
         self.item_id = item_id
-        # 类型: directory 或 resource
+        # The item type.
         self.item_type = item_type
-        # 文件名
+        # The name.
         self.name = name
+        # The object bindings.
         self.object_bindings = object_bindings
-        # 目录下失败资源数（含子目录，仅 directoryId=\"root\" 列表时返回）
+        # The number of resources in the FAILED state. This field is returned only when the top-level KB directory list is queried.
         self.source_failed_count = source_failed_count
-        # Source KB 归属类型（itemType=resource 时有值）：aliding_kb_doc / normal
+        # The knowledge base affiliation type. Valid values: aliding_kb_doc (DingTalk knowledge base document), normal (common knowledge).
         self.source_kind = source_kind
-        # 目录下成功资源数（含子目录，仅 directoryId=\"root\" 列表时返回）
+        # The number of resources in the READY state. This field is returned only when the top-level KB directory list is queried.
         self.source_ready_count = source_ready_count
-        # 资源状态（itemType=resource 时有值）
+        # The resource status. This field has a value only when itemType is resource.
         self.source_status = source_status
-        # 目录下资源总数（含子目录，仅 directoryId=\"root\" 列表时返回）
+        # The total number of resources under the directory and its subdirectories. This field is returned only when the top-level KB directory list is queried.
         self.source_total_count = source_total_count
-        # 资源类型（itemType=resource 时有值；产出保存类资源会被反刷为 OUTPUT）
+        # The data source type.
         self.source_type = source_type
 
     def validate(self):
@@ -265,13 +267,13 @@ class ListPersonalDirectoryContentsResponseBodyItemsObjectBindings(DaraModel):
         object_type: str = None,
         object_type_name: str = None,
     ):
-        # 对象唯一 ID
+        # The bound object ID.
         self.object_id = object_id
-        # 对象显示名（如客户名称），由图谱 schema 解析；缓存缺失时为 null
+        # The object name.
         self.object_name = object_name
-        # 对象类型（如 customer / opportunity），对应图谱 schema 中的 object_type
+        # The bound object type, such as customer or project.
         self.object_type = object_type
-        # 对象类型显示名（如"客户"），由图谱 schema 解析；缓存缺失时为 null
+        # The display name of the object type, such as "Customer". This value is resolved from the graph schema. The value is null when the cache is missed.
         self.object_type_name = object_type_name
 
     def validate(self):

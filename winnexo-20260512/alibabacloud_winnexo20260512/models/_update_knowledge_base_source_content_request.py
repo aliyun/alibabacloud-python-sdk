@@ -12,17 +12,17 @@ class UpdateKnowledgeBaseSourceContentRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 更新后的完整正文；允许空字符串
+        # Specifies whether the operation is successful. A value of true indicates success.
         # 
         # This parameter is required.
         self.content = content
-        # 是否同步等待重新解析完成；默认 false，异步入队
+        # Specifies whether to force synchronous processing.
         self.force_sync = force_sync
-        # 待编辑的企业知识库数据源 ID
+        # The source ID.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID that takes effect.
         self.tenant_id = tenant_id
 
     def validate(self):

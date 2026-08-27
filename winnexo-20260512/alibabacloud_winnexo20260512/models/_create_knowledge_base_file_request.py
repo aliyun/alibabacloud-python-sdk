@@ -20,33 +20,33 @@ class CreateKnowledgeBaseFileRequest(DaraModel):
         source_tags: str = None,
         tenant_id: str = None,
     ):
-        # 资源描述（可选）
+        # The description of the alias.
         self.description = description
-        # 目标企业知识库目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前租户下已有的企业知识库目录
+        # The directory ID.
         self.directory_id = directory_id
-        # 文件后缀名（可选，如 pdf、docx）
+        # The file name extension. This parameter is optional. Examples: pdf and docx.
         self.file_ext = file_ext
-        # 原始文件名（可选，含后缀）
+        # The file name.
         self.file_name = file_name
-        # 文件 OSS 持久化地址（必填，对应 settings.file_path）
+        # The file path.
         # 
         # This parameter is required.
         self.file_path = file_path
-        # 文件公开访问 URL（可选，带签名，对应 settings.file_public_url）
+        # The publicly accessible URL of the DingTalk online document.
         self.file_public_url = file_public_url
-        # 文件记录 ID（可选，对应 settings.file_record_id）
+        # The file record ID. This parameter is optional and corresponds to settings.file_record_id.
         self.file_record_id = file_record_id
-        # 知识库 ID（可选，透传给 document_agent）
+        # Not supported. Ignore this parameter.
         self.knowledge_id = knowledge_id
-        # 资源显示名称
+        # The name of the AI assistant.
         # 
         # This parameter is required.
         self.name = name
-        # 数字员工名称（运营对象 name，可选）
+        # The name of the digital employee (operating object name). This parameter is optional.
         self.operating_object_name = operating_object_name
-        # 资源标签（可选，JSON 字符串列表，如 ["tagA","tagB"]）
+        # The resource labels. This parameter is optional. Specify a JSON string list, such as ["tagA","tagB"].
         self.source_tags = source_tags
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

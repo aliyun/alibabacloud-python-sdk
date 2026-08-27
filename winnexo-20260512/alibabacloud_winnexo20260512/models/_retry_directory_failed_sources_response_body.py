@@ -20,22 +20,23 @@ class RetryDirectoryFailedSourcesResponseBody(DaraModel):
         request_id: str = None,
         skipped_count: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 目录 ID
+        # The ID of the enterprise knowledge base folder. Failed resources in the folder and its subfolders are included recursively.
         self.directory_id = directory_id
-        # 成功入队重试的数量
+        # The number of resources successfully enqueued for retry.
         self.enqueued_count = enqueued_count
-        # enqueuedIds
+        # enqueuedIds。
         self.enqueued_ids = enqueued_ids
-        # 目录下失败资源总数
+        # The total number of failed resources in the folder.
         self.failed_count = failed_count
+        # The list of failed data source IDs.
         self.failed_sources = failed_sources
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 跳过（非 FAILED 或无权限）的数量
+        # The number of resources skipped because they are not in FAILED status.
         self.skipped_count = skipped_count
 
     def validate(self):
@@ -121,11 +122,11 @@ class RetryDirectoryFailedSourcesResponseBodyFailedSources(DaraModel):
         source_id: str = None,
         source_type: str = None,
     ):
-        # 文件名
+        # The file name.
         self.name = name
-        # 数据源 ID
+        # The data source ID.
         self.source_id = source_id
-        # 数据源类型
+        # The data source type.
         self.source_type = source_type
 
     def validate(self):

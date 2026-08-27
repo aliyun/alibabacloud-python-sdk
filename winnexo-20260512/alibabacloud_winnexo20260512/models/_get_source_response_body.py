@@ -38,56 +38,61 @@ class GetSourceResponseBody(DaraModel):
         structured_tables: List[str] = None,
         unstructured_docs: List[main_models.GetSourceResponseBodyUnstructuredDocs] = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # DocumentAgent 解析完成时间，ISO8601 格式
+        # The completion time, in milliseconds.
         self.completion_time = completion_time
-        # 数据源描述
+        # The description of the to-do card type.
         self.description = description
-        # 创建时间，ISO8601 格式
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间，ISO8601 格式
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 是否存在备注
+        # Indicates whether notes exist.
         self.has_notes = has_notes
-        # 是否存在 settings 配置
+        # Indicates whether settings configuration exists.
         self.has_settings = has_settings
-        # 是否存在结构化表
+        # Indicates whether structured tables exist.
         self.has_structured_tables = has_structured_tables
-        # 是否存在非结构化文档
+        # Indicates whether unstructured documents exist.
         self.has_unstructured_docs = has_unstructured_docs
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 文件名
+        # The username.
         self.name = name
-        # 备注（仅 includeDetails=True）
+        # The meeting notes content (optional), which participates in auxiliary analysis.
         self.notes = notes
+        # The object bindings.
         self.object_bindings = object_bindings
-        # 主对象 ID（兼容字段）
+        # The associated variable ID.
         self.object_id = object_id
-        # 主对象类型（兼容字段）
+        # The object type, such as customer. This field has a value when type is set to mention.
         self.object_type = object_type
-        # 运营对象名称
+        # The digital employee name (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 可见范围：PERSONAL / TENANT
+        # The task scope.
         self.scope = scope
+        # The user profile card settings.
         self.settings = settings
-        # 技能产出 ID（由产出保存为资源时携带）
+        # The skill output ID (carried when the output is saved as a resource).
         self.skill_output_id = skill_output_id
-        # 数据源 ID
+        # The data source ID.
         self.source_id = source_id
-        # 数据源归属类型：normal / aliding_kb_doc
+        # The knowledge base affiliation type. Valid values:
+        # - aliding_kb_doc: DingTalk knowledge base document.
+        # - normal: common knowledge.
         self.source_kind = source_kind
-        # 资源标签 JSON 字符串
+        # The resource tags (optional, a JSON string list such as ["tagA","tagB"]).
         self.source_tags = source_tags
-        # 数据源类型
+        # The resource type.
         self.source_type = source_type
-        # 数据源状态
+        # The final status of the message.
         self.status = status
         # structuredTables
         self.structured_tables = structured_tables
+        # The unstructured documents.
         self.unstructured_docs = unstructured_docs
 
     def validate(self):
@@ -293,17 +298,19 @@ class GetSourceResponseBodyUnstructuredDocs(DaraModel):
         oss_url: str = None,
         semantics_id: str = None,
     ):
-        # DocumentAgent 解析完成时间，ISO8601 格式
+        # The completion time, in milliseconds.
         self.completion_time = completion_time
-        # 文件名
+        # The file name, including the file name extension.
         self.file_name = file_name
-        # 文件记录 ID
+        # The file record ID (optional, corresponding to settings.file_record_id).
         self.file_record_id = file_record_id
-        # 文件类型
+        # The file type. Valid values:
+        # - **file**: file.
+        # - **folder**: folder.
         self.file_type = file_type
-        # OSS 远程 URL
+        # The session analysis result in OSS URL format. The URL expires in one hour.
         self.oss_url = oss_url
-        # DocumentAgent 语义 ID
+        # The DocumentAgent semantic ID.
         self.semantics_id = semantics_id
 
     def validate(self):
@@ -363,11 +370,11 @@ class GetSourceResponseBodyObjectBindings(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # 对象归属的语义图谱名
+        # The semantic graph name to which the object belongs.
         self.graph_name = graph_name
-        # 对象 ID
+        # The ID of the recommended item, which can be a **feedId** or a micro-application ID.
         self.object_id = object_id
-        # 对象类型
+        # The object type, such as customer. This field has a value when type is set to mention.
         self.object_type = object_type
 
     def validate(self):

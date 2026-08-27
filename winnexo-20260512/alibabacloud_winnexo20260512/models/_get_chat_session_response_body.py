@@ -16,13 +16,15 @@ class GetChatSessionResponseBody(DaraModel):
         request_id: str = None,
         session: main_models.GetChatSessionResponseBodySession = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
+        # The message data detail structure.
         self.messages = messages
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
+        # The session ID.
         self.session = session
 
     def validate(self):
@@ -94,24 +96,25 @@ class GetChatSessionResponseBodySession(DaraModel):
         title: str = None,
         updated_at: int = None,
     ):
-        # 创建时间
+        # The creation time.
         self.created_at = created_at
-        # 消息ID
+        # The message ID.
         self.id = id
-        # 创建时间是否超过30天
+        # Indicates whether the creation time exceeds 30 days.
         self.is_expired = is_expired
-        # 关联对象ID
+        # The session metadata.
         self.metadata = metadata
-        # 会话使用的抽象模型名（quick/standard/flagship）
+        # The abstract model name used by the session (quick/standard/flagship).
         self.model = model
-        # 类型
+        # The type.
         self.object = object
+        # The associated object ID.
         self.object_id = object_id
-        # operatingObjectName
+        # The list of digital employee names.
         self.operating_object_name = operating_object_name
-        # 标题
+        # The title.
         self.title = title
-        # 更新时间
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):
@@ -204,28 +207,29 @@ class GetChatSessionResponseBodyMessages(DaraModel):
         update_at: int = None,
         user_feedback: str = None,
     ):
-        # 消息内容
+        # The message content.
         self.content = content
-        # 该消息之后 LLM 上下文是否已清空
+        # Indicates whether the LLM context has been cleared after this message.
         self.context_cleared = context_cleared
-        # 是否来自分享续聊复制的消息
+        # Indicates whether the message is copied from a shared conversation.
         self.from_share = from_share
-        # 消息ID
+        # The message ID.
         self.id = id
-        # 更新时间
+        # The message metadata.
         self.metadata = metadata
-        # 类型
+        # The type.
         self.object = object
-        # 角色
+        # The role.
         self.role = role
-        # 分享来源用户名称
+        # The username of the sharing source. This parameter has a value only when from_share=True.
         self.share_user_name = share_user_name
-        # 消息状态
+        # The message status.
         self.status = status
-        # 追踪ID
+        # The trace ID.
         self.trace_id = trace_id
+        # The update time.
         self.update_at = update_at
-        # 用户反馈类型
+        # The user feedback type: LIKE | DISLIKE | CANCEL.
         self.user_feedback = user_feedback
 
     def validate(self):

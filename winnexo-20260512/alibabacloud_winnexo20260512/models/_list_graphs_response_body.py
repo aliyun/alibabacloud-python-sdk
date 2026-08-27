@@ -15,15 +15,15 @@ class ListGraphsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 租户下可用于语义查询的已发布图谱列表
+        # The list of MCP cards.
         # 
         # This parameter is required.
         self.items = items
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,19 +80,19 @@ class ListGraphsResponseBodyItems(DaraModel):
         graph_name: str = None,
         is_default: bool = None,
     ):
-        # 图谱业务说明，未配置时为空字符串
+        # The business description of the knowledge graph. An empty string is returned if not configured.
         # 
         # This parameter is required.
         self.business_profile = business_profile
-        # 图谱显示名称
+        # The tool display name.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # 图谱名称，传给 querySemanticKnowledge.graphName
+        # The knowledge graph name.
         # 
         # This parameter is required.
         self.graph_name = graph_name
-        # 是否为租户默认图谱
+        # Indicates whether this is the default group.
         # 
         # This parameter is required.
         self.is_default = is_default

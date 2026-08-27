@@ -12,15 +12,17 @@ class SaveOutputFileToResourceShrinkRequest(DaraModel):
         mode: str = None,
         tenant_id: str = None,
     ):
-        # 目标个人目录 ID；不传则自动解析用户默认目录。
+        # The ID of the target personal folder. If not specified, the user\\"s default folder is automatically resolved.
         self.directory_id = directory_id
         # itemIds
         # 
         # This parameter is required.
         self.item_ids_shrink = item_ids_shrink
-        # 保存方式：link=链接（1:1 幂等，编辑产出会同步资源） / copy=复制（不限次，快照）
+        # The save mode. Valid values:
+        # - link: Links the resource to the output in a 1:1 idempotent manner. Edits to the output are synchronized to the resource.
+        # - copy: Creates a snapshot copy with no limit on the number of copies.
         self.mode = mode
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

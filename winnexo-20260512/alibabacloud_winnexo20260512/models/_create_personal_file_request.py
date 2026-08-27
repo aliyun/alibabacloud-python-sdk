@@ -18,29 +18,29 @@ class CreatePersonalFileRequest(DaraModel):
         operating_object_name: str = None,
         tenant_id: str = None,
     ):
-        # 资源描述（可选）
+        # The pipeline description.
         self.description = description
-        # 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前用户在当前数字员工下的已有个人目录
+        # The directory ID.
         self.directory_id = directory_id
-        # 文件后缀名（可选，如 pdf、docx）
+        # The file extension (optional, such as pdf or docx).
         self.file_ext = file_ext
-        # 原始文件名（可选，含后缀）
+        # The file name.
         self.file_name = file_name
-        # 文件 OSS 持久化地址（必填，对应 settings.file_path）
+        # The file path.
         # 
         # This parameter is required.
         self.file_path = file_path
-        # 文件公开访问 URL（可选，带签名，对应 settings.file_public_url）
+        # The publicly accessible URL of the Alibaba DingTalk online document.
         self.file_public_url = file_public_url
-        # 文件记录 ID（可选，对应 settings.file_record_id）
+        # The file record ID (optional, corresponding to settings.file_record_id).
         self.file_record_id = file_record_id
-        # 资源显示名称
+        # The pipeline name.
         # 
         # This parameter is required.
         self.name = name
-        # 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

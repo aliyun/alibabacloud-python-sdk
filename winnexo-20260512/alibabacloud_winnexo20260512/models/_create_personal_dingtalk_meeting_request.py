@@ -16,25 +16,25 @@ class CreatePersonalDingtalkMeetingRequest(DaraModel):
         room_code: str = None,
         tenant_id: str = None,
     ):
-        # 凭证 ID（不传则使用系统默认配置）
+        # The credential ID.
         self.credential_id = credential_id
-        # 资源描述（可选）
+        # The pipeline description.
         self.description = description
-        # 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前用户在当前数字员工下的已有个人目录
+        # The directory ID.
         self.directory_id = directory_id
-        # 资源显示名称
+        # The image name.
         # 
         # This parameter is required.
         self.name = name
-        # 会议笔记内容（可选），会参与辅助分析
+        # The meeting notes content (optional). The notes are used for auxiliary analysis.
         self.notes = notes
-        # 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 钉钉会议号（必填）
+        # The meeting code.
         # 
         # This parameter is required.
         self.room_code = room_code
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

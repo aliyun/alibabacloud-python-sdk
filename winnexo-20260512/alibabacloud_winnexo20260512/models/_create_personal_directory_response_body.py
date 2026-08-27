@@ -20,29 +20,29 @@ class CreatePersonalDirectoryResponseBody(DaraModel):
         path: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
         self.code = code
-        # 目录描述
+        # The description.
         self.description = description
-        # 新建目录 ID
+        # The folder ID.
         self.directory_id = directory_id
-        # 目录 KB 归属类型：normal / aliding_kb_root / aliding_kb_internal
+        # The folder type.
         self.directory_kind = directory_kind
-        # 创建时间戳（毫秒）
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳（毫秒）
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 错误描述，成功时为空
+        # The response message.
         self.message = message
-        # 文件名
+        # The name of the worksheet.
         self.name = name
-        # 所属数字员工名称
+        # The name of the digital human (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 父目录 ID（service 若回填默认根目录，这里返回回填后的父目录 ID）
+        # The folder ID.
         self.parent_directory_id = parent_directory_id
-        # 文件 OSS URL
+        # The path.
         self.path = path
-        # 请求追踪 ID
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

@@ -18,18 +18,19 @@ class ListUserVisibleKnowledgeBaseContentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
+        # The list of skill cards.
         self.items = items
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 当前页码
+        # The page number. Default value: 1. Pages start from page 1.
         self.page = page
-        # 每页数量
+        # The page size.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 命中总数
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -122,47 +123,49 @@ class ListUserVisibleKnowledgeBaseContentsResponseBodyItems(DaraModel):
         source_total_count: int = None,
         source_type: str = None,
     ):
-        # 创建人名称
+        # The name of the creator.
         self.creator_name = creator_name
-        # 知识库描述
+        # The description of the to-do card type.
         self.description = description
-        # 目录归属类型
+        # The directory type.
         self.directory_kind = directory_kind
-        # 目录类型
+        # The directory type.
         self.directory_type = directory_type
-        # 创建时间戳（毫秒）
+        # The creation time.
         self.gmt_create = gmt_create
-        # 修改时间戳（毫秒）
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # 目录 ID 或资源 ID
+        # The item ID.
         self.item_id = item_id
-        # 内容类型：directory 或 resource
+        # The item type.
         self.item_type = item_type
-        # 资源是否存在待审批的知识库提交记录
+        # Indicates whether the resource has a pending knowledge base submission record.
         self.kb_submission_pending = kb_submission_pending
-        # 更新人名称
+        # The name of the modifier.
         self.modifier_name = modifier_name
-        # 目录或资源名称
+        # The name.
         self.name = name
+        # The object bindings.
         self.object_bindings = object_bindings
-        # 知识库对数字员工的可见模式
+        # The visibility mode of the knowledge base to digital employees.
         self.oo_visibility_mode = oo_visibility_mode
-        # 是否为只读关联内容
+        # Indicates whether the item is read-only.
         self.read_only = read_only
+        # The sharing information.
         self.share_infos = share_infos
-        # 是否已直接共享到企业知识库
+        # Indicates whether shared access is allowed.
         self.shared = shared
-        # 目录 FAILED 资源数
+        # The number of resources in FAILED status. Returned only when listing top-level KB directories.
         self.source_failed_count = source_failed_count
-        # 资源归属类型
+        # The knowledge base affiliation type. Valid values: aliding_kb_doc (DingTalk knowledge base document), normal (common knowledge).
         self.source_kind = source_kind
-        # 目录 READY 资源数
+        # The number of resources in READY status. Returned only when listing top-level KB directories.
         self.source_ready_count = source_ready_count
-        # 资源状态；本接口只返回 READY 资源
+        # The resource status. This field has a value only when itemType is resource.
         self.source_status = source_status
-        # 目录资源总数
+        # The total number of resources under the directory and its subdirectories. Returned only when listing top-level KB directories.
         self.source_total_count = source_total_count
-        # 资源类型，目录项为空
+        # The data source type.
         self.source_type = source_type
 
     def validate(self):
@@ -330,19 +333,19 @@ class ListUserVisibleKnowledgeBaseContentsResponseBodyItemsShareInfos(DaraModel)
         target_kb_root_directory_id: str = None,
         target_kb_root_directory_name: str = None,
     ):
-        # 知识库提交审批单 ID
+        # The Ray Job ID.
         self.submission_id = submission_id
-        # 提交人用户 ID
+        # The user ID of the submitter.
         self.submitter_id = submitter_id
-        # 提交人名称
+        # The submitter name.
         self.submitter_name = submitter_name
-        # 目标目录 ID
+        # The target directory ID.
         self.target_directory_id = target_directory_id
-        # 目标目录名称
+        # The target directory name.
         self.target_directory_name = target_directory_name
-        # 目标企业知识库根目录 ID
+        # The root directory ID of the target enterprise knowledge base.
         self.target_kb_root_directory_id = target_kb_root_directory_id
-        # 目标企业知识库名称
+        # The name of the target enterprise knowledge base.
         self.target_kb_root_directory_name = target_kb_root_directory_name
 
     def validate(self):

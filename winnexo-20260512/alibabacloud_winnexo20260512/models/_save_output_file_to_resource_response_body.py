@@ -15,12 +15,13 @@ class SaveOutputFileToResourceResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.SaveOutputFileToResourceResponseBodyResults] = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
-        # 错误描述，成功时为空
+        # The error description. This value is empty on success.
         self.message = message
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
+        # The per-record results in the same order as the input itemIds. A single record failure does not affect other records.
         self.results = results
 
     def validate(self):
@@ -78,15 +79,15 @@ class SaveOutputFileToResourceResponseBodyResults(DaraModel):
         source_id: str = None,
         success: bool = None,
     ):
-        # 失败时返回业务错误码（i18n key）
+        # The business error code (i18n key). Returned on failure.
         self.error_code = error_code
-        # 失败时返回错误描述（已按请求 locale 国际化）
+        # The error description, localized based on the request Accept-Language header. Returned on failure.
         self.error_message = error_message
-        # 产出明细 ID
+        # The output detail ID.
         self.item_id = item_id
-        # 成功时返回新建的资源 sourceId
+        # The sourceId of the newly created resource. Returned on success.
         self.source_id = source_id
-        # 操作是否成功
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

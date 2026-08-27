@@ -14,21 +14,21 @@ class CreatePersonalAlidingDocRequest(DaraModel):
         operating_object_name: str = None,
         tenant_id: str = None,
     ):
-        # 资源描述（可选）
+        # The pipeline description.
         self.description = description
-        # 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时绑定到该目录（必须是当前用户在当前数字员工下的已有个人目录）
+        # The folder ID.
         self.directory_id = directory_id
-        # 阿里钉在线文档的可公开访问 URL
+        # The publicly accessible URL of the AliDing online document.
         # 
         # This parameter is required.
         self.file_public_url = file_public_url
-        # 文件名
+        # The customer group name.
         # 
         # This parameter is required.
         self.name = name
-        # Agent 命名空间标识，可选
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

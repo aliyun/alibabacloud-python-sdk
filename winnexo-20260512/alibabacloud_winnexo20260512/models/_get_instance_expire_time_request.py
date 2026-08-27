@@ -9,7 +9,7 @@ class GetInstanceExpireTimeRequest(DaraModel):
         self,
         tenant_id: str = None,
     ):
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The effective tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

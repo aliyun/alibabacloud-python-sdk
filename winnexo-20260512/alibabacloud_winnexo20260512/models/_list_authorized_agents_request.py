@@ -11,11 +11,11 @@ class ListAuthorizedAgentsRequest(DaraModel):
         target_user_id: int = None,
         tenant_id: str = None,
     ):
-        # 权限类型：USE=使用权限, MANAGE=管理权限，默认 USE
+        # The userId of the responsible user.
         self.permission = permission
-        # 目标用户 ID，管理员代查指定用户可用的数字员工时传入（需 APPLICATION_AGENT_VIEW 权限）；不传则查询调用方自身
+        # The target user ID.
         self.target_user_id = target_user_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

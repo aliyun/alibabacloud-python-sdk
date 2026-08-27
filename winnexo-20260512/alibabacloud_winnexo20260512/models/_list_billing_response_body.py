@@ -18,18 +18,19 @@ class ListBillingResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
+        # The details of the list.
         self.list = list
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 页码
+        # The page number.
         self.page = page
-        # 每页条数
+        # The number of entries per page.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 总数
+        # The total number of bills.
         self.total = total
 
     def validate(self):
@@ -117,39 +118,39 @@ class ListBillingResponseBodyList(DaraModel):
         total_credit_cost: str = None,
         wn_user_id: str = None,
     ):
-        # 账单业务ID
+        # The billing ID.
         self.billing_id = billing_id
-        # 业务来源ID
+        # The file ID.
         self.biz_id = biz_id
-        # 业务来源类型
+        # The business type.
         self.biz_type = biz_type
         # costSource
         self.cost_source = cost_source
         # costSourceDisplayName
         self.cost_source_display_name = cost_source_display_name
-        # 结束时间
+        # The end timestamp, in milliseconds.
         self.end_time = end_time
-        # 入口对象ID
+        # The entry object ID.
         self.entry_object_id = entry_object_id
-        # 入口对象类型
+        # The entry object type.
         self.entry_object_type = entry_object_type
-        # 是否影子账单
+        # Indicates whether the bill is a shadow bill.
         self.is_shadow = is_shadow
-        # 操作类型
+        # The operation type.
         self.operation = operation
-        # 操作类型展示名称
+        # The display name of the operation.
         self.operation_display_name = operation_display_name
-        # 开始时间
+        # The start timestamp, in milliseconds.
         self.start_time = start_time
-        # 状态
+        # The task status. Running is returned upon submission.
         self.status = status
-        # 状态展示名称
+        # The display name of the status.
         self.status_display_name = status_display_name
-        # 租户ID
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 汇总 credit 消耗
+        # The total credit consumption.
         self.total_credit_cost = total_credit_cost
-        # WINNEXO 平台用户ID
+        # The WINNEXO platform user ID.
         self.wn_user_id = wn_user_id
 
     def validate(self):

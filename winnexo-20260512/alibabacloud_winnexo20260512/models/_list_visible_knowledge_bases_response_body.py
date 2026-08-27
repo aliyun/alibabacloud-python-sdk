@@ -16,14 +16,15 @@ class ListVisibleKnowledgeBasesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
+        # The file information.
         self.items = items
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # Id of the request
         self.request_id = request_id
-        # 返回条数（不分页，等于 len(items)）
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -92,25 +93,25 @@ class ListVisibleKnowledgeBasesResponseBodyItems(DaraModel):
         source_ready_count: int = None,
         source_total_count: int = None,
     ):
-        # 目录创建者姓名（来自 rbj_user_tenant_mapping.user_display_name）
+        # The creator.
         self.creator_name = creator_name
-        # 目录描述
+        # The description.
         self.description = description
-        # 目录唯一标识（租户内唯一）
+        # The directory ID. You can obtain this value by calling the API operation for retrieving the knowledge base directory.
         self.directory_id = directory_id
-        # 创建时间戳（毫秒）
+        # The creation time. This value is a timestamp in milliseconds.
         self.gmt_create = gmt_create
-        # 修改时间戳（毫秒）
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # 文件名
+        # The skill name.
         self.name = name
-        # 文件 OSS URL
+        # The file directory information.
         self.path = path
-        # 目录及子目录下状态为 FAILED 的资源数
+        # The number of resources in the FAILED state. This parameter is returned only when listing top-level knowledge base directories.
         self.source_failed_count = source_failed_count
-        # 目录及子目录下状态为 READY 的资源数
+        # The number of resources in the READY state. This parameter is returned only when listing top-level knowledge base directories.
         self.source_ready_count = source_ready_count
-        # 目录及子目录下的资源总数
+        # The total number of resources in the directory and its subdirectories. This parameter is returned only when listing top-level knowledge base directories.
         self.source_total_count = source_total_count
 
     def validate(self):

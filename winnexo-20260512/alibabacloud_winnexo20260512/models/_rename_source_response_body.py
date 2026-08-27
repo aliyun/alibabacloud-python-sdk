@@ -15,19 +15,19 @@ class RenameSourceResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 最近修改时间，ISO8601 格式
+        # The last modified time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 文件名
+        # The file name.
         self.name = name
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 数据源 ID
+        # The data source ID.
         self.source_id = source_id
-        # 数据源状态
+        # The data source status.
         self.status = status
 
     def validate(self):

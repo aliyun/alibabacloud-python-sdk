@@ -15,25 +15,27 @@ class UpdateSourceContentResponseBody(DaraModel):
         source_type: str = None,
         status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 文件名
+        # The username.
         # 
         # This parameter is required.
         self.name = name
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 数据源 ID
+        # The ID of the data source.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 数据源类型
+        # The source type of the dictionary file. Valid values:
+        # - OSS: Object Storage Service (OSS).
+        # - ORIGIN: retains the previously uploaded dictionary.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # 重新解析后的数据源状态
+        # The status.
         # 
         # This parameter is required.
         self.status = status

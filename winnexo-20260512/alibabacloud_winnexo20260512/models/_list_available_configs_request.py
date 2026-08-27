@@ -9,7 +9,7 @@ class ListAvailableConfigsRequest(DaraModel):
         self,
         tenant_id: str = None,
     ):
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. Pass it explicitly through --tenant-id in winnexo-cli.
         self.tenant_id = tenant_id
 
     def validate(self):

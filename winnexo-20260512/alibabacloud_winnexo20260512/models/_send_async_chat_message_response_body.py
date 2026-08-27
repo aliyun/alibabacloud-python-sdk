@@ -13,19 +13,22 @@ class SendAsyncChatMessageResponseBody(DaraModel):
         request_id: str = None,
         session_created: bool = None,
         session_id: str = None,
+        user_message_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* or InvalidParameter.*).
         self.code = code
-        # 错误描述，成功时为空
+        # The error description. This is empty when the request succeeds.
         self.message = message
-        # 助手消息ID；用于随后调用 streamChatMessage 订阅生成结果
+        # The assistant message ID. Use this ID to call streamChatMessage to subscribe to the generation results.
         self.message_id = message_id
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 本次调用是否新建了会话
+        # Indicates whether a new session was created by this call.
         self.session_created = session_created
-        # 会话ID；续写会话时与入参一致，新建会话时为服务端生成值
+        # The session ID. For continued sessions, this matches the input value. For new sessions, this is a server-generated value.
         self.session_id = session_id
+        # The user message ID. Use this ID to establish a pairing relationship with the assistant message in this turn.
+        self.user_message_id = user_message_id
 
     def validate(self):
         pass
@@ -53,6 +56,9 @@ class SendAsyncChatMessageResponseBody(DaraModel):
         if self.session_id is not None:
             result['sessionId'] = self.session_id
 
+        if self.user_message_id is not None:
+            result['userMessageId'] = self.user_message_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -74,6 +80,9 @@ class SendAsyncChatMessageResponseBody(DaraModel):
 
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
+
+        if m.get('userMessageId') is not None:
+            self.user_message_id = m.get('userMessageId')
 
         return self
 

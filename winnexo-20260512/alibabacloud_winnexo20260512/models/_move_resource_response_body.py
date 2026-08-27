@@ -15,19 +15,19 @@ class MoveResourceResponseBody(DaraModel):
         success: bool = None,
         target_directory_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 错误描述，成功时为空
+        # The response message.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 源目录 ID（echo 回入参）
+        # The source directory ID, which echoes the input parameter.
         self.source_directory_id = source_directory_id
-        # 资源 ID（echo 回入参）
+        # The resource ID, which echoes the input parameter.
         self.source_id = source_id
-        # 操作是否成功
+        # Indicates whether the request was successful.
         self.success = success
-        # 目标目录 ID（echo 回入参）
+        # The target directory ID.
         self.target_directory_id = target_directory_id
 
     def validate(self):

@@ -19,29 +19,29 @@ class SendAsyncChatMessageShrinkRequest(DaraModel):
         task_execution_shrink: str = None,
         tenant_id: str = None,
     ):
-        # 用户消息正文
+        # The message body from the user.
         # 
         # This parameter is required.
         self.content = content
-        # 消息类型：Text / Markdown
+        # The message type. Valid values: Text and Markdown.
         self.content_type = content_type
-        # 数字员工名称列表（兼容旧格式可传单个字符串）
+        # The list of digital employee names. A single string can be passed for backward compatibility with the legacy format.
         self.digital_employee_name_shrink = digital_employee_name_shrink
-        # 是否启用直连模式；true 时跳过常规场景路由，直接进入直连对话场景
+        # Specifies whether to enable direct chat mode. If set to true, the regular scenario routing is skipped and the direct chat scenario is entered.
         self.direct_chat = direct_chat
-        # 文件引用列表；每项为对象，fileId 必传（由 uploadChatFile 返回）
+        # The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
         self.files_shrink = files_shrink
-        # 抽象模型档位（quick / standard / flagship）；缺省时新会话用 standard，已有会话沿用会话当前档位
+        # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain their current tier.
         self.model = model
-        # 不传 sessionId 时是否复用该数字员工下最近一个会话（CLI 场景），缺省 false 即新建会话
+        # Specifies whether to reuse the most recent session of the digital employee when sessionId is not specified. This is designed for CLI scenarios. Default value: false, which creates a new session.
         self.reuse_last_session = reuse_last_session
-        # 会话ID，不传则新建会话
+        # The session ID. If not specified, a new session is created.
         self.session_id = session_id
-        # 是否流式生成；本接口固定按流式生成后台内容并写入消息流，取值不改变返回结构
+        # Specifies whether to use streaming generation. This operation always generates backend content in streaming mode and writes it to the message stream. The value does not change the response structure.
         self.stream = stream
-        # executeScheduledTask 返回的任务执行元数据；传入后按任务执行链路处理
+        # The task execution metadata returned by executeScheduledTask. When provided, the request is processed through the task execution pipeline.
         self.task_execution_shrink = task_execution_shrink
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

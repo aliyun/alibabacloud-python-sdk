@@ -15,19 +15,19 @@ class UpdateUserInfoRequest(DaraModel):
         self_introduction: str = None,
         tenant_id: str = None,
     ):
-        # 用户头像 URL
+        # The profile picture URL.
         self.avatar = avatar
-        # 语言偏好: zh-CN, en-US
+        # The language preference: zh-CN, en-US.
         self.language_preference = language_preference
-        # 文件名
+        # The name.
         self.name = name
-        # 用户服务描述，最多1000字符
+        # The user service description. Maximum length: 1000 characters.
         self.offering = offering
-        # 用户角色描述（当profileRole为Others时使用），最多100字符
+        # The user role description (used when profileRole is set to Others). Maximum length: 100 characters.
         self.profile_role_info = profile_role_info
-        # 用户自我介绍，最多1000字符
+        # The user self-introduction. Maximum length: 1000 characters.
         self.self_introduction = self_introduction
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The effective tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

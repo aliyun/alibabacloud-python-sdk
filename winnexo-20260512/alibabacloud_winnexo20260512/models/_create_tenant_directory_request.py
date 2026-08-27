@@ -13,17 +13,17 @@ class CreateTenantDirectoryRequest(DaraModel):
         path: str = None,
         tenant_id: str = None,
     ):
-        # 目录描述
+        # The description of the to-do card type.
         self.description = description
-        # 文件名
+        # The name.
         # 
         # This parameter is required.
         self.name = name
-        # 父目录内部主键；不传表示创建企业知识库根目录
+        # The ID of the parent node.
         self.parent_id = parent_id
-        # 文件 OSS URL
+        # The path of the node.
         self.path = path
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

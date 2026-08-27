@@ -16,21 +16,25 @@ class ListAdminKnowledgeBasesShrinkRequest(DaraModel):
         source_types_shrink: str = None,
         tenant_id: str = None,
     ):
-        # 目录 ID；为空或 \"root\" 时返回 KB 顶层列表，传具体值时下钻返回该目录的子目录 + 资源（混合分页，由 itemType 区分）
+        # The directory ID.
         self.directory_id = directory_id
-        # 搜索关键词，仅在 directoryId 为空/root 时生效，模糊匹配 KB 名称或描述（忽略大小写）
+        # The keyword for fuzzy search on form component data.
         self.keyword = keyword
-        # 页码，从 1 开始
+        # The page number. Default value: 1. Pages start from page 1.
         self.page = page
-        # 每页数量，范围 1-100
+        # The number of entries per page.
         self.page_size = page_size
-        # 排序字段：name / gmtCreate / gmtModified；非法值回退为 name
+        # The field by which the results are sorted. Valid values:
+        # 
+        # - event_time: the event creation time.
+        # - event_execute_start_time: the event execution time.
+        # - event_execute_finish_time: the event completion time.
         self.sort_field = sort_field
-        # 排序方向：asc / desc；非法值回退为 asc
+        # The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
         self.sort_order = sort_order
-        # 资源类型过滤，仅在下钻（directoryId 非空）时生效；命中时仅返回匹配类型的资源，不含子目录
+        # The list of source types.
         self.source_types_shrink = source_types_shrink
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID to which the task belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

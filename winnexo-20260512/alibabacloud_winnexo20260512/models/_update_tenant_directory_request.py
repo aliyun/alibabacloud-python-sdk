@@ -14,17 +14,17 @@ class UpdateTenantDirectoryRequest(DaraModel):
         path: str = None,
         tenant_id: str = None,
     ):
-        # 新目录描述
+        # The folder description.
         self.description = description
-        # 目录唯一标识
+        # The folder ID.
         self.directory_id = directory_id
-        # 文件名
+        # The folder name.
         self.name = name
-        # 新父目录内部主键
+        # The parent label ID. Set this parameter to -**1** for the root folder.
         self.parent_id = parent_id
-        # 文件 OSS URL
+        # The path of the node.
         self.path = path
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

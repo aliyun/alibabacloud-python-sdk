@@ -13,15 +13,15 @@ class GetSkillRequest(DaraModel):
         tenant_id: str = None,
         view_mode: str = None,
     ):
-        # 是否返回完整文件树（默认 False，避免大体积响应）
+        # Specifies whether to return the complete file tree. Default value: False. This avoids large response payloads.
         self.include_skill_files = include_skill_files
-        # 技能编码（全局唯一），优先级高于 skillName
+        # The skill code. This parameter has a value when type is set to skill.
         self.skill_code = skill_code
-        # 技能名称，未传 skillCode 时使用；租户范围内必须唯一
+        # The skill name.
         self.skill_name = skill_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID to which the task belongs.
         self.tenant_id = tenant_id
-        # 视角：draft（草稿/编辑视角）或 published（已发布视角，默认）
+        # The view mode. Valid values: draft (draft/editing view) or published (published view, default).
         self.view_mode = view_mode
 
     def validate(self):

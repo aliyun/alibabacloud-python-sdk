@@ -12,13 +12,13 @@ class RemoveUserResponseBody(DaraModel):
         request_id: str = None,
         wn_user_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # WINNEXO 平台用户ID
+        # The WINNEXO platform user ID.
         self.wn_user_id = wn_user_id
 
     def validate(self):

@@ -15,27 +15,27 @@ class ReplaceSourceFileRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 新文件名（可选；不传或空字符串时保持原文件名）
+        # The new file name. This parameter is optional. If you do not specify this parameter or set it to an empty string, the original file name is retained.
         self.file_name = file_name
-        # 新文件的 OSS 持久化地址（由上传签名接口返回）
+        # The OSS persistent address of the new file, returned by the upload signing operation.
         # 
         # This parameter is required.
         self.file_path = file_path
-        # 新文件的公开访问 URL（可能携带临时签名）
+        # The public access URL of the new file. The URL may contain a temporary signature.
         # 
         # This parameter is required.
         self.file_public_url = file_public_url
-        # 新文件的文件记录 ID
+        # The file record ID of the new file.
         # 
         # This parameter is required.
         self.file_record_id = file_record_id
-        # 是否同步等待重新解析完成；默认 false，异步入队
+        # Specifies whether to synchronously wait for re-parsing to complete. Default value: false, which indicates asynchronous queuing.
         self.force_sync = force_sync
-        # 待替换的个人 FILE 数据源 ID（租户内唯一）
+        # The ID of the personal FILE data source to be replaced. This ID is unique within the tenant.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

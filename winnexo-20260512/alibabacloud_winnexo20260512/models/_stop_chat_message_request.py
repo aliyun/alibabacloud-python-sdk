@@ -10,11 +10,11 @@ class StopChatMessageRequest(DaraModel):
         session_id: str = None,
         tenant_id: str = None,
     ):
-        # 会话ID
+        # The session ID.
         # 
         # This parameter is required.
         self.session_id = session_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

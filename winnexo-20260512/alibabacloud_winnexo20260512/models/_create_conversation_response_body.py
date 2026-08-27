@@ -17,18 +17,19 @@ class CreateConversationResponseBody(DaraModel):
         request_id: str = None,
         title: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The error code.
         self.code = code
-        # 新建会话ID
+        # Id of the request
         self.conversation_id = conversation_id
-        # 会话创建时间戳（秒）
+        # The time when the share was created.
         self.created_at = created_at
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
+        # A reserved field for extension use.
         self.metadata = metadata
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 会话标题（已按调用方语言国际化）
+        # The appointment title.
         self.title = title
 
     def validate(self):
