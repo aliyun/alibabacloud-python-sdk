@@ -1,3 +1,8 @@
+2026-08-27 Version: 2.2.0
+- Support API GetBillingOverview.
+- Support API GetBillingTrend.
+
+
 2026-08-11 Version: 2.1.0
 - Support API ListModelLimits.
 - Support API ListModelPermissions.

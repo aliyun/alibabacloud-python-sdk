@@ -26,7 +26,6 @@ class Client(OpenApiClient):
             'cn-beijing': 'modelstudio.cn-beijing.aliyuncs.com',
             'cn-hongkong': 'modelstudio.cn-hongkong.aliyuncs.com',
             'ap-southeast-1': 'modelstudio.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'modelstudio.ap-northeast-1.aliyuncs.com',
             'us-east-1': 'modelstudio.us-east-1.aliyuncs.com',
             'eu-central-1': 'modelstudio.eu-central-1.aliyuncs.com'
         }
@@ -980,6 +979,238 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_api_key_with_options_async(api_key_id, headers, runtime)
+
+    def get_billing_overview_with_options(
+        self,
+        tmp_req: main_models.GetBillingOverviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBillingOverviewResponse:
+        tmp_req.validate()
+        request = main_models.GetBillingOverviewShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
+        if not DaraCore.is_null(tmp_req.group_by):
+            request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        query = {}
+        if not DaraCore.is_null(request.bill_month):
+            query['billMonth'] = request.bill_month
+        if not DaraCore.is_null(request.filter_shrink):
+            query['filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.group_by_shrink):
+            query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.locale):
+            query['locale'] = request.locale
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.top_num):
+            query['topNum'] = request.top_num
+        if not DaraCore.is_null(request.zero_filter):
+            query['zeroFilter'] = request.zero_filter
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBillingOverview',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/billing/overview',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBillingOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_billing_overview_with_options_async(
+        self,
+        tmp_req: main_models.GetBillingOverviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBillingOverviewResponse:
+        tmp_req.validate()
+        request = main_models.GetBillingOverviewShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
+        if not DaraCore.is_null(tmp_req.group_by):
+            request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        query = {}
+        if not DaraCore.is_null(request.bill_month):
+            query['billMonth'] = request.bill_month
+        if not DaraCore.is_null(request.filter_shrink):
+            query['filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.group_by_shrink):
+            query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.locale):
+            query['locale'] = request.locale
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.top_num):
+            query['topNum'] = request.top_num
+        if not DaraCore.is_null(request.zero_filter):
+            query['zeroFilter'] = request.zero_filter
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBillingOverview',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/billing/overview',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBillingOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_billing_overview(
+        self,
+        request: main_models.GetBillingOverviewRequest,
+    ) -> main_models.GetBillingOverviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_billing_overview_with_options(request, headers, runtime)
+
+    async def get_billing_overview_async(
+        self,
+        request: main_models.GetBillingOverviewRequest,
+    ) -> main_models.GetBillingOverviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_billing_overview_with_options_async(request, headers, runtime)
+
+    def get_billing_trend_with_options(
+        self,
+        tmp_req: main_models.GetBillingTrendRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBillingTrendResponse:
+        tmp_req.validate()
+        request = main_models.GetBillingTrendShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
+        if not DaraCore.is_null(tmp_req.group_by):
+            request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        if not DaraCore.is_null(tmp_req.time_period):
+            request.time_period_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_period, 'timePeriod', 'json')
+        query = {}
+        if not DaraCore.is_null(request.filter_shrink):
+            query['filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.group_by_shrink):
+            query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.locale):
+            query['locale'] = request.locale
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.time_period_shrink):
+            query['timePeriod'] = request.time_period_shrink
+        if not DaraCore.is_null(request.top_num):
+            query['topNum'] = request.top_num
+        if not DaraCore.is_null(request.zero_filter):
+            query['zeroFilter'] = request.zero_filter
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBillingTrend',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/billing/trend',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBillingTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_billing_trend_with_options_async(
+        self,
+        tmp_req: main_models.GetBillingTrendRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBillingTrendResponse:
+        tmp_req.validate()
+        request = main_models.GetBillingTrendShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
+        if not DaraCore.is_null(tmp_req.group_by):
+            request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        if not DaraCore.is_null(tmp_req.time_period):
+            request.time_period_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_period, 'timePeriod', 'json')
+        query = {}
+        if not DaraCore.is_null(request.filter_shrink):
+            query['filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.group_by_shrink):
+            query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.locale):
+            query['locale'] = request.locale
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.time_period_shrink):
+            query['timePeriod'] = request.time_period_shrink
+        if not DaraCore.is_null(request.top_num):
+            query['topNum'] = request.top_num
+        if not DaraCore.is_null(request.zero_filter):
+            query['zeroFilter'] = request.zero_filter
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBillingTrend',
+            version = '2026-02-10',
+            protocol = 'HTTPS',
+            pathname = f'/modelstudio/billing/trend',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBillingTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_billing_trend(
+        self,
+        request: main_models.GetBillingTrendRequest,
+    ) -> main_models.GetBillingTrendResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_billing_trend_with_options(request, headers, runtime)
+
+    async def get_billing_trend_async(
+        self,
+        request: main_models.GetBillingTrendRequest,
+    ) -> main_models.GetBillingTrendResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_billing_trend_with_options_async(request, headers, runtime)
 
     def get_organization_with_options(
         self,

@@ -13,10 +13,15 @@ class UpdateModelPermissionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter is empty when the call is successful.
         self.code = code
+        # The error message. This parameter is empty when the call is successful.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the API call is successful.
         self.success = success
 
     def validate(self):

@@ -14,8 +14,15 @@ class UpdateModelPermissionsRequest(DaraModel):
         models: List[main_models.UpdateModelPermissionsRequestModels] = None,
         workspace_id: str = None,
     ):
+        # The tri-state value for one-click authorization. Valid values:
+        # - OPEN: grants authorization to all models with one click.
+        # - CLOSE: cancels one-click authorization.
+        # - KEEP: keeps per-model authorization.
         self.access_all_entities = access_all_entities
+        # The list of per-model authorization items.
         self.models = models
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -67,9 +74,14 @@ class UpdateModelPermissionsRequestModels(DaraModel):
         inference: bool = None,
         model: str = None,
     ):
+        # Specifies whether to grant model deployment permission.
         self.deploy = deploy
+        # Specifies whether to grant model training permission.
         self.fine_tune = fine_tune
+        # Specifies whether to grant model invocation permission.
         self.inference = inference
+        # The model.
+        # 
         # This parameter is required.
         self.model = model
 
