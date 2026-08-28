@@ -1,3 +1,6 @@
+2026-08-28 Version: 2.11.1
+- Generated python 2023-06-30 for dataphin-public.
+
 2026-08-10 Version: 2.11.0
 - Support API ExecuteDDL.
 - Support API ListPipelines.
