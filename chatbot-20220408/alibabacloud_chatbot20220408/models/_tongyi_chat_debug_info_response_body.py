@@ -14,14 +14,16 @@ class TongyiChatDebugInfoResponseBody(DaraModel):
         message_id: str = None,
         pipeline: List[main_models.TongyiChatDebugInfoResponseBodyPipeline] = None,
         request_id: str = None,
+        session_id: str = None,
     ):
         self.answer_info = answer_info
         # The ID of the response message in the current session.
         self.message_id = message_id
-        # The array of nodes that constitute the Q\\&A workflow.
+        # The information about the entire Q&A pipeline.
         self.pipeline = pipeline
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
+        self.session_id = session_id
 
     def validate(self):
         if self.answer_info:
@@ -50,6 +52,9 @@ class TongyiChatDebugInfoResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -70,6 +75,9 @@ class TongyiChatDebugInfoResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+
         return self
 
 class TongyiChatDebugInfoResponseBodyPipeline(DaraModel):
@@ -80,29 +88,22 @@ class TongyiChatDebugInfoResponseBodyPipeline(DaraModel):
         node_type: str = None,
         output: Any = None,
     ):
-        # The input data for the node.
+        # The debugging input information.
         self.input = input
-        # The name of the strategy. Possible values include:
+        # The Policy Name. Valid values:
+        # - High-frequency Q&A direct response
+        # - Keyword-based transfer to agent
+        # - Global sensitive words
         # 
-        # - FAQ
-        # 
-        # - Hit Keywords
-        # 
-        # - Global Sensitive Words
-        # 
-        # This parameter is returned only when `NodeType` is set to `system_strategy`.
+        # This field is returned only when NodeType is system_strategy.
         self.name = name
         # The node type. Valid values:
-        # 
-        # - **system_strategy**: system strategy.
-        # 
-        # - **rewrite_query**: retrieval query.
-        # 
-        # - **invoke_llm**: LLM invocation.
-        # 
-        # - **invoke_tools**: tool invocation.
+        # * **system_strategy**: system strategy.
+        # * **rewrite_query**: retrieval query.
+        # * **invoke_llm**: LLM invocation.
+        # * **invoke_tools**: tool calling.
         self.node_type = node_type
-        # The output data from the node.
+        # The output information.
         self.output = output
 
     def validate(self):
