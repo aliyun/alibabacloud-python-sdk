@@ -17,19 +17,19 @@ class GetDatabasesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of databases. This parameter is returned only if the request is successful. If the request fails, this parameter is empty.
+        # The list of databases that meet the specified conditions when success is true. This value is empty when success is false.
         self.data = data
-        # - If \\`success\\` is \\`false\\`, an error code is returned.
-        # 
-        # - If \\`success\\` is \\`true\\`, this parameter is empty.
+        # - If success is false, a business error code is returned.
+        #  
+        # - If success is true, an empty value is returned.
         self.error_code = error_code
-        # - If \\`success\\` is \\`false\\`, an error message is returned.
+        # - If success is false, a business error message is returned.
         # 
-        # - If \\`success\\` is \\`true\\`, this parameter is empty.
+        # - If success is true, an empty value is returned.
         self.error_message = error_message
-        # The HTTP status code. A value of 200 is always returned. To determine whether the request was successful, check the value of the \\`success\\` parameter.
+        # The HTTP status code, which is always 200. Use the success field to determine whether the request was successful.
         self.http_code = http_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

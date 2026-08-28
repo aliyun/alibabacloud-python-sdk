@@ -17,15 +17,15 @@ class GetAutopilotPolicyResponseBody(DaraModel):
     ):
         # The Autopilot tuning policy response data.
         self.data = data
-        # The business error code. This field is not empty when success is false. This field is empty when success is true.
+        # The error code. This field is not empty when success is false. This field is empty when success is true.
         self.error_code = error_code
-        # The business error message. This field is not empty when success is false. This field is empty when success is true.
+        # The error message. This field is not empty when success is false. This field is empty when success is true.
         self.error_message = error_message
-        # The business status code, which is always 200. Use the success field to determine whether the request was successful.
+        # The business status code, which is always 200. Use the success field to determine whether the request is successful.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,7 +86,7 @@ class GetAutopilotPolicyResponseBodyData(DaraModel):
         enabled: bool = None,
         policy_config: main_models.AutopilotPolicy = None,
     ):
-        # Indicates whether automatic tuning is enabled. A value of true indicates that automatic tuning is in the ACTIVE state. A value of false indicates that tuning is not enabled.
+        # Indicates whether automatic tuning is enabled. A value of true indicates that automatic tuning is active (ACTIVE). A value of false indicates that tuning is not enabled.
         self.enabled = enabled
         # The tuning policy configuration.
         self.policy_config = policy_config

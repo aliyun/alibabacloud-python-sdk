@@ -15,17 +15,17 @@ class StartSqlExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The complete information of the SQL script returned upon success. This parameter is valid when success is true.
+        # The complete SQL script information returned upon success. This parameter is valid when success is true.
         self.data = data
-        # The business error code. This parameter is not empty when success is false. This parameter is empty when success is true.
+        # The business error code. This parameter is not empty when success is false, and is empty when success is true.
         self.error_code = error_code
-        # The business error message. This parameter is not empty when success is false. This parameter is empty when success is true.
+        # The business error message. This parameter is not empty when success is false, and is empty when success is true.
         self.error_message = error_message
-        # The business status code, which is always 200. Use success to determine whether the request was successful.
+        # The business status code, which is always 200. Use success to determine whether the business request is successful.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the business request was successful.
+        # Indicates whether the business request is successful.
         self.success = success
 
     def validate(self):

@@ -10,9 +10,9 @@ class GetFolderRequest(DaraModel):
         folder_id: str = None,
         root_type: str = None,
     ):
-        # Folder ID. If empty, the root folder is returned.
+        # The folder ID. If this parameter is left empty, the root folder is returned.
         self.folder_id = folder_id
-        # The type of the root folder.
+        # The folder type.
         self.root_type = root_type
 
     def validate(self):

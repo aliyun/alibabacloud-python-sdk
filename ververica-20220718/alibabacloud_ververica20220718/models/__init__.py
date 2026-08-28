@@ -328,6 +328,14 @@ from ._get_lineage_info_response import GetLineageInfoResponse
 from ._get_member_headers import GetMemberHeaders
 from ._get_member_response_body import GetMemberResponseBody
 from ._get_member_response import GetMemberResponse
+from ._get_patrol_config_headers import GetPatrolConfigHeaders
+from ._get_patrol_config_request import GetPatrolConfigRequest
+from ._get_patrol_config_response_body import GetPatrolConfigResponseBody
+from ._get_patrol_config_response import GetPatrolConfigResponse
+from ._get_patrol_report_detail_headers import GetPatrolReportDetailHeaders
+from ._get_patrol_report_detail_request import GetPatrolReportDetailRequest
+from ._get_patrol_report_detail_response_body import GetPatrolReportDetailResponseBody
+from ._get_patrol_report_detail_response import GetPatrolReportDetailResponse
 from ._get_pre_signed_url_for_put_object_headers import GetPreSignedUrlForPutObjectHeaders
 from ._get_pre_signed_url_for_put_object_request import GetPreSignedUrlForPutObjectRequest
 from ._get_pre_signed_url_for_put_object_response_body import GetPreSignedUrlForPutObjectResponseBody
@@ -389,6 +397,10 @@ from ._list_members_headers import ListMembersHeaders
 from ._list_members_request import ListMembersRequest
 from ._list_members_response_body import ListMembersResponseBody
 from ._list_members_response import ListMembersResponse
+from ._list_patrol_reports_headers import ListPatrolReportsHeaders
+from ._list_patrol_reports_request import ListPatrolReportsRequest
+from ._list_patrol_reports_response_body import ListPatrolReportsResponseBody
+from ._list_patrol_reports_response import ListPatrolReportsResponse
 from ._list_savepoints_headers import ListSavepointsHeaders
 from ._list_savepoints_request import ListSavepointsRequest
 from ._list_savepoints_response_body import ListSavepointsResponseBody
@@ -449,6 +461,10 @@ from ._submit_sql_preview_headers import SubmitSqlPreviewHeaders
 from ._submit_sql_preview_request import SubmitSqlPreviewRequest
 from ._submit_sql_preview_response_body import SubmitSqlPreviewResponseBody
 from ._submit_sql_preview_response import SubmitSqlPreviewResponse
+from ._trigger_patrol_headers import TriggerPatrolHeaders
+from ._trigger_patrol_request import TriggerPatrolRequest
+from ._trigger_patrol_response_body import TriggerPatrolResponseBody
+from ._trigger_patrol_response import TriggerPatrolResponse
 from ._update_autopilot_policy_headers import UpdateAutopilotPolicyHeaders
 from ._update_autopilot_policy_request import UpdateAutopilotPolicyRequest
 from ._update_autopilot_policy_response_body import UpdateAutopilotPolicyResponseBody
@@ -481,6 +497,10 @@ from ._update_member_headers import UpdateMemberHeaders
 from ._update_member_request import UpdateMemberRequest
 from ._update_member_response_body import UpdateMemberResponseBody
 from ._update_member_response import UpdateMemberResponse
+from ._update_patrol_config_headers import UpdatePatrolConfigHeaders
+from ._update_patrol_config_request import UpdatePatrolConfigRequest
+from ._update_patrol_config_response_body import UpdatePatrolConfigResponseBody
+from ._update_patrol_config_response import UpdatePatrolConfigResponse
 from ._update_scheduled_plan_headers import UpdateScheduledPlanHeaders
 from ._update_scheduled_plan_request import UpdateScheduledPlanRequest
 from ._update_scheduled_plan_response_body import UpdateScheduledPlanResponseBody
@@ -532,10 +552,26 @@ from ._chat_ai_agent_response_body import ChatAiAgentResponseBodyUsage
 from ._deploy_deployment_draft_async_response_body import DeployDeploymentDraftAsyncResponseBodyData
 from ._generate_resource_plan_with_flink_conf_async_response_body import GenerateResourcePlanWithFlinkConfAsyncResponseBodyData
 from ._get_autopilot_policy_response_body import GetAutopilotPolicyResponseBodyData
+from ._get_patrol_config_response_body import GetPatrolConfigResponseBodyDataScopeConfig
+from ._get_patrol_config_response_body import GetPatrolConfigResponseBodyData
+from ._get_patrol_report_detail_response_body import GetPatrolReportDetailResponseBodyDataOverviewProblemSummary
+from ._get_patrol_report_detail_response_body import GetPatrolReportDetailResponseBodyDataOverviewRiskSummary
+from ._get_patrol_report_detail_response_body import GetPatrolReportDetailResponseBodyDataOverview
+from ._get_patrol_report_detail_response_body import GetPatrolReportDetailResponseBodyDataScopeConfig
+from ._get_patrol_report_detail_response_body import GetPatrolReportDetailResponseBodyDataUnhealthyJobs
+from ._get_patrol_report_detail_response_body import GetPatrolReportDetailResponseBodyData
 from ._list_autopilot_tuning_histories_response_body import ListAutopilotTuningHistoriesResponseBodyData
 from ._list_editable_namespace_response_body import ListEditableNamespaceResponseBodyData
+from ._list_patrol_reports_response_body import ListPatrolReportsResponseBodyDataItemsScopeConfig
+from ._list_patrol_reports_response_body import ListPatrolReportsResponseBodyDataItems
+from ._list_patrol_reports_response_body import ListPatrolReportsResponseBodyData
 from ._stop_sql_execution_response_body import StopSqlExecutionResponseBodyData
+from ._trigger_patrol_request import TriggerPatrolRequestScopeConfig
+from ._trigger_patrol_response_body import TriggerPatrolResponseBodyData
 from ._update_autopilot_policy_response_body import UpdateAutopilotPolicyResponseBodyData
+from ._update_patrol_config_request import UpdatePatrolConfigRequestScopeConfig
+from ._update_patrol_config_response_body import UpdatePatrolConfigResponseBodyDataScopeConfig
+from ._update_patrol_config_response_body import UpdatePatrolConfigResponseBodyData
 from ._validate_deployment_draft_async_response_body import ValidateDeploymentDraftAsyncResponseBodyData
 
 __all__ = [
@@ -865,6 +901,14 @@ __all__ = [
     GetMemberHeaders,
     GetMemberResponseBody,
     GetMemberResponse,
+    GetPatrolConfigHeaders,
+    GetPatrolConfigRequest,
+    GetPatrolConfigResponseBody,
+    GetPatrolConfigResponse,
+    GetPatrolReportDetailHeaders,
+    GetPatrolReportDetailRequest,
+    GetPatrolReportDetailResponseBody,
+    GetPatrolReportDetailResponse,
     GetPreSignedUrlForPutObjectHeaders,
     GetPreSignedUrlForPutObjectRequest,
     GetPreSignedUrlForPutObjectResponseBody,
@@ -926,6 +970,10 @@ __all__ = [
     ListMembersRequest,
     ListMembersResponseBody,
     ListMembersResponse,
+    ListPatrolReportsHeaders,
+    ListPatrolReportsRequest,
+    ListPatrolReportsResponseBody,
+    ListPatrolReportsResponse,
     ListSavepointsHeaders,
     ListSavepointsRequest,
     ListSavepointsResponseBody,
@@ -986,6 +1034,10 @@ __all__ = [
     SubmitSqlPreviewRequest,
     SubmitSqlPreviewResponseBody,
     SubmitSqlPreviewResponse,
+    TriggerPatrolHeaders,
+    TriggerPatrolRequest,
+    TriggerPatrolResponseBody,
+    TriggerPatrolResponse,
     UpdateAutopilotPolicyHeaders,
     UpdateAutopilotPolicyRequest,
     UpdateAutopilotPolicyResponseBody,
@@ -1018,6 +1070,10 @@ __all__ = [
     UpdateMemberRequest,
     UpdateMemberResponseBody,
     UpdateMemberResponse,
+    UpdatePatrolConfigHeaders,
+    UpdatePatrolConfigRequest,
+    UpdatePatrolConfigResponseBody,
+    UpdatePatrolConfigResponse,
     UpdateScheduledPlanHeaders,
     UpdateScheduledPlanRequest,
     UpdateScheduledPlanResponseBody,
@@ -1069,9 +1125,25 @@ __all__ = [
     DeployDeploymentDraftAsyncResponseBodyData,
     GenerateResourcePlanWithFlinkConfAsyncResponseBodyData,
     GetAutopilotPolicyResponseBodyData,
+    GetPatrolConfigResponseBodyDataScopeConfig,
+    GetPatrolConfigResponseBodyData,
+    GetPatrolReportDetailResponseBodyDataOverviewProblemSummary,
+    GetPatrolReportDetailResponseBodyDataOverviewRiskSummary,
+    GetPatrolReportDetailResponseBodyDataOverview,
+    GetPatrolReportDetailResponseBodyDataScopeConfig,
+    GetPatrolReportDetailResponseBodyDataUnhealthyJobs,
+    GetPatrolReportDetailResponseBodyData,
     ListAutopilotTuningHistoriesResponseBodyData,
     ListEditableNamespaceResponseBodyData,
+    ListPatrolReportsResponseBodyDataItemsScopeConfig,
+    ListPatrolReportsResponseBodyDataItems,
+    ListPatrolReportsResponseBodyData,
     StopSqlExecutionResponseBodyData,
+    TriggerPatrolRequestScopeConfig,
+    TriggerPatrolResponseBodyData,
     UpdateAutopilotPolicyResponseBodyData,
+    UpdatePatrolConfigRequestScopeConfig,
+    UpdatePatrolConfigResponseBodyDataScopeConfig,
+    UpdatePatrolConfigResponseBodyData,
     ValidateDeploymentDraftAsyncResponseBodyData
 ]

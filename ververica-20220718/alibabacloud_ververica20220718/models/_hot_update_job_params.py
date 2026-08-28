@@ -11,7 +11,9 @@ class HotUpdateJobParams(DaraModel):
         rescale_job_param: main_models.RescaleJobParam = None,
         update_job_config_param: main_models.UpdateJobConfigParam = None,
     ):
+        # The dynamic update of resources.
         self.rescale_job_param = rescale_job_param
+        # The dynamic update of runtime parameters.
         self.update_job_config_param = update_job_config_param
 
     def validate(self):

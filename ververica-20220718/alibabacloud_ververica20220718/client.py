@@ -25,24 +25,24 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
+            'cn-qingdao': 'ververica.cn-qingdao.aliyuncs.com',
+            'cn-shenzhen': 'ververica.cn-shenzhen.aliyuncs.com',
+            'cn-wulanchabu': 'ververica.cn-wulanchabu.aliyuncs.com',
+            'cn-beijing': 'ververica.cn-beijing.aliyuncs.com',
+            'ap-northeast-1': 'ververica.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'ververica.cn-chengdu.aliyuncs.com',
+            'cn-shanghai': 'ververica.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'ververica.cn-hongkong.aliyuncs.com',
+            'ap-southeast-1': 'ververica.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'ververica.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'ververica.ap-southeast-5.aliyuncs.com',
+            'cn-zhangjiakou': 'ververica.cn-zhangjiakou.aliyuncs.com',
+            'cn-hangzhou': 'ververica.cn-hangzhou.aliyuncs.com',
             'us-west-1': 'ververica.us-west-1.aliyuncs.com',
             'us-east-1': 'ververica.us-east-1.aliyuncs.com',
-            'eu-west-1': 'ververica.eu-west-1.aliyuncs.com',
             'eu-central-1': 'ververica.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'ververica.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'ververica.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'ververica.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'ververica.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'ververica.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'ververica.cn-qingdao.aliyuncs.com',
-            'cn-hongkong': 'ververica.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'ververica.cn-hangzhou.aliyuncs.com',
-            'cn-chengdu': 'ververica.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'ververica.cn-beijing.aliyuncs.com',
-            'ap-southeast-5': 'ververica.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'ververica.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'ververica.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'ververica.ap-northeast-1.aliyuncs.com'
+            'eu-west-1': 'ververica.eu-west-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'ververica.cn-shanghai-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ververica', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -5015,6 +5015,186 @@ class Client(OpenApiClient):
         headers = main_models.GetMemberHeaders()
         return await self.get_member_with_options_async(namespace, member, headers, runtime)
 
+    def get_patrol_config_with_options(
+        self,
+        namespace: str,
+        request: main_models.GetPatrolConfigRequest,
+        headers: main_models.GetPatrolConfigHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPatrolConfigResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPatrolConfig',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-config',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPatrolConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_patrol_config_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.GetPatrolConfigRequest,
+        headers: main_models.GetPatrolConfigHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPatrolConfigResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPatrolConfig',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-config',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPatrolConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_patrol_config(
+        self,
+        namespace: str,
+        request: main_models.GetPatrolConfigRequest,
+    ) -> main_models.GetPatrolConfigResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetPatrolConfigHeaders()
+        return self.get_patrol_config_with_options(namespace, request, headers, runtime)
+
+    async def get_patrol_config_async(
+        self,
+        namespace: str,
+        request: main_models.GetPatrolConfigRequest,
+    ) -> main_models.GetPatrolConfigResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetPatrolConfigHeaders()
+        return await self.get_patrol_config_with_options_async(namespace, request, headers, runtime)
+
+    def get_patrol_report_detail_with_options(
+        self,
+        namespace: str,
+        request: main_models.GetPatrolReportDetailRequest,
+        headers: main_models.GetPatrolReportDetailHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPatrolReportDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.date):
+            query['date'] = request.date
+        if not DaraCore.is_null(request.report_id):
+            query['reportId'] = request.report_id
+        if not DaraCore.is_null(request.timezone):
+            query['timezone'] = request.timezone
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPatrolReportDetail',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-reports/details',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPatrolReportDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_patrol_report_detail_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.GetPatrolReportDetailRequest,
+        headers: main_models.GetPatrolReportDetailHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPatrolReportDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.date):
+            query['date'] = request.date
+        if not DaraCore.is_null(request.report_id):
+            query['reportId'] = request.report_id
+        if not DaraCore.is_null(request.timezone):
+            query['timezone'] = request.timezone
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPatrolReportDetail',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-reports/details',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPatrolReportDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_patrol_report_detail(
+        self,
+        namespace: str,
+        request: main_models.GetPatrolReportDetailRequest,
+    ) -> main_models.GetPatrolReportDetailResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetPatrolReportDetailHeaders()
+        return self.get_patrol_report_detail_with_options(namespace, request, headers, runtime)
+
+    async def get_patrol_report_detail_async(
+        self,
+        namespace: str,
+        request: main_models.GetPatrolReportDetailRequest,
+    ) -> main_models.GetPatrolReportDetailResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetPatrolReportDetailHeaders()
+        return await self.get_patrol_report_detail_with_options_async(namespace, request, headers, runtime)
+
     def get_pre_signed_url_for_put_object_with_options(
         self,
         namespace: str,
@@ -6559,6 +6739,120 @@ class Client(OpenApiClient):
         headers = main_models.ListMembersHeaders()
         return await self.list_members_with_options_async(namespace, request, headers, runtime)
 
+    def list_patrol_reports_with_options(
+        self,
+        namespace: str,
+        request: main_models.ListPatrolReportsRequest,
+        headers: main_models.ListPatrolReportsHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPatrolReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['endDate'] = request.end_date
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.scope_type):
+            query['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.start_date):
+            query['startDate'] = request.start_date
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.trigger_type):
+            query['triggerType'] = request.trigger_type
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPatrolReports',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-reports',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPatrolReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_patrol_reports_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.ListPatrolReportsRequest,
+        headers: main_models.ListPatrolReportsHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPatrolReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['endDate'] = request.end_date
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.scope_type):
+            query['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.start_date):
+            query['startDate'] = request.start_date
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.trigger_type):
+            query['triggerType'] = request.trigger_type
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPatrolReports',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-reports',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPatrolReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_patrol_reports(
+        self,
+        namespace: str,
+        request: main_models.ListPatrolReportsRequest,
+    ) -> main_models.ListPatrolReportsResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ListPatrolReportsHeaders()
+        return self.list_patrol_reports_with_options(namespace, request, headers, runtime)
+
+    async def list_patrol_reports_async(
+        self,
+        namespace: str,
+        request: main_models.ListPatrolReportsRequest,
+    ) -> main_models.ListPatrolReportsResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ListPatrolReportsHeaders()
+        return await self.list_patrol_reports_with_options_async(namespace, request, headers, runtime)
+
     def list_savepoints_with_options(
         self,
         namespace: str,
@@ -7969,6 +8263,100 @@ class Client(OpenApiClient):
         headers = main_models.SubmitSqlPreviewHeaders()
         return await self.submit_sql_preview_with_options_async(namespace, request, headers, runtime)
 
+    def trigger_patrol_with_options(
+        self,
+        namespace: str,
+        request: main_models.TriggerPatrolRequest,
+        headers: main_models.TriggerPatrolHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerPatrolResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.scope_config):
+            body['scopeConfig'] = request.scope_config
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerPatrol',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-reports/trigger',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerPatrolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trigger_patrol_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.TriggerPatrolRequest,
+        headers: main_models.TriggerPatrolHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerPatrolResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.scope_config):
+            body['scopeConfig'] = request.scope_config
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerPatrol',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-reports/trigger',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerPatrolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trigger_patrol(
+        self,
+        namespace: str,
+        request: main_models.TriggerPatrolRequest,
+    ) -> main_models.TriggerPatrolResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.TriggerPatrolHeaders()
+        return self.trigger_patrol_with_options(namespace, request, headers, runtime)
+
+    async def trigger_patrol_async(
+        self,
+        namespace: str,
+        request: main_models.TriggerPatrolRequest,
+    ) -> main_models.TriggerPatrolResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.TriggerPatrolHeaders()
+        return await self.trigger_patrol_with_options_async(namespace, request, headers, runtime)
+
     def update_autopilot_policy_with_options(
         self,
         namespace: str,
@@ -8682,6 +9070,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.UpdateMemberHeaders()
         return await self.update_member_with_options_async(namespace, request, headers, runtime)
+
+    def update_patrol_config_with_options(
+        self,
+        namespace: str,
+        request: main_models.UpdatePatrolConfigRequest,
+        headers: main_models.UpdatePatrolConfigHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePatrolConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cron):
+            body['cron'] = request.cron
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.scope_config):
+            body['scopeConfig'] = request.scope_config
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.timezone):
+            body['timezone'] = request.timezone
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePatrolConfig',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-config',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePatrolConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_patrol_config_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.UpdatePatrolConfigRequest,
+        headers: main_models.UpdatePatrolConfigHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePatrolConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cron):
+            body['cron'] = request.cron
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.scope_config):
+            body['scopeConfig'] = request.scope_config
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.timezone):
+            body['timezone'] = request.timezone
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePatrolConfig',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/autopilot/v2/namespaces/{DaraURL.percent_encode(namespace)}/patrol-config',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePatrolConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_patrol_config(
+        self,
+        namespace: str,
+        request: main_models.UpdatePatrolConfigRequest,
+    ) -> main_models.UpdatePatrolConfigResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.UpdatePatrolConfigHeaders()
+        return self.update_patrol_config_with_options(namespace, request, headers, runtime)
+
+    async def update_patrol_config_async(
+        self,
+        namespace: str,
+        request: main_models.UpdatePatrolConfigRequest,
+    ) -> main_models.UpdatePatrolConfigResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.UpdatePatrolConfigHeaders()
+        return await self.update_patrol_config_with_options_async(namespace, request, headers, runtime)
 
     def update_scheduled_plan_with_options(
         self,

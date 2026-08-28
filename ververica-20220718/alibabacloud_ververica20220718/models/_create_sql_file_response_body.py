@@ -17,9 +17,9 @@ class CreateSqlFileResponseBody(DaraModel):
     ):
         # The variable configuration settings.
         self.data = data
-        # The error code returned when success is false. This value is empty when success is true.
+        # The business error code returned when success is false. This value is empty when success is true.
         self.error_code = error_code
-        # The error message returned when success is false. This value is empty when success is true.
+        # The business error message returned when success is false. This value is empty when success is true.
         self.error_message = error_message
         # The business status code, which is always 200. Use success to determine whether the request was successful.
         self.http_code = http_code

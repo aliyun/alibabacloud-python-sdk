@@ -23,11 +23,11 @@ class ListAutopilotTuningHistoriesResponseBody(DaraModel):
         self.error_code = error_code
         # When success is false, this value is not empty and indicates the business error message. When success is true, this value is empty.
         self.error_message = error_message
-        # The business status code, which is always 200. Use success to determine whether the business request is successful.
+        # The business status code, which is always 200. Use success to determine whether the business request was successful.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the business request is successful.
+        # Indicates whether the business request was successful.
         self.success = success
 
     def validate(self):

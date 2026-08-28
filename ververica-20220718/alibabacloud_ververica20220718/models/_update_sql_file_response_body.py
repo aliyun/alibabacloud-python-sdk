@@ -17,11 +17,11 @@ class UpdateSqlFileResponseBody(DaraModel):
     ):
         # The complete SQL script information returned upon success. This value is valid when success is true.
         self.data = data
-        # The business error code. This value is not empty when success is false, and is empty when success is true.
+        # The business error code. This value is not empty when success is false. This value is empty when success is true.
         self.error_code = error_code
-        # The business error message. This value is not empty when success is false, and is empty when success is true.
+        # The business error message. This value is not empty when success is false. This value is empty when success is true.
         self.error_message = error_message
-        # The business status code, which is always 200. Use success to determine whether the request was successful.
+        # The business status code, which is uniformly 200. Use success to determine whether the request was successful.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id

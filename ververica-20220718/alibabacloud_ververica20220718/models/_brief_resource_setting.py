@@ -14,11 +14,11 @@ class BriefResourceSetting(DaraModel):
         flink_conf: Dict[str, Any] = None,
         streaming_resource_setting: main_models.StreamingResourceSetting = None,
     ):
-        # The resource configuration for the deployment in batch mode. This parameter is required for a deployment in batch mode.
+        # The resource settings for running in batch mode. This parameter is required when batch mode is selected.
         self.batch_resource_setting = batch_resource_setting
-        # The Realtime Compute for Apache Flink configuration.
+        # The Flink configuration.
         self.flink_conf = flink_conf
-        # The resource configuration for the deployment in streaming mode. This parameter is required for a deployment in streaming mode.
+        # The resource settings for running in streaming mode. This parameter is required when streaming mode is selected.
         self.streaming_resource_setting = streaming_resource_setting
 
     def validate(self):

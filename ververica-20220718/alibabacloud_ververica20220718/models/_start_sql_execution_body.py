@@ -11,8 +11,11 @@ class StartSqlExecutionBody(DaraModel):
         sql_file_id: str = None,
         sql_script: str = None,
     ):
+        # The execution description.
         self.description = description
+        # The ID of the associated query script. This is a required parameter. It provides the execution environment configuration (Session Cluster, Flink configuration, etc.) and also serves as the parentResourceId for deduplication.
         self.sql_file_id = sql_file_id
+        # The SQL script content to execute.
         self.sql_script = sql_script
 
     def validate(self):

@@ -4,14 +4,9 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetTablesRequest(DaraModel):
-    def __init__(
-        self,
-        table_name: str = None,
-    ):
-        # The table name. If this parameter is left empty, information about all tables is returned.
-        self.table_name = table_name
-
+class GetPatrolConfigRequest(DaraModel):
+    def __init__(self):
+        pass
     def validate(self):
         pass
 
@@ -20,15 +15,9 @@ class GetTablesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.table_name is not None:
-            result['tableName'] = self.table_name
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('tableName') is not None:
-            self.table_name = m.get('tableName')
-
         return self
 

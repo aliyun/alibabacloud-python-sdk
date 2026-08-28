@@ -12,11 +12,11 @@ class BasicResourceSetting(DaraModel):
         parallelism: int = None,
         taskmanager_resource_setting_spec: main_models.BasicResourceSettingSpec = None,
     ):
-        # The resource configuration of the JobManager.
+        # The JobManager resource settings.
         self.jobmanager_resource_setting_spec = jobmanager_resource_setting_spec
-        # The parallelism for a deployment.
+        # The concurrency.
         self.parallelism = parallelism
-        # The resource configuration of a TaskManager.
+        # The TaskManager resource settings.
         self.taskmanager_resource_setting_spec = taskmanager_resource_setting_spec
 
     def validate(self):

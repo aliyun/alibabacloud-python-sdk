@@ -1,3 +1,11 @@
+2026-08-28 Version: 1.14.0
+- Support API GetPatrolConfig.
+- Support API GetPatrolReportDetail.
+- Support API ListPatrolReports.
+- Support API TriggerPatrol.
+- Support API UpdatePatrolConfig.
+
+
 2026-07-28 Version: 1.13.0
 - Support API ChatAiAgent.
 - Support API GetAutopilotPolicy.

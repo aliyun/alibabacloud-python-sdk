@@ -22,16 +22,39 @@ class TuningHistory(DaraModel):
         tuning_message: str = None,
         tuning_state: str = None,
     ):
+        # The action type. Valid values:
+        # - SCALE_UP_PARALLELISM: scales up parallelism.
+        # - SCALE_DOWN_PARALLELISM: scales down parallelism.
+        # - SCALE_UP_MEMORY: scales up memory.
+        # - RESTART: restarts the job.
         self.action_type = action_type
+        # The additional annotations.
         self.annotations = annotations
+        # The full path name of the deployment.
         self.deployment_name = deployment_name
+        # Indicates whether this is a hot update. A value of true indicates that the change takes effect without restarting the job. A value of false indicates that the job must be restarted.
         self.is_hot_update = is_hot_update
+        # The ID of the associated job.
         self.job_id = job_id
+        # The resource configuration after tuning. This value may be null if the tuning failed.
         self.new_resource_setting = new_resource_setting
+        # The resource configuration before tuning.
         self.old_resource_setting = old_resource_setting
+        # The trigger timestamp in milliseconds.
         self.trigger_time = trigger_time
+        # The UUID of the tuning record.
         self.tuning_id = tuning_id
+        # The tuning message. This is an internationalized, human-readable string that is not recommended for programmatic parsing.
         self.tuning_message = tuning_message
+        # The tuning state. Valid values:
+        # - SUCCESS: The tuning succeeded.
+        # - FAILED: The tuning failed.
+        # - EXECUTING: The tuning is in progress.
+        # - TERMINATED: The tuning was terminated.
+        # - FAILED_WITH_ROLLBACK_SUCCESS: The tuning failed but the rollback succeeded.
+        # - FAILED_WITH_ROLLBACK_FAILED: The tuning failed and the rollback also failed.
+        # - FAILED_WITH_RESOURCE_LACK: The tuning failed due to insufficient resources.
+        # - FAILED_WITH_SAME_RESOURCE_SETTING: The tuning failed because the resource configuration did not change.
         self.tuning_state = tuning_state
 
     def validate(self):
@@ -126,8 +149,11 @@ class TuningHistoryOldResourceSetting(DaraModel):
         memory: str = None,
         parallelism: int = None,
     ):
+        # The number of CPU cores per TaskManager.
         self.cpu = cpu
+        # The memory per TaskManager, in a format such as 4 Gi.
         self.memory = memory
+        # The parallelism.
         self.parallelism = parallelism
 
     def validate(self):
@@ -169,8 +195,11 @@ class TuningHistoryNewResourceSetting(DaraModel):
         memory: str = None,
         parallelism: int = None,
     ):
+        # The number of CPU cores per TaskManager.
         self.cpu = cpu
+        # The memory per TaskManager, in a format such as 4 Gi.
         self.memory = memory
+        # The parallelism.
         self.parallelism = parallelism
 
     def validate(self):

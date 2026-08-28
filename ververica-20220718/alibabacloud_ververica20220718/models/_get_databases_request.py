@@ -9,7 +9,7 @@ class GetDatabasesRequest(DaraModel):
         self,
         database_name: str = None,
     ):
-        # The name of the database. If you do not specify this parameter, information about all databases in the catalog is returned.
+        # The database name. If this parameter is left empty, information about all databases is returned.
         self.database_name = database_name
 
     def validate(self):

@@ -6,7 +6,7 @@ from typing import Dict
 
 from darabonba.model import DaraModel
 
-class GetCatalogsHeaders(DaraModel):
+class GetPatrolReportDetailHeaders(DaraModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,

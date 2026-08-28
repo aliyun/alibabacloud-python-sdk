@@ -15,7 +15,7 @@ class DeleteSqlFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The basic information about the deleted file returned after a successful deletion. Only metadata is included. The content field is not returned. This field is valid when success is set to true.
+        # The basic information about the deleted file returned after a successful deletion. Only metadata is included. The content field is not returned. This field is valid when success is true.
         self.data = data
         # The error code returned when success is false. This value is empty when success is true.
         self.error_code = error_code

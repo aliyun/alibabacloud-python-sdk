@@ -12,11 +12,11 @@ class StartJobRequestBody(DaraModel):
         resource_setting_spec: main_models.BriefResourceSetting = None,
         restore_strategy: main_models.DeploymentRestoreStrategy = None,
     ):
-        # The deployment ID.
+        # The ID of the deployed job.
         self.deployment_id = deployment_id
-        # The resource configuration of the deployment.
+        # The job resource settings.
         self.resource_setting_spec = resource_setting_spec
-        # The start offset of the job.
+        # The startup position settings for the job instance.
         self.restore_strategy = restore_strategy
 
     def validate(self):

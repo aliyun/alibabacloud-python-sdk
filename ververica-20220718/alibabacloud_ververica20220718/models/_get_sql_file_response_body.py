@@ -15,7 +15,7 @@ class GetSqlFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The complete SQL script information returned when the request is successful. This field is valid when success is true.
+        # The complete SQL script information returned when the request succeeds. This field is valid when success is true.
         self.data = data
         # The error code returned when success is false. This value is empty when success is true.
         self.error_code = error_code

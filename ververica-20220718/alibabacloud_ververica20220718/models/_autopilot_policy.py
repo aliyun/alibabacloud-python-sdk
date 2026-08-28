@@ -16,10 +16,15 @@ class AutopilotPolicy(DaraModel):
         scale_up_rules: main_models.AutopilotPolicyScaleUpRules = None,
         silent_period_config: main_models.AutopilotPolicySilentPeriodConfig = None,
     ):
+        # The advanced rule configuration. This includes advanced parameters such as chain-break optimization, minimum parallelism, and TM CPU scaling. Disabled by default and must be explicitly enabled.
         self.advanced_rules = advanced_rules
+        # The upper and lower limits for tuning resources.
         self.limits = limits
+        # The scale-down rule configuration.
         self.scale_down_rules = scale_down_rules
+        # The scale-up rule configuration.
         self.scale_up_rules = scale_up_rules
+        # The silent period configuration. Automatic tuning operations are not performed during silent periods.
         self.silent_period_config = silent_period_config
 
     def validate(self):
@@ -86,7 +91,9 @@ class AutopilotPolicySilentPeriodConfig(DaraModel):
         enabled: bool = None,
         silent_periods: List[main_models.AutopilotPolicySilentPeriodConfigSilentPeriods] = None,
     ):
+        # Specifies whether to enable silent periods.
         self.enabled = enabled
+        # The list of silent periods. This is a full replacement, not an append operation.
         self.silent_periods = silent_periods
 
     def validate(self):
@@ -130,8 +137,11 @@ class AutopilotPolicySilentPeriodConfigSilentPeriods(DaraModel):
         end_time: int = None,
         level: str = None,
     ):
+        # The start time. For the DAY level: 0-1439, representing the minute offset of the day (for example, 540 represents 9:00). For the WEEK level: 1-7, representing the day of the week (ISO 8601, 1=Monday, 7=Sunday).
         self.begin_time = begin_time
+        # The end time. The format is the same as beginTime. For the WEEK level, if endTime is less than beginTime, it indicates a cross-week period (for example, beginTime=6, endTime=2 means silent from Saturday to the following Tuesday).
         self.end_time = end_time
+        # The silent level. DAY indicates daily repetition. WEEK indicates weekly repetition.
         self.level = level
 
     def validate(self):
@@ -175,10 +185,15 @@ class AutopilotPolicyScaleUpRules(DaraModel):
         oom_scale_up_rule: main_models.AutopilotPolicyScaleUpRulesOomScaleUpRule = None,
         slot_busy_scale_up_rule: main_models.AutopilotPolicyScaleUpRulesSlotBusyScaleUpRule = None,
     ):
+        # The delay detection scale-up rule. Scale-up is triggered when the job delay exceeds the threshold.
         self.delay_rule = delay_rule
+        # The GC tuning rule. Scale-up is triggered when the GC time ratio exceeds the threshold.
         self.gc_rule = gc_rule
+        # The memory scale-up rule. Scale-up is triggered when memory usage exceeds the threshold.
         self.memory_scale_up_rule = memory_scale_up_rule
+        # The OOM scale-up rule. Scale-up is triggered when an OOM risk is detected.
         self.oom_scale_up_rule = oom_scale_up_rule
+        # The slot busy scale-up rule. Scale-up is triggered when the slot busy ratio exceeds the threshold.
         self.slot_busy_scale_up_rule = slot_busy_scale_up_rule
 
     def validate(self):
@@ -246,8 +261,11 @@ class AutopilotPolicyScaleUpRulesSlotBusyScaleUpRule(DaraModel):
         slot_busy_scale_up_sample_interval: str = None,
         slot_busy_scale_up_threshold: float = None,
     ):
+        # Specifies whether to enable slot busy scale-up.
         self.enabled = enabled
+        # The slot busy sampling interval. Format examples: 6min, 5m.
         self.slot_busy_scale_up_sample_interval = slot_busy_scale_up_sample_interval
+        # The slot busy scale-up threshold. Valid values: 0.0 to 1.0. Scale-up is triggered when the slot busy ratio exceeds this value.
         self.slot_busy_scale_up_threshold = slot_busy_scale_up_threshold
 
     def validate(self):
@@ -287,6 +305,7 @@ class AutopilotPolicyScaleUpRulesOomScaleUpRule(DaraModel):
         self,
         enabled: bool = None,
     ):
+        # Specifies whether to enable OOM scale-up.
         self.enabled = enabled
 
     def validate(self):
@@ -315,7 +334,9 @@ class AutopilotPolicyScaleUpRulesMemoryScaleUpRule(DaraModel):
         enabled: bool = None,
         mem_usage_scale_up_threshold: float = None,
     ):
+        # Specifies whether to enable memory scale-up.
         self.enabled = enabled
+        # The memory scale-up threshold. Valid values: 0.0 to 1.0. Scale-up is triggered when memory usage exceeds this value.
         self.mem_usage_scale_up_threshold = mem_usage_scale_up_threshold
 
     def validate(self):
@@ -351,8 +372,11 @@ class AutopilotPolicyScaleUpRulesGcRule(DaraModel):
         gc_sample_interval: str = None,
         gc_time_ratio_threshold: float = None,
     ):
+        # Specifies whether to enable GC tuning.
         self.enabled = enabled
+        # The GC sampling interval. Format examples: 3min, 5m.
         self.gc_sample_interval = gc_sample_interval
+        # The GC time ratio threshold. Valid values: 0.0 to 1.0. Scale-up is triggered when the GC time ratio exceeds this value.
         self.gc_time_ratio_threshold = gc_time_ratio_threshold
 
     def validate(self):
@@ -394,8 +418,11 @@ class AutopilotPolicyScaleUpRulesDelayRule(DaraModel):
         delay_threshold: str = None,
         enabled: bool = None,
     ):
+        # The delay sampling interval. Format examples: 3min, 5m, 1h.
         self.delay_sample_interval = delay_sample_interval
+        # The latency threshold. Format examples: 1min, 10m. Scale-up is triggered when the delay continuously exceeds this threshold.
         self.delay_threshold = delay_threshold
+        # Specifies whether to enable delay detection scale-up.
         self.enabled = enabled
 
     def validate(self):
@@ -436,7 +463,9 @@ class AutopilotPolicyScaleDownRules(DaraModel):
         memory_scale_down_rule: main_models.AutopilotPolicyScaleDownRulesMemoryScaleDownRule = None,
         slot_busy_scale_down_rule: main_models.AutopilotPolicyScaleDownRulesSlotBusyScaleDownRule = None,
     ):
+        # The memory scale-down rule. Scale-down is triggered when memory usage falls below the threshold.
         self.memory_scale_down_rule = memory_scale_down_rule
+        # The slot idle scale-down rule. Scale-down is triggered when the slot busy ratio falls below the threshold.
         self.slot_busy_scale_down_rule = slot_busy_scale_down_rule
 
     def validate(self):
@@ -477,8 +506,11 @@ class AutopilotPolicyScaleDownRulesSlotBusyScaleDownRule(DaraModel):
         slot_busy_scale_down_sample_interval: str = None,
         slot_busy_scale_down_threshold: float = None,
     ):
+        # Specifies whether to enable slot idle scale-down.
         self.enabled = enabled
+        # The slot idle sampling interval. Format examples: 4h, 5m.
         self.slot_busy_scale_down_sample_interval = slot_busy_scale_down_sample_interval
+        # The slot idle scale-down threshold. Valid values: 0.0 to 1.0. Scale-down is triggered when the slot busy ratio falls below this value. This value must be less than the scale-up threshold.
         self.slot_busy_scale_down_threshold = slot_busy_scale_down_threshold
 
     def validate(self):
@@ -520,8 +552,11 @@ class AutopilotPolicyScaleDownRulesMemoryScaleDownRule(DaraModel):
         mem_usage_scale_down_sample_interval: str = None,
         mem_usage_scale_down_threshold: float = None,
     ):
+        # Specifies whether to enable memory scale-down.
         self.enabled = enabled
+        # The memory scale-down sampling interval. Format examples: 4h, 5m.
         self.mem_usage_scale_down_sample_interval = mem_usage_scale_down_sample_interval
+        # The memory scale-down threshold. Valid values: 0.0 to 1.0. Scale-down is triggered when memory usage falls below this value. This value must be less than the scale-up threshold.
         self.mem_usage_scale_down_threshold = mem_usage_scale_down_threshold
 
     def validate(self):
@@ -565,10 +600,15 @@ class AutopilotPolicyLimits(DaraModel):
         job_max_parallelism: int = None,
         job_min_parallelism: int = None,
     ):
+        # The minimum cool-down time between two tuning operations, in minutes.
         self.cool_down_minutes = cool_down_minutes
+        # The maximum CPU.
         self.job_max_cpu = job_max_cpu
+        # The maximum memory. Format examples: 4Gi, 256GiB.
         self.job_max_memory = job_max_memory
+        # The maximum parallelism.
         self.job_max_parallelism = job_max_parallelism
+        # The minimum parallelism.
         self.job_min_parallelism = job_min_parallelism
 
     def validate(self):
@@ -623,7 +663,9 @@ class AutopilotPolicyAdvancedRules(DaraModel):
         enabled: bool = None,
         parameters: Dict[str, str] = None,
     ):
+        # Specifies whether to enable advanced rules.
         self.enabled = enabled
+        # The advanced rule parameters. An empty map indicates that internal default parameters are used. You can override specific internal parameters by using key-value pairs. The entire map is replaced.
         self.parameters = parameters
 
     def validate(self):

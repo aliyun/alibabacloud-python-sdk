@@ -12,14 +12,13 @@ class StreamingResourceSetting(DaraModel):
         expert_resource_setting: main_models.ExpertResourceSetting = None,
         resource_setting_mode: str = None,
     ):
-        # The resource parameters in basic mode.
+        # The resource settings for basic mode.
         self.basic_resource_setting = basic_resource_setting
-        # The resource parameters in expert mode.
+        # The resource settings for expert mode.
         self.expert_resource_setting = expert_resource_setting
-        # The resource configuration mode used by a deployment that runs in streaming mode. Valid values:
-        # 
-        # *   EXPERT
-        # *   BASIC
+        # The resource mode used in stream mode. Valid values:
+        # - EXPERT: expert mode.
+        # - BASIC: basic mode.
         self.resource_setting_mode = resource_setting_mode
 
     def validate(self):
