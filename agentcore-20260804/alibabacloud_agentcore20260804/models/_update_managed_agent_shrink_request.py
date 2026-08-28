@@ -12,7 +12,7 @@ class UpdateManagedAgentShrinkRequest(DaraModel):
     ):
         # The request body.
         self.body_shrink = body_shrink
-        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current version.
+        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
         self.client_token = client_token
 
     def validate(self):

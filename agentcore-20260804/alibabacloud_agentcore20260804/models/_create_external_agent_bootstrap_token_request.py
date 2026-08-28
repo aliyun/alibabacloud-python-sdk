@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CreateExternalAgentBootstrapTokenRequest(DaraModel):
+    def __init__(
+        self,
+        network_type: str = None,
+    ):
+        # The network type for connection. Valid values:
+        # - INTERNET: public network
+        # - INTRANET: internal network
+        # 
+        # This parameter is required.
+        self.network_type = network_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.network_type is not None:
+            result['networkType'] = self.network_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('networkType') is not None:
+            self.network_type = m.get('networkType')
+
+        return self
+
