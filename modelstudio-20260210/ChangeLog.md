@@ -1,3 +1,8 @@
+2026-08-28 Version: 2.2.1
+- Update API ListOrganizationMembers: add response parameters Body.Data.$.PackLimitInfo.
+- Update API ListOrganizationMembers: add response parameters Body.Data.$.SubscriptionInfo.
+
+
 2026-08-27 Version: 2.2.0
 - Support API GetBillingOverview.
 - Support API GetBillingTrend.

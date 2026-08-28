@@ -15,13 +15,13 @@ class ListOrganizationMembersRequest(DaraModel):
     ):
         # Specifies whether to filter by seat assignment.
         self.has_seat = has_seat
-        # Fuzzy filter by member name. Matches accountName or email and is case-insensitive.
+        # Fuzzy filter by member name. Matches accountName or email, case-insensitive.
         self.name = name
         # The page number, starting from 1. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # Filters by member status, such as ACTIVE or FROZEN. Set to null to disable filtering.
+        # Filters by member status, such as ACTIVE or FROZEN. A value of null indicates no filtering.
         self.status = status
 
     def validate(self):

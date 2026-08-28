@@ -16,10 +16,15 @@ class GetBillingOverviewResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request result code.
         self.code = code
+        # The bill overview data.
         self.data = data
+        # The request result message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -77,10 +82,15 @@ class GetBillingOverviewResponseBodyData(DaraModel):
         tax_amount: str = None,
         total_amount: str = None,
     ):
+        # The currency of the amount.
         self.currency = currency
+        # The top N groups sorted by amount in descending order.
         self.groups = groups
+        # The total pretax amount.
         self.pretax_amount = pretax_amount
+        # The total tax amount.
         self.tax_amount = tax_amount
+        # The total amount.
         self.total_amount = total_amount
 
     def validate(self):
@@ -144,10 +154,15 @@ class GetBillingOverviewResponseBodyDataGroups(DaraModel):
         name: str = None,
         percentage: str = None,
     ):
+        # The amount of the current group.
         self.amount = amount
+        # The list of commodity codes associated with the current group.
         self.article_codes = article_codes
+        # The grouping dimension value. A null value is returned as DIMENSION_FILTER_NULL_VALUE.
         self.key = key
+        # The display name of the group, which is affected by the locale parameter. A null value is displayed as -.
         self.name = name
+        # The ratio of the group amount to the total amount of the top N groups.
         self.percentage = percentage
 
     def validate(self):

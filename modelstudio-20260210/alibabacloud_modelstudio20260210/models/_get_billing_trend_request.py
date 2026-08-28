@@ -19,13 +19,21 @@ class GetBillingTrendRequest(DaraModel):
         top_num: int = None,
         zero_filter: bool = None,
     ):
+        # The dimension filter conditions.
         self.filter = filter
+        # The query granularity. This parameter is required.
         self.granularity = granularity
+        # The grouping conditions. This parameter must contain one and only one element.
         self.group_by = group_by
+        # The response language. Default value: en-US.
         self.locale = locale
+        # The region ID.
         self.region_id = region_id
+        # The query time range, including the start time and end time. This parameter is required.
         self.time_period = time_period
+        # The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Others".
         self.top_num = top_num
+        # Specifies whether to filter out groups with a zero amount. Default value: true.
         self.zero_filter = zero_filter
 
     def validate(self):
@@ -110,7 +118,9 @@ class GetBillingTrendRequestTimePeriod(DaraModel):
         end: str = None,
         start: str = None,
     ):
+        # The end time.
         self.end = end
+        # The start time.
         self.start = start
 
     def validate(self):
@@ -144,6 +154,7 @@ class GetBillingTrendRequestGroupBy(DaraModel):
         self,
         code: str = None,
     ):
+        # The grouping dimension code. For more information, see the "Additional information" section below.
         self.code = code
 
     def validate(self):
@@ -171,6 +182,7 @@ class GetBillingTrendRequestFilter(DaraModel):
         self,
         dimensions: List[main_models.GetBillingTrendRequestFilterDimensions] = None,
     ):
+        # The dimension filter list.
         self.dimensions = dimensions
 
     def validate(self):
@@ -208,8 +220,11 @@ class GetBillingTrendRequestFilterDimensions(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # The filter dimension code. For more information, see the "Additional information" section below.
         self.code = code
+        # The filter method.
         self.select_type = select_type
+        # The filter value list.
         self.values = values
 
     def validate(self):

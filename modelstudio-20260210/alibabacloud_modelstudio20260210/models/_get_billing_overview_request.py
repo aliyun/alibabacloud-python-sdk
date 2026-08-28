@@ -18,12 +18,19 @@ class GetBillingOverviewRequest(DaraModel):
         top_num: int = None,
         zero_filter: bool = None,
     ):
+        # The billing month. This parameter is required.
         self.bill_month = bill_month
+        # The filter condition.
         self.filter = filter
+        # The list of grouping conditions. Currently, you must specify exactly one grouping dimension.
         self.group_by = group_by
+        # The response language. Default value: en-US.
         self.locale = locale
+        # The region.
         self.region_id = region_id
+        # The number of groups to return. Valid values: 1 to 20. Default value: 20.
         self.top_num = top_num
+        # Specifies whether to filter out groups with a zero amount. Default value: true.
         self.zero_filter = zero_filter
 
     def validate(self):
@@ -98,6 +105,7 @@ class GetBillingOverviewRequestGroupBy(DaraModel):
         self,
         code: str = None,
     ):
+        # The grouping dimension code. For more information, see the "Additional information" section below.
         self.code = code
 
     def validate(self):
@@ -125,6 +133,7 @@ class GetBillingOverviewRequestFilter(DaraModel):
         self,
         dimensions: List[main_models.GetBillingOverviewRequestFilterDimensions] = None,
     ):
+        # The list of dimension filters.
         self.dimensions = dimensions
 
     def validate(self):
@@ -162,8 +171,11 @@ class GetBillingOverviewRequestFilterDimensions(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # The filter field. For more information, see the "Additional information" section below.
         self.code = code
+        # The filter type.
         self.select_type = select_type
+        # The list of filter values.
         self.values = values
 
     def validate(self):

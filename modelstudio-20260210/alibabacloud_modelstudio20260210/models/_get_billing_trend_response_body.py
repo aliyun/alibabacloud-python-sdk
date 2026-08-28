@@ -16,10 +16,15 @@ class GetBillingTrendResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request result code.
         self.code = code
+        # The response data.
         self.data = data
+        # The request result description.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -75,8 +80,11 @@ class GetBillingTrendResponseBodyData(DaraModel):
         group_by_total: List[main_models.GetBillingTrendResponseBodyDataGroupByTotal] = None,
         result_by_time: List[main_models.GetBillingTrendResponseBodyDataResultByTime] = None,
     ):
+        # The total cost for the entire query time range, including the top N groups and "Others".
         self.cost_totals = cost_totals
+        # The total cost of the top N groups and the optional "Others" group within the period.
         self.group_by_total = group_by_total
+        # The cost trend list sorted by time in ascending order.
         self.result_by_time = result_by_time
 
     def validate(self):
@@ -138,8 +146,11 @@ class GetBillingTrendResponseBodyDataResultByTime(DaraModel):
         period_details: List[main_models.GetBillingTrendResponseBodyDataResultByTimePeriodDetails] = None,
         total: main_models.GetBillingTrendResponseBodyDataResultByTimeTotal = None,
     ):
+        # The statistical period. DAY returns yyyyMMdd. MONTH returns yyyyMM.
         self.period = period
+        # The cost groups that actually exist in the current period.
         self.period_details = period_details
+        # The total cost for the current period.
         self.total = total
 
     def validate(self):
@@ -193,9 +204,13 @@ class GetBillingTrendResponseBodyDataResultByTimeTotal(DaraModel):
         pretax_amount: str = None,
         tax_amount: str = None,
     ):
+        # The total amount for the current period.
         self.amount = amount
+        # The currency of the amount for the current period.
         self.currency = currency
+        # The pretax amount for the current period.
         self.pretax_amount = pretax_amount
+        # The tax amount for the current period.
         self.tax_amount = tax_amount
 
     def validate(self):
@@ -246,11 +261,17 @@ class GetBillingTrendResponseBodyDataResultByTimePeriodDetails(DaraModel):
         pretax_amount: str = None,
         tax_amount: str = None,
     ):
+        # The amount of the group within the current period.
         self.amount = amount
+        # The grouping dimension value. Data beyond the top N uses DIMENSION_GROUP_OTHERS_VALUE.
         self.key = key
+        # The display name of the group. This value is affected by the locale parameter.
         self.name = name
+        # The ratio of the current group amount to the total amount of the current period.
         self.percentage = percentage
+        # The pretax amount of the group within the current period.
         self.pretax_amount = pretax_amount
+        # The tax amount of the group within the current period.
         self.tax_amount = tax_amount
 
     def validate(self):
@@ -312,10 +333,15 @@ class GetBillingTrendResponseBodyDataGroupByTotal(DaraModel):
         pretax_amount: str = None,
         tax_amount: str = None,
     ):
+        # The total amount of the current group.
         self.amount = amount
+        # The grouping dimension value.
         self.key = key
+        # The display name of the group. This value is affected by the locale parameter.
         self.name = name
+        # The pretax amount of the current group.
         self.pretax_amount = pretax_amount
+        # The tax amount of the current group.
         self.tax_amount = tax_amount
 
     def validate(self):
@@ -370,9 +396,13 @@ class GetBillingTrendResponseBodyDataCostTotals(DaraModel):
         pretax_amount: str = None,
         tax_amount: str = None,
     ):
+        # The total amount.
         self.amount = amount
+        # The currency of the amount.
         self.currency = currency
+        # The pretax amount.
         self.pretax_amount = pretax_amount
+        # The tax amount.
         self.tax_amount = tax_amount
 
     def validate(self):
