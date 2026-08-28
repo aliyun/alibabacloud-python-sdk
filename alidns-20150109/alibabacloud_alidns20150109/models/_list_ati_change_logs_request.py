@@ -17,11 +17,11 @@ class ListAtiChangeLogsRequest(DaraModel):
         start_timestamp: int = None,
         time_range: str = None,
     ):
-        # The agent ID that is assigned by CNNIC after real-name verification. The AgentID serves as the unique identifier that binds the agent to the real-name registered contact.
+        # The agent ID assigned by CNNIC after real-name authentication. The AgentID serves as the unique identifier that binds the agent to the real-name authenticated registrant.
         self.agent_id = agent_id
-        # Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
         # 
-        # - If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
+        # - If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
         # The end time of the query (timestamp).
         self.end_timestamp = end_timestamp
@@ -39,7 +39,7 @@ class ListAtiChangeLogsRequest(DaraModel):
         self.page_size = page_size
         # The start time of the query (timestamp).
         self.start_timestamp = start_timestamp
-        # Ignored.
+        # Ignore.
         self.time_range = time_range
 
     def validate(self):

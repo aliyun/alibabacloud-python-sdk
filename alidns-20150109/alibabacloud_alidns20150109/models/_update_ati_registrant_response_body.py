@@ -12,7 +12,7 @@ class UpdateAtiRegistrantResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial. This field is returned only when RAM authentication fails.
+        # The details of the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
         # The request ID.
         self.request_id = request_id
@@ -74,7 +74,7 @@ class UpdateAtiRegistrantResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The identity type.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The encoded complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The reason for the authentication failure. Valid values:
         # - ExplicitDeny: explicit deny.

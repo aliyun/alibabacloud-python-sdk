@@ -1,3 +1,17 @@
+2026-08-28 Version: 4.6.1
+- Update API CreateAtiAgentRegisterInfo: add request parameters AgentSubHost.
+- Update API CreateAtiAgentRegisterInfo: add request parameters DomainMode.
+- Update API CreateAtiAgentRegisterInfoAcmeChallengeRecord: add response parameters Body.Records.
+- Update API DescribeAtiAgentRegisterInfo: add response parameters Body.AgentSubHost.
+- Update API DescribeAtiAgentRegisterInfo: add response parameters Body.DomainMode.
+- Update API DescribeAtiAgentRegisterInfo: add response parameters Body.TrustLevel.
+- Update API DescribeAtiAgentRegisterInfoMarket: add request parameters TrustLevel.
+- Update API ListAtiAgentRegisterInfos: add response parameters Body.AgentRegisterInfos.$.TrustLevel.
+- Update API UpdateAtiAgentRegisterInfo: add request parameters AgentSubHost.
+- Update API UpdateAtiAgentRegisterInfo: add request parameters DomainMode.
+- Update API VerifyAtiAgentDnsRecords: add request parameters TrustLevel.
+
+
 2026-07-17 Version: 4.6.0
 - Support API DescribeAtiAgentRegisterInfoMarket.
 

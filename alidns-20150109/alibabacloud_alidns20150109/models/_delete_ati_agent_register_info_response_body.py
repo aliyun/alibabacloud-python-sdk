@@ -16,7 +16,7 @@ class DeleteAtiAgentRegisterInfoResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # RequestId
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation was successful:
         # 
         # - true: The operation was successful.
         # 

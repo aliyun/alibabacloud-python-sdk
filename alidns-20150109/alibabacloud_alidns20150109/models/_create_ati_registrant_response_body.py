@@ -19,16 +19,16 @@ class CreateAtiRegistrantResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The creation time (timestamp).
         self.create_timestamp = create_timestamp
-        # The name of the real-name verified registrant.
+        # The name of the real-name registrant.
         self.name = name
-        # The ID of the real-name verified registrant.
+        # The ID of the real-name registrant.
         self.registrant_id = registrant_id
         # The request ID.
         self.request_id = request_id
         # The real-name verification status. Valid values:
         # 
         # - Approved.
-        # - Under review.
+        # - Pending review.
         # - Rejected.
         self.status = status
 
@@ -103,11 +103,11 @@ class CreateAtiRegistrantResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The identity type.
         self.auth_principal_type = auth_principal_type
-        # The encrypted complete diagnostic message.
+        # The encrypted diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The reason for the authentication failure. Valid values:
-        # - ExplicitDeny: Explicit deny.
-        # - ImplicitDeny: Implicit deny.
+        # - ExplicitDeny: explicit deny.
+        # - ImplicitDeny: implicit deny.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

@@ -14,11 +14,9 @@ class RevokeAtiAgentRegisterInfoResponseBody(DaraModel):
     ):
         # The details about the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request was successful. Valid values: `true`: The request was successful. `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -68,13 +66,13 @@ class RevokeAtiAgentRegisterInfoResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The unauthorized operation that was attempted.
         self.auth_action = auth_action
-        # The display name of the authorized principal.
+        # The display name of the authorization principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authorized principal.
+        # The owner ID of the authorization principal.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The identity type.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The encrypted complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The reason for the authentication failure. Valid values:
         # - ExplicitDeny: Explicit deny.

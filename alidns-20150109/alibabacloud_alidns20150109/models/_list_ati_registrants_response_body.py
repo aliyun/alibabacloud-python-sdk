@@ -20,14 +20,22 @@ class ListAtiRegistrantsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The details of the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # The maximum number of records to return in this request.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # The current page number. Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of rows per page in a paged query. Maximum value: 100. Default value: 20.
         self.page_size = page_size
         self.registrants = registrants
+        # The unique request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_items = total_items
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -256,12 +264,21 @@ class ListAtiRegistrantsResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The unauthorized operation that was attempted.
         self.auth_action = auth_action
+        # The display name of the authorization principal.
         self.auth_principal_display_name = auth_principal_display_name
+        # The owner ID of the authorization principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The identity type.
         self.auth_principal_type = auth_principal_type
+        # The encrypted complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The reason for the authentication failure. Valid values:
+        # - ExplicitDeny: explicit deny.
+        # - ImplicitDeny: implicit deny.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

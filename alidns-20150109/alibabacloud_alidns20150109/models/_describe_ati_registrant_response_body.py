@@ -31,7 +31,7 @@ class DescribeAtiRegistrantResponseBody(DaraModel):
         self.cc = cc
         # The city. Default value: Hangzhou.
         self.city = city
-        # The creation time (timestamp).
+        # The creation time (UNIX timestamp).
         self.create_timestamp = create_timestamp
         # The document number of the registrant. The number can be up to 50 characters in length.
         self.document_code = document_code
@@ -47,9 +47,9 @@ class DescribeAtiRegistrantResponseBody(DaraModel):
         self.registrant_id = registrant_id
         # The reason why the real-name verification was rejected.
         self.reject_reason = reject_reason
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The status of the public recursive service.
+        # The state or province.
         self.state = state
         # The real-name verification status. Valid values:
         # 
@@ -59,7 +59,7 @@ class DescribeAtiRegistrantResponseBody(DaraModel):
         self.status = status
         # The street address.
         self.street = street
-        # The update time (timestamp).
+        # The update time (UNIX timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -193,7 +193,7 @@ class DescribeAtiRegistrantResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The identity type.
         self.auth_principal_type = auth_principal_type
-        # The encrypted diagnostic message.
+        # The encrypted complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The reason for the authentication failure. Valid values:
         # - ExplicitDeny: explicit deny.

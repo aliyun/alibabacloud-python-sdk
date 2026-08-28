@@ -25,7 +25,7 @@ class ListAtiChangeLogsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         # The total number of entries in the address list.
         self.total_items = total_items
@@ -286,11 +286,11 @@ class ListAtiChangeLogsResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The identity type.
         self.auth_principal_type = auth_principal_type
-        # The encrypted diagnostic message.
+        # The encrypted complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The reason for the authentication failure. Valid values:
-        # - ExplicitDeny: explicit deny.
-        # - ImplicitDeny: implicit deny.
+        # - ExplicitDeny: explicit deny
+        # - ImplicitDeny: implicit deny
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

@@ -15,14 +15,29 @@ class ListAtiRegistrantsRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
+        # Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # - If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
+        # The maximum number of records to return in this request.
         self.max_results = max_results
+        # The name of the real-name verified registrant.
         self.name = name
+        # The token for the next query.
         self.next_token = next_token
+        # The current page number. Minimum value: **1**. Default value: **1**.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of rows per page in a paged query. Maximum value: 100. Default value: 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The real-name verification status. Valid values:
+        # 
+        # - Approved
+        # - Pending
+        # - Rejected
         self.status = status
 
     def validate(self):

@@ -23,17 +23,17 @@ class ListAtiAgentRegisterInfosResponseBody(DaraModel):
         # The details about the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
         self.agent_register_infos = agent_register_infos
-        # The maximum number of entries to return in this request.
+        # The maximum number of records to return in this request.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
-        # The current page number. Minimum value: 1. Default value: 1.
+        # The current page number. The start value is 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page set for the paged query. This is the paging size. Maximum value: **100**. Default value: **20**. Settings determine how many rows are displayed per page.
+        # The number of entries per page in the Settings for the paging query. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_items = total_items
         # The total number of pages.
         self.total_pages = total_pages
@@ -158,6 +158,7 @@ class ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo(D
         create_timestamp: str = None,
         endpoints: main_models.ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfoEndpoints = None,
         status: str = None,
+        trust_level: str = None,
         update_timestamp: str = None,
     ):
         self.agent_display_name = agent_display_name
@@ -169,6 +170,7 @@ class ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo(D
         self.create_timestamp = create_timestamp
         self.endpoints = endpoints
         self.status = status
+        self.trust_level = trust_level
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -207,6 +209,9 @@ class ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo(D
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.trust_level is not None:
+            result['TrustLevel'] = self.trust_level
+
         if self.update_timestamp is not None:
             result['UpdateTimestamp'] = self.update_timestamp
 
@@ -241,6 +246,9 @@ class ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo(D
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('TrustLevel') is not None:
+            self.trust_level = m.get('TrustLevel')
 
         if m.get('UpdateTimestamp') is not None:
             self.update_timestamp = m.get('UpdateTimestamp')
@@ -328,11 +336,11 @@ class ListAtiAgentRegisterInfosResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The identity type.
         self.auth_principal_type = auth_principal_type
-        # The encrypted diagnostic message.
+        # The encrypted complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The cause of the authentication failure. Valid values:
-        # - ExplicitDeny: Explicit denial.
-        # - ImplicitDeny: Implicit denial.
+        # The reason for the authentication failure. Valid values:
+        # - ExplicitDeny: explicit denial.
+        # - ImplicitDeny: implicit denial.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

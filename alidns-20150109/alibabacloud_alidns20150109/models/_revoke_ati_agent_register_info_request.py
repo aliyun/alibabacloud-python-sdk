@@ -16,9 +16,9 @@ class RevokeAtiAgentRegisterInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.agent_register_info_id = agent_register_info_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotency of the request. Generate a parameter value from your client that is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
         self.client_token = client_token
         # The reason for unregistration. Valid values:
         # 
@@ -36,15 +36,15 @@ class RevokeAtiAgentRegisterInfoRequest(DaraModel):
         # The revocation reason code as defined in RFC 5280. Valid values:
         # 
         # - unspecified: Unspecified. Default value. Used when the CA does not provide a specific reason or the reason is unknown. This is the most common code.
-        # - keyCompromise: Key compromise. The private key may have been obtained by an unauthorized party. This is the most serious reason and typically means the certificate must be revoked immediately and cannot be recovered.
+        # - keyCompromise: Key compromise. The private key may have been obtained by an unauthorized party. This is the most severe reason and typically means the certificate must be revoked immediately and cannot be recovered.
         # - cACompromise: CA key compromise. The private key of the CA that issued the certificate has been compromised. This affects all certificates issued by the CA and typically results in the revocation of the entire subtree.
-        # - affiliationChanged: Affiliation changed. The identity information of the certificate holder (such as name or organization name) has changed, but the public key is still valid. For example, an employee leaves the company or the company is renamed.
-        # - superseded: Certificate superseded. The certificate holder has applied for a new certificate (for example, key rotation or algorithm upgrade), and the old certificate is revoked. The old key has not been compromised.
-        # - cessationOfOperation: Cessation of operation. The certificate holder no longer uses the key for related operations (for example, server decommissioning or service termination). The key has not been compromised.
+        # - affiliationChanged: Affiliation changed. The identity information of the certificate holder (such as name or organization name) has changed, but the public key remains valid. For example, an employee leaves the company or the company is renamed.
+        # - superseded: Certificate superseded. The certificate holder has applied for a new certificate (such as key rotation or algorithm upgrade), and the old certificate is revoked. The old key has not been compromised.
+        # - cessationOfOperation: Cessation of operation. The certificate holder no longer uses the key for related operations (such as server decommissioning or service termination). The key has not been compromised.
         # - certificateHold: Certificate hold. Temporary revocation. Typically used for investigating suspicious activities or for administrative reasons. The hold can be removed later (Unhold) to make the certificate valid again. Note: This code cannot be used for final revocation.
         # - removeFromCRL: Remove from CRL. Used only for delta CRLs (incremental revocation lists). Indicates that a certificate previously held by certificateHold has been released and should be removed from the revocation list. This is not a revocation reason but a status update instruction.
-        # - privilegeWithdrawn: Privilege withdrawn. The privileges or attributes granted in the certificate have been revoked (primarily used for Attribute Certificates and rarely used for regular SSL/TLS certificates).
-        # - aACompromise: AA compromise. The key of the Attribute Authority (AA) that issued the attribute certificate has been compromised. This is also primarily used in the attribute certificate system.
+        # - privilegeWithdrawn: Privilege withdrawn. The privileges or attributes granted in the certificate have been revoked (primarily used for Attribute Certificates and rarely for regular SSL/TLS certificates).
+        # - aACompromise: AA compromise. The key of the AA (Attribute Authority) that issued the attribute certificate has been compromised. This is also primarily used in the attribute certificate system.
         # 
         # This parameter is required.
         self.reason_code = reason_code

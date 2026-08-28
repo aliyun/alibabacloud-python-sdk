@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_alidns20150109 import models as main_models
 from darabonba.model import DaraModel
 
@@ -15,6 +17,7 @@ class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody(DaraModel):
         record_name: str = None,
         record_type: str = None,
         record_value: str = None,
+        records: main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords = None,
         request_id: str = None,
         update_timestamp: str = None,
     ):
@@ -32,6 +35,7 @@ class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody(DaraModel):
         self.record_type = record_type
         # The record value of the DNS record for domain ownership verification.
         self.record_value = record_value
+        self.records = records
         # The request ID.
         self.request_id = request_id
         # The update time (timestamp).
@@ -40,6 +44,8 @@ class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody(DaraModel):
     def validate(self):
         if self.access_denied_detail:
             self.access_denied_detail.validate()
+        if self.records:
+            self.records.validate()
 
     def to_map(self):
         result = dict()
@@ -66,6 +72,9 @@ class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody(DaraModel):
 
         if self.record_value is not None:
             result['RecordValue'] = self.record_value
+
+        if self.records is not None:
+            result['Records'] = self.records.to_map()
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -99,11 +108,101 @@ class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody(DaraModel):
         if m.get('RecordValue') is not None:
             self.record_value = m.get('RecordValue')
 
+        if m.get('Records') is not None:
+            temp_model = main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords()
+            self.records = temp_model.from_map(m.get('Records'))
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         if m.get('UpdateTimestamp') is not None:
             self.update_timestamp = m.get('UpdateTimestamp')
+
+        return self
+
+class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords(DaraModel):
+    def __init__(
+        self,
+        record: List[main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord] = None,
+    ):
+        self.record = record
+
+    def validate(self):
+        if self.record:
+            for v1 in self.record:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Record'] = []
+        if self.record is not None:
+            for k1 in self.record:
+                result['Record'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.record = []
+        if m.get('Record') is not None:
+            for k1 in m.get('Record'):
+                temp_model = main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord()
+                self.record.append(temp_model.from_map(k1))
+
+        return self
+
+class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord(DaraModel):
+    def __init__(
+        self,
+        domain_scope: str = None,
+        record_name: str = None,
+        record_type: str = None,
+        record_value: str = None,
+    ):
+        self.domain_scope = domain_scope
+        self.record_name = record_name
+        self.record_type = record_type
+        self.record_value = record_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.domain_scope is not None:
+            result['DomainScope'] = self.domain_scope
+
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+
+        if self.record_type is not None:
+            result['RecordType'] = self.record_type
+
+        if self.record_value is not None:
+            result['RecordValue'] = self.record_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainScope') is not None:
+            self.domain_scope = m.get('DomainScope')
+
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+
+        if m.get('RecordType') is not None:
+            self.record_type = m.get('RecordType')
+
+        if m.get('RecordValue') is not None:
+            self.record_value = m.get('RecordValue')
 
         return self
 

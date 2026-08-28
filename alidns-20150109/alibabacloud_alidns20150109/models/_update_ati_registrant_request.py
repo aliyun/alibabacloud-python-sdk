@@ -24,27 +24,27 @@ class UpdateAtiRegistrantRequest(DaraModel):
         self.cc = cc
         # The city.
         self.city = city
-        # Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
         # 
-        # If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+        # If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
-        # The document number of the registrant. Maximum length: 50 characters.
+        # The document number of the registrant. The number cannot exceed 50 characters in length.
         self.document_code = document_code
         # The document image of the registrant (Base64-encoded). The original file size must be between 50 KB and 3 MB.
         self.document_image = document_image
         # The document type of the registrant. For more information, see the appendix on document types.
         self.document_type = document_type
-        # The email address. Maximum length: 300 characters.
+        # The email address. The address cannot exceed 300 characters in length.
         self.email = email
-        # The name of the registrant. Maximum length: 255 characters.
+        # The name of the registrant. The name cannot exceed 255 characters in length.
         self.name = name
-        # The phone number of the registrant. Maximum length: 128 characters. If the country is China, the area code of a non-mobile phone number must match the city.
+        # The phone number of the registrant. The number cannot exceed 128 characters in length. If the country is China and the number is not a mobile phone number, the area code must match the city.
         self.phone = phone
-        # The ID of the registrant profile.
+        # The ID of the real-name registrant.
         self.registrant_id = registrant_id
         # The state or province.
         self.state = state
-        # The street.
+        # The street address.
         self.street = street
 
     def validate(self):

@@ -22,6 +22,7 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
+            'cn-hangzhou': 'alidns.aliyuncs.com',
             'public': 'alidns.aliyuncs.com'
         }
         self.check_config(config)
@@ -1982,10 +1983,14 @@ class Client(OpenApiClient):
             query['AgentDisplayName'] = request.agent_display_name
         if not DaraCore.is_null(request.agent_host):
             query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_sub_host):
+            query['AgentSubHost'] = request.agent_sub_host
         if not DaraCore.is_null(request.agent_version):
             query['AgentVersion'] = request.agent_version
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.domain_mode):
+            query['DomainMode'] = request.domain_mode
         if not DaraCore.is_null(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
         if not DaraCore.is_null(request.registrant_id):
@@ -2026,10 +2031,14 @@ class Client(OpenApiClient):
             query['AgentDisplayName'] = request.agent_display_name
         if not DaraCore.is_null(request.agent_host):
             query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_sub_host):
+            query['AgentSubHost'] = request.agent_sub_host
         if not DaraCore.is_null(request.agent_version):
             query['AgentVersion'] = request.agent_version
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.domain_mode):
+            query['DomainMode'] = request.domain_mode
         if not DaraCore.is_null(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
         if not DaraCore.is_null(request.registrant_id):
@@ -4384,6 +4393,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.trust_level):
+            query['TrustLevel'] = request.trust_level
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4420,6 +4431,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.trust_level):
+            query['TrustLevel'] = request.trust_level
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17816,10 +17829,14 @@ class Client(OpenApiClient):
             query['AgentHost'] = request.agent_host
         if not DaraCore.is_null(request.agent_register_info_id):
             query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.agent_sub_host):
+            query['AgentSubHost'] = request.agent_sub_host
         if not DaraCore.is_null(request.agent_version):
             query['AgentVersion'] = request.agent_version
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.domain_mode):
+            query['DomainMode'] = request.domain_mode
         if not DaraCore.is_null(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
         if not DaraCore.is_null(request.registrant_id):
@@ -17862,10 +17879,14 @@ class Client(OpenApiClient):
             query['AgentHost'] = request.agent_host
         if not DaraCore.is_null(request.agent_register_info_id):
             query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.agent_sub_host):
+            query['AgentSubHost'] = request.agent_sub_host
         if not DaraCore.is_null(request.agent_version):
             query['AgentVersion'] = request.agent_version
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.domain_mode):
+            query['DomainMode'] = request.domain_mode
         if not DaraCore.is_null(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
         if not DaraCore.is_null(request.registrant_id):
@@ -22288,6 +22309,8 @@ class Client(OpenApiClient):
             query['AgentRegisterInfoId'] = request.agent_register_info_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.trust_level):
+            query['TrustLevel'] = request.trust_level
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -22318,6 +22341,8 @@ class Client(OpenApiClient):
             query['AgentRegisterInfoId'] = request.agent_register_info_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.trust_level):
+            query['TrustLevel'] = request.trust_level
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -12,8 +12,13 @@ class UpdateAtiAlertSettingsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This parameter is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -61,12 +66,21 @@ class UpdateAtiAlertSettingsResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The unauthorized operation that was attempted.
         self.auth_action = auth_action
+        # The display name of the authorization principal.
         self.auth_principal_display_name = auth_principal_display_name
+        # The ID of the authorization principal owner.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The identity type.
         self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The reason for the authentication failure. Valid values:
+        # - ExplicitDeny: explicit deny.
+        # - ImplicitDeny: implicit deny.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

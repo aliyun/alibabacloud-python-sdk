@@ -10,8 +10,10 @@ class CreateAtiAgentRegisterInfoShrinkRequest(DaraModel):
         agent_description: str = None,
         agent_display_name: str = None,
         agent_host: str = None,
+        agent_sub_host: str = None,
         agent_version: str = None,
         client_token: str = None,
+        domain_mode: str = None,
         endpoints_shrink: str = None,
         registrant_id: str = None,
     ):
@@ -25,12 +27,14 @@ class CreateAtiAgentRegisterInfoShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.agent_host = agent_host
+        self.agent_sub_host = agent_sub_host
         # The version of the agent.
         # 
         # This parameter is required.
         self.agent_version = agent_version
         # Provides idempotency. Within 3 minutes, the same value takes effect only once.
         self.client_token = client_token
+        self.domain_mode = domain_mode
         # The endpoint information of the agent.
         # 
         # This parameter is required.
@@ -57,11 +61,17 @@ class CreateAtiAgentRegisterInfoShrinkRequest(DaraModel):
         if self.agent_host is not None:
             result['AgentHost'] = self.agent_host
 
+        if self.agent_sub_host is not None:
+            result['AgentSubHost'] = self.agent_sub_host
+
         if self.agent_version is not None:
             result['AgentVersion'] = self.agent_version
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.domain_mode is not None:
+            result['DomainMode'] = self.domain_mode
 
         if self.endpoints_shrink is not None:
             result['Endpoints'] = self.endpoints_shrink
@@ -82,11 +92,17 @@ class CreateAtiAgentRegisterInfoShrinkRequest(DaraModel):
         if m.get('AgentHost') is not None:
             self.agent_host = m.get('AgentHost')
 
+        if m.get('AgentSubHost') is not None:
+            self.agent_sub_host = m.get('AgentSubHost')
+
         if m.get('AgentVersion') is not None:
             self.agent_version = m.get('AgentVersion')
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DomainMode') is not None:
+            self.domain_mode = m.get('DomainMode')
 
         if m.get('Endpoints') is not None:
             self.endpoints_shrink = m.get('Endpoints')

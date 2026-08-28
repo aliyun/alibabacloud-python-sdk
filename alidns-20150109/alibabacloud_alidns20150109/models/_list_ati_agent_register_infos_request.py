@@ -22,21 +22,21 @@ class ListAtiAgentRegisterInfosRequest(DaraModel):
         self.agent_display_name = agent_display_name
         # The host address of the Agent.
         self.agent_host = agent_host
-        # The Agent ID, which is uniformly assigned by CNNIC after real-name verification through CNNIC. The AgentID serves as the unique identifier that binds the Agent to the real-name verified registrant.
+        # The Agent ID, which is uniformly assigned by CNNIC after real-name verification. The AgentID serves as the unique identifier that binds the Agent to the verified registrant.
         self.agent_id = agent_id
         # The version of the Agent.
         self.agent_version = agent_version
-        # Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The maximum number of entries to return in this request.
+        # The maximum number of records to return in this request.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
-        # The current page number. Minimum value: 1. Default value: 1.
+        # The current page number. The start value is 1. Default value: 1.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The page size for the paged query. This parameter specifies the number of entries per page for paging.
+        # The page size for the paging query.
         # 
         # This parameter is required.
         self.page_size = page_size
