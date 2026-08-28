@@ -10,7 +10,12 @@ class CancelTranslationTaskRequest(DaraModel):
         apikey: str = None,
         task_id: str = None,
     ):
+        # The API key, the identity of member accounts. You can obtain it from the RuiYiBao console.
         self.apikey = apikey
+        # The task ID.
+        # - The TaskId is returned after a task is submitted by calling SubmitTranslationTask.
+        # - Only running tasks can be canceled.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

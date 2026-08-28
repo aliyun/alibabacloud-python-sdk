@@ -18,15 +18,37 @@ class ListTranslationTasksRequest(DaraModel):
         target_language: str = None,
         task_id: str = None,
     ):
+        # The API key that identifies the identity of member accounts. You can obtain it from the RuiYiBao console.
         self.apikey = apikey
+        # The end time of the task.
+        # - Format: YYYY-MM-dd HH:mm:ss.
         self.end_time = end_time
+        # The maximum number of results to return per request when using the NextToken-based pagination.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The name of the source file.
         self.original_file_name = original_file_name
+        # The language of the source file.
         self.source_language = source_language
+        # The start time of the task.
+        # - Format: YYYY-MM-dd HH:mm:ss.
         self.start_time = start_time
+        # The task status. Valid values:
+        # - CANCELLED: Cancelled.
+        # - COMPLETED: Completed.
+        # - FAILED: Failed.
+        # - PROCESSING: Processing.
+        # - PENDING: Pending.
+        # - ANALYZED: Analyzed.
         self.status = status
+        # The target language.
         self.target_language = target_language
+        # The translation task ID, which is the TaskId obtained from UploadTranslationFile.
         self.task_id = task_id
 
     def validate(self):

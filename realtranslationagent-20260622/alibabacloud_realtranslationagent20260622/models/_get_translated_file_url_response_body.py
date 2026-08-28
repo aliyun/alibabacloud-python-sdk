@@ -14,10 +14,15 @@ class GetTranslatedFileUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The business data.
         self.data = data
+        # The return message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -73,8 +78,11 @@ class GetTranslatedFileUrlResponseBodyData(DaraModel):
         expire_time: int = None,
         file_name: str = None,
     ):
+        # The download URL of the file.
         self.download_url = download_url
+        # The expiration time. Unit: milliseconds.
         self.expire_time = expire_time
+        # The name of the file.
         self.file_name = file_name
 
     def validate(self):

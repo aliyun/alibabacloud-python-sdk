@@ -16,10 +16,15 @@ class ListTranslationTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The business data.
         self.data = data
+        # The return message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -76,9 +81,15 @@ class ListTranslationTasksResponseBodyData(DaraModel):
         next_token: str = None,
         total: int = None,
     ):
+        # The data list.
         self.list = list
+        # The maximum number of results returned per request when using the NextToken-based pagination.
         self.max_results = max_results
+        # Indicates whether a token exists for the next query. Valid values:
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** has a value, the value is the token for the next query.
         self.next_token = next_token
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -153,27 +164,58 @@ class ListTranslationTasksResponseBodyDataList(DaraModel):
         word_count: int = None,
         work_space_id: str = None,
     ):
+        # The task completion time, in 13-digit timestamp format.
         self.complete_time = complete_time
+        # The credits consumed by this task.
         self.cost_credits = cost_credits
+        # The time consumed, in milliseconds.
         self.cost_time = cost_time
+        # The creator ID.
         self.creator = creator
+        # The creator name.
         self.creator_name = creator_name
+        # The error message when the task fails.
         self.error_message = error_message
+        # The parsed file format.
         self.file_format = file_format
+        # The file name.
         self.file_name = file_name
+        # The task creation time, in 13-digit timestamp format.
         self.gmt_create = gmt_create
+        # The organization ID.
         self.org_id = org_id
+        # The source file address.
         self.original_file_name = original_file_name
+        # The page count of the uploaded file.
         self.page_count = page_count
+        # The task progress.
         self.progress = progress
+        # The language of the source file.
         self.source_language = source_language
+        # The task start time, in 13-digit timestamp format.
         self.start_time = start_time
+        # The task status. Valid values:
+        # - CANCELLED: Cancelled.
+        # - COMPLETED: Completed.
+        # - FAILED: Failed.
+        # - PROCESSING: Processing.
+        # - PENDING: Pending.
+        # - ANALYZED: Analyzed.
         self.status = status
+        # The target language.
         self.target_language = target_language
+        # The translation task ID.
         self.task_id = task_id
+        # The task type. Valid values:
+        # 
+        # - DOCUMENT: document type.
         self.task_type = task_type
+        # The translation template. Valid values:
+        # - common: General.
         self.template = template
+        # The word count of the uploaded file.
         self.word_count = word_count
+        # The workspace ID.
         self.work_space_id = work_space_id
 
     def validate(self):

@@ -10,7 +10,11 @@ class GetTranslatedFileUrlRequest(DaraModel):
         apikey: str = None,
         task_id: str = None,
     ):
+        # The API key that identifies a member accounts identity. You can obtain the key from the RuiYiBao console.
         self.apikey = apikey
+        # The task ID.
+        # - The TaskId is returned after a task is submitted by calling SubmitTranslationTask.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

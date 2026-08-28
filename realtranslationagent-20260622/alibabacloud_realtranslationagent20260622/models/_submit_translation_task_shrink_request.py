@@ -13,11 +13,21 @@ class SubmitTranslationTaskShrinkRequest(DaraModel):
         custom_terms_shrink: str = None,
         task_id: str = None,
     ):
+        # The API key that identifies the identity of the member account. You can obtain this from the RuiYiBao console.
         self.apikey = apikey
+        # The translation task ID of a previously submitted translation task. Pass in this parameter when resubmitting a translation task.
+        # - You must pass in either this parameter or TaskId.
         self.base_task_id = base_task_id
+        # The translation configuration.
+        # 
         # This parameter is required.
         self.config_shrink = config_shrink
+        # The custom terms.
+        # >Notice: Custom terms are for reference only. Actual translation results may differ. Refer to the final output for the definitive result.</notice>
         self.custom_terms_shrink = custom_terms_shrink
+        # The translation task ID.
+        # - Obtained from the TaskId returned by UploadTranslationFile.
+        # - You must pass in either this parameter or BaseTaskId.
         self.task_id = task_id
 
     def validate(self):

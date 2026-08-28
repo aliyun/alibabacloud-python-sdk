@@ -16,10 +16,15 @@ class GetTranslationTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The business data.
         self.data = data
+        # The return message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -93,26 +98,49 @@ class GetTranslationTaskResponseBodyData(DaraModel):
         word_count: int = None,
         work_space_id: str = None,
     ):
+        # The translation task ID of a previously submitted task. This parameter is passed in when resubmitting a translation task.
         self.base_task_id = base_task_id
+        # The translation configuration.
         self.config = config
+        # The credits consumed by this task.
         self.cost_credits = cost_credits
+        # The time consumed, in milliseconds.
         self.cost_time = cost_time
+        # The error message when the task fails.
         self.error_message = error_message
+        # The estimated credits to be consumed.
         self.estimated_cost_credits = estimated_cost_credits
+        # The estimated translation time, in **seconds**.
         self.estimated_time = estimated_time
+        # The terms used in this task.
         self.extracted_terms = extracted_terms
+        # The parsed file format.
         self.file_format = file_format
+        # The file name.
         self.file_name = file_name
+        # The task completion time, expressed as a 13-digit timestamp.
         self.finished_at = finished_at
+        # The languages that support font modification and the corresponding font lists. The key of the map identifies the language type. Currently supported languages include English, French, Indonesian, and Japanese.
         self.fonts = fonts
+        # The organization ID.
         self.org_id = org_id
+        # The source file address.
         self.original_file_name = original_file_name
+        # The page count of the uploaded file.
         self.page_count = page_count
+        # The progress, expressed as a percentage number.
         self.progress = progress
+        # The task status.
         self.status = status
+        # The translation task ID.
         self.task_id = task_id
+        # The task type.
+        # 
+        # - DOCUMENT: Document type.
         self.task_type = task_type
+        # The word count of the uploaded document.
         self.word_count = word_count
+        # The workspace ID.
         self.work_space_id = work_space_id
 
     def validate(self):
@@ -272,7 +300,9 @@ class GetTranslationTaskResponseBodyDataExtractedTerms(DaraModel):
         source_term: str = None,
         target_term: str = None,
     ):
+        # The source term.
         self.source_term = source_term
+        # The translated term.
         self.target_term = target_term
 
     def validate(self):
@@ -310,10 +340,19 @@ class GetTranslationTaskResponseBodyDataConfig(DaraModel):
         target_language: str = None,
         template: str = None,
     ):
+        # The security level.
+        # - public: Standard confidentiality.
         self.security_level = security_level
+        # The source file language.
         self.source_language = source_language
+        # The translation style. This parameter takes effect only when the translation file is a PPT file.
+        # - normal: Standard. The original information is fully preserved.
+        # - minimal: More concise information with a more visually appealing layout.
         self.style = style
+        # The target language.
         self.target_language = target_language
+        # The translation template.
+        # - common: General-purpose.
         self.template = template
 
     def validate(self):

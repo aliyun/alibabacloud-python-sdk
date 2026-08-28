@@ -16,10 +16,15 @@ class UploadTranslationFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The business data.
         self.data = data
+        # The return message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,16 +88,29 @@ class UploadTranslationFileResponseBodyData(DaraModel):
         task_id: str = None,
         word_count: int = None,
     ):
+        # The description of the estimated Credits billing and time consumption for the task.
         self.credit_breakdown = credit_breakdown
+        # Indicates whether the available Credits are sufficient for this translation task.
+        # - The estimate may be affected by various factors and may deviate. The actual result is based on the task submission operation.
         self.credits_available = credits_available
+        # The detected language type.
         self.detected_lang = detected_lang
+        # The estimated Credits consumption.
         self.estimated_cost_credits = estimated_cost_credits
+        # The estimated translation time in **seconds**.
         self.estimated_time = estimated_time
+        # The languages that support font modification and the corresponding font lists. The key of the map identifies the language type.
+        # - Currently supported fonts include: English, French, Indonesian, and Japanese.
         self.fonts = fonts
+        # The page count of the uploaded file.
         self.page_count = page_count
+        # Indicates whether sensitive information was detected.
         self.sensitive_detected = sensitive_detected
+        # The keywords that matched sensitive information.
         self.sensitive_tags = sensitive_tags
+        # The translation task ID, used for subsequent task submission.
         self.task_id = task_id
+        # The word count of the uploaded file.
         self.word_count = word_count
 
     def validate(self):

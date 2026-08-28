@@ -14,10 +14,15 @@ class CancelTranslationTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The business data.
         self.data = data
+        # The return message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -74,7 +79,9 @@ class CancelTranslationTaskResponseBodyData(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The task status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
