@@ -13968,6 +13968,10 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.relative_dbcluster_id):
@@ -14008,6 +14012,10 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.relative_dbcluster_id):
@@ -16242,6 +16250,76 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeApplicationPromptsResponse:
         runtime = RuntimeOptions()
         return await self.describe_application_prompts_with_options_async(request, runtime)
+
+    def describe_application_sslwith_options(
+        self,
+        request: main_models.DescribeApplicationSSLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationSSLResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationSSL',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_sslwith_options_async(
+        self,
+        request: main_models.DescribeApplicationSSLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationSSLResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationSSL',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_ssl(
+        self,
+        request: main_models.DescribeApplicationSSLRequest,
+    ) -> main_models.DescribeApplicationSSLResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_sslwith_options(request, runtime)
+
+    async def describe_application_ssl_async(
+        self,
+        request: main_models.DescribeApplicationSSLRequest,
+    ) -> main_models.DescribeApplicationSSLResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_sslwith_options_async(request, runtime)
 
     def describe_application_serverless_conf_with_options(
         self,

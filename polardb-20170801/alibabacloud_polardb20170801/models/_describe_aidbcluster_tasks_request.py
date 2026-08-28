@@ -10,6 +10,8 @@ class DescribeAIDBClusterTasksRequest(DaraModel):
         kube_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
         relative_dbcluster_id: str = None,
         resource_owner_account: str = None,
@@ -19,6 +21,10 @@ class DescribeAIDBClusterTasksRequest(DaraModel):
         self.kube_type = kube_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
+        self.page_number = page_number
+        # The number of items per page.
+        self.page_size = page_size
         # The region ID.
         self.region_id = region_id
         # The instance ID of the PolarDB instance.
@@ -42,6 +48,12 @@ class DescribeAIDBClusterTasksRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -67,6 +79,12 @@ class DescribeAIDBClusterTasksRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

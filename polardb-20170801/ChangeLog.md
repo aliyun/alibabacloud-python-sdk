@@ -1,3 +1,7 @@
+2026-08-28 Version: 8.1.1
+- Update API DescribeKnowledgeBases: add response parameters Body.Items.$.KnowledgeBaseType.
+
+
 2026-08-26 Version: 8.0.0
 - Support API CreateKnowledgeBase.
 - Support API CreateKnowledgeSpace.

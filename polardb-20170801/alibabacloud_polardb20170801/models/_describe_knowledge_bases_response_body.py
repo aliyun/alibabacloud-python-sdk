@@ -88,6 +88,7 @@ class DescribeKnowledgeBasesResponseBodyItems(DaraModel):
         creation_time: str = None,
         description: str = None,
         knowledge_base_id: str = None,
+        knowledge_base_type: str = None,
         knowledge_space_id: str = None,
         name: str = None,
         status: str = None,
@@ -102,6 +103,10 @@ class DescribeKnowledgeBasesResponseBodyItems(DaraModel):
         self.description = description
         # The unique identifier of the knowledge base.
         self.knowledge_base_id = knowledge_base_id
+        # The type of the knowledge base. Valid values:
+        # - PUBLIC: public.
+        # - PERSONAL: personal.
+        self.knowledge_base_type = knowledge_base_type
         # The ID of the knowledge space.
         self.knowledge_space_id = knowledge_space_id
         # The name of the knowledge base.
@@ -133,6 +138,9 @@ class DescribeKnowledgeBasesResponseBodyItems(DaraModel):
         if self.knowledge_base_id is not None:
             result['KnowledgeBaseId'] = self.knowledge_base_id
 
+        if self.knowledge_base_type is not None:
+            result['KnowledgeBaseType'] = self.knowledge_base_type
+
         if self.knowledge_space_id is not None:
             result['KnowledgeSpaceId'] = self.knowledge_space_id
 
@@ -163,6 +171,9 @@ class DescribeKnowledgeBasesResponseBodyItems(DaraModel):
 
         if m.get('KnowledgeBaseId') is not None:
             self.knowledge_base_id = m.get('KnowledgeBaseId')
+
+        if m.get('KnowledgeBaseType') is not None:
+            self.knowledge_base_type = m.get('KnowledgeBaseType')
 
         if m.get('KnowledgeSpaceId') is not None:
             self.knowledge_space_id = m.get('KnowledgeSpaceId')

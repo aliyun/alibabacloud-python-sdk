@@ -13,9 +13,13 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
         engine: str = None,
         engine_version: str = None,
         items: List[main_models.DescribeAIDBClusterTasksResponseBodyItems] = None,
+        page_number: int = None,
+        page_record_count: str = None,
+        page_size: str = None,
         relative_dbcluster_id: str = None,
         request_id: str = None,
         task_type: str = None,
+        total_record_count: str = None,
     ):
         # The cluster engine.
         self.engine = engine
@@ -23,12 +27,20 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
         self.engine_version = engine_version
         # The cluster endpoint details.
         self.items = items
+        # The page number.
+        self.page_number = page_number
+        # The total number of records on the current page.
+        self.page_record_count = page_record_count
+        # The number of records per page.
+        self.page_size = page_size
         # The ID of the PolarDB cluster.
         self.relative_dbcluster_id = relative_dbcluster_id
         # Id of the request
         self.request_id = request_id
         # The task type.
         self.task_type = task_type
+        # The total number of records.
+        self.total_record_count = total_record_count
 
     def validate(self):
         if self.items:
@@ -52,6 +64,15 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
             for k1 in self.items:
                 result['Items'].append(k1.to_map() if k1 else None)
 
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_record_count is not None:
+            result['PageRecordCount'] = self.page_record_count
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.relative_dbcluster_id is not None:
             result['RelativeDBClusterId'] = self.relative_dbcluster_id
 
@@ -60,6 +81,9 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
 
         if self.task_type is not None:
             result['TaskType'] = self.task_type
+
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
 
         return result
 
@@ -77,6 +101,15 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
                 temp_model = main_models.DescribeAIDBClusterTasksResponseBodyItems()
                 self.items.append(temp_model.from_map(k1))
 
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageRecordCount') is not None:
+            self.page_record_count = m.get('PageRecordCount')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
         if m.get('RelativeDBClusterId') is not None:
             self.relative_dbcluster_id = m.get('RelativeDBClusterId')
 
@@ -85,6 +118,9 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
 
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
+
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
 
         return self
 
@@ -115,7 +151,7 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         self.creation_time = creation_time
         # The node description.
         self.dbnode_description = dbnode_description
-        # The instance ID of the model operator.
+        # The template operator instance ID.
         self.dbnode_id = dbnode_id
         # The instance status. This parameter may not be returned.
         self.dbnode_status = dbnode_status
@@ -141,6 +177,7 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         self.train_mode = train_mode
         # The type.
         self.train_type = train_type
+        # The tuning framework.
         self.tune_arch = tune_arch
 
     def validate(self):

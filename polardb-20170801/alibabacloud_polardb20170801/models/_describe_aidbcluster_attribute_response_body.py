@@ -25,6 +25,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         expire_time: str = None,
         expired: bool = None,
         gateway_id: str = None,
+        inference_engine: str = None,
         internal_ip: str = None,
         kvcache_instance_id: str = None,
         kube_cluster_id: str = None,
@@ -50,9 +51,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         zone_ids: str = None,
     ):
         # The node type. Valid values:
-        # - vnode: managed by ACK
-        # - container: loginable container
-        # - maas: model service
+        # - vnode: ACK-managed.
+        # - container: loginable container.
+        # - maas: model service.
         self.ai_node_type = ai_node_type
         # The API key.
         self.api_key = api_key
@@ -64,31 +65,42 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The cluster status. Valid values:
         # 
-        # - **Creating**: being created.
-        # - **Running**: running.
-        # - **Deleting**: being released.
-        # - **DBNodeCreating**: a node is being added.
-        # - **DBNodeDeleting**: a node is being deleted.
-        # - **ClassChanging**: node specifications are being changed.
-        # - **Deleted**: released.
+        # - **Creating**: Being created.
+        # - **Running**: Running.
+        # - **Deleting**: Being released.
+        # - **DBNodeCreating**: Adding a node.
+        # - **DBNodeDeleting**: Deleting a node.
+        # - **ClassChanging**: Changing node specifications. 
+        # - **Deleted**: Released.
         self.dbcluster_status = dbcluster_status
         self.dbinstance_status_desc = dbinstance_status_desc
         # The node information.
         self.dbnodes = dbnodes
         # The cluster version. Valid values:
+        # 
+        # **1.0**
+        # 
+        # **2.0**
+        # 
+        # **3.0**
         self.dbversion = dbversion
         self.dedicated_host_model = dedicated_host_model
         # The security group ID.
         self.ecs_security_group_id = ecs_security_group_id
         # The list of network connection addresses of the instance.
         self.endpoint_list = endpoint_list
-        # The expiration time of the cluster.
+        # The cluster expiration time.
         # 
-        # > Only clusters whose billing method is **Prepaid** (subscription) return a specific value for this parameter. **Postpaid** (pay-as-you-go) clusters return an empty value.
+        # > Only clusters with the billing method set to **Prepaid** (subscription) return a specific value. **Postpaid** (pay-as-you-go) clusters return an empty value.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.expired = expired
         self.gateway_id = gateway_id
+        self.inference_engine = inference_engine
         # The internal IP address.
         self.internal_ip = internal_ip
         # The KVCache instance ID.
@@ -117,21 +129,34 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # The architecture type. Valid values:
+        # - container: AI container.
+        # - ainode: AI node.
         self.run_type = run_type
         # The storage type for Enterprise Edition. Valid values:
+        # - **PSL5**
+        # - **PSL4**
+        # 
+        # The storage type for Standard Edition. Valid values:
+        # - **ESSDPL0**
+        # - **ESSDPL1**
+        # - **ESSDPL2**
+        # - **ESSDPL3**
+        # - **ESSDAUTOPL**
         self.storage_type = storage_type
         self.time_slices_info = time_slices_info
         self.time_slices_type = time_slices_type
         # The VPC ID specified for the zone switchover.
         self.vpcid = vpcid
         # The vSwitch ID.
+        # 
+        # > If VPCId is specified, VSwitchId is required.
         self.v_switch_id = v_switch_id
         self.vnode_kubernetes_config = vnode_kubernetes_config
         # The list of data cloud disks.
         self.volumes = volumes
         # The zone ID of the PolarDB cluster node.
         self.zone_id = zone_id
-        # The zone IDs.
+        # The zone ID.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -205,6 +230,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
 
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
+
+        if self.inference_engine is not None:
+            result['InferenceEngine'] = self.inference_engine
 
         if self.internal_ip is not None:
             result['InternalIp'] = self.internal_ip
@@ -332,6 +360,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
 
+        if m.get('InferenceEngine') is not None:
+            self.inference_engine = m.get('InferenceEngine')
+
         if m.get('InternalIp') is not None:
             self.internal_ip = m.get('InternalIp')
 
@@ -417,7 +448,7 @@ class DescribeAIDBClusterAttributeResponseBodyVolumes(DaraModel):
         storage_category: str = None,
         storage_type: str = None,
     ):
-        # The mount path in the container.
+        # The mount path inside the container.
         self.mount_path = mount_path
         # The disk name.
         self.name = name
@@ -715,9 +746,9 @@ class DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems(DaraModel
         net_type: str = None,
         port: str = None,
     ):
-        # The database endpoint.
+        # The database connection address.
         self.connection_string = connection_string
-        # The network type of the endpoint. Valid values:
+        # The network type of the connection string. Valid values:
         # * **Public**: public endpoint.
         # * **Private**: private endpoint.
         # * **Inner**: private endpoint (classic network).
@@ -791,16 +822,16 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         # The node ID.
         self.dbnode_id = dbnode_id
         # The node status. Valid values:
-        # * **Creating**: Being created.
-        # * **Running**: Running.
-        # * **Deleting**: Being deleted.
-        # * **Rebooting**: Being restarted.
-        # * **DBNodeCreating**: A node is being added.
-        # * **DBNodeDeleting**: A node is being deleted.
-        # * **ClassChanging**: The node specifications are being changed.
-        # * **MinorVersionUpgrading**: A minor engine version update is in progress.
-        # * **Maintaining**: The instance is under maintenance.
-        # * **Switching**: A switchover is in progress.
+        # * **Creating**: Being created. 
+        # * **Running**: Running. 
+        # * **Deleting**: Being deleted.  
+        # * **Rebooting**: Restarting.  
+        # * **DBNodeCreating**: Adding a node.  
+        # * **DBNodeDeleting**: Deleting a node. 
+        # * **ClassChanging**: Changing node specifications.  
+        # * **MinorVersionUpgrading**: Performing a minor version upgrade.
+        # * **Maintaining**: Under maintenance.  
+        # * **Switching**: Switching.
         self.dbnode_status = dbnode_status
         # The number of GPU cards.
         self.gpu = gpu
@@ -1022,7 +1053,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes(DaraModel):
         self.mount_path = mount_path
         # The disk name.
         self.name = name
-        # The storage disk size.
+        # The storage size.
         self.size_gb = size_gb
         # The storage type.
         self.storage_category = storage_category

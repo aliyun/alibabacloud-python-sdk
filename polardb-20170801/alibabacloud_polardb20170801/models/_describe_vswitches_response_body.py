@@ -16,15 +16,10 @@ class DescribeVSwitchesResponseBody(DaraModel):
         total_count: int = None,
         v_switchs: List[main_models.DescribeVSwitchesResponseBodyVSwitchs] = None,
     ):
-        # The current page number.
         self.page_number = page_number
-        # The number of entries on the current page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # The number of entries in the list.
         self.total_count = total_count
-        # The list of vSwitches.
         self.v_switchs = v_switchs
 
     def validate(self):
@@ -91,29 +86,13 @@ class DescribeVSwitchesResponseBodyVSwitchs(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
-        # The number of available IP addresses in the vSwitch.
         self.available_ip_address_count = available_ip_address_count
-        # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
-        # The description of the vSwitch.
         self.description = description
-        # Indicates whether the vSwitch is the default vSwitch. Valid values:
-        # 
-        # - **true**: The vSwitch is the default vSwitch.
-        # 
-        # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
-        # The zone where the NAT Gateway is located.
         self.iz_no = iz_no
-        # The status of the vSwitch. Valid values:
-        # 
-        # - **Pending**: The vSwitch is being configured.
-        # 
-        # - **Available**: The vSwitch is active.
         self.status = status
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):
