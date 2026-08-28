@@ -21,21 +21,22 @@ class EkycVerifyV2AdvanceRequest(DaraModel):
         id_ocr_picture_base_64: str = None,
         id_ocr_picture_file_object: BinaryIO = None,
         id_ocr_picture_url: str = None,
+        id_spoof: str = None,
         id_threshold: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         product_code: str = None,
     ):
-        # Specifies whether to enable authoritative identity verification. Currently, this feature is applicable only to second-generation ID cards of mainland China.
+        # Specifies whether to enable authoritative identity verification. Currently, this parameter applies only to second-generation mainland China ID cards.
         self.authorize = authorize
-        # Specifies whether cropping is allowed. Not allowed by default. Valid values: T and F.
+        # Specifies whether cropping is allowed. By default, cropping is not allowed. Valid values:
         # 
-        # - T: Cropping is allowed.
-        # - F: Cropping is not allowed. (Default: F)
+        # - T: Detection is required.
+        # - F: Detection is required (default value: F).
         self.crop = crop
-        # The real name of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, at least one of the following groups must be provided: document key information (DocName, DocNo) or document image (IdOcrPictureBase64/URL). Note: Supports combinations of Chinese characters with a length of at least 1 character. Special characters are not supported, except for the middle dot (·) used in ethnic minority names.
+        # The real name of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, you must provide at least one of the following: key document information (DocName, DocNo) or document images (IdOcrPictureBase64/URL). Note: Supports a combination of Chinese characters with a minimum length of 1 character. No special characters are allowed, except for the middle dot (·) used in ethnic minority names.
         self.doc_name = doc_name
-        # The document number of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, at least one of the following groups must be provided: document key information (DocName, DocNo) or document image (IdOcrPictureBase64/URL). Note: Supports a combination of letters and digits with a length of 18 characters.
+        # The document number of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, you must provide at least one of the following: key document information (DocName, DocNo) or document images (IdOcrPictureBase64/URL). Note: Supports a combination of letters and numbers with a length of 18 characters.
         self.doc_no = doc_no
         # The document type.
         self.doc_type = doc_type
@@ -43,31 +44,34 @@ class EkycVerifyV2AdvanceRequest(DaraModel):
         # 
         # Note:
         # 
-        # - If you use this method to pass the face image, check the photo size and do not pass an overly large photo.
-        # - You can only specify one of FacePictureBase64, FacePictureUrl, and FacePictureFile.
+        # - If you choose this method to pass in the face image, check the photo size and do not pass in an excessively large photo.
+        # - Specify one of the following parameters: FacePictureBase64, FacePictureUrl, or FacePictureFile.
         self.face_picture_base_64 = face_picture_base_64
         # The file stream of the face photo.
         self.face_picture_file_object = face_picture_file_object
         # The URL of the face photo.
         self.face_picture_url = face_picture_url
+        # Specifies whether to enable face quality detection.
         self.face_quality_check = face_quality_check
-        # The Base64-encoded document image. Note:
+        # The Base64-encoded identity document image. Note:
         # 
-        # - If you use this method to pass the document image, check the photo size and do not pass an overly large photo.
-        # - You can only specify one of IdOcrPictureBase64, IdOcrPictureUrl, and IdOcrPictureFile.
+        # - If you choose this method to pass in the document image, check the photo size and do not pass in an excessively large photo.
+        # - Specify one of the following parameters: IdOcrPictureBase64, IdOcrPictureUrl, or IdOcrPictureFile.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # The file stream of the front side of the document image.
+        # The file stream of the front side of the identity document image.
         self.id_ocr_picture_file_object = id_ocr_picture_file_object
-        # The URL of the front side of the document image.
+        # The URL of the front side of the identity document image.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # The custom OCR quality detection threshold mode:
+        # Specifies whether to enable document anti-spoofing.
+        self.id_spoof = id_spoof
+        # The custom OCR quality detection threshold mode. Valid values:
         # 
-        # - 0: System default.
-        # - 1: Strict mode.
-        # - 2: Lenient mode.
-        # - 3 (Default): Quality detection is disabled.
+        # - 0: system default.
+        # - 1: strict mode.
+        # - 2: loose mode.
+        # - 3 (default): quality detection disabled.
         self.id_threshold = id_threshold
-        # A unique business identifier customized by the merchant, used for subsequent troubleshooting. Supports a combination of letters and digits with a length of 32 characters. Ensure that the value is unique.
+        # A custom business unique identifier defined by the merchant, used for subsequent issue tracking and troubleshooting. Supports a combination of letters and numbers up to 32 characters in length. Ensure that this value is unique.
         self.merchant_biz_id = merchant_biz_id
         # A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
@@ -117,6 +121,9 @@ class EkycVerifyV2AdvanceRequest(DaraModel):
 
         if self.id_ocr_picture_url is not None:
             result['IdOcrPictureUrl'] = self.id_ocr_picture_url
+
+        if self.id_spoof is not None:
+            result['IdSpoof'] = self.id_spoof
 
         if self.id_threshold is not None:
             result['IdThreshold'] = self.id_threshold
@@ -169,6 +176,9 @@ class EkycVerifyV2AdvanceRequest(DaraModel):
 
         if m.get('IdOcrPictureUrl') is not None:
             self.id_ocr_picture_url = m.get('IdOcrPictureUrl')
+
+        if m.get('IdSpoof') is not None:
+            self.id_spoof = m.get('IdSpoof')
 
         if m.get('IdThreshold') is not None:
             self.id_threshold = m.get('IdThreshold')

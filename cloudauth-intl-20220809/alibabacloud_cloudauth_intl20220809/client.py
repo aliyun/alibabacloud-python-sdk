@@ -1198,11 +1198,19 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not DaraCore.is_null(request.fraud_check):
             query['FraudCheck'] = request.fraud_check
+        if not DaraCore.is_null(request.id_quality):
+            query['IdQuality'] = request.id_quality
         if not DaraCore.is_null(request.ocr_area):
             query['OcrArea'] = request.ocr_area
+        if not DaraCore.is_null(request.ocr_translation):
+            query['OcrTranslation'] = request.ocr_translation
+        if not DaraCore.is_null(request.ocr_value_standard):
+            query['OcrValueStandard'] = request.ocr_value_standard
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         body = {}
+        if not DaraCore.is_null(request.check_rule_config):
+            body['CheckRuleConfig'] = request.check_rule_config
         if not DaraCore.is_null(request.credential_ocr_picture_base_64):
             body['CredentialOcrPictureBase64'] = request.credential_ocr_picture_base_64
         if not DaraCore.is_null(request.credential_ocr_picture_url):
@@ -1238,11 +1246,19 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not DaraCore.is_null(request.fraud_check):
             query['FraudCheck'] = request.fraud_check
+        if not DaraCore.is_null(request.id_quality):
+            query['IdQuality'] = request.id_quality
         if not DaraCore.is_null(request.ocr_area):
             query['OcrArea'] = request.ocr_area
+        if not DaraCore.is_null(request.ocr_translation):
+            query['OcrTranslation'] = request.ocr_translation
+        if not DaraCore.is_null(request.ocr_value_standard):
+            query['OcrValueStandard'] = request.ocr_value_standard
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         body = {}
+        if not DaraCore.is_null(request.check_rule_config):
+            body['CheckRuleConfig'] = request.check_rule_config
         if not DaraCore.is_null(request.credential_ocr_picture_base_64):
             body['CredentialOcrPictureBase64'] = request.credential_ocr_picture_base_64
         if not DaraCore.is_null(request.credential_ocr_picture_url):
@@ -1292,15 +1308,23 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not DaraCore.is_null(request.fraud_check):
             query['FraudCheck'] = request.fraud_check
+        if not DaraCore.is_null(request.id_quality):
+            query['IdQuality'] = request.id_quality
         if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not DaraCore.is_null(request.ocr_area):
             query['OcrArea'] = request.ocr_area
+        if not DaraCore.is_null(request.ocr_translation):
+            query['OcrTranslation'] = request.ocr_translation
+        if not DaraCore.is_null(request.ocr_value_standard):
+            query['OcrValueStandard'] = request.ocr_value_standard
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.scene_code):
             query['SceneCode'] = request.scene_code
         body = {}
+        if not DaraCore.is_null(request.check_rule_config):
+            body['CheckRuleConfig'] = request.check_rule_config
         if not DaraCore.is_null(request.credential_ocr_picture_base_64):
             body['CredentialOcrPictureBase64'] = request.credential_ocr_picture_base_64
         if not DaraCore.is_null(request.credential_ocr_picture_url):
@@ -1336,15 +1360,23 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not DaraCore.is_null(request.fraud_check):
             query['FraudCheck'] = request.fraud_check
+        if not DaraCore.is_null(request.id_quality):
+            query['IdQuality'] = request.id_quality
         if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not DaraCore.is_null(request.ocr_area):
             query['OcrArea'] = request.ocr_area
+        if not DaraCore.is_null(request.ocr_translation):
+            query['OcrTranslation'] = request.ocr_translation
+        if not DaraCore.is_null(request.ocr_value_standard):
+            query['OcrValueStandard'] = request.ocr_value_standard
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.scene_code):
             query['SceneCode'] = request.scene_code
         body = {}
+        if not DaraCore.is_null(request.check_rule_config):
+            body['CheckRuleConfig'] = request.check_rule_config
         if not DaraCore.is_null(request.credential_ocr_picture_base_64):
             body['CredentialOcrPictureBase64'] = request.credential_ocr_picture_base_64
         if not DaraCore.is_null(request.credential_ocr_picture_url):
@@ -3198,6 +3230,8 @@ class Client(OpenApiClient):
             query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not DaraCore.is_null(request.id_spoof):
+            query['IdSpoof'] = request.id_spoof
         if not DaraCore.is_null(request.id_threshold):
             query['IdThreshold'] = request.id_threshold
         if not DaraCore.is_null(request.merchant_biz_id):
@@ -3254,6 +3288,8 @@ class Client(OpenApiClient):
             query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not DaraCore.is_null(request.id_spoof):
+            query['IdSpoof'] = request.id_spoof
         if not DaraCore.is_null(request.id_threshold):
             query['IdThreshold'] = request.id_threshold
         if not DaraCore.is_null(request.merchant_biz_id):
@@ -3324,6 +3360,8 @@ class Client(OpenApiClient):
             query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not DaraCore.is_null(request.id_spoof):
+            query['IdSpoof'] = request.id_spoof
         if not DaraCore.is_null(request.id_threshold):
             query['IdThreshold'] = request.id_threshold
         if not DaraCore.is_null(request.merchant_biz_id):
@@ -3384,6 +3422,8 @@ class Client(OpenApiClient):
             query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
+        if not DaraCore.is_null(request.id_spoof):
+            query['IdSpoof'] = request.id_spoof
         if not DaraCore.is_null(request.id_threshold):
             query['IdThreshold'] = request.id_threshold
         if not DaraCore.is_null(request.merchant_biz_id):

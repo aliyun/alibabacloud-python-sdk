@@ -72,16 +72,16 @@ class FaceCompareV2ResponseBodyResult(DaraModel):
         passed: str = None,
         transaction_id: str = None,
     ):
-        # The additional result information.
+        # The related result information.
         self.ext_face_info = ext_face_info
-        # The comparison score between the submitted face image and the reference face image during the verification process. Valid values: 0 to 100.
+        # The comparison score between the submitted face photo and the target reference face image during verification. Value range: 0 to 100.
         self.face_comparison_score = face_comparison_score
-        # Indicates whether the verification is passed. Valid values:
+        # Indicates whether the verification passed.
         # 
         # - Y: Passed.
         # - N: Not passed.
         self.passed = passed
-        # The unique ID of the verification request.
+        # The unique identifier of the verification request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -148,10 +148,15 @@ class FaceCompareV2ResponseBodyResultExtFaceInfo(DaraModel):
         self.occlusion_score = occlusion_score
         # The sharpness score.
         self.sharpness_score = sharpness_score
+        # The overall quality score of the target reference face image.
         self.target_face_quality_score = target_face_quality_score
+        # The illumination score of the target reference face image.
         self.target_illumination_score = target_illumination_score
+        # The key area occlusion score of the target reference face image.
         self.target_ka_occlusion_score = target_ka_occlusion_score
+        # The occlusion score of the target reference face image.
         self.target_occlusion_score = target_occlusion_score
+        # The sharpness score of the target reference face image.
         self.target_sharpness_score = target_sharpness_score
 
     def validate(self):

@@ -17,52 +17,56 @@ class EkycVerifyRequest(DaraModel):
         face_quality_check: str = None,
         id_ocr_picture_base_64: str = None,
         id_ocr_picture_url: str = None,
+        id_spoof: str = None,
         id_threshold: str = None,
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         product_code: str = None,
     ):
-        # Specifies whether to enable authoritative identity verification. This feature currently applies only to second-generation ID cards issued in the Chinese mainland.
+        # Specifies whether to enable authoritative identity verification. Currently, this applies only to second-generation ID cards in mainland China.
         self.authorize = authorize
         # Specifies whether cropping is allowed. By default, cropping is not allowed. Valid values:
         # 
-        # - T: Cropping is required.
-        # - F: Cropping is not required. This is the default value.
+        # - T: Detection is required.
+        # - F: Detection is required. (Default value: F)
         self.crop = crop
-        # The real name of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: the key document information (DocName and DocNo) or the document image (IdOcrPictureBase64 or IdOcrPictureURL).
-        # Note: The value must contain at least one Chinese character and cannot contain special characters, except for the middle dot (·) used in ethnic minority names.
+        # The real name of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, either the key document information (DocName, DocNo) or the document image (IdOcrPictureBase64/URL) must be provided.
+        # Note: Supports a combination of Chinese characters with a minimum length of one character. No special characters are allowed, except for the middle dot (·) used in ethnic minority names.
         self.doc_name = doc_name
-        # The document number of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: the key document information (DocName and DocNo) or the document image (IdOcrPictureBase64 or IdOcrPictureURL).
-        # Note: The value is a combination of letters and digits up to 18 characters in length.
+        # The document number of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, either the key document information (DocName, DocNo) or the document image (IdOcrPictureBase64/URL) must be provided.
+        # Note: Supports a combination of letters and numbers with a length of 18 characters.
         self.doc_no = doc_no
         # The document type.
         self.doc_type = doc_type
         # The Base64-encoded face image.
         # 
         # Note:
-        # - If you use this method to pass the face image, check the image size and do not pass an excessively large image.
+        # - If you choose this method to pass in the face image, check the photo size and do not pass in an excessively large photo.
         # - Specify either FacePictureBase64 or FacePictureUrl.
         self.face_picture_base_64 = face_picture_base_64
         # The URL of the face photo.
         self.face_picture_url = face_picture_url
+        # Specifies whether to enable face quality detection.
         self.face_quality_check = face_quality_check
         # The Base64-encoded document image.
         # Note:
-        # - If you use this method to pass the document image, check the image size and do not pass an excessively large image.
+        # - If you choose this method to pass in the document image, check the photo size and do not pass in an excessively large photo.
         # - Specify either IdOcrPictureBase64 or IdOcrPictureUrl.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
         # The URL of the front side of the document image.
         self.id_ocr_picture_url = id_ocr_picture_url
+        # Specifies whether to enable document anti-spoofing.
+        self.id_spoof = id_spoof
         # The custom OCR quality detection threshold mode. Valid values:
         # 
         # - 0: system default
         # - 1: strict mode
         # - 2: loose mode
-        # - 3 (default): quality detection disabled.
+        # - 3 (default): disable quality detection
         self.id_threshold = id_threshold
-        # The merchant-defined unique business identifier, used for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Ensure that the value is unique.
+        # A custom business unique identifier defined by the merchant, used for subsequent issue tracking and troubleshooting. Supports a combination of letters and numbers up to 32 characters in length. Ensure that this value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you mask the value of this field in advance, for example, by hashing the value.
+        # A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize this field value in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
         # The product code.
         self.product_code = product_code
@@ -104,6 +108,9 @@ class EkycVerifyRequest(DaraModel):
 
         if self.id_ocr_picture_url is not None:
             result['IdOcrPictureUrl'] = self.id_ocr_picture_url
+
+        if self.id_spoof is not None:
+            result['IdSpoof'] = self.id_spoof
 
         if self.id_threshold is not None:
             result['IdThreshold'] = self.id_threshold
@@ -150,6 +157,9 @@ class EkycVerifyRequest(DaraModel):
 
         if m.get('IdOcrPictureUrl') is not None:
             self.id_ocr_picture_url = m.get('IdOcrPictureUrl')
+
+        if m.get('IdSpoof') is not None:
+            self.id_spoof = m.get('IdSpoof')
 
         if m.get('IdThreshold') is not None:
             self.id_threshold = m.get('IdThreshold')

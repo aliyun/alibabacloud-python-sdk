@@ -19,7 +19,7 @@ class EkycVerifyResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result = result
 
     def validate(self):
@@ -71,11 +71,11 @@ class EkycVerifyResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The face verification result.
+        # The face verification result information.
         self.ext_face_info = ext_face_info
-        # The document recognition result. This field is returned only when the API response is successful.
+        # The document recognition result. Returned only when the API response is successful.
         self.ext_id_info = ext_id_info
-        # Indicates whether the verification is passed. Valid values: T (passed) and F (not passed).
+        # Indicates whether the verification is passed. T indicates passed, and F indicates not passed.
         self.passed = passed
         # The sub-result code.
         self.sub_code = sub_code

@@ -1,3 +1,16 @@
+2026-08-28 Version: 3.22.3
+- Update API CredentialRecognitionIntl: add request parameters CheckRuleConfig.
+- Update API CredentialRecognitionIntl: add request parameters IdQuality.
+- Update API CredentialRecognitionIntl: add request parameters OcrTranslation.
+- Update API CredentialRecognitionIntl: add request parameters OcrValueStandard.
+- Update API CredentialSubmitIntl: add request parameters CheckRuleConfig.
+- Update API CredentialSubmitIntl: add request parameters IdQuality.
+- Update API CredentialSubmitIntl: add request parameters OcrTranslation.
+- Update API CredentialSubmitIntl: add request parameters OcrValueStandard.
+- Update API EkycVerify: add request parameters IdSpoof.
+- Update API EkycVerifyV2: add request parameters IdSpoof.
+
+
 2026-08-10 Version: 3.22.2
 - Update API FaceDuplicationCheckIntl: add request parameters UpdateFaceIfUserExists.
 - Update API FaceVerifyIntl: add request parameters UpdateFaceIfUserExists.

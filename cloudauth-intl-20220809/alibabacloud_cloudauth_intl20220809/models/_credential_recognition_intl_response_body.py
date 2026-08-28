@@ -74,7 +74,7 @@ class CredentialRecognitionIntlResponseBodyResult(DaraModel):
         # The description of the authentication result.
         self.sub_code = sub_code
         # The extraction result. Valid values:
-        # - S: Succeeded.
+        # - S: Successful.
         # - F: Failed.
         self.success = success
 
