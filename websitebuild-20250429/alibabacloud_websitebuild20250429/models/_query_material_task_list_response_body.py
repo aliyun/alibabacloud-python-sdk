@@ -37,11 +37,11 @@ class QueryMaterialTaskListResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is currently not in use. Ignore this parameter.
+        # The dynamic message. Currently not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # The returned error parameters.
+        # The error parameters.
         self.error_args = error_args
-        # The error code. The ErrorCode parameter is not returned if the request is successful. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes section.
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
@@ -55,13 +55,13 @@ class QueryMaterialTaskListResponseBody(DaraModel):
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # The error code.
+        # The root error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # Indicates whether synchronous processing is used.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -190,7 +190,7 @@ class QueryMaterialTaskListResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request results.
+        # The query results.
         self.data = data
         # Indicates whether a next page exists.
         self.next_page = next_page
@@ -198,7 +198,7 @@ class QueryMaterialTaskListResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to the pagination limit, the server processes up to the 1000 most recent records for the current query. If the results exceed 1000 records, **ResultLimit** is set to **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is set to **false**.
+        # Apart from pagination limits, the server processes up to 1000 recent records per query. If the results exceed 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num

@@ -39,7 +39,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.app_name = app_name
         # The current page number.
         self.current_page_num = current_page_num
-        # The request result.
+        # The request result. When QueryMode is set to CONTENT_CREATION, only BizId, Name, Domain, and Version are guaranteed to be valid. Version returns V2.0 only for 2.0 sites and is empty for 1.0 sites.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -53,7 +53,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.max_results = max_results
         # Indicates whether a next page exists.
         self.next_page = next_page
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token for the next query. This parameter is empty if there is no next query.
         self.next_token = next_token
         # The page size.
         self.page_size = page_size
@@ -61,7 +61,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.pre_page = pre_page
         # Id of the request
         self.request_id = request_id
-        # In addition to the pagination limit, the server processes a maximum of 1000 recent records per query. If the results exceed 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of 1000 recent records for the current query. If the results exceed 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The error code.
         self.root_error_code = root_error_code

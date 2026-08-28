@@ -25,7 +25,7 @@ class UploadMaterialFileResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -35,7 +35,7 @@ class UploadMaterialFileResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The error parameters returned.
         self.error_args = error_args
         # The error code. The ErrorCode field is not returned if the request is successful. The ErrorCode field is returned if the request fails. For more information, see the error codes in this topic.
         self.error_code = error_code
@@ -45,9 +45,9 @@ class UploadMaterialFileResponseBody(DaraModel):
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # The root error code.
+        # The error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # Indicates whether the request was successful.
         self.success = success

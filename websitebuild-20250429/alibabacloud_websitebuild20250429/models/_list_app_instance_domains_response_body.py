@@ -24,20 +24,22 @@ class ListAppInstanceDomainsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The app name.
+        # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message. It is used to replace the `%s` variable in the **ErrMessage** response parameter.
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** that you specify is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters returned.
         self.error_args = error_args
-        # The maximum number of entries returned per query.
+        # The number of entries per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
@@ -171,9 +173,9 @@ class ListAppInstanceDomainsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Indicates whether the result set exceeds the server-side limit. The server processes up to 1000 records for the current query regardless of pagination settings. If the results exceed 1000 records, **ResultLimit** is **true** and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of 1000 recent records for the current query. If the result exceeds 1000 records, **ResultLimit** is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # The total number of records.
+        # The total number of entries.
         self.total_item_num = total_item_num
         # The total number of pages.
         self.total_page_num = total_page_num
@@ -262,9 +264,13 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         self,
         certificate: main_models.ListAppInstanceDomainsResponseBodyModuleNextCertificate = None,
         create_time: str = None,
+        deploy_type: str = None,
         dns_conflict: main_models.ListAppInstanceDomainsResponseBodyModuleNextDnsConflict = None,
         domain_name: str = None,
+        domain_type: str = None,
+        icp_filing_status: str = None,
         migration: main_models.ListAppInstanceDomainsResponseBodyModuleNextMigration = None,
+        offline: bool = None,
         overall_status: str = None,
         ownership: main_models.ListAppInstanceDomainsResponseBodyModuleNextOwnership = None,
         qualification: main_models.ListAppInstanceDomainsResponseBodyModuleNextQualification = None,
@@ -275,17 +281,30 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         self.certificate = certificate
         # The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
-        # The DNS conflict information. This field has a value when resolveStatus is DNS_CONFLICT.
+        # The network hosting type. Valid values:
+        # - CDN
+        # - INDEP_DEPLOY
+        # - ESA_SAAS
+        self.deploy_type = deploy_type
+        # The DNS conflict information. This parameter has a value only when resolveStatus is DNS_CONFLICT.
         self.dns_conflict = dns_conflict
         # The domain name.
         self.domain_name = domain_name
-        # The domain migration information. This field is returned when a region switch occurs.
+        # The domain management type. Valid values:
+        # - CUSTOM
+        # - PLATFORM_PREFIX
+        self.domain_type = domain_type
+        # The ICP filing status of the domain name. Valid values: FILED, NOT_FILED, and NOT_REQUIRED.
+        self.icp_filing_status = icp_filing_status
+        # The domain name migration information. This parameter is returned when a region switch occurs.
         self.migration = migration
+        # Indicates whether the website is currently offline. This status belongs to the application instance, and all domain names under the same instance share the same value.
+        self.offline = offline
         # The overall binding status.
         self.overall_status = overall_status
         # The domain ownership information.
         self.ownership = ownership
-        # The domain qualification information.
+        # The domain name qualification information.
         self.qualification = qualification
         # The domain resolution information.
         self.resolution = resolution
@@ -319,14 +338,26 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+
         if self.dns_conflict is not None:
             result['DnsConflict'] = self.dns_conflict.to_map()
 
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
 
+        if self.domain_type is not None:
+            result['DomainType'] = self.domain_type
+
+        if self.icp_filing_status is not None:
+            result['IcpFilingStatus'] = self.icp_filing_status
+
         if self.migration is not None:
             result['Migration'] = self.migration.to_map()
+
+        if self.offline is not None:
+            result['Offline'] = self.offline
 
         if self.overall_status is not None:
             result['OverallStatus'] = self.overall_status
@@ -354,6 +385,9 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+
         if m.get('DnsConflict') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleNextDnsConflict()
             self.dns_conflict = temp_model.from_map(m.get('DnsConflict'))
@@ -361,9 +395,18 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
 
+        if m.get('DomainType') is not None:
+            self.domain_type = m.get('DomainType')
+
+        if m.get('IcpFilingStatus') is not None:
+            self.icp_filing_status = m.get('IcpFilingStatus')
+
         if m.get('Migration') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleNextMigration()
             self.migration = temp_model.from_map(m.get('Migration'))
+
+        if m.get('Offline') is not None:
+            self.offline = m.get('Offline')
 
         if m.get('OverallStatus') is not None:
             self.overall_status = m.get('OverallStatus')
@@ -638,7 +681,9 @@ class ListAppInstanceDomainsResponseBodyModuleNextOwnership(DaraModel):
     ):
         # The account owner type. Valid values: CURRENT and OTHER.
         self.account = account
-        # The registrar type. Valid values: ALIYUN and OTHER.
+        # The registrar type. Valid values:
+        # - ALIYUN
+        # - OTHER
         self.provider = provider
         # The primary domain name.
         self.root_domain = root_domain
@@ -681,9 +726,12 @@ class ListAppInstanceDomainsResponseBodyModuleNextMigration(DaraModel):
         migration_status: str = None,
         previous_domain: Any = None,
     ):
-        # The migration status. Valid values: NOT_STARTED, IN_PROGRESS, and COMPLETED.
+        # The migration status. Valid values:
+        # - NOT_STARTED
+        # - IN_PROGRESS
+        # - COMPLETED
         self.migration_status = migration_status
-        # The complete domain status before migration. The structure is consistent with the current domain DTO, so the frontend can directly reuse the rendering logic.
+        # The complete state of the domain name before migration. The structure is consistent with the current domain name DTO, and the frontend can directly reuse the rendering logic.
         self.previous_domain = previous_domain
 
     def validate(self):
@@ -720,7 +768,7 @@ class ListAppInstanceDomainsResponseBodyModuleNextDnsConflict(DaraModel):
         message: str = None,
         records: List[main_models.ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords] = None,
     ):
-        # Indicates whether automatic override is supported. A value of true indicates the domain is under the current Alibaba Cloud account. A value of false indicates otherwise.
+        # Specifies whether automatic override is supported. The value is true for the current Alibaba Cloud account and false for other accounts.
         self.can_auto_resolve = can_auto_resolve
         # Indicates whether a conflict exists.
         self.has_conflict = has_conflict
@@ -829,13 +877,13 @@ class ListAppInstanceDomainsResponseBodyModuleNextCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # The certificate name.
+        # The name of the certificate.
         self.certificate_name = certificate_name
-        # The certificate status.
+        # The status of the certificate.
         self.certificate_status = certificate_status
-        # The certificate type.
+        # The type of the certificate.
         self.certificate_type = certificate_type
-        # The certificate expiration date.
+        # The expiration date of the certificate.
         self.end_time = end_time
 
     def validate(self):
@@ -885,7 +933,9 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         dns_conflict: main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflict = None,
         domain_name: str = None,
         domain_type: str = None,
+        icp_filing_status: str = None,
         migration: main_models.ListAppInstanceDomainsResponseBodyModuleDataMigration = None,
+        offline: bool = None,
         overall_status: str = None,
         ownership: main_models.ListAppInstanceDomainsResponseBodyModuleDataOwnership = None,
         qualification: main_models.ListAppInstanceDomainsResponseBodyModuleDataQualification = None,
@@ -898,19 +948,23 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         self.create_time = create_time
         # The network deployment type. Valid values: CDN, INDEP_DEPLOY, and ESA_SAAS.
         self.deploy_type = deploy_type
-        # The DNS conflict information. This field has a value when resolveStatus is DNS_CONFLICT.
+        # The DNS conflict information. This parameter has a value only when resolveStatus is DNS_CONFLICT.
         self.dns_conflict = dns_conflict
         # The domain name.
         self.domain_name = domain_name
         # The domain management type. Valid values: CUSTOM and PLATFORM_PREFIX.
         self.domain_type = domain_type
-        # The domain migration information. This field is returned when a region switch occurs.
+        # The ICP filing status of the domain name. Valid values: FILED, NOT_FILED, and NOT_REQUIRED.
+        self.icp_filing_status = icp_filing_status
+        # The domain name migration information. This parameter is returned when a region switch occurs.
         self.migration = migration
+        # Indicates whether the website is currently offline. This status belongs to the application instance, and all domain names under the same instance share the same value.
+        self.offline = offline
         # The overall binding status.
         self.overall_status = overall_status
         # The domain ownership information.
         self.ownership = ownership
-        # The domain qualification information.
+        # The domain name qualification information.
         self.qualification = qualification
         # The domain resolution information.
         self.resolution = resolution
@@ -956,8 +1010,14 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         if self.domain_type is not None:
             result['DomainType'] = self.domain_type
 
+        if self.icp_filing_status is not None:
+            result['IcpFilingStatus'] = self.icp_filing_status
+
         if self.migration is not None:
             result['Migration'] = self.migration.to_map()
+
+        if self.offline is not None:
+            result['Offline'] = self.offline
 
         if self.overall_status is not None:
             result['OverallStatus'] = self.overall_status
@@ -998,9 +1058,15 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         if m.get('DomainType') is not None:
             self.domain_type = m.get('DomainType')
 
+        if m.get('IcpFilingStatus') is not None:
+            self.icp_filing_status = m.get('IcpFilingStatus')
+
         if m.get('Migration') is not None:
             temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataMigration()
             self.migration = temp_model.from_map(m.get('Migration'))
+
+        if m.get('Offline') is not None:
+            self.offline = m.get('Offline')
 
         if m.get('OverallStatus') is not None:
             self.overall_status = m.get('OverallStatus')
@@ -1275,7 +1341,9 @@ class ListAppInstanceDomainsResponseBodyModuleDataOwnership(DaraModel):
     ):
         # The account owner type. Valid values: CURRENT and OTHER.
         self.account = account
-        # The registrar type. Valid values: ALIYUN and OTHER.
+        # The registrar type. Valid values:
+        # - ALIYUN
+        # - OTHER
         self.provider = provider
         # The root domain name that corresponds to the domain name.
         self.root_domain = root_domain
@@ -1318,9 +1386,12 @@ class ListAppInstanceDomainsResponseBodyModuleDataMigration(DaraModel):
         migration_status: str = None,
         previous_domain: Any = None,
     ):
-        # The migration status. Valid values: NOT_STARTED, IN_PROGRESS, and COMPLETED.
+        # The migration status. Valid values:
+        # - NOT_STARTED
+        # - IN_PROGRESS
+        # - COMPLETED
         self.migration_status = migration_status
-        # The complete domain status before migration. The structure is consistent with the current domain DTO, so the frontend can directly reuse the rendering logic.
+        # The complete state of the domain name before migration. The structure is consistent with the current domain name DTO, and the frontend can directly reuse the rendering logic.
         self.previous_domain = previous_domain
 
     def validate(self):
@@ -1357,7 +1428,7 @@ class ListAppInstanceDomainsResponseBodyModuleDataDnsConflict(DaraModel):
         message: str = None,
         records: List[main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords] = None,
     ):
-        # Indicates whether automatic override is supported. A value of true indicates the domain is under the current Alibaba Cloud account. A value of false indicates otherwise.
+        # Specifies whether automatic override is supported. The value is true for the current Alibaba Cloud account and false for other accounts.
         self.can_auto_resolve = can_auto_resolve
         # Indicates whether a conflict exists.
         self.has_conflict = has_conflict
@@ -1474,13 +1545,13 @@ class ListAppInstanceDomainsResponseBodyModuleDataCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # The certificate name.
+        # The name of the certificate.
         self.certificate_name = certificate_name
-        # The certificate status.
+        # The status of the certificate.
         self.certificate_status = certificate_status
-        # The certificate type.
+        # The type of the certificate.
         self.certificate_type = certificate_type
-        # The certificate expiration date.
+        # The expiration date of the certificate.
         self.end_time = end_time
 
     def validate(self):

@@ -16,24 +16,29 @@ class ListAppInstanceDomainsRequest(DaraModel):
         order_type: str = None,
         page_num: int = None,
         page_size: int = None,
+        status_query_mode: str = None,
     ):
         # The business ID.
         self.biz_id = biz_id
         # The domain name keyword. This parameter is optional and used for fuzzy match.
         self.domain_keyword = domain_keyword
         # The domain management type. Valid values:
+        # 
         # - CUSTOM
         # - PLATFORM_PREFIX
         # 
         # Default value: CUSTOM.
         self.domain_type = domain_type
-        # The maximum number of entries returned per query.
+        # The number of entries per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The token for the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
-        # The field used for sorting.
+        # The field by which to sort the results.
         self.order_column = order_column
         # The sort type. Valid values:
+        # 
         # - ASC
         # - DESC
         self.order_type = order_type
@@ -41,6 +46,13 @@ class ListAppInstanceDomainsRequest(DaraModel):
         self.page_num = page_num
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The domain status query mode. Valid values:
+        # 
+        # - BASIC: returns only the persisted status.
+        # - REALTIME: refreshes the external service status.
+        # 
+        # Default value: REALTIME.
+        self.status_query_mode = status_query_mode
 
     def validate(self):
         pass
@@ -77,6 +89,9 @@ class ListAppInstanceDomainsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.status_query_mode is not None:
+            result['StatusQueryMode'] = self.status_query_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -107,6 +122,9 @@ class ListAppInstanceDomainsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('StatusQueryMode') is not None:
+            self.status_query_mode = m.get('StatusQueryMode')
 
         return self
 

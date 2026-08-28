@@ -39,7 +39,7 @@ class SubmitMaterialTaskResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # The error code. The ErrorCode field is not returned if the request is successful. The ErrorCode field is returned if the request fails. For more information, see the error codes in this topic.
+        # The error code. The ErrorCode field is not returned if the request is successful. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
@@ -159,8 +159,11 @@ class SubmitMaterialTaskResponseBody(DaraModel):
 class SubmitMaterialTaskResponseBodyModule(DaraModel):
     def __init__(
         self,
+        biz_group_id: str = None,
         task_id: str = None,
     ):
+        # The business group ID.
+        self.biz_group_id = biz_group_id
         # The task ID.
         self.task_id = task_id
 
@@ -172,6 +175,9 @@ class SubmitMaterialTaskResponseBodyModule(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_group_id is not None:
+            result['BizGroupId'] = self.biz_group_id
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -179,6 +185,9 @@ class SubmitMaterialTaskResponseBodyModule(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizGroupId') is not None:
+            self.biz_group_id = m.get('BizGroupId')
+
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 

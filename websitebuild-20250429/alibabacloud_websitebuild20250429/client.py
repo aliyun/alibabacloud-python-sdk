@@ -2005,6 +2005,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_app_token_service_with_options_async(request, runtime)
 
+    def create_distribution_with_options(
+        self,
+        tmp_req: main_models.CreateDistributionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDistributionResponse:
+        tmp_req.validate()
+        request = main_models.CreateDistributionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.channels):
+            request.channels_shrink = Utils.array_to_string_with_specified_style(tmp_req.channels, 'Channels', 'json')
+        query = {}
+        if not DaraCore.is_null(request.article_id):
+            query['ArticleId'] = request.article_id
+        if not DaraCore.is_null(request.channels_shrink):
+            query['Channels'] = request.channels_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDistribution',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDistributionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_distribution_with_options_async(
+        self,
+        tmp_req: main_models.CreateDistributionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDistributionResponse:
+        tmp_req.validate()
+        request = main_models.CreateDistributionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.channels):
+            request.channels_shrink = Utils.array_to_string_with_specified_style(tmp_req.channels, 'Channels', 'json')
+        query = {}
+        if not DaraCore.is_null(request.article_id):
+            query['ArticleId'] = request.article_id
+        if not DaraCore.is_null(request.channels_shrink):
+            query['Channels'] = request.channels_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDistribution',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDistributionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_distribution(
+        self,
+        request: main_models.CreateDistributionRequest,
+    ) -> main_models.CreateDistributionResponse:
+        runtime = RuntimeOptions()
+        return self.create_distribution_with_options(request, runtime)
+
+    async def create_distribution_async(
+        self,
+        request: main_models.CreateDistributionRequest,
+    ) -> main_models.CreateDistributionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_distribution_with_options_async(request, runtime)
+
     def create_inspiration_with_options(
         self,
         request: main_models.CreateInspirationRequest,
@@ -2920,6 +3002,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAppPluginResponse:
         runtime = RuntimeOptions()
         return await self.delete_app_plugin_with_options_async(request, runtime)
+
+    def delete_app_scene_recipient_with_options(
+        self,
+        request: main_models.DeleteAppSceneRecipientRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppSceneRecipientResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.recipient_id):
+            query['RecipientId'] = request.recipient_id
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppSceneRecipient',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppSceneRecipientResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_scene_recipient_with_options_async(
+        self,
+        request: main_models.DeleteAppSceneRecipientRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppSceneRecipientResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.recipient_id):
+            query['RecipientId'] = request.recipient_id
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppSceneRecipient',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppSceneRecipientResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_scene_recipient(
+        self,
+        request: main_models.DeleteAppSceneRecipientRequest,
+    ) -> main_models.DeleteAppSceneRecipientResponse:
+        runtime = RuntimeOptions()
+        return self.delete_app_scene_recipient_with_options(request, runtime)
+
+    async def delete_app_scene_recipient_async(
+        self,
+        request: main_models.DeleteAppSceneRecipientRequest,
+    ) -> main_models.DeleteAppSceneRecipientResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_app_scene_recipient_with_options_async(request, runtime)
 
     def delete_app_supabase_secrets_with_options(
         self,
@@ -7482,6 +7642,8 @@ class Client(OpenApiClient):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status_query_mode):
+            query['StatusQueryMode'] = request.status_query_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7526,6 +7688,8 @@ class Client(OpenApiClient):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status_query_mode):
+            query['StatusQueryMode'] = request.status_query_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7596,6 +7760,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
+        if not DaraCore.is_null(request.query_mode):
+            query['QueryMode'] = request.query_mode
         if not DaraCore.is_null(request.status_list_shrink):
             query['StatusList'] = request.status_list_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -7654,6 +7820,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
+        if not DaraCore.is_null(request.query_mode):
+            query['QueryMode'] = request.query_mode
         if not DaraCore.is_null(request.status_list_shrink):
             query['StatusList'] = request.status_list_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -11260,6 +11428,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.task_type_list):
             request.task_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_type_list, 'TaskTypeList', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_group_id):
+            query['BizGroupId'] = request.biz_group_id
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -11308,6 +11478,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.task_type_list):
             request.task_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_type_list, 'TaskTypeList', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_group_id):
+            query['BizGroupId'] = request.biz_group_id
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -12463,6 +12635,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.renew_app_sandbox_with_options_async(request, runtime)
 
+    def report_channel_publish_result_with_options(
+        self,
+        request: main_models.ReportChannelPublishResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReportChannelPublishResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not DaraCore.is_null(request.external_id):
+            query['ExternalId'] = request.external_id
+        if not DaraCore.is_null(request.external_url):
+            query['ExternalUrl'] = request.external_url
+        if not DaraCore.is_null(request.fail_reason):
+            query['FailReason'] = request.fail_reason
+        if not DaraCore.is_null(request.success):
+            query['Success'] = request.success
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReportChannelPublishResult',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReportChannelPublishResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def report_channel_publish_result_with_options_async(
+        self,
+        request: main_models.ReportChannelPublishResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReportChannelPublishResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not DaraCore.is_null(request.external_id):
+            query['ExternalId'] = request.external_id
+        if not DaraCore.is_null(request.external_url):
+            query['ExternalUrl'] = request.external_url
+        if not DaraCore.is_null(request.fail_reason):
+            query['FailReason'] = request.fail_reason
+        if not DaraCore.is_null(request.success):
+            query['Success'] = request.success
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReportChannelPublishResult',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReportChannelPublishResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def report_channel_publish_result(
+        self,
+        request: main_models.ReportChannelPublishResultRequest,
+    ) -> main_models.ReportChannelPublishResultResponse:
+        runtime = RuntimeOptions()
+        return self.report_channel_publish_result_with_options(request, runtime)
+
+    async def report_channel_publish_result_async(
+        self,
+        request: main_models.ReportChannelPublishResultRequest,
+    ) -> main_models.ReportChannelPublishResultResponse:
+        runtime = RuntimeOptions()
+        return await self.report_channel_publish_result_with_options_async(request, runtime)
+
+    def retry_channel_publish_with_options(
+        self,
+        request: main_models.RetryChannelPublishRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryChannelPublishResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryChannelPublish',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryChannelPublishResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_channel_publish_with_options_async(
+        self,
+        request: main_models.RetryChannelPublishRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryChannelPublishResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryChannelPublish',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryChannelPublishResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_channel_publish(
+        self,
+        request: main_models.RetryChannelPublishRequest,
+    ) -> main_models.RetryChannelPublishResponse:
+        runtime = RuntimeOptions()
+        return self.retry_channel_publish_with_options(request, runtime)
+
+    async def retry_channel_publish_async(
+        self,
+        request: main_models.RetryChannelPublishRequest,
+    ) -> main_models.RetryChannelPublishResponse:
+        runtime = RuntimeOptions()
+        return await self.retry_channel_publish_with_options_async(request, runtime)
+
     def revoke_rbac_user_role_with_options(
         self,
         request: main_models.RevokeRbacUserRoleRequest,
@@ -12536,6 +12864,80 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeRbacUserRoleResponse:
         runtime = RuntimeOptions()
         return await self.revoke_rbac_user_role_with_options_async(request, runtime)
+
+    def rewrite_channel_title_with_options(
+        self,
+        request: main_models.RewriteChannelTitleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RewriteChannelTitleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not DaraCore.is_null(request.user_requirement):
+            query['UserRequirement'] = request.user_requirement
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RewriteChannelTitle',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RewriteChannelTitleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rewrite_channel_title_with_options_async(
+        self,
+        request: main_models.RewriteChannelTitleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RewriteChannelTitleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        if not DaraCore.is_null(request.user_requirement):
+            query['UserRequirement'] = request.user_requirement
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RewriteChannelTitle',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RewriteChannelTitleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rewrite_channel_title(
+        self,
+        request: main_models.RewriteChannelTitleRequest,
+    ) -> main_models.RewriteChannelTitleResponse:
+        runtime = RuntimeOptions()
+        return self.rewrite_channel_title_with_options(request, runtime)
+
+    async def rewrite_channel_title_async(
+        self,
+        request: main_models.RewriteChannelTitleRequest,
+    ) -> main_models.RewriteChannelTitleResponse:
+        runtime = RuntimeOptions()
+        return await self.rewrite_channel_title_with_options_async(request, runtime)
 
     def rollback_app_code_snapshot_with_options(
         self,
@@ -12918,6 +13320,96 @@ class Client(OpenApiClient):
     ) -> main_models.SaveAppSupabaseSecretsResponse:
         runtime = RuntimeOptions()
         return await self.save_app_supabase_secrets_with_options_async(request, runtime)
+
+    def save_channel_draft_with_options(
+        self,
+        tmp_req: main_models.SaveChannelDraftRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveChannelDraftResponse:
+        tmp_req.validate()
+        request = main_models.SaveChannelDraftShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cover_images):
+            request.cover_images_shrink = Utils.array_to_string_with_specified_style(tmp_req.cover_images, 'CoverImages', 'json')
+        query = {}
+        if not DaraCore.is_null(request.adapted_content):
+            query['AdaptedContent'] = request.adapted_content
+        if not DaraCore.is_null(request.adapted_title):
+            query['AdaptedTitle'] = request.adapted_title
+        if not DaraCore.is_null(request.cover_images_shrink):
+            query['CoverImages'] = request.cover_images_shrink
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveChannelDraft',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveChannelDraftResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_channel_draft_with_options_async(
+        self,
+        tmp_req: main_models.SaveChannelDraftRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveChannelDraftResponse:
+        tmp_req.validate()
+        request = main_models.SaveChannelDraftShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cover_images):
+            request.cover_images_shrink = Utils.array_to_string_with_specified_style(tmp_req.cover_images, 'CoverImages', 'json')
+        query = {}
+        if not DaraCore.is_null(request.adapted_content):
+            query['AdaptedContent'] = request.adapted_content
+        if not DaraCore.is_null(request.adapted_title):
+            query['AdaptedTitle'] = request.adapted_title
+        if not DaraCore.is_null(request.cover_images_shrink):
+            query['CoverImages'] = request.cover_images_shrink
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveChannelDraft',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveChannelDraftResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_channel_draft(
+        self,
+        request: main_models.SaveChannelDraftRequest,
+    ) -> main_models.SaveChannelDraftResponse:
+        runtime = RuntimeOptions()
+        return self.save_channel_draft_with_options(request, runtime)
+
+    async def save_channel_draft_async(
+        self,
+        request: main_models.SaveChannelDraftRequest,
+    ) -> main_models.SaveChannelDraftResponse:
+        runtime = RuntimeOptions()
+        return await self.save_channel_draft_with_options_async(request, runtime)
 
     def search_image_with_options(
         self,
@@ -13310,6 +13802,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitMaterialTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_group_id):
+            query['BizGroupId'] = request.biz_group_id
         if not DaraCore.is_null(request.task_param):
             query['TaskParam'] = request.task_param
         if not DaraCore.is_null(request.task_type):
@@ -13340,6 +13834,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitMaterialTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_group_id):
+            query['BizGroupId'] = request.biz_group_id
         if not DaraCore.is_null(request.task_param):
             query['TaskParam'] = request.task_param
         if not DaraCore.is_null(request.task_type):
@@ -13548,6 +14044,76 @@ class Client(OpenApiClient):
     ) -> main_models.SyncAppInstanceForPartnerResponse:
         runtime = RuntimeOptions()
         return await self.sync_app_instance_for_partner_with_options_async(request, runtime)
+
+    def translate_channel_draft_with_options(
+        self,
+        request: main_models.TranslateChannelDraftRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TranslateChannelDraftResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TranslateChannelDraft',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TranslateChannelDraftResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def translate_channel_draft_with_options_async(
+        self,
+        request: main_models.TranslateChannelDraftRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TranslateChannelDraftResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_id):
+            query['DraftId'] = request.draft_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TranslateChannelDraft',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TranslateChannelDraftResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def translate_channel_draft(
+        self,
+        request: main_models.TranslateChannelDraftRequest,
+    ) -> main_models.TranslateChannelDraftResponse:
+        runtime = RuntimeOptions()
+        return self.translate_channel_draft_with_options(request, runtime)
+
+    async def translate_channel_draft_async(
+        self,
+        request: main_models.TranslateChannelDraftRequest,
+    ) -> main_models.TranslateChannelDraftResponse:
+        runtime = RuntimeOptions()
+        return await self.translate_channel_draft_with_options_async(request, runtime)
 
     def unbind_app_domain_with_options(
         self,
@@ -14854,6 +15420,8 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.oss_key):
+            query['OssKey'] = request.oss_key
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14888,6 +15456,8 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.oss_key):
+            query['OssKey'] = request.oss_key
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

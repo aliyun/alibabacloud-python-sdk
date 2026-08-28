@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class QueryMaterialTaskListRequest(DaraModel):
     def __init__(
         self,
+        biz_group_id: str = None,
         max_results: int = None,
         next_token: str = None,
         order_column: str = None,
@@ -18,23 +19,25 @@ class QueryMaterialTaskListRequest(DaraModel):
         status_list: List[str] = None,
         task_type_list: List[str] = None,
     ):
+        # The business group ID.
+        self.biz_group_id = biz_group_id
         # The number of entries per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # Sort field
+        # The field used for sorting.
         self.order_column = order_column
-        # Sort type ASC|DESC
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
-        # Page number. Default value: 1
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # Page size. Default value: 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Task status list
+        # The list of task statuses.
         self.status_list = status_list
-        # Task type list
+        # The list of task types.
         self.task_type_list = task_type_list
 
     def validate(self):
@@ -45,6 +48,9 @@ class QueryMaterialTaskListRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_group_id is not None:
+            result['BizGroupId'] = self.biz_group_id
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -73,6 +79,9 @@ class QueryMaterialTaskListRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizGroupId') is not None:
+            self.biz_group_id = m.get('BizGroupId')
+
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
 

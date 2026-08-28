@@ -4,10 +4,9 @@ from __future__ import annotations
 
 from typing import List, Any
 
-from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
-class GetAppInstanceResponseBody(DaraModel):
+class DeleteAppSceneRecipientResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
@@ -16,7 +15,7 @@ class GetAppInstanceResponseBody(DaraModel):
         dynamic_code: str = None,
         dynamic_message: str = None,
         error_args: List[Any] = None,
-        module: main_models.AppInstanceAggregate = None,
+        module: bool = None,
         request_id: str = None,
         root_error_code: str = None,
         root_error_msg: str = None,
@@ -30,12 +29,11 @@ class GetAppInstanceResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic message. Currently not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
-        # The response data.
+        # Indicates whether the move was successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
@@ -43,12 +41,11 @@ class GetAppInstanceResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
-        if self.module:
-            self.module.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -74,7 +71,7 @@ class GetAppInstanceResponseBody(DaraModel):
             result['ErrorArgs'] = self.error_args
 
         if self.module is not None:
-            result['Module'] = self.module.to_map()
+            result['Module'] = self.module
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -111,8 +108,7 @@ class GetAppInstanceResponseBody(DaraModel):
             self.error_args = m.get('ErrorArgs')
 
         if m.get('Module') is not None:
-            temp_model = main_models.AppInstanceAggregate()
-            self.module = temp_model.from_map(m.get('Module'))
+            self.module = m.get('Module')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

@@ -39,7 +39,7 @@ class QueryMaterialTaskDetailResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         # The error parameters returned.
         self.error_args = error_args
-        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg

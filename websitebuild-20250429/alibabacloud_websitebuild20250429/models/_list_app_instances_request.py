@@ -21,14 +21,15 @@ class ListAppInstancesRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
         query: str = None,
+        query_mode: str = None,
         status_list: List[str] = None,
     ):
         # The business ID.
         self.biz_id = biz_id
         self.biz_ids = biz_ids
-        # The start of the expiration time range.
+        # The start time of the expiration range.
         self.end_time_begin = end_time_begin
-        # The end of the expiration time range.
+        # The end time of the expiration range.
         self.end_time_end = end_time_end
         # The extended information.
         self.extend = extend
@@ -36,7 +37,7 @@ class ListAppInstancesRequest(DaraModel):
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token for the next query. This parameter is empty if there is no next query.
         self.next_token = next_token
         # The field used for sorting.
         self.order_column = order_column
@@ -48,6 +49,8 @@ class ListAppInstancesRequest(DaraModel):
         self.page_size = page_size
         # The query parameter.
         self.query = query
+        # The query mode. CONTENT_CREATION indicates a lightweight query for the content creation site selector, which only queries published sites and does not load aggregated information such as Profile, services, or AI Staff.
+        self.query_mode = query_mode
         # The status range.
         self.status_list = status_list
 
@@ -95,6 +98,9 @@ class ListAppInstancesRequest(DaraModel):
         if self.query is not None:
             result['Query'] = self.query
 
+        if self.query_mode is not None:
+            result['QueryMode'] = self.query_mode
+
         if self.status_list is not None:
             result['StatusList'] = self.status_list
 
@@ -137,6 +143,9 @@ class ListAppInstancesRequest(DaraModel):
 
         if m.get('Query') is not None:
             self.query = m.get('Query')
+
+        if m.get('QueryMode') is not None:
+            self.query_mode = m.get('QueryMode')
 
         if m.get('StatusList') is not None:
             self.status_list = m.get('StatusList')

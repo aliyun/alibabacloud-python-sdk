@@ -1,3 +1,25 @@
+2026-08-28 Version: 2.38.0
+- Support API CreateDistribution.
+- Support API DeleteAppSceneRecipient.
+- Support API ReportChannelPublishResult.
+- Support API RetryChannelPublish.
+- Support API RewriteChannelTitle.
+- Support API SaveChannelDraft.
+- Support API TranslateChannelDraft.
+- Update API ListAppInstanceDomains: add request parameters StatusQueryMode.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.IcpFilingStatus.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.Offline.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.DeployType.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.DomainType.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.IcpFilingStatus.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Offline.
+- Update API ListAppInstances: add request parameters QueryMode.
+- Update API QueryMaterialTaskList: add request parameters BizGroupId.
+- Update API SubmitMaterialTask: add request parameters BizGroupId.
+- Update API SubmitMaterialTask: add response parameters Body.Module.BizGroupId.
+- Update API UploadMaterialFile: add request parameters OssKey.
+
+
 2026-08-26 Version: 2.37.3
 - Update API ListAppTemplates: add request parameters OrderColumn.
 - Update API ListAppTemplates: add request parameters OrderType.

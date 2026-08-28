@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class AppMaterialTask(DaraModel):
     def __init__(
         self,
+        biz_group_id: str = None,
         complete_time: str = None,
         complete_time_format: str = None,
         fail_reason: str = None,
@@ -20,6 +21,8 @@ class AppMaterialTask(DaraModel):
         task_param: str = None,
         task_type: str = None,
     ):
+        # The business group ID.
+        self.biz_group_id = biz_group_id
         # The task completion time.
         self.complete_time = complete_time
         # The display format of the completion time.
@@ -36,7 +39,7 @@ class AppMaterialTask(DaraModel):
         self.submit_time = submit_time
         # The task ID.
         self.task_id = task_id
-        # The task parameter.
+        # The task parameters.
         self.task_param = task_param
         # The task type.
         self.task_type = task_type
@@ -49,6 +52,9 @@ class AppMaterialTask(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_group_id is not None:
+            result['BizGroupId'] = self.biz_group_id
+
         if self.complete_time is not None:
             result['CompleteTime'] = self.complete_time
 
@@ -83,6 +89,9 @@ class AppMaterialTask(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizGroupId') is not None:
+            self.biz_group_id = m.get('BizGroupId')
+
         if m.get('CompleteTime') is not None:
             self.complete_time = m.get('CompleteTime')
 

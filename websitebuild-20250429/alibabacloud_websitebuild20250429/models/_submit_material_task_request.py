@@ -7,14 +7,17 @@ from darabonba.model import DaraModel
 class SubmitMaterialTaskRequest(DaraModel):
     def __init__(
         self,
+        biz_group_id: str = None,
         task_param: str = None,
         task_type: str = None,
     ):
-        # The parameters of the task.
+        # The business group ID.
+        self.biz_group_id = biz_group_id
+        # The task parameters.
         # 
         # This parameter is required.
         self.task_param = task_param
-        # The type of the task.
+        # The task type.
         # 
         # This parameter is required.
         self.task_type = task_type
@@ -27,6 +30,9 @@ class SubmitMaterialTaskRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_group_id is not None:
+            result['BizGroupId'] = self.biz_group_id
+
         if self.task_param is not None:
             result['TaskParam'] = self.task_param
 
@@ -37,6 +43,9 @@ class SubmitMaterialTaskRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizGroupId') is not None:
+            self.biz_group_id = m.get('BizGroupId')
+
         if m.get('TaskParam') is not None:
             self.task_param = m.get('TaskParam')
 

@@ -11,6 +11,7 @@ class UploadMaterialFileRequest(DaraModel):
         directory_id: str = None,
         file_url: str = None,
         name: str = None,
+        oss_key: str = None,
     ):
         # The business ID of the application instance.
         # 
@@ -20,12 +21,12 @@ class UploadMaterialFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # The path of the file.
-        # 
-        # This parameter is required.
+        # The file path.
         self.file_url = file_url
-        # The name of the file.
+        # The file name.
         self.name = name
+        # The OSS object key.
+        self.oss_key = oss_key
 
     def validate(self):
         pass
@@ -47,6 +48,9 @@ class UploadMaterialFileRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+
         return result
 
     def from_map(self, m: dict = None):
@@ -62,6 +66,9 @@ class UploadMaterialFileRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
 
         return self
 

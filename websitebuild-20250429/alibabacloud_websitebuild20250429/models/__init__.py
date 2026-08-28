@@ -91,6 +91,10 @@ from ._create_app_plugin_response import CreateAppPluginResponse
 from ._create_app_token_service_request import CreateAppTokenServiceRequest
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBody
 from ._create_app_token_service_response import CreateAppTokenServiceResponse
+from ._create_distribution_request import CreateDistributionRequest
+from ._create_distribution_shrink_request import CreateDistributionShrinkRequest
+from ._create_distribution_response_body import CreateDistributionResponseBody
+from ._create_distribution_response import CreateDistributionResponse
 from ._create_inspiration_request import CreateInspirationRequest
 from ._create_inspiration_response_body import CreateInspirationResponseBody
 from ._create_inspiration_response import CreateInspirationResponse
@@ -127,6 +131,9 @@ from ._delete_app_notification_scene_response import DeleteAppNotificationSceneR
 from ._delete_app_plugin_request import DeleteAppPluginRequest
 from ._delete_app_plugin_response_body import DeleteAppPluginResponseBody
 from ._delete_app_plugin_response import DeleteAppPluginResponse
+from ._delete_app_scene_recipient_request import DeleteAppSceneRecipientRequest
+from ._delete_app_scene_recipient_response_body import DeleteAppSceneRecipientResponseBody
+from ._delete_app_scene_recipient_response import DeleteAppSceneRecipientResponse
 from ._delete_app_supabase_secrets_request import DeleteAppSupabaseSecretsRequest
 from ._delete_app_supabase_secrets_response_body import DeleteAppSupabaseSecretsResponseBody
 from ._delete_app_supabase_secrets_response import DeleteAppSupabaseSecretsResponse
@@ -480,9 +487,18 @@ from ._renew_app_instance_response import RenewAppInstanceResponse
 from ._renew_app_sandbox_request import RenewAppSandboxRequest
 from ._renew_app_sandbox_response_body import RenewAppSandboxResponseBody
 from ._renew_app_sandbox_response import RenewAppSandboxResponse
+from ._report_channel_publish_result_request import ReportChannelPublishResultRequest
+from ._report_channel_publish_result_response_body import ReportChannelPublishResultResponseBody
+from ._report_channel_publish_result_response import ReportChannelPublishResultResponse
+from ._retry_channel_publish_request import RetryChannelPublishRequest
+from ._retry_channel_publish_response_body import RetryChannelPublishResponseBody
+from ._retry_channel_publish_response import RetryChannelPublishResponse
 from ._revoke_rbac_user_role_request import RevokeRbacUserRoleRequest
 from ._revoke_rbac_user_role_response_body import RevokeRbacUserRoleResponseBody
 from ._revoke_rbac_user_role_response import RevokeRbacUserRoleResponse
+from ._rewrite_channel_title_request import RewriteChannelTitleRequest
+from ._rewrite_channel_title_response_body import RewriteChannelTitleResponseBody
+from ._rewrite_channel_title_response import RewriteChannelTitleResponse
 from ._rollback_app_code_snapshot_request import RollbackAppCodeSnapshotRequest
 from ._rollback_app_code_snapshot_response_body import RollbackAppCodeSnapshotResponseBody
 from ._rollback_app_code_snapshot_response import RollbackAppCodeSnapshotResponse
@@ -498,6 +514,10 @@ from ._save_app_requirement_response import SaveAppRequirementResponse
 from ._save_app_supabase_secrets_request import SaveAppSupabaseSecretsRequest
 from ._save_app_supabase_secrets_response_body import SaveAppSupabaseSecretsResponseBody
 from ._save_app_supabase_secrets_response import SaveAppSupabaseSecretsResponse
+from ._save_channel_draft_request import SaveChannelDraftRequest
+from ._save_channel_draft_shrink_request import SaveChannelDraftShrinkRequest
+from ._save_channel_draft_response_body import SaveChannelDraftResponseBody
+from ._save_channel_draft_response import SaveChannelDraftResponse
 from ._search_image_request import SearchImageRequest
 from ._search_image_shrink_request import SearchImageShrinkRequest
 from ._search_image_response_body import SearchImageResponseBody
@@ -521,6 +541,9 @@ from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerReq
 from ._sync_app_instance_for_partner_shrink_request import SyncAppInstanceForPartnerShrinkRequest
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBody
 from ._sync_app_instance_for_partner_response import SyncAppInstanceForPartnerResponse
+from ._translate_channel_draft_request import TranslateChannelDraftRequest
+from ._translate_channel_draft_response_body import TranslateChannelDraftResponseBody
+from ._translate_channel_draft_response import TranslateChannelDraftResponse
 from ._unbind_app_domain_request import UnbindAppDomainRequest
 from ._unbind_app_domain_response_body import UnbindAppDomainResponseBody
 from ._unbind_app_domain_response import UnbindAppDomainResponse
@@ -610,6 +633,9 @@ from ._create_app_llm_api_key_for_partner_response_body import CreateAppLlmApiKe
 from ._create_app_notification_scene_response_body import CreateAppNotificationSceneResponseBodyModule
 from ._create_app_plugin_response_body import CreateAppPluginResponseBodyModule
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBodyModule
+from ._create_distribution_response_body import CreateDistributionResponseBodyModuleDraftsCoverImages
+from ._create_distribution_response_body import CreateDistributionResponseBodyModuleDrafts
+from ._create_distribution_response_body import CreateDistributionResponseBodyModule
 from ._create_inspiration_response_body import CreateInspirationResponseBodyModule
 from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBodyModule
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
@@ -783,9 +809,13 @@ from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicket
 from ._refund_app_instance_for_partner_response_body import RefundAppInstanceForPartnerResponseBodyModule
 from ._renew_app_instance_response_body import RenewAppInstanceResponseBodyModule
 from ._renew_app_sandbox_response_body import RenewAppSandboxResponseBodyModule
+from ._report_channel_publish_result_response_body import ReportChannelPublishResultResponseBodyModule
+from ._rewrite_channel_title_response_body import RewriteChannelTitleResponseBodyModuleCoverImages
+from ._rewrite_channel_title_response_body import RewriteChannelTitleResponseBodyModule
 from ._rollback_app_code_snapshot_response_body import RollbackAppCodeSnapshotResponseBodyModule
 from ._rollback_app_instance_publish_response_body import RollbackAppInstancePublishResponseBodyModule
 from ._rollback_app_plugin_version_response_body import RollbackAppPluginVersionResponseBodyModule
+from ._save_channel_draft_request import SaveChannelDraftRequestCoverImages
 from ._search_image_response_body import SearchImageResponseBodyImageResponseImageList
 from ._search_image_response_body import SearchImageResponseBodyImageResponse
 from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBodyModule
@@ -795,6 +825,8 @@ from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerReq
 from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequestAppInstance
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyDataAppInstance
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyData
+from ._translate_channel_draft_response_body import TranslateChannelDraftResponseBodyModuleCoverImages
+from ._translate_channel_draft_response_body import TranslateChannelDraftResponseBodyModule
 from ._unbind_app_domain_response_body import UnbindAppDomainResponseBodyModule
 from ._uninstall_app_plugin_response_body import UninstallAppPluginResponseBodyModule
 from ._update_app_chat_message_response_body import UpdateAppChatMessageResponseBodyModule
@@ -895,6 +927,10 @@ __all__ = [
     CreateAppTokenServiceRequest,
     CreateAppTokenServiceResponseBody,
     CreateAppTokenServiceResponse,
+    CreateDistributionRequest,
+    CreateDistributionShrinkRequest,
+    CreateDistributionResponseBody,
+    CreateDistributionResponse,
     CreateInspirationRequest,
     CreateInspirationResponseBody,
     CreateInspirationResponse,
@@ -931,6 +967,9 @@ __all__ = [
     DeleteAppPluginRequest,
     DeleteAppPluginResponseBody,
     DeleteAppPluginResponse,
+    DeleteAppSceneRecipientRequest,
+    DeleteAppSceneRecipientResponseBody,
+    DeleteAppSceneRecipientResponse,
     DeleteAppSupabaseSecretsRequest,
     DeleteAppSupabaseSecretsResponseBody,
     DeleteAppSupabaseSecretsResponse,
@@ -1284,9 +1323,18 @@ __all__ = [
     RenewAppSandboxRequest,
     RenewAppSandboxResponseBody,
     RenewAppSandboxResponse,
+    ReportChannelPublishResultRequest,
+    ReportChannelPublishResultResponseBody,
+    ReportChannelPublishResultResponse,
+    RetryChannelPublishRequest,
+    RetryChannelPublishResponseBody,
+    RetryChannelPublishResponse,
     RevokeRbacUserRoleRequest,
     RevokeRbacUserRoleResponseBody,
     RevokeRbacUserRoleResponse,
+    RewriteChannelTitleRequest,
+    RewriteChannelTitleResponseBody,
+    RewriteChannelTitleResponse,
     RollbackAppCodeSnapshotRequest,
     RollbackAppCodeSnapshotResponseBody,
     RollbackAppCodeSnapshotResponse,
@@ -1302,6 +1350,10 @@ __all__ = [
     SaveAppSupabaseSecretsRequest,
     SaveAppSupabaseSecretsResponseBody,
     SaveAppSupabaseSecretsResponse,
+    SaveChannelDraftRequest,
+    SaveChannelDraftShrinkRequest,
+    SaveChannelDraftResponseBody,
+    SaveChannelDraftResponse,
     SearchImageRequest,
     SearchImageShrinkRequest,
     SearchImageResponseBody,
@@ -1325,6 +1377,9 @@ __all__ = [
     SyncAppInstanceForPartnerShrinkRequest,
     SyncAppInstanceForPartnerResponseBody,
     SyncAppInstanceForPartnerResponse,
+    TranslateChannelDraftRequest,
+    TranslateChannelDraftResponseBody,
+    TranslateChannelDraftResponse,
     UnbindAppDomainRequest,
     UnbindAppDomainResponseBody,
     UnbindAppDomainResponse,
@@ -1414,6 +1469,9 @@ __all__ = [
     CreateAppNotificationSceneResponseBodyModule,
     CreateAppPluginResponseBodyModule,
     CreateAppTokenServiceResponseBodyModule,
+    CreateDistributionResponseBodyModuleDraftsCoverImages,
+    CreateDistributionResponseBodyModuleDrafts,
+    CreateDistributionResponseBodyModule,
     CreateInspirationResponseBodyModule,
     CreateMaterialDirectoryResponseBodyModule,
     DeleteAppDomainCertificateResponseBodyModule,
@@ -1587,9 +1645,13 @@ __all__ = [
     RefundAppInstanceForPartnerResponseBodyModule,
     RenewAppInstanceResponseBodyModule,
     RenewAppSandboxResponseBodyModule,
+    ReportChannelPublishResultResponseBodyModule,
+    RewriteChannelTitleResponseBodyModuleCoverImages,
+    RewriteChannelTitleResponseBodyModule,
     RollbackAppCodeSnapshotResponseBodyModule,
     RollbackAppInstancePublishResponseBodyModule,
     RollbackAppPluginVersionResponseBodyModule,
+    SaveChannelDraftRequestCoverImages,
     SearchImageResponseBodyImageResponseImageList,
     SearchImageResponseBodyImageResponse,
     SetAppDomainCertificateResponseBodyModule,
@@ -1599,6 +1661,8 @@ __all__ = [
     SyncAppInstanceForPartnerRequestAppInstance,
     SyncAppInstanceForPartnerResponseBodyDataAppInstance,
     SyncAppInstanceForPartnerResponseBodyData,
+    TranslateChannelDraftResponseBodyModuleCoverImages,
+    TranslateChannelDraftResponseBodyModule,
     UnbindAppDomainResponseBodyModule,
     UninstallAppPluginResponseBodyModule,
     UpdateAppChatMessageResponseBodyModule,

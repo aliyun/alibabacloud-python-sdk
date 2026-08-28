@@ -24,7 +24,7 @@ class ModifyAppInstanceSpecResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -40,7 +40,7 @@ class ModifyAppInstanceSpecResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro

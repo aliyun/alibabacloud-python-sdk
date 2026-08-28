@@ -7,7 +7,7 @@ from typing import List, Any
 from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
-class GetAppInstanceResponseBody(DaraModel):
+class ReportChannelPublishResultResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
@@ -16,13 +16,13 @@ class GetAppInstanceResponseBody(DaraModel):
         dynamic_code: str = None,
         dynamic_message: str = None,
         error_args: List[Any] = None,
-        module: main_models.AppInstanceAggregate = None,
+        module: main_models.ReportChannelPublishResultResponseBodyModule = None,
         request_id: str = None,
         root_error_code: str = None,
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied details.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -30,8 +30,7 @@ class GetAppInstanceResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message. This parameter is used to replace the %s variable in the ErrMessage error message.
         self.dynamic_message = dynamic_message
         # The error parameters returned.
         self.error_args = error_args
@@ -43,7 +42,7 @@ class GetAppInstanceResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -111,7 +110,7 @@ class GetAppInstanceResponseBody(DaraModel):
             self.error_args = m.get('ErrorArgs')
 
         if m.get('Module') is not None:
-            temp_model = main_models.AppInstanceAggregate()
+            temp_model = main_models.ReportChannelPublishResultResponseBodyModule()
             self.module = temp_model.from_map(m.get('Module'))
 
         if m.get('RequestId') is not None:
@@ -125,6 +124,52 @@ class GetAppInstanceResponseBody(DaraModel):
 
         if m.get('Synchro') is not None:
             self.synchro = m.get('Synchro')
+
+        return self
+
+class ReportChannelPublishResultResponseBodyModule(DaraModel):
+    def __init__(
+        self,
+        article_status: str = None,
+        draft_id: str = None,
+        status: str = None,
+    ):
+        # The article status.
+        self.article_status = article_status
+        # The channel draft ID.
+        self.draft_id = draft_id
+        # The draft status: SUCCESS/FAILED.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.article_status is not None:
+            result['ArticleStatus'] = self.article_status
+
+        if self.draft_id is not None:
+            result['DraftId'] = self.draft_id
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArticleStatus') is not None:
+            self.article_status = m.get('ArticleStatus')
+
+        if m.get('DraftId') is not None:
+            self.draft_id = m.get('DraftId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 
