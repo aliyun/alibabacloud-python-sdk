@@ -1,3 +1,32 @@
+2026-08-28 Version: 11.2.0
+- Support API ListPluginWorkspace.
+- Support API ListRiskCheckResults.
+- Support API ListSources.
+- Support API ListSyncMCPServer.
+- Support API RefreshPluginOAuthCode.
+- Support API RunPluginPipeline.
+- Support API UpdateAuthorizationRule.
+- Support API UpdateGatewayElasticPolicy.
+- Support API UpdateGatewayLoadBalancer.
+- Update API AddGatewayQuotaRule: add request parameters body.subjectType.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectId.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectName.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectType.
+- Update API GetGatewayQuotaRule: add request parameters withSubjects.
+- Update API GetGatewayQuotaRule: add response parameters Body.data.subjectCount.
+- Update API GetGatewayQuotaRule: add response parameters Body.data.subjectType.
+- Update API GetGatewayQuotaRule: add response parameters Body.data.subjects.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.subjectType.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.details.items.$.consumer.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.details.items.$.requestId.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectId.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectName.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectType.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectId.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectName.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectType.
+
+
 2026-08-24 Version: 11.0.4
 - Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.groupName.
 - Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.httpDubboTranscoder.

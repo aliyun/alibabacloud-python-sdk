@@ -115,7 +115,9 @@ class GetGatewayResponseBodyData(DaraModel):
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The running mode of AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter.
+        # The running mode for AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter. Valid values:
+        # - ENTERPRISE: default.
+        # - STANDARD: allowed only for AI multi-tenant V2.
         self.gateway_mode = gateway_mode
         # The gateway type. Valid values:
         # - API: API gateway.
@@ -692,8 +694,8 @@ class GetGatewayResponseBodyDataLoadBalancers(DaraModel):
         # The list of listening ports.
         self.ports = ports
         # The status of load balancing. Valid values:
-        # - Ready: active.
-        # - NotCreate: not associated with an instance.
+        # - Ready: Active.
+        # - NotCreate: No associated instance.
         self.status = status
         # The load balancing type. Valid values:
         # - NLB: Network Load Balancer (NLB).

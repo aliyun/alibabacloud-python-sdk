@@ -19,34 +19,35 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         quota_dimension: str = None,
         quota_limit: int = None,
         rule_name: str = None,
+        subject_type: str = None,
         timezone: str = None,
         window_alignment: str = None,
     ):
-        # The conflict snapshot hash, used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dry run (dryRun=true).
+        # The conflict snapshot hash, used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dryRun=true request.
         # 
-        # This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite is set to false.
+        # This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite=false (no overwrite confirmation).
         # 
-        # If dryRun is set to false and overwrite is set to true but this parameter is not specified or the value has expired, the system returns accepted=false with a new conflict preview. Perform a new dry run to confirm the updated conflicts.
+        # When dryRun=false and overwrite=true, if this parameter is not provided or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. Perform a dry run again to confirm the new conflicts.
         self.conflict_hash = conflict_hash
-        # The list of consumer group IDs. This parameter is not supported.
+        # The list of consumer group IDs (not supported currently).
         self.consumer_group_ids = consumer_group_ids
-        # The list of consumer IDs to bind to the rule. You can specify up to 1,000 consumers in a single request.
+        # The list of consumer IDs to bind to the rule. A maximum of 1000 consumers can be specified in a single request.
         self.consumer_ids = consumer_ids
-        # Specifies whether to perform only a dry run without applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. For example, a consumer that already has a calendar-day quota rule cannot have another calendar-day quota rule added.
+        # Specifies whether to perform only a dry run without applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. For example, a consumer that already has a calendar-day quota cannot have another calendar-day quota rule added.
         self.dry_run = dry_run
-        # Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, the conflicting consumers are unbound from the old rule and bound to the new rule.
+        # Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, the conflicting subjects (consumers) are unbound from the old rule and bound to the new rule.
         self.overwrite = overwrite
-        # The period multiplier, which specifies the number of periods after which the quota resets. This parameter is required for custom period rules. Minimum value: 1. Maximum value: 60.
+        # The period multiplier. This parameter applies to epoch period rules.
         self.period_multiplier = period_multiplier
-        # The period unit. For calendar periods, the value can be day, week, or month. For custom periods, only day is supported.
+        # The period type. For calendar periods, statistics are collected by day, week, or month. Valid values: day, week, and month. For epoch periods, only day is supported.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The quota dimension or throttling type. Valid values: token and credit. The credit quota applies only to dedicated instances of version 2.1.19 or later.
+        # The quota dimension or throttling type. Valid values: token and credit. The credit quota applies only to dedicated instances running version 2.1.19 or later.
         # 
         # This parameter is required.
         self.quota_dimension = quota_dimension
-        # The total available quota per period (the limit).
+        # The total available quota per period (limit).
         # 
         # This parameter is required.
         self.quota_limit = quota_limit
@@ -54,12 +55,11 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The rule subject type. Valid values: consumer (a consumer) and consumer_group (a consumer group). Default value: consumer.
+        self.subject_type = subject_type
         # The time zone for the calendar period, in UTC+x format.
         self.timezone = timezone
-        # The reset period type. Valid values:
-        # 
-        # - calendar: calendar period. The period starts from the beginning of a calendar day, week, or month.
-        # - epoch: custom period. The period starts from the time the rule is applied. The custom period applies only to dedicated instances of version 2.1.19 or later.
+        # The reset period type. Valid values: calendar (the period starts from the beginning of a calendar day, week, or month) and epoch (the period starts from when the rule is applied). The epoch type applies only to dedicated instances running version 2.1.19 or later.
         self.window_alignment = window_alignment
 
     def validate(self):
@@ -100,6 +100,9 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         if self.rule_name is not None:
             result['ruleName'] = self.rule_name
 
+        if self.subject_type is not None:
+            result['subjectType'] = self.subject_type
+
         if self.timezone is not None:
             result['timezone'] = self.timezone
 
@@ -139,6 +142,9 @@ class AddGatewayQuotaRuleRequest(DaraModel):
 
         if m.get('ruleName') is not None:
             self.rule_name = m.get('ruleName')
+
+        if m.get('subjectType') is not None:
+            self.subject_type = m.get('subjectType')
 
         if m.get('timezone') is not None:
             self.timezone = m.get('timezone')

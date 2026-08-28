@@ -21,7 +21,7 @@ class UpdateGatewayQuotaRuleResponseBody(DaraModel):
         self.data = data
         # The message content.
         self.message = message
-        # The unique ID of the request.
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class UpdateGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
+        # Indicates whether the write request semantics are accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
         # Indicates whether this is a dry run.
         self.dry_run = dry_run
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -128,9 +128,9 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The hash of the conflict snapshot.
+        # The conflict hash.
         self.conflict_hash = conflict_hash
-        # The list of conflicting principals (consumers).
+        # The list of conflicting subjects (consumers).
         self.items = items
         # The total number of conflicts.
         self.total_conflict_count = total_conflict_count
@@ -182,15 +182,24 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         conflict_type: str = None,
         consumer_id: str = None,
         consumer_name: str = None,
+        subject_id: str = None,
+        subject_name: str = None,
+        subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumer. Valid values: day: daily period. week: weekly period. month: monthly period.
+        # The period type of the existing conflicting rule on the consumer. Valid values: day (daily period), week (weekly period), and month (monthly period).
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumer. Valid values: calendar: The conflicting rule is a calendar-period rule. epoch: The conflicting rule is a custom-period rule.
+        # The type of the existing conflicting rule on the consumer. Valid values: calendar (the conflicting rule uses a calendar period) and epoch (the conflicting rule uses a custom period).
         self.conflict_type = conflict_type
         # The consumer ID.
         self.consumer_id = consumer_id
         # The consumer name.
         self.consumer_name = consumer_name
+        # The ID of the conflicting subject.
+        self.subject_id = subject_id
+        # The name of the conflicting subject.
+        self.subject_name = subject_name
+        # The type of the conflicting subject. Valid values: consumer and consumer_group.
+        self.subject_type = subject_type
 
     def validate(self):
         pass
@@ -212,6 +221,15 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         if self.consumer_name is not None:
             result['consumerName'] = self.consumer_name
 
+        if self.subject_id is not None:
+            result['subjectId'] = self.subject_id
+
+        if self.subject_name is not None:
+            result['subjectName'] = self.subject_name
+
+        if self.subject_type is not None:
+            result['subjectType'] = self.subject_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -227,6 +245,15 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
 
         if m.get('consumerName') is not None:
             self.consumer_name = m.get('consumerName')
+
+        if m.get('subjectId') is not None:
+            self.subject_id = m.get('subjectId')
+
+        if m.get('subjectName') is not None:
+            self.subject_name = m.get('subjectName')
+
+        if m.get('subjectType') is not None:
+            self.subject_type = m.get('subjectType')
 
         return self
 

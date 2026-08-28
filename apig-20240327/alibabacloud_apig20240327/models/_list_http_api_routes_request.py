@@ -29,7 +29,7 @@ class ListHttpApiRoutesRequest(DaraModel):
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
         # The deployment status of the route.
         self.deploy_statuses = deploy_statuses
-        # The domain name ID used to filter route information.
+        # Filters route information by domain name ID.
         self.domain_id = domain_id
         # The environment ID.
         self.environment_id = environment_id
@@ -43,15 +43,15 @@ class ListHttpApiRoutesRequest(DaraModel):
         self.name_like = name_like
         # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
-        # The page size. Valid values: 1 to 100. Default value: 10.
+        # The page size. Valid range: 1 to 100. Default value: 10.
         self.page_size = page_size
         # Fuzzy match by route path.
         self.path_like = path_like
-        # Specifies whether to include consumer authorization information in the response.
+        # Includes consumer authorization information in the response.
         self.with_auth_policy_info = with_auth_policy_info
-        # Specifies a consumer ID so that the response includes the authorization rule list for the specified consumer in each route.
+        # Includes the authorization rule list of the specified consumer ID for each route in the response.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # Specifies a plug-in ID so that the response includes the mount information of the specified plug-in in each route.
+        # Includes the plug-in attachment information of the specified plug-in ID for each route in the response.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):

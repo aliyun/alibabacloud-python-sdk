@@ -17,7 +17,7 @@ class AiPluginStatus(DaraModel):
         self.error_logs = error_logs
         # The plug-in instance ID.
         self.plugin_id = plugin_id
-        # Indicates whether the backend service that the plug-in depends on is healthy.
+        # Indicates whether the backend service that the plugin depends on is healthy.
         self.service_healthy = service_healthy
 
     def validate(self):

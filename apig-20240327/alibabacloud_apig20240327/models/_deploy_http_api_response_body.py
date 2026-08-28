@@ -67,7 +67,7 @@ class DeployHttpApiResponseBodyData(DaraModel):
         self,
         http_api_id: str = None,
     ):
-        # HTTP API ID。
+        # The ID of the HTTP API.
         self.http_api_id = http_api_id
 
     def validate(self):

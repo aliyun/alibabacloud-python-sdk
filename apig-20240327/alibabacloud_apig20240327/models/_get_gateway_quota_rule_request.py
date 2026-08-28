@@ -10,13 +10,16 @@ class GetGatewayQuotaRuleRequest(DaraModel):
         consumer_page_number: str = None,
         consumer_page_size: str = None,
         with_consumers: bool = None,
+        with_subjects: bool = None,
     ):
         # The page number of the consumer list.
         self.consumer_page_number = consumer_page_number
-        # The number of consumers per page.
+        # The page size of the consumer list.
         self.consumer_page_size = consumer_page_size
-        # Specifies whether to include the consumer list in the response.
+        # Specifies whether to return the consumer list.
         self.with_consumers = with_consumers
+        # Specifies whether to return the general subject list. This parameter applies to both consumer and consumer group rules.
+        self.with_subjects = with_subjects
 
     def validate(self):
         pass
@@ -35,6 +38,9 @@ class GetGatewayQuotaRuleRequest(DaraModel):
         if self.with_consumers is not None:
             result['withConsumers'] = self.with_consumers
 
+        if self.with_subjects is not None:
+            result['withSubjects'] = self.with_subjects
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +53,9 @@ class GetGatewayQuotaRuleRequest(DaraModel):
 
         if m.get('withConsumers') is not None:
             self.with_consumers = m.get('withConsumers')
+
+        if m.get('withSubjects') is not None:
+            self.with_subjects = m.get('withSubjects')
 
         return self
 

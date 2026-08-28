@@ -29,48 +29,40 @@ class HttpApiApiInfo(DaraModel):
         type: str = None,
         version_info: main_models.HttpApiVersionInfo = None,
     ):
-        # Agent protocol list
+        # The list of agent protocols.
         self.agent_protocols = agent_protocols
-        # The AI protocols.
+        # The list of AI protocols.
         self.ai_protocols = ai_protocols
-        # The authentication configurations.
+        # The authentication configuration.
         self.auth_config = auth_config
-        # The base path of the API.
+        # The API base path.
         self.base_path = base_path
-        # The API publishing status.
+        # The API operation publish status.
         self.deploy_cnt_map = deploy_cnt_map
-        # The API deployment configurations.
+        # The list of API deployment configurations.
         self.deploy_configs = deploy_configs
         # The API description.
         self.description = description
         self.enable_auth = enable_auth
-        # The API environment information.
+        # The publish environment context of the API.
         self.environments = environments
-        # The instance ID.
+        # The ID of the gateway instance to which the API belongs.
         self.gateway_id = gateway_id
-        # The HTTP API ID.
+        # HTTP API ID。
         self.http_api_id = http_api_id
-        # The information about the HTTP Ingress API.
+        # The HTTP Ingress API information.
         self.ingress_info = ingress_info
-        # Model category
+        # The model category.
         self.model_category = model_category
         # The API name.
         self.name = name
-        # The protocols.
+        # The list of API protocols.
         self.protocols = protocols
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The API type.
-        # 
-        # Valid values:
-        # 
-        # *   HttpIngress
-        # *   Rest
-        # *   Websocket
-        # *   AI
-        # *   Http
         self.type = type
-        # The API versioning information.
+        # The API version control information.
         self.version_info = version_info
 
     def validate(self):
@@ -240,17 +232,17 @@ class HttpApiApiInfoIngressInfo(DaraModel):
         source_id: str = None,
         watch_namespace: str = None,
     ):
-        # The environment information.
+        # The environment context.
         self.environment_info = environment_info
-        # The Ingress Class for listening.
+        # The monitored Ingress Class.
         self.ingress_class = ingress_class
-        # The information about the Kubernetes cluster.
+        # The Kubernetes cluster information.
         self.k_8s_cluster_info = k_8s_cluster_info
         # Specifies whether to update the address in Ingress Status.
         self.override_ingress_ip = override_ingress_ip
         # The source ID.
         self.source_id = source_id
-        # The namespace for listening.
+        # The monitored namespace.
         self.watch_namespace = watch_namespace
 
     def validate(self):
@@ -380,38 +372,23 @@ class HttpApiApiInfoEnvironments(DaraModel):
     ):
         # The environment alias.
         self.alias = alias
-        # The publishing scenario.
-        # 
-        # Valid values:
-        # 
-        # *   SingleService
-        # *   MultiServiceByRatio
-        # *   MultiServiceByContent
-        # *   MultiServiceByTag
-        # *   Mock
+        # The deployment scenario.
         self.backend_scene = backend_scene
-        # The type of the backend service.
-        # 
-        # Valid values:
-        # 
-        # *   DNS: a DNS domain name
-        # *   Service: an existing service
-        # *   VIP: a fixed IP address
-        # *   CloudProduct: a cloud service
+        # The backend type.
         self.backend_type = backend_type
-        # The custom domain names.
+        # The domain name information published by the user.
         self.custom_domains = custom_domains
-        # The publishing status of the API in the current environment.
+        # The deployment status of the API in the current environment.
         self.deploy_status = deploy_status
         # The environment ID.
         self.environment_id = environment_id
-        # The information about the gateway instance to which the environment belongs.
+        # The gateway instance information for the current environment.
         self.gateway_info = gateway_info
         # The environment name.
         self.name = name
-        # The configurations of an existing service.
+        # The existing service configurations.
         self.service_configs = service_configs
-        # The default domain names of the environment.
+        # The list of default domain names for the environment.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -531,7 +508,7 @@ class HttpApiApiInfoEnvironmentsSubDomains(DaraModel):
         self.name = name
         # The network type.
         self.network_type = network_type
-        # The communication protocol.
+        # The access protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -586,7 +563,7 @@ class HttpApiApiInfoEnvironmentsServiceConfigs(DaraModel):
     ):
         # The service ID.
         self.gateway_service_id = gateway_service_id
-        # The matching conditions.
+        # The match condition.
         self.match = match
         # The service name.
         self.name = name
@@ -596,9 +573,9 @@ class HttpApiApiInfoEnvironmentsServiceConfigs(DaraModel):
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
-        # The version of the microservice.
+        # The service version.
         self.version = version
-        # The service weight.
+        # The weight.
         self.weight = weight
 
     def validate(self):
@@ -673,9 +650,9 @@ class HttpApiApiInfoEnvironmentsGatewayInfo(DaraModel):
         name: str = None,
     ):
         self.gateway_edition = gateway_edition
-        # The instance ID.
+        # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The instance name.
+        # The gateway instance name.
         self.name = name
 
     def validate(self):

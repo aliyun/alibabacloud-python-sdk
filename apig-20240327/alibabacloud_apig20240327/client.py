@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_apig20240327 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -97,6 +99,8 @@ class Client(OpenApiClient):
             body['quotaLimit'] = request.quota_limit
         if not DaraCore.is_null(request.rule_name):
             body['ruleName'] = request.rule_name
+        if not DaraCore.is_null(request.subject_type):
+            body['subjectType'] = request.subject_type
         if not DaraCore.is_null(request.timezone):
             body['timezone'] = request.timezone
         if not DaraCore.is_null(request.window_alignment):
@@ -150,6 +154,8 @@ class Client(OpenApiClient):
             body['quotaLimit'] = request.quota_limit
         if not DaraCore.is_null(request.rule_name):
             body['ruleName'] = request.rule_name
+        if not DaraCore.is_null(request.subject_type):
+            body['subjectType'] = request.subject_type
         if not DaraCore.is_null(request.timezone):
             body['timezone'] = request.timezone
         if not DaraCore.is_null(request.window_alignment):
@@ -719,6 +725,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.batch_remove_consumer_group_consumers_with_options_async(consumer_group_id, request, headers, runtime)
+
+    def batch_update_http_api_operation_with_options(
+        self,
+        http_api_id: str,
+        request: main_models.BatchUpdateHttpApiOperationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchUpdateHttpApiOperationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auth_config):
+            body['authConfig'] = request.auth_config
+        if not DaraCore.is_null(request.enable_auth):
+            body['enableAuth'] = request.enable_auth
+        if not DaraCore.is_null(request.operation_ids):
+            body['operationIds'] = request.operation_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchUpdateHttpApiOperation',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/{DaraURL.percent_encode(http_api_id)}/operations',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchUpdateHttpApiOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_update_http_api_operation_with_options_async(
+        self,
+        http_api_id: str,
+        request: main_models.BatchUpdateHttpApiOperationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchUpdateHttpApiOperationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.auth_config):
+            body['authConfig'] = request.auth_config
+        if not DaraCore.is_null(request.enable_auth):
+            body['enableAuth'] = request.enable_auth
+        if not DaraCore.is_null(request.operation_ids):
+            body['operationIds'] = request.operation_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchUpdateHttpApiOperation',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/{DaraURL.percent_encode(http_api_id)}/operations',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchUpdateHttpApiOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_update_http_api_operation(
+        self,
+        http_api_id: str,
+        request: main_models.BatchUpdateHttpApiOperationRequest,
+    ) -> main_models.BatchUpdateHttpApiOperationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_update_http_api_operation_with_options(http_api_id, request, headers, runtime)
+
+    async def batch_update_http_api_operation_async(
+        self,
+        http_api_id: str,
+        request: main_models.BatchUpdateHttpApiOperationRequest,
+    ) -> main_models.BatchUpdateHttpApiOperationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_update_http_api_operation_with_options_async(http_api_id, request, headers, runtime)
 
     def change_resource_group_with_options(
         self,
@@ -2160,6 +2254,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_http_api_route_with_options_async(http_api_id, request, headers, runtime)
 
+    def create_http_api_version_with_options(
+        self,
+        http_api_id: str,
+        request: main_models.CreateHttpApiVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateHttpApiVersionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.version_config):
+            body['versionConfig'] = request.version_config
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateHttpApiVersion',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/{DaraURL.percent_encode(http_api_id)}/versions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateHttpApiVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_http_api_version_with_options_async(
+        self,
+        http_api_id: str,
+        request: main_models.CreateHttpApiVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateHttpApiVersionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.version_config):
+            body['versionConfig'] = request.version_config
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateHttpApiVersion',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/{DaraURL.percent_encode(http_api_id)}/versions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateHttpApiVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_http_api_version(
+        self,
+        http_api_id: str,
+        request: main_models.CreateHttpApiVersionRequest,
+    ) -> main_models.CreateHttpApiVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_http_api_version_with_options(http_api_id, request, headers, runtime)
+
+    async def create_http_api_version_async(
+        self,
+        http_api_id: str,
+        request: main_models.CreateHttpApiVersionRequest,
+    ) -> main_models.CreateHttpApiVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_http_api_version_with_options_async(http_api_id, request, headers, runtime)
+
     def create_mcp_server_with_options(
         self,
         request: main_models.CreateMcpServerRequest,
@@ -2287,6 +2461,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_mcp_server_with_options_async(request, headers, runtime)
+
+    def create_migration_task_with_options(
+        self,
+        request: main_models.CreateMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMigrationTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['clusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.http_api_id):
+            body['httpApiId'] = request.http_api_id
+        if not DaraCore.is_null(request.ingress_class):
+            body['ingressClass'] = request.ingress_class
+        if not DaraCore.is_null(request.migration_type):
+            body['migrationType'] = request.migration_type
+        if not DaraCore.is_null(request.watch_namespace):
+            body['watchNamespace'] = request.watch_namespace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMigrationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_migration_task_with_options_async(
+        self,
+        request: main_models.CreateMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMigrationTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['clusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.http_api_id):
+            body['httpApiId'] = request.http_api_id
+        if not DaraCore.is_null(request.ingress_class):
+            body['ingressClass'] = request.ingress_class
+        if not DaraCore.is_null(request.migration_type):
+            body['migrationType'] = request.migration_type
+        if not DaraCore.is_null(request.watch_namespace):
+            body['watchNamespace'] = request.watch_namespace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMigrationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_migration_task(
+        self,
+        request: main_models.CreateMigrationTaskRequest,
+    ) -> main_models.CreateMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_migration_task_with_options(request, headers, runtime)
+
+    async def create_migration_task_async(
+        self,
+        request: main_models.CreateMigrationTaskRequest,
+    ) -> main_models.CreateMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_migration_task_with_options_async(request, headers, runtime)
 
     def create_plugin_attachment_with_options(
         self,
@@ -2500,6 +2778,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_plugin_class_with_options_async(request, headers, runtime)
 
+    def create_plugin_workspace_with_options(
+        self,
+        request: main_models.CreatePluginWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePluginWorkspaceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.organization_id):
+            body['organizationId'] = request.organization_id
+        if not DaraCore.is_null(request.repo_name):
+            body['repoName'] = request.repo_name
+        if not DaraCore.is_null(request.workspace_name):
+            body['workspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePluginWorkspace',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-workspaces',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePluginWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_plugin_workspace_with_options_async(
+        self,
+        request: main_models.CreatePluginWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePluginWorkspaceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.organization_id):
+            body['organizationId'] = request.organization_id
+        if not DaraCore.is_null(request.repo_name):
+            body['repoName'] = request.repo_name
+        if not DaraCore.is_null(request.workspace_name):
+            body['workspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePluginWorkspace',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-workspaces',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePluginWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_plugin_workspace(
+        self,
+        request: main_models.CreatePluginWorkspaceRequest,
+    ) -> main_models.CreatePluginWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_plugin_workspace_with_options(request, headers, runtime)
+
+    async def create_plugin_workspace_async(
+        self,
+        request: main_models.CreatePluginWorkspaceRequest,
+    ) -> main_models.CreatePluginWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_plugin_workspace_with_options_async(request, headers, runtime)
+
     def create_policy_with_options(
         self,
         request: main_models.CreatePolicyRequest,
@@ -2679,6 +3045,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_policy_attachment_with_options_async(request, headers, runtime)
+
+    def create_risk_check_task_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.CreateRiskCheckTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRiskCheckTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRiskCheckTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/risk-check/tasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRiskCheckTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_risk_check_task_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.CreateRiskCheckTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRiskCheckTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRiskCheckTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/risk-check/tasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRiskCheckTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_risk_check_task(
+        self,
+        gateway_id: str,
+        request: main_models.CreateRiskCheckTaskRequest,
+    ) -> main_models.CreateRiskCheckTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_risk_check_task_with_options(gateway_id, request, headers, runtime)
+
+    async def create_risk_check_task_async(
+        self,
+        gateway_id: str,
+        request: main_models.CreateRiskCheckTaskRequest,
+    ) -> main_models.CreateRiskCheckTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_risk_check_task_with_options_async(gateway_id, request, headers, runtime)
 
     def create_secret_with_options(
         self,
@@ -4044,6 +4482,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_mcp_server_with_options_async(mcp_server_id, headers, runtime)
 
+    def delete_migration_task_with_options(
+        self,
+        task_id: str,
+        request: main_models.DeleteMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMigrationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMigrationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_migration_task_with_options_async(
+        self,
+        task_id: str,
+        request: main_models.DeleteMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMigrationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMigrationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_migration_task(
+        self,
+        task_id: str,
+        request: main_models.DeleteMigrationTaskRequest,
+    ) -> main_models.DeleteMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_migration_task_with_options(task_id, request, headers, runtime)
+
+    async def delete_migration_task_async(
+        self,
+        task_id: str,
+        request: main_models.DeleteMigrationTaskRequest,
+    ) -> main_models.DeleteMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_migration_task_with_options_async(task_id, request, headers, runtime)
+
     def delete_plugin_attachment_with_options(
         self,
         plugin_attachment_id: str,
@@ -4811,6 +5321,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(request, headers, runtime)
+
+    def detach_and_delete_policy_with_options(
+        self,
+        policy_id: str,
+        request: main_models.DetachAndDeletePolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachAndDeletePolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.policy_attachment_id):
+            query['policyAttachmentId'] = request.policy_attachment_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachAndDeletePolicy',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/policies/{DaraURL.percent_encode(policy_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachAndDeletePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_and_delete_policy_with_options_async(
+        self,
+        policy_id: str,
+        request: main_models.DetachAndDeletePolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachAndDeletePolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.policy_attachment_id):
+            query['policyAttachmentId'] = request.policy_attachment_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachAndDeletePolicy',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/policies/{DaraURL.percent_encode(policy_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachAndDeletePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_and_delete_policy(
+        self,
+        policy_id: str,
+        request: main_models.DetachAndDeletePolicyRequest,
+    ) -> main_models.DetachAndDeletePolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.detach_and_delete_policy_with_options(policy_id, request, headers, runtime)
+
+    async def detach_and_delete_policy_async(
+        self,
+        policy_id: str,
+        request: main_models.DetachAndDeletePolicyRequest,
+    ) -> main_models.DetachAndDeletePolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.detach_and_delete_policy_with_options_async(policy_id, request, headers, runtime)
 
     def export_http_api_with_options(
         self,
@@ -5746,6 +6336,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_gateway_with_options_async(gateway_id, headers, runtime)
 
+    def get_gateway_elastic_policy_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayElasticPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayElasticPolicyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayElasticPolicy',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/elastic-policy',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayElasticPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_elastic_policy_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayElasticPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayElasticPolicyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayElasticPolicy',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/elastic-policy',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayElasticPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_elastic_policy(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayElasticPolicyRequest,
+    ) -> main_models.GetGatewayElasticPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gateway_elastic_policy_with_options(gateway_id, request, headers, runtime)
+
+    async def get_gateway_elastic_policy_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayElasticPolicyRequest,
+    ) -> main_models.GetGatewayElasticPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gateway_elastic_policy_with_options_async(gateway_id, request, headers, runtime)
+
     def get_gateway_quota_rule_with_options(
         self,
         gateway_id: str,
@@ -5762,6 +6424,8 @@ class Client(OpenApiClient):
             query['consumerPageSize'] = request.consumer_page_size
         if not DaraCore.is_null(request.with_consumers):
             query['withConsumers'] = request.with_consumers
+        if not DaraCore.is_null(request.with_subjects):
+            query['withSubjects'] = request.with_subjects
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5798,6 +6462,8 @@ class Client(OpenApiClient):
             query['consumerPageSize'] = request.consumer_page_size
         if not DaraCore.is_null(request.with_consumers):
             query['withConsumers'] = request.with_consumers
+        if not DaraCore.is_null(request.with_subjects):
+            query['withSubjects'] = request.with_subjects
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6220,6 +6886,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_mcp_server_with_options_async(mcp_server_id, headers, runtime)
 
+    def get_migration_namespaced_services_with_options(
+        self,
+        task_id: str,
+        request: main_models.GetMigrationNamespacedServicesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMigrationNamespacedServicesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMigrationNamespacedServices',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}/namespaced-services',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMigrationNamespacedServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_migration_namespaced_services_with_options_async(
+        self,
+        task_id: str,
+        request: main_models.GetMigrationNamespacedServicesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMigrationNamespacedServicesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMigrationNamespacedServices',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}/namespaced-services',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMigrationNamespacedServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_migration_namespaced_services(
+        self,
+        task_id: str,
+        request: main_models.GetMigrationNamespacedServicesRequest,
+    ) -> main_models.GetMigrationNamespacedServicesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_migration_namespaced_services_with_options(task_id, request, headers, runtime)
+
+    async def get_migration_namespaced_services_async(
+        self,
+        task_id: str,
+        request: main_models.GetMigrationNamespacedServicesRequest,
+    ) -> main_models.GetMigrationNamespacedServicesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_migration_namespaced_services_with_options_async(task_id, request, headers, runtime)
+
+    def get_migration_task_with_options(
+        self,
+        task_id: str,
+        request: main_models.GetMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMigrationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMigrationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_migration_task_with_options_async(
+        self,
+        task_id: str,
+        request: main_models.GetMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMigrationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMigrationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_migration_task(
+        self,
+        task_id: str,
+        request: main_models.GetMigrationTaskRequest,
+    ) -> main_models.GetMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_migration_task_with_options(task_id, request, headers, runtime)
+
+    async def get_migration_task_async(
+        self,
+        task_id: str,
+        request: main_models.GetMigrationTaskRequest,
+    ) -> main_models.GetMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_migration_task_with_options_async(task_id, request, headers, runtime)
+
     def get_plugin_attachment_with_options(
         self,
         plugin_attachment_id: str,
@@ -6357,6 +7167,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_plugin_class_with_options_async(plugin_class_id, request, headers, runtime)
+
+    def get_plugin_workspace_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetPluginWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPluginWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPluginWorkspace',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPluginWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_plugin_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetPluginWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPluginWorkspaceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPluginWorkspace',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPluginWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_plugin_workspace(
+        self,
+        workspace_id: str,
+        request: main_models.GetPluginWorkspaceRequest,
+    ) -> main_models.GetPluginWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_plugin_workspace_with_options(workspace_id, request, headers, runtime)
+
+    async def get_plugin_workspace_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetPluginWorkspaceRequest,
+    ) -> main_models.GetPluginWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_plugin_workspace_with_options_async(workspace_id, request, headers, runtime)
 
     def get_policy_with_options(
         self,
@@ -6565,6 +7447,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_resource_overview_with_options_async(request, headers, runtime)
+
+    def get_risk_notification_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.GetRiskNotificationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRiskNotificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.risk_code):
+            query['riskCode'] = request.risk_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRiskNotification',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/risk-check/notifications',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRiskNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_risk_notification_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetRiskNotificationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRiskNotificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.risk_code):
+            query['riskCode'] = request.risk_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRiskNotification',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/risk-check/notifications',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRiskNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_risk_notification(
+        self,
+        gateway_id: str,
+        request: main_models.GetRiskNotificationRequest,
+    ) -> main_models.GetRiskNotificationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_risk_notification_with_options(gateway_id, request, headers, runtime)
+
+    async def get_risk_notification_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetRiskNotificationRequest,
+    ) -> main_models.GetRiskNotificationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_risk_notification_with_options_async(gateway_id, request, headers, runtime)
 
     def get_secret_with_options(
         self,
@@ -7117,6 +8079,192 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.install_plugin_with_options_async(request, headers, runtime)
+
+    def invoke_aiagent_with_sse(
+        self,
+        request: main_models.InvokeAIAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.InvokeAIAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not DaraCore.is_null(request.biz_params):
+            body['bizParams'] = request.biz_params
+        if not DaraCore.is_null(request.history):
+            body['history'] = request.history
+        if not DaraCore.is_null(request.output_language):
+            body['outputLanguage'] = request.output_language
+        if not DaraCore.is_null(request.prompt):
+            body['prompt'] = request.prompt
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeAIAgent',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-agents/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeAIAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def invoke_aiagent_with_sse_async(
+        self,
+        request: main_models.InvokeAIAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.InvokeAIAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not DaraCore.is_null(request.biz_params):
+            body['bizParams'] = request.biz_params
+        if not DaraCore.is_null(request.history):
+            body['history'] = request.history
+        if not DaraCore.is_null(request.output_language):
+            body['outputLanguage'] = request.output_language
+        if not DaraCore.is_null(request.prompt):
+            body['prompt'] = request.prompt
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeAIAgent',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-agents/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeAIAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def invoke_aiagent_with_options(
+        self,
+        request: main_models.InvokeAIAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeAIAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not DaraCore.is_null(request.biz_params):
+            body['bizParams'] = request.biz_params
+        if not DaraCore.is_null(request.history):
+            body['history'] = request.history
+        if not DaraCore.is_null(request.output_language):
+            body['outputLanguage'] = request.output_language
+        if not DaraCore.is_null(request.prompt):
+            body['prompt'] = request.prompt
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeAIAgent',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-agents/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeAIAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invoke_aiagent_with_options_async(
+        self,
+        request: main_models.InvokeAIAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeAIAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not DaraCore.is_null(request.biz_params):
+            body['bizParams'] = request.biz_params
+        if not DaraCore.is_null(request.history):
+            body['history'] = request.history
+        if not DaraCore.is_null(request.output_language):
+            body['outputLanguage'] = request.output_language
+        if not DaraCore.is_null(request.prompt):
+            body['prompt'] = request.prompt
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeAIAgent',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-agents/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeAIAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invoke_aiagent(
+        self,
+        request: main_models.InvokeAIAgentRequest,
+    ) -> main_models.InvokeAIAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.invoke_aiagent_with_options(request, headers, runtime)
+
+    async def invoke_aiagent_async(
+        self,
+        request: main_models.InvokeAIAgentRequest,
+    ) -> main_models.InvokeAIAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.invoke_aiagent_with_options_async(request, headers, runtime)
 
     def list_ai_model_cards_with_options(
         self,
@@ -8142,6 +9290,262 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_external_services_with_options_async(gateway_id, request, headers, runtime)
 
+    def list_gateway_authorizable_security_groups_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayAuthorizableSecurityGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayAuthorizableSecurityGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cs_cluster_id):
+            query['csClusterId'] = request.cs_cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayAuthorizableSecurityGroups',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/authorizable-security-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayAuthorizableSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_authorizable_security_groups_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayAuthorizableSecurityGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayAuthorizableSecurityGroupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cs_cluster_id):
+            query['csClusterId'] = request.cs_cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayAuthorizableSecurityGroups',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/authorizable-security-groups',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayAuthorizableSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_authorizable_security_groups(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayAuthorizableSecurityGroupsRequest,
+    ) -> main_models.ListGatewayAuthorizableSecurityGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_gateway_authorizable_security_groups_with_options(gateway_id, request, headers, runtime)
+
+    async def list_gateway_authorizable_security_groups_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayAuthorizableSecurityGroupsRequest,
+    ) -> main_models.ListGatewayAuthorizableSecurityGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_authorizable_security_groups_with_options_async(gateway_id, request, headers, runtime)
+
+    def list_gateway_authorized_security_group_rules_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayAuthorizedSecurityGroupRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayAuthorizedSecurityGroupRulesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayAuthorizedSecurityGroupRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/authorized-security-groups-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayAuthorizedSecurityGroupRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_authorized_security_group_rules_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayAuthorizedSecurityGroupRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayAuthorizedSecurityGroupRulesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayAuthorizedSecurityGroupRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/authorized-security-groups-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayAuthorizedSecurityGroupRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_authorized_security_group_rules(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayAuthorizedSecurityGroupRulesRequest,
+    ) -> main_models.ListGatewayAuthorizedSecurityGroupRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_gateway_authorized_security_group_rules_with_options(gateway_id, request, headers, runtime)
+
+    async def list_gateway_authorized_security_group_rules_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayAuthorizedSecurityGroupRulesRequest,
+    ) -> main_models.ListGatewayAuthorizedSecurityGroupRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_authorized_security_group_rules_with_options_async(gateway_id, request, headers, runtime)
+
+    def list_gateway_error_access_logs_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayErrorAccessLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayErrorAccessLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authority):
+            query['authority'] = request.authority
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.gateway_request_id):
+            query['gatewayRequestId'] = request.gateway_request_id
+        if not DaraCore.is_null(request.path):
+            query['path'] = request.path
+        if not DaraCore.is_null(request.response_code):
+            query['responseCode'] = request.response_code
+        if not DaraCore.is_null(request.route_name):
+            query['routeName'] = request.route_name
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayErrorAccessLogs',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/error-access-logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayErrorAccessLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_error_access_logs_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayErrorAccessLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayErrorAccessLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authority):
+            query['authority'] = request.authority
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.gateway_request_id):
+            query['gatewayRequestId'] = request.gateway_request_id
+        if not DaraCore.is_null(request.path):
+            query['path'] = request.path
+        if not DaraCore.is_null(request.response_code):
+            query['responseCode'] = request.response_code
+        if not DaraCore.is_null(request.route_name):
+            query['routeName'] = request.route_name
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayErrorAccessLogs',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/error-access-logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayErrorAccessLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_error_access_logs(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayErrorAccessLogsRequest,
+    ) -> main_models.ListGatewayErrorAccessLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_gateway_error_access_logs_with_options(gateway_id, request, headers, runtime)
+
+    async def list_gateway_error_access_logs_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayErrorAccessLogsRequest,
+    ) -> main_models.ListGatewayErrorAccessLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_error_access_logs_with_options_async(gateway_id, request, headers, runtime)
+
     def list_gateway_features_with_options(
         self,
         gateway_id: str,
@@ -8207,6 +9611,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_gateway_features_with_options_async(gateway_id, headers, runtime)
+
+    def list_gateway_load_balancers_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayLoadBalancersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayLoadBalancersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['all'] = request.all
+        if not DaraCore.is_null(request.load_balancer_id):
+            query['loadBalancerId'] = request.load_balancer_id
+        if not DaraCore.is_null(request.network):
+            query['network'] = request.network
+        if not DaraCore.is_null(request.related):
+            query['related'] = request.related
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        if not DaraCore.is_null(request.vpc_id):
+            query['vpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayLoadBalancers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/list-load-balancers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayLoadBalancersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_load_balancers_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayLoadBalancersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayLoadBalancersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['all'] = request.all
+        if not DaraCore.is_null(request.load_balancer_id):
+            query['loadBalancerId'] = request.load_balancer_id
+        if not DaraCore.is_null(request.network):
+            query['network'] = request.network
+        if not DaraCore.is_null(request.related):
+            query['related'] = request.related
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        if not DaraCore.is_null(request.vpc_id):
+            query['vpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayLoadBalancers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/list-load-balancers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayLoadBalancersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_load_balancers(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayLoadBalancersRequest,
+    ) -> main_models.ListGatewayLoadBalancersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_gateway_load_balancers_with_options(gateway_id, request, headers, runtime)
+
+    async def list_gateway_load_balancers_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayLoadBalancersRequest,
+    ) -> main_models.ListGatewayLoadBalancersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_load_balancers_with_options_async(gateway_id, request, headers, runtime)
 
     def list_gateway_quota_rules_with_options(
         self,
@@ -8419,6 +9923,130 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_gateways_with_options_async(request, headers, runtime)
+
+    def list_global_policies_with_options(
+        self,
+        request: main_models.ListGlobalPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGlobalPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attach_resource_type):
+            query['attachResourceType'] = request.attach_resource_type
+        if not DaraCore.is_null(request.class_name):
+            query['className'] = request.class_name
+        if not DaraCore.is_null(request.enable):
+            query['enable'] = request.enable
+        if not DaraCore.is_null(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.global_policy_type):
+            query['globalPolicyType'] = request.global_policy_type
+        if not DaraCore.is_null(request.ip_access_control_content):
+            query['ipAccessControlContent'] = request.ip_access_control_content
+        if not DaraCore.is_null(request.ip_access_control_protocol_layer):
+            query['ipAccessControlProtocolLayer'] = request.ip_access_control_protocol_layer
+        if not DaraCore.is_null(request.ip_access_control_resource_name):
+            query['ipAccessControlResourceName'] = request.ip_access_control_resource_name
+        if not DaraCore.is_null(request.ip_access_control_type):
+            query['ipAccessControlType'] = request.ip_access_control_type
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGlobalPolicies',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/global-policies',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGlobalPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_global_policies_with_options_async(
+        self,
+        request: main_models.ListGlobalPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGlobalPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attach_resource_type):
+            query['attachResourceType'] = request.attach_resource_type
+        if not DaraCore.is_null(request.class_name):
+            query['className'] = request.class_name
+        if not DaraCore.is_null(request.enable):
+            query['enable'] = request.enable
+        if not DaraCore.is_null(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.global_policy_type):
+            query['globalPolicyType'] = request.global_policy_type
+        if not DaraCore.is_null(request.ip_access_control_content):
+            query['ipAccessControlContent'] = request.ip_access_control_content
+        if not DaraCore.is_null(request.ip_access_control_protocol_layer):
+            query['ipAccessControlProtocolLayer'] = request.ip_access_control_protocol_layer
+        if not DaraCore.is_null(request.ip_access_control_resource_name):
+            query['ipAccessControlResourceName'] = request.ip_access_control_resource_name
+        if not DaraCore.is_null(request.ip_access_control_type):
+            query['ipAccessControlType'] = request.ip_access_control_type
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGlobalPolicies',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/global-policies',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGlobalPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_global_policies(
+        self,
+        request: main_models.ListGlobalPoliciesRequest,
+    ) -> main_models.ListGlobalPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_global_policies_with_options(request, headers, runtime)
+
+    async def list_global_policies_async(
+        self,
+        request: main_models.ListGlobalPoliciesRequest,
+    ) -> main_models.ListGlobalPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_global_policies_with_options_async(request, headers, runtime)
 
     def list_http_api_operations_with_options(
         self,
@@ -8824,6 +10452,174 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_http_apis_with_options_async(request, headers, runtime)
 
+    def list_installable_gateways_with_options(
+        self,
+        plugin_class_id: str,
+        request: main_models.ListInstallableGatewaysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstallableGatewaysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstallableGateways',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes/{DaraURL.percent_encode(plugin_class_id)}/installable-gateways',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstallableGatewaysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_installable_gateways_with_options_async(
+        self,
+        plugin_class_id: str,
+        request: main_models.ListInstallableGatewaysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstallableGatewaysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstallableGateways',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes/{DaraURL.percent_encode(plugin_class_id)}/installable-gateways',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstallableGatewaysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_installable_gateways(
+        self,
+        plugin_class_id: str,
+        request: main_models.ListInstallableGatewaysRequest,
+    ) -> main_models.ListInstallableGatewaysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_installable_gateways_with_options(plugin_class_id, request, headers, runtime)
+
+    async def list_installable_gateways_async(
+        self,
+        plugin_class_id: str,
+        request: main_models.ListInstallableGatewaysRequest,
+    ) -> main_models.ListInstallableGatewaysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_installable_gateways_with_options_async(plugin_class_id, request, headers, runtime)
+
+    def list_k8s_cluster_sources_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListK8sClusterSourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListK8sClusterSourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.vpc_id):
+            query['vpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListK8sClusterSources',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v2/gateways/{DaraURL.percent_encode(gateway_id)}/service-sources/k8s-clusters',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListK8sClusterSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_k8s_cluster_sources_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListK8sClusterSourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListK8sClusterSourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.vpc_id):
+            query['vpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListK8sClusterSources',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v2/gateways/{DaraURL.percent_encode(gateway_id)}/service-sources/k8s-clusters',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListK8sClusterSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_k8s_cluster_sources(
+        self,
+        gateway_id: str,
+        request: main_models.ListK8sClusterSourcesRequest,
+    ) -> main_models.ListK8sClusterSourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_k8s_cluster_sources_with_options(gateway_id, request, headers, runtime)
+
+    async def list_k8s_cluster_sources_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListK8sClusterSourcesRequest,
+    ) -> main_models.ListK8sClusterSourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_k8s_cluster_sources_with_options_async(gateway_id, request, headers, runtime)
+
     def list_mcp_servers_with_options(
         self,
         request: main_models.ListMcpServersRequest,
@@ -8923,6 +10719,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_mcp_servers_with_options_async(request, headers, runtime)
+
+    def list_migration_tasks_with_options(
+        self,
+        request: main_models.ListMigrationTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMigrationTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMigrationTasks',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMigrationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_migration_tasks_with_options_async(
+        self,
+        request: main_models.ListMigrationTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMigrationTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMigrationTasks',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMigrationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_migration_tasks(
+        self,
+        request: main_models.ListMigrationTasksRequest,
+    ) -> main_models.ListMigrationTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_migration_tasks_with_options(request, headers, runtime)
+
+    async def list_migration_tasks_async(
+        self,
+        request: main_models.ListMigrationTasksRequest,
+    ) -> main_models.ListMigrationTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_migration_tasks_with_options_async(request, headers, runtime)
+
+    def list_mse_nacos_sources_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListMseNacosSourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMseNacosSourcesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMseNacosSources',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/service-sources/mse-nacos-instances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMseNacosSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mse_nacos_sources_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListMseNacosSourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMseNacosSourcesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMseNacosSources',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/service-sources/mse-nacos-instances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMseNacosSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mse_nacos_sources(
+        self,
+        gateway_id: str,
+        request: main_models.ListMseNacosSourcesRequest,
+    ) -> main_models.ListMseNacosSourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_mse_nacos_sources_with_options(gateway_id, request, headers, runtime)
+
+    async def list_mse_nacos_sources_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListMseNacosSourcesRequest,
+    ) -> main_models.ListMseNacosSourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_mse_nacos_sources_with_options_async(gateway_id, request, headers, runtime)
 
     def list_plugin_attachments_with_options(
         self,
@@ -9147,6 +11095,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_plugin_classes_with_options_async(request, headers, runtime)
+
+    def list_plugin_repositories_with_options(
+        self,
+        request: main_models.ListPluginRepositoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPluginRepositoriesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPluginRepositories',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-repositories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPluginRepositoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_plugin_repositories_with_options_async(
+        self,
+        request: main_models.ListPluginRepositoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPluginRepositoriesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPluginRepositories',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-repositories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPluginRepositoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_plugin_repositories(
+        self,
+        request: main_models.ListPluginRepositoriesRequest,
+    ) -> main_models.ListPluginRepositoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_plugin_repositories_with_options(request, headers, runtime)
+
+    async def list_plugin_repositories_async(
+        self,
+        request: main_models.ListPluginRepositoriesRequest,
+    ) -> main_models.ListPluginRepositoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_plugin_repositories_with_options_async(request, headers, runtime)
+
+    def list_plugin_workspace_with_options(
+        self,
+        request: main_models.ListPluginWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPluginWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPluginWorkspace',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-workspaces',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPluginWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_plugin_workspace_with_options_async(
+        self,
+        request: main_models.ListPluginWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPluginWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPluginWorkspace',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-workspaces',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPluginWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_plugin_workspace(
+        self,
+        request: main_models.ListPluginWorkspaceRequest,
+    ) -> main_models.ListPluginWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_plugin_workspace_with_options(request, headers, runtime)
+
+    async def list_plugin_workspace_async(
+        self,
+        request: main_models.ListPluginWorkspaceRequest,
+    ) -> main_models.ListPluginWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_plugin_workspace_with_options_async(request, headers, runtime)
 
     def list_plugins_with_options(
         self,
@@ -9456,6 +11548,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_policy_classes_with_options_async(request, headers, runtime)
 
+    def list_risk_check_results_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListRiskCheckResultsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRiskCheckResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRiskCheckResults',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/risk-check/results',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRiskCheckResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_risk_check_results_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListRiskCheckResultsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRiskCheckResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRiskCheckResults',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/risk-check/results',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRiskCheckResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_risk_check_results(
+        self,
+        gateway_id: str,
+        request: main_models.ListRiskCheckResultsRequest,
+    ) -> main_models.ListRiskCheckResultsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_risk_check_results_with_options(gateway_id, request, headers, runtime)
+
+    async def list_risk_check_results_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListRiskCheckResultsRequest,
+    ) -> main_models.ListRiskCheckResultsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_risk_check_results_with_options_async(gateway_id, request, headers, runtime)
+
     def list_secret_references_with_options(
         self,
         secret_id: str,
@@ -9728,6 +11912,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_services_with_options_async(request, headers, runtime)
 
+    def list_sources_with_options(
+        self,
+        request: main_models.ListSourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSources',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/sources',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sources_with_options_async(
+        self,
+        request: main_models.ListSourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSources',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/sources',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sources(
+        self,
+        request: main_models.ListSourcesRequest,
+    ) -> main_models.ListSourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_sources_with_options(request, headers, runtime)
+
+    async def list_sources_async(
+        self,
+        request: main_models.ListSourcesRequest,
+    ) -> main_models.ListSourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_sources_with_options_async(request, headers, runtime)
+
     def list_ssl_certs_with_options(
         self,
         request: main_models.ListSslCertsRequest,
@@ -9815,6 +12091,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_ssl_certs_with_options_async(request, headers, runtime)
+
+    def list_sync_mcpserver_with_options(
+        self,
+        request: main_models.ListSyncMCPServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSyncMCPServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.source_id):
+            query['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSyncMCPServer',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/mcp-servers/sync-mcp-server/list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSyncMCPServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sync_mcpserver_with_options_async(
+        self,
+        request: main_models.ListSyncMCPServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSyncMCPServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.source_id):
+            query['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSyncMCPServer',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/mcp-servers/sync-mcp-server/list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSyncMCPServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sync_mcpserver(
+        self,
+        request: main_models.ListSyncMCPServerRequest,
+    ) -> main_models.ListSyncMCPServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_sync_mcpserver_with_options(request, headers, runtime)
+
+    async def list_sync_mcpserver_async(
+        self,
+        request: main_models.ListSyncMCPServerRequest,
+    ) -> main_models.ListSyncMCPServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_sync_mcpserver_with_options_async(request, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -10120,6 +12480,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_consumer_authorization_rules_with_options_async(request, headers, runtime)
 
+    def refresh_plugin_oauth_code_with_options(
+        self,
+        request: main_models.RefreshPluginOAuthCodeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshPluginOAuthCodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code):
+            body['code'] = request.code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshPluginOAuthCode',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-oauth-codes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshPluginOAuthCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_plugin_oauth_code_with_options_async(
+        self,
+        request: main_models.RefreshPluginOAuthCodeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshPluginOAuthCodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code):
+            body['code'] = request.code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshPluginOAuthCode',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-oauth-codes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshPluginOAuthCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_plugin_oauth_code(
+        self,
+        request: main_models.RefreshPluginOAuthCodeRequest,
+    ) -> main_models.RefreshPluginOAuthCodeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.refresh_plugin_oauth_code_with_options(request, headers, runtime)
+
+    async def refresh_plugin_oauth_code_async(
+        self,
+        request: main_models.RefreshPluginOAuthCodeRequest,
+    ) -> main_models.RefreshPluginOAuthCodeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.refresh_plugin_oauth_code_with_options_async(request, headers, runtime)
+
     def remove_consumer_authorization_rule_with_options(
         self,
         consumer_authorization_rule_id: str,
@@ -10363,6 +12799,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.restart_gateway_with_options_async(gateway_id, headers, runtime)
+
+    def run_plugin_pipeline_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.RunPluginPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunPluginPipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RunPluginPipeline',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-workspaces/{DaraURL.percent_encode(workspace_id)}/pipeline-run',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunPluginPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_plugin_pipeline_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.RunPluginPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunPluginPipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RunPluginPipeline',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-workspaces/{DaraURL.percent_encode(workspace_id)}/pipeline-run',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunPluginPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_plugin_pipeline(
+        self,
+        workspace_id: str,
+        request: main_models.RunPluginPipelineRequest,
+    ) -> main_models.RunPluginPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.run_plugin_pipeline_with_options(workspace_id, request, headers, runtime)
+
+    async def run_plugin_pipeline_async(
+        self,
+        workspace_id: str,
+        request: main_models.RunPluginPipelineRequest,
+    ) -> main_models.RunPluginPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.run_plugin_pipeline_with_options_async(workspace_id, request, headers, runtime)
 
     def sync_mcpservers_with_options(
         self,
@@ -11152,6 +13660,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_and_attach_policy_with_options_async(policy_id, request, headers, runtime)
 
+    def update_authorization_rule_with_options(
+        self,
+        consumer_authorization_rule_id: str,
+        request: main_models.UpdateAuthorizationRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.resources):
+            body['resources'] = request.resources
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/authorization-rules/{DaraURL.percent_encode(consumer_authorization_rule_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_rule_with_options_async(
+        self,
+        consumer_authorization_rule_id: str,
+        request: main_models.UpdateAuthorizationRuleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.resources):
+            body['resources'] = request.resources
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRule',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/authorization-rules/{DaraURL.percent_encode(consumer_authorization_rule_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_rule(
+        self,
+        consumer_authorization_rule_id: str,
+        request: main_models.UpdateAuthorizationRuleRequest,
+    ) -> main_models.UpdateAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_authorization_rule_with_options(consumer_authorization_rule_id, request, headers, runtime)
+
+    async def update_authorization_rule_async(
+        self,
+        consumer_authorization_rule_id: str,
+        request: main_models.UpdateAuthorizationRuleRequest,
+    ) -> main_models.UpdateAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_authorization_rule_with_options_async(consumer_authorization_rule_id, request, headers, runtime)
+
     def update_consumer_with_options(
         self,
         consumer_id: str,
@@ -11628,6 +14216,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_environment_with_options_async(environment_id, request, headers, runtime)
 
+    def update_gateway_elastic_policy_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayElasticPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayElasticPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.elastic_policy):
+            body['elasticPolicy'] = request.elastic_policy
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayElasticPolicy',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/elastic-policy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayElasticPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_elastic_policy_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayElasticPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayElasticPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.elastic_policy):
+            body['elasticPolicy'] = request.elastic_policy
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayElasticPolicy',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/elastic-policy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayElasticPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_elastic_policy(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayElasticPolicyRequest,
+    ) -> main_models.UpdateGatewayElasticPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_gateway_elastic_policy_with_options(gateway_id, request, headers, runtime)
+
+    async def update_gateway_elastic_policy_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayElasticPolicyRequest,
+    ) -> main_models.UpdateGatewayElasticPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_gateway_elastic_policy_with_options_async(gateway_id, request, headers, runtime)
+
     def update_gateway_feature_with_options(
         self,
         gateway_id: str,
@@ -11711,6 +14379,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_gateway_feature_with_options_async(gateway_id, name, request, headers, runtime)
+
+    def update_gateway_load_balancer_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayLoadBalancerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayLoadBalancerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.load_balancer_dto):
+            body['loadBalancerDTO'] = request.load_balancer_dto
+        if not DaraCore.is_null(request.option):
+            body['option'] = request.option
+        if not DaraCore.is_null(request.ports):
+            body['ports'] = request.ports
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayLoadBalancer',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/update-load-balancer',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayLoadBalancerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_load_balancer_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayLoadBalancerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayLoadBalancerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.load_balancer_dto):
+            body['loadBalancerDTO'] = request.load_balancer_dto
+        if not DaraCore.is_null(request.option):
+            body['option'] = request.option
+        if not DaraCore.is_null(request.ports):
+            body['ports'] = request.ports
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayLoadBalancer',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/update-load-balancer',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayLoadBalancerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_load_balancer(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayLoadBalancerRequest,
+    ) -> main_models.UpdateGatewayLoadBalancerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_gateway_load_balancer_with_options(gateway_id, request, headers, runtime)
+
+    async def update_gateway_load_balancer_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayLoadBalancerRequest,
+    ) -> main_models.UpdateGatewayLoadBalancerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_gateway_load_balancer_with_options_async(gateway_id, request, headers, runtime)
+
+    def update_gateway_maintenance_period_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayMaintenancePeriodRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayMaintenancePeriodResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.maintenance_period):
+            body['maintenancePeriod'] = request.maintenance_period
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayMaintenancePeriod',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/maintenance-period',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayMaintenancePeriodResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_maintenance_period_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayMaintenancePeriodRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGatewayMaintenancePeriodResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.maintenance_period):
+            body['maintenancePeriod'] = request.maintenance_period
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGatewayMaintenancePeriod',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/maintenance-period',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGatewayMaintenancePeriodResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_maintenance_period(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayMaintenancePeriodRequest,
+    ) -> main_models.UpdateGatewayMaintenancePeriodResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_gateway_maintenance_period_with_options(gateway_id, request, headers, runtime)
+
+    async def update_gateway_maintenance_period_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateGatewayMaintenancePeriodRequest,
+    ) -> main_models.UpdateGatewayMaintenancePeriodResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_gateway_maintenance_period_with_options_async(gateway_id, request, headers, runtime)
 
     def update_gateway_name_with_options(
         self,
@@ -12444,6 +15280,194 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_mcp_server_with_options_async(mcp_server_id, request, headers, runtime)
 
+    def update_migration_task_with_options(
+        self,
+        task_id: str,
+        request: main_models.UpdateMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMigrationTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_namespace):
+            body['clusterNamespace'] = request.cluster_namespace
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.service_name):
+            body['serviceName'] = request.service_name
+        if not DaraCore.is_null(request.slb_id):
+            body['slbId'] = request.slb_id
+        if not DaraCore.is_null(request.switch_type):
+            body['switchType'] = request.switch_type
+        if not DaraCore.is_null(request.target):
+            body['target'] = request.target
+        if not DaraCore.is_null(request.virtual_services):
+            body['virtualServices'] = request.virtual_services
+        if not DaraCore.is_null(request.weight):
+            body['weight'] = request.weight
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMigrationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_migration_task_with_options_async(
+        self,
+        task_id: str,
+        request: main_models.UpdateMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMigrationTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_namespace):
+            body['clusterNamespace'] = request.cluster_namespace
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.service_name):
+            body['serviceName'] = request.service_name
+        if not DaraCore.is_null(request.slb_id):
+            body['slbId'] = request.slb_id
+        if not DaraCore.is_null(request.switch_type):
+            body['switchType'] = request.switch_type
+        if not DaraCore.is_null(request.target):
+            body['target'] = request.target
+        if not DaraCore.is_null(request.virtual_services):
+            body['virtualServices'] = request.virtual_services
+        if not DaraCore.is_null(request.weight):
+            body['weight'] = request.weight
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMigrationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_migration_task(
+        self,
+        task_id: str,
+        request: main_models.UpdateMigrationTaskRequest,
+    ) -> main_models.UpdateMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_migration_task_with_options(task_id, request, headers, runtime)
+
+    async def update_migration_task_async(
+        self,
+        task_id: str,
+        request: main_models.UpdateMigrationTaskRequest,
+    ) -> main_models.UpdateMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_migration_task_with_options_async(task_id, request, headers, runtime)
+
+    def update_network_access_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateNetworkAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNetworkAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_access_type):
+            query['networkAccessType'] = request.network_access_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNetworkAccess',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/network-type',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNetworkAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_network_access_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateNetworkAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNetworkAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_access_type):
+            query['networkAccessType'] = request.network_access_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNetworkAccess',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/network-type',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNetworkAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_network_access(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateNetworkAccessRequest,
+    ) -> main_models.UpdateNetworkAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_network_access_with_options(gateway_id, request, headers, runtime)
+
+    async def update_network_access_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateNetworkAccessRequest,
+    ) -> main_models.UpdateNetworkAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_network_access_with_options_async(gateway_id, request, headers, runtime)
+
     def update_plugin_attachment_with_options(
         self,
         plugin_attachment_id: str,
@@ -12619,6 +15643,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_policy_with_options_async(policy_id, request, headers, runtime)
+
+    def update_risk_notification_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateRiskNotificationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRiskNotificationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.is_mute):
+            body['isMute'] = request.is_mute
+        if not DaraCore.is_null(request.risk_code):
+            body['riskCode'] = request.risk_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRiskNotification',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/risk-check/notifications',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRiskNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_risk_notification_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateRiskNotificationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRiskNotificationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.is_mute):
+            body['isMute'] = request.is_mute
+        if not DaraCore.is_null(request.risk_code):
+            body['riskCode'] = request.risk_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRiskNotification',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/risk-check/notifications',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRiskNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_risk_notification(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateRiskNotificationRequest,
+    ) -> main_models.UpdateRiskNotificationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_risk_notification_with_options(gateway_id, request, headers, runtime)
+
+    async def update_risk_notification_async(
+        self,
+        gateway_id: str,
+        request: main_models.UpdateRiskNotificationRequest,
+    ) -> main_models.UpdateRiskNotificationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_risk_notification_with_options_async(gateway_id, request, headers, runtime)
 
     def update_secret_with_options(
         self,
@@ -12979,3 +16087,75 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.upgrade_gateway_with_options_async(gateway_id, request, headers, runtime)
+
+    def verify_migration_task_with_options(
+        self,
+        task_id: str,
+        request: main_models.VerifyMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyMigrationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}/verify',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyMigrationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_migration_task_with_options_async(
+        self,
+        task_id: str,
+        request: main_models.VerifyMigrationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyMigrationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyMigrationTask',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/migration-tasks/{DaraURL.percent_encode(task_id)}/verify',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyMigrationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_migration_task(
+        self,
+        task_id: str,
+        request: main_models.VerifyMigrationTaskRequest,
+    ) -> main_models.VerifyMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.verify_migration_task_with_options(task_id, request, headers, runtime)
+
+    async def verify_migration_task_async(
+        self,
+        task_id: str,
+        request: main_models.VerifyMigrationTaskRequest,
+    ) -> main_models.VerifyMigrationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.verify_migration_task_with_options_async(task_id, request, headers, runtime)

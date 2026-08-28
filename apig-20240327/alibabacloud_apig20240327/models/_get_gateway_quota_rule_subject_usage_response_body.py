@@ -72,6 +72,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         input_amount: int = None,
         output_amount: int = None,
         over_limit: bool = None,
+        subject_type: str = None,
         total_quota: int = None,
         used_amount: int = None,
     ):
@@ -83,11 +84,15 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         self.input_amount = input_amount
         # The total output token consumption.
         self.output_amount = output_amount
-        # Indicates whether the limit is exceeded.
+        # Indicates whether the quota limit is exceeded.
         self.over_limit = over_limit
+        # The subject type. Valid values:
+        # - consumer
+        # - consumer_group
+        self.subject_type = subject_type
         # The total quota of the subject.
         self.total_quota = total_quota
-        # The total used amount of the subject.
+        # The total used quota of the subject.
         self.used_amount = used_amount
 
     def validate(self):
@@ -114,6 +119,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         if self.over_limit is not None:
             result['overLimit'] = self.over_limit
 
+        if self.subject_type is not None:
+            result['subjectType'] = self.subject_type
+
         if self.total_quota is not None:
             result['totalQuota'] = self.total_quota
 
@@ -139,6 +147,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
 
         if m.get('overLimit') is not None:
             self.over_limit = m.get('overLimit')
+
+        if m.get('subjectType') is not None:
+            self.subject_type = m.get('subjectType')
 
         if m.get('totalQuota') is not None:
             self.total_quota = m.get('totalQuota')
@@ -215,20 +226,26 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
     def __init__(
         self,
         cached_amount: int = None,
+        consumer: str = None,
         input_amount: int = None,
         model: str = None,
         output_amount: int = None,
+        request_id: str = None,
         start_time: str = None,
         used_amount: int = None,
     ):
         # The cached token consumption.
         self.cached_amount = cached_amount
+        # The consumer name.
+        self.consumer = consumer
         # The input token consumption.
         self.input_amount = input_amount
         # The model name.
         self.model = model
         # The output token consumption.
         self.output_amount = output_amount
+        # The request ID.
+        self.request_id = request_id
         # The consumption (request) time in the format of YYYY-MM-DD.
         self.start_time = start_time
         # The total consumption.
@@ -245,6 +262,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         if self.cached_amount is not None:
             result['cachedAmount'] = self.cached_amount
 
+        if self.consumer is not None:
+            result['consumer'] = self.consumer
+
         if self.input_amount is not None:
             result['inputAmount'] = self.input_amount
 
@@ -253,6 +273,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
 
         if self.output_amount is not None:
             result['outputAmount'] = self.output_amount
+
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
 
         if self.start_time is not None:
             result['startTime'] = self.start_time
@@ -267,6 +290,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         if m.get('cachedAmount') is not None:
             self.cached_amount = m.get('cachedAmount')
 
+        if m.get('consumer') is not None:
+            self.consumer = m.get('consumer')
+
         if m.get('inputAmount') is not None:
             self.input_amount = m.get('inputAmount')
 
@@ -275,6 +301,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
 
         if m.get('outputAmount') is not None:
             self.output_amount = m.get('outputAmount')
+
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
 
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')

@@ -24,31 +24,31 @@ class HttpRoute(DaraModel):
         route_id: str = None,
         update_timestamp: int = None,
     ):
-        # The backend configuration
+        # The backend service.
         self.backend = backend
-        # builtin
+        # Indicates whether the route is a built-in system route.
         self.builtin = builtin
-        # The creation timestamp in milliseconds
+        # The creation time, in ms.
         self.create_timestamp = create_timestamp
-        # The deployment status
+        # The deployment status.
         self.deploy_status = deploy_status
-        # The description of the route
+        # The route description.
         self.description = description
-        # List of domain information
+        # The list of domain name information.
         self.domain_infos = domain_infos
-        # The environment information
+        # The environment context of the routing.
         self.environment_info = environment_info
-        # gatewayStatus
+        # The route publish status.
         self.gateway_status = gateway_status
-        # The route matching rules
+        # The route matching rule.
         self.match = match
-        # The MCP server information
+        # The MCP server information.
         self.mcp_server_info = mcp_server_info
-        # The name of the route
+        # The route name.
         self.name = name
-        # The unique identifier of the route
+        # The HttpApi route ID.
         self.route_id = route_id
-        # The last update timestamp in milliseconds
+        # The update time, in ms.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -173,17 +173,17 @@ class HttpRouteMcpServerInfo(DaraModel):
         mcp_route_config: main_models.HttpRouteMcpServerInfoMcpRouteConfig = None,
         mcp_server_config: str = None,
     ):
-        # The creation type
+        # The creation type.
         self.create_from_type = create_from_type
-        # The imported instance ID
+        # The Nacos instance ID.
         self.import_instance_id = import_instance_id
-        # The imported Nacos MCP server ID
+        # The Nacos MCP server identifier.
         self.import_mcp_server_id = import_mcp_server_id
-        # The imported namespace
+        # The Nacos namespace.
         self.import_namespace = import_namespace
-        # The MCP route configuration
+        # The MCP route information.
         self.mcp_route_config = mcp_route_config
-        # The MCP server configuration content
+        # The MCP server metadata configuration.
         self.mcp_server_config = mcp_server_config
 
     def validate(self):
@@ -246,7 +246,7 @@ class HttpRouteMcpServerInfoMcpRouteConfig(DaraModel):
     ):
         # mcp route path
         self.exposed_uri_path = exposed_uri_path
-        # The MCP protocol
+        # The MCP protocol type.
         self.protocol = protocol
 
     def validate(self):
@@ -284,15 +284,15 @@ class HttpRouteEnvironmentInfo(DaraModel):
         name: str = None,
         sub_domains: List[main_models.HttpRouteEnvironmentInfoSubDomains] = None,
     ):
-        # The environment alias
+        # The environment name alias.
         self.alias = alias
-        # The environment ID
+        # The environment ID.
         self.environment_id = environment_id
-        # The gateway information
+        # The gateway information.
         self.gateway_info = gateway_info
-        # The environment name
+        # The environment name.
         self.name = name
-        # List of subdomain information
+        # The list of default second-level domain names of the environment.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -358,13 +358,13 @@ class HttpRouteEnvironmentInfoSubDomains(DaraModel):
         network_type: str = None,
         protocol: str = None,
     ):
-        # The subdomain ID
+        # The domain name ID.
         self.domain_id = domain_id
-        # The subdomain name
+        # The domain name.
         self.name = name
-        # networkType
+        # The domain name access type.
         self.network_type = network_type
-        # The subdomain protocol
+        # The domain name protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -413,9 +413,9 @@ class HttpRouteEnvironmentInfoGatewayInfo(DaraModel):
         name: str = None,
     ):
         self.gateway_edition = gateway_edition
-        # The gateway ID
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # The gateway name
+        # The gateway name.
         self.name = name
 
     def validate(self):
@@ -457,11 +457,11 @@ class HttpRouteDomainInfos(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
-        # The domain ID
+        # The domain name ID.
         self.domain_id = domain_id
-        # The domain name
+        # The domain name.
         self.name = name
-        # The domain protocol
+        # The domain name protocol.
         self.protocol = protocol
 
     def validate(self):

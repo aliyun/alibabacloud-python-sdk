@@ -76,14 +76,17 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         rule_id: str = None,
         rule_name: str = None,
         rule_status: str = None,
+        subject_count: int = None,
+        subject_type: str = None,
+        subjects: List[main_models.GetGatewayQuotaRuleResponseBodyDataSubjects] = None,
         timezone: str = None,
         window_alignment: str = None,
     ):
-        # The base timestamp of the period.
+        # The period base timestamp.
         self.base_timestamp = base_timestamp
         # The number of consumers associated with the rule.
         self.consumer_count = consumer_count
-        # The list of principals (consumers) bound to this rule.
+        # The list of subjects (consumers) bound to this rule.
         self.consumers = consumers
         # The quota period type.
         self.period_type = period_type
@@ -97,7 +100,13 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         self.rule_name = rule_name
         # The rule status.
         self.rule_status = rule_status
-        # The time zone for the calendar period, in UTC+x format.
+        # The number of associated subjects.
+        self.subject_count = subject_count
+        # The rule subject type. Valid values: consumer or consumer_group.
+        self.subject_type = subject_type
+        # The general subject list bound to this rule. Returned only when withSubjects is set to true.
+        self.subjects = subjects
+        # The time zone corresponding to the calendar period, in UTC+x format.
         self.timezone = timezone
         # The reset period type.
         self.window_alignment = window_alignment
@@ -105,6 +114,10 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
     def validate(self):
         if self.consumers:
             for v1 in self.consumers:
+                 if v1:
+                    v1.validate()
+        if self.subjects:
+            for v1 in self.subjects:
                  if v1:
                     v1.validate()
 
@@ -141,6 +154,17 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
 
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+
+        if self.subject_count is not None:
+            result['subjectCount'] = self.subject_count
+
+        if self.subject_type is not None:
+            result['subjectType'] = self.subject_type
+
+        result['subjects'] = []
+        if self.subjects is not None:
+            for k1 in self.subjects:
+                result['subjects'].append(k1.to_map() if k1 else None)
 
         if self.timezone is not None:
             result['timezone'] = self.timezone
@@ -182,11 +206,69 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
 
+        if m.get('subjectCount') is not None:
+            self.subject_count = m.get('subjectCount')
+
+        if m.get('subjectType') is not None:
+            self.subject_type = m.get('subjectType')
+
+        self.subjects = []
+        if m.get('subjects') is not None:
+            for k1 in m.get('subjects'):
+                temp_model = main_models.GetGatewayQuotaRuleResponseBodyDataSubjects()
+                self.subjects.append(temp_model.from_map(k1))
+
         if m.get('timezone') is not None:
             self.timezone = m.get('timezone')
 
         if m.get('windowAlignment') is not None:
             self.window_alignment = m.get('windowAlignment')
+
+        return self
+
+class GetGatewayQuotaRuleResponseBodyDataSubjects(DaraModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        subject_type: str = None,
+    ):
+        # The subject ID.
+        self.id = id
+        # The subject name.
+        self.name = name
+        # The subject type. Valid values: consumer or consumer_group.
+        self.subject_type = subject_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.subject_type is not None:
+            result['subjectType'] = self.subject_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('subjectType') is not None:
+            self.subject_type = m.get('subjectType')
 
         return self
 
@@ -196,9 +278,9 @@ class GetGatewayQuotaRuleResponseBodyDataConsumers(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the principal (consumer).
+        # The subject (consumer) ID.
         self.id = id
-        # The name of the principal (consumer).
+        # The subject (consumer) name.
         self.name = name
 
     def validate(self):

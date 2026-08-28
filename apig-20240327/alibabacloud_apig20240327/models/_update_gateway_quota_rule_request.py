@@ -18,23 +18,23 @@ class UpdateGatewayQuotaRuleRequest(DaraModel):
         remove_ids: List[str] = None,
         rule_name: str = None,
     ):
-        # The list of principal (consumer) IDs to bind.
+        # The list of subject (consumer) IDs to bind.
         self.add_ids = add_ids
-        # The conflict snapshot hash, used to prevent concurrent dirty overwrites when confirming an overwrite. Obtain this value from the response of a prior dryRun=true call.
+        # The conflict snapshot hash used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a prior dryRun=true call.
         # 
-        # This parameter is not required in the following cases: no conflicts exist, the call is a dry run (dryRun=true), or overwrite is set to false.
+        # This parameter is not required in the following cases: no conflict exists, the request is a dry run (dryRun=true), or overwrite is set to false.
         # 
-        # When dryRun is set to false and overwrite is set to true, if this parameter is missing or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. Perform the dry run again to confirm the new conflicts.
+        # When dryRun=false and overwrite=true, if this parameter is missing or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. You must perform a dry run again to confirm the new conflict.
         self.conflict_hash = conflict_hash
-        # The list of consumer group IDs. This parameter is not supported.
+        # The list of consumer group IDs. This parameter is not supported currently.
         self.consumer_group_ids = consumer_group_ids
-        # Specifies whether to perform a dry run only without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. For example, a consumer that already has a calendar-day quota cannot have another calendar-day quota rule added.
+        # Specifies whether to perform a dry run only without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. The same consumer cannot have two quota rules with the same calendar period. For example, a consumer that already has a daily calendar quota cannot be assigned another daily calendar quota rule.
         self.dry_run = dry_run
-        # Specifies whether to allow overwriting when a conflict exists. If overwriting is allowed, the conflicting principals (consumers) are unbound from the old rule and bound to the new rule.
+        # Specifies whether to allow overwriting on conflict. If overwriting is allowed, conflicting subjects (consumers) are unbound from the old rule and bound to the new rule.
         self.overwrite = overwrite
         # The updated total available quota.
         self.quota_limit = quota_limit
-        # The list of principal (consumer) IDs to unbind.
+        # The list of subject (consumer) IDs to unbind.
         self.remove_ids = remove_ids
         # The updated rule name.
         self.rule_name = rule_name
