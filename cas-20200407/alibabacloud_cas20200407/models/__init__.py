@@ -41,6 +41,9 @@ from ._create_csr_response import CreateCsrResponse
 from ._create_deployment_job_request import CreateDeploymentJobRequest
 from ._create_deployment_job_response_body import CreateDeploymentJobResponseBody
 from ._create_deployment_job_response import CreateDeploymentJobResponse
+from ._create_rollback_task_request import CreateRollbackTaskRequest
+from ._create_rollback_task_response_body import CreateRollbackTaskResponseBody
+from ._create_rollback_task_response import CreateRollbackTaskResponse
 from ._create_whclient_certificate_request import CreateWHClientCertificateRequest
 from ._create_whclient_certificate_response_body import CreateWHClientCertificateResponseBody
 from ._create_whclient_certificate_response import CreateWHClientCertificateResponse
@@ -214,6 +217,9 @@ from ._revoke_certificate_response import RevokeCertificateResponse
 from ._revoke_whclient_certificate_request import RevokeWHClientCertificateRequest
 from ._revoke_whclient_certificate_response_body import RevokeWHClientCertificateResponseBody
 from ._revoke_whclient_certificate_response import RevokeWHClientCertificateResponse
+from ._share_certificate_request import ShareCertificateRequest
+from ._share_certificate_response_body import ShareCertificateResponseBody
+from ._share_certificate_response import ShareCertificateResponse
 from ._sign_request import SignRequest
 from ._sign_response_body import SignResponseBody
 from ._sign_response import SignResponse
@@ -334,6 +340,9 @@ __all__ = [
     CreateDeploymentJobRequest,
     CreateDeploymentJobResponseBody,
     CreateDeploymentJobResponse,
+    CreateRollbackTaskRequest,
+    CreateRollbackTaskResponseBody,
+    CreateRollbackTaskResponse,
     CreateWHClientCertificateRequest,
     CreateWHClientCertificateResponseBody,
     CreateWHClientCertificateResponse,
@@ -507,6 +516,9 @@ __all__ = [
     RevokeWHClientCertificateRequest,
     RevokeWHClientCertificateResponseBody,
     RevokeWHClientCertificateResponse,
+    ShareCertificateRequest,
+    ShareCertificateResponseBody,
+    ShareCertificateResponse,
     SignRequest,
     SignResponseBody,
     SignResponse,

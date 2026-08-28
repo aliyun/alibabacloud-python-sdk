@@ -1230,6 +1230,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_deployment_job_with_options_async(request, runtime)
 
+    def create_rollback_task_with_options(
+        self,
+        request: main_models.CreateRollbackTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRollbackTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.worker_id):
+            query['WorkerId'] = request.worker_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRollbackTask',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRollbackTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rollback_task_with_options_async(
+        self,
+        request: main_models.CreateRollbackTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRollbackTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.worker_id):
+            query['WorkerId'] = request.worker_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRollbackTask',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRollbackTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rollback_task(
+        self,
+        request: main_models.CreateRollbackTaskRequest,
+    ) -> main_models.CreateRollbackTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_rollback_task_with_options(request, runtime)
+
+    async def create_rollback_task_async(
+        self,
+        request: main_models.CreateRollbackTaskRequest,
+    ) -> main_models.CreateRollbackTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_rollback_task_with_options_async(request, runtime)
+
     def create_whclient_certificate_with_options(
         self,
         request: main_models.CreateWHClientCertificateRequest,
@@ -5703,6 +5777,80 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeWHClientCertificateResponse:
         runtime = RuntimeOptions()
         return await self.revoke_whclient_certificate_with_options_async(request, runtime)
+
+    def share_certificate_with_options(
+        self,
+        request: main_models.ShareCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ShareCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not DaraCore.is_null(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShareCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ShareCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def share_certificate_with_options_async(
+        self,
+        request: main_models.ShareCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ShareCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not DaraCore.is_null(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShareCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ShareCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def share_certificate(
+        self,
+        request: main_models.ShareCertificateRequest,
+    ) -> main_models.ShareCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.share_certificate_with_options(request, runtime)
+
+    async def share_certificate_async(
+        self,
+        request: main_models.ShareCertificateRequest,
+    ) -> main_models.ShareCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.share_certificate_with_options_async(request, runtime)
 
     def sign_with_options(
         self,

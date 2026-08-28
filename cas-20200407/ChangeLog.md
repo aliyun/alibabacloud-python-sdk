@@ -1,3 +1,8 @@
+2026-08-28 Version: 3.9.0
+- Support API CreateRollbackTask.
+- Support API ShareCertificate.
+
+
 2026-08-26 Version: 3.8.1
 - Update API DeleteInstance: add request parameters ClientToken.
 - Update API DeleteUserCertificate: add request parameters ClientToken.
