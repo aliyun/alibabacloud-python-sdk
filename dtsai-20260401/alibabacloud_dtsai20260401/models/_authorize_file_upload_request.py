@@ -8,11 +8,13 @@ class AuthorizeFileUploadRequest(DaraModel):
     def __init__(
         self,
         agent_name: str = None,
+        batch_size: str = None,
         file_format: str = None,
         region_id: str = None,
     ):
         # The Agent or client source that initiates the call, such as codex, cursor, or openapi. Maximum length: 32 characters. Used only for statistics and does not participate in authentication, throttling, quota, or billing.
         self.agent_name = agent_name
+        self.batch_size = batch_size
         # The format of the file to be uploaded.
         self.file_format = file_format
         # The region ID, such as cn-beijing.
@@ -31,6 +33,9 @@ class AuthorizeFileUploadRequest(DaraModel):
         if self.agent_name is not None:
             result['AgentName'] = self.agent_name
 
+        if self.batch_size is not None:
+            result['BatchSize'] = self.batch_size
+
         if self.file_format is not None:
             result['FileFormat'] = self.file_format
 
@@ -43,6 +48,9 @@ class AuthorizeFileUploadRequest(DaraModel):
         m = m or dict()
         if m.get('AgentName') is not None:
             self.agent_name = m.get('AgentName')
+
+        if m.get('BatchSize') is not None:
+            self.batch_size = m.get('BatchSize')
 
         if m.get('FileFormat') is not None:
             self.file_format = m.get('FileFormat')

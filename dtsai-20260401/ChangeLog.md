@@ -1,3 +1,6 @@
+2026-08-28 Version: 1.1.2
+- Generated python 2026-04-01 for DtsAI.
+
 2026-08-24 Version: 1.1.0
 - Support API AuthorizeFileUpload.
 

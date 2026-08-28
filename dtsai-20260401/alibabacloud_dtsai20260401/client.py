@@ -217,6 +217,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_name):
             query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.batch_size):
+            query['BatchSize'] = request.batch_size
         if not DaraCore.is_null(request.file_format):
             query['FileFormat'] = request.file_format
         if not DaraCore.is_null(request.region_id):
@@ -249,6 +251,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_name):
             query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.batch_size):
+            query['BatchSize'] = request.batch_size
         if not DaraCore.is_null(request.file_format):
             query['FileFormat'] = request.file_format
         if not DaraCore.is_null(request.region_id):

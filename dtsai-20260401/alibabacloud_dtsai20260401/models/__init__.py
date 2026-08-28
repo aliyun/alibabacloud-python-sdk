@@ -21,6 +21,7 @@ from ._web_fetch_response import WebFetchResponse
 from ._web_search_request import WebSearchRequest
 from ._web_search_response_body import WebSearchResponseBody
 from ._web_search_response import WebSearchResponse
+from ._authorize_file_upload_response_body import AuthorizeFileUploadResponseBodyAuthorizations
 from ._web_search_response_body import WebSearchResponseBodySearchResult
 
 __all__ = [
@@ -43,5 +44,6 @@ __all__ = [
     WebSearchRequest,
     WebSearchResponseBody,
     WebSearchResponse,
+    AuthorizeFileUploadResponseBodyAuthorizations,
     WebSearchResponseBodySearchResult
 ]

@@ -106,8 +106,6 @@ class WebSearchResponseBody(DaraModel):
 
         return self
 
-
-
 class WebSearchResponseBodySearchResult(DaraModel):
     def __init__(
         self,
