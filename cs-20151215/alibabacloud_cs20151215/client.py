@@ -8489,6 +8489,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_cluster_kubeconfig_states_with_options_async(cluster_id, request, headers, runtime)
 
+    def list_node_pool_component_instance_nodes_with_options(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        name: str,
+        tmp_req: main_models.ListNodePoolComponentInstanceNodesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodePoolComponentInstanceNodesResponse:
+        tmp_req.validate()
+        request = main_models.ListNodePoolComponentInstanceNodesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.node_names):
+            request.node_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_names, 'node_names', 'json')
+        query = {}
+        if not DaraCore.is_null(request.config_revision):
+            query['config_revision'] = request.config_revision
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
+        if not DaraCore.is_null(request.node_names_shrink):
+            query['node_names'] = request.node_names_shrink
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodePoolComponentInstanceNodes',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/nodepools/{DaraURL.percent_encode(nodepool_id)}/component_instances/{DaraURL.percent_encode(name)}/nodes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodePoolComponentInstanceNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_node_pool_component_instance_nodes_with_options_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        name: str,
+        tmp_req: main_models.ListNodePoolComponentInstanceNodesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodePoolComponentInstanceNodesResponse:
+        tmp_req.validate()
+        request = main_models.ListNodePoolComponentInstanceNodesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.node_names):
+            request.node_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_names, 'node_names', 'json')
+        query = {}
+        if not DaraCore.is_null(request.config_revision):
+            query['config_revision'] = request.config_revision
+        if not DaraCore.is_null(request.max_results):
+            query['max_results'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['next_token'] = request.next_token
+        if not DaraCore.is_null(request.node_names_shrink):
+            query['node_names'] = request.node_names_shrink
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodePoolComponentInstanceNodes',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/nodepools/{DaraURL.percent_encode(nodepool_id)}/component_instances/{DaraURL.percent_encode(name)}/nodes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodePoolComponentInstanceNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_node_pool_component_instance_nodes(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        name: str,
+        request: main_models.ListNodePoolComponentInstanceNodesRequest,
+    ) -> main_models.ListNodePoolComponentInstanceNodesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_node_pool_component_instance_nodes_with_options(cluster_id, nodepool_id, name, request, headers, runtime)
+
+    async def list_node_pool_component_instance_nodes_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        name: str,
+        request: main_models.ListNodePoolComponentInstanceNodesRequest,
+    ) -> main_models.ListNodePoolComponentInstanceNodesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_node_pool_component_instance_nodes_with_options_async(cluster_id, nodepool_id, name, request, headers, runtime)
+
     def list_node_pool_component_instances_with_options(
         self,
         cluster_id: str,

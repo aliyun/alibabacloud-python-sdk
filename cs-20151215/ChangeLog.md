@@ -1,3 +1,7 @@
+2026-08-28 Version: 7.2.0
+- Support API ListNodePoolComponentInstanceNodes.
+
+
 2026-08-25 Version: 7.1.3
 - Generated python 2015-12-15 for CS.
 
