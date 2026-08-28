@@ -14,13 +14,13 @@ class MerchandisePlacementDetectionRequest(DaraModel):
     ):
         # Specifies a custom API version. If you created a "My API" during the trial phase, you can find the corresponding ApiId in the product console under "Intelligent Inspection > API Management > My API".
         self.api_id = api_id
-        # The URL of the shelf or floor-stack image to be recognized (accessible via the public network or OSS).
+        # The URL of the shelf or floor-stack image to be recognized (accessible over the public network or from OSS).
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The customer-specific SKU vector library ID that determines which library to retrieve from. The library must be created in advance through the library creation process.
+        # The ID of the customer\\"s dedicated SKU vector library, which determines which library is used for retrieval. The library must be created in advance through the library creation process.
         self.rag_id = rag_id
-        # The business type (reserved for future routing by business line). The current release supports skincare & lotion.
+        # The business type (reserved for future routing by business line). The current phase supports skincare & lotion.
         self.type = type
 
     def validate(self):

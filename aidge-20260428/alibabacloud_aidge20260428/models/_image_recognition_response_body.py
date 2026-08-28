@@ -16,11 +16,11 @@ class ImageRecognitionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned for successful calls.
         self.code = code
         # The intelligent element recognition result.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned for successful calls.
         self.message = message
         # Id of the request
         self.request_id = request_id

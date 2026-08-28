@@ -22,9 +22,9 @@ class AssetOptimizeProShrinkRequest(DaraModel):
     ):
         # The list of column names to recognize in size chart images. Optional.
         self.column_name_list_shrink = column_name_list_shrink
-        # The glossary ID. Optional. Create a glossary in the console and provide its ID. If left empty, translation results are not modified by any glossary.
+        # The glossary ID. Optional. Create a glossary separately in the console and provide its ID. If empty, translation results are not modified.
         self.glossary = glossary
-        # Specifies whether to translate text on the product subject area of images. Setting this to false helps protect embedded information such as product names from being translated. Default value: false.
+        # Specifies whether to translate text on the product subject area in images. Setting this to false helps protect embedded information such as product names from being translated. Default value: false.
         self.including_product_area = including_product_area
         # The output language format for size chart images. If not specified, the original format is used. Set to en for English output or cn for Chinese output.
         self.language_model = language_model
@@ -36,13 +36,13 @@ class AssetOptimizeProShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.product_url = product_url
-        # The source language code. Optional. For supported language pairs, refer to the supported translation language list. This parameter is required if NeedTrans is set to true.
+        # The source language code. Optional. Refer to the supported language pairs list for available language directions. Required if NeedTrans is set to true.
         self.source_language = source_language
         # The source platform. Only 1688 is supported.
         # 
         # This parameter is required.
         self.source_platform = source_platform
-        # The target language code. Optional. For supported language pairs, refer to the supported translation language list. This parameter is required if NeedTrans is set to true.
+        # The target language code. Optional. Refer to the supported language pairs list for available language directions. Required if NeedTrans is set to true.
         self.target_language = target_language
         # The target listing platform. Only temu is supported.
         # 
@@ -50,7 +50,7 @@ class AssetOptimizeProShrinkRequest(DaraModel):
         self.target_platform = target_platform
         # The confidence threshold for size chart detection. Default value: 0.4. A value of 0 treats all images as size charts. A value of 1 treats no images as size charts.
         self.threshold = threshold
-        # Specifies whether to translate brand names on images. Optional. Default value: false. Setting this to false helps protect brand name information from being translated.
+        # Specifies whether to translate brand names in images. Optional. Default value: false. Setting this to false helps protect brand name information from being translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
 
     def validate(self):

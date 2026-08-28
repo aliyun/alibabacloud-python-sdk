@@ -18,11 +18,12 @@ class DocumentTranslateResponseBody(DaraModel):
         self.code = code
         # The asynchronous task information.
         self.data = data
-        # The error message. Not returned for successful calls.
+        # The error message, such as "The parameters contain sensitive information. Try other input."
+        # This parameter is not returned for successful calls.
         self.message = message
-        # Id of the request
+        # The unique request identity, used for troubleshooting and tracing.
         self.request_id = request_id
-        # Indicates whether the call is successful. true: successful. false: failed.
+        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
         self.success = success
 
     def validate(self):

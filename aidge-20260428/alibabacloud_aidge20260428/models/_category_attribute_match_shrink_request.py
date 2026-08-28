@@ -18,7 +18,7 @@ class CategoryAttributeMatchShrinkRequest(DaraModel):
     ):
         # The product details.
         self.description = description
-        # The product image URLs. A maximum of 10 images are supported.
+        # The product image URLs (up to 10 images are supported).
         self.image_url_shrink = image_url_shrink
         # The product attributes that describe the product characteristics.
         # 
@@ -32,11 +32,11 @@ class CategoryAttributeMatchShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.source_category = source_category
-        # The source platform from which the product originates.
+        # The source platform where the product originates.
         # 
         # This parameter is required.
         self.source_platform = source_platform
-        # The target listing platform. Currently, only temu is supported.
+        # The target listing platform. Currently only temu is supported.
         # 
         # This parameter is required.
         self.target_platform = target_platform

@@ -16,9 +16,9 @@ class ImageRemoveResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The status code.
         self.code = code
-        # The intelligent erasure result.
+        # The intelligent removal result.
         self.data = data
         # The error message.
         self.message = message
@@ -81,13 +81,13 @@ class ImageRemoveResponseBodyData(DaraModel):
         usage_map: Dict[str, int] = None,
         width: int = None,
     ):
-        # The height of the result image, in pixels.
+        # The height of the result image in pixels.
         self.height = height
-        # The URL of the result image after erasure.
+        # The URL of the result image after removal.
         self.image_url = image_url
         # The usage information.
         self.usage_map = usage_map
-        # The width of the result image, in pixels.
+        # The width of the result image in pixels.
         self.width = width
 
     def validate(self):

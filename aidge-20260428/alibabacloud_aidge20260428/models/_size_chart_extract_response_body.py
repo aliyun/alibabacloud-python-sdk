@@ -76,7 +76,7 @@ class SizeChartExtractResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID, which is used to query the result later.
+        # The asynchronous task ID, used to query the result later.
         self.task_id = task_id
 
     def validate(self):

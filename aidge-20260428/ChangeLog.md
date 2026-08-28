@@ -1,3 +1,7 @@
+2026-08-28 Version: 5.3.2
+- Update API LanguageDetect: add request parameters Scene.
+
+
 2026-08-17 Version: 5.3.1
 - Update API ImageRemove: add request parameters Position.
 - Update API ImageRemove: add request parameters UserImage.

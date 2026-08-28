@@ -20,9 +20,9 @@ class ImageTranslationStandardResponseBody(DaraModel):
         self.code = code
         # The translation result data, including the translated image URL and usage information.
         self.data = data
-        # The error message. Returns "Success" for successful calls, and returns specific error information for failed calls.
+        # The error message. "Success" is returned for successful calls, and a specific error message is returned for failed calls.
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # The request ID, used to uniquely identify a request.
         self.request_id = request_id
         # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
@@ -82,9 +82,9 @@ class ImageTranslationStandardResponseBodyData(DaraModel):
     ):
         # The edit information.
         self.edit_info = edit_info
-        # The URL of the image generated after image translation.
+        # The URL of the image generated from the image translation result.
         self.image_url = image_url
-        # The usage information, including the number of images processed.
+        # The usage information, including the number of processed images.
         self.usage_map = usage_map
 
     def validate(self):
@@ -137,15 +137,15 @@ class ImageTranslationStandardResponseBodyDataEditInfo(DaraModel):
     ):
         # The list of fonts used.
         self.font = font
-        # The product area rectangles.
+        # The product area rectangle.
         self.goods_rects = goods_rects
         # The product image URL.
         self.goods_url = goods_url
         # The list of target languages.
         self.languages = languages
-        # The original image URL.
+        # The URL of the original image.
         self.pict_url = pict_url
-        # The repaired image URL.
+        # The URL of the repaired image.
         self.repaired_url = repaired_url
         # The list of repaired image URLs.
         self.repaired_urls = repaired_urls

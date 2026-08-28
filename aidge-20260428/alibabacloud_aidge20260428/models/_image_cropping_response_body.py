@@ -16,15 +16,17 @@ class ImageCroppingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code
+        # The response code.
         self.code = code
-        # Crop result
+        # The cropping result.
         self.data = data
-        # Error message
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Whether the call was successful: true indicates success, false indicates failure
+        # Indicates whether the call is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -81,13 +83,13 @@ class ImageCroppingResponseBodyData(DaraModel):
         usage_map: Dict[str, int] = None,
         width: int = None,
     ):
-        # Image height
+        # The image height.
         self.height = height
-        # URL of the cropped image
+        # The URL of the cropped image.
         self.image_url = image_url
-        # Usage information
+        # The usage information.
         self.usage_map = usage_map
-        # Image width
+        # The image width.
         self.width = width
 
     def validate(self):

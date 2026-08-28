@@ -16,11 +16,11 @@ class CategoryAttributeMatchResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned for successful calls.
         self.code = code
-        # The returned result.
+        # The response data.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned for successful calls.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -99,7 +99,7 @@ class CategoryAttributeMatchResponseBodyData(DaraModel):
         self.matched = matched
         # The total number of attributes under the category.
         self.total_attributes = total_attributes
-        # The usage fields.
+        # The usage information.
         self.usage_map = usage_map
 
     def validate(self):
@@ -218,9 +218,9 @@ class CategoryAttributeMatchResponseBodyDataAttributes(DaraModel):
     ):
         # The attribute ID.
         self.attr_id = attr_id
-        # The matching confidence score. Valid values: 0 to 100.
+        # The matching confidence score, ranging from 0 to 100.
         self.confidence = confidence
-        # The input type of the attribute.
+        # The attribute input type.
         self.input_type = input_type
         # Indicates whether the attribute is successfully matched. Valid values: true and false.
         self.matched = matched
@@ -228,7 +228,7 @@ class CategoryAttributeMatchResponseBodyDataAttributes(DaraModel):
         self.name = name
         # The English name of the attribute.
         self.name_en = name_en
-        # The reason for the matching result.
+        # The explanation for the matching result.
         self.reason = reason
         # The list of selected attribute value texts, such as ["iOS","Android"\\].
         self.selected_values = selected_values

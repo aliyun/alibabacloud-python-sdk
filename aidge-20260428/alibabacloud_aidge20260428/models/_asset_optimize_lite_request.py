@@ -17,31 +17,31 @@ class AssetOptimizeLiteRequest(DaraModel):
         target_platform: str = None,
         translating_brand_in_the_product: bool = None,
     ):
-        # Custom glossary
+        # The custom glossary for term intervention.
         self.glossary = glossary
-        # Whether to include product region translation
+        # Specifies whether product area translation is included.
         self.including_product_area = including_product_area
-        # Whether translation is required
+        # Specifies whether translation is needed.
         # 
         # This parameter is required.
         self.need_trans = need_trans
-        # Product Link URL
+        # The product URL.
         # 
         # This parameter is required.
         self.product_url = product_url
-        # Source language code, e.g., zh
+        # The source language code, such as zh.
         self.source_language = source_language
-        # Source platform, e.g., 1688
+        # The source platform, such as 1688.
         # 
         # This parameter is required.
         self.source_platform = source_platform
-        # Target language code, e.g., en
+        # The target language code, such as en.
         self.target_language = target_language
-        # Target platform, e.g., temu
+        # The target platform, such as temu.
         # 
         # This parameter is required.
         self.target_platform = target_platform
-        # Whether to translate brand names in images, default false
+        # Specifies whether to translate brand names in images. Default value: false.
         self.translating_brand_in_the_product = translating_brand_in_the_product
 
     def validate(self):

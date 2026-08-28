@@ -25,6 +25,7 @@ class ImageMattingResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
+        # 
         # - true: Successful.
         # - false: Failed.
         self.success = success

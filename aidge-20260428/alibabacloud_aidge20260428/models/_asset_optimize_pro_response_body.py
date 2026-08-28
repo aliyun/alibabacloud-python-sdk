@@ -16,13 +16,13 @@ class AssetOptimizeProResponseBody(DaraModel):
     ):
         # The status code. The value "success" is returned for a successful call.
         self.code = code
-        # The result data of the asynchronous task submission, which contains the asynchronous task ID.
+        # The asynchronous task submission result data, which contains the asynchronous task ID.
         self.data = data
         # The error message. The value "Success" is returned for a successful call.
         self.message = message
-        # The request ID, which uniquely identifies the API call.
+        # The request ID, used to uniquely identify a single API call.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class AssetOptimizeProResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID, which is used to query the processing result by calling QueryAsyncTaskResult.
+        # The asynchronous task ID, used to query processing results through QueryAsyncTaskResult.
         self.task_id = task_id
 
     def validate(self):

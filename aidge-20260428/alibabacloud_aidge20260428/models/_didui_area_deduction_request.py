@@ -19,7 +19,7 @@ class DiduiAreaDeductionRequest(DaraModel):
         # 
         # This parameter is required.
         self.products = products
-        # The ID of the customer-specific SKU vector database that determines which database is used for retrieval. The database must be created in advance through the database creation process.
+        # The ID of the customer-specific SKU vector store that determines which store is used for retrieval. The store must be created in advance through the store creation process.
         self.rag_id = rag_id
         # The optional business request ID used for Tracing Analysis.
         self.req_id = req_id

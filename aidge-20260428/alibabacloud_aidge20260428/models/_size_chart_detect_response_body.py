@@ -25,6 +25,7 @@ class SizeChartDetectResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
+        # 
         # - true: The call is successful.
         # - false: The call failed.
         self.success = success

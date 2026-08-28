@@ -16,13 +16,13 @@ class VisionFlowResponseBody(DaraModel):
     ):
         # The status code. The value "success" is returned for a successful call.
         self.code = code
-        # The submit status data of the asynchronous task, which contains the asynchronous task ID.
+        # The asynchronous task submit status data, which contains the asynchronous task ID.
         self.data = data
         # The error message. The value "Success" is returned for a successful call.
         self.message = message
-        # The request ID, which uniquely identifies the API call.
+        # The request ID, used to uniquely identify a single API call.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true and false.
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class VisionFlowResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID. Use this ID to query the processing result through QueryAsyncTaskResult.
+        # The asynchronous task ID, used to query processing results later through QueryAsyncTaskResult.
         self.task_id = task_id
 
     def validate(self):

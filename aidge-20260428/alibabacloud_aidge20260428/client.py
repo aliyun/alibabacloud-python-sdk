@@ -1394,6 +1394,8 @@ class Client(OpenApiClient):
     ) -> main_models.LanguageDetectResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
         if not DaraCore.is_null(request.source_text):
             query['SourceText'] = request.source_text
         req = open_api_util_models.OpenApiRequest(
@@ -1422,6 +1424,8 @@ class Client(OpenApiClient):
     ) -> main_models.LanguageDetectResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
         if not DaraCore.is_null(request.source_text):
             query['SourceText'] = request.source_text
         req = open_api_util_models.OpenApiRequest(

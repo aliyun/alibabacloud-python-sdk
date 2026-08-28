@@ -11,15 +11,15 @@ class ImageCroppingRequest(DaraModel):
         target_height: int = None,
         target_width: int = None,
     ):
-        # URL of the image to be processed
+        # The URL of the image to process.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Target height
+        # The target height.
         # 
         # This parameter is required.
         self.target_height = target_height
-        # Target width
+        # The target width.
         # 
         # This parameter is required.
         self.target_width = target_width

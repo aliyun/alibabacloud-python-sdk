@@ -16,16 +16,16 @@ class MerchandisePlacementDetectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned for successful calls.
         self.code = code
         # The display detection result.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned for successful calls.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # - true: The call is successful.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
         # - false: The call failed.
         self.success = success
 
@@ -86,7 +86,7 @@ class MerchandisePlacementDetectionResponseBodyData(DaraModel):
         self.box_count = box_count
         # The list of retrieval details for each detection box.
         self.data = data
-        # The usage information. The key is the usage metric name, and the value is the count.
+        # The usage information. The key is the usage name and the value is the count.
         self.usage_map = usage_map
 
     def validate(self):
@@ -138,7 +138,7 @@ class MerchandisePlacementDetectionResponseBodyDataData(DaraModel):
         top_1: main_models.MerchandisePlacementDetectionResponseBodyDataDataTop1 = None,
         topk: List[main_models.MerchandisePlacementDetectionResponseBodyDataDataTopk] = None,
     ):
-        # The position coordinates of the detection box in the format [x1,y1,x2,y2].
+        # The position coordinates of the detection box in the format [x1, y1, x2, y2].
         self.bbox = bbox
         # The failure reason for the detection box. The value is null if the detection is successful.
         self.error = error

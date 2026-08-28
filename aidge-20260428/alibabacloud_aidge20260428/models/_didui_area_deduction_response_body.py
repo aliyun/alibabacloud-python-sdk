@@ -96,7 +96,7 @@ class DiduiAreaDeductionResponseBodyData(DaraModel):
         self.http_status = http_status
         # The downstream call latency, in milliseconds.
         self.latency_ms = latency_ms
-        # The workflow description.
+        # The workflow description message.
         self.message = message
         # The model request ID.
         self.model_request_id = model_request_id

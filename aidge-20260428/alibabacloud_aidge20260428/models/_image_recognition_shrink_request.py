@@ -20,19 +20,19 @@ class ImageRecognitionShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The list of non-subject element types to detect. Valid values: 1 (background), 2 (border), 3 (watermark), and 4 (collage).
+        # The list of non-subject element types to detect. Valid values: 1 (background), 2 (border), 3 (watermark), 4 (splice).
         self.non_object_detect_elements_shrink = non_object_detect_elements_shrink
-        # The list of subject element types to detect. Valid values: 1 (product subject), 2 (model), 3 (text), and 4 (logo).
+        # The list of subject element types to detect. Valid values: 1 (product subject), 2 (model), 3 (text), 4 (logo).
         self.object_detect_elements_shrink = object_detect_elements_shrink
         # Specifies whether to return border pixel information. Valid values: 1 (return) and 0 (do not return).
         self.return_border_pixel = return_border_pixel
         # Specifies whether to return text information. Valid values: 1 (return) and 0 (do not return).
         self.return_character = return_character
-        # Specifies whether to return text property information. Valid values: 1 (return) and 0 (do not return).
+        # Specifies whether to return text attribute information. Valid values: 1 (return) and 0 (do not return).
         self.return_character_prop = return_character_prop
         # Specifies whether to return the product count. Valid values: 1 (return) and 0 (do not return).
         self.return_product_num = return_product_num
-        # Specifies whether to return product property information. Valid values: 1 (return) and 0 (do not return).
+        # Specifies whether to return product attribute information. Valid values: 1 (return) and 0 (do not return).
         self.return_product_prop = return_product_prop
 
     def validate(self):

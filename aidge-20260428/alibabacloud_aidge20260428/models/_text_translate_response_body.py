@@ -16,11 +16,11 @@ class TextTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Returns "success" for normal calls.
+        # The response code. Returns "success" for successful calls.
         self.code = code
         # The translation result data, including the translation list and usage information.
         self.data = data
-        # The error message. Returns "Success" for normal calls. Returns specific error information for exceptions, such as "The parameters contain sensitive information. Try other input."
+        # The error message. Returns "Success" for successful calls. Returns specific error information for exceptions, such as "The parameters contain sensitive information. Try other input."
         self.message = message
         # The request ID, used to identify a unique request call.
         self.request_id = request_id
@@ -125,7 +125,7 @@ class TextTranslateResponseBodyDataTranslations(DaraModel):
         detected_language: str = None,
         translated_text: str = None,
     ):
-        # The source text character count.
+        # The number of characters in the source text.
         self.characters = characters
         # The automatically detected source language code.
         self.detected_language = detected_language
