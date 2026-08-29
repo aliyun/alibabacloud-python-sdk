@@ -1,3 +1,9 @@
+2026-08-29 Version: 1.2.1
+- Update API ListMcps: add request parameters name.
+- Update API ListMcps: add request parameters searchType.
+- Update API ListModelConnections: add request parameters searchType.
+
+
 2026-08-28 Version: 1.2.0
 - Support API BatchUploadSkillsViaOss.
 - Support API CreateAgentIMChannel.

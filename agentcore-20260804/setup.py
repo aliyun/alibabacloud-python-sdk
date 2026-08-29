@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_agentcore20260804.
 
-Created on 28/08/2026
+Created on 29/08/2026
 
 @author: Alibaba Cloud SDK
 """

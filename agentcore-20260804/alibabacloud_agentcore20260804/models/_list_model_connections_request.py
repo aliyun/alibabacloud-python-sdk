@@ -13,6 +13,7 @@ class ListModelConnectionsRequest(DaraModel):
         next_token: str = None,
         protocol: str = None,
         provider_type: str = None,
+        search_type: str = None,
     ):
         self.include_models = include_models
         self.max_results = max_results
@@ -20,6 +21,7 @@ class ListModelConnectionsRequest(DaraModel):
         self.next_token = next_token
         self.protocol = protocol
         self.provider_type = provider_type
+        self.search_type = search_type
 
     def validate(self):
         pass
@@ -47,6 +49,9 @@ class ListModelConnectionsRequest(DaraModel):
         if self.provider_type is not None:
             result['providerType'] = self.provider_type
 
+        if self.search_type is not None:
+            result['searchType'] = self.search_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -68,6 +73,9 @@ class ListModelConnectionsRequest(DaraModel):
 
         if m.get('providerType') is not None:
             self.provider_type = m.get('providerType')
+
+        if m.get('searchType') is not None:
+            self.search_type = m.get('searchType')
 
         return self
 

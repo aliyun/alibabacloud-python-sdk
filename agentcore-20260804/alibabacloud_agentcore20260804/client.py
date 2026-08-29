@@ -5700,8 +5700,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_type):
+            query['searchType'] = request.search_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5733,8 +5737,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_type):
+            query['searchType'] = request.search_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5794,6 +5802,8 @@ class Client(OpenApiClient):
             query['protocol'] = request.protocol
         if not DaraCore.is_null(request.provider_type):
             query['providerType'] = request.provider_type
+        if not DaraCore.is_null(request.search_type):
+            query['searchType'] = request.search_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5835,6 +5845,8 @@ class Client(OpenApiClient):
             query['protocol'] = request.protocol
         if not DaraCore.is_null(request.provider_type):
             query['providerType'] = request.provider_type
+        if not DaraCore.is_null(request.search_type):
+            query['searchType'] = request.search_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
