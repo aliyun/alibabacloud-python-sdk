@@ -673,6 +673,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_delete_private_access_policy_with_options_async(request, runtime)
 
+    def bind_sase_user_tag_with_options(
+        self,
+        request: main_models.BindSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindSaseUserTagResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.sase_user_ids):
+            body_flat['SaseUserIds'] = request.sase_user_ids
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindSaseUserTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_sase_user_tag_with_options_async(
+        self,
+        request: main_models.BindSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindSaseUserTagResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.sase_user_ids):
+            body_flat['SaseUserIds'] = request.sase_user_ids
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindSaseUserTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_sase_user_tag(
+        self,
+        request: main_models.BindSaseUserTagRequest,
+    ) -> main_models.BindSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return self.bind_sase_user_tag_with_options(request, runtime)
+
+    async def bind_sase_user_tag_async(
+        self,
+        request: main_models.BindSaseUserTagRequest,
+    ) -> main_models.BindSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return await self.bind_sase_user_tag_with_options_async(request, runtime)
+
     def cancel_virus_scan_tasks_with_options(
         self,
         request: main_models.CancelVirusScanTasksRequest,
@@ -2636,6 +2714,80 @@ class Client(OpenApiClient):
     ) -> main_models.CreateRegistrationPolicyResponse:
         runtime = RuntimeOptions()
         return await self.create_registration_policy_with_options_async(request, runtime)
+
+    def create_sase_user_tag_with_options(
+        self,
+        request: main_models.CreateSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSaseUserTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSaseUserTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sase_user_tag_with_options_async(
+        self,
+        request: main_models.CreateSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSaseUserTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSaseUserTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sase_user_tag(
+        self,
+        request: main_models.CreateSaseUserTagRequest,
+    ) -> main_models.CreateSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return self.create_sase_user_tag_with_options(request, runtime)
+
+    async def create_sase_user_tag_async(
+        self,
+        request: main_models.CreateSaseUserTagRequest,
+    ) -> main_models.CreateSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return await self.create_sase_user_tag_with_options_async(request, runtime)
 
     def create_softwarelib_distribute_task_with_options(
         self,
@@ -5461,6 +5613,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_registration_policies_with_options_async(request, runtime)
 
+    def delete_sase_user_tag_with_options(
+        self,
+        request: main_models.DeleteSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSaseUserTagResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSaseUserTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sase_user_tag_with_options_async(
+        self,
+        request: main_models.DeleteSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSaseUserTagResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSaseUserTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sase_user_tag(
+        self,
+        request: main_models.DeleteSaseUserTagRequest,
+    ) -> main_models.DeleteSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return self.delete_sase_user_tag_with_options(request, runtime)
+
+    async def delete_sase_user_tag_async(
+        self,
+        request: main_models.DeleteSaseUserTagRequest,
+    ) -> main_models.DeleteSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_sase_user_tag_with_options_async(request, runtime)
+
     def delete_user_devices_with_options(
         self,
         request: main_models.DeleteUserDevicesRequest,
@@ -7623,6 +7849,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_registration_policy_with_options_async(request, runtime)
 
+    def get_sase_user_tag_with_options(
+        self,
+        request: main_models.GetSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSaseUserTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.tag_id):
+            body['TagId'] = request.tag_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSaseUserTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sase_user_tag_with_options_async(
+        self,
+        request: main_models.GetSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSaseUserTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.tag_id):
+            body['TagId'] = request.tag_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSaseUserTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sase_user_tag(
+        self,
+        request: main_models.GetSaseUserTagRequest,
+    ) -> main_models.GetSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return self.get_sase_user_tag_with_options(request, runtime)
+
+    async def get_sase_user_tag_async(
+        self,
+        request: main_models.GetSaseUserTagRequest,
+    ) -> main_models.GetSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return await self.get_sase_user_tag_with_options_async(request, runtime)
+
     def get_user_device_with_options(
         self,
         request: main_models.GetUserDeviceRequest,
@@ -9102,6 +9398,174 @@ class Client(OpenApiClient):
     ) -> main_models.ListDevicesForVulnerabilityResponse:
         runtime = RuntimeOptions()
         return await self.list_devices_for_vulnerability_with_options_async(request, runtime)
+
+    def list_dlp_outbound_logs_with_options(
+        self,
+        request: main_models.ListDlpOutboundLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDlpOutboundLogsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.log_id):
+            body['LogId'] = request.log_id
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.policy_action):
+            body['PolicyAction'] = request.policy_action
+        if not DaraCore.is_null(request.src_file_name):
+            body['SrcFileName'] = request.src_file_name
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.sub_channel_type):
+            body['SubChannelType'] = request.sub_channel_type
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDlpOutboundLogs',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDlpOutboundLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dlp_outbound_logs_with_options_async(
+        self,
+        request: main_models.ListDlpOutboundLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDlpOutboundLogsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.log_id):
+            body['LogId'] = request.log_id
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.policy_action):
+            body['PolicyAction'] = request.policy_action
+        if not DaraCore.is_null(request.src_file_name):
+            body['SrcFileName'] = request.src_file_name
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.sub_channel_type):
+            body['SubChannelType'] = request.sub_channel_type
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDlpOutboundLogs',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDlpOutboundLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dlp_outbound_logs(
+        self,
+        request: main_models.ListDlpOutboundLogsRequest,
+    ) -> main_models.ListDlpOutboundLogsResponse:
+        runtime = RuntimeOptions()
+        return self.list_dlp_outbound_logs_with_options(request, runtime)
+
+    async def list_dlp_outbound_logs_async(
+        self,
+        request: main_models.ListDlpOutboundLogsRequest,
+    ) -> main_models.ListDlpOutboundLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_dlp_outbound_logs_with_options_async(request, runtime)
+
+    def list_domain_access_logs_with_options(
+        self,
+        request: main_models.ListDomainAccessLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDomainAccessLogsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDomainAccessLogs',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDomainAccessLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_domain_access_logs_with_options_async(
+        self,
+        request: main_models.ListDomainAccessLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDomainAccessLogsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDomainAccessLogs',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDomainAccessLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_domain_access_logs(
+        self,
+        request: main_models.ListDomainAccessLogsRequest,
+    ) -> main_models.ListDomainAccessLogsResponse:
+        runtime = RuntimeOptions()
+        return self.list_domain_access_logs_with_options(request, runtime)
+
+    async def list_domain_access_logs_async(
+        self,
+        request: main_models.ListDomainAccessLogsRequest,
+    ) -> main_models.ListDomainAccessLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_domain_access_logs_with_options_async(request, runtime)
 
     def list_domain_items_with_options(
         self,
@@ -13633,6 +14097,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.revoke_user_session_with_options_async(request, runtime)
 
+    def unbind_sase_user_tag_with_options(
+        self,
+        request: main_models.UnbindSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindSaseUserTagResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.sase_user_ids):
+            body_flat['SaseUserIds'] = request.sase_user_ids
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindSaseUserTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_sase_user_tag_with_options_async(
+        self,
+        request: main_models.UnbindSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindSaseUserTagResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.sase_user_ids):
+            body_flat['SaseUserIds'] = request.sase_user_ids
+        if not DaraCore.is_null(request.tag_ids):
+            body_flat['TagIds'] = request.tag_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindSaseUserTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_sase_user_tag(
+        self,
+        request: main_models.UnbindSaseUserTagRequest,
+    ) -> main_models.UnbindSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return self.unbind_sase_user_tag_with_options(request, runtime)
+
+    async def unbind_sase_user_tag_async(
+        self,
+        request: main_models.UnbindSaseUserTagRequest,
+    ) -> main_models.UnbindSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return await self.unbind_sase_user_tag_with_options_async(request, runtime)
+
     def update_anti_virus_real_time_defence_strategy_with_options(
         self,
         request: main_models.UpdateAntiVirusRealTimeDefenceStrategyRequest,
@@ -15980,6 +16522,84 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateRiskStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_risk_status_with_options_async(request, runtime)
+
+    def update_sase_user_tag_with_options(
+        self,
+        request: main_models.UpdateSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSaseUserTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.tag_id):
+            body['TagId'] = request.tag_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSaseUserTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_sase_user_tag_with_options_async(
+        self,
+        request: main_models.UpdateSaseUserTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSaseUserTagResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.tag_id):
+            body['TagId'] = request.tag_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSaseUserTag',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSaseUserTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_sase_user_tag(
+        self,
+        request: main_models.UpdateSaseUserTagRequest,
+    ) -> main_models.UpdateSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return self.update_sase_user_tag_with_options(request, runtime)
+
+    async def update_sase_user_tag_async(
+        self,
+        request: main_models.UpdateSaseUserTagRequest,
+    ) -> main_models.UpdateSaseUserTagResponse:
+        runtime = RuntimeOptions()
+        return await self.update_sase_user_tag_with_options_async(request, runtime)
 
     def update_uninstall_applications_status_with_options(
         self,

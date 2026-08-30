@@ -63,6 +63,9 @@ from ._batch_delete_private_access_application_response import BatchDeletePrivat
 from ._batch_delete_private_access_policy_request import BatchDeletePrivateAccessPolicyRequest
 from ._batch_delete_private_access_policy_response_body import BatchDeletePrivateAccessPolicyResponseBody
 from ._batch_delete_private_access_policy_response import BatchDeletePrivateAccessPolicyResponse
+from ._bind_sase_user_tag_request import BindSaseUserTagRequest
+from ._bind_sase_user_tag_response_body import BindSaseUserTagResponseBody
+from ._bind_sase_user_tag_response import BindSaseUserTagResponse
 from ._cancel_virus_scan_tasks_request import CancelVirusScanTasksRequest
 from ._cancel_virus_scan_tasks_response_body import CancelVirusScanTasksResponseBody
 from ._cancel_virus_scan_tasks_response import CancelVirusScanTasksResponse
@@ -128,6 +131,9 @@ from ._create_registration_policy_request import CreateRegistrationPolicyRequest
 from ._create_registration_policy_shrink_request import CreateRegistrationPolicyShrinkRequest
 from ._create_registration_policy_response_body import CreateRegistrationPolicyResponseBody
 from ._create_registration_policy_response import CreateRegistrationPolicyResponse
+from ._create_sase_user_tag_request import CreateSaseUserTagRequest
+from ._create_sase_user_tag_response_body import CreateSaseUserTagResponseBody
+from ._create_sase_user_tag_response import CreateSaseUserTagResponse
 from ._create_softwarelib_distribute_task_request import CreateSoftwarelibDistributeTaskRequest
 from ._create_softwarelib_distribute_task_response_body import CreateSoftwarelibDistributeTaskResponseBody
 from ._create_softwarelib_distribute_task_response import CreateSoftwarelibDistributeTaskResponse
@@ -228,6 +234,9 @@ from ._delete_prohibited_tags_response import DeleteProhibitedTagsResponse
 from ._delete_registration_policies_request import DeleteRegistrationPoliciesRequest
 from ._delete_registration_policies_response_body import DeleteRegistrationPoliciesResponseBody
 from ._delete_registration_policies_response import DeleteRegistrationPoliciesResponse
+from ._delete_sase_user_tag_request import DeleteSaseUserTagRequest
+from ._delete_sase_user_tag_response_body import DeleteSaseUserTagResponseBody
+from ._delete_sase_user_tag_response import DeleteSaseUserTagResponse
 from ._delete_user_devices_request import DeleteUserDevicesRequest
 from ._delete_user_devices_response_body import DeleteUserDevicesResponseBody
 from ._delete_user_devices_response import DeleteUserDevicesResponse
@@ -321,6 +330,9 @@ from ._get_prohibited_software_response import GetProhibitedSoftwareResponse
 from ._get_registration_policy_request import GetRegistrationPolicyRequest
 from ._get_registration_policy_response_body import GetRegistrationPolicyResponseBody
 from ._get_registration_policy_response import GetRegistrationPolicyResponse
+from ._get_sase_user_tag_request import GetSaseUserTagRequest
+from ._get_sase_user_tag_response_body import GetSaseUserTagResponseBody
+from ._get_sase_user_tag_response import GetSaseUserTagResponse
 from ._get_user_device_request import GetUserDeviceRequest
 from ._get_user_device_response_body import GetUserDeviceResponseBody
 from ._get_user_device_response import GetUserDeviceResponse
@@ -387,6 +399,12 @@ from ._list_device_groups_response import ListDeviceGroupsResponse
 from ._list_devices_for_vulnerability_request import ListDevicesForVulnerabilityRequest
 from ._list_devices_for_vulnerability_response_body import ListDevicesForVulnerabilityResponseBody
 from ._list_devices_for_vulnerability_response import ListDevicesForVulnerabilityResponse
+from ._list_dlp_outbound_logs_request import ListDlpOutboundLogsRequest
+from ._list_dlp_outbound_logs_response_body import ListDlpOutboundLogsResponseBody
+from ._list_dlp_outbound_logs_response import ListDlpOutboundLogsResponse
+from ._list_domain_access_logs_request import ListDomainAccessLogsRequest
+from ._list_domain_access_logs_response_body import ListDomainAccessLogsResponseBody
+from ._list_domain_access_logs_response import ListDomainAccessLogsResponse
 from ._list_domain_items_request import ListDomainItemsRequest
 from ._list_domain_items_response_body import ListDomainItemsResponseBody
 from ._list_domain_items_response import ListDomainItemsResponse
@@ -573,6 +591,9 @@ from ._revoke_user_device_session_response import RevokeUserDeviceSessionRespons
 from ._revoke_user_session_request import RevokeUserSessionRequest
 from ._revoke_user_session_response_body import RevokeUserSessionResponseBody
 from ._revoke_user_session_response import RevokeUserSessionResponse
+from ._unbind_sase_user_tag_request import UnbindSaseUserTagRequest
+from ._unbind_sase_user_tag_response_body import UnbindSaseUserTagResponseBody
+from ._unbind_sase_user_tag_response import UnbindSaseUserTagResponse
 from ._update_anti_virus_real_time_defence_strategy_request import UpdateAntiVirusRealTimeDefenceStrategyRequest
 from ._update_anti_virus_real_time_defence_strategy_response_body import UpdateAntiVirusRealTimeDefenceStrategyResponseBody
 from ._update_anti_virus_real_time_defence_strategy_response import UpdateAntiVirusRealTimeDefenceStrategyResponse
@@ -649,6 +670,9 @@ from ._update_registration_policy_response import UpdateRegistrationPolicyRespon
 from ._update_risk_status_request import UpdateRiskStatusRequest
 from ._update_risk_status_response_body import UpdateRiskStatusResponseBody
 from ._update_risk_status_response import UpdateRiskStatusResponse
+from ._update_sase_user_tag_request import UpdateSaseUserTagRequest
+from ._update_sase_user_tag_response_body import UpdateSaseUserTagResponseBody
+from ._update_sase_user_tag_response import UpdateSaseUserTagResponse
 from ._update_uninstall_applications_status_request import UpdateUninstallApplicationsStatusRequest
 from ._update_uninstall_applications_status_response_body import UpdateUninstallApplicationsStatusResponseBody
 from ._update_uninstall_applications_status_response import UpdateUninstallApplicationsStatusResponse
@@ -848,6 +872,7 @@ from ._get_prohibited_software_response_body import GetProhibitedSoftwareRespons
 from ._get_prohibited_software_response_body import GetProhibitedSoftwareResponseBodySoftware
 from ._get_registration_policy_response_body import GetRegistrationPolicyResponseBodyLimitDetailLimitCount
 from ._get_registration_policy_response_body import GetRegistrationPolicyResponseBodyLimitDetail
+from ._get_sase_user_tag_response_body import GetSaseUserTagResponseBodySaseUserTag
 from ._get_user_device_response_body import GetUserDeviceResponseBodyDeviceHistoryUsers
 from ._get_user_device_response_body import GetUserDeviceResponseBodyDeviceNetInterfaceInfo
 from ._get_user_device_response_body import GetUserDeviceResponseBodyDeviceProcesses
@@ -896,6 +921,13 @@ from ._list_connectors_response_body import ListConnectorsResponseBodyConnectors
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectors
 from ._list_device_groups_response_body import ListDeviceGroupsResponseBodyDeviceGroups
 from ._list_devices_for_vulnerability_response_body import ListDevicesForVulnerabilityResponseBodyDevices
+from ._list_dlp_outbound_logs_response_body import ListDlpOutboundLogsResponseBodyLogsMatchedDictsInnerDicts
+from ._list_dlp_outbound_logs_response_body import ListDlpOutboundLogsResponseBodyLogsMatchedDictsKeywords
+from ._list_dlp_outbound_logs_response_body import ListDlpOutboundLogsResponseBodyLogsMatchedDictsUserDicts
+from ._list_dlp_outbound_logs_response_body import ListDlpOutboundLogsResponseBodyLogsMatchedDicts
+from ._list_dlp_outbound_logs_response_body import ListDlpOutboundLogsResponseBodyLogsMatchedPolicies
+from ._list_dlp_outbound_logs_response_body import ListDlpOutboundLogsResponseBodyLogs
+from ._list_domain_access_logs_response_body import ListDomainAccessLogsResponseBodyAccessLogs
 from ._list_domain_items_response_body import ListDomainItemsResponseBodyDomainItems
 from ._list_domain_metas_response_body import ListDomainMetasResponseBodyDomainMetas
 from ._list_dynamic_disposal_processes_response_body import ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo
@@ -1157,6 +1189,9 @@ __all__ = [
     BatchDeletePrivateAccessPolicyRequest,
     BatchDeletePrivateAccessPolicyResponseBody,
     BatchDeletePrivateAccessPolicyResponse,
+    BindSaseUserTagRequest,
+    BindSaseUserTagResponseBody,
+    BindSaseUserTagResponse,
     CancelVirusScanTasksRequest,
     CancelVirusScanTasksResponseBody,
     CancelVirusScanTasksResponse,
@@ -1222,6 +1257,9 @@ __all__ = [
     CreateRegistrationPolicyShrinkRequest,
     CreateRegistrationPolicyResponseBody,
     CreateRegistrationPolicyResponse,
+    CreateSaseUserTagRequest,
+    CreateSaseUserTagResponseBody,
+    CreateSaseUserTagResponse,
     CreateSoftwarelibDistributeTaskRequest,
     CreateSoftwarelibDistributeTaskResponseBody,
     CreateSoftwarelibDistributeTaskResponse,
@@ -1322,6 +1360,9 @@ __all__ = [
     DeleteRegistrationPoliciesRequest,
     DeleteRegistrationPoliciesResponseBody,
     DeleteRegistrationPoliciesResponse,
+    DeleteSaseUserTagRequest,
+    DeleteSaseUserTagResponseBody,
+    DeleteSaseUserTagResponse,
     DeleteUserDevicesRequest,
     DeleteUserDevicesResponseBody,
     DeleteUserDevicesResponse,
@@ -1415,6 +1456,9 @@ __all__ = [
     GetRegistrationPolicyRequest,
     GetRegistrationPolicyResponseBody,
     GetRegistrationPolicyResponse,
+    GetSaseUserTagRequest,
+    GetSaseUserTagResponseBody,
+    GetSaseUserTagResponse,
     GetUserDeviceRequest,
     GetUserDeviceResponseBody,
     GetUserDeviceResponse,
@@ -1481,6 +1525,12 @@ __all__ = [
     ListDevicesForVulnerabilityRequest,
     ListDevicesForVulnerabilityResponseBody,
     ListDevicesForVulnerabilityResponse,
+    ListDlpOutboundLogsRequest,
+    ListDlpOutboundLogsResponseBody,
+    ListDlpOutboundLogsResponse,
+    ListDomainAccessLogsRequest,
+    ListDomainAccessLogsResponseBody,
+    ListDomainAccessLogsResponse,
     ListDomainItemsRequest,
     ListDomainItemsResponseBody,
     ListDomainItemsResponse,
@@ -1667,6 +1717,9 @@ __all__ = [
     RevokeUserSessionRequest,
     RevokeUserSessionResponseBody,
     RevokeUserSessionResponse,
+    UnbindSaseUserTagRequest,
+    UnbindSaseUserTagResponseBody,
+    UnbindSaseUserTagResponse,
     UpdateAntiVirusRealTimeDefenceStrategyRequest,
     UpdateAntiVirusRealTimeDefenceStrategyResponseBody,
     UpdateAntiVirusRealTimeDefenceStrategyResponse,
@@ -1743,6 +1796,9 @@ __all__ = [
     UpdateRiskStatusRequest,
     UpdateRiskStatusResponseBody,
     UpdateRiskStatusResponse,
+    UpdateSaseUserTagRequest,
+    UpdateSaseUserTagResponseBody,
+    UpdateSaseUserTagResponse,
     UpdateUninstallApplicationsStatusRequest,
     UpdateUninstallApplicationsStatusResponseBody,
     UpdateUninstallApplicationsStatusResponse,
@@ -1942,6 +1998,7 @@ __all__ = [
     GetProhibitedSoftwareResponseBodySoftware,
     GetRegistrationPolicyResponseBodyLimitDetailLimitCount,
     GetRegistrationPolicyResponseBodyLimitDetail,
+    GetSaseUserTagResponseBodySaseUserTag,
     GetUserDeviceResponseBodyDeviceHistoryUsers,
     GetUserDeviceResponseBodyDeviceNetInterfaceInfo,
     GetUserDeviceResponseBodyDeviceProcesses,
@@ -1990,6 +2047,13 @@ __all__ = [
     ListConnectorsResponseBodyConnectors,
     ListDeviceGroupsResponseBodyDeviceGroups,
     ListDevicesForVulnerabilityResponseBodyDevices,
+    ListDlpOutboundLogsResponseBodyLogsMatchedDictsInnerDicts,
+    ListDlpOutboundLogsResponseBodyLogsMatchedDictsKeywords,
+    ListDlpOutboundLogsResponseBodyLogsMatchedDictsUserDicts,
+    ListDlpOutboundLogsResponseBodyLogsMatchedDicts,
+    ListDlpOutboundLogsResponseBodyLogsMatchedPolicies,
+    ListDlpOutboundLogsResponseBodyLogs,
+    ListDomainAccessLogsResponseBodyAccessLogs,
     ListDomainItemsResponseBodyDomainItems,
     ListDomainMetasResponseBodyDomainMetas,
     ListDynamicDisposalProcessesResponseBodyDisposalProcessesDeviceBasicInfo,
