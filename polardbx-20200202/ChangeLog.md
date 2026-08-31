@@ -1,3 +1,14 @@
+2026-08-31 Version: 3.12.0
+- Support API QueryColumnarLog.
+- Support API QueryColumnarLogSSE.
+- Update API ExecuteMetaQuery: add request parameters MaxResultRows.
+- Update API ExecuteMetaQuery: add response parameters Body.Data.AppliedOffset.
+- Update API ExecuteMetaQuery: add response parameters Body.Data.AppliedRowLimit.
+- Update API ExecuteMetaQuery: add response parameters Body.Data.HasMore.
+- Update API ExecuteMetaQuery: add response parameters Body.Data.RecordsSizeBytes.
+- Update API ExecuteMetaQuery: add response parameters Body.Data.ReturnedRowCount.
+
+
 2026-08-22 Version: 3.11.0
 - Support API AllocateContext0PublicConnection.
 - Support API CreateContext0.

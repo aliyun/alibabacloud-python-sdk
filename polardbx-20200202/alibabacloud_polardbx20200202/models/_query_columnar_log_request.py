@@ -4,31 +4,28 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ExecuteMetaQueryRequest(DaraModel):
+class QueryColumnarLogRequest(DaraModel):
     def __init__(
         self,
         dbinstance_name: str = None,
         max_result_rows: int = None,
         region_id: str = None,
         sql: str = None,
-        storage_inst_id: str = None,
     ):
-        # The primary instance ID.
+        # The ID of the PolarDB-X instance for which you want to query column store audit logs.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The maximum number of rows to return. Default value: 100. Valid values: 1 to 1000. The actual number of returned rows is the minimum value among the code hard limit, the Biz DB limit, and the outermost LIMIT clause in the SQL statement. To retrieve data continuously, implement pagination in the SQL statement.
+        # The maximum number of result rows to return for this request. Valid values: 1 to 1000. Default value: 100. The actual number of returned rows is also subject to the top-level LIMIT clause in the SQL statement and the current service policy.
         self.max_result_rows = max_result_rows
-        # The region ID.
+        # The region ID of the request. The region ID must be the same as the region where the SQLQuery service is deployed.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The SQL statement to execute.
+        # The read-only query statement to execute. Only a single MySQL SELECT statement is supported, and it must access the fully qualified polardbx_sls table. Multi-statement queries, write operations, locks, user variables, dynamic placeholders, and reserved hints are not supported.
         # 
         # This parameter is required.
         self.sql = sql
-        # The data node (DN) instance ID.
-        self.storage_inst_id = storage_inst_id
 
     def validate(self):
         pass
@@ -48,10 +45,7 @@ class ExecuteMetaQueryRequest(DaraModel):
             result['RegionId'] = self.region_id
 
         if self.sql is not None:
-            result['Sql'] = self.sql
-
-        if self.storage_inst_id is not None:
-            result['StorageInstId'] = self.storage_inst_id
+            result['SQL'] = self.sql
 
         return result
 
@@ -66,11 +60,8 @@ class ExecuteMetaQueryRequest(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
-        if m.get('Sql') is not None:
-            self.sql = m.get('Sql')
-
-        if m.get('StorageInstId') is not None:
-            self.storage_inst_id = m.get('StorageInstId')
+        if m.get('SQL') is not None:
+            self.sql = m.get('SQL')
 
         return self
 

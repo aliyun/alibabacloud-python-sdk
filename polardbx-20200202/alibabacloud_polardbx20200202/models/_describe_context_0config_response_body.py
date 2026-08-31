@@ -12,8 +12,11 @@ class DescribeContext0ConfigResponseBody(DaraModel):
         data: main_models.DescribeContext0ConfigResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The paginated result of the instance list.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -62,10 +65,15 @@ class DescribeContext0ConfigResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         open_search_instance_name: str = None,
     ):
+        # The administrator key of the context service.
         self.context_0admin_key = context_0admin_key
+        # The name of the context service instance.
         self.context_0instance_name = context_0instance_name
+        # The owner key of the context service.
         self.context_0owner_key = context_0owner_key
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
+        # The name of the PolarDB-X Search instance.
         self.open_search_instance_name = open_search_instance_name
 
     def validate(self):
@@ -123,12 +131,19 @@ class DescribeContext0ConfigResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication action.
         self.auth_action = auth_action
+        # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # NoPermissionType
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

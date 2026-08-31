@@ -12,8 +12,11 @@ class DeleteOpenSearchAccountResponseBody(DaraModel):
         data: main_models.DeleteOpenSearchAccountResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The data struct.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -59,7 +62,9 @@ class DeleteOpenSearchAccountResponseBodyData(DaraModel):
         account_name: str = None,
         task_id: int = None,
     ):
+        # The account name.
         self.account_name = account_name
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -99,12 +104,19 @@ class DeleteOpenSearchAccountResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication action.
         self.auth_action = auth_action
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # NoPermissionType
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

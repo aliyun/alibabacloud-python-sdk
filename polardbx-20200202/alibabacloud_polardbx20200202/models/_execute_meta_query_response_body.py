@@ -16,11 +16,11 @@ class ExecuteMetaQueryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The list of instance details.
         self.data = data
-        # The additional information returned. If the request is successful, **success** is returned. If the request fails, the corresponding error code is returned.
+        # The additional information returned by the operation. success is returned if the request is successful. Otherwise, an error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -79,12 +79,22 @@ class ExecuteMetaQueryResponseBody(DaraModel):
 class ExecuteMetaQueryResponseBodyData(DaraModel):
     def __init__(
         self,
+        applied_offset: int = None,
+        applied_row_limit: int = None,
         columns: List[str] = None,
+        has_more: bool = None,
+        records_size_bytes: int = None,
+        returned_row_count: int = None,
         row_count: int = None,
         rows: List[Dict[str, Any]] = None,
     ):
+        self.applied_offset = applied_offset
+        self.applied_row_limit = applied_row_limit
         # The column names.
         self.columns = columns
+        self.has_more = has_more
+        self.records_size_bytes = records_size_bytes
+        self.returned_row_count = returned_row_count
         # The total number of data rows.
         self.row_count = row_count
         # The number of affected or returned rows. This field is available only for compute nodes (CNs).
@@ -98,8 +108,23 @@ class ExecuteMetaQueryResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.applied_offset is not None:
+            result['AppliedOffset'] = self.applied_offset
+
+        if self.applied_row_limit is not None:
+            result['AppliedRowLimit'] = self.applied_row_limit
+
         if self.columns is not None:
             result['Columns'] = self.columns
+
+        if self.has_more is not None:
+            result['HasMore'] = self.has_more
+
+        if self.records_size_bytes is not None:
+            result['RecordsSizeBytes'] = self.records_size_bytes
+
+        if self.returned_row_count is not None:
+            result['ReturnedRowCount'] = self.returned_row_count
 
         if self.row_count is not None:
             result['RowCount'] = self.row_count
@@ -111,8 +136,23 @@ class ExecuteMetaQueryResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppliedOffset') is not None:
+            self.applied_offset = m.get('AppliedOffset')
+
+        if m.get('AppliedRowLimit') is not None:
+            self.applied_row_limit = m.get('AppliedRowLimit')
+
         if m.get('Columns') is not None:
             self.columns = m.get('Columns')
+
+        if m.get('HasMore') is not None:
+            self.has_more = m.get('HasMore')
+
+        if m.get('RecordsSizeBytes') is not None:
+            self.records_size_bytes = m.get('RecordsSizeBytes')
+
+        if m.get('ReturnedRowCount') is not None:
+            self.returned_row_count = m.get('ReturnedRowCount')
 
         if m.get('RowCount') is not None:
             self.row_count = m.get('RowCount')

@@ -14,8 +14,11 @@ class DescribeOpenSearchTopologyResponseBody(DaraModel):
         data: main_models.DescribeOpenSearchTopologyResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The data struct.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -61,7 +64,9 @@ class DescribeOpenSearchTopologyResponseBodyData(DaraModel):
         nodes: List[main_models.DescribeOpenSearchTopologyResponseBodyDataNodes] = None,
         storage: main_models.DescribeOpenSearchTopologyResponseBodyDataStorage = None,
     ):
+        # The node IDs.
         self.nodes = nodes
+        # The configuration of the automatic storage scaling feature for the instance.
         self.storage = storage
 
     def validate(self):
@@ -108,8 +113,12 @@ class DescribeOpenSearchTopologyResponseBodyDataStorage(DaraModel):
         storage_total_gb: int = None,
         storage_type: str = None,
     ):
+        # The number of secondary nodes in the primary zone.
+        # > The **ReplicaCount** and **SlaveReplicaCount** parameters apply only to cloud-native instances. If the instance uses the cluster architecture, these parameters indicate the number of secondary nodes of a **single shard** in the primary and secondary zones.
         self.replica_count = replica_count
+        # The total storage capacity of the node. Unit: GB.
         self.storage_total_gb = storage_total_gb
+        # The storage type.
         self.storage_type = storage_type
 
     def validate(self):
@@ -156,13 +165,33 @@ class DescribeOpenSearchTopologyResponseBodyDataNodes(DaraModel):
         role: str = None,
         status: str = None,
     ):
+        # The zone.
         self.availability_zone = availability_zone
+        # The total number of CPU cores in the cluster.
         self.cpu = cpu
+        # The Origin Domain Name that you configured in the DCDN console, including IPv4 addresses, IPv6 addresses, common domain names, and OSS domain names.
         self.host = host
+        # Indicates whether the current node is the primary node.
         self.is_leader = is_leader
+        # The memory size.
         self.memory_gb = memory_gb
+        # The node ID.
         self.node_id = node_id
+        # The role of a node in the three-node RDS cluster. Valid values:
+        # 
+        # - **leader**: primary node
+        # - **follower**: secondary node
+        # - **logger**: logger node
         self.role = role
+        # The node status. Valid values:
+        # 
+        # - **0**: Running
+        # - **1**: Creating
+        # - **2**: Abnormal
+        # - **3**: Expired
+        # - **4**: Releasing
+        # - **5**: Released
+        # - **6**: Locked
         self.status = status
 
     def validate(self):
@@ -238,12 +267,19 @@ class DescribeOpenSearchTopologyResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication action.
         self.auth_action = auth_action
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The authentication principal type.
         self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # NoPermissionType
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

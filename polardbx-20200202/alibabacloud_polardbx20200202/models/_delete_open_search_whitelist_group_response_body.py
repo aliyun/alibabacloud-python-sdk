@@ -12,8 +12,11 @@ class DeleteOpenSearchWhitelistGroupResponseBody(DaraModel):
         data: main_models.DeleteOpenSearchWhitelistGroupResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The monitoring data.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -58,6 +61,7 @@ class DeleteOpenSearchWhitelistGroupResponseBodyData(DaraModel):
         self,
         message: str = None,
     ):
+        # The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
         self.message = message
 
     def validate(self):
@@ -91,12 +95,19 @@ class DeleteOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication action.
         self.auth_action = auth_action
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The type of the permission denial.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

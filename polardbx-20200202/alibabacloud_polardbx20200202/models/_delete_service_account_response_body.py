@@ -18,7 +18,7 @@ class DeleteServiceAccountResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The data struct.
         self.data = data
-        # The error message. This parameter is empty if the request is successful.
+        # The error message returned if the request failed. This parameter is empty if the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class DeleteServiceAccountResponseBodyData(DaraModel):
         self.deleted = deleted
         # The request ID.
         self.request_id = request_id
-        # The service account type.
+        # The type of the service account.
         self.service_account_type = service_account_type
         # The instance status.
         self.status = status
@@ -158,11 +158,11 @@ class DeleteServiceAccountResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The authentication principal type.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The type of the missing permission.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

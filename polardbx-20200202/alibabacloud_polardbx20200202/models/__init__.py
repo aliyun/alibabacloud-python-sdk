@@ -530,6 +530,12 @@ from ._modify_supabase_security_iplist_response import ModifySupabaseSecurityIPL
 from ._pre_check_sql_flashback_task_request import PreCheckSqlFlashbackTaskRequest
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBody
 from ._pre_check_sql_flashback_task_response import PreCheckSqlFlashbackTaskResponse
+from ._query_columnar_log_request import QueryColumnarLogRequest
+from ._query_columnar_log_response_body import QueryColumnarLogResponseBody
+from ._query_columnar_log_response import QueryColumnarLogResponse
+from ._query_columnar_log_sserequest import QueryColumnarLogSSERequest
+from ._query_columnar_log_sseresponse_body import QueryColumnarLogSSEResponseBody
+from ._query_columnar_log_sseresponse import QueryColumnarLogSSEResponse
 from ._refresh_import_meta_request import RefreshImportMetaRequest
 from ._refresh_import_meta_response_body import RefreshImportMetaResponseBody
 from ._refresh_import_meta_response import RefreshImportMetaResponse
@@ -904,6 +910,8 @@ from ._modify_supabase_security_iplist_response_body import ModifySupabaseSecuri
 from ._modify_supabase_security_iplist_response_body import ModifySupabaseSecurityIPListResponseBodyData
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBodyDataCheckResult
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBodyData
+from ._query_columnar_log_response_body import QueryColumnarLogResponseBodyAccessDeniedDetail
+from ._query_columnar_log_sseresponse_body import QueryColumnarLogSSEResponseBodyAccessDeniedDetail
 from ._refresh_import_meta_response_body import RefreshImportMetaResponseBodyData
 from ._release_context_0public_connection_response_body import ReleaseContext0PublicConnectionResponseBodyAccessDeniedDetail
 from ._release_context_0public_connection_response_body import ReleaseContext0PublicConnectionResponseBodyData
@@ -1463,6 +1471,12 @@ __all__ = [
     PreCheckSqlFlashbackTaskRequest,
     PreCheckSqlFlashbackTaskResponseBody,
     PreCheckSqlFlashbackTaskResponse,
+    QueryColumnarLogRequest,
+    QueryColumnarLogResponseBody,
+    QueryColumnarLogResponse,
+    QueryColumnarLogSSERequest,
+    QueryColumnarLogSSEResponseBody,
+    QueryColumnarLogSSEResponse,
     RefreshImportMetaRequest,
     RefreshImportMetaResponseBody,
     RefreshImportMetaResponse,
@@ -1837,6 +1851,8 @@ __all__ = [
     ModifySupabaseSecurityIPListResponseBodyData,
     PreCheckSqlFlashbackTaskResponseBodyDataCheckResult,
     PreCheckSqlFlashbackTaskResponseBodyData,
+    QueryColumnarLogResponseBodyAccessDeniedDetail,
+    QueryColumnarLogSSEResponseBodyAccessDeniedDetail,
     RefreshImportMetaResponseBodyData,
     ReleaseContext0PublicConnectionResponseBodyAccessDeniedDetail,
     ReleaseContext0PublicConnectionResponseBodyData,

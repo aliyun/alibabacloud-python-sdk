@@ -11,15 +11,15 @@ class DeleteServiceAccountRequest(DaraModel):
         region_id: str = None,
         service_account_type: str = None,
     ):
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region where the instance resides.
+        # The region in which the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The service account type.
+        # The type of the service account.
         # 
         # This parameter is required.
         self.service_account_type = service_account_type

@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_polardbx20200202 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -11960,6 +11962,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_result_rows):
+            query['MaxResultRows'] = request.max_result_rows
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.sql):
@@ -11994,6 +11998,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_result_rows):
+            query['MaxResultRows'] = request.max_result_rows
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.sql):
@@ -14624,6 +14630,256 @@ class Client(OpenApiClient):
     ) -> main_models.PreCheckSqlFlashbackTaskResponse:
         runtime = RuntimeOptions()
         return await self.pre_check_sql_flashback_task_with_options_async(request, runtime)
+
+    def query_columnar_log_with_options(
+        self,
+        request: main_models.QueryColumnarLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryColumnarLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_result_rows):
+            query['MaxResultRows'] = request.max_result_rows
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sql):
+            query['SQL'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryColumnarLog',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryColumnarLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_columnar_log_with_options_async(
+        self,
+        request: main_models.QueryColumnarLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryColumnarLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_result_rows):
+            query['MaxResultRows'] = request.max_result_rows
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sql):
+            query['SQL'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryColumnarLog',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryColumnarLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_columnar_log(
+        self,
+        request: main_models.QueryColumnarLogRequest,
+    ) -> main_models.QueryColumnarLogResponse:
+        runtime = RuntimeOptions()
+        return self.query_columnar_log_with_options(request, runtime)
+
+    async def query_columnar_log_async(
+        self,
+        request: main_models.QueryColumnarLogRequest,
+    ) -> main_models.QueryColumnarLogResponse:
+        runtime = RuntimeOptions()
+        return await self.query_columnar_log_with_options_async(request, runtime)
+
+    def query_columnar_log_ssewith_sse(
+        self,
+        request: main_models.QueryColumnarLogSSERequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.QueryColumnarLogSSEResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_result_rows):
+            query['MaxResultRows'] = request.max_result_rows
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sql):
+            query['SQL'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryColumnarLogSSE',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.QueryColumnarLogSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def query_columnar_log_ssewith_sse_async(
+        self,
+        request: main_models.QueryColumnarLogSSERequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.QueryColumnarLogSSEResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_result_rows):
+            query['MaxResultRows'] = request.max_result_rows
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sql):
+            query['SQL'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryColumnarLogSSE',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.QueryColumnarLogSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def query_columnar_log_ssewith_options(
+        self,
+        request: main_models.QueryColumnarLogSSERequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryColumnarLogSSEResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_result_rows):
+            query['MaxResultRows'] = request.max_result_rows
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sql):
+            query['SQL'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryColumnarLogSSE',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryColumnarLogSSEResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_columnar_log_ssewith_options_async(
+        self,
+        request: main_models.QueryColumnarLogSSERequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryColumnarLogSSEResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.max_result_rows):
+            query['MaxResultRows'] = request.max_result_rows
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sql):
+            query['SQL'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryColumnarLogSSE',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryColumnarLogSSEResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_columnar_log_sse(
+        self,
+        request: main_models.QueryColumnarLogSSERequest,
+    ) -> main_models.QueryColumnarLogSSEResponse:
+        runtime = RuntimeOptions()
+        return self.query_columnar_log_ssewith_options(request, runtime)
+
+    async def query_columnar_log_sse_async(
+        self,
+        request: main_models.QueryColumnarLogSSERequest,
+    ) -> main_models.QueryColumnarLogSSEResponse:
+        runtime = RuntimeOptions()
+        return await self.query_columnar_log_ssewith_options_async(request, runtime)
 
     def refresh_import_meta_with_options(
         self,

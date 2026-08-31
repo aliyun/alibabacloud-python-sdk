@@ -14,8 +14,11 @@ class DescribeOpenSearchInstancesResponseBody(DaraModel):
         data: main_models.DescribeOpenSearchInstancesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The operation result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,11 +68,17 @@ class DescribeOpenSearchInstancesResponseBodyData(DaraModel):
         page_size: int = None,
         total_number: int = None,
     ):
+        # The cluster ID.
         self.instances = instances
+        # The maximum number of entries per page for a paging query. Maximum value: 100. Default value: If you do not specify a value or the value is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_number = total_number
 
     def validate(self):
@@ -148,19 +157,38 @@ class DescribeOpenSearchInstancesResponseBodyDataInstances(DaraModel):
         status: str = None,
         storage_size_gb: int = None,
     ):
+        # The zone.
         self.availability_zone = availability_zone
+        # The billing method. Valid values:
+        # * **PrePaid**: subscription.
+        # * **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
+        # The number of CPUs.
         self.cpu = cpu
+        # The creation time.
         self.create_time = create_time
+        # The number of data nodes.
         self.data_node_count = data_node_count
+        # The instance description.
         self.description = description
+        # The DPI engine version. Default value: 2.0.
         self.engine_version = engine_version
+        # The instance ID.
         self.instance_id = instance_id
+        # The memory size. Unit: GB.
         self.memory_gb = memory_gb
+        # The network type of the connection string. Valid values:
+        # * **Public**: public endpoint.
+        # * **Private**: private endpoint.
+        # * **Inner**: private endpoint (classic network).
         self.net_type = net_type
+        # The region ID.
         self.region_id = region_id
+        # The display name of the instance specifications.
         self.spec_display = spec_display
+        # The instance status.
         self.status = status
+        # The storage size of a single data node. Unit: GB.
         self.storage_size_gb = storage_size_gb
 
     def validate(self):
@@ -272,12 +300,19 @@ class DescribeOpenSearchInstancesResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication action.
         self.auth_action = auth_action
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The type of the permission denial.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):
