@@ -8,25 +8,25 @@ class EnableAccessForCloudSiemRequest(DaraModel):
     def __init__(
         self,
         auto_submit: int = None,
+        client_token: str = None,
         region_id: str = None,
         role_for: int = None,
         role_type: int = None,
     ):
-        # Specifies whether to automatically add alert logs from Security Center, Web Application Firewall (WAF), and Cloud Firewall. By default, alert logs are automatically added.
+        # Specifies whether to automatically integrate alert logs from Security Center, Web Application Firewall (WAF), and Cloud Firewall. By default, the logs are automatically integrated.
         self.auto_submit = auto_submit
-        # The region of the Data Management center for Threat Analysis. Select the region based on where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
-        # 
-        # - ap-southeast-1: Your assets are in regions outside China.
+        # The idempotency token.
+        self.client_token = client_token
+        # The region where the threat detection and response data management center resides. Select the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: assets in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: assets outside China.
         self.region_id = region_id
-        # The user ID of a member. An administrator can use this parameter to switch to the perspective of the specified member.
+        # The ID of the member account to which the administrator switches the view.
         self.role_for = role_for
-        # The type of the view.
+        # The view type.
         # 
-        # - 0: The view of the current Alibaba Cloud account.
-        # 
-        # - 1: The view of all member accounts.
+        # - 0: the view of the current Alibaba Cloud account.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -39,6 +39,9 @@ class EnableAccessForCloudSiemRequest(DaraModel):
             result = _map
         if self.auto_submit is not None:
             result['AutoSubmit'] = self.auto_submit
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -55,6 +58,9 @@ class EnableAccessForCloudSiemRequest(DaraModel):
         m = m or dict()
         if m.get('AutoSubmit') is not None:
             self.auto_submit = m.get('AutoSubmit')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

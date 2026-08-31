@@ -4457,6 +4457,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.auto_submit):
             body['AutoSubmit'] = request.auto_submit
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
@@ -4491,6 +4493,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.auto_submit):
             body['AutoSubmit'] = request.auto_submit
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
@@ -7359,6 +7363,8 @@ class Client(OpenApiClient):
     ) -> main_models.PostEventDisposeAndWhiteruleListResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dispose_strategy_ids):
             body['DisposeStrategyIds'] = request.dispose_strategy_ids
         if not DaraCore.is_null(request.event_dispose):
@@ -7409,6 +7415,8 @@ class Client(OpenApiClient):
     ) -> main_models.PostEventDisposeAndWhiteruleListResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dispose_strategy_ids):
             body['DisposeStrategyIds'] = request.dispose_strategy_ids
         if not DaraCore.is_null(request.event_dispose):

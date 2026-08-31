@@ -10,9 +10,9 @@ class EnableAccessForCloudSiemResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # The return value of the request.
+        # The response data.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class PostEventDisposeAndWhiteruleListRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         dispose_strategy_ids: str = None,
         event_dispose: str = None,
         incident_uuid: str = None,
@@ -20,6 +21,8 @@ class PostEventDisposeAndWhiteruleListRequest(DaraModel):
         status: int = None,
         threat_level: str = None,
     ):
+        # 幂等令牌。
+        self.client_token = client_token
         # A comma-separated list of response strategy IDs.
         self.dispose_strategy_ids = dispose_strategy_ids
         # A JSON object that defines the incident response configuration.
@@ -75,6 +78,9 @@ class PostEventDisposeAndWhiteruleListRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.dispose_strategy_ids is not None:
             result['DisposeStrategyIds'] = self.dispose_strategy_ids
 
@@ -115,6 +121,9 @@ class PostEventDisposeAndWhiteruleListRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('DisposeStrategyIds') is not None:
             self.dispose_strategy_ids = m.get('DisposeStrategyIds')
 

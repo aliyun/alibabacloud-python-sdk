@@ -1,3 +1,8 @@
+2026-08-31 Version: 6.2.6
+- Update API EnableAccessForCloudSiem: add request parameters ClientToken.
+- Update API PostEventDisposeAndWhiteruleList: add request parameters ClientToken.
+
+
 2026-08-22 Version: 6.2.5
 - Update API DescribeAlertType: add response parameters Body.Data.$.AlertTypeCategory.
 - Update API DescribeAlertType: add response parameters Body.Data.$.AlertTypeCategoryMds.
