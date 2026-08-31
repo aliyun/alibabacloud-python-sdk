@@ -18,6 +18,7 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         current_workspace_id: str = None,
         customer_name_or_phone: str = None,
         display_status_list: List[str] = None,
+        duration_range_list: List[str] = None,
         label_tags: List[str] = None,
         max_results: int = None,
         next_token: str = None,
@@ -34,6 +35,7 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         self.current_workspace_id = current_workspace_id
         self.customer_name_or_phone = customer_name_or_phone
         self.display_status_list = display_status_list
+        self.duration_range_list = duration_range_list
         self.label_tags = label_tags
         self.max_results = max_results
         self.next_token = next_token
@@ -75,6 +77,9 @@ class ReadOutboundTaskCallListRequest(DaraModel):
 
         if self.display_status_list is not None:
             result['DisplayStatusList'] = self.display_status_list
+
+        if self.duration_range_list is not None:
+            result['DurationRangeList'] = self.duration_range_list
 
         if self.label_tags is not None:
             result['LabelTags'] = self.label_tags
@@ -124,6 +129,9 @@ class ReadOutboundTaskCallListRequest(DaraModel):
 
         if m.get('DisplayStatusList') is not None:
             self.display_status_list = m.get('DisplayStatusList')
+
+        if m.get('DurationRangeList') is not None:
+            self.duration_range_list = m.get('DurationRangeList')
 
         if m.get('LabelTags') is not None:
             self.label_tags = m.get('LabelTags')

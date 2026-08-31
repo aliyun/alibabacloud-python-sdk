@@ -234,6 +234,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.display_status_list):
             request.display_status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.display_status_list, 'DisplayStatusList', 'json')
+        if not DaraCore.is_null(tmp_req.duration_range_list):
+            request.duration_range_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.duration_range_list, 'DurationRangeList', 'json')
         if not DaraCore.is_null(tmp_req.label_tags):
             request.label_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_tags, 'LabelTags', 'json')
         body = {}
@@ -255,6 +257,8 @@ class Client(OpenApiClient):
             body['CustomerNameOrPhone'] = request.customer_name_or_phone
         if not DaraCore.is_null(request.display_status_list_shrink):
             body['DisplayStatusList'] = request.display_status_list_shrink
+        if not DaraCore.is_null(request.duration_range_list_shrink):
+            body['DurationRangeList'] = request.duration_range_list_shrink
         if not DaraCore.is_null(request.label_tags_shrink):
             body['LabelTags'] = request.label_tags_shrink
         if not DaraCore.is_null(request.max_results):
@@ -296,6 +300,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.display_status_list):
             request.display_status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.display_status_list, 'DisplayStatusList', 'json')
+        if not DaraCore.is_null(tmp_req.duration_range_list):
+            request.duration_range_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.duration_range_list, 'DurationRangeList', 'json')
         if not DaraCore.is_null(tmp_req.label_tags):
             request.label_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_tags, 'LabelTags', 'json')
         body = {}
@@ -317,6 +323,8 @@ class Client(OpenApiClient):
             body['CustomerNameOrPhone'] = request.customer_name_or_phone
         if not DaraCore.is_null(request.display_status_list_shrink):
             body['DisplayStatusList'] = request.display_status_list_shrink
+        if not DaraCore.is_null(request.duration_range_list_shrink):
+            body['DurationRangeList'] = request.duration_range_list_shrink
         if not DaraCore.is_null(request.label_tags_shrink):
             body['LabelTags'] = request.label_tags_shrink
         if not DaraCore.is_null(request.max_results):

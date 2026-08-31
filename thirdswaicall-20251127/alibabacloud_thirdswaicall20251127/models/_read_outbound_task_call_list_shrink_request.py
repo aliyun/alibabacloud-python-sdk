@@ -16,6 +16,7 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         current_workspace_id: str = None,
         customer_name_or_phone: str = None,
         display_status_list_shrink: str = None,
+        duration_range_list_shrink: str = None,
         label_tags_shrink: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -32,6 +33,7 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         self.current_workspace_id = current_workspace_id
         self.customer_name_or_phone = customer_name_or_phone
         self.display_status_list_shrink = display_status_list_shrink
+        self.duration_range_list_shrink = duration_range_list_shrink
         self.label_tags_shrink = label_tags_shrink
         self.max_results = max_results
         self.next_token = next_token
@@ -73,6 +75,9 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
 
         if self.display_status_list_shrink is not None:
             result['DisplayStatusList'] = self.display_status_list_shrink
+
+        if self.duration_range_list_shrink is not None:
+            result['DurationRangeList'] = self.duration_range_list_shrink
 
         if self.label_tags_shrink is not None:
             result['LabelTags'] = self.label_tags_shrink
@@ -122,6 +127,9 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
 
         if m.get('DisplayStatusList') is not None:
             self.display_status_list_shrink = m.get('DisplayStatusList')
+
+        if m.get('DurationRangeList') is not None:
+            self.duration_range_list_shrink = m.get('DurationRangeList')
 
         if m.get('LabelTags') is not None:
             self.label_tags_shrink = m.get('LabelTags')

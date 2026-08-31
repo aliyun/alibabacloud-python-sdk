@@ -1,3 +1,7 @@
+2026-08-31 Version: 1.2.4
+- Update API ReadOutboundTaskCallList: add request parameters DurationRangeList.
+
+
 2026-08-20 Version: 1.2.3
 - Generated python 2025-11-27 for ThirdswAicall.
 
