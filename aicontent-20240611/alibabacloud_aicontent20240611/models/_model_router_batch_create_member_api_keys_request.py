@@ -13,8 +13,11 @@ class ModelRouterBatchCreateMemberApiKeysRequest(DaraModel):
         name: str = None,
         user_ids: List[int] = None,
     ):
+        # The expiration time in RFC 3339 format. This parameter is optional. If not specified, the key is permanently valid.
         self.expire_at = expire_at
+        # The key name. This parameter is optional.
         self.name = name
+        # The list of member user IDs.
         self.user_ids = user_ids
 
     def validate(self):

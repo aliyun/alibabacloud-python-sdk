@@ -2,22 +2,20 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from alibabacloud_aicontent20240611 import models as main_models
 from darabonba.model import DaraModel
 
-class ModelRouterListDeptMembersResponseBody(DaraModel):
+class ModelRouterQueryBillingDetailsResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.ModelRouterListDeptMembersResponseBodyData = None,
+        data: main_models.BillingDetailListRespDTO = None,
         err_code: str = None,
         err_message: str = None,
         http_status_code: int = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data object.
+        # The data object.
         self.data = data
         # The fault code.
         self.err_code = err_code
@@ -62,7 +60,7 @@ class ModelRouterListDeptMembersResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('data') is not None:
-            temp_model = main_models.ModelRouterListDeptMembersResponseBodyData()
+            temp_model = main_models.BillingDetailListRespDTO()
             self.data = temp_model.from_map(m.get('data'))
 
         if m.get('errCode') is not None:
@@ -79,69 +77,6 @@ class ModelRouterListDeptMembersResponseBody(DaraModel):
 
         if m.get('success') is not None:
             self.success = m.get('success')
-
-        return self
-
-class ModelRouterListDeptMembersResponseBodyData(DaraModel):
-    def __init__(
-        self,
-        list: List[main_models.DeptMemberDTO] = None,
-        page: int = None,
-        page_size: int = None,
-        total: int = None,
-    ):
-        # The list of returned data.
-        self.list = list
-        # The page number.
-        self.page = page
-        # The number of entries per page.
-        self.page_size = page_size
-        # The total number of records.
-        self.total = total
-
-    def validate(self):
-        if self.list:
-            for v1 in self.list:
-                 if v1:
-                    v1.validate()
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        result['list'] = []
-        if self.list is not None:
-            for k1 in self.list:
-                result['list'].append(k1.to_map() if k1 else None)
-
-        if self.page is not None:
-            result['page'] = self.page
-
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-
-        if self.total is not None:
-            result['total'] = self.total
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.list = []
-        if m.get('list') is not None:
-            for k1 in m.get('list'):
-                temp_model = main_models.DeptMemberDTO()
-                self.list.append(temp_model.from_map(k1))
-
-        if m.get('page') is not None:
-            self.page = m.get('page')
-
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
-
-        if m.get('total') is not None:
-            self.total = m.get('total')
 
         return self
 

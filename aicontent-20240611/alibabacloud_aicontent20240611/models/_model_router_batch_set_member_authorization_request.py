@@ -12,9 +12,9 @@ class ModelRouterBatchSetMemberAuthorizationRequest(DaraModel):
         allowed_model_group_config: str = None,
         user_id_list: List[int] = None,
     ):
-        # The authorization configuration. This parameter is a required JSON string that uses overwrite mode: {"model_ids":[...],"group_ids":["mg_xxx"]}. Internal key names use a fixed underscore style and are not converted to the camelCase convention of the API.
+        # The authorization configuration. This parameter is a required JSON string and uses overwrite mode. Format: {"model_ids":[...],"group_ids":["mg_xxx"]}. Internal key names use a fixed underscore style and are not converted to the camelCase convention of the API.
         self.allowed_model_group_config = allowed_model_group_config
-        # The list of user IDs. This parameter is required. You can specify 1 to 50 user IDs. If more than 50 user IDs are required, call this operation in batches. All users must be direct members of the specified department.
+        # The list of user IDs. This parameter is required. You can specify 1 to 50 user IDs. If more than 50 user IDs are required, call this operation in batches. All specified users must be direct members of the department.
         self.user_id_list = user_id_list
 
     def validate(self):

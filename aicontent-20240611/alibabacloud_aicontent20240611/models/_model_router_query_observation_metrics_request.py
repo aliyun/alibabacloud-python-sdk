@@ -9,6 +9,7 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
         self,
         api_key_id: int = None,
         client_id: int = None,
+        client_ids: str = None,
         end_time: str = None,
         group_by: str = None,
         max_results: int = None,
@@ -23,19 +24,21 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
         start_time: str = None,
         time_range: str = None,
     ):
-        # The API key ID used to filter the results.
+        # The API key ID used to filter results.
         self.api_key_id = api_key_id
-        # The client ID used to filter the results.
+        # The client ID used to filter results.
         self.client_id = client_id
+        # The list of department IDs, separated by commas. You can query data for multiple departments. This parameter is mutually exclusive with client_id.
+        self.client_ids = client_ids
         # The custom end time.
         self.end_time = end_time
         # The field by which to group the results.
         self.group_by = group_by
         # The maximum number of results to return.
         self.max_results = max_results
-        # Optional. Filters by member IDs. Separate multiple IDs with commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+        # Optional. Filters by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
         self.member_user_ids = member_user_ids
-        # The model ID used to filter the results.
+        # The model ID used to filter results.
         self.model_id = model_id
         # Specifies whether to return the total count.
         self.need_total_count = need_total_count
@@ -51,7 +54,7 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
         self.page_size = page_size
         # The custom start time.
         self.start_time = start_time
-        # The time range for the query. Valid values: 1h, 6h, 24h, 7d, 30d.
+        # The time range for the query. Valid values: 1h, 6h, 24h, 7d, and 30d.
         self.time_range = time_range
 
     def validate(self):
@@ -67,6 +70,9 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
 
         if self.client_id is not None:
             result['clientId'] = self.client_id
+
+        if self.client_ids is not None:
+            result['clientIds'] = self.client_ids
 
         if self.end_time is not None:
             result['endTime'] = self.end_time
@@ -116,6 +122,9 @@ class ModelRouterQueryObservationMetricsRequest(DaraModel):
 
         if m.get('clientId') is not None:
             self.client_id = m.get('clientId')
+
+        if m.get('clientIds') is not None:
+            self.client_ids = m.get('clientIds')
 
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')

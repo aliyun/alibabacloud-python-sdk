@@ -15,14 +15,11 @@ class ModelRouterCreateBalanceTransactionRequest(DaraModel):
     ):
         # The transaction amount.
         self.amount = amount
-        # The target balance pool type. Default value: permanent. Valid values:
-        # 
-        # - permanent: permanent balance pool. The balance never expires.
-        # - monthly: monthly balance pool. The balance is automatically reset to zero at the beginning of each month.
+        # The target balance pool type. If not specified, the default value is permanent. Valid values: permanent: permanent balance pool (the balance never expires). monthly: monthly balance pool (the balance is automatically cleared at the beginning of each month).
         self.balance_type = balance_type
-        # The idempotency key. UUID v4 format is recommended. Maximum length: 32 characters. Duplicate submissions with the same key are not executed repeatedly.
+        # The idempotency key. UUID v4 format is recommended. The maximum length is 32 characters. Duplicate submissions with the same key are not executed more than once.
         self.idempotency_key = idempotency_key
-        # The remark.
+        # The remarks.
         self.remark = remark
         # The transaction type.
         self.type = type

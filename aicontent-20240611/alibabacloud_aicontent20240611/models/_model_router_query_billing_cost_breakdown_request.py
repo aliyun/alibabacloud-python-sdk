@@ -9,6 +9,7 @@ class ModelRouterQueryBillingCostBreakdownRequest(DaraModel):
         self,
         api_key_id: int = None,
         client_id: int = None,
+        client_ids: str = None,
         end_time: int = None,
         granularity: str = None,
         max_results: int = None,
@@ -20,24 +21,23 @@ class ModelRouterQueryBillingCostBreakdownRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # Optional. Filters results by API key ID. This parameter is linked with the department. Specify clientId first.
+        # Optional. Filters results by API Key ID. This parameter is linked with the department, and clientId must be specified first.
         self.api_key_id = api_key_id
         # Optional. Filters results by department ID.
         self.client_id = client_id
+        # The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with client_id.
+        self.client_ids = client_ids
         # The query end time, in UNIX timestamp (seconds).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The aggregation granularity. Valid values:
-        # 
-        # - hourly
-        # - daily
+        # The aggregation granularity. Valid values: hourly and daily.
         # 
         # This parameter is required.
         self.granularity = granularity
         # The maximum number of results to return.
         self.max_results = max_results
-        # Optional. Filters results by member ID. Separate multiple values with commas. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+        # Optional. Filters results by member IDs, separated by commas. If not specified, the department and all its members are included. If an empty value is passed, only the department is included without members.
         self.member_user_ids = member_user_ids
         # Optional. Filters results by model ID.
         self.model_id = model_id
@@ -67,6 +67,9 @@ class ModelRouterQueryBillingCostBreakdownRequest(DaraModel):
 
         if self.client_id is not None:
             result['clientId'] = self.client_id
+
+        if self.client_ids is not None:
+            result['clientIds'] = self.client_ids
 
         if self.end_time is not None:
             result['endTime'] = self.end_time
@@ -107,6 +110,9 @@ class ModelRouterQueryBillingCostBreakdownRequest(DaraModel):
 
         if m.get('clientId') is not None:
             self.client_id = m.get('clientId')
+
+        if m.get('clientIds') is not None:
+            self.client_ids = m.get('clientIds')
 
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')

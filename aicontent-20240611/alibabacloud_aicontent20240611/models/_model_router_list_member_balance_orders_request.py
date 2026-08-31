@@ -13,10 +13,15 @@ class ModelRouterListMemberBalanceOrdersRequest(DaraModel):
         page: int = None,
         page_size: int = None,
     ):
+        # The balance type filter. Valid values: permanent and monthly.
         self.balance_type = balance_type
+        # The change direction filter. Valid values: in and out.
         self.direction = direction
+        # The change type filter.
         self.order_type = order_type
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

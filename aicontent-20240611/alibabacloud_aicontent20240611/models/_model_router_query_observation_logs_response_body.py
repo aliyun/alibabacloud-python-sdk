@@ -21,7 +21,7 @@ class ModelRouterQueryObservationLogsResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The fault information code.
+        # The fault code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -110,11 +110,17 @@ class ModelRouterQueryObservationLogsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The list of log data.
         self.list = list
+        # maxResults
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # The page number.
         self.page = page
+        # The number of entries returned per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The total number of entries.
         self.total = total
 
     def validate(self):

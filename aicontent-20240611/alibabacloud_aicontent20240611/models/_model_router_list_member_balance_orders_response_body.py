@@ -17,11 +17,17 @@ class ModelRouterListMemberBalanceOrdersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data object.
         self.data = data
+        # The fault code.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ModelRouterListMemberBalanceOrdersResponseBodyData(DaraModel):
         size: int = None,
         total: int = None,
     ):
+        # The list of balance change records.
         self.list = list
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.size = size
+        # The total number of records.
         self.total = total
 
     def validate(self):

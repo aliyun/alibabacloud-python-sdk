@@ -85,7 +85,7 @@ class ModelRouterCreateUserResponseBodyData(DaraModel):
         self,
         user_id: int = None,
     ):
-        # The user ID. This ID is used as the userId addressing key for subsequent member API operations.
+        # The user ID. This ID is used as the userId addressing key for subsequent member-related operations.
         self.user_id = user_id
 
     def validate(self):

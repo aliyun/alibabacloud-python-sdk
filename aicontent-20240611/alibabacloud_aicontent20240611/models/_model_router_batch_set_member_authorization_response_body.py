@@ -16,7 +16,7 @@ class ModelRouterBatchSetMemberAuthorizationResponseBody(DaraModel):
     ):
         # The data object. This object contains no business data. This operation uses all-or-nothing semantics. If the operation succeeds, all changes take effect.
         self.data = data
-        # The fault code.
+        # The fault information code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message

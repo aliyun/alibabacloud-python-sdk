@@ -25,10 +25,10 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'public': 'aicontent.aliyuncs.com',
-            'cn-shanghai': 'aicontent.aliyuncs.com',
+            'cn-beijing': 'aicontent.cn-beijing.aliyuncs.com',
             'cn-hangzhou': 'aicontent.cn-hangzhou.aliyuncs.com',
-            'cn-beijing': 'aicontent.cn-beijing.aliyuncs.com'
+            'cn-shanghai': 'aicontent.aliyuncs.com',
+            'public': 'aicontent.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aicontent', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -6299,6 +6299,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_export_member_balance_orders_with_options_async(client_id, id, request, headers, runtime)
 
+    def model_router_get_billing_bill_summary_with_options(
+        self,
+        request: main_models.ModelRouterGetBillingBillSummaryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetBillingBillSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
+        if not DaraCore.is_null(request.client_id):
+            query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
+        if not DaraCore.is_null(request.model_id):
+            query['modelId'] = request.model_id
+        if not DaraCore.is_null(request.model_types):
+            query['modelTypes'] = request.model_types
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetBillingBillSummary',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/billing/bills/summary',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetBillingBillSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_get_billing_bill_summary_with_options_async(
+        self,
+        request: main_models.ModelRouterGetBillingBillSummaryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterGetBillingBillSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
+        if not DaraCore.is_null(request.client_id):
+            query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.member_user_ids):
+            query['memberUserIds'] = request.member_user_ids
+        if not DaraCore.is_null(request.model_id):
+            query['modelId'] = request.model_id
+        if not DaraCore.is_null(request.model_types):
+            query['modelTypes'] = request.model_types
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterGetBillingBillSummary',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/billing/bills/summary',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterGetBillingBillSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_get_billing_bill_summary(
+        self,
+        request: main_models.ModelRouterGetBillingBillSummaryRequest,
+    ) -> main_models.ModelRouterGetBillingBillSummaryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_get_billing_bill_summary_with_options(request, headers, runtime)
+
+    async def model_router_get_billing_bill_summary_async(
+        self,
+        request: main_models.ModelRouterGetBillingBillSummaryRequest,
+    ) -> main_models.ModelRouterGetBillingBillSummaryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_get_billing_bill_summary_with_options_async(request, headers, runtime)
+
     def model_router_get_client_balance_with_options(
         self,
         id: str,
@@ -7351,6 +7463,162 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_list_subscriptions_with_options_async(id, request, headers, runtime)
 
+    def model_router_migu_download_source_with_options(
+        self,
+        request: main_models.ModelRouterMiguDownloadSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterMiguDownloadSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source_id):
+            query['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterMiguDownloadSource',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/pipeline/api/aigc/source/download',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterMiguDownloadSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_migu_download_source_with_options_async(
+        self,
+        request: main_models.ModelRouterMiguDownloadSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterMiguDownloadSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source_id):
+            query['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterMiguDownloadSource',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/pipeline/api/aigc/source/download',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterMiguDownloadSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_migu_download_source(
+        self,
+        request: main_models.ModelRouterMiguDownloadSourceRequest,
+    ) -> main_models.ModelRouterMiguDownloadSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_migu_download_source_with_options(request, headers, runtime)
+
+    async def model_router_migu_download_source_async(
+        self,
+        request: main_models.ModelRouterMiguDownloadSourceRequest,
+    ) -> main_models.ModelRouterMiguDownloadSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_migu_download_source_with_options_async(request, headers, runtime)
+
+    def model_router_migu_upload_source_with_options(
+        self,
+        request: main_models.ModelRouterMiguUploadSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterMiguUploadSourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.file_type):
+            body['fileType'] = request.file_type
+        if not DaraCore.is_null(request.service_name):
+            body['serviceName'] = request.service_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterMiguUploadSource',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/pipeline/api/aigc/source/upload',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterMiguUploadSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_migu_upload_source_with_options_async(
+        self,
+        request: main_models.ModelRouterMiguUploadSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterMiguUploadSourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.file_type):
+            body['fileType'] = request.file_type
+        if not DaraCore.is_null(request.service_name):
+            body['serviceName'] = request.service_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterMiguUploadSource',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/pipeline/api/aigc/source/upload',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterMiguUploadSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_migu_upload_source(
+        self,
+        request: main_models.ModelRouterMiguUploadSourceRequest,
+    ) -> main_models.ModelRouterMiguUploadSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_migu_upload_source_with_options(request, headers, runtime)
+
+    async def model_router_migu_upload_source_async(
+        self,
+        request: main_models.ModelRouterMiguUploadSourceRequest,
+    ) -> main_models.ModelRouterMiguUploadSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_migu_upload_source_with_options_async(request, headers, runtime)
+
     def model_router_query_api_key_with_options(
         self,
         id: str,
@@ -7553,6 +7821,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -7605,6 +7875,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -7660,6 +7932,122 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_query_billing_cost_breakdown_with_options_async(request, headers, runtime)
+
+    def model_router_query_billing_details_with_options(
+        self,
+        request: main_models.ModelRouterQueryBillingDetailsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryBillingDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
+        if not DaraCore.is_null(request.client_id):
+            query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.model_codes):
+            query['modelCodes'] = request.model_codes
+        if not DaraCore.is_null(request.model_id):
+            query['modelId'] = request.model_id
+        if not DaraCore.is_null(request.model_types):
+            query['modelTypes'] = request.model_types
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.request_id):
+            query['requestId'] = request.request_id
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryBillingDetails',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/billing/details',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryBillingDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_query_billing_details_with_options_async(
+        self,
+        request: main_models.ModelRouterQueryBillingDetailsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterQueryBillingDetailsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['apiKeyId'] = request.api_key_id
+        if not DaraCore.is_null(request.client_id):
+            query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.model_codes):
+            query['modelCodes'] = request.model_codes
+        if not DaraCore.is_null(request.model_id):
+            query['modelId'] = request.model_id
+        if not DaraCore.is_null(request.model_types):
+            query['modelTypes'] = request.model_types
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.request_id):
+            query['requestId'] = request.request_id
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterQueryBillingDetails',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/billing/details',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterQueryBillingDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_query_billing_details(
+        self,
+        request: main_models.ModelRouterQueryBillingDetailsRequest,
+    ) -> main_models.ModelRouterQueryBillingDetailsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_query_billing_details_with_options(request, headers, runtime)
+
+    async def model_router_query_billing_details_async(
+        self,
+        request: main_models.ModelRouterQueryBillingDetailsRequest,
+    ) -> main_models.ModelRouterQueryBillingDetailsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_query_billing_details_with_options_async(request, headers, runtime)
 
     def model_router_query_billing_rule_list_with_options(
         self,
@@ -8239,6 +8627,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.max_results):
@@ -8289,6 +8679,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.max_results):
@@ -8355,6 +8747,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -8403,6 +8797,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -8467,6 +8863,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -8513,6 +8911,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -8575,6 +8975,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -8621,6 +9023,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -9597,6 +10001,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.member_user_ids):
@@ -9639,6 +10045,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.member_user_ids):
@@ -9697,6 +10105,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.group_by):
@@ -9755,6 +10165,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.group_by):
@@ -9829,6 +10241,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.group_by):
@@ -9887,6 +10301,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.group_by):
@@ -9961,6 +10377,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -10009,6 +10427,8 @@ class Client(OpenApiClient):
             query['apiKeyId'] = request.api_key_id
         if not DaraCore.is_null(request.client_id):
             query['clientId'] = request.client_id
+        if not DaraCore.is_null(request.client_ids):
+            query['clientIds'] = request.client_ids
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.granularity):
@@ -10075,6 +10495,8 @@ class Client(OpenApiClient):
             query['pageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.phone):
+            query['phone'] = request.phone
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -10109,6 +10531,8 @@ class Client(OpenApiClient):
             query['pageIndex'] = request.page_index
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.phone):
+            query['phone'] = request.phone
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

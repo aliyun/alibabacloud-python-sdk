@@ -13,10 +13,20 @@ class ModelRouterTransferToMemberRequest(DaraModel):
         monthly_quota: float = None,
         remark: str = None,
     ):
+        # The transfer amount.
         self.amount = amount
+        # The balance type. Valid values:
+        # 
+        # - permanent
+        # - monthly
+        # 
+        # Default value: permanent.
         self.balance_type = balance_type
+        # The idempotency key. UUID v4 format is recommended.
         self.idempotency_key = idempotency_key
+        # The monthly refresh quota for monthly-type transfers.
         self.monthly_quota = monthly_quota
+        # The remark for the transfer.
         self.remark = remark
 
     def validate(self):

@@ -1,3 +1,8 @@
+2026-08-31 Version: 7.8.0
+- Support API ModelRouterMiguDownloadSource.
+- Support API ModelRouterMiguUploadSource.
+
+
 2026-08-04 Version: 7.6.0
 - Support API ModelRouterBatchCreateMemberApiKeys.
 - Support API ModelRouterBatchCreateModel.

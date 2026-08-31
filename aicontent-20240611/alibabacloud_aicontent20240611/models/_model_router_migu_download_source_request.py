@@ -4,13 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ModelRouterSearchClientTreeRequest(DaraModel):
+class ModelRouterMiguDownloadSourceRequest(DaraModel):
     def __init__(
         self,
-        keyword: str = None,
+        source_id: str = None,
     ):
-        # The search keyword, which can be a department name, username, or phone number.
-        self.keyword = keyword
+        # The unique identifier of the source file. This is the sourceId returned by the upload operation.
+        # 
+        # This parameter is required.
+        self.source_id = source_id
 
     def validate(self):
         pass
@@ -20,15 +22,15 @@ class ModelRouterSearchClientTreeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.keyword is not None:
-            result['keyword'] = self.keyword
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('keyword') is not None:
-            self.keyword = m.get('keyword')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
 
         return self
 

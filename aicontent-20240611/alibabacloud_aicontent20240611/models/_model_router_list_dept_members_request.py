@@ -15,12 +15,22 @@ class ModelRouterListDeptMembersRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # The authorization configuration filter. Valid values:
+        # - inherit: only members that inherit department settings.
+        # - custom: only members with custom settings.
+        # - Empty: all members.
         self.auth_config = auth_config
+        # Specifies whether to include the authorized models and the number of associated keys for the member.
         self.include_authorization = include_authorization
+        # Specifies whether to include the monthly and permanent balance of the member\\"s sub-wallet.
         self.include_balance = include_balance
+        # The search keyword.
         self.keyword = keyword
+        # Filters members by the authorized model ID.
         self.model = model
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

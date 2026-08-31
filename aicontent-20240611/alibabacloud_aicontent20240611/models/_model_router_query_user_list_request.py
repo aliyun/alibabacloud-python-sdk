@@ -10,6 +10,7 @@ class ModelRouterQueryUserListRequest(DaraModel):
         keyword: str = None,
         page_index: int = None,
         page_size: int = None,
+        phone: str = None,
     ):
         # The search keyword.
         self.keyword = keyword
@@ -17,6 +18,8 @@ class ModelRouterQueryUserListRequest(DaraModel):
         self.page_index = page_index
         # The number of entries per page.
         self.page_size = page_size
+        # Specifies the phone number for exact matching (not fuzzy). When specified together with keyword, the two conditions are combined with AND, meaning both must be satisfied. If not specified, no filtering by phone number is applied.
+        self.phone = phone
 
     def validate(self):
         pass
@@ -35,6 +38,9 @@ class ModelRouterQueryUserListRequest(DaraModel):
         if self.page_size is not None:
             result['pageSize'] = self.page_size
 
+        if self.phone is not None:
+            result['phone'] = self.phone
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +53,9 @@ class ModelRouterQueryUserListRequest(DaraModel):
 
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+
+        if m.get('phone') is not None:
+            self.phone = m.get('phone')
 
         return self
 

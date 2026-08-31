@@ -12,9 +12,13 @@ class ModelRouterGetMemberBalanceLogsRequest(DaraModel):
         size: int = None,
         skip_total: bool = None,
     ):
+        # The change type filter.
         self.change_type = change_type
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.size = size
+        # Specifies whether to skip the total count calculation.
         self.skip_total = skip_total
 
     def validate(self):

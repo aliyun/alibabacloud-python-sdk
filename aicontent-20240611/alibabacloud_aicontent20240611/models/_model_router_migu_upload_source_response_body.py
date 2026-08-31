@@ -2,28 +2,30 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from alibabacloud_aicontent20240611 import models as main_models
 from darabonba.model import DaraModel
 
-class ModelRouterSearchClientTreeResponseBody(DaraModel):
+class ModelRouterMiguUploadSourceResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.ModelRouterSearchClientTreeResponseBodyData = None,
+        data: main_models.MiguSourceUploadDTO = None,
         err_code: str = None,
         err_message: str = None,
         http_status_code: int = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data object.
+        # The data object.
         self.data = data
-        # The fault message code.
+        # The business error code. The console passes through the original value without mapping to standard platform error codes. Valid values:
+        # - ERROR_PARAMETERS: Missing or invalid parameters.
+        # - ERROR_SERVER_INTERNAL: Internal error.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
-        # The HTTP status code.
+        # The business status code. Valid values:
+        # - 0: Success.
+        # - 400/403/500: Business error. For details, see errCode.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
@@ -62,7 +64,7 @@ class ModelRouterSearchClientTreeResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('data') is not None:
-            temp_model = main_models.ModelRouterSearchClientTreeResponseBodyData()
+            temp_model = main_models.MiguSourceUploadDTO()
             self.data = temp_model.from_map(m.get('data'))
 
         if m.get('errCode') is not None:
@@ -79,34 +81,6 @@ class ModelRouterSearchClientTreeResponseBody(DaraModel):
 
         if m.get('success') is not None:
             self.success = m.get('success')
-
-        return self
-
-class ModelRouterSearchClientTreeResponseBodyData(DaraModel):
-    def __init__(
-        self,
-        matched_dept_ids: List[int] = None,
-    ):
-        # The collection of matched department IDs.
-        self.matched_dept_ids = matched_dept_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.matched_dept_ids is not None:
-            result['matchedDeptIds'] = self.matched_dept_ids
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('matchedDeptIds') is not None:
-            self.matched_dept_ids = m.get('matchedDeptIds')
 
         return self
 

@@ -17,7 +17,7 @@ class ModelRouterCreateBalanceTransactionResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The error message code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
