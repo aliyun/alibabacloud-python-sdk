@@ -26,7 +26,7 @@ class DescribeFilesetsRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The filter information for the filesets to query.
+        # The filter key information for the filesets to query.
         self.filters = filters
         # The number of results for each query.
         # 
@@ -41,7 +41,7 @@ class DescribeFilesetsRequest(DaraModel):
         # - FileCountUsage: the file count usage.
         # - SpaceUsage: the capacity usage.
         self.order_by_field = order_by_field
-        # The sort order. Valid values:
+        # The sort order.
         # 
         # - asc (default): ascending order, which sorts results from smallest to largest.
         # - desc: descending order, which sorts results from largest to smallest.
@@ -122,10 +122,10 @@ class DescribeFilesetsRequestFilters(DaraModel):
         self.key = key
         # The value of the filter key. Wildcards are not supported for this parameter.
         # 
-        # - If Key is set to FsetIds, Value is a fileset ID. You can specify one or more fileset IDs, up to a maximum of 10. Separate multiple values with commas (,). Example: `fset-1902718ea0ae****` or `fset-1902718ea0ae****,fset-3212718ea0ae****`.
-        # - If Key is set to FileSystemPath, Value is the path or a partial path of the fileset in the CPFS file system. The value must be 2 to 1,024 characters in length and encoded in UTF-8.
-        # - If Key is set to Description, Value is the description or a partial description of the fileset.
-        # - If Key is set to QuotaExists, Value is true or false. If this parameter is left empty, all filesets are returned.
+        # - If Key is set to FsetIds, Value is set to a fileset ID. You can specify one or more fileset IDs, up to a maximum of 10. Separate multiple values with commas (,). Example: `fset-1902718ea0ae****` or `fset-1902718ea0ae****,fset-3212718ea0ae****`.
+        # - If Key is set to FileSystemPath, Value is set to the path or a partial path of the fileset in the CPFS file system. The value must be 2 to 1,024 characters in length and encoded in UTF-8.
+        # - If Key is set to Description, Value is set to the description or a partial description of the fileset.
+        # - If Key is set to QuotaExists, Value is set to true or false. If this parameter is left empty, all filesets are returned.
         self.value = value
 
     def validate(self):

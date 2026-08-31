@@ -10,11 +10,11 @@ class GetDirectoryOrFilePropertiesRequest(DaraModel):
         file_system_id: str = None,
         path: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The absolute path of the directory or file.
+        # The absolute path of the specified directory.
         # 
         # The path must start with a forward slash (/) and must be an existing path in the mount target.
         # 

@@ -13,11 +13,26 @@ class CreateCpfsAccessPointRequest(DaraModel):
         region_id: str = None,
         root_directory: main_models.CreateCpfsAccessPointRequestRootDirectory = None,
     ):
+        # The description of the access point.
+        # 
+        # Limits:
+        # - The description must be 2 to 128 characters in length.
+        # - The description must start with a letter.It cannot start with http:// or https://.
+        # - The description can contain digits, colons (:), underscores (_), or hyphens (-).
         self.description = description
+        # The file system ID.
+        # 
+        # - CPFS: The ID must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
+        # 
+        # - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The root directory of the access point. Default value: "/".
         self.root_directory = root_directory
 
     def validate(self):
@@ -65,6 +80,7 @@ class CreateCpfsAccessPointRequestRootDirectory(DaraModel):
         self,
         root_path: str = None,
     ):
+        # The root directory of the access point. The value must start and end with a forward slash (/).
         self.root_path = root_path
 
     def validate(self):

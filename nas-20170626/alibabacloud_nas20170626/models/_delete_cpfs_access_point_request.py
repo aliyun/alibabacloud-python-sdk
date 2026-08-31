@@ -11,10 +11,20 @@ class DeleteCpfsAccessPointRequest(DaraModel):
         file_system_id: str = None,
         region_id: str = None,
     ):
+        # The access point ID.
+        # 
         # This parameter is required.
         self.access_point_id = access_point_id
+        # The file system ID.
+        # 
+        # - CPFS: The ID must start with `cpfs-`, such as cpfs-099394bd928c****.
+        # 
+        # - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-290w65p03ok64ya****.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

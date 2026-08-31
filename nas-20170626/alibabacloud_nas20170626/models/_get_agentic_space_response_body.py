@@ -63,8 +63,7 @@ class GetAgenticSpaceResponseBodyAgenticSpace(DaraModel):
         self.agentic_space_id = agentic_space_id
         # The zone ID.
         self.azone = azone
-        # The time when the AgenticSpace was created.
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time_utc = create_time_utc
         # AgenticSpace Description。
         self.description = description
@@ -81,8 +80,7 @@ class GetAgenticSpaceResponseBodyAgenticSpace(DaraModel):
         # The status of the AgenticSpace. Valid values:
         # - Running
         self.status = status
-        # The time when the AgenticSpace was last updated.
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the AgenticSpace was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time_utc = update_time_utc
 
     def validate(self):

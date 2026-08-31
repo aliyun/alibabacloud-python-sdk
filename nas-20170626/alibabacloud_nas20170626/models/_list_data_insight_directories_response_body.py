@@ -16,10 +16,15 @@ class ListDataInsightDirectoriesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The directory information.
         self.directory = directory
+        # The file system ID.
         self.file_system_id = file_system_id
+        # The maximum number of directories returned.
         self.max_results = max_results
+        # The pagination token returned in this call.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77,14 +82,24 @@ class ListDataInsightDirectoriesResponseBodyDirectory(DaraModel):
         file_count: int = None,
         file_count_offline: int = None,
         file_count_online: int = None,
+        inode: int = None,
         sub_directories: List[main_models.ListDataInsightDirectoriesResponseBodyDirectorySubDirectories] = None,
     ):
+        # The directory capacity.
         self.dir_capacity = dir_capacity
+        # The capacity of IA files.
         self.dir_capacity_offline = dir_capacity_offline
+        # The capacity of standard files.
         self.dir_capacity_online = dir_capacity_online
+        # The number of files.
         self.file_count = file_count
+        # The number of Infrequent Access (IA) files.
         self.file_count_offline = file_count_offline
+        # The number of standard files.
         self.file_count_online = file_count_online
+        # The inode number of the directory.
+        self.inode = inode
+        # The subdirectory information.
         self.sub_directories = sub_directories
 
     def validate(self):
@@ -116,6 +131,9 @@ class ListDataInsightDirectoriesResponseBodyDirectory(DaraModel):
         if self.file_count_online is not None:
             result['FileCountOnline'] = self.file_count_online
 
+        if self.inode is not None:
+            result['Inode'] = self.inode
+
         result['SubDirectories'] = []
         if self.sub_directories is not None:
             for k1 in self.sub_directories:
@@ -143,6 +161,9 @@ class ListDataInsightDirectoriesResponseBodyDirectory(DaraModel):
         if m.get('FileCountOnline') is not None:
             self.file_count_online = m.get('FileCountOnline')
 
+        if m.get('Inode') is not None:
+            self.inode = m.get('Inode')
+
         self.sub_directories = []
         if m.get('SubDirectories') is not None:
             for k1 in m.get('SubDirectories'):
@@ -163,19 +184,33 @@ class ListDataInsightDirectoriesResponseBodyDirectorySubDirectories(DaraModel):
         file_count: int = None,
         file_count_offline: int = None,
         file_count_online: int = None,
+        inode: int = None,
         last_access_time: str = None,
         updated_at: str = None,
     ):
+        # The time when the directory was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.created_at = created_at
+        # The capacity of the subdirectory.
         self.dir_capacity = dir_capacity
+        # The capacity of IA files in the subdirectory.
         self.dir_capacity_offline = dir_capacity_offline
+        # The capacity of standard files in the subdirectory.
         self.dir_capacity_online = dir_capacity_online
+        # The subdirectory level.
         self.dir_level = dir_level
+        # The subdirectory name.
         self.dir_name = dir_name
+        # The number of files in the subdirectory.
         self.file_count = file_count
+        # The number of IA files in the subdirectory.
         self.file_count_offline = file_count_offline
+        # The number of standard files in the subdirectory.
         self.file_count_online = file_count_online
+        # The inode number of the subdirectory.
+        self.inode = inode
+        # The time when the database directory data record was last updated. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.last_access_time = last_access_time
+        # The time when the directory was last accessed. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.updated_at = updated_at
 
     def validate(self):
@@ -213,6 +248,9 @@ class ListDataInsightDirectoriesResponseBodyDirectorySubDirectories(DaraModel):
         if self.file_count_online is not None:
             result['FileCountOnline'] = self.file_count_online
 
+        if self.inode is not None:
+            result['Inode'] = self.inode
+
         if self.last_access_time is not None:
             result['LastAccessTime'] = self.last_access_time
 
@@ -249,6 +287,9 @@ class ListDataInsightDirectoriesResponseBodyDirectorySubDirectories(DaraModel):
 
         if m.get('FileCountOnline') is not None:
             self.file_count_online = m.get('FileCountOnline')
+
+        if m.get('Inode') is not None:
+            self.inode = m.get('Inode')
 
         if m.get('LastAccessTime') is not None:
             self.last_access_time = m.get('LastAccessTime')

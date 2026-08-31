@@ -12,10 +12,22 @@ class ListDataInsightDirectoriesRequest(DaraModel):
         next_token: str = None,
         parent_dir: str = None,
     ):
+        # The file system ID.
+        # 
+        # - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
+        # > Only CPFS for Lingjun file systems are supported.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The maximum number of directories to return.
+        # 
+        # Valid values: 10 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first request. Default value: "".
         self.next_token = next_token
+        # The parent directory path. Specifies the parent directory to query. Default value: root directory "/".
         self.parent_dir = parent_dir
 
     def validate(self):

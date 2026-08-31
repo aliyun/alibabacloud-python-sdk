@@ -10,7 +10,9 @@ class CreateCpfsAccessPointResponseBody(DaraModel):
         access_point_id: str = None,
         request_id: str = None,
     ):
+        # The access point ID.
         self.access_point_id = access_point_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

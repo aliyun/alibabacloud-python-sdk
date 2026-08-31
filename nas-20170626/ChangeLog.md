@@ -1,3 +1,8 @@
+2026-08-31 Version: 3.7.1
+- Update API ListDataInsightDirectories: add response parameters Body.Directory.Inode.
+- Update API ListDataInsightDirectories: add response parameters Body.Directory.SubDirectories.$.Inode.
+
+
 2026-08-06 Version: 3.7.0
 - Support API DisableDataInsight.
 - Support API EnableDataInsight.

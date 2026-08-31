@@ -9,6 +9,11 @@ class EnableDataInsightRequest(DaraModel):
         self,
         file_system_id: str = None,
     ):
+        # The file system ID.
+        # 
+        # - CPFS for Lingjun: The value must start with `bmcpfs-`, such as bmcpfs-125487\\*\\*\\*\\*.
+        # > Only CPFS for Lingjun file systems are supported.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
 

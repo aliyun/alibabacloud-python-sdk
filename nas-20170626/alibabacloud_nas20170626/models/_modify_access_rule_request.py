@@ -46,7 +46,7 @@ class ModifyAccessRuleRequest(DaraModel):
         # 
         # Default value: 1 (highest priority).
         self.priority = priority
-        # The read and write permission that the authorized object has on the file system.
+        # The read and write permissions of the authorized object on the file system.
         # 
         # Valid values:
         # 
@@ -59,7 +59,7 @@ class ModifyAccessRuleRequest(DaraModel):
         # 
         # > You must specify either SourceCidrIp or Ipv6SourceCidrIp. You cannot leave both parameters empty, and you cannot specify both parameters at the same time.
         self.source_cidr_ip = source_cidr_ip
-        # The access permissions that the system user of the authorization object has on the file system.
+        # The authorization of the system user of the authorized object on the file system.
         # 
         # Valid values:
         # 

@@ -50,7 +50,7 @@ class CreateAccessPointResponseBodyAccessPoint(DaraModel):
         access_point_domain: str = None,
         access_point_id: str = None,
     ):
-        # The domain name of the access point.
+        # The access point domain name.
         self.access_point_domain = access_point_domain
         # The access point ID.
         self.access_point_id = access_point_id

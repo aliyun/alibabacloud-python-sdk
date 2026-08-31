@@ -17,7 +17,7 @@ class DescribeLifecyclePolicyLogsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The execution logs of the lifecycle policy.
+        # The execution logs of the lifecycle management policy.
         self.lifecycle_policy_logs = lifecycle_policy_logs
         # The page number.
         self.page_number = page_number
@@ -25,9 +25,7 @@ class DescribeLifecyclePolicyLogsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The request status.
-        # 
-        # Valid values:
+        # The request status. Valid values:
         # 
         # - true: The request was successful.
         # - false: The request failed.
@@ -226,7 +224,7 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules(Dar
         # The attribute of the rule.
         # 
         # Valid values:
-        # - Atime: the access time of the file.
+        # - Atime: the last access time of the file.
         self.attribute = attribute
         # The threshold of the rule.
         # 
@@ -310,7 +308,7 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules(Dara
         # The attribute of the rule.
         # 
         # Valid values:
-        # - Atime: the access time of the file.
+        # - Atime: the last access time of the file.
         self.attribute = attribute
         # The threshold of the rule.
         # 

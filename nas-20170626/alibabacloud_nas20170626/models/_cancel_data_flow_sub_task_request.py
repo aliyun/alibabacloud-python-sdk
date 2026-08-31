@@ -14,9 +14,9 @@ class CancelDataFlowSubTaskRequest(DaraModel):
         dry_run: bool = None,
         file_system_id: str = None,
     ):
-        # Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
         # 
-        # ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
         # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
@@ -24,7 +24,7 @@ class CancelDataFlowSubTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
-        # The data flow streaming task ID.
+        # The data flow streaming subtask ID.
         # 
         # This parameter is required.
         self.data_flow_sub_task_id = data_flow_sub_task_id
@@ -34,14 +34,16 @@ class CancelDataFlowSubTaskRequest(DaraModel):
         self.data_flow_task_id = data_flow_task_id
         # Specifies whether to perform a dry run for this request.
         # 
-        # A dry run checks parameter validity and resource availability without actually creating an instance or incurring fees.
+        # A dry run checks parameter validity and resource availability without actually creating an instance or incurring charges.
         # 
         # Valid values:
         # 
-        # - true: Sends a check request without creating an instance. The check items include whether required parameters are specified, the request format, business limitations, and NAS inventory. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned.
-        # - false (default): Sends a normal request. After the check passes, the instance is directly created.
+        # - true: Sends a dry run request without creating an instance. The check items include required parameters, request format, business limits, and NAS inventory. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned.
+        # - false (default): Sends a normal request and creates the instance after the check passes.
         self.dry_run = dry_run
         # The file system ID.
+        # 
+        # > Only CPFS for Lingjun (with the bmcpfs- prefix) file systems of version 2.6.0 or later are supported.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

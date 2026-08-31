@@ -16,10 +16,17 @@ class DescribeCpfsAccessPointsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The access point information.
         self.access_points = access_points
+        # The page number of the list.
         self.page_number = page_number
+        # The number of results per page.
+        # Valid values: 1 to 100.                              
+        # Default value: 10.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of access points.
         self.total_count = total_count
 
     def validate(self):
@@ -87,14 +94,32 @@ class DescribeCpfsAccessPointsResponseBodyAccessPoints(DaraModel):
         root_directory: main_models.DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory = None,
         status: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the access point.
         self.arn = arn
+        # The access point ID.
         self.access_point_id = access_point_id
+        # The time when the access point was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
+        # The description of the access point.
         self.description = description
+        # The file system ID.
         self.file_system_id = file_system_id
+        # The time when the access point was last modified. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.modify_time = modify_time
+        # The region ID.
         self.region_id = region_id
+        # The root directory information.
         self.root_directory = root_directory
+        # The current status of the access point.
+        # 
+        # Valid values:
+        # 
+        # - Active: available
+        # - Inactive: unavailable
+        # - Pending: being created
+        # - Deleting: being deleted
+        # 
+        # > The file system can be mounted only when the status is Active.
         self.status = status
 
     def validate(self):
@@ -173,7 +198,15 @@ class DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory(DaraModel):
         root_path: str = None,
         root_path_status: str = None,
     ):
+        # The root directory.
         self.root_path = root_path
+        # The current status of the root directory.
+        # 
+        # Valid values:
+        # 
+        # - Unknown: The root path status is unknown.
+        # - NotExist: The root path does not exist. It may have been deleted by the user.
+        # - Ready: The root path status is normal.
         self.root_path_status = root_path_status
 
     def validate(self):

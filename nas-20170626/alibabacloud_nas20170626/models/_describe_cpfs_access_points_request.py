@@ -13,11 +13,24 @@ class DescribeCpfsAccessPointsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The access point ID.
         self.access_point_id = access_point_id
+        # The file system ID.
+        # 
+        # - CPFS: The ID must start with `cpfs-`, such as cpfs-099394bd928c****.
+        # 
+        # - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-290w65p03ok64ya****.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The page number of the list.
         self.page_number = page_number
+        # The number of results per query.
+        # Valid values: 1 to 100.
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

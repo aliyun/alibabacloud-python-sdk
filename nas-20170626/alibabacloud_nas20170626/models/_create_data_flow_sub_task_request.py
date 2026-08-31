@@ -17,11 +17,11 @@ class CreateDataFlowSubTaskRequest(DaraModel):
         file_system_id: str = None,
         src_file_path: str = None,
     ):
-        # Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
         # 
-        # ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
         self.client_token = client_token
         # The verification condition. The specified conditions must pass verification.
         self.condition = condition
@@ -36,19 +36,19 @@ class CreateDataFlowSubTaskRequest(DaraModel):
         self.data_flow_task_id = data_flow_task_id
         # Specifies whether to perform a dry run for this request.
         # 
-        # A dry run checks parameter validity and resource availability without actually creating the instance or incurring charges.
+        # A dry run checks parameter validity and resource availability without actually creating an instance or incurring fees.
         # 
         # Valid values:
         # 
         # - true: Sends a check request without creating the data flow. The check items include whether required parameters are specified, the request format, and business limit dependencies. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but DataFlowSubTaskId is empty.
-        # - false (default): Sends a normal request and directly creates the instance after the check passes.
+        # - false (default): Sends a normal request. After the check passes, the instance is directly created.
         self.dry_run = dry_run
         # The destination file path.
         # Limits:
-        # - The value must be 1 to 1,023 characters in length.
-        # - The value must be encoded in UTF-8.
-        # - The value must start with a forward slash (/).
-        # - The value must end with a file name.
+        # - The path must be 1 to 1,023 characters in length.
+        # - The path must be encoded in UTF-8.
+        # - The path must start with a forward slash (/).
+        # - The path must end with a file name.
         # 
         # This parameter is required.
         self.dst_file_path = dst_file_path
@@ -58,10 +58,10 @@ class CreateDataFlowSubTaskRequest(DaraModel):
         self.file_system_id = file_system_id
         # The source file path.
         # Limits:
-        # - The value must be 1 to 1,023 characters in length.
-        # - The value must be encoded in UTF-8.
-        # - The value must start with a forward slash (/).
-        # - The value must end with a file name.
+        # - The path must be 1 to 1,023 characters in length.
+        # - The path must be encoded in UTF-8.
+        # - The path must start with a forward slash (/).
+        # - The path must end with a file name.
         # 
         # This parameter is required.
         self.src_file_path = src_file_path

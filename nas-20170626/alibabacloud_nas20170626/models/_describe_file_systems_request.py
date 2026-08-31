@@ -32,30 +32,22 @@ class DescribeFileSystemsRequest(DaraModel):
         # - all (default): queries all types.
         # - standard: General-purpose NAS.
         # - extreme: Extreme NAS.
-        # - cpfs: Cloud Parallel File Storage (locally redundant).
-        # - cpfsse: Cloud Parallel File Storage SE (zone-redundant).
+        # - cpfs: Cloud Parallel File Storage (CPFS) with locally redundant storage.
+        # - cpfsse: CPFS SE with zone-redundant storage.
         # 
         # > To query multiple types, separate them with commas (,).
         self.file_system_type = file_system_type
         # The page number of the file system list.
         self.page_number = page_number
-        # The number of file systems on each page during a paged query.
+        # The number of file systems on each page in a paging query.
         self.page_size = page_size
         # The resource group ID.
         # 
         # You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
         self.resource_group_id = resource_group_id
-        # The storage type.
-        # 
-        # Valid values:
-        # 
-        # - General-purpose NAS: Capacity, Performance, and Premium.
-        # - Extreme NAS: standard and advance.
-        # - CPFS: advance_100 (100 MB/s/TiB baseline), advance_200 (200 MB/s/TiB baseline), and economic.
-        # - CPFS SE: advance_100 (100 MB/s/TiB baseline).
-        # - AgenticFS: Agentic (available only when FileSystemType is set to standard).
+        # The storage type. Currently, only CPFS for Lingjun specifications are supported for a filtered query. Other FileSystemType values are not supported. The following specifications are supported:
         self.storage_type = storage_type
-        # The collection of tag information.
+        # The tag information.
         self.tag = tag
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -137,12 +129,19 @@ class DescribeFileSystemsRequestTag(DaraModel):
         value: str = None,
     ):
         # The tag key.
+        # 
+        # Limits:
+        # 
+        # - Valid values of N: 1 to 20.
+        # - The tag key can be up to 128 characters in length.
+        # - The tag key cannot start with `aliyun` or `acs:`.
+        # - The tag key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         # 
         # Limits:
         # 
-        # - Valid values of N: 1 to 20.
+        # - N can be an integer from 1 to 20.
         # - The tag value can be up to 128 characters in length.
         # - The tag value cannot start with `aliyun` or `acs:`.
         # - The tag value cannot contain `http://` or `https://`.

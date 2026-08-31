@@ -11,7 +11,7 @@ class DeleteSnapshotResponseBody(DaraModel):
     ):
         # The request ID.
         # 
-        # The request ID is returned regardless of whether the API call is successful.
+        # A request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
 
     def validate(self):

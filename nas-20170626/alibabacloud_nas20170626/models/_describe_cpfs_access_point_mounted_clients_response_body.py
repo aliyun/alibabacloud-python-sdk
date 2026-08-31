@@ -16,10 +16,15 @@ class DescribeCpfsAccessPointMountedClientsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The clients mounted to the access point.
         self.mounted_client = mounted_client
+        # The page number of the list.
         self.page_number = page_number
+        # The number of results on each page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of clients mounted to the access point.
         self.total_count = total_count
 
     def validate(self):
@@ -81,8 +86,13 @@ class DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient(DaraModel):
         client_id: str = None,
         client_ip: str = None,
     ):
+        # The type of the client mounted to the access point. Valid values:
+        # - vsc
+        # - tcp
         self.channel_type = channel_type
+        # The ID of the client mounted to the access point.
         self.client_id = client_id
+        # The IP address of the client mounted to the access point.
         self.client_ip = client_ip
 
     def validate(self):

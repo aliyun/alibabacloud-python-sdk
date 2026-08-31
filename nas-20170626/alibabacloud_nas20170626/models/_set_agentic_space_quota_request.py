@@ -24,11 +24,11 @@ class SetAgenticSpaceQuotaRequest(DaraModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run for this request. A dry run checks parameter validity and dependencies without actually modifying the instance or incurring charges.
+        # Specifies whether to perform a dry run for this request. A dry run checks parameter validity and dependencies without actually modifying the instance or incurring fees.
         # 
         # Valid values:
         # 
-        # - true: Sends a dry run request without modifying the protocol service. The check items include required parameters, request format, and business dependency conditions. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned.
+        # - true: Sends a check request without modifying the protocol service. The check items include whether required parameters are specified, request format, and business limit dependencies. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned.
         # - false (default): Sends a normal request. After the check passes, the protocol service is directly modified.
         self.dry_run = dry_run
         # The file count limit for the quota. Valid values:

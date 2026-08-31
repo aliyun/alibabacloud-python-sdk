@@ -26,25 +26,25 @@ class CreateAccessPointRequest(DaraModel):
         vpc_id: str = None,
         vsw_id: str = None,
     ):
-        # The name of the permission group.
+        # The permission group name.
         # 
         # This parameter is required if the file system is a General-purpose NAS file system.
         # 
         # Default permission group: DEFAULT_VPC_GROUP_NAME (the default permission group for VPCs).
         # >Not supported for Agentic file systems.
         self.access_group = access_group
-        # The name of the access point.
+        # The access point name.
         self.access_point_name = access_point_name
         # The AgenticSpace ID.
         # >This parameter is required for Agentic file systems.
         self.agentic_space_id = agentic_space_id
-        # Specifies whether to enable access point policy.
+        # Specifies whether to enable the RAM policy.
         # Valid values:
         # 
         # - true: enabled.
         # - false (default): not enabled.
         # 
-        # > After you enable access point policy for the access point, all Resource Access Management (RAM) users are denied access to mount and access data through the access point by default. You must grant the corresponding access permissions through authorization and then mount and access the file system through the access point. After you disable access point policy, the access point allows anonymity mounting. For more information about how to configure access point permissions, see [Configure access point policies](https://help.aliyun.com/document_detail/2545998.html).
+        # > After you enable the access point RAM policy, all Resource Access Management (RAM) users are denied access to mount and access data through the access point by default. You must grant the corresponding access permissions through authorization and mount the file system through the access point. After you disable the RAM policy, the access point allows anonymous mounting. For more information about how to configure access point permissions, see [Configure an access point policy](https://help.aliyun.com/document_detail/2545998.html).
         # 
         # >For Agentic file systems, this parameter must be set to true.
         self.enabled_ram = enabled_ram
@@ -62,9 +62,9 @@ class CreateAccessPointRequest(DaraModel):
         # This parameter is required if the RootDirectory directory does not exist.
         # >Not supported for Agentic file systems.
         self.owner_user_id = owner_user_id
-        # The POSIX permission. Default value: "0755". The value must be a four-digit octal number that starts with 0.
+        # The POSIX permission. Default value: "0755". Limit: The value must be a four-digit octal number that starts with 0.
         # 
-        # This parameter takes effect only after you specify the OwnerUserId and OwnerGroupId parameters.
+        # This parameter takes effect after you specify the OwnerUserId and OwnerGroupId parameters.
         # >Not supported for Agentic file systems.
         self.permission = permission
         # The POSIX group ID.
@@ -78,7 +78,7 @@ class CreateAccessPointRequest(DaraModel):
         self.posix_user_id = posix_user_id
         # The root directory of the access point.
         # Default value: "/". If the access point directory does not exist, you must also specify the OwnerUserId and OwnerGroupId parameters.
-        # >Supported only for Agentic file systems.
+        # >Not supported for Agentic file systems.
         self.root_directory = root_directory
         # The list of access point tags.
         self.tag = tag
@@ -212,17 +212,17 @@ class CreateAccessPointRequestTag(DaraModel):
         # The tag key.
         # Limits:
         # 
-        # - Cannot be empty or an empty string.
-        # - Can be up to 128 characters in length.
-        # - Cannot start with aliyun or acs:.
-        # - Cannot contain http:// or https://.
+        # - The tag key cannot be empty or an empty string.
+        # - The tag key can be up to 128 characters in length.
+        # - The tag key cannot start with aliyun or acs:.
+        # - The tag key cannot contain http:// or https://.
         self.key = key
         # The tag value.
         # Limits:
         # 
-        # - Cannot be empty or an empty string.
-        # - Can be up to 128 characters in length.
-        # - Cannot contain http:// or https://.
+        # - The tag value cannot be empty or an empty string.
+        # - The tag value can be up to 128 characters in length.
+        # - The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

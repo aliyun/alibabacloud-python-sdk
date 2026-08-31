@@ -12,11 +12,22 @@ class ModifyCpfsAccessPointRequest(DaraModel):
         file_system_id: str = None,
         region_id: str = None,
     ):
+        # The access point ID.
+        # 
         # This parameter is required.
         self.access_point_id = access_point_id
+        # The description of the access point.
         self.description = description
+        # The file system ID.
+        # 
+        # - CPFS: The ID must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
+        # 
+        # - CPFS for Lingjun: The ID must start with `bmcpfs-`, for example, bmcpfs-0015\\*\\*\\*\\*.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

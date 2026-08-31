@@ -11,7 +11,7 @@ class GetDirectoryOrFilePropertiesResponseBody(DaraModel):
         entry: main_models.GetDirectoryOrFilePropertiesResponseBodyEntry = None,
         request_id: str = None,
     ):
-        # The properties of the directory or file.
+        # The directory or file information.
         self.entry = entry
         # The request ID.
         self.request_id = request_id
@@ -61,79 +61,77 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
         storage_type: str = None,
         type: str = None,
     ):
-        # The time when the file was last accessed.
+        # The time when the file was queried.
         # 
-        # The time is displayed in the ISO 8601 standard format and is returned in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
-        # This parameter is returned only if Type is set to File.
+        # This parameter is returned only when Type is File.
         self.atime = atime
-        # The time when the metadata of the file was last modified.
+        # The time when the metadata was modified.
         # 
-        # The time is displayed in the ISO 8601 standard format and is returned in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
-        # This parameter is returned only if Type is set to File.
+        # This parameter is returned only when Type is File.
         self.ctime = ctime
-        # Indicates whether the directory contains an archive file.
+        # Indicates whether the directory contains Archive storage class files.
         # 
-        # This parameter is returned only if Type is set to Directory.
+        # This parameter is returned only when Type is Directory.
         # 
         # Valid values:
         # 
-        # - true: The directory contains at least one archive file.
-        # 
-        # - false: The directory does not contain archive files.
+        # - true: The directory contains Archive storage class files.
+        # - false: The directory does not contain Archive storage class files.
         self.has_archive_file = has_archive_file
-        # Indicates whether the directory contains an Infrequent Access (IA) file.
+        # Indicates whether the directory contains IA storage class files.
         # 
-        # This parameter is returned only if Type is set to Directory.
+        # This parameter is returned only when Type is Directory.
         # 
         # Valid values:
         # 
-        # - true: The directory contains at least one IA file.
-        # 
-        # - false: The directory does not contain IA files.
+        # - true: The directory contains IA storage class files.
+        # - false: The directory does not contain IA storage class files.
         self.has_infrequent_access_file = has_infrequent_access_file
         # The inode of the file or directory.
         self.inode = inode
-        # The time when the file was last modified.
+        # The time when the file was modified.
         # 
-        # The time is displayed in the ISO 8601 standard format and is returned in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
-        # This parameter is returned only if Type is set to File.
+        # This parameter is returned only when Type is File.
         self.mtime = mtime
-        # The name of the file or directory.
+        # The file name or directory name.
         self.name = name
+        # The total duration for which the file has been stored as an Archive file. Unit: seconds.
         self.offline_duration = offline_duration
+        # The total duration for which the file has remained unchanged since it was stored as an Archive file. Unit: seconds.
         self.offline_unchanged_duration = offline_unchanged_duration
-        # The time when the last data retrieval task was run.
+        # The time when the most recent data retrieval task was executed.
         # 
-        # The time is displayed in the ISO 8601 standard format and is returned in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
-        # This parameter is returned only if Type is set to File.
+        # This parameter is returned only when Type is File.
         self.retrieve_time = retrieve_time
         # The size of the file.
         # 
         # Unit: bytes.
         # 
-        # This parameter is returned only if Type is set to File.
+        # This parameter is returned only when Type is File.
         self.size = size
-        # The storage type of the file.
+        # The storage type of the returned file.
         # 
-        # This parameter is returned only if Type is set to File.
+        # This parameter is returned only when Type is File.
         # 
         # Valid values:
         # 
-        # - Standard: General-purpose NAS file systems
-        # 
-        # - InfrequentAccess: IA storage medium
+        # - Standard: General-purpose NAS storage.
+        # - InfrequentAccess: IA storage class.
         self.storage_type = storage_type
-        # The type of the returned entry.
+        # The type of the returned result.
         # 
         # Valid values:
         # 
-        # - File: The entry is a file.
-        # 
-        # - Directory: The entry is a directory.
+        # - File: file
+        # - Directory: directory
         self.type = type
 
     def validate(self):
