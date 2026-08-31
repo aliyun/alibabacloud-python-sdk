@@ -16,7 +16,7 @@ class CreateSecurityClassifyResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The data classification ID.
+        # The data category ID.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

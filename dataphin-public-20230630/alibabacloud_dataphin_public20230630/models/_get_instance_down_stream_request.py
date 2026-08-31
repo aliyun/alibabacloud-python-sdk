@@ -12,6 +12,7 @@ class GetInstanceDownStreamRequest(DaraModel):
         env: str = None,
         instance_get: main_models.GetInstanceDownStreamRequestInstanceGet = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         run_status: str = None,
     ):
         # Number of levels to expand downstream in the DAG query. Valid values: 1 to 6.
@@ -30,6 +31,7 @@ class GetInstanceDownStreamRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # Run status of the instance.
         # - INIT
         # - WATING
@@ -59,6 +61,9 @@ class GetInstanceDownStreamRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.run_status is not None:
             result['RunStatus'] = self.run_status
 
@@ -78,6 +83,9 @@ class GetInstanceDownStreamRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('RunStatus') is not None:
             self.run_status = m.get('RunStatus')

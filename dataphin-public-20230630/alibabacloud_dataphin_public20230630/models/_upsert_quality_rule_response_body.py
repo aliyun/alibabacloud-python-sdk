@@ -14,13 +14,13 @@ class UpsertQualityRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The backend response code.
         self.code = code
-        # The rule ID.
+        # The task rule ID.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id

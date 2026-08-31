@@ -12,9 +12,10 @@ class BatchCreateKgEntityRequest(DaraModel):
         self,
         create_command: main_models.BatchCreateKgEntityRequestCreateCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The create instruction.
+        # The create command.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -22,6 +23,8 @@ class BatchCreateKgEntityRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
         # The workspace ID.
         # 
         # This parameter is required.
@@ -42,6 +45,9 @@ class BatchCreateKgEntityRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -55,6 +61,9 @@ class BatchCreateKgEntityRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

@@ -9,12 +9,14 @@ class GetTableColumnLineageByTaskIdRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         table_column_lineage_by_task_id_query: main_models.GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery = None,
     ):
         # Tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # Data structure for querying table column lineage.
         # 
         # This parameter is required.
@@ -32,6 +34,9 @@ class GetTableColumnLineageByTaskIdRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.table_column_lineage_by_task_id_query is not None:
             result['TableColumnLineageByTaskIdQuery'] = self.table_column_lineage_by_task_id_query.to_map()
 
@@ -41,6 +46,9 @@ class GetTableColumnLineageByTaskIdRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('TableColumnLineageByTaskIdQuery') is not None:
             temp_model = main_models.GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery()

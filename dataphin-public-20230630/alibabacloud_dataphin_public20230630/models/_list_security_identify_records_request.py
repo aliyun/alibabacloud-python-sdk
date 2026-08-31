@@ -10,6 +10,7 @@ class ListSecurityIdentifyRecordsRequest(DaraModel):
         self,
         list_query: main_models.ListSecurityIdentifyRecordsRequestListQuery = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The query conditions.
         # 
@@ -19,6 +20,8 @@ class ListSecurityIdentifyRecordsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.list_query:
@@ -35,6 +38,9 @@ class ListSecurityIdentifyRecordsRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -45,6 +51,9 @@ class ListSecurityIdentifyRecordsRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 
@@ -61,23 +70,23 @@ class ListSecurityIdentifyRecordsRequestListQuery(DaraModel):
         table_catalog: str = None,
         table_name: str = None,
     ):
-        # The datasource environment identifier. This parameter is required only for datasource tables.
+        # The data source environment identifier. This parameter is required only for data source tables.
         self.datasource_env = datasource_env
-        # The datasource name. This parameter is required only for datasource tables.
+        # The data source name. This parameter is required only for data source tables.
         self.datasource_name = datasource_name
         # The field name.
         # 
         # This parameter is required.
         self.field_name = field_name
-        # Specifies whether the table is a datasource table. Default value: false (treated as a Dataphin table).
+        # Specifies whether the table is a data source table. Default value: false (treated as a Dataphin table).
         self.is_datasource_table = is_datasource_table
-        # The search keyword. The search scope is the field name.
+        # The search keyword. The search scope is field names.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_no = page_no
         # The number of records per page. Default value: 20.
         self.page_size = page_size
-        # The table catalog. For datasource tables, specify the database or schema name. For Dataphin physical tables, specify the project name in English. For Dataphin logical tables, specify the business unit name in English.
+        # The table catalog. For data source tables, specify the database or schema name. For Dataphin physical tables, specify the project name in English. For Dataphin logical tables, specify the business unit name in English.
         # 
         # This parameter is required.
         self.table_catalog = table_catalog

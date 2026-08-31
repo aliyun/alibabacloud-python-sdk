@@ -13,17 +13,20 @@ class ListInstancesRequest(DaraModel):
         env: str = None,
         list_query: main_models.ListInstancesRequestListQuery = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
-        # Environment identifier
-        # - DEV: Development environment
-        # - PROD (default): Production environment
+        # The environment identifier. Valid values:
+        # - DEV: Development environment. 
+        # - PROD (default): Production environment.
         self.env = env
-        # Query Request
+        # The query request.
         self.list_query = list_query
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.list_query:
@@ -43,6 +46,9 @@ class ListInstancesRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +62,9 @@ class ListInstancesRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 
@@ -81,60 +90,61 @@ class ListInstancesRequestListQuery(DaraModel):
         schedule_type: str = None,
         search_text: str = None,
         sub_biz_type_list: List[str] = None,
+        tag_list: List[str] = None,
     ):
-        # Business Type
+        # The business type. Valid values:
         # 
-        # - SCRIPT: Script Instance
-        # - LOGICAL_TABLE: Logical Table
+        # - SCRIPT: Script instance.
+        # - LOGICAL_TABLE: Logical table.
         self.biz_type = biz_type
-        # Business unit ID. Required when querying summary logical tables.
+        # The business unit ID. Required when querying aggregate logical tables.
         self.biz_unit_id = biz_unit_id
-        # Workflow ID
+        # The workflow ID.
         self.flow_id = flow_id
-        # End business date and time. The time format must conform to the partition format specified by the business unit.
+        # The end business date and time. The time format must match the partition format specified by the business unit.
         self.max_biz_date = max_biz_date
-        # Maximum instance run time
+        # The maximum instance run time.
         self.max_run_date = max_run_date
-        # Start business date and time. The time format must conform to the partition format specified by the business unit.
+        # The start business date and time. The time format must match the partition format specified by the business unit.
         self.min_biz_date = min_biz_date
-        # Minimum instance run time
+        # The minimum instance run time.
         self.min_run_date = min_run_date
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # Node Owner
+        # The node owners.
         self.owner_list = owner_list
-        # Page Number
+        # The page number.
         # 
         # This parameter is required.
         self.page = page
-        # Page Size
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Priority
+        # The priority. Valid values:
         # - HIGHEST
         # - HIGH
         # - MIDDLE
         # - LOW
         # - LOWEST
         self.priority_list = priority_list
-        # Project ID
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Running status
-        # - INIT: Initialized
-        # - WAIT_SUBMISSION: Waiting for Submission
-        # - WAIT_SCHEDULE: Waiting for Schedule Time
-        # - DISPATCH_BLOCKED: Throttled
-        # - WAIT_RESOURCE: Waiting for Scheduling Resources
-        # - RUNNING: Running
-        # - SUCCESS: Succeeded
-        # - FAILED: Failed
+        # The run status. Valid values:
+        # - INIT: Init.
+        # - WAIT_SUBMISSION: Waiting for submission.
+        # - WAIT_SCHEDULE: Waiting for schedule time.
+        # - DISPATCH_BLOCKED: Throttled.
+        # - WAIT_RESOURCE: Waiting for schedule resource.
+        # - RUNNING: Running.
+        # - SUCCESS: Succeeded.
+        # - FAILED: Failed.
         self.run_status_list = run_status_list
-        # Whether scheduling is paused
+        # Specifies whether scheduling is paused.
         self.schedule_paused = schedule_paused
-        # Schedule Period
+        # The scheduling period. Valid values:
         # - YEARLY
         # - MONTHLY
         # - WEEKLY
@@ -142,15 +152,15 @@ class ListInstancesRequestListQuery(DaraModel):
         # - HOURLY
         # - MINUTELY
         self.schedule_period_list = schedule_period_list
-        # Instance schedule type
-        # - NORMAL (Periodic Instance)
-        # - MANUAL (Manual Instance)
+        # The instance scheduling type. Valid values:
+        # - NORMAL: Periodic instance.
+        # - MANUAL: Manual instance.
         # 
         # This parameter is required.
         self.schedule_type = schedule_type
-        # Fuzzy match by node name or exact match by node ID
+        # Fuzzy match by node name or exact match by node ID.
         self.search_text = search_text
-        # Sub-business Type
+        # The sub-business type. Valid values:
         # - MAX_COMPUTE_SQL
         # - HIVE_SQL
         # - SHELL
@@ -158,6 +168,8 @@ class ListInstancesRequestListQuery(DaraModel):
         # - ONE_SERVICE_SQL
         # - DATABASE_SQL
         self.sub_biz_type_list = sub_biz_type_list
+        # The node tag filter list. Each element is a numeric string of a node tag ID (such as "123"). Filters the instance list by node tags. If not specified or empty, no filtering is applied and all instances are returned. Multiple tags use OR logic. Invalid elements (non-numeric or overflow) are ignored.
+        self.tag_list = tag_list
 
     def validate(self):
         pass
@@ -224,6 +236,9 @@ class ListInstancesRequestListQuery(DaraModel):
         if self.sub_biz_type_list is not None:
             result['SubBizTypeList'] = self.sub_biz_type_list
 
+        if self.tag_list is not None:
+            result['TagList'] = self.tag_list
+
         return result
 
     def from_map(self, m: dict = None):
@@ -284,6 +299,9 @@ class ListInstancesRequestListQuery(DaraModel):
 
         if m.get('SubBizTypeList') is not None:
             self.sub_biz_type_list = m.get('SubBizTypeList')
+
+        if m.get('TagList') is not None:
+            self.tag_list = m.get('TagList')
 
         return self
 

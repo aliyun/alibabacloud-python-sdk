@@ -21,7 +21,7 @@ class GetPhysicalInstanceLogResponseBody(DaraModel):
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -98,15 +98,15 @@ class GetPhysicalInstanceLogResponseBodyTaskrunLogList(DaraModel):
         status: str = None,
         taskrun_id: str = None,
     ):
-        # The execution duration of the task. Unit: seconds.
+        # The task execution duration, in seconds.
         self.duration = duration
         # The time when the task finished running.
         self.end_time = end_time
-        # The execution log content. This value is empty if the task has not been run.
+        # The run log content. This value is empty if the task has not been run.
         self.log_content = log_content
         # The time when the task started running.
         self.start_time = start_time
-        # The execution status.
+        # The run status.
         self.status = status
         # The task ID for each run.
         self.taskrun_id = taskrun_id

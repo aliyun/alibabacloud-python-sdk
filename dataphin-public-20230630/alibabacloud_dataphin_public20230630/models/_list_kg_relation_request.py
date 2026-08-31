@@ -10,15 +10,18 @@ class ListKgRelationRequest(DaraModel):
         self,
         list_query: main_models.ListKgRelationRequestListQuery = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         relation_type: str = None,
         workspace_id: str = None,
     ):
-        # The paged search filter conditions.
+        # The paged query filter conditions.
         self.list_query = list_query
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
         # The relationship type code.
         # 
         # This parameter is required.
@@ -43,6 +46,9 @@ class ListKgRelationRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.relation_type is not None:
             result['RelationType'] = self.relation_type
 
@@ -59,6 +65,9 @@ class ListKgRelationRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('RelationType') is not None:
             self.relation_type = m.get('RelationType')

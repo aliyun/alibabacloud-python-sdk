@@ -17,17 +17,17 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Request error code. OK indicates a normal request.
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
-        # Backend response HTTP code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Request error message
+        # The error message returned if the request failed.
         self.message = message
-        # Paginated result
+        # The paginated result.
         self.page_result = page_result
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListInstancesResponseBodyPageResult(DaraModel):
         data: List[main_models.ListInstancesResponseBodyPageResultData] = None,
         total_count: int = None,
     ):
-        # Paginated records
+        # The paginated records.
         self.data = data
-        # Total number of records
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -141,25 +141,25 @@ class ListInstancesResponseBodyPageResultData(DaraModel):
         start_execute_time: int = None,
         status_list: List[str] = None,
     ):
-        # Business Date
+        # The business date.
         self.biz_date = biz_date
-        # Schedule Time
+        # The scheduling time.
         self.due_time = due_time
-        # Running duration, in seconds
+        # The execution duration. Unit: seconds.
         self.duration = duration
-        # Execution End Time
+        # The execution end time.
         self.end_execute_time = end_execute_time
-        # Node extended information: specific information for instances from different business systems, such as pipeline fileId, whether the logical table has hierarchical dimensions, mid node information, and instance output name
+        # The extended node information, which contains properties specific to different business system instances, such as the fileId of a pipeline, whether a logical table uses hierarchy dimensions, mid node information, and instance output names.
         self.extend_info = extend_info
-        # Instance ID
+        # The instance ID.
         self.id = id
-        # Hourly/Minutely instance sequence number
+        # The sequence number of the hourly or minutely instance.
         self.index = index
-        # Node Details
+        # The node details.
         self.node_info = node_info
-        # Execution start time
+        # The execution start time.
         self.start_execute_time = start_execute_time
-        # Instance Status
+        # The instance status.
         self.status_list = status_list
 
     def validate(self):
@@ -261,46 +261,46 @@ class ListInstancesResponseBodyPageResultDataNodeInfo(DaraModel):
         sub_detail_type: str = None,
         type: str = None,
     ):
-        # Business Unit
+        # The business unit.
         self.biz_unit_name = biz_unit_name
-        # Creation Time
+        # The creation time.
         self.create_time = create_time
-        # Node Creator
+        # The creator of the node.
         self.creator = creator
-        # Node Description
+        # The description of the node.
         self.description = description
-        # Whether to dry run
+        # Indicates whether the node is a dry run.
         self.dry_run = dry_run
-        # Node Source
+        # The source of the node.
         self.from_ = from_
-        # Whether a development environment exists
+        # Indicates whether the node has a development environment.
         self.has_dev = has_dev
-        # Whether a production environment exists
+        # Indicates whether the node has a production environment.
         self.has_prod = has_prod
-        # Node ID
+        # The node ID.
         self.id = id
-        # Last Modified Time
+        # The modification time.
         self.last_modified_time = last_modified_time
-        # Modifier
+        # The modifier of the node.
         self.modifier = modifier
-        # Node Name
+        # The name of the node.
         self.name = name
-        # Owner
+        # The owner.
         self.owner_list = owner_list
-        # Priority
+        # The priority. Valid values:
         # - HIGHEST
         # - HIGH
         # - MIDDLE
         # - LOW
         # - LOWEST
         self.priority_list = priority_list
-        # Running Resource Group
+        # The schedule resource groups for execution.
         self.resource_group_list = resource_group_list
-        # Whether scheduling is paused
+        # Specifies whether scheduling is paused.
         self.schedule_paused = schedule_paused
-        # Schedule Period
+        # The scheduling period.
         self.schedule_period_list = schedule_period_list
-        # Sub-business Type
+        # The sub-business type. Valid values:
         # - MAX_COMPUTE_SQL
         # - HIVE_SQL
         # - SHELL
@@ -308,9 +308,9 @@ class ListInstancesResponseBodyPageResultDataNodeInfo(DaraModel):
         # - ONE_SERVICE_SQL
         # - DATABASE_SQL
         self.sub_detail_type = sub_detail_type
-        # Node Business Type
-        # - SCRIPT: Script
-        # - LOGICAL_TABLE: Logical Table
+        # The business type of the node. Valid values:
+        # - SCRIPT: script.
+        # - LOGICAL_TABLE: logical table.
         self.type = type
 
     def validate(self):
@@ -461,9 +461,9 @@ class ListInstancesResponseBodyPageResultDataNodeInfoOwnerList(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # User ID
+        # The user ID.
         self.id = id
-        # Username
+        # The username.
         self.name = name
 
     def validate(self):
@@ -498,9 +498,9 @@ class ListInstancesResponseBodyPageResultDataNodeInfoModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # Username
+        # The username.
         self.id = id
-        # Username
+        # The username.
         self.name = name
 
     def validate(self):
@@ -535,9 +535,9 @@ class ListInstancesResponseBodyPageResultDataNodeInfoCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # User ID
+        # The user ID.
         self.id = id
-        # Username
+        # The username.
         self.name = name
 
     def validate(self):

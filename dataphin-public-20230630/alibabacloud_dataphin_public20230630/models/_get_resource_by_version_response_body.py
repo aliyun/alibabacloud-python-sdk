@@ -15,15 +15,15 @@ class GetResourceByVersionResponseBody(DaraModel):
         resource_info: main_models.GetResourceByVersionResponseBodyResourceInfo = None,
         success: bool = None,
     ):
-        # Backend response code.
+        # The backend response code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Backend error details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Resource file details.
+        # The details of the resource file.
         self.resource_info = resource_info
         # Indicates whether the request was successful.
         self.success = success
@@ -97,31 +97,31 @@ class GetResourceByVersionResponseBodyResourceInfo(DaraModel):
         size: int = None,
         storage_address: str = None,
     ):
-        # Compute engine type.
+        # The compute engine source type.
         self.compute_engine_type = compute_engine_type
-        # Creator.
+        # The creator.
         self.creator = creator
-        # Description.
+        # The description.
         self.description = description
-        # Storage directory.
+        # The storage folder.
         self.directory = directory
-        # Creation time, format: yyyy-MM-dd HH:mm:ss.
+        # The creation time, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_create = gmt_create
-        # Modification time, format: yyyy-MM-dd HH:mm:ss.
+        # The update time, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_modified = gmt_modified
-        # Resource ID.
+        # The resource ID.
         self.id = id
-        # Last modifier.
+        # The last modifier.
         self.last_modifier = last_modifier
-        # Resource file name.
+        # The name of the resource file.
         self.name = name
-        # Project ID.
+        # The project ID.
         self.project_id = project_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # Resource size, unit: bytes.
+        # The size of the resource, in bytes.
         self.size = size
-        # Resource storage address.
+        # The storage address of the resource.
         self.storage_address = storage_address
 
     def validate(self):

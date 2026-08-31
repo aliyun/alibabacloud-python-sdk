@@ -19,7 +19,7 @@ class GetUdfResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -98,11 +98,11 @@ class GetUdfResponseBodyUdfInfo(DaraModel):
     ):
         # The category. Valid values:
         # - 1: window function.
-        # - 2: aggregate function.
-        # - 3: numeric function.
+        # - 2: statistical function.
+        # - 3: numerical function.
         # - 4: string function.
         # - 5: time function.
-        # - 6: IP address utility function.
+        # - 6: IP address helper function.
         # - 7: URL-related function.
         # - 8: encoding and decoding function.
         # - 9: business-related function.
@@ -112,17 +112,17 @@ class GetUdfResponseBodyUdfInfo(DaraModel):
         self.class_name = class_name
         # The command help information.
         self.command_help = command_help
-        # The compute engine. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
+        # The compute engine type. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
         self.compute_engine_type = compute_engine_type
         # The creator.
         self.creator = creator
         # The description.
         self.description = description
-        # The directory where the function is stored.
+        # The storage folder.
         self.directory = directory
-        # The creation time, in the yyyy-MM-d HH:mm:ss format.
+        # The creation time. Format: yyyy-MM-d HH:mm:ss.
         self.gmt_create = gmt_create
-        # The last modification time, in the yyyy-MM-d HH:mm:ss format.
+        # The update time. Format: yyyy-MM-d HH:mm:ss.
         self.gmt_modified = gmt_modified
         # The user-defined function ID.
         self.id = id

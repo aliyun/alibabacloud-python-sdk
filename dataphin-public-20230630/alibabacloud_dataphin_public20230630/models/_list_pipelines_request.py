@@ -13,6 +13,7 @@ class ListPipelinesRequest(DaraModel):
         context: main_models.ListPipelinesRequestContext = None,
         list_command: main_models.ListPipelinesRequestListCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The request context.
         # 
@@ -26,6 +27,8 @@ class ListPipelinesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The user ID of the operator.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.context:
@@ -47,6 +50,9 @@ class ListPipelinesRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -61,6 +67,9 @@ class ListPipelinesRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 
@@ -83,34 +92,34 @@ class ListPipelinesRequestListCommand(DaraModel):
         tag_list: List[str] = None,
         total_count: int = None,
     ):
-        # The list of creator user IDs for filtering. If left empty, no filtering is applied. Multiple values have an OR relationship.
+        # The list of creator user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
         self.creator_list = creator_list
-        # The list of development owner user IDs for filtering. If left empty, no filtering is applied. Multiple values have an OR relationship.
+        # The list of development owner user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
         self.develop_owner_list = develop_owner_list
         # The list of full folder paths to query. If left empty, the root folder is queried.
         self.directories = directories
         # Specifies whether to use exact match for node names. Default value: false.
         self.exact_match = exact_match
-        # The list of node name keywords. This parameter is optional. If left empty, no filtering by name is applied. For exact match, this is a list of full names. For fuzzy match, this is a list of keywords. Multiple values have an OR relationship.
+        # The list of node name keywords. This parameter is optional. If left empty, no filtering by name is applied. For exact match, specify full names. For fuzzy match, specify keywords. Multiple values are evaluated with an OR relationship.
         self.keywords = keywords
-        # The cursor-based pagination parameter (an opaque cursor that callers do not need to interpret). This parameter is optional. If not specified, the request is treated as a first-page request and returns the actual total count. If specified, the request is treated as a subsequent-page request. Pass the NextCursor value from the previous page response as-is. The SQL layer automatically filters by incrementing ID to query the next page without re-querying the total count. No OFFSET is used throughout, which avoids performance degradation in deep paging scenarios.
+        # The cursor-based pagination parameter (an opaque cursor that callers do not need to interpret). This parameter is optional. If not specified, the request is treated as a first-page request and returns the actual total count. If specified, the request is treated as a subsequent-page request. Pass the NextCursor value returned from the previous page as-is. The SQL layer automatically filters by incrementing ID to query the next page without re-querying the total count. No OFFSET is used throughout, which avoids performance degradation in deep paging scenarios.
         self.next_cursor = next_cursor
-        # The list of O&M owner user IDs for filtering. If left empty, no filtering is applied. Multiple values have an OR relationship.
+        # The list of O&M owner user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
         self.ops_owner_list = ops_owner_list
-        # The page number. Default value: 1. Starts from 1.
+        # The page number. Default value: 1. Pages start from 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The list of node types. Valid values:
+        # The list of node types. Default value: [0] (batch integration). Valid values:
         # 
-        # - 0: offline integration.
+        # - 0: batch integration.
         # - 1: real-time integration.
         # - 13: data aggregation.
         # - 14: offline unstructured workflow.
         # - 15: real-time unstructured workflow.
         # - 16: online unstructured workflow.
         # 
-        # Default value: [0]. If null or an empty list is passed, the default value [0] is used.
+        # If null or an empty list is passed, the default value [0] is used.
         self.pipeline_type_list = pipeline_type_list
         # Specifies whether to recursively query subfolders. Default value: false.
         self.recursive = recursive
@@ -128,9 +137,9 @@ class ListPipelinesRequestListCommand(DaraModel):
         # - SUBMITTED: submitted.
         # - PUBLISHED: published.
         self.submit_status_list = submit_status_list
-        # The list of label names for filtering. If left empty, no filtering is applied. Multiple values have an OR relationship.
+        # The list of label names for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
         self.tag_list = tag_list
-        # The total number of records for cursor-based pagination. This parameter is optional and takes effect only when NextCursor is not empty. After the first-page request returns the actual total count, pass this value back as-is for subsequent pages. The server does not re-query the total count and directly returns this value, which avoids redundant count overhead. If not specified, the system falls back to querying one extra record to determine whether a next page exists.
+        # The total number of records for cursor-based pagination. This parameter is optional and takes effect only when NextCursor is not empty. After the first-page request returns the actual total count, pass this value back as-is for subsequent pages. The server does not re-query the total count and directly echoes the value, which avoids redundant count overhead. If not specified, the system falls back to querying one extra record to determine whether a next page exists.
         self.total_count = total_count
 
     def validate(self):

@@ -13,6 +13,7 @@ class ListNodeDownStreamRequest(DaraModel):
         env: str = None,
         list_query: main_models.ListNodeDownStreamRequestListQuery = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The environment identifier. Valid values:
         # - DEV: development environment. 
@@ -26,6 +27,8 @@ class ListNodeDownStreamRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.list_query:
@@ -45,6 +48,9 @@ class ListNodeDownStreamRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -59,6 +65,9 @@ class ListNodeDownStreamRequest(DaraModel):
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
+
         return self
 
 class ListNodeDownStreamRequestListQuery(DaraModel):
@@ -69,9 +78,9 @@ class ListNodeDownStreamRequestListQuery(DaraModel):
         node_id_list: List[main_models.ListNodeDownStreamRequestListQueryNodeIdList] = None,
         project_id: int = None,
     ):
-        # The depth. Default value: 3.
+        # The depth of the downstream query. Default value: 3.
         self.down_stream_depth = down_stream_depth
-        # The filters. You can include or exclude results based on projects or nodes. Default value: empty.
+        # The list of filters. You can include or exclude results based on projects and nodes. Default value: empty.
         self.filter_list = filter_list
         # The list of nodes.
         # 
@@ -141,7 +150,7 @@ class ListNodeDownStreamRequestListQueryNodeIdList(DaraModel):
         field_id_list: List[str] = None,
         id: str = None,
     ):
-        # The list of field IDs. This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, all fields in the table are used by default.
+        # The list of field IDs. This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, the full table is used by default.
         self.field_id_list = field_id_list
         # The node ID.
         self.id = id
@@ -184,7 +193,7 @@ class ListNodeDownStreamRequestListQueryFilterList(DaraModel):
         # The filter key. Valid values:
         # - PROJECT: project
         # - PHYSICAL_NODE_ID: physical node ID
-        # - LOGICAL_TABLE_NODE_ID: logical table ID.
+        # - LOGICAL_TABLE_NODE_ID: logical table ID
         self.key = key
         # The list of filter values.
         self.value_list = value_list

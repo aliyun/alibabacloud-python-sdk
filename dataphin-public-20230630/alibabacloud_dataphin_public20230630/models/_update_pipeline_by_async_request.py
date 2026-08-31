@@ -12,6 +12,7 @@ class UpdatePipelineByAsyncRequest(DaraModel):
         self,
         context: main_models.UpdatePipelineByAsyncRequestContext = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         update_command: main_models.UpdatePipelineByAsyncRequestUpdateCommand = None,
     ):
         # The request context information.
@@ -22,6 +23,7 @@ class UpdatePipelineByAsyncRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The pipeline node update configuration.
         # 
         # This parameter is required.
@@ -44,6 +46,9 @@ class UpdatePipelineByAsyncRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.update_command is not None:
             result['UpdateCommand'] = self.update_command.to_map()
 
@@ -57,6 +62,9 @@ class UpdatePipelineByAsyncRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('UpdateCommand') is not None:
             temp_model = main_models.UpdatePipelineByAsyncRequestUpdateCommand()

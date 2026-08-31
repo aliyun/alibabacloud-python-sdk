@@ -88,7 +88,7 @@ class ListKgRelationResponseBodyPageResult(DaraModel):
         relation_list: List[main_models.ListKgRelationResponseBodyPageResultRelationList] = None,
         total_count: int = None,
     ):
-        # The paged relationship record list.
+        # The list of paged relationship records.
         self.relation_list = relation_list
         # The total number of records.
         self.total_count = total_count
@@ -136,7 +136,7 @@ class ListKgRelationResponseBodyPageResultRelationList(DaraModel):
         source_entity_id: str = None,
         target_entity_id: str = None,
     ):
-        # The relationship record property list.
+        # The list of properties for the relationship record.
         self.property_list = property_list
         # The relationship record ID.
         self.relation_id = relation_id
@@ -208,7 +208,7 @@ class ListKgRelationResponseBodyPageResultRelationListPropertyList(DaraModel):
     ):
         # The property code.
         self.code = code
-        # The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (float), BOOLEAN (boolean), DATE (date), LIST (list), and others.
+        # The data type of the property. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), and LIST (list).
         self.data_type = data_type
         # The property value.
         self.value = value

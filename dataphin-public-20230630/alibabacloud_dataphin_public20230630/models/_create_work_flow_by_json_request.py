@@ -11,6 +11,7 @@ class CreateWorkFlowByJsonRequest(DaraModel):
         context: main_models.CreateWorkFlowByJsonRequestContext = None,
         create_command: main_models.CreateWorkFlowByJsonRequestCreateCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The request context information.
         # 
@@ -24,6 +25,8 @@ class CreateWorkFlowByJsonRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.context:
@@ -45,6 +48,9 @@ class CreateWorkFlowByJsonRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -60,6 +66,9 @@ class CreateWorkFlowByJsonRequest(DaraModel):
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
+
         return self
 
 class CreateWorkFlowByJsonRequestCreateCommand(DaraModel):
@@ -73,19 +82,19 @@ class CreateWorkFlowByJsonRequestCreateCommand(DaraModel):
         task_type: int = None,
         work_flow_json: str = None,
     ):
-        # The description of the node.
+        # The node description.
         self.description = description
         # The folder to which the node belongs. If this parameter is left empty, the root folder is used.
         self.directory = directory
-        # The schedule configuration. This parameter is required for periodic nodes. The value is a JSON string. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig#toJsonString method.
+        # The schedule configuration (required for periodic nodes). The value is a JSON string. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig#toJsonString method.
         self.schedule_config = schedule_config
         # Specifies whether to submit the node. Default value: true.
         self.submit = submit
-        # The name of the node.
+        # The node name.
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The scheduling type of the node. Valid values:
+        # The node scheduling type. Valid values:
         # 
         # - 1: periodic scheduling.
         # - 3: manual scheduling.

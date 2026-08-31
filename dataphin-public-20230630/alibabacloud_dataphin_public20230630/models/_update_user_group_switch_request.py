@@ -9,6 +9,7 @@ class UpdateUserGroupSwitchRequest(DaraModel):
         self,
         active: bool = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         user_group_id: str = None,
     ):
         # Specifies whether to enable the user group.
@@ -19,6 +20,7 @@ class UpdateUserGroupSwitchRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The user group ID.
         # 
         # This parameter is required.
@@ -38,6 +40,9 @@ class UpdateUserGroupSwitchRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.user_group_id is not None:
             result['UserGroupId'] = self.user_group_id
 
@@ -50,6 +55,9 @@ class UpdateUserGroupSwitchRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('UserGroupId') is not None:
             self.user_group_id = m.get('UserGroupId')

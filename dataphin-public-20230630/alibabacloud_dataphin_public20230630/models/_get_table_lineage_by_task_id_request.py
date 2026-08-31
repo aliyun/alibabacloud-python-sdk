@@ -9,12 +9,15 @@ class GetTableLineageByTaskIdRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         table_lineage_by_task_id_query: main_models.GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery = None,
     ):
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
+        self.op_user_id = op_user_id
         # The data structure for querying table lineage.
         # 
         # This parameter is required.
@@ -32,6 +35,9 @@ class GetTableLineageByTaskIdRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.table_lineage_by_task_id_query is not None:
             result['TableLineageByTaskIdQuery'] = self.table_lineage_by_task_id_query.to_map()
 
@@ -41,6 +47,9 @@ class GetTableLineageByTaskIdRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('TableLineageByTaskIdQuery') is not None:
             temp_model = main_models.GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery()
@@ -57,9 +66,9 @@ class GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery(DaraModel):
     ):
         # Specifies whether to return tables that do not exist in the asset inventory. If this parameter is not specified, non-existent tables are not returned.
         self.need_not_exist_object = need_not_exist_object
-        # The environment of the task to query: DEV or PROD.
+        # The environment of the node used to filter the query. Valid values: DEV and PROD.
         self.task_env = task_env
-        # The task (node) ID used to filter the query.
+        # The ID of the node used to filter the query.
         # 
         # This parameter is required.
         self.task_id = task_id

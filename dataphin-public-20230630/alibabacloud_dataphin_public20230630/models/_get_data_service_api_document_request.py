@@ -9,6 +9,7 @@ class GetDataServiceApiDocumentRequest(DaraModel):
         self,
         id: int = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         version_id: str = None,
     ):
         # The API ID.
@@ -19,6 +20,7 @@ class GetDataServiceApiDocumentRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The version.
         self.version_id = version_id
 
@@ -36,6 +38,9 @@ class GetDataServiceApiDocumentRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.version_id is not None:
             result['VersionId'] = self.version_id
 
@@ -48,6 +53,9 @@ class GetDataServiceApiDocumentRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')

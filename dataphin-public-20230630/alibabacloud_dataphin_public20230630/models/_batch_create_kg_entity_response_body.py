@@ -89,9 +89,9 @@ class BatchCreateKgEntityResponseBodyCreateResult(DaraModel):
         success_count: int = None,
         success_entity_list: List[main_models.BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList] = None,
     ):
-        # The number of failed records.
+        # The number of entity records that failed to be created.
         self.fail_count = fail_count
-        # The number of successfully created records.
+        # The number of successfully created entity records.
         self.success_count = success_count
         # The list of IDs of successfully created entity records.
         self.success_entity_list = success_entity_list

@@ -12,6 +12,7 @@ class CreateBatchTaskRequest(DaraModel):
         self,
         create_command: main_models.CreateBatchTaskRequestCreateCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The create command.
         # 
@@ -21,6 +22,8 @@ class CreateBatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.create_command:
@@ -37,6 +40,9 @@ class CreateBatchTaskRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -48,6 +54,9 @@ class CreateBatchTaskRequest(DaraModel):
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
+
         return self
 
 class CreateBatchTaskRequestCreateCommand(DaraModel):
@@ -57,44 +66,50 @@ class CreateBatchTaskRequestCreateCommand(DaraModel):
         data_source_id: str = None,
         data_source_schema: str = None,
         description: str = None,
+        develop_owner_id_list: List[str] = None,
         directory: str = None,
         engine: str = None,
         name: str = None,
+        ops_owner_id_list: List[str] = None,
         project_id: int = None,
         python_module_list: List[str] = None,
         schedule_type: int = None,
         task_type: int = None,
     ):
-        # The catalog for a database SQL node. This parameter takes effect only for data source types that require a catalog, such as Presto.
+        # The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
-        # The data source ID for a database SQL node.
+        # The data source ID for database SQL nodes.
         self.data_source_id = data_source_id
-        # The schema for a database SQL node. This parameter takes effect only for data source types that require a schema, such as Oracle.
+        # The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
         # The description.
         # 
         # This parameter is required.
         self.description = description
+        # The list of development owner IDs.
+        self.develop_owner_id_list = develop_owner_id_list
         # The folder path in the menu tree to which the node belongs.
         # 
         # This parameter is required.
         self.directory = directory
-        # The execution engine for the node, such as a Python node. Valid values:
-        # - 1: PYTHON2_7
-        # - 2: PYTHON3_7
-        # - 3: PYTHON3_11.
+        # The execution engine for the node, such as for Python nodes. Valid values:
+        # - 1. PYTHON2_7
+        # - 2. PYTHON3_7
+        # - 3. PYTHON3_11
         self.engine = engine
         # The name of the batch task.
         # 
         # This parameter is required.
         self.name = name
+        # The list of O&M owner IDs.
+        self.ops_owner_id_list = ops_owner_id_list
         # The ID of the project to which the node belongs.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The list of third-party Python packages that the node depends on.
+        # The list of Python third-party packages that the node depends on.
         self.python_module_list = python_module_list
-        # The scheduling type. Valid values:
+        # The schedule type. Valid values:
         # - 1: periodic node.
         # - 3: manual node.
         # 
@@ -144,7 +159,7 @@ class CreateBatchTaskRequestCreateCommand(DaraModel):
         # - SPARK_SQL: 80
         # - GAUSS_SQL: 81
         # - DATABASE_SQL: 998
-        # - EXTERNAL_TRIGGER: 997.
+        # - EXTERNAL_TRIGGER: 997
         # 
         # This parameter is required.
         self.task_type = task_type
@@ -169,6 +184,9 @@ class CreateBatchTaskRequestCreateCommand(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.develop_owner_id_list is not None:
+            result['DevelopOwnerIdList'] = self.develop_owner_id_list
+
         if self.directory is not None:
             result['Directory'] = self.directory
 
@@ -177,6 +195,9 @@ class CreateBatchTaskRequestCreateCommand(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.ops_owner_id_list is not None:
+            result['OpsOwnerIdList'] = self.ops_owner_id_list
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -206,6 +227,9 @@ class CreateBatchTaskRequestCreateCommand(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('DevelopOwnerIdList') is not None:
+            self.develop_owner_id_list = m.get('DevelopOwnerIdList')
+
         if m.get('Directory') is not None:
             self.directory = m.get('Directory')
 
@@ -214,6 +238,9 @@ class CreateBatchTaskRequestCreateCommand(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('OpsOwnerIdList') is not None:
+            self.ops_owner_id_list = m.get('OpsOwnerIdList')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

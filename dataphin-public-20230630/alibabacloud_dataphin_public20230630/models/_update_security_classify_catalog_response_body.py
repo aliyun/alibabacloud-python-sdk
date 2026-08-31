@@ -16,11 +16,11 @@ class UpdateSecurityClassifyCatalogResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The full path of the folder after the update.
+        # The full path of the updated folder.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id

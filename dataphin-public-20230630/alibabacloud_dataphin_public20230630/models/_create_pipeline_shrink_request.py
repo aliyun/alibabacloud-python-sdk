@@ -10,19 +10,22 @@ class CreatePipelineShrinkRequest(DaraModel):
         context_shrink: str = None,
         create_command_shrink: str = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
-        # Request context information
+        # The request context information.
         # 
         # This parameter is required.
         self.context_shrink = context_shrink
-        # Pipeline/workflow task creation configuration
+        # The configuration for creating a pipeline or workflow node.
         # 
         # This parameter is required.
         self.create_command_shrink = create_command_shrink
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
 
     def validate(self):
         pass
@@ -41,6 +44,9 @@ class CreatePipelineShrinkRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -53,6 +59,9 @@ class CreatePipelineShrinkRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 

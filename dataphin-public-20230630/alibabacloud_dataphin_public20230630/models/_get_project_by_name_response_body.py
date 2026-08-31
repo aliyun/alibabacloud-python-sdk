@@ -21,7 +21,7 @@ class GetProjectByNameResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # The project details.
         self.project_info = project_info
@@ -109,9 +109,9 @@ class GetProjectByNameResponseBodyProjectInfo(DaraModel):
         self.biz_unit_display_name = biz_unit_display_name
         # The ID of the business unit to which the project belongs.
         self.biz_unit_id = biz_unit_id
-        # The ID of the associated compute source.
+        # The ID of the bound compute source.
         self.compute_source_id = compute_source_id
-        # The name of the associated compute source.
+        # The name of the bound compute source.
         self.compute_source_name = compute_source_name
         # The project description.
         self.description = description
@@ -119,9 +119,9 @@ class GetProjectByNameResponseBodyProjectInfo(DaraModel):
         self.display_name = display_name
         # The environment identifier.
         self.env = env
-        # The creation time, in the format of yyyy-MM-dd HH:mm:ss.
+        # The creation time, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_create = gmt_create
-        # The update time, in the format of yyyy-MM-dd HH:mm:ss.
+        # The modification time, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_modified = gmt_modified
         # The project ID.
         self.id = id
@@ -130,20 +130,22 @@ class GetProjectByNameResponseBodyProjectInfo(DaraModel):
         # The project name.
         self.name = name
         # The namespace type. Valid values:
-        # - PUBLIC: public type
-        # - APPLICATION: application type
+        # 
+        # - PUBLIC: common pattern.
+        # - APPLICATION: application type.
         # - BASE: base type.
         self.name_space_tag = name_space_tag
         # The project owner.
         self.owner = owner
         # The project owner.
         self.owner_name = owner_name
-        # The ID of the associated real-time compute source.
+        # The ID of the bound streaming compute source.
         self.stream_compute_source_id = stream_compute_source_id
-        # The name of the associated real-time compute source.
+        # The name of the bound streaming compute source.
         self.stream_compute_source_name = stream_compute_source_name
         # The project type. Valid values:
-        # - DISTILL: distillation project
+        # 
+        # - DISTILL: distillation project.
         # - GENERAL: general project.
         self.type = type
         # The whitelists.

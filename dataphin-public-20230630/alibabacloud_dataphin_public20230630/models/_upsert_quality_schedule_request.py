@@ -11,12 +11,14 @@ class UpsertQualityScheduleRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         upsert_command: main_models.UpsertQualityScheduleRequestUpsertCommand = None,
     ):
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The update instruction.
         # 
         # This parameter is required.
@@ -34,6 +36,9 @@ class UpsertQualityScheduleRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.upsert_command is not None:
             result['UpsertCommand'] = self.upsert_command.to_map()
 
@@ -43,6 +48,9 @@ class UpsertQualityScheduleRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('UpsertCommand') is not None:
             temp_model = main_models.UpsertQualityScheduleRequestUpsertCommand()
@@ -69,42 +77,42 @@ class UpsertQualityScheduleRequestUpsertCommand(DaraModel):
     ):
         # The cron expression for timed scheduling.
         self.cron_expression = cron_expression
-        # The ID of the schedule resource. If specified, the operation updates the existing resource. If not specified, the operation creates a new resource.
+        # The schedule object ID. If this parameter is specified, the schedule is updated. If this parameter is not specified, a schedule is created.
         self.id = id
-        # The name of the schedule resource.
+        # The name of the schedule object.
         # 
         # This parameter is required.
         self.name = name
-        # The partition expression for custom expressions.
+        # The custom partition expression.
         self.partition_expression = partition_expression
         # The partition type. Valid values:
         # - EVERY_DAY: every day.
-        # - PRE_DAY: previous day.
-        # - TODAY: current day.
+        # - PRE_DAY: yesterday.
+        # - TODAY: today.
         # - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
         # - CUSTOM: custom.
         self.partition_type = partition_type
-        # The scheduling interval type for timed scheduling. Valid values:
+        # The schedule interval type for timed scheduling. Valid values:
         # - DAILY: day.
         # - WEEKLY: week.
         # - MONTHLY: month.
         # - HOURLY: hour.
         # - MINUTELY: minute.
         self.period_schedule_interval_type = period_schedule_interval_type
-        # The scheduling interval values for timed scheduling.
+        # The schedule interval values for timed scheduling.
         self.period_schedule_param_list = period_schedule_param_list
         # The trigger method for fixed task triggers. Valid values:
-        # - ALL_TASKS_FINISHED
-        # - ONE_TASKS_FINISHED
-        # - PRE_ONE_TASKS_START.
+        # - ALL_TASKS_FINISHED: triggered when all tasks are finished.
+        # - ONE_TASKS_FINISHED: triggered when one task is finished.
+        # - PRE_ONE_TASKS_START: triggered when the previous task starts.
         self.static_task_trigger_type = static_task_trigger_type
-        # The checklist of trigger nodes for trigger scheduling.
+        # The list of trigger nodes for trigger scheduling.
         self.trigger_node_list = trigger_node_list
         # The trigger method for trigger scheduling. Valid values:
         # - STATIC_TASK_TRIGGER: fixed task trigger.
         # - CODE_CHECK_TRIGGER: code check trigger.
         self.trigger_type = trigger_type
-        # The scheduling type. Valid values:
+        # The schedule type. Valid values:
         # - PERIOD_SCHEDULE: timed scheduling.
         # - MANUAL_SCHEDULE: manual trigger.
         # - CODE_CHECK_TRIGGER: code check trigger.
@@ -117,7 +125,7 @@ class UpsertQualityScheduleRequestUpsertCommand(DaraModel):
         # - TASK_REFERRED_PARTITION: task update partition.
         # - USER_DEFINED_PARTITION: custom partition.
         self.validate_partition_type = validate_partition_type
-        # The ID of the monitored object.
+        # The monitored object ID.
         # 
         # This parameter is required.
         self.watch_id = watch_id

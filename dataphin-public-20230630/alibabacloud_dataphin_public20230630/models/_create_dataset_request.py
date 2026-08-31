@@ -12,6 +12,7 @@ class CreateDatasetRequest(DaraModel):
         self,
         create_command: main_models.CreateDatasetRequestCreateCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         project_id: str = None,
     ):
         # The creation request.
@@ -22,6 +23,7 @@ class CreateDatasetRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The project ID.
         # 
         # This parameter is required.
@@ -42,6 +44,9 @@ class CreateDatasetRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -56,6 +61,9 @@ class CreateDatasetRequest(DaraModel):
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
+
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
 
@@ -64,6 +72,7 @@ class CreateDatasetRequest(DaraModel):
 class CreateDatasetRequestCreateCommand(DaraModel):
     def __init__(
         self,
+        api_info: main_models.CreateDatasetRequestCreateCommandApiInfo = None,
         content_type: str = None,
         data_cell_id: str = None,
         description: str = None,
@@ -78,6 +87,7 @@ class CreateDatasetRequestCreateCommand(DaraModel):
         version: str = None,
         version_config: main_models.CreateDatasetRequestCreateCommandVersionConfig = None,
     ):
+        self.api_info = api_info
         # The dataset content type. Valid values: GENERAL, TEXT, AUDIO, VIDEO, IMAGE, TABLE, INDEX.
         # 
         # This parameter is required.
@@ -118,6 +128,8 @@ class CreateDatasetRequestCreateCommand(DaraModel):
         self.version_config = version_config
 
     def validate(self):
+        if self.api_info:
+            self.api_info.validate()
         if self.version_config:
             self.version_config.validate()
 
@@ -126,6 +138,9 @@ class CreateDatasetRequestCreateCommand(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_info is not None:
+            result['ApiInfo'] = self.api_info.to_map()
+
         if self.content_type is not None:
             result['ContentType'] = self.content_type
 
@@ -169,6 +184,10 @@ class CreateDatasetRequestCreateCommand(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiInfo') is not None:
+            temp_model = main_models.CreateDatasetRequestCreateCommandApiInfo()
+            self.api_info = temp_model.from_map(m.get('ApiInfo'))
+
         if m.get('ContentType') is not None:
             self.content_type = m.get('ContentType')
 
@@ -917,6 +936,248 @@ class CreateDatasetRequestCreateCommandVersionConfigFileStorageConfig(DaraModel)
 
         if m.get('ProdPath') is not None:
             self.prod_path = m.get('ProdPath')
+
+        return self
+
+class CreateDatasetRequestCreateCommandApiInfo(DaraModel):
+    def __init__(
+        self,
+        exec_timeout: int = None,
+        execute_mode: int = None,
+        os_api_group: int = None,
+        os_project: int = None,
+        protocol: int = None,
+        request_method: int = None,
+        request_param_list: List[main_models.CreateDatasetRequestCreateCommandApiInfoRequestParamList] = None,
+        response_param_list: List[main_models.CreateDatasetRequestCreateCommandApiInfoResponseParamList] = None,
+        timeout: int = None,
+    ):
+        self.exec_timeout = exec_timeout
+        self.execute_mode = execute_mode
+        self.os_api_group = os_api_group
+        self.os_project = os_project
+        self.protocol = protocol
+        self.request_method = request_method
+        self.request_param_list = request_param_list
+        self.response_param_list = response_param_list
+        self.timeout = timeout
+
+    def validate(self):
+        if self.request_param_list:
+            for v1 in self.request_param_list:
+                 if v1:
+                    v1.validate()
+        if self.response_param_list:
+            for v1 in self.response_param_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.exec_timeout is not None:
+            result['ExecTimeout'] = self.exec_timeout
+
+        if self.execute_mode is not None:
+            result['ExecuteMode'] = self.execute_mode
+
+        if self.os_api_group is not None:
+            result['OsApiGroup'] = self.os_api_group
+
+        if self.os_project is not None:
+            result['OsProject'] = self.os_project
+
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+
+        if self.request_method is not None:
+            result['RequestMethod'] = self.request_method
+
+        result['RequestParamList'] = []
+        if self.request_param_list is not None:
+            for k1 in self.request_param_list:
+                result['RequestParamList'].append(k1.to_map() if k1 else None)
+
+        result['ResponseParamList'] = []
+        if self.response_param_list is not None:
+            for k1 in self.response_param_list:
+                result['ResponseParamList'].append(k1.to_map() if k1 else None)
+
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecTimeout') is not None:
+            self.exec_timeout = m.get('ExecTimeout')
+
+        if m.get('ExecuteMode') is not None:
+            self.execute_mode = m.get('ExecuteMode')
+
+        if m.get('OsApiGroup') is not None:
+            self.os_api_group = m.get('OsApiGroup')
+
+        if m.get('OsProject') is not None:
+            self.os_project = m.get('OsProject')
+
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+
+        if m.get('RequestMethod') is not None:
+            self.request_method = m.get('RequestMethod')
+
+        self.request_param_list = []
+        if m.get('RequestParamList') is not None:
+            for k1 in m.get('RequestParamList'):
+                temp_model = main_models.CreateDatasetRequestCreateCommandApiInfoRequestParamList()
+                self.request_param_list.append(temp_model.from_map(k1))
+
+        self.response_param_list = []
+        if m.get('ResponseParamList') is not None:
+            for k1 in m.get('ResponseParamList'):
+                temp_model = main_models.CreateDatasetRequestCreateCommandApiInfoResponseParamList()
+                self.response_param_list.append(temp_model.from_map(k1))
+
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+
+        return self
+
+class CreateDatasetRequestCreateCommandApiInfoResponseParamList(DaraModel):
+    def __init__(
+        self,
+        descr: str = None,
+        is_url: bool = None,
+        param_name: str = None,
+        param_type: str = None,
+        sample: str = None,
+    ):
+        self.descr = descr
+        self.is_url = is_url
+        self.param_name = param_name
+        self.param_type = param_type
+        self.sample = sample
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.descr is not None:
+            result['Descr'] = self.descr
+
+        if self.is_url is not None:
+            result['IsUrl'] = self.is_url
+
+        if self.param_name is not None:
+            result['ParamName'] = self.param_name
+
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+
+        if self.sample is not None:
+            result['Sample'] = self.sample
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Descr') is not None:
+            self.descr = m.get('Descr')
+
+        if m.get('IsUrl') is not None:
+            self.is_url = m.get('IsUrl')
+
+        if m.get('ParamName') is not None:
+            self.param_name = m.get('ParamName')
+
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+
+        if m.get('Sample') is not None:
+            self.sample = m.get('Sample')
+
+        return self
+
+class CreateDatasetRequestCreateCommandApiInfoRequestParamList(DaraModel):
+    def __init__(
+        self,
+        default_value: str = None,
+        descr: str = None,
+        is_url: bool = None,
+        must: bool = None,
+        param_name: str = None,
+        param_type: str = None,
+        sample: str = None,
+    ):
+        self.default_value = default_value
+        self.descr = descr
+        self.is_url = is_url
+        self.must = must
+        self.param_name = param_name
+        self.param_type = param_type
+        self.sample = sample
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+
+        if self.descr is not None:
+            result['Descr'] = self.descr
+
+        if self.is_url is not None:
+            result['IsUrl'] = self.is_url
+
+        if self.must is not None:
+            result['Must'] = self.must
+
+        if self.param_name is not None:
+            result['ParamName'] = self.param_name
+
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+
+        if self.sample is not None:
+            result['Sample'] = self.sample
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+
+        if m.get('Descr') is not None:
+            self.descr = m.get('Descr')
+
+        if m.get('IsUrl') is not None:
+            self.is_url = m.get('IsUrl')
+
+        if m.get('Must') is not None:
+            self.must = m.get('Must')
+
+        if m.get('ParamName') is not None:
+            self.param_name = m.get('ParamName')
+
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+
+        if m.get('Sample') is not None:
+            self.sample = m.get('Sample')
 
         return self
 

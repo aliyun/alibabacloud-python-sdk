@@ -9,6 +9,7 @@ class ListComputeSourcesShrinkRequest(DaraModel):
         self,
         list_query_shrink: str = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The query conditions.
         # 
@@ -18,6 +19,7 @@ class ListComputeSourcesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
 
     def validate(self):
         pass
@@ -33,6 +35,9 @@ class ListComputeSourcesShrinkRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -42,6 +47,9 @@ class ListComputeSourcesShrinkRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 

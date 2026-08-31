@@ -10,9 +10,10 @@ class ImportKgSchemaRequest(DaraModel):
         self,
         import_command: main_models.ImportKgSchemaRequestImportCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The instruction for importing the knowledge graph definition.
+        # The command for importing the knowledge graph definition.
         # 
         # This parameter is required.
         self.import_command = import_command
@@ -20,6 +21,8 @@ class ImportKgSchemaRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
         # The workspace ID.
         # 
         # This parameter is required.
@@ -40,6 +43,9 @@ class ImportKgSchemaRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -53,6 +59,9 @@ class ImportKgSchemaRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

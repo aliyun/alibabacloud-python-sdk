@@ -15,17 +15,17 @@ class CreatePipelineResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Backend response code
+        # The backend response code.
         self.code = code
-        # Integration pipeline/workflow task creation result
+        # The creation result of the integration pipeline or workflow task.
         self.data = data
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Backend response exception details
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Whether the request was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -89,17 +89,17 @@ class CreatePipelineResponseBodyData(DaraModel):
         submit_id: int = None,
         version: str = None,
     ):
-        # Server-side execution machine name and IP
+        # The name and IP address of the server machine that executes the task.
         self.host_machine = host_machine
-        # Scheduling node ID of the pipeline/workflow task after successful creation
+        # The scheduling node ID of the pipeline or workflow task after successful creation.
         self.node_id = node_id
-        # Pipeline/workflow ID after successful creation
+        # The pipeline or workflow ID after successful creation.
         self.pipeline_id = pipeline_id
-        # Submit ID of the pending release list generated after successfully submitting the pipeline, used for release through the release domain.
-        # Workflow tasks only support PROD, so this value is not applicable.
+        # The submit ID of the pending publish list generated after the pipeline is submitted. Use this ID to publish through the publish domain.
+        # Workflow tasks support only PROD, so this value is not returned for workflow tasks.
         self.submit_id = submit_id
-        # Pending release version number generated after pipeline submission.
-        # Workflow tasks only support PROD, so this value is not applicable.
+        # The pending publish version number generated after the pipeline is submitted.
+        # Workflow tasks support only PROD, so this value is not returned for workflow tasks.
         self.version = version
 
     def validate(self):

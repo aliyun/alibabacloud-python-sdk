@@ -23,7 +23,7 @@ class CreateStandardRelationsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -90,7 +90,7 @@ class CreateStandardRelationsResponseBodyData(DaraModel):
     ):
         # The list of standard IDs that do not exist.
         self.not_exist_standard_id_list = not_exist_standard_id_list
-        # The number of successfully added items.
+        # The number of successfully added associations.
         self.success_count = success_count
 
     def validate(self):

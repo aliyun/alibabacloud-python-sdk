@@ -9,6 +9,7 @@ class GetAssetMappingRelationsShrinkRequest(DaraModel):
         self,
         asset_mapping_query_shrink: str = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The query instruction.
         self.asset_mapping_query_shrink = asset_mapping_query_shrink
@@ -16,6 +17,7 @@ class GetAssetMappingRelationsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
 
     def validate(self):
         pass
@@ -31,6 +33,9 @@ class GetAssetMappingRelationsShrinkRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -40,6 +45,9 @@ class GetAssetMappingRelationsShrinkRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 

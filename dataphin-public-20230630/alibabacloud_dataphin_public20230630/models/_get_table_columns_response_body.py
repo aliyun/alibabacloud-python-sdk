@@ -17,17 +17,17 @@ class GetTableColumnsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Backend response code.
+        # The backend response code.
         self.code = code
-        # List of asset table columns.
+        # The list of asset table columns.
         self.column_list = column_list
-        # HTTP response code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Backend response exception details.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -116,53 +116,53 @@ class GetTableColumnsResponseBodyColumnList(DaraModel):
         table_name: str = None,
         visit_count_30d: int = None,
     ):
-        # Data classification ID.
+        # The ID of the data classification.
         self.classify_id = classify_id
-        # Data classification name.
+        # The name of the data classification.
         self.classify_name = classify_name
-        # Column comment.
+        # The comment of the field.
         self.comment = comment
-        # Creation time.
+        # The creation time of the field.
         self.create_time = create_time
-        # Creator.
+        # The creator of the field.
         self.creator = creator
-        # Data source ID.
+        # The ID of the data source.
         self.data_source_id = data_source_id
-        # Data source type.
+        # The type of the data source.
         self.data_source_type = data_source_type
-        # Data type.
+        # The data type of the field.
         self.data_type = data_type
-        # Default value.
+        # The default value of the field.
         self.default_value = default_value
-        # Column display name.
+        # The display name of the field.
         self.display_name = display_name
-        # Environment: dev or prod.
+        # The environment to which the column belongs. Valid values: dev and prod.
         self.env = env
-        # Column GUID.
+        # The GUID of the column.
         self.guid = guid
-        # Whether this is a foreign key.
+        # Indicates whether the field is a foreign key.
         self.is_foreign_key = is_foreign_key
-        # Whether this is a partition column.
+        # Indicates whether the field is a partition key.
         self.is_partition_column = is_partition_column
-        # Whether this is a primary key.
+        # Indicates whether the field is a primary key.
         self.is_primary_key = is_primary_key
-        # Last modifier.
+        # The last modifier of the field.
         self.last_modifier = last_modifier
-        # Data level abbreviation.
+        # The abbreviation of the data level.
         self.level_abbreviation = level_abbreviation
-        # Modification time.
+        # The modification time of the field.
         self.modify_time = modify_time
-        # Column name.
+        # The name of the field.
         self.name = name
-        # Whether null values are allowed.
+        # Indicates whether the field allows null values.
         self.nullable = nullable
-        # Sequence number.
+        # The sequence number of the column.
         self.seq_number = seq_number
-        # Table GUID.
+        # The GUID of the table.
         self.table_guid = table_guid
-        # Table name.
+        # The table name.
         self.table_name = table_name
-        # Query count in the last 30 days.
+        # The number of queries in the last 30 days.
         self.visit_count_30d = visit_count_30d
 
     def validate(self):

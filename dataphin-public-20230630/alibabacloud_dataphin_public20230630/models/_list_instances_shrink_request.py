@@ -10,17 +10,20 @@ class ListInstancesShrinkRequest(DaraModel):
         env: str = None,
         list_query_shrink: str = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
-        # Environment identifier
-        # - DEV: Development environment
-        # - PROD (default): Production environment
+        # The environment identifier. Valid values:
+        # - DEV: Development environment. 
+        # - PROD (default): Production environment.
         self.env = env
-        # Query Request
+        # The query request.
         self.list_query_shrink = list_query_shrink
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
+        self.op_user_id = op_user_id
 
     def validate(self):
         pass
@@ -39,6 +42,9 @@ class ListInstancesShrinkRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -51,6 +57,9 @@ class ListInstancesShrinkRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 

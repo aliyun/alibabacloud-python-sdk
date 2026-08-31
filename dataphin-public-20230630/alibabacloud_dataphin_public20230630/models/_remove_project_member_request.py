@@ -12,6 +12,7 @@ class RemoveProjectMemberRequest(DaraModel):
         self,
         id: int = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         remove_command: main_models.RemoveProjectMemberRequestRemoveCommand = None,
     ):
         # The project ID.
@@ -22,6 +23,7 @@ class RemoveProjectMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The command to remove a member.
         # 
         # This parameter is required.
@@ -42,6 +44,9 @@ class RemoveProjectMemberRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.remove_command is not None:
             result['RemoveCommand'] = self.remove_command.to_map()
 
@@ -54,6 +59,9 @@ class RemoveProjectMemberRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('RemoveCommand') is not None:
             temp_model = main_models.RemoveProjectMemberRequestRemoveCommand()

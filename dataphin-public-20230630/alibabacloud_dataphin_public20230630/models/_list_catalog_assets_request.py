@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_dataphin_public20230630 import models as main_models
 from darabonba.model import DaraModel
 
@@ -10,6 +12,7 @@ class ListCatalogAssetsRequest(DaraModel):
         self,
         list_catalog_assets_query: main_models.ListCatalogAssetsRequestListCatalogAssetsQuery = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The query parameters.
         # 
@@ -19,6 +22,8 @@ class ListCatalogAssetsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.list_catalog_assets_query:
@@ -35,6 +40,9 @@ class ListCatalogAssetsRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -45,6 +53,9 @@ class ListCatalogAssetsRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 
@@ -57,26 +68,29 @@ class ListCatalogAssetsRequestListCatalogAssetsQuery(DaraModel):
         page_num: int = None,
         page_size: int = None,
         query_mode: str = None,
+        shelve_directory_ids: List[int] = None,
     ):
         # The asset type. Default value: TABLE. Valid values:
-        # - TABLE: table, including views and materialized views.
-        # - INDEX: technical metric.
-        # - BIZ_INDEX: business metric.
-        # - API: API.
-        # - PAGE: dashboard.
+        # - TABLE: tables, including views and materialized views.
+        # - INDEX: technical metrics.
+        # - BIZ_INDEX: business metrics.
+        # - API
+        # - PAGE: dashboards.
         self.asset_type = asset_type
-        # The search keyword. Used when queryMode is set to ASSET_SEARCH. Supports keyword matching against the asset full name, asset name, asset display name, and asset description. If this parameter is not specified, all assets are queried.
+        # The search keyword. Used when queryMode is set to ASSET_SEARCH. Supports keyword matching against the asset full name, asset name, asset display name, and asset description. If not specified, all assets are returned by default.
         self.keyword = keyword
-        # The asset name. Used when queryMode is set to EXACT_MATCH. If this parameter is not specified, all assets are queried.
+        # The asset name. Used when queryMode is set to EXACT_MATCH. If not specified, all assets are returned by default.
         self.name = name
         # The page number. Default value: 1.
         self.page_num = page_num
         # The page size. Default value: 10.
         self.page_size = page_size
-        # The query type. Determines whether to use name for exact matching or keyword for fuzzy search. Default value: EXACT_MATCH. Valid values:
+        # The query type. Determines whether to use name for exact match or keyword for fuzzy search. Default value: EXACT_MATCH. Valid values:
         # - EXACT_MATCH: exact match.
         # - ASSET_SEARCH: fuzzy search.
         self.query_mode = query_mode
+        # The list of folder IDs to which the assets belong. Multiple folders are matched with OR logic. Only the specified folders are matched, and subfolders are not included.
+        self.shelve_directory_ids = shelve_directory_ids
 
     def validate(self):
         pass
@@ -104,6 +118,9 @@ class ListCatalogAssetsRequestListCatalogAssetsQuery(DaraModel):
         if self.query_mode is not None:
             result['QueryMode'] = self.query_mode
 
+        if self.shelve_directory_ids is not None:
+            result['ShelveDirectoryIds'] = self.shelve_directory_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -125,6 +142,9 @@ class ListCatalogAssetsRequestListCatalogAssetsQuery(DaraModel):
 
         if m.get('QueryMode') is not None:
             self.query_mode = m.get('QueryMode')
+
+        if m.get('ShelveDirectoryIds') is not None:
+            self.shelve_directory_ids = m.get('ShelveDirectoryIds')
 
         return self
 

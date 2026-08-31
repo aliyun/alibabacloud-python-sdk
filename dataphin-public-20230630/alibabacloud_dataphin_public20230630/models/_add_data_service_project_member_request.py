@@ -12,6 +12,7 @@ class AddDataServiceProjectMemberRequest(DaraModel):
         self,
         add_command: main_models.AddDataServiceProjectMemberRequestAddCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         project_id: int = None,
     ):
         # The command to add project members.
@@ -22,6 +23,7 @@ class AddDataServiceProjectMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The data service project ID.
         # 
         # This parameter is required.
@@ -42,6 +44,9 @@ class AddDataServiceProjectMemberRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -55,6 +60,9 @@ class AddDataServiceProjectMemberRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

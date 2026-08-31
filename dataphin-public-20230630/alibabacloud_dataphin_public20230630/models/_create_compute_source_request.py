@@ -12,6 +12,7 @@ class CreateComputeSourceRequest(DaraModel):
         self,
         create_command: main_models.CreateComputeSourceRequestCreateCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The create command.
         # 
@@ -21,6 +22,8 @@ class CreateComputeSourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.create_command:
@@ -37,6 +40,9 @@ class CreateComputeSourceRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -48,20 +54,33 @@ class CreateComputeSourceRequest(DaraModel):
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
+
         return self
 
 class CreateComputeSourceRequestCreateCommand(DaraModel):
     def __init__(
         self,
+        cluster_id: int = None,
         config_list: List[main_models.CreateComputeSourceRequestCreateCommandConfigList] = None,
+        create_type: str = None,
         description: str = None,
         name: str = None,
         type: str = None,
+        type_version: str = None,
     ):
+        # The ID of the associated cluster. This parameter takes effect only when CreateType is not specified or is set to COMPUTE_SOURCE, which creates a compute source that references a cluster. This parameter is mutually exclusive with CreateType=CLUSTER.
+        self.cluster_id = cluster_id
         # The connection configuration items.
         # 
         # This parameter is required.
         self.config_list = config_list
+        # The type of entity to create. Valid values:
+        # 
+        # - CLUSTER: Creates a cluster. ClusterId cannot be specified.
+        # - COMPUTE_SOURCE: Creates a compute source. This is the default value.
+        self.create_type = create_type
         # The description.
         self.description = description
         # The name of the compute source.
@@ -72,6 +91,8 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.type = type
+        # The version of the compute source type.
+        self.type_version = type_version
 
     def validate(self):
         if self.config_list:
@@ -84,10 +105,16 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+
         result['ConfigList'] = []
         if self.config_list is not None:
             for k1 in self.config_list:
                 result['ConfigList'].append(k1.to_map() if k1 else None)
+
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
 
         if self.description is not None:
             result['Description'] = self.description
@@ -98,15 +125,24 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
         if self.type is not None:
             result['Type'] = self.type
 
+        if self.type_version is not None:
+            result['TypeVersion'] = self.type_version
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+
         self.config_list = []
         if m.get('ConfigList') is not None:
             for k1 in m.get('ConfigList'):
                 temp_model = main_models.CreateComputeSourceRequestCreateCommandConfigList()
                 self.config_list.append(temp_model.from_map(k1))
+
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -116,6 +152,9 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
+
+        if m.get('TypeVersion') is not None:
+            self.type_version = m.get('TypeVersion')
 
         return self
 

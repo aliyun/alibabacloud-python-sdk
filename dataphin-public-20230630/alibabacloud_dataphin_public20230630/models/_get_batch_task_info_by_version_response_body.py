@@ -27,7 +27,7 @@ class GetBatchTaskInfoByVersionResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The node details.
+        # The task details.
         self.task_info = task_info
 
     def validate(self):
@@ -92,6 +92,8 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         data_source_catalog: str = None,
         data_source_id: str = None,
         data_source_schema: str = None,
+        develop_owner_id_list: List[str] = None,
+        develop_owner_name_list: List[str] = None,
         file_id: int = None,
         has_dev_node: bool = None,
         name: str = None,
@@ -103,6 +105,8 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         node_output_name_list: List[str] = None,
         node_status: int = None,
         operator_user_id: str = None,
+        ops_owner_id_list: List[str] = None,
+        ops_owner_name_list: List[str] = None,
         owner_name: str = None,
         owner_user_id: str = None,
         param_list: List[main_models.GetBatchTaskInfoByVersionResponseBodyTaskInfoParamList] = None,
@@ -119,13 +123,13 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         task_type: int = None,
         up_stream_list: List[main_models.GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamList] = None,
     ):
-        # The node code.
+        # The task code.
         self.code = code
-        # The cron expression for automatic scheduling. For more information, refer to the Linux cron expression syntax.
+        # The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
         self.cron_expression = cron_expression
         # The custom scheduling interval configuration.
         self.custom_schedule_config = custom_schedule_config
-        # The ID of the DAG to which the node belongs.
+        # The ID of the DAG to which the task belongs.
         self.dag_id = dag_id
         # The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
@@ -133,15 +137,19 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         self.data_source_id = data_source_id
         # The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
-        # The node ID in the node directory tree.
+        # The list of development owner IDs.
+        self.develop_owner_id_list = develop_owner_id_list
+        # The list of development owner names.
+        self.develop_owner_name_list = develop_owner_name_list
+        # The node ID in the directory tree.
         self.file_id = file_id
-        # Indicates whether the node has a development environment node.
+        # Indicates whether the task has a development environment node.
         self.has_dev_node = has_dev_node
-        # The node name.
+        # The task name.
         self.name = name
-        # Indicates whether the node needs to be published.
+        # Indicates whether the task needs to be published.
         self.need_publish = need_publish
-        # The node description.
+        # The task description.
         self.node_description = node_description
         # The source of the node, indicating the organization or application that created the node.
         self.node_from = node_from
@@ -158,19 +166,23 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         self.node_status = node_status
         # The user ID of the current operator.
         self.operator_user_id = operator_user_id
+        # The list of O&M owner IDs.
+        self.ops_owner_id_list = ops_owner_id_list
+        # The list of O&M owner names.
+        self.ops_owner_name_list = ops_owner_name_list
         # The name of the node owner.
         self.owner_name = owner_name
         # The user ID of the node owner.
         self.owner_user_id = owner_user_id
-        # The list of custom node parameters.
+        # The list of custom parameters for the node.
         self.param_list = param_list
-        # Indicates whether the node scheduling is paused.
+        # Indicates whether the node is paused for scheduling.
         self.paused = paused
         # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
         # The project ID.
         self.project_id = project_id
-        # Indicates whether the node has been published.
+        # Indicates whether the task is published.
         self.published = published
         # The remarks.
         self.remark = remark
@@ -182,20 +194,20 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         # - WEEKLY
         # - DAILY
         # - HOURLY
-        # - MINUTELY.
+        # - MINUTELY
         self.schedule_period = schedule_period
-        # The scheduling type. Valid values:
+        # The node type. Valid values:
         # - 1: periodic node.
         # - 3: manual node.
         self.schedule_type = schedule_type
         # The Spark client information.
         self.spark_client_info = spark_client_info
-        # The publish status. Valid values:
+        # The submit status. Valid values:
         # - 0: draft.
         # - 1: submitted.
         # - 100: in development.
         self.status = status
-        # The node type. For more information, see the API operation for creating a batch task.
+        # The task type. For more information, refer to the API operation for creating batch tasks.
         self.task_type = task_type
         # The upstream dependencies.
         self.up_stream_list = up_stream_list
@@ -240,6 +252,12 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         if self.data_source_schema is not None:
             result['DataSourceSchema'] = self.data_source_schema
 
+        if self.develop_owner_id_list is not None:
+            result['DevelopOwnerIdList'] = self.develop_owner_id_list
+
+        if self.develop_owner_name_list is not None:
+            result['DevelopOwnerNameList'] = self.develop_owner_name_list
+
         if self.file_id is not None:
             result['FileId'] = self.file_id
 
@@ -272,6 +290,12 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
 
         if self.operator_user_id is not None:
             result['OperatorUserId'] = self.operator_user_id
+
+        if self.ops_owner_id_list is not None:
+            result['OpsOwnerIdList'] = self.ops_owner_id_list
+
+        if self.ops_owner_name_list is not None:
+            result['OpsOwnerNameList'] = self.ops_owner_name_list
 
         if self.owner_name is not None:
             result['OwnerName'] = self.owner_name
@@ -348,6 +372,12 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         if m.get('DataSourceSchema') is not None:
             self.data_source_schema = m.get('DataSourceSchema')
 
+        if m.get('DevelopOwnerIdList') is not None:
+            self.develop_owner_id_list = m.get('DevelopOwnerIdList')
+
+        if m.get('DevelopOwnerNameList') is not None:
+            self.develop_owner_name_list = m.get('DevelopOwnerNameList')
+
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
 
@@ -380,6 +410,12 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
 
         if m.get('OperatorUserId') is not None:
             self.operator_user_id = m.get('OperatorUserId')
+
+        if m.get('OpsOwnerIdList') is not None:
+            self.ops_owner_id_list = m.get('OpsOwnerIdList')
+
+        if m.get('OpsOwnerNameList') is not None:
+            self.ops_owner_name_list = m.get('OpsOwnerNameList')
 
         if m.get('OwnerName') is not None:
             self.owner_name = m.get('OwnerName')
@@ -454,13 +490,13 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamList(DaraModel):
         self.depend_period = depend_period
         # The dependency strategy. Valid values: ALL, FIRST, LAST, NEAR.
         self.depend_strategy = depend_strategy
-        # The fields of the dependent logical table.
+        # The dependent logical table fields.
         self.field_list = field_list
         # The type of the upstream dependency node. Valid values:
         # - PHYSICAL: physical node.
         # - LOGICAL: logical table dependency.
         self.node_type = node_type
-        # The period difference. A value of 0 indicates a same-period dependency. A positive number indicates a dependency on the previous N periods.
+        # The period difference. A value of 0 indicates a same-cycle dependency. A positive number indicates a dependency on the previous N cycles.
         self.period_diff = period_diff
         # Indicates whether the upstream node is enabled.
         self.source_node_enabled = source_node_enabled
@@ -569,7 +605,7 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamListDependPeriod(Dara
         # - CURRENT_PERIOD
         # - LAST_PERIOD
         # - LAST_N_PERIOD
-        # - LAST_24_HOUR.
+        # - LAST_24_HOUR
         self.period_type = period_type
 
     def validate(self):
@@ -603,7 +639,7 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfoSparkClientInfo(DaraModel):
         self,
         spark_client_version: str = None,
     ):
-        # The Spark client version.
+        # The Spark client version name.
         self.spark_client_version = spark_client_version
 
     def validate(self):

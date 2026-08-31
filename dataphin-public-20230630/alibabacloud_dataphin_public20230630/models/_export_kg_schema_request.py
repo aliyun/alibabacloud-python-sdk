@@ -8,6 +8,7 @@ class ExportKgSchemaRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         output_format: str = None,
         version_id: int = None,
         workspace_id: str = None,
@@ -16,6 +17,7 @@ class ExportKgSchemaRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The format of the exported content. Valid values: json and yaml. Default value: yaml.
         self.output_format = output_format
         # The version number. If this parameter is empty or set to -1, the model metadata in draft state is returned. If this parameter is set to 0, the model metadata of the latest version is returned.
@@ -36,6 +38,9 @@ class ExportKgSchemaRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.output_format is not None:
             result['OutputFormat'] = self.output_format
 
@@ -51,6 +56,9 @@ class ExportKgSchemaRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('OutputFormat') is not None:
             self.output_format = m.get('OutputFormat')

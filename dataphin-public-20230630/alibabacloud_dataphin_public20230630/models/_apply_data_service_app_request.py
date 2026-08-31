@@ -10,6 +10,7 @@ class ApplyDataServiceAppRequest(DaraModel):
         self,
         apply_command: main_models.ApplyDataServiceAppRequestApplyCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         project_id: int = None,
     ):
         # The apply command.
@@ -20,6 +21,8 @@ class ApplyDataServiceAppRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
         # The data service project ID.
         # 
         # This parameter is required.
@@ -40,6 +43,9 @@ class ApplyDataServiceAppRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -53,6 +59,9 @@ class ApplyDataServiceAppRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
@@ -70,7 +79,7 @@ class ApplyDataServiceAppRequestApplyCommand(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The expiration date in the format of yyyy-MM-dd.
+        # The expiration date in yyyy-MM-dd format.
         # 
         # This parameter is required.
         self.expire_date = expire_date

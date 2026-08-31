@@ -9,12 +9,14 @@ class CreateStreamBatchJobMappingRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         stream_batch_job_mapping_create_command: main_models.CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand = None,
     ):
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The stream-batch integrated node information.
         # 
         # This parameter is required.
@@ -32,6 +34,9 @@ class CreateStreamBatchJobMappingRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.stream_batch_job_mapping_create_command is not None:
             result['StreamBatchJobMappingCreateCommand'] = self.stream_batch_job_mapping_create_command.to_map()
 
@@ -41,6 +46,9 @@ class CreateStreamBatchJobMappingRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('StreamBatchJobMappingCreateCommand') is not None:
             temp_model = main_models.CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand()

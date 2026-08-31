@@ -9,6 +9,7 @@ class RevokeDataServiceApiRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         project_id: int = None,
         revoke_command: main_models.RevokeDataServiceApiRequestRevokeCommand = None,
     ):
@@ -16,6 +17,7 @@ class RevokeDataServiceApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The data service project ID.
         # 
         # This parameter is required.
@@ -37,6 +39,9 @@ class RevokeDataServiceApiRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -49,6 +54,9 @@ class RevokeDataServiceApiRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

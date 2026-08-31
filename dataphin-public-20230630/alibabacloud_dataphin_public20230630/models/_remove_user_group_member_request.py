@@ -11,12 +11,14 @@ class RemoveUserGroupMemberRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         remove_command: main_models.RemoveUserGroupMemberRequestRemoveCommand = None,
     ):
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The command to remove user group members.
         # 
         # This parameter is required.
@@ -34,6 +36,9 @@ class RemoveUserGroupMemberRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.remove_command is not None:
             result['RemoveCommand'] = self.remove_command.to_map()
 
@@ -43,6 +48,9 @@ class RemoveUserGroupMemberRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('RemoveCommand') is not None:
             temp_model = main_models.RemoveUserGroupMemberRequestRemoveCommand()

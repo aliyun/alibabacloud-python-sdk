@@ -17,13 +17,13 @@ class ListPipelinesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
         # The paged query result.
         self.data = data
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -91,7 +91,7 @@ class ListPipelinesResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The list of task information on the current page.
+        # The list of node information on the current page.
         self.list = list
         # The cursor for the next page (an opaque cursor that the caller does not need to interpret). A null value indicates that there are no more pages. Otherwise, pass this value as the nextCursor parameter in the next request to retrieve the next page.
         self.next_cursor = next_cursor
@@ -99,7 +99,7 @@ class ListPipelinesResponseBodyData(DaraModel):
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of records that match the conditions. On the first page request, the actual total is returned. On subsequent page requests (when nextCursor is passed in), if totalCount is included in the request, the same value is returned. Otherwise, this field is not returned. The total value is a snapshot taken at the time of the first page query and is not updated in real time as data changes during pagination.
+        # The total number of records that match the conditions. For the first page request, the actual total count is returned. For subsequent page requests (when nextCursor is passed in), if totalCount is included in the request, the same value is returned. Otherwise, this field is not returned. The total value is a snapshot taken at the time of the first page query and is not updated in real time as data changes during pagination.
         self.total = total
 
     def validate(self):
@@ -171,11 +171,11 @@ class ListPipelinesResponseBodyDataList(DaraModel):
     ):
         # The list of user IDs of development owners.
         self.develop_owners = develop_owners
-        # The directory in which the task resides.
+        # The directory where the node is located.
         self.directory = directory
         # The file ID.
         self.file_id = file_id
-        # The scheduling node ID.
+        # The schedule node ID.
         self.node_id = node_id
         # The node name.
         self.node_name = node_name
@@ -184,19 +184,22 @@ class ListPipelinesResponseBodyDataList(DaraModel):
         # The pipeline ID.
         self.pipeline_id = pipeline_id
         # The schedule type. Valid values:
+        # 
         # - 1: periodic scheduling.
         # - 3: manual scheduling.
         # - 5: real-time scheduling.
         self.schedule_type = schedule_type
-        # The list of task tag names.
+        # The list of node tag names.
         self.tags = tags
-        # The task status. Valid values:
+        # The node status. Valid values:
+        # 
         # - DRAFT: draft.
         # - SUBMITTING: being submitted.
         # - SUBMITTED: submitted.
         # - PUBLISHED: published.
         self.task_status = task_status
-        # The task type. Valid values:
+        # The node type. Valid values:
+        # 
         # - 0: offline integration.
         # - 1: real-time integration.
         # - 13: data aggregation.

@@ -85,7 +85,7 @@ class CreateBatchTaskResponseBodyCreateResult(DaraModel):
         self,
         file_id: int = None,
     ):
-        # The node ID in the node directory tree.
+        # The node ID in the folder tree.
         self.file_id = file_id
 
     def validate(self):

@@ -11,12 +11,15 @@ class UpdateBatchTaskRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         update_command: main_models.UpdateBatchTaskRequestUpdateCommand = None,
     ):
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
         # The update request.
         # 
         # This parameter is required.
@@ -34,6 +37,9 @@ class UpdateBatchTaskRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.update_command is not None:
             result['UpdateCommand'] = self.update_command.to_map()
 
@@ -43,6 +49,9 @@ class UpdateBatchTaskRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('UpdateCommand') is not None:
             temp_model = main_models.UpdateBatchTaskRequestUpdateCommand()
@@ -59,6 +68,7 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         data_source_catalog: str = None,
         data_source_id: str = None,
         data_source_schema: str = None,
+        develop_owner_id_list: List[str] = None,
         engine: str = None,
         file_id: int = None,
         name: str = None,
@@ -74,26 +84,28 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         task_type: int = None,
         up_stream_list: List[main_models.UpdateBatchTaskRequestUpdateCommandUpStreamList] = None,
     ):
-        # The node code.
+        # The code of the node.
         # 
         # This parameter is required.
         self.code = code
-        # The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
+        # The cron expression for automatic scheduling. Refer to Linux cron expressions.
         self.cron_expression = cron_expression
-        # The custom scheduling interval configuration.
+        # The custom schedule interval configuration.
         self.custom_schedule_config = custom_schedule_config
-        # The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
+        # The catalog for database SQL nodes. This parameter applies only to datasource types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
-        # The data source ID for database SQL nodes.
+        # The datasource ID for database SQL nodes.
         self.data_source_id = data_source_id
-        # The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
+        # The schema for database SQL nodes. This parameter applies only to datasource types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
-        # The execution engine for the node, such as a Python node. Valid values:
+        # The list of development owner IDs.
+        self.develop_owner_id_list = develop_owner_id_list
+        # The execution engine for the node, such as for Python nodes. Valid values:
         # - PYTHON2_7
         # - PYTHON3_7
-        # - PYTHON3_11.
+        # - PYTHON3_11
         self.engine = engine
-        # The ID of the node in the folder tree.
+        # The node ID in the folder tree.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -118,15 +130,15 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The third-party Python packages that the node depends on.
+        # The third-party Python packages required by the node.
         self.python_module_list = python_module_list
-        # The scheduling period. Valid values:
+        # The schedule period. Valid values:
         # - YEARLY
         # - MONTHLY
         # - WEEKLY
         # - DAILY
         # - HOURLY
-        # - MINUTELY.
+        # - MINUTELY
         self.schedule_period = schedule_period
         # The Spark client information.
         self.spark_client_info = spark_client_info
@@ -177,6 +189,9 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
 
         if self.data_source_schema is not None:
             result['DataSourceSchema'] = self.data_source_schema
+
+        if self.develop_owner_id_list is not None:
+            result['DevelopOwnerIdList'] = self.develop_owner_id_list
 
         if self.engine is not None:
             result['Engine'] = self.engine
@@ -246,6 +261,9 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
 
         if m.get('DataSourceSchema') is not None:
             self.data_source_schema = m.get('DataSourceSchema')
+
+        if m.get('DevelopOwnerIdList') is not None:
+            self.develop_owner_id_list = m.get('DevelopOwnerIdList')
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
@@ -325,11 +343,11 @@ class UpdateBatchTaskRequestUpdateCommandUpStreamList(DaraModel):
         # - PHYSICAL: physical node.
         # - LOGICAL: logical table dependency.
         self.node_type = node_type
-        # The period offset. A value of 0 indicates a same-period dependency. A positive integer indicates a dependency on the previous N periods.
+        # The period difference. A value of 0 indicates same-period dependency. A positive number indicates dependency on the previous N periods.
         # 
         # This parameter is required.
         self.period_diff = period_diff
-        # Specifies whether the upstream node is enabled.
+        # Indicates whether the upstream node is enabled.
         self.source_node_enabled = source_node_enabled
         # The ID of the upstream node.
         self.source_node_id = source_node_id
@@ -418,7 +436,7 @@ class UpdateBatchTaskRequestUpdateCommandUpStreamListDependPeriod(DaraModel):
     ):
         # The period offset. This parameter is required when dependencyPeriodType is set to LAST_N_PERIOD.
         self.period_offset = period_offset
-        # The dependency period type. Valid values:
+        # The type of the dependency period. Valid values:
         # - CURRENT_PERIOD: current period.
         # - LAST_PERIOD: previous period.
         # - LAST_N_PERIOD: last N days.
@@ -542,18 +560,18 @@ class UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig(DaraModel):
         # This parameter is required.
         self.interval = interval
         # The interval unit. Valid values:
-        # - MINUTE: minute
+        # - MINUTE: minute.
         # - HOUR: hour.
         # 
         # This parameter is required.
         self.interval_unit = interval_unit
-        # The scheduling period. Valid values:
+        # The schedule period. Valid values:
         # - YEARLY
         # - MONTHLY
         # - WEEKLY
         # - DAILY
         # - HOURLY
-        # - MINUTELY.
+        # - MINUTELY
         # 
         # This parameter is required.
         self.schedule_period = schedule_period

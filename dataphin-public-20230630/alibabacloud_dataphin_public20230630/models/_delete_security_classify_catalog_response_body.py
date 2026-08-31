@@ -23,7 +23,7 @@ class DeleteSecurityClassifyCatalogResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -89,9 +89,9 @@ class DeleteSecurityClassifyCatalogResponseBodyData(DaraModel):
         classify_id_list: List[int] = None,
         success: bool = None,
     ):
-        # The list of full paths of child catalogs that were also deleted.
+        # The list of full paths of child catalogs that were deleted as a result of the cascading deletion.
         self.child_catalog_full_path_list = child_catalog_full_path_list
-        # The list of classification IDs that were also deleted.
+        # The list of classification IDs that were deleted as a result of the cascading deletion.
         self.classify_id_list = classify_id_list
         # Indicates whether the deletion was successful.
         self.success = success

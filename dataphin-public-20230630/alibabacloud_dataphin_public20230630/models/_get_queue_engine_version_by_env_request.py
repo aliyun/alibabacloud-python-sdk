@@ -10,6 +10,7 @@ class GetQueueEngineVersionByEnvRequest(DaraModel):
         cluster_id: str = None,
         env: str = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         project_id: int = None,
         queue_name: str = None,
         stream_batch_mode: str = None,
@@ -26,6 +27,8 @@ class GetQueueEngineVersionByEnvRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
         # The project ID.
         # 
         # This parameter is required.
@@ -56,6 +59,9 @@ class GetQueueEngineVersionByEnvRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -77,6 +83,9 @@ class GetQueueEngineVersionByEnvRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

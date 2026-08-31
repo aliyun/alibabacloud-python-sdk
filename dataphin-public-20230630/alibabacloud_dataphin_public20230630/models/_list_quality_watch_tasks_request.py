@@ -12,6 +12,7 @@ class ListQualityWatchTasksRequest(DaraModel):
         self,
         list_query: main_models.ListQualityWatchTasksRequestListQuery = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The paged query conditions.
         self.list_query = list_query
@@ -19,6 +20,8 @@ class ListQualityWatchTasksRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.list_query:
@@ -35,6 +38,9 @@ class ListQualityWatchTasksRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -45,6 +51,9 @@ class ListQualityWatchTasksRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 
@@ -71,36 +80,36 @@ class ListQualityWatchTasksRequestListQuery(DaraModel):
     ):
         # The business date filter.
         self.biz_date = biz_date
-        # The business unit names.
+        # The name of the business unit to which the object belongs.
         self.biz_unit_name_list = biz_unit_name_list
-        # Specifies whether to query only the quality monitoring node objects owned by the current user.
+        # Specifies whether to query only the watchtask objects owned by the current user.
         self.current_user_owned = current_user_owned
-        # The data source IDs.
+        # The data source ID.
         self.data_source_id_list = data_source_id_list
-        # The data source owners.
+        # The data source owner.
         self.data_source_owner_list = data_source_owner_list
-        # The data source scopes. Valid values:
+        # The data source scope. Valid values:
         # - STREAMING: real-time only.
         # - OFFLINE: offline only.
         # - ALL: real-time and offline.
         self.data_source_scope_list = data_source_scope_list
-        # The data source types, such as MAX_COMPUTE, HADOOP, and MYSQL.
+        # The data source type, such as MAX_COMPUTE, HADOOP, or MYSQL.
         self.data_source_type_list = data_source_type_list
-        # The rule exception types. Valid values:
+        # The rule exception type. Valid values:
         # - STRONG: strong.
         # - WEAK: weak.
         self.error_rule_strength_list = error_rule_strength_list
-        # The search keyword, which is the name of the monitored table.
+        # The search keyword. This parameter specifies the name of the monitored table.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The project names.
+        # The name of the project to which the object belongs.
         self.project_name_list = project_name_list
-        # The quality owners.
+        # The quality owner.
         self.quality_owner_list = quality_owner_list
-        # The task statuses. Valid values:
+        # The task status. Valid values:
         # - NOT_RUN: not executed.
         # - WAITING: waiting.
         # - RUNNING: running.
@@ -110,9 +119,9 @@ class ListQualityWatchTasksRequestListQuery(DaraModel):
         # - TIMEOUT: timed out.
         # - OFFLINE: offline.
         self.status_list = status_list
-        # The table owners.
+        # The table owner.
         self.table_owner_list = table_owner_list
-        # The table types. Valid values:
+        # The table type. Valid values:
         # - LOGIC_DIM_TABLE: logical dimension table.
         # - LOGIC_FACT_TABLE: logical fact table.
         # - LOGIC_SUM_TABLE: logical aggregate table.
@@ -120,9 +129,9 @@ class ListQualityWatchTasksRequestListQuery(DaraModel):
         # - PHYSICAL_TABLE: physical table.
         # - REALTIME_LOGICAL_TABLE: real-time meta table.
         self.table_type_list = table_type_list
-        # The monitored object types. Valid values:
+        # The monitored object type. Valid values:
         # - TABLE: Dataphin table.
-        # - DATASOURCE_TABLE: global table.
+        # - DATASOURCE_TABLE: global domain table.
         # - DATASOURCE: data source.
         # - INDEX: metric.
         # - REALTIME_LOGICAL_TABLE: real-time meta table.

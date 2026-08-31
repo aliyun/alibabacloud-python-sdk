@@ -21,7 +21,7 @@ class CreateWorkFlowByJsonResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error details returned by the backend.
+        # The error message returned by the backend.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -91,11 +91,11 @@ class CreateWorkFlowByJsonResponseBodyData(DaraModel):
     ):
         # The name and IP address of the server-side execution machine.
         self.host_machine = host_machine
-        # The scheduling node ID of the workflow node after successful creation.
+        # The scheduling node ID of the workflow node created.
         self.node_id = node_id
-        # The workflow ID after successful creation.
+        # The workflow ID generated after successful creation.
         self.pipeline_id = pipeline_id
-        # The submit ID generated for the pending publish list after submission. Use this ID to publish through the publish domain. You can ignore this value for BASIC projects.
+        # The submit ID of the pending publish list generated after a successful submission. Use this ID to publish through the publish domain. You can ignore this value for BASIC projects.
         self.submit_id = submit_id
         # The pending publish version number generated after the workflow is submitted. You can ignore this value for BASIC projects.
         self.version = version

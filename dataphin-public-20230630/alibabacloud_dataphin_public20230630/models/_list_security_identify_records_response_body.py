@@ -21,9 +21,9 @@ class ListSecurityIdentifyRecordsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
-        # The paging query result.
+        # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
@@ -166,31 +166,31 @@ class ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList(DaraMo
         self.biz_date = biz_date
         # The display name of the business unit.
         self.biz_unit_display_name = biz_unit_display_name
-        # The business unit ID.
+        # The ID of the business unit.
         self.biz_unit_id = biz_unit_id
-        # The business unit name.
+        # The name of the business unit.
         self.biz_unit_name = biz_unit_name
-        # The classification abbreviation.
+        # The abbreviation of the classification.
         self.classify_abbreviation = classify_abbreviation
-        # The classification ID.
+        # The ID of the classification.
         self.classify_id = classify_id
-        # The classification name.
+        # The name of the classification.
         self.classify_name = classify_name
-        # The classification effective status. Valid values:
-        # - ENABLE: enabled.
-        # - DISABLE: disabled.
+        # The status of the classification. Valid values:
+        # - ENABLE: Enabled.
+        # - DISABLE: Disabled.
         self.classify_status = classify_status
-        # The datasource ID.
+        # The ID of the data source.
         self.datasource_id = datasource_id
-        # The datasource name.
+        # The name of the data source.
         self.datasource_name = datasource_name
-        # The field description.
+        # The description of the field.
         self.field_description = field_description
-        # The field ID.
+        # The ID of the field.
         self.field_id = field_id
         # The field name.
         self.field_name = field_name
-        # The identification record ID.
+        # The ID of the identification record.
         self.id = id
         # Indicates whether this is a better match.
         self.is_better_match = is_better_match
@@ -198,31 +198,31 @@ class ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList(DaraMo
         self.is_custom_identify = is_custom_identify
         # Indicates whether the record is locked.
         self.is_locked = is_locked
-        # The classification level abbreviation.
+        # The abbreviated name of the level.
         self.level_abbreviation = level_abbreviation
-        # The classification level index.
+        # The level index.
         self.level_index = level_index
-        # The classification level name.
+        # The name of the level.
         self.level_name = level_name
         # The display name of the project.
         self.project_display_name = project_display_name
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.project_name = project_name
-        # The table description.
+        # The description of the table.
         self.table_description = table_description
         # The table environment.
         self.table_env = table_env
-        # The table ID.
+        # The ID of the table.
         self.table_id = table_id
         # The table name.
         self.table_name = table_name
-        # The table type. Valid values:
+        # The type of the table. Valid values:
         # - LOGIC_TABLE: logical table.
         # - LOGIC_DIM_TABLE: logical dimension table.
         # - LOGIC_FACT_TABLE: logical fact table.
-        # - LOGIC_SUM_TABLE: logical aggregate table.
+        # - LOGIC_SUM_TABLE: logical summary table.
         # - LOGIC_ODM_SOURCE: source table.
         # - LOGIC_LABEL_TABLE: logical label table.
         # - PHYSICAL_TABLE: physical table.

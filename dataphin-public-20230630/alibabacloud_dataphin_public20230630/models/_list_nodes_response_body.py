@@ -21,7 +21,7 @@ class ListNodesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
         # The paging query result.
         self.page_result = page_result
@@ -88,7 +88,7 @@ class ListNodesResponseBodyPageResult(DaraModel):
         node_list: List[main_models.ListNodesResponseBodyPageResultNodeList] = None,
         total_count: int = None,
     ):
-        # The list of nodes on the current page.
+        # The paginated list of nodes.
         self.node_list = node_list
         # The total number of records.
         self.total_count = total_count
@@ -153,29 +153,29 @@ class ListNodesResponseBodyPageResultNodeList(DaraModel):
     ):
         # The name of the business unit to which the node belongs.
         self.biz_unit_name = biz_unit_name
-        # The creation time.
+        # The time when the node was created.
         self.create_time = create_time
-        # The creator.
+        # The creator of the node.
         self.creator = creator
-        # The description.
+        # The description of the node.
         self.description = description
         # Specifies whether to perform a dry run.
         self.dry_run = dry_run
-        # The extended information.
+        # The extended information of the node.
         self.extend_info = extend_info
-        # The source.
+        # The source of the node.
         self.from_ = from_
-        # Indicates whether a development environment exists.
+        # Indicates whether the node has a development environment.
         self.has_dev = has_dev
-        # Indicates whether a production environment exists.
+        # Indicates whether the node has a production environment.
         self.has_prod = has_prod
         # The node ID.
         self.id = id
-        # The last modification time.
+        # The time when the node was last modified.
         self.last_modified_time = last_modified_time
         # The user who last modified the node.
         self.modifier = modifier
-        # The node name.
+        # The name of the node.
         self.name = name
         # The owner.
         self.owner_list = owner_list
@@ -183,19 +183,19 @@ class ListNodesResponseBodyPageResultNodeList(DaraModel):
         self.priority_list = priority_list
         # The project to which the node belongs.
         self.project_info = project_info
-        # Indicates whether scheduling is paused.
+        # Indicates whether the node is paused.
         self.schedule_paused = schedule_paused
         # The scheduling period.
         self.schedule_period_list = schedule_period_list
-        # The sub-business types. Valid values:
+        # The sub-business type. Valid values:
         # - MAX_COMPUTE_SQL
         # - HIVE_SQL
         # - SHELL
         # - PYTHON
         # - ONE_SERVICE_SQL
-        # - DATABASE_SQL.
+        # - DATABASE_SQL, etc.
         self.sub_detail_type = sub_detail_type
-        # The node type.
+        # The type of the node.
         self.type = type
 
     def validate(self):

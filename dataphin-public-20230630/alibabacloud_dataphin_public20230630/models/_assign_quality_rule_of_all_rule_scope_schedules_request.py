@@ -12,8 +12,9 @@ class AssignQualityRuleOfAllRuleScopeSchedulesRequest(DaraModel):
         self,
         assign_command: main_models.AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
-        # The assignment binding instruction.
+        # The assignment binding command.
         # 
         # This parameter is required.
         self.assign_command = assign_command
@@ -21,6 +22,8 @@ class AssignQualityRuleOfAllRuleScopeSchedulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.assign_command:
@@ -37,6 +40,9 @@ class AssignQualityRuleOfAllRuleScopeSchedulesRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -48,6 +54,9 @@ class AssignQualityRuleOfAllRuleScopeSchedulesRequest(DaraModel):
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
+
         return self
 
 class AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand(DaraModel):
@@ -57,15 +66,15 @@ class AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand(DaraModel):
         schedule_id_list: List[int] = None,
         watch_id: int = None,
     ):
-        # The rule IDs.
+        # The rule ID.
         # 
         # This parameter is required.
         self.rule_id_list = rule_id_list
-        # The schedule IDs.
+        # The schedule ID.
         # 
         # This parameter is required.
         self.schedule_id_list = schedule_id_list
-        # The ID of the monitored object.
+        # The monitored object ID.
         # 
         # This parameter is required.
         self.watch_id = watch_id

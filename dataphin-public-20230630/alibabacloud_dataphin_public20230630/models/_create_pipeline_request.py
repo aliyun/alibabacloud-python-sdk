@@ -13,19 +13,22 @@ class CreatePipelineRequest(DaraModel):
         context: main_models.CreatePipelineRequestContext = None,
         create_command: main_models.CreatePipelineRequestCreateCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
-        # Request context information
+        # The request context information.
         # 
         # This parameter is required.
         self.context = context
-        # Pipeline/workflow task creation configuration
+        # The configuration for creating a pipeline or workflow node.
         # 
         # This parameter is required.
         self.create_command = create_command
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.context:
@@ -47,6 +50,9 @@ class CreatePipelineRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -61,6 +67,9 @@ class CreatePipelineRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 
@@ -77,31 +86,39 @@ class CreatePipelineRequestCreateCommand(DaraModel):
         settings: str = None,
         submit: bool = None,
     ):
-        # Comment
+        # The comment.
         self.comment = comment
-        # Integration pipeline configuration mode: PIPELINE indicates pipeline mode (default), JSON indicates script mode.
-        # For workflows, this can be ignored.
+        # The integration pipeline configuration mode. Valid values:
+        # 
+        # - PIPELINE: pipeline mode. This is the default value.
+        # - JSON: script mode.
+        # 
+        # If the node is a workflow node, you can ignore this parameter.
         self.mode = mode
-        # Integration pipeline/workflow task basic information
+        # The basic information of the integration pipeline or workflow node.
         # 
         # This parameter is required.
         self.node_info = node_info
-        # Integration pipeline component/workflow operator configuration
+        # The integration pipeline component or workflow operator configuration.
         # 
         # This parameter is required.
         self.pipeline_config = pipeline_config
-        # In script mode: integration pipeline configuration (in JSON string format).
-        # Workflow tasks do not support script mode
+        # The integration pipeline configuration in JSON string format for script mode. Workflow nodes do not support script mode.
         self.pipeline_json = pipeline_json
-        # Task type: 0 indicates offline integration (default), 1 indicates real-time integration, 14 indicates a workflow task
+        # The node type. Valid values:
+        # 
+        # - 0: offline integration. Default value: 0.
+        # - 1: real-time integration.
+        # - 14: offline workflow node.
+        # - 15: real-time workflow.
         self.pipeline_type = pipeline_type
-        # Scheduling configuration in JSON string format. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig#toJsonString method
+        # The scheduling configuration in JSON string format. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig#toJsonString method.
         # 
         # This parameter is required.
         self.schedule_config = schedule_config
-        # Channel configuration in JSON string format. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAPipelineSetting#toJsonString method
+        # The channel configuration in JSON string format. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAPipelineSetting#toJsonString method.
         self.settings = settings
-        # Whether to submit. Submitted by default
+        # Specifies whether to submit the node. The node is submitted by default.
         self.submit = submit
 
     def validate(self):
@@ -183,11 +200,11 @@ class CreatePipelineRequestCreateCommandPipelineConfig(DaraModel):
         hops: List[main_models.CreatePipelineRequestCreateCommandPipelineConfigHops] = None,
         steps: List[main_models.CreatePipelineRequestCreateCommandPipelineConfigSteps] = None,
     ):
-        # DAG (directed acyclic graph) link configuration: describes the connections between all components/operators
+        # The directed acyclic graph (DAG) link configuration that describes the connections between all components or operators.
         # 
         # This parameter is required.
         self.hops = hops
-        # Component/operator configuration: contains detailed configuration of all components/operators used
+        # The component or operator configurations, which contain the detailed configurations of all components or operators used.
         # 
         # This parameter is required.
         self.steps = steps
@@ -244,24 +261,33 @@ class CreatePipelineRequestCreateCommandPipelineConfigSteps(DaraModel):
         step_name: str = None,
         step_type: str = None,
     ):
-        # Indicates the data distribution method when the current component has multiple downstream components:
-        # true indicates that data from the current component is sent to all downstream components in a round-robin manner. For example, if the current component has 100 records and two downstream components, each downstream component receives 50 records. The default value is true.
-        # false indicates that data from the current component is sent in full to all downstream components. For example, if the current component has 100 records and two downstream components, both downstream components receive all 100 records.
-        # For workflow tasks, this value can be ignored.
+        # Specifies the data distribution mode when the current component has multiple downstream components. Valid values:
+        # 
+        # - true: The data of the current component is distributed to all downstream components in a round-robin manner. For example, if the current component has 100 records and two downstream components, each downstream component receives 50 records. Default value: true.
+        # - false: The full data of the current component is sent to all downstream components. For example, if the current component has 100 records and two downstream components, both downstream components receive 100 records.
+        # 
+        # If the node is a workflow node, you can ignore this parameter.
         self.is_distribute = is_distribute
-        # Plugin/operator ID. Each plugin/operator has a unique identifier. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepKey. Developers should inherit this component/operator configuration class and implement the corresponding component/operator configuration. Each component/operator configuration has the same structure as the configuration created on the Dataphin page
+        # The plugin ID. Each plugin or operator has a unique identifier. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepKey. Developers should inherit the component or operator configuration class and implement the corresponding component or operator configuration. Each component or operator configuration has the same structure as the configuration created on the Dataphin console.
         # 
         # This parameter is required.
         self.key = key
-        # Specific component configuration in JSON string format. Refer to the utility class: subclasses of com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig (for workflow operators, use com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.unstructured.BaseOAUnstructuredNeuronConfig) and their toJsonString method. Developers should inherit this component/operator configuration class and implement the corresponding component/operator configuration. Each component/operator configuration has the same structure as the task configuration created on the Dataphin page
+        # The specific component configuration in JSON string format. Refer to the toJsonString method of the relevant subclasses of the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig (for workflow operators, use com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.unstructured.BaseOAUnstructuredNeuronConfig). Developers should inherit the component or operator configuration class and implement the corresponding component or operator configuration. Each component or operator configuration has the same structure as the node configuration created on the Dataphin console.
         # 
         # This parameter is required.
         self.plugin_config = plugin_config
-        # Step name. Step names must be unique within the same pipeline task
+        # The step name. Step names must be unique within the same pipeline node.
         # 
         # This parameter is required.
         self.step_name = step_name
-        # Component type: input indicates an input component, output indicates an output component, transfrom indicates a transform component, process indicates a flow control component. For workflow tasks, this indicates the operator type, such as image for image, text for text. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepType. Developers should inherit this component/operator configuration class and implement the corresponding component/operator configuration. Each component/operator configuration has the same structure as the configuration created on the Dataphin page
+        # The component type. Valid values:
+        # 
+        # - input: an input component.
+        # - output: an output component.
+        # - transfrom: a transform component.
+        # - process: a flow control component.
+        # 
+        # For workflow nodes, this parameter specifies the operator type, such as image or text. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepType. Developers should inherit the component or operator configuration class and implement the corresponding component or operator configuration. Each component or operator configuration has the same structure as the configuration created on the Dataphin console.
         # 
         # This parameter is required.
         self.step_type = step_type
@@ -317,14 +343,13 @@ class CreatePipelineRequestCreateCommandPipelineConfigHops(DaraModel):
         source: str = None,
         target: str = None,
     ):
-        # For conditional distribution components, set to true when the downstream condition is true, otherwise set to false.
-        # For workflow tasks, this can be ignored.
+        # Specifies the downstream condition for a conditional distribution component. Set this parameter to true if the downstream condition is true, or false otherwise. If the node is a workflow node, you can ignore this parameter.
         self.send_to = send_to
-        # Input step name, i.e., Steps[*].StepName
+        # The name of the input step, which corresponds to Steps[*].StepName.
         # 
         # This parameter is required.
         self.source = source
-        # Output step name, i.e., Steps[*].StepName
+        # The name of the output step, which corresponds to Steps[*].StepName.
         # 
         # This parameter is required.
         self.target = target
@@ -370,17 +395,17 @@ class CreatePipelineRequestCreateCommandNodeInfo(DaraModel):
         node_name: str = None,
         pipeline_id: int = None,
     ):
-        # Directory of the integration pipeline/workflow task node (defaults to root directory). The directory must exist. If it does not exist, call the relevant API to create a directory of type offlinePipeline (or unstructuredPipeline for workflows)
+        # The folder of the integration pipeline or workflow node. Default value: root folder. The folder must already exist. If it does not exist, call the relevant API operation to create a folder of type offlinePipeline (or unstructuredPipeline for workflows).
         self.directory = directory
-        # Pipeline/workflow file ID. Leave empty for initial creation. When updating a pipeline/workflow task, at least one of pipelineId, fileId, or nodeId must be specified
+        # The pipeline or workflow file ID. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of pipelineId, fileId, or nodeId.
         self.file_id = file_id
-        # Scheduling node ID of the pipeline/workflow task. Leave empty for initial creation. When updating a pipeline/workflow task, at least one of pipelineId, fileId, or nodeId must be specified
+        # The scheduling node ID of the pipeline or workflow node. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of pipelineId, fileId, or nodeId.
         self.node_id = node_id
-        # Integration pipeline/workflow task name
+        # The name of the integration pipeline or workflow node.
         # 
         # This parameter is required.
         self.node_name = node_name
-        # Pipeline/workflow task ID. Leave empty for initial creation. When updating a pipeline/workflow task, at least one of pipelineId, fileId, or nodeId must be specified
+        # The pipeline or workflow node ID. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of pipelineId, fileId, or nodeId.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -433,11 +458,16 @@ class CreatePipelineRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
-        # Current operating environment: DEV indicates the development environment, PROD indicates the production environment (for workflows, only PROD is currently supported)
+        # The current operating environment. Valid values:
+        # 
+        # - DEV: the development environment.
+        # - PROD: the production environment.
+        # 
+        # For workflow nodes, only PROD is supported.
         # 
         # This parameter is required.
         self.env = env
-        # Project ID to which the integration pipeline/workflow task belongs
+        # The ID of the project to which the integration pipeline or workflow node belongs.
         # 
         # This parameter is required.
         self.project_id = project_id

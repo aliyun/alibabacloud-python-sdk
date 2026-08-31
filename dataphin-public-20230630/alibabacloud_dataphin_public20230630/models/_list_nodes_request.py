@@ -13,10 +13,11 @@ class ListNodesRequest(DaraModel):
         env: str = None,
         list_query: main_models.ListNodesRequestListQuery = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The environment identifier. Valid values:
-        # - DEV: development environment 
-        # - PROD (default): production environment.
+        # - DEV: Development environment. 
+        # - PROD (default): Production environment.
         self.env = env
         # The query conditions.
         # 
@@ -26,6 +27,8 @@ class ListNodesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.list_query:
@@ -45,6 +48,9 @@ class ListNodesRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +64,9 @@ class ListNodesRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 
@@ -80,18 +89,18 @@ class ListNodesRequestListQuery(DaraModel):
         # Specifies whether to perform a dry run.
         self.dry_run = dry_run
         # The node business type. Valid values:
-        # - SCRIPT: script
+        # - SCRIPT: script.
         # - LOGICAL_TABLE: logical table.
         # 
         # This parameter is required.
         self.node_biz_type = node_biz_type
-        # The sub-business types. Valid values:
+        # The sub-business type. Valid values:
         # - MAX_COMPUTE_SQL
         # - HIVE_SQL
         # - SHELL
         # - PYTHON
         # - ONE_SERVICE_SQL
-        # - DATABASE_SQL.
+        # - DATABASE_SQL, etc.
         # 
         # This parameter is required.
         self.node_sub_biz_type_list = node_sub_biz_type_list
@@ -99,14 +108,14 @@ class ListNodesRequestListQuery(DaraModel):
         self.owner_list = owner_list
         # The page number.
         self.page = page
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
-        # The node priorities. Valid values:
+        # The node priority. Valid values:
         # - HIGHEST
         # - HIGH
         # - MIDDLE
         # - LOW
-        # - LOWEST.
+        # - LOWEST
         self.priority_list = priority_list
         # The project ID.
         # 
@@ -114,20 +123,20 @@ class ListNodesRequestListQuery(DaraModel):
         self.project_id = project_id
         # Specifies whether scheduling is paused.
         self.schedule_paused = schedule_paused
-        # The scheduling periods. Valid values:
+        # The scheduling period. Valid values:
         # - YEARLY
         # - MONTHLY
         # - WEEKLY
         # - DAILY
         # - HOURLY
-        # - MINUTELY.
+        # - MINUTELY
         self.schedule_period_list = schedule_period_list
         # The node scheduling type. Valid values:
-        # - NORMAL: periodic scheduling
-        # - SUPPLEMENT: data backfill
-        # - MANUAL: manual scheduling.
+        # - NORMAL: Periodic.
+        # - SUPPLEMENT: Data backfill.
+        # - MANUAL: Manual.
         self.schedule_type = schedule_type
-        # The search keyword. Fuzzy search by node name and exact search by node ID are supported.
+        # The search keyword. Supports fuzzy match by node name and exact match by node ID.
         self.search_text = search_text
 
     def validate(self):

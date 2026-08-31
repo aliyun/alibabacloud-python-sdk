@@ -10,6 +10,7 @@ class GetPipelineByIdRequest(DaraModel):
         self,
         context: main_models.GetPipelineByIdRequestContext = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         query_id: main_models.GetPipelineByIdRequestQueryId = None,
     ):
         # The request context information.
@@ -20,7 +21,9 @@ class GetPipelineByIdRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The query ID used to query the pipeline node.
+        # The ID of the operator.
+        self.op_user_id = op_user_id
+        # The ID used to query the pipeline node.
         # 
         # This parameter is required.
         self.query_id = query_id
@@ -42,6 +45,9 @@ class GetPipelineByIdRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.query_id is not None:
             result['QueryId'] = self.query_id.to_map()
 
@@ -55,6 +61,9 @@ class GetPipelineByIdRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('QueryId') is not None:
             temp_model = main_models.GetPipelineByIdRequestQueryId()
@@ -120,7 +129,7 @@ class GetPipelineByIdRequestContext(DaraModel):
         # 
         # This parameter is required.
         self.env = env
-        # The project ID to which the integration pipeline node belongs.
+        # The ID of the project to which the integration pipeline node belongs.
         # 
         # This parameter is required.
         self.project_id = project_id

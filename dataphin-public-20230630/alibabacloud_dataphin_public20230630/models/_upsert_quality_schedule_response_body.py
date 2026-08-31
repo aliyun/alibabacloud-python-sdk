@@ -16,11 +16,11 @@ class UpsertQualityScheduleResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The ID of the schedule resource.
+        # The schedule object ID.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id

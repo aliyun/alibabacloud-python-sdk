@@ -12,6 +12,7 @@ class CreateDataServiceAppRequest(DaraModel):
         self,
         create_command: main_models.CreateDataServiceAppRequestCreateCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
     ):
         # The command to create a data service application.
         # 
@@ -21,6 +22,8 @@ class CreateDataServiceAppRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
+        self.op_user_id = op_user_id
 
     def validate(self):
         if self.create_command:
@@ -37,6 +40,9 @@ class CreateDataServiceAppRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +53,9 @@ class CreateDataServiceAppRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         return self
 
@@ -72,7 +81,7 @@ class CreateDataServiceAppRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The app secret.
+        # The application secret.
         # If this parameter is not specified, the system automatically generates a new AppSecret value.
         # The secret must be 8 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
         # This parameter can be customized only when using Alibaba Cloud API Gateway or the built-in gateway. This parameter is ignored when using a dedicated cloud gateway.
@@ -81,7 +90,7 @@ class CreateDataServiceAppRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.owner_ids = owner_ids
-        # Common scenarios.
+        # The common scenarios.
         # 
         # This parameter is required.
         self.scenarios = scenarios

@@ -17,7 +17,7 @@ class DeleteRegisterLineageResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error details returned by the backend.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id

@@ -60,6 +60,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_command_shrink):
             body['AddCommand'] = request.add_command_shrink
@@ -96,6 +98,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_command_shrink):
             body['AddCommand'] = request.add_command_shrink
@@ -146,6 +150,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -184,6 +190,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -238,6 +246,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_command_shrink):
             body['AddCommand'] = request.add_command_shrink
@@ -276,6 +286,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_command_shrink):
             body['AddCommand'] = request.add_command_shrink
@@ -326,6 +338,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_register_lineage_command_shrink):
             body['AddRegisterLineageCommand'] = request.add_register_lineage_command_shrink
@@ -362,6 +376,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_register_lineage_command_shrink):
             body['AddRegisterLineageCommand'] = request.add_register_lineage_command_shrink
@@ -412,6 +428,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_command_shrink):
             body['AddCommand'] = request.add_command_shrink
@@ -448,6 +466,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_command_shrink):
             body['AddCommand'] = request.add_command_shrink
@@ -584,6 +604,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_command_shrink):
             body['AddCommand'] = request.add_command_shrink
@@ -620,6 +642,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.add_command_shrink):
             body['AddCommand'] = request.add_command_shrink
@@ -670,6 +694,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -708,6 +734,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -760,6 +788,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -798,6 +828,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -850,6 +882,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.assign_command_shrink):
             body['AssignCommand'] = request.assign_command_shrink
@@ -886,6 +920,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.assign_command_shrink):
             body['AssignCommand'] = request.assign_command_shrink
@@ -936,6 +972,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -974,6 +1012,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -1026,6 +1066,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -1064,6 +1106,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -1116,6 +1160,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.check_command_shrink):
             body['CheckCommand'] = request.check_command_shrink
@@ -1152,6 +1198,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.check_command_shrink):
             body['CheckCommand'] = request.check_command_shrink
@@ -1200,6 +1248,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1230,6 +1280,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1276,6 +1328,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.check_command_shrink):
             body['CheckCommand'] = request.check_command_shrink
@@ -1312,6 +1366,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.check_command_shrink):
             body['CheckCommand'] = request.check_command_shrink
@@ -1360,6 +1416,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1390,6 +1448,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1434,6 +1494,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1464,6 +1526,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1510,6 +1574,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.check_command_shrink):
             body['CheckCommand'] = request.check_command_shrink
@@ -1546,6 +1612,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.check_command_shrink):
             body['CheckCommand'] = request.check_command_shrink
@@ -1596,6 +1664,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -1632,6 +1702,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -1682,6 +1754,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -1718,6 +1792,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -1768,6 +1844,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -1804,6 +1882,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -1854,6 +1934,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -1890,6 +1972,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -1940,6 +2024,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_biz_metric_command_shrink):
             body['CreateBizMetricCommand'] = request.create_biz_metric_command_shrink
@@ -1976,6 +2062,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_biz_metric_command_shrink):
             body['CreateBizMetricCommand'] = request.create_biz_metric_command_shrink
@@ -2026,6 +2114,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2062,6 +2152,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2099,6 +2191,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_biz_unit_with_options_async(request, runtime)
 
+    def create_compute_cluster_with_options(
+        self,
+        tmp_req: main_models.CreateComputeClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateComputeClusterResponse:
+        tmp_req.validate()
+        request = main_models.CreateComputeClusterShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cluster_config):
+            request.cluster_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.cluster_config, 'ClusterConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.cluster_config_shrink):
+            body['ClusterConfig'] = request.cluster_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateComputeCluster',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateComputeClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_compute_cluster_with_options_async(
+        self,
+        tmp_req: main_models.CreateComputeClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateComputeClusterResponse:
+        tmp_req.validate()
+        request = main_models.CreateComputeClusterShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cluster_config):
+            request.cluster_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.cluster_config, 'ClusterConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.cluster_config_shrink):
+            body['ClusterConfig'] = request.cluster_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateComputeCluster',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateComputeClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_compute_cluster(
+        self,
+        request: main_models.CreateComputeClusterRequest,
+    ) -> main_models.CreateComputeClusterResponse:
+        runtime = RuntimeOptions()
+        return self.create_compute_cluster_with_options(request, runtime)
+
+    async def create_compute_cluster_async(
+        self,
+        request: main_models.CreateComputeClusterRequest,
+    ) -> main_models.CreateComputeClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.create_compute_cluster_with_options_async(request, runtime)
+
     def create_compute_source_with_options(
         self,
         tmp_req: main_models.CreateComputeSourceRequest,
@@ -2112,6 +2294,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2148,6 +2332,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2198,6 +2384,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2234,6 +2422,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2284,6 +2474,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2320,6 +2512,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2370,6 +2564,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2406,6 +2602,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2454,6 +2652,8 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2484,6 +2684,8 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2530,6 +2732,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2566,6 +2770,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2616,6 +2822,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -2654,6 +2862,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -2706,6 +2916,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2742,6 +2954,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2792,6 +3006,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2828,6 +3044,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -2878,6 +3096,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -2916,6 +3136,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -2968,6 +3190,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -3006,6 +3230,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -3060,6 +3286,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3098,6 +3326,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3150,6 +3380,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -3190,6 +3422,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -3244,6 +3478,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -3284,6 +3520,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -3336,6 +3574,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_pipeline_node_command_shrink):
             body['CreatePipelineNodeCommand'] = request.create_pipeline_node_command_shrink
@@ -3372,6 +3612,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_pipeline_node_command_shrink):
             body['CreatePipelineNodeCommand'] = request.create_pipeline_node_command_shrink
@@ -3422,6 +3664,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3458,6 +3702,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3508,6 +3754,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_row_permission_command_shrink):
             body['CreateRowPermissionCommand'] = request.create_row_permission_command_shrink
@@ -3544,6 +3792,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_row_permission_command_shrink):
             body['CreateRowPermissionCommand'] = request.create_row_permission_command_shrink
@@ -3594,6 +3844,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3630,6 +3882,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3680,6 +3934,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3716,6 +3972,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3766,6 +4024,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3802,6 +4062,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3852,6 +4114,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3888,6 +4152,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3938,6 +4204,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -3974,6 +4242,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4024,6 +4294,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4060,6 +4332,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4110,6 +4384,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4146,6 +4422,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4196,6 +4474,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4232,6 +4512,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4282,6 +4564,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4318,6 +4602,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4368,6 +4654,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4404,6 +4692,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4454,6 +4744,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4490,6 +4782,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4540,6 +4834,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.stream_batch_job_mapping_create_command_shrink):
             body['StreamBatchJobMappingCreateCommand'] = request.stream_batch_job_mapping_create_command_shrink
@@ -4576,6 +4872,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.stream_batch_job_mapping_create_command_shrink):
             body['StreamBatchJobMappingCreateCommand'] = request.stream_batch_job_mapping_create_command_shrink
@@ -4626,6 +4924,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4662,6 +4962,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4712,6 +5014,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4748,6 +5052,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.create_command_shrink):
             body['CreateCommand'] = request.create_command_shrink
@@ -4800,6 +5106,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -4840,6 +5148,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -4890,6 +5200,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -4922,6 +5234,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -4970,6 +5284,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -5006,6 +5322,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -5056,6 +5374,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -5090,6 +5410,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -5138,6 +5460,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_biz_metric_command_shrink):
             body['DeleteBizMetricCommand'] = request.delete_biz_metric_command_shrink
@@ -5174,6 +5498,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_biz_metric_command_shrink):
             body['DeleteBizMetricCommand'] = request.delete_biz_metric_command_shrink
@@ -5222,6 +5548,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5252,6 +5580,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5285,6 +5615,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_biz_unit_with_options_async(request, runtime)
 
+    def delete_compute_cluster_with_options(
+        self,
+        request: main_models.DeleteComputeClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComputeClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComputeCluster',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComputeClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_compute_cluster_with_options_async(
+        self,
+        request: main_models.DeleteComputeClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteComputeClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteComputeCluster',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteComputeClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_compute_cluster(
+        self,
+        request: main_models.DeleteComputeClusterRequest,
+    ) -> main_models.DeleteComputeClusterResponse:
+        runtime = RuntimeOptions()
+        return self.delete_compute_cluster_with_options(request, runtime)
+
+    async def delete_compute_cluster_async(
+        self,
+        request: main_models.DeleteComputeClusterRequest,
+    ) -> main_models.DeleteComputeClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_compute_cluster_with_options_async(request, runtime)
+
     def delete_compute_source_with_options(
         self,
         request: main_models.DeleteComputeSourceRequest,
@@ -5296,6 +5704,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5326,6 +5736,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5372,6 +5784,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5404,6 +5818,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5448,6 +5864,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5478,6 +5896,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5522,6 +5942,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5552,6 +5974,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5598,6 +6022,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -5634,6 +6060,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -5682,6 +6110,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -5714,6 +6144,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -5760,6 +6192,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -5792,6 +6226,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -5840,6 +6276,8 @@ class Client(OpenApiClient):
             query['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -5874,6 +6312,8 @@ class Client(OpenApiClient):
             query['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -5918,6 +6358,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.relation_id):
             query['RelationId'] = request.relation_id
         if not DaraCore.is_null(request.relation_type):
@@ -5952,6 +6394,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.relation_id):
             query['RelationId'] = request.relation_id
         if not DaraCore.is_null(request.relation_type):
@@ -6002,6 +6446,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6032,6 +6478,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6078,6 +6526,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6114,6 +6564,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6164,6 +6616,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6200,6 +6654,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6250,6 +6706,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6286,6 +6744,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6336,6 +6796,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6372,6 +6834,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6422,6 +6886,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_register_lineage_command_shrink):
             body['DeleteRegisterLineageCommand'] = request.delete_register_lineage_command_shrink
@@ -6458,6 +6924,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_register_lineage_command_shrink):
             body['DeleteRegisterLineageCommand'] = request.delete_register_lineage_command_shrink
@@ -6508,6 +6976,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -6542,6 +7012,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -6590,6 +7062,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_row_permission_command_shrink):
             body['DeleteRowPermissionCommand'] = request.delete_row_permission_command_shrink
@@ -6626,6 +7100,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_row_permission_command_shrink):
             body['DeleteRowPermissionCommand'] = request.delete_row_permission_command_shrink
@@ -6676,6 +7152,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6712,6 +7190,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6762,6 +7242,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6798,6 +7280,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6848,6 +7332,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6884,6 +7370,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6934,6 +7422,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -6970,6 +7460,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7020,6 +7512,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7056,6 +7550,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7106,6 +7602,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7142,6 +7640,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7190,6 +7690,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7220,6 +7722,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7266,6 +7770,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7302,6 +7808,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7350,6 +7858,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7380,6 +7890,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7426,6 +7938,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7462,6 +7976,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.delete_command_shrink):
             body['DeleteCommand'] = request.delete_command_shrink
@@ -7510,6 +8026,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7540,6 +8058,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7586,6 +8106,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -7620,6 +8142,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -7664,6 +8188,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.user_group_id):
             query['UserGroupId'] = request.user_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -7694,6 +8220,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.user_group_id):
             query['UserGroupId'] = request.user_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -7742,6 +8270,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -7780,6 +8310,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -7819,6 +8351,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.exec_kg_cypher_with_options_async(request, runtime)
 
+    def exec_kg_gremlin_with_options(
+        self,
+        tmp_req: main_models.ExecKgGremlinRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecKgGremlinResponse:
+        tmp_req.validate()
+        request = main_models.ExecKgGremlinShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.exec_command):
+            request.exec_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.exec_command, 'ExecCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.exec_command_shrink):
+            body['ExecCommand'] = request.exec_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecKgGremlin',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecKgGremlinResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def exec_kg_gremlin_with_options_async(
+        self,
+        tmp_req: main_models.ExecKgGremlinRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecKgGremlinResponse:
+        tmp_req.validate()
+        request = main_models.ExecKgGremlinShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.exec_command):
+            request.exec_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.exec_command, 'ExecCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.exec_command_shrink):
+            body['ExecCommand'] = request.exec_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecKgGremlin',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecKgGremlinResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def exec_kg_gremlin(
+        self,
+        request: main_models.ExecKgGremlinRequest,
+    ) -> main_models.ExecKgGremlinResponse:
+        runtime = RuntimeOptions()
+        return self.exec_kg_gremlin_with_options(request, runtime)
+
+    async def exec_kg_gremlin_async(
+        self,
+        request: main_models.ExecKgGremlinRequest,
+    ) -> main_models.ExecKgGremlinResponse:
+        runtime = RuntimeOptions()
+        return await self.exec_kg_gremlin_with_options_async(request, runtime)
+
     def execute_ad_hoc_task_with_options(
         self,
         tmp_req: main_models.ExecuteAdHocTaskRequest,
@@ -7832,6 +8458,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.execute_command_shrink):
             body['ExecuteCommand'] = request.execute_command_shrink
@@ -7868,6 +8496,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.execute_command_shrink):
             body['ExecuteCommand'] = request.execute_command_shrink
@@ -8014,6 +8644,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.execute_command_shrink):
             body['ExecuteCommand'] = request.execute_command_shrink
@@ -8052,6 +8684,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.execute_command_shrink):
             body['ExecuteCommand'] = request.execute_command_shrink
@@ -8106,6 +8740,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -8144,6 +8780,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -8188,6 +8826,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.output_format):
             query['OutputFormat'] = request.output_format
         if not DaraCore.is_null(request.version_id):
@@ -8222,6 +8862,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.output_format):
             query['OutputFormat'] = request.output_format
         if not DaraCore.is_null(request.version_id):
@@ -8276,6 +8918,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.fix_data_command_shrink):
             body['FixDataCommand'] = request.fix_data_command_shrink
@@ -8314,6 +8958,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.fix_data_command_shrink):
             body['FixDataCommand'] = request.fix_data_command_shrink
@@ -8364,6 +9010,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.get_account_by_row_permission_id_query_shrink):
             body['GetAccountByRowPermissionIdQuery'] = request.get_account_by_row_permission_id_query_shrink
@@ -8400,6 +9048,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.get_account_by_row_permission_id_query_shrink):
             body['GetAccountByRowPermissionIdQuery'] = request.get_account_by_row_permission_id_query_shrink
@@ -8448,6 +9098,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -8480,6 +9132,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -8526,6 +9180,8 @@ class Client(OpenApiClient):
             query['Offset'] = request.offset
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.sub_task_id):
@@ -8562,6 +9218,8 @@ class Client(OpenApiClient):
             query['Offset'] = request.offset
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.sub_task_id):
@@ -8610,6 +9268,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.sub_task_id):
@@ -8644,6 +9304,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.sub_task_id):
@@ -8694,6 +9356,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8724,6 +9388,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8757,6 +9423,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_alert_event_with_options_async(request, runtime)
 
+    def get_asset_attributes_with_options(
+        self,
+        tmp_req: main_models.GetAssetAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAssetAttributesResponse:
+        tmp_req.validate()
+        request = main_models.GetAssetAttributesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.query_command):
+            request.query_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_command, 'QueryCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.query_command_shrink):
+            body['QueryCommand'] = request.query_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAssetAttributes',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAssetAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_asset_attributes_with_options_async(
+        self,
+        tmp_req: main_models.GetAssetAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAssetAttributesResponse:
+        tmp_req.validate()
+        request = main_models.GetAssetAttributesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.query_command):
+            request.query_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_command, 'QueryCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.query_command_shrink):
+            body['QueryCommand'] = request.query_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAssetAttributes',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAssetAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_asset_attributes(
+        self,
+        request: main_models.GetAssetAttributesRequest,
+    ) -> main_models.GetAssetAttributesResponse:
+        runtime = RuntimeOptions()
+        return self.get_asset_attributes_with_options(request, runtime)
+
+    async def get_asset_attributes_async(
+        self,
+        request: main_models.GetAssetAttributesRequest,
+    ) -> main_models.GetAssetAttributesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_asset_attributes_with_options_async(request, runtime)
+
     def get_asset_mapping_relations_with_options(
         self,
         tmp_req: main_models.GetAssetMappingRelationsRequest,
@@ -8770,6 +9526,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.asset_mapping_query_shrink):
             body['AssetMappingQuery'] = request.asset_mapping_query_shrink
@@ -8806,6 +9564,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.asset_mapping_query_shrink):
             body['AssetMappingQuery'] = request.asset_mapping_query_shrink
@@ -8843,6 +9603,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_asset_mapping_relations_with_options_async(request, runtime)
 
+    def get_asset_type_attribute_codes_with_options(
+        self,
+        request: main_models.GetAssetTypeAttributeCodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAssetTypeAttributeCodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAssetTypeAttributeCodes',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAssetTypeAttributeCodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_asset_type_attribute_codes_with_options_async(
+        self,
+        request: main_models.GetAssetTypeAttributeCodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAssetTypeAttributeCodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAssetTypeAttributeCodes',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAssetTypeAttributeCodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_asset_type_attribute_codes(
+        self,
+        request: main_models.GetAssetTypeAttributeCodesRequest,
+    ) -> main_models.GetAssetTypeAttributeCodesResponse:
+        runtime = RuntimeOptions()
+        return self.get_asset_type_attribute_codes_with_options(request, runtime)
+
+    async def get_asset_type_attribute_codes_async(
+        self,
+        request: main_models.GetAssetTypeAttributeCodesRequest,
+    ) -> main_models.GetAssetTypeAttributeCodesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_asset_type_attribute_codes_with_options_async(request, runtime)
+
     def get_batch_task_info_with_options(
         self,
         request: main_models.GetBatchTaskInfoRequest,
@@ -8858,6 +9696,8 @@ class Client(OpenApiClient):
             query['IncludeAllUpStreams'] = request.include_all_up_streams
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -8894,6 +9734,8 @@ class Client(OpenApiClient):
             query['IncludeAllUpStreams'] = request.include_all_up_streams
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -8940,6 +9782,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.version_id):
@@ -8974,6 +9818,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.version_id):
@@ -9022,6 +9868,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -9054,6 +9902,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -9100,6 +9950,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -9132,6 +9984,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -9178,6 +10032,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.template_id):
@@ -9212,6 +10068,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.template_id):
@@ -9262,6 +10120,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.asset_mapping_query_shrink):
             body['AssetMappingQuery'] = request.asset_mapping_query_shrink
@@ -9298,6 +10158,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.asset_mapping_query_shrink):
             body['AssetMappingQuery'] = request.asset_mapping_query_shrink
@@ -9346,6 +10208,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -9378,6 +10242,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -9424,6 +10290,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         if not DaraCore.is_null(request.version_id):
@@ -9458,6 +10326,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         if not DaraCore.is_null(request.version_id):
@@ -9508,6 +10378,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.biz_metric_by_name_query_shrink):
             body['BizMetricByNameQuery'] = request.biz_metric_by_name_query_shrink
@@ -9544,6 +10416,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.biz_metric_by_name_query_shrink):
             body['BizMetricByNameQuery'] = request.biz_metric_by_name_query_shrink
@@ -9592,6 +10466,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9622,6 +10498,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9668,6 +10546,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.get_catalog_asset_details_query_shrink):
             body['GetCatalogAssetDetailsQuery'] = request.get_catalog_asset_details_query_shrink
@@ -9704,6 +10584,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.get_catalog_asset_details_query_shrink):
             body['GetCatalogAssetDetailsQuery'] = request.get_catalog_asset_details_query_shrink
@@ -9752,6 +10634,8 @@ class Client(OpenApiClient):
             query['DataSourceId'] = request.data_source_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9782,6 +10666,8 @@ class Client(OpenApiClient):
             query['DataSourceId'] = request.data_source_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9826,6 +10712,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.stream_batch_mode):
@@ -9860,6 +10748,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.stream_batch_mode):
@@ -9897,6 +10787,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_cluster_queue_info_by_env_with_options_async(request, runtime)
 
+    def get_compute_cluster_with_options(
+        self,
+        request: main_models.GetComputeClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetComputeClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetComputeCluster',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetComputeClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_cluster_with_options_async(
+        self,
+        request: main_models.GetComputeClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetComputeClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetComputeCluster',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetComputeClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_cluster(
+        self,
+        request: main_models.GetComputeClusterRequest,
+    ) -> main_models.GetComputeClusterResponse:
+        runtime = RuntimeOptions()
+        return self.get_compute_cluster_with_options(request, runtime)
+
+    async def get_compute_cluster_async(
+        self,
+        request: main_models.GetComputeClusterRequest,
+    ) -> main_models.GetComputeClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.get_compute_cluster_with_options_async(request, runtime)
+
     def get_compute_source_with_options(
         self,
         request: main_models.GetComputeSourceRequest,
@@ -9908,6 +10876,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9938,6 +10908,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9971,6 +10943,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_compute_source_with_options_async(request, runtime)
 
+    def get_data_assets_govern_object_with_options(
+        self,
+        tmp_req: main_models.GetDataAssetsGovernObjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAssetsGovernObjectResponse:
+        tmp_req.validate()
+        request = main_models.GetDataAssetsGovernObjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.command):
+            request.command_shrink = Utils.array_to_string_with_specified_style(tmp_req.command, 'Command', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.command_shrink):
+            body['Command'] = request.command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAssetsGovernObject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAssetsGovernObjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_assets_govern_object_with_options_async(
+        self,
+        tmp_req: main_models.GetDataAssetsGovernObjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAssetsGovernObjectResponse:
+        tmp_req.validate()
+        request = main_models.GetDataAssetsGovernObjectShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.command):
+            request.command_shrink = Utils.array_to_string_with_specified_style(tmp_req.command, 'Command', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.command_shrink):
+            body['Command'] = request.command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAssetsGovernObject',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAssetsGovernObjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_assets_govern_object(
+        self,
+        request: main_models.GetDataAssetsGovernObjectRequest,
+    ) -> main_models.GetDataAssetsGovernObjectResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_assets_govern_object_with_options(request, runtime)
+
+    async def get_data_assets_govern_object_async(
+        self,
+        request: main_models.GetDataAssetsGovernObjectRequest,
+    ) -> main_models.GetDataAssetsGovernObjectResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_assets_govern_object_with_options_async(request, runtime)
+
     def get_data_domain_info_with_options(
         self,
         request: main_models.GetDataDomainInfoRequest,
@@ -9982,6 +11044,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10012,6 +11076,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10056,6 +11122,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.start_time):
@@ -10090,6 +11158,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.start_time):
@@ -10138,6 +11208,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.start_time):
@@ -10172,6 +11244,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.start_time):
@@ -10220,6 +11294,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
         req = open_api_util_models.OpenApiRequest(
@@ -10252,6 +11328,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
         req = open_api_util_models.OpenApiRequest(
@@ -10298,6 +11376,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.start_time):
@@ -10332,6 +11412,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.start_time):
@@ -10378,6 +11460,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10408,6 +11492,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10454,6 +11540,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10484,6 +11572,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10528,6 +11618,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10560,6 +11652,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10604,6 +11698,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10634,6 +11730,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10680,6 +11778,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10710,6 +11810,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10754,6 +11856,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10786,6 +11890,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10832,6 +11938,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10864,6 +11972,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -10908,6 +12018,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10936,6 +12048,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10978,6 +12092,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11006,6 +12122,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11048,6 +12166,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -11078,6 +12198,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -11124,6 +12246,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11154,6 +12278,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11198,6 +12324,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -11230,6 +12358,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -11280,6 +12410,8 @@ class Client(OpenApiClient):
             query['ObjectType'] = request.object_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -11316,6 +12448,8 @@ class Client(OpenApiClient):
             query['ObjectType'] = request.object_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -11362,6 +12496,8 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -11394,6 +12530,8 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -11438,6 +12576,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.purpose):
@@ -11472,6 +12612,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.purpose):
@@ -11528,6 +12670,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.run_status):
             query['RunStatus'] = request.run_status
         body = {}
@@ -11570,6 +12714,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.run_status):
             query['RunStatus'] = request.run_status
         body = {}
@@ -11626,6 +12772,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.up_stream_depth):
@@ -11670,6 +12818,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.up_stream_depth):
@@ -11711,6 +12861,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_instance_up_down_stream_with_options_async(request, runtime)
 
+    def get_kg_authorized_workspaces_with_options(
+        self,
+        request: main_models.GetKgAuthorizedWorkspacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgAuthorizedWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgAuthorizedWorkspaces',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgAuthorizedWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kg_authorized_workspaces_with_options_async(
+        self,
+        request: main_models.GetKgAuthorizedWorkspacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKgAuthorizedWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKgAuthorizedWorkspaces',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKgAuthorizedWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kg_authorized_workspaces(
+        self,
+        request: main_models.GetKgAuthorizedWorkspacesRequest,
+    ) -> main_models.GetKgAuthorizedWorkspacesResponse:
+        runtime = RuntimeOptions()
+        return self.get_kg_authorized_workspaces_with_options(request, runtime)
+
+    async def get_kg_authorized_workspaces_async(
+        self,
+        request: main_models.GetKgAuthorizedWorkspacesRequest,
+    ) -> main_models.GetKgAuthorizedWorkspacesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_kg_authorized_workspaces_with_options_async(request, runtime)
+
     def get_kg_entity_with_options(
         self,
         request: main_models.GetKgEntityRequest,
@@ -11724,6 +12948,8 @@ class Client(OpenApiClient):
             query['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -11758,6 +12984,8 @@ class Client(OpenApiClient):
             query['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -11810,6 +13038,8 @@ class Client(OpenApiClient):
             query['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -11852,6 +13082,8 @@ class Client(OpenApiClient):
             query['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -11900,6 +13132,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.relation_id):
             query['RelationId'] = request.relation_id
         if not DaraCore.is_null(request.relation_type):
@@ -11934,6 +13168,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.relation_id):
             query['RelationId'] = request.relation_id
         if not DaraCore.is_null(request.relation_type):
@@ -11982,6 +13218,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
         if not DaraCore.is_null(request.workspace_id):
@@ -12014,6 +13252,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
         if not DaraCore.is_null(request.workspace_id):
@@ -12064,6 +13304,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.submit_detail_query_shrink):
             body['SubmitDetailQuery'] = request.submit_detail_query_shrink
@@ -12100,6 +13342,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.submit_detail_query_shrink):
             body['SubmitDetailQuery'] = request.submit_detail_query_shrink
@@ -12137,6 +13381,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_latest_submit_detail_with_options_async(request, runtime)
 
+    def get_llm_model_provider_by_name_with_options(
+        self,
+        request: main_models.GetLlmModelProviderByNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLlmModelProviderByNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLlmModelProviderByName',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLlmModelProviderByNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_llm_model_provider_by_name_with_options_async(
+        self,
+        request: main_models.GetLlmModelProviderByNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLlmModelProviderByNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLlmModelProviderByName',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLlmModelProviderByNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_llm_model_provider_by_name(
+        self,
+        request: main_models.GetLlmModelProviderByNameRequest,
+    ) -> main_models.GetLlmModelProviderByNameResponse:
+        runtime = RuntimeOptions()
+        return self.get_llm_model_provider_by_name_with_options(request, runtime)
+
+    async def get_llm_model_provider_by_name_async(
+        self,
+        request: main_models.GetLlmModelProviderByNameRequest,
+    ) -> main_models.GetLlmModelProviderByNameResponse:
+        runtime = RuntimeOptions()
+        return await self.get_llm_model_provider_by_name_with_options_async(request, runtime)
+
+    def get_llm_model_providers_with_options(
+        self,
+        request: main_models.GetLlmModelProvidersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLlmModelProvidersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLlmModelProviders',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLlmModelProvidersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_llm_model_providers_with_options_async(
+        self,
+        request: main_models.GetLlmModelProvidersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLlmModelProvidersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLlmModelProviders',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLlmModelProvidersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_llm_model_providers(
+        self,
+        request: main_models.GetLlmModelProvidersRequest,
+    ) -> main_models.GetLlmModelProvidersResponse:
+        runtime = RuntimeOptions()
+        return self.get_llm_model_providers_with_options(request, runtime)
+
+    async def get_llm_model_providers_async(
+        self,
+        request: main_models.GetLlmModelProvidersRequest,
+    ) -> main_models.GetLlmModelProvidersResponse:
+        runtime = RuntimeOptions()
+        return await self.get_llm_model_providers_with_options_async(request, runtime)
+
     def get_my_roles_with_options(
         self,
         request: main_models.GetMyRolesRequest,
@@ -12146,6 +13542,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12174,6 +13572,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12220,6 +13620,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.feature_code_list_shrink):
             body['FeatureCodeList'] = request.feature_code_list_shrink
@@ -12256,6 +13658,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.feature_code_list_shrink):
             body['FeatureCodeList'] = request.feature_code_list_shrink
@@ -12310,6 +13714,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.up_stream_depth):
@@ -12354,6 +13760,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.up_stream_depth):
@@ -12408,6 +13816,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.detail_command_shrink):
             body['DetailCommand'] = request.detail_command_shrink
@@ -12444,6 +13854,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.detail_command_shrink):
             body['DetailCommand'] = request.detail_command_shrink
@@ -12494,6 +13906,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.record_detail_command_shrink):
             body['RecordDetailCommand'] = request.record_detail_command_shrink
@@ -12530,6 +13944,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.record_detail_command_shrink):
             body['RecordDetailCommand'] = request.record_detail_command_shrink
@@ -12580,6 +13996,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.code_command_shrink):
             body['CodeCommand'] = request.code_command_shrink
@@ -12616,6 +14034,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.code_command_shrink):
             body['CodeCommand'] = request.code_command_shrink
@@ -12666,6 +14086,8 @@ class Client(OpenApiClient):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12698,6 +14120,8 @@ class Client(OpenApiClient):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12744,6 +14168,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -12778,6 +14204,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -12826,6 +14254,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -12860,6 +14290,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -12908,6 +14340,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12940,6 +14374,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12984,6 +14420,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.output_name):
             query['OutputName'] = request.output_name
         req = open_api_util_models.OpenApiRequest(
@@ -13016,6 +14454,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.output_name):
             query['OutputName'] = request.output_name
         req = open_api_util_models.OpenApiRequest(
@@ -13064,6 +14504,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13096,6 +14538,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13142,6 +14586,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13174,6 +14620,8 @@ class Client(OpenApiClient):
             query['NodeId'] = request.node_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13222,6 +14670,8 @@ class Client(OpenApiClient):
             query['AsyncId'] = request.async_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -13260,6 +14710,8 @@ class Client(OpenApiClient):
             query['AsyncId'] = request.async_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -13312,6 +14764,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -13352,6 +14806,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -13404,6 +14860,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13436,6 +14894,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13480,6 +14940,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13510,6 +14972,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13552,6 +15016,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -13582,6 +15048,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -13628,6 +15096,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13658,6 +15128,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13700,6 +15172,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_id):
             query['WatchId'] = request.watch_id
         req = open_api_util_models.OpenApiRequest(
@@ -13730,6 +15204,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_id):
             query['WatchId'] = request.watch_id
         req = open_api_util_models.OpenApiRequest(
@@ -13765,6 +15241,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_quality_alert_of_all_rule_scope_by_watch_id_with_options_async(request, runtime)
 
+    def get_quality_archive_table_progress_with_options(
+        self,
+        request: main_models.GetQualityArchiveTableProgressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetQualityArchiveTableProgressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        if not DaraCore.is_null(request.progress_id):
+            query['ProgressId'] = request.progress_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetQualityArchiveTableProgress',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetQualityArchiveTableProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_quality_archive_table_progress_with_options_async(
+        self,
+        request: main_models.GetQualityArchiveTableProgressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetQualityArchiveTableProgressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        if not DaraCore.is_null(request.progress_id):
+            query['ProgressId'] = request.progress_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetQualityArchiveTableProgress',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetQualityArchiveTableProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_quality_archive_table_progress(
+        self,
+        request: main_models.GetQualityArchiveTableProgressRequest,
+    ) -> main_models.GetQualityArchiveTableProgressResponse:
+        runtime = RuntimeOptions()
+        return self.get_quality_archive_table_progress_with_options(request, runtime)
+
+    async def get_quality_archive_table_progress_async(
+        self,
+        request: main_models.GetQualityArchiveTableProgressRequest,
+    ) -> main_models.GetQualityArchiveTableProgressResponse:
+        runtime = RuntimeOptions()
+        return await self.get_quality_archive_table_progress_with_options_async(request, runtime)
+
     def get_quality_rule_with_options(
         self,
         request: main_models.GetQualityRuleRequest,
@@ -13776,6 +15330,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13806,6 +15362,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13848,6 +15406,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.rule_task_id):
             query['RuleTaskId'] = request.rule_task_id
         req = open_api_util_models.OpenApiRequest(
@@ -13878,6 +15438,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.rule_task_id):
             query['RuleTaskId'] = request.rule_task_id
         req = open_api_util_models.OpenApiRequest(
@@ -13922,6 +15484,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.rule_task_id):
             query['RuleTaskId'] = request.rule_task_id
         req = open_api_util_models.OpenApiRequest(
@@ -13952,6 +15516,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.rule_task_id):
             query['RuleTaskId'] = request.rule_task_id
         req = open_api_util_models.OpenApiRequest(
@@ -13998,6 +15564,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14028,6 +15596,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14070,6 +15640,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_id):
             query['WatchId'] = request.watch_id
         req = open_api_util_models.OpenApiRequest(
@@ -14100,6 +15672,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_id):
             query['WatchId'] = request.watch_id
         req = open_api_util_models.OpenApiRequest(
@@ -14146,6 +15720,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14176,6 +15752,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14220,6 +15798,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14250,6 +15830,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14292,6 +15874,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_object_id):
             query['WatchObjectId'] = request.watch_object_id
         if not DaraCore.is_null(request.watch_type):
@@ -14324,6 +15908,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_object_id):
             query['WatchObjectId'] = request.watch_object_id
         if not DaraCore.is_null(request.watch_type):
@@ -14370,6 +15956,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_task_id):
             query['WatchTaskId'] = request.watch_task_id
         req = open_api_util_models.OpenApiRequest(
@@ -14400,6 +15988,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_task_id):
             query['WatchTaskId'] = request.watch_task_id
         req = open_api_util_models.OpenApiRequest(
@@ -14444,6 +16034,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_task_id):
             query['WatchTaskId'] = request.watch_task_id
         req = open_api_util_models.OpenApiRequest(
@@ -14474,6 +16066,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.watch_task_id):
             query['WatchTaskId'] = request.watch_task_id
         req = open_api_util_models.OpenApiRequest(
@@ -14522,6 +16116,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.queue_name):
@@ -14560,6 +16156,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.queue_name):
@@ -14610,6 +16208,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -14642,6 +16242,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -14688,6 +16290,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.version_id):
@@ -14722,6 +16326,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.version_id):
@@ -14772,6 +16378,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.get_row_permission_by_table_guids_query_shrink):
             body['GetRowPermissionByTableGuidsQuery'] = request.get_row_permission_by_table_guids_query_shrink
@@ -14808,6 +16416,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.get_row_permission_by_table_guids_query_shrink):
             body['GetRowPermissionByTableGuidsQuery'] = request.get_row_permission_by_table_guids_query_shrink
@@ -14856,6 +16466,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14886,6 +16498,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14930,6 +16544,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14960,6 +16576,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15004,6 +16622,8 @@ class Client(OpenApiClient):
             query['Index'] = request.index
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15034,6 +16654,8 @@ class Client(OpenApiClient):
             query['Index'] = request.index
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15078,6 +16700,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15108,6 +16732,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15152,6 +16778,8 @@ class Client(OpenApiClient):
             query['EnvEnum'] = request.env_enum
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -15184,6 +16812,8 @@ class Client(OpenApiClient):
             query['EnvEnum'] = request.env_enum
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -15232,6 +16862,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.standard_get_query_shrink):
             body['StandardGetQuery'] = request.standard_get_query_shrink
@@ -15268,6 +16900,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.standard_get_query_shrink):
             body['StandardGetQuery'] = request.standard_get_query_shrink
@@ -15318,6 +16952,8 @@ class Client(OpenApiClient):
             query['Nullable'] = request.nullable
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15350,6 +16986,8 @@ class Client(OpenApiClient):
             query['Nullable'] = request.nullable
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15396,6 +17034,8 @@ class Client(OpenApiClient):
             query['Nullable'] = request.nullable
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15428,6 +17068,8 @@ class Client(OpenApiClient):
             query['Nullable'] = request.nullable
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15474,6 +17116,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.statistics_query_shrink):
             body['StatisticsQuery'] = request.statistics_query_shrink
@@ -15510,6 +17154,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.statistics_query_shrink):
             body['StatisticsQuery'] = request.statistics_query_shrink
@@ -15564,6 +17210,8 @@ class Client(OpenApiClient):
             query['Nullable'] = request.nullable
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.filter_query_shrink):
             body['FilterQuery'] = request.filter_query_shrink
@@ -15604,6 +17252,8 @@ class Client(OpenApiClient):
             query['Nullable'] = request.nullable
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.filter_query_shrink):
             body['FilterQuery'] = request.filter_query_shrink
@@ -15654,6 +17304,8 @@ class Client(OpenApiClient):
             query['Nullable'] = request.nullable
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15686,6 +17338,8 @@ class Client(OpenApiClient):
             query['Nullable'] = request.nullable
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15730,6 +17384,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -15762,6 +17418,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -15808,6 +17466,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.supplement_id):
             query['SupplementId'] = request.supplement_id
         req = open_api_util_models.OpenApiRequest(
@@ -15840,6 +17500,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.supplement_id):
             query['SupplementId'] = request.supplement_id
         req = open_api_util_models.OpenApiRequest(
@@ -15888,6 +17550,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15920,6 +17584,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15966,6 +17632,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.table_column_lineage_by_task_id_query_shrink):
             body['TableColumnLineageByTaskIdQuery'] = request.table_column_lineage_by_task_id_query_shrink
@@ -16002,6 +17670,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.table_column_lineage_by_task_id_query_shrink):
             body['TableColumnLineageByTaskIdQuery'] = request.table_column_lineage_by_task_id_query_shrink
@@ -16052,6 +17722,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.table_guid):
             query['TableGuid'] = request.table_guid
         body = {}
@@ -16090,6 +17762,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.table_guid):
             query['TableGuid'] = request.table_guid
         body = {}
@@ -16140,6 +17814,8 @@ class Client(OpenApiClient):
             query['Catalog'] = request.catalog
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -16172,6 +17848,8 @@ class Client(OpenApiClient):
             query['Catalog'] = request.catalog
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -16220,6 +17898,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.table_lineage_by_task_id_query_shrink):
             body['TableLineageByTaskIdQuery'] = request.table_lineage_by_task_id_query_shrink
@@ -16256,6 +17936,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.table_lineage_by_task_id_query_shrink):
             body['TableLineageByTaskIdQuery'] = request.table_lineage_by_task_id_query_shrink
@@ -16306,6 +17988,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.table_guid):
             query['TableGuid'] = request.table_guid
         body = {}
@@ -16344,6 +18028,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.table_guid):
             query['TableGuid'] = request.table_guid
         body = {}
@@ -16392,6 +18078,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.proposal_id):
             query['ProposalId'] = request.proposal_id
         req = open_api_util_models.OpenApiRequest(
@@ -16422,6 +18110,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.proposal_id):
             query['ProposalId'] = request.proposal_id
         req = open_api_util_models.OpenApiRequest(
@@ -16468,6 +18158,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -16500,6 +18192,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -16546,6 +18240,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.version_id):
@@ -16580,6 +18276,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.version_id):
@@ -16617,6 +18315,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_udf_by_version_with_options_async(request, runtime)
 
+    def get_user_by_access_key_with_options(
+        self,
+        request: main_models.GetUserByAccessKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserByAccessKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserByAccessKey',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserByAccessKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_by_access_key_with_options_async(
+        self,
+        request: main_models.GetUserByAccessKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserByAccessKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserByAccessKey',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserByAccessKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_by_access_key(
+        self,
+        request: main_models.GetUserByAccessKeyRequest,
+    ) -> main_models.GetUserByAccessKeyResponse:
+        runtime = RuntimeOptions()
+        return self.get_user_by_access_key_with_options(request, runtime)
+
+    async def get_user_by_access_key_async(
+        self,
+        request: main_models.GetUserByAccessKeyRequest,
+    ) -> main_models.GetUserByAccessKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_user_by_access_key_with_options_async(request, runtime)
+
     def get_user_by_source_id_with_options(
         self,
         request: main_models.GetUserBySourceIdRequest,
@@ -16626,8 +18398,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.source_id):
             query['SourceId'] = request.source_id
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -16656,8 +18432,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.source_id):
             query['SourceId'] = request.source_id
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -16700,6 +18480,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.user_group_id):
             query['UserGroupId'] = request.user_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -16730,6 +18512,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.user_group_id):
             query['UserGroupId'] = request.user_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -16778,6 +18562,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.user_id_list_shrink):
             body['UserIdList'] = request.user_id_list_shrink
@@ -16814,6 +18600,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.user_id_list_shrink):
             body['UserIdList'] = request.user_id_list_shrink
@@ -16864,6 +18652,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -16902,6 +18692,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -16954,6 +18746,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.grant_command_shrink):
             body['GrantCommand'] = request.grant_command_shrink
@@ -16990,6 +18784,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.grant_command_shrink):
             body['GrantCommand'] = request.grant_command_shrink
@@ -17040,6 +18836,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -17078,6 +18876,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -17126,6 +18926,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17154,6 +18956,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17200,6 +19004,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17236,6 +19042,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17286,6 +19094,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17322,6 +19132,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17372,6 +19184,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17408,6 +19222,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17458,6 +19274,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.page_query_shrink):
             body['PageQuery'] = request.page_query_shrink
@@ -17494,6 +19312,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.page_query_shrink):
             body['PageQuery'] = request.page_query_shrink
@@ -17531,6 +19351,276 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_api_by_app_with_options_async(request, runtime)
 
+    def list_approval_tasks_by_user_with_options(
+        self,
+        tmp_req: main_models.ListApprovalTasksByUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApprovalTasksByUserResponse:
+        tmp_req.validate()
+        request = main_models.ListApprovalTasksByUserShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApprovalTasksByUser',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApprovalTasksByUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_approval_tasks_by_user_with_options_async(
+        self,
+        tmp_req: main_models.ListApprovalTasksByUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApprovalTasksByUserResponse:
+        tmp_req.validate()
+        request = main_models.ListApprovalTasksByUserShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApprovalTasksByUser',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApprovalTasksByUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_approval_tasks_by_user(
+        self,
+        request: main_models.ListApprovalTasksByUserRequest,
+    ) -> main_models.ListApprovalTasksByUserResponse:
+        runtime = RuntimeOptions()
+        return self.list_approval_tasks_by_user_with_options(request, runtime)
+
+    async def list_approval_tasks_by_user_async(
+        self,
+        request: main_models.ListApprovalTasksByUserRequest,
+    ) -> main_models.ListApprovalTasksByUserResponse:
+        runtime = RuntimeOptions()
+        return await self.list_approval_tasks_by_user_with_options_async(request, runtime)
+
+    def list_asset_directories_with_options(
+        self,
+        tmp_req: main_models.ListAssetDirectoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssetDirectoriesResponse:
+        tmp_req.validate()
+        request = main_models.ListAssetDirectoriesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAssetDirectories',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAssetDirectoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_asset_directories_with_options_async(
+        self,
+        tmp_req: main_models.ListAssetDirectoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssetDirectoriesResponse:
+        tmp_req.validate()
+        request = main_models.ListAssetDirectoriesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAssetDirectories',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAssetDirectoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_asset_directories(
+        self,
+        request: main_models.ListAssetDirectoriesRequest,
+    ) -> main_models.ListAssetDirectoriesResponse:
+        runtime = RuntimeOptions()
+        return self.list_asset_directories_with_options(request, runtime)
+
+    async def list_asset_directories_async(
+        self,
+        request: main_models.ListAssetDirectoriesRequest,
+    ) -> main_models.ListAssetDirectoriesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_asset_directories_with_options_async(request, runtime)
+
+    def list_asset_topics_with_options(
+        self,
+        tmp_req: main_models.ListAssetTopicsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssetTopicsResponse:
+        tmp_req.validate()
+        request = main_models.ListAssetTopicsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAssetTopics',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAssetTopicsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_asset_topics_with_options_async(
+        self,
+        tmp_req: main_models.ListAssetTopicsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssetTopicsResponse:
+        tmp_req.validate()
+        request = main_models.ListAssetTopicsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAssetTopics',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAssetTopicsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_asset_topics(
+        self,
+        request: main_models.ListAssetTopicsRequest,
+    ) -> main_models.ListAssetTopicsResponse:
+        runtime = RuntimeOptions()
+        return self.list_asset_topics_with_options(request, runtime)
+
+    async def list_asset_topics_async(
+        self,
+        request: main_models.ListAssetTopicsRequest,
+    ) -> main_models.ListAssetTopicsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_asset_topics_with_options_async(request, runtime)
+
     def list_authorized_data_service_api_details_with_options(
         self,
         tmp_req: main_models.ListAuthorizedDataServiceApiDetailsRequest,
@@ -17544,6 +19634,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17580,6 +19672,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17632,6 +19726,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -17672,6 +19768,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -17724,6 +19822,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17760,6 +19860,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -17806,6 +19908,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17834,6 +19938,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17880,6 +19986,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_catalog_assets_query_shrink):
             body['ListCatalogAssetsQuery'] = request.list_catalog_assets_query_shrink
@@ -17916,6 +20024,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_catalog_assets_query_shrink):
             body['ListCatalogAssetsQuery'] = request.list_catalog_assets_query_shrink
@@ -17953,6 +20063,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_catalog_assets_with_options_async(request, runtime)
 
+    def list_compute_clusters_with_options(
+        self,
+        tmp_req: main_models.ListComputeClustersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListComputeClustersResponse:
+        tmp_req.validate()
+        request = main_models.ListComputeClustersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListComputeClusters',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListComputeClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_compute_clusters_with_options_async(
+        self,
+        tmp_req: main_models.ListComputeClustersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListComputeClustersResponse:
+        tmp_req.validate()
+        request = main_models.ListComputeClustersShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListComputeClusters',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListComputeClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_compute_clusters(
+        self,
+        request: main_models.ListComputeClustersRequest,
+    ) -> main_models.ListComputeClustersResponse:
+        runtime = RuntimeOptions()
+        return self.list_compute_clusters_with_options(request, runtime)
+
+    async def list_compute_clusters_async(
+        self,
+        request: main_models.ListComputeClustersRequest,
+    ) -> main_models.ListComputeClustersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_compute_clusters_with_options_async(request, runtime)
+
     def list_compute_sources_with_options(
         self,
         tmp_req: main_models.ListComputeSourcesRequest,
@@ -17966,6 +20174,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -18002,6 +20212,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -18052,6 +20264,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -18088,6 +20302,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -18138,6 +20354,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18176,6 +20394,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18228,6 +20448,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18266,6 +20488,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18318,6 +20542,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18356,6 +20582,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18408,6 +20636,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -18444,6 +20674,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -18494,6 +20726,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18532,6 +20766,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18584,6 +20820,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18622,6 +20860,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18674,6 +20914,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18712,6 +20954,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18764,6 +21008,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18802,6 +21048,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -18854,6 +21102,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -18890,6 +21140,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -18940,6 +21192,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.dataset_query_shrink):
             body['DatasetQuery'] = request.dataset_query_shrink
@@ -18976,6 +21230,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.dataset_query_shrink):
             body['DatasetQuery'] = request.dataset_query_shrink
@@ -19026,6 +21282,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19062,6 +21320,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19099,6 +21359,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_files_with_options_async(request, runtime)
 
+    def list_govern_objects_with_options(
+        self,
+        tmp_req: main_models.ListGovernObjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGovernObjectsResponse:
+        tmp_req.validate()
+        request = main_models.ListGovernObjectsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGovernObjects',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGovernObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_govern_objects_with_options_async(
+        self,
+        tmp_req: main_models.ListGovernObjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGovernObjectsResponse:
+        tmp_req.validate()
+        request = main_models.ListGovernObjectsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGovernObjects',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGovernObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_govern_objects(
+        self,
+        request: main_models.ListGovernObjectsRequest,
+    ) -> main_models.ListGovernObjectsResponse:
+        runtime = RuntimeOptions()
+        return self.list_govern_objects_with_options(request, runtime)
+
+    async def list_govern_objects_async(
+        self,
+        request: main_models.ListGovernObjectsRequest,
+    ) -> main_models.ListGovernObjectsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_govern_objects_with_options_async(request, runtime)
+
     def list_instances_with_options(
         self,
         tmp_req: main_models.ListInstancesRequest,
@@ -19114,6 +21464,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19152,6 +21504,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19204,6 +21558,8 @@ class Client(OpenApiClient):
             query['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -19244,6 +21600,8 @@ class Client(OpenApiClient):
             query['EntityType'] = request.entity_type
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -19296,6 +21654,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.relation_type):
             query['RelationType'] = request.relation_type
         if not DaraCore.is_null(request.workspace_id):
@@ -19336,6 +21696,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.relation_type):
             query['RelationType'] = request.relation_type
         if not DaraCore.is_null(request.workspace_id):
@@ -19392,6 +21754,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19430,6 +21794,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19482,6 +21848,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19520,6 +21888,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19570,6 +21940,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_command_shrink):
             body['ListCommand'] = request.list_command_shrink
@@ -19606,6 +21978,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_command_shrink):
             body['ListCommand'] = request.list_command_shrink
@@ -19658,6 +22032,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -19698,6 +22074,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -19752,6 +22130,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19790,6 +22170,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19840,6 +22222,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19876,6 +22260,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19926,6 +22312,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19962,6 +22350,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -19999,6 +22389,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_publish_records_with_options_async(request, runtime)
 
+    def list_quality_archive_tables_with_options(
+        self,
+        tmp_req: main_models.ListQualityArchiveTablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQualityArchiveTablesResponse:
+        tmp_req.validate()
+        request = main_models.ListQualityArchiveTablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQualityArchiveTables',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQualityArchiveTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_quality_archive_tables_with_options_async(
+        self,
+        tmp_req: main_models.ListQualityArchiveTablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQualityArchiveTablesResponse:
+        tmp_req.validate()
+        request = main_models.ListQualityArchiveTablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.list_query):
+            request.list_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQualityArchiveTables',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQualityArchiveTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_quality_archive_tables(
+        self,
+        request: main_models.ListQualityArchiveTablesRequest,
+    ) -> main_models.ListQualityArchiveTablesResponse:
+        runtime = RuntimeOptions()
+        return self.list_quality_archive_tables_with_options(request, runtime)
+
+    async def list_quality_archive_tables_async(
+        self,
+        request: main_models.ListQualityArchiveTablesRequest,
+    ) -> main_models.ListQualityArchiveTablesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_quality_archive_tables_with_options_async(request, runtime)
+
     def list_quality_rule_tasks_with_options(
         self,
         tmp_req: main_models.ListQualityRuleTasksRequest,
@@ -20012,6 +22492,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20048,6 +22530,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20098,6 +22582,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20134,6 +22620,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20184,6 +22672,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20220,6 +22710,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20270,6 +22762,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20306,6 +22800,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20356,6 +22852,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20392,6 +22890,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20614,6 +23114,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.page_row_permission_query_shrink):
             body['PageRowPermissionQuery'] = request.page_row_permission_query_shrink
@@ -20650,6 +23152,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.page_row_permission_query_shrink):
             body['PageRowPermissionQuery'] = request.page_row_permission_query_shrink
@@ -20700,6 +23204,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_row_permission_by_user_id_query_shrink):
             body['ListRowPermissionByUserIdQuery'] = request.list_row_permission_by_user_id_query_shrink
@@ -20736,6 +23242,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_row_permission_by_user_id_query_shrink):
             body['ListRowPermissionByUserIdQuery'] = request.list_row_permission_by_user_id_query_shrink
@@ -20872,6 +23380,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20908,6 +23418,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20958,6 +23470,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -20994,6 +23508,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21044,6 +23560,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21080,6 +23598,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21130,6 +23650,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21166,6 +23688,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21216,6 +23740,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21252,6 +23778,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21302,6 +23830,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21338,6 +23868,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21388,6 +23920,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21424,6 +23958,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21474,6 +24010,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21510,6 +24048,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.list_query_shrink):
             body['ListQuery'] = request.list_query_shrink
@@ -21560,6 +24100,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -21594,6 +24136,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -21642,6 +24186,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.offline_command_shrink):
             body['OfflineCommand'] = request.offline_command_shrink
@@ -21678,6 +24224,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.offline_command_shrink):
             body['OfflineCommand'] = request.offline_command_shrink
@@ -21730,6 +24278,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -21770,6 +24320,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -21824,6 +24376,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -21864,6 +24418,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -21916,6 +24472,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.offline_command_shrink):
             body['OfflineCommand'] = request.offline_command_shrink
@@ -21952,6 +24510,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.offline_command_shrink):
             body['OfflineCommand'] = request.offline_command_shrink
@@ -22002,6 +24562,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.online_command_shrink):
             body['OnlineCommand'] = request.online_command_shrink
@@ -22038,6 +24600,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.online_command_shrink):
             body['OnlineCommand'] = request.online_command_shrink
@@ -22090,6 +24654,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.operate_command_shrink):
             body['OperateCommand'] = request.operate_command_shrink
@@ -22128,6 +24694,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.operate_command_shrink):
             body['OperateCommand'] = request.operate_command_shrink
@@ -22178,6 +24746,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.parse_command_shrink):
             body['ParseCommand'] = request.parse_command_shrink
@@ -22214,6 +24784,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.parse_command_shrink):
             body['ParseCommand'] = request.parse_command_shrink
@@ -22266,6 +24838,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.pause_command_shrink):
             body['PauseCommand'] = request.pause_command_shrink
@@ -22304,6 +24878,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.pause_command_shrink):
             body['PauseCommand'] = request.pause_command_shrink
@@ -22352,6 +24928,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.version_id):
@@ -22386,6 +24964,8 @@ class Client(OpenApiClient):
             query['ApiId'] = request.api_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.version_id):
@@ -22436,6 +25016,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -22474,6 +25056,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -22526,6 +25110,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.publish_command_shrink):
             body['PublishCommand'] = request.publish_command_shrink
@@ -22562,6 +25148,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.publish_command_shrink):
             body['PublishCommand'] = request.publish_command_shrink
@@ -22612,6 +25200,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.publish_command_shrink):
             body['PublishCommand'] = request.publish_command_shrink
@@ -22648,6 +25238,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.publish_command_shrink):
             body['PublishCommand'] = request.publish_command_shrink
@@ -22698,6 +25290,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -22734,6 +25328,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -22786,6 +25382,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -22824,6 +25422,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -22874,6 +25474,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -22910,6 +25512,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -22960,6 +25564,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -22996,6 +25602,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -23046,6 +25654,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -23082,6 +25692,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.remove_command_shrink):
             body['RemoveCommand'] = request.remove_command_shrink
@@ -23134,6 +25746,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.replace_command_shrink):
             body['ReplaceCommand'] = request.replace_command_shrink
@@ -23172,6 +25786,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.replace_command_shrink):
             body['ReplaceCommand'] = request.replace_command_shrink
@@ -23222,6 +25838,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -23258,6 +25876,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -23310,6 +25930,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.resume_command_shrink):
             body['ResumeCommand'] = request.resume_command_shrink
@@ -23348,6 +25970,8 @@ class Client(OpenApiClient):
             query['Env'] = request.env
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.resume_command_shrink):
             body['ResumeCommand'] = request.resume_command_shrink
@@ -23398,6 +26022,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.privilege_transfer_record_shrink):
             body['PrivilegeTransferRecord'] = request.privilege_transfer_record_shrink
@@ -23434,6 +26060,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.privilege_transfer_record_shrink):
             body['PrivilegeTransferRecord'] = request.privilege_transfer_record_shrink
@@ -23484,6 +26112,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -23522,6 +26152,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -23574,6 +26206,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.revoke_command_shrink):
             body['RevokeCommand'] = request.revoke_command_shrink
@@ -23610,6 +26244,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.revoke_command_shrink):
             body['RevokeCommand'] = request.revoke_command_shrink
@@ -23746,6 +26382,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.task_id):
@@ -23778,6 +26416,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.task_id):
@@ -23815,6 +26455,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.stop_ad_hoc_task_with_options_async(request, runtime)
 
+    def submit_assets_off_shelve_with_options(
+        self,
+        tmp_req: main_models.SubmitAssetsOffShelveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAssetsOffShelveResponse:
+        tmp_req.validate()
+        request = main_models.SubmitAssetsOffShelveShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.submit_command):
+            request.submit_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.submit_command, 'SubmitCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.submit_command_shrink):
+            body['SubmitCommand'] = request.submit_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAssetsOffShelve',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAssetsOffShelveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_assets_off_shelve_with_options_async(
+        self,
+        tmp_req: main_models.SubmitAssetsOffShelveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAssetsOffShelveResponse:
+        tmp_req.validate()
+        request = main_models.SubmitAssetsOffShelveShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.submit_command):
+            request.submit_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.submit_command, 'SubmitCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.submit_command_shrink):
+            body['SubmitCommand'] = request.submit_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAssetsOffShelve',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAssetsOffShelveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_assets_off_shelve(
+        self,
+        request: main_models.SubmitAssetsOffShelveRequest,
+    ) -> main_models.SubmitAssetsOffShelveResponse:
+        runtime = RuntimeOptions()
+        return self.submit_assets_off_shelve_with_options(request, runtime)
+
+    async def submit_assets_off_shelve_async(
+        self,
+        request: main_models.SubmitAssetsOffShelveRequest,
+    ) -> main_models.SubmitAssetsOffShelveResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_assets_off_shelve_with_options_async(request, runtime)
+
+    def submit_assets_on_shelve_with_options(
+        self,
+        tmp_req: main_models.SubmitAssetsOnShelveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAssetsOnShelveResponse:
+        tmp_req.validate()
+        request = main_models.SubmitAssetsOnShelveShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.submit_command):
+            request.submit_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.submit_command, 'SubmitCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.submit_command_shrink):
+            body['SubmitCommand'] = request.submit_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAssetsOnShelve',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAssetsOnShelveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_assets_on_shelve_with_options_async(
+        self,
+        tmp_req: main_models.SubmitAssetsOnShelveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAssetsOnShelveResponse:
+        tmp_req.validate()
+        request = main_models.SubmitAssetsOnShelveShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.submit_command):
+            request.submit_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.submit_command, 'SubmitCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.submit_command_shrink):
+            body['SubmitCommand'] = request.submit_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAssetsOnShelve',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAssetsOnShelveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_assets_on_shelve(
+        self,
+        request: main_models.SubmitAssetsOnShelveRequest,
+    ) -> main_models.SubmitAssetsOnShelveResponse:
+        runtime = RuntimeOptions()
+        return self.submit_assets_on_shelve_with_options(request, runtime)
+
+    async def submit_assets_on_shelve_async(
+        self,
+        request: main_models.SubmitAssetsOnShelveRequest,
+    ) -> main_models.SubmitAssetsOnShelveResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_assets_on_shelve_with_options_async(request, runtime)
+
     def submit_batch_task_with_options(
         self,
         tmp_req: main_models.SubmitBatchTaskRequest,
@@ -23828,6 +26648,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.submit_command_shrink):
             body['SubmitCommand'] = request.submit_command_shrink
@@ -23864,6 +26686,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.submit_command_shrink):
             body['SubmitCommand'] = request.submit_command_shrink
@@ -24008,6 +26832,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.submit_command_shrink):
             body['SubmitCommand'] = request.submit_command_shrink
@@ -24044,6 +26870,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.submit_command_shrink):
             body['SubmitCommand'] = request.submit_command_shrink
@@ -24094,6 +26922,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.submit_command_shrink):
             body['SubmitCommand'] = request.submit_command_shrink
@@ -24130,6 +26960,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.submit_command_shrink):
             body['SubmitCommand'] = request.submit_command_shrink
@@ -24180,6 +27012,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.sync_department_command_shrink):
             body['SyncDepartmentCommand'] = request.sync_department_command_shrink
@@ -24216,6 +27050,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.sync_department_command_shrink):
             body['SyncDepartmentCommand'] = request.sync_department_command_shrink
@@ -24266,6 +27102,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.sync_department_user_command_shrink):
             body['SyncDepartmentUserCommand'] = request.sync_department_user_command_shrink
@@ -24302,6 +27140,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.sync_department_user_command_shrink):
             body['SyncDepartmentUserCommand'] = request.sync_department_user_command_shrink
@@ -24352,6 +27192,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.privilege_transfer_record_shrink):
             body['PrivilegeTransferRecord'] = request.privilege_transfer_record_shrink
@@ -24388,6 +27230,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.privilege_transfer_record_shrink):
             body['PrivilegeTransferRecord'] = request.privilege_transfer_record_shrink
@@ -24438,6 +27282,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24474,6 +27320,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24511,6 +27359,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_ad_hoc_file_with_options_async(request, runtime)
 
+    def update_asset_attributes_with_options(
+        self,
+        tmp_req: main_models.UpdateAssetAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAssetAttributesResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAssetAttributesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAssetAttributes',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAssetAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_asset_attributes_with_options_async(
+        self,
+        tmp_req: main_models.UpdateAssetAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAssetAttributesResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAssetAttributesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAssetAttributes',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAssetAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_asset_attributes(
+        self,
+        request: main_models.UpdateAssetAttributesRequest,
+    ) -> main_models.UpdateAssetAttributesResponse:
+        runtime = RuntimeOptions()
+        return self.update_asset_attributes_with_options(request, runtime)
+
+    async def update_asset_attributes_async(
+        self,
+        request: main_models.UpdateAssetAttributesRequest,
+    ) -> main_models.UpdateAssetAttributesResponse:
+        runtime = RuntimeOptions()
+        return await self.update_asset_attributes_with_options_async(request, runtime)
+
     def update_basic_project_with_options(
         self,
         tmp_req: main_models.UpdateBasicProjectRequest,
@@ -24524,6 +27462,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24560,6 +27500,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24610,6 +27552,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24646,6 +27590,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24696,6 +27642,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24732,6 +27680,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24782,6 +27732,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24818,6 +27770,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24868,6 +27822,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_biz_metric_command_shrink):
             body['UpdateBizMetricCommand'] = request.update_biz_metric_command_shrink
@@ -24904,6 +27860,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_biz_metric_command_shrink):
             body['UpdateBizMetricCommand'] = request.update_biz_metric_command_shrink
@@ -24954,6 +27912,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -24990,6 +27950,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25027,6 +27989,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_biz_unit_with_options_async(request, runtime)
 
+    def update_compute_cluster_with_options(
+        self,
+        tmp_req: main_models.UpdateComputeClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateComputeClusterResponse:
+        tmp_req.validate()
+        request = main_models.UpdateComputeClusterShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cluster_config):
+            request.cluster_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.cluster_config, 'ClusterConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.cluster_config_shrink):
+            body['ClusterConfig'] = request.cluster_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateComputeCluster',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateComputeClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_compute_cluster_with_options_async(
+        self,
+        tmp_req: main_models.UpdateComputeClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateComputeClusterResponse:
+        tmp_req.validate()
+        request = main_models.UpdateComputeClusterShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cluster_config):
+            request.cluster_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.cluster_config, 'ClusterConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.cluster_config_shrink):
+            body['ClusterConfig'] = request.cluster_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateComputeCluster',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateComputeClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_compute_cluster(
+        self,
+        request: main_models.UpdateComputeClusterRequest,
+    ) -> main_models.UpdateComputeClusterResponse:
+        runtime = RuntimeOptions()
+        return self.update_compute_cluster_with_options(request, runtime)
+
+    async def update_compute_cluster_async(
+        self,
+        request: main_models.UpdateComputeClusterRequest,
+    ) -> main_models.UpdateComputeClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.update_compute_cluster_with_options_async(request, runtime)
+
     def update_compute_source_with_options(
         self,
         tmp_req: main_models.UpdateComputeSourceRequest,
@@ -25040,6 +28096,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25076,6 +28134,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25113,6 +28173,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_compute_source_with_options_async(request, runtime)
 
+    def update_data_assets_govern_object_status_with_options(
+        self,
+        tmp_req: main_models.UpdateDataAssetsGovernObjectStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAssetsGovernObjectStatusResponse:
+        tmp_req.validate()
+        request = main_models.UpdateDataAssetsGovernObjectStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAssetsGovernObjectStatus',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAssetsGovernObjectStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_assets_govern_object_status_with_options_async(
+        self,
+        tmp_req: main_models.UpdateDataAssetsGovernObjectStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAssetsGovernObjectStatusResponse:
+        tmp_req.validate()
+        request = main_models.UpdateDataAssetsGovernObjectStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_command):
+            request.update_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAssetsGovernObjectStatus',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAssetsGovernObjectStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_assets_govern_object_status(
+        self,
+        request: main_models.UpdateDataAssetsGovernObjectStatusRequest,
+    ) -> main_models.UpdateDataAssetsGovernObjectStatusResponse:
+        runtime = RuntimeOptions()
+        return self.update_data_assets_govern_object_status_with_options(request, runtime)
+
+    async def update_data_assets_govern_object_status_async(
+        self,
+        request: main_models.UpdateDataAssetsGovernObjectStatusRequest,
+    ) -> main_models.UpdateDataAssetsGovernObjectStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.update_data_assets_govern_object_status_with_options_async(request, runtime)
+
     def update_data_domain_with_options(
         self,
         tmp_req: main_models.UpdateDataDomainRequest,
@@ -25126,6 +28276,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25162,6 +28314,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25212,6 +28366,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25248,6 +28404,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25298,6 +28456,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25334,6 +28494,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25384,6 +28546,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25420,6 +28584,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25470,6 +28636,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25506,6 +28674,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25556,6 +28726,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25592,6 +28764,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25642,6 +28816,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -25680,6 +28856,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         body = {}
@@ -25732,6 +28910,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25768,6 +28948,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -25818,6 +29000,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -25852,6 +29036,8 @@ class Client(OpenApiClient):
             query['FileId'] = request.file_id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -25900,6 +29086,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -25934,6 +29122,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_util_models.OpenApiRequest(
@@ -25982,6 +29172,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -26020,6 +29212,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -26072,6 +29266,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -26110,6 +29306,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         body = {}
@@ -26149,6 +29347,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_kg_relation_with_options_async(request, runtime)
 
+    def update_node_ops_owner_with_options(
+        self,
+        tmp_req: main_models.UpdateNodeOpsOwnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNodeOpsOwnerResponse:
+        tmp_req.validate()
+        request = main_models.UpdateNodeOpsOwnerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.command):
+            request.command_shrink = Utils.array_to_string_with_specified_style(tmp_req.command, 'Command', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.command_shrink):
+            body['Command'] = request.command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNodeOpsOwner',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNodeOpsOwnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_node_ops_owner_with_options_async(
+        self,
+        tmp_req: main_models.UpdateNodeOpsOwnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNodeOpsOwnerResponse:
+        tmp_req.validate()
+        request = main_models.UpdateNodeOpsOwnerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.command):
+            request.command_shrink = Utils.array_to_string_with_specified_style(tmp_req.command, 'Command', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.command_shrink):
+            body['Command'] = request.command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNodeOpsOwner',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNodeOpsOwnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_node_ops_owner(
+        self,
+        request: main_models.UpdateNodeOpsOwnerRequest,
+    ) -> main_models.UpdateNodeOpsOwnerResponse:
+        runtime = RuntimeOptions()
+        return self.update_node_ops_owner_with_options(request, runtime)
+
+    async def update_node_ops_owner_async(
+        self,
+        request: main_models.UpdateNodeOpsOwnerRequest,
+    ) -> main_models.UpdateNodeOpsOwnerResponse:
+        runtime = RuntimeOptions()
+        return await self.update_node_ops_owner_with_options_async(request, runtime)
+
     def update_pipeline_with_options(
         self,
         tmp_req: main_models.UpdatePipelineRequest,
@@ -26164,6 +29452,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -26204,6 +29494,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -26258,6 +29550,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -26298,6 +29592,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.context_shrink):
             body['Context'] = request.context_shrink
@@ -26352,6 +29648,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26390,6 +29688,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26440,6 +29740,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26476,6 +29778,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26526,6 +29830,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26562,6 +29868,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26612,6 +29920,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26648,6 +29958,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26698,6 +30010,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_row_permission_command_shrink):
             body['UpdateRowPermissionCommand'] = request.update_row_permission_command_shrink
@@ -26734,6 +30048,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_row_permission_command_shrink):
             body['UpdateRowPermissionCommand'] = request.update_row_permission_command_shrink
@@ -26784,6 +30100,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26820,6 +30138,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26870,6 +30190,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26906,6 +30228,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26956,6 +30280,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -26992,6 +30318,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27042,6 +30370,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27078,6 +30408,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27128,6 +30460,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27164,6 +30498,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27214,6 +30550,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27250,6 +30588,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27300,6 +30640,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27336,6 +30678,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27386,6 +30730,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27422,6 +30768,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27472,6 +30820,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27508,6 +30858,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27558,6 +30910,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27594,6 +30948,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27644,6 +31000,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27680,6 +31038,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27730,6 +31090,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27766,6 +31128,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27816,6 +31180,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27852,6 +31218,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27902,6 +31270,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27938,6 +31308,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.update_command_shrink):
             body['UpdateCommand'] = request.update_command_shrink
@@ -27986,6 +31358,8 @@ class Client(OpenApiClient):
             query['Active'] = request.active
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.user_group_id):
             query['UserGroupId'] = request.user_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -28018,6 +31392,8 @@ class Client(OpenApiClient):
             query['Active'] = request.active
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         if not DaraCore.is_null(request.user_group_id):
             query['UserGroupId'] = request.user_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -28053,6 +31429,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_user_group_switch_with_options_async(request, runtime)
 
+    def upload_data_source_file_with_options(
+        self,
+        tmp_req: main_models.UploadDataSourceFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadDataSourceFileResponse:
+        tmp_req.validate()
+        request = main_models.UploadDataSourceFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.upload_command):
+            request.upload_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.upload_command, 'UploadCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.upload_command_shrink):
+            body['UploadCommand'] = request.upload_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadDataSourceFile',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadDataSourceFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_data_source_file_with_options_async(
+        self,
+        tmp_req: main_models.UploadDataSourceFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadDataSourceFileResponse:
+        tmp_req.validate()
+        request = main_models.UploadDataSourceFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.upload_command):
+            request.upload_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.upload_command, 'UploadCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.upload_command_shrink):
+            body['UploadCommand'] = request.upload_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadDataSourceFile',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadDataSourceFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_data_source_file(
+        self,
+        request: main_models.UploadDataSourceFileRequest,
+    ) -> main_models.UploadDataSourceFileResponse:
+        runtime = RuntimeOptions()
+        return self.upload_data_source_file_with_options(request, runtime)
+
+    async def upload_data_source_file_async(
+        self,
+        request: main_models.UploadDataSourceFileRequest,
+    ) -> main_models.UploadDataSourceFileResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_data_source_file_with_options_async(request, runtime)
+
+    def upsert_quality_archive_table_with_options(
+        self,
+        tmp_req: main_models.UpsertQualityArchiveTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpsertQualityArchiveTableResponse:
+        tmp_req.validate()
+        request = main_models.UpsertQualityArchiveTableShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.upsert_command):
+            request.upsert_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.upsert_command, 'UpsertCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.upsert_command_shrink):
+            body['UpsertCommand'] = request.upsert_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpsertQualityArchiveTable',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpsertQualityArchiveTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upsert_quality_archive_table_with_options_async(
+        self,
+        tmp_req: main_models.UpsertQualityArchiveTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpsertQualityArchiveTableResponse:
+        tmp_req.validate()
+        request = main_models.UpsertQualityArchiveTableShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.upsert_command):
+            request.upsert_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.upsert_command, 'UpsertCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        body = {}
+        if not DaraCore.is_null(request.upsert_command_shrink):
+            body['UpsertCommand'] = request.upsert_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpsertQualityArchiveTable',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpsertQualityArchiveTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upsert_quality_archive_table(
+        self,
+        request: main_models.UpsertQualityArchiveTableRequest,
+    ) -> main_models.UpsertQualityArchiveTableResponse:
+        runtime = RuntimeOptions()
+        return self.upsert_quality_archive_table_with_options(request, runtime)
+
+    async def upsert_quality_archive_table_async(
+        self,
+        request: main_models.UpsertQualityArchiveTableRequest,
+    ) -> main_models.UpsertQualityArchiveTableResponse:
+        runtime = RuntimeOptions()
+        return await self.upsert_quality_archive_table_with_options_async(request, runtime)
+
     def upsert_quality_rule_with_options(
         self,
         tmp_req: main_models.UpsertQualityRuleRequest,
@@ -28066,6 +31622,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28102,6 +31660,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28152,6 +31712,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28188,6 +31750,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28238,6 +31802,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28274,6 +31840,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28324,6 +31892,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28360,6 +31930,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28410,6 +31982,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink
@@ -28446,6 +32020,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.op_tenant_id):
             query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
         body = {}
         if not DaraCore.is_null(request.upsert_command_shrink):
             body['UpsertCommand'] = request.upsert_command_shrink

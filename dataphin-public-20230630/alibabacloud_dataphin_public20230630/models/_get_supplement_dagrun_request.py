@@ -9,6 +9,7 @@ class GetSupplementDagrunRequest(DaraModel):
         self,
         env: str = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         supplement_id: str = None,
     ):
         # The environment identifier. Valid values:
@@ -20,6 +21,7 @@ class GetSupplementDagrunRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The ID of the data backfill instance.
         # 
         # This parameter is required.
@@ -39,6 +41,9 @@ class GetSupplementDagrunRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.supplement_id is not None:
             result['SupplementId'] = self.supplement_id
 
@@ -51,6 +56,9 @@ class GetSupplementDagrunRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('SupplementId') is not None:
             self.supplement_id = m.get('SupplementId')

@@ -11,12 +11,15 @@ class UpdateComputeSourceRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         update_command: main_models.UpdateComputeSourceRequestUpdateCommand = None,
     ):
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
+        self.op_user_id = op_user_id
         # The edit command.
         # 
         # This parameter is required.
@@ -34,6 +37,9 @@ class UpdateComputeSourceRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.update_command is not None:
             result['UpdateCommand'] = self.update_command.to_map()
 
@@ -44,6 +50,9 @@ class UpdateComputeSourceRequest(DaraModel):
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
+
         if m.get('UpdateCommand') is not None:
             temp_model = main_models.UpdateComputeSourceRequestUpdateCommand()
             self.update_command = temp_model.from_map(m.get('UpdateCommand'))
@@ -53,32 +62,43 @@ class UpdateComputeSourceRequest(DaraModel):
 class UpdateComputeSourceRequestUpdateCommand(DaraModel):
     def __init__(
         self,
+        cluster_id: int = None,
         config_list: List[main_models.UpdateComputeSourceRequestUpdateCommandConfigList] = None,
+        create_type: str = None,
         description: str = None,
         id: int = None,
         name: str = None,
         type: str = None,
+        type_version: str = None,
     ):
+        # The associated cluster ID. This parameter takes effect only when CreateType is left empty or set to COMPUTE_SOURCE (to create a compute source that references a cluster). This parameter is mutually exclusive with CreateType=CLUSTER.
+        self.cluster_id = cluster_id
         # The connection configuration items.
         # 
         # This parameter is required.
         self.config_list = config_list
+        # The creation entity type. Valid values:
+        # - CLUSTER: Creates the entity as a cluster. ClusterId cannot be specified.
+        # - COMPUTE_SOURCE: Creates the entity as a compute source. This is the default value.
+        self.create_type = create_type
         # The description.
         # 
         # This parameter is required.
         self.description = description
-        # The ID of the compute source.
+        # The compute source ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the compute source.
+        # The compute source name.
         # 
         # This parameter is required.
         self.name = name
-        # The type of the compute source.
+        # The compute source type.
         # 
         # This parameter is required.
         self.type = type
+        # The compute source type version.
+        self.type_version = type_version
 
     def validate(self):
         if self.config_list:
@@ -91,10 +111,16 @@ class UpdateComputeSourceRequestUpdateCommand(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+
         result['ConfigList'] = []
         if self.config_list is not None:
             for k1 in self.config_list:
                 result['ConfigList'].append(k1.to_map() if k1 else None)
+
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
 
         if self.description is not None:
             result['Description'] = self.description
@@ -108,15 +134,24 @@ class UpdateComputeSourceRequestUpdateCommand(DaraModel):
         if self.type is not None:
             result['Type'] = self.type
 
+        if self.type_version is not None:
+            result['TypeVersion'] = self.type_version
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+
         self.config_list = []
         if m.get('ConfigList') is not None:
             for k1 in m.get('ConfigList'):
                 temp_model = main_models.UpdateComputeSourceRequestUpdateCommandConfigList()
                 self.config_list.append(temp_model.from_map(k1))
+
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
@@ -130,6 +165,9 @@ class UpdateComputeSourceRequestUpdateCommand(DaraModel):
         if m.get('Type') is not None:
             self.type = m.get('Type')
 
+        if m.get('TypeVersion') is not None:
+            self.type_version = m.get('TypeVersion')
+
         return self
 
 class UpdateComputeSourceRequestUpdateCommandConfigList(DaraModel):
@@ -138,11 +176,11 @@ class UpdateComputeSourceRequestUpdateCommandConfigList(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the configuration item.
+        # The configuration item.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the configuration item.
+        # The configuration item value.
         # 
         # This parameter is required.
         self.value = value

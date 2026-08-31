@@ -9,12 +9,14 @@ class RemoveTenantMemberRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         remove_command: main_models.RemoveTenantMemberRequestRemoveCommand = None,
     ):
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The request command.
         # 
         # This parameter is required.
@@ -32,6 +34,9 @@ class RemoveTenantMemberRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.remove_command is not None:
             result['RemoveCommand'] = self.remove_command.to_map()
 
@@ -41,6 +46,9 @@ class RemoveTenantMemberRequest(DaraModel):
         m = m or dict()
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('RemoveCommand') is not None:
             temp_model = main_models.RemoveTenantMemberRequestRemoveCommand()
@@ -52,11 +60,13 @@ class RemoveTenantMemberRequestRemoveCommand(DaraModel):
     def __init__(
         self,
         source_id: str = None,
+        source_type: str = None,
     ):
         # The source ID of the user.
         # 
         # This parameter is required.
         self.source_id = source_id
+        self.source_type = source_type
 
     def validate(self):
         pass
@@ -69,12 +79,18 @@ class RemoveTenantMemberRequestRemoveCommand(DaraModel):
         if self.source_id is not None:
             result['SourceId'] = self.source_id
 
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
+
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
 
         return self
 

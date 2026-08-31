@@ -21,7 +21,7 @@ class ImportKgSchemaResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The import result.
         self.import_result = import_result
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id

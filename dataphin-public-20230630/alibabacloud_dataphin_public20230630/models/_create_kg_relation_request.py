@@ -12,6 +12,7 @@ class CreateKgRelationRequest(DaraModel):
         self,
         create_command: main_models.CreateKgRelationRequestCreateCommand = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         workspace_id: str = None,
     ):
         # The create command.
@@ -22,6 +23,7 @@ class CreateKgRelationRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The workspace ID.
         # 
         # This parameter is required.
@@ -42,6 +44,9 @@ class CreateKgRelationRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -55,6 +60,9 @@ class CreateKgRelationRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

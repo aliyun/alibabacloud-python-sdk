@@ -23,7 +23,7 @@ class ListCatalogAssetsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend response exception.
+        # The backend response exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -161,8 +161,8 @@ class ListCatalogAssetsResponseBodyDataAssetList(DaraModel):
         sum_table_name: str = None,
     ):
         # The API call mode. Returned when the asset type is API. Valid values:
-        # - 1: synchronous call.
-        # - 2: asynchronous call.
+        # - 1: Synchronous call.
+        # - 2: Asynchronous call.
         self.api_call_mode = api_call_mode
         # The API group name. Returned when the asset type is API.
         self.api_group_name = api_group_name
@@ -175,55 +175,74 @@ class ListCatalogAssetsResponseBodyDataAssetList(DaraModel):
         # - 4: Update.
         # - 5: Delete.
         self.api_request_method = api_request_method
-        # The asset description.
+        # The description of the asset.
         self.asset_description = asset_description
-        # The asset display name. Returned when the asset type is TABLE, INDEX, or BIZ_INDEX.
+        # The display name of the asset. This parameter is returned when the asset type is TABLE, INDEX, or BIZ_INDEX.
         self.asset_display_name = asset_display_name
-        # The asset source. For TABLE (physical table), the value is in the format "Dataphin-workspace type-project Chinese name (project English name)". For TABLE (logical table), the value is in the format "Dataphin-workspace type-data domain Chinese name (data domain English name)". For TABLE (data source table), the value is in the format "source system name-data source name-database/schema name". For INDEX (standard modeling metric), the value is the asset source of the associated aggregate table. For INDEX (custom metric), the value is the asset source of the source table. For API, the value is the data service project name. For PAGE, the value is the application system name.
+        # The source of the asset. For TABLE (physical table), the value is returned in the format of "Dataphin-Workspace Type-Project Chinese Name (Project English Name)". For TABLE (logical table), the value is returned in the format of "Dataphin-Workspace Type-Data Domain Chinese Name (Data Domain English Name)". For TABLE (data source table), the value is returned in the format of "Source System Name-Data Source Name-Database/Schema Name". For INDEX (standard modeling metric), the value is the asset source of the associated aggregate table. For INDEX (custom metric), the value is the asset source of the source table. For API, the value is the data service project name. For PAGE, the value is the application system name.
         self.asset_from = asset_from
-        # The asset full name. Returned when the asset type is TABLE or INDEX.
+        # The full name of the asset. This parameter is returned when the asset type is TABLE or INDEX.
         self.asset_full_name = asset_full_name
-        # The asset name.
+        # The name of the asset.
         self.asset_name = asset_name
-        # The asset tags.
+        # The tags of the asset.
         self.asset_tags = asset_tags
-        # The asset type. Valid values: TABLE (table, including views and materialized views), INDEX (technical metric), BIZ_INDEX (business metric), API, and PAGE (dashboard).
+        # The asset type. Valid values:
+        # - TABLE: table, including views and materialized views.
+        # - INDEX: technical metric.
+        # - BIZ_INDEX: business metric.
+        # - API: API.
+        # - PAGE: dashboard.
         self.asset_type = asset_type
-        # The BI workspace or directory to which the asset belongs. Returned when the asset type is PAGE (dashboard).
+        # The BI space or folder to which the asset belongs. Returned when the asset type is PAGE (dashboard).
         self.bi_catalog = bi_catalog
-        # The ID of the business unit to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+        # The ID of the business unit to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
         self.biz_unit_id = biz_unit_id
-        # The name of the business unit to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+        # The name of the business unit to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
         self.biz_unit_name = biz_unit_name
         # The total number of charts. Returned when the asset type is PAGE (dashboard).
         self.chart_count = chart_count
-        # The ID of the subject domain to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+        # The ID of the data domain to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
         self.data_cell_id = data_cell_id
-        # The name of the subject domain to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+        # The name of the data domain to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
         self.data_cell_name = data_cell_name
-        # The name of the data source to which the asset belongs. Returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
+        # The name of the data source to which the asset belongs. This parameter is returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
         self.data_source_name = data_source_name
-        # The ID of the data source to which the asset belongs. Returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
+        # The ID of the data source to which the asset belongs. This parameter is returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
         self.datasource_id = datasource_id
         # The directories to which the asset belongs, including topic ID, topic name, directory ID, and directory name.
         self.directories = directories
-        # The statistical granularity name of the technical metric. Returned when the asset type is INDEX.
+        # The statistical granularity name of the technical metric. This parameter is returned when the asset type is INDEX.
         self.granularity = granularity
-        # The asset GUID, which serves as the unique identifier of the asset.
+        # The GUID of the asset, which serves as the unique identifier of the asset.
         self.guid = guid
         # Indicates whether the asset is deleted.
         self.is_deleted = is_deleted
-        # The highest sensitivity level. Returned when the asset type is TABLE.
+        # The maximum sensitivity level. This parameter is returned when the asset type is TABLE.
         self.max_security_level = max_security_level
-        # The ID of the project to which the asset belongs. Returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
+        # The ID of the project to which the asset belongs. This parameter is returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
         self.project_id = project_id
-        # The name of the project to which the asset belongs. Returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
+        # The name of the project to which the asset belongs. This parameter is returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
         self.project_name = project_name
-        # The subtype. Valid values: DIM_NORMAL (common logical dimension table), DIM_ENUM (enumeration logical dimension table), DIM_VIRTUAL (virtual logical dimension table), SUM_BIZ_UNIT (aggregate logical table), FACT_EVENT (event fact logical table), FACT_SNAPSHOT (snapshot fact logical table), DATASOURCE_TABLE (data source table), PHYSICAL_TABLE (physical table), DATASOURCE_VIEW (view - data source view), PHYSICAL_VIEW (physical view), MATERIALIZED_VIEW (materialized view), BIZ_INDEX (business metric), INDEX (technical metric - standard modeling metric), and CUSTOM_INDEX (technical metric - custom metric).
+        # The subtype of the asset. Valid values:
+        # - DIM_NORMAL: common logical dimension table.
+        # - DIM_ENUM: enumeration logical dimension table.
+        # - DIM_VIRTUAL: virtual logical dimension table.
+        # - SUM_BIZ_UNIT: aggregate table.
+        # - FACT_EVENT: event fact logical table.
+        # - FACT_SNAPSHOT: snapshot fact logical table.
+        # - DATASOURCE_TABLE: data source table.
+        # - PHYSICAL_TABLE: physical table.
+        # - DATASOURCE_VIEW: view (data source view).
+        # - PHYSICAL_VIEW: physical view.
+        # - MATERIALIZED_VIEW: materialized view.
+        # - BIZ_INDEX: business metric.
+        # - INDEX: technical metric (standard modeling metric).
+        # - CUSTOM_INDEX: technical metric (custom metric).
         self.sub_type = sub_type
-        # The GUID of the aggregate table to which the asset belongs. Returned when the asset type is INDEX.
+        # The GUID of the aggregate table to which the asset belongs. This parameter is returned when the asset type is INDEX.
         self.sum_table_guid = sum_table_guid
-        # The name of the aggregate table to which the asset belongs. Returned when the asset type is INDEX.
+        # The name of the aggregate table to which the asset belongs. This parameter is returned when the asset type is INDEX.
         self.sum_table_name = sum_table_name
 
     def validate(self):
@@ -430,13 +449,13 @@ class ListCatalogAssetsResponseBodyDataAssetListDirectories(DaraModel):
         topic_id: int = None,
         topic_name: str = None,
     ):
-        # The directory ID.
+        # The ID of the directory.
         self.directory_id = directory_id
-        # The directory name.
+        # The name of the directory.
         self.directory_name = directory_name
-        # The topic ID.
+        # The ID of the topic.
         self.topic_id = topic_id
-        # The topic name.
+        # The name of the topic.
         self.topic_name = topic_name
 
     def validate(self):

@@ -11,13 +11,16 @@ class UpsertQualityRuleRequest(DaraModel):
     def __init__(
         self,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         upsert_command: main_models.UpsertQualityRuleRequestUpsertCommand = None,
     ):
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The upsert command.
+        # The ID of the operator user.
+        self.op_user_id = op_user_id
+        # The update command.
         # 
         # This parameter is required.
         self.upsert_command = upsert_command
@@ -34,6 +37,9 @@ class UpsertQualityRuleRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.upsert_command is not None:
             result['UpsertCommand'] = self.upsert_command.to_map()
 
@@ -44,6 +50,9 @@ class UpsertQualityRuleRequest(DaraModel):
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
+
         if m.get('UpsertCommand') is not None:
             temp_model = main_models.UpsertQualityRuleRequestUpsertCommand()
             self.upsert_command = temp_model.from_map(m.get('UpsertCommand'))
@@ -53,6 +62,8 @@ class UpsertQualityRuleRequest(DaraModel):
 class UpsertQualityRuleRequestUpsertCommand(DaraModel):
     def __init__(
         self,
+        archive_mode: str = None,
+        archive_store_type: str = None,
         attribute_with_value_list: List[main_models.UpsertQualityRuleRequestUpsertCommandAttributeWithValueList] = None,
         catalog_list: List[str] = None,
         description: str = None,
@@ -66,25 +77,47 @@ class UpsertQualityRuleRequestUpsertCommand(DaraModel):
         validate_condition_list: List[main_models.UpsertQualityRuleRequestUpsertCommandValidateConditionList] = None,
         watch_id: int = None,
     ):
-        # The rule business attribute configuration.
+        # The exception archive mode. Valid values:
+        # - ONLY_ERROR_FIELD: Archives only the exception fields.
+        # - FULL_RECORD: Archives the complete record.
+        # 
+        # Default value: ONLY_ERROR_FIELD.
+        self.archive_mode = archive_mode
+        # The exception archive storage type. Valid values:
+        # - FILE_SYSTEM: File system.
+        # - CUSTOM_TABLE: Custom table.
+        # 
+        # Default value: FILE_SYSTEM.
+        self.archive_store_type = archive_store_type
+        # The rule business property configuration.
         self.attribute_with_value_list = attribute_with_value_list
-        # The rule category. Valid values: CONSISTENT (Consistency), EFFECTIVE (Effectiveness), TIMELINESE (Timeliness), ACCURATE (Accuracy), UNIQUENESS (Uniqueness), COMPLETENESS (Completeness), STABILITY (Stability), CUSTOM (Custom).
+        # The rule catalog. Valid values:
+        # - CONSISTENT: consistency.
+        # - EFFECTIVE: validity.
+        # - TIMELINESE: timeliness.
+        # - ACCURATE: accuracy.
+        # - UNIQUENESS: uniqueness.
+        # - COMPLETENESS: completeness.
+        # - STABILITY: stability.
+        # - CUSTOM: custom.
         # 
         # This parameter is required.
         self.catalog_list = catalog_list
-        # The description of the quality rule.
+        # The description.
         self.description = description
         # Specifies whether to enable error archiving.
         self.enable_error_archive = enable_error_archive
-        # The rule configuration key-value pairs. The configuration varies based on the template type. Different template types return different form key-value pair configurations.
+        # The rule configuration key-value pairs. These are related to the templatetype. Different template types return different form key-value pair configurations.
         self.form_property_list = form_property_list
-        # Rule ID. A non-empty value indicates a modification, and an empty value indicates a creation.
+        # The rule ID. If this parameter is not empty, the operation updates the rule. If this parameter is empty, the operation creates a rule.
         self.id = id
         # The name of the quality rule.
         # 
         # This parameter is required.
         self.name = name
-        # The rule strength. Valid values: STRONG, WEAK.
+        # The rule strength. Valid values:
+        # - STRONG
+        # - WEAK
         # 
         # This parameter is required.
         self.strength = strength
@@ -92,44 +125,44 @@ class UpsertQualityRuleRequestUpsertCommand(DaraModel):
         # 
         # This parameter is required.
         self.template_id = template_id
-        # The template type. Valid values:
-        #   - FIELD_NULL_VALUE_VALIDATE: Field null value validation
-        #   - FIELD_EMPTY_STRING_VALIDATE: Field empty string validation
-        #   - FIELD_UNIQUE_VALIDATE: Field uniqueness validation
-        #   - FIELD_GROUP_COUNT_VALIDATE: Field unique value count validation
-        #   - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: Field duplicate value count validation
-        #   - FUNCTION_TIME_COMPARE: Time function comparison
-        #   - SINGLE_TABLE_TIME_COMPARE: Single-table time field comparison
-        #   - DOUBLE_TABLE_TIME_COMPARE: Cross-table time field comparison
-        #   - FIELD_FORMAT_VALIDATE: Field format validation
-        #   - FIELD_LENGTH_VALIDATE: Field length validation
-        #   - FIELD_VALUE_RANGE_VALIDATE: Field value range validation
-        #   - CODE_TABLE_COMPARE: Code table reference comparison
-        #   - STANDARD_CODE_TABLE_COMPARE: Data standard code table reference comparison
-        #   - SINGLE_TABLE_FIELD_VALUE_COMPARE: Single-table field value consistency comparison
-        #   - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: Single-table field statistical value consistency comparison
-        #   - SINGLE_TABLE_FIELD_EXP_COMPARE: Single-table field business logic consistency comparison
-        #   - DOUBLE_TABLE_FIELD_VALUE_COMPARE: Cross-table field value consistency comparison
-        #   - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Cross-table field statistical value consistency comparison
-        #   - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Cross-source cross-table field statistical value consistency comparison
-        #   - DOUBLE_TABLE_FIELD_EXP_COMPARE: Cross-table field business logic consistency comparison
-        #   - TABLE_STABILITY_VALIDATE: Table stability validation
-        #   - TABLE_FLUCTUATION_VALIDATE: Table fluctuation validation
-        #   - FIELD_STABILITY_VALIDATE: Field stability validation
-        #   - FIELD_FLUCTUATION_VALIDATE: Field fluctuation validation
-        #   - CUSTOM_STATISTICAL_VALIDATE: Custom statistical metric validation
-        #   - CUSTOM_DATA_DETAILS_VALIDATE: Custom data details validation
-        #   - DATASOURCE_AVAILABLE_CHECK: Data source connectivity check
-        #   - TABLE_SCHEMA_CHECK: Table schema change monitoring
-        #   - REAL_TIME_OFFLINE_COMPARE: Real-time offline comparison
-        #   - REAL_TIME_STATISTICAL_VALIDATE: Real-time statistical value monitoring
-        #   - REAL_TIME_MULTI_CHAIN_COMPARE: Real-time multi-chain comparison, etc.
+        # The templatetype. Valid values:
+        # - FIELD_NULL_VALUE_VALIDATE: field null value check.
+        # - FIELD_EMPTY_STRING_VALIDATE: field empty string check.
+        # - FIELD_UNIQUE_VALIDATE: field uniqueness check.
+        # - FIELD_GROUP_COUNT_VALIDATE: field unique value count check.
+        # - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check.
+        # - FUNCTION_TIME_COMPARE: time function comparison.
+        # - SINGLE_TABLE_TIME_COMPARE: single-table time field comparison.
+        # - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison.
+        # - FIELD_FORMAT_VALIDATE: field format check.
+        # - FIELD_LENGTH_VALIDATE: field length check.
+        # - FIELD_VALUE_RANGE_VALIDATE: field value range check.
+        # - CODE_TABLE_COMPARE: lookup table reference comparison.
+        # - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison.
+        # - SINGLE_TABLE_FIELD_VALUE_COMPARE: single-table field value consistency comparison.
+        # - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: single-table field statistical value consistency comparison.
+        # - SINGLE_TABLE_FIELD_EXP_COMPARE: single-table field business logic consistency comparison.
+        # - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison.
+        # - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison.
+        # - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison.
+        # - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison.
+        # - TABLE_STABILITY_VALIDATE: table stability check.
+        # - TABLE_FLUCTUATION_VALIDATE: table fluctuation check.
+        # - FIELD_STABILITY_VALIDATE: field stability check.
+        # - FIELD_FLUCTUATION_VALIDATE: field fluctuation check.
+        # - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check.
+        # - CUSTOM_DATA_DETAILS_VALIDATE: custom data details check.
+        # - DATASOURCE_AVAILABLE_CHECK: datasource connectivity monitoring.
+        # - TABLE_SCHEMA_CHECK: table schema change monitoring.
+        # - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison.
+        # - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring.
+        # - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
         # 
         # This parameter is required.
         self.template_type = template_type
         # The validation conditions.
         self.validate_condition_list = validate_condition_list
-        # The ID of the associated monitor.
+        # The ID of the associated watch.
         # 
         # This parameter is required.
         self.watch_id = watch_id
@@ -153,6 +186,12 @@ class UpsertQualityRuleRequestUpsertCommand(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.archive_mode is not None:
+            result['ArchiveMode'] = self.archive_mode
+
+        if self.archive_store_type is not None:
+            result['ArchiveStoreType'] = self.archive_store_type
+
         result['AttributeWithValueList'] = []
         if self.attribute_with_value_list is not None:
             for k1 in self.attribute_with_value_list:
@@ -199,6 +238,12 @@ class UpsertQualityRuleRequestUpsertCommand(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArchiveMode') is not None:
+            self.archive_mode = m.get('ArchiveMode')
+
+        if m.get('ArchiveStoreType') is not None:
+            self.archive_store_type = m.get('ArchiveStoreType')
+
         self.attribute_with_value_list = []
         if m.get('AttributeWithValueList') is not None:
             for k1 in m.get('AttributeWithValueList'):
@@ -256,15 +301,25 @@ class UpsertQualityRuleRequestUpsertCommandValidateConditionList(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The ID of the condition node.
+        # The condition node ID.
         self.id = id
         # The metric.
         self.metric = metric
-        # The operator. Valid values: EQUAL, NOT_EQUAL, LARGER, SMALLER, LARGE_OR_EQUAL, SMALLER_OR_EQUAL, AND, OR.
+        # The operator. Valid values:
+        # - EQUAL
+        # - NOT_EQUAL
+        # - LARGER
+        # - SMALLER
+        # - LARGE_OR_EQUAL
+        # - SMALLER_OR_EQUAL
+        # - AND
+        # - OR
         self.operator = operator
-        # The ID of the parent condition node.
+        # The parent condition node ID.
         self.parent_id = parent_id
-        # The condition type. Valid values: RELATION, EXPRESSION.
+        # The condition type. Valid values:
+        # - RELATION: relationship.
+        # - EXPRESSION: expression.
         self.type = type
         # The value.
         self.value = value
@@ -326,7 +381,7 @@ class UpsertQualityRuleRequestUpsertCommandFormPropertyList(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The component type.
+        # The control type.
         self.component_type = component_type
         # The property name.
         self.name = name
@@ -371,9 +426,9 @@ class UpsertQualityRuleRequestUpsertCommandAttributeWithValueList(DaraModel):
         attribute_info: main_models.UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfo = None,
         attribute_value: main_models.UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeValue = None,
     ):
-        # The attribute details.
+        # The property details.
         self.attribute_info = attribute_info
-        # The attribute value.
+        # The property value.
         self.attribute_value = attribute_value
 
     def validate(self):
@@ -416,15 +471,15 @@ class UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeValue(
         min_value: str = None,
         value_list: List[str] = None,
     ):
-        # Specifies whether to include the maximum value.
+        # Indicates whether the maximum value is included.
         self.include_max_value = include_max_value
-        # Specifies whether to include the minimum value.
+        # Indicates whether the minimum value is included.
         self.include_min_value = include_min_value
-        # The maximum value. Applicable to range interval attributes.
+        # The maximum value. This parameter applies to range interval properties.
         self.max_value = max_value
-        # The minimum value. Applicable to range interval attributes.
+        # The minimum value. This parameter applies to range interval properties.
         self.min_value = min_value
-        # The attribute value list. Applicable to attributes with the custom input, single-select dropdown, or multi-select dropdown input method.
+        # The property value list. This parameter applies to properties whose input method is custom input, single-select dropdown, or multi-select dropdown.
         self.value_list = value_list
 
     def validate(self):
@@ -484,17 +539,17 @@ class UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfo(D
     ):
         # The description.
         self.description = description
-        # Specifies whether to enable the attribute.
+        # Indicates whether the property is enabled.
         self.enabled = enabled
-        # The attribute ID.
+        # The property ID.
         self.id = id
-        # The attribute name.
+        # The property name.
         self.name = name
-        # Specifies whether the attribute is required.
+        # Indicates whether the property is required.
         self.required = required
-        # Specifies whether the attribute is searchable.
+        # Indicates whether the property is searchable.
         self.searchable = searchable
-        # The attribute value configuration details.
+        # The property value configuration details.
         self.value_config = value_config
 
     def validate(self):
@@ -564,15 +619,25 @@ class UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfoVa
         type: str = None,
         value_enum_list: List[str] = None,
     ):
-        # The attribute field type. Valid values: STRING (Text), BIGINT (Integer), DOUBLE (Floating-point), BOOLEAN (Boolean), DATE (Date), DATETIME (Datetime).
+        # The property field data type. Valid values:
+        # - STRING: text.
+        # - BIGINT: integer.
+        # - DOUBLE: floating-point.
+        # - BOOLEAN: Boolean.
+        # - DATE: date.
+        # - DATETIME: datetime.
         self.data_type = data_type
-        # The attribute default value.
+        # The property default value.
         self.default_value = default_value
-        # The attribute field length. Used to constrain the maximum length of text-type attribute values.
+        # The property field length. You can use this parameter to constrain the maximum length of text-type property values.
         self.length = length
-        # The attribute value input method. Valid values: CUSTOMIZED (Custom input), SINGLE_ENUM (Single-select dropdown), MULTIPLE_ENUMS (Multi-select dropdown), RANGE (Range interval).
+        # The property value input method. Valid values:
+        # - CUSTOMIZED: custom input.
+        # - SINGLE_ENUM: single-select dropdown.
+        # - MULTIPLE_ENUMS: multi-select dropdown.
+        # - RANGE: range interval.
         self.type = type
-        # The attribute option values. Only applicable to attributes with the single-select dropdown or multi-select dropdown input method.
+        # The property option values. This parameter applies only to properties whose input method is single-select dropdown or multi-select dropdown.
         self.value_enum_list = value_enum_list
 
     def validate(self):
@@ -630,15 +695,15 @@ class UpsertQualityRuleRequestUpsertCommandAttributeWithValueListAttributeInfoVa
         min_value: str = None,
         value_list: List[str] = None,
     ):
-        # Specifies whether to include the maximum value.
+        # Indicates whether the maximum value is included.
         self.include_max_value = include_max_value
-        # Specifies whether to include the minimum value.
+        # Indicates whether the minimum value is included.
         self.include_min_value = include_min_value
-        # The maximum value. Applicable to range interval attributes.
+        # The maximum value. This parameter applies to range interval properties.
         self.max_value = max_value
-        # The minimum value. Applicable to range interval attributes.
+        # The minimum value. This parameter applies to range interval properties.
         self.min_value = min_value
-        # The attribute value list. Applicable to attributes with the custom input, single-select dropdown, or multi-select dropdown input method.
+        # The property value list. This parameter applies to properties whose input method is custom input, single-select dropdown, or multi-select dropdown.
         self.value_list = value_list
 
     def validate(self):

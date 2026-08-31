@@ -19,7 +19,7 @@ class GetUserBySourceIdResponseBody(DaraModel):
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id

@@ -9,6 +9,7 @@ class GetBizEntityInfoByVersionRequest(DaraModel):
         self,
         id: int = None,
         op_tenant_id: int = None,
+        op_user_id: str = None,
         type: str = None,
         version_id: int = None,
     ):
@@ -20,6 +21,7 @@ class GetBizEntityInfoByVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        self.op_user_id = op_user_id
         # The business type. Valid values: BIZ_OBJECT and BIZ_PROCESS.
         # 
         # This parameter is required.
@@ -43,6 +45,9 @@ class GetBizEntityInfoByVersionRequest(DaraModel):
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
+        if self.op_user_id is not None:
+            result['OpUserId'] = self.op_user_id
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -58,6 +63,9 @@ class GetBizEntityInfoByVersionRequest(DaraModel):
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
+
+        if m.get('OpUserId') is not None:
+            self.op_user_id = m.get('OpUserId')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

@@ -330,6 +330,7 @@ class GetDatasetResponseBodyDatasetDTO(DaraModel):
 class GetDatasetResponseBodyDatasetDTOVersionList(DaraModel):
     def __init__(
         self,
+        api_info: main_models.GetDatasetResponseBodyDatasetDTOVersionListApiInfo = None,
         creator: str = None,
         data_version_config: main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfig = None,
         dataset_id: int = None,
@@ -338,6 +339,7 @@ class GetDatasetResponseBodyDatasetDTOVersionList(DaraModel):
         id: int = None,
         version: str = None,
     ):
+        self.api_info = api_info
         # The creator ID.
         self.creator = creator
         # The dataset version configuration.
@@ -354,6 +356,8 @@ class GetDatasetResponseBodyDatasetDTOVersionList(DaraModel):
         self.version = version
 
     def validate(self):
+        if self.api_info:
+            self.api_info.validate()
         if self.data_version_config:
             self.data_version_config.validate()
 
@@ -362,6 +366,9 @@ class GetDatasetResponseBodyDatasetDTOVersionList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_info is not None:
+            result['ApiInfo'] = self.api_info.to_map()
+
         if self.creator is not None:
             result['Creator'] = self.creator
 
@@ -387,6 +394,10 @@ class GetDatasetResponseBodyDatasetDTOVersionList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiInfo') is not None:
+            temp_model = main_models.GetDatasetResponseBodyDatasetDTOVersionListApiInfo()
+            self.api_info = temp_model.from_map(m.get('ApiInfo'))
+
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
 
@@ -1119,6 +1130,360 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigFileStorageCon
 
         if m.get('ProdPath') is not None:
             self.prod_path = m.get('ProdPath')
+
+        return self
+
+class GetDatasetResponseBodyDatasetDTOVersionListApiInfo(DaraModel):
+    def __init__(
+        self,
+        api_no: int = None,
+        exec_timeout: int = None,
+        execute_mode: int = None,
+        os_api_group: int = None,
+        os_api_group_name: str = None,
+        os_project: int = None,
+        os_project_name: str = None,
+        protocol: int = None,
+        request_method: int = None,
+        request_param_list: List[main_models.GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList] = None,
+        response_param_list: List[main_models.GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList] = None,
+        timeout: int = None,
+    ):
+        self.api_no = api_no
+        # This parameter is required.
+        self.exec_timeout = exec_timeout
+        # This parameter is required.
+        self.execute_mode = execute_mode
+        # This parameter is required.
+        self.os_api_group = os_api_group
+        self.os_api_group_name = os_api_group_name
+        # This parameter is required.
+        self.os_project = os_project
+        self.os_project_name = os_project_name
+        # This parameter is required.
+        self.protocol = protocol
+        # This parameter is required.
+        self.request_method = request_method
+        # This parameter is required.
+        self.request_param_list = request_param_list
+        self.response_param_list = response_param_list
+        # This parameter is required.
+        self.timeout = timeout
+
+    def validate(self):
+        if self.request_param_list:
+            for v1 in self.request_param_list:
+                 if v1:
+                    v1.validate()
+        if self.response_param_list:
+            for v1 in self.response_param_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.api_no is not None:
+            result['ApiNo'] = self.api_no
+
+        if self.exec_timeout is not None:
+            result['ExecTimeout'] = self.exec_timeout
+
+        if self.execute_mode is not None:
+            result['ExecuteMode'] = self.execute_mode
+
+        if self.os_api_group is not None:
+            result['OsApiGroup'] = self.os_api_group
+
+        if self.os_api_group_name is not None:
+            result['OsApiGroupName'] = self.os_api_group_name
+
+        if self.os_project is not None:
+            result['OsProject'] = self.os_project
+
+        if self.os_project_name is not None:
+            result['OsProjectName'] = self.os_project_name
+
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+
+        if self.request_method is not None:
+            result['RequestMethod'] = self.request_method
+
+        result['RequestParamList'] = []
+        if self.request_param_list is not None:
+            for k1 in self.request_param_list:
+                result['RequestParamList'].append(k1.to_map() if k1 else None)
+
+        result['ResponseParamList'] = []
+        if self.response_param_list is not None:
+            for k1 in self.response_param_list:
+                result['ResponseParamList'].append(k1.to_map() if k1 else None)
+
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiNo') is not None:
+            self.api_no = m.get('ApiNo')
+
+        if m.get('ExecTimeout') is not None:
+            self.exec_timeout = m.get('ExecTimeout')
+
+        if m.get('ExecuteMode') is not None:
+            self.execute_mode = m.get('ExecuteMode')
+
+        if m.get('OsApiGroup') is not None:
+            self.os_api_group = m.get('OsApiGroup')
+
+        if m.get('OsApiGroupName') is not None:
+            self.os_api_group_name = m.get('OsApiGroupName')
+
+        if m.get('OsProject') is not None:
+            self.os_project = m.get('OsProject')
+
+        if m.get('OsProjectName') is not None:
+            self.os_project_name = m.get('OsProjectName')
+
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+
+        if m.get('RequestMethod') is not None:
+            self.request_method = m.get('RequestMethod')
+
+        self.request_param_list = []
+        if m.get('RequestParamList') is not None:
+            for k1 in m.get('RequestParamList'):
+                temp_model = main_models.GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList()
+                self.request_param_list.append(temp_model.from_map(k1))
+
+        self.response_param_list = []
+        if m.get('ResponseParamList') is not None:
+            for k1 in m.get('ResponseParamList'):
+                temp_model = main_models.GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList()
+                self.response_param_list.append(temp_model.from_map(k1))
+
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+
+        return self
+
+class GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList(DaraModel):
+    def __init__(
+        self,
+        date_format: str = None,
+        descr: str = None,
+        is_url: bool = None,
+        mapping_column: str = None,
+        original_column: str = None,
+        param_name: str = None,
+        param_type: str = None,
+        sample: str = None,
+        seq_num: str = None,
+    ):
+        self.date_format = date_format
+        self.descr = descr
+        self.is_url = is_url
+        self.mapping_column = mapping_column
+        self.original_column = original_column
+        self.param_name = param_name
+        self.param_type = param_type
+        self.sample = sample
+        self.seq_num = seq_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.date_format is not None:
+            result['DateFormat'] = self.date_format
+
+        if self.descr is not None:
+            result['Descr'] = self.descr
+
+        if self.is_url is not None:
+            result['IsUrl'] = self.is_url
+
+        if self.mapping_column is not None:
+            result['MappingColumn'] = self.mapping_column
+
+        if self.original_column is not None:
+            result['OriginalColumn'] = self.original_column
+
+        if self.param_name is not None:
+            result['ParamName'] = self.param_name
+
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+
+        if self.sample is not None:
+            result['Sample'] = self.sample
+
+        if self.seq_num is not None:
+            result['SeqNum'] = self.seq_num
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DateFormat') is not None:
+            self.date_format = m.get('DateFormat')
+
+        if m.get('Descr') is not None:
+            self.descr = m.get('Descr')
+
+        if m.get('IsUrl') is not None:
+            self.is_url = m.get('IsUrl')
+
+        if m.get('MappingColumn') is not None:
+            self.mapping_column = m.get('MappingColumn')
+
+        if m.get('OriginalColumn') is not None:
+            self.original_column = m.get('OriginalColumn')
+
+        if m.get('ParamName') is not None:
+            self.param_name = m.get('ParamName')
+
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+
+        if m.get('Sample') is not None:
+            self.sample = m.get('Sample')
+
+        if m.get('SeqNum') is not None:
+            self.seq_num = m.get('SeqNum')
+
+        return self
+
+class GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList(DaraModel):
+    def __init__(
+        self,
+        date_format: str = None,
+        default_value: str = None,
+        descr: str = None,
+        is_url: bool = None,
+        mapping_column: str = None,
+        must: bool = None,
+        operator: str = None,
+        optional: bool = None,
+        original_column: str = None,
+        param_name: str = None,
+        param_type: str = None,
+        sample: str = None,
+        seq_num: int = None,
+    ):
+        self.date_format = date_format
+        self.default_value = default_value
+        self.descr = descr
+        self.is_url = is_url
+        self.mapping_column = mapping_column
+        self.must = must
+        self.operator = operator
+        self.optional = optional
+        self.original_column = original_column
+        self.param_name = param_name
+        self.param_type = param_type
+        self.sample = sample
+        self.seq_num = seq_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.date_format is not None:
+            result['DateFormat'] = self.date_format
+
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+
+        if self.descr is not None:
+            result['Descr'] = self.descr
+
+        if self.is_url is not None:
+            result['IsUrl'] = self.is_url
+
+        if self.mapping_column is not None:
+            result['MappingColumn'] = self.mapping_column
+
+        if self.must is not None:
+            result['Must'] = self.must
+
+        if self.operator is not None:
+            result['Operator'] = self.operator
+
+        if self.optional is not None:
+            result['Optional'] = self.optional
+
+        if self.original_column is not None:
+            result['OriginalColumn'] = self.original_column
+
+        if self.param_name is not None:
+            result['ParamName'] = self.param_name
+
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+
+        if self.sample is not None:
+            result['Sample'] = self.sample
+
+        if self.seq_num is not None:
+            result['SeqNum'] = self.seq_num
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DateFormat') is not None:
+            self.date_format = m.get('DateFormat')
+
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+
+        if m.get('Descr') is not None:
+            self.descr = m.get('Descr')
+
+        if m.get('IsUrl') is not None:
+            self.is_url = m.get('IsUrl')
+
+        if m.get('MappingColumn') is not None:
+            self.mapping_column = m.get('MappingColumn')
+
+        if m.get('Must') is not None:
+            self.must = m.get('Must')
+
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+
+        if m.get('Optional') is not None:
+            self.optional = m.get('Optional')
+
+        if m.get('OriginalColumn') is not None:
+            self.original_column = m.get('OriginalColumn')
+
+        if m.get('ParamName') is not None:
+            self.param_name = m.get('ParamName')
+
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+
+        if m.get('Sample') is not None:
+            self.sample = m.get('Sample')
+
+        if m.get('SeqNum') is not None:
+            self.seq_num = m.get('SeqNum')
 
         return self
 
