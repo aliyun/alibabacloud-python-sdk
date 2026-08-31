@@ -18,21 +18,20 @@ class DescribeComfyTasksResponseBody(DaraModel):
         tasks: List[main_models.DescribeComfyTasksResponseBodyTasks] = None,
         total: int = None,
     ):
-        # The error code. A value of 0 indicates a successful request.
+        # The error code.
         self.code = code
-        # The message that provides details about the result of the request.
+        # The description.
         self.message = message
-        # The page number of the returned data. The default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of tasks per page.
-        # 
-        # > This parameter applies only to recording queries.
+        # The page size.
+        # > Only applicable to recording queries.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # A list of Comfy tasks.
+        # The task list.
         self.tasks = tasks
-        # The total number of tasks that match the filter criteria.
+        # The number of tasks.
         self.total = total
 
     def validate(self):
@@ -105,24 +104,30 @@ class DescribeComfyTasksResponseBodyTasks(DaraModel):
         creation_time: str = None,
         end_time: str = None,
         hive_id: str = None,
+        task_error_message: str = None,
         task_id: str = None,
         task_state: str = None,
+        task_state_message: str = None,
         updated_time: str = None,
         workflow_id: str = None,
     ):
-        # The creation time of the task.
+        # The creation time.
         self.creation_time = creation_time
-        # The end time of the task.
+        # The task end time.
         self.end_time = end_time
-        # The ID of the resource pool used by the task.
+        # The resource pool ID used by the task.
         self.hive_id = hive_id
+        # The task status.
+        self.task_error_message = task_error_message
         # The task ID.
         self.task_id = task_id
-        # The task state.
+        # The task status.
         self.task_state = task_state
-        # The last modified time of the task.
+        # The task status.
+        self.task_state_message = task_state_message
+        # The last modified time.
         self.updated_time = updated_time
-        # The ID of the Comfy workflow associated with the task.
+        # The Comfy workflow ID used by the task.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -142,11 +147,17 @@ class DescribeComfyTasksResponseBodyTasks(DaraModel):
         if self.hive_id is not None:
             result['HiveId'] = self.hive_id
 
+        if self.task_error_message is not None:
+            result['TaskErrorMessage'] = self.task_error_message
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
         if self.task_state is not None:
             result['TaskState'] = self.task_state
+
+        if self.task_state_message is not None:
+            result['TaskStateMessage'] = self.task_state_message
 
         if self.updated_time is not None:
             result['UpdatedTime'] = self.updated_time
@@ -167,11 +178,17 @@ class DescribeComfyTasksResponseBodyTasks(DaraModel):
         if m.get('HiveId') is not None:
             self.hive_id = m.get('HiveId')
 
+        if m.get('TaskErrorMessage') is not None:
+            self.task_error_message = m.get('TaskErrorMessage')
+
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 
         if m.get('TaskState') is not None:
             self.task_state = m.get('TaskState')
+
+        if m.get('TaskStateMessage') is not None:
+            self.task_state_message = m.get('TaskStateMessage')
 
         if m.get('UpdatedTime') is not None:
             self.updated_time = m.get('UpdatedTime')

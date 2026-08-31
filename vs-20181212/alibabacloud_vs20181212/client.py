@@ -23,9 +23,9 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-shenzhen': 'vs.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'vs.cn-shanghai.aliyuncs.com',
             'cn-qingdao': 'vs.cn-qingdao.aliyuncs.com',
-            'cn-beijing': 'vs.cn-beijing.aliyuncs.com'
+            'cn-beijing': 'vs.cn-beijing.aliyuncs.com',
+            'cn-shanghai': 'vs.cn-shanghai.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('vs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -5669,6 +5669,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
         if not DaraCore.is_null(request.task_state):
             query['TaskState'] = request.task_state
         if not DaraCore.is_null(request.workflow_id):
@@ -5703,6 +5705,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
         if not DaraCore.is_null(request.task_state):
             query['TaskState'] = request.task_state
         if not DaraCore.is_null(request.workflow_id):

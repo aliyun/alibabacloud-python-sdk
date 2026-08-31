@@ -16,10 +16,15 @@ class ListSpecificationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The result objects.
         self.items = items
+        # The page number of the query list. Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListSpecificationsResponseBodyItems(DaraModel):
         specification: str = None,
         storage: int = None,
     ):
+        # The specification family.
         self.class_ = class_
+        # The number of cores.
         self.cores = cores
+        # The memory size.
         self.memory = memory
+        # The number of cards per single load.
         self.shard = shard
+        # `RenderingSpec`
         self.specification = specification
+        # The maximum storage capacity. Unit: GB.
         self.storage = storage
 
     def validate(self):

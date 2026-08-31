@@ -1,3 +1,8 @@
+2026-08-31 Version: 3.8.2
+- Update API DescribeComfyTasks: add response parameters Body.Tasks.$.TaskErrorMessage.
+- Update API DescribeComfyTasks: add response parameters Body.Tasks.$.TaskStateMessage.
+
+
 2026-07-08 Version: 3.8.0
 - Support API BatchCaptureRenderingInstanceScreenshot.
 

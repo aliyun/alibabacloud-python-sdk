@@ -11,8 +11,11 @@ class ListSpecificationsRequest(DaraModel):
         page_size: int = None,
         specification: str = None,
     ):
+        # The page number of the query list. Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page for paging. Maximum value: 100. Default value: 10.
         self.page_size = page_size
+        # The specification.
         self.specification = specification
 
     def validate(self):

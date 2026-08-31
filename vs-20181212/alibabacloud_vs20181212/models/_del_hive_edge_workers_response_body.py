@@ -16,10 +16,15 @@ class DelHiveEdgeWorkersResponseBody(DaraModel):
         success_instance_count: int = None,
         success_instances: List[main_models.DelHiveEdgeWorkersResponseBodySuccessInstances] = None,
     ):
+        # The number of workload instances that failed to be unbound.
         self.failed_instance_count = failed_instance_count
+        # The list of workload instances that failed to be unbound.
         self.failed_instances = failed_instances
+        # **The request ID.**
         self.request_id = request_id
+        # The number of workload instances that were successfully unbound.
         self.success_instance_count = success_instance_count
+        # The list of workload instances that were successfully unbound.
         self.success_instances = success_instances
 
     def validate(self):
@@ -89,7 +94,9 @@ class DelHiveEdgeWorkersResponseBodySuccessInstances(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
+        # The workload ID.
         self.instance_id = instance_id
+        # The message.
         self.message = message
 
     def validate(self):
@@ -124,7 +131,9 @@ class DelHiveEdgeWorkersResponseBodyFailedInstances(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
+        # The workload ID.
         self.instance_id = instance_id
+        # The failure reason.
         self.message = message
 
     def validate(self):

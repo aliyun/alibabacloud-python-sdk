@@ -19,23 +19,23 @@ class ListEdgeWorkersRequest(DaraModel):
         start_time: str = None,
         statuses: List[str] = None,
     ):
-        # This parameter is required for renewal scenarios.
+        # The expiration time.
         self.end_time = end_time
-        # The list of cluster IDs.
+        # The cluster ID list.
         self.hive_ids = hive_ids
-        # The list of payload IDs.
+        # The workload ID list.
         self.instance_ids = instance_ids
-        # The page number of the query. The value starts from 1. Default value: 1.
+        # The page number of the query list. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page for a paged query. The maximum value is 100. Default value: 10.
+        # The number of entries per page for a paginated query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The list of package IDs.
+        # The plan ID list.
         self.plan_ids = plan_ids
-        # Specification
+        # The specification.
         self.spec = spec
-        # The parameter for filtering by time range. The time must be in ISO 8601 format and use UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+        # The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
-        # The list of statuses.
+        # The status list.
         self.statuses = statuses
 
     def validate(self):

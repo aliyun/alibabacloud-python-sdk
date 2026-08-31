@@ -12,11 +12,11 @@ class MoveHiveEdgeWorkersRequest(DaraModel):
         hive_id: str = None,
         instance_ids: List[str] = None,
     ):
-        # The ID of the target Hive.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.hive_id = hive_id
-        # The IDs of the cloud application service instances to move.
+        # The list of workload IDs.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

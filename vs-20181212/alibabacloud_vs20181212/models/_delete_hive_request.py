@@ -9,6 +9,8 @@ class DeleteHiveRequest(DaraModel):
         self,
         hive_id: str = None,
     ):
+        # The ID of the cloud application service group.
+        # 
         # This parameter is required.
         self.hive_id = hive_id
 

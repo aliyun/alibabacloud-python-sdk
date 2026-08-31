@@ -9,16 +9,19 @@ class DescribeComfyTasksRequest(DaraModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        task_id: str = None,
         task_state: str = None,
         workflow_id: str = None,
     ):
         # The page number.
         self.page_number = page_number
-        # The number of tasks per page.
+        # The number of records to display per page.
         self.page_size = page_size
-        # The task state. If specified, the operation returns only tasks in that state.
+        # The Comfy workflow ID used as a filter condition.
+        self.task_id = task_id
+        # The task status used as a filter condition.
         self.task_state = task_state
-        # If you specify this parameter, the operation returns only tasks for the specified workflow.
+        # The Comfy workflow ID used as a filter condition.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -35,6 +38,9 @@ class DescribeComfyTasksRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+
         if self.task_state is not None:
             result['TaskState'] = self.task_state
 
@@ -50,6 +56,9 @@ class DescribeComfyTasksRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
 
         if m.get('TaskState') is not None:
             self.task_state = m.get('TaskState')

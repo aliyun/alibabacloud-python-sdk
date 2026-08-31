@@ -10,8 +10,12 @@ class DelHiveEdgeWorkersShrinkRequest(DaraModel):
         hive_id: str = None,
         instance_ids_shrink: str = None,
     ):
+        # **The cluster ID.**
+        # 
         # This parameter is required.
         self.hive_id = hive_id
+        # **The list of workload IDs.**
+        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
 

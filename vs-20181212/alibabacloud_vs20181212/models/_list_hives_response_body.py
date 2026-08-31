@@ -14,8 +14,11 @@ class ListHivesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of clusters.
         self.hives = hives
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -66,9 +69,13 @@ class ListHivesResponseBodyHives(DaraModel):
         hive_id: str = None,
         name: str = None,
     ):
+        # The creation time.
         self.creation_time = creation_time
+        # The description.
         self.description = description
+        # The cluster ID.
         self.hive_id = hive_id
+        # The name.
         self.name = name
 
     def validate(self):
