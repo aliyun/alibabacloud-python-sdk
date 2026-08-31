@@ -12,9 +12,16 @@ class DescribeScansRequest(DaraModel):
         status: str = None,
         task_name: str = None,
     ):
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
+        # The pagination token. Do not specify this parameter or set it to an empty string for the first page. For subsequent pages, pass the nextToken value from the previous response without any modification. If the nextToken value in the response is empty, the last page has been reached.
         self.next_token = next_token
+        # The task status. Valid values:
+        # * running: Running.
+        # * completed: Completed.
+        # * failed: Failed.
         self.status = status
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

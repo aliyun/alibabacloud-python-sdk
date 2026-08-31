@@ -21,7 +21,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'ap-southeast-1': 'codesec.ap-southeast-1.aliyuncs.com',
+            'cn-hangzhou': 'codesec.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('codesec', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

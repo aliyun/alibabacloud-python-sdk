@@ -19,13 +19,23 @@ class DescribeScanResultsByEngineResponseBody(DaraModel):
         scan_id: int = None,
         total_count: int = None,
     ):
+        # The engine type. Valid values:
+        # * sast
+        # * sca
         self.engine = engine
+        # The result list.
         self.items = items
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token. Do not pass nextToken or pass an empty string for the first page. To retrieve the next page, pass the nextToken value from the previous response without any modification. When the nextToken in the response is empty, you have reached the last page.
         self.next_token = next_token
+        # The project ID.
         self.project_id = project_id
+        # Id of the request
         self.request_id = request_id
+        # The task ID.
         self.scan_id = scan_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -127,31 +137,62 @@ class DescribeScanResultsByEngineResponseBodyItems(DaraModel):
         taint_flow_summary: str = None,
         title: str = None,
     ):
+        # Filters results by incremental scan baseline status. Valid values: new, unchanged, absent, updated.
         self.baseline_state = baseline_state
+        # The category. The system classifies files based on file name extensions and MIME types. Common categories include doc, image, audio, and video.
         self.category = category
+        # The code snippet near the primary location (SAST).
         self.code_snippet = code_snippet
+        # The rule confidence level, ranging from 0 to 1. This field is common in SAST results and is omitted if not applicable.
         self.confidence = confidence
-        # 发现记录创建时间（RFC3339）
+        # The time when the finding record was created (RFC 3339 format).
         self.created_at = created_at
+        # The associated CWE ID.
         self.cwe_id = cwe_id
+        # The issue description.
         self.description = description
+        # The end line number.
         self.end_line = end_line
+        # The file path.
         self.file_path = file_path
+        # The project ID.
         self.id = id
+        # The brief summary of the finding. Unlike description, this field is more of a conclusion statement.
         self.item_summary = item_summary
+        # The OWASP category.
         self.owasp_category = owasp_category
+        # The project name.
         self.project_name = project_name
+        # The remediation code example.
         self.remediation_code_example = remediation_code_example
+        # The remediation suggestion.
         self.remediation_suggestion = remediation_suggestion
+        # The rule ID.
         self.rule_id = rule_id
+        # The SCA component information. This field is returned only when engine is set to sca.
         self.sca_component = sca_component
+        # The task ID.
         self.scan_id = scan_id
+        # The severity level. Valid values:
+        # * critical 
+        # * high 
+        # * medium 
+        # * low
         self.severity = severity
+        # The source.
         self.source = source
+        # The start line number.
         self.start_line = start_line
+        # The status. Valid values:
+        # * running: Running.
+        # * completed: Completed.
+        # * failed: Failed.
         self.status = status
+        # The SAST taint analysis call chain that describes the complete propagation path of sensitive data from the taint source to the dangerous sink. This field is returned only when engine is set to sast.
         self.taint_flow = taint_flow
+        # The text summary of the taint call chain. This field is returned only when engine is set to sast.
         self.taint_flow_summary = taint_flow_summary
+        # The issue title.
         self.title = title
 
     def validate(self):
@@ -339,11 +380,21 @@ class DescribeScanResultsByEngineResponseBodyItemsTaintFlow(DaraModel):
         note: str = None,
         step: int = None,
     ):
+        # The code.
         self.code = code
+        # The file path.
         self.file = file
+        # The role type in the taint propagation chain. Valid values:
+        # * source: taint source.
+        # * propagator: propagation node.	
+        # * validation: validation or scrubbing center.	
+        # * sink: dangerous sink.
         self.kind = kind
+        # The line number.
         self.line = line
+        # The remarks.
         self.note = note
+        # The step number, starting from 0 and incrementing.
         self.step = step
 
     def validate(self):
@@ -407,12 +458,19 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponent(DaraModel):
         remediation: str = None,
         version: str = None,
     ):
+        # The number of CVEs.
         self.cve_count = cve_count
+        # The list of CVE details associated with a component in the SCA finding.
         self.cve_details = cve_details
+        # The list of dependency introduction paths in the SCA component information. This field is returned only when engine is set to sca.
         self.intro_paths = intro_paths
+        # Indicates whether the component is a direct dependency.
         self.is_direct = is_direct
+        # The component coordinate.
         self.package_name = package_name
+        # The component-level remediation suggestion.
         self.remediation = remediation
+        # The component version.
         self.version = version
 
     def validate(self):
@@ -489,11 +547,21 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails(DaraMod
         references: List[str] = None,
         severity: str = None,
     ):
+        # The associated CWE ID.
         self.cve_id = cve_id
+        # The CVSS score.
         self.cvss = cvss
+        # The CVSS version.
         self.cvss_version = cvss_version
+        # The description.
         self.description = description
+        # The reference information.
         self.references = references
+        # The severity level. Valid values:
+        # * critical
+        # * high
+        # * medium
+        # * low
         self.severity = severity
 
     def validate(self):

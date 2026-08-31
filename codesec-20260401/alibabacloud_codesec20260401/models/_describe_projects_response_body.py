@@ -16,10 +16,17 @@ class DescribeProjectsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of projects.
         self.items = items
+        # The page size.
+        # 
+        # > If not specified, all projects are displayed.
         self.max_results = max_results
+        # The pagination token. An empty value indicates the last page.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,17 +95,25 @@ class DescribeProjectsResponseBodyItems(DaraModel):
         source: main_models.DescribeProjectsResponseBodyItemsSource = None,
         updated_at: str = None,
     ):
+        # The project configuration version number.
         self.config_revision = config_revision
-        # 扫描项目创建时间（RFC3339）
+        # The creation time.
         self.created_at = created_at
+        # The user ID of the project creator.
         self.created_by = created_by
+        # The description.
         self.description = description
+        # The engine switches for the project or scan snapshot (SAST and SCA only).
         self.engines = engines
+        # The project ID.
         self.id = id
+        # The natural language prompt provided by the user that describes scanning or result processing preferences, such as ignoring low-risk vulnerabilities.
         self.instruction_prompt = instruction_prompt
+        # The project name.
         self.name = name
+        # The project source.
         self.source = source
-        # 扫描项目更新时间（RFC3339）
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):
@@ -185,6 +200,7 @@ class DescribeProjectsResponseBodyItemsSource(DaraModel):
         self,
         type: str = None,
     ):
+        # The project type.
         self.type = type
 
     def validate(self):
@@ -215,7 +231,9 @@ class DescribeProjectsResponseBodyItemsEngines(DaraModel):
         sast: bool = None,
         sca: bool = None,
     ):
+        # Indicates whether SAST is supported.
         self.sast = sast
+        # Indicates whether SCA is supported.
         self.sca = sca
 
     def validate(self):

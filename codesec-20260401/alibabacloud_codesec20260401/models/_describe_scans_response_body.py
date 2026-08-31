@@ -16,10 +16,15 @@ class DescribeScansResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The task list.
         self.items = items
+        # The page size.
         self.max_results = max_results
+        # The pagination token. An empty value indicates the last page.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -80,6 +85,7 @@ class DescribeScansResponseBodyItems(DaraModel):
         code_bundle_id: int = None,
         created_at: str = None,
         created_by: str = None,
+        current_phase: str = None,
         engine_snapshot: main_models.DescribeScansResponseBodyItemsEngineSnapshot = None,
         finished_at: str = None,
         id: int = None,
@@ -93,24 +99,49 @@ class DescribeScansResponseBodyItems(DaraModel):
         updated_at: str = None,
         worker_id: str = None,
     ):
+        # The code bundle ID.
         self.code_bundle_id = code_bundle_id
-        # 扫描任务创建时间（RFC3339）
+        # The time when the task was created.
         self.created_at = created_at
+        # The user ID of the task creator.
         self.created_by = created_by
+        # The scan phase. Valid values:
+        # * threat_model: Threat modeling.
+        # * discovery: Vulnerability discovery.
+        # * panel: Vulnerability review.
+        # * adversarial: Adversarial verification.
+        # * finalize: Report generation.
+        self.current_phase = current_phase
+        # The supported scan types.
         self.engine_snapshot = engine_snapshot
-        # 扫描结束时间（RFC3339）
+        # The time when the scan finished.
         self.finished_at = finished_at
+        # The task ID.
         self.id = id
+        # The scan type. Valid values:
+        # * full: Full scan.
+        # * incremental: Incremental scan.
         self.kind = kind
+        # The project ID.
         self.project_id = project_id
+        # The scan result statistics information.
         self.scan_metrics = scan_metrics
+        # The task progress.
         self.scan_progress = scan_progress
-        # 扫描开始时间（RFC3339）
+        # The time when the task started.
         self.started_at = started_at
+        # The task status. Valid values:
+        # * running: Running.
+        # * completed: Completed.
+        # * failed: Failed.
+        # * canceling: Being canceled. 
+        # * canceled: Canceled.
         self.status = status
+        # The task name.
         self.task_name = task_name
-        # 扫描任务更新时间（RFC3339）
+        # The time when the task was last updated.
         self.updated_at = updated_at
+        # Deprecated.
         self.worker_id = worker_id
 
     def validate(self):
@@ -132,6 +163,9 @@ class DescribeScansResponseBodyItems(DaraModel):
 
         if self.created_by is not None:
             result['createdBy'] = self.created_by
+
+        if self.current_phase is not None:
+            result['currentPhase'] = self.current_phase
 
         if self.engine_snapshot is not None:
             result['engineSnapshot'] = self.engine_snapshot.to_map()
@@ -182,6 +216,9 @@ class DescribeScansResponseBodyItems(DaraModel):
         if m.get('createdBy') is not None:
             self.created_by = m.get('createdBy')
 
+        if m.get('currentPhase') is not None:
+            self.current_phase = m.get('currentPhase')
+
         if m.get('engineSnapshot') is not None:
             temp_model = main_models.DescribeScansResponseBodyItemsEngineSnapshot()
             self.engine_snapshot = temp_model.from_map(m.get('engineSnapshot'))
@@ -230,9 +267,13 @@ class DescribeScansResponseBodyItemsScanMetrics(DaraModel):
         lines_of_code: int = None,
         token_total: int = None,
     ):
+        # The number of credits consumed by the task.
         self.credit = credit
+        # The number of files.
         self.file_count = file_count
+        # The number of lines of code.
         self.lines_of_code = lines_of_code
+        # Deprecated.
         self.token_total = token_total
 
     def validate(self):
@@ -279,7 +320,9 @@ class DescribeScansResponseBodyItemsEngineSnapshot(DaraModel):
         sast: bool = None,
         sca: bool = None,
     ):
+        # Indicates whether SAST is supported.
         self.sast = sast
+        # Indicates whether SCA is supported.
         self.sca = sca
 
     def validate(self):
