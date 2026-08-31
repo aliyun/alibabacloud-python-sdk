@@ -20,13 +20,18 @@ class DescribeNetworkInterfacesResponseBody(DaraModel):
         self.network_interface_sets = network_interface_sets
         # The pagination token returned in this call.
         self.next_token = next_token
-        # The paging query parameter.
+        # The paging parameter.
+        # 
+        # > This parameter is being deprecated. Use NextToken and MaxResults for paging.
         self.page_number = page_number
-        # The paging query parameter.
+        # The paging parameter.
+        # 
+        # > This parameter is being deprecated. Use NextToken and MaxResults for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of Elastic Network Interfaces (ENIs) returned.
+        # > When you use the `MaxResults` and `NextToken` parameters for paging, the returned `TotalCount` value is meaningless.
         self.total_count = total_count
 
     def validate(self):

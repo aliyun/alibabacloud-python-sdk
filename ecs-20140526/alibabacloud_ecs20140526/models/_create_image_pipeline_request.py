@@ -40,39 +40,68 @@ class CreateImagePipelineRequest(DaraModel):
         to_region_id: List[str] = None,
         v_switch_id: str = None,
     ):
-        # The Alibaba Cloud account ID to which to share the destination image through image sharing. Valid values of N: 1 to 20.
+        # The Alibaba Cloud account ID to which to share the built image through image sharing. Valid values of N: 1 to 20.
         self.add_account = add_account
         # The advanced configuration.
         self.advanced_options = advanced_options
         # The source image.
+        # - If `BaseImageType=IMAGE`, set this parameter to an image ID.
+        # - If `BaseImageType=IMAGE_FAMILY`, set this parameter to an image family name.
+        # - If `BaseImageType=OSS`, you do not need to set this parameter.
         self.base_image = base_image
         # The type of the source image. Valid values:
         # 
+        # - IMAGE: image.
+        # - IMAGE_FAMILY: image family.
+        # - OSS: OSS object.
+        # 
         # This parameter is required.
         self.base_image_type = base_image_type
-        # The content of the image build template. The content size cannot exceed 16 KB. For information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+        # The content of the image build template. The content size cannot exceed 16 KB. For more information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
         self.build_content = build_content
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # Specifies whether to release the intermediate instance if the image build fails. Valid values:
+        # Specifies whether to release the intermediate instance if the image fails to be built. Valid values:
+        # 
+        # - true: releases the intermediate instance.
+        # - false: does not release the intermediate instance.
+        # 
+        # Default value: true.
+        # 
+        # > If the intermediate instance fails to start, the instance is not retained by default.
         self.delete_instance_on_failure = delete_instance_on_failure
         # The description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The destination image family.
+        # The image family of the built image.
+        # <notice>
+        # This parameter is deprecated. Use ImageOptions.ImageFamily instead.
+        # </notice>
         self.image_family = image_family
-        # The prefix of the destination image name.
+        # The prefix of the name of the built image.
+        # <notice>
+        # This parameter is deprecated. Use ImageOptions.ImageName instead.
+        # </notice>
         self.image_name = image_name
-        # The destination image properties.
+        # The properties of the built image.
         self.image_options = image_options
-        # The properties and settings for importing the image. This parameter is required when `BaseImageType=OSS`.
+        # The properties and settings for importing an image. This parameter is required when `BaseImageType=OSS`.
         self.import_image_options = import_image_options
-        # The instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query available instance types.
+        # The instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query different instance types.
+        # 
+        # If you do not specify this parameter, the instance type that has the minimum number of vCPUs and the smallest memory size is automatically selected. The selection is subject to the inventory of instance types. For example, the ecs.g6.large instance type is selected by default. If the inventory of the ecs.g6.large instance type is insufficient, the ecs.g6.xlarge instance type is selected.
         self.instance_type = instance_type
         # The outbound public bandwidth of the intermediate instance. Unit: Mbit/s. Valid values: 0 to 100.
+        # 
+        # Default value: 0.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The template name. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
+        # The template name. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # 
+        # > If you do not specify `Name`, the `ImagePipelineId` return value is used by default.
         self.name = name
-        # Specifies whether the destination image supports NVMe.
+        # Specifies whether the built image supports NVMe.
+        # <notice>
+        # This parameter is deprecated. Use ImageOptions.ImageFeatures.NvmeSupport instead.
+        # </notice>
         self.nvme_support = nvme_support
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -81,21 +110,45 @@ class CreateImagePipelineRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.repair_item = repair_item
-        # The repair options in the image template.
+        # The repair option in the image template.
+        # 
+        # Valid values:
+        # - Standard: standard mode.
+        # 
+        #   Detection items for Linux include:
+        #   - GUESTOS.CloudInit
+        #   - GUESTOS.Dhcp
+        #   - GUESTOS.Virtio
+        #   - GUESTOS.OnlineResizeFS
+        #   - GUESTOS.Grub
+        #   - GUESTOS.Fstab
+        # 
+        #   Detection items for Windows include:
+        #   - GUESTOS.Virtio
+        #   - GUESTOS.Update
+        #   - GUESTOS.Hotfix
+        #   - GUESTOS.Server
+        # > As detection and repair capabilities continue to improve, the repair items may increase. For more information about the repair items, see [Overview of image detection](https://help.aliyun.com/document_detail/439819.html).
         self.repair_mode = repair_mode
         # The ID of the enterprise resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The system disk size of the intermediate instance. Unit: GiB. Valid values: 20 to 500.
+        # 
+        # Default value: 40.
         self.system_disk_size = system_disk_size
         # The tags.
         self.tag = tag
-        # The content of the image test template. The content size cannot exceed 16 KB. For information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+        # The content of the image test template. The content size cannot exceed 16 KB. For more information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
         self.test_content = test_content
-        # The regions to which to distribute the destination image. Valid values of N: 1 to 20.
+        # The regions to which to distribute the built image. Valid values of N: 1 to 20.
+        # 
+        # If you do not specify this parameter, the image is created only in the current region.
         self.to_region_id = to_region_id
-        # The vSwitch ID of the VPC.
+        # The ID of the vSwitch in the VPC.
+        # 
+        # If you do not specify this parameter, a new VPC and vSwitch are created by default. Make sure that the VPC resource quota in your account is sufficient. For more information, see [Limits](https://help.aliyun.com/document_detail/27750.html).
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -357,22 +410,80 @@ class CreateImagePipelineRequestImportImageOptions(DaraModel):
         retention_strategy: str = None,
         role_name: str = None,
     ):
-        # The system architecture of the system disk. You must specify this parameter when you use a data disk snapshot to create a system disk image. Valid values:
+        # The system architecture of the system disk when a data disk snapshot is used as the system disk. Valid values:
+        # 
+        # - x86_64.
+        # - arm64.
+        # 
+        # Default value: x86_64.
         self.architecture = architecture
         # The boot mode of the image. Valid values:
+        # 
+        # - BIOS: BIOS boot mode.
+        # - UEFI: UEFI boot mode.
+        # 
+        # Default value: BIOS. If `Architecture=arm64`, the default value is UEFI, and only UEFI is supported.
+        # 
+        # <notice>
+        # 
+        # To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot modes supported by the image before you set this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
+        # 
+        # </notice>
         self.boot_mode = boot_mode
         self.description = description
-        # The information about the custom images.
+        # The list of custom image information.
+        # - When N=1, the entry represents the system disk.
+        # - When N=2 to 17, the entry represents a data disk.
         self.disk_device_mappings = disk_device_mappings
         # The image feature properties.
         self.features = features
         self.image_name = image_name
         self.import_image_tags = import_image_tags
         # The license type used to activate the operating system after the image is imported. Valid values:
+        # 
+        # - Auto: Alibaba Cloud detects the source operating system and assigns a license. In automatic mode, the system first checks whether a license distributed through official Alibaba Cloud channels exists for the `Platform` you specified and assigns the license to the imported image. If no such license exists, the system switches to BYOL (Bring Your Own License) mode.
+        # - Aliyun: uses a license distributed through official Alibaba Cloud channels based on the `Platform` you specified.
+        # - BYOL: uses the license that comes with the source operating system. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
+        # 
+        # Default value: Auto.
         self.license_type = license_type
         # The operating system type. Valid values:
+        # 
+        # - windows.
+        # - linux.
+        # 
+        # Default value: linux.
         self.ostype = ostype
         # The operating system version. Valid values:
+        # - Aliyun
+        # - Anolis
+        # - CentOS
+        # - Ubuntu
+        # - CoreOS
+        # - SUSE
+        # - Debian
+        # - OpenSUSE
+        # - FreeBSD
+        # - RedHat
+        # - Kylin
+        # - UOS
+        # - Fedora
+        # - Fedora CoreOS
+        # - CentOS Stream
+        # - AlmaLinux
+        # - Rocky Linux
+        # - Gentoo
+        # - Customized Linux
+        # - Others Linux
+        # - Windows Server 2022
+        # - Windows Server 2019
+        # - Windows Server 2016
+        # - Windows Server 2012
+        # - Windows Server 2008
+        # - Windows Server 2003
+        # - Other Windows
+        # 
+        # Default value: Others Linux if the operating system type is Linux. Otherwise, the default value is Other Windows.
         self.platform = platform
         # > This parameter is in invitational preview.
         self.retain_imported_image = retain_imported_image
@@ -533,7 +644,11 @@ class CreateImagePipelineRequestImportImageOptionsFeatures(DaraModel):
         nvme_support: str = None,
     ):
         self.imds_support = imds_support
-        # Specifies whether the imported source image supports NVMe. Valid values:
+        # Specifies whether the imported original image supports NVMe. Valid values:
+        # - supported: The instances created from this image support the NVMe protocol.
+        # - unsupported: The instances created from this image do not support the NVMe protocol.
+        # 
+        # Default value: unsupported.
         self.nvme_support = nvme_support
 
     def validate(self):
@@ -571,12 +686,25 @@ class CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings(DaraModel):
         ossobject: str = None,
     ):
         # The size of the custom image after the image is imported.
+        # 
+        # The size consists of the system disk and data disks. Make sure that the system disk size is greater than or equal to the size of the imported image file. Valid values:
+        # 
+        # - When N=1, the entry represents the system disk. Valid values: 1 GiB to 2048 GiB.
+        # - When N=2 to 17, the entry represents a data disk. Valid values: 1 GiB to 2048 GiB.
+        # 
+        # After you upload the source image file to OSS, you can view the size of the image file in the OSS bucket.
         self.disk_image_size = disk_image_size
         # The image format. Valid values:
+        # 
+        # - RAW.
+        # - VHD.
+        # - QCOW2.
+        # 
+        # Default value: none. Alibaba Cloud automatically detects the image format, and the detected format prevails.
         self.format = format
         # The OSS bucket in which the image file is stored.
         self.ossbucket = ossbucket
-        # The name (key) of the image file stored in the OSS bucket after the image is uploaded.
+        # The file name (key) of the image file stored in the OSS bucket after the image is uploaded.
         self.ossobject = ossobject
 
     def validate(self):
@@ -628,13 +756,15 @@ class CreateImagePipelineRequestImageOptions(DaraModel):
     ):
         # The description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The destination image family. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with aliyun or acs:. The name cannot contain http:// or https://. The name can contain digits, colons (:), underscores (_), or hyphens (-).
+        # The image family of the built image. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with aliyun or acs:. The name cannot contain http:// or https://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
         self.image_family = image_family
-        # The feature properties of the destination image.
+        # The image feature properties of the built image.
         self.image_features = image_features
-        # The prefix of the destination image name. The name must be 2 to 64 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
+        # The prefix of the name of the built image. The name must be 2 to 64 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # 
+        # The final complete image name is automatically generated by the system by concatenating the name prefix and the build task ID (`ExecutionId`) in the format of `{ImageName}_{ExecutionId}`.
         self.image_name = image_name
-        # The tags of the destination image.
+        # The tags of the built image.
         self.image_tags = image_tags
 
     def validate(self):
@@ -734,7 +864,10 @@ class CreateImagePipelineRequestImageOptionsImageFeatures(DaraModel):
         self,
         nvme_support: str = None,
     ):
-        # Specifies whether the destination image supports NVMe. Valid values:
+        # Specifies whether the built image supports NVMe. Valid values:
+        # - supported: The instances created from this image support the NVMe protocol.
+        # - unsupported: The instances created from this image do not support the NVMe protocol.
+        # - auto: The system automatically detects whether your image has the NVMe driver installed. This detection occurs before the build phase. If you install or uninstall the NVMe driver during the build, the result may be inaccurate. Set this parameter to supported or unsupported based on your build content.
         self.nvme_support = nvme_support
 
     def validate(self):
@@ -763,9 +896,15 @@ class CreateImagePipelineRequestAdvancedOptions(DaraModel):
         image_name_suffix: str = None,
         retain_cloud_assistant: bool = None,
     ):
-        # Specifies whether to disable the automatic suffix for the destination image name. Valid values:
+        # Specifies whether to disable the automatic suffix for the built image name. Valid values:
+        # - disable: disables the automatic suffix.
         self.image_name_suffix = image_name_suffix
-        # Specifies whether to retain Cloud Assistant. During the build process, the system automatically installs Cloud Assistant on the intermediate instance to run commands. You can choose whether to retain Cloud Assistant in the destination image. Valid values:
+        # Specifies whether to retain Cloud Assistant. During the build process, the system automatically installs Cloud Assistant on the intermediate instance to run commands. You can choose whether to retain Cloud Assistant in the built image. Valid values:
+        # - true: retains Cloud Assistant.
+        # - false: does not retain Cloud Assistant.
+        # 
+        # Default value: false.
+        # > This setting does not affect Cloud Assistant that is already included in your image.
         self.retain_cloud_assistant = retain_cloud_assistant
 
     def validate(self):

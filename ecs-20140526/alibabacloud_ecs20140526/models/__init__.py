@@ -905,6 +905,9 @@ from ._modify_instance_network_options_response import ModifyInstanceNetworkOpti
 from ._modify_instance_network_spec_request import ModifyInstanceNetworkSpecRequest
 from ._modify_instance_network_spec_response_body import ModifyInstanceNetworkSpecResponseBody
 from ._modify_instance_network_spec_response import ModifyInstanceNetworkSpecResponse
+from ._modify_instance_security_options_request import ModifyInstanceSecurityOptionsRequest
+from ._modify_instance_security_options_response_body import ModifyInstanceSecurityOptionsResponseBody
+from ._modify_instance_security_options_response import ModifyInstanceSecurityOptionsResponse
 from ._modify_instance_spec_request import ModifyInstanceSpecRequest
 from ._modify_instance_spec_response_body import ModifyInstanceSpecResponseBody
 from ._modify_instance_spec_response import ModifyInstanceSpecResponse
@@ -2991,6 +2994,9 @@ __all__ = [
     ModifyInstanceNetworkSpecRequest,
     ModifyInstanceNetworkSpecResponseBody,
     ModifyInstanceNetworkSpecResponse,
+    ModifyInstanceSecurityOptionsRequest,
+    ModifyInstanceSecurityOptionsResponseBody,
+    ModifyInstanceSecurityOptionsResponse,
     ModifyInstanceSpecRequest,
     ModifyInstanceSpecResponseBody,
     ModifyInstanceSpecResponse,

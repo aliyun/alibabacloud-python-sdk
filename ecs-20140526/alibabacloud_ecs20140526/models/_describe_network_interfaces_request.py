@@ -36,21 +36,28 @@ class DescribeNetworkInterfacesRequest(DaraModel):
     ):
         # The instance ID of the instance to which the network interface controller (NIC) is attached.
         self.instance_id = instance_id
-        # The IPv6 address of the network interface controller (NIC). N indicates that you can configure multiple IPv6 addresses. Valid values of N: 1 to 100.
+        # The IPv6 address of the network interface controller (NIC). N indicates that you can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
         self.ipv_6address = ipv_6address
-        # The maximum number of entries per page for paging query. Valid values: 10 to 500.
+        # The maximum number of entries per page for paging. Valid values: 10 to 500.
+        # 
+        # Default value:
+        # 
+        # - If you do not set this parameter or set it to a value less than 10, the default value is 10.
+        # - If you set this parameter to a value greater than 500, the default value is 500.
         self.max_results = max_results
         # The network interface controller (NIC) ID. Valid values of N: 1 to 100.
         self.network_interface_id = network_interface_id
-        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain characters under the Unicode letter categorization (including English letters, Chinese characters, and digits). It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and can contain characters from the Unicode letter categorization (which includes English letters, Chinese characters, and digits). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
         self.network_interface_name = network_interface_name
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+        # The pagination token. Set this parameter to the `NextToken` value returned in the previous API call.
+        # 
+        # For information about how to view the returned data, refer to the operation description above.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # **[Deprecated]** Use MaxResults or NextToken for pagination instead.
+        # > This parameter is deprecated. Use the MaxResults and NextToken parameters for pagination.
         self.page_number = page_number
-        # **[Deprecated]** Use MaxResults or NextToken for pagination instead.
+        # > This parameter is deprecated. Use the MaxResults and NextToken parameters for pagination.
         self.page_size = page_size
         # The primary private IP address of the network interface controller (NIC).
         self.primary_ip_address = primary_ip_address
@@ -60,19 +67,37 @@ class DescribeNetworkInterfacesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1,000.
+        # 
+        # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The security group ID associated with the secondary ENI.
+        # The security group ID of the secondary ENI.
+        # 
+        # - To query information about a secondary ENI by security group ID, specify this parameter.
+        # - To query information about a primary ENI by security group ID, call [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) and specify the `SecurityGroupId` parameter.
         self.security_group_id = security_group_id
-        # Specifies whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a Virtual Network Operator (VNO).
+        # Indicates whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a Virtual Network Operator (VNO).
         self.service_managed = service_managed
         # The status of the network interface controller (NIC). Valid values:
+        # 
+        # * Available: available.
+        # * Attaching: being attached.
+        # * InUse: attached.
+        # * Detaching: being detached.
+        # * Deleting: being deleted.
+        # 
+        # Default value: null, which indicates that all statuses are queried.
         self.status = status
         # The tags.
         self.tag = tag
-        # The type of the network interface controller (NIC). Valid values:
+        # The type of the Elastic Network Interface (ENI). Valid values:
+        # 
+        # - Primary: primary network interface controller (NIC).
+        # - Secondary: secondary ENI.
+        # 
+        # Default value: null, which indicates that all types are queried.
         self.type = type
         # The vSwitch ID of the network interface controller (NIC).
         self.v_switch_id = v_switch_id
@@ -248,6 +273,8 @@ class DescribeNetworkInterfacesRequestTag(DaraModel):
         # The tag key of the network interface controller (NIC). Valid values of N: 1 to 20.
         self.key = key
         # The tag value of the network interface controller (NIC). Valid values of N: 1 to 20.
+        # 
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         self.value = value
 
     def validate(self):

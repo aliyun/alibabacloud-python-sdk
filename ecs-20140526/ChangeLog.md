@@ -1,3 +1,7 @@
+2026-08-31 Version: 7.11.0
+- Support API ModifyInstanceSecurityOptions.
+
+
 2026-08-24 Version: 7.10.0
 - Support API SendDiagnosticInterrupt.
 

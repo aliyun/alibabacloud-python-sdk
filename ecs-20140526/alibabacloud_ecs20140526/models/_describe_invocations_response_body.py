@@ -20,7 +20,7 @@ class DescribeInvocationsResponseBody(DaraModel):
         self.invocations = invocations
         # The pagination token returned in this call.
         self.next_token = next_token
-        # The page number of the query result.
+        # The page number of the query results.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

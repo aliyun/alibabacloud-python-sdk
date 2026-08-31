@@ -33456,6 +33456,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_instance_network_spec_with_options_async(request, runtime)
 
+    def modify_instance_security_options_with_options(
+        self,
+        request: main_models.ModifyInstanceSecurityOptionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceSecurityOptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.enable_secure_boot):
+            query['EnableSecureBoot'] = request.enable_secure_boot
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceSecurityOptions',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceSecurityOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_security_options_with_options_async(
+        self,
+        request: main_models.ModifyInstanceSecurityOptionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceSecurityOptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.enable_secure_boot):
+            query['EnableSecureBoot'] = request.enable_secure_boot
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceSecurityOptions',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceSecurityOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_security_options(
+        self,
+        request: main_models.ModifyInstanceSecurityOptionsRequest,
+    ) -> main_models.ModifyInstanceSecurityOptionsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_instance_security_options_with_options(request, runtime)
+
+    async def modify_instance_security_options_async(
+        self,
+        request: main_models.ModifyInstanceSecurityOptionsRequest,
+    ) -> main_models.ModifyInstanceSecurityOptionsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_instance_security_options_with_options_async(request, runtime)
+
     def modify_instance_spec_with_options(
         self,
         request: main_models.ModifyInstanceSpecRequest,

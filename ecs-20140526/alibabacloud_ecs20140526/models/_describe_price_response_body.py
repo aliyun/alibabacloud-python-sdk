@@ -208,6 +208,10 @@ class DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice(DaraMo
         trade_price: float = None,
     ):
         # The currency unit.
+        # 
+        # China site: CNY.
+        # 
+        # International site: USD.
         self.currency = currency
         # The discount.
         self.discount_price = discount_price
@@ -265,6 +269,10 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
         trade_price: float = None,
     ):
         # The currency unit.
+        # 
+        # China site: CNY.
+        # 
+        # International site: USD.
         self.currency = currency
         self.detail_infos = detail_infos
         # The discount.

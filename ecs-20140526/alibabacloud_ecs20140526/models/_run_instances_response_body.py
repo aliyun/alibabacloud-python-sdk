@@ -16,7 +16,7 @@ class RunInstancesResponseBody(DaraModel):
         trade_price: float = None,
     ):
         self.instance_id_sets = instance_id_sets
-        # The order ID. This parameter is returned only when you create subscription ECS instances (request parameter `InstanceChargeType=PrePaid`).
+        # The order ID. This parameter is returned only when you create a subscription ECS instance (the request parameter `InstanceChargeType=PrePaid`).
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

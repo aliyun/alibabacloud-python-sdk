@@ -55,16 +55,26 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         # > This parameter is in invitational preview and is not publicly available.
         self.bond_interface_specification = bond_interface_specification
         # The collection of network connectivity tracking configuration information.
+        # 
+        # Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
+        # 
+        # > This parameter is returned only when the `Attribute` input parameter is set to `connectionTrackingConfiguration`.
         self.connection_tracking_configuration = connection_tracking_configuration
         # The time when the network interface controller (NIC) was created.
         self.creation_time = creation_time
         # Indicates whether the ENI is retained when the associated instance is released. Valid values:
+        # 
+        # - true: The ENI is not retained.
+        # 
+        # - false: The ENI is retained.
         self.delete_on_release = delete_on_release
         # The description of the network interface controller (NIC).
         self.description = description
         # This parameter is not publicly available.
         self.enhanced_network = enhanced_network
         # The ID of the instance to which the network interface controller (NIC) is attached.
+        # 
+        # > Network interface controllers (NICs) that are managed and controlled by other Alibaba Cloud services do not return an instance ID.
         self.instance_id = instance_id
         self.ipv_4prefix_sets = ipv_4prefix_sets
         self.ipv_6prefix_sets = ipv_6prefix_sets
@@ -77,25 +87,41 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         self.network_interface_name = network_interface_name
         # The traffic parameters of the network interface controller (NIC).
         self.network_interface_traffic_config = network_interface_traffic_config
-        # The communication mode of the network interface controller (NIC). Valid values:
+        # The communication pattern of the network interface controller (NIC). Valid values:
+        # 
+        # - Standard: uses the TCP communication pattern.
+        # - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication pattern.
+        # 
+        # > The HighPerformance parameter value is supported only by the c7re RDMA enhanced instance family.
         self.network_interface_traffic_mode = network_interface_traffic_mode
         # The ID of the account that owns the network interface controller (NIC).
         self.owner_id = owner_id
-        # The private network IP address of the network interface controller (NIC).
+        # The private IP address of the network interface controller (NIC).
         self.private_ip_address = private_ip_address
         self.private_ip_sets = private_ip_sets
-        # The QoS rate limiting settings.
+        # The QoS rate limit settings.
         self.qo_sconfig = qo_sconfig
-        # The number of queues supported by the network interface controller (NIC).
+        # The number of queues for the Elastic Network Interface (ENI).
+        # * If the Elastic Network Interface (ENI) is a primary network interface controller (NIC): the default number of queues for the primary network interface controller (NIC) based on the instance type is returned.
+        # 
+        # * If the Elastic Network Interface (ENI) is a secondary ENI:
+        #     * If the secondary ENI is in the InUse state:
+        #         * If the number of queues has not been modified, the default number of queues for the secondary ENI based on the instance type is returned.
+        #         * If the number of queues has been modified, the modified number of queues is returned.
+        #     * If the secondary ENI is in the active (Available) state:
+        #         * If the number of queues has not been modified, an empty value is returned.
+        #         * If the number of queues has been modified, the modified number of queues is returned.
         self.queue_number = queue_number
         # > This parameter is in invitational preview and is not publicly available.
         self.queue_pair_number = queue_pair_number
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
+        # The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # 
+        # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
-        # The ID of the Virtual Network Operator (VNO) to which the network interface controller (NIC) belongs.
+        # The Virtual Network Operator (VNO) ID associated with the network interface controller (NIC).
         self.service_id = service_id
         # Indicates whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a VNO.
         self.service_managed = service_managed
@@ -104,11 +130,22 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         # This parameter is not publicly available.
         self.source_dest_check = source_dest_check
         # The status of the network interface controller (NIC). Valid values:
+        # 
+        # * Available: active.
+        # * Attaching: being attached.
+        # * InUse: in use.
+        # * Detaching: being detached.
+        # * Deleting: being deleted.
+        # 
+        # Default value: empty, which indicates that network interface controllers (NICs) in all statuses are queried.
         self.status = status
         self.tags = tags
         # > This parameter is in invitational preview and is not publicly available.
         self.tcp_option_address_enabled = tcp_option_address_enabled
-        # The type of the network interface controller (NIC). Valid values:
+        # The type of the Elastic Network Interface (ENI). Valid values:
+        # 
+        # * Primary: primary network interface controller (NIC).
+        # * Secondary: secondary Elastic Network Interface (ENI).
         self.type = type
         # The ID of the vSwitch to which the network interface controller (NIC) belongs.
         self.v_switch_id = v_switch_id
@@ -545,7 +582,7 @@ class DescribeNetworkInterfaceAttributeResponseBodyQoSConfig(DaraModel):
     ):
         # Indicates whether QoS rate limiting is enabled.
         self.enable_qo_s = enable_qo_s
-        # The QoS rate limiting settings.
+        # The QoS rate limit settings.
         self.qo_s = qo_s
 
     def validate(self):
@@ -762,11 +799,11 @@ class DescribeNetworkInterfaceAttributeResponseBodyNetworkInterfaceTrafficConfig
         queue_number: int = None,
         queue_pair_number: int = None,
     ):
-        # The communication mode of the network interface controller (NIC).
+        # The communication pattern of the network interface controller (NIC).
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The number of queues supported by the network interface controller (NIC).
+        # The number of queues for the network interface controller (NIC).
         self.queue_number = queue_number
-        # The number of queues supported by the RDMA network interface.
+        # The number of RDMA queue pairs.
         self.queue_pair_number = queue_pair_number
 
     def validate(self):
@@ -1005,7 +1042,7 @@ class DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork(DaraModel):
         virtual_function_total_queue_number: int = None,
     ):
         self.enable_express = enable_express
-        # > This parameter is not yet available for use.
+        # > This parameter is not available for use.
         self.enable_rss = enable_rss
         # This parameter is not publicly available.
         self.enable_sriov = enable_sriov
@@ -1063,11 +1100,15 @@ class DescribeNetworkInterfaceAttributeResponseBodyConnectionTrackingConfigurati
         tcp_established_timeout: int = None,
         udp_timeout: int = None,
     ):
-        # The timeout period for TCP connections in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: an integer from 3 to 15.
+        # The timeout period for TCP connections in the TIME_WAIT and CLOSED states. Unit: seconds. Valid values: an integer from 3 to 15.
+        # 
+        # > If your ECS instance is used with NLB or CLB, the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
         self.tcp_closed_and_time_wait_timeout = tcp_closed_and_time_wait_timeout
-        # The timeout period for established TCP connections. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
+        # The timeout period for TCP connections in the established state. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
         self.tcp_established_timeout = tcp_established_timeout
         # The timeout period for UDP flows. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
+        # 
+        # > If your ECS instance is used with NLB or CLB, the default value is 100 seconds.
         self.udp_timeout = udp_timeout
 
     def validate(self):
@@ -1233,6 +1274,8 @@ class DescribeNetworkInterfaceAttributeResponseBodyAttachment(DaraModel):
         self.instance_id = instance_id
         self.member_network_interface_ids = member_network_interface_ids
         # The index of the network card to which the ENI is attached.
+        # - If the ENI is in the Available state or the index was not specified during attachment, this value is not returned.
+        # - If the ENI is in the InUse state and the index was specified during attachment, this value indicates the index of the network card to which the ENI is attached.
         self.network_card_index = network_card_index
         # > This parameter is in invitational preview and is not publicly available.
         self.trunk_network_interface_id = trunk_network_interface_id

@@ -55,6 +55,7 @@ class DescribeRenewalPriceResponseBodyPriceInfo(DaraModel):
     ):
         # The price.
         self.price = price
+        # The related price.
         self.related_price = related_price
         self.rules = rules
 
@@ -173,6 +174,7 @@ class DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice(DaraModel):
         self,
         marketplace_image_price: main_models.DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice = None,
     ):
+        # The Alibaba Cloud Marketplace image price.
         self.marketplace_image_price = marketplace_image_price
 
     def validate(self):
@@ -205,9 +207,17 @@ class DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice
         original_price: float = None,
         trade_price: float = None,
     ):
+        # The currency unit.
+        # 
+        # China site: CNY.
+        # 
+        # International site: USD.
         self.currency = currency
+        # The discount.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
