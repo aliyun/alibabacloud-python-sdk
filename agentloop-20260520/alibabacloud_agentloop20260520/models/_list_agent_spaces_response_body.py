@@ -179,9 +179,11 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
 class ListAgentSpacesResponseBodyAgentSpacesMseNamespace(DaraModel):
     def __init__(
         self,
+        bind_type: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        self.bind_type = bind_type
         # The MSE namespace ID.
         self.namespace_id = namespace_id
         # The MSE namespace name.
@@ -195,6 +197,9 @@ class ListAgentSpacesResponseBodyAgentSpacesMseNamespace(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.bind_type is not None:
+            result['bindType'] = self.bind_type
+
         if self.namespace_id is not None:
             result['namespaceId'] = self.namespace_id
 
@@ -205,6 +210,9 @@ class ListAgentSpacesResponseBodyAgentSpacesMseNamespace(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('bindType') is not None:
+            self.bind_type = m.get('bindType')
+
         if m.get('namespaceId') is not None:
             self.namespace_id = m.get('namespaceId')
 

@@ -25,13 +25,13 @@ class GetAgentSpaceResponseBody(DaraModel):
         self.cms_workspace = cms_workspace
         # The binding type of the CloudMonitor 2.0 workspace.
         self.cms_workspace_bind_type = cms_workspace_bind_type
-        # The time when the AgentSpace was created.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
         # The description.
         self.description = description
-        # The Microservices Engine (MSE) namespace.
+        # The MSE namespace.
         self.mse_namespace = mse_namespace
         # The region ID.
         self.region_id = region_id
@@ -39,7 +39,7 @@ class GetAgentSpaceResponseBody(DaraModel):
         self.request_id = request_id
         # The name of the Simple Log Service project.
         self.sls_project = sls_project
-        # The time when the AgentSpace was last updated.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -123,9 +123,11 @@ class GetAgentSpaceResponseBody(DaraModel):
 class GetAgentSpaceResponseBodyMseNamespace(DaraModel):
     def __init__(
         self,
+        bind_type: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        self.bind_type = bind_type
         # The ID of the MSE namespace.
         self.namespace_id = namespace_id
         # The name of the MSE namespace.
@@ -139,6 +141,9 @@ class GetAgentSpaceResponseBodyMseNamespace(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.bind_type is not None:
+            result['bindType'] = self.bind_type
+
         if self.namespace_id is not None:
             result['namespaceId'] = self.namespace_id
 
@@ -149,6 +154,9 @@ class GetAgentSpaceResponseBodyMseNamespace(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('bindType') is not None:
+            self.bind_type = m.get('bindType')
+
         if m.get('namespaceId') is not None:
             self.namespace_id = m.get('namespaceId')
 

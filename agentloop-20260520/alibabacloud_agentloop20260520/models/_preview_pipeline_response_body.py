@@ -14,7 +14,7 @@ class PreviewPipelineResponseBody(DaraModel):
         meta: main_models.PreviewPipelineResponseBodyMeta = None,
         request_id: str = None,
     ):
-        # The `data` field is a collection of sample rows (an array of maps) that contains only the first N rows (up to 5 by default) and does not reflect the complete write plan.
+        # `data` is a collection of sample rows (maps within an array) that contains only the first N rows (up to 5 by default) and does not reflect the complete write plan.
         self.data = data
         # The query metadata.
         self.meta = meta
@@ -78,7 +78,7 @@ class PreviewPipelineResponseBodyMeta(DaraModel):
     ):
         # The aggregation analysis SPL statement.
         self.agg_query = agg_query
-        # The `meta.columnTypes` field provides a mapping from column names to data types (string / long / double / json).
+        # `meta.columnTypes` provides the mapping from column names to data types (string / long / double / json).
         self.column_types = column_types
         # The number of matched log entries.
         self.count = count
@@ -94,19 +94,19 @@ class PreviewPipelineResponseBodyMeta(DaraModel):
         self.is_accurate = is_accurate
         # The list of result column names.
         self.keys = keys
-        # The maximum number of result rows returned.
+        # The maximum number of rows that can be returned.
         self.limited = limited
         # The query mode identifier.
         self.mode = mode
-        # The number of processed data bytes.
+        # The number of data bytes processed.
         self.processed_bytes = processed_bytes
         # The number of processed log rows.
         self.processed_rows = processed_rows
-        # The SLS query progress. A value of Complete indicates that the query is complete.
+        # The Simple Log Service (SLS) query progress. A value of Complete indicates that the query is complete.
         self.progress = progress
         # The number of raw data bytes scanned.
         self.scan_bytes = scan_bytes
-        # The column type and aggregation information.
+        # The type and aggregation information of columns.
         self.terms = terms
         # The filter condition SPL statement.
         self.where_query = where_query

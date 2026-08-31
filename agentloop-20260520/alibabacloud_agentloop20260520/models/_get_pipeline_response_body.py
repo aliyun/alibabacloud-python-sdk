@@ -154,13 +154,23 @@ class GetPipelineResponseBody(DaraModel):
 class GetPipelineResponseBodySource(DaraModel):
     def __init__(
         self,
+        dataset: main_models.GetPipelineResponseBodySourceDataset = None,
+        input_fields: List[main_models.GetPipelineResponseBodySourceInputFields] = None,
         logstore: main_models.GetPipelineResponseBodySourceLogstore = None,
         type: str = None,
     ):
+        self.dataset = dataset
+        self.input_fields = input_fields
         self.logstore = logstore
         self.type = type
 
     def validate(self):
+        if self.dataset:
+            self.dataset.validate()
+        if self.input_fields:
+            for v1 in self.input_fields:
+                 if v1:
+                    v1.validate()
         if self.logstore:
             self.logstore.validate()
 
@@ -169,6 +179,14 @@ class GetPipelineResponseBodySource(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dataset is not None:
+            result['dataset'] = self.dataset.to_map()
+
+        result['inputFields'] = []
+        if self.input_fields is not None:
+            for k1 in self.input_fields:
+                result['inputFields'].append(k1.to_map() if k1 else None)
+
         if self.logstore is not None:
             result['logstore'] = self.logstore.to_map()
 
@@ -179,6 +197,16 @@ class GetPipelineResponseBodySource(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('dataset') is not None:
+            temp_model = main_models.GetPipelineResponseBodySourceDataset()
+            self.dataset = temp_model.from_map(m.get('dataset'))
+
+        self.input_fields = []
+        if m.get('inputFields') is not None:
+            for k1 in m.get('inputFields'):
+                temp_model = main_models.GetPipelineResponseBodySourceInputFields()
+                self.input_fields.append(temp_model.from_map(k1))
+
         if m.get('logstore') is not None:
             temp_model = main_models.GetPipelineResponseBodySourceLogstore()
             self.logstore = temp_model.from_map(m.get('logstore'))
@@ -231,10 +259,262 @@ class GetPipelineResponseBodySourceLogstore(DaraModel):
 
         return self
 
+class GetPipelineResponseBodySourceInputFields(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class GetPipelineResponseBodySourceDataset(DaraModel):
+    def __init__(
+        self,
+        dataset: str = None,
+        filter: str = None,
+    ):
+        self.dataset = dataset
+        self.filter = filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dataset is not None:
+            result['dataset'] = self.dataset
+
+        if self.filter is not None:
+            result['filter'] = self.filter
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dataset') is not None:
+            self.dataset = m.get('dataset')
+
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+
+        return self
+
 class GetPipelineResponseBodySink(DaraModel):
     def __init__(
         self,
+        condition: main_models.GetPipelineResponseBodySinkCondition = None,
         dataset: main_models.GetPipelineResponseBodySinkDataset = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.dataset = dataset
+        self.type = type
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+        if self.dataset:
+            self.dataset.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.condition is not None:
+            result['condition'] = self.condition.to_map()
+
+        if self.dataset is not None:
+            result['dataset'] = self.dataset.to_map()
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            temp_model = main_models.GetPipelineResponseBodySinkCondition()
+            self.condition = temp_model.from_map(m.get('condition'))
+
+        if m.get('dataset') is not None:
+            temp_model = main_models.GetPipelineResponseBodySinkDataset()
+            self.dataset = temp_model.from_map(m.get('dataset'))
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class GetPipelineResponseBodySinkDataset(DaraModel):
+    def __init__(
+        self,
+        agent_space: str = None,
+        dataset: str = None,
+    ):
+        self.agent_space = agent_space
+        self.dataset = dataset
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_space is not None:
+            result['agentSpace'] = self.agent_space
+
+        if self.dataset is not None:
+            result['dataset'] = self.dataset
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentSpace') is not None:
+            self.agent_space = m.get('agentSpace')
+
+        if m.get('dataset') is not None:
+            self.dataset = m.get('dataset')
+
+        return self
+
+class GetPipelineResponseBodySinkCondition(DaraModel):
+    def __init__(
+        self,
+        default_sink: main_models.GetPipelineResponseBodySinkConditionDefaultSink = None,
+        match_mode: str = None,
+        routes: List[main_models.GetPipelineResponseBodySinkConditionRoutes] = None,
+    ):
+        self.default_sink = default_sink
+        self.match_mode = match_mode
+        self.routes = routes
+
+    def validate(self):
+        if self.default_sink:
+            self.default_sink.validate()
+        if self.routes:
+            for v1 in self.routes:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.default_sink is not None:
+            result['defaultSink'] = self.default_sink.to_map()
+
+        if self.match_mode is not None:
+            result['matchMode'] = self.match_mode
+
+        result['routes'] = []
+        if self.routes is not None:
+            for k1 in self.routes:
+                result['routes'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('defaultSink') is not None:
+            temp_model = main_models.GetPipelineResponseBodySinkConditionDefaultSink()
+            self.default_sink = temp_model.from_map(m.get('defaultSink'))
+
+        if m.get('matchMode') is not None:
+            self.match_mode = m.get('matchMode')
+
+        self.routes = []
+        if m.get('routes') is not None:
+            for k1 in m.get('routes'):
+                temp_model = main_models.GetPipelineResponseBodySinkConditionRoutes()
+                self.routes.append(temp_model.from_map(k1))
+
+        return self
+
+class GetPipelineResponseBodySinkConditionRoutes(DaraModel):
+    def __init__(
+        self,
+        expression: str = None,
+        id: str = None,
+        sink: main_models.GetPipelineResponseBodySinkConditionRoutesSink = None,
+    ):
+        self.expression = expression
+        self.id = id
+        self.sink = sink
+
+    def validate(self):
+        if self.sink:
+            self.sink.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.expression is not None:
+            result['expression'] = self.expression
+
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.sink is not None:
+            result['sink'] = self.sink.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expression') is not None:
+            self.expression = m.get('expression')
+
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('sink') is not None:
+            temp_model = main_models.GetPipelineResponseBodySinkConditionRoutesSink()
+            self.sink = temp_model.from_map(m.get('sink'))
+
+        return self
+
+class GetPipelineResponseBodySinkConditionRoutesSink(DaraModel):
+    def __init__(
+        self,
+        dataset: main_models.GetPipelineResponseBodySinkConditionRoutesSinkDataset = None,
         type: str = None,
     ):
         self.dataset = dataset
@@ -260,7 +540,7 @@ class GetPipelineResponseBodySink(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('dataset') is not None:
-            temp_model = main_models.GetPipelineResponseBodySinkDataset()
+            temp_model = main_models.GetPipelineResponseBodySinkConditionRoutesSinkDataset()
             self.dataset = temp_model.from_map(m.get('dataset'))
 
         if m.get('type') is not None:
@@ -268,7 +548,79 @@ class GetPipelineResponseBodySink(DaraModel):
 
         return self
 
-class GetPipelineResponseBodySinkDataset(DaraModel):
+class GetPipelineResponseBodySinkConditionRoutesSinkDataset(DaraModel):
+    def __init__(
+        self,
+        agent_space: str = None,
+        dataset: str = None,
+    ):
+        self.agent_space = agent_space
+        self.dataset = dataset
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_space is not None:
+            result['agentSpace'] = self.agent_space
+
+        if self.dataset is not None:
+            result['dataset'] = self.dataset
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentSpace') is not None:
+            self.agent_space = m.get('agentSpace')
+
+        if m.get('dataset') is not None:
+            self.dataset = m.get('dataset')
+
+        return self
+
+class GetPipelineResponseBodySinkConditionDefaultSink(DaraModel):
+    def __init__(
+        self,
+        dataset: main_models.GetPipelineResponseBodySinkConditionDefaultSinkDataset = None,
+        type: str = None,
+    ):
+        self.dataset = dataset
+        self.type = type
+
+    def validate(self):
+        if self.dataset:
+            self.dataset.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dataset is not None:
+            result['dataset'] = self.dataset.to_map()
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dataset') is not None:
+            temp_model = main_models.GetPipelineResponseBodySinkConditionDefaultSinkDataset()
+            self.dataset = temp_model.from_map(m.get('dataset'))
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class GetPipelineResponseBodySinkConditionDefaultSinkDataset(DaraModel):
     def __init__(
         self,
         agent_space: str = None,

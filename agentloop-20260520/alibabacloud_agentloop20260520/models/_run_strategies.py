@@ -11,7 +11,9 @@ class RunStrategies(DaraModel):
         backfill: main_models.BackfillStrategy = None,
         continuous: main_models.ContinuousStrategy = None,
     ):
+        # The historical batch backfill policy. Backfill is enabled when the object exists and enabled is not explicitly set to false.
         self.backfill = backfill
+        # The continuous evaluation policy. Continuous evaluation is enabled when the object exists and enabled is not explicitly set to false.
         self.continuous = continuous
 
     def validate(self):

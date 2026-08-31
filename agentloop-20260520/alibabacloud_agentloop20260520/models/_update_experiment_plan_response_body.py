@@ -14,11 +14,11 @@ class UpdateExperimentPlanResponseBody(DaraModel):
     ):
         # The prompt message.
         self.message = message
-        # The experiment plan ID.
+        # The ID of the experiment plan.
         self.plan_id = plan_id
         # The request ID.
         self.request_id = request_id
-        # The update result. The value is updated if successful.
+        # The update result. A value of updated indicates success.
         self.status = status
 
     def validate(self):

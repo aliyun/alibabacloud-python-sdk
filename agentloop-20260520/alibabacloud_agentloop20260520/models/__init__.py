@@ -17,6 +17,7 @@ from ._model_parameters import ModelParameters
 from ._offline_experiment_config import OfflineExperimentConfig
 from ._prompt_template_item import PromptTemplateItem
 from ._run_strategies import RunStrategies
+from ._evaluator_variable_extractor_mapping_value import EvaluatorVariableExtractorMappingValue
 from ._add_dataset_data_request import AddDatasetDataRequest
 from ._add_dataset_data_response_body import AddDatasetDataResponseBody
 from ._add_dataset_data_response import AddDatasetDataResponse
@@ -224,8 +225,16 @@ from ._create_pipeline_request import CreatePipelineRequestExecutePolicySchedule
 from ._create_pipeline_request import CreatePipelineRequestExecutePolicy
 from ._create_pipeline_request import CreatePipelineRequestPipelineNodes
 from ._create_pipeline_request import CreatePipelineRequestPipeline
+from ._create_pipeline_request import CreatePipelineRequestSinkConditionDefaultSinkDataset
+from ._create_pipeline_request import CreatePipelineRequestSinkConditionDefaultSink
+from ._create_pipeline_request import CreatePipelineRequestSinkConditionRoutesSinkDataset
+from ._create_pipeline_request import CreatePipelineRequestSinkConditionRoutesSink
+from ._create_pipeline_request import CreatePipelineRequestSinkConditionRoutes
+from ._create_pipeline_request import CreatePipelineRequestSinkCondition
 from ._create_pipeline_request import CreatePipelineRequestSinkDataset
 from ._create_pipeline_request import CreatePipelineRequestSink
+from ._create_pipeline_request import CreatePipelineRequestSourceDataset
+from ._create_pipeline_request import CreatePipelineRequestSourceInputFields
 from ._create_pipeline_request import CreatePipelineRequestSourceLogstore
 from ._create_pipeline_request import CreatePipelineRequestSource
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
@@ -245,8 +254,16 @@ from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicySch
 from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicy
 from ._get_pipeline_response_body import GetPipelineResponseBodyPipelineNodes
 from ._get_pipeline_response_body import GetPipelineResponseBodyPipeline
+from ._get_pipeline_response_body import GetPipelineResponseBodySinkConditionDefaultSinkDataset
+from ._get_pipeline_response_body import GetPipelineResponseBodySinkConditionDefaultSink
+from ._get_pipeline_response_body import GetPipelineResponseBodySinkConditionRoutesSinkDataset
+from ._get_pipeline_response_body import GetPipelineResponseBodySinkConditionRoutesSink
+from ._get_pipeline_response_body import GetPipelineResponseBodySinkConditionRoutes
+from ._get_pipeline_response_body import GetPipelineResponseBodySinkCondition
 from ._get_pipeline_response_body import GetPipelineResponseBodySinkDataset
 from ._get_pipeline_response_body import GetPipelineResponseBodySink
+from ._get_pipeline_response_body import GetPipelineResponseBodySourceDataset
+from ._get_pipeline_response_body import GetPipelineResponseBodySourceInputFields
 from ._get_pipeline_response_body import GetPipelineResponseBodySourceLogstore
 from ._get_pipeline_response_body import GetPipelineResponseBodySource
 from ._get_pipeline_stats_response_body import GetPipelineStatsResponseBodySummary
@@ -267,6 +284,8 @@ from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExe
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelines
 from ._preview_pipeline_request import PreviewPipelineRequestPipelineNodes
 from ._preview_pipeline_request import PreviewPipelineRequestPipeline
+from ._preview_pipeline_request import PreviewPipelineRequestSourceDataset
+from ._preview_pipeline_request import PreviewPipelineRequestSourceInputFields
 from ._preview_pipeline_request import PreviewPipelineRequestSourceLogstore
 from ._preview_pipeline_request import PreviewPipelineRequestSource
 from ._preview_pipeline_response_body import PreviewPipelineResponseBodyMeta
@@ -279,8 +298,16 @@ from ._update_pipeline_request import UpdatePipelineRequestExecutePolicySchedule
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicy
 from ._update_pipeline_request import UpdatePipelineRequestPipelineNodes
 from ._update_pipeline_request import UpdatePipelineRequestPipeline
+from ._update_pipeline_request import UpdatePipelineRequestSinkConditionDefaultSinkDataset
+from ._update_pipeline_request import UpdatePipelineRequestSinkConditionDefaultSink
+from ._update_pipeline_request import UpdatePipelineRequestSinkConditionRoutesSinkDataset
+from ._update_pipeline_request import UpdatePipelineRequestSinkConditionRoutesSink
+from ._update_pipeline_request import UpdatePipelineRequestSinkConditionRoutes
+from ._update_pipeline_request import UpdatePipelineRequestSinkCondition
 from ._update_pipeline_request import UpdatePipelineRequestSinkDataset
 from ._update_pipeline_request import UpdatePipelineRequestSink
+from ._update_pipeline_request import UpdatePipelineRequestSourceDataset
+from ._update_pipeline_request import UpdatePipelineRequestSourceInputFields
 from ._update_pipeline_request import UpdatePipelineRequestSourceLogstore
 from ._update_pipeline_request import UpdatePipelineRequestSource
 
@@ -300,6 +327,7 @@ __all__ = [
     OfflineExperimentConfig,
     PromptTemplateItem,
     RunStrategies,
+    EvaluatorVariableExtractorMappingValue,
     AddDatasetDataRequest,
     AddDatasetDataResponseBody,
     AddDatasetDataResponse,
@@ -507,8 +535,16 @@ __all__ = [
     CreatePipelineRequestExecutePolicy,
     CreatePipelineRequestPipelineNodes,
     CreatePipelineRequestPipeline,
+    CreatePipelineRequestSinkConditionDefaultSinkDataset,
+    CreatePipelineRequestSinkConditionDefaultSink,
+    CreatePipelineRequestSinkConditionRoutesSinkDataset,
+    CreatePipelineRequestSinkConditionRoutesSink,
+    CreatePipelineRequestSinkConditionRoutes,
+    CreatePipelineRequestSinkCondition,
     CreatePipelineRequestSinkDataset,
     CreatePipelineRequestSink,
+    CreatePipelineRequestSourceDataset,
+    CreatePipelineRequestSourceInputFields,
     CreatePipelineRequestSourceLogstore,
     CreatePipelineRequestSource,
     DescribeRegionsResponseBodyRegions,
@@ -528,8 +564,16 @@ __all__ = [
     GetPipelineResponseBodyExecutePolicy,
     GetPipelineResponseBodyPipelineNodes,
     GetPipelineResponseBodyPipeline,
+    GetPipelineResponseBodySinkConditionDefaultSinkDataset,
+    GetPipelineResponseBodySinkConditionDefaultSink,
+    GetPipelineResponseBodySinkConditionRoutesSinkDataset,
+    GetPipelineResponseBodySinkConditionRoutesSink,
+    GetPipelineResponseBodySinkConditionRoutes,
+    GetPipelineResponseBodySinkCondition,
     GetPipelineResponseBodySinkDataset,
     GetPipelineResponseBodySink,
+    GetPipelineResponseBodySourceDataset,
+    GetPipelineResponseBodySourceInputFields,
     GetPipelineResponseBodySourceLogstore,
     GetPipelineResponseBodySource,
     GetPipelineStatsResponseBodySummary,
@@ -550,6 +594,8 @@ __all__ = [
     ListPipelinesResponseBodyPipelines,
     PreviewPipelineRequestPipelineNodes,
     PreviewPipelineRequestPipeline,
+    PreviewPipelineRequestSourceDataset,
+    PreviewPipelineRequestSourceInputFields,
     PreviewPipelineRequestSourceLogstore,
     PreviewPipelineRequestSource,
     PreviewPipelineResponseBodyMeta,
@@ -562,8 +608,16 @@ __all__ = [
     UpdatePipelineRequestExecutePolicy,
     UpdatePipelineRequestPipelineNodes,
     UpdatePipelineRequestPipeline,
+    UpdatePipelineRequestSinkConditionDefaultSinkDataset,
+    UpdatePipelineRequestSinkConditionDefaultSink,
+    UpdatePipelineRequestSinkConditionRoutesSinkDataset,
+    UpdatePipelineRequestSinkConditionRoutesSink,
+    UpdatePipelineRequestSinkConditionRoutes,
+    UpdatePipelineRequestSinkCondition,
     UpdatePipelineRequestSinkDataset,
     UpdatePipelineRequestSink,
+    UpdatePipelineRequestSourceDataset,
+    UpdatePipelineRequestSourceInputFields,
     UpdatePipelineRequestSourceLogstore,
     UpdatePipelineRequestSource
 ]

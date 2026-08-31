@@ -26,7 +26,7 @@ class GetExperimentPlanResponseBody(DaraModel):
         status: str = None,
         updated_at: int = None,
     ):
-        # The creation time. This value is a millisecond-level UNIX timestamp.
+        # The creation time, in millisecond-level UNIX timestamp.
         self.created_at = created_at
         # The associated dataset ID.
         self.dataset_id = dataset_id
@@ -40,6 +40,7 @@ class GetExperimentPlanResponseBody(DaraModel):
         self.experiments = experiments
         # Optional.
         self.input = input
+        # The name of the associated data processing pipeline. This value is empty if no pipeline is associated.
         self.pipeline_name = pipeline_name
         # The experiment plan ID.
         self.plan_id = plan_id
@@ -49,11 +50,11 @@ class GetExperimentPlanResponseBody(DaraModel):
         self.query_sql = query_sql
         # The request ID.
         self.request_id = request_id
-        # The list of selected data item IDs in partial dataset mode.
+        # The list of data item IDs selected in partial dataset mode.
         self.selected_item_ids = selected_item_ids
         # The plan status.
         self.status = status
-        # The update time. This value is a millisecond-level UNIX timestamp.
+        # The update time, in millisecond-level UNIX timestamp.
         self.updated_at = updated_at
 
     def validate(self):

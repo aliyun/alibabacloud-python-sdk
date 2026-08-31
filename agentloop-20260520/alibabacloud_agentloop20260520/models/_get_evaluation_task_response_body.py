@@ -32,11 +32,11 @@ class GetEvaluationTaskResponseBody(DaraModel):
         self.agent_space = agent_space
         # The task source.
         self.channel = channel
-        # The data source and execution configuration. Tasks with `dataType=trace` typically include `project`, `storeName`, and `dataScope` fields populated by the backend.
+        # The data source and execution configuration. Tasks with `dataType=trace` typically contain `project`, `storeName`, and `dataScope` fields that are populated by the backend.
         self.config = config
         # The creation time, in seconds-level UNIX timestamp.
         self.created_at = created_at
-        # The filter conditions for evaluation data, returned by the backend as a JSON string.
+        # The evaluation data filter condition, returned by the backend as a JSON string.
         self.data_filter = data_filter
         # The data source type of the evaluation object.
         self.data_type = data_type

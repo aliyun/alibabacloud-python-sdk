@@ -70,15 +70,27 @@ class PreviewPipelineRequest(DaraModel):
 class PreviewPipelineRequestSource(DaraModel):
     def __init__(
         self,
+        dataset: main_models.PreviewPipelineRequestSourceDataset = None,
+        input_fields: List[main_models.PreviewPipelineRequestSourceInputFields] = None,
         logstore: main_models.PreviewPipelineRequestSourceLogstore = None,
         type: str = None,
     ):
+        # The Dataset datasource config under the current AgentSpace.
+        self.dataset = dataset
+        # The input fields and field types. This parameter applies to all data source types.
+        self.input_fields = input_fields
         # The SLS Logstore datasource config.
         self.logstore = logstore
-        # The data source type. Currently, only Simple Log Service (SLS) is supported.
+        # The data source type. Currently, Simple Log Service (SLS) is supported.
         self.type = type
 
     def validate(self):
+        if self.dataset:
+            self.dataset.validate()
+        if self.input_fields:
+            for v1 in self.input_fields:
+                 if v1:
+                    v1.validate()
         if self.logstore:
             self.logstore.validate()
 
@@ -87,6 +99,14 @@ class PreviewPipelineRequestSource(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dataset is not None:
+            result['dataset'] = self.dataset.to_map()
+
+        result['inputFields'] = []
+        if self.input_fields is not None:
+            for k1 in self.input_fields:
+                result['inputFields'].append(k1.to_map() if k1 else None)
+
         if self.logstore is not None:
             result['logstore'] = self.logstore.to_map()
 
@@ -97,6 +117,16 @@ class PreviewPipelineRequestSource(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('dataset') is not None:
+            temp_model = main_models.PreviewPipelineRequestSourceDataset()
+            self.dataset = temp_model.from_map(m.get('dataset'))
+
+        self.input_fields = []
+        if m.get('inputFields') is not None:
+            for k1 in m.get('inputFields'):
+                temp_model = main_models.PreviewPipelineRequestSourceInputFields()
+                self.input_fields.append(temp_model.from_map(k1))
+
         if m.get('logstore') is not None:
             temp_model = main_models.PreviewPipelineRequestSourceLogstore()
             self.logstore = temp_model.from_map(m.get('logstore'))
@@ -152,6 +182,80 @@ class PreviewPipelineRequestSourceLogstore(DaraModel):
 
         return self
 
+class PreviewPipelineRequestSourceInputFields(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+    ):
+        # The field name.
+        self.name = name
+        # The field type. Valid values: text, long, double, and json.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class PreviewPipelineRequestSourceDataset(DaraModel):
+    def __init__(
+        self,
+        dataset: str = None,
+        filter: str = None,
+    ):
+        # The name of the source dataset.
+        self.dataset = dataset
+        # The filter condition for dataset data.
+        self.filter = filter
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dataset is not None:
+            result['dataset'] = self.dataset
+
+        if self.filter is not None:
+            result['filter'] = self.filter
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dataset') is not None:
+            self.dataset = m.get('dataset')
+
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+
+        return self
+
 class PreviewPipelineRequestPipeline(DaraModel):
     def __init__(
         self,
@@ -197,7 +301,7 @@ class PreviewPipelineRequestPipelineNodes(DaraModel):
     ):
         # The node ID.
         self.id = id
-        # The node parameters in key-value structure. The parameters vary depending on the node type.
+        # The node parameters in key-value format. The parameters vary based on the node type.
         self.parameters = parameters
         # The node type.
         self.type = type

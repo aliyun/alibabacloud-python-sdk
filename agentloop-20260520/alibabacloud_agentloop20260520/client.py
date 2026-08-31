@@ -23,15 +23,15 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-zhangjiakou': 'agentloop.cn-zhangjiakou.aliyuncs.com',
             'cn-shenzhen': 'agentloop.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'agentloop.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'agentloop.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'agentloop.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'agentloop.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'agentloop.cn-chengdu.aliyuncs.com',
             'cn-beijing': 'agentloop.cn-beijing.aliyuncs.com',
-            'ap-southeast-1': 'agentloop.ap-southeast-1.aliyuncs.com'
+            'cn-shanghai': 'agentloop.cn-shanghai.aliyuncs.com',
+            'cn-guangzhou': 'agentloop.cn-guangzhou.aliyuncs.com',
+            'cn-hongkong': 'agentloop.cn-hongkong.aliyuncs.com',
+            'ap-southeast-1': 'agentloop.ap-southeast-1.aliyuncs.com',
+            'cn-zhangjiakou': 'agentloop.cn-zhangjiakou.aliyuncs.com',
+            'cn-hangzhou': 'agentloop.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'agentloop.cn-chengdu.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentloop', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -241,6 +241,8 @@ class Client(OpenApiClient):
             body['cmsWorkspace'] = request.cms_workspace
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.mse_namespace_id):
+            body['mseNamespaceId'] = request.mse_namespace_id
         if not DaraCore.is_null(request.trajectory_store_enabled):
             body['trajectoryStoreEnabled'] = request.trajectory_store_enabled
         req = open_api_util_models.OpenApiRequest(
@@ -281,6 +283,8 @@ class Client(OpenApiClient):
             body['cmsWorkspace'] = request.cms_workspace
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.mse_namespace_id):
+            body['mseNamespaceId'] = request.mse_namespace_id
         if not DaraCore.is_null(request.trajectory_store_enabled):
             body['trajectoryStoreEnabled'] = request.trajectory_store_enabled
         req = open_api_util_models.OpenApiRequest(

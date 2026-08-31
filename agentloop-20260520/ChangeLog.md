@@ -1,3 +1,18 @@
+2026-08-31 Version: 2.3.3
+- Update API CreatePipeline: add request parameters body.sink.condition.
+- Update API CreatePipeline: add request parameters body.source.dataset.
+- Update API CreatePipeline: add request parameters body.source.inputFields.
+- Update API GetPipeline: add response parameters Body.sink.condition.
+- Update API GetPipeline: add response parameters Body.source.dataset.
+- Update API GetPipeline: add response parameters Body.source.inputFields.
+- Update API PreviewPipeline: add request parameters body.source.dataset.
+- Update API PreviewPipeline: add request parameters body.source.inputFields.
+- Update API UpdatePipeline: add request parameters body.sink.condition.
+- Update API UpdatePipeline: add request parameters body.source.dataset.
+- Update API UpdatePipeline: add request parameters body.source.inputFields.
+- Update API UpdatePipeline: add request parameters body.source.logstore.project.
+
+
 2026-07-30 Version: 2.3.1
 - Update API CreateExperimentPlan: add request parameters body.pipelineName.
 - Update API GetDataset: add response parameters Body.labels.

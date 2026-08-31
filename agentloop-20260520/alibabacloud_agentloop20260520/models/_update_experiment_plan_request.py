@@ -22,22 +22,23 @@ class UpdateExperimentPlanRequest(DaraModel):
         query_sql: str = None,
         selected_item_ids: List[str] = None,
     ):
-        # The associated dataset ID.
+        # The ID of the associated dataset.
         self.dataset_id = dataset_id
         # Optional.
         self.dataset_project = dataset_project
         # The description.
         self.description = description
-        # The evaluator list. Omitting this field means no modification. Passing an empty array clears the list.
+        # The list of evaluators. Omitting this field indicates no modification. Passing an empty array clears the list.
         self.evaluators = evaluators
         # The experiment type.
         self.experiment_type = experiment_type
-        # The experiment configuration list. When passed, the entire list is replaced. The number of items must be 1 to 5.
+        # The list of experiment configurations. When specified, the entire list is replaced. The number of configurations must be 1 to 5.
         self.experiments = experiments
         # Optional.
         self.input = input
+        # The name of the associated data processing pipeline. This parameter is optional. If not specified, the value is not updated. If an empty character string is specified, the association is dissociated. After association, when an experiment under this plan finishes execution and writes results to the experiment result Logstore, the system filters by the traceId of the experiment trace and calls PreviewPipeline. The pipeline-processed results are then written together.
         self.pipeline_name = pipeline_name
-        # The experiment plan name.
+        # The name of the experiment plan.
         self.plan_name = plan_name
         # The custom query SQL clause in partial dataset mode.
         self.query_sql = query_sql

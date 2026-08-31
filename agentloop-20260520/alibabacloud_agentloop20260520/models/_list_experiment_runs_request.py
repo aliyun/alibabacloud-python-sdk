@@ -28,7 +28,7 @@ class ListExperimentRunsRequest(DaraModel):
         self.page = page
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # Filters results by fuzzy match on experiment plan name.
+        # Filters results by fuzzy match on the experiment plan name.
         self.plan_name = plan_name
         # Filters results by status.
         self.status = status
