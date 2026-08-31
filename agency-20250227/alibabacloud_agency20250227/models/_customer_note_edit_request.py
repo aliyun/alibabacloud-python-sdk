@@ -13,10 +13,15 @@ class CustomerNoteEditRequest(DaraModel):
         note_id: int = None,
         touch_date: int = None,
     ):
+        # The contact information.
         self.contact_information = contact_information
+        # The name of the contact.
         self.contact_name = contact_name
+        # The content of the note.
         self.note_content = note_content
+        # The note ID. This parameter is required.
         self.note_id = note_id
+        # The touch date. The value is a UNIX timestamp in milliseconds.
         self.touch_date = touch_date
 
     def validate(self):

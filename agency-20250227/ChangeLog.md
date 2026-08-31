@@ -1,3 +1,7 @@
+2026-08-31 Version: 1.2.1
+- Update API CustomerNoteListDetail: add response parameters Body.Data.Attachment.$.DownloadUrl.
+
+
 2026-07-20 Version: 1.2.0
 - Support API CustomerNoteCreate.
 - Support API CustomerNoteEdit.

@@ -11,8 +11,11 @@ class CustomerNoteListRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The UID of the customer.
         self.customer_uid = customer_uid
+        # The page number. Pages start from 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

@@ -18,12 +18,19 @@ class CustomerNoteListDetailResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The access denied details returned by the POP API when RAM permissions are missing.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code returned by the POP API.
         self.http_status_code = http_status_code
+        # The prompt message.
         self.message = message
+        # The prompt message. This is the same as Message.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -102,19 +109,33 @@ class CustomerNoteListDetailResponseBodyData(DaraModel):
         note_type_label: str = None,
         touch_date: str = None,
     ):
+        # The AI parsing result (JSON string).
         self.ai_result = ai_result
+        # The attachment list.
         self.attachment = attachment
+        # The contact information.
         self.contact_information = contact_information
+        # The contact name.
         self.contact_name = contact_name
+        # The UID of the creator.
         self.creator = creator
+        # The logon name of the creator.
         self.creator_name = creator_name
+        # The customer name.
         self.customer_name = customer_name
+        # The customer UID.
         self.customer_uid = customer_uid
+        # The creation time in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_create = gmt_create
+        # The note content.
         self.note_content = note_content
+        # The note ID.
         self.note_id = note_id
+        # The note type (CUSTOMER).
         self.note_type = note_type
+        # The note type label.
         self.note_type_label = note_type_label
+        # The touch date (timestamp).
         self.touch_date = touch_date
 
     def validate(self):
@@ -226,16 +247,24 @@ class CustomerNoteListDetailResponseBodyData(DaraModel):
 class CustomerNoteListDetailResponseBodyDataAttachment(DaraModel):
     def __init__(
         self,
+        download_url: str = None,
         id: int = None,
         name: str = None,
         signature: str = None,
         size: int = None,
         type: str = None,
     ):
+        # The attachment signature.
+        self.download_url = download_url
+        # The attachment ID.
         self.id = id
+        # The attachment name.
         self.name = name
+        # The attachment signature.
         self.signature = signature
+        # The attachment size in bytes.
         self.size = size
+        # The attachment type.
         self.type = type
 
     def validate(self):
@@ -246,6 +275,9 @@ class CustomerNoteListDetailResponseBodyDataAttachment(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+
         if self.id is not None:
             result['Id'] = self.id
 
@@ -265,6 +297,9 @@ class CustomerNoteListDetailResponseBodyDataAttachment(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+
         if m.get('Id') is not None:
             self.id = m.get('Id')
 

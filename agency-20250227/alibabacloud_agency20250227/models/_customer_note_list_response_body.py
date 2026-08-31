@@ -18,12 +18,19 @@ class CustomerNoteListResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The details of the access denied error returned by the POP API when the caller does not have the required RAM permissions.
         self.access_denied_detail = access_denied_detail
+        # The result code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code returned by the POP API.
         self.http_status_code = http_status_code
+        # The prompt message.
         self.message = message
+        # The prompt message, same as message.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -99,16 +106,27 @@ class CustomerNoteListResponseBodyData(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The details of the access denied error returned by the POP API when the caller does not have the required RAM permissions.
         self.access_denied_detail = access_denied_detail
+        # The result code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code returned by the POP API.
         self.http_status_code = http_status_code
+        # The prompt message.
         self.message = message
+        # The prompt message, same as message.
         self.msg = msg
+        # The pagination information compatible with the legacy interface (deprecated).
         self.page_info = page_info
+        # The current page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -209,8 +227,11 @@ class CustomerNoteListResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The current page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -260,14 +281,23 @@ class CustomerNoteListResponseBodyDataData(DaraModel):
         note_type_label: str = None,
         touch_date: str = None,
     ):
+        # The name of the contact.
         self.contact_name = contact_name
+        # The UID of the creator.
         self.creator = creator
+        # The logon name of the creator.
         self.creator_name = creator_name
+        # The creation time in the format of yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
+        # The content of the note.
         self.note_content = note_content
+        # The ID of the note.
         self.note_id = note_id
+        # The type of the note (CUSTOMER).
         self.note_type = note_type
+        # The label of the note type.
         self.note_type_label = note_type_label
+        # The touch date (timestamp).
         self.touch_date = touch_date
 
     def validate(self):
