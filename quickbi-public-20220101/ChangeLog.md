@@ -1,3 +1,10 @@
+2026-09-01 Version: 1.17.1
+- Update API QueryOrganizationWorkspaceList: add response parameters Body.Result.Data.$.WorkspaceExportConfig.
+- Update API QueryUserInfoByAccount: add response parameters Body.Result.IsDeleted.
+- Update API QueryUserInfoByUserId: add response parameters Body.Result.IsDeleted.
+- Update API QueryWorks: add response parameters Body.Result.GlobalParamVoList.
+
+
 2026-07-02 Version: 1.17.0
 - Support API DeleteAuthorizationByUserId.
 - Support API IpWhiteListConfig.

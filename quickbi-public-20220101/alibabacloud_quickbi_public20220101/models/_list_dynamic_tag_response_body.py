@@ -14,8 +14,11 @@ class ListDynamicTagResponseBody(DaraModel):
         result: List[main_models.ListDynamicTagResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The label list.
         self.result = result
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -69,12 +72,23 @@ class ListDynamicTagResponseBodyResult(DaraModel):
         related_attribute: int = None,
         table_name: str = None,
     ):
+        # The column name of the associated data source.
         self.column_name = column_name
+        # The ID of the individual configuration.
         self.config_id = config_id
+        # The name of the label configuration.
         self.config_name = config_name
+        # The ID of the associated data source.
         self.ds_id = ds_id
+        # The organization ID.
         self.organization_id = organization_id
+        # The associated user attribute. Valid values:
+        # 
+        # - 0: account ID
+        # - 1: account name
+        # - 2: nickname within the organization
         self.related_attribute = related_attribute
+        # The table name of the associated data source.
         self.table_name = table_name
 
     def validate(self):

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_quickbi_public20220101 import models as main_models
 from darabonba.model import DaraModel
 
@@ -62,6 +64,7 @@ class QueryWorksResponseBodyResult(DaraModel):
         auth_3rd_flag: int = None,
         description: str = None,
         directory: main_models.QueryWorksResponseBodyResultDirectory = None,
+        global_param_vo_list: List[main_models.QueryWorksResponseBodyResultGlobalParamVoList] = None,
         gmt_create: str = None,
         gmt_modify: str = None,
         modify_name: str = None,
@@ -86,6 +89,7 @@ class QueryWorksResponseBodyResult(DaraModel):
         self.description = description
         # The directory to which the work belongs.
         self.directory = directory
+        self.global_param_vo_list = global_param_vo_list
         # The timestamp of the creation of the work in milliseconds.
         self.gmt_create = gmt_create
         # The timestamp of the modification of the work in milliseconds.
@@ -139,6 +143,10 @@ class QueryWorksResponseBodyResult(DaraModel):
     def validate(self):
         if self.directory:
             self.directory.validate()
+        if self.global_param_vo_list:
+            for v1 in self.global_param_vo_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -153,6 +161,11 @@ class QueryWorksResponseBodyResult(DaraModel):
 
         if self.directory is not None:
             result['Directory'] = self.directory.to_map()
+
+        result['GlobalParamVoList'] = []
+        if self.global_param_vo_list is not None:
+            for k1 in self.global_param_vo_list:
+                result['GlobalParamVoList'].append(k1.to_map() if k1 else None)
 
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
@@ -210,6 +223,12 @@ class QueryWorksResponseBodyResult(DaraModel):
             temp_model = main_models.QueryWorksResponseBodyResultDirectory()
             self.directory = temp_model.from_map(m.get('Directory'))
 
+        self.global_param_vo_list = []
+        if m.get('GlobalParamVoList') is not None:
+            for k1 in m.get('GlobalParamVoList'):
+                temp_model = main_models.QueryWorksResponseBodyResultGlobalParamVoList()
+                self.global_param_vo_list.append(temp_model.from_map(k1))
+
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
 
@@ -251,6 +270,57 @@ class QueryWorksResponseBodyResult(DaraModel):
 
         if m.get('WorkspaceName') is not None:
             self.workspace_name = m.get('WorkspaceName')
+
+        return self
+
+class QueryWorksResponseBodyResultGlobalParamVoList(DaraModel):
+    def __init__(
+        self,
+        data_type: str = None,
+        param_alias: str = None,
+        param_name: str = None,
+        required: bool = None,
+    ):
+        self.data_type = data_type
+        self.param_alias = param_alias
+        self.param_name = param_name
+        self.required = required
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+
+        if self.param_alias is not None:
+            result['ParamAlias'] = self.param_alias
+
+        if self.param_name is not None:
+            result['ParamName'] = self.param_name
+
+        if self.required is not None:
+            result['Required'] = self.required
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+
+        if m.get('ParamAlias') is not None:
+            self.param_alias = m.get('ParamAlias')
+
+        if m.get('ParamName') is not None:
+            self.param_name = m.get('ParamName')
+
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
 
         return self
 

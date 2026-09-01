@@ -147,6 +147,7 @@ class QueryOrganizationWorkspaceListResponseBodyResultData(DaraModel):
         owner_account_name: str = None,
         real_owner_account_name: str = None,
         workspace_description: str = None,
+        workspace_export_config: main_models.QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig = None,
         workspace_id: str = None,
         workspace_name: str = None,
     ):
@@ -184,13 +185,15 @@ class QueryOrganizationWorkspaceListResponseBodyResultData(DaraModel):
         self.real_owner_account_name = real_owner_account_name
         # The workspace description.
         self.workspace_description = workspace_description
+        self.workspace_export_config = workspace_export_config
         # The workspace ID.
         self.workspace_id = workspace_id
         # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):
-        pass
+        if self.workspace_export_config:
+            self.workspace_export_config.validate()
 
     def to_map(self):
         result = dict()
@@ -235,6 +238,9 @@ class QueryOrganizationWorkspaceListResponseBodyResultData(DaraModel):
 
         if self.workspace_description is not None:
             result['WorkspaceDescription'] = self.workspace_description
+
+        if self.workspace_export_config is not None:
+            result['WorkspaceExportConfig'] = self.workspace_export_config.to_map()
 
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
@@ -285,11 +291,106 @@ class QueryOrganizationWorkspaceListResponseBodyResultData(DaraModel):
         if m.get('WorkspaceDescription') is not None:
             self.workspace_description = m.get('WorkspaceDescription')
 
+        if m.get('WorkspaceExportConfig') is not None:
+            temp_model = main_models.QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig()
+            self.workspace_export_config = temp_model.from_map(m.get('WorkspaceExportConfig'))
+
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
 
         if m.get('WorkspaceName') is not None:
             self.workspace_name = m.get('WorkspaceName')
+
+        return self
+
+class QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig(DaraModel):
+    def __init__(
+        self,
+        allow_excel_image_file: bool = None,
+        data_export: bool = None,
+        default_export_type: bool = None,
+        export_main_switch: bool = None,
+        export_to_local: bool = None,
+        export_to_public_work: bool = None,
+        export_to_server: bool = None,
+        image_export: bool = None,
+        pdf_export: bool = None,
+    ):
+        self.allow_excel_image_file = allow_excel_image_file
+        self.data_export = data_export
+        self.default_export_type = default_export_type
+        self.export_main_switch = export_main_switch
+        self.export_to_local = export_to_local
+        self.export_to_public_work = export_to_public_work
+        self.export_to_server = export_to_server
+        self.image_export = image_export
+        self.pdf_export = pdf_export
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allow_excel_image_file is not None:
+            result['AllowExcelImageFile'] = self.allow_excel_image_file
+
+        if self.data_export is not None:
+            result['DataExport'] = self.data_export
+
+        if self.default_export_type is not None:
+            result['DefaultExportType'] = self.default_export_type
+
+        if self.export_main_switch is not None:
+            result['ExportMainSwitch'] = self.export_main_switch
+
+        if self.export_to_local is not None:
+            result['ExportToLocal'] = self.export_to_local
+
+        if self.export_to_public_work is not None:
+            result['ExportToPublicWork'] = self.export_to_public_work
+
+        if self.export_to_server is not None:
+            result['ExportToServer'] = self.export_to_server
+
+        if self.image_export is not None:
+            result['ImageExport'] = self.image_export
+
+        if self.pdf_export is not None:
+            result['PdfExport'] = self.pdf_export
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowExcelImageFile') is not None:
+            self.allow_excel_image_file = m.get('AllowExcelImageFile')
+
+        if m.get('DataExport') is not None:
+            self.data_export = m.get('DataExport')
+
+        if m.get('DefaultExportType') is not None:
+            self.default_export_type = m.get('DefaultExportType')
+
+        if m.get('ExportMainSwitch') is not None:
+            self.export_main_switch = m.get('ExportMainSwitch')
+
+        if m.get('ExportToLocal') is not None:
+            self.export_to_local = m.get('ExportToLocal')
+
+        if m.get('ExportToPublicWork') is not None:
+            self.export_to_public_work = m.get('ExportToPublicWork')
+
+        if m.get('ExportToServer') is not None:
+            self.export_to_server = m.get('ExportToServer')
+
+        if m.get('ImageExport') is not None:
+            self.image_export = m.get('ImageExport')
+
+        if m.get('PdfExport') is not None:
+            self.pdf_export = m.get('PdfExport')
 
         return self
 

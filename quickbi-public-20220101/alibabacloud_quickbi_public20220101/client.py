@@ -22,16 +22,16 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'us-east-1': 'quickbi-public.us-east-1.aliyuncs.com',
-            'me-central-1': 'quickbi-public.me-central-1.aliyuncs.com',
-            'eu-central-1': 'quickbi-public.eu-central-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'quickbi-public.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-hongkong': 'quickbi-public.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'quickbi-public.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-5': 'quickbi-public.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'quickbi-public.ap-southeast-3.aliyuncs.com',
+            'ap-northeast-1': 'quickbi-public.ap-northeast-1.aliyuncs.com',
             'ap-southeast-1': 'quickbi-public.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'quickbi-public.ap-northeast-1.aliyuncs.com'
+            'ap-southeast-3': 'quickbi-public.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'quickbi-public.ap-southeast-5.aliyuncs.com',
+            'cn-hangzhou': 'quickbi-public.cn-hangzhou.aliyuncs.com',
+            'cn-hongkong': 'quickbi-public.cn-hongkong.aliyuncs.com',
+            'us-east-1': 'quickbi-public.us-east-1.aliyuncs.com',
+            'eu-central-1': 'quickbi-public.eu-central-1.aliyuncs.com',
+            'me-central-1': 'quickbi-public.me-central-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'quickbi-public.cn-shanghai-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('quickbi-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)

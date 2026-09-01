@@ -62,7 +62,7 @@ class QueryUserByMobileAccountResponseBodyResult(DaraModel):
         bound_user_id: str = None,
         third_account_name: str = None,
     ):
-        # The QuickBI user ID of the bound account.
+        # The Quick BI user ID of the bound account.
         self.bound_user_id = bound_user_id
         # The mobile account name.
         self.third_account_name = third_account_name

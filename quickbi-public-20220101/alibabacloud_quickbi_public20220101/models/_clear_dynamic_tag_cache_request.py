@@ -9,6 +9,8 @@ class ClearDynamicTagCacheRequest(DaraModel):
         self,
         config_id: str = None,
     ):
+        # The ID of the tag configuration.
+        # 
         # This parameter is required.
         self.config_id = config_id
 

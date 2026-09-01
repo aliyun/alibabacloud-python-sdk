@@ -68,6 +68,7 @@ class QueryUserInfoByUserIdResponseBodyResult(DaraModel):
         auth_admin_user: bool = None,
         copilot_modules: List[str] = None,
         email: str = None,
+        is_deleted: bool = None,
         nick_name: str = None,
         phone: str = None,
         role_id_list: List[int] = None,
@@ -102,6 +103,7 @@ class QueryUserInfoByUserIdResponseBodyResult(DaraModel):
         self.copilot_modules = copilot_modules
         # The email address of the user.
         self.email = email
+        self.is_deleted = is_deleted
         # The nickname of the user.
         self.nick_name = nick_name
         # The phone number of the user.
@@ -145,6 +147,9 @@ class QueryUserInfoByUserIdResponseBodyResult(DaraModel):
         if self.email is not None:
             result['Email'] = self.email
 
+        if self.is_deleted is not None:
+            result['IsDeleted'] = self.is_deleted
+
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
 
@@ -181,6 +186,9 @@ class QueryUserInfoByUserIdResponseBodyResult(DaraModel):
 
         if m.get('Email') is not None:
             self.email = m.get('Email')
+
+        if m.get('IsDeleted') is not None:
+            self.is_deleted = m.get('IsDeleted')
 
         if m.get('NickName') is not None:
             self.nick_name = m.get('NickName')

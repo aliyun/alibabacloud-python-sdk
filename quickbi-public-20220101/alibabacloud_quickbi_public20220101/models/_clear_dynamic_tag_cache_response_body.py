@@ -11,8 +11,14 @@ class ClearDynamicTagCacheResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the cache is purged.
+        # 
+        # - true: The cache is purged.
+        # - false: No cache exists.
         self.result = result
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
