@@ -22,6 +22,7 @@ class DescribeApiKeyResponseBody(DaraModel):
         # The error code.
         self.code = code
         self.ip_blacklist = ip_blacklist
+        # The IP whitelist.
         self.ip_whitelist = ip_whitelist
         # The response message.
         self.message = message

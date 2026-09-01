@@ -28,7 +28,9 @@ class Client(OpenApiClient):
             'cn-shanghai': 'fcsandbox.cn-shanghai.aliyuncs.com',
             'cn-hongkong': 'fcsandbox.cn-hongkong.aliyuncs.com',
             'ap-southeast-1': 'fcsandbox.ap-southeast-1.aliyuncs.com',
-            'cn-hangzhou': 'fcsandbox.cn-hangzhou.aliyuncs.com'
+            'cn-hangzhou': 'fcsandbox.cn-hangzhou.aliyuncs.com',
+            'us-west-1': 'fcsandbox.us-west-1.aliyuncs.com',
+            'us-east-1': 'fcsandbox.us-east-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('fcsandbox', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -188,6 +190,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_team_with_options_async(request, headers, runtime)
+
+    def create_template_with_options(
+        self,
+        request: main_models.CreateTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTemplateResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTemplate',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_template_with_options_async(
+        self,
+        request: main_models.CreateTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTemplateResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTemplate',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_template(
+        self,
+        request: main_models.CreateTemplateRequest,
+    ) -> main_models.CreateTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_template_with_options(request, headers, runtime)
+
+    async def create_template_async(
+        self,
+        request: main_models.CreateTemplateRequest,
+    ) -> main_models.CreateTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_template_with_options_async(request, headers, runtime)
 
     def create_volume_with_options(
         self,
@@ -478,6 +550,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_team_with_options_async(team_id, request, headers, runtime)
+
+    def delete_template_with_options(
+        self,
+        template_id: str,
+        request: main_models.DeleteTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTemplate',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates/{DaraURL.percent_encode(template_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_template_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.DeleteTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTemplate',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates/{DaraURL.percent_encode(template_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_template(
+        self,
+        template_id: str,
+        request: main_models.DeleteTemplateRequest,
+    ) -> main_models.DeleteTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_template_with_options(template_id, request, headers, runtime)
+
+    async def delete_template_async(
+        self,
+        template_id: str,
+        request: main_models.DeleteTemplateRequest,
+    ) -> main_models.DeleteTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_template_with_options_async(template_id, request, headers, runtime)
 
     def delete_volume_with_options(
         self,
@@ -778,6 +930,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_team_with_options_async(team_id, request, headers, runtime)
+
+    def get_template_with_options(
+        self,
+        template_id: str,
+        request: main_models.GetTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTemplate',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates/{DaraURL.percent_encode(template_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_template_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.GetTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTemplate',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates/{DaraURL.percent_encode(template_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_template(
+        self,
+        template_id: str,
+        request: main_models.GetTemplateRequest,
+    ) -> main_models.GetTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_template_with_options(template_id, request, headers, runtime)
+
+    async def get_template_async(
+        self,
+        template_id: str,
+        request: main_models.GetTemplateRequest,
+    ) -> main_models.GetTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_template_with_options_async(template_id, request, headers, runtime)
 
     def get_volume_with_options(
         self,
@@ -1130,6 +1362,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_teams_with_options_async(request, headers, runtime)
+
+    def list_templates_with_options(
+        self,
+        request: main_models.ListTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTemplates',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_templates_with_options_async(
+        self,
+        request: main_models.ListTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTemplates',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_templates(
+        self,
+        request: main_models.ListTemplatesRequest,
+    ) -> main_models.ListTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_templates_with_options(request, headers, runtime)
+
+    async def list_templates_async(
+        self,
+        request: main_models.ListTemplatesRequest,
+    ) -> main_models.ListTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_templates_with_options_async(request, headers, runtime)
 
     def list_volumes_with_options(
         self,

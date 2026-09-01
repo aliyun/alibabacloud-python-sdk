@@ -9,6 +9,19 @@ from ._container_configuration import ContainerConfiguration
 from ._create_api_key_input import CreateApiKeyInput
 from ._create_custom_domain_input import CreateCustomDomainInput
 from ._create_team_input import CreateTeamInput
+from ._create_template_build_config import CreateTemplateBuildConfig
+from ._create_template_copy_action import CreateTemplateCopyAction
+from ._create_template_envd_inject_action import CreateTemplateEnvdInjectAction
+from ._create_template_input import CreateTemplateInput
+from ._create_template_log_config import CreateTemplateLogConfig
+from ._create_template_registry_auth_config import CreateTemplateRegistryAuthConfig
+from ._create_template_registry_cert_config import CreateTemplateRegistryCertConfig
+from ._create_template_registry_config import CreateTemplateRegistryConfig
+from ._create_template_registry_network_config import CreateTemplateRegistryNetworkConfig
+from ._create_template_runtime_config import CreateTemplateRuntimeConfig
+from ._create_template_sandbox_config import CreateTemplateSandboxConfig
+from ._create_template_step import CreateTemplateStep
+from ._create_template_vpcconfig import CreateTemplateVPCConfig
 from ._create_volume_input import CreateVolumeInput
 from ._custom_domain_resp import CustomDomainResp
 from ._e2blifecycle import E2BLifecycle
@@ -27,6 +40,15 @@ from ._import_api_key_input import ImportApiKeyInput
 from ._log_configuration import LogConfiguration
 from ._network_configuration import NetworkConfiguration
 from ._ossvolume_config import OSSVolumeConfig
+from ._public_template import PublicTemplate
+from ._public_template_log_config import PublicTemplateLogConfig
+from ._public_template_registry_config import PublicTemplateRegistryConfig
+from ._public_template_registry_network_config import PublicTemplateRegistryNetworkConfig
+from ._public_template_runtime_config import PublicTemplateRuntimeConfig
+from ._public_template_sandbox_config import PublicTemplateSandboxConfig
+from ._public_template_status import PublicTemplateStatus
+from ._public_template_status_reason import PublicTemplateStatusReason
+from ._public_template_vpcconfig import PublicTemplateVPCConfig
 from ._quota import Quota
 from ._tlsconfig import TLSConfig
 from ._update_api_key_input import UpdateApiKeyInput
@@ -40,6 +62,9 @@ from ._create_api_key_response import CreateApiKeyResponse
 from ._create_team_request import CreateTeamRequest
 from ._create_team_response_body import CreateTeamResponseBody
 from ._create_team_response import CreateTeamResponse
+from ._create_template_request import CreateTemplateRequest
+from ._create_template_response_body import CreateTemplateResponseBody
+from ._create_template_response import CreateTemplateResponse
 from ._create_volume_request import CreateVolumeRequest
 from ._create_volume_response_body import CreateVolumeResponseBody
 from ._create_volume_response import CreateVolumeResponse
@@ -52,6 +77,9 @@ from ._delete_quota_response import DeleteQuotaResponse
 from ._delete_team_request import DeleteTeamRequest
 from ._delete_team_response_body import DeleteTeamResponseBody
 from ._delete_team_response import DeleteTeamResponse
+from ._delete_template_request import DeleteTemplateRequest
+from ._delete_template_response_body import DeleteTemplateResponseBody
+from ._delete_template_response import DeleteTemplateResponse
 from ._delete_volume_request import DeleteVolumeRequest
 from ._delete_volume_response_body import DeleteVolumeResponseBody
 from ._delete_volume_response import DeleteVolumeResponse
@@ -64,6 +92,9 @@ from ._describe_quota_response import DescribeQuotaResponse
 from ._get_team_request import GetTeamRequest
 from ._get_team_response_body import GetTeamResponseBody
 from ._get_team_response import GetTeamResponse
+from ._get_template_request import GetTemplateRequest
+from ._get_template_response_body import GetTemplateResponseBody
+from ._get_template_response import GetTemplateResponse
 from ._get_volume_request import GetVolumeRequest
 from ._get_volume_response_body import GetVolumeResponseBody
 from ._get_volume_response import GetVolumeResponse
@@ -76,6 +107,9 @@ from ._list_quota_response import ListQuotaResponse
 from ._list_teams_request import ListTeamsRequest
 from ._list_teams_response_body import ListTeamsResponseBody
 from ._list_teams_response import ListTeamsResponse
+from ._list_templates_request import ListTemplatesRequest
+from ._list_templates_response_body import ListTemplatesResponseBody
+from ._list_templates_response import ListTemplatesResponse
 from ._list_volumes_request import ListVolumesRequest
 from ._list_volumes_response_body import ListVolumesResponseBody
 from ._list_volumes_response import ListVolumesResponse
@@ -104,6 +138,19 @@ __all__ = [
     CreateApiKeyInput,
     CreateCustomDomainInput,
     CreateTeamInput,
+    CreateTemplateBuildConfig,
+    CreateTemplateCopyAction,
+    CreateTemplateEnvdInjectAction,
+    CreateTemplateInput,
+    CreateTemplateLogConfig,
+    CreateTemplateRegistryAuthConfig,
+    CreateTemplateRegistryCertConfig,
+    CreateTemplateRegistryConfig,
+    CreateTemplateRegistryNetworkConfig,
+    CreateTemplateRuntimeConfig,
+    CreateTemplateSandboxConfig,
+    CreateTemplateStep,
+    CreateTemplateVPCConfig,
     CreateVolumeInput,
     CustomDomainResp,
     E2BLifecycle,
@@ -122,6 +169,15 @@ __all__ = [
     LogConfiguration,
     NetworkConfiguration,
     OSSVolumeConfig,
+    PublicTemplate,
+    PublicTemplateLogConfig,
+    PublicTemplateRegistryConfig,
+    PublicTemplateRegistryNetworkConfig,
+    PublicTemplateRuntimeConfig,
+    PublicTemplateSandboxConfig,
+    PublicTemplateStatus,
+    PublicTemplateStatusReason,
+    PublicTemplateVPCConfig,
     Quota,
     TLSConfig,
     UpdateApiKeyInput,
@@ -135,6 +191,9 @@ __all__ = [
     CreateTeamRequest,
     CreateTeamResponseBody,
     CreateTeamResponse,
+    CreateTemplateRequest,
+    CreateTemplateResponseBody,
+    CreateTemplateResponse,
     CreateVolumeRequest,
     CreateVolumeResponseBody,
     CreateVolumeResponse,
@@ -147,6 +206,9 @@ __all__ = [
     DeleteTeamRequest,
     DeleteTeamResponseBody,
     DeleteTeamResponse,
+    DeleteTemplateRequest,
+    DeleteTemplateResponseBody,
+    DeleteTemplateResponse,
     DeleteVolumeRequest,
     DeleteVolumeResponseBody,
     DeleteVolumeResponse,
@@ -159,6 +221,9 @@ __all__ = [
     GetTeamRequest,
     GetTeamResponseBody,
     GetTeamResponse,
+    GetTemplateRequest,
+    GetTemplateResponseBody,
+    GetTemplateResponse,
     GetVolumeRequest,
     GetVolumeResponseBody,
     GetVolumeResponse,
@@ -171,6 +236,9 @@ __all__ = [
     ListTeamsRequest,
     ListTeamsResponseBody,
     ListTeamsResponse,
+    ListTemplatesRequest,
+    ListTemplatesResponseBody,
+    ListTemplatesResponse,
     ListVolumesRequest,
     ListVolumesResponseBody,
     ListVolumesResponse,
