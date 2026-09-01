@@ -1,3 +1,7 @@
+2026-09-01 Version: 1.26.0
+- Support API CreateDataAgentFeedback.
+
+
 2026-09-01 Version: 1.25.1
 - Update API SendChatMessage: add request parameters DataSource.Permission.Tables.$.DisallowedColumns.
 - Update API SendChatMessage: add request parameters DataSources.$.Permission.Tables.$.DisallowedColumns.

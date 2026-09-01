@@ -1272,6 +1272,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_data_agent_accuracy_test_with_options_async(request, runtime)
 
+    def create_data_agent_feedback_with_options(
+        self,
+        request: main_models.CreateDataAgentFeedbackRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentFeedbackResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.feedback_content):
+            query['FeedbackContent'] = request.feedback_content
+        if not DaraCore.is_null(request.feedback_type):
+            query['FeedbackType'] = request.feedback_type
+        if not DaraCore.is_null(request.like_value):
+            query['LikeValue'] = request.like_value
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.target_id):
+            query['TargetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentFeedback',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentFeedbackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_agent_feedback_with_options_async(
+        self,
+        request: main_models.CreateDataAgentFeedbackRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentFeedbackResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.feedback_content):
+            query['FeedbackContent'] = request.feedback_content
+        if not DaraCore.is_null(request.feedback_type):
+            query['FeedbackType'] = request.feedback_type
+        if not DaraCore.is_null(request.like_value):
+            query['LikeValue'] = request.like_value
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.target_id):
+            query['TargetId'] = request.target_id
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentFeedback',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentFeedbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_agent_feedback(
+        self,
+        request: main_models.CreateDataAgentFeedbackRequest,
+    ) -> main_models.CreateDataAgentFeedbackResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_agent_feedback_with_options(request, runtime)
+
+    async def create_data_agent_feedback_async(
+        self,
+        request: main_models.CreateDataAgentFeedbackRequest,
+    ) -> main_models.CreateDataAgentFeedbackResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_agent_feedback_with_options_async(request, runtime)
+
     def create_data_agent_knowledge_base_with_options(
         self,
         request: main_models.CreateDataAgentKnowledgeBaseRequest,

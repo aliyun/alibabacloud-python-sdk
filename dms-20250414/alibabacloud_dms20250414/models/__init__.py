@@ -98,6 +98,9 @@ from ._create_custom_agent_response import CreateCustomAgentResponse
 from ._create_data_agent_accuracy_test_request import CreateDataAgentAccuracyTestRequest
 from ._create_data_agent_accuracy_test_response_body import CreateDataAgentAccuracyTestResponseBody
 from ._create_data_agent_accuracy_test_response import CreateDataAgentAccuracyTestResponse
+from ._create_data_agent_feedback_request import CreateDataAgentFeedbackRequest
+from ._create_data_agent_feedback_response_body import CreateDataAgentFeedbackResponseBody
+from ._create_data_agent_feedback_response import CreateDataAgentFeedbackResponse
 from ._create_data_agent_knowledge_base_request import CreateDataAgentKnowledgeBaseRequest
 from ._create_data_agent_knowledge_base_response_body import CreateDataAgentKnowledgeBaseResponseBody
 from ._create_data_agent_knowledge_base_response import CreateDataAgentKnowledgeBaseResponse
@@ -523,6 +526,7 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDat
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataScheduleTaskConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyData
 from ._create_data_agent_accuracy_test_response_body import CreateDataAgentAccuracyTestResponseBodyData
+from ._create_data_agent_feedback_response_body import CreateDataAgentFeedbackResponseBodyData
 from ._create_data_agent_knowledge_base_response_body import CreateDataAgentKnowledgeBaseResponseBodyData
 from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyDataSessionConfig
@@ -738,6 +742,9 @@ __all__ = [
     CreateDataAgentAccuracyTestRequest,
     CreateDataAgentAccuracyTestResponseBody,
     CreateDataAgentAccuracyTestResponse,
+    CreateDataAgentFeedbackRequest,
+    CreateDataAgentFeedbackResponseBody,
+    CreateDataAgentFeedbackResponse,
     CreateDataAgentKnowledgeBaseRequest,
     CreateDataAgentKnowledgeBaseResponseBody,
     CreateDataAgentKnowledgeBaseResponse,
@@ -1163,6 +1170,7 @@ __all__ = [
     CreateCustomAgentResponseBodyDataScheduleTaskConfig,
     CreateCustomAgentResponseBodyData,
     CreateDataAgentAccuracyTestResponseBodyData,
+    CreateDataAgentFeedbackResponseBodyData,
     CreateDataAgentKnowledgeBaseResponseBodyData,
     CreateDataAgentSessionRequestSessionConfig,
     CreateDataAgentSessionResponseBodyDataSessionConfig,
