@@ -84,9 +84,9 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
     ):
         # The period base timestamp.
         self.base_timestamp = base_timestamp
-        # The number of consumers associated with the rule.
+        # The number of API consumers associated with the rule.
         self.consumer_count = consumer_count
-        # The list of subjects (consumers) bound to this rule.
+        # The list of subjects (API consumers) bound to this rule.
         self.consumers = consumers
         # The quota period type.
         self.period_type = period_type
@@ -278,9 +278,9 @@ class GetGatewayQuotaRuleResponseBodyDataConsumers(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The subject (consumer) ID.
+        # The subject (API consumer) ID.
         self.id = id
-        # The subject (consumer) name.
+        # The subject (API consumer) name.
         self.name = name
 
     def validate(self):

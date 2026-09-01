@@ -8722,6 +8722,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_consumer_group_consumers_with_options_async(consumer_group_id, request, headers, runtime)
 
+    def list_consumer_group_quota_rules_with_options(
+        self,
+        consumer_group_id: str,
+        request: main_models.ListConsumerGroupQuotaRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerGroupQuotaRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerGroupQuotaRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}/quota-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerGroupQuotaRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_consumer_group_quota_rules_with_options_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.ListConsumerGroupQuotaRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerGroupQuotaRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerGroupQuotaRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumer-groups/{DaraURL.percent_encode(consumer_group_id)}/quota-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerGroupQuotaRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_consumer_group_quota_rules(
+        self,
+        consumer_group_id: str,
+        request: main_models.ListConsumerGroupQuotaRulesRequest,
+    ) -> main_models.ListConsumerGroupQuotaRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_consumer_group_quota_rules_with_options(consumer_group_id, request, headers, runtime)
+
+    async def list_consumer_group_quota_rules_async(
+        self,
+        consumer_group_id: str,
+        request: main_models.ListConsumerGroupQuotaRulesRequest,
+    ) -> main_models.ListConsumerGroupQuotaRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_consumer_group_quota_rules_with_options_async(consumer_group_id, request, headers, runtime)
+
     def list_consumer_groups_with_options(
         self,
         request: main_models.ListConsumerGroupsRequest,

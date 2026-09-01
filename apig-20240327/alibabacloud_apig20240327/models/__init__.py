@@ -381,6 +381,9 @@ from ._list_consumer_authorization_rules_response import ListConsumerAuthorizati
 from ._list_consumer_group_consumers_request import ListConsumerGroupConsumersRequest
 from ._list_consumer_group_consumers_response_body import ListConsumerGroupConsumersResponseBody
 from ._list_consumer_group_consumers_response import ListConsumerGroupConsumersResponse
+from ._list_consumer_group_quota_rules_request import ListConsumerGroupQuotaRulesRequest
+from ._list_consumer_group_quota_rules_response_body import ListConsumerGroupQuotaRulesResponseBody
+from ._list_consumer_group_quota_rules_response import ListConsumerGroupQuotaRulesResponse
 from ._list_consumer_groups_request import ListConsumerGroupsRequest
 from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBody
 from ._list_consumer_groups_response import ListConsumerGroupsResponse
@@ -923,6 +926,8 @@ from ._list_consumer_authorization_rules_response_body import ListConsumerAuthor
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyData
 from ._list_consumer_group_consumers_response_body import ListConsumerGroupConsumersResponseBodyDataItems
 from ._list_consumer_group_consumers_response_body import ListConsumerGroupConsumersResponseBodyData
+from ._list_consumer_group_quota_rules_response_body import ListConsumerGroupQuotaRulesResponseBodyDataItems
+from ._list_consumer_group_quota_rules_response_body import ListConsumerGroupQuotaRulesResponseBodyData
 from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBodyDataItems
 from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBodyData
 from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResponseBodyDataItems
@@ -1451,6 +1456,9 @@ __all__ = [
     ListConsumerGroupConsumersRequest,
     ListConsumerGroupConsumersResponseBody,
     ListConsumerGroupConsumersResponse,
+    ListConsumerGroupQuotaRulesRequest,
+    ListConsumerGroupQuotaRulesResponseBody,
+    ListConsumerGroupQuotaRulesResponse,
     ListConsumerGroupsRequest,
     ListConsumerGroupsResponseBody,
     ListConsumerGroupsResponse,
@@ -1993,6 +2001,8 @@ __all__ = [
     ListConsumerAuthorizationRulesResponseBodyData,
     ListConsumerGroupConsumersResponseBodyDataItems,
     ListConsumerGroupConsumersResponseBodyData,
+    ListConsumerGroupQuotaRulesResponseBodyDataItems,
+    ListConsumerGroupQuotaRulesResponseBodyData,
     ListConsumerGroupsResponseBodyDataItems,
     ListConsumerGroupsResponseBodyData,
     ListConsumerQuotaRulesResponseBodyDataItems,

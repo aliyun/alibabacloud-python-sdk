@@ -1,3 +1,7 @@
+2026-09-01 Version: 11.3.0
+- Support API ListConsumerGroupQuotaRules.
+
+
 2026-08-28 Version: 11.2.0
 - Support API ListPluginWorkspace.
 - Support API ListRiskCheckResults.

@@ -26,7 +26,7 @@ class HttpRoute(DaraModel):
     ):
         # The backend service.
         self.backend = backend
-        # Indicates whether the route is a built-in system route.
+        # Indicates whether the route is a system built-in route.
         self.builtin = builtin
         # The creation time, in ms.
         self.create_timestamp = create_timestamp
@@ -412,6 +412,7 @@ class HttpRouteEnvironmentInfoGatewayInfo(DaraModel):
         gateway_id: str = None,
         name: str = None,
     ):
+        # The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id

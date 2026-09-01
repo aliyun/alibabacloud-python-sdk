@@ -19,9 +19,9 @@ class ResetGatewayQuotaRuleResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The message content.
+        # The message.
         self.message = message
-        # The unique identifier of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +72,7 @@ class ResetGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
+        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
@@ -130,7 +130,7 @@ class ResetGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
     ):
         # The conflict hash.
         self.conflict_hash = conflict_hash
-        # The list of conflicting subjects (consumers).
+        # The list of conflicting subjects.
         self.items = items
         # The total number of conflicts.
         self.total_conflict_count = total_conflict_count
@@ -186,26 +186,26 @@ class ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumer. Valid values:
-        # 
-        # - day: daily.
-        # - week: weekly.
-        # - month: monthly.
+        # The period type of the existing conflicting rule on the subject. Valid values:
+        # - day: The period of the existing conflicting rule is daily.
+        # - week: The period of the existing conflicting rule is weekly.
+        # - month: The period of the existing conflicting rule is monthly.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumer. Valid values:
-        # 
-        # - calendar: the existing conflicting rule uses a calendar period.
-        # - epoch: the existing conflicting rule uses a custom period.
+        # The type of the existing conflicting rule on the subject. Valid values:
+        # - calendar: The existing conflicting rule uses a calendar period.
+        # - epoch: The existing conflicting rule uses a custom period.
         self.conflict_type = conflict_type
-        # The consumer ID.
+        # The consumer ID. You can use subjectId instead.
         self.consumer_id = consumer_id
-        # The consumer name.
+        # The consumer name. You can use subjectName instead.
         self.consumer_name = consumer_name
         # The ID of the conflicting subject.
         self.subject_id = subject_id
         # The name of the conflicting subject.
         self.subject_name = subject_name
-        # The conflict subject type. Valid values: consumer and consumer_group.
+        # The type of the conflicting subject. Valid values:
+        # - consumer
+        # - consumer_group
         self.subject_type = subject_type
 
     def validate(self):

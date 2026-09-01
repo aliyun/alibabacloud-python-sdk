@@ -4,18 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
+class ListConsumerGroupQuotaRulesRequest(DaraModel):
     def __init__(
         self,
-        filter_failed_requests: bool = None,
+        gateway_id: str = None,
+        keyword: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
-        # Specifies whether to filter out zero values.
-        self.filter_failed_requests = filter_failed_requests
-        # The page number of the detailed consumption (request) records of the subject within the cycle.
+        self.gateway_id = gateway_id
+        self.keyword = keyword
         self.page_number = page_number
-        # The number of detailed consumption (request) records per page for the subject within the cycle. Maximum value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -26,8 +25,11 @@ class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.filter_failed_requests is not None:
-            result['filterFailedRequests'] = self.filter_failed_requests
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
 
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
@@ -39,8 +41,11 @@ class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('filterFailedRequests') is not None:
-            self.filter_failed_requests = m.get('filterFailedRequests')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
 
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')

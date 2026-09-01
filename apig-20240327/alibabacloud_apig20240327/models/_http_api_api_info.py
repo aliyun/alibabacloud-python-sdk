@@ -37,7 +37,7 @@ class HttpApiApiInfo(DaraModel):
         self.auth_config = auth_config
         # The API base path.
         self.base_path = base_path
-        # The API operation publish status.
+        # The API operation deployment status.
         self.deploy_cnt_map = deploy_cnt_map
         # The list of API deployment configurations.
         self.deploy_configs = deploy_configs

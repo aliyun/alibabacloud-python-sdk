@@ -92,7 +92,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         self.subject_type = subject_type
         # The total quota of the subject.
         self.total_quota = total_quota
-        # The total used quota of the subject.
+        # The total used amount of the subject.
         self.used_amount = used_amount
 
     def validate(self):

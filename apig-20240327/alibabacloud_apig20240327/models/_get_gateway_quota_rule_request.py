@@ -12,13 +12,13 @@ class GetGatewayQuotaRuleRequest(DaraModel):
         with_consumers: bool = None,
         with_subjects: bool = None,
     ):
-        # The page number of the consumer list.
+        # The page number.
         self.consumer_page_number = consumer_page_number
-        # The page size of the consumer list.
+        # The page size.
         self.consumer_page_size = consumer_page_size
-        # Specifies whether to return the consumer list.
+        # Specifies whether to return the API consumer list.
         self.with_consumers = with_consumers
-        # Specifies whether to return the general subject list. This parameter applies to both consumer and consumer group rules.
+        # Specifies whether to return the general subject list. This parameter applies to both API consumer and API consumer group rules.
         self.with_subjects = with_subjects
 
     def validate(self):
