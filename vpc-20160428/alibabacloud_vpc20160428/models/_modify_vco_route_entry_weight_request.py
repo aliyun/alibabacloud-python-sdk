@@ -32,7 +32,7 @@ class ModifyVcoRouteEntryWeightRequest(DaraModel):
         # 
         # This parameter is required.
         self.new_weight = new_weight
-        # The next hop of the destination route entry to modify.
+        # The next hop of the destination route entry to be modified.
         # 
         # This parameter is required.
         self.next_hop = next_hop
@@ -41,13 +41,13 @@ class ModifyVcoRouteEntryWeightRequest(DaraModel):
         self.owner_account = owner_account
         # The region ID of the IPsec-VPN connection.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The destination CIDR block of the destination route entry to modify.
+        # The destination CIDR block of the destination route entry to be modified.
         # 
         # This parameter is required.
         self.route_dest = route_dest
@@ -55,7 +55,7 @@ class ModifyVcoRouteEntryWeightRequest(DaraModel):
         # 
         # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
-        # The current weight of the destination route entry to modify. Valid values:
+        # The current weight of the destination route entry to be modified. Valid values:
         # 
         # - **0**: low priority.
         # - **100**: high priority.

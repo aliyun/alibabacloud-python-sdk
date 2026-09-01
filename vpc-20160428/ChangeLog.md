@@ -1,3 +1,7 @@
+2026-09-01 Version: 7.2.0
+- Support API ModifyVpcCidrBlock.
+
+
 2026-08-03 Version: 7.1.5
 - Update API DescribePhysicalConnections: add response parameters Body.PhysicalConnectionSet.$.DeviceFeaturesSelected.
 - Update API DescribePhysicalConnections: add response parameters Body.PhysicalConnectionSet.$.DownDelayTime.

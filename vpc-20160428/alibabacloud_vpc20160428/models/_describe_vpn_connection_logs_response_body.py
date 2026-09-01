@@ -25,7 +25,7 @@ class DescribeVpnConnectionLogsResponseBody(DaraModel):
         # - **true**: Accurate.
         # - **false**: Not accurate.
         self.is_completed = is_completed
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page for paging.
         self.page_size = page_size

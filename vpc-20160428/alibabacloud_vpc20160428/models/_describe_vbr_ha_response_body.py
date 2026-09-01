@@ -17,7 +17,7 @@ class DescribeVbrHaResponseBody(DaraModel):
         vbr_ha_id: str = None,
         vbr_id: str = None,
     ):
-        # The time when the VBR was created.
+        # The time when the VBR was created. The time is displayed in the ISO 8601 standard in UTC. The format is YYYY-MM-DDThh:mm:ss.
         self.creation_time = creation_time
         # The description of the VBR failover group.
         # 

@@ -35,30 +35,30 @@ class CreateVpnPbrRouteEntryRequest(DaraModel):
         # The description must be 1 to 100 characters in length.
         self.description = description
         # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without creating the route. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
-        # - **false** (default): performs a dry run and sends the request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
+        # - **true**: performs a dry run without creating the route. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The next hop of the policy-based route.
         # 
         # This parameter is required.
         self.next_hop = next_hop
-        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunneling protocol).
+        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunnel protocol).
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The policy priority of the policy-based routing entry. Valid values: **1** to **100**. Default value: **10**.
+        # The policy priority of the policy-based route. Valid values: **1** to **100**. Default value: **10**.
         # 
-        # A smaller policy priority value indicates a higher priority of the routing entry.
+        # A smaller policy priority value indicates a higher routing priority.
         self.priority = priority
         # Specifies whether to publish the policy-based route to the VPC route table. Valid values:
         # 
-        # - **true**: Publishes the policy-based route to the VPC. The system publishes the route only to the VPC system route table, not to VPC custom route tables.
+        # - **true**: Publishes the policy-based route to the VPC route table. The system publishes the route only to the VPC system route table, not to VPC custom route tables.
         # 
         #   If you want the VPC custom route table to contain this route, manually add it. For more information, see [CreateRouteEntry](https://help.aliyun.com/document_detail/448722.html).
         # 
         # - **false**: Does not publish the policy-based route to the VPC route table.
         # 
-        #   You must manually add a policy-based route with the next hop pointing to the VPN gateway instance in both the VPC system route table and custom route tables. Otherwise, the VPC cannot access resources in the destination CIDR block through the IPsec-VPN connection.
+        #   You must manually add a policy-based route whose next hop points to the VPN gateway instance in both the VPC system route table and custom route tables. Otherwise, the VPC cannot access resources in the CIDR block through the IPsec-VPN connection.
         # 
         # This parameter is required.
         self.publish_vpc = publish_vpc
@@ -80,16 +80,16 @@ class CreateVpnPbrRouteEntryRequest(DaraModel):
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
-        # The weight of the policy-based routing entry.
+        # The weight of the policy-based route.
         # 
-        # When you use the same VPN gateway instance to establish active/standby IPsec-VPN connections, you can specify the active and standby links by configuring the weight of the policy-based routing entry. A policy-based routing entry with a weight of 100 is the active link by default, and a policy-based routing entry with a weight of 0 is the standby link by default.
+        # If you use the same VPN gateway instance to establish active/standby IPsec-VPN connections, you can specify the weight of the policy-based route to specify the active and standby links. A policy-based route with a weight of 100 is the active link by default, and a policy-based route with a weight of 0 is the standby link by default.
         # 
-        # You can configure health checks for the IPsec-VPN connection to automatically detect link connectivity. If the active link is down, the system automatically switches traffic to the standby link, ensuring high availability of the cloud connection. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
+        # You can configure health checks for the IPsec-VPN connection to automatically detect link connectivity. If the active link is unavailable, the system automatically switches traffic to the standby link, which ensures high availability of the cloud connection. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
         # 
-        # - **100**: The IPsec-VPN connection associated with the policy-based routing entry serves as the active link.
-        # - **0**: The IPsec-VPN connection associated with the policy-based routing entry serves as the standby link.
+        # - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
+        # - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
         # 
-        # > - When you specify active and standby links, the source and destination CIDR blocks of the active and standby policy-based routing entries must be the same.
+        # > - When you specify active and standby links, the source and destination CIDR blocks of the active and standby policy-based routes must be the same.
         # > - For VPN gateway instances that support dual-tunnel pattern IPsec-VPN connections, you do not need to configure this parameter. A dual-tunnel pattern IPsec-VPN connection contains two tunnels that automatically form active/standby links. You do not need to specify active/standby links by configuring this parameter. If you configure this parameter, the parameter settings do not take effect.
         # 
         # This parameter is required.

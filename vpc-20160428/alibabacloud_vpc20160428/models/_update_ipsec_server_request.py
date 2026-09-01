@@ -54,7 +54,7 @@ class UpdateIpsecServerRequest(DaraModel):
         # 
         # - **IkePfs**: The Diffie-Hellman key exchange algorithm used in Phase 1 negotiations. Default value: **group2**.
         # 
-        # - **IkeLifetime**: The epoch of the SA negotiated in Phase 1. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        # - **IkeLifetime**: The lifetime of the SA negotiated in Phase 1. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**. The parameter specifies the SA epoch.
         # 
         # - **LocalId**: The identity of the IPsec server. FQDN and IP address formats are supported.
         # 

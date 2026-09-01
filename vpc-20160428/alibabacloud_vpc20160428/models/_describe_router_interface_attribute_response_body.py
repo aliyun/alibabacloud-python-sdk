@@ -63,7 +63,7 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         self.bandwidth = bandwidth
         # The business status of the router interface. Valid values:
         # 
-        # - **Normal**: Normal.
+        # - **Normal**: normal.
         # 
         # - **FinancialLocked**: locked due to overdue payment.
         # 
@@ -76,24 +76,24 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         self.charge_type = charge_type
         # The HTTP status code.
         self.code = code
-        # The time when the connection was established.
+        # The time when the connection was established. The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.connected_time = connected_time
-        # The time when the router interface was created.
+        # The time when the router interface was created. The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # Indicates whether the connection is a cross-border connection. Valid values:
+        # Indicates whether this is a cross-border connection. Valid values:
         # 
-        # - **false**: The connection is not a cross-border connection.
+        # - **false**: No.
         # 
-        # - **true**: The connection is a cross-border connection.
+        # - **true**: Yes.
         self.cross_border = cross_border
         # The description of the router interface.
         self.description = description
-        # The end time of the data retrieval.
+        # The end time of the data retrieval. The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # Indicates whether the router interface on the VBR was created in fast link mode. Fast link mode allows the router interfaces on the VBR and VPC to be automatically connected after they are created. Valid values:
+        # Indicates whether the router interface on the VBR was created in fast link mode. Fast link mode allows the router interfaces on both the VBR and VPC sides to automatically connect after creation. Valid values:
         # 
-        # - **true**: The router interface was created in fast link mode.
-        # - **false** (default): The router interface was not created in fast link mode.
+        # - **true**: Yes.
+        # - **false** (default): No.
         # 
         # 
         # > -  This parameter takes effect only when **RouterType** is set to **VBR** and **OppositeRouterType** is set to **VRouter**.
@@ -103,26 +103,26 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         self.gmt_modified = gmt_modified
         # Indicates whether renewal data exists. Valid values:
         # 
-        # - **false**: No renewal data exists.
+        # - **false**: No.
         # 
-        # - **true**: Renewal data exists.
+        # - **true**: Yes.
         self.has_reservation_data = has_reservation_data
         # The health check rate. Unit: seconds. This value indicates the interval between consecutive probe packets sent during a health check.
         self.hc_rate = hc_rate
         # The health check threshold. This value indicates the number of probe packets sent during a health check. Unit: packets.
         self.hc_threshold = hc_threshold
-        # The source IP address of the health check.
+        # The health check source IP address.
         self.health_check_source_ip = health_check_source_ip
         # The health check status. Valid values:
         # 
         # - **Abnormal**: abnormal.
-        # - **Normal**: Normal.
+        # - **Normal**: normal.
         # - **NoRedundantRoute**: no redundant route configured.
         # - **NoHealthCheckConfig**: no health check configured.
         self.health_check_status = health_check_status
-        # The target IP address of the health check.
+        # The health check target IP address.
         self.health_check_target_ip = health_check_target_ip
-        # The response message.
+        # The returned message.
         self.message = message
         # The name of the router interface.
         self.name = name
@@ -131,7 +131,7 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         # The bandwidth of the peer router interface. Unit: Mbps.
         self.opposite_bandwidth = opposite_bandwidth
         # The business status of the peer router interface. Valid values:
-        # - **Normal**: Normal.
+        # - **Normal**: normal.
         # - **FinancialLocked**: locked due to overdue payment.
         # - **SecurityLocked**: locked due to security risk control.
         self.opposite_interface_business_status = opposite_interface_business_status
@@ -181,13 +181,13 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         self.opposite_vpc_instance_id = opposite_vpc_instance_id
         # The request ID.
         self.request_id = request_id
-        # The renewal active time.
+        # The renewal active time. The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.reservation_active_time = reservation_active_time
         # The renewal bandwidth. Unit: Mbps.
         self.reservation_bandwidth = reservation_bandwidth
         # The renewal billing type. Valid values: **PayByBandwidth**, which indicates pay-by-bandwidth.
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The type of the renewal order. Valid values: **RENEW**, which indicates a renewal order.
+        # The renewal order type. Valid values: **RENEW**, which indicates a renewal order.
         self.reservation_order_type = reservation_order_type
         # The resource group ID.
         # 
@@ -235,7 +235,7 @@ class DescribeRouterInterfaceAttributeResponseBody(DaraModel):
         # Indicates whether the call was successful.
         self.success = success
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) to which the routing interface belongs.
+        # The ID of the virtual private cloud (VPC) to which the router interface belongs.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

@@ -66,13 +66,13 @@ class DescribeFailoverTestJobResponseBodyFailoverTestJobModel(DaraModel):
         self.description = description
         # The failover test duration. Unit: minutes. Valid values: **1 to 4320**.
         self.job_duration = job_duration
-        # The ID of the failover test job.
+        # The failover test job ID.
         self.job_id = job_id
         # The failover test type. Valid values:
         # 
-        # - **StartNow**: starts immediately. The failover test starts immediately after the job is created.
+        # - **StartNow**: start immediately. The test starts immediately after the job is created.
         # 
-        # - **StartLater**: starts later. Only the job is created without starting the test.
+        # - **StartLater**: start later. Only the test job is created without starting the test.
         self.job_type = job_type
         # The name of the failover test job.
         # 
@@ -80,9 +80,9 @@ class DescribeFailoverTestJobResponseBodyFailoverTestJobModel(DaraModel):
         self.name = name
         # The list of failover test resource IDs.
         self.resource_id = resource_id
-        # The resource type for the failover test. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
+        # The failover test resource type. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
         self.resource_type = resource_type
-        # The start time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+        # The start time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format as defined by ISO 8601.
         self.start_time = start_time
         # The status of the failover test job. Valid values:
         # 
@@ -96,7 +96,7 @@ class DescribeFailoverTestJobResponseBodyFailoverTestJobModel(DaraModel):
         # 
         # - **Stopped**: completed.
         self.status = status
-        # The end time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+        # The end time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format as defined by ISO 8601.
         self.stop_time = stop_time
 
     def validate(self):

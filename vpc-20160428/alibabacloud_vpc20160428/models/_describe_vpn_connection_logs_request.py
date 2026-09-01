@@ -30,13 +30,13 @@ class DescribeVpnConnectionLogsRequest(DaraModel):
         self.minute_period = minute_period
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page for paging. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the IPsec-VPN connection.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -19,15 +19,15 @@ class DescribeVbrHaRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: performs a dry run without starting the instance. The system checks whether required parameters are specified, whether the request format is valid, and whether the instance status is valid. If the check fails, the corresponding error is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
         # 
-        # - **false** (default): sends a normal request. After the request passes the check, the instance is directly started.
+        # - **false** (default): sends the request. After the request passes the check, the instance is started.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37,9 +37,9 @@ class DescribeVbrHaRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The VBR failover group instance ID.
+        # The VBR failover group instance ID. You must specify at least one of **VbrHaId** and **VbrId**. If both are omitted, the service returns MissingParam.VbrHaIdOrVbrId (400).
         self.vbr_ha_id = vbr_ha_id
-        # The VBR instance ID.
+        # The VBR instance ID. You must specify at least one of **VbrId** and **VbrHaId**. If both are omitted, the service returns MissingParam.VbrHaIdOrVbrId (400).
         self.vbr_id = vbr_id
 
     def validate(self):

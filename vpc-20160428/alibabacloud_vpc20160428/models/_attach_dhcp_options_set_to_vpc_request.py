@@ -29,9 +29,9 @@ class AttachDhcpOptionsSetToVpcRequest(DaraModel):
         self.dhcp_options_set_id = dhcp_options_set_id
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # **true**: performs a dry run without associating the DHCP options set with the VPC. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # **true**: performs a dry run without associating the DHCP options set with the associate VPC. The system checks the request for potential issues, including whether the AccessKey is valid, the authorization of the Resource Access Management (RAM) user, and whether required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
         # 
-        # **false** (default): sends a normal request. If the request passes the dry run, a 2XX HTTP status code is returned and the DHCP options set is associated with the VPC.
+        # **false** (default): sends a normal request. If the check succeeds, a 2XX HTTP status code is returned and the DHCP options set is associated with the VPC.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id

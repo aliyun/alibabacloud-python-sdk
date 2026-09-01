@@ -30,8 +30,8 @@ class DescribeVSwitchesRequest(DaraModel):
         zone_id: str = None,
     ):
         # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
-        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # Specifies whether to query vSwitches that have IPv6 CIDR blocks enabled in the specified region. Valid values:
         # 
@@ -53,9 +53,9 @@ class DescribeVSwitchesRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page when using paging. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region to which the vSwitch belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+        # The ID of the region to which the vSwitch belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # > Specify at least one of the **RegionId** and **VpcId** parameters.
         self.region_id = region_id
@@ -67,7 +67,7 @@ class DescribeVSwitchesRequest(DaraModel):
         self.route_table_id = route_table_id
         # The tags of the resource.
         self.tag = tag
-        # The ID of the vSwitch to query.
+        # The ID of the vSwitch that you want to query.
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         # 
@@ -75,11 +75,11 @@ class DescribeVSwitchesRequest(DaraModel):
         self.v_switch_name = v_switch_name
         # The Alibaba Cloud account ID of the resource ownership.
         self.v_switch_owner_id = v_switch_owner_id
-        # The ID of the VPC to which the vSwitch belongs. 
+        # The ID of the VPC to which the vSwitches that you want to query belong. 
         # 
         # > Specify at least one of the **RegionId** and **VpcId** parameters.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitch belongs. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
+        # The ID of the zone to which the vSwitch belongs. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the zone ID.
         self.zone_id = zone_id
 
     def validate(self):

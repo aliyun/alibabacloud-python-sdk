@@ -25,8 +25,8 @@ class CreatePhysicalConnectionSetupOrderRequest(DaraModel):
         self.access_point_id = access_point_id
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **false** (default): disables automatic payment.
-        # - **true**: enables automatic payment.
+        # - **false** (default): Automatic payment is disabled.
+        # - **true**: Automatic payment is enabled.
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -42,11 +42,11 @@ class CreatePhysicalConnectionSetupOrderRequest(DaraModel):
         # 
         # - **CM**: China Mobile
         # 
-        # - **CO**: other carriers in the Chinese mainland
+        # - **CO**: Other carriers in the Chinese mainland
         # 
         # - **Equinix**: Equinix
         # 
-        # - **Other**: other carriers outside the Chinese mainland
+        # - **Other**: Other carriers outside the Chinese mainland
         # 
         # This parameter is required.
         self.line_operator = line_operator
@@ -56,11 +56,11 @@ class CreatePhysicalConnectionSetupOrderRequest(DaraModel):
         # 
         # - **100Base-T**: 100M Ethernet port.
         # 
-        # - **1000Base-T** (default): 1 GE port.
+        # - **1000Base-T** (default): 1 GE electrical port.
         # 
         # - **1000Base-LX**: GE single-mode optical port (10 km).
         # 
-        # - **10GBase-T**: 10 GE port.
+        # - **10GBase-T**: 10 GE electrical port.
         # 
         # - **10GBase-LR**: 10 GE single-mode optical port (10 km).
         # 
@@ -68,13 +68,15 @@ class CreatePhysicalConnectionSetupOrderRequest(DaraModel):
         # 
         # - **100GBase-LR**: 100 GE single-mode optical port.
         # 
-        # > 40GBase-LR and 100GBase-LR ports are created based on the actual port availability. Contact your account manager for details.
+        # The default value **1000Base-T** is available only at access points that support this port type. Before calling this operation, call ListBusinessAccessPoints to query the **SupportPortTypes** of the target access point. For optical ports, also verify the **OpticalModuleModels**.
+        # 
+        # > 40GBase-LR and 100GBase-LR must be created based on the actual backend port availability. Contact your account manager for details.
         self.port_type = port_type
         # The ID of the redundant Express Connect circuit. The circuit must be in the **Allocated**, **Confirmed**, or **Enabled** state.
         self.redundant_physical_connection_id = redundant_physical_connection_id
         # The region ID of the Express Connect circuit. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

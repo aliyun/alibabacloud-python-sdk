@@ -17,7 +17,7 @@ class CancelPhysicalConnectionRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # The client generates the value of this parameter. Ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length.
+        # The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -18,9 +18,9 @@ class ListVirtualPhysicalConnectionsResponseBody(DaraModel):
     ):
         # The number of entries returned in the current query.
         self.count = count
-        # Indicates whether a next query token is available. Valid values:
-        # - If **NextToken** is empty, no next query is available.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # Indicates whether a next query token exists. Valid values:
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** has a return value, the value is the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -127,7 +127,7 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections(DaraM
         # The business status of the Express Connect circuit. Valid values:
         # 
         # - **Normal**: Enabled.
-        # - **FinancialLocked**: Financial lock.
+        # - **FinancialLocked**: Locked due to overdue payment.
         # - **SecurityLocked**: Locked for security reasons.
         self.business_status = business_status
         # The billing method of the Express Connect circuit.
@@ -136,21 +136,21 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections(DaraM
         self.charge_type = charge_type
         # The circuit code provided by the carrier for the Express Connect circuit.
         self.circuit_code = circuit_code
-        # The time when the Express Connect circuit was created.
+        # The time when the Express Connect circuit was created. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the Express Connect circuit.
         self.description = description
-        # The time when the Express Connect circuit was enabled.
+        # The time when the Express Connect circuit was enabled. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.enabled_time = enabled_time
         # The expiration time of the shared Express Connect circuits.
         # 
-        # The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+        # The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The expected bandwidth of the shared Express Connect circuits. The expected bandwidth takes effect only after payment is complete.
+        # The expected bandwidth value of the shared Express Connect circuits. The expected bandwidth value takes effect only after payment is completed.
         # 
         # Unit: **M** indicates Mbit/s, and **G** indicates Gbit/s.
         self.expect_spec = expect_spec
-        # The carrier that provides the physical connection. Valid values:
+        # The carrier that provides the physical line for access. Valid values:
         # 
         # - **CT**: China Telecom.
         # - **CU**: China Unicom.
@@ -176,7 +176,7 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections(DaraM
         # - **PayByPhysicalConnectionOwner**: The owner of the Express Connect circuit associated with the shared Express Connect circuits is the payer.
         # - **PayByVirtualPhysicalConnectionOwner**: The owner of the shared Express Connect circuits is the payer.
         self.order_mode = order_mode
-        # The Alibaba Cloud account ID to which the Express Connect circuit belongs.
+        # The Alibaba Cloud account ID that owns the Express Connect circuit.
         self.parent_physical_connection_ali_uid = parent_physical_connection_ali_uid
         # The instance ID of the Express Connect circuit.
         self.parent_physical_connection_id = parent_physical_connection_id
@@ -186,10 +186,10 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections(DaraM
         self.physical_connection_id = physical_connection_id
         # The port number of the access device for the Express Connect circuit.
         self.port_number = port_number
-        # The port type of the Express Connect circuit. Valid values:
+        # The port type of the access device for the Express Connect circuit. Valid values:
         # 
         # - **100Base-T**: 100M Ethernet port.
-        # - **1000Base-T**: 1 GE electrical port.
+        # - **1000Base-T**: GE electrical port.
         # - **1000Base-LX**: GE single-mode optical port (10 km).
         # - **10GBase-T**: 10 GE electrical port.
         # - **10GBase-LR**: 10 GE single-mode optical port (10 km).
@@ -205,7 +205,7 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections(DaraM
         self.redundant_physical_connection_id = redundant_physical_connection_id
         # The ID of the resource group to which the shared Express Connect circuits belong.
         self.resource_group_id = resource_group_id
-        # The bandwidth of the shared Express Connect circuits.
+        # The bandwidth value of the shared Express Connect circuits.
         # 
         # Unit: **M** indicates Mbit/s, and **G** indicates Gbit/s.
         self.spec = spec
@@ -215,7 +215,7 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections(DaraM
         # - **Approved**: The application is approved.
         # - **Allocating**: Resources are being allocated.
         # - **Allocated**: Under construction.
-        # - **Confirmed**: Pending confirmation.
+        # - **Confirmed**: Waiting for user confirmation.
         # - **Enabled**: Enabled.
         # - **Rejected**: The application is rejected.
         # - **Canceled**: Canceled.
@@ -451,11 +451,11 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags(D
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

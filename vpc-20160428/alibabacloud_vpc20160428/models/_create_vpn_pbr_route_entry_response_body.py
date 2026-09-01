@@ -21,15 +21,15 @@ class CreateVpnPbrRouteEntryResponseBody(DaraModel):
     ):
         # The timestamp when the policy-based route was created. Unit: milliseconds.
         # 
-        # The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The description of the policy-based route.
         self.description = description
         # The next hop of the policy-based route.
         self.next_hop = next_hop
-        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunneling protocol).
+        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunnel protocol).
         self.overlay_mode = overlay_mode
-        # The policy priority of the policy-based routing entry.
+        # The policy priority of the policy-based route.
         self.priority = priority
         # The request ID.
         self.request_id = request_id
@@ -39,11 +39,11 @@ class CreateVpnPbrRouteEntryResponseBody(DaraModel):
         self.route_source = route_source
         # The publish status of the policy-based route.
         # 
-        # - **published**: The policy-based route has been published to the VPC route table.
+        # - **published**: The policy-based route is published to the VPC route table.
         # 
-        # - **normal**: The policy-based route has not been published to the VPC route table.
+        # - **normal**: The policy-based route is not published to the VPC route table.
         self.state = state
-        # The instance ID of the VPN gateway.
+        # The VPN gateway instance ID.
         self.vpn_instance_id = vpn_instance_id
         # The weight of the policy-based route.
         # 

@@ -27,7 +27,7 @@ class DescribeVcoRouteEntriesResponseBody(DaraModel):
         self.total_count = total_count
         # The list of routes.
         self.vco_route_entries = vco_route_entries
-        # The route statistics of the IPsec-VPN connection in dual-tunnel mode.
+        # The route statistics for the IPsec-VPN connection in dual-tunnel mode.
         # 
         # > This information is returned only for IPsec-VPN connections in dual-tunnel mode.
         self.vpn_route_counts = vpn_route_counts
@@ -108,12 +108,12 @@ class DescribeVcoRouteEntriesResponseBodyVpnRouteCounts(DaraModel):
     ):
         # The number of routes.
         self.route_count = route_count
-        # The type of the route. Valid values:
+        # The type of the route.
         # 
         # - **custom**: destination route.
         # - **bgp**: BGP route.
         self.route_entry_type = route_entry_type
-        # The source of the BGP route. Valid values:
+        # The source of the BGP route.
         # 
         # - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from the transit router.
         # - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from the on-premises data center.
@@ -172,7 +172,7 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(DaraModel):
         self.community = community
         # The timestamp when the destination route was created.
         # 
-        # The timestamp is in the Unix format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The next hop of the route.
         self.next_hop = next_hop
@@ -183,19 +183,19 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(DaraModel):
         self.next_hop_tunnel_id_list = next_hop_tunnel_id_list
         # The destination CIDR block of the route.
         self.route_dest = route_dest
-        # The type of the route. Valid values:
+        # The type of the route.
         # 
-        # - **custom**: destination route.
-        # - **bgp**: BGP route.
+        # - **custom**: The route is a destination route.
+        # - **bgp**: The route is a BGP route.
         self.route_entry_type = route_entry_type
-        # The source of the BGP route. Valid values:
+        # The source of the BGP route.
         # 
         # - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from the transit router.
         # - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from the on-premises data center.
         self.source = source
-        # The status of the route. Valid values:
+        # The status of the route.
         # 
-        # - **published**: The destination route is published to the transit router instance.
+        # - **published**: The destination route has been published to the transit router instance.
         # - **Active**: The BGP route is available.
         self.state = state
         # The ID of the IPsec-VPN connection.

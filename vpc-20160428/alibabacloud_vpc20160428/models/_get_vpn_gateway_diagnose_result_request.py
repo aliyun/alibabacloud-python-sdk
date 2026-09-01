@@ -16,11 +16,11 @@ class GetVpnGatewayDiagnoseResultRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the client token. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The diagnostic ID.
+        # The diagnosis ID.
         # 
-        # The diagnostic ID is returned when you call the [DiagnoseVpnGateway](https://help.aliyun.com/document_detail/469751.html) operation.
+        # When you call the [DiagnoseVpnGateway](https://help.aliyun.com/document_detail/469751.html) operation, the system returns the corresponding diagnosis ID.
         self.diagnose_id = diagnose_id
         # The region ID of the VPN gateway instance.
         # 

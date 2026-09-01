@@ -21,15 +21,19 @@ class DescribeExpressConnectTrafficQosRuleRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The QoS policy ID.
+        # The QoS policy ID returned by the CreateExpressConnectTrafficQos operation.
+        # 
+        # > This parameter is required. If you do not specify this parameter, the service returns IllegalParam.QosId (400).
         self.qos_id = qos_id
-        # The QoS queue ID.
+        # The QoS queue ID returned by the CreateExpressConnectTrafficQosQueue operation.
+        # 
+        # > This parameter is required. If you do not specify this parameter, the service returns IllegalParam.QueueId (400).
         self.queue_id = queue_id
         # The region ID of the QoS policy.
         # 
@@ -38,9 +42,9 @@ class DescribeExpressConnectTrafficQosRuleRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The QoS rule IDs.
+        # The list of QoS rule IDs.
         self.rule_id_list = rule_id_list
-        # The QoS rule names.
+        # The list of QoS rule names.
         self.rule_name_list = rule_name_list
 
     def validate(self):

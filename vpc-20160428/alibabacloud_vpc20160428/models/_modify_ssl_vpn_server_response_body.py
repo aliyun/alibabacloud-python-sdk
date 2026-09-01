@@ -38,7 +38,7 @@ class ModifySslVpnServerResponseBody(DaraModel):
         self.connections = connections
         # The time when the SSL-VPN server was created.
         self.create_time = create_time
-        # Indicates whether two-factor identity authentication is enabled.
+        # Indicates whether two-factor authentication is enabled.
         # 
         # - **true**: enabled.
         # 

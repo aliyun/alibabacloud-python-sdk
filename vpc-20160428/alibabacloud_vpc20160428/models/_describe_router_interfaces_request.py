@@ -32,7 +32,7 @@ class DescribeRouterInterfacesRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page when paging is performed. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the router interface.
         # 
@@ -148,11 +148,11 @@ class DescribeRouterInterfacesRequestTags(DaraModel):
     ):
         # The tag key of the resource. You must specify at least 1 tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -195,7 +195,7 @@ class DescribeRouterInterfacesRequestFilter(DaraModel):
         # 
         # - **RouterType**: the router type. Valid values: **VRouter** and **VBR**.
         # 
-        # - **RouterInterfaceOwnerId**: the ID of the account that owns the router interface.
+        # - **RouterInterfaceOwnerId**: the ID of the account to which the router interface belongs.
         # 
         # - **OppositeInterfaceId**: the peer router interface ID.
         # 
@@ -203,15 +203,15 @@ class DescribeRouterInterfacesRequestFilter(DaraModel):
         # 
         # - **OppositeRouterId**: the peer router interface ID.
         # 
-        # - **OppositeInterfaceOwnerId**: the ID of the account that owns the peer router interface.
+        # - **OppositeInterfaceOwnerId**: the ID of the account to which the peer router interface belongs.
         # 
         # - **Status**: the router interface status.
         # 
         # - **Name**: the router interface name.
         # 
-        # > Multiple values for a filter condition are evaluated by using the OR operator. A result is returned if any of the values match. Filter conditions are evaluated by using the AND operator. A result is returned only if all filter conditions are matched.
+        # > The multiple values of each filter condition have an OR relationship. A router interface is returned as long as it matches one of the values. The filter conditions have an AND relationship. A router interface is returned only when it matches all specified filter conditions.
         self.key = key
-        # The filter value based on the specified Key. You can specify multiple filter values for a Key. Multiple filter values are evaluated by using the OR operator. A result is returned if any of the filter values match.
+        # The filter value based on the specified Key. You can specify multiple filter values for a Key. The filter values have an OR relationship. A router interface is returned as long as it matches one of the filter values.
         self.value = value
 
     def validate(self):

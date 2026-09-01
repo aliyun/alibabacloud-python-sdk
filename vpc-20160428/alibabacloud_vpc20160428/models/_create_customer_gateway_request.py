@@ -24,14 +24,14 @@ class CreateCustomerGatewayRequest(DaraModel):
         resource_owner_id: int = None,
         tags: List[main_models.CreateCustomerGatewayRequestTags] = None,
     ):
-        # The Autonomous System Number (ASN) of the gateway device in the on-premises data center. This parameter is required if you plan to enable Border Gateway Protocol (BGP) dynamic routing for the IPsec-VPN connection. Valid values: 1 to 4294967295. The value 45104 is not supported.
+        # If you plan to enable the BGP dynamic routing protocol for the IPsec-VPN connection, you need to allocate the Autonomous System Number (ASN) of the gateway device in the on-premises data center. Valid values: 1 to 4294967295. The value 45104 is not supported.
         # 
-        # **Asn** is a 4-byte number that can be entered in the two-segment format: the first 16 bits.the last 16 bits. Each segment is entered in decimal notation.
+        # **Asn** is a 4-byte number. You can enter the number in two-segment format: the first 16 bits.the last 16 bits. Each segment is entered in decimal format.
         # 
         # For example, if you enter 123.456, the ASN is 123 × 65536 + 456 = 8061384.
         # 
         # > - Use a private ASN to establish a BGP connection with Alibaba Cloud. For more information about the range of private ASNs, refer to the relevant documentation.
-        # > - 45104 is a unique identity allocated to Alibaba Cloud Computing Co., Ltd. by the Internet Assigned Numbers Authority (IANA). It is used to identify Alibaba Cloud in global Internet routing and data transmission.
+        # > - 45104 is a unique identity allocated to Alibaba Cloud Computing Co., Ltd. by the Internet Assigned Numbers Authority (IANA). It is used as an identity for Alibaba Cloud in global Internet routing and data transmission.
         self.asn = asn
         # The authentication key of the BGP routing protocol for the gateway device in the on-premises data center.
         # 
@@ -78,7 +78,7 @@ class CreateCustomerGatewayRequest(DaraModel):
         # The ID of the resource group to which the customer gateway belongs.
         # 
         # - You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group ID.
-        # - If you do not specify a resource group, the customer gateway is added to the default resource group after it is created.
+        # - If you do not specify a resource group, the customer gateway belongs to the default resource group after it is created.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

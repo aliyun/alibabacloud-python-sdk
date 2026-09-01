@@ -48,7 +48,7 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         # - **Normal**: Normal.
         # - **FinancialLocked**: Locked due to overdue payment.
         self.business_status = business_status
-        # The time when the NAT gateway was created. The time is displayed in the YYYY-MM-DDThh:mm:ssZ format.
+        # The time when the NAT gateway was created. The time is displayed in the format of YYYY-MM-DDThh:mm:ssZ.
         self.creation_time = creation_time
         # The deletion protection information.
         self.deletion_protection_info = deletion_protection_info
@@ -56,7 +56,7 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         self.description = description
         # Indicates whether the gateway traffic monitoring feature is enabled. Valid values:
         # - **true**: The gateway traffic monitoring feature is enabled.
-        # - **false**: The gateway traffic monitoring feature is not enabled.
+        # - **false**: The gateway traffic monitoring feature is disabled.
         self.ecs_metric_enabled = ecs_metric_enabled
         # Indicates whether session logging is enabled. Valid values:
         # 
@@ -87,12 +87,12 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         self.network_type = network_type
         # The private network information of the NAT gateway instance.
         self.private_info = private_info
-        # Indicates whether PrivateLink is supported. Valid values:
+        # Indicates whether private connectivity is supported. Valid values:
         # 
-        # - **true**: PrivateLink is supported.
-        # - **false**: PrivateLink is not supported.
+        # - **true**: Private connectivity is supported.
+        # - **false**: Private connectivity is not supported.
         self.private_link_enabled = private_link_enabled
-        # The PrivateLink service conversion mode. Valid values:
+        # The conversion mode of the private connectivity service. Valid values:
         # 
         # - **FullNat**: FULLNAT mode.
         # - **Geneve**: Geneve mode.
@@ -107,11 +107,11 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         self.snat_table = snat_table
         # The status of the NAT gateway. Valid values:
         # 
-        # - **Creating**: The NAT gateway is being created. The creation of a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Creating** state until the creation is complete.
+        # - **Creating**: The NAT gateway is being created. Creating a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Creating** state until the operation is complete.
         # - **Available**: The NAT gateway is available. This is a stable state after the NAT gateway is created.
-        # - **Modifying**: The NAT gateway is being modified. The modification of a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Modifying** state during the modification.
-        # - **Deleting**: The NAT gateway is being deleted. The deletion of a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Deleting** state during the deletion.
-        # - **Converting**: The NAT gateway is being converted. The conversion from a standard NAT gateway to an enhanced NAT gateway is an asynchronous operation. The NAT gateway remains in the **Converting** state during the conversion.
+        # - **Modifying**: The NAT gateway is being modified. Modifying a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Modifying** state until the operation is complete.
+        # - **Deleting**: The NAT gateway is being deleted. Deleting a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Deleting** state until the operation is complete.
+        # - **Converting**: The NAT gateway is being converted. Converting a standard NAT gateway to an enhanced NAT gateway is an asynchronous operation. The NAT gateway remains in the **Converting** state until the operation is complete.
         self.status = status
         # The ID of the VPC to which the NAT gateway instance belongs.
         self.vpc_id = vpc_id
@@ -441,7 +441,7 @@ class GetNatGatewayAttributeResponseBodyLogDelivery(DaraModel):
         # - **Failure**: Failed.
         self.delivery_status = delivery_status
         # The destination type for session log delivery. Valid values:
-        # **sls**: Simple Log Service (SLS).
+        # **sls**: Alibaba Cloud Simple Log Service (SLS).
         self.log_delivery_type = log_delivery_type
         # The destination address to which session logs are written.
         self.log_destination = log_destination
@@ -497,8 +497,8 @@ class GetNatGatewayAttributeResponseBodyIpList(DaraModel):
         self.ip_address = ip_address
         # The association status of the EIP bound to the Internet NAT gateway instance.
         # 
-        # - **idle**: The EIP is not associated with any SNAT entry or DNAT entry.
-        # - **UsedBySnatTable**: The EIP is associated with an SNAT entry.
+        # - **idle**: The EIP is not associated with a SNAT entry or DNAT entry.
+        # - **UsedBySnatTable**: The EIP is associated with a SNAT entry.
         # - **UsedByForwardTable**: The EIP is associated with a DNAT entry.
         self.using_status = using_status
 
@@ -615,7 +615,7 @@ class GetNatGatewayAttributeResponseBodyDeletionProtectionInfo(DaraModel):
     ):
         # Indicates whether deletion protection is enabled.
         # - **true**: Deletion protection is enabled.
-        # - **false**: Deletion protection is not enabled.
+        # - **false**: Deletion protection is disabled.
         self.enabled = enabled
 
     def validate(self):
@@ -648,7 +648,7 @@ class GetNatGatewayAttributeResponseBodyBillingConfig(DaraModel):
     ):
         # Indicates whether automatic payment is enabled. When the value of **InstanceChargeType** is **PrePaid**, the following values are returned:
         # 
-        # - **false**: Automatic payment is not enabled. After an order is generated, go to the Order Center to complete the payment.
+        # - **false**: Automatic payment is disabled. After an order is generated, go to the Order Center to complete the payment.
         # 
         # - **true**: Automatic payment is enabled. The order is automatically paid.
         # 
@@ -664,8 +664,8 @@ class GetNatGatewayAttributeResponseBodyBillingConfig(DaraModel):
         self.instance_charge_type = instance_charge_type
         # The billing type of the NAT gateway instance. Valid values:
         # 
-        # - **PayBySpec**: billed by defined specifications.
-        # - **PayByLcu**: billed by usage.
+        # - **PayBySpec**: Billed by defined specifications.
+        # - **PayByLcu**: Billed by usage.
         self.internet_charge_type = internet_charge_type
         # The specification of the Internet NAT gateway instance. When **InternetChargeType** is **PayBySpec**, the following values are returned:
         # - **Small**: small.
@@ -718,11 +718,11 @@ class GetNatGatewayAttributeResponseBodyAccessMode(DaraModel):
         mode_value: str = None,
         tunnel_type: str = None,
     ):
-        # The access mode. Valid values:
+        # The access mode value. Valid values:
         # 
-        # - **route**: route mode.
+        # - **route**: Route mode.
         # 
-        # - **tunnel**: tunnel mode.
+        # - **tunnel**: Tunnel mode.
         self.mode_value = mode_value
         # The tunnel mode type. Valid values:
         # 

@@ -41,7 +41,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest(DaraModel):
         # 
         # - **false** (default): Disabled.
         self.enable_ipv_6 = enable_ipv_6
-        # The Alibaba Cloud-side IP address of the VBR instance.
+        # The Alibaba Cloud-side IP address of the VBR instance. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask** together when you call this operation. The request fails if any of these parameters is missing.
         self.local_gateway_ip = local_gateway_ip
         # The Alibaba Cloud-side IPv6 address of the VBR instance.
         self.local_ipv_6gateway_ip = local_ipv_6gateway_ip
@@ -49,9 +49,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest(DaraModel):
         self.owner_id = owner_id
         # The client-side IP address of the VBR instance.
         # 
-        # - Only the VBR owner can specify or modify this property.
-        # 
-        # - This parameter is required when you create a VBR instance for the Express Connect circuit owner.
+        # Only the VBR owner can specify or modify this property. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask** together when you call this operation. The request fails if any of these parameters is missing.
         self.peer_gateway_ip = peer_gateway_ip
         # The client-side IPv6 address of the VBR instance.
         # 
@@ -65,7 +63,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest(DaraModel):
         self.peering_ipv_6subnet_mask = peering_ipv_6subnet_mask
         # The subnet mask for the Alibaba Cloud-side and client-side IP addresses of the VBR instance.
         # 
-        # The two IP addresses must be in the same subnet.
+        # The two IP addresses must be in the same subnet. You must specify **LocalGatewayIp**, **PeerGatewayIp**, and **PeeringSubnetMask** together when you call this operation. The request fails if any of these parameters is missing.
         self.peering_subnet_mask = peering_subnet_mask
         # The Express Connect circuit instance ID.
         # 
@@ -73,7 +71,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest(DaraModel):
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -85,7 +83,7 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest(DaraModel):
         self.vbr_id = vbr_id
         # The VLAN ID of the VBR. Valid values: **0 to 2999**. 
         # 
-        # > Only the owner of the Express Connect circuit can specify this parameter. The VLAN IDs of two VBRs on the same Express Connect circuit must be different.
+        # > Only the owner of the Express Connect circuit can specify this parameter. Two VBRs on the same Express Connect circuit cannot have the same VLAN ID.
         # 
         # This parameter is required.
         self.vlan_id = vlan_id

@@ -17,17 +17,17 @@ class DeleteNatGatewayRequest(DaraModel):
     ):
         # Specifies whether to forcefully delete the NAT gateway. Valid values:
         # 
-        # - **true**: forcefully deletes the NAT gateway. If this parameter is set to **true**:
+        # - **true**: forcefully deletes the NAT gateway. If you set this parameter to **true**:
         # 
         #     - If the NAT gateway has SNAT rules, the system force deletes the SNAT rules.
         # 
         #     - If the NAT gateway has DNAT rules, the system force deletes the DNAT rules.
         # 
-        #     - If the NAT gateway has associated Elastic IP Addresses (EIPs), the system automatically disassociates the EIPs.
+        #     - If the NAT gateway has associated elastic IP addresses (EIPs), the system automatically disassociates the EIPs.
         # 
         #     - If the NAT gateway has NAT service plans that are not deleted, the system force deletes the NAT service plans.
         # 
-        # - **false** (default): does not forcefully delete the NAT gateway. If this parameter is set to **false**:
+        # - **false** (default): does not forcefully delete the NAT gateway. If you set this parameter to **false**:
         # 
         #     - If the NAT gateway has NAT service plans that are not deleted, delete the NAT service plans first.
         # 
@@ -45,7 +45,7 @@ class DeleteNatGatewayRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

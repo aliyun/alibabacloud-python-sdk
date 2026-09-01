@@ -34,8 +34,8 @@ class DescribeVpcGrantRulesToEcrRequest(DaraModel):
         self.instance_id = instance_id
         # The type of the instance for which to query the authorization relationship. Valid values:
         # 
-        # - **VBR**: Virtual Border Router (VBR) instance. Queries the VPC instances that the VBR instance is authorized to access through the vRouter.
-        # - **VPC**: virtual private cloud (VPC) instance. Queries the VBR instances that the VPC instance has authorized through the vRouter.
+        # - **VBR**: Virtual Border Router (VBR) instance. Queries the VPC instances for which the VBR instance has been granted authorization.
+        # - **VPC**: virtual private cloud (VPC) instance. Queries the VBR instances to which the VPC instance has granted authorization.
         self.instance_type = instance_type
         # The number of entries per page for paginated queries. Valid values: **1** to **100**. Default value: **100**.
         self.max_results = max_results
@@ -47,7 +47,7 @@ class DescribeVpcGrantRulesToEcrRequest(DaraModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region in which the network instance to query resides.
+        # The region where the network instance to query resides.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -164,13 +164,13 @@ class DescribeVpcGrantRulesToEcrRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You must specify at least 1 and can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You must specify at least 1 tag key and can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

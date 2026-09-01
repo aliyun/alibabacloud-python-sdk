@@ -20,7 +20,7 @@ class DescribeFailoverTestJobRequest(DaraModel):
         # 
         # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The ID of the failover test job.
+        # The failover test job ID. Before calling this operation, use CreateFailoverTestJob to create a job and obtain this ID. If the test resource is an Express Connect circuit, the circuit must be in the **Enabled** state and its business status must be **Normal**.
         # 
         # This parameter is required.
         self.job_id = job_id
@@ -28,7 +28,7 @@ class DescribeFailoverTestJobRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the failover test job. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 

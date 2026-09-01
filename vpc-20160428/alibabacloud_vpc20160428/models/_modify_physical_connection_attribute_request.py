@@ -36,8 +36,9 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
         # 
         # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
+        # The port down delay time of the Express Connect circuit, in milliseconds. When a physical link Down event is detected, the access device waits for this duration before setting the port to the down state. This prevents transient disconnections from affecting your services. Valid values: 0 to 10000. The step size is 100. A value of 0 indicates that the port goes down immediately after the link goes down (default).
         self.down_delay_time = down_delay_time
-        # The carrier that provides the access to the physical connection. Valid values:
+        # The carrier that provides the access to the physical line. Valid values:
         # 
         # - **CT**: China Telecom
         # - **CU**: China Unicom
@@ -52,7 +53,7 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The geographical location of the on-premises data center.
+        # The geographic location of the on-premises data center.
         self.peer_location = peer_location
         # The ID of the Express Connect circuit.
         # 
@@ -68,7 +69,7 @@ class ModifyPhysicalConnectionAttributeRequest(DaraModel):
         # - **40GBase-LR**: 40 GE single-mode optical port.
         # - **100GBase-LR**: 100 GE single-mode optical port.
         # 
-        # > To create 40GBase-LR or 100GBase-LR ports, check the actual port availability on the backend. Contact your account manager for details.
+        # > 40GBase-LR and 100GBase-LR are subject to the availability of backend port resources. Contact your account manager for more information.
         self.port_type = port_type
         # The ID of the redundant Express Connect circuit. The redundant circuit must be in the **Allocated**, **Confirmed**, or **Enabled** state.
         self.redundant_physical_connection_id = redundant_physical_connection_id

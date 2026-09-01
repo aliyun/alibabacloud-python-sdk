@@ -27,9 +27,9 @@ class ListIpsecServerLogsRequest(DaraModel):
         # 
         # > If you do not specify **From** or **To**, you must specify **MinutePeriod**.
         self.minute_period = minute_period
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page for paging. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the IPsec server.
         # 

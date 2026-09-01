@@ -62,7 +62,7 @@ class DescribeVpnGatewayResponseBody(DaraModel):
         self.charge_type = charge_type
         # The timestamp when the VPN gateway was created. Unit: milliseconds.
         # 
-        # The timestamp follows the UNIX format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
@@ -82,7 +82,7 @@ class DescribeVpnGatewayResponseBody(DaraModel):
         self.enable_bgp = enable_bgp
         # The timestamp when the VPN gateway expires. Unit: milliseconds.
         # 
-        # The timestamp follows the UNIX format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
         self.eni_instance_ids = eni_instance_ids
         # The type of the VPN gateway. Valid values:
@@ -128,7 +128,7 @@ class DescribeVpnGatewayResponseBody(DaraModel):
         # 
         # - **disable**: disabled.
         self.ssl_vpn = ssl_vpn
-        # The IP address of the SSL-VPN connection.
+        # The IP address for SSL-VPN connections.
         # 
         # This parameter is returned only when the SSL-VPN feature is enabled on a VPN gateway instance that has a public network type and supports creating dual-tunnel IPsec-VPN connections.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
@@ -459,9 +459,9 @@ class DescribeVpnGatewayResponseBodyReservationData(DaraModel):
         reservation_ssl: str = None,
         status: str = None,
     ):
-        # If the pending order type is **TEMP_UPGRADE** (temporary upgrade), this parameter indicates the revert time of the temporary upgrade.
+        # If the pending order type is **TEMP_UPGRADE** (temporary upgrade), this parameter indicates the revert time for the temporary upgrade.
         # 
-        # If the pending order type is **RENEWCHANGE** (renewal with Upgrade/Downgrade) or **RENEW** (renewal), this parameter indicates the effective period when the renewal or renewal with specification change takes effect.
+        # If the pending order type is **RENEWCHANGE** (renewal with specification change) or **RENEW** (renewal), this parameter indicates the effective period when the renewal or renewal with specification change takes effect.
         self.reservation_end_time = reservation_end_time
         # The enabling status of the IPsec-VPN feature for the pending order. Valid values:
         # 
@@ -491,7 +491,7 @@ class DescribeVpnGatewayResponseBodyReservationData(DaraModel):
         # 
         # - **1**: the renewal or renewal with specification change order has not taken effect.
         # 
-        # - **2**: the temporary upgrade order has taken effect. After the restoration time is reached, the system restores the VPN gateway to the specification before the temporary upgrade. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the specification before the temporary upgrade.
+        # - **2**: the temporary upgrade order has taken effect. After the restoration time is reached, the system restores the VPN gateway to the specification before the temporary upgrade. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the specifications before the temporary upgrade.
         self.status = status
 
     def validate(self):

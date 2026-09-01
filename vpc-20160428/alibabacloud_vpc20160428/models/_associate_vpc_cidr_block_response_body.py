@@ -13,7 +13,7 @@ class AssociateVpcCidrBlockResponseBody(DaraModel):
     ):
         # The secondary CIDR block added to the VPC.
         self.cidr_block = cidr_block
-        # The IP address type of the secondary CIDR block.
+        # The IP address version of the secondary CIDR block.
         self.ip_version = ip_version
         # The request ID.
         self.request_id = request_id

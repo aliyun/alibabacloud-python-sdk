@@ -4,17 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DiagnoseVpnGatewayResponseBody(DaraModel):
+class ModifyVpcCidrBlockResponseBody(DaraModel):
     def __init__(
         self,
-        diagnose_id: str = None,
         request_id: str = None,
     ):
-        # The diagnosis ID.
-        # 
-        # After this operation returns the diagnosis ID, you can call the [GetVpnGatewayDiagnoseResult](https://help.aliyun.com/document_detail/2521963.html) operation to query the diagnostic report.
-        self.diagnose_id = diagnose_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -25,9 +20,6 @@ class DiagnoseVpnGatewayResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.diagnose_id is not None:
-            result['DiagnoseId'] = self.diagnose_id
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -35,9 +27,6 @@ class DiagnoseVpnGatewayResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DiagnoseId') is not None:
-            self.diagnose_id = m.get('DiagnoseId')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 

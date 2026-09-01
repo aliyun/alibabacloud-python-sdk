@@ -41,15 +41,15 @@ class ModifyVpcAttributeRequest(DaraModel):
         # - **true**: Enabled.
         self.enable_ipv_6 = enable_ipv_6
         # The IPv6 CIDR block of the VPC.
-        # When you enable IPv6 for a VPC, the system will assign an IPv6 CIDR block. To specify an IPv6 CIDR block, invoke the [AllocateVpcIpv6Cidr](https://help.aliyun.com/document_detail/448916.html) operation to reserve a specific IPv6 CIDR block first, and then pass it in.
+        # When you enable IPv6 for a VPC, the system will assign an IPv6 CIDR block. To specify an IPv6 CIDR block, you need to first invoke the [AllocateVpcIpv6Cidr](https://help.aliyun.com/document_detail/448916.html) operation to reserve the specified IPv6 CIDR block, and then pass it in.
         # > For a VPC that already has IPv6 enabled, you cannot modify the IPv6 CIDR block by passing in this parameter.
         self.ipv_6cidr_block = ipv_6cidr_block
         # The type of the IPv6 CIDR block of the VPC. Valid values:
         # 
         # - **BGP** (default): Alibaba Cloud BGP IPv6.
-        # - **ChinaMobile**: China Mobile (single ISP).
-        # - **ChinaUnicom**: China Unicom (single ISP).
-        # - **ChinaTelecom**: China Telecom (single ISP).
+        # - **ChinaMobile**: China Mobile (single-ISP).
+        # - **ChinaUnicom**: China Unicom (single-ISP).
+        # - **ChinaTelecom**: China Telecom (single-ISP).
         # 
         # > If you are a user who has the single-ISP bandwidth whitelist enabled, you can set this parameter to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         self.ipv_6isp = ipv_6isp

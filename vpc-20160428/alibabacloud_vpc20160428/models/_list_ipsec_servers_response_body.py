@@ -22,7 +22,7 @@ class ListIpsecServersResponseBody(DaraModel):
         self.max_results = max_results
         # The pagination token. Valid values:
         # 
-        # - If **NextToken** is empty, no subsequent query is to be sent.
+        # - If **NextToken** is empty, no subsequent query exists.
         # 
         # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
@@ -109,7 +109,7 @@ class ListIpsecServersResponseBodyIpsecServers(DaraModel):
         self.client_ip_pool = client_ip_pool
         # The time when the IPsec server was created.
         # 
-        # T is the delimiter. Z indicates UTC.
+        # T is the delimiter and Z indicates UTC (Coordinated Universal Time).
         self.creation_time = creation_time
         # Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
         # 
@@ -132,7 +132,7 @@ class ListIpsecServersResponseBodyIpsecServers(DaraModel):
         # The local CIDR block, which is the VPC-side CIDR block that needs to communicate with the client CIDR block.
         self.local_subnet = local_subnet
         # The maximum number of SSL-VPN connections supported by the VPN gateway.
-        # > SSL-VPN and the IPsec server share SSL-VPN connections. For example, if the maximum number of SSL-VPN connections is 5 and three SSL clients are already connected to SSL-VPN, only two more clients can connect to the IPsec server.
+        # > SSL-VPN and the IPsec server share the SSL-VPN connections. For example, if the maximum number of SSL-VPN connections is 5 and three SSL clients are already connected to SSL-VPN, only two more clients can connect to the IPsec server.
         self.max_connections = max_connections
         # Indicates whether two-factor authentication is enabled.
         # 
@@ -148,7 +148,7 @@ class ListIpsecServersResponseBodyIpsecServers(DaraModel):
         self.psk_enabled = psk_enabled
         # The region ID of the IPsec server.
         self.region_id = region_id
-        # The ID of the resource group to which the IPsec server belongs.
+        # The resource group ID of the IPsec server.
         # 
         # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
@@ -355,7 +355,7 @@ class ListIpsecServersResponseBodyIpsecServersIkeConfig(DaraModel):
         self.ike_enc_alg = ike_enc_alg
         # The IKE lifetime. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values:
+        # The IKE version negotiation mode. Valid values:
         # 
         # **main**: main mode. Negotiations are highly secure.
         self.ike_mode = ike_mode
@@ -363,9 +363,9 @@ class ListIpsecServersResponseBodyIpsecServersIkeConfig(DaraModel):
         self.ike_pfs = ike_pfs
         # The IKE version.
         self.ike_version = ike_version
-        # The identifier of the IPsec server. FQDN and IP address formats are supported. The default value is the public IP address of the selected VPN gateway.
+        # The identifier of the IPsec server. The value can be in the FQDN or IP address format. The default value is the public IP address of the selected VPN gateway.
         self.local_id = local_id
-        # The identifier of the peer. FQDN and IP address formats are supported. The default value is empty.
+        # The identifier of the peer. The value can be in the FQDN or IP address format. The default value is empty.
         self.remote_id = remote_id
 
     def validate(self):

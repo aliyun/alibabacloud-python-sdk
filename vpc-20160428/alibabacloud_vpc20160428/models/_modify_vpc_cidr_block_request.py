@@ -4,27 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class AssociateVpnGatewayWithCertificateRequest(DaraModel):
+class ModifyVpcCidrBlockRequest(DaraModel):
     def __init__(
         self,
-        certificate_id: str = None,
-        certificate_type: str = None,
         client_token: str = None,
         dry_run: bool = None,
+        original_cidr_block: str = None,
         region_id: str = None,
-        vpn_gateway_id: str = None,
+        target_cidr_block: str = None,
+        vpc_id: str = None,
     ):
-        # The certificate ID.
-        # 
-        # This parameter is required.
-        self.certificate_id = certificate_id
-        # The certificate type. Valid values:
-        # 
-        # - **Encryption**: specifies the SSL certificate as the encryption certificate.
-        # - **Signature**: specifies the SSL certificate as the signing certificate.
-        # 
-        # This parameter is required.
-        self.certificate_type = certificate_type
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
@@ -33,22 +22,27 @@ class AssociateVpnGatewayWithCertificateRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: performs a dry run without actually associating the certificate. The system checks the required parameters, request syntax, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, the corresponding request ID is returned.
-        # 
-        # - **false** (default): sends the request. After the request passes the check, the VPN gateway is associated with the certificate.
+        # - **true**: performs a dry run without modifying the CIDR block of the virtual private cloud (VPC). The system checks the request for potential issues. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): sends a Normal request. If the check succeeds, an HTTP 2xx status code is returned and the modification is performed.
         self.dry_run = dry_run
-        # The region ID of the VPN gateway.
+        # The CIDR block of the VPC to modify. Both primary and secondary CIDR blocks are supported.
+        # 
+        # This parameter is required.
+        self.original_cidr_block = original_cidr_block
+        # The ID of the region where the VPC resides.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The instance ID of the VPN gateway.
-        # 
-        # > Only ShangMi (SM) VPN gateways support attaching certificates.
+        # The new CIDR block for the VPC after modification.
         # 
         # This parameter is required.
-        self.vpn_gateway_id = vpn_gateway_id
+        self.target_cidr_block = target_cidr_block
+        # The ID of the VPC to modify.
+        # 
+        # This parameter is required.
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -58,45 +52,45 @@ class AssociateVpnGatewayWithCertificateRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.certificate_id is not None:
-            result['CertificateId'] = self.certificate_id
-
-        if self.certificate_type is not None:
-            result['CertificateType'] = self.certificate_type
-
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
+        if self.original_cidr_block is not None:
+            result['OriginalCidrBlock'] = self.original_cidr_block
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
-        if self.vpn_gateway_id is not None:
-            result['VpnGatewayId'] = self.vpn_gateway_id
+        if self.target_cidr_block is not None:
+            result['TargetCidrBlock'] = self.target_cidr_block
+
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CertificateId') is not None:
-            self.certificate_id = m.get('CertificateId')
-
-        if m.get('CertificateType') is not None:
-            self.certificate_type = m.get('CertificateType')
-
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
 
+        if m.get('OriginalCidrBlock') is not None:
+            self.original_cidr_block = m.get('OriginalCidrBlock')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
-        if m.get('VpnGatewayId') is not None:
-            self.vpn_gateway_id = m.get('VpnGatewayId')
+        if m.get('TargetCidrBlock') is not None:
+            self.target_cidr_block = m.get('TargetCidrBlock')
+
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
 
         return self
 

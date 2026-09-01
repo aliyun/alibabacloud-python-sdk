@@ -12,6 +12,7 @@ class CreateVSwitchCidrReservationRequest(DaraModel):
         self,
         client_token: str = None,
         dry_run: bool = None,
+        ip_prefix_number: int = None,
         ip_version: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -33,9 +34,11 @@ class CreateVSwitchCidrReservationRequest(DaraModel):
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # - **true**: sends a check request without creating the reserved CIDR block for a vSwitch. The system checks whether the required parameters are specified, the request format is valid, and the service limits are not exceeded. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends a Normal request. After the check passes, an HTTP 2xx status code is returned and the reserved CIDR block for a vSwitch is created.
+        # - **true**: sends a check request without creating the reserved CIDR block for a vSwitch. The system checks whether the required parameters are specified, the request format is valid, and the service limits are not exceeded. If the check fails, the corresponding error message is returned. If the check passes, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a Normal request. After the check passes, an HTTP 2xx status code is returned and the vSwitch reserved CIDR block for a vSwitch is created.
         self.dry_run = dry_run
+        # The expected number of IP prefixes to reserve. Valid values: 1 to 32.
+        self.ip_prefix_number = ip_prefix_number
         # The IP version of the reserved CIDR block for a vSwitch. Valid values:
         # 
         # - **IPv4** (default)
@@ -61,7 +64,7 @@ class CreateVSwitchCidrReservationRequest(DaraModel):
         # - If **IpVersion** is set to **IPv6**, the reserved CIDR block for a vSwitch must be a proper subset of the IPv6 CIDR block of the vSwitch, and the mask length cannot exceed 80.
         # 
         # > - You must specify either the **VSwitchCidrReservationMask** parameter or the **VSwitchCidrReservationCidr** parameter.
-        # > - A reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch to which it belongs.
+        # > - The reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch.
         self.v_switch_cidr_reservation_cidr = v_switch_cidr_reservation_cidr
         # The description of the reserved CIDR block for a vSwitch. If you leave this parameter empty, the default value is empty.
         # 
@@ -73,17 +76,17 @@ class CreateVSwitchCidrReservationRequest(DaraModel):
         # - If **IpVersion** is set to **IPv6**, the mask length of the reserved CIDR block must be longer than the IPv6 CIDR block mask of the vSwitch and cannot exceed 80.
         # 
         # > - You must specify either the **VSwitchCidrReservationMask** parameter or the **VSwitchCidrReservationCidr** parameter.
-        # > - A reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch to which it belongs.
+        # > - The reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch.
         self.v_switch_cidr_reservation_mask = v_switch_cidr_reservation_mask
         # The name of the reserved CIDR block for a vSwitch.
         # 
         # The name must be 1 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.v_switch_cidr_reservation_name = v_switch_cidr_reservation_name
-        # The type of the reserved CIDR block for a vSwitch. Valid values: **prefix**, which indicates that addresses are allocated by CIDR block.
+        # The type of the reserved CIDR block for a vSwitch. Valid values: **prefix**, which indicates that IP addresses are allocated by CIDR block.
         # 
-        # > When users or cloud services automatically assign CIDR blocks to elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR block. If the addresses in the reserved CIDR block are exhausted, the system returns an error.
+        # > When users or cloud services automatically assign CIDR blocks to elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR block for a vSwitch. If the IP addresses in the reserved CIDR block for a vSwitch are exhausted, the system returns an error.
         self.v_switch_cidr_reservation_type = v_switch_cidr_reservation_type
-        # The ID of the vSwitch for which you want to create the reserved CIDR block for a vSwitch.
+        # The ID of the vSwitch for which you want to create a reserved CIDR block for a vSwitch.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
@@ -104,6 +107,9 @@ class CreateVSwitchCidrReservationRequest(DaraModel):
 
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+
+        if self.ip_prefix_number is not None:
+            result['IpPrefixNumber'] = self.ip_prefix_number
 
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
@@ -155,6 +161,9 @@ class CreateVSwitchCidrReservationRequest(DaraModel):
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+
+        if m.get('IpPrefixNumber') is not None:
+            self.ip_prefix_number = m.get('IpPrefixNumber')
 
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')

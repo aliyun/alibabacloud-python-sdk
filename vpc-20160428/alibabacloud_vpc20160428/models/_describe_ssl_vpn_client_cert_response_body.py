@@ -31,11 +31,11 @@ class DescribeSslVpnClientCertResponseBody(DaraModel):
         self.client_key = client_key
         # The timestamp when the SSL client certificate was created. Unit: milliseconds.
         # 
-        # The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the Unix format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC, to the time when the SSL client certificate was created.
         self.create_time = create_time
         # The timestamp when the SSL client certificate expires. Unit: milliseconds.
         # 
-        # The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the Unix format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC, to the time when the SSL client certificate expires.
         self.end_time = end_time
         # The name of the SSL client certificate.
         self.name = name
@@ -49,7 +49,7 @@ class DescribeSslVpnClientCertResponseBody(DaraModel):
         self.resource_group_id = resource_group_id
         # The ID of the SSL client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
-        # The ID of the SSL server.
+        # The SSL server ID.
         self.ssl_vpn_server_id = ssl_vpn_server_id
         # The status of the SSL client certificate. Valid values:
         # 

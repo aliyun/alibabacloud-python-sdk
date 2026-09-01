@@ -29,7 +29,7 @@ class CreateVirtualPhysicalConnectionRequest(DaraModel):
         self.description = description
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: performs a dry run without creating the shared Express Connect circuits. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check passes, `DRYRUN.SUCCESS` is returned.
+        # - **true**: performs a dry run without creating the shared Express Connect circuits. The system checks required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check passes, `DRYRUN.SUCCESS` is returned.
         # - **false** (default): sends a Normal request. After the check passes, the shared Express Connect circuits are created.
         self.dry_run = dry_run
         # The name of the shared Express Connect circuits.
@@ -40,16 +40,18 @@ class CreateVirtualPhysicalConnectionRequest(DaraModel):
         # 
         # - **PayByPhysicalConnectionOwner**: The partner pays.
         # - **PayByVirtualPhysicalConnectionOwner**: The tenant pays.
+        # > Default value: PayByVirtualPhysicalConnectionOwner (tenant pays).
         # 
         # This parameter is required.
         self.order_mode = order_mode
         # The ID of the Express Connect circuit associated with the shared Express Connect circuits.
+        # > The Express Connect circuit must be in the Enabled state and must be an Express Connect circuit (shared Express Connect circuits IDs are not supported). Otherwise, ResourceNotFound.PhysicalConnectionId or IncorrectStatus.PhysicalConnection is returned. You can invoke DescribePhysicalConnections to query the status of the Express Connect circuit. The caller must be the account (partner) that owns the Express Connect circuit.
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the shared Express Connect circuits.
         # 
-        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -62,16 +64,14 @@ class CreateVirtualPhysicalConnectionRequest(DaraModel):
         # <props="china">
         # > The bandwidth values **2G**, **5G**, **8G**, and **10G** are not available by default. To use these values, contact your account manager.
         # 
-        # 
         # <props="intl">
         # > The bandwidth values **2G**, **5G**, **8G**, and **10G** are not available by default. To use these values, contact your account manager.
         # 
-        # 
-        # Unit: **M** indicates Mbit/s, and **G** indicates Gbit/s.
+        # Unit: **M** indicates Mbit/s and **G** indicates Gbit/s.
         # 
         # This parameter is required.
         self.spec = spec
-        # The tags.
+        # The list of tags.
         self.tag = tag
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -81,12 +81,12 @@ class CreateVirtualPhysicalConnectionRequest(DaraModel):
         self.token = token
         # The VLAN ID of the shared Express Connect circuits. Valid values: **0** to **2999**.
         # 
-        # - If the VLAN ID is set to **0**, the physical vSwitch port of the Virtual Border Router (VBR) uses Layer 3 routing interface mode instead of VLAN mode. In Layer 3 routing interface mode, each Express Connect circuit corresponds to one VBR.
-        # - If the VLAN ID is set to a value from **1** to **2999**, the physical vSwitch port of the VBR uses VLAN-based Layer 3 sub-interfaces. In Layer 3 sub-interface mode, each VLAN ID corresponds to one VBR. In this case, the Express Connect circuit of the VBR can connect to VPCs under multiple accounts. VBRs in different VLANs have network isolation at Layer 2 and cannot communicate with each other.
+        # - If the VLAN ID is **0**, the physical switch port of the Virtual Border Router (VBR) does not use VLAN mode but uses Layer 3 routing interface mode. In Layer 3 routing interface mode, each Express Connect circuit corresponds to one VBR.
+        # - If the VLAN ID is **1** to **2999**, the physical switch port of the VBR uses VLAN-based Layer 3 sub-interfaces. In Layer 3 sub-interface mode, each VLAN ID corresponds to one VBR. In this case, the Express Connect circuit of the VBR can connect to VPCs under multiple accounts. VBRs in different VLANs have network isolation at Layer 2 and cannot communicate with each other.
         # 
         # This parameter is required.
         self.vlan_id = vlan_id
-        # The Alibaba Cloud account ID of the tenant.
+        # The ID of the tenant\\"s Alibaba Cloud account.
         # 
         # This parameter is required.
         self.vpconn_ali_uid = vpconn_ali_uid

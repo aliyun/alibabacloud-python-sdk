@@ -31,51 +31,37 @@ class ModifyVpnConnectionAttributeResponseBody(DaraModel):
         vpn_gateway_id: str = None,
     ):
         # The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
-        # 
-        # The timestamp follows the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The ID of the customer gateway associated with the IPsec-VPN connection.
-        # 
-        # This parameter is returned only for single-tunnel IPsec-VPN connections.
         self.customer_gateway_id = customer_gateway_id
         # The description of the IPsec-VPN connection.
         self.description = description
         # Indicates whether the IPsec-VPN connection configuration takes effect immediately.
         # 
         # - **true**: The system immediately initiates IPsec protocol negotiation after the configuration is complete.
-        #    
-        # - **false**: The system initiates IPsec protocol negotiation only when inbound traffic is detected.
+        # 
+        # - **false**: The system initiates IPsec protocol negotiation only when traffic enters.
         self.effect_immediately = effect_immediately
-        # Indicates whether the DPD (Dead Peer Detection) feature is enabled for the IPsec-VPN connection.
+        # Indicates whether Dead Peer Detection (DPD) is enabled for the IPsec-VPN connection.
         # 
-        # - **false**: Disabled.
-        # 
-        # - **true**: Enabled.
-        # 
-        # This parameter is returned only for single-tunnel IPsec-VPN connections.
-        self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
-        # 
-        # - **false**: Disabled.
-        # 
-        # - **true**: Enabled.
-        # 
-        # This parameter is returned only for single-tunnel IPsec-VPN connections.
-        self.enable_nat_traversal = enable_nat_traversal
-        # The enabling status of tunnel BGP.
-        # 
-        # - **true**: Enabled.
         # - **false**: Not enabled.
         # 
-        # This parameter is returned only for dual-tunnel pattern IPsec-VPN connections.
+        # - **true**: Enabled.
+        # 
+        # This parameter is returned only for IPsec-VPN connections in single-tunnel mode.
+        self.enable_dpd = enable_dpd
+        # Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
+        self.enable_nat_traversal = enable_nat_traversal
+        # The BGP status of the tunnel.
+        # 
+        # - **true**: enabled.
+        # - **false**: disabled.
+        # 
+        # This parameter is returned only for IPsec-VPN connections in dual-tunnel mode.
         self.enable_tunnels_bgp = enable_tunnels_bgp
-        # The Phase 1 negotiation configuration.
-        # 
-        # The parameters under **IkeConfig** are returned only for single-tunnel IPsec-VPN connections.
+        # The configuration of Phase 1 negotiation.
         self.ike_config = ike_config
-        # The Phase 2 negotiation configuration.
-        # 
-        # The parameters under **IpsecConfig** are returned only for single-tunnel IPsec-VPN connections.
+        # The configuration of Phase 2 negotiation.
         self.ipsec_config = ipsec_config
         # The CIDR block on the VPC side.
         self.local_subnet = local_subnet
@@ -86,17 +72,13 @@ class ModifyVpnConnectionAttributeResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # The ID of the resource group to which the IPsec-VPN connection belongs.
-        # 
-        # The IPsec-VPN connection belongs to the same resource group as the associated VPN gateway instance. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
         self.tunnel_options_specification = tunnel_options_specification
         # The health check configuration.
         # 
-        # The parameters under **VcoHealthCheck** are returned only for single-tunnel IPsec-VPN connections.
+        # Parameters in the **VcoHealthCheck** array are returned only for IPsec-VPN connections in single-tunnel mode.
         self.vco_health_check = vco_health_check
         # The BGP configuration.
-        # 
-        # The parameters under **VpnBgpConfig** are returned only for single-tunnel IPsec-VPN connections.
         self.vpn_bgp_config = vpn_bgp_config
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
@@ -257,13 +239,8 @@ class ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig(DaraModel):
         tunnel_cidr: str = None,
     ):
         # The enabling status of BGP.
-        # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
         self.enable_bgp = enable_bgp
         # The autonomous system number on the Alibaba Cloud side.
-        # [_single.resp.
         self.local_asn = local_asn
         # The BGP address on the Alibaba Cloud side.
         self.local_bgp_ip = local_bgp_ip
@@ -272,10 +249,6 @@ class ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig(DaraModel):
         # The BGP address on the on-premises data center side.
         self.peer_bgp_ip = peer_bgp_ip
         # The BGP negotiation status.
-        # 
-        # - **success**: Normal.
-        # 
-        # - **false**: Abnormal.
         self.status = status
         # The BGP CIDR block of the IPsec-VPN connection.
         self.tunnel_cidr = tunnel_cidr
@@ -351,11 +324,11 @@ class ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck(DaraModel):
         # 
         # - **true**: Enabled.
         # 
-        # - **false**: Disabled.
+        # - **false**: Not enabled.
         self.enable = enable
         # The retry interval of the health check. Unit: seconds.
         self.interval = interval
-        # The number of retries for the health check.
+        # The number of retry packets sent for the health check.
         self.retry = retry
         # The source IP address.
         self.sip = sip
@@ -771,13 +744,13 @@ class ModifyVpnConnectionAttributeResponseBodyIpsecConfig(DaraModel):
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The IPsec phase authentication algorithm.
+        # The authentication algorithm of the IPsec phase.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The IPsec phase encryption algorithm.
+        # The encryption algorithm of the IPsec phase.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The IPsec phase lifetime. Unit: seconds.
+        # The lifetime of the IPsec phase. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH group in the IPsec phase.
+        # The DH group of the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -831,18 +804,18 @@ class ModifyVpnConnectionAttributeResponseBodyIkeConfig(DaraModel):
         psk: str = None,
         remote_id: str = None,
     ):
-        # The IKE phase authentication algorithm.
+        # The authentication algorithm of the IKE phase.
         self.ike_auth_alg = ike_auth_alg
-        # The IKE phase encryption algorithm.
+        # The encryption algorithm of the IKE phase.
         self.ike_enc_alg = ike_enc_alg
-        # The IKE phase lifetime. Unit: seconds.
+        # The lifetime of the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode.
         # 
-        # - **main**: Main mode. This mode offers high security during negotiation.
-        # - **aggressive**: Aggressive mode. This mode supports fast negotiation and a higher success rate.
+        # - **main**: Main mode. The negotiation process is highly secure.
+        # - **aggressive**: Aggressive mode. Negotiation is fast and has a high success rate.
         self.ike_mode = ike_mode
-        # The DH group in the IKE phase.
+        # The DH group of the IKE phase.
         self.ike_pfs = ike_pfs
         # The IKE protocol version.
         # 
@@ -851,11 +824,11 @@ class ModifyVpnConnectionAttributeResponseBodyIkeConfig(DaraModel):
         # 
         # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
         self.ike_version = ike_version
-        # The identifier of the VPC side. The FQDN and IP formats are supported. The default value is the IP address of the selected VPN gateway.
+        # The identifier on the VPC side. FQDN and IP formats are supported. The default value is the IP address of the selected VPN gateway.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The identifier of the on-premises data center side. The FQDN and IP formats are supported. The default value is the IP address of the selected customer gateway.
+        # The identifier on the on-premises data center side. FQDN and IP formats are supported. The default value is the IP address of the selected customer gateway.
         self.remote_id = remote_id
 
     def validate(self):

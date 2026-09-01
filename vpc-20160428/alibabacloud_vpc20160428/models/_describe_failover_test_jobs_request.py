@@ -21,19 +21,19 @@ class DescribeFailoverTestJobsRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
         self.client_token = client_token
         # The filter information.
         self.filter = filter
-        # The number of entries per page for paginated queries. Valid values: **1 to 100**. Default value: 20.
+        # The number of entries per page for a paginated query. Valid values: **1** to **100**. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. Valid values:
+        # The pagination token. Valid values:
         # 
-        # - Leave this parameter empty for the first query or if no next query exists.
+        # - Leave this parameter empty for the first query or if no subsequent query is required.
         # 
-        # - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
+        # - If a subsequent query is required, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -133,11 +133,11 @@ class DescribeFailoverTestJobsRequestFilter(DaraModel):
         # 
         # - **ResourceType**: the failover test resource type.
         # 
-        # > Specify up to 5 unique filter conditions. If you specify a resource ID or resource name, you must also specify the resource type. All filter conditions must be met to return accurate query results.
+        # > You can specify up to 5 unique filter conditions. If you specify a resource ID or resource name, you must also specify the resource type. All filter conditions must be met to return accurate query results.
         self.key = key
         # The filter values that correspond to the filter condition.
         # 
-        # > Each filter condition can contain up to 5 filter values. These filter values have an OR relationship. A record is considered a match if it matches any one of the filter values.
+        # > Each filter condition can contain up to 5 filter values. These filter values use the OR logic. A record is considered a match if it matches any one of the filter values.
         self.value = value
 
     def validate(self):

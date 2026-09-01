@@ -18,9 +18,9 @@ class ListVpnCertificateAssociationsResponseBody(DaraModel):
     ):
         # The number of entries per page.
         self.max_results = max_results
-        # The token for the next query. Valid values:
+        # The pagination token. Valid values:
         # 
-        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is empty, no subsequent query exists.
         # 
         # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token

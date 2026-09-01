@@ -18,7 +18,7 @@ class DescribeVpnGatewaysResponseBody(DaraModel):
     ):
         # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page for paging queries.
+        # The number of entries per page in a paged query. This is used for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

@@ -44,7 +44,7 @@ class CreateIpsecServerRequest(DaraModel):
         # 
         # - **false** (default): Negotiation starts when inbound traffic is detected.
         self.effect_immediately = effect_immediately
-        # The Phase 1 negotiation parameter settings. Valid values:
+        # The parameter settings of Phase 1 negotiations. Valid values:
         # 
         # - **IkeVersion**: The version of the IKE protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev2**.
         # 
@@ -66,7 +66,7 @@ class CreateIpsecServerRequest(DaraModel):
         # 
         # The name must be 1 to 100 characters in length.
         self.ip_sec_server_name = ip_sec_server_name
-        # The Phase 2 negotiation parameter settings. Valid values:
+        # The parameter settings of Phase 2 negotiations. Valid values:
         # 
         # - **IpsecEncAlg**: The encryption algorithm used in Phase 2 negotiations. Default value: **aes**.
         # 

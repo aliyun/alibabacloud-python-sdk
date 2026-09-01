@@ -23,15 +23,15 @@ class CreateVbrHaRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
         self.client_token = client_token
         # The description of the VBR failover group.
         # 
-        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: performs a dry run without starting the instance. The system checks whether the required parameters are specified, whether the request format is valid, and whether the instance status is Normal. If the check fails, the corresponding error is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
         # 
         # - **false** (default): sends the request. After the request passes the check, the instance is started.
         self.dry_run = dry_run
@@ -39,7 +39,7 @@ class CreateVbrHaRequest(DaraModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The instance ID of the other VBR in the VBR failover group.
+        # The instance ID of the other VBR in the VBR failover group. The two VBRs must be in the same region, each connected to the on-premises data center through its own Express Connect circuit, added to the same Express Connect Router (ECR) or the same Cloud Enterprise Network (CEN) instance, and both must have BFD enabled. A VBR can be added to only one failover group.
         # 
         # This parameter is required.
         self.peer_vbr_id = peer_vbr_id
@@ -49,7 +49,7 @@ class CreateVbrHaRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The VBR instance ID.
+        # The instance ID of the VBR. The two VBRs must be in the same region, each connected to the on-premises data center through its own Express Connect circuit, added to the same Express Connect Router (ECR) or the same Cloud Enterprise Network (CEN) instance, and both must have BFD enabled. A VBR can be added to only one failover group.
         # 
         # This parameter is required.
         self.vbr_id = vbr_id

@@ -20,7 +20,7 @@ class DeleteRouteEntriesRequest(DaraModel):
     ):
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # **true**: performs a dry run without deleting routes. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
+        # **true**: performs a dry run without deleting routes. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
         # 
         # **false** (default): sends a normal request. If the check passes, a 2xx HTTP status code is returned and the routes are deleted.
         self.dry_run = dry_run
@@ -28,7 +28,7 @@ class DeleteRouteEntriesRequest(DaraModel):
         self.owner_id = owner_id
         # The ID of the region where the route table resides.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -89,19 +89,19 @@ class DescribeVpnCrossAccountAuthorizationsResponseBodyCrossAccountAuthorization
         creation_time: int = None,
         vpn_connection_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+        # The ID of the Alibaba Cloud account that owns the IPsec-VPN connection.
         self.ali_uid = ali_uid
-        # The instance ID of the CEN instance to which the IPsec-VPN connection grants authorization.
+        # The instance ID of the CEN instance to which the IPsec-VPN connection authorization is granted.
         self.bind_instance = bind_instance
         # The type of resource to which the IPsec-VPN connection is authorized.
         # 
-        # The value is **CEN** only, which indicates that the IPsec-VPN connection is authorized to a cross-account Cloud Enterprise Network (CEN) instance. The IPsec-VPN connection can be attached to a transit router instance under the cross-account CEN instance.
+        # The value is **CEN** only, which indicates that the IPsec-VPN connection is authorized to a Cloud Enterprise Network (CEN) instance that belongs to another Alibaba Cloud account. The IPsec-VPN connection can be attached to a transit router instance under the cross-account CEN instance.
         self.bind_product = bind_product
         # The ID of the Alibaba Cloud account to which the IPsec-VPN connection is authorized.
         self.bind_uid = bind_uid
-        # The timestamp when the cross-account authorization of the IPsec-VPN connection was created.
+        # The timestamp when the cross-account authorization was created for the IPsec-VPN connection.
         # 
-        # The timestamp is in the UNIX format and represents the total number of seconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the cross-account authorization was created.
+        # The timestamp is in the UNIX format and represents the total number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the cross-account authorization was created.
         self.creation_time = creation_time
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id

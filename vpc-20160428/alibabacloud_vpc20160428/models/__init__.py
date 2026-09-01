@@ -1012,6 +1012,9 @@ from ._modify_virtual_border_router_attribute_response import ModifyVirtualBorde
 from ._modify_vpc_attribute_request import ModifyVpcAttributeRequest
 from ._modify_vpc_attribute_response_body import ModifyVpcAttributeResponseBody
 from ._modify_vpc_attribute_response import ModifyVpcAttributeResponse
+from ._modify_vpc_cidr_block_request import ModifyVpcCidrBlockRequest
+from ._modify_vpc_cidr_block_response_body import ModifyVpcCidrBlockResponseBody
+from ._modify_vpc_cidr_block_response import ModifyVpcCidrBlockResponse
 from ._modify_vpc_prefix_list_request import ModifyVpcPrefixListRequest
 from ._modify_vpc_prefix_list_response_body import ModifyVpcPrefixListResponseBody
 from ._modify_vpc_prefix_list_response import ModifyVpcPrefixListResponse
@@ -2744,6 +2747,9 @@ __all__ = [
     ModifyVpcAttributeRequest,
     ModifyVpcAttributeResponseBody,
     ModifyVpcAttributeResponse,
+    ModifyVpcCidrBlockRequest,
+    ModifyVpcCidrBlockResponseBody,
+    ModifyVpcCidrBlockResponse,
     ModifyVpcPrefixListRequest,
     ModifyVpcPrefixListResponseBody,
     ModifyVpcPrefixListResponse,

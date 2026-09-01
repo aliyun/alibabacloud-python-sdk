@@ -12,7 +12,7 @@ class AttachVbrToVpconnResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The instance ID of the shared Express Connect circuits.
+        # The shared Express Connect circuits instance ID.
         self.virtual_physical_connection = virtual_physical_connection
 
     def validate(self):

@@ -59,41 +59,42 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'vpc-nebula.cn-qingdao-nebula.aliyuncs.com',
             'eu-west-1-oxs': 'vpc-nebula.cn-shenzhen-cloudstone.aliyuncs.com',
             'rus-west-1-pop': 'vpc.aliyuncs.com',
-            'us-west-1': 'vpc.us-west-1.aliyuncs.com',
+            'cn-beijing': 'vpc.cn-beijing.aliyuncs.com',
+            'cn-heyuan': 'vpc.cn-heyuan.aliyuncs.com',
+            'cn-zhangjiakou': 'vpc.cn-zhangjiakou.aliyuncs.com',
+            'ap-northeast-2': 'vpc.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'vpc.ap-northeast-1.aliyuncs.com',
+            'ap-southeast-1': 'vpc.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'vpc.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-5': 'vpc.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'vpc.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'vpc.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-8': 'vpc.ap-southeast-8.aliyuncs.com',
+            'cn-zhongwei': 'vpc.cn-zhongwei.aliyuncs.com',
+            'cn-wulanchabu': 'vpc.cn-wulanchabu.aliyuncs.com',
+            'cn-qingdao': 'vpc.cn-qingdao.aliyuncs.com',
+            'cn-wuhan-lr': 'vpc.cn-wuhan-lr.aliyuncs.com',
+            'cn-shanghai': 'vpc.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'vpc.cn-hongkong.aliyuncs.com',
+            'cn-shenzhen': 'vpc.cn-shenzhen.aliyuncs.com',
+            'cn-nanjing': 'vpc.cn-nanjing.aliyuncs.com',
+            'cn-fuzhou': 'vpc.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'vpc.cn-chengdu.aliyuncs.com',
+            'cn-guangzhou': 'vpc.cn-guangzhou.aliyuncs.com',
+            'cn-huhehaote': 'vpc.cn-huhehaote.aliyuncs.com',
             'us-southeast-1': 'vpc.us-southeast-1.aliyuncs.com',
+            'eu-west-1': 'vpc.eu-west-1.aliyuncs.com',
+            'eu-west-2': 'vpc.eu-west-2.aliyuncs.com',
+            'eu-central-1': 'vpc.eu-central-1.aliyuncs.com',
             'us-east-1': 'vpc.us-east-1.aliyuncs.com',
+            'sa-east-1': 'vpc.sa-east-1.aliyuncs.com',
+            'us-west-1': 'vpc.us-west-1.aliyuncs.com',
             'na-south-1': 'vpc.na-south-1.aliyuncs.com',
             'me-east-1': 'vpc.me-east-1.aliyuncs.com',
             'me-central-1': 'vpc.me-central-1.aliyuncs.com',
-            'eu-west-2': 'vpc.eu-west-2.aliyuncs.com',
-            'eu-west-1': 'vpc.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'vpc.eu-central-1.aliyuncs.com',
-            'cn-zhongwei': 'vpc.cn-zhongwei.aliyuncs.com',
-            'cn-zhangjiakou': 'vpc.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'vpc.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-wulanchabu': 'vpc.cn-wulanchabu.aliyuncs.com',
-            'cn-wuhan-lr': 'vpc.cn-wuhan-lr.aliyuncs.com',
-            'cn-shenzhen': 'vpc.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'vpc.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'vpc.cn-qingdao.aliyuncs.com',
-            'cn-nanjing': 'vpc.cn-nanjing.aliyuncs.com',
-            'cn-huhehaote': 'vpc.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'vpc.cn-hongkong.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'vpc.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-heyuan': 'vpc.cn-heyuan.aliyuncs.com',
-            'cn-guangzhou': 'vpc.cn-guangzhou.aliyuncs.com',
-            'cn-fuzhou': 'vpc.cn-fuzhou.aliyuncs.com',
-            'cn-chengdu': 'vpc.cn-chengdu.aliyuncs.com',
             'cn-beijing-finance-1': 'vpc.cn-beijing-finance-1.aliyuncs.com',
-            'cn-beijing': 'vpc.cn-beijing.aliyuncs.com',
-            'ap-southeast-8': 'vpc.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'vpc.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'vpc.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'vpc.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'vpc.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'vpc.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'vpc.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'vpc.ap-northeast-1.aliyuncs.com'
+            'cn-heyuan-acdr-1': 'vpc.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'vpc.cn-wulanchabu-gic-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('vpc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -9753,6 +9754,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ip_prefix_number):
+            query['IpPrefixNumber'] = request.ip_prefix_number
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.owner_account):
@@ -9809,6 +9812,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ip_prefix_number):
+            query['IpPrefixNumber'] = request.ip_prefix_number
         if not DaraCore.is_null(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.owner_account):
@@ -36429,6 +36434,96 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyVpcAttributeResponse:
         runtime = RuntimeOptions()
         return await self.modify_vpc_attribute_with_options_async(request, runtime)
+
+    def modify_vpc_cidr_block_with_options(
+        self,
+        request: main_models.ModifyVpcCidrBlockRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVpcCidrBlockResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.original_cidr_block):
+            query['OriginalCidrBlock'] = request.original_cidr_block
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_cidr_block):
+            query['TargetCidrBlock'] = request.target_cidr_block
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyVpcCidrBlock',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyVpcCidrBlockResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpc_cidr_block_with_options_async(
+        self,
+        request: main_models.ModifyVpcCidrBlockRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVpcCidrBlockResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.original_cidr_block):
+            query['OriginalCidrBlock'] = request.original_cidr_block
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_cidr_block):
+            query['TargetCidrBlock'] = request.target_cidr_block
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyVpcCidrBlock',
+            version = '2016-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyVpcCidrBlockResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpc_cidr_block(
+        self,
+        request: main_models.ModifyVpcCidrBlockRequest,
+    ) -> main_models.ModifyVpcCidrBlockResponse:
+        runtime = RuntimeOptions()
+        return self.modify_vpc_cidr_block_with_options(request, runtime)
+
+    async def modify_vpc_cidr_block_async(
+        self,
+        request: main_models.ModifyVpcCidrBlockRequest,
+    ) -> main_models.ModifyVpcCidrBlockResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_vpc_cidr_block_with_options_async(request, runtime)
 
     def modify_vpc_prefix_list_with_options(
         self,

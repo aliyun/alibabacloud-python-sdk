@@ -17,21 +17,21 @@ class DescribeFailoverTestJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page.
+        # The number of entries returned on the current page.
         self.count = count
         # The list of failover test jobs.
         self.failover_test_job_list = failover_test_job_list
-        # The number of entries per page for paginated queries. Valid values: **1 to 100**. Default value: 20.
+        # The number of entries per page for a paginated query. Valid values: **1** to **100**. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. Valid values:
+        # The pagination token. Valid values:
         # 
-        # - Leave this parameter empty for the first query or if no next query exists.
+        # - Leave this parameter empty for the first query or if no subsequent query is required.
         # 
-        # - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
+        # - If a subsequent query is required, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -110,15 +110,15 @@ class DescribeFailoverTestJobsResponseBodyFailoverTestJobList(DaraModel):
         # 
         # The description is 0 to 256 characters in length and cannot start with **http://** or **https://**.
         self.description = description
-        # The test duration. Unit: minutes. Valid values: **1 to 4320**.
+        # The test duration. Unit: minutes. Valid values: **1** to **4320**.
         self.job_duration = job_duration
         # The failover test job ID.
         self.job_id = job_id
         # The failover test type. Valid values:
         # 
-        # - **StartNow**: The test starts immediately after the failover test job is created.
+        # - **StartNow**: starts the test immediately after the failover test job is created.
         # 
-        # - **StartLater**: Only the test job is created. The test is not started.
+        # - **StartLater**: creates the failover test job without starting the test.
         self.job_type = job_type
         # The name of the failover test job.
         # 
@@ -132,15 +132,15 @@ class DescribeFailoverTestJobsResponseBodyFailoverTestJobList(DaraModel):
         self.start_time = start_time
         # The status of the failover test job. Valid values:
         # 
-        # - **Init**: Pending.
+        # - **Init**: pending.
         # 
-        # - **Starting**: Starting.
+        # - **Starting**: starting.
         # 
-        # - **Testing**: In progress.
+        # - **Testing**: in progress.
         # 
-        # - **Stopping**: Stopping.
+        # - **Stopping**: stopping.
         # 
-        # - **Stopped**: Completed.
+        # - **Stopped**: completed.
         self.status = status
         # The end time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format based on the ISO 8601 standard.
         self.stop_time = stop_time

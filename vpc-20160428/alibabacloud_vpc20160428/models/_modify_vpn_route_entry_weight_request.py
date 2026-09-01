@@ -24,7 +24,7 @@ class ModifyVpnRouteEntryWeightRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
         self.client_token = client_token
         # The new weight of the destination route. Valid values:
         # 
@@ -56,7 +56,7 @@ class ModifyVpnRouteEntryWeightRequest(DaraModel):
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
-        # The original weight of the destination route before modification. Valid values:
+        # The original weight of the destination route. Valid values:
         # 
         # - **0**: low priority.
         # 

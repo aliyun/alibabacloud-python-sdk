@@ -13,7 +13,7 @@ class AssociateMacSecKeyRequest(DaraModel):
         physical_connection_id: str = None,
         region_id: str = None,
     ):
-        # The passphrase. Only hexadecimal characters are supported. Lowercase characters are automatically transformed to uppercase. If the encryption algorithm type is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. If the encryption algorithm type is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters.
+        # The passphrase. Only hexadecimal characters are supported. Lowercase characters are automatically transformed to uppercase. When the encryption algorithm type is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. When the encryption algorithm type is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters.
         # 
         # This parameter is required.
         self.cak = cak
@@ -29,11 +29,11 @@ class AssociateMacSecKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.cipher_suite = cipher_suite
-        # The key name. Only hexadecimal characters are supported. Lowercase characters are automatically converted to uppercase. If the encryption algorithm type is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. If the encryption algorithm type is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters.
+        # The key name. Only hexadecimal characters are supported. Lowercase characters are automatically transformed to uppercase. When the encryption algorithm type is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. When the encryption algorithm type is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters.
         # 
         # This parameter is required.
         self.ckn = ckn
-        # The ID of the Express Connect circuit.
+        # The ID of the Express Connect circuit. The Express Connect circuit must be a dedicated circuit that has completed payment, supports MACsec, and is in the **Enabled** state. You can call DescribePhysicalConnections to query the current status and device capabilities.
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id

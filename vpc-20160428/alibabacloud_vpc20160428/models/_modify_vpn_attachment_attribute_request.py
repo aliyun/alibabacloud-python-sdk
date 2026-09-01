@@ -39,126 +39,79 @@ class ModifyVpnAttachmentAttributeRequest(DaraModel):
         # 
         # - **false**: does not automatically configure routes.
         self.auto_config_route = auto_config_route
-        # This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
+        # This parameter is supported when you modify an IPsec-VPN connection in single-tunnel mode.
         # 
         # BGP configuration:
         # 
-        # - **BgpConfig.EnableBgp**: Specifies whether to enable the BGP feature. Valid values:
-        #     - **true**: enables the BGP feature.
-        #     - **false**: disables the BGP feature.
+        # - **BgpConfig.EnableBgp**: specifies whether to enable BGP. Valid values:
+        #     - **true**: Enable BGP.
+        #     - **false**: Disable BGP.
         # 
-        # - **BgpConfig.LocalAsn**: The autonomous system number on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
+        # - **BgpConfig.LocalAsn**: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
         # 
-        #     The value can be entered in the two-segment format: the first 16 bits.the last 16 bits. Each segment is entered in decimal format.
+        #     You can enter the ASN in the two-segment notation: the first 16 bits.the last 16 bits. Each segment is entered in decimal format.
         # 
-        #     For example, if you enter 123.456, the autonomous system number is 123 × 65536 + 456 = 8061384.
+        #     For example, if you enter 123.456, the ASN is 123 × 65536 + 456 = 8061384.
         # 
-        # - **BgpConfig.TunnelCidr**: The IPsec tunnel CIDR block. The CIDR block must fall within 169.254.0.0/16 and have a mask length of 30. The CIDR block cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+        # - **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must be a /30 CIDR block within 169.254.0.0/16 and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
         # 
-        # - **LocalBgpIp**: The BGP IP address on the Alibaba Cloud side. This address is an IP address within the IPsec tunnel CIDR block. 
+        # - **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This address must be an IP address within the CIDR block of the IPsec tunnel.
         # 
-        # >- Before you configure BGP, learn about how the BGP dynamic routing feature works and its limits. For more information, see [Configure BGP dynamic routing](https://help.aliyun.com/document_detail/445767.html).
-        # >- Use a private autonomous system number to establish a BGP connection with Alibaba Cloud. Refer to the relevant documentation for the range of private autonomous system numbers.
+        # >- Before you configure BGP, we recommend that you learn about how BGP dynamic routing works and its limits. For more information, see [Configure BGP dynamic routing](https://help.aliyun.com/document_detail/445767.html).
+        # >- We recommend that you use a private ASN to establish a BGP connection with Alibaba Cloud. For the range of private ASNs, refer to the relevant documentation.
         self.bgp_config = bgp_config
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
         # The customer gateway instance associated with the IPsec-VPN connection.
-        # 
-        # > Only single-tunnel IPsec-VPN connections support this parameter.
         self.customer_gateway_id = customer_gateway_id
-        # Specifies whether the IPsec-VPN connection configuration takes effect immediately. Valid values:
-        # 
-        # - **true**: The system immediately initiates IPsec protocol negotiation after the configuration is complete.
-        # - **false**: The system initiates IPsec protocol negotiation only when traffic enters.
+        # Specifies whether the configuration of the IPsec-VPN connection takes effect immediately. Valid values:
         self.effect_immediately = effect_immediately
         # This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
         # 
         # Specifies whether to enable the Dead Peer Detection (DPD) feature. Valid values:
         # 
-        # - **true**: enables DPD. The IPsec initiator sends DPD packets to check whether the peer is alive. If no correct response is received within the specified time, the peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+        # - **true**: Enables the DPD feature. The IPsec initiator sends DPD packets to check whether the peer device is alive. If no correct response is received within the specified period of time, the peer is considered disconnected. The ISAKMP SA and the corresponding IPsec SA are deleted, and the security tunnel is also deleted.
         # 
-        # - **false**: disables DPD. The IPsec initiator does not send DPD packets.
+        # - **false**: Disables the DPD feature. The IPsec initiator does not send DPD probe packets.
         self.enable_dpd = enable_dpd
-        # This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
+        # This parameter is supported when you modify an IPsec-VPN connection in single-tunnel mode.
         # 
         # Specifies whether to enable NAT traversal. Valid values:
         # 
-        # - **true**: enables NAT traversal. After NAT traversal is enabled, the verification of the UDP port number is removed during IKE negotiation, and the NAT gateway device in the VPN tunnel can be discovered.
+        # - **true**: Enable NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices in the VPN tunnel.
         # 
-        # - **false**: disables NAT traversal.
+        # - **false**: Disable NAT traversal.
         self.enable_nat_traversal = enable_nat_traversal
-        # This parameter is supported when you modify a dual-tunnel IPsec-VPN connection.
+        # This parameter is supported when you modify an IPsec-VPN connection in dual-tunnel mode.
         # 
-        # Specifies whether to enable the BGP dynamic routing feature for the tunnels. Valid values: **true** or **false**.
+        # Specifies whether to enable BGP for the tunnel. Valid values: **true** or **false**.
         # 
-        # > Before you configure BGP, learn about how the BGP dynamic routing feature works and its limits. For more information, see [Configure BGP dynamic routing](https://help.aliyun.com/document_detail/445767.html).
+        # > Before you add BGP configurations, we recommend that you understand the working mechanism and limits of BGP dynamic routing. For more information, see [Configure BGP dynamic routing](https://help.aliyun.com/document_detail/445767.html).
         self.enable_tunnels_bgp = enable_tunnels_bgp
         # This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
-        # 
-        # Health check configuration:
-        # 
-        # - **HealthCheckConfig.enable**: Specifies whether to enable health checks. Valid values:
-        #     - **true**: enables health checks.
-        #     - **false**: disables health checks.
-        # 
-        # - **HealthCheckConfig.dip**: The destination IP address of the health check. Enter an IP address of the on-premises data center that can be accessed from the VPC side through the IPsec-VPN connection.
-        # 
-        # - **HealthCheckConfig.sip**: The source IP address of the health check. Enter an IP address on the VPC side that can be accessed from the on-premises data center through the IPsec-VPN connection.
-        # 
-        # - **HealthCheckConfig.interval**: The retry interval of the health check. Unit: seconds.
-        # 
-        # - **HealthCheckConfig.retry**: The number of health check retries.
-        # 
-        # - **HealthCheckConfig.Policy**: Specifies whether to withdraw published routes when the health check fails. Valid values:
-        # 
-        #     - **revoke_route**: withdraws published routes.
-        #     - **reserve_route**: does not withdraw published routes.
         self.health_check_config = health_check_config
         # This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
-        # 
-        # Phase 1 negotiation configuration:
-        #            
-        # - **IkeConfig.Psk**: The pre-shared key used for identity authentication between the Alibaba Cloud IPsec-VPN connection and the on-premises data center.
-        #     - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ```~!`@#$%^&*()_-+={}[]|;:\\",.<>/?```
-        #     - If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call [DescribeVpnConnection](https://help.aliyun.com/document_detail/120374.html) to query the pre-shared key that is automatically generated by the system. 
-        #     > The pre-shared key on the IPsec-VPN connection side must be the same as the authentication key on the on-premises data center side. Otherwise, a connection cannot be established between the on-premises data center and the VPN gateway.
-        # 
-        # - **IkeConfig.IkeVersion**: The version of the IKE protocol. Valid values: **ikev1** or **ikev2**.
-        # 
-        # - **IkeConfig.IkeMode**: The negotiation mode. Valid values: **main** or **aggressive**.
-        # 
-        # - **IkeConfig.IkeEncAlg**: The encryption algorithm for Phase 1 negotiation. Valid values: **aes**, **aes192**, **aes256**, **des**, or **3des**.
-        # 
-        # - **IkeConfig.IkeAuthAlg**: The authentication algorithm for Phase 1 negotiation. Valid values: **md5**, **sha1**, **sha256**, **sha384**, or **sha512**.
-        # 
-        # - **IkeConfig.IkePfs**: The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation. Valid values: **group1**, **group2**, **group5**, or **group14**.
-        # 
-        # - **IkeConfig.IkeLifetime**: The lifetime of the SA negotiated in Phase 1. Unit: seconds. Valid values: **0** to **86400**.
-        # 
-        # - **IkeConfig.LocalId**: The identifier on the Alibaba Cloud side of the IPsec-VPN connection. The value is limited to 100 characters and cannot contain spaces.
-        # 
-        # - **IkeConfig.RemoteId**: The identifier on the on-premises data center side of the IPsec-VPN connection. The value is limited to 100 characters and cannot contain spaces.
         self.ike_config = ike_config
-        # This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
+        # This parameter is supported when you modify an IPsec-VPN connection in single-tunnel mode.
         # 
-        # Phase 2 negotiation configuration: 
+        # The configuration of Phase 2 negotiation:
         # 
-        # - **IpsecConfig.IpsecEncAlg**: The encryption algorithm for Phase 2 negotiation. Valid values: **aes**, **aes192**, **aes256**, **des**, or **3des**.
+        # - **IpsecConfig.IpsecEncAlg**: The encryption algorithm used in Phase 2 negotiation. Valid values: **aes**, **aes192**, **aes256**, **des**, or **3des**.
         # 
-        # - **IpsecConfig.IpsecAuthAlg**: The authentication algorithm for Phase 2 negotiation. Valid values: **md5**, **sha1**, **sha256**, **sha384**, or **sha512**.
+        # - **IpsecConfig.IpsecAuthAlg**: The authentication algorithm used in Phase 2 negotiation. Valid values: **md5**, **sha1**, **sha256**, **sha384**, or **sha512**.
         # 
         # - **IpsecConfig.IpsecPfs**: The Diffie-Hellman key exchange algorithm used in Phase 2 negotiation. Valid values: **disabled**, **group1**, **group2**, **group5**, or **group14**.
         # - **IpsecConfig.IpsecLifetime**: The lifetime of the SA negotiated in Phase 2. Unit: seconds. Valid values: **0** to **86400**.
         self.ipsec_config = ipsec_config
-        # The CIDR block on the VPC side that needs to communicate with the on-premises data center. This parameter is used for Phase 2 negotiation.
+        # The CIDR block on the VPC side that needs to communicate with the on-premises data center. This is used for Phase 2 negotiation.
         # 
         # Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
         # 
-        # The following descriptions provide information about the routing mode of the IPsec-VPN connection:
+        # Description of the IPsec-VPN connection routing mode:
         # 
         # - If both **LocalSubnet** and **RemoteSubnet** are set to 0.0.0.0/0, the destination routing mode is used.
         # - If both **LocalSubnet** and **RemoteSubnet** are set to specific CIDR blocks, the protected data flow mode is used.
@@ -174,28 +127,19 @@ class ModifyVpnAttachmentAttributeRequest(DaraModel):
         self.owner_account = owner_account
         # The region ID of the IPsec-VPN connection.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The CA certificate of the peer.
-        # 
-        # > This parameter does not take effect.
         self.remote_ca_cert = remote_ca_cert
         # The CIDR block on the on-premises data center side that needs to communicate with the VPC. This parameter is used for Phase 2 negotiation.
-        # 
-        # Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
-        # 
-        # The following descriptions provide information about the routing mode of the IPsec-VPN connection:
-        # 
-        # - If both **LocalSubnet** and **RemoteSubnet** are set to 0.0.0.0/0, the destination routing mode is used.
-        # - If both **LocalSubnet** and **RemoteSubnet** are set to specific CIDR blocks, the protected data flow mode is used.
         self.remote_subnet = remote_subnet
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tunnel configurations.
         # 
-        # The parameters in the **TunnelOptionsSpecification** array are supported only when you modify a dual-tunnel IPsec-VPN connection. You can modify the configurations of both tunnels of the IPsec-VPN connection at the same time.
+        # The parameters in the **TunnelOptionsSpecification** array are supported only when you modify an IPsec-VPN connection in dual-tunnel mode. You can modify the configurations of both tunnels of the IPsec-VPN connection at the same time.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the IPsec-VPN connection.
         # 
@@ -368,34 +312,25 @@ class ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecification(DaraModel):
         tunnel_index: int = None,
         tunnel_ipsec_config: main_models.ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
-        # The customer gateway ID associated with the tunnel.
-        # 
-        # > Only dual-tunnel IPsec-VPN connections support this parameter.
+        # The ID of the customer gateway associated with the tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Specifies whether to enable DPD for the tunnel. Valid values:
-        # 
-        # - **true**: enables DPD. The IPsec initiator sends DPD packets to check whether the peer is alive. If no correct response is received within the specified time, the peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
-        # 
-        # - **false**: disables DPD. The IPsec initiator does not send DPD packets.
+        # Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
         self.enable_dpd = enable_dpd
         # Specifies whether to enable NAT traversal for the tunnel. Valid values:
         # 
-        # - **true**: enables NAT traversal. After NAT traversal is enabled, the verification of the UDP port number is removed during IKE negotiation, and the NAT gateway device in the tunnel can be discovered.
+        # - **true**: Enables NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices along the tunnel.
         # 
-        # - **false**: disables NAT traversal.
+        # - **false**: Disables NAT traversal.
         self.enable_nat_traversal = enable_nat_traversal
-        # The BGP configuration for the tunnel.
+        # Adds BGP configurations for the tunnel.
         # 
-        # > Configure this parameter after you enable BGP for the IPsec-VPN connection (set **EnableTunnelsBgp** to **true**).
+        # > Configure this parameter after you enable BGP for the IPsec-VPN connection (that is, set **EnableTunnelsBgp** to **true**).
         self.tunnel_bgp_config = tunnel_bgp_config
         # The tunnel ID.
         self.tunnel_id = tunnel_id
         # The Phase 1 negotiation configuration.
         self.tunnel_ike_config = tunnel_ike_config
         # The creation order of the tunnel.
-        # 
-        # - **1**: the first tunnel.
-        # - **2**: the second tunnel.
         self.tunnel_index = tunnel_index
         # The Phase 2 negotiation configuration.
         self.tunnel_ipsec_config = tunnel_ipsec_config
@@ -478,17 +413,15 @@ class ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIpsecCo
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm for Phase 2 negotiation.
+        # The authentication algorithm used in Phase 2 negotiations.
         # 
         # Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm for Phase 2 negotiation. Valid values: **aes**, **aes192**, **aes256**, **des**, or **3des**.
+        # The encryption algorithm for Phase 2 negotiation. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The lifetime of the SA negotiated in Phase 2. Unit: seconds.
-        # 
-        # Valid values: **0** to **86400**.
+        # The lifetime of the SA generated by Phase 2 negotiation. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The Diffie-Hellman key exchange algorithm used in Phase 2 negotiation.
+        # The Diffie-Hellman key exchange algorithm used in the second phase of negotiation.
         # 
         # Valid values: **disabled**, **group1**, **group2**, **group5**, **group14**.
         self.ipsec_pfs = ipsec_pfs
@@ -544,41 +477,34 @@ class ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelIkeConf
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm for Phase 1 negotiation. Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**.
+        # The authentication algorithm for Phase 1 negotiation. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm for Phase 1 negotiation. Valid values: **aes**, **aes192**, **aes256**, **des**, or **3des**.
+        # The encryption algorithm for Phase 1 negotiation. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         self.ike_enc_alg = ike_enc_alg
-        # The lifetime of the SA negotiated in Phase 1. Unit: seconds.
-        # 
-        # Valid values: **0** to **86400**.
+        # The lifetime of the SA generated by Phase 1 negotiation. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The negotiation mode of the IKE version. Valid values: **main** or **aggressive**. 
+        # The negotiation mode of the IKE version. Valid values: **main** and **aggressive**.
         # 
-        # - **main**: main mode. The negotiation process is highly secure.
-        # - **aggressive**: aggressive mode. The negotiation is fast and has a high success rate.
+        # - **main**: Main mode. The negotiation process is highly secure.
+        # - **aggressive**: Aggressive mode. The negotiation is fast and has a high success rate.
         self.ike_mode = ike_mode
-        # The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation.
+        # The Diffie-Hellman key exchange algorithm used in the first-phase negotiation.
+        # 
         # Valid values: **group1**, **group2**, **group5**, **group14**.
         self.ike_pfs = ike_pfs
-        # The version of the IKE protocol. Valid values: **ikev1** or **ikev2**.
-        # 
-        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+        # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
         self.ike_version = ike_version
-        # The identifier on the local end (Alibaba Cloud side) of the tunnel, which is used for Phase 1 negotiation. The value is limited to 100 characters and cannot contain spaces.
-        # 
-        # **LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you set the negotiation mode to **aggressive**.
+        # The identifier on the Alibaba Cloud side for the tunnel, used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces.
         self.local_id = local_id
-        # The pre-shared key used for identity authentication between the tunnel and the tunnel peer.
+        # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
         # 
         # - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ```~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?```
         # 
-        # - If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call [DescribeVpnAttachments](https://help.aliyun.com/document_detail/2526939.html) to query the pre-shared key that is automatically generated by the system.     
+        # - If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [DescribeVpnAttachments](https://help.aliyun.com/document_detail/2526939.html) operation to query the pre-shared key automatically generated by the system.
         # 
-        # > The pre-shared key of the tunnel must be the same as that of the tunnel peer. Otherwise, the tunnel cannot be established.
+        # > The pre-shared keys of the tunnel and the tunnel peer must be the same. Otherwise, the tunnel cannot be established.
         self.psk = psk
-        # The identifier of the tunnel peer, which is used for Phase 1 negotiation. The value is limited to 100 characters and cannot contain spaces.
-        # 
-        # **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you set the negotiation mode to **aggressive**.
+        # The identifier of the tunnel peer, used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces.
         self.remote_id = remote_id
 
     def validate(self):
@@ -656,15 +582,13 @@ class ModifyVpnAttachmentAttributeRequestTunnelOptionsSpecificationTunnelBgpConf
         local_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # The autonomous system number on the local end (Alibaba Cloud side) of the tunnel. Valid values: **1** to **4294967295**. Default value: **45104**.
+        # The autonomous system number (ASN) on the Alibaba Cloud side of the tunnel. Valid values: **1** to **4294967295**. Default value: **45104**.
         # 
-        # > We recommend that you use a private autonomous system number to establish a BGP connection with Alibaba Cloud. Refer to the relevant documentation for the range of private autonomous system numbers.
+        # > Use a private ASN to establish a BGP connection with Alibaba Cloud. For the range of private ASNs, refer to the relevant documentation.
         self.local_asn = local_asn
-        # The BGP IP address on the local end (Alibaba Cloud side) of the tunnel. This address is an IP address within the BGP CIDR block.
+        # The BGP address on the Alibaba Cloud side. This address is an IP address within the BGP CIDR block.
         self.local_bgp_ip = local_bgp_ip
-        # The BGP CIDR block of the tunnel. The CIDR block must fall within 169.254.0.0/16 and have a mask length of 30. The CIDR block cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
-        # 
-        # > The BGP CIDR blocks of the two tunnels under the same IPsec-VPN connection must be different.
+        # The BGP CIDR block of the tunnel. The CIDR block must be a CIDR block with a mask length of 30 within 169.254.0.0/16 and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):

@@ -27,9 +27,9 @@ class ListIpsecServersRequest(DaraModel):
         self.max_results = max_results
         # The pagination token. Valid values:
         # 
-        # - If this is the first query or no subsequent query is to be sent, you do not need to specify this parameter.
+        # - You do not need to specify this parameter for the first request or if no subsequent query exists.
         # 
-        # - If a subsequent query is to be sent, set the value to the NextToken value returned in the previous call.
+        # - If a subsequent query exists, set the value to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         # The region ID of the IPsec server.
         # 
@@ -37,7 +37,7 @@ class ListIpsecServersRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the IPsec server belongs.
+        # The resource group ID of the IPsec server.
         # 
         # The IPsec server belongs to the same resource group as the associated VPN gateway instance. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the resource group ID of the VPN gateway instance.
         self.resource_group_id = resource_group_id

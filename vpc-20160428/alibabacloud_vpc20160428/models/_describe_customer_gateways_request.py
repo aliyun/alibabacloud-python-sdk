@@ -23,7 +23,7 @@ class DescribeCustomerGatewaysRequest(DaraModel):
     ):
         # The instance ID of the customer gateway. 
         # 
-        # > If you do not specify the instance ID of a customer gateway, the system queries information about all customer gateways in the current region by default.
+        # > If you do not specify the instance ID of the customer gateway, the system queries information about all customer gateways in the current region by default.
         self.customer_gateway_id = customer_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id

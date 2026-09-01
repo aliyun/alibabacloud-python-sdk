@@ -30,7 +30,7 @@ class DescribeVpnPbrRouteEntriesRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The VPN gateway instance ID.
+        # The instance ID of the VPN gateway.
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id

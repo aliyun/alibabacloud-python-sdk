@@ -82,7 +82,7 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueList(DaraModel):
         # 
         # The name must be **0** to **128** characters in length and cannot start with `http://` or `https://`.
         self.queue_name = queue_name
-        # The type of the QoS queue. Valid values:
+        # The QoS queue type. Valid values:
         # 
         # - **High**: high-priority queue.
         # 
@@ -96,7 +96,7 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueList(DaraModel):
         self.rule_list = rule_list
         # The status of the QoS queue. Valid values:
         # 
-        # - **Normal**: active.
+        # - **Normal**: available.
         # 
         # - **Configuring**: being configured.
         # 
@@ -193,15 +193,15 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList(DaraMod
         src_port_range: str = None,
         status: str = None,
     ):
-        # The destination IP address IPv4 CIDR block that the QoS rule matches for traffic.
+        # The destination IP address IPv4 CIDR block for traffic matching in the QoS rule.
         # 
         # > You cannot specify this parameter together with **SrcIPv6Cidr** or **DstIPv6Cidr**.
         self.dst_cidr = dst_cidr
-        # The destination IP address IPv6 CIDR block that the QoS rule matches for traffic.
+        # The destination IP address IPv6 CIDR block for traffic matching in the QoS rule.
         # 
         # > You cannot specify this parameter together with **SrcCidr** or **DstCidr**.
         self.dst_ipv_6cidr = dst_ipv_6cidr
-        # The destination port range that the QoS rule matches. Valid values: **0** to **65535**. A value of -1 indicates that no match is applied. Only a single port number can be specified. The start and end port numbers must be the same. The destination port range is fixed for different protocol types. Valid values:
+        # The destination port range for traffic matching in the QoS rule. Valid values: **0** to **65535**. A value of -1 indicates that no matching is performed. Only a single port number can be specified. The start and end port numbers must be the same. The destination port range is fixed for different protocol types. Valid values:
         # 
         # - **ALL**: -1/-1, not editable.
         # 
@@ -235,9 +235,9 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList(DaraMod
         # 
         # - **Redis**: 6379/6379, not editable.
         self.dst_port_range = dst_port_range
-        # The DSCP value that the QoS rule matches. Valid values: **0** to **63**. A value of -1 indicates that no match is applied.
+        # The DSCP value for traffic matching in the QoS rule. Valid values: **0** to **63**. A value of -1 indicates that no matching is performed.
         self.match_dscp = match_dscp
-        # The priority of the QoS rule. Valid values: **1** to **9000**. A larger value indicates a higher priority. QoS rule priorities must be unique within the same QoS policy.
+        # The priority of the QoS rule. Valid values: **1** to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique within the same QoS policy.
         self.priority = priority
         # The protocol type of the QoS rule. Valid values:
         # 
@@ -277,7 +277,7 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList(DaraMod
         self.qos_id = qos_id
         # The QoS queue ID.
         self.queue_id = queue_id
-        # The remarked DSCP value in the traffic. Valid values: **0** to **63**. A value of -1 indicates that the DSCP value is not modified.
+        # The DSCP value to remark in the traffic. Valid values: **0** to **63**. A value of -1 indicates that no remarking is performed.
         self.remarking_dscp = remarking_dscp
         # The description of the QoS rule.
         # 
@@ -289,19 +289,19 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList(DaraMod
         # 
         # The name must be **0** to **128** characters in length and cannot start with `http://` or `https://`.
         self.rule_name = rule_name
-        # The source IPv4 CIDR block that the QoS rule matches.
+        # The source IPv4 CIDR block for traffic matching in the QoS rule.
         # 
         # > You cannot specify this parameter together with **SrcIPv6Cidr** or **DstIPv6Cidr**.
         self.src_cidr = src_cidr
-        # The source IPv6 CIDR block that the QoS rule matches.
+        # The source IPv6 CIDR block for traffic matching in the QoS rule.
         # 
         # > You cannot specify this parameter together with **SrcCidr** or **DstCidr**.
         self.src_ipv_6cidr = src_ipv_6cidr
-        # The source port range that the QoS rule matches. Valid values: **0** to **65535**. A value of -1 indicates that no match is applied. Only a single port number can be specified. The start and end port numbers must be the same.
+        # The source port range for traffic matching in the QoS rule. Valid values: **0** to **65535**. A value of -1 indicates that no matching is performed. Only a single port number can be specified. The start and end port numbers must be the same.
         self.src_port_range = src_port_range
         # The status of the QoS rule. Valid values:
         # 
-        # - **Normal**: active.
+        # - **Normal**: available.
         # 
         # - **Configuring**: being configured.
         # 

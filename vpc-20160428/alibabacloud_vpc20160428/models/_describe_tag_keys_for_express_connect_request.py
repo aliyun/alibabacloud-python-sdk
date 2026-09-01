@@ -45,6 +45,8 @@ class DescribeTagKeysForExpressConnectRequest(DaraModel):
         # - **VIRTUALBORDERROUTER**: Virtual Border Router.
         # - **ROUTERINTERFACE**: VBR uplink.
         # - **TRAFFICQOS**: QoS policy.
+        # 
+        # > This parameter is essentially required. If it is not specified, the service returns MissingParameter (400).
         self.resource_type = resource_type
 
     def validate(self):

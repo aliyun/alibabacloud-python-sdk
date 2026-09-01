@@ -22,7 +22,7 @@ class DescribeCustomerGatewayRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the customer gateway. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -27,9 +27,9 @@ class ModifyVpnPbrRouteEntryPriorityRequest(DaraModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The new policy priority of the policy-based routing entry. Valid values: **1** to **100**.
+        # The new policy priority of the policy-based routing. Valid values: **1** to **100**.
         # 
-        # A smaller value indicates a higher policy priority for the routing entry.
+        # A smaller policy priority value indicates a higher priority of the routing.
         # 
         # This parameter is required.
         self.new_priority = new_priority
@@ -39,13 +39,13 @@ class ModifyVpnPbrRouteEntryPriorityRequest(DaraModel):
         self.next_hop = next_hop
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The original policy priority of the policy-based routing entry. Valid values: **1** to **100**.
+        # The original policy priority of the policy-based routing. Valid values: **1** to **100**.
         # 
-        # A smaller value indicates a higher policy priority for the routing entry.
+        # A smaller policy priority value indicates a higher priority of the routing.
         self.priority = priority
         # The region ID of the VPN gateway instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

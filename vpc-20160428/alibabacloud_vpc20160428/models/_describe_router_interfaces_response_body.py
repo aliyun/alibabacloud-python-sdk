@@ -18,7 +18,7 @@ class DescribeRouterInterfacesResponseBody(DaraModel):
     ):
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page when paging is performed. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

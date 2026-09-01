@@ -15,11 +15,11 @@ class CreateVpnAttachmentResponseBody(DaraModel):
         success: bool = None,
         vpn_connection_id: str = None,
     ):
-        # The status code returned by the current task. **200** indicates that the task is successful.
+        # The status code returned by the current task. A value of **200** indicates that the task is successful.
         self.code = code
         # The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
         # 
-        # The timestamp follows the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the IPsec-VPN connection was created.
         self.create_time = create_time
         # The message returned by the current task.
         self.message = message
@@ -30,7 +30,7 @@ class CreateVpnAttachmentResponseBody(DaraModel):
         # Indicates whether the current task is successfully executed.
         # 
         # - **true**: Successfully executed.
-        # - **false**: Failed to execute.
+        # - **false**: Not successfully executed.
         self.success = success
         # The IPsec-VPN connection ID.
         self.vpn_connection_id = vpn_connection_id

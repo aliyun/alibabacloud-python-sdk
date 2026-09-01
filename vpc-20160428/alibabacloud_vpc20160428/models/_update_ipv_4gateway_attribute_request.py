@@ -20,21 +20,21 @@ class UpdateIpv4GatewayAttributeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without modifying the name or description of the IPv4 gateway. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the name or description of the IPv4 gateway is modified.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the name or description of the IPv4 gateway is directly modified.
         self.dry_run = dry_run
-        # The new description of the IPv4 gateway.
+        # The new description of the IPv4 gateway instance.
         self.ipv_4gateway_description = ipv_4gateway_description
         # The instance ID of the IPv4 gateway whose name or description you want to modify.
         # 
         # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id
-        # The new name of the IPv4 gateway.
+        # The new name of the IPv4 gateway instance.
         self.ipv_4gateway_name = ipv_4gateway_name
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -19,9 +19,10 @@ class DescribePhysicalConnectionLOARequest(DaraModel):
         # 
         # The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
-        # The instance ID of the Express Connect circuit.
+        # The ID of the Express Connect circuit instance.
+        # > The Express Connect circuit instance ID is obtained through the Alibaba Cloud Express Connect circuit access application process. For more information, refer to the Express Connect circuit access documentation.
         # 
         # This parameter is required.
         self.instance_id = instance_id

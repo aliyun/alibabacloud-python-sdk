@@ -395,13 +395,13 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig(Dara
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The IPsec phase authentication algorithm.
+        # The authentication algorithm of the IPsec phase.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The IPsec phase encryption algorithm.
+        # The encryption algorithm of the IPsec phase.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The IPsec phase lifetime. Unit: seconds.
+        # The lifetime of the IPsec phase. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH group in the IPsec phase.
+        # The DH group of the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -455,18 +455,18 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig(DaraMo
         psk: str = None,
         remote_id: str = None,
     ):
-        # The IKE phase authentication algorithm.
+        # The authentication algorithm of the IKE phase.
         self.ike_auth_alg = ike_auth_alg
-        # The IKE phase encryption algorithm.
+        # The encryption algorithm of the IKE phase.
         self.ike_enc_alg = ike_enc_alg
-        # The IKE phase lifetime. Unit: seconds.
+        # The lifetime of the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values:
+        # The IKE negotiation mode.
         # 
-        # - **main**: Main mode. This mode provides high security during negotiation.
-        # - **aggressive**: Aggressive mode. This mode supports fast negotiation and a higher success rate.
+        # - **main**: Main mode. This mode offers high negotiation security.
+        # - **aggressive**: Aggressive mode. This mode supports fast negotiation and a high negotiation success rate.
         self.ike_mode = ike_mode
-        # The DH group in the IKE phase.
+        # The DH group of the IKE phase.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol.
         self.ike_version = ike_version

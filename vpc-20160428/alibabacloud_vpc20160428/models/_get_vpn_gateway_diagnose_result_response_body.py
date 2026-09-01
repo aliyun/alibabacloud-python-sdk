@@ -21,19 +21,19 @@ class GetVpnGatewayDiagnoseResultResponseBody(DaraModel):
         total_count: int = None,
         vpn_gateway_id: str = None,
     ):
-        # The time when the diagnostic started.
+        # The time when the diagnosis started.
         # 
         # The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.begin_time = begin_time
-        # The diagnostic ID.
+        # The diagnosis ID.
         self.diagnose_id = diagnose_id
-        # The list of diagnostic items.
+        # The list of diagnosis items.
         self.diagnose_result = diagnose_result
-        # The time when the diagnostic ended.
+        # The time when the diagnosis ended.
         # 
         # The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.finish_time = finish_time
-        # The number of diagnostic items that have been completed.
+        # The number of diagnosis items that have been completed.
         self.finished_count = finished_count
         # The request ID.
         self.request_id = request_id
@@ -43,7 +43,7 @@ class GetVpnGatewayDiagnoseResultResponseBody(DaraModel):
         # 
         # Valid values: **IPsec**, which indicates an IPsec-VPN connection.
         self.resource_type = resource_type
-        # The total number of diagnostic items.
+        # The total number of diagnosis items.
         self.total_count = total_count
         # The VPN gateway instance ID.
         self.vpn_gateway_id = vpn_gateway_id
@@ -137,7 +137,7 @@ class GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult(DaraModel):
         diagnose_result_description: str = None,
         diagnose_result_level: str = None,
     ):
-        # The diagnostic item.
+        # The diagnosis item.
         # 
         # - **RouteEntryConflict**: route conflict.
         # - **VpnRouteQuota**: VPN gateway destination route quota.
@@ -147,11 +147,11 @@ class GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult(DaraModel):
         # - **VcoUserInternetIpConnectivity**: public network connectivity of the customer gateway.
         # - **VcoPrivateConnectivity**: private network connectivity.
         # 
-        # For more information about each diagnostic item, see [One-click diagnostics background information](https://help.aliyun.com/document_detail/190330.html).
+        # For more information about each diagnosis item, see [Background information about one-click diagnosis](https://help.aliyun.com/document_detail/190330.html).
         self.diagnose_name = diagnose_name
-        # The diagnostic result of the diagnostic item.
+        # The diagnosis result of the diagnosis item.
         # 
-        # The operation returns different information for each diagnostic item:
+        # The operation returns different information for each diagnosis item:
         # 
         # - **RouteEntryConflict**: The system returns information about the route conflict.
         # - **VpnRouteQuota**:
@@ -181,13 +181,13 @@ class GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult(DaraModel):
         #     - **rtt**: The latency when the source IP address accesses the destination IP address. Unit: ms.
         #     - **lossRate**: The packet loss rate when the source IP address accesses the destination IP address.
         self.diagnose_result_description = diagnose_result_description
-        # The diagnostic result level of the diagnostic item.
+        # The diagnosis result level of the diagnosis item.
         # 
         # - **normal**: Normal.
         # - **warning**: Warning.
         # - **error**: Error.
         # 
-        # For more information about the diagnostic result levels of each diagnostic item, see [One-click diagnostics background information](https://help.aliyun.com/document_detail/190330.html).
+        # For more information about the diagnosis result levels of each diagnosis item, see [Background information about one-click diagnosis](https://help.aliyun.com/document_detail/190330.html).
         self.diagnose_result_level = diagnose_result_level
 
     def validate(self):

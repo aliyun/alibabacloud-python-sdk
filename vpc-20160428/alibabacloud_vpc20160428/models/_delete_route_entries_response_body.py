@@ -81,9 +81,9 @@ class DeleteRouteEntriesResponseBodyFailedRouteEntries(DaraModel):
     ):
         # The destination CIDR block of the route entry that failed to be deleted. IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix list CIDR blocks are supported.
         self.dst_cidr_block = dst_cidr_block
-        # The error code returned for the failure.
+        # The error code of the failure.
         self.failed_code = failed_code
-        # The error message returned for the failure.
+        # The error message of the failure.
         self.failed_message = failed_message
         # The instance ID of the next hop that failed to be deleted.
         self.next_hop = next_hop
