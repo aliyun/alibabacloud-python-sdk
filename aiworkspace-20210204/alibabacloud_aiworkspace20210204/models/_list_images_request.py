@@ -11,6 +11,7 @@ class ListImagesRequest(DaraModel):
         image_uri: str = None,
         labels: str = None,
         name: str = None,
+        options: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -68,6 +69,7 @@ class ListImagesRequest(DaraModel):
         self.labels = labels
         # The name of the image. Fuzzy search is supported.
         self.name = name
+        self.options = options
         # The order in which to sort the results of a paged query. This parameter is used with SortBy. The default value is ASC.
         # 
         # - ASC: ascending order.
@@ -111,6 +113,9 @@ class ListImagesRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.options is not None:
+            result['Options'] = self.options
+
         if self.order is not None:
             result['Order'] = self.order
 
@@ -147,6 +152,9 @@ class ListImagesRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
 
         if m.get('Order') is not None:
             self.order = m.get('Order')

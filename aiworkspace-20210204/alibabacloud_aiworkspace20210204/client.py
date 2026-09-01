@@ -7732,6 +7732,8 @@ class Client(OpenApiClient):
             query['Labels'] = request.labels
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.options):
+            query['Options'] = request.options
         if not DaraCore.is_null(request.order):
             query['Order'] = request.order
         if not DaraCore.is_null(request.page_number):
@@ -7782,6 +7784,8 @@ class Client(OpenApiClient):
             query['Labels'] = request.labels
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.options):
+            query['Options'] = request.options
         if not DaraCore.is_null(request.order):
             query['Order'] = request.order
         if not DaraCore.is_null(request.page_number):
