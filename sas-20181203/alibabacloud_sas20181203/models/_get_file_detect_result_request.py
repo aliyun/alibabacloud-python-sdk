@@ -13,7 +13,7 @@ class GetFileDetectResultRequest(DaraModel):
         source_ip: str = None,
         type: int = None,
     ):
-        # An array of up to 100 unique file identifiers.
+        # The list of file identifiers. A maximum of 100 elements can be specified.
         # 
         # This parameter is required.
         self.hash_key_list = hash_key_list
@@ -21,9 +21,7 @@ class GetFileDetectResultRequest(DaraModel):
         self.source_ip = source_ip
         # The type of file to detect. Valid values:
         # 
-        # - **0**: malicious file detection
-        # 
-        # - **6**: Skill compressed package detection
+        # -  **0**: malicious file detection
         # 
         # This parameter is required.
         self.type = type

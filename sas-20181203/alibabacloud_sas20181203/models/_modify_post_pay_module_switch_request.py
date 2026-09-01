@@ -8,18 +8,23 @@ from darabonba.model import DaraModel
 class ModifyPostPayModuleSwitchRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
+        edr_module_switch: main_models.ModifyPostPayModuleSwitchRequestEdrModuleSwitch = None,
         post_paid_host_auto_bind: int = None,
         post_paid_host_auto_bind_version: int = None,
         post_pay_instance_id: str = None,
         post_pay_module_switch: str = None,
         post_pay_module_switch_obj: main_models.ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj = None,
     ):
-        # Specifies whether to automatically bind newly added assets for host and container protection. Valid values:
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+        self.client_token = client_token
+        self.edr_module_switch = edr_module_switch
+        # Specifies whether to automatically bind new assets for host and container protection. Valid values:
         # 
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.post_paid_host_auto_bind = post_paid_host_auto_bind
-        # The version to which newly added assets are automatically bound for host and container protection. Valid values:
+        # The edition to which new assets are automatically bound for host and container protection. Valid values:
         # - **1**: Free Edition. 
         # - **3**: Enterprise Edition.
         # - **5**: Advanced Edition.
@@ -32,7 +37,7 @@ class ModifyPostPayModuleSwitchRequest(DaraModel):
         self.post_pay_instance_id = post_pay_instance_id
         # The switch status of pay-as-you-go modules in JSON string format. Valid values:
         # - Key:
-        #   - **VUL**: vulnerability fix module
+        #   - **VUL**: vulnerability management module
         #   - **CSPM**: Cloud Security Posture Management (CSPM) module
         #   - **AGENTLESS**: agentless detection module
         #   - **SERVERLESS**: serverless security module
@@ -46,13 +51,15 @@ class ModifyPostPayModuleSwitchRequest(DaraModel):
         # 
         # > Modules for which no value is specified remain unchanged.
         # 
-        # <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
+        # <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
         self.post_pay_module_switch = post_pay_module_switch
         # The pay-as-you-go module switch.
-        # >Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
+        # >Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
         self.post_pay_module_switch_obj = post_pay_module_switch_obj
 
     def validate(self):
+        if self.edr_module_switch:
+            self.edr_module_switch.validate()
         if self.post_pay_module_switch_obj:
             self.post_pay_module_switch_obj.validate()
 
@@ -61,6 +68,12 @@ class ModifyPostPayModuleSwitchRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.edr_module_switch is not None:
+            result['EdrModuleSwitch'] = self.edr_module_switch.to_map()
+
         if self.post_paid_host_auto_bind is not None:
             result['PostPaidHostAutoBind'] = self.post_paid_host_auto_bind
 
@@ -80,6 +93,13 @@ class ModifyPostPayModuleSwitchRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('EdrModuleSwitch') is not None:
+            temp_model = main_models.ModifyPostPayModuleSwitchRequestEdrModuleSwitch()
+            self.edr_module_switch = temp_model.from_map(m.get('EdrModuleSwitch'))
+
         if m.get('PostPaidHostAutoBind') is not None:
             self.post_paid_host_auto_bind = m.get('PostPaidHostAutoBind')
 
@@ -119,17 +139,17 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.agentless = agentless
-        # The AI digitalization module.
+        # The AI digital human module.
         self.ai_digital = ai_digital
         # The anti-ransomware module. Valid values:
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.anti_ransomware = anti_ransomware
         # The basic service module. Valid values:
-        # - **0**: shutdown.
-        # - **1**: enabling status.
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         # 
-        # >Notice: The basic service module switch cannot be manually modified. This module is in the enabling status when any other module is in the enabling status, and is in the shutdown state only when all other modules are in the shutdown state.
+        # >Notice: The basic service module switch cannot be manually modified. This module is enabled when any other module is enabled, and is disabled when all other modules are disabled.
         self.basic_service = basic_service
         # The cloud security configuration check module. Valid values:
         # - **0**: Disabled.
@@ -159,11 +179,11 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.serverless = serverless
-        # The vulnerability fix module. Valid values:
+        # The vulnerability management module. Valid values:
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.vul = vul
-        # The tamper-proofing module. Valid values:
+        # The file tamper-proofing module. Valid values:
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.web_lock = web_lock
@@ -257,6 +277,41 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
 
         if m.get('WebLock') is not None:
             self.web_lock = m.get('WebLock')
+
+        return self
+
+class ModifyPostPayModuleSwitchRequestEdrModuleSwitch(DaraModel):
+    def __init__(
+        self,
+        auto_bind: int = None,
+        edr_host_usage: int = None,
+    ):
+        self.auto_bind = auto_bind
+        self.edr_host_usage = edr_host_usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auto_bind is not None:
+            result['AutoBind'] = self.auto_bind
+
+        if self.edr_host_usage is not None:
+            result['EDR_HOST_USAGE'] = self.edr_host_usage
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoBind') is not None:
+            self.auto_bind = m.get('AutoBind')
+
+        if m.get('EDR_HOST_USAGE') is not None:
+            self.edr_host_usage = m.get('EDR_HOST_USAGE')
 
         return self
 

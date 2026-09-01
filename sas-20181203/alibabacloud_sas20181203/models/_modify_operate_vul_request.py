@@ -7,61 +7,59 @@ from darabonba.model import DaraModel
 class ModifyOperateVulRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         from_: str = None,
         info: str = None,
         operate_type: str = None,
         reason: str = None,
+        resource_directory_account_id: int = None,
         type: str = None,
     ):
-        # The request ID. Set the value to **sas**.
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The source identifier of the request. Set the value to **sas**.
         self.from_ = from_
-        # The details of the vulnerability. The value of this parameter is in the JSON format and contains the following fields:
+        # The information about the vulnerability to handle. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **name**: the name of the vulnerability.
+        # - **name**: The name of the vulnerability.
+        # - **uuid**: The UUID of the server on which the vulnerability is detected.
+        # - **tag**: The tag of the vulnerability. Valid values:
+        #     - **oval**: Linux software vulnerability.
+        #     - **system**: Windows system vulnerability.
+        #     - **cms**: Web-CMS vulnerability.
         # 
-        # *   **uuid**: the UUID of the server on which the vulnerability is detected.
+        # > For other vulnerability types, call the [DescribeVulList](~~DescribeVulList~~) operation to obtain vulnerability information.
         # 
-        # *   **tag**: the tag that is added to the vulnerability. Valid values:
+        # - **isFront**: Specifies whether the Windows patch is a prerequisite patch. This parameter is required only when you handle Windows system vulnerabilities. You can ignore this parameter for other vulnerability types. Valid values:
+        #     - **0**: No.
+        #     - **1**: Yes.
         # 
-        #     *   **oval**: Linux software vulnerability
-        #     *   **system**: Windows system vulnerability
-        #     *   **cms**: Web-CMS vulnerability
-        # 
-        # >  You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the tags that are added to vulnerabilities of other types.
-        # 
-        # *   **isFront**: specifies whether a pre-patch is required to fix the Windows system vulnerability. This field is required only for Windows system vulnerabilities. Valid values:
-        # 
-        #     *   **0**: no
-        #     *   **1**: yes
-        # 
-        # >  You can fix multiple vulnerabilities at a time. Separate the details of multiple vulnerabilities with commas (,). You can call the [DescribeVulLIst](~~DescribeVulList~~) operation to query the details of vulnerabilities.
+        # > Batch processing of vulnerabilities is supported. Separate multiple vulnerability entries with commas (,). Call the [DescribeVulList](~~DescribeVulList~~) operation to obtain vulnerability information.
         # 
         # This parameter is required.
         self.info = info
-        # The operation that you want to perform on the vulnerability. Valid values:
-        # 
-        # *   **vul_fix**: fixes the vulnerability.
-        # *   **vul_verify**: verifies the vulnerability fix.
-        # *   **vul_ignore**: ignores the vulnerability.
-        # *   **vul_undo_ignore**: cancels ignoring the vulnerability.
-        # *   **vul_delete**: deletes the vulnerability.
+        # The operation to perform on the vulnerability. Valid values:
+        # - **vul_fix**: fixes the vulnerability.
+        # - **vul_verify**: verifies the vulnerability.
+        # - **vul_ignore**: ignores the vulnerability.
+        # - **vul_undo_ignore**: cancels ignoring the vulnerability.
+        # - **vul_delete**: deletes the vulnerability.
         # 
         # This parameter is required.
         self.operate_type = operate_type
-        # The reason why the vulnerability is **ignored**.
-        # 
-        # >  This parameter is required only when you set **OperateType** to **vul_ignore**.
+        # The reason for ignoring the vulnerability.
+        # > This parameter is required only when the operation type is **ignore** (OperateType is set to **vul_ignore**).
         self.reason = reason
-        # The type of the vulnerability. Valid values:
+        self.resource_directory_account_id = resource_directory_account_id
+        # The type of the vulnerability to handle. Valid values:
+        # - **cve**: Linux software vulnerability.
+        # - **sys**: Windows system vulnerability.
+        # - **cms**: Web-CMS vulnerability.
+        # - **emg**: emergency vulnerability.
+        # - **app**: application vulnerability.
+        # - **sca**: software constituency parsing vulnerability.
         # 
-        # *   **cve**: Linux software vulnerability
-        # *   **sys**: Windows system vulnerability
-        # *   **cms**: Web-CMS vulnerability
-        # *   **emg**: urgent vulnerability
-        # *   **app**: application vulnerability
-        # *   **sca**: vulnerability that is detected based on software component analysis
-        # 
-        # >  You cannot fix the urgent vulnerabilities, application vulnerabilities, or vulnerabilities that are detected based on software component analysis.
+        # > Emergency vulnerabilities (emg), application vulnerabilities (app), and software constituency parsing vulnerabilities (sca) do not support the execute vulnerability fix operation.
         # 
         # This parameter is required.
         self.type = type
@@ -74,6 +72,9 @@ class ModifyOperateVulRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.from_ is not None:
             result['From'] = self.from_
 
@@ -86,6 +87,9 @@ class ModifyOperateVulRequest(DaraModel):
         if self.reason is not None:
             result['Reason'] = self.reason
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -93,6 +97,9 @@ class ModifyOperateVulRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('From') is not None:
             self.from_ = m.get('From')
 
@@ -104,6 +111,9 @@ class ModifyOperateVulRequest(DaraModel):
 
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

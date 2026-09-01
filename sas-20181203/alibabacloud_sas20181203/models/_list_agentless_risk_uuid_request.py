@@ -30,7 +30,7 @@ class ListAgentlessRiskUuidRequest(DaraModel):
         self.intranet_ip = intranet_ip
         # The instance name.
         self.machine_name = machine_name
-        # The maximum number of entries per page when using paging.
+        # The maximum number of entries to return per page when using paging.
         self.page_size = page_size
         # Specifies whether risks exist. Valid values:
         # 

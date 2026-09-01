@@ -14,11 +14,11 @@ class ListUnknownThreatDetectStrategyResponseBody(DaraModel):
         page_info: main_models.ListUnknownThreatDetectStrategyResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array of strategies.
+        # The returned data.
         self.data = data
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListUnknownThreatDetectStrategyResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries displayed on the current page.
         self.count = count
-        # The current page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries displayed on each page in a paging query.
         self.page_size = page_size
-        # The total number of matching entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -132,20 +132,19 @@ class ListUnknownThreatDetectStrategyResponseBodyData(DaraModel):
     ):
         # The asset selection identifier.
         self.asset_selection_type = asset_selection_type
-        # The duration, in days, of the learning phase after model creation.
+        # The number of days after the model is initially created before learning ends.
         self.duration_days_after_init = duration_days_after_init
-        # The number of consecutive days without new process detections before the learning phase automatically ends.
+        # The number of days after which the model ends when no new processes are added.
         self.duration_days_after_stop = duration_days_after_stop
-        # The strategy ID.
+        # The policy ID.
         self.id = id
         # The number of servers.
         self.machine_count = machine_count
-        # The strategy name.
+        # The policy name.
         self.name = name
         # The whitelist mode. Valid values:
         # 
         # - **hash**: process hash
-        # 
         # - **path**: process path
         self.study_mode = study_mode
 

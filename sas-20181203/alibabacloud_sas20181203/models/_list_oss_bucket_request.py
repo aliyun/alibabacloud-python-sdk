@@ -9,14 +9,19 @@ class ListOssBucketRequest(DaraModel):
         self,
         bucket_name: str = None,
         lang: str = None,
+        source: str = None,
     ):
         # The bucket name.
         self.bucket_name = bucket_name
         # The language type for requests and responses. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
+        # The business source. Valid values:
+        # - **OSS**: OSS
+        # - **NAS**: NAS
+        self.source = source
 
     def validate(self):
         pass
@@ -32,6 +37,9 @@ class ListOssBucketRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.source is not None:
+            result['Source'] = self.source
+
         return result
 
     def from_map(self, m: dict = None):
@@ -41,6 +49,9 @@ class ListOssBucketRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         return self
 

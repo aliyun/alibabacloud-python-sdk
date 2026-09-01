@@ -10,9 +10,9 @@ class ListMultiUserInstancesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # Number of items per page in a paginated query. The maximum value is 100. Range: 10 - 100, default value: 10.
+        # The number of entries per page for a paged query. Maximum value: 100. Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
-        # Used for paginated queries. Leave it empty for the first request, and fill in the NextToken value returned from the previous response for subsequent requests.
+        # The token used for paging. Leave this parameter empty for the first request. For subsequent requests, set this parameter to the NextToken value returned in the previous response.
         self.next_token = next_token
 
     def validate(self):

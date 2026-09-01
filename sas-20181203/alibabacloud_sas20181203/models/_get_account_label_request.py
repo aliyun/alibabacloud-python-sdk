@@ -12,14 +12,14 @@ class GetAccountLabelRequest(DaraModel):
         label_list: List[str] = None,
         lang: str = None,
     ):
-        # The tags.
+        # The labels.
         # 
         # This parameter is required.
         self.label_list = label_list
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

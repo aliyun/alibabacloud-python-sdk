@@ -10,13 +10,18 @@ class ListOssScanConfigRequest(DaraModel):
         current_page: int = None,
         name: str = None,
         page_size: int = None,
+        source: str = None,
     ):
-        # The page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
         # The policy name.
         self.name = name
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
+        # The business source. Valid values:
+        # - **OSS**: OSS
+        # - **NAS**: NAS
+        self.source = source
 
     def validate(self):
         pass
@@ -35,6 +40,9 @@ class ListOssScanConfigRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.source is not None:
+            result['Source'] = self.source
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +55,9 @@ class ListOssScanConfigRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         return self
 

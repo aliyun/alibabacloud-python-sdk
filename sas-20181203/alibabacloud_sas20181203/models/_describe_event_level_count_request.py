@@ -13,6 +13,7 @@ class DescribeEventLevelCountRequest(DaraModel):
         container_ids: str = None,
         from_: str = None,
         multi_account_action_type: int = None,
+        resource_directory_account_id: int = None,
         target_type: str = None,
     ):
         # The ID of the container cluster.
@@ -45,6 +46,7 @@ class DescribeEventLevelCountRequest(DaraModel):
         # *   **0**: the current account.
         # *   **1**: all accounts.
         self.multi_account_action_type = multi_account_action_type
+        self.resource_directory_account_id = resource_directory_account_id
         # The type of the query condition. Valid values:
         # 
         # *   **containerId**: the ID of the container
@@ -77,6 +79,9 @@ class DescribeEventLevelCountRequest(DaraModel):
         if self.multi_account_action_type is not None:
             result['MultiAccountActionType'] = self.multi_account_action_type
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.target_type is not None:
             result['TargetType'] = self.target_type
 
@@ -101,6 +106,9 @@ class DescribeEventLevelCountRequest(DaraModel):
 
         if m.get('MultiAccountActionType') is not None:
             self.multi_account_action_type = m.get('MultiAccountActionType')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('TargetType') is not None:
             self.target_type = m.get('TargetType')

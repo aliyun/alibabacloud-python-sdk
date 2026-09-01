@@ -11,14 +11,16 @@ class AddUnknownThreatDetectProcessRequest(DaraModel):
     def __init__(
         self,
         event_id_list: List[int] = None,
+        handle_remark: str = None,
         process_list: List[main_models.AddUnknownThreatDetectProcessRequestProcessList] = None,
         uuid_list: List[str] = None,
     ):
-        # A list of associated event IDs.
+        # The list of specified event IDs.
         self.event_id_list = event_id_list
-        # The list of processes to add.
+        self.handle_remark = handle_remark
+        # The list of processes.
         self.process_list = process_list
-        # The UUIDs of assets on which the processes are located.
+        # The list of asset UUIDs for which processes are to be added.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -35,6 +37,9 @@ class AddUnknownThreatDetectProcessRequest(DaraModel):
         if self.event_id_list is not None:
             result['EventIdList'] = self.event_id_list
 
+        if self.handle_remark is not None:
+            result['HandleRemark'] = self.handle_remark
+
         result['ProcessList'] = []
         if self.process_list is not None:
             for k1 in self.process_list:
@@ -49,6 +54,9 @@ class AddUnknownThreatDetectProcessRequest(DaraModel):
         m = m or dict()
         if m.get('EventIdList') is not None:
             self.event_id_list = m.get('EventIdList')
+
+        if m.get('HandleRemark') is not None:
+            self.handle_remark = m.get('HandleRemark')
 
         self.process_list = []
         if m.get('ProcessList') is not None:
@@ -69,13 +77,13 @@ class AddUnknownThreatDetectProcessRequestProcessList(DaraModel):
         remark: str = None,
         sha_256: str = None,
     ):
-        # The MD5 hash of the process file.
+        # The MD5 hash of the process.
         self.md_5 = md_5
-        # The path to the process executable.
+        # The process path.
         self.process_path = process_path
-        # A remark for the process.
+        # The remarks.
         self.remark = remark
-        # The SHA-256 hash of the process file.
+        # The SHA-256 hash of the process.
         self.sha_256 = sha_256
 
     def validate(self):

@@ -8,6 +8,7 @@ class GetInstanceAlarmStatisticsRequest(DaraModel):
     def __init__(
         self,
         from_: str = None,
+        resource_directory_account_id: int = None,
         uuid: str = None,
     ):
         # The data source for statistics on instance alarms, with a default value of aqs:
@@ -15,6 +16,7 @@ class GetInstanceAlarmStatisticsRequest(DaraModel):
         # - *aqs*: Alarm event data
         # - *honeypot*: Honeypot
         self.from_ = from_
+        self.resource_directory_account_id = resource_directory_account_id
         # The UUID of the server to be queried.
         # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) API to obtain this parameter.
         self.uuid = uuid
@@ -30,6 +32,9 @@ class GetInstanceAlarmStatisticsRequest(DaraModel):
         if self.from_ is not None:
             result['From'] = self.from_
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.uuid is not None:
             result['Uuid'] = self.uuid
 
@@ -39,6 +44,9 @@ class GetInstanceAlarmStatisticsRequest(DaraModel):
         m = m or dict()
         if m.get('From') is not None:
             self.from_ = m.get('From')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')

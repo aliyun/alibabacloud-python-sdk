@@ -55,6 +55,8 @@ class GetAttackPathEventDetailResponseBodyAttackPathEvent(DaraModel):
         path_detail_desc: str = None,
         path_event_edge_list: List[main_models.GetAttackPathEventDetailResponseBodyAttackPathEventPathEventEdgeList] = None,
         path_event_node_list: List[main_models.GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList] = None,
+        path_interpretation_status: str = None,
+        path_interpretation_url: str = None,
         path_name: str = None,
         path_name_desc: str = None,
         path_type: str = None,
@@ -74,6 +76,8 @@ class GetAttackPathEventDetailResponseBodyAttackPathEvent(DaraModel):
         self.path_event_edge_list = path_event_edge_list
         # The list of path nodes.
         self.path_event_node_list = path_event_node_list
+        self.path_interpretation_status = path_interpretation_status
+        self.path_interpretation_url = path_interpretation_url
         # The path name.
         self.path_name = path_name
         # The description of the path name.
@@ -128,6 +132,12 @@ class GetAttackPathEventDetailResponseBodyAttackPathEvent(DaraModel):
             for k1 in self.path_event_node_list:
                 result['PathEventNodeList'].append(k1.to_map() if k1 else None)
 
+        if self.path_interpretation_status is not None:
+            result['PathInterpretationStatus'] = self.path_interpretation_status
+
+        if self.path_interpretation_url is not None:
+            result['PathInterpretationUrl'] = self.path_interpretation_url
+
         if self.path_name is not None:
             result['PathName'] = self.path_name
 
@@ -174,6 +184,12 @@ class GetAttackPathEventDetailResponseBodyAttackPathEvent(DaraModel):
             for k1 in m.get('PathEventNodeList'):
                 temp_model = main_models.GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList()
                 self.path_event_node_list.append(temp_model.from_map(k1))
+
+        if m.get('PathInterpretationStatus') is not None:
+            self.path_interpretation_status = m.get('PathInterpretationStatus')
+
+        if m.get('PathInterpretationUrl') is not None:
+            self.path_interpretation_url = m.get('PathInterpretationUrl')
 
         if m.get('PathName') is not None:
             self.path_name = m.get('PathName')

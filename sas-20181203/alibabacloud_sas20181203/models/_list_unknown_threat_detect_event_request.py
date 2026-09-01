@@ -19,18 +19,18 @@ class ListUnknownThreatDetectEventRequest(DaraModel):
         uuid: str = None,
     ):
         self.analyze_result = analyze_result
-        # The page number of the current page in a paged query. This parameter is used for paging.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
         # The unique identifier of the file.
         self.hash_key = hash_key
         self.lang = lang
-        # The maximum number of entries to return on each page in a paged query. This parameter is used for paging.
+        # The maximum number of entries to return on each page in a paging query.
         self.page_size = page_size
         # The parent process path.
         self.parent_process_path = parent_process_path
         # The process path.
         self.process_path = process_path
-        # The filter condition. You can filter by instance name or IP address.
+        # The filter condition based on instance name or IP address.
         self.remark = remark
         # The event status. Valid values:
         # 

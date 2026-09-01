@@ -9,6 +9,7 @@ class DescribeReportExportRequest(DaraModel):
         self,
         export_id: int = None,
         lang: str = None,
+        resource_directory_account_id: int = None,
     ):
         # The ID of the export task.
         # > Call [ExportCustomizeReport](~~ExportCustomizeReport~~) to obtain this parameter.
@@ -19,6 +20,7 @@ class DescribeReportExportRequest(DaraModel):
         # - **zh**: Chinese
         # - **en**: English.
         self.lang = lang
+        self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):
         pass
@@ -34,6 +36,9 @@ class DescribeReportExportRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -43,6 +48,9 @@ class DescribeReportExportRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         return self
 

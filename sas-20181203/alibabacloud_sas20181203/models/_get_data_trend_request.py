@@ -10,6 +10,7 @@ class GetDataTrendRequest(DaraModel):
         biz_types: str = None,
         end_timestamp: int = None,
         interval: int = None,
+        resource_directory_account_id: int = None,
         start_timestamp: int = None,
     ):
         # The type of security data to query. Valid values:
@@ -32,6 +33,7 @@ class GetDataTrendRequest(DaraModel):
         # 
         # This parameter is required.
         self.interval = interval
+        self.resource_directory_account_id = resource_directory_account_id
         # The start timestamp of the query. Unit: milliseconds.
         # 
         # This parameter is required.
@@ -54,6 +56,9 @@ class GetDataTrendRequest(DaraModel):
         if self.interval is not None:
             result['Interval'] = self.interval
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.start_timestamp is not None:
             result['StartTimestamp'] = self.start_timestamp
 
@@ -69,6 +74,9 @@ class GetDataTrendRequest(DaraModel):
 
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('StartTimestamp') is not None:
             self.start_timestamp = m.get('StartTimestamp')

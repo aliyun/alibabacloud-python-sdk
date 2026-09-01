@@ -16,6 +16,7 @@ class GetAuthSummaryResponseBody(DaraModel):
         auto_bind: int = None,
         cluster_node_check: int = None,
         default_auth_to_all: int = None,
+        edr_summary: main_models.GetAuthSummaryResponseBodyEdrSummary = None,
         has_pre_bind_setting: bool = None,
         highest_version: int = None,
         invalid_bind_status: str = None,
@@ -36,7 +37,7 @@ class GetAuthSummaryResponseBody(DaraModel):
         # - **0**: Not allowed.
         # - **1**: Allowed.
         self.allow_upgrade_partial_buy = allow_upgrade_partial_buy
-        # Indicates whether you can immediately unbind all bound assets. Valid values:
+        # Indicates whether immediate unbinding of all bound assets is allowed. Valid values:
         # - **0**: No.
         # - **1**: Yes.
         self.allow_user_unbind = allow_user_unbind
@@ -45,7 +46,7 @@ class GetAuthSummaryResponseBody(DaraModel):
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.auto_bind = auto_bind
-        # Indicates whether the cluster node requires machine version verification. Valid values:
+        # Indicates whether cluster nodes require agent version verification. Valid values:
         # - **0**: Not required.
         # - **1**: Required.
         self.cluster_node_check = cluster_node_check
@@ -53,22 +54,23 @@ class GetAuthSummaryResponseBody(DaraModel):
         # - **0**: No.
         # - **1**: Yes.
         self.default_auth_to_all = default_auth_to_all
-        # Indicates whether a pre-bindingasset configuration exists. Pre-binding refers to the asset binding configuration that is selected in advance during purchase. Valid values:
-        # - **0**: No.
-        # - **1**: Yes.
+        self.edr_summary = edr_summary
+        # Indicates whether a pre-bindingasset configuration exists. Pre-binding refers to the asset binding configuration selected in advance during purchase. Valid values:
+        # - **0**: Does not exist.
+        # - **1**: Exists.
         self.has_pre_bind_setting = has_pre_bind_setting
-        # The highest edition of Security Center that is purchased. Valid values:
+        # The highest purchased edition of Security Center. Valid values:
         # - **1**: Free Edition.
         # - **3**: Enterprise Edition.
         # - **5**: Premium Edition.
         # - **6**: Anti-virus Edition.
         # - **7**: Ultimate Edition.
-        # - **10**: Only value-added services are purchased.
-        # > If a single edition is purchased, this value indicates the corresponding edition. If multiple editions are purchased, this value indicates the highest edition among the sub-editions.
+        # - **10**: Value-added services only.
+        # > If a single edition is purchased, this value indicates the corresponding edition. If multiple editions are purchased, this value indicates the highest sub-edition.
         self.highest_version = highest_version
         # The binding validity status. Valid values:
-        # - **NORMAL**: valid.
-        # - **INVALID_NODE_VERSION**: invalid.
+        # - **NORMAL**: Valid.
+        # - **INVALID_NODE_VERSION**: Invalid.
         self.invalid_bind_status = invalid_bind_status
         # Indicates whether multiple versions exist. Valid values:
         # - **0**: No.
@@ -76,14 +78,14 @@ class GetAuthSummaryResponseBody(DaraModel):
         self.is_multi_version = is_multi_version
         # The asset authorization statistics information.
         self.machine = machine
-        # The protection edition of the host and container security pay-as-you-go service. This value indicates the highest protection edition among all bound hosts. Valid values:  
+        # The protection edition of the host and container security pay-as-you-go service. This is the highest protection edition among all bound hosts. Valid values:  
         # - **1**: Free Edition. 
         # - **3**: Enterprise Edition.
         # - **5**: Premium Edition.
         # - **6**: Anti-virus Edition.    
         # - **7**: Ultimate Edition.
         self.post_paid_highest_version = post_paid_highest_version
-        # Indicates whether new hosts are automatically bound for the host and container security pay-as-you-go service. Valid values:
+        # Indicates whether automatic binding of new hosts is enabled for the host and container security pay-as-you-go service. Valid values:
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.post_paid_host_auto_bind = post_paid_host_auto_bind
@@ -102,6 +104,8 @@ class GetAuthSummaryResponseBody(DaraModel):
         self.version_summary = version_summary
 
     def validate(self):
+        if self.edr_summary:
+            self.edr_summary.validate()
         if self.machine:
             self.machine.validate()
         if self.post_paid_version_summary:
@@ -135,6 +139,9 @@ class GetAuthSummaryResponseBody(DaraModel):
 
         if self.default_auth_to_all is not None:
             result['DefaultAuthToAll'] = self.default_auth_to_all
+
+        if self.edr_summary is not None:
+            result['EdrSummary'] = self.edr_summary.to_map()
 
         if self.has_pre_bind_setting is not None:
             result['HasPreBindSetting'] = self.has_pre_bind_setting
@@ -194,6 +201,10 @@ class GetAuthSummaryResponseBody(DaraModel):
 
         if m.get('DefaultAuthToAll') is not None:
             self.default_auth_to_all = m.get('DefaultAuthToAll')
+
+        if m.get('EdrSummary') is not None:
+            temp_model = main_models.GetAuthSummaryResponseBodyEdrSummary()
+            self.edr_summary = temp_model.from_map(m.get('EdrSummary'))
 
         if m.get('HasPreBindSetting') is not None:
             self.has_pre_bind_setting = m.get('HasPreBindSetting')
@@ -257,7 +268,7 @@ class GetAuthSummaryResponseBodyVersionSummary(DaraModel):
         # - CORE: consumes authorized core count.
         # - ASSET_AND_CORE: consumes both authorized asset count and authorized core count.
         self.auth_bind_type = auth_bind_type
-        # The index of the current edition. A larger value indicates a higher edition. This parameter is used for sorting. Valid values:
+        # The index of the current edition. A larger value indicates a higher edition. This field is used for sorting. Valid values:
         # - **1**: Free Edition. 
         # - **2**: Anti-virus Edition.    
         # - **3**: Premium Edition.
@@ -282,10 +293,10 @@ class GetAuthSummaryResponseBodyVersionSummary(DaraModel):
         # The number of unused authorized assets.
         # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.unused_ecs_auth_count = unused_ecs_auth_count
-        # The number of authorized cores that are used.
+        # The number of authorized cores that have been used.
         # > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
         self.used_core_count = used_core_count
-        # The number of authorized assets that are used.
+        # The number of authorized assets that have been used.
         # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.used_ecs_count = used_ecs_count
         # The purchased edition of Security Center. Valid values:  
@@ -295,7 +306,7 @@ class GetAuthSummaryResponseBodyVersionSummary(DaraModel):
         # - **6**: Anti-virus Edition.    
         # - **7**: Ultimate Edition.   
         # - **8**: Multi-version.   
-        # - **10**: Only value-added services are purchased.
+        # - **10**: Value-added services only.
         self.version = version
 
     def validate(self):
@@ -382,6 +393,9 @@ class GetAuthSummaryResponseBodyPostPaidVersionSummary(DaraModel):
     def __init__(
         self,
         auth_bind_type: str = None,
+        free_core_count: int = None,
+        free_ecs_count: int = None,
+        free_type: str = None,
         index: int = None,
         used_core_count: int = None,
         used_ecs_count: int = None,
@@ -392,20 +406,23 @@ class GetAuthSummaryResponseBodyPostPaidVersionSummary(DaraModel):
         # - **CORE**: consumes authorized core count.
         # - **ASSET_AND_CORE**: consumes both authorized asset count and authorized core count.
         self.auth_bind_type = auth_bind_type
-        # The index of the current edition. A larger value indicates a higher edition. This parameter is used for sorting. Valid values:
+        self.free_core_count = free_core_count
+        self.free_ecs_count = free_ecs_count
+        self.free_type = free_type
+        # The index of the current edition. A larger value indicates a higher edition. This field is used for sorting. Valid values:
         # - **1**: Free Edition. 
         # - **2**: Anti-virus Edition.    
         # - **3**: Premium Edition.
         # - **4**: Enterprise Edition.
         # - **5**: Ultimate Edition.
         self.index = index
-        # The number of authorized cores that are used.
+        # The number of authorized cores that have been used.
         # > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
         self.used_core_count = used_core_count
-        # The number of authorized assets that are used.
+        # The number of authorized assets that have been used.
         # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.used_ecs_count = used_ecs_count
-        # The pay-as-you-go edition that is bound to host assets. Valid values:  
+        # The pay-as-you-go edition bound to host assets. Valid values:  
         # - **1**: Free Edition. 
         # - **3**: Enterprise Edition.
         # - **5**: Premium Edition.
@@ -423,6 +440,15 @@ class GetAuthSummaryResponseBodyPostPaidVersionSummary(DaraModel):
             result = _map
         if self.auth_bind_type is not None:
             result['AuthBindType'] = self.auth_bind_type
+
+        if self.free_core_count is not None:
+            result['FreeCoreCount'] = self.free_core_count
+
+        if self.free_ecs_count is not None:
+            result['FreeEcsCount'] = self.free_ecs_count
+
+        if self.free_type is not None:
+            result['FreeType'] = self.free_type
 
         if self.index is not None:
             result['Index'] = self.index
@@ -442,6 +468,15 @@ class GetAuthSummaryResponseBodyPostPaidVersionSummary(DaraModel):
         m = m or dict()
         if m.get('AuthBindType') is not None:
             self.auth_bind_type = m.get('AuthBindType')
+
+        if m.get('FreeCoreCount') is not None:
+            self.free_core_count = m.get('FreeCoreCount')
+
+        if m.get('FreeEcsCount') is not None:
+            self.free_ecs_count = m.get('FreeEcsCount')
+
+        if m.get('FreeType') is not None:
+            self.free_type = m.get('FreeType')
 
         if m.get('Index') is not None:
             self.index = m.get('Index')
@@ -475,9 +510,9 @@ class GetAuthSummaryResponseBodyMachine(DaraModel):
         self.bind_core_count = bind_core_count
         # The number of bound assets.
         self.bind_ecs_count = bind_ecs_count
-        # The number of cores of assets that are bound with pay-as-you-go authorization.
+        # The number of cores of assets bound with pay-as-you-go authorization.
         self.post_paid_bind_core_count = post_paid_bind_core_count
-        # The number of assets that are bound with pay-as-you-go authorization.
+        # The number of assets bound with pay-as-you-go authorization.
         self.post_paid_bind_ecs_count = post_paid_bind_ecs_count
         # The number of cores of assets that have security risks.
         self.risk_core_count = risk_core_count
@@ -563,6 +598,49 @@ class GetAuthSummaryResponseBodyMachine(DaraModel):
 
         if m.get('UnBindEcsCount') is not None:
             self.un_bind_ecs_count = m.get('UnBindEcsCount')
+
+        return self
+
+class GetAuthSummaryResponseBodyEdrSummary(DaraModel):
+    def __init__(
+        self,
+        bound_count: str = None,
+        hybrid_paid_auto_bind: str = None,
+        post_paid_auto_bind: str = None,
+    ):
+        self.bound_count = bound_count
+        self.hybrid_paid_auto_bind = hybrid_paid_auto_bind
+        self.post_paid_auto_bind = post_paid_auto_bind
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bound_count is not None:
+            result['BoundCount'] = self.bound_count
+
+        if self.hybrid_paid_auto_bind is not None:
+            result['HybridPaidAutoBind'] = self.hybrid_paid_auto_bind
+
+        if self.post_paid_auto_bind is not None:
+            result['PostPaidAutoBind'] = self.post_paid_auto_bind
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BoundCount') is not None:
+            self.bound_count = m.get('BoundCount')
+
+        if m.get('HybridPaidAutoBind') is not None:
+            self.hybrid_paid_auto_bind = m.get('HybridPaidAutoBind')
+
+        if m.get('PostPaidAutoBind') is not None:
+            self.post_paid_auto_bind = m.get('PostPaidAutoBind')
 
         return self
 

@@ -13,16 +13,16 @@ class DescribeClusterScannerListRequest(DaraModel):
         lang: str = None,
         status_list: List[str] = None,
     ):
-        # List of cluster IDs.
+        # The list of cluster IDs.
         self.cluster_id_list = cluster_id_list
-        # The language type for requests and responses.
+        # The language type for the request and response messages.
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # List of scanner statuses. Values:
-        # - **online**: Running
-        # - **offline**: Offline
-        # - **not_installed**: Not Installed
+        # The list of scanner statuses. Valid values:
+        # - **online**: running
+        # - **offline**: offline
+        # - **not_installed**: not installed
         self.status_list = status_list
 
     def validate(self):

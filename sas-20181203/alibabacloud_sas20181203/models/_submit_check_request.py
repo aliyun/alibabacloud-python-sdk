@@ -7,15 +7,18 @@ from darabonba.model import DaraModel
 class SubmitCheckRequest(DaraModel):
     def __init__(
         self,
+        resource_directory_account_id: int = None,
         scan_range: str = None,
         task_source: str = None,
     ):
-        # The check items that are scanned. Valid values:
-        # 
-        # *   **FULL**: All check items are scanned.
-        # *   **FULL**: Only the check items that are configured are scanned.
+        self.resource_directory_account_id = resource_directory_account_id
+        # The scan range. Valid values:
+        # - **FULL**: scans all check items
+        # - **POLICY**: scans custom-configured check items
         self.scan_range = scan_range
-        # The source of task.
+        # The task source. Valid values:
+        # 
+        # - **YAO_CHI**: Alibaba Cloud ApsaraDB console.
         self.task_source = task_source
 
     def validate(self):
@@ -26,6 +29,9 @@ class SubmitCheckRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.scan_range is not None:
             result['ScanRange'] = self.scan_range
 
@@ -36,6 +42,9 @@ class SubmitCheckRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
+
         if m.get('ScanRange') is not None:
             self.scan_range = m.get('ScanRange')
 

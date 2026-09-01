@@ -8,6 +8,7 @@ class DescribeCriteriaRequest(DaraModel):
     def __init__(
         self,
         machine_types: str = None,
+        resource_directory_account_id: int = None,
         support_auto_tag: bool = None,
         value: str = None,
     ):
@@ -15,6 +16,7 @@ class DescribeCriteriaRequest(DaraModel):
         # 
         # *   Set the value to **ecs**, which specifies to query all Elastic Compute Service (ECS) instances.
         self.machine_types = machine_types
+        self.resource_directory_account_id = resource_directory_account_id
         # Specifies whether the keyword that you specify for fuzzy search can be automatically matched. Default value: **false**. Valid values:
         # 
         # *   **true**
@@ -34,6 +36,9 @@ class DescribeCriteriaRequest(DaraModel):
         if self.machine_types is not None:
             result['MachineTypes'] = self.machine_types
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.support_auto_tag is not None:
             result['SupportAutoTag'] = self.support_auto_tag
 
@@ -46,6 +51,9 @@ class DescribeCriteriaRequest(DaraModel):
         m = m or dict()
         if m.get('MachineTypes') is not None:
             self.machine_types = m.get('MachineTypes')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SupportAutoTag') is not None:
             self.support_auto_tag = m.get('SupportAutoTag')

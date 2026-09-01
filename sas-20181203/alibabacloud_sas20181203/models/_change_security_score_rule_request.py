@@ -12,6 +12,7 @@ class ChangeSecurityScoreRuleRequest(DaraModel):
         self,
         cal_type: str = None,
         reset_security_score_rule: bool = None,
+        resource_directory_account_id: int = None,
         security_score_category_list: List[main_models.ChangeSecurityScoreRuleRequestSecurityScoreCategoryList] = None,
         security_score_rule_list: List[main_models.ChangeSecurityScoreRuleRequestSecurityScoreRuleList] = None,
     ):
@@ -22,6 +23,7 @@ class ChangeSecurityScoreRuleRequest(DaraModel):
         # *   true: yes
         # *   false: no
         self.reset_security_score_rule = reset_security_score_rule
+        self.resource_directory_account_id = resource_directory_account_id
         # The information about the new version of the security score rule.
         self.security_score_category_list = security_score_category_list
         # The information about the old version of the security score rule.
@@ -48,6 +50,9 @@ class ChangeSecurityScoreRuleRequest(DaraModel):
         if self.reset_security_score_rule is not None:
             result['ResetSecurityScoreRule'] = self.reset_security_score_rule
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         result['SecurityScoreCategoryList'] = []
         if self.security_score_category_list is not None:
             for k1 in self.security_score_category_list:
@@ -67,6 +72,9 @@ class ChangeSecurityScoreRuleRequest(DaraModel):
 
         if m.get('ResetSecurityScoreRule') is not None:
             self.reset_security_score_rule = m.get('ResetSecurityScoreRule')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         self.security_score_category_list = []
         if m.get('SecurityScoreCategoryList') is not None:

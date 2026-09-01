@@ -8,24 +8,27 @@ class ModifyNoticeConfigRequest(DaraModel):
     def __init__(
         self,
         biz_type: str = None,
+        client_token: str = None,
         focus_level: str = None,
         project: str = None,
         route: int = None,
         source_ip: str = None,
         time_limit: int = None,
     ):
-        # The notification configuration type. By default, notifications are sent by SMS, email, or internal message. Valid values:
+        # The notification configuration type. By default, notifications are sent through SMS, email, or internal message. Valid values:
         # 
         # - **cms**: CloudMonitor push.
         self.biz_type = biz_type
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
         # The focus level. Separate multiple levels with commas (,).
         # 
         # When **Project** is **yundun_soar_incident_generate** or **yundun_soar_incident_update**, valid values:
         # 
         # - **CRITICAL**: Critical.
-        # - **HIGH**: High-risk.
-        # - **MEDIUM**: Medium-risk.
-        # - **LOW**: Low-risk.
+        # - **HIGH**: High.
+        # - **MEDIUM**: Medium.
+        # - **LOW**: Low.
         # - **INFO**: Informational.
         # 
         # When **Project** is **yundun_sas_antiransomware_task**, valid values:
@@ -38,8 +41,8 @@ class ModifyNoticeConfigRequest(DaraModel):
         # #### When the BizType field is empty: valid values
         # - **yundun_security_Weekreport**: Security weekly report (email only)
         # - **sas_healthcheck**: Baseline check
-        # - **yundun_defennce_antiRansomware_overflow**: Anti-ransomware storage space exceeded
-        # - **yundun_sas_cloudsiem_log**: Cloud Threat Detection and Response (CTDR) log excess notification
+        # - **yundun_defennce_antiRansomware_overflow**: Anti-ransomware storage exceeded
+        # - **yundun_sas_cloudsiem_log**: Threat analysis log excess notification
         # - **sas_suspicious**: Security alert
         # - **yundun_aegis_AV_true**: Precise defense
         # - **yundun_sas_ak_leakage AccessKey**: AccessKey leak intelligence
@@ -50,12 +53,12 @@ class ModifyNoticeConfigRequest(DaraModel):
         # - **yundun_sas_cloud_native_firewall_Defense**: Container firewall active defense notification (email only)
         # - **yundun_IP_Blocking**: Malicious IP blocking alerting notification
         # - **yundun_sas_anti_virus_config**: Virus scan notification
-        # - **yundun_sas_log**: Log storage exceeded
+        # - **yundun_sas_log**: Log excess
         # - **yundun_honeypot_alarm**: Cloud honeypot alerting
         # - **aliyun_rasp_alarm**: Application protection alerting
         # - **yundun_soar_incident_generate**: New security incident
         # - **yundun_soar_incident_update**: Updated security incident
-        # > **yundun_security_Weekreport** sends a weekly report to notify you of unresolved vulnerabilities.
+        # > **yundun_security_Weekreport** sends a weekly report to notify about unresolved vulnerabilities.
         # 
         # ---
         # 
@@ -66,7 +69,7 @@ class ModifyNoticeConfigRequest(DaraModel):
         # - **Vul_summary**: Vulnerability result summary
         # - **Agentless_event**: Agentless detection result details
         # - **Filedetect_event**: Malicious file SDK result details
-        # - **Rasp_event**: Application protection result details.
+        # - **Rasp_event**: Application protection result details
         self.project = project
         # ### Notification method
         # 
@@ -82,18 +85,18 @@ class ModifyNoticeConfigRequest(DaraModel):
         # 
         # #### When BizType is `cms`
         # - 0: CloudMonitor push disabled
-        # - 1: CloudMonitor push enabled.
+        # - 1: CloudMonitor push enabled
         self.route = route
         # The IP address of the access source.
         self.source_ip = source_ip
         # ### Notification time limit
         # 
         # #### When the BizType field is empty: valid values
-        # - **0**: No limit.
-        # - **1**: Notifications are sent only between 08:00 and 22:00.
+        # - **0**: No limit
+        # - **1**: Notifications are sent only during 08:00-22:00
         # 
-        # #### When the BizType field is `cms`
-        # Specifies the push frequency limit, in seconds. The minimum value is **60**.
+        # #### When the BizType field is `cms`: description
+        # Specifies the push frequency limit in seconds. The minimum value is **60**.
         self.time_limit = time_limit
 
     def validate(self):
@@ -106,6 +109,9 @@ class ModifyNoticeConfigRequest(DaraModel):
             result = _map
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.focus_level is not None:
             result['FocusLevel'] = self.focus_level
@@ -128,6 +134,9 @@ class ModifyNoticeConfigRequest(DaraModel):
         m = m or dict()
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('FocusLevel') is not None:
             self.focus_level = m.get('FocusLevel')

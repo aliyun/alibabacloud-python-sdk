@@ -16,11 +16,11 @@ class GetAttackPathEventDetailRequest(DaraModel):
         self.event_id = event_id
         # The data source. Default value: **default**. Valid values:
         # - **caasm**: attack surface
-        # - **default**: attack path.
+        # - **default**: attack path
         self.event_source = event_source
         # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

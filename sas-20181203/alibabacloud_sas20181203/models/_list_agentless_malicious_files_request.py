@@ -36,7 +36,7 @@ class ListAgentlessMaliciousFilesRequest(DaraModel):
         # The name of the malicious file to query.
         # > Fuzzy match is supported.
         self.fuzzy_malicious_name = fuzzy_malicious_name
-        # The language type for the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English.
         self.lang = lang
@@ -48,7 +48,7 @@ class ListAgentlessMaliciousFilesRequest(DaraModel):
         self.levels = levels
         # The MD5 hash of the malicious file.
         self.malicious_md_5 = malicious_md_5
-        # The alert type.
+        # The Alarm Metric.
         # 
         # If Lang is set to zh, valid values:
         # 
@@ -66,7 +66,7 @@ class ListAgentlessMaliciousFilesRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The asset information for the vulnerability query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
+        # The asset information to query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
         self.remark = remark
         # The file source.
         self.scan_range = scan_range

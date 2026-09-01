@@ -10,21 +10,23 @@ from darabonba.model import DaraModel
 class AddAssetSelectionCriteriaRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         criteria: str = None,
         criteria_operation: str = None,
         selection_key: str = None,
         target_operation_list: List[main_models.AddAssetSelectionCriteriaRequestTargetOperationList] = None,
     ):
-        # The search conditions that are used to query assets. The value of this parameter is in the JSON format and is case-sensitive.
-        # 
-        # > A search condition can be an instance ID, instance name, virtual private cloud (VPC) ID, region, or public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The conditions for searching assets. This parameter is in JSON format. Pay attention to the letter case when you specify this parameter.
+        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
-        # The type of the operation on search conditions. Valid values:
+        # The operation type for criteria. Valid values:
         # 
-        # *   **add**: adds assets.
-        # *   **del**: deletes assets.
+        # - **add**: adds assets.
+        # - **del**: deletes assets.
         self.criteria_operation = criteria_operation
-        # The unique ID of the asset.
+        # The unique identifier of the asset selection.
         # 
         # This parameter is required.
         self.selection_key = selection_key
@@ -42,6 +44,9 @@ class AddAssetSelectionCriteriaRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.criteria is not None:
             result['Criteria'] = self.criteria
 
@@ -60,6 +65,9 @@ class AddAssetSelectionCriteriaRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('Criteria') is not None:
             self.criteria = m.get('Criteria')
 
@@ -85,12 +93,12 @@ class AddAssetSelectionCriteriaRequestTargetOperationList(DaraModel):
         operation: str = None,
         target: str = None,
     ):
-        # The type of the operation. Valid values:
+        # The operation type. Valid values:
         # 
-        # *   **add**
-        # *   **del**
+        # - **add**: adds the asset.
+        # - **del**: deletes the asset.
         self.operation = operation
-        # The ID of the asset.
+        # The asset ID. If you select assets by machine, the value is the UUID of the machine. If you select assets by group, the value is the group ID. If you select assets by VPC, the value is the VPC ID.
         self.target = target
 
     def validate(self):

@@ -13,27 +13,29 @@ class BindAuthToMachineRequest(DaraModel):
         auto_bind: int = None,
         bind: List[str] = None,
         bind_all: bool = None,
+        client_token: str = None,
         criteria: str = None,
         is_pre_bind: int = None,
         logical_exp: str = None,
         ntm_version: str = None,
         pre_bind_order_id: int = None,
+        product_code: str = None,
         resource_directory_account_id: int = None,
         un_bind: List[str] = None,
     ):
         # The authorization version of the asset. Valid values:
-        # - **6**: Anti-virus Edition
-        # - **5**: Advanced Edition
-        # - **3**: Enterprise Edition
-        # - **7**: Ultimate Edition
-        # - **10**: Value-added Service Edition.
+        # - **6**: Anti-virus Edition.
+        # - **5**: Premium Edition.
+        # - **3**: Enterprise Edition.
+        # - **7**: Ultimate Edition.
+        # - **10**: Value-added service Edition.
         self.auth_version = auth_version
         # Specifies whether to enable automatic binding. Valid values:
         # 
-        # - **0**: Disabled.
-        # - **1**: Enabled.
+        # - **0**: Disable automatic binding.
+        # - **1**: Enable automatic binding.
         self.auto_bind = auto_bind
-        # The UUIDs of the servers to bind.
+        # The collection of UUIDs to bind.
         # 
         # > **Bind** and **UnBind** cannot both be empty.
         self.bind = bind
@@ -42,7 +44,9 @@ class BindAuthToMachineRequest(DaraModel):
         # - **true**: Bind all assets.
         # - **false**: Do not bind all assets.
         self.bind_all = bind_all
-        # The search conditions for assets. This parameter is in JSON format. Note that the parameter values are case-sensitive.
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The conditions for searching assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
         # > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
         # Specifies whether this is a pre-binding operation. Valid values:
@@ -54,23 +58,24 @@ class BindAuthToMachineRequest(DaraModel):
         # > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
         self.is_pre_bind = is_pre_bind
         # The logical relationship among multiple search conditions. Default value: **OR**. Valid values:
-        # - **OR**: The search conditions are evaluated with a logical OR.
-        # - **AND**: The search conditions are evaluated with a logical AND.
+        # - **OR**: The search conditions are evaluated using a logical OR.
+        # - **AND**: The search conditions are evaluated using a logical AND.
         self.logical_exp = logical_exp
-        # The order version associated with the pre-binding. Valid values:
+        # The order version associated with the pre-binding operation. Valid values:
         # 
-        # - **level7**: Anti-virus Edition
-        # - **level3**: Advanced Edition
-        # - **level2**: Enterprise Edition
-        # - **level8**: Ultimate Edition
+        # - **level7**: Anti-virus Edition.
+        # - **level3**: Premium Edition.
+        # - **level2**: Enterprise Edition.
+        # - **level8**: Ultimate Edition.
         # - **level10**: Value-added service only.
         self.ntm_version = ntm_version
-        # The order ID associated with the pre-binding.
+        # The order ID associated with the pre-binding operation.
         self.pre_bind_order_id = pre_bind_order_id
-        # The ID of the member accounts in the resource folder (Alibaba Cloud account).
-        # > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        self.product_code = product_code
+        # The ID of the member accounts (Alibaba Cloud account) in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The UUIDs of the servers to unbind.
+        # The collection of UUIDs to unbind.
         # > **Bind** and **UnBind** cannot both be empty.
         self.un_bind = un_bind
 
@@ -94,6 +99,9 @@ class BindAuthToMachineRequest(DaraModel):
         if self.bind_all is not None:
             result['BindAll'] = self.bind_all
 
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.criteria is not None:
             result['Criteria'] = self.criteria
 
@@ -108,6 +116,9 @@ class BindAuthToMachineRequest(DaraModel):
 
         if self.pre_bind_order_id is not None:
             result['PreBindOrderId'] = self.pre_bind_order_id
+
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
 
         if self.resource_directory_account_id is not None:
             result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
@@ -131,6 +142,9 @@ class BindAuthToMachineRequest(DaraModel):
         if m.get('BindAll') is not None:
             self.bind_all = m.get('BindAll')
 
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('Criteria') is not None:
             self.criteria = m.get('Criteria')
 
@@ -145,6 +159,9 @@ class BindAuthToMachineRequest(DaraModel):
 
         if m.get('PreBindOrderId') is not None:
             self.pre_bind_order_id = m.get('PreBindOrderId')
+
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
 
         if m.get('ResourceDirectoryAccountId') is not None:
             self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')

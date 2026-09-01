@@ -9,6 +9,7 @@ class CreateSuspEventNoteRequest(DaraModel):
         self,
         event_id: int = None,
         note: str = None,
+        resource_directory_account_id: int = None,
     ):
         # The ID of the security alert event to which you want to add a note. Call [DescribeSuspEvents](https://help.aliyun.com/document_detail/251497.html) to obtain the ID of the alert event.
         # 
@@ -18,6 +19,7 @@ class CreateSuspEventNoteRequest(DaraModel):
         # 
         # This parameter is required.
         self.note = note
+        self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):
         pass
@@ -33,6 +35,9 @@ class CreateSuspEventNoteRequest(DaraModel):
         if self.note is not None:
             result['Note'] = self.note
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -42,6 +47,9 @@ class CreateSuspEventNoteRequest(DaraModel):
 
         if m.get('Note') is not None:
             self.note = m.get('Note')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         return self
 

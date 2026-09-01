@@ -18,6 +18,7 @@ class ListCloudAssetInstancesRequest(DaraModel):
         logical_exp: str = None,
         page_size: int = None,
         region_id: str = None,
+        resource_directory_account_id: int = None,
     ):
         # The data list queried by keyword.
         self.cloud_asset_query_data = cloud_asset_query_data
@@ -43,6 +44,7 @@ class ListCloudAssetInstancesRequest(DaraModel):
         self.page_size = page_size
         # The ID of the region where the instance resides.
         self.region_id = region_id
+        self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):
         if self.cloud_asset_query_data:
@@ -87,6 +89,9 @@ class ListCloudAssetInstancesRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -120,6 +125,9 @@ class ListCloudAssetInstancesRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         return self
 

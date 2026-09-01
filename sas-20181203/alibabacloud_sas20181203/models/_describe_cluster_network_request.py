@@ -10,15 +10,15 @@ class DescribeClusterNetworkRequest(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end timestamp of the query. Unit: milliseconds.
+        # The end timestamp. Unit: milliseconds.
         # 
-        # > The days between the start timestamp and the end timestamp cannot exceed **seven** days.
+        # > The difference between the start timestamp and end timestamp cannot exceed **7** days.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The start timestamp of the query. Unit: milliseconds.
+        # The start timestamp. Unit: milliseconds.
         # 
-        # > The days between the start timestamp and the end timestamp cannot exceed **seven** days.
+        # > The difference between the start timestamp and end timestamp cannot exceed **7** days.
         # 
         # This parameter is required.
         self.start_time = start_time

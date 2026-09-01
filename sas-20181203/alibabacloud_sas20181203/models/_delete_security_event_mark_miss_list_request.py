@@ -10,10 +10,12 @@ class DeleteSecurityEventMarkMissListRequest(DaraModel):
     def __init__(
         self,
         ids: List[int] = None,
+        resource_directory_account_id: int = None,
         resource_owner_id: int = None,
     ):
         # The IDs of custom defense rule.
         self.ids = ids
+        self.resource_directory_account_id = resource_directory_account_id
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -27,6 +29,9 @@ class DeleteSecurityEventMarkMissListRequest(DaraModel):
         if self.ids is not None:
             result['Ids'] = self.ids
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
@@ -36,6 +41,9 @@ class DeleteSecurityEventMarkMissListRequest(DaraModel):
         m = m or dict()
         if m.get('Ids') is not None:
             self.ids = m.get('Ids')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')

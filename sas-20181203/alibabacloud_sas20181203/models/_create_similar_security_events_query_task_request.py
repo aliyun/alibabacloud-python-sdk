@@ -7,13 +7,18 @@ from darabonba.model import DaraModel
 class CreateSimilarSecurityEventsQueryTaskRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
+        resource_directory_account_id: int = None,
         resource_owner_id: int = None,
         security_event_id: int = None,
         similar_event_scenario_code: str = None,
         source_ip: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        self.resource_directory_account_id = resource_directory_account_id
         self.resource_owner_id = resource_owner_id
-        # The ID of the alert event.
+        # The ID of the security alert.
         # 
         # This parameter is required.
         self.security_event_id = security_event_id
@@ -30,6 +35,12 @@ class CreateSimilarSecurityEventsQueryTaskRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
@@ -46,6 +57,12 @@ class CreateSimilarSecurityEventsQueryTaskRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
+
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
 

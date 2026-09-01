@@ -10,6 +10,7 @@ class DescribeVulWhitelistRequest(DaraModel):
         current_page: int = None,
         lang: str = None,
         page_size: int = None,
+        resource_directory_account_id: int = None,
     ):
         # The page number in paging. Pages start from page 1. Default value: 1.
         self.current_page = current_page
@@ -19,6 +20,7 @@ class DescribeVulWhitelistRequest(DaraModel):
         self.lang = lang
         # The number of entries per page in paging. Default value: 10.
         self.page_size = page_size
+        self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):
         pass
@@ -37,6 +39,9 @@ class DescribeVulWhitelistRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -49,6 +54,9 @@ class DescribeVulWhitelistRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         return self
 

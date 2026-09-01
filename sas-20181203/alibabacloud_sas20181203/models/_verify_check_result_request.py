@@ -10,11 +10,17 @@ class VerifyCheckResultRequest(DaraModel):
     def __init__(
         self,
         check_ids: List[int] = None,
+        force: bool = None,
         instance_ids: List[str] = None,
         task_source: str = None,
     ):
         # The list of check item IDs.
         self.check_ids = check_ids
+        # Specifies whether to forcibly run the specified check items. Default value: false.
+        # 
+        # - true: Forcibly runs the specified check items. Forced execution bypasses frequency and quantity limits and initiates the check directly, which may cause duplicate checks to run multiple times within a short period.
+        # - false (default): Does not forcibly run the specified check items. This ensures that the same check item is executed only once within a short period.
+        self.force = force
         # The list of instance IDs of the assets associated with the check items.
         self.instance_ids = instance_ids
         # The task source. Valid values:
@@ -33,6 +39,9 @@ class VerifyCheckResultRequest(DaraModel):
         if self.check_ids is not None:
             result['CheckIds'] = self.check_ids
 
+        if self.force is not None:
+            result['Force'] = self.force
+
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
@@ -45,6 +54,9 @@ class VerifyCheckResultRequest(DaraModel):
         m = m or dict()
         if m.get('CheckIds') is not None:
             self.check_ids = m.get('CheckIds')
+
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
 
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')

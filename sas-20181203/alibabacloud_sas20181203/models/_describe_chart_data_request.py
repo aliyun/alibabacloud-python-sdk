@@ -11,6 +11,7 @@ class DescribeChartDataRequest(DaraModel):
         chart_id: str = None,
         lang: str = None,
         report_id: int = None,
+        resource_directory_account_id: int = None,
         time_end: int = None,
         time_start: int = None,
     ):
@@ -31,6 +32,7 @@ class DescribeChartDataRequest(DaraModel):
         # 
         # > Call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to obtain this parameter.
         self.report_id = report_id
+        self.resource_directory_account_id = resource_directory_account_id
         # The end timestamp for statistics. Unit: milliseconds.
         self.time_end = time_end
         # The start timestamp for statistics. Unit: milliseconds.
@@ -56,6 +58,9 @@ class DescribeChartDataRequest(DaraModel):
         if self.report_id is not None:
             result['ReportId'] = self.report_id
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.time_end is not None:
             result['TimeEnd'] = self.time_end
 
@@ -77,6 +82,9 @@ class DescribeChartDataRequest(DaraModel):
 
         if m.get('ReportId') is not None:
             self.report_id = m.get('ReportId')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('TimeEnd') is not None:
             self.time_end = m.get('TimeEnd')

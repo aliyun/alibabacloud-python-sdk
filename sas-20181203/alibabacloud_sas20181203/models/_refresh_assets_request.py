@@ -10,6 +10,7 @@ class RefreshAssetsRequest(DaraModel):
         asset_type: str = None,
         cloud_asset_sub_type: int = None,
         cloud_asset_type: int = None,
+        resource_directory_account_id: int = None,
         vendor: int = None,
     ):
         # The type of the asset that you want to synchronize. Valid values:
@@ -47,6 +48,7 @@ class RefreshAssetsRequest(DaraModel):
         # *   **23**: Data Security Center (DSC)
         # *   **24**: Elastic IP Address (EIP)
         self.cloud_asset_type = cloud_asset_type
+        self.resource_directory_account_id = resource_directory_account_id
         # The type of the server. Valid values:
         # 
         # *   **0**: an asset provided by Alibaba Cloud
@@ -73,6 +75,9 @@ class RefreshAssetsRequest(DaraModel):
         if self.cloud_asset_type is not None:
             result['CloudAssetType'] = self.cloud_asset_type
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.vendor is not None:
             result['Vendor'] = self.vendor
 
@@ -88,6 +93,9 @@ class RefreshAssetsRequest(DaraModel):
 
         if m.get('CloudAssetType') is not None:
             self.cloud_asset_type = m.get('CloudAssetType')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('Vendor') is not None:
             self.vendor = m.get('Vendor')

@@ -11,6 +11,7 @@ class HandleSimilarSecurityEventsRequest(DaraModel):
         operation_code: str = None,
         operation_params: str = None,
         remark: str = None,
+        resource_directory_account_id: int = None,
         resource_owner_id: int = None,
         source_ip: str = None,
         task_id: int = None,
@@ -40,6 +41,7 @@ class HandleSimilarSecurityEventsRequest(DaraModel):
         self.operation_params = operation_params
         # The remarks for the operation.
         self.remark = remark
+        self.resource_directory_account_id = resource_directory_account_id
         self.resource_owner_id = resource_owner_id
         # The IP address of the access source.
         self.source_ip = source_ip
@@ -69,6 +71,9 @@ class HandleSimilarSecurityEventsRequest(DaraModel):
         if self.remark is not None:
             result['Remark'] = self.remark
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
@@ -93,6 +98,9 @@ class HandleSimilarSecurityEventsRequest(DaraModel):
 
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')

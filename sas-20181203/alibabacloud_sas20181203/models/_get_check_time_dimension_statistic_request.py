@@ -10,12 +10,14 @@ class GetCheckTimeDimensionStatisticRequest(DaraModel):
     def __init__(
         self,
         end_time_stamp: int = None,
+        resource_directory_account_id: int = None,
         start_time_stamp: int = None,
         statistic_type: str = None,
         vendors: List[str] = None,
     ):
         # The end time in timestamp format.
         self.end_time_stamp = end_time_stamp
+        self.resource_directory_account_id = resource_directory_account_id
         # The start time in timestamp format.
         self.start_time_stamp = start_time_stamp
         # The type of data statistics. Valid values:
@@ -36,6 +38,9 @@ class GetCheckTimeDimensionStatisticRequest(DaraModel):
         if self.end_time_stamp is not None:
             result['EndTimeStamp'] = self.end_time_stamp
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.start_time_stamp is not None:
             result['StartTimeStamp'] = self.start_time_stamp
 
@@ -51,6 +56,9 @@ class GetCheckTimeDimensionStatisticRequest(DaraModel):
         m = m or dict()
         if m.get('EndTimeStamp') is not None:
             self.end_time_stamp = m.get('EndTimeStamp')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('StartTimeStamp') is not None:
             self.start_time_stamp = m.get('StartTimeStamp')

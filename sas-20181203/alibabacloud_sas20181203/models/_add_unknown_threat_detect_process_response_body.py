@@ -13,9 +13,9 @@ class AddUnknownThreatDetectProcessResponseBody(DaraModel):
         id_list: List[main_models.AddUnknownThreatDetectProcessResponseBodyIdList] = None,
         request_id: str = None,
     ):
-        # A list of results for the added processes.
+        # The list of process IDs.
         self.id_list = id_list
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -57,7 +57,7 @@ class AddUnknownThreatDetectProcessResponseBodyIdList(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID generated for the added process.
+        # The process ID.
         self.id = id
 
     def validate(self):

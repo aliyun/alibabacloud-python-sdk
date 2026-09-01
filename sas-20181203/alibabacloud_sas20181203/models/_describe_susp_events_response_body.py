@@ -17,17 +17,17 @@ class DescribeSuspEventsResponseBody(DaraModel):
         susp_events: List[main_models.DescribeSuspEventsResponseBodySuspEvents] = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in a paging query.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The ID of the request.
+        # The ID of this request.
         self.request_id = request_id
-        # The information about the alert events.
+        # The security alert information.
         self.susp_events = susp_events
-        # The total number of alert events.
+        # The total number of security alerts.
         self.total_count = total_count
 
     def validate(self):
@@ -106,6 +106,7 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
         container_image_id: str = None,
         container_image_name: str = None,
         data_source: str = None,
+        deep_analyze_report_url: str = None,
         desc: str = None,
         details: List[main_models.DescribeSuspEventsResponseBodySuspEventsDetails] = None,
         detect_source: str = None,
@@ -149,81 +150,64 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
         uuid: str = None,
         cluster_id: str = None,
     ):
-        # Indicates whether the alert event was analyzed offline.
+        # Indicates whether this is an offline analysis alert.
         self.advanced = advanced
-        # The name of the alert event.
+        # The name of the security alert.
         self.alarm_event_name = alarm_event_name
-        # The name of the alert.
+        # The alert name.
         self.alarm_event_name_display = alarm_event_name_display
-        # The type of the alert event.
+        # The alerting event type.
         self.alarm_event_type = alarm_event_type
-        # The display name of the type of the alert event.
+        # The alerting event type.
         self.alarm_event_type_display = alarm_event_type_display
         # The unique ID of the alert event.
         self.alarm_unique_info = alarm_unique_info
-        # The name of the application to which the alert event belongs.
+        # The name of the application to which the security alert belongs.
         self.app_name = app_name
         # Indicates whether automatic defense is enabled.
         self.auto_breaking = auto_breaking
-        # Indicates whether you can handle the alert event online, such as quarantining the source file of the malicious process. Valid values:
+        # Indicates whether the alert event can be handled online, such as quarantine. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Online handling is supported.
+        # - **false**: Online handling is not supported.
         self.can_be_deal_on_line = can_be_deal_on_line
-        # Indicates whether you can cancel marking the alert event as a false positive. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the false positive mark can be unmarked. Valid values:
         self.can_cancel_fault = can_cancel_fault
-        # Indicates whether the safeguard mode for major activities is enabled for the server. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether critical event protection mode is enabled for the server. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.contain_hw_mode = contain_hw_mode
-        # The ID of the container.
+        # The container ID.
         self.container_id = container_id
-        # The ID of the container image.
+        # The container image ID.
         self.container_image_id = container_image_id
-        # The name of the container image.
+        # The container image name.
         self.container_image_name = container_image_name
-        # The source of data. This parameter can be ignored.
+        # The data source. You can ignore this parameter.
         self.data_source = data_source
-        # The impact of the alert event.
+        # The download URL of the file deep analysis report.
+        self.deep_analyze_report_url = deep_analyze_report_url
+        # The description of the impact of the security alert.
         self.desc = desc
-        # The details of the alert event.
+        # The details of the security alert.
         self.details = details
-        # Source of discovery (invalid field)
+        # The discovery source. This parameter is invalid.
         self.detect_source = detect_source
-        # Indicates whether the alert event can be detected by cloud sandbox. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether cloud sandbox detection is supported. Valid values:
         self.display_sandbox_result = display_sandbox_result
-        # The note information about the alert event.
+        # The remarks of the security alert.
         self.event_notes = event_notes
-        # The status of the alert event. Valid values:
-        # 
-        # *   **1**: pending handling
-        # *   **2**: ignored
-        # *   **4**: confirmed
-        # *   **8**: marked as a false positive
-        # *   **16**: handling
-        # *   **32**: handled
-        # *   **64**: expired
-        # *   **604**: marked as a false positive by the system
+        # The status of the security alert. Valid values:
         self.event_status = event_status
-        # The subtype of the alert event.
+        # The subtype of the security alert.
         self.event_sub_type = event_sub_type
-        # Indicates whether the alert event has tracing information. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the security alert has tracing information. Valid values:
         self.has_trace_info = has_trace_info
         # The unique ID of the alert event.
         self.id = id
-        # The UUID of the image.
+        # The image UUID.
         self.image_uuid = image_uuid
-        # The instance ID of the affected asset.
+        # The ID of the asset instance affected by the security alert.
         self.instance_id = instance_id
         # The name of the associated instance.
         self.instance_name = instance_name
@@ -231,77 +215,71 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the associated instance.
         self.intranet_ip = intranet_ip
-        # The ID of the Kubernetes cluster.
+        # The Kubernetes cluster ID.
         self.k_8s_cluster_id = k_8s_cluster_id
         # The name of the Kubernetes cluster.
         self.k_8s_cluster_name = k_8s_cluster_name
-        # The namespace of the Kubernetes cluster.
+        # The Kubernetes namespace.
         self.k_8s_namespace = k_8s_namespace
-        # The ID of the Kubernetes node.
+        # The Kubernetes node ID.
         self.k_8s_node_id = k_8s_node_id
-        # The name of the Kubernetes node.
+        # The Kubernetes node name.
         self.k_8s_node_name = k_8s_node_name
-        # The name of the Kubernetes pod.
+        # The Kubernetes pod name.
         self.k_8s_pod_name = k_8s_pod_name
-        # Indicates whether the large model analysis tag is supported. Valid values:
+        # Indicates whether large model analysis tags are supported. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.large_model = large_model
-        # The time when the alert event was last detected.
+        # The most recent time when the security alert occurred.
         self.last_time = last_time
-        # The timestamp when the alert event was last detected. Unit: milliseconds.
+        # The timestamp of the last occurrence, in milliseconds.
         self.last_time_stamp = last_time_stamp
-        # The severity of the alert event. Valid values:
+        # The risk level of the alert event. Valid values:
         # 
-        # *   **serious**
-        # *   **suspicious**
-        # *   **remind**
+        # - **serious**: critical
+        # - **suspicious**: suspicious
+        # - **remind**: reminder
         self.level = level
         # The status of the malicious behavior defense rule. Valid values:
-        # 
-        # *   **open**
-        # *   **close**
         self.malicious_rule_status = malicious_rule_status
-        # The tags of the alert events.
+        # The collection of security alert tags.
         self.mark_list = mark_list
-        # The advanced whitelist rule.
+        # The advanced whitelisting rules.
         self.mark_mis_rules = mark_mis_rules
-        # The complete name of the alert event.
+        # The full name of the security alert.
         self.name = name
-        # The time when the alert event was first detected.
+        # The time when the security alert first occurred.
         self.occurrence_time = occurrence_time
-        # The timestamp when the alert event was first detected. Unit: milliseconds.
+        # The timestamp of the first occurrence, in milliseconds.
         self.occurrence_time_stamp = occurrence_time_stamp
-        # The handling result code of the alert event.
+        # The error code of the security alert operation.
         self.operate_error_code = operate_error_code
-        # The handing result message of the alert event.
+        # The remarks of the security alert operation.
         self.operate_msg = operate_msg
-        # The handling timestamp of the alert event. Unit: milliseconds.
+        # The timestamp of the security alert operation, in milliseconds.
         self.operate_time = operate_time
-        # The edition of Security Center in which the alert event can be detected. Valid values:
-        # 
-        # *   **0**: Basic edition
-        # *   **1**: Enterprise edition
+        # The product edition that supports the detection of this security alert. Valid values:
         self.sale_version = sale_version
-        # The ID of the associated alert event.
+        # The IDs of the security alerts associated with this security alert.
         self.security_event_ids = security_event_ids
-        # The ID of the Alibaba Cloud account within which an alert is generated.
+        # The Alibaba Cloud account ID that generated the alert.
         self.source_ali_uid = source_ali_uid
-        # The stage at which the attack is detected.
+        # The attack stage.
         self.stages = stages
-        # Supported alarm operation types: 
-        # - **AI.false_positive**: Suspected false positive 
-        # - **AI.real_attack**: Real attack 
-        # - **AI.Insufficient_information_to_evaluate**: Insufficient information to evaluate
+        # The operation types supported by the alert. Valid values:
+        # - **AI.false_positive**: suspected false positive.
+        # - **AI.real_attack**: real attack.
+        # - **AI.Insufficient_information_to_evaluate**: unable to determine.
         self.support_operate_code = support_operate_code
         # The display name of the attack stage.
         self.tactic_items = tactic_items
-        # The unique key of the alert.
+        # The unique key of the security alert.
         self.unique_info = unique_info
-        # The unique ID of the associated instance.
+        # The unique identifier of the associated instance.
         self.uuid = uuid
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -367,6 +345,9 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
 
         if self.data_source is not None:
             result['DataSource'] = self.data_source
+
+        if self.deep_analyze_report_url is not None:
+            result['DeepAnalyzeReportUrl'] = self.deep_analyze_report_url
 
         if self.desc is not None:
             result['Desc'] = self.desc
@@ -549,6 +530,9 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
         if m.get('DataSource') is not None:
             self.data_source = m.get('DataSource')
 
+        if m.get('DeepAnalyzeReportUrl') is not None:
+            self.deep_analyze_report_url = m.get('DeepAnalyzeReportUrl')
+
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')
 
@@ -692,9 +676,9 @@ class DescribeSuspEventsResponseBodySuspEventsTacticItems(DaraModel):
         tactic_display_name: str = None,
         tactic_id: str = None,
     ):
-        # The tactic name of ATT\\&CK.
+        # The ATT&CK tactic name.
         self.tactic_display_name = tactic_display_name
-        # The stage information about ATT\\&CK.
+        # The ATT&CK attack stage information.
         self.tactic_id = tactic_id
 
     def validate(self):
@@ -730,11 +714,11 @@ class DescribeSuspEventsResponseBodySuspEventsEventNotes(DaraModel):
         note_id: int = None,
         note_time: str = None,
     ):
-        # The note.
+        # The remark information.
         self.note = note
-        # The ID of the note.
+        # The event record ID.
         self.note_id = note_id
-        # The time when the note was created.
+        # The event record time.
         self.note_time = note_time
 
     def validate(self):
@@ -777,13 +761,13 @@ class DescribeSuspEventsResponseBodySuspEventsDetails(DaraModel):
         value: str = None,
         value_display: str = None,
     ):
-        # The display name of the alert event.
+        # The display name of the security alert.
         self.name_display = name_display
-        # The type of the alert event.
+        # The alerting event type.
         self.type = type
-        # The path of the alert event.
+        # The path where the security alert occurred.
         self.value = value
-        # The display name of the path of the alert event.
+        # The path where the security alert occurred.
         self.value_display = value_display
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetAgentlessTaskUsedSizeEstimateRequest(DaraModel):
         self,
         asset_selection_type: str = None,
     ):
-        # Asset selection identifier.
+        # The asset selection identifier.
         # 
         # This parameter is required.
         self.asset_selection_type = asset_selection_type

@@ -9,6 +9,7 @@ class OperationSuspEventsRequest(DaraModel):
         self,
         from_: str = None,
         operation: str = None,
+        resource_directory_account_id: int = None,
         source_ip: str = None,
         sub_operation: str = None,
         suspicious_event_ids: str = None,
@@ -28,6 +29,7 @@ class OperationSuspEventsRequest(DaraModel):
         # 
         # This parameter is required.
         self.operation = operation
+        self.resource_directory_account_id = resource_directory_account_id
         # The IP address of the access source.
         self.source_ip = source_ip
         # The sub-operation type to perform when quarantining the alert event. Valid values:
@@ -62,6 +64,9 @@ class OperationSuspEventsRequest(DaraModel):
         if self.operation is not None:
             result['Operation'] = self.operation
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
 
@@ -83,6 +88,9 @@ class OperationSuspEventsRequest(DaraModel):
 
         if m.get('Operation') is not None:
             self.operation = m.get('Operation')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

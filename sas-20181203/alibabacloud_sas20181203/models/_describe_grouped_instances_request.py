@@ -14,6 +14,7 @@ class DescribeGroupedInstancesRequest(DaraModel):
         machine_types: str = None,
         no_page: bool = None,
         page_size: int = None,
+        resource_directory_account_id: int = None,
         sale_version_check_code: str = None,
         vendor: int = None,
         vendors: str = None,
@@ -42,6 +43,7 @@ class DescribeGroupedInstancesRequest(DaraModel):
         self.no_page = no_page
         # The number of entries per page in a paginated query. Default value: **20**, indicating that 20 entries of asset information are displayed per page.
         self.page_size = page_size
+        self.resource_directory_account_id = resource_directory_account_id
         # The edition filter for querying assets. Valid values:
         # 
         # - **sas_gte_advanced**: Advanced edition or higher
@@ -96,6 +98,9 @@ class DescribeGroupedInstancesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.sale_version_check_code is not None:
             result['SaleVersionCheckCode'] = self.sale_version_check_code
 
@@ -129,6 +134,9 @@ class DescribeGroupedInstancesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SaleVersionCheckCode') is not None:
             self.sale_version_check_code = m.get('SaleVersionCheckCode')

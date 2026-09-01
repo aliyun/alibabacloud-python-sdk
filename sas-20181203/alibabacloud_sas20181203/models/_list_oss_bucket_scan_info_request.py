@@ -10,32 +10,40 @@ class ListOssBucketScanInfoRequest(DaraModel):
         bucket_name: str = None,
         current_page: int = None,
         fuzz_bucket_name: str = None,
+        fuzz_file_system_name: str = None,
         has_risk: int = None,
         lang: str = None,
         page_size: int = None,
+        source: str = None,
         status: int = None,
     ):
         # The bucket name.
         self.bucket_name = bucket_name
-        # The page number of the current page in a paging query.
+        # The page number of the current page in a paged query.
         # 
         # This parameter is required.
         self.current_page = current_page
         # The bucket name for fuzzy match.
         self.fuzz_bucket_name = fuzz_bucket_name
+        # The NAS file system name for fuzzy match.
+        self.fuzz_file_system_name = fuzz_file_system_name
         # Specifies whether risky files are detected. Valid values:
         # 
         # - **0**: No risks detected.
         # - **1**: Risky files exist.
         self.has_risk = has_risk
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # The language type of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The maximum number of entries to return on each page in a paging query.
+        # The maximum number of entries to return on each page in a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size
+        # The business source. Valid values:
+        # - **OSS**: OSS
+        # - **NAS**: NAS
+        self.source = source
         # The detection status. Valid values:
         # 
         # - **1**: Not scanned.
@@ -61,6 +69,9 @@ class ListOssBucketScanInfoRequest(DaraModel):
         if self.fuzz_bucket_name is not None:
             result['FuzzBucketName'] = self.fuzz_bucket_name
 
+        if self.fuzz_file_system_name is not None:
+            result['FuzzFileSystemName'] = self.fuzz_file_system_name
+
         if self.has_risk is not None:
             result['HasRisk'] = self.has_risk
 
@@ -69,6 +80,9 @@ class ListOssBucketScanInfoRequest(DaraModel):
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.source is not None:
+            result['Source'] = self.source
 
         if self.status is not None:
             result['Status'] = self.status
@@ -86,6 +100,9 @@ class ListOssBucketScanInfoRequest(DaraModel):
         if m.get('FuzzBucketName') is not None:
             self.fuzz_bucket_name = m.get('FuzzBucketName')
 
+        if m.get('FuzzFileSystemName') is not None:
+            self.fuzz_file_system_name = m.get('FuzzFileSystemName')
+
         if m.get('HasRisk') is not None:
             self.has_risk = m.get('HasRisk')
 
@@ -94,6 +111,9 @@ class ListOssBucketScanInfoRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

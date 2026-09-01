@@ -11,6 +11,7 @@ class ChangeCheckConfigRequest(DaraModel):
     def __init__(
         self,
         added_check: List[main_models.ChangeCheckConfigRequestAddedCheck] = None,
+        client_token: str = None,
         config_requirement_ids: main_models.ChangeCheckConfigRequestConfigRequirementIds = None,
         config_standard_ids: main_models.ChangeCheckConfigRequestConfigStandardIds = None,
         configure: str = None,
@@ -26,62 +27,67 @@ class ChangeCheckConfigRequest(DaraModel):
         system_config: bool = None,
         vendors: List[str] = None,
     ):
-        # The list of check items that you want to add to the policy.
-        # 
-        # >  If the ConfigStandardIds or ConfigRequirementIds parameter is configured, this parameter does not take effect.
+        # The list of check items to add to the policy.
+        # <notice> If ConfigStandardIds or ConfigRequirementIds is specified, this parameter does not take effect.
         self.added_check = added_check
-        # The requirement IDs that you want to specify for the check policy.
+        # The client token used to ensure request idempotency. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+        self.client_token = client_token
+        # Configures the check policy by specifying requirement IDs.
         # 
-        # >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the requirement ID. If the ConfigStandardIds parameter is configured, this parameter does not take effect.
+        # > Call [ListCheckResult](~~ListCheckResult~~) to obtain requirement IDs. If ConfigStandardIds is specified, this parameter does not take effect.
         self.config_requirement_ids = config_requirement_ids
-        # The standard IDs that you want to specify for the check policy.
+        # Configures the check policy by specifying standard IDs.
         # 
-        # >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the standard ID.
+        # > Call [ListCheckResult](~~ListCheckResult~~) to obtain standard IDs.
         self.config_standard_ids = config_standard_ids
-        # The configuration of the check item. Valid value:
+        # The field configuration. Valid values:
         # 
-        # *   **all**: Add all check items.
+        # - **all:** Adds all check items.
         self.configure = configure
-        # The days in a week on which a check is performed.
+        # The scheduled check days.
         self.cycle_days = cycle_days
-        # Specifies whether to check the new check items in the selected requirement item. Valid values:
-        # - **true**
-        # - **false**
+        # Specifies whether to automatically include newly added check items from the selected requirements. Valid values:
+        # 
+        # - **true:** Enabled.
+        # - **false:** Disabled.
         self.enable_add_check = enable_add_check
-        # Specifies whether to enable the automatic periodical check feature. Valid values:
+        # Specifies whether to enable automatic scheduled checks. Valid values:
         # 
-        # - **true**
-        # - **false**
+        # - **true:** Enabled.
+        # - **false:** Disabled.
         self.enable_auto_check = enable_auto_check
-        # The end time of the check. The value specifies a point in time in a day. The time period that is specified by the start time and end time must be one of the following time periods:
+        # The end hour of the check time window, expressed as an hour of the day. The start and end times must fall within one of the following time ranges. Valid values: 6, 12, 18, 24.
         # 
-        # *   **00:00 to 06:00:** If you set the StartTime parameter to 0, you must set the EndTime parameter to 6.
-        # *   **06:00 to 12:00**: If you set the StartTime parameter to 6, you must set the EndTime parameter to 12.
-        # *   **12:00 to 18:00**: If you set the StartTime parameter to 12, you must set the EndTime parameter to 18.
-        # *  **18:00 to 24:00:** If you set the StartTime parameter to 18, you must set the EndTime parameter to 24.
+        # - **0~6:** If the start time is 0, set the end time to 6.
+        # - **6~12:** If the start time is 6, set the end time to 12.
+        # - **12~18:** If the start time is 12, set the end time to 18.
+        # - **18~24:** If the start time is 18, set the end time to 24.
         self.end_time = end_time
-        # The region ID of the bastion host to query.
+        # The region of the Security Center instance. Valid values:
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # - **cn-hangzhou:** China (Hangzhou)
+        # - **ap-southeast-1:** Singapore
         self.region_id = region_id
-        # The list of the check items that you want to remove from the policy.
-        # 
-        # >  If the ConfigStandardIds or ConfigRequirementIds parameter is configured, this parameter does not take effect.
+        # The list of check items to remove from the policy.
+        # <notice> If ConfigStandardIds or ConfigRequirementIds is specified, this parameter does not take effect.
         self.removed_check = removed_check
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # The ID of the resource directory member accounts (Alibaba Cloud account).
+        # > Call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # An array that consists of the information about the check item.
+        # This parameter is deprecated. You do not need to configure it.
         self.standard_ids = standard_ids
-        # The start time of the check. The value specifies a point in time in a day.
-        self.start_time = start_time
-        # Specifies whether to use the configuration automatically generated by the system. Valid values:
+        # The start hour of the check time window, expressed as an hour of the day. The start and end times must fall within one of the following time ranges. Valid values: 0, 6, 12, 18.
         # 
-        # *   **true**
-        # *   **false**
+        # - **0~6:** If the start time is 0, set the end time to 6.
+        # - **6~12:** If the start time is 6, set the end time to 12.
+        # - **12~18:** If the start time is 12, set the end time to 18.
+        # - **18~24:** If the start time is 18, set the end time to 24.
+        self.start_time = start_time
+        # Specifies whether to use the system-generated configuration. Valid values:
+        # - **true:** Yes.
+        # - **false:** No.
         self.system_config = system_config
-        # The cloud service providers.
+        # The list of cloud vendors.
         self.vendors = vendors
 
     def validate(self):
@@ -107,6 +113,9 @@ class ChangeCheckConfigRequest(DaraModel):
         if self.added_check is not None:
             for k1 in self.added_check:
                 result['AddedCheck'].append(k1.to_map() if k1 else None)
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.config_requirement_ids is not None:
             result['ConfigRequirementIds'] = self.config_requirement_ids.to_map()
@@ -161,6 +170,9 @@ class ChangeCheckConfigRequest(DaraModel):
             for k1 in m.get('AddedCheck'):
                 temp_model = main_models.ChangeCheckConfigRequestAddedCheck()
                 self.added_check.append(temp_model.from_map(k1))
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('ConfigRequirementIds') is not None:
             temp_model = main_models.ChangeCheckConfigRequestConfigRequirementIds()
@@ -219,7 +231,7 @@ class ChangeCheckConfigRequestRemovedCheck(DaraModel):
     ):
         # The ID of the check item.
         # 
-        # >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the ID of the check item.
+        # > Call [ListCheckResult](~~ListCheckResult~~) to obtain check item IDs.
         self.check_id = check_id
         # The section ID of the check item.
         self.section_id = section_id
@@ -256,9 +268,9 @@ class ChangeCheckConfigRequestConfigStandardIds(DaraModel):
         add_ids: List[int] = None,
         remove_ids: List[int] = None,
     ):
-        # The standard IDs that you want to add to the policy.
+        # The list of standard IDs to add to the policy.
         self.add_ids = add_ids
-        # The standard IDs that you want to remove from the policy.
+        # The list of standard IDs to remove from the policy.
         self.remove_ids = remove_ids
 
     def validate(self):
@@ -293,9 +305,9 @@ class ChangeCheckConfigRequestConfigRequirementIds(DaraModel):
         add_ids: List[int] = None,
         remove_ids: List[int] = None,
     ):
-        # The requirement IDs that you want to add to the policy.
+        # The list of requirement IDs to add to the policy.
         self.add_ids = add_ids
-        # The requirement IDs that you want to remove from the policy.
+        # The list of requirement IDs to remove from the policy.
         self.remove_ids = remove_ids
 
     def validate(self):
@@ -332,7 +344,7 @@ class ChangeCheckConfigRequestAddedCheck(DaraModel):
     ):
         # The ID of the check item.
         # 
-        # >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the ID of the check item.
+        # > Call [ListCheckResult](~~ListCheckResult~~) to obtain check item IDs.
         self.check_id = check_id
         # The section ID of the check item.
         self.section_id = section_id

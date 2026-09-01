@@ -9,13 +9,18 @@ class OperateBucketScanTaskRequest(DaraModel):
         self,
         bucket_name: str = None,
         operate_code: int = None,
+        source: str = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The operation that you want to perform on the bucket. Valid value:
+        # The operation to perform on the bucket. Valid values:
         # 
-        # *   **1**: cancels the bucket check.
+        # - **1**: Cancel detection.
         self.operate_code = operate_code
+        # The business source. Valid values:
+        # - **OSS**: OSS
+        # - **NAS**: NAS
+        self.source = source
 
     def validate(self):
         pass
@@ -31,6 +36,9 @@ class OperateBucketScanTaskRequest(DaraModel):
         if self.operate_code is not None:
             result['OperateCode'] = self.operate_code
 
+        if self.source is not None:
+            result['Source'] = self.source
+
         return result
 
     def from_map(self, m: dict = None):
@@ -40,6 +48,9 @@ class OperateBucketScanTaskRequest(DaraModel):
 
         if m.get('OperateCode') is not None:
             self.operate_code = m.get('OperateCode')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         return self
 

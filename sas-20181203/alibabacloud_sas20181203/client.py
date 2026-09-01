@@ -88,6 +88,8 @@ class Client(OpenApiClient):
     ) -> main_models.AddAssetSelectionCriteriaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.criteria_operation):
@@ -122,6 +124,8 @@ class Client(OpenApiClient):
     ) -> main_models.AddAssetSelectionCriteriaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.criteria_operation):
@@ -260,6 +264,8 @@ class Client(OpenApiClient):
             query['CheckGroupId'] = request.check_group_id
         if not DaraCore.is_null(request.check_id):
             query['CheckId'] = request.check_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_list):
@@ -298,6 +304,8 @@ class Client(OpenApiClient):
             query['CheckGroupId'] = request.check_group_id
         if not DaraCore.is_null(request.check_id):
             query['CheckId'] = request.check_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_list):
@@ -348,6 +356,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.remark):
@@ -382,6 +392,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.remark):
@@ -2004,6 +2016,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.event_id_list):
             query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.handle_remark):
+            query['HandleRemark'] = request.handle_remark
         if not DaraCore.is_null(request.process_list):
             query['ProcessList'] = request.process_list
         if not DaraCore.is_null(request.uuid_list):
@@ -2036,6 +2050,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.event_id_list):
             query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.handle_remark):
+            query['HandleRemark'] = request.handle_remark
         if not DaraCore.is_null(request.process_list):
             query['ProcessList'] = request.process_list
         if not DaraCore.is_null(request.uuid_list):
@@ -2154,6 +2170,8 @@ class Client(OpenApiClient):
             query['EventName'] = request.event_name
         if not DaraCore.is_null(request.event_type):
             query['EventType'] = request.event_type
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.rule_id):
@@ -2188,6 +2206,8 @@ class Client(OpenApiClient):
             query['EventName'] = request.event_name
         if not DaraCore.is_null(request.event_type):
             query['EventType'] = request.event_type
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.rule_id):
@@ -2524,6 +2544,8 @@ class Client(OpenApiClient):
             query['Bind'] = request.bind
         if not DaraCore.is_null(request.bind_all):
             query['BindAll'] = request.bind_all
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.is_pre_bind):
@@ -2534,6 +2556,8 @@ class Client(OpenApiClient):
             query['NtmVersion'] = request.ntm_version
         if not DaraCore.is_null(request.pre_bind_order_id):
             query['PreBindOrderId'] = request.pre_bind_order_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.un_bind):
@@ -2572,6 +2596,8 @@ class Client(OpenApiClient):
             query['Bind'] = request.bind
         if not DaraCore.is_null(request.bind_all):
             query['BindAll'] = request.bind_all
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.is_pre_bind):
@@ -2582,6 +2608,8 @@ class Client(OpenApiClient):
             query['NtmVersion'] = request.ntm_version
         if not DaraCore.is_null(request.pre_bind_order_id):
             query['PreBindOrderId'] = request.pre_bind_order_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.un_bind):
@@ -2852,6 +2880,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.added_check):
             query['AddedCheck'] = request.added_check
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config_requirement_ids_shrink):
             query['ConfigRequirementIds'] = request.config_requirement_ids_shrink
         if not DaraCore.is_null(request.config_standard_ids_shrink):
@@ -2914,6 +2944,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.added_check):
             query['AddedCheck'] = request.added_check
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config_requirement_ids_shrink):
             query['ConfigRequirementIds'] = request.config_requirement_ids_shrink
         if not DaraCore.is_null(request.config_standard_ids_shrink):
@@ -3057,6 +3089,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.change_check_custom_config_with_options_async(request, runtime)
 
+    def change_check_scope_config_instance_with_options(
+        self,
+        request: main_models.ChangeCheckScopeConfigInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeCheckScopeConfigInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.add_asset_uuids):
+            query['AddAssetUuids'] = request.add_asset_uuids
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.delete_asset_uuids):
+            query['DeleteAssetUuids'] = request.delete_asset_uuids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChangeCheckScopeConfigInstance',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChangeCheckScopeConfigInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_check_scope_config_instance_with_options_async(
+        self,
+        request: main_models.ChangeCheckScopeConfigInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeCheckScopeConfigInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.add_asset_uuids):
+            query['AddAssetUuids'] = request.add_asset_uuids
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.delete_asset_uuids):
+            query['DeleteAssetUuids'] = request.delete_asset_uuids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChangeCheckScopeConfigInstance',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChangeCheckScopeConfigInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_check_scope_config_instance(
+        self,
+        request: main_models.ChangeCheckScopeConfigInstanceRequest,
+    ) -> main_models.ChangeCheckScopeConfigInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.change_check_scope_config_instance_with_options(request, runtime)
+
+    async def change_check_scope_config_instance_async(
+        self,
+        request: main_models.ChangeCheckScopeConfigInstanceRequest,
+    ) -> main_models.ChangeCheckScopeConfigInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.change_check_scope_config_instance_with_options_async(request, runtime)
+
     def change_security_score_rule_with_options(
         self,
         request: main_models.ChangeSecurityScoreRuleRequest,
@@ -3068,6 +3178,8 @@ class Client(OpenApiClient):
             query['CalType'] = request.cal_type
         if not DaraCore.is_null(request.reset_security_score_rule):
             query['ResetSecurityScoreRule'] = request.reset_security_score_rule
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.security_score_category_list):
             query['SecurityScoreCategoryList'] = request.security_score_category_list
         if not DaraCore.is_null(request.security_score_rule_list):
@@ -3102,6 +3214,8 @@ class Client(OpenApiClient):
             query['CalType'] = request.cal_type
         if not DaraCore.is_null(request.reset_security_score_rule):
             query['ResetSecurityScoreRule'] = request.reset_security_score_rule
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.security_score_category_list):
             query['SecurityScoreCategoryList'] = request.security_score_category_list
         if not DaraCore.is_null(request.security_score_rule_list):
@@ -3652,6 +3766,10 @@ class Client(OpenApiClient):
             query['AssetSelectionType'] = request.asset_selection_type
         if not DaraCore.is_null(request.auto_delete_days):
             query['AutoDeleteDays'] = request.auto_delete_days
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.release_after_scan):
             query['ReleaseAfterScan'] = request.release_after_scan
         if not DaraCore.is_null(request.scan_data_disk):
@@ -3690,6 +3808,10 @@ class Client(OpenApiClient):
             query['AssetSelectionType'] = request.asset_selection_type
         if not DaraCore.is_null(request.auto_delete_days):
             query['AutoDeleteDays'] = request.auto_delete_days
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.release_after_scan):
             query['ReleaseAfterScan'] = request.release_after_scan
         if not DaraCore.is_null(request.scan_data_disk):
@@ -3850,6 +3972,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.business_type):
             query['BusinessType'] = request.business_type
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
         if not DaraCore.is_null(request.target_type):
@@ -3882,6 +4006,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.business_type):
             query['BusinessType'] = request.business_type
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
         if not DaraCore.is_null(request.target_type):
@@ -4978,6 +5104,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCycleTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
         if not DaraCore.is_null(request.first_date_str):
@@ -5024,6 +5152,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCycleTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
         if not DaraCore.is_null(request.first_date_str):
@@ -7344,6 +7474,8 @@ class Client(OpenApiClient):
             query['LastModifiedStartTime'] = request.last_modified_start_time
         if not DaraCore.is_null(request.scan_mode):
             query['ScanMode'] = request.scan_mode
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7390,6 +7522,8 @@ class Client(OpenApiClient):
             query['LastModifiedStartTime'] = request.last_modified_start_time
         if not DaraCore.is_null(request.scan_mode):
             query['ScanMode'] = request.scan_mode
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7432,8 +7566,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
+        if not DaraCore.is_null(request.auto_add):
+            query['AutoAdd'] = request.auto_add
         if not DaraCore.is_null(request.bucket_name_list):
             query['BucketNameList'] = request.bucket_name_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.decompress_max_file_count):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
         if not DaraCore.is_null(request.decompress_max_layer):
@@ -7456,6 +7594,8 @@ class Client(OpenApiClient):
             query['RealTimeIncr'] = request.real_time_incr
         if not DaraCore.is_null(request.scan_day_list):
             query['ScanDayList'] = request.scan_day_list
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -7486,8 +7626,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
+        if not DaraCore.is_null(request.auto_add):
+            query['AutoAdd'] = request.auto_add
         if not DaraCore.is_null(request.bucket_name_list):
             query['BucketNameList'] = request.bucket_name_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.decompress_max_file_count):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
         if not DaraCore.is_null(request.decompress_max_layer):
@@ -7510,6 +7654,8 @@ class Client(OpenApiClient):
             query['RealTimeIncr'] = request.real_time_incr
         if not DaraCore.is_null(request.scan_day_list):
             query['ScanDayList'] = request.scan_day_list
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -7723,6 +7869,9 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.request_form):
             request.request_form_shrink = Utils.array_to_string_with_specified_style(tmp_req.request_form, 'RequestForm', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         body = {}
         if not DaraCore.is_null(request.from_ecs):
             body['FromEcs'] = request.from_ecs
@@ -7735,6 +7884,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.try_version):
             body['TryVersion'] = request.try_version
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7763,6 +7913,9 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.request_form):
             request.request_form_shrink = Utils.array_to_string_with_specified_style(tmp_req.request_form, 'RequestForm', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         body = {}
         if not DaraCore.is_null(request.from_ecs):
             body['FromEcs'] = request.from_ecs
@@ -7775,6 +7928,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.try_version):
             body['TryVersion'] = request.try_version
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7814,6 +7968,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateServiceLinkedRoleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.service_linked_role):
             query['ServiceLinkedRole'] = request.service_linked_role
         req = open_api_util_models.OpenApiRequest(
@@ -7842,6 +7998,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateServiceLinkedRoleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.service_linked_role):
             query['ServiceLinkedRole'] = request.service_linked_role
         req = open_api_util_models.OpenApiRequest(
@@ -7954,6 +8112,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSimilarSecurityEventsQueryTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.security_event_id):
@@ -7988,6 +8150,10 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSimilarSecurityEventsQueryTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.security_event_id):
@@ -8126,6 +8292,8 @@ class Client(OpenApiClient):
             query['EventId'] = request.event_id
         if not DaraCore.is_null(request.note):
             query['Note'] = request.note
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8156,6 +8324,8 @@ class Client(OpenApiClient):
             query['EventId'] = request.event_id
         if not DaraCore.is_null(request.note):
             query['Note'] = request.note
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8580,6 +8750,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateVirusScanOnceTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.param):
             query['Param'] = request.param
         if not DaraCore.is_null(request.scan_path):
@@ -8614,6 +8786,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateVirusScanOnceTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.param):
             query['Param'] = request.param
         if not DaraCore.is_null(request.scan_path):
@@ -12192,6 +12366,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.ids):
             query['Ids'] = request.ids
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
@@ -12222,6 +12398,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.ids):
             query['Ids'] = request.ids
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_util_models.OpenApiRequest(
@@ -12484,6 +12662,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.note_id):
             query['NoteId'] = request.note_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12512,6 +12692,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.note_id):
             query['NoteId'] = request.note_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12990,6 +13172,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.whitelist):
             query['Whitelist'] = request.whitelist
         req = open_api_util_models.OpenApiRequest(
@@ -13020,6 +13204,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.whitelist):
             query['Whitelist'] = request.whitelist
         req = open_api_util_models.OpenApiRequest(
@@ -13662,6 +13848,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -13696,6 +13884,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -14024,6 +14214,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -14058,6 +14250,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -15714,6 +15908,8 @@ class Client(OpenApiClient):
             query['RepoNamespace'] = request.repo_namespace
         if not DaraCore.is_null(request.repo_region_id):
             query['RepoRegionId'] = request.repo_region_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.scan_range):
             query['ScanRange'] = request.scan_range
         if not DaraCore.is_null(request.status_list):
@@ -15794,6 +15990,8 @@ class Client(OpenApiClient):
             query['RepoNamespace'] = request.repo_namespace
         if not DaraCore.is_null(request.repo_region_id):
             query['RepoRegionId'] = request.repo_region_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.scan_range):
             query['ScanRange'] = request.scan_range
         if not DaraCore.is_null(request.status_list):
@@ -15902,6 +16100,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.report_id):
             query['ReportId'] = request.report_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.time_end):
             query['TimeEnd'] = request.time_end
         if not DaraCore.is_null(request.time_start):
@@ -15940,6 +16140,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.report_id):
             query['ReportId'] = request.report_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.time_end):
             query['TimeEnd'] = request.time_end
         if not DaraCore.is_null(request.time_start):
@@ -19266,6 +19468,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.machine_types):
             query['MachineTypes'] = request.machine_types
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.support_auto_tag):
             query['SupportAutoTag'] = request.support_auto_tag
         if not DaraCore.is_null(request.value):
@@ -19298,6 +19502,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.machine_types):
             query['MachineTypes'] = request.machine_types
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.support_auto_tag):
             query['SupportAutoTag'] = request.support_auto_tag
         if not DaraCore.is_null(request.value):
@@ -19522,6 +19728,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.report_id):
             query['ReportId'] = request.report_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -19554,6 +19762,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.report_id):
             query['ReportId'] = request.report_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -19606,6 +19816,8 @@ class Client(OpenApiClient):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.report_version):
             query['ReportVersion'] = request.report_version
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.title):
             query['Title'] = request.title
         req = open_api_util_models.OpenApiRequest(
@@ -19644,6 +19856,8 @@ class Client(OpenApiClient):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.report_version):
             query['ReportVersion'] = request.report_version
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.title):
             query['Title'] = request.title
         req = open_api_util_models.OpenApiRequest(
@@ -20650,6 +20864,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -20680,6 +20896,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -21252,6 +21470,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.multi_account_action_type):
             query['MultiAccountActionType'] = request.multi_account_action_type
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
         req = open_api_util_models.OpenApiRequest(
@@ -21292,6 +21512,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.multi_account_action_type):
             query['MultiAccountActionType'] = request.multi_account_action_type
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
         req = open_api_util_models.OpenApiRequest(
@@ -21336,6 +21558,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21364,6 +21588,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -22530,6 +22756,8 @@ class Client(OpenApiClient):
             query['NoPage'] = request.no_page
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.sale_version_check_code):
             query['SaleVersionCheckCode'] = request.sale_version_check_code
         if not DaraCore.is_null(request.vendor):
@@ -22576,6 +22804,8 @@ class Client(OpenApiClient):
             query['NoPage'] = request.no_page
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.sale_version_check_code):
             query['SaleVersionCheckCode'] = request.sale_version_check_code
         if not DaraCore.is_null(request.vendor):
@@ -24884,6 +25114,8 @@ class Client(OpenApiClient):
             query['RepoNamespace'] = request.repo_namespace
         if not DaraCore.is_null(request.repo_region_id):
             query['RepoRegionId'] = request.repo_region_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.rule_tag):
             query['RuleTag'] = request.rule_tag
         if not DaraCore.is_null(request.scan_range):
@@ -24956,6 +25188,8 @@ class Client(OpenApiClient):
             query['RepoNamespace'] = request.repo_namespace
         if not DaraCore.is_null(request.repo_region_id):
             query['RepoRegionId'] = request.repo_region_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.rule_tag):
             query['RuleTag'] = request.rule_tag
         if not DaraCore.is_null(request.scan_range):
@@ -26348,6 +26582,8 @@ class Client(OpenApiClient):
             query['RepoNamespace'] = request.repo_namespace
         if not DaraCore.is_null(request.repo_region_id):
             query['RepoRegionId'] = request.repo_region_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.rule_tag):
             query['RuleTag'] = request.rule_tag
         if not DaraCore.is_null(request.scan_range):
@@ -26432,6 +26668,8 @@ class Client(OpenApiClient):
             query['RepoNamespace'] = request.repo_namespace
         if not DaraCore.is_null(request.repo_region_id):
             query['RepoRegionId'] = request.repo_region_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.rule_tag):
             query['RuleTag'] = request.rule_tag
         if not DaraCore.is_null(request.scan_range):
@@ -28422,6 +28660,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source):
             query['Source'] = request.source
         if not DaraCore.is_null(request.use_next_token):
@@ -28466,6 +28706,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source):
             query['Source'] = request.source
         if not DaraCore.is_null(request.use_next_token):
@@ -29012,6 +29254,8 @@ class Client(OpenApiClient):
             query['ProcessStartedStart'] = request.process_started_start
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.sca_name):
             query['ScaName'] = request.sca_name
         if not DaraCore.is_null(request.sca_name_pattern):
@@ -29084,6 +29328,8 @@ class Client(OpenApiClient):
             query['ProcessStartedStart'] = request.process_started_start
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.sca_name):
             query['ScaName'] = request.sca_name
         if not DaraCore.is_null(request.sca_name_pattern):
@@ -29764,6 +30010,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.use_next_token):
             query['UseNextToken'] = request.use_next_token
         if not DaraCore.is_null(request.user):
@@ -29812,6 +30060,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.use_next_token):
             query['UseNextToken'] = request.use_next_token
         if not DaraCore.is_null(request.user):
@@ -30018,6 +30268,8 @@ class Client(OpenApiClient):
             query['ExportId'] = request.export_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -30048,6 +30300,8 @@ class Client(OpenApiClient):
             query['ExportId'] = request.export_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -31164,6 +31418,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source):
             query['Source'] = request.source
         if not DaraCore.is_null(request.start_time):
@@ -31196,6 +31452,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source):
             query['Source'] = request.source
         if not DaraCore.is_null(request.start_time):
@@ -35266,6 +35524,8 @@ class Client(OpenApiClient):
             query['Necessity'] = request.necessity
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.search_tags):
             query['SearchTags'] = request.search_tags
         if not DaraCore.is_null(request.status_list):
@@ -35322,6 +35582,8 @@ class Client(OpenApiClient):
             query['Necessity'] = request.necessity
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.search_tags):
             query['SearchTags'] = request.search_tags
         if not DaraCore.is_null(request.status_list):
@@ -35784,6 +36046,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeVulCheckTaskStatusDetailResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.task_ids):
             query['TaskIds'] = request.task_ids
         if not DaraCore.is_null(request.types):
@@ -35816,6 +36080,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeVulCheckTaskStatusDetailResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.task_ids):
             query['TaskIds'] = request.task_ids
         if not DaraCore.is_null(request.types):
@@ -36730,6 +36996,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36762,6 +37030,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -39076,6 +39346,8 @@ class Client(OpenApiClient):
             query['ExportType'] = request.export_type
         if not DaraCore.is_null(request.report_id):
             query['ReportId'] = request.report_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -39106,6 +39378,8 @@ class Client(OpenApiClient):
             query['ExportType'] = request.export_type
         if not DaraCore.is_null(request.report_id):
             query['ReportId'] = request.report_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -39264,6 +39538,8 @@ class Client(OpenApiClient):
             query['ParentEventTypes'] = request.parent_event_types
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.status):
@@ -39336,6 +39612,8 @@ class Client(OpenApiClient):
             query['ParentEventTypes'] = request.parent_event_types
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.status):
@@ -39392,6 +39670,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.alias_name):
             query['AliasName'] = request.alias_name
+        if not DaraCore.is_null(request.asset_type):
+            query['AssetType'] = request.asset_type
         if not DaraCore.is_null(request.attach_types):
             query['AttachTypes'] = request.attach_types
         if not DaraCore.is_null(request.container_name):
@@ -39456,6 +39736,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.alias_name):
             query['AliasName'] = request.alias_name
+        if not DaraCore.is_null(request.asset_type):
+            query['AssetType'] = request.asset_type
         if not DaraCore.is_null(request.attach_types):
             query['AttachTypes'] = request.attach_types
         if not DaraCore.is_null(request.container_name):
@@ -40652,6 +40934,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.from_):
             query['From'] = request.from_
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -40680,6 +40964,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.from_):
             query['From'] = request.from_
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -41947,9 +42233,16 @@ class Client(OpenApiClient):
 
     def get_check_config_with_options(
         self,
+        request: main_models.GetCheckConfigRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GetCheckConfigResponse:
-        req = open_api_util_models.OpenApiRequest()
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'GetCheckConfig',
             version = '2018-12-03',
@@ -41968,9 +42261,16 @@ class Client(OpenApiClient):
 
     async def get_check_config_with_options_async(
         self,
+        request: main_models.GetCheckConfigRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GetCheckConfigResponse:
-        req = open_api_util_models.OpenApiRequest()
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'GetCheckConfig',
             version = '2018-12-03',
@@ -41987,13 +42287,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_check_config(self) -> main_models.GetCheckConfigResponse:
+    def get_check_config(
+        self,
+        request: main_models.GetCheckConfigRequest,
+    ) -> main_models.GetCheckConfigResponse:
         runtime = RuntimeOptions()
-        return self.get_check_config_with_options(runtime)
+        return self.get_check_config_with_options(request, runtime)
 
-    async def get_check_config_async(self) -> main_models.GetCheckConfigResponse:
+    async def get_check_config_async(
+        self,
+        request: main_models.GetCheckConfigRequest,
+    ) -> main_models.GetCheckConfigResponse:
         runtime = RuntimeOptions()
-        return await self.get_check_config_with_options_async(runtime)
+        return await self.get_check_config_with_options_async(request, runtime)
 
     def get_check_count_statistic_with_options(
         self,
@@ -42162,6 +42468,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetCheckProcessResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -42190,6 +42498,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetCheckProcessResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -42373,6 +42683,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_check_sale_with_options_async(request, runtime)
 
+    def get_check_scope_config_with_options(
+        self,
+        request: main_models.GetCheckScopeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCheckScopeConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCheckScopeConfig',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCheckScopeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_check_scope_config_with_options_async(
+        self,
+        request: main_models.GetCheckScopeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCheckScopeConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCheckScopeConfig',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCheckScopeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_check_scope_config(
+        self,
+        request: main_models.GetCheckScopeConfigRequest,
+    ) -> main_models.GetCheckScopeConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_check_scope_config_with_options(request, runtime)
+
+    async def get_check_scope_config_async(
+        self,
+        request: main_models.GetCheckScopeConfigRequest,
+    ) -> main_models.GetCheckScopeConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_check_scope_config_with_options_async(request, runtime)
+
     def get_check_structure_with_options(
         self,
         request: main_models.GetCheckStructureRequest,
@@ -42554,6 +42938,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.end_time_stamp):
             query['EndTimeStamp'] = request.end_time_stamp
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.start_time_stamp):
             query['StartTimeStamp'] = request.start_time_stamp
         if not DaraCore.is_null(request.statistic_type):
@@ -42588,6 +42974,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.end_time_stamp):
             query['EndTimeStamp'] = request.end_time_stamp
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.start_time_stamp):
             query['StartTimeStamp'] = request.start_time_stamp
         if not DaraCore.is_null(request.statistic_type):
@@ -42946,6 +43334,8 @@ class Client(OpenApiClient):
             query['CloudAssetTypes'] = request.cloud_asset_types
         if not DaraCore.is_null(request.is_sale_data):
             query['IsSaleData'] = request.is_sale_data
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_util_models.OpenApiRequest(
@@ -42978,6 +43368,8 @@ class Client(OpenApiClient):
             query['CloudAssetTypes'] = request.cloud_asset_types
         if not DaraCore.is_null(request.is_sale_data):
             query['IsSaleData'] = request.is_sale_data
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_util_models.OpenApiRequest(
@@ -43702,6 +44094,8 @@ class Client(OpenApiClient):
             query['EndTimestamp'] = request.end_timestamp
         if not DaraCore.is_null(request.interval):
             query['Interval'] = request.interval
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
         req = open_api_util_models.OpenApiRequest(
@@ -43736,6 +44130,8 @@ class Client(OpenApiClient):
             query['EndTimestamp'] = request.end_timestamp
         if not DaraCore.is_null(request.interval):
             query['Interval'] = request.interval
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
         req = open_api_util_models.OpenApiRequest(
@@ -45700,6 +46096,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.from_):
             query['From'] = request.from_
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_util_models.OpenApiRequest(
@@ -45730,6 +46128,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.from_):
             query['From'] = request.from_
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_util_models.OpenApiRequest(
@@ -45898,6 +46298,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.exclude_cluster_types):
+            query['ExcludeClusterTypes'] = request.exclude_cluster_types
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -45926,6 +46328,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.exclude_cluster_types):
+            query['ExcludeClusterTypes'] = request.exclude_cluster_types
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -47828,6 +48232,8 @@ class Client(OpenApiClient):
             query['CalType'] = request.cal_type
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -47858,6 +48264,8 @@ class Client(OpenApiClient):
             query['CalType'] = request.cal_type
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -48344,6 +48752,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.group_id_list):
             query['GroupIdList'] = request.group_id_list
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -48374,6 +48784,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.group_id_list):
             query['GroupIdList'] = request.group_id_list
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -49446,6 +49858,8 @@ class Client(OpenApiClient):
             query['OperationParams'] = request.operation_params
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.source_ip):
@@ -49486,6 +49900,8 @@ class Client(OpenApiClient):
             query['OperationParams'] = request.operation_params
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.source_ip):
@@ -49534,6 +49950,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.event_id_list):
             query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.handle_remark):
+            query['HandleRemark'] = request.handle_remark
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -49564,6 +49982,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.event_id_list):
             query['EventIdList'] = request.event_id_list
+        if not DaraCore.is_null(request.handle_remark):
+            query['HandleRemark'] = request.handle_remark
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -53522,6 +53942,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -53564,6 +53986,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -54014,6 +54438,8 @@ class Client(OpenApiClient):
             query['ClusterName'] = request.cluster_name
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.exclude_cluster_types):
+            query['ExcludeClusterTypes'] = request.exclude_cluster_types
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         req = open_api_util_models.OpenApiRequest(
@@ -54050,6 +54476,8 @@ class Client(OpenApiClient):
             query['ClusterName'] = request.cluster_name
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.exclude_cluster_types):
+            query['ExcludeClusterTypes'] = request.exclude_cluster_types
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         req = open_api_util_models.OpenApiRequest(
@@ -57882,6 +58310,8 @@ class Client(OpenApiClient):
             query['BucketName'] = request.bucket_name
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -57912,6 +58342,8 @@ class Client(OpenApiClient):
             query['BucketName'] = request.bucket_name
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -57958,12 +58390,16 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.fuzz_bucket_name):
             query['FuzzBucketName'] = request.fuzz_bucket_name
+        if not DaraCore.is_null(request.fuzz_file_system_name):
+            query['FuzzFileSystemName'] = request.fuzz_file_system_name
         if not DaraCore.is_null(request.has_risk):
             query['HasRisk'] = request.has_risk
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -57998,12 +58434,16 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.fuzz_bucket_name):
             query['FuzzBucketName'] = request.fuzz_bucket_name
+        if not DaraCore.is_null(request.fuzz_file_system_name):
+            query['FuzzFileSystemName'] = request.fuzz_file_system_name
         if not DaraCore.is_null(request.has_risk):
             query['HasRisk'] = request.has_risk
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -59618,6 +60058,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.event_status):
+            query['EventStatus'] = request.event_status
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.remark):
@@ -59660,6 +60102,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.event_status):
+            query['EventStatus'] = request.event_status
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.remark):
@@ -62760,8 +63204,12 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyCreateVulWhitelistResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.reason):
             query['Reason'] = request.reason
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.target_info):
             query['TargetInfo'] = request.target_info
         if not DaraCore.is_null(request.whitelist):
@@ -62792,8 +63240,12 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyCreateVulWhitelistResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.reason):
             query['Reason'] = request.reason
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.target_info):
             query['TargetInfo'] = request.target_info
         if not DaraCore.is_null(request.whitelist):
@@ -63104,6 +63556,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyEmgVulSubmitResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.name):
@@ -63138,6 +63592,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyEmgVulSubmitResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.name):
@@ -64290,6 +64746,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.focus_level):
             query['FocusLevel'] = request.focus_level
         if not DaraCore.is_null(request.project):
@@ -64328,6 +64786,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.focus_level):
             query['FocusLevel'] = request.focus_level
         if not DaraCore.is_null(request.project):
@@ -64452,6 +64912,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyOperateVulResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.from_):
             query['From'] = request.from_
         if not DaraCore.is_null(request.info):
@@ -64460,6 +64922,8 @@ class Client(OpenApiClient):
             query['OperateType'] = request.operate_type
         if not DaraCore.is_null(request.reason):
             query['Reason'] = request.reason
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -64488,6 +64952,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyOperateVulResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.from_):
             query['From'] = request.from_
         if not DaraCore.is_null(request.info):
@@ -64496,6 +64962,8 @@ class Client(OpenApiClient):
             query['OperateType'] = request.operate_type
         if not DaraCore.is_null(request.reason):
             query['Reason'] = request.reason
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -64539,9 +65007,15 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ModifyPostPayModuleSwitchShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.edr_module_switch):
+            request.edr_module_switch_shrink = Utils.array_to_string_with_specified_style(tmp_req.edr_module_switch, 'EdrModuleSwitch', 'json')
         if not DaraCore.is_null(tmp_req.post_pay_module_switch_obj):
             request.post_pay_module_switch_obj_shrink = Utils.array_to_string_with_specified_style(tmp_req.post_pay_module_switch_obj, 'PostPayModuleSwitchObj', 'json')
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.edr_module_switch_shrink):
+            query['EdrModuleSwitch'] = request.edr_module_switch_shrink
         if not DaraCore.is_null(request.post_paid_host_auto_bind):
             query['PostPaidHostAutoBind'] = request.post_paid_host_auto_bind
         if not DaraCore.is_null(request.post_paid_host_auto_bind_version):
@@ -64579,9 +65053,15 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ModifyPostPayModuleSwitchShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.edr_module_switch):
+            request.edr_module_switch_shrink = Utils.array_to_string_with_specified_style(tmp_req.edr_module_switch, 'EdrModuleSwitch', 'json')
         if not DaraCore.is_null(tmp_req.post_pay_module_switch_obj):
             request.post_pay_module_switch_obj_shrink = Utils.array_to_string_with_specified_style(tmp_req.post_pay_module_switch_obj, 'PostPayModuleSwitchObj', 'json')
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.edr_module_switch_shrink):
+            query['EdrModuleSwitch'] = request.edr_module_switch_shrink
         if not DaraCore.is_null(request.post_paid_host_auto_bind):
             query['PostPaidHostAutoBind'] = request.post_paid_host_auto_bind
         if not DaraCore.is_null(request.post_paid_host_auto_bind_version):
@@ -65190,6 +65670,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySecurityEventMarkMissIndividuallyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         body = {}
@@ -65228,6 +65710,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySecurityEventMarkMissIndividuallyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         body = {}
@@ -65294,6 +65778,8 @@ class Client(OpenApiClient):
             query['BindAssetType'] = request.bind_asset_type
         if not DaraCore.is_null(request.bind_uuid_list):
             query['BindUuidList'] = request.bind_uuid_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.logical_exp):
@@ -65350,6 +65836,8 @@ class Client(OpenApiClient):
             query['BindAssetType'] = request.bind_asset_type
         if not DaraCore.is_null(request.bind_uuid_list):
             query['BindUuidList'] = request.bind_uuid_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.logical_exp):
@@ -65480,6 +65968,10 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyStartVulScanResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.types):
             query['Types'] = request.types
         if not DaraCore.is_null(request.uuids):
@@ -65510,6 +66002,10 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyStartVulScanResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.types):
             query['Types'] = request.types
         if not DaraCore.is_null(request.uuids):
@@ -66020,6 +66516,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyVulConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config):
             query['Config'] = request.config
         if not DaraCore.is_null(request.type):
@@ -66050,6 +66548,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyVulConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config):
             query['Config'] = request.config
         if not DaraCore.is_null(request.type):
@@ -67508,6 +68008,8 @@ class Client(OpenApiClient):
             query['BucketName'] = request.bucket_name
         if not DaraCore.is_null(request.operate_code):
             query['OperateCode'] = request.operate_code
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -67538,6 +68040,8 @@ class Client(OpenApiClient):
             query['BucketName'] = request.bucket_name
         if not DaraCore.is_null(request.operate_code):
             query['OperateCode'] = request.operate_code
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -67578,6 +68082,8 @@ class Client(OpenApiClient):
     ) -> main_models.OperateCommonOverallConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config):
             query['Config'] = request.config
         if not DaraCore.is_null(request.no_target_as_on):
@@ -67612,6 +68118,8 @@ class Client(OpenApiClient):
     ) -> main_models.OperateCommonOverallConfigResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config):
             query['Config'] = request.config
         if not DaraCore.is_null(request.no_target_as_on):
@@ -68318,6 +68826,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.operate_type):
             query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         if not DaraCore.is_null(request.uuids):
@@ -68352,6 +68862,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.operate_type):
             query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         if not DaraCore.is_null(request.uuids):
@@ -68478,6 +68990,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.security_event_ids):
             query['SecurityEventIds'] = request.security_event_ids
         req = open_api_util_models.OpenApiRequest(
@@ -68508,6 +69022,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.security_event_ids):
             query['SecurityEventIds'] = request.security_event_ids
         req = open_api_util_models.OpenApiRequest(
@@ -68628,6 +69144,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.operation):
             query['Operation'] = request.operation
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.sub_operation):
@@ -68666,6 +69184,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.operation):
             query['Operation'] = request.operation
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.sub_operation):
@@ -69234,6 +69754,8 @@ class Client(OpenApiClient):
     ) -> main_models.QueryAttackCountResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.uuids):
@@ -69270,6 +69792,8 @@ class Client(OpenApiClient):
     ) -> main_models.QueryAttackCountResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.uuids):
@@ -69914,6 +70438,8 @@ class Client(OpenApiClient):
             query['CloudAssetSubType'] = request.cloud_asset_sub_type
         if not DaraCore.is_null(request.cloud_asset_type):
             query['CloudAssetType'] = request.cloud_asset_type
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.vendor):
             query['Vendor'] = request.vendor
         req = open_api_util_models.OpenApiRequest(
@@ -69948,6 +70474,8 @@ class Client(OpenApiClient):
             query['CloudAssetSubType'] = request.cloud_asset_sub_type
         if not DaraCore.is_null(request.cloud_asset_type):
             query['CloudAssetType'] = request.cloud_asset_type
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.vendor):
             query['Vendor'] = request.vendor
         req = open_api_util_models.OpenApiRequest(
@@ -70055,9 +70583,16 @@ class Client(OpenApiClient):
 
     def refresh_oss_bucket_scan_info_with_options(
         self,
+        request: main_models.RefreshOssBucketScanInfoRequest,
         runtime: RuntimeOptions,
     ) -> main_models.RefreshOssBucketScanInfoResponse:
-        req = open_api_util_models.OpenApiRequest()
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'RefreshOssBucketScanInfo',
             version = '2018-12-03',
@@ -70076,9 +70611,16 @@ class Client(OpenApiClient):
 
     async def refresh_oss_bucket_scan_info_with_options_async(
         self,
+        request: main_models.RefreshOssBucketScanInfoRequest,
         runtime: RuntimeOptions,
     ) -> main_models.RefreshOssBucketScanInfoResponse:
-        req = open_api_util_models.OpenApiRequest()
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'RefreshOssBucketScanInfo',
             version = '2018-12-03',
@@ -70095,13 +70637,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def refresh_oss_bucket_scan_info(self) -> main_models.RefreshOssBucketScanInfoResponse:
+    def refresh_oss_bucket_scan_info(
+        self,
+        request: main_models.RefreshOssBucketScanInfoRequest,
+    ) -> main_models.RefreshOssBucketScanInfoResponse:
         runtime = RuntimeOptions()
-        return self.refresh_oss_bucket_scan_info_with_options(runtime)
+        return self.refresh_oss_bucket_scan_info_with_options(request, runtime)
 
-    async def refresh_oss_bucket_scan_info_async(self) -> main_models.RefreshOssBucketScanInfoResponse:
+    async def refresh_oss_bucket_scan_info_async(
+        self,
+        request: main_models.RefreshOssBucketScanInfoRequest,
+    ) -> main_models.RefreshOssBucketScanInfoResponse:
         runtime = RuntimeOptions()
-        return await self.refresh_oss_bucket_scan_info_with_options_async(runtime)
+        return await self.refresh_oss_bucket_scan_info_with_options_async(request, runtime)
 
     def refresh_registry_token_with_options(
         self,
@@ -70710,6 +71258,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.quara_file_id):
             query['QuaraFileId'] = request.quara_file_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -70742,6 +71292,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.quara_file_id):
             query['QuaraFileId'] = request.quara_file_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -70880,6 +71432,8 @@ class Client(OpenApiClient):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.report_version):
             query['ReportVersion'] = request.report_version
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.send_end_time):
             query['SendEndTime'] = request.send_end_time
         if not DaraCore.is_null(request.send_period_days):
@@ -70946,6 +71500,8 @@ class Client(OpenApiClient):
             query['ReportType'] = request.report_type
         if not DaraCore.is_null(request.report_version):
             query['ReportVersion'] = request.report_version
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.send_end_time):
             query['SendEndTime'] = request.send_end_time
         if not DaraCore.is_null(request.send_period_days):
@@ -71094,6 +71650,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.levels_on):
             query['LevelsOn'] = request.levels_on
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -71124,6 +71682,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not DaraCore.is_null(request.levels_on):
             query['LevelsOn'] = request.levels_on
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -71338,6 +71898,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.report_id):
             query['ReportId'] = request.report_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -71366,6 +71928,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.report_id):
             query['ReportId'] = request.report_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -72434,6 +72998,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitCheckResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.scan_range):
             query['ScanRange'] = request.scan_range
         if not DaraCore.is_null(request.task_source):
@@ -72464,6 +73030,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitCheckResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.scan_range):
             query['ScanRange'] = request.scan_range
         if not DaraCore.is_null(request.task_source):
@@ -73059,6 +73627,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAlarmEventResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         body = {}
         if not DaraCore.is_null(request.alarm_event_id_list):
             body['AlarmEventIdList'] = request.alarm_event_id_list
@@ -73067,6 +73638,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.operation_code):
             body['OperationCode'] = request.operation_code
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -73091,6 +73663,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAlarmEventResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         body = {}
         if not DaraCore.is_null(request.alarm_event_id_list):
             body['AlarmEventIdList'] = request.alarm_event_id_list
@@ -73099,6 +73674,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.operation_code):
             body['OperationCode'] = request.operation_code
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -73612,6 +74188,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCheckPolicyResponse:
         runtime = RuntimeOptions()
         return await self.update_check_policy_with_options_async(request, runtime)
+
+    def update_check_scope_config_with_options(
+        self,
+        request: main_models.UpdateCheckScopeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCheckScopeConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_config):
+            query['AutoConfig'] = request.auto_config
+        if not DaraCore.is_null(request.auto_type):
+            query['AutoType'] = request.auto_type
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCheckScopeConfig',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCheckScopeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_check_scope_config_with_options_async(
+        self,
+        request: main_models.UpdateCheckScopeConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCheckScopeConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_config):
+            query['AutoConfig'] = request.auto_config
+        if not DaraCore.is_null(request.auto_type):
+            query['AutoType'] = request.auto_type
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCheckScopeConfig',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCheckScopeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_check_scope_config(
+        self,
+        request: main_models.UpdateCheckScopeConfigRequest,
+    ) -> main_models.UpdateCheckScopeConfigResponse:
+        runtime = RuntimeOptions()
+        return self.update_check_scope_config_with_options(request, runtime)
+
+    async def update_check_scope_config_async(
+        self,
+        request: main_models.UpdateCheckScopeConfigRequest,
+    ) -> main_models.UpdateCheckScopeConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.update_check_scope_config_with_options_async(request, runtime)
 
     def update_client_alert_mode_with_options(
         self,
@@ -75760,6 +76422,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
+        if not DaraCore.is_null(request.auto_add):
+            query['AutoAdd'] = request.auto_add
         if not DaraCore.is_null(request.bucket_name_list):
             query['BucketNameList'] = request.bucket_name_list
         if not DaraCore.is_null(request.decompress_max_file_count):
@@ -75786,6 +76450,8 @@ class Client(OpenApiClient):
             query['RealTimeIncr'] = request.real_time_incr
         if not DaraCore.is_null(request.scan_day_list):
             query['ScanDayList'] = request.scan_day_list
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -75816,6 +76482,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
+        if not DaraCore.is_null(request.auto_add):
+            query['AutoAdd'] = request.auto_add
         if not DaraCore.is_null(request.bucket_name_list):
             query['BucketNameList'] = request.bucket_name_list
         if not DaraCore.is_null(request.decompress_max_file_count):
@@ -75842,6 +76510,8 @@ class Client(OpenApiClient):
             query['RealTimeIncr'] = request.real_time_incr
         if not DaraCore.is_null(request.scan_day_list):
             query['ScanDayList'] = request.scan_day_list
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -75890,6 +76560,10 @@ class Client(OpenApiClient):
             query['AutoBindVersion'] = request.auto_bind_version
         if not DaraCore.is_null(request.bind_action):
             query['BindAction'] = request.bind_action
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.update_if_necessary):
             query['UpdateIfNecessary'] = request.update_if_necessary
         req = open_api_util_models.OpenApiRequest(
@@ -75924,6 +76598,10 @@ class Client(OpenApiClient):
             query['AutoBindVersion'] = request.auto_bind_version
         if not DaraCore.is_null(request.bind_action):
             query['BindAction'] = request.bind_action
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.update_if_necessary):
             query['UpdateIfNecessary'] = request.update_if_necessary
         req = open_api_util_models.OpenApiRequest(
@@ -76276,6 +76954,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.business_type):
             query['BusinessType'] = request.business_type
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.selection_key):
             query['SelectionKey'] = request.selection_key
         req = open_api_util_models.OpenApiRequest(
@@ -76306,6 +76986,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.business_type):
             query['BusinessType'] = request.business_type
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.selection_key):
             query['SelectionKey'] = request.selection_key
         req = open_api_util_models.OpenApiRequest(
@@ -77312,6 +77994,8 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not DaraCore.is_null(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.task_source):
@@ -77346,6 +78030,8 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not DaraCore.is_null(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.task_source):
@@ -77392,6 +78078,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.task_source):
@@ -77424,6 +78112,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.task_source):

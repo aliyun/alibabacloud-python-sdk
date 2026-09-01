@@ -8,38 +8,38 @@ from darabonba.model import DaraModel
 class CreateSasTrialRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         from_ecs: bool = None,
         lang: str = None,
         request_form: main_models.CreateSasTrialRequestRequestForm = None,
         try_type: int = None,
         try_version: int = None,
     ):
-        # Specifies whether the request is redirected from the Elastic Compute Service (ECS) console. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # Specifies whether the request is from the ECS console. Valid values:
+        # - **true**: yes.
+        # - **false**: no.
         self.from_ecs = from_ecs
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The reason why you apply for the trial. You must specify the reason for the second trial.
+        # The reason for applying for a trial. This parameter is required for a second trial.
         self.request_form = request_form
         # The trial type. Valid values:
+        # - **0**: trial not allowed.
+        # - **1**: first trial.
+        # - **2**: second trial.
         # 
-        # *   **0**: trial prohibited
-        # *   **1**: first trial
-        # *   **2**: second trial
         # 
-        # >  You can call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain the trial type. You can start a trial only if this parameter is not set to 0.
+        # > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter. A trial can be started only when the value is not 0.
         self.try_type = try_type
-        # The trial edition. Valid values:
+        # The trial version. Valid values:
+        # - **3**: Enterprise Edition.
+        # - **7**: Ultimate Edition.
         # 
-        # *   **3**: Enterprise
-        # *   **7**: Ultimate
-        # 
-        # >  You can call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain the trial edition.
+        # >Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
         self.try_version = try_version
 
     def validate(self):
@@ -51,6 +51,9 @@ class CreateSasTrialRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.from_ecs is not None:
             result['FromEcs'] = self.from_ecs
 
@@ -70,6 +73,9 @@ class CreateSasTrialRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('FromEcs') is not None:
             self.from_ecs = m.get('FromEcs')
 
@@ -93,7 +99,7 @@ class CreateSasTrialRequestRequestForm(DaraModel):
         self,
         try_reason: str = None,
     ):
-        # The reason why you apply for the trial.
+        # The reason for applying for a trial.
         self.try_reason = try_reason
 
     def validate(self):

@@ -14,17 +14,17 @@ class ListCheckItemRequest(DaraModel):
         page_size: int = None,
         task_sources: List[str] = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid value:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # 
         # 
         # - **zh**: Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The number of entries per page. Default value: **20**.
+        # The maximum number of entries per page in a paged query. Default value: **20**.
         self.page_size = page_size
-        # List of task sources.
+        # The list of task sources.
         self.task_sources = task_sources
 
     def validate(self):

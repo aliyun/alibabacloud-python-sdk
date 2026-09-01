@@ -9,6 +9,7 @@ class RollbackSuspEventQuaraFileRequest(DaraModel):
         self,
         from_: str = None,
         quara_file_id: int = None,
+        resource_directory_account_id: int = None,
         source_ip: str = None,
     ):
         # The ID of the request source. Set the value to sas.
@@ -16,6 +17,7 @@ class RollbackSuspEventQuaraFileRequest(DaraModel):
         # The ID of the quarantined file.   
         # > If you do not configure this parameter, you cannot call the RollbackSuspEventQuaraFile operation to restore a quarantined file. You can call the [DescribeSuspEventQuaraFiles](~~DescribeSuspEventQuaraFiles~~) operation to query the IDs of quarantined files.
         self.quara_file_id = quara_file_id
+        self.resource_directory_account_id = resource_directory_account_id
         # The source IP address of the request.
         self.source_ip = source_ip
 
@@ -33,6 +35,9 @@ class RollbackSuspEventQuaraFileRequest(DaraModel):
         if self.quara_file_id is not None:
             result['QuaraFileId'] = self.quara_file_id
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
 
@@ -45,6 +50,9 @@ class RollbackSuspEventQuaraFileRequest(DaraModel):
 
         if m.get('QuaraFileId') is not None:
             self.quara_file_id = m.get('QuaraFileId')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

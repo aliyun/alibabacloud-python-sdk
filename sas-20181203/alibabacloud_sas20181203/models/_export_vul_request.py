@@ -11,6 +11,7 @@ class ExportVulRequest(DaraModel):
     def __init__(
         self,
         alias_name: str = None,
+        asset_type: str = None,
         attach_types: str = None,
         container_name: str = None,
         create_ts_end: int = None,
@@ -30,112 +31,91 @@ class ExportVulRequest(DaraModel):
         vpc_instance_ids: str = None,
         vul_entity_list: List[main_models.ExportVulRequestVulEntityList] = None,
     ):
-        # The vulnerability name.
+        # The name of the vulnerability.
         self.alias_name = alias_name
-        # An additional vulnerability type to export. This parameter is required and must be set to **sca** if the `Type` parameter is set to `app`.
+        # The asset type where the vulnerability is detected. Separate multiple types with commas (,). Valid values:
+        # - **ECS**: host asset
+        # - **CONTAINER**: container asset
+        self.asset_type = asset_type
+        # The additional vulnerability type when querying application vulnerabilities. This parameter is required when Type is set to app. The value is fixed as **sca**.
         # 
-        # > If you set this parameter to **sca**, the query returns both application vulnerabilities (**app**) and software composition analysis (**sca**) vulnerabilities. If you do not set this parameter, only application vulnerabilities are returned.
+        # > If this parameter is set to **sca**, both application vulnerabilities (**app** type) and software composition analysis (**sca** type) vulnerabilities are queried. If this parameter is not set, only application vulnerabilities are queried.
         self.attach_types = attach_types
-        # The affected container name.
+        # The name of the container affected by the vulnerability.
         self.container_name = container_name
-        # The end of the creation time range for the vulnerabilities to export.
-        # 
-        # > A Unix timestamp in milliseconds.
+        # The end of the time range during which the first scan was performed.
+        # > The value is a UNIX timestamp. Unit: milliseconds.
         self.create_ts_end = create_ts_end
-        # The start of the creation time range for the vulnerabilities to export.
-        # 
-        # > A Unix timestamp in milliseconds.
+        # The start of the time range during which the first scan was performed.
+        # > The value is a UNIX timestamp. Unit: milliseconds.
         self.create_ts_start = create_ts_start
         # The CVE ID.
         self.cve_id = cve_id
-        # Indicates whether the vulnerability is remediated. Valid values:
+        # Specifies whether the vulnerability is fixed. Valid values:
         # 
-        # - **y**: Remediated
-        # 
-        # - **n**: Not remediated
+        # - **y**: fixed
+        # - **n**: not fixed
         self.dealed = dealed
-        # The ID of the asset group that contains the affected servers.
-        # 
-        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain this parameter.
+        # The ID of the asset group to which the server with the vulnerability belongs.
+        # > Call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain this parameter.
         self.group_id = group_id
-        # The affected image name.
+        # The name of the image affected by the vulnerability.
         self.image_name = image_name
-        # The language of the request and response. The default value is **zh**. Valid values:
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # - **zh**: Chinese
-        # 
-        # - **en**: English
+        # - zh: Chinese
+        # - en: English
         self.lang = lang
-        # The remediation priority of the vulnerabilities to export. Separate multiple priorities with commas. Valid values:
+        # The priority of the vulnerability to query. Separate multiple priorities with commas (,). Valid values:
         # 
-        # - **asap**: High
-        # 
-        # - **later**: Medium
-        # 
-        # - **nntf**: Low
+        # - **asap**: high
+        # - **later**: medium
+        # - **nntf**: low
         self.necessity = necessity
-        # The affected process path.
+        # The path of the process affected by the vulnerability.
         self.path = path
-        # Specifies whether the vulnerability is protected by runtime application self-protection (RASP). Valid values:
+        # Specifies whether runtime application self-protection (RASP) supports real-time protection against the vulnerability. Valid values:
         # 
-        # - **0**: Not supported
-        # 
-        # - **1**: Supported
+        # - **0**: Not supported.
+        # - **1**: Supported.
         self.rasp_defend = rasp_defend
+        # The ID of the resource directory account.
         self.resource_directory_account_id = resource_directory_account_id
-        # A tag for filtering vulnerabilities. Separate multiple tags with commas. Valid values:
+        # Filters results by label. Valid values:
         # 
         # <props="china">
-        # 
         # - Restart required
-        # 
-        # - remote exploitation
-        # 
-        # - exploit exists
-        # 
-        # - exploitable
-        # 
-        # - Elevation of Privilege
-        # 
-        # - Code Execution
-        # 
+        # - Remote utilization
+        # - EXP exists
+        # - Exploitable
+        # - Privilege escalation
+        # - Code execution
         # 
         # 
         # <props="intl">
-        # 
         # - **Restart required**
-        # 
-        # - **remote exploitation**
-        # 
-        # - **exploit exists**
-        # 
-        # - **exploitable**
-        # 
+        # - **Remote utilization**
+        # - **EXP exists**
+        # - **Available**
         # - **Elevation of Privilege**
-        # 
         # - **Code Execution**
         self.search_tags = search_tags
         # The type of vulnerabilities to export. Valid values:
         # 
         # - **cve**: Linux software vulnerability
-        # 
         # - **sys**: Windows system vulnerability
-        # 
         # - **cms**: Web-CMS vulnerability
-        # 
         # - **app**: application vulnerability
-        # 
         # - **emg**: emergency vulnerability
         # 
         # This parameter is required.
         self.type = type
-        # The UUIDs of the servers for which to export vulnerabilities. Separate multiple UUIDs with commas.
+        # The UUIDs of the servers to query for vulnerabilities. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
-        # The IDs of the VPC instances for which to export vulnerabilities. Separate multiple IDs with commas.
-        # 
-        # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain this parameter.
+        # The instance IDs of the VPC-connected instances to query for vulnerabilities. Separate multiple IDs with commas (,).
+        # > Invoke the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain this parameter.
         self.vpc_instance_ids = vpc_instance_ids
-        # A list of vulnerability component information.
+        # The list of vulnerability component information.
         self.vul_entity_list = vul_entity_list
 
     def validate(self):
@@ -151,6 +131,9 @@ class ExportVulRequest(DaraModel):
             result = _map
         if self.alias_name is not None:
             result['AliasName'] = self.alias_name
+
+        if self.asset_type is not None:
+            result['AssetType'] = self.asset_type
 
         if self.attach_types is not None:
             result['AttachTypes'] = self.attach_types
@@ -214,6 +197,9 @@ class ExportVulRequest(DaraModel):
         m = m or dict()
         if m.get('AliasName') is not None:
             self.alias_name = m.get('AliasName')
+
+        if m.get('AssetType') is not None:
+            self.asset_type = m.get('AssetType')
 
         if m.get('AttachTypes') is not None:
             self.attach_types = m.get('AttachTypes')
@@ -280,9 +266,9 @@ class ExportVulRequestVulEntityList(DaraModel):
         entity_name: str = None,
         entity_version: str = None,
     ):
-        # The component name.
+        # The name of the component.
         self.entity_name = entity_name
-        # The component version.
+        # The version of the component.
         self.entity_version = entity_version
 
     def validate(self):

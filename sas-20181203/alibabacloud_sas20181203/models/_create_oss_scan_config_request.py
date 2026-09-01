@@ -10,7 +10,9 @@ class CreateOssScanConfigRequest(DaraModel):
     def __init__(
         self,
         all_key_prefix: bool = None,
+        auto_add: int = None,
         bucket_name_list: List[str] = None,
+        client_token: str = None,
         decompress_max_file_count: int = None,
         decompress_max_layer: int = None,
         decryption_list: List[str] = None,
@@ -22,38 +24,48 @@ class CreateOssScanConfigRequest(DaraModel):
         name: str = None,
         real_time_incr: bool = None,
         scan_day_list: List[int] = None,
+        source: str = None,
         start_time: str = None,
     ):
-        # Specifies whether to match the prefixes of all objects.
+        # Specifies whether to match all prefixes. If this parameter is set to true, the KeyPrefixList parameter does not take effect.
         self.all_key_prefix = all_key_prefix
-        # The names of buckets.
+        # Specifies whether OSS buckets are automatically added to this policy. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
+        self.auto_add = auto_add
+        # The list of bucket names.
         self.bucket_name_list = bucket_name_list
-        # The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops. The detection of files that have already been decompressed is not affected.
         self.decompress_max_file_count = decompress_max_file_count
-        # The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        # The maximum number of decompression layers when multiple levels of nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation stops. The detection of files that have already been decompressed is not affected.
         self.decompress_max_layer = decompress_max_layer
-        # The decryption methods.
+        # The list of decryption types.
         self.decryption_list = decryption_list
         # Specifies whether to enable the policy. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.enable = enable
-        # The time when the scan ends. The time must be in the HH:mm:ss format.
+        # The scan stop time, in the HH:mm:ss format.
         self.end_time = end_time
-        # The prefixes of the objects.
+        # The file prefix list.
         self.key_prefix_list = key_prefix_list
-        # The suffixes of the files to scan.
+        # The list of file suffixes to scan.
         self.key_suffix_list = key_suffix_list
-        # The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        # Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
         self.last_modified_start_time = last_modified_start_time
         # The policy name.
         self.name = name
-        # Whether to enable real-time incremental detection. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime are not effective.
+        # Specifies whether to enable real-time incremental detection. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
         self.real_time_incr = real_time_incr
-        # The days on which the scan is executed in a week.
+        # The scan schedule. The number represents the day of the week.
         self.scan_day_list = scan_day_list
-        # The time when the scan starts. The time must be in the HH:mm:ss format.
+        # The business source. Valid values:
+        # - **OSS**: OSS.
+        # - **NAS**: NAS.
+        self.source = source
+        # The scan start time, in the HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):
@@ -67,8 +79,14 @@ class CreateOssScanConfigRequest(DaraModel):
         if self.all_key_prefix is not None:
             result['AllKeyPrefix'] = self.all_key_prefix
 
+        if self.auto_add is not None:
+            result['AutoAdd'] = self.auto_add
+
         if self.bucket_name_list is not None:
             result['BucketNameList'] = self.bucket_name_list
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.decompress_max_file_count is not None:
             result['DecompressMaxFileCount'] = self.decompress_max_file_count
@@ -103,6 +121,9 @@ class CreateOssScanConfigRequest(DaraModel):
         if self.scan_day_list is not None:
             result['ScanDayList'] = self.scan_day_list
 
+        if self.source is not None:
+            result['Source'] = self.source
+
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
@@ -113,8 +134,14 @@ class CreateOssScanConfigRequest(DaraModel):
         if m.get('AllKeyPrefix') is not None:
             self.all_key_prefix = m.get('AllKeyPrefix')
 
+        if m.get('AutoAdd') is not None:
+            self.auto_add = m.get('AutoAdd')
+
         if m.get('BucketNameList') is not None:
             self.bucket_name_list = m.get('BucketNameList')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('DecompressMaxFileCount') is not None:
             self.decompress_max_file_count = m.get('DecompressMaxFileCount')
@@ -148,6 +175,9 @@ class CreateOssScanConfigRequest(DaraModel):
 
         if m.get('ScanDayList') is not None:
             self.scan_day_list = m.get('ScanDayList')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

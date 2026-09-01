@@ -25,6 +25,7 @@ class ExportSuspEventsRequest(DaraModel):
         page_size: str = None,
         parent_event_types: str = None,
         remark: str = None,
+        resource_directory_account_id: int = None,
         source_ip: str = None,
         status: str = None,
         target_type: str = None,
@@ -114,6 +115,7 @@ class ExportSuspEventsRequest(DaraModel):
         self.parent_event_types = parent_event_types
         # The remarks.
         self.remark = remark
+        self.resource_directory_account_id = resource_directory_account_id
         # The source IP address of the request. The value of this parameter is specified by the system.
         self.source_ip = source_ip
         # The handling status of the exception. Valid values:
@@ -199,6 +201,9 @@ class ExportSuspEventsRequest(DaraModel):
         if self.remark is not None:
             result['Remark'] = self.remark
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
 
@@ -271,6 +276,9 @@ class ExportSuspEventsRequest(DaraModel):
 
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

@@ -8,6 +8,7 @@ class DescribeScreenScoreThreadRequest(DaraModel):
     def __init__(
         self,
         end_time: int = None,
+        resource_directory_account_id: int = None,
         source: int = None,
         start_time: int = None,
     ):
@@ -15,6 +16,7 @@ class DescribeScreenScoreThreadRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.resource_directory_account_id = resource_directory_account_id
         # The source of the security score. If left empty, the default value is Security Center. Valid values:
         # 
         # 0: Security Center.
@@ -37,6 +39,9 @@ class DescribeScreenScoreThreadRequest(DaraModel):
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source is not None:
             result['Source'] = self.source
 
@@ -49,6 +54,9 @@ class DescribeScreenScoreThreadRequest(DaraModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('Source') is not None:
             self.source = m.get('Source')

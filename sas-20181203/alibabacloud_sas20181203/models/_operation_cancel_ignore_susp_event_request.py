@@ -10,10 +10,12 @@ class OperationCancelIgnoreSuspEventRequest(DaraModel):
     def __init__(
         self,
         remark: str = None,
+        resource_directory_account_id: int = None,
         security_event_ids: List[int] = None,
     ):
         # The remarks.
         self.remark = remark
+        self.resource_directory_account_id = resource_directory_account_id
         # The IDs of alert events.
         # 
         # This parameter is required.
@@ -30,6 +32,9 @@ class OperationCancelIgnoreSuspEventRequest(DaraModel):
         if self.remark is not None:
             result['Remark'] = self.remark
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.security_event_ids is not None:
             result['SecurityEventIds'] = self.security_event_ids
 
@@ -39,6 +44,9 @@ class OperationCancelIgnoreSuspEventRequest(DaraModel):
         m = m or dict()
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SecurityEventIds') is not None:
             self.security_event_ids = m.get('SecurityEventIds')

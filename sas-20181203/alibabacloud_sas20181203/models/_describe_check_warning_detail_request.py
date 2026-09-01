@@ -16,26 +16,26 @@ class DescribeCheckWarningDetailRequest(DaraModel):
         uuid: str = None,
     ):
         # The ID of the check item.
-        # > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.>Notice: When this parameter is specified, the Uuid parameter is required..
+        # > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.>Notice: When this parameter is specified, the Uuid parameter is required.
         self.check_id = check_id
         # The alert ID of the check item.
         # 
         # > To query the details of a specified check item, provide the alert ID of the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain this ID.
-        # >Notice: This parameter is required when both Uuid and CheckId are empty..
+        # >Notice: This parameter is required when both Uuid and CheckId are empty.
         self.check_warning_id = check_warning_id
         # The container name.
         self.container_name = container_name
         # The language of the request and response. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The ID of the Alibaba Cloud account of the member accounts in the resource folder.
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
         # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The source IP address of the request.
         self.source_ip = source_ip
         # The UUID of the server to query.
-        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.>Notice: When this parameter is specified, the CheckId parameter is required..
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.>Notice: When this parameter is specified, the CheckId parameter is required.
         self.uuid = uuid
 
     def validate(self):

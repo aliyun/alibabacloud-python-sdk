@@ -16,6 +16,7 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         bind_app_list: List[str] = None,
         bind_asset_type: str = None,
         bind_uuid_list: List[str] = None,
+        client_token: str = None,
         criteria: str = None,
         logical_exp: str = None,
         ntm_version: str = None,
@@ -32,8 +33,8 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         self.auth_item = auth_item
         # Specifies whether to enable automatic binding. Valid values:
         # 
-        # - **0**: Disabled.
-        # - **1**: Enabled.
+        # - **0**: Disable automatic binding.
+        # - **1**: Enable automatic binding.
         self.auto_bind = auto_bind
         # Specifies whether to bind all assets. Default value: **false**. Valid values:
         # 
@@ -42,16 +43,18 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         self.bind_all = bind_all
         # The list of application IDs to bind.
         # 
-        # > Retrieve the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
+        # > Obtain the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
         self.bind_app_list = bind_app_list
         # The Asset Type for the operation. Valid values:
-        # - **INSTANCE**: instance.
-        # - **APP**: application.
+        # - **INSTANCE**: Instance.
+        # - **APP**: Application.
         self.bind_asset_type = bind_asset_type
         # The list of asset UUIDs to bind.
         self.bind_uuid_list = bind_uuid_list
-        # The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when specifying this parameter.
-        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query supported search conditions.
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
+        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
         # The logical relationship among multiple search conditions. Valid values:
         # - **OR**: The search conditions are evaluated with a logical OR.
@@ -59,13 +62,13 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         self.logical_exp = logical_exp
         # The NTM version code for pre-binding.
         self.ntm_version = ntm_version
-        # Specifies whether to perform a pre-binding operation. Valid values:
+        # Specifies whether to enable pre-binding. Valid values:
         # 
         # - **0**: No.
         # - **1**: Yes.
         # 
         # 
-        # > After pre-binding is enabled, the corresponding edition authorization quota is automatically bound to the specified servers after the purchase is completed.
+        # > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
         self.pre_bind = pre_bind
         # The pre-binding order ID.
         self.pre_bind_order_id = pre_bind_order_id
@@ -73,7 +76,7 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         self.resource_directory_uid = resource_directory_uid
         # The list of application IDs to unbind.
         # 
-        # > Retrieve the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
+        # > Obtain the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
         self.un_bind_app_list = un_bind_app_list
         # The list of asset UUIDs to unbind.
         self.un_bind_uuid_list = un_bind_uuid_list
@@ -106,6 +109,9 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
 
         if self.bind_uuid_list is not None:
             result['BindUuidList'] = self.bind_uuid_list
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.criteria is not None:
             result['Criteria'] = self.criteria
@@ -155,6 +161,9 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
 
         if m.get('BindUuidList') is not None:
             self.bind_uuid_list = m.get('BindUuidList')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('Criteria') is not None:
             self.criteria = m.get('Criteria')

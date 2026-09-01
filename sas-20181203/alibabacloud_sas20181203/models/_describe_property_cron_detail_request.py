@@ -12,6 +12,7 @@ class DescribePropertyCronDetailRequest(DaraModel):
         next_token: str = None,
         page_size: int = None,
         remark: str = None,
+        resource_directory_account_id: int = None,
         source: str = None,
         use_next_token: bool = None,
         user: str = None,
@@ -27,6 +28,7 @@ class DescribePropertyCronDetailRequest(DaraModel):
         self.page_size = page_size
         # The name or IP address of the server.
         self.remark = remark
+        self.resource_directory_account_id = resource_directory_account_id
         # The path to the scheduled task.
         self.source = source
         # Specifies whether to use the NextToken method to retrieve a new page of results. If you set UseNextToken to true, the value of TotalCount is not returned. Valid values:
@@ -62,6 +64,9 @@ class DescribePropertyCronDetailRequest(DaraModel):
         if self.remark is not None:
             result['Remark'] = self.remark
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source is not None:
             result['Source'] = self.source
 
@@ -92,6 +97,9 @@ class DescribePropertyCronDetailRequest(DaraModel):
 
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('Source') is not None:
             self.source = m.get('Source')

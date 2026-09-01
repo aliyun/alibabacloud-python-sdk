@@ -7,18 +7,23 @@ from darabonba.model import DaraModel
 class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
+        edr_module_switch_shrink: str = None,
         post_paid_host_auto_bind: int = None,
         post_paid_host_auto_bind_version: int = None,
         post_pay_instance_id: str = None,
         post_pay_module_switch: str = None,
         post_pay_module_switch_obj_shrink: str = None,
     ):
-        # Specifies whether to automatically bind newly added assets for host and container protection. Valid values:
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+        self.client_token = client_token
+        self.edr_module_switch_shrink = edr_module_switch_shrink
+        # Specifies whether to automatically bind new assets for host and container protection. Valid values:
         # 
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.post_paid_host_auto_bind = post_paid_host_auto_bind
-        # The version to which newly added assets are automatically bound for host and container protection. Valid values:
+        # The edition to which new assets are automatically bound for host and container protection. Valid values:
         # - **1**: Free Edition. 
         # - **3**: Enterprise Edition.
         # - **5**: Advanced Edition.
@@ -31,7 +36,7 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
         self.post_pay_instance_id = post_pay_instance_id
         # The switch status of pay-as-you-go modules in JSON string format. Valid values:
         # - Key:
-        #   - **VUL**: vulnerability fix module
+        #   - **VUL**: vulnerability management module
         #   - **CSPM**: Cloud Security Posture Management (CSPM) module
         #   - **AGENTLESS**: agentless detection module
         #   - **SERVERLESS**: serverless security module
@@ -45,10 +50,10 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
         # 
         # > Modules for which no value is specified remain unchanged.
         # 
-        # <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
+        # <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
         self.post_pay_module_switch = post_pay_module_switch
         # The pay-as-you-go module switch.
-        # >Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
+        # >Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
         self.post_pay_module_switch_obj_shrink = post_pay_module_switch_obj_shrink
 
     def validate(self):
@@ -59,6 +64,12 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.edr_module_switch_shrink is not None:
+            result['EdrModuleSwitch'] = self.edr_module_switch_shrink
+
         if self.post_paid_host_auto_bind is not None:
             result['PostPaidHostAutoBind'] = self.post_paid_host_auto_bind
 
@@ -78,6 +89,12 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('EdrModuleSwitch') is not None:
+            self.edr_module_switch_shrink = m.get('EdrModuleSwitch')
+
         if m.get('PostPaidHostAutoBind') is not None:
             self.post_paid_host_auto_bind = m.get('PostPaidHostAutoBind')
 

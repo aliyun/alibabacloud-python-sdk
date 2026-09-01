@@ -12,7 +12,7 @@ class UpdateMultiUserInstancesRequest(DaraModel):
         self,
         member_instances: List[main_models.UpdateMultiUserInstancesRequestMemberInstances] = None,
     ):
-        # Member instances.
+        # The member instances.
         self.member_instances = member_instances
 
     def validate(self):
@@ -50,6 +50,7 @@ class UpdateMultiUserInstancesRequestMemberInstances(DaraModel):
         anti_ransomware_capacity: int = None,
         charge_type: str = None,
         cspm_capacity: int = None,
+        cspm_instance_capacity: int = None,
         honeypot_capacity: int = None,
         image_scan_capacity: int = None,
         instance_id: str = None,
@@ -66,61 +67,50 @@ class UpdateMultiUserInstancesRequestMemberInstances(DaraModel):
     ):
         # The Alibaba Cloud account UID of the member.
         self.ali_uid = ali_uid
-        # Anti-ransomware capacity allocated to the member, in GB.
+        # The anti-ransomware capacity assigned to the member. Unit: GB.
         self.anti_ransomware_capacity = anti_ransomware_capacity
-        # Charge type, values:
-        # 
-        # - **PREPAID**: Prepaid.
-        # 
-        # - **POSTPAID** (default): Postpaid.
+        # The billing type. Valid values:
+        # * **PREPAID**: upfront.
+        # * **POSTPAID** (default): pay-as-you-go.
         self.charge_type = charge_type
-        # Cloud platform configuration check scan count allocated to the member. Unit: times per month.
+        # The number of cloud platform configuration check scans assigned to the member. Unit: scans per month.
         self.cspm_capacity = cspm_capacity
-        # Honeypot authorization count allocated to the member.
+        self.cspm_instance_capacity = cspm_instance_capacity
+        # The number of honeypot quotas assigned to the member.
         self.honeypot_capacity = honeypot_capacity
-        # Image scan authorization count allocated to the member.
+        # The number of image scan quotas assigned to the member.
         self.image_scan_capacity = image_scan_capacity
-        # The Cloud Security Center instance ID purchased by the member account.
+        # The Security Center instance ID purchased by the member accounts.
         self.instance_id = instance_id
-        # Operation type. Values:
-        # 
-        # - **ADD**: Add
-        # 
-        # - **CHANGE**: Change
-        # 
-        # - **DEL**: Delete
+        # The operation type. Valid values:  
+        # - **ADD**: increase 
+        # - **CHANGE**: update
+        # - **DEL**: delete
         self.opt_type = opt_type
-        # Application protection count allocated to the member. Unit: per month.
+        # The number of application protection quotas assigned to the member. Unit: quotas per month.
         self.rasp_capacity = rasp_capacity
-        # Malicious file detection SDK authorization count allocated to the member.
+        # The number of malicious file detection SDK quotas assigned to the member.
         self.sdk_capacity = sdk_capacity
-        # Log storage capacity allocated to the member, in GB.
+        # The log storage capacity assigned to the member. Unit: GB.
         self.sls_capacity = sls_capacity
-        # Status of the member account instance. Values:
-        # 
-        # - **1**: Valid.
-        # 
-        # - **2**: Invalid.
+        # The instance status of the member accounts. Valid values:
+        # - **1**: active.
+        # - **2**: expired.
         self.status = status
-        # Threat analysis capacity allocated to the member. Unit: GB.
+        # The threat analysis capacity assigned to the member. Unit: GB.
         self.threat_analysis_capacity = threat_analysis_capacity
-        # Threat analysis and response log access traffic allocated to the member. Unit: GB/day.
+        # The log ingestion traffic for threat detection and response assigned to the member. Unit: GB/day.
         self.threat_analysis_flow = threat_analysis_flow
-        # The version of Cloud Security Center protection to be bound. Values:
-        # 
-        # - **1**: Free Edition
-        # 
+        # The Security Center edition to bind. Valid values:  
+        # - **1**: Free Edition 
         # - **3**: Enterprise Edition
-        # 
         # - **5**: Advanced Edition
-        # 
-        # - **6**: Antivirus Edition
-        # 
-        # - **7**: Flagship Edition
+        # - **6**: Anti-virus Edition    
+        # - **7**: Ultimate Edition
         self.version = version
-        # Member account authorization usage information.
+        # The authorization usage information of the member accounts.
         self.version_summary = version_summary
-        # Web tamper-proof authorization count allocated to the member.
+        # The number of web tamper-proofing authorization quotas assigned to the member.
         self.web_lock_capacity = web_lock_capacity
 
     def validate(self):
@@ -145,6 +135,9 @@ class UpdateMultiUserInstancesRequestMemberInstances(DaraModel):
 
         if self.cspm_capacity is not None:
             result['CspmCapacity'] = self.cspm_capacity
+
+        if self.cspm_instance_capacity is not None:
+            result['CspmInstanceCapacity'] = self.cspm_instance_capacity
 
         if self.honeypot_capacity is not None:
             result['HoneypotCapacity'] = self.honeypot_capacity
@@ -203,6 +196,9 @@ class UpdateMultiUserInstancesRequestMemberInstances(DaraModel):
         if m.get('CspmCapacity') is not None:
             self.cspm_capacity = m.get('CspmCapacity')
 
+        if m.get('CspmInstanceCapacity') is not None:
+            self.cspm_instance_capacity = m.get('CspmInstanceCapacity')
+
         if m.get('HoneypotCapacity') is not None:
             self.honeypot_capacity = m.get('HoneypotCapacity')
 
@@ -254,25 +250,18 @@ class UpdateMultiUserInstancesRequestMemberInstancesVersionSummary(DaraModel):
         ecs_count: int = None,
         version: int = None,
     ):
-        # Number of cores authorized for the member.
+        # The number of authorized cores assigned to the member.
         self.core_count = core_count
-        # Number of authorizations allocated to the member.
+        # The number of authorized instances assigned to the member.
         self.ecs_count = ecs_count
-        # Version of the Cloud Security Center for the member account. Values:
-        # 
-        # - **1**: Free Edition
-        # 
+        # The Security Center edition of the member accounts. Valid values:  
+        # - **1**: Free Edition 
         # - **3**: Enterprise Edition
-        # 
-        # - **5**: Advanced Edition
-        # 
-        # - **6**: Antivirus Edition
-        # 
-        # - **7**: Flagship Edition
-        # 
-        # - **8**: Multiple Versions
-        # 
-        # - **10**: Only Purchase Value-Added Services
+        # - **5**: Premium Edition
+        # - **6**: Anti-virus Edition    
+        # - **7**: Ultimate Edition   
+        # - **8**: multi-edition   
+        # - **10**: value-added services only
         self.version = version
 
     def validate(self):

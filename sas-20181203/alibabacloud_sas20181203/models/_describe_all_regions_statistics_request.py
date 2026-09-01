@@ -10,6 +10,7 @@ class DescribeAllRegionsStatisticsRequest(DaraModel):
         from_: str = None,
         group_id: int = None,
         remark: str = None,
+        resource_directory_account_id: int = None,
         source_ip: str = None,
     ):
         # The source of the request. Default value: **aqs**. Valid values:
@@ -23,6 +24,7 @@ class DescribeAllRegionsStatisticsRequest(DaraModel):
         self.group_id = group_id
         # The name or public IP address of the asset.
         self.remark = remark
+        self.resource_directory_account_id = resource_directory_account_id
         # The source IP address of the request.
         self.source_ip = source_ip
 
@@ -43,6 +45,9 @@ class DescribeAllRegionsStatisticsRequest(DaraModel):
         if self.remark is not None:
             result['Remark'] = self.remark
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
 
@@ -58,6 +63,9 @@ class DescribeAllRegionsStatisticsRequest(DaraModel):
 
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

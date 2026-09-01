@@ -9,10 +9,12 @@ from darabonba.model import DaraModel
 class DescribeVulCheckTaskStatusDetailRequest(DaraModel):
     def __init__(
         self,
+        resource_directory_account_id: int = None,
         task_ids: List[str] = None,
         types: List[str] = None,
         uuid: str = None,
     ):
+        self.resource_directory_account_id = resource_directory_account_id
         # The task IDs.
         self.task_ids = task_ids
         # The types of the vulnerabilities that are detected by the tasks.
@@ -28,6 +30,9 @@ class DescribeVulCheckTaskStatusDetailRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.task_ids is not None:
             result['TaskIds'] = self.task_ids
 
@@ -41,6 +46,9 @@ class DescribeVulCheckTaskStatusDetailRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
+
         if m.get('TaskIds') is not None:
             self.task_ids = m.get('TaskIds')
 

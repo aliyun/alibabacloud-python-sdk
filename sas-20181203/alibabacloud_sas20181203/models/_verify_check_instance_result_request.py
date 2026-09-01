@@ -11,20 +11,23 @@ class VerifyCheckInstanceResultRequest(DaraModel):
         self,
         check_id: int = None,
         check_ids: List[int] = None,
+        client_token: str = None,
         instance_ids: List[str] = None,
         task_source: str = None,
     ):
         # The ID of the check item.
         # 
-        # > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the ID of the check item.
+        # > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the check item ID.
         self.check_id = check_id
-        # The list of IDs of the check items.
+        # The list of check item IDs.
         self.check_ids = check_ids
-        # The list of instance IDs of the assets affected by the check item.
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The list of instance IDs of the affected assets under the check item.
         self.instance_ids = instance_ids
-        # The source of the task. Valid values:
+        # The task source. Valid values:
         # 
-        # - **YAO_CHI**: YaoChi console.
+        # - **YAO_CHI**: ApsaraDB console.
         self.task_source = task_source
 
     def validate(self):
@@ -41,6 +44,9 @@ class VerifyCheckInstanceResultRequest(DaraModel):
         if self.check_ids is not None:
             result['CheckIds'] = self.check_ids
 
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
@@ -56,6 +62,9 @@ class VerifyCheckInstanceResultRequest(DaraModel):
 
         if m.get('CheckIds') is not None:
             self.check_ids = m.get('CheckIds')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')

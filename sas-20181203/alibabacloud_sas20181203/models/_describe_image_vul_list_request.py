@@ -30,6 +30,7 @@ class DescribeImageVulListRequest(DaraModel):
         repo_name: str = None,
         repo_namespace: str = None,
         repo_region_id: str = None,
+        resource_directory_account_id: int = None,
         rule_tag: str = None,
         scan_range: List[str] = None,
         status_list: str = None,
@@ -86,6 +87,7 @@ class DescribeImageVulListRequest(DaraModel):
         self.repo_namespace = repo_namespace
         # The region ID of the container image repository.
         self.repo_region_id = repo_region_id
+        self.resource_directory_account_id = resource_directory_account_id
         # The vulnerability tag. Valid values:
         # 
         # - **AI**: vulnerability related to AI components.
@@ -177,6 +179,9 @@ class DescribeImageVulListRequest(DaraModel):
         if self.repo_region_id is not None:
             result['RepoRegionId'] = self.repo_region_id
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.rule_tag is not None:
             result['RuleTag'] = self.rule_tag
 
@@ -261,6 +266,9 @@ class DescribeImageVulListRequest(DaraModel):
 
         if m.get('RepoRegionId') is not None:
             self.repo_region_id = m.get('RepoRegionId')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('RuleTag') is not None:
             self.rule_tag = m.get('RuleTag')

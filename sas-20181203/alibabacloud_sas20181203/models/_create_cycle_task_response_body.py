@@ -10,9 +10,9 @@ class CreateCycleTaskResponseBody(DaraModel):
         config_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the task configuration.
+        # The ID of the configuration.
         self.config_id = config_id
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

@@ -21,62 +21,54 @@ class DescribeCloudCenterInstancesRequest(DaraModel):
         resource_directory_account_id: int = None,
         use_next_token: bool = None,
     ):
-        # The search conditions for assets. This parameter is in JSON format. Pay attention to the case sensitivity when you specify this parameter.
-        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+        # The conditions for searching assets. This parameter is in JSON format. Note that the parameter values are case-sensitive.
+        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
-        # The page number to return from the query results. Default value: **1**, which indicates that query results are returned starting from page 1.
+        # The page number of the first page to return. Default value: **1**, which indicates that the query results are returned starting from page 1.
         self.current_page = current_page
-        # The asset vendor. Separate multiple vendors with commas (,). Valid values:
-        # 
-        # - **0**: Alibaba Cloud asset
-        # - **1**: non-cloud asset
-        # - **2**: IDC asset
-        # - **3**, **4**, **5**, **7**, **14**, **16**: third-party cloud asset
-        # - **8**: lightweight asset
-        # - **9**: SAE
-        # - **10**: PAI
+        # The asset vendor. Separate multiple asset vendors with commas (,). Valid values:
         self.flags = flags
         # The importance level of the asset. Valid values:
-        # - **2**: important asset
-        # - **1**: normal asset
-        # - **0**: test asset
+        # - **2**: Important asset.
+        # - **1**: General asset.
+        # - **0**: Test asset.
         self.importance = importance
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
         # The logical relationship between multiple search conditions. Default value: **OR**. Valid values:
         # 
-        # - **OR**: The search conditions are in the **OR** relationship.
-        # - **AND**: The search conditions are in the **AND** relationship.
+        # - **OR**: The search conditions have an **OR** relationship.
+        # - **AND**: The search conditions have an **AND** relationship.
         self.logical_exp = logical_exp
-        # The type of the asset that you want to query. Valid values:
+        # The type of asset to query. Valid values:
         # 
-        # - **ecs**: server
-        # - **cloud_product**: cloud product
-        # - **eci**: elastic container instance
-        # - **rund**: RunD container instance
-        # - **runc**: RunC container instance
+        # - **ecs**: server.
+        # - **cloud_product**: cloud product.
+        # - **eci**: elastic container instance.
+        # - **rund**: RunD container instance.
+        # - **runc**: RunC container instance.
         self.machine_types = machine_types
         # The NextToken value returned when the NextToken method is used. Leave this parameter empty for the first request.
         self.next_token = next_token
-        # Specifies whether to internationalize the default group name **Ungrouped**. Default value: **false**. Valid values:
+        # Specifies whether to disable internationalization for the default group name **未分组**. Default value: **false**. Valid values:
         # 
-        # - **true**: does not internationalize the group name. If the value of the GroupTrace response parameter is the default group **Ungrouped** in Security Center, the group name is still displayed as **Ungrouped** in Chinese.
-        # - **false**: internationalizes the group name. If the value of the GroupTrace response parameter is the default group **Ungrouped** in Security Center, the group name is displayed as **default**.
+        # - **true**: Internationalization is disabled. If the value of the GroupTrace response parameter is the default Security Center group **未分组**, the value is still displayed as **未分组**.
+        # - **false**: Internationalization is enabled. If the value of the GroupTrace response parameter is the default Security Center group **未分组**, the value is displayed as **default**.
         self.no_group_trace = no_group_trace
-        # The number of entries per page in a paginated query. Default value: **20**, which indicates that 20 entries of asset information are displayed per page.
+        # The number of assets to display on each page in a paged conditional query. Default value: **20**, which indicates that 20 asset records are displayed on each page.
         self.page_size = page_size
-        # The ID of the region where the instance you want to query resides.
+        # The region ID of the instance to query.
         self.region_id = region_id
-        # The Alibaba Cloud account ID of the member account in the resource directory.
-        # >You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the Alibaba Cloud account that corresponds to the member account in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # Specifies whether to use the NextToken method to retrieve asset list data. If this parameter is used, the TotalCount parameter is no longer returned. Valid values:
+        # Specifies whether to use the NextToken method to retrieve asset list data. If this parameter is set to true, TotalCount is no longer returned. Valid values:
         # 
-        # - **true**: uses the NextToken method.
-        # - **false**: does not use the NextToken method.
+        # - **true**: Uses the NextToken method.
+        # - **false**: Does not use the NextToken method.
         self.use_next_token = use_next_token
 
     def validate(self):

@@ -20,6 +20,7 @@ class SaveCustomizeReportConfigRequest(DaraModel):
         report_status: int = None,
         report_type: int = None,
         report_version: str = None,
+        resource_directory_account_id: int = None,
         send_end_time: str = None,
         send_period_days: int = None,
         send_period_type: str = None,
@@ -98,6 +99,7 @@ class SaveCustomizeReportConfigRequest(DaraModel):
         # *   **1.0.0**
         # *   **2.0.0**
         self.report_version = report_version
+        self.resource_directory_account_id = resource_directory_account_id
         # The end time at which the report is sent. The value is in the HH:mm:ss format.
         # 
         # >  This parameter is required if the ReportType parameter is set to 0, 1, 2, or 4.
@@ -178,6 +180,9 @@ class SaveCustomizeReportConfigRequest(DaraModel):
         if self.report_version is not None:
             result['ReportVersion'] = self.report_version
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.send_end_time is not None:
             result['SendEndTime'] = self.send_end_time
 
@@ -241,6 +246,9 @@ class SaveCustomizeReportConfigRequest(DaraModel):
 
         if m.get('ReportVersion') is not None:
             self.report_version = m.get('ReportVersion')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SendEndTime') is not None:
             self.send_end_time = m.get('SendEndTime')

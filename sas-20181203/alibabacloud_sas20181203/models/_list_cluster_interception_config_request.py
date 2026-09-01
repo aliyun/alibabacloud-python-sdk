@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class ListClusterInterceptionConfigRequest(DaraModel):
@@ -11,13 +13,14 @@ class ListClusterInterceptionConfigRequest(DaraModel):
         cluster_id: str = None,
         cluster_name: str = None,
         current_page: int = None,
+        exclude_cluster_types: List[str] = None,
         page_size: int = None,
     ):
         # The container firewall status of the cluster. Valid values:
         # - **-1**: unknown
         # - **0**: abnormal
         # - **1**: normal
-        # - **2**: normal pending confirmation.
+        # - **2**: normal pending confirmation
         self.cluster_cnnfstatus = cluster_cnnfstatus
         # The ID of the container cluster.
         # >You can call the [DescribeContainerInstances](~~DescribeContainerInstances~~) operation to obtain this parameter.
@@ -26,7 +29,9 @@ class ListClusterInterceptionConfigRequest(DaraModel):
         self.cluster_name = cluster_name
         # The page number of the page to return. Default value: 1, which indicates the first page.
         self.current_page = current_page
-        # The maximum number of entries per page in a paged query. Default value: 20.
+        # The list of excluded cluster types.
+        self.exclude_cluster_types = exclude_cluster_types
+        # The maximum number of entries per page in a paging query. Default value: 20.
         self.page_size = page_size
 
     def validate(self):
@@ -49,6 +54,9 @@ class ListClusterInterceptionConfigRequest(DaraModel):
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
+        if self.exclude_cluster_types is not None:
+            result['ExcludeClusterTypes'] = self.exclude_cluster_types
+
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
@@ -67,6 +75,9 @@ class ListClusterInterceptionConfigRequest(DaraModel):
 
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+
+        if m.get('ExcludeClusterTypes') is not None:
+            self.exclude_cluster_types = m.get('ExcludeClusterTypes')
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')

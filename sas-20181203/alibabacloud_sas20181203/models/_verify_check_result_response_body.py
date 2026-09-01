@@ -58,7 +58,7 @@ class VerifyCheckResultResponseBodyData(DaraModel):
         self.operate_code = operate_code
         # The task ID.
         self.task_id = task_id
-        # The rate limit duration. Unit: seconds.
+        # The throttling duration. Unit: seconds.
         self.throttling_time_second = throttling_time_second
 
     def validate(self):

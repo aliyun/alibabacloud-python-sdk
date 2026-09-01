@@ -11,7 +11,7 @@ class CreateSimilarSecurityEventsQueryTaskResponseBody(DaraModel):
         create_similar_security_events_query_task_response: main_models.CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEventsQueryTaskResponse = None,
         request_id: str = None,
     ):
-        # The response for creating a task to query similar alert events.
+        # The response information of the task for querying similar security alerts.
         self.create_similar_security_events_query_task_response = create_similar_security_events_query_task_response
         # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id

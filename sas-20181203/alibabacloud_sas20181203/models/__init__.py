@@ -107,6 +107,9 @@ from ._change_check_config_response import ChangeCheckConfigResponse
 from ._change_check_custom_config_request import ChangeCheckCustomConfigRequest
 from ._change_check_custom_config_response_body import ChangeCheckCustomConfigResponseBody
 from ._change_check_custom_config_response import ChangeCheckCustomConfigResponse
+from ._change_check_scope_config_instance_request import ChangeCheckScopeConfigInstanceRequest
+from ._change_check_scope_config_instance_response_body import ChangeCheckScopeConfigInstanceResponseBody
+from ._change_check_scope_config_instance_response import ChangeCheckScopeConfigInstanceResponse
 from ._change_security_score_rule_request import ChangeSecurityScoreRuleRequest
 from ._change_security_score_rule_response_body import ChangeSecurityScoreRuleResponseBody
 from ._change_security_score_rule_response import ChangeSecurityScoreRuleResponse
@@ -1517,6 +1520,7 @@ from ._get_build_risk_define_rule_config_response import GetBuildRiskDefineRuleC
 from ._get_can_try_sas_request import GetCanTrySasRequest
 from ._get_can_try_sas_response_body import GetCanTrySasResponseBody
 from ._get_can_try_sas_response import GetCanTrySasResponse
+from ._get_check_config_request import GetCheckConfigRequest
 from ._get_check_config_response_body import GetCheckConfigResponseBody
 from ._get_check_config_response import GetCheckConfigResponse
 from ._get_check_count_statistic_request import GetCheckCountStatisticRequest
@@ -1534,6 +1538,9 @@ from ._get_check_risk_statistics_response import GetCheckRiskStatisticsResponse
 from ._get_check_sale_request import GetCheckSaleRequest
 from ._get_check_sale_response_body import GetCheckSaleResponseBody
 from ._get_check_sale_response import GetCheckSaleResponse
+from ._get_check_scope_config_request import GetCheckScopeConfigRequest
+from ._get_check_scope_config_response_body import GetCheckScopeConfigResponseBody
+from ._get_check_scope_config_response import GetCheckScopeConfigResponse
 from ._get_check_structure_request import GetCheckStructureRequest
 from ._get_check_structure_response_body import GetCheckStructureResponseBody
 from ._get_check_structure_response import GetCheckStructureResponse
@@ -2559,6 +2566,7 @@ from ._refresh_assets_response import RefreshAssetsResponse
 from ._refresh_container_assets_request import RefreshContainerAssetsRequest
 from ._refresh_container_assets_response_body import RefreshContainerAssetsResponseBody
 from ._refresh_container_assets_response import RefreshContainerAssetsResponse
+from ._refresh_oss_bucket_scan_info_request import RefreshOssBucketScanInfoRequest
 from ._refresh_oss_bucket_scan_info_response_body import RefreshOssBucketScanInfoResponseBody
 from ._refresh_oss_bucket_scan_info_response import RefreshOssBucketScanInfoResponse
 from ._refresh_registry_token_request import RefreshRegistryTokenRequest
@@ -2694,6 +2702,9 @@ from ._update_check_item_response import UpdateCheckItemResponse
 from ._update_check_policy_request import UpdateCheckPolicyRequest
 from ._update_check_policy_response_body import UpdateCheckPolicyResponseBody
 from ._update_check_policy_response import UpdateCheckPolicyResponse
+from ._update_check_scope_config_request import UpdateCheckScopeConfigRequest
+from ._update_check_scope_config_response_body import UpdateCheckScopeConfigResponseBody
+from ._update_check_scope_config_response import UpdateCheckScopeConfigResponse
 from ._update_client_alert_mode_request import UpdateClientAlertModeRequest
 from ._update_client_alert_mode_response_body import UpdateClientAlertModeResponseBody
 from ._update_client_alert_mode_response import UpdateClientAlertModeResponse
@@ -3300,6 +3311,7 @@ from ._describe_uni_recoverable_list_response_body import DescribeUniRecoverable
 from ._describe_user_backup_machines_response_body import DescribeUserBackupMachinesResponseBodyMachines
 from ._describe_user_baseline_authorization_response_body import DescribeUserBaselineAuthorizationResponseBodyUserBaselineAuthorization
 from ._describe_uuids_by_vul_names_response_body import DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics
+from ._describe_version_config_response_body import DescribeVersionConfigResponseBodyTrialModuleList
 from ._describe_vpc_honey_pot_criteria_response_body import DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList
 from ._describe_vpc_honey_pot_list_response_body import DescribeVpcHoneyPotListResponseBodyPageInfo
 from ._describe_vpc_honey_pot_list_response_body import DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList
@@ -3377,6 +3389,7 @@ from ._get_attack_path_sensitive_asset_config_response_body import GetAttackPath
 from ._get_attack_path_whitelist_response_body import GetAttackPathWhitelistResponseBodyAttackPathWhitelistAttackPathAssetList
 from ._get_attack_path_whitelist_response_body import GetAttackPathWhitelistResponseBodyAttackPathWhitelist
 from ._get_attack_type_list_response_body import GetAttackTypeListResponseBodyAttackTypeList
+from ._get_auth_summary_response_body import GetAuthSummaryResponseBodyEdrSummary
 from ._get_auth_summary_response_body import GetAuthSummaryResponseBodyMachine
 from ._get_auth_summary_response_body import GetAuthSummaryResponseBodyPostPaidVersionSummary
 from ._get_auth_summary_response_body import GetAuthSummaryResponseBodyVersionSummary
@@ -3402,6 +3415,7 @@ from ._get_check_risk_statistics_response_body import GetCheckRiskStatisticsResp
 from ._get_check_risk_statistics_response_body import GetCheckRiskStatisticsResponseBodyData
 from ._get_check_risk_statistics_response_body import GetCheckRiskStatisticsResponseBodySummary
 from ._get_check_sale_response_body import GetCheckSaleResponseBodyCheckSale
+from ._get_check_scope_config_response_body import GetCheckScopeConfigResponseBodyData
 from ._get_check_structure_response_body import GetCheckStructureResponseBodyCheckStructureResponseStandardsRequirementsSections
 from ._get_check_structure_response_body import GetCheckStructureResponseBodyCheckStructureResponseStandardsRequirements
 from ._get_check_structure_response_body import GetCheckStructureResponseBodyCheckStructureResponseStandards
@@ -3744,6 +3758,7 @@ from ._list_malicious_file_whitelist_configs_response_body import ListMaliciousF
 from ._list_malicious_file_whitelist_configs_response_body import ListMaliciousFileWhitelistConfigsResponseBodyPageInfo
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodyDaInstanceAntiRansomwareCapacity
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodyDaInstanceCspmCapacity
+from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodyDaInstanceCspmInstanceCapacity
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodyDaInstanceHoneypotCapacity
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodyDaInstanceImageScanCapacity
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodyDaInstanceRaspCapacity
@@ -3759,6 +3774,7 @@ from ._list_multi_user_instances_response_body import ListMultiUserInstancesResp
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodyPageInfo
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodySaleInstanceListAntiRansomwareCapacity
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodySaleInstanceListCspmCapacity
+from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodySaleInstanceListCspmInstanceCapacity
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodySaleInstanceListHoneypotCapacity
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodySaleInstanceListImageScanCapacity
 from ._list_multi_user_instances_response_body import ListMultiUserInstancesResponseBodySaleInstanceListRaspCapacity
@@ -3852,6 +3868,7 @@ from ._modify_container_defense_rule_request import ModifyContainerDefenseRuleRe
 from ._modify_container_defense_rule_shrink_request import ModifyContainerDefenseRuleShrinkRequestScope
 from ._modify_container_plugin_rule_response_body import ModifyContainerPluginRuleResponseBodyData
 from ._modify_create_vul_whitelist_response_body import ModifyCreateVulWhitelistResponseBodyVulWhitelistList
+from ._modify_post_pay_module_switch_request import ModifyPostPayModuleSwitchRequestEdrModuleSwitch
 from ._modify_post_pay_module_switch_request import ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj
 from ._modify_push_all_task_response_body import ModifyPushAllTaskResponseBodyPushTaskRspPushTaskResultList
 from ._modify_push_all_task_response_body import ModifyPushAllTaskResponseBodyPushTaskRsp
@@ -3891,6 +3908,7 @@ from ._update_check_item_request import UpdateCheckItemRequestDescription
 from ._update_check_item_request import UpdateCheckItemRequestSolution
 from ._update_check_item_response_body import UpdateCheckItemResponseBodyData
 from ._update_check_policy_response_body import UpdateCheckPolicyResponseBodyCheckCustomPolicy
+from ._update_check_scope_config_response_body import UpdateCheckScopeConfigResponseBodyData
 from ._update_honeypot_response_body import UpdateHoneypotResponseBodyData
 from ._update_honeypot_probe_bind_request import UpdateHoneypotProbeBindRequestBindPortList
 from ._update_image_event_operation_response_body import UpdateImageEventOperationResponseBodyData
@@ -4033,6 +4051,9 @@ __all__ = [
     ChangeCheckCustomConfigRequest,
     ChangeCheckCustomConfigResponseBody,
     ChangeCheckCustomConfigResponse,
+    ChangeCheckScopeConfigInstanceRequest,
+    ChangeCheckScopeConfigInstanceResponseBody,
+    ChangeCheckScopeConfigInstanceResponse,
     ChangeSecurityScoreRuleRequest,
     ChangeSecurityScoreRuleResponseBody,
     ChangeSecurityScoreRuleResponse,
@@ -5443,6 +5464,7 @@ __all__ = [
     GetCanTrySasRequest,
     GetCanTrySasResponseBody,
     GetCanTrySasResponse,
+    GetCheckConfigRequest,
     GetCheckConfigResponseBody,
     GetCheckConfigResponse,
     GetCheckCountStatisticRequest,
@@ -5460,6 +5482,9 @@ __all__ = [
     GetCheckSaleRequest,
     GetCheckSaleResponseBody,
     GetCheckSaleResponse,
+    GetCheckScopeConfigRequest,
+    GetCheckScopeConfigResponseBody,
+    GetCheckScopeConfigResponse,
     GetCheckStructureRequest,
     GetCheckStructureResponseBody,
     GetCheckStructureResponse,
@@ -6485,6 +6510,7 @@ __all__ = [
     RefreshContainerAssetsRequest,
     RefreshContainerAssetsResponseBody,
     RefreshContainerAssetsResponse,
+    RefreshOssBucketScanInfoRequest,
     RefreshOssBucketScanInfoResponseBody,
     RefreshOssBucketScanInfoResponse,
     RefreshRegistryTokenRequest,
@@ -6620,6 +6646,9 @@ __all__ = [
     UpdateCheckPolicyRequest,
     UpdateCheckPolicyResponseBody,
     UpdateCheckPolicyResponse,
+    UpdateCheckScopeConfigRequest,
+    UpdateCheckScopeConfigResponseBody,
+    UpdateCheckScopeConfigResponse,
     UpdateClientAlertModeRequest,
     UpdateClientAlertModeResponseBody,
     UpdateClientAlertModeResponse,
@@ -7226,6 +7255,7 @@ __all__ = [
     DescribeUserBackupMachinesResponseBodyMachines,
     DescribeUserBaselineAuthorizationResponseBodyUserBaselineAuthorization,
     DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics,
+    DescribeVersionConfigResponseBodyTrialModuleList,
     DescribeVpcHoneyPotCriteriaResponseBodyCriteriaList,
     DescribeVpcHoneyPotListResponseBodyPageInfo,
     DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOListVpcSwitchIdList,
@@ -7303,6 +7333,7 @@ __all__ = [
     GetAttackPathWhitelistResponseBodyAttackPathWhitelistAttackPathAssetList,
     GetAttackPathWhitelistResponseBodyAttackPathWhitelist,
     GetAttackTypeListResponseBodyAttackTypeList,
+    GetAuthSummaryResponseBodyEdrSummary,
     GetAuthSummaryResponseBodyMachine,
     GetAuthSummaryResponseBodyPostPaidVersionSummary,
     GetAuthSummaryResponseBodyVersionSummary,
@@ -7328,6 +7359,7 @@ __all__ = [
     GetCheckRiskStatisticsResponseBodyData,
     GetCheckRiskStatisticsResponseBodySummary,
     GetCheckSaleResponseBodyCheckSale,
+    GetCheckScopeConfigResponseBodyData,
     GetCheckStructureResponseBodyCheckStructureResponseStandardsRequirementsSections,
     GetCheckStructureResponseBodyCheckStructureResponseStandardsRequirements,
     GetCheckStructureResponseBodyCheckStructureResponseStandards,
@@ -7670,6 +7702,7 @@ __all__ = [
     ListMaliciousFileWhitelistConfigsResponseBodyPageInfo,
     ListMultiUserInstancesResponseBodyDaInstanceAntiRansomwareCapacity,
     ListMultiUserInstancesResponseBodyDaInstanceCspmCapacity,
+    ListMultiUserInstancesResponseBodyDaInstanceCspmInstanceCapacity,
     ListMultiUserInstancesResponseBodyDaInstanceHoneypotCapacity,
     ListMultiUserInstancesResponseBodyDaInstanceImageScanCapacity,
     ListMultiUserInstancesResponseBodyDaInstanceRaspCapacity,
@@ -7685,6 +7718,7 @@ __all__ = [
     ListMultiUserInstancesResponseBodyPageInfo,
     ListMultiUserInstancesResponseBodySaleInstanceListAntiRansomwareCapacity,
     ListMultiUserInstancesResponseBodySaleInstanceListCspmCapacity,
+    ListMultiUserInstancesResponseBodySaleInstanceListCspmInstanceCapacity,
     ListMultiUserInstancesResponseBodySaleInstanceListHoneypotCapacity,
     ListMultiUserInstancesResponseBodySaleInstanceListImageScanCapacity,
     ListMultiUserInstancesResponseBodySaleInstanceListRaspCapacity,
@@ -7778,6 +7812,7 @@ __all__ = [
     ModifyContainerDefenseRuleShrinkRequestScope,
     ModifyContainerPluginRuleResponseBodyData,
     ModifyCreateVulWhitelistResponseBodyVulWhitelistList,
+    ModifyPostPayModuleSwitchRequestEdrModuleSwitch,
     ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj,
     ModifyPushAllTaskResponseBodyPushTaskRspPushTaskResultList,
     ModifyPushAllTaskResponseBodyPushTaskRsp,
@@ -7817,6 +7852,7 @@ __all__ = [
     UpdateCheckItemRequestSolution,
     UpdateCheckItemResponseBodyData,
     UpdateCheckPolicyResponseBodyCheckCustomPolicy,
+    UpdateCheckScopeConfigResponseBodyData,
     UpdateHoneypotResponseBodyData,
     UpdateHoneypotProbeBindRequestBindPortList,
     UpdateImageEventOperationResponseBodyData,

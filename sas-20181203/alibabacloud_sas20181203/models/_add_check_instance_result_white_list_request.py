@@ -12,26 +12,27 @@ class AddCheckInstanceResultWhiteListRequest(DaraModel):
         self,
         check_group_id: str = None,
         check_id: int = None,
+        client_token: str = None,
         instance_ids: List[str] = None,
         instance_list: List[main_models.AddCheckInstanceResultWhiteListRequestInstanceList] = None,
         remark: str = None,
         rule_type: str = None,
     ):
-        # The ID of the group to which the check item belongs.
+        # The ID of the check group to which the check item belongs.
         self.check_group_id = check_group_id
         # The ID of the check item.
-        # 
-        # >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of check items.
+        # > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain this parameter.
         self.check_id = check_id
-        # The instance IDs of the assets.
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The collection of asset instance IDs.
         self.instance_ids = instance_ids
-        # The asset instances.
+        # The collection of asset instance information.
         self.instance_list = instance_list
-        # The description. The value of this parameter can be up to 65,535 bytes in length.
+        # The remarks. Maximum length: 65535 bytes.
         self.remark = remark
-        # The type of the rule. Default value: **WHITE**. Valid value:
-        # 
-        # *   WHITE: adds check items to the whitelist.
+        # The rule type. Default value: **WHITE**. Valid values:
+        # - WHITE: whitelist
         self.rule_type = rule_type
 
     def validate(self):
@@ -50,6 +51,9 @@ class AddCheckInstanceResultWhiteListRequest(DaraModel):
 
         if self.check_id is not None:
             result['CheckId'] = self.check_id
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
@@ -75,6 +79,9 @@ class AddCheckInstanceResultWhiteListRequest(DaraModel):
         if m.get('CheckId') is not None:
             self.check_id = m.get('CheckId')
 
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
 
@@ -98,13 +105,11 @@ class AddCheckInstanceResultWhiteListRequestInstanceList(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The instance ID of the asset.
-        # 
-        # >  You can call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to query the instance IDs of assets.
+        # The asset instance ID.
+        # > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
         self.instance_id = instance_id
-        # The region ID of the asset.
-        # 
-        # >  You can call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to query the region ID of the asset.
+        # The region where the asset resides.
+        # > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
         self.region_id = region_id
 
     def validate(self):

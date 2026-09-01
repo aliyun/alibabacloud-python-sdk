@@ -16,11 +16,11 @@ class DescribeOnceTaskRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The page number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates the first page.
         self.current_page = current_page
         # The timestamp when the root task ends. Unit: milliseconds.
         self.end_time_query = end_time_query
-        # The number of client tasks per page in a paged query. Default value: **20**.
+        # Settings for the number of client tasks on each page in a paged query. Default value: **20**, which indicates that each page contains 20 client tasks.
         self.page_size = page_size
         # The root task ID.
         # > **TaskType** and **RootTaskId** cannot both be empty.
@@ -38,6 +38,7 @@ class DescribeOnceTaskRequest(DaraModel):
         # - **CLIENT_PROBLEM_CHECK**: client node
         # - **CLIENT_DEV_OPS**: cloud O&M node
         # - **ASSET_SECURITY_CHECK**: asset information collection node
+        # - **ASSET_REFRESH_HOST**: host asset synchronization node
         # > **TaskType** and **RootTaskId** cannot both be empty.
         self.task_type = task_type
 

@@ -9,6 +9,7 @@ class QueryAttackCountRequest(DaraModel):
         self,
         from_: str = None,
         lang: str = None,
+        resource_directory_account_id: int = None,
         source_ip: str = None,
         uuids: str = None,
     ):
@@ -18,6 +19,7 @@ class QueryAttackCountRequest(DaraModel):
         # - **zh**: Chinese
         # - **en**: English.
         self.lang = lang
+        self.resource_directory_account_id = resource_directory_account_id
         # The IP address of the access source.
         self.source_ip = source_ip
         # The UUID of the server. Separate multiple UUIDs with commas (,).
@@ -38,6 +40,9 @@ class QueryAttackCountRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
 
@@ -53,6 +58,9 @@ class QueryAttackCountRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

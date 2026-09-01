@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateCycleTaskRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         enable: int = None,
         first_date_str: int = None,
         interval_period: int = None,
@@ -18,53 +19,51 @@ class CreateCycleTaskRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
         # Specifies whether to enable the task. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: enabled.
+        # - **0**: disabled.
         # 
         # This parameter is required.
         self.enable = enable
-        # The first time when the task is performed.
+        # The first execution time.
         # 
         # This parameter is required.
         self.first_date_str = first_date_str
-        # The interval of the task.
+        # The interval period.
         # 
         # This parameter is required.
         self.interval_period = interval_period
-        # The additional information.
+        # The extended information field.
         self.param = param
         # The unit of the scan interval. Valid values:
-        # 
-        # *   **day**: days
-        # *   **hour**: hours
+        # - **day**: day.
+        # - **hour**: hour.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The additional source for the task.
+        # The source from which the task is added.
         self.source = source
-        # The time when the task ends. Unit: hours.
+        # The task end time, in hours.
         # 
         # This parameter is required.
         self.target_end_time = target_end_time
-        # The time when the task is started. Unit: hours.
+        # The task start time, in hours.
         # 
         # This parameter is required.
         self.target_start_time = target_start_time
-        # The name of the task. Valid values:
-        # 
-        # *   **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
-        # *   **IMAGE_SCAN**: image scan task
-        # *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+        # The task name. Valid values:
+        # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
+        # - **IMAGE_SCAN**: image scan.
+        # - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The type of the task. Valid values:
-        # 
-        # *   **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
-        # *   **IMAGE_SCAN**: image scan task
-        # *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+        # The task type. Valid values:
+        # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
+        # - **IMAGE_SCAN**: image scan.
+        # - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
         # 
         # This parameter is required.
         self.task_type = task_type
@@ -77,6 +76,9 @@ class CreateCycleTaskRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.enable is not None:
             result['Enable'] = self.enable
 
@@ -111,6 +113,9 @@ class CreateCycleTaskRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
 

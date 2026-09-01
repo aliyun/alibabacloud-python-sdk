@@ -10,6 +10,7 @@ class OperateVulsRequest(DaraModel):
     def __init__(
         self,
         operate_type: str = None,
+        resource_directory_account_id: int = None,
         type: str = None,
         uuids: List[str] = None,
         vul_names: List[str] = None,
@@ -18,6 +19,7 @@ class OperateVulsRequest(DaraModel):
         # 
         # This parameter is required.
         self.operate_type = operate_type
+        self.resource_directory_account_id = resource_directory_account_id
         # The type of vulnerability to fix. Set the value to **cve**, which indicates a Linux software vulnerability.
         # 
         # This parameter is required.
@@ -42,6 +44,9 @@ class OperateVulsRequest(DaraModel):
         if self.operate_type is not None:
             result['OperateType'] = self.operate_type
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -57,6 +62,9 @@ class OperateVulsRequest(DaraModel):
         m = m or dict()
         if m.get('OperateType') is not None:
             self.operate_type = m.get('OperateType')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

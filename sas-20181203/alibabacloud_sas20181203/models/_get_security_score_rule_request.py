@@ -9,6 +9,7 @@ class GetSecurityScoreRuleRequest(DaraModel):
         self,
         cal_type: str = None,
         lang: str = None,
+        resource_directory_account_id: int = None,
     ):
         # Specifies whether to query the new or legacy security score rules. If the value is **home_security_score**, the new security score rules are queried. Otherwise, the legacy security score rules are queried by default.
         self.cal_type = cal_type
@@ -16,6 +17,7 @@ class GetSecurityScoreRuleRequest(DaraModel):
         # - **zh**: Chinese
         # - **en**: English.
         self.lang = lang
+        self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):
         pass
@@ -31,6 +33,9 @@ class GetSecurityScoreRuleRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -40,6 +45,9 @@ class GetSecurityScoreRuleRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         return self
 

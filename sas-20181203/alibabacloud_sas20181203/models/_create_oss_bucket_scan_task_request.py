@@ -19,34 +19,40 @@ class CreateOssBucketScanTaskRequest(DaraModel):
         key_suffix_list: List[str] = None,
         last_modified_start_time: int = None,
         scan_mode: int = None,
+        source: str = None,
     ):
-        # Specifies whether to match the prefixes of all objects.
+        # Specifies whether to match all prefixes. If this parameter is set to true, the KeyPrefixList parameter does not take effect.
         self.all_key_prefix = all_key_prefix
-        # The names of the buckets.
+        # The list of bucket names.
         # 
         # This parameter is required.
         self.bucket_name_list = bucket_name_list
-        # The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        # The maximum number of files to decompress. The minimum value is 1 and the maximum value is 1000. When the maximum number of decompressed files is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
         self.decompress_max_file_count = decompress_max_file_count
-        # The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        # The maximum number of decompression layers when multiple levels of compressed packages are nested. The minimum value is 1 and the maximum value is 5. When the maximum number of decompression layers is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
         self.decompress_max_layer = decompress_max_layer
-        # The decryption methods.
+        # The list of decryption types.
         self.decryption_list = decryption_list
-        # The suffixes of the objects that you do not want to check.
+        # The list of file suffixes to exclude from detection.
         self.exclude_key_suffix_list = exclude_key_suffix_list
-        # The prefixes of the objects.
+        # The prefix list of files.
         self.key_prefix_list = key_prefix_list
-        # The suffixes of the objects that you want to check.
+        # The list of file suffixes.
         self.key_suffix_list = key_suffix_list
-        # The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        # Specifies that only files whose last modification time is after the specified timestamp are detected. Unit: milliseconds.
         self.last_modified_start_time = last_modified_start_time
-        # The check mode. Valid values:
+        # The detection mode. Valid values:
         # 
-        # *   **1**: checks all objects in the bucket.
-        # *   **2**: checks only new objects in the bucket.
+        # - **1**: Full file detection.
+        # 
+        # - **2**: Incremental file detection.
         # 
         # This parameter is required.
         self.scan_mode = scan_mode
+        # The business source. Valid values:
+        # - **OSS**: OSS
+        # - **NAS**: NAS
+        self.source = source
 
     def validate(self):
         pass
@@ -86,6 +92,9 @@ class CreateOssBucketScanTaskRequest(DaraModel):
         if self.scan_mode is not None:
             result['ScanMode'] = self.scan_mode
 
+        if self.source is not None:
+            result['Source'] = self.source
+
         return result
 
     def from_map(self, m: dict = None):
@@ -119,6 +128,9 @@ class CreateOssBucketScanTaskRequest(DaraModel):
 
         if m.get('ScanMode') is not None:
             self.scan_mode = m.get('ScanMode')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         return self
 

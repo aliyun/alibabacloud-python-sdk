@@ -72,11 +72,11 @@ class ListUnknownThreatDetectEventResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of alerting events displayed on the current page in a paged query. This parameter is used for paging.
+        # The number of alerting events displayed on the current page in a paging query.
         self.count = count
-        # The page number of the current page in a paged query. This parameter is used for paging.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The maximum number of entries displayed on each page in a paged query. This parameter is used for paging.
+        # The maximum number of entries displayed on each page in a paging query.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -128,6 +128,7 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
         cmdline: str = None,
         count: int = None,
         first_time: int = None,
+        handle_remark: str = None,
         handle_type: str = None,
         hash_key: str = None,
         id: str = None,
@@ -155,6 +156,7 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
         self.count = count
         # The timestamp of the first occurrence.
         self.first_time = first_time
+        self.handle_remark = handle_remark
         self.handle_type = handle_type
         # The unique identifier of the file.
         self.hash_key = hash_key
@@ -216,6 +218,9 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
 
         if self.first_time is not None:
             result['FirstTime'] = self.first_time
+
+        if self.handle_remark is not None:
+            result['HandleRemark'] = self.handle_remark
 
         if self.handle_type is not None:
             result['HandleType'] = self.handle_type
@@ -286,6 +291,9 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
 
         if m.get('FirstTime') is not None:
             self.first_time = m.get('FirstTime')
+
+        if m.get('HandleRemark') is not None:
+            self.handle_remark = m.get('HandleRemark')
 
         if m.get('HandleType') is not None:
             self.handle_type = m.get('HandleType')

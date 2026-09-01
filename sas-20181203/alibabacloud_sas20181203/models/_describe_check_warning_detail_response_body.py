@@ -25,7 +25,7 @@ class DescribeCheckWarningDetailResponseBody(DaraModel):
         self.advice = advice
         # The list of checked asset details.
         self.check_detail_asset_info = check_detail_asset_info
-        # The details of the check content.
+        # The check content details.
         self.check_detail_columns = check_detail_columns
         # The ID of the check item.
         self.check_id = check_id
@@ -143,11 +143,11 @@ class DescribeCheckWarningDetailResponseBodyCheckDetailColumns(DaraModel):
         self.grids = grids
         # The key of the check content.
         self.key = key
-        # The display name that corresponds to the key of the check content.
+        # The display name corresponding to the check content key.
         self.show_name = show_name
         # The display type. Valid values:
-        # - **grid**: grid
-        # - **text**: text.
+        # - **grid**: check grid
+        # - **text**: text
         self.type = type
 
     def validate(self):
@@ -205,11 +205,11 @@ class DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids(DaraModel):
     ):
         # The key of the check content.
         self.key = key
-        # The display name that corresponds to the key of the check content.
+        # The display name corresponding to the check content key.
         self.show_name = show_name
         # The display type. Valid values:
-        # - **grid**: grid
-        # - **text**: text.
+        # - **grid**: check grid
+        # - **text**: text
         self.type = type
 
     def validate(self):

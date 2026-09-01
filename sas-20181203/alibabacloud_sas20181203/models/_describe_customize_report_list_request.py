@@ -12,6 +12,7 @@ class DescribeCustomizeReportListRequest(DaraModel):
         report_status: int = None,
         report_type: int = None,
         report_version: str = None,
+        resource_directory_account_id: int = None,
         title: str = None,
     ):
         # The language of the content within the request and response. Default value: **zh**. Valid values:
@@ -41,6 +42,7 @@ class DescribeCustomizeReportListRequest(DaraModel):
         # *   **1.0.0**
         # *   **2.0.0**
         self.report_version = report_version
+        self.resource_directory_account_id = resource_directory_account_id
         # The name of the report.
         self.title = title
 
@@ -67,6 +69,9 @@ class DescribeCustomizeReportListRequest(DaraModel):
         if self.report_version is not None:
             result['ReportVersion'] = self.report_version
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -88,6 +93,9 @@ class DescribeCustomizeReportListRequest(DaraModel):
 
         if m.get('ReportVersion') is not None:
             self.report_version = m.get('ReportVersion')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')

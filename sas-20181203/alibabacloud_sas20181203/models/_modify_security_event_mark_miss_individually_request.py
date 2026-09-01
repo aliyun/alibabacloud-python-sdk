@@ -11,6 +11,7 @@ class ModifySecurityEventMarkMissIndividuallyRequest(DaraModel):
         from_: str = None,
         insert_mark_miss_param: str = None,
         lang: str = None,
+        resource_directory_account_id: int = None,
         source_ip: str = None,
     ):
         # The alert handling rule that you want to delete.
@@ -24,6 +25,7 @@ class ModifySecurityEventMarkMissIndividuallyRequest(DaraModel):
         # *   **zh**: Chinese
         # *   **en**: English
         self.lang = lang
+        self.resource_directory_account_id = resource_directory_account_id
         # The source IP address of the request. You do not need to specify this parameter. It is automatically obtained by the system.
         self.source_ip = source_ip
 
@@ -47,6 +49,9 @@ class ModifySecurityEventMarkMissIndividuallyRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
 
@@ -65,6 +70,9 @@ class ModifySecurityEventMarkMissIndividuallyRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

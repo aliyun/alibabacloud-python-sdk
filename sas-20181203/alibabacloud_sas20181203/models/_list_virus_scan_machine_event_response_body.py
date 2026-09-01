@@ -231,10 +231,10 @@ class ListVirusScanMachineEventResponseBodyDataDetails(DaraModel):
         # Valid values:
         # 
         # - **text**: plain text
-        # - **html**: rich text.
+        # - **html**: rich text
         self.type = type
         # The additional attribute information of the exception event.
-        # For example, the logon time or logon location of an unusual logon alert, or the trojan file path or trojan type of an alert.
+        # For example, the logon time or logon location for an unusual logon alert, or the trojan file path or trojan type for a trojan alert.
         self.value_display = value_display
 
     def validate(self):

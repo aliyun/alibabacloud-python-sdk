@@ -16,9 +16,9 @@ class ListAgentlessRiskUuidResponseBody(DaraModel):
     ):
         # The list of servers.
         self.list = list
-        # The paging information for the query.
+        # The paging information.
         self.page_info = page_info
-        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,7 +71,7 @@ class ListAgentlessRiskUuidResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the current page when using paging.
+        # The current page number when using paging.
         self.current_page = current_page
         # The maximum number of entries per page when using paging.
         self.page_size = page_size
@@ -119,6 +119,7 @@ class ListAgentlessRiskUuidResponseBodyList(DaraModel):
         internet_ip: str = None,
         intranet_ip: str = None,
         malicious_count: int = None,
+        report_url_html: str = None,
         scan_time: int = None,
         target_id: str = None,
         target_name: str = None,
@@ -137,6 +138,8 @@ class ListAgentlessRiskUuidResponseBodyList(DaraModel):
         self.intranet_ip = intranet_ip
         # The number of malicious samples.
         self.malicious_count = malicious_count
+        # The URL of the latest parallel sandbox HTML report.
+        self.report_url_html = report_url_html
         # The timestamp of the scan. Unit: milliseconds.
         self.scan_time = scan_time
         # The ID of the scan target.
@@ -174,6 +177,9 @@ class ListAgentlessRiskUuidResponseBodyList(DaraModel):
         if self.malicious_count is not None:
             result['MaliciousCount'] = self.malicious_count
 
+        if self.report_url_html is not None:
+            result['ReportUrlHtml'] = self.report_url_html
+
         if self.scan_time is not None:
             result['ScanTime'] = self.scan_time
 
@@ -210,6 +216,9 @@ class ListAgentlessRiskUuidResponseBodyList(DaraModel):
 
         if m.get('MaliciousCount') is not None:
             self.malicious_count = m.get('MaliciousCount')
+
+        if m.get('ReportUrlHtml') is not None:
+            self.report_url_html = m.get('ReportUrlHtml')
 
         if m.get('ScanTime') is not None:
             self.scan_time = m.get('ScanTime')

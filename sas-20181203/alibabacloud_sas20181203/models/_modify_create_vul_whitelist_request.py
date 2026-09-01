@@ -7,60 +7,49 @@ from darabonba.model import DaraModel
 class ModifyCreateVulWhitelistRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         reason: str = None,
+        resource_directory_account_id: int = None,
         target_info: str = None,
         whitelist: str = None,
     ):
-        # The reason why you add the vulnerability to the whitelist.
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The reason for adding the vulnerability to the whitelist.
         self.reason = reason
-        # The applicable scope of the whitelist. The value of this parameter is in the JSON format and contains the following fields:
-        # 
-        # *   **type**: the type of the applicable scope. Valid values:
-        # 
-        #     *   **GroupId**: the ID of a server group.
-        #     *   **Uuid**: the UUID of a server.
-        # 
-        # *   **uuids**: the UUIDs of servers. This field is of the string type.
-        # 
-        # *   **groupIds**: the IDs of server groups. This field is of the long type.
-        # 
-        # >  If you leave this parameter empty, the applicable scope is all servers. If you set the **type** field to **GroupId**, you must also specify the **groupIds** field. If you set the **type** field to **Uuid**, you must also specify the **uuids** field.
+        self.resource_directory_account_id = resource_directory_account_id
+        # The scope in which the whitelist takes effect. The value is a JSON string that contains the following fields:
+        # - **type**: The scope type. Valid values:
+        #     - **GroupId**: server group
+        #     - **Uuid**: host asset
+        # - **uuids**: The collection of host asset UUIDs. The field type is String.
+        # - **groupIds**: The collection of server group IDs. The field type is Long.
+        # > If this parameter is left empty, the whitelist takes effect on all hosts. If **type** is set to **GroupId**, **groupIds** cannot be empty. If **type** is set to **Uuid**, **uuids** cannot be empty.
         self.target_info = target_info
-        # The information about the vulnerability that you want to add to the whitelist. The value is a JSON string that contains the following fields:
+        # The information about the vulnerability to add to the whitelist. The value is a JSON string that contains the following fields:
         # 
-        # *   **Status**: the status of the vulnerability.
+        # - **Status**: The vulnerability status.
+        # - **GmtLast**: The timestamp when the vulnerability was last detected. Unit: milliseconds.
+        # - **LaterCount**: The number of medium-priority vulnerabilities.
+        # - **AsapCount**: The number of high-priority vulnerabilities.
+        # - **Name**: The vulnerability name.
+        # - **Type**: The vulnerability type. Valid values:
         # 
-        # *   **GmtLast**: the timestamp when the vulnerability was last detected. Unit: milliseconds.
+        #     - **cve**: Linux software vulnerability
+        #     - **sys**: Windows system vulnerability
+        #     - **cms**: Web-CMS vulnerability
+        #     - **app**: application vulnerability
+        #     - **emg**: emergency vulnerability
         # 
-        # *   **LaterCount**: the number of vulnerabilities that have the medium priority.
+        # - **Related**: The CVE ID of the vulnerability.
+        # - **HandledCount**: The number of handled vulnerabilities.
+        # - **AliasName**: The alias of the vulnerability.
+        # - **RuleModifyTime**: The time when the vulnerability was last published.
+        # - **NntfCount**: The number of low-priority vulnerabilities.
+        # - **TotalFixCount**: The total number of fixed vulnerabilities.
+        # - **Tags**: The vulnerability tags.
         # 
-        # *   **AsapCount**: the number of vulnerabilities that have the high priority.
-        # 
-        # *   **Name**: the name of the vulnerability.
-        # 
-        # *   **Type**: the type of the vulnerability. Valid values:
-        # 
-        #     *   **cve**: Linux software vulnerability
-        #     *   **sys**: Windows system vulnerability
-        #     *   **cms**: Web-CMS vulnerability
-        #     *   **app**: application vulnerability
-        #     *   **emg**: urgent vulnerability
-        # 
-        # *   **Related**: the Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
-        # 
-        # *   **HandledCount**: the number of handled vulnerabilities.
-        # 
-        # *   **AliasName**: the alias of the vulnerability.
-        # 
-        # *   **RuleModifyTime**: the time when the vulnerability was last disclosed.
-        # 
-        # *   **NntfCount**: the number of vulnerabilities that have the low priority.
-        # 
-        # *   **TotalFixCount**: the total number of fixed vulnerabilities.
-        # 
-        # *   **Tags**: the tag that is added to the vulnerability.
-        # 
-        # >  You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to query the information about the vulnerability that you want to add to the whitelist.
+        # > You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to obtain the vulnerability information to add to the whitelist.
         # 
         # This parameter is required.
         self.whitelist = whitelist
@@ -73,8 +62,14 @@ class ModifyCreateVulWhitelistRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.reason is not None:
             result['Reason'] = self.reason
+
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
 
         if self.target_info is not None:
             result['TargetInfo'] = self.target_info
@@ -86,8 +81,14 @@ class ModifyCreateVulWhitelistRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('TargetInfo') is not None:
             self.target_info = m.get('TargetInfo')

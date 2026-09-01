@@ -17,6 +17,7 @@ class DescribeUuidsByVulNamesRequest(DaraModel):
         level: str = None,
         necessity: str = None,
         remark: str = None,
+        resource_directory_account_id: int = None,
         search_tags: str = None,
         status_list: str = None,
         tag: str = None,
@@ -53,6 +54,7 @@ class DescribeUuidsByVulNamesRequest(DaraModel):
         self.necessity = necessity
         # The asset information for the vulnerability query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
         self.remark = remark
+        self.resource_directory_account_id = resource_directory_account_id
         # The tag for querying vulnerabilities.
         self.search_tags = search_tags
         # The fix status of the vulnerability. Separate multiple statuses with commas (,). Valid values:
@@ -114,6 +116,9 @@ class DescribeUuidsByVulNamesRequest(DaraModel):
         if self.remark is not None:
             result['Remark'] = self.remark
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.search_tags is not None:
             result['SearchTags'] = self.search_tags
 
@@ -162,6 +167,9 @@ class DescribeUuidsByVulNamesRequest(DaraModel):
 
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SearchTags') is not None:
             self.search_tags = m.get('SearchTags')

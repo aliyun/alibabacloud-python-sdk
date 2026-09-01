@@ -15,6 +15,7 @@ class DescribePropertyUserDetailRequest(DaraModel):
         next_token: str = None,
         page_size: int = None,
         remark: str = None,
+        resource_directory_account_id: int = None,
         use_next_token: bool = None,
         user: str = None,
         uuid: str = None,
@@ -40,6 +41,7 @@ class DescribePropertyUserDetailRequest(DaraModel):
         self.page_size = page_size
         # The name or IP address of the server to query.
         self.remark = remark
+        self.resource_directory_account_id = resource_directory_account_id
         # Specifies whether to use the NextToken method to retrieve the vulnerability list data. If this parameter is used, TotalCount is no longer returned. Valid values:
         # 
         # - **true**: Uses the NextToken method.
@@ -82,6 +84,9 @@ class DescribePropertyUserDetailRequest(DaraModel):
         if self.remark is not None:
             result['Remark'] = self.remark
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.use_next_token is not None:
             result['UseNextToken'] = self.use_next_token
 
@@ -118,6 +123,9 @@ class DescribePropertyUserDetailRequest(DaraModel):
 
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('UseNextToken') is not None:
             self.use_next_token = m.get('UseNextToken')

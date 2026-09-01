@@ -14,11 +14,11 @@ class ListUnknownThreatDetectMachineResponseBody(DaraModel):
         page_info: main_models.ListUnknownThreatDetectMachineResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array of instance details.
+        # The returned data.
         self.data = data
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class ListUnknownThreatDetectMachineResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page.
+        # The number of entries on the current page when using paging.
         self.count = count
-        # The current page number.
+        # The page number of the current page when using paging.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page when using paging.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -126,8 +126,11 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         instance_name: str = None,
         internet_ip: str = None,
         intranet_ip: str = None,
+        malicious_process_count: int = None,
+        normal_event_count: int = None,
         plugin_status: str = None,
         process_count: int = None,
+        recent_deviation_behavior_count: int = None,
         status: str = None,
         study_mode: str = None,
         study_remain_days: int = None,
@@ -141,25 +144,25 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address.
         self.intranet_ip = intranet_ip
+        self.malicious_process_count = malicious_process_count
+        self.normal_event_count = normal_event_count
         self.plugin_status = plugin_status
-        # The process count.
+        # The number of processes.
         self.process_count = process_count
-        # The instance status. Valid values:
+        self.recent_deviation_behavior_count = recent_deviation_behavior_count
+        # The running status of the machine. Valid values:
         # 
-        # - **monitoring**: The instance is being monitored for threats.
-        # 
-        # - **blocking**: The instance is blocking unauthorized processes.
-        # 
-        # - **studying**: The instance is in a learning phase.
+        # - **monitoring**: Warning.
+        # - **blocking**: Blocking.
+        # - **studying**: Learning.
         self.status = status
         # The whitelist mode. Valid values:
         # 
         # - **hash**: process hash
-        # 
         # - **path**: process path
         self.study_mode = study_mode
         self.study_remain_days = study_remain_days
-        # The timestamp when the learning phase started. Unit: seconds.
+        # The timestamp when learning started.
         self.study_start_time = study_start_time
         # The UUID of the asset instance.
         self.uuid = uuid
@@ -184,11 +187,20 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         if self.intranet_ip is not None:
             result['IntranetIp'] = self.intranet_ip
 
+        if self.malicious_process_count is not None:
+            result['MaliciousProcessCount'] = self.malicious_process_count
+
+        if self.normal_event_count is not None:
+            result['NormalEventCount'] = self.normal_event_count
+
         if self.plugin_status is not None:
             result['PluginStatus'] = self.plugin_status
 
         if self.process_count is not None:
             result['ProcessCount'] = self.process_count
+
+        if self.recent_deviation_behavior_count is not None:
+            result['RecentDeviationBehaviorCount'] = self.recent_deviation_behavior_count
 
         if self.status is not None:
             result['Status'] = self.status
@@ -221,11 +233,20 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         if m.get('IntranetIp') is not None:
             self.intranet_ip = m.get('IntranetIp')
 
+        if m.get('MaliciousProcessCount') is not None:
+            self.malicious_process_count = m.get('MaliciousProcessCount')
+
+        if m.get('NormalEventCount') is not None:
+            self.normal_event_count = m.get('NormalEventCount')
+
         if m.get('PluginStatus') is not None:
             self.plugin_status = m.get('PluginStatus')
 
         if m.get('ProcessCount') is not None:
             self.process_count = m.get('ProcessCount')
+
+        if m.get('RecentDeviationBehaviorCount') is not None:
+            self.recent_deviation_behavior_count = m.get('RecentDeviationBehaviorCount')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

@@ -17,59 +17,44 @@ class ListAttackEventInfoRequest(DaraModel):
         src_ip: str = None,
         start_time: int = None,
     ):
-        # Attacked asset. You can fill in the machine instance name, public IP, or private IP.
+        # The attacked asset. You can specify the instance name, public IP address, or private IP address.
         self.attack_instance = attack_instance
-        # Attack type. Values:
-        # 
-        # - 9: SQL Server brute force attack
-        # 
-        # - 5: SSH brute force attack
-        # 
-        # - 6: RDP brute force attack
-        # 
-        # - 101: Java Struts2 attack interception
-        # 
-        # - 102: Redis attack interception
-        # 
-        # - 103: Chinese AntSword WebShell communication
-        # 
-        # - 104: Chinese Chopper WebShell communication
-        # 
+        # The attack type. Valid values:
+        # - 9: SQL Server brute-force attacks
+        # - 5: SSH brute-force attacks
+        # - 6: RDP brute-force attacks
+        # - 101: Java Struts2 attack blocked
+        # - 102: Redis attack blocked
+        # - 103: China Chopper (AntSword) WebShell communication
+        # - 104: China Chopper WebShell communication
         # - 133: XISE WebShell communication
-        # 
         # - 161: WebShell upload
-        # 
         # - 209: PHP WebShell upload
-        # 
         # - 210: JSP WebShell upload
-        # 
         # - 211: ASP WebShell upload
-        # 
-        # - 215: Special suffix WebShell upload
-        # 
-        # - ai_webshell: Intelligent defense for WebShell upload
-        # 
-        # - java_common_rce: Java common RCE vulnerability interception
-        # 
+        # - 215: Special extension WebShell upload
+        # - ai_webshell: WebShell upload intelligent defense
+        # - java_common_rce: Java common remote code execution (RCE) vulnerability blocked
         # - alinet_webrce: Adaptive web attack defense
         self.attack_type = attack_type
-        # Page number to display in a paginated query.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
-        # Target port of the attack.
+        # The Attack Target Ports of the Attack Target.
         self.dst_port = dst_port
-        # Timestamp of the end time.
+        # The timestamp of the end time.
         self.end_time = end_time
-        # Set the language type for request and response messages. Default is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # Maximum number of records per page in a paginated query.
+        # The maximum number of entries to return on each page in a paged query.
         self.page_size = page_size
-        # Source IP of the attack.
+        # The Attack Source IP Addresses.
         self.src_ip = src_ip
-        # Timestamp of the start time.
+        # The timestamp of the start time.
+        # 
+        # This field is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

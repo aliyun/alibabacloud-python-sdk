@@ -9,6 +9,7 @@ class AdvanceSecurityEventOperationsRequest(DaraModel):
         self,
         event_name: str = None,
         event_type: str = None,
+        resource_directory_account_id: int = None,
         resource_owner_id: int = None,
         rule_id: int = None,
     ):
@@ -42,6 +43,7 @@ class AdvanceSecurityEventOperationsRequest(DaraModel):
         # 
         # For more information about alert types, see [Alerts](https://help.aliyun.com/document_detail/68388.html).
         self.event_type = event_type
+        self.resource_directory_account_id = resource_directory_account_id
         self.resource_owner_id = resource_owner_id
         # The rule ID.
         self.rule_id = rule_id
@@ -60,6 +62,9 @@ class AdvanceSecurityEventOperationsRequest(DaraModel):
         if self.event_type is not None:
             result['EventType'] = self.event_type
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
@@ -75,6 +80,9 @@ class AdvanceSecurityEventOperationsRequest(DaraModel):
 
         if m.get('EventType') is not None:
             self.event_type = m.get('EventType')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')

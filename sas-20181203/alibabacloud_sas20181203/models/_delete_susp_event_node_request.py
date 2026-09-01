@@ -8,6 +8,7 @@ class DeleteSuspEventNodeRequest(DaraModel):
     def __init__(
         self,
         note_id: int = None,
+        resource_directory_account_id: int = None,
     ):
         # The ID of the description.
         # 
@@ -15,6 +16,7 @@ class DeleteSuspEventNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.note_id = note_id
+        self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):
         pass
@@ -27,12 +29,18 @@ class DeleteSuspEventNodeRequest(DaraModel):
         if self.note_id is not None:
             result['NoteId'] = self.note_id
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('NoteId') is not None:
             self.note_id = m.get('NoteId')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         return self
 

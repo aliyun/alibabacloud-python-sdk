@@ -13,7 +13,7 @@ class GetCheckSaleResponseBody(DaraModel):
     ):
         # The sales information of cloud service configuration check.
         self.check_sale = check_sale
-        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
+        # The ID of the request. The China Cloud generates a unique identifier for the request, which can be used for troubleshooting and diagnostics.
         self.request_id = request_id
 
     def validate(self):
@@ -62,16 +62,16 @@ class GetCheckSaleResponseBodyCheckSale(DaraModel):
         self.instance_hybrid_post_latest_cycled_resource_count = instance_hybrid_post_latest_cycled_resource_count
         self.instance_post_consume_count = instance_post_consume_count
         self.instance_purchase_count = instance_purchase_count
-        # Indicates whether the user is an existing user who used the cloud service configuration check feature before the sales feature was released on July 7, 2023. Valid values:
+        # Indicates whether the user is an existing user who used the cloud service configuration check feature before the sales feature was released (July 7, 2023). Valid values:
         # - **true**: The user is an existing user.
         # - **false**: The user is not an existing user.
         self.loyal_user = loyal_user
         # The number of purchased authorized quotas.
         self.purchase_count = purchase_count
-        # The type of the sales user. Valid values:
-        # - **1**: full-feature user who can use all check items.
-        # - **2**: user who needs to upgrade and can only use check items that were available before the sales feature was released on July 7, 2023.
-        # - **3**: user who needs to purchase the feature and cannot use the cloud service configuration check feature.
+        # The sales user type. Valid values:
+        # - **1**: Full-feature user. The user can use all check items.
+        # - **2**: Upgrade-required user. The user can use only the check items that were available before the sales feature was released (July 7, 2023).
+        # - **3**: Purchase-required user. The user cannot use the cloud service configuration check feature.
         self.sale_user_type = sale_user_type
 
     def validate(self):

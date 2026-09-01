@@ -9,6 +9,7 @@ class SaveSuspEventUserSettingRequest(DaraModel):
         self,
         from_: str = None,
         levels_on: str = None,
+        resource_directory_account_id: int = None,
     ):
         # The data source of the exception. Set the value to sas.
         self.from_ = from_
@@ -18,6 +19,7 @@ class SaveSuspEventUserSettingRequest(DaraModel):
         # *   **suspicious**
         # *   **serious**
         self.levels_on = levels_on
+        self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):
         pass
@@ -33,6 +35,9 @@ class SaveSuspEventUserSettingRequest(DaraModel):
         if self.levels_on is not None:
             result['LevelsOn'] = self.levels_on
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -42,6 +47,9 @@ class SaveSuspEventUserSettingRequest(DaraModel):
 
         if m.get('LevelsOn') is not None:
             self.levels_on = m.get('LevelsOn')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         return self
 

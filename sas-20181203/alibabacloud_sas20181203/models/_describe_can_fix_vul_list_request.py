@@ -29,6 +29,7 @@ class DescribeCanFixVulListRequest(DaraModel):
         repo_name: str = None,
         repo_namespace: str = None,
         repo_region_id: str = None,
+        resource_directory_account_id: int = None,
         scan_range: List[str] = None,
         status_list: str = None,
         tag: str = None,
@@ -113,6 +114,7 @@ class DescribeCanFixVulListRequest(DaraModel):
         # - **eu-central-1**: Germany (Frankfurt)
         # - **eu-west-1**: UK (London).
         self.repo_region_id = repo_region_id
+        self.resource_directory_account_id = resource_directory_account_id
         # The scan scope. Valid values:
         # 
         # - **image**: Image.
@@ -202,6 +204,9 @@ class DescribeCanFixVulListRequest(DaraModel):
         if self.repo_region_id is not None:
             result['RepoRegionId'] = self.repo_region_id
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.scan_range is not None:
             result['ScanRange'] = self.scan_range
 
@@ -280,6 +285,9 @@ class DescribeCanFixVulListRequest(DaraModel):
 
         if m.get('RepoRegionId') is not None:
             self.repo_region_id = m.get('RepoRegionId')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('ScanRange') is not None:
             self.scan_range = m.get('ScanRange')

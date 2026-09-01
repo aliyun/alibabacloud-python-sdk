@@ -13,20 +13,19 @@ class UpdateUnknownThreatDetectStrategyRequest(DaraModel):
         name: str = None,
         study_mode: str = None,
     ):
-        # The number of days the model learns for after its creation.
+        # The number of days after the model is initially created before learning stops.
         self.duration_days_after_init = duration_days_after_init
-        # The number of consecutive days without new processes before the model stops learning.
+        # The number of days after which the model ends if no new processes are added.
         self.duration_days_after_stop = duration_days_after_stop
-        # The ID of the unknown threat detection strategy to update.
+        # The ID of the policy to delete.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the unknown threat detection strategy.
+        # The policy name.
         self.name = name
-        # The whitelist mode. Valid values are:
+        # The whitelist mode. Valid values:
         # 
         # - **hash**: process hash
-        # 
         # - **path**: process path
         self.study_mode = study_mode
 

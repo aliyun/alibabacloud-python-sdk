@@ -10,6 +10,7 @@ class DescribeAlarmEventDetailRequest(DaraModel):
         alarm_unique_info: str = None,
         from_: str = None,
         lang: str = None,
+        resource_directory_account_id: int = None,
         source_ip: str = None,
     ):
         # The unique identifier of the alert event.
@@ -27,6 +28,7 @@ class DescribeAlarmEventDetailRequest(DaraModel):
         # *   **zh**: Chinese
         # *   **en**: English
         self.lang = lang
+        self.resource_directory_account_id = resource_directory_account_id
         # The source IP address of the request.
         self.source_ip = source_ip
 
@@ -47,6 +49,9 @@ class DescribeAlarmEventDetailRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
 
@@ -62,6 +67,9 @@ class DescribeAlarmEventDetailRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

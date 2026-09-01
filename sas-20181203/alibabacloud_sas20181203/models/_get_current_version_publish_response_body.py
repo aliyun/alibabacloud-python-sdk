@@ -11,9 +11,9 @@ class GetCurrentVersionPublishResponseBody(DaraModel):
         data: main_models.GetCurrentVersionPublishResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The data details.
         self.data = data
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -60,38 +60,35 @@ class GetCurrentVersionPublishResponseBodyData(DaraModel):
     ):
         # Indicates whether automatic upgrade is enabled. Valid values:
         # 
-        # *   **1**: yes.
-        # *   **0**: no.
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.auto_upgrade = auto_upgrade
-        # Indicates whether you can enable custom upgrade for the Security Center agent. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the current user supports custom upgrades in Security Center. Valid values:
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.big_customer = big_customer
-        # The version of the Security Center agent.
+        # The current version.
         self.cur_version = cur_version
-        # The timestamp when the Security Center agent was forcibly upgraded.
+        # The timestamp for the forced client upgrade.
         self.force_upgrade_time = force_upgrade_time
         # Indicates whether the canary release policy is enabled. Valid values:
-        # 
-        # *   **1**: yes.
-        # *   .**0**: no.
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.gray_switch_status = gray_switch_status
-        # The latest version of the Security Center agent.
+        # The latest client version number.
         self.latest_version = latest_version
-        # The timestamp when the latest version of the Security Center agent was created.
+        # The timestamp when the latest client version was created.
         self.latest_version_create = latest_version_create
-        # The description of about the latest version.
+        # The description of the latest version.
         self.latest_version_desc = latest_version_desc
-        # The publish status of the Security Center agent. Valid values:
-        # 
-        # *   **0**: not started.
-        # *   **1**: publishing.
-        # *   **2**: published.
-        # *   **3**: publish suspended.
-        # *   **4**: forcibly upgrading.
+        # The release status of the current version. Valid values:
+        # - **0**: Not started.
+        # - **1**: Being released.
+        # - **2**: Release completed.
+        # - **3**: Release paused.
+        # - **4**: Forced upgrade in progress.
         self.publish_status = publish_status
-        # The destination version of the Security Center agent.
+        # The target version to upgrade to.
         self.upgrade_version = upgrade_version
 
     def validate(self):

@@ -8,11 +8,13 @@ class DeleteVulWhitelistRequest(DaraModel):
     def __init__(
         self,
         id: str = None,
+        resource_directory_account_id: int = None,
         whitelist: str = None,
     ):
         # The ID of the vulnerability whitelist.
         # > To delete a vulnerability whitelist, provide the vulnerability whitelist ID. You can obtain this ID by calling the [DescribeVulWhitelist](~~DescribeVulWhitelist~~) operation.
         self.id = id
+        self.resource_directory_account_id = resource_directory_account_id
         # The vulnerability whitelist information to delete. The value is a JSON string that contains the following fields:
         # 
         # - **Name**: The name of the vulnerability.
@@ -38,6 +40,9 @@ class DeleteVulWhitelistRequest(DaraModel):
         if self.id is not None:
             result['Id'] = self.id
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.whitelist is not None:
             result['Whitelist'] = self.whitelist
 
@@ -47,6 +52,9 @@ class DeleteVulWhitelistRequest(DaraModel):
         m = m or dict()
         if m.get('Id') is not None:
             self.id = m.get('Id')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('Whitelist') is not None:
             self.whitelist = m.get('Whitelist')
