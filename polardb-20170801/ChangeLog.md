@@ -1,3 +1,22 @@
+2026-09-01 Version: 8.2.0
+- Support API AnswerKnowledgeBase.
+- Support API CreateKBSyncLink.
+- Support API DeleteKBSyncLink.
+- Support API DeleteKnowledgeBaseFile.
+- Support API DescribeKBSyncLinks.
+- Support API DescribeKnowledgeBaseAnswer.
+- Support API DescribeKnowledgeBaseFileShards.
+- Support API DescribeKnowledgeBaseFiles.
+- Support API DescribeKnowledgeSpaceAttribute.
+- Support API RetrievalKnowledgeBase.
+- Support API RetryKnowledgeBaseFiles.
+- Support API TriggerKnowledgeBaseSync.
+- Support API UpdateKBSyncLink.
+- Support API UpdateKnowledgeBase.
+- Support API UpdateKnowledgeBaseFileShardingStrategy.
+- Support API UpdateKnowledgeSpace.
+
+
 2026-08-28 Version: 8.1.1
 - Update API DescribeKnowledgeBases: add response parameters Body.Items.$.KnowledgeBaseType.
 

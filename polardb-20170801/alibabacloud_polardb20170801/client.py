@@ -809,6 +809,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_sqlrate_limiting_rules_with_options_async(request, runtime)
 
+    def answer_knowledge_base_with_options(
+        self,
+        request: main_models.AnswerKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AnswerKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.max_context_chars):
+            query['MaxContextChars'] = request.max_context_chars
+        if not DaraCore.is_null(request.query_text):
+            query['QueryText'] = request.query_text
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rerank_enabled):
+            query['RerankEnabled'] = request.rerank_enabled
+        if not DaraCore.is_null(request.return_sources):
+            query['ReturnSources'] = request.return_sources
+        if not DaraCore.is_null(request.score_threshold):
+            query['ScoreThreshold'] = request.score_threshold
+        if not DaraCore.is_null(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not DaraCore.is_null(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.user_instructions):
+            query['UserInstructions'] = request.user_instructions
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AnswerKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AnswerKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def answer_knowledge_base_with_options_async(
+        self,
+        request: main_models.AnswerKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AnswerKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.max_context_chars):
+            query['MaxContextChars'] = request.max_context_chars
+        if not DaraCore.is_null(request.query_text):
+            query['QueryText'] = request.query_text
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rerank_enabled):
+            query['RerankEnabled'] = request.rerank_enabled
+        if not DaraCore.is_null(request.return_sources):
+            query['ReturnSources'] = request.return_sources
+        if not DaraCore.is_null(request.score_threshold):
+            query['ScoreThreshold'] = request.score_threshold
+        if not DaraCore.is_null(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not DaraCore.is_null(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.user_instructions):
+            query['UserInstructions'] = request.user_instructions
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AnswerKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AnswerKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def answer_knowledge_base(
+        self,
+        request: main_models.AnswerKnowledgeBaseRequest,
+    ) -> main_models.AnswerKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.answer_knowledge_base_with_options(request, runtime)
+
+    async def answer_knowledge_base_async(
+        self,
+        request: main_models.AnswerKnowledgeBaseRequest,
+    ) -> main_models.AnswerKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.answer_knowledge_base_with_options_async(request, runtime)
+
     def apply_application_prompts_with_options(
         self,
         tmp_req: main_models.ApplyApplicationPromptsRequest,
@@ -7111,6 +7221,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_gw_consumer_order_with_options_async(request, runtime)
 
+    def create_kbsync_link_with_options(
+        self,
+        request: main_models.CreateKBSyncLinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKBSyncLinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_id):
+            query['ClientId'] = request.client_id
+        if not DaraCore.is_null(request.client_secret):
+            query['ClientSecret'] = request.client_secret
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_name):
+            query['LinkName'] = request.link_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_dir):
+            query['SourceDir'] = request.source_dir
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.sync_interval_minutes):
+            query['SyncIntervalMinutes'] = request.sync_interval_minutes
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKBSyncLink',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKBSyncLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_kbsync_link_with_options_async(
+        self,
+        request: main_models.CreateKBSyncLinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKBSyncLinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_id):
+            query['ClientId'] = request.client_id
+        if not DaraCore.is_null(request.client_secret):
+            query['ClientSecret'] = request.client_secret
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_name):
+            query['LinkName'] = request.link_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_dir):
+            query['SourceDir'] = request.source_dir
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.sync_interval_minutes):
+            query['SyncIntervalMinutes'] = request.sync_interval_minutes
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKBSyncLink',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKBSyncLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_kbsync_link(
+        self,
+        request: main_models.CreateKBSyncLinkRequest,
+    ) -> main_models.CreateKBSyncLinkResponse:
+        runtime = RuntimeOptions()
+        return self.create_kbsync_link_with_options(request, runtime)
+
+    async def create_kbsync_link_async(
+        self,
+        request: main_models.CreateKBSyncLinkRequest,
+    ) -> main_models.CreateKBSyncLinkResponse:
+        runtime = RuntimeOptions()
+        return await self.create_kbsync_link_with_options_async(request, runtime)
+
     def create_knowledge_base_with_options(
         self,
         request: main_models.CreateKnowledgeBaseRequest,
@@ -11833,6 +12049,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_global_security_ipgroup_with_options_async(request, runtime)
 
+    def delete_kbsync_link_with_options(
+        self,
+        request: main_models.DeleteKBSyncLinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKBSyncLinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKBSyncLink',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKBSyncLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_kbsync_link_with_options_async(
+        self,
+        request: main_models.DeleteKBSyncLinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKBSyncLinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKBSyncLink',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKBSyncLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_kbsync_link(
+        self,
+        request: main_models.DeleteKBSyncLinkRequest,
+    ) -> main_models.DeleteKBSyncLinkResponse:
+        runtime = RuntimeOptions()
+        return self.delete_kbsync_link_with_options(request, runtime)
+
+    async def delete_kbsync_link_async(
+        self,
+        request: main_models.DeleteKBSyncLinkRequest,
+    ) -> main_models.DeleteKBSyncLinkResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_kbsync_link_with_options_async(request, runtime)
+
     def delete_knowledge_base_with_options(
         self,
         request: main_models.DeleteKnowledgeBaseRequest,
@@ -11906,6 +12200,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteKnowledgeBaseResponse:
         runtime = RuntimeOptions()
         return await self.delete_knowledge_base_with_options_async(request, runtime)
+
+    def delete_knowledge_base_file_with_options(
+        self,
+        request: main_models.DeleteKnowledgeBaseFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeBaseFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeBaseFile',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeBaseFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_knowledge_base_file_with_options_async(
+        self,
+        request: main_models.DeleteKnowledgeBaseFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeBaseFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeBaseFile',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeBaseFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_knowledge_base_file(
+        self,
+        request: main_models.DeleteKnowledgeBaseFileRequest,
+    ) -> main_models.DeleteKnowledgeBaseFileResponse:
+        runtime = RuntimeOptions()
+        return self.delete_knowledge_base_file_with_options(request, runtime)
+
+    async def delete_knowledge_base_file_async(
+        self,
+        request: main_models.DeleteKnowledgeBaseFileRequest,
+    ) -> main_models.DeleteKnowledgeBaseFileResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_knowledge_base_file_with_options_async(request, runtime)
 
     def delete_lakebase_s3account_with_options(
         self,
@@ -23743,6 +24115,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_history_tasks_stat_with_options_async(request, runtime)
 
+    def describe_kbsync_links_with_options(
+        self,
+        request: main_models.DescribeKBSyncLinksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKBSyncLinksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.im_platform):
+            query['ImPlatform'] = request.im_platform
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKBSyncLinks',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKBSyncLinksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_kbsync_links_with_options_async(
+        self,
+        request: main_models.DescribeKBSyncLinksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKBSyncLinksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.im_platform):
+            query['ImPlatform'] = request.im_platform
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKBSyncLinks',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKBSyncLinksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_kbsync_links(
+        self,
+        request: main_models.DescribeKBSyncLinksRequest,
+    ) -> main_models.DescribeKBSyncLinksResponse:
+        runtime = RuntimeOptions()
+        return self.describe_kbsync_links_with_options(request, runtime)
+
+    async def describe_kbsync_links_async(
+        self,
+        request: main_models.DescribeKBSyncLinksRequest,
+    ) -> main_models.DescribeKBSyncLinksResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_kbsync_links_with_options_async(request, runtime)
+
+    def describe_knowledge_base_answer_with_options(
+        self,
+        request: main_models.DescribeKnowledgeBaseAnswerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseAnswerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.query_id):
+            query['QueryId'] = request.query_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseAnswer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseAnswerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_knowledge_base_answer_with_options_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseAnswerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseAnswerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.query_id):
+            query['QueryId'] = request.query_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseAnswer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseAnswerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_knowledge_base_answer(
+        self,
+        request: main_models.DescribeKnowledgeBaseAnswerRequest,
+    ) -> main_models.DescribeKnowledgeBaseAnswerResponse:
+        runtime = RuntimeOptions()
+        return self.describe_knowledge_base_answer_with_options(request, runtime)
+
+    async def describe_knowledge_base_answer_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseAnswerRequest,
+    ) -> main_models.DescribeKnowledgeBaseAnswerResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_knowledge_base_answer_with_options_async(request, runtime)
+
     def describe_knowledge_base_attribute_with_options(
         self,
         request: main_models.DescribeKnowledgeBaseAttributeRequest,
@@ -23816,6 +24344,190 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeKnowledgeBaseAttributeResponse:
         runtime = RuntimeOptions()
         return await self.describe_knowledge_base_attribute_with_options_async(request, runtime)
+
+    def describe_knowledge_base_file_shards_with_options(
+        self,
+        request: main_models.DescribeKnowledgeBaseFileShardsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseFileShardsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseFileShards',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseFileShardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_knowledge_base_file_shards_with_options_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseFileShardsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseFileShardsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseFileShards',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseFileShardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_knowledge_base_file_shards(
+        self,
+        request: main_models.DescribeKnowledgeBaseFileShardsRequest,
+    ) -> main_models.DescribeKnowledgeBaseFileShardsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_knowledge_base_file_shards_with_options(request, runtime)
+
+    async def describe_knowledge_base_file_shards_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseFileShardsRequest,
+    ) -> main_models.DescribeKnowledgeBaseFileShardsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_knowledge_base_file_shards_with_options_async(request, runtime)
+
+    def describe_knowledge_base_files_with_options(
+        self,
+        request: main_models.DescribeKnowledgeBaseFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_ids):
+            query['FileIds'] = request.file_ids
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseFiles',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_knowledge_base_files_with_options_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeBaseFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_ids):
+            query['FileIds'] = request.file_ids
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeBaseFiles',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeBaseFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_knowledge_base_files(
+        self,
+        request: main_models.DescribeKnowledgeBaseFilesRequest,
+    ) -> main_models.DescribeKnowledgeBaseFilesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_knowledge_base_files_with_options(request, runtime)
+
+    async def describe_knowledge_base_files_async(
+        self,
+        request: main_models.DescribeKnowledgeBaseFilesRequest,
+    ) -> main_models.DescribeKnowledgeBaseFilesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_knowledge_base_files_with_options_async(request, runtime)
 
     def describe_knowledge_bases_with_options(
         self,
@@ -23906,6 +24618,80 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeKnowledgeBasesResponse:
         runtime = RuntimeOptions()
         return await self.describe_knowledge_bases_with_options_async(request, runtime)
+
+    def describe_knowledge_space_attribute_with_options(
+        self,
+        request: main_models.DescribeKnowledgeSpaceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeSpaceAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_space_id):
+            query['KnowledgeSpaceId'] = request.knowledge_space_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeSpaceAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeSpaceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_knowledge_space_attribute_with_options_async(
+        self,
+        request: main_models.DescribeKnowledgeSpaceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKnowledgeSpaceAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_space_id):
+            query['KnowledgeSpaceId'] = request.knowledge_space_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKnowledgeSpaceAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKnowledgeSpaceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_knowledge_space_attribute(
+        self,
+        request: main_models.DescribeKnowledgeSpaceAttributeRequest,
+    ) -> main_models.DescribeKnowledgeSpaceAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_knowledge_space_attribute_with_options(request, runtime)
+
+    async def describe_knowledge_space_attribute_async(
+        self,
+        request: main_models.DescribeKnowledgeSpaceAttributeRequest,
+    ) -> main_models.DescribeKnowledgeSpaceAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_knowledge_space_attribute_with_options_async(request, runtime)
 
     def describe_lakebase_s3account_with_options(
         self,
@@ -41123,6 +41909,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.restore_table_with_options_async(request, runtime)
 
+    def retrieval_knowledge_base_with_options(
+        self,
+        request: main_models.RetrievalKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetrievalKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.query_text):
+            query['QueryText'] = request.query_text
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rerank_enabled):
+            query['RerankEnabled'] = request.rerank_enabled
+        if not DaraCore.is_null(request.score_threshold):
+            query['ScoreThreshold'] = request.score_threshold
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetrievalKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetrievalKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retrieval_knowledge_base_with_options_async(
+        self,
+        request: main_models.RetrievalKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetrievalKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.query_text):
+            query['QueryText'] = request.query_text
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rerank_enabled):
+            query['RerankEnabled'] = request.rerank_enabled
+        if not DaraCore.is_null(request.score_threshold):
+            query['ScoreThreshold'] = request.score_threshold
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetrievalKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetrievalKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retrieval_knowledge_base(
+        self,
+        request: main_models.RetrievalKnowledgeBaseRequest,
+    ) -> main_models.RetrievalKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.retrieval_knowledge_base_with_options(request, runtime)
+
+    async def retrieval_knowledge_base_async(
+        self,
+        request: main_models.RetrievalKnowledgeBaseRequest,
+    ) -> main_models.RetrievalKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.retrieval_knowledge_base_with_options_async(request, runtime)
+
+    def retry_knowledge_base_files_with_options(
+        self,
+        request: main_models.RetryKnowledgeBaseFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryKnowledgeBaseFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_ids):
+            query['FileIds'] = request.file_ids
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryKnowledgeBaseFiles',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryKnowledgeBaseFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_knowledge_base_files_with_options_async(
+        self,
+        request: main_models.RetryKnowledgeBaseFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryKnowledgeBaseFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_ids):
+            query['FileIds'] = request.file_ids
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryKnowledgeBaseFiles',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryKnowledgeBaseFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_knowledge_base_files(
+        self,
+        request: main_models.RetryKnowledgeBaseFilesRequest,
+    ) -> main_models.RetryKnowledgeBaseFilesResponse:
+        runtime = RuntimeOptions()
+        return self.retry_knowledge_base_files_with_options(request, runtime)
+
+    async def retry_knowledge_base_files_async(
+        self,
+        request: main_models.RetryKnowledgeBaseFilesRequest,
+    ) -> main_models.RetryKnowledgeBaseFilesResponse:
+        runtime = RuntimeOptions()
+        return await self.retry_knowledge_base_files_with_options_async(request, runtime)
+
     def revoke_account_privilege_with_options(
         self,
         request: main_models.RevokeAccountPrivilegeRequest,
@@ -42091,6 +43045,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.transform_dbcluster_pay_type_with_options_async(request, runtime)
 
+    def trigger_knowledge_base_sync_with_options(
+        self,
+        request: main_models.TriggerKnowledgeBaseSyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerKnowledgeBaseSyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerKnowledgeBaseSync',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerKnowledgeBaseSyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trigger_knowledge_base_sync_with_options_async(
+        self,
+        request: main_models.TriggerKnowledgeBaseSyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TriggerKnowledgeBaseSyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TriggerKnowledgeBaseSync',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TriggerKnowledgeBaseSyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trigger_knowledge_base_sync(
+        self,
+        request: main_models.TriggerKnowledgeBaseSyncRequest,
+    ) -> main_models.TriggerKnowledgeBaseSyncResponse:
+        runtime = RuntimeOptions()
+        return self.trigger_knowledge_base_sync_with_options(request, runtime)
+
+    async def trigger_knowledge_base_sync_async(
+        self,
+        request: main_models.TriggerKnowledgeBaseSyncRequest,
+    ) -> main_models.TriggerKnowledgeBaseSyncResponse:
+        runtime = RuntimeOptions()
+        return await self.trigger_knowledge_base_sync_with_options_async(request, runtime)
+
     def unbind_polar_claw_agent_with_options(
         self,
         request: main_models.UnbindPolarClawAgentRequest,
@@ -42638,6 +43670,370 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateExtensionsResponse:
         runtime = RuntimeOptions()
         return await self.update_extensions_with_options_async(request, runtime)
+
+    def update_kbsync_link_with_options(
+        self,
+        request: main_models.UpdateKBSyncLinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKBSyncLinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sync_interval_minutes):
+            query['SyncIntervalMinutes'] = request.sync_interval_minutes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKBSyncLink',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKBSyncLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_kbsync_link_with_options_async(
+        self,
+        request: main_models.UpdateKBSyncLinkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKBSyncLinkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sync_interval_minutes):
+            query['SyncIntervalMinutes'] = request.sync_interval_minutes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKBSyncLink',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKBSyncLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_kbsync_link(
+        self,
+        request: main_models.UpdateKBSyncLinkRequest,
+    ) -> main_models.UpdateKBSyncLinkResponse:
+        runtime = RuntimeOptions()
+        return self.update_kbsync_link_with_options(request, runtime)
+
+    async def update_kbsync_link_async(
+        self,
+        request: main_models.UpdateKBSyncLinkRequest,
+    ) -> main_models.UpdateKBSyncLinkResponse:
+        runtime = RuntimeOptions()
+        return await self.update_kbsync_link_with_options_async(request, runtime)
+
+    def update_knowledge_base_with_options(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_knowledge_base_with_options_async(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBase',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_knowledge_base(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.update_knowledge_base_with_options(request, runtime)
+
+    async def update_knowledge_base_async(
+        self,
+        request: main_models.UpdateKnowledgeBaseRequest,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.update_knowledge_base_with_options_async(request, runtime)
+
+    def update_knowledge_base_file_sharding_strategy_with_options(
+        self,
+        tmp_req: main_models.UpdateKnowledgeBaseFileShardingStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseFileShardingStrategyResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKnowledgeBaseFileShardingStrategyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sharding_strategy_config):
+            request.sharding_strategy_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sharding_strategy_config, 'ShardingStrategyConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.inherit_space_strategy):
+            query['InheritSpaceStrategy'] = request.inherit_space_strategy
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sharding_strategy_config_shrink):
+            query['ShardingStrategyConfig'] = request.sharding_strategy_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBaseFileShardingStrategy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseFileShardingStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_knowledge_base_file_sharding_strategy_with_options_async(
+        self,
+        tmp_req: main_models.UpdateKnowledgeBaseFileShardingStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseFileShardingStrategyResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKnowledgeBaseFileShardingStrategyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sharding_strategy_config):
+            request.sharding_strategy_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sharding_strategy_config, 'ShardingStrategyConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.inherit_space_strategy):
+            query['InheritSpaceStrategy'] = request.inherit_space_strategy
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sharding_strategy_config_shrink):
+            query['ShardingStrategyConfig'] = request.sharding_strategy_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBaseFileShardingStrategy',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseFileShardingStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_knowledge_base_file_sharding_strategy(
+        self,
+        request: main_models.UpdateKnowledgeBaseFileShardingStrategyRequest,
+    ) -> main_models.UpdateKnowledgeBaseFileShardingStrategyResponse:
+        runtime = RuntimeOptions()
+        return self.update_knowledge_base_file_sharding_strategy_with_options(request, runtime)
+
+    async def update_knowledge_base_file_sharding_strategy_async(
+        self,
+        request: main_models.UpdateKnowledgeBaseFileShardingStrategyRequest,
+    ) -> main_models.UpdateKnowledgeBaseFileShardingStrategyResponse:
+        runtime = RuntimeOptions()
+        return await self.update_knowledge_base_file_sharding_strategy_with_options_async(request, runtime)
+
+    def update_knowledge_space_with_options(
+        self,
+        tmp_req: main_models.UpdateKnowledgeSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeSpaceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKnowledgeSpaceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sharding_strategy_config):
+            request.sharding_strategy_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sharding_strategy_config, 'ShardingStrategyConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_space_id):
+            query['KnowledgeSpaceId'] = request.knowledge_space_id
+        if not DaraCore.is_null(request.llmmodel):
+            query['LLMModel'] = request.llmmodel
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rerank_model):
+            query['RerankModel'] = request.rerank_model
+        if not DaraCore.is_null(request.sharding_strategy_config_shrink):
+            query['ShardingStrategyConfig'] = request.sharding_strategy_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeSpace',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_knowledge_space_with_options_async(
+        self,
+        tmp_req: main_models.UpdateKnowledgeSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeSpaceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateKnowledgeSpaceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.sharding_strategy_config):
+            request.sharding_strategy_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sharding_strategy_config, 'ShardingStrategyConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.knowledge_space_id):
+            query['KnowledgeSpaceId'] = request.knowledge_space_id
+        if not DaraCore.is_null(request.llmmodel):
+            query['LLMModel'] = request.llmmodel
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rerank_model):
+            query['RerankModel'] = request.rerank_model
+        if not DaraCore.is_null(request.sharding_strategy_config_shrink):
+            query['ShardingStrategyConfig'] = request.sharding_strategy_config_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeSpace',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_knowledge_space(
+        self,
+        request: main_models.UpdateKnowledgeSpaceRequest,
+    ) -> main_models.UpdateKnowledgeSpaceResponse:
+        runtime = RuntimeOptions()
+        return self.update_knowledge_space_with_options(request, runtime)
+
+    async def update_knowledge_space_async(
+        self,
+        request: main_models.UpdateKnowledgeSpaceRequest,
+    ) -> main_models.UpdateKnowledgeSpaceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_knowledge_space_with_options_async(request, runtime)
 
     def update_polar_claw_agent_with_options(
         self,
