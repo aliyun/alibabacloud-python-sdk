@@ -281,6 +281,7 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         language: str = None,
         mcp_server_ids: str = None,
         mode: str = None,
+        permission_config: main_models.SendChatMessageRequestSessionConfigPermissionConfig = None,
         plan_mode: str = None,
         report_water_mark: str = None,
         skip_ask_human: bool = None,
@@ -306,6 +307,8 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         #  - **ANALYSIS**: analysis mode.
         #  - **INSIGHT**: insight mode.
         self.mode = mode
+        # session 级权限生效机制配置，仅含未配置表的默认行为
+        self.permission_config = permission_config
         # Specifies whether to enable the plan. Valid values: disable, enable, force. Default value: enable.
         self.plan_mode = plan_mode
         # The text (up to 64 characters) used as a watermark in the generated PDF report.
@@ -321,7 +324,8 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         self.user_specified_skill_list = user_specified_skill_list
 
     def validate(self):
-        pass
+        if self.permission_config:
+            self.permission_config.validate()
 
     def to_map(self):
         result = dict()
@@ -348,6 +352,9 @@ class SendChatMessageRequestSessionConfig(DaraModel):
 
         if self.mode is not None:
             result['Mode'] = self.mode
+
+        if self.permission_config is not None:
+            result['PermissionConfig'] = self.permission_config.to_map()
 
         if self.plan_mode is not None:
             result['PlanMode'] = self.plan_mode
@@ -395,6 +402,10 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
 
+        if m.get('PermissionConfig') is not None:
+            temp_model = main_models.SendChatMessageRequestSessionConfigPermissionConfig()
+            self.permission_config = temp_model.from_map(m.get('PermissionConfig'))
+
         if m.get('PlanMode') is not None:
             self.plan_mode = m.get('PlanMode')
 
@@ -415,6 +426,34 @@ class SendChatMessageRequestSessionConfig(DaraModel):
 
         if m.get('UserSpecifiedSkillList') is not None:
             self.user_specified_skill_list = m.get('UserSpecifiedSkillList')
+
+        return self
+
+class SendChatMessageRequestSessionConfigPermissionConfig(DaraModel):
+    def __init__(
+        self,
+        default_action: str = None,
+    ):
+        # 未配置表的默认行为：allow=放行（默认），deny=拒绝
+        self.default_action = default_action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.default_action is not None:
+            result['DefaultAction'] = self.default_action
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultAction') is not None:
+            self.default_action = m.get('DefaultAction')
 
         return self
 
@@ -587,11 +626,13 @@ class SendChatMessageRequestDataSourcesPermissionTables(DaraModel):
     def __init__(
         self,
         allowed_columns: List[str] = None,
+        disallowed_columns: List[str] = None,
         required_row_filter: str = None,
         table_name: str = None,
     ):
         # The list of columns that are allowed to be queried in the current table. If this field is left empty, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT * is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, unauthorized SQL statements may be generated and blocked, which reduces DataAgent analysis speed and effectiveness.
         self.allowed_columns = allowed_columns
+        self.disallowed_columns = disallowed_columns
         # The required row filter condition for the current table. If this field is left empty, it is ignored. If specified, all SQL statements involving this table are validated to check whether they include the filter field and whether the WHERE condition meets the constraint. SQL statements that do not meet the constraint are rejected. Ensure the validation condition format is correct.
         self.required_row_filter = required_row_filter
         # The table name to which the permission constraint rule applies.
@@ -608,6 +649,9 @@ class SendChatMessageRequestDataSourcesPermissionTables(DaraModel):
         if self.allowed_columns is not None:
             result['AllowedColumns'] = self.allowed_columns
 
+        if self.disallowed_columns is not None:
+            result['DisallowedColumns'] = self.disallowed_columns
+
         if self.required_row_filter is not None:
             result['RequiredRowFilter'] = self.required_row_filter
 
@@ -620,6 +664,9 @@ class SendChatMessageRequestDataSourcesPermissionTables(DaraModel):
         m = m or dict()
         if m.get('AllowedColumns') is not None:
             self.allowed_columns = m.get('AllowedColumns')
+
+        if m.get('DisallowedColumns') is not None:
+            self.disallowed_columns = m.get('DisallowedColumns')
 
         if m.get('RequiredRowFilter') is not None:
             self.required_row_filter = m.get('RequiredRowFilter')
@@ -798,11 +845,13 @@ class SendChatMessageRequestDataSourcePermissionTables(DaraModel):
     def __init__(
         self,
         allowed_columns: List[str] = None,
+        disallowed_columns: List[str] = None,
         required_row_filter: str = None,
         table_name: str = None,
     ):
         # The list of columns that are allowed to be queried in the current table. If this field is left empty, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT * is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, unauthorized SQL statements may be generated and blocked, which reduces DataAgent analysis speed and effectiveness.
         self.allowed_columns = allowed_columns
+        self.disallowed_columns = disallowed_columns
         # The required row filter condition for the current table. If this field is left empty, it is ignored. If specified, all SQL statements involving this table are validated to check whether they include the filter field and whether the WHERE condition meets the constraint. SQL statements that do not meet the constraint are rejected. Ensure the validation condition format is correct.
         self.required_row_filter = required_row_filter
         # The table name to which the permission constraint rule applies.
@@ -819,6 +868,9 @@ class SendChatMessageRequestDataSourcePermissionTables(DaraModel):
         if self.allowed_columns is not None:
             result['AllowedColumns'] = self.allowed_columns
 
+        if self.disallowed_columns is not None:
+            result['DisallowedColumns'] = self.disallowed_columns
+
         if self.required_row_filter is not None:
             result['RequiredRowFilter'] = self.required_row_filter
 
@@ -831,6 +883,9 @@ class SendChatMessageRequestDataSourcePermissionTables(DaraModel):
         m = m or dict()
         if m.get('AllowedColumns') is not None:
             self.allowed_columns = m.get('AllowedColumns')
+
+        if m.get('DisallowedColumns') is not None:
+            self.disallowed_columns = m.get('DisallowedColumns')
 
         if m.get('RequiredRowFilter') is not None:
             self.required_row_filter = m.get('RequiredRowFilter')

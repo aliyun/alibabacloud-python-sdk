@@ -12,9 +12,16 @@ class ModifyDataAgentThemeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned when the request is abnormal.
         self.error_code = error_code
+        # The error message returned when the call fails.
         self.error_message = error_message
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

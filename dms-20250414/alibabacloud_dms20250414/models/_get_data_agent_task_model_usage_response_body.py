@@ -16,16 +16,16 @@ class GetDataAgentTaskModelUsageResponseBody(DaraModel):
     ):
         # The summary data of model usage for DataAgent analysis tasks.
         self.data = data
-        # The error code returned if the request fails.
+        # The error code returned if the request failed.
         self.error_code = error_code
-        # The error message returned if the request fails.
+        # The error message returned if the call failed.
         self.error_message = error_message
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request is successful.
-        # - **false**: The request fails.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

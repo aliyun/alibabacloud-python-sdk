@@ -1452,6 +1452,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_data_agent_session_with_options_async(request, runtime)
 
+    def create_data_agent_skill_meta_with_options(
+        self,
+        request: main_models.CreateDataAgentSkillMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentSkillMetaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.upload_location):
+            query['UploadLocation'] = request.upload_location
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentSkillMeta',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentSkillMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_agent_skill_meta_with_options_async(
+        self,
+        request: main_models.CreateDataAgentSkillMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentSkillMetaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.upload_location):
+            query['UploadLocation'] = request.upload_location
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentSkillMeta',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentSkillMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_agent_skill_meta(
+        self,
+        request: main_models.CreateDataAgentSkillMetaRequest,
+    ) -> main_models.CreateDataAgentSkillMetaResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_agent_skill_meta_with_options(request, runtime)
+
+    async def create_data_agent_skill_meta_async(
+        self,
+        request: main_models.CreateDataAgentSkillMetaRequest,
+    ) -> main_models.CreateDataAgentSkillMetaResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_agent_skill_meta_with_options_async(request, runtime)
+
     def create_data_agent_theme_with_options(
         self,
         request: main_models.CreateDataAgentThemeRequest,
@@ -2667,6 +2749,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDataAgentMemoryResponse:
         runtime = RuntimeOptions()
         return await self.delete_data_agent_memory_with_options_async(request, runtime)
+
+    def delete_data_agent_skill_meta_with_options(
+        self,
+        request: main_models.DeleteDataAgentSkillMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentSkillMetaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentSkillMeta',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentSkillMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_agent_skill_meta_with_options_async(
+        self,
+        request: main_models.DeleteDataAgentSkillMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentSkillMetaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentSkillMeta',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentSkillMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_agent_skill_meta(
+        self,
+        request: main_models.DeleteDataAgentSkillMetaRequest,
+    ) -> main_models.DeleteDataAgentSkillMetaResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_agent_skill_meta_with_options(request, runtime)
+
+    async def delete_data_agent_skill_meta_async(
+        self,
+        request: main_models.DeleteDataAgentSkillMetaRequest,
+    ) -> main_models.DeleteDataAgentSkillMetaResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_agent_skill_meta_with_options_async(request, runtime)
 
     def delete_data_agent_workspace_with_options(
         self,
@@ -4154,6 +4310,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_knowledge_base_upload_signature_with_options_async(request, runtime)
 
+    def describe_skill_file_upload_signature_with_options(
+        self,
+        request: main_models.DescribeSkillFileUploadSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSkillFileUploadSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSkillFileUploadSignature',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSkillFileUploadSignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_skill_file_upload_signature_with_options_async(
+        self,
+        request: main_models.DescribeSkillFileUploadSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSkillFileUploadSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSkillFileUploadSignature',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSkillFileUploadSignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_skill_file_upload_signature(
+        self,
+        request: main_models.DescribeSkillFileUploadSignatureRequest,
+    ) -> main_models.DescribeSkillFileUploadSignatureResponse:
+        runtime = RuntimeOptions()
+        return self.describe_skill_file_upload_signature_with_options(request, runtime)
+
+    async def describe_skill_file_upload_signature_async(
+        self,
+        request: main_models.DescribeSkillFileUploadSignatureRequest,
+    ) -> main_models.DescribeSkillFileUploadSignatureResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_skill_file_upload_signature_with_options_async(request, runtime)
+
     def file_upload_callback_with_options(
         self,
         request: main_models.FileUploadCallbackRequest,
@@ -4710,10 +4936,14 @@ class Client(OpenApiClient):
 
     def get_data_agent_task_model_usage_with_options(
         self,
-        request: main_models.GetDataAgentTaskModelUsageRequest,
+        tmp_req: main_models.GetDataAgentTaskModelUsageRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GetDataAgentTaskModelUsageResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.GetDataAgentTaskModelUsageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = {}
         if not DaraCore.is_null(request.begin_time):
             query['BeginTime'] = request.begin_time
@@ -4721,6 +4951,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.pay_level):
             query['PayLevel'] = request.pay_level
         if not DaraCore.is_null(request.region_id):
@@ -4746,10 +4978,14 @@ class Client(OpenApiClient):
 
     async def get_data_agent_task_model_usage_with_options_async(
         self,
-        request: main_models.GetDataAgentTaskModelUsageRequest,
+        tmp_req: main_models.GetDataAgentTaskModelUsageRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GetDataAgentTaskModelUsageResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.GetDataAgentTaskModelUsageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = {}
         if not DaraCore.is_null(request.begin_time):
             query['BeginTime'] = request.begin_time
@@ -4757,6 +4993,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.pay_level):
             query['PayLevel'] = request.pay_level
         if not DaraCore.is_null(request.region_id):
@@ -4796,10 +5034,14 @@ class Client(OpenApiClient):
 
     def get_data_agent_task_model_usage_metrics_with_options(
         self,
-        request: main_models.GetDataAgentTaskModelUsageMetricsRequest,
+        tmp_req: main_models.GetDataAgentTaskModelUsageMetricsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GetDataAgentTaskModelUsageMetricsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.GetDataAgentTaskModelUsageMetricsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = {}
         if not DaraCore.is_null(request.begin_time):
             query['BeginTime'] = request.begin_time
@@ -4807,6 +5049,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.pay_level):
             query['PayLevel'] = request.pay_level
         if not DaraCore.is_null(request.region_id):
@@ -4832,10 +5076,14 @@ class Client(OpenApiClient):
 
     async def get_data_agent_task_model_usage_metrics_with_options_async(
         self,
-        request: main_models.GetDataAgentTaskModelUsageMetricsRequest,
+        tmp_req: main_models.GetDataAgentTaskModelUsageMetricsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.GetDataAgentTaskModelUsageMetricsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.GetDataAgentTaskModelUsageMetricsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_ids):
+            request.instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         query = {}
         if not DaraCore.is_null(request.begin_time):
             query['BeginTime'] = request.begin_time
@@ -4843,6 +5091,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.pay_level):
             query['PayLevel'] = request.pay_level
         if not DaraCore.is_null(request.region_id):
@@ -7217,6 +7467,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListDataAgentSessionResponse:
         runtime = RuntimeOptions()
         return await self.list_data_agent_session_with_options_async(request, runtime)
+
+    def list_data_agent_skill_meta_with_options(
+        self,
+        request: main_models.ListDataAgentSkillMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentSkillMetaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.skill_from):
+            query['SkillFrom'] = request.skill_from
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentSkillMeta',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentSkillMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_skill_meta_with_options_async(
+        self,
+        request: main_models.ListDataAgentSkillMetaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentSkillMetaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.skill_from):
+            query['SkillFrom'] = request.skill_from
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentSkillMeta',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentSkillMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_skill_meta(
+        self,
+        request: main_models.ListDataAgentSkillMetaRequest,
+    ) -> main_models.ListDataAgentSkillMetaResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_skill_meta_with_options(request, runtime)
+
+    async def list_data_agent_skill_meta_async(
+        self,
+        request: main_models.ListDataAgentSkillMetaRequest,
+    ) -> main_models.ListDataAgentSkillMetaResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_skill_meta_with_options_async(request, runtime)
 
     def list_data_agent_theme_with_options(
         self,

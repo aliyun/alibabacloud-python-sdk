@@ -2,27 +2,25 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
-class GetDataAgentTaskModelUsageMetricsResponseBody(DaraModel):
+class DeleteDataAgentSkillMetaResponseBody(DaraModel):
     def __init__(
         self,
-        data: List[main_models.GetDataAgentTaskModelUsageMetricsResponseBodyData] = None,
+        data: main_models.DeleteDataAgentSkillMetaResponseBodyData = None,
         error_code: str = None,
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of TPM time series metrics for model usage, returned in chronological order.
+        # The response struct.
         self.data = data
-        # The error code returned when the request is abnormal.
+        # The error code returned if the call failed.
         self.error_code = error_code
-        # The error message returned when the call fails.
+        # The error message returned if the call failed.
         self.error_message = error_message
-        # The request ID, which is used to locate logs and troubleshoot issues.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
@@ -32,19 +30,15 @@ class GetDataAgentTaskModelUsageMetricsResponseBody(DaraModel):
 
     def validate(self):
         if self.data:
-            for v1 in self.data:
-                 if v1:
-                    v1.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['Data'] = []
         if self.data is not None:
-            for k1 in self.data:
-                result['Data'].append(k1.to_map() if k1 else None)
+            result['Data'] = self.data.to_map()
 
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
@@ -62,11 +56,9 @@ class GetDataAgentTaskModelUsageMetricsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.data = []
         if m.get('Data') is not None:
-            for k1 in m.get('Data'):
-                temp_model = main_models.GetDataAgentTaskModelUsageMetricsResponseBodyData()
-                self.data.append(temp_model.from_map(k1))
+            temp_model = main_models.DeleteDataAgentSkillMetaResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
@@ -82,19 +74,19 @@ class GetDataAgentTaskModelUsageMetricsResponseBody(DaraModel):
 
         return self
 
-class GetDataAgentTaskModelUsageMetricsResponseBodyData(DaraModel):
+class DeleteDataAgentSkillMetaResponseBodyData(DaraModel):
     def __init__(
         self,
-        begin_time: int = None,
-        end_time: int = None,
-        tpm: int = None,
+        skill_id: str = None,
+        success: bool = None,
     ):
-        # The start time of the statistical interval for this time series data point. The value is a UNIX timestamp in seconds.
-        self.begin_time = begin_time
-        # The end time of the statistical interval for this time series data point. The value is a UNIX timestamp in seconds.
-        self.end_time = end_time
-        # The TPM for this time series data point, which is the number of tokens consumed within the statistical interval.
-        self.tpm = tpm
+        # The skill ID.
+        self.skill_id = skill_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - **true**: The operation was successful.                                 
+        # - **false**: The operation failed.
+        self.success = success
 
     def validate(self):
         pass
@@ -104,27 +96,21 @@ class GetDataAgentTaskModelUsageMetricsResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.begin_time is not None:
-            result['BeginTime'] = self.begin_time
+        if self.skill_id is not None:
+            result['SkillId'] = self.skill_id
 
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-
-        if self.tpm is not None:
-            result['Tpm'] = self.tpm
+        if self.success is not None:
+            result['Success'] = self.success
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('BeginTime') is not None:
-            self.begin_time = m.get('BeginTime')
+        if m.get('SkillId') is not None:
+            self.skill_id = m.get('SkillId')
 
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-
-        if m.get('Tpm') is not None:
-            self.tpm = m.get('Tpm')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
 
         return self
 

@@ -2,27 +2,25 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class GetDataAgentTaskModelUsageRequest(DaraModel):
+class GetDataAgentTaskModelUsageMetricsShrinkRequest(DaraModel):
     def __init__(
         self,
-        begin_time: int = None,
+        begin_time: str = None,
         dmsunit: str = None,
-        end_time: int = None,
-        instance_ids: List[str] = None,
+        end_time: str = None,
+        instance_ids_shrink: str = None,
         pay_level: str = None,
         region_id: str = None,
     ):
         # The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
         self.begin_time = begin_time
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dmsunit = dmsunit
         # The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
         self.end_time = end_time
-        self.instance_ids = instance_ids
+        self.instance_ids_shrink = instance_ids_shrink
         self.pay_level = pay_level
         # The region ID.
         self.region_id = region_id
@@ -44,8 +42,8 @@ class GetDataAgentTaskModelUsageRequest(DaraModel):
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
-        if self.instance_ids is not None:
-            result['InstanceIds'] = self.instance_ids
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
 
         if self.pay_level is not None:
             result['PayLevel'] = self.pay_level
@@ -67,7 +65,7 @@ class GetDataAgentTaskModelUsageRequest(DaraModel):
             self.end_time = m.get('EndTime')
 
         if m.get('InstanceIds') is not None:
-            self.instance_ids = m.get('InstanceIds')
+            self.instance_ids_shrink = m.get('InstanceIds')
 
         if m.get('PayLevel') is not None:
             self.pay_level = m.get('PayLevel')

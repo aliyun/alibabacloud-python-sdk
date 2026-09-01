@@ -10,6 +10,7 @@ from ._agentic_database_engine_meta import AgenticDatabaseEngineMeta
 from ._agentic_database_object import AgenticDatabaseObject
 from ._agentic_dms_instance_sync_task import AgenticDmsInstanceSyncTask
 from ._agentic_dms_instance_sync_task_instance import AgenticDmsInstanceSyncTaskInstance
+from ._agentic_knowledge_view import AgenticKnowledgeView
 from ._agentic_table_base_info import AgenticTableBaseInfo
 from ._agentic_table_column import AgenticTableColumn
 from ._agentic_table_column_engine_meta import AgenticTableColumnEngineMeta
@@ -104,6 +105,9 @@ from ._create_data_agent_session_request import CreateDataAgentSessionRequest
 from ._create_data_agent_session_shrink_request import CreateDataAgentSessionShrinkRequest
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBody
 from ._create_data_agent_session_response import CreateDataAgentSessionResponse
+from ._create_data_agent_skill_meta_request import CreateDataAgentSkillMetaRequest
+from ._create_data_agent_skill_meta_response_body import CreateDataAgentSkillMetaResponseBody
+from ._create_data_agent_skill_meta_response import CreateDataAgentSkillMetaResponse
 from ._create_data_agent_theme_request import CreateDataAgentThemeRequest
 from ._create_data_agent_theme_response_body import CreateDataAgentThemeResponseBody
 from ._create_data_agent_theme_response import CreateDataAgentThemeResponse
@@ -151,6 +155,9 @@ from ._delete_data_agent_mcp_response import DeleteDataAgentMcpResponse
 from ._delete_data_agent_memory_request import DeleteDataAgentMemoryRequest
 from ._delete_data_agent_memory_response_body import DeleteDataAgentMemoryResponseBody
 from ._delete_data_agent_memory_response import DeleteDataAgentMemoryResponse
+from ._delete_data_agent_skill_meta_request import DeleteDataAgentSkillMetaRequest
+from ._delete_data_agent_skill_meta_response_body import DeleteDataAgentSkillMetaResponseBody
+from ._delete_data_agent_skill_meta_response import DeleteDataAgentSkillMetaResponse
 from ._delete_data_agent_workspace_request import DeleteDataAgentWorkspaceRequest
 from ._delete_data_agent_workspace_response_body import DeleteDataAgentWorkspaceResponseBody
 from ._delete_data_agent_workspace_response import DeleteDataAgentWorkspaceResponse
@@ -210,6 +217,9 @@ from ._describe_knowledge_base_stats_response import DescribeKnowledgeBaseStatsR
 from ._describe_knowledge_base_upload_signature_request import DescribeKnowledgeBaseUploadSignatureRequest
 from ._describe_knowledge_base_upload_signature_response_body import DescribeKnowledgeBaseUploadSignatureResponseBody
 from ._describe_knowledge_base_upload_signature_response import DescribeKnowledgeBaseUploadSignatureResponse
+from ._describe_skill_file_upload_signature_request import DescribeSkillFileUploadSignatureRequest
+from ._describe_skill_file_upload_signature_response_body import DescribeSkillFileUploadSignatureResponseBody
+from ._describe_skill_file_upload_signature_response import DescribeSkillFileUploadSignatureResponse
 from ._file_upload_callback_request import FileUploadCallbackRequest
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBody
 from ._file_upload_callback_response import FileUploadCallbackResponse
@@ -229,9 +239,11 @@ from ._get_data_agent_sub_account_info_request import GetDataAgentSubAccountInfo
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBody
 from ._get_data_agent_sub_account_info_response import GetDataAgentSubAccountInfoResponse
 from ._get_data_agent_task_model_usage_request import GetDataAgentTaskModelUsageRequest
+from ._get_data_agent_task_model_usage_shrink_request import GetDataAgentTaskModelUsageShrinkRequest
 from ._get_data_agent_task_model_usage_response_body import GetDataAgentTaskModelUsageResponseBody
 from ._get_data_agent_task_model_usage_response import GetDataAgentTaskModelUsageResponse
 from ._get_data_agent_task_model_usage_metrics_request import GetDataAgentTaskModelUsageMetricsRequest
+from ._get_data_agent_task_model_usage_metrics_shrink_request import GetDataAgentTaskModelUsageMetricsShrinkRequest
 from ._get_data_agent_task_model_usage_metrics_response_body import GetDataAgentTaskModelUsageMetricsResponseBody
 from ._get_data_agent_task_model_usage_metrics_response import GetDataAgentTaskModelUsageMetricsResponse
 from ._get_data_agent_theme_upload_signature_request import GetDataAgentThemeUploadSignatureRequest
@@ -316,6 +328,9 @@ from ._list_data_agent_memory_response import ListDataAgentMemoryResponse
 from ._list_data_agent_session_request import ListDataAgentSessionRequest
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBody
 from ._list_data_agent_session_response import ListDataAgentSessionResponse
+from ._list_data_agent_skill_meta_request import ListDataAgentSkillMetaRequest
+from ._list_data_agent_skill_meta_response_body import ListDataAgentSkillMetaResponseBody
+from ._list_data_agent_skill_meta_response import ListDataAgentSkillMetaResponse
 from ._list_data_agent_theme_request import ListDataAgentThemeRequest
 from ._list_data_agent_theme_response_body import ListDataAgentThemeResponseBody
 from ._list_data_agent_theme_response import ListDataAgentThemeResponse
@@ -512,6 +527,7 @@ from ._create_data_agent_knowledge_base_response_body import CreateDataAgentKnow
 from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyDataSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyData
+from ._create_data_agent_skill_meta_response_body import CreateDataAgentSkillMetaResponseBodyData
 from ._create_data_agent_theme_response_body import CreateDataAgentThemeResponseBodyData
 from ._create_data_agent_workspace_response_body import CreateDataAgentWorkspaceResponseBodyData
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRootResponses
@@ -520,6 +536,7 @@ from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyDat
 from ._delete_data_agent_response_body import DeleteDataAgentResponseBodyData
 from ._delete_data_agent_knowledge_base_response_body import DeleteDataAgentKnowledgeBaseResponseBodyData
 from ._delete_data_agent_memory_response_body import DeleteDataAgentMemoryResponseBodyData
+from ._delete_data_agent_skill_meta_response_body import DeleteDataAgentSkillMetaResponseBodyData
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataCallbackConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataExecutionConfig
@@ -540,6 +557,7 @@ from ._describe_document_response_body import DescribeDocumentResponseBodyData
 from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBodyData
 from ._describe_knowledge_base_stats_response_body import DescribeKnowledgeBaseStatsResponseBodyData
 from ._describe_knowledge_base_upload_signature_response_body import DescribeKnowledgeBaseUploadSignatureResponseBodyData
+from ._describe_skill_file_upload_signature_response_body import DescribeSkillFileUploadSignatureResponseBodyData
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBodyData
 from ._get_agentic_agent_by_install_token_response_body import GetAgenticAgentByInstallTokenResponseBodyData
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
@@ -573,6 +591,8 @@ from ._list_data_agent_memory_response_body import ListDataAgentMemoryResponseBo
 from ._list_data_agent_memory_response_body import ListDataAgentMemoryResponseBodyData
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBodyDataSessionConfig
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBodyData
+from ._list_data_agent_skill_meta_response_body import ListDataAgentSkillMetaResponseBodyDataContent
+from ._list_data_agent_skill_meta_response_body import ListDataAgentSkillMetaResponseBodyData
 from ._list_data_agent_theme_response_body import ListDataAgentThemeResponseBodyData
 from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBodyDataContent
 from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBodyData
@@ -605,6 +625,7 @@ from ._send_chat_message_request import SendChatMessageRequestDataSource
 from ._send_chat_message_request import SendChatMessageRequestDataSourcesPermissionTables
 from ._send_chat_message_request import SendChatMessageRequestDataSourcesPermission
 from ._send_chat_message_request import SendChatMessageRequestDataSources
+from ._send_chat_message_request import SendChatMessageRequestSessionConfigPermissionConfig
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
 from ._send_chat_message_request import SendChatMessageRequestTaskConfigReportConfig
 from ._send_chat_message_request import SendChatMessageRequestTaskConfig
@@ -629,6 +650,7 @@ __all__ = [
     AgenticDatabaseObject,
     AgenticDmsInstanceSyncTask,
     AgenticDmsInstanceSyncTaskInstance,
+    AgenticKnowledgeView,
     AgenticTableBaseInfo,
     AgenticTableColumn,
     AgenticTableColumnEngineMeta,
@@ -723,6 +745,9 @@ __all__ = [
     CreateDataAgentSessionShrinkRequest,
     CreateDataAgentSessionResponseBody,
     CreateDataAgentSessionResponse,
+    CreateDataAgentSkillMetaRequest,
+    CreateDataAgentSkillMetaResponseBody,
+    CreateDataAgentSkillMetaResponse,
     CreateDataAgentThemeRequest,
     CreateDataAgentThemeResponseBody,
     CreateDataAgentThemeResponse,
@@ -770,6 +795,9 @@ __all__ = [
     DeleteDataAgentMemoryRequest,
     DeleteDataAgentMemoryResponseBody,
     DeleteDataAgentMemoryResponse,
+    DeleteDataAgentSkillMetaRequest,
+    DeleteDataAgentSkillMetaResponseBody,
+    DeleteDataAgentSkillMetaResponse,
     DeleteDataAgentWorkspaceRequest,
     DeleteDataAgentWorkspaceResponseBody,
     DeleteDataAgentWorkspaceResponse,
@@ -829,6 +857,9 @@ __all__ = [
     DescribeKnowledgeBaseUploadSignatureRequest,
     DescribeKnowledgeBaseUploadSignatureResponseBody,
     DescribeKnowledgeBaseUploadSignatureResponse,
+    DescribeSkillFileUploadSignatureRequest,
+    DescribeSkillFileUploadSignatureResponseBody,
+    DescribeSkillFileUploadSignatureResponse,
     FileUploadCallbackRequest,
     FileUploadCallbackResponseBody,
     FileUploadCallbackResponse,
@@ -848,9 +879,11 @@ __all__ = [
     GetDataAgentSubAccountInfoResponseBody,
     GetDataAgentSubAccountInfoResponse,
     GetDataAgentTaskModelUsageRequest,
+    GetDataAgentTaskModelUsageShrinkRequest,
     GetDataAgentTaskModelUsageResponseBody,
     GetDataAgentTaskModelUsageResponse,
     GetDataAgentTaskModelUsageMetricsRequest,
+    GetDataAgentTaskModelUsageMetricsShrinkRequest,
     GetDataAgentTaskModelUsageMetricsResponseBody,
     GetDataAgentTaskModelUsageMetricsResponse,
     GetDataAgentThemeUploadSignatureRequest,
@@ -935,6 +968,9 @@ __all__ = [
     ListDataAgentSessionRequest,
     ListDataAgentSessionResponseBody,
     ListDataAgentSessionResponse,
+    ListDataAgentSkillMetaRequest,
+    ListDataAgentSkillMetaResponseBody,
+    ListDataAgentSkillMetaResponse,
     ListDataAgentThemeRequest,
     ListDataAgentThemeResponseBody,
     ListDataAgentThemeResponse,
@@ -1131,6 +1167,7 @@ __all__ = [
     CreateDataAgentSessionRequestSessionConfig,
     CreateDataAgentSessionResponseBodyDataSessionConfig,
     CreateDataAgentSessionResponseBodyData,
+    CreateDataAgentSkillMetaResponseBodyData,
     CreateDataAgentThemeResponseBodyData,
     CreateDataAgentWorkspaceResponseBodyData,
     DeleteAirflowResponseBodyRootResponses,
@@ -1139,6 +1176,7 @@ __all__ = [
     DeleteDataAgentResponseBodyData,
     DeleteDataAgentKnowledgeBaseResponseBodyData,
     DeleteDataAgentMemoryResponseBodyData,
+    DeleteDataAgentSkillMetaResponseBodyData,
     DeleteFileUploadResponseBodyData,
     DescribeCustomAgentResponseBodyDataCallbackConfig,
     DescribeCustomAgentResponseBodyDataExecutionConfig,
@@ -1159,6 +1197,7 @@ __all__ = [
     DescribeFileUploadSignatureResponseBodyData,
     DescribeKnowledgeBaseStatsResponseBodyData,
     DescribeKnowledgeBaseUploadSignatureResponseBodyData,
+    DescribeSkillFileUploadSignatureResponseBodyData,
     FileUploadCallbackResponseBodyData,
     GetAgenticAgentByInstallTokenResponseBodyData,
     GetAirflowResponseBodyRoot,
@@ -1192,6 +1231,8 @@ __all__ = [
     ListDataAgentMemoryResponseBodyData,
     ListDataAgentSessionResponseBodyDataSessionConfig,
     ListDataAgentSessionResponseBodyData,
+    ListDataAgentSkillMetaResponseBodyDataContent,
+    ListDataAgentSkillMetaResponseBodyData,
     ListDataAgentThemeResponseBodyData,
     ListDataAgentWorkspaceResponseBodyDataContent,
     ListDataAgentWorkspaceResponseBodyData,
@@ -1224,6 +1265,7 @@ __all__ = [
     SendChatMessageRequestDataSourcesPermissionTables,
     SendChatMessageRequestDataSourcesPermission,
     SendChatMessageRequestDataSources,
+    SendChatMessageRequestSessionConfigPermissionConfig,
     SendChatMessageRequestSessionConfig,
     SendChatMessageRequestTaskConfigReportConfig,
     SendChatMessageRequestTaskConfig,
