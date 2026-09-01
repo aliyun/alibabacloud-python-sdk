@@ -10,14 +10,15 @@ class DescriberPython3ScriptLogsRequest(DaraModel):
         lang: str = None,
         request_uuid: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response.
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The UUID that is returned when the Python3 script is run.
+        # The UUID that is returned when you run a Python 3 script.
         # 
-        # >  You can call the [RunPython3Script](~~RunPython3Script~~) operation to query the UUID.
+        # > Call the [RunPython3Script](~~RunPython3Script~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.request_uuid = request_uuid

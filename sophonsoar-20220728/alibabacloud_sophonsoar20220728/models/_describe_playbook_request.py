@@ -12,23 +12,25 @@ class DescribePlaybookRequest(DaraModel):
         playbook_uuid: str = None,
         taskflow_md_5: str = None,
     ):
-        # The flag that indicates whether the playbook is of the debugging or published version. Valid values:
+        # A flag that indicates whether the version is a published version or a debug version. Valid values:
         # 
-        # *   **1**: playbook of the debugging version
-        # *   **0**: playbook of the published version
+        # - **1**: retrieves the debug version.
+        # 
+        # - **0**: retrieves the published version.
         self.debug_flag = debug_flag
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. The default value is **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid
-        # The MD5 hash value of the playbook.
+        # The MD5 value of the playbook configuration.
         self.taskflow_md_5 = taskflow_md_5
 
     def validate(self):

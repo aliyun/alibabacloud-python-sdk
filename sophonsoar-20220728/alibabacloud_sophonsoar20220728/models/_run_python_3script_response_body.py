@@ -10,9 +10,9 @@ class RunPython3ScriptResponseBody(DaraModel):
         request_id: str = None,
         run_result: str = None,
     ):
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates this unique ID for the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The execution result of the Python3 script.
+        # The data returned after the script is run.
         self.run_result = run_result
 
     def validate(self):

@@ -11,18 +11,19 @@ class DescribeDistinctReleasesRequest(DaraModel):
         playbook_uuid: str = None,
         taskflow_md_5: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The playbook UUID.
+        # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid
-        # The MD5 value of the playbook XML configuration.
+        # The MD5 value of the playbook\\"s XML configuration.
         self.taskflow_md_5 = taskflow_md_5
 
     def validate(self):

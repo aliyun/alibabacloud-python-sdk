@@ -21,58 +21,73 @@ class DescribePlaybooksRequest(DaraModel):
         sort: int = None,
         start_millis: int = None,
     ):
-        # Activation status of the playbook. Values:
+        # The status of the playbook. Valid values:
         # 
-        # - **1**: Indicates the playbook is activated.
-        # - **0**: Indicates the playbook is not activated.
+        # - **1**: The playbook is enabled.
+        # 
+        # - **0**: The playbook is disabled.
         self.active = active
-        # End time for the query, in 13-digit timestamp format.
+        # The end of the time range to query. This value is a 13-digit timestamp.
         self.end_millis = end_millis
-        # Specifies the language type for the request and response, default is **zh**. Values:
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # 
         # - **zh**: Chinese.
+        # 
         # - **en**: English.
         self.lang = lang
         # The name of the playbook.
         self.name = name
-        # The sorting logic, with a default value of **desc**. Values:
-        # - **desc**: Descending order.
-        # - **asc**: Ascending order.
-        self.order = order
-        # Type of the playbook. Values:
+        # The sort order. Default value: **desc**. Valid values:
         # 
-        # - **preset**: Predefined playbook.
-        # - **user**: Custom playbook.
+        # - **desc**: descending.
+        # 
+        # - **asc**: ascending.
+        self.order = order
+        # The type of the playbook. Valid values:
+        # 
+        # - **preset**: predefined playbook.
+        # 
+        # - **user**: custom playbook.
         self.own_type = own_type
-        # Sets the page number from which to start displaying the query results. The default value is 1, indicating the first page.
+        # The page number of the page to return. Default value: 1.
         self.page_number = page_number
-        # Specifies the maximum number of items to display per page in a paginated query. The default number of items per page is 20. If the PageSize parameter is empty, it will return 10 items by default.
-        # > It is recommended that the PageSize value is not empty.
+        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 10 entries are returned by default.
+        # 
+        # > Specify a value for this parameter.
         self.page_size = page_size
-        # The trigger method for the playbook, with a default value of **query all**. Values:
-        # - **template-incident**: Security incident.
+        # The trigger type of the playbook. If you do not specify this parameter, playbooks of all trigger types are queried. Valid values:
+        # 
+        # - **template-incident**: security event.
+        # 
         # - **template-ip**: IP entity.
-        # - **template-file**: File entity.
-        # - **template-process**: Process entity.
-        # - **template-alert**: Security alert.
-        # - **template-domain**: Domain entity.
-        # - **template-container**: Container entity.
-        # - **template-host**: Host entity.
-        # - **template-custom**: Custom.
+        # 
+        # - **template-file**: file entity.
+        # 
+        # - **template-process**: process entity.
+        # 
+        # - **template-alert**: security alert.
+        # 
+        # - **template-domain**: domain name entity.
+        # 
+        # - **template-container**: container entity.
+        # 
+        # - **template-host**: host entity.
+        # 
+        # - **template-custom**: custom.
         self.param_types = param_types
         # The UUID of the playbook.
-        # > You can use the UUID to query specific playbook information.
-        # > - Call the [CreatePlaybook](~~CreatePlaybook~~) API to obtain this parameter.
-        self.playbook_uuid = playbook_uuid
-        # UUID List of the playbook.
         # 
-        # Note You can use the UUID list to query specific playbook information.
-        # Call the DescribePlaybooks API to obtain this parameter.
+        # > Call the [CreatePlaybook](~~CreatePlaybook~~) operation to obtain this parameter.
+        self.playbook_uuid = playbook_uuid
+        # A comma-separated list of playbook UUIDs. You can specify up to 100 UUIDs.
         self.playbook_uuids = playbook_uuids
-        # The sorting basis, with a default value of **1**. Values:
-        # - **1**: Last modified time.
-        # - **2**: Most recent execution time.
+        # The field to sort by. Default value: **1**. Valid values:
+        # 
+        # - **1**: last modification time.
+        # 
+        # - **2**: last running time.
         self.sort = sort
-        # Start time for the query, in 13-digit timestamp format.
+        # The start of the time range to query. This value is a 13-digit timestamp.
         self.start_millis = start_millis
 
     def validate(self):

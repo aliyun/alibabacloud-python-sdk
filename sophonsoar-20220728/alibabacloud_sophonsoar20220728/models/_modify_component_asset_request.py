@@ -10,14 +10,15 @@ class ModifyComponentAssetRequest(DaraModel):
         asset_config: str = None,
         lang: str = None,
     ):
-        # The configuration of the asset. The value is a JSON object.
+        # The configuration of the component asset. This parameter is a JSON object.
         # 
         # This parameter is required.
         self.asset_config = asset_config
-        # The language of the content within the request and response.
+        # The language of the request and response.
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

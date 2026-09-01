@@ -11,19 +11,15 @@ class DescribePopApiRequest(DaraModel):
         api_version: str = None,
         pop_code: str = None,
     ):
-        # The operation name of the Alibaba Cloud service.
+        # The name of the Alibaba Cloud product API.
         # 
         # This parameter is required.
         self.api_name = api_name
         # The version number of the API.
         # 
-        # >  You can call the [DescribePopApiVersionList](~~DescribePopApiVersionList~~) operation to query the version number.
-        # 
         # This parameter is required.
         self.api_version = api_version
-        # The POP code of the Alibaba Cloud service.
-        # 
-        # >  You can call the [DescribeApiList](~~DescribeApiList~~) operation to query the POP code.
+        # The POP code of the Alibaba Cloud product API.
         # 
         # This parameter is required.
         self.pop_code = pop_code

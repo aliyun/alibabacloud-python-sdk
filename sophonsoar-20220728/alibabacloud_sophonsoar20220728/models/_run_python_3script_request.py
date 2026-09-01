@@ -13,16 +13,17 @@ class RunPython3ScriptRequest(DaraModel):
         python_script: str = None,
         python_version: str = None,
     ):
-        # The name of the node in the playbook.
+        # The name of the playbook node.
         self.node_name = node_name
-        # The input parameters of the Python3 script.
+        # The input parameters for the Python 3 script.
         self.params = params
         # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         self.playbook_uuid = playbook_uuid
-        # The Python3 script.
+        # The Python 3 script.
         self.python_script = python_script
+        # The Python version.
         self.python_version = python_version
 
     def validate(self):

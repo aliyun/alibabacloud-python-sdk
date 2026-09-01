@@ -10,9 +10,9 @@ class TriggerPlaybookResponseBody(DaraModel):
         request_id: str = None,
         trigger_uuid: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The running UUID of the playbook. This parameter is used to query the running result of the playbook.
+        # The UUID of the playbook run. You can use this UUID to obtain the results of the playbook run.
         self.trigger_uuid = trigger_uuid
 
     def validate(self):

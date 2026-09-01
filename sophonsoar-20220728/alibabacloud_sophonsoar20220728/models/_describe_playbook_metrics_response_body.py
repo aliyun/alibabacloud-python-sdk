@@ -13,7 +13,7 @@ class DescribePlaybookMetricsResponseBody(DaraModel):
     ):
         # The details of the playbook.
         self.metrics = metrics
-        # The request ID.
+        # The ID of the request. This ID is unique to each request and is used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -60,14 +60,15 @@ class DescribePlaybookMetricsResponseBodyMetrics(DaraModel):
     ):
         # The status of the playbook. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # - **1**: The playbook is enabled.
+        # 
+        # - **0**: The playbook is disabled.
         self.active = active
         # The description of the playbook.
         self.description = description
         # The name of the playbook.
         self.display_name = display_name
-        # The number of the tasks that are created for the playbook and failed to run.
+        # The number of failed playbook runs.
         self.fail_num = fail_num
         # The time when the playbook was created. The value is a 13-digit timestamp.
         self.gmt_create = gmt_create
@@ -77,12 +78,13 @@ class DescribePlaybookMetricsResponseBodyMetrics(DaraModel):
         self.last_runtime = last_runtime
         # The type of the playbook. Valid values:
         # 
-        # *   **preset**: predefined playbook
-        # *   **user**: custom playbook
+        # - **preset**: predefined playbook.
+        # 
+        # - **user**: custom playbook.
         self.own_type = own_type
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The number of the tasks that are created for the playbook and were successfully run.
+        # The number of successful playbook runs.
         self.succ_num = succ_num
 
     def validate(self):

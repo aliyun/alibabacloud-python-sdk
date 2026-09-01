@@ -9,7 +9,7 @@ class DescribeSophonCommandsRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the command. Fuzzy match is supported.
+        # The name of the command. Fuzzy search is supported.
         self.name = name
 
     def validate(self):

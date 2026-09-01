@@ -8,20 +8,26 @@ class DescribeProcessStatisticsRequest(DaraModel):
     def __init__(
         self,
         lang: str = None,
+        process_action_end: int = None,
+        process_action_start: int = None,
         role_for: str = None,
         role_type: str = None,
     ):
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese.
-        # *   **en**: English.
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The ID of the user who switches from the current view to the destination view by using the management account.
+        # The end time of the query for response tasks. The value is a 13-digit UNIX timestamp.
+        self.process_action_end = process_action_end
+        # The start time of the query for response tasks. The value is a 13-digit UNIX timestamp.
+        self.process_action_start = process_action_start
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
-        # The type of the view. Valid values:
+        # The view type. Valid values:
         # 
-        # *   0 (default): the view of the current Alibaba Cloud account.
-        # *   1: the view of all accounts for the enterprise.
+        # - 0 (default): the view of the current Alibaba Cloud account.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -35,6 +41,12 @@ class DescribeProcessStatisticsRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.process_action_end is not None:
+            result['ProcessActionEnd'] = self.process_action_end
+
+        if self.process_action_start is not None:
+            result['ProcessActionStart'] = self.process_action_start
+
         if self.role_for is not None:
             result['RoleFor'] = self.role_for
 
@@ -47,6 +59,12 @@ class DescribeProcessStatisticsRequest(DaraModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ProcessActionEnd') is not None:
+            self.process_action_end = m.get('ProcessActionEnd')
+
+        if m.get('ProcessActionStart') is not None:
+            self.process_action_start = m.get('ProcessActionStart')
 
         if m.get('RoleFor') is not None:
             self.role_for = m.get('RoleFor')

@@ -10,11 +10,11 @@ class PublishPlaybookRequest(DaraModel):
         description: str = None,
         playbook_uuid: str = None,
     ):
-        # The description of the released version.
+        # The description of the published version.
         self.description = description
-        # The playbook UUID.
+        # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid

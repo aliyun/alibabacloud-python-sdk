@@ -13,7 +13,7 @@ class DescribePlaybookNumberMetricsResponseBody(DaraModel):
     ):
         # The statistics.
         self.metrics = metrics
-        # The request ID.
+        # The unique ID of the request. If you have an issue with a request, provide this ID for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

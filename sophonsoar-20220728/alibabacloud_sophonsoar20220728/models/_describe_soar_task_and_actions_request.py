@@ -14,16 +14,33 @@ class DescribeSoarTaskAndActionsRequest(DaraModel):
         query_value: str = None,
         request_uuid: str = None,
     ):
-        # The language of the content within the request and response.
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. The maximum value is 20. If you do not specify this parameter, 10 entries are returned.
+        # 
+        # > Specify a value for this parameter.
         self.page_size = page_size
+        # The trigger type of the task. Valid values:
+        # 
+        # - **stream**: The task is triggered by a data stream.
+        # 
+        # - **debug**: The task is triggered by a debugging process.
+        # 
+        # - **manual**: The task is triggered manually.
+        # 
+        # - **timer**: The task is triggered by a timer.
+        # 
+        # - **SubInvoke**: The task is triggered by a child flow.
         self.query_type = query_type
+        # The input parameter of the playbook.
         self.query_value = query_value
-        # The playbook UUID.
+        # The UUID of the playbook task.
         self.request_uuid = request_uuid
 
     def validate(self):

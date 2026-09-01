@@ -12,22 +12,23 @@ class DebugPlaybookRequest(DaraModel):
         record: str = None,
         taskflow: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The playbook UUID.
+        # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid
-        # The input parameters that you use to debug the playbook. You can define the parameters based on your business requirements.
+        # The user-defined input parameters for debugging the playbook.
         self.record = record
         # The XML configuration of the playbook.
         # 
-        # >  You can call the [DescribePlaybook](~~DescribePlaybook~~) operation to query the XML configuration of the playbook.
+        # > Call the [DescribePlaybook](~~DescribePlaybook~~) operation to obtain this configuration.
         # 
         # This parameter is required.
         self.taskflow = taskflow

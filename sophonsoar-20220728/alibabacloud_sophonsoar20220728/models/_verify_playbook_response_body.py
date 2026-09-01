@@ -14,10 +14,11 @@ class VerifyPlaybookResponseBody(DaraModel):
         prerequisites: List[main_models.VerifyPlaybookResponseBodyPrerequisites] = None,
         request_id: str = None,
     ):
-        # The result of the verification.
+        # The verification results.
         self.check_task_infos = check_task_infos
+        # The prerequisite check information for the playbook.
         self.prerequisites = prerequisites
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates this unique identifier for the request. Use this ID to troubleshoot and locate issues.
         self.request_id = request_id
 
     def validate(self):
@@ -75,7 +76,17 @@ class VerifyPlaybookResponseBodyPrerequisites(DaraModel):
         prerequisite_type: str = None,
         prerequisite_value: str = None,
     ):
+        # The check type. Valid values:
+        # 
+        # - **role**: The name of the custom RAM role.
+        # 
+        # - **policies**: The list of RAM system policies.
         self.prerequisite_type = prerequisite_type
+        # The check content. The value is determined as follows:
+        # 
+        # - If PrerequisiteType is **role**, the value is the static field AliyunSiemSoarExecutionDefaultRole.
+        # 
+        # - If PrerequisiteType is **policies**, the value is a collection of policy names.
         self.prerequisite_value = prerequisite_value
 
     def validate(self):
@@ -111,15 +122,17 @@ class VerifyPlaybookResponseBodyCheckTaskInfos(DaraModel):
         node_name: str = None,
         risk_level: str = None,
     ):
-        # The error message returned when the playbook does not pass the check.
+        # The specific error message that is returned if the verification fails.
         self.detail = detail
-        # The name of the node in the playbook.
+        # The name of the playbook node.
         self.node_name = node_name
-        # The severity level of the verification information. Valid values:
+        # The severity level of the verification message. Valid values:
         # 
-        # *   warn: An issue may occur during playbook running.
-        # *   error: The playbook cannot be compiled.
-        # *   remind: The publishing and running of the playbook are not affected. We recommend that you optimize the playbook format.
+        # - **warn**: A warning message. An issue may occur when the playbook runs.
+        # 
+        # - **error**: An error message. The playbook fails to be compiled.
+        # 
+        # - **remind**: A suggestion. This does not affect publishing or running the playbook. Optimize the playbook format.
         self.risk_level = risk_level
 
     def validate(self):

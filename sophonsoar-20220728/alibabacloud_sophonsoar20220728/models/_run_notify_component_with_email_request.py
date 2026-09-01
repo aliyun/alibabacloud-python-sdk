@@ -21,15 +21,15 @@ class RunNotifyComponentWithEmailRequest(DaraModel):
         role_type: str = None,
         subject: str = None,
     ):
-        # The action name of the component.
+        # The name of the component action.
         # 
         # This parameter is required.
         self.action_name = action_name
-        # The resource instance ID of the email sender.
+        # The ID of the asset that is used to send the email.
         # 
-        # >  You can call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to query the ID.
+        # > Call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to obtain this parameter.
         self.asset_id = asset_id
-        # The name of component in the playbook.
+        # The name of the playbook component.
         # 
         # This parameter is required.
         self.component_name = component_name
@@ -37,33 +37,35 @@ class RunNotifyComponentWithEmailRequest(DaraModel):
         # 
         # This parameter is required.
         self.content = content
-        # The language of the content within the request and the response. Valid value:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese.
-        # *   **en**: English.
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The name of the node in the playbook.
+        # The name of the playbook node.
         # 
         # This parameter is required.
         self.node_name = node_name
         # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid
-        # The email addresses.
+        # A list of email addresses.
         # 
         # This parameter is required.
         self.receivers = receivers
-        # The ID of the user who switches from the current view to the destination view by using the management account.
+        # The UID of the member whose data an administrator wants to access.
         self.role_for = role_for
-        # The type of the view. Valid values:
+        # The view type. Valid values:
         # 
-        # *   0: the view of the current Alibaba Cloud account.
-        # *   1: the view of all accounts for the enterprise.
+        # - 0: The view of the current Alibaba Cloud account.
+        # 
+        # - 1: The view of all accounts that belong to the enterprise.
         self.role_type = role_type
-        # The subject of the email.
+        # The title of the email.
         # 
         # This parameter is required.
         self.subject = subject

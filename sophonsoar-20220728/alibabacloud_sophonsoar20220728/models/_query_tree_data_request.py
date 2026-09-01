@@ -9,10 +9,11 @@ class QueryTreeDataRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

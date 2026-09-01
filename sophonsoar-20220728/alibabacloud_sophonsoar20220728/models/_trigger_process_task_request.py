@@ -10,16 +10,17 @@ class TriggerProcessTaskRequest(DaraModel):
         action_type: str = None,
         task_id: str = None,
     ):
-        # The type of the action. Valid values:
+        # The type of the handling action. Valid values:
         # 
-        # *   **remove**: cancels blocking or isolation.
-        # *   **retry**: submits the task again.
+        # - **remove**: Removes a block or an asset from isolation.
+        # 
+        # - **retry**: Resubmits the task.
         # 
         # This parameter is required.
         self.action_type = action_type
-        # The ID of the handling task.
+        # The unique ID of the handling task.
         # 
-        # >  You can call the [DescribeProcessTasks](~~DescribeProcessTasks~~) operation to query the IDs of handling tasks.
+        # > Call the [DescribeProcessTasks](~~DescribeProcessTasks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.task_id = task_id

@@ -11,11 +11,11 @@ class DescribeFieldResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
-        # The configuration content.
+        # The content of the configuration.
         self.fields = fields
         # The name of the global configuration.
         self.name = name
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

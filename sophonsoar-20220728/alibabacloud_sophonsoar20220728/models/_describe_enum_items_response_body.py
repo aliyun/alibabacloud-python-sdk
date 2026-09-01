@@ -13,9 +13,9 @@ class DescribeEnumItemsResponseBody(DaraModel):
         data: List[main_models.DescribeEnumItemsResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The information about the enumeration item.
+        # The enumeration information.
         self.data = data
-        # The request ID.
+        # The ID of the request. This ID is unique to each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeEnumItemsResponseBodyData(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the enumeration item.
+        # The key of the enumeration.
         self.key = key
-        # The value of the enumeration item.
+        # The value of the enumeration.
         self.value = value
 
     def validate(self):

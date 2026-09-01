@@ -9,7 +9,7 @@ class RevertPlaybookReleaseResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request. This ID is unique to the request and can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

@@ -10,16 +10,17 @@ class DeleteComponentAssetRequest(DaraModel):
         asset_id: int = None,
         lang: str = None,
     ):
-        # The ID of the asset.
+        # The asset ID of the component.
         # 
-        # >  You can call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to query the ID.
+        # > Call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.asset_id = asset_id
-        # The language of the content within the request and the response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

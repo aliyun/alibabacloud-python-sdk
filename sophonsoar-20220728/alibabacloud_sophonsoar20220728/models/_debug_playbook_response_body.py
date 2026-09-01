@@ -10,9 +10,9 @@ class DebugPlaybookResponseBody(DaraModel):
         request_id: str = None,
         request_uuid: str = None,
     ):
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot and locate issues.
         self.request_id = request_id
-        # The UUID of the debugging task. You can use the UUID to query the result and other details of the debugging task.
+        # The run UUID of the debugging task. Use this UUID to query information, such as the task result.
         self.request_uuid = request_uuid
 
     def validate(self):

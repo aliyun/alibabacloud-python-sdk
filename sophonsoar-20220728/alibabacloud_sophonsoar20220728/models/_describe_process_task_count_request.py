@@ -14,22 +14,23 @@ class DescribeProcessTaskCountRequest(DaraModel):
         role_for: int = None,
         role_type: str = None,
     ):
-        # Collection of entity UUIDs.
+        # The UUIDs of the entities.
         # 
         # This parameter is required.
         self.entity_uuid_list = entity_uuid_list
-        # Language type for request and response messages. Values:
+        # The language of the request and response. Valid values:
         # 
         # - **zh** (default): Chinese.
         # 
         # - **en**: English.
         self.lang = lang
-        # User ID for administrators to switch to other member\\"s perspective.
+        # The UID of the member whose permissions you want to use to call the operation.
         self.role_for = role_for
-        # View type.
+        # The view type.
         # 
-        # - **0**: Current Alibaba Cloud account view.
-        # - **1**: View for all accounts under the enterprise.
+        # - **0**: The view of the current Alibaba Cloud account.
+        # 
+        # - **1**: The view of all accounts that belong to the enterprise.
         self.role_type = role_type
 
     def validate(self):

@@ -12,7 +12,7 @@ class DescribeSoarRecordInOutputResponseBody(DaraModel):
     ):
         # The execution result of the component action.
         self.in_output_info = in_output_info
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

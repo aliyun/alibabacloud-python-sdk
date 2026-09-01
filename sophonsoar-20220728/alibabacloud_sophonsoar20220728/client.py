@@ -20,7 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'ap-southeast-1': 'sophonsoar.ap-southeast-1.aliyuncs.com',
+            'public': 'sophonsoar.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sophonsoar', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2295,6 +2299,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeProcessTasksResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.alert_id):
+            query['AlertId'] = request.alert_id
         if not DaraCore.is_null(request.direction):
             query['Direction'] = request.direction
         if not DaraCore.is_null(request.entity_name):
@@ -2305,6 +2311,8 @@ class Client(OpenApiClient):
             query['EntityUuid'] = request.entity_uuid
         if not DaraCore.is_null(request.event_uuid):
             query['EventUuid'] = request.event_uuid
+        if not DaraCore.is_null(request.execute_uuid):
+            query['ExecuteUuid'] = request.execute_uuid
         if not DaraCore.is_null(request.order_field):
             query['OrderField'] = request.order_field
         if not DaraCore.is_null(request.page_number):
@@ -2325,6 +2333,8 @@ class Client(OpenApiClient):
             query['ProcessStrategyUuid'] = request.process_strategy_uuid
         if not DaraCore.is_null(request.req_uuid):
             query['ReqUuid'] = request.req_uuid
+        if not DaraCore.is_null(request.response_rule_id):
+            query['ResponseRuleId'] = request.response_rule_id
         if not DaraCore.is_null(request.scene_code):
             query['SceneCode'] = request.scene_code
         if not DaraCore.is_null(request.scope):
@@ -2365,6 +2375,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeProcessTasksResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.alert_id):
+            query['AlertId'] = request.alert_id
         if not DaraCore.is_null(request.direction):
             query['Direction'] = request.direction
         if not DaraCore.is_null(request.entity_name):
@@ -2375,6 +2387,8 @@ class Client(OpenApiClient):
             query['EntityUuid'] = request.entity_uuid
         if not DaraCore.is_null(request.event_uuid):
             query['EventUuid'] = request.event_uuid
+        if not DaraCore.is_null(request.execute_uuid):
+            query['ExecuteUuid'] = request.execute_uuid
         if not DaraCore.is_null(request.order_field):
             query['OrderField'] = request.order_field
         if not DaraCore.is_null(request.page_number):
@@ -2395,6 +2409,8 @@ class Client(OpenApiClient):
             query['ProcessStrategyUuid'] = request.process_strategy_uuid
         if not DaraCore.is_null(request.req_uuid):
             query['ReqUuid'] = request.req_uuid
+        if not DaraCore.is_null(request.response_rule_id):
+            query['ResponseRuleId'] = request.response_rule_id
         if not DaraCore.is_null(request.scene_code):
             query['SceneCode'] = request.scene_code
         if not DaraCore.is_null(request.scope):
@@ -3987,6 +4003,8 @@ class Client(OpenApiClient):
     ) -> main_models.TriggerSophonPlaybookResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.command_name):
             query['CommandName'] = request.command_name
         if not DaraCore.is_null(request.input_params):
@@ -4023,6 +4041,8 @@ class Client(OpenApiClient):
     ) -> main_models.TriggerSophonPlaybookResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.command_name):
             query['CommandName'] = request.command_name
         if not DaraCore.is_null(request.input_params):

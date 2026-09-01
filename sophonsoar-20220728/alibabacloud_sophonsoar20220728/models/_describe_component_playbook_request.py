@@ -10,14 +10,15 @@ class DescribeComponentPlaybookRequest(DaraModel):
         lang: str = None,
         playbook_uuid: str = None,
     ):
-        # The language of the content within the request and the response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The UUID of the playbook.
+        # The UUID of the component playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid

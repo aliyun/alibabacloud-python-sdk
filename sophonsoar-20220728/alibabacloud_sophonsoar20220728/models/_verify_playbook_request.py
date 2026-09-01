@@ -10,9 +10,9 @@ class VerifyPlaybookRequest(DaraModel):
         playbook_uuid: str = None,
         task_flow: str = None,
     ):
-        # The playbook UUID.
+        # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         self.playbook_uuid = playbook_uuid
         # The XML configuration of the playbook.
         self.task_flow = task_flow

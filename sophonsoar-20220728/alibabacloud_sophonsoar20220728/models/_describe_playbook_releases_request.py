@@ -14,16 +14,17 @@ class DescribePlaybookReleasesRequest(DaraModel):
     ):
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
-        self.lang = lang
-        # The page number. Default value: 1. Pages start from page 1.
-        self.page_number = page_number
-        # The number of entries per page. Default value: 10. If you do not specify the PageSize parameter, 10 entries are returned by default.
+        # - **zh**: Chinese
         # 
-        # >  We recommend that you do not leave this parameter empty.
+        # - **en**: English
+        self.lang = lang
+        # The page number of the page to return. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 20. If you do not specify this parameter, 10 entries are returned.
+        # 
+        # > Specify a value for this parameter.
         self.page_size = page_size
-        # The playbook UUID.
+        # The UUID of the playbook.
         # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid

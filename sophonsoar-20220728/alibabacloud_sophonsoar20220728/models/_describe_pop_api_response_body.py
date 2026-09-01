@@ -18,13 +18,13 @@ class DescribePopApiResponseBody(DaraModel):
     ):
         # The name of the API.
         self.api_name = api_name
-        # The information about the API.
+        # List of API information.
         self.open_api_meta_list = open_api_meta_list
-        # The POP code of the Alibaba Cloud service.
+        # The POP code of the Alibaba Cloud product API.
         self.pop_code = pop_code
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The version of the API.
+        # The version number of the API.
         self.version = version
 
     def validate(self):
@@ -89,7 +89,7 @@ class DescribePopApiResponseBodyOpenApiMetaList(DaraModel):
         style: str = None,
         type: str = None,
     ):
-        # The parameter description.
+        # The description of the parameter.
         self.description = description
         # The example value.
         self.example_value = example_value
@@ -97,16 +97,33 @@ class DescribePopApiResponseBodyOpenApiMetaList(DaraModel):
         self.name = name
         # Indicates whether the parameter is required.
         # 
-        # *   true
-        # *   false
-        self.required = required
-        self.style = style
-        # The data type of the parameter field. Valid values:
+        # - **true**: required.
         # 
-        # *   **string**
-        # *   **boolean**
-        # *   **integer**
-        # *   **long**
+        # - **false**: not required.
+        self.required = required
+        # The serialization method for an array parameter. Valid values:
+        # 
+        # - **repeatList**: An array is serialized in the XXX.N format. Example: Instance.1=i-instance1&\\&Instance.2=i-instance2.
+        # 
+        # - **simple**: An array is serialized as a comma-separated string. Example: i-instance1,i-instance2.
+        # 
+        # - **spaceDelimited**: An array is serialized as a space-separated string. Example: i-instance1 i-instance2.
+        # 
+        # - **pipeDelimited**: An array is serialized as a pipe-separated string. Example: i-instance1|i-instance2.
+        # 
+        # - **json**: An array is serialized in JSON format. Example: ["i-instance1","i-instance2"].
+        # 
+        # - **flat**: An array is serialized in the XXX.N format. Example: Instance.1=i-instance1\\&Instance.2=i-instance2.
+        self.style = style
+        # The data type of the parameter. Valid values:
+        # 
+        # - **string**: a string.
+        # 
+        # - **boolean**: a Boolean value.
+        # 
+        # - **integer**: an integer.
+        # 
+        # - **long**: a long integer.
         self.type = type
 
     def validate(self):

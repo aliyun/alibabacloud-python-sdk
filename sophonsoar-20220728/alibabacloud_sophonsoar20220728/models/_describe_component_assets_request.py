@@ -10,14 +10,15 @@ class DescribeComponentAssetsRequest(DaraModel):
         component_name: str = None,
         lang: str = None,
     ):
-        # The name of the component.
+        # The component name.
         # 
         # This parameter is required.
         self.component_name = component_name
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response.
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

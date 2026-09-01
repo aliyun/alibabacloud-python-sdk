@@ -1,3 +1,12 @@
+2026-09-01 Version: 4.0.2
+- Update API DescribeProcessStatistics: add request parameters ProcessActionEnd.
+- Update API DescribeProcessStatistics: add request parameters ProcessActionStart.
+- Update API DescribeProcessTasks: add request parameters AlertId.
+- Update API DescribeProcessTasks: add request parameters ExecuteUuid.
+- Update API DescribeProcessTasks: add request parameters ResponseRuleId.
+- Update API TriggerSophonPlaybook: add request parameters ClientToken.
+
+
 2026-03-13 Version: 4.0.1
 - Update API DescribeOpenApiList: add response parameters Body.Data.Versions.
 

@@ -12,14 +12,15 @@ class DescribeSoarRecordInOutputRequest(DaraModel):
     ):
         # The UUID of the component action.
         # 
-        # >  You can call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) operation to query the UUIDs of component actions.
+        # > Call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) API to get this parameter.
         # 
         # This parameter is required.
         self.action_uuid = action_uuid
-        # The language of the content within the request and the response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

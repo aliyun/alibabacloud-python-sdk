@@ -13,9 +13,9 @@ class DescribeLatestRecordSchemaResponseBody(DaraModel):
         playbook_node_schema: main_models.DescribeLatestRecordSchemaResponseBodyPlaybookNodeSchema = None,
         request_id: str = None,
     ):
-        # The output structure information of the playbook.
+        # The output structure of the playbook.
         self.playbook_node_schema = playbook_node_schema
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

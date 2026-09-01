@@ -14,22 +14,27 @@ class CreatePlaybookRequest(DaraModel):
         output_params: str = None,
         taskflow_type: str = None,
     ):
-        # Description of the playbook.
+        # The description of the playbook.
         self.description = description
-        # Name of the playbook.
+        # The name of the playbook.
         # 
         # This parameter is required.
         self.display_name = display_name
+        # The input configuration of the playbook.
         self.input_params = input_params
-        # Language type for receiving messages. Values:
+        # The language of the messages to receive. Valid values:
         # 
-        # - **zh** (default): Chinese
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The output configuration of the playbook.
         self.output_params = output_params
-        # Playbook TaskFlow type.
-        # - **x6** : x6
-        # - **bpmn**: bpmn
+        # The configuration format of the playbook.
+        # 
+        # - **xml**: XML format.
+        # 
+        # - **x6**: JSON format.
         self.taskflow_type = taskflow_type
 
     def validate(self):

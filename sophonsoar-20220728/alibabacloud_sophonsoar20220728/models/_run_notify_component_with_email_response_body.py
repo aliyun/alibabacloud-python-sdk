@@ -12,11 +12,11 @@ class RunNotifyComponentWithEmailResponseBody(DaraModel):
         page: main_models.RunNotifyComponentWithEmailResponseBodyPage = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The pagination information.
         self.page = page
-        # The request ID.
+        # The ID of the request. Use this ID for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -60,11 +60,11 @@ class RunNotifyComponentWithEmailResponseBodyPage(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

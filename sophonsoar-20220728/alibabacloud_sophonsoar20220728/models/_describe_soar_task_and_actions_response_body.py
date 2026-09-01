@@ -14,10 +14,11 @@ class DescribeSoarTaskAndActionsResponseBody(DaraModel):
         page: main_models.DescribeSoarTaskAndActionsResponseBodyPage = None,
         request_id: str = None,
     ):
-        # The execution details of each task.
+        # The details of the task execution.
         self.details = details
+        # The pagination information.
         self.page = page
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -64,8 +65,11 @@ class DescribeSoarTaskAndActionsResponseBodyPage(DaraModel):
         page_size: str = None,
         total_count: str = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -116,36 +120,41 @@ class DescribeSoarTaskAndActionsResponseBodyDetails(DaraModel):
         trigger_type: str = None,
         trigger_user: str = None,
     ):
+        # The total number of action logs.
         self.action_log_num = action_log_num
-        # The list of component actions during the running of the playbook.
+        # The list of component actions executed in the playbook.
         self.actions = actions
-        # The end of the time range during which the playbook is run. The value is a 13-digit timestamp.
+        # The end time of the playbook run. This is a 13-digit timestamp.
         self.end_time = end_time
-        # The error message of the task. If the task is successful, this field is empty.
+        # The error message for the playbook task. This field is empty if the task is successful.
         self.error_msg = error_msg
-        # The request parameters of the task.
+        # The request parameters of the playbook task.
         self.raw_event_req = raw_event_req
-        # The request ID of the task. The value is unique.
+        # The request ID of the playbook task. This is the unique ID for each task run.
         self.request_uuid = request_uuid
-        # The beginning of the time range during which the playbook is run. The value is a 13-digit timestamp.
+        # The start time of the playbook run. This is a 13-digit timestamp.
         self.start_time = start_time
-        # The task status. Valid values:
+        # The status of the playbook task. Valid values:
         # 
-        # *   **success**
-        # *   **fail**
-        # *   **running**
+        # - **success**: The task was successful.
+        # 
+        # - **fail**: The task failed.
+        # 
+        # - **running**: The task is running.
         self.status = status
-        # The MD5 value of the playbook.
+        # The MD5 value of the playbook configuration that was run.
         self.task_flow_md_5 = task_flow_md_5
-        # The name of the task. The value is the same as the playbook UUID.
+        # The name of the playbook task. This is the same as the playbook UUID.
         self.task_name = task_name
-        # The task type. Valid values:
+        # The trigger type. Valid values:
         # 
-        # *   **debug**: a debugging task
-        # *   **manual**: a manual task
-        # *   **siem**: an event-triggered task
+        # - **debug**: A task for debugging a playbook.
+        # 
+        # - **manual**: A manually triggered task.
+        # 
+        # - **siem**: An event-triggered task.
         self.trigger_type = trigger_type
-        # The ID of the Alibaba Cloud account that triggers the task.
+        # The ID of the Alibaba Cloud account that triggered the playbook task.
         self.trigger_user = trigger_user
 
     def validate(self):
@@ -254,24 +263,25 @@ class DescribeSoarTaskAndActionsResponseBodyDetailsActions(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The action name of the component.
+        # The name of the component action.
         self.action = action
-        # The UUID of the component execution record.
+        # The UUID of the component action execution record.
         self.action_uuid = action_uuid
-        # The name of the asset that is used by the component.
+        # The name of the asset used by the component.
         self.asset_name = asset_name
-        # The component name.
+        # The name of the component.
         self.component = component
-        # The end of the time range during which the component is run. The value is a 13-digit timestamp.
+        # The end time of the component run. This is a 13-digit timestamp.
         self.end_time = end_time
-        # The custom name of the node in the component.
+        # The custom node name of the component.
         self.node_name = node_name
-        # The beginning of the time range during which the component is run. The value is a 13-digit timestamp.
+        # The start time of the component run. This is a 13-digit timestamp.
         self.start_time = start_time
-        # The running result of the component. Valid values:
+        # The result of the component run. Valid values:
         # 
-        # *   **success**
-        # *   **fail**
+        # - **success**: The run was successful.
+        # 
+        # - **fail**: The run failed.
         self.status = status
 
     def validate(self):

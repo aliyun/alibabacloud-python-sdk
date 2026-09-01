@@ -13,9 +13,9 @@ class DescribeSophonCommandsResponseBody(DaraModel):
         data: List[main_models.DescribeSophonCommandsResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The commands.
+        # The list of returned commands.
         self.data = data
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot and locate issues.
         self.request_id = request_id
 
     def validate(self):
@@ -66,7 +66,7 @@ class DescribeSophonCommandsResponseBodyData(DaraModel):
         self.display_name = display_name
         # The name of the command.
         self.name = name
-        # The parameter configurations.
+        # The parameter settings.
         self.param_config = param_config
 
     def validate(self):
@@ -123,14 +123,15 @@ class DescribeSophonCommandsResponseBodyDataParamConfig(DaraModel):
         necessary: bool = None,
         value: str = None,
     ):
-        # The regular expression that is used to check the format of the parameter value. If the parameter is left empty, the check is not performed.
+        # The regular expression that is used to check the format of the field. If this parameter is empty, no check is performed.
         self.check_field = check_field
-        # The name of the parameter.
+        # The name of the parameter field.
         self.field = field
         # Indicates whether the parameter is required. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true**: The parameter is required. This is the default value.
+        # 
+        # - **false**: The parameter is optional.
         self.necessary = necessary
         # The value of the parameter.
         self.value = value

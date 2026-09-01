@@ -10,13 +10,13 @@ class TriggerPlaybookRequest(DaraModel):
         input_param: str = None,
         playbook_uuid: str = None,
     ):
-        # The input parameters of the playbook.
+        # The input parameters for the playbook.
         # 
         # This parameter is required.
         self.input_param = input_param
-        # The playbook UUID.
+        # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.playbook_uuid = playbook_uuid

@@ -22,38 +22,61 @@ class DescribeSoarRecordsRequest(DaraModel):
         trigger_type: str = None,
         trigger_user: str = None,
     ):
+        # The start time when the task was completed. The value is a 13-digit UNIX timestamp.
         self.completed_begin_time = completed_begin_time
+        # The end time when the task was completed. The value is a 13-digit UNIX timestamp.
         self.completed_end_time = completed_end_time
-        # The end time of the task execution, in 13-digit timestamp format.
+        # The end time of the task run. The value is a 13-digit UNIX timestamp.
         self.end_millis = end_millis
-        # Set the language type for requests and received messages. The default is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # 
         # - **zh**: Chinese
+        # 
         # - **en**: English
         self.lang = lang
-        # Set which page to start displaying the query results from. The default value is 1, indicating the first page.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # Specify the maximum number of data entries per page when performing a paginated query. The default number of entries per page is 20. If the PageSize parameter is empty, it will return 10 entries by default.
-        # > It is recommended not to leave the PageSize value empty.
+        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 10 entries are returned on each page.
+        # 
+        # > Specify a value for PageSize.
         self.page_size = page_size
         # The UUID of the playbook.
-        # > You can obtain this parameter by calling the [DescribePlaybooks](~~DescribePlaybooks~~) interface.
-        self.playbook_uuid = playbook_uuid
-        self.query_value = query_value
-        # UUID of the playbook task execution.
-        # > You can obtain this parameter by calling the [DescribeSoarRecords](https://help.aliyun.com/document_detail/2627455.html) interface.
-        self.request_uuid = request_uuid
-        # The start time of the task execution, in 13-digit timestamp format.
-        self.start_millis = start_millis
-        # The status of the task execution. Values:
         # 
-        # - **success**: Successful task.
-        # - **failed**: Failed task.
-        # - **inprogress**: Task in progress
+        # > For more information, see [DescribePlaybooks](~~DescribePlaybooks~~).
+        self.playbook_uuid = playbook_uuid
+        # The input parameter of the playbook.
+        self.query_value = query_value
+        # The UUID of the playbook task execution.
+        # 
+        # > For more information, see [DescribeSoarRecords](https://help.aliyun.com/document_detail/2627455.html).
+        self.request_uuid = request_uuid
+        # The start time of the task run. The value is a 13-digit UNIX timestamp.
+        self.start_millis = start_millis
+        # The status of the task run. Valid values:
+        # 
+        # - **success**: The task is successful.
+        # 
+        # - **failed**: The task failed.
+        # 
+        # - **inprogress**: The task is in progress.
         self.task_status = task_status
         # The MD5 value of the playbook configuration.
         self.taskflow_md_5 = taskflow_md_5
+        # The trigger type of the task. Valid values:
+        # 
+        # - **stream**: stream
+        # 
+        # - **debug**: test
+        # 
+        # - **manual**: manual
+        # 
+        # - **timer**: scheduled
+        # 
+        # - **SubInvoke**: child flow
+        # 
+        # - **siem**: triggered by a SIEM product
         self.trigger_type = trigger_type
-        # The Alibaba Cloud account ID that executed the playbook task.
+        # The ID of the Alibaba Cloud account that runs the playbook task.
         self.trigger_user = trigger_user
 
     def validate(self):

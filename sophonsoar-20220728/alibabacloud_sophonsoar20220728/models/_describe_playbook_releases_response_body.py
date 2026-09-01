@@ -16,9 +16,9 @@ class DescribePlaybookReleasesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page = page
-        # The information about the playbook version.
+        # A list of playbook versions.
         self.records = records
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -74,17 +74,17 @@ class DescribePlaybookReleasesResponseBodyRecords(DaraModel):
         id: int = None,
         taskflow_md_5: str = None,
     ):
-        # The ID of the Alibaba Cloud account that is used to publish the version.
+        # The ID of the Alibaba Cloud account that published the version.
         self.creator = creator
-        # The description of the layer version.
+        # The description of the version.
         self.description = description
-        # The time when the version was created. The value is a 13-digit timestamp.
+        # The time when the version was created. This is a 13-digit UNIX timestamp.
         self.gmt_create = gmt_create
-        # The time when the version was modified. The value is a 13-digit timestamp.
+        # The time when the version was last modified. This is a 13-digit UNIX timestamp.
         self.gmt_modified = gmt_modified
         # The record ID.
         self.id = id
-        # The MD5 value configured for the published version of the playbook.
+        # The MD5 hash of the playbook configuration for the published version.
         self.taskflow_md_5 = taskflow_md_5
 
     def validate(self):
@@ -144,9 +144,9 @@ class DescribePlaybookReleasesResponseBodyPage(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count

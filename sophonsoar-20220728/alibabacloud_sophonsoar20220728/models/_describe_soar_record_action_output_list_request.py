@@ -14,22 +14,23 @@ class DescribeSoarRecordActionOutputListRequest(DaraModel):
     ):
         # The UUID of the component action.
         # 
-        # >  You can call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) operation to query the UUID.
+        # > Call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) operation to get this parameter.
         # 
         # This parameter is required.
         self.action_uuid = action_uuid
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The page number. Default value: 1. Pages start from page 1.
+        # The page number of the results to return. Default value: 1.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. If you leave this parameter empty, 10 entries are returned on each page.
+        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 10 entries are returned.
         # 
-        # >  We recommend that you do not leave this parameter empty.
+        # > We recommend that you specify a value for this parameter.
         # 
         # This parameter is required.
         self.page_size = page_size

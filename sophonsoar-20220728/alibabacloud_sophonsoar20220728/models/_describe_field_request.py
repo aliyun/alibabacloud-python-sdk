@@ -10,14 +10,15 @@ class DescribeFieldRequest(DaraModel):
         lang: str = None,
         query_key: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response messages. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The key of the global configuration. Valid values:
+        # The key of the global configuration. Valid value:
         # 
-        # *   **soar_filed_tags**: queries the input template of the playbook.
+        # - **soar_filed_tags**: Obtains the input field template for a playbook.
         # 
         # This parameter is required.
         self.query_key = query_key

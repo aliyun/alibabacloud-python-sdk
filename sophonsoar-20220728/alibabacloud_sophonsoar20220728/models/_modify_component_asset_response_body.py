@@ -9,7 +9,7 @@ class ModifyComponentAssetResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request. This ID is unique to each request and is used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

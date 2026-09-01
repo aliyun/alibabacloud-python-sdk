@@ -13,9 +13,9 @@ class DescribeComponentAssetsResponseBody(DaraModel):
         component_assets: List[main_models.DescribeComponentAssetsResponseBodyComponentAssets] = None,
         request_id: str = None,
     ):
-        # The information about the assets.
+        # A list of assets.
         self.component_assets = component_assets
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -63,21 +63,21 @@ class DescribeComponentAssetsResponseBodyComponentAssets(DaraModel):
         name: str = None,
         params: str = None,
     ):
-        # The UUID of the asset.
+        # The asset\\"s UUID.
         self.asset_uuid = asset_uuid
-        # The name of the component to which the asset belongs.
+        # The name of the component that the asset belongs to.
         self.componentname = componentname
-        # The time when the asset was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+        # The time when the asset was created. The time is in UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
         self.gmt_create = gmt_create
-        # The time when the asset was modified. The time is in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+        # The time when the asset was last modified. The time is in UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
         self.gmt_modified = gmt_modified
-        # The UUID of the asset.
+        # The unique ID of the asset.
         self.id = id
-        # The name of the asset.
+        # The asset name.
         self.name = name
-        # The configurations of the asset in the JSON string format. DescribeComponentAssetForm
+        # The asset configuration in JSON format.
         # 
-        # >  For more information, see [DescribeComponentAssetForm](~~DescribeComponentAssetForm~~).
+        # > For more information about the format, see [DescribeComponentAssetForm](~~DescribeComponentAssetForm~~).
         self.params = params
 
     def validate(self):

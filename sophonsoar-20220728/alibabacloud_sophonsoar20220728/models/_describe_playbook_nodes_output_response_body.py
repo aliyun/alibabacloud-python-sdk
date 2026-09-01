@@ -11,9 +11,9 @@ class DescribePlaybookNodesOutputResponseBody(DaraModel):
         playbook_nodes_output: main_models.DescribePlaybookNodesOutputResponseBodyPlaybookNodesOutput = None,
         request_id: str = None,
     ):
-        # The output data of the component node.
+        # The output data of the node.
         self.playbook_nodes_output = playbook_nodes_output
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +50,9 @@ class DescribePlaybookNodesOutputResponseBodyPlaybookNodesOutput(DaraModel):
         node_name: str = None,
         node_output: str = None,
     ):
-        # The name of the component node.
+        # The name of the playbook node.
         self.node_name = node_name
-        # The historical output data of the component node. The value is in the JSON string format. If no data is found, the parameter is left empty.
+        # The historical output data of the component. The data is in the JSON format. If no data exists, this parameter is empty.
         self.node_output = node_output
 
     def validate(self):

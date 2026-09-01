@@ -7,11 +7,13 @@ from darabonba.model import DaraModel
 class DescribeProcessTasksRequest(DaraModel):
     def __init__(
         self,
+        alert_id: str = None,
         direction: str = None,
         entity_name: str = None,
         entity_type: str = None,
         entity_uuid: str = None,
         event_uuid: str = None,
+        execute_uuid: str = None,
         order_field: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -22,6 +24,7 @@ class DescribeProcessTasksRequest(DaraModel):
         process_remove_start: int = None,
         process_strategy_uuid: str = None,
         req_uuid: str = None,
+        response_rule_id: str = None,
         scene_code: str = None,
         scope: str = None,
         source: str = None,
@@ -30,91 +33,92 @@ class DescribeProcessTasksRequest(DaraModel):
         trigger_source: str = None,
         yun_code: str = None,
     ):
-        # The sort order. Valid values:
+        self.alert_id = alert_id
+        # The sort direction. Valid values:
         # 
-        # *   **desc** (default).
-        # *   **asc**.
+        # - **desc**: Descending (default).
+        # - **asc**: Ascending.
         self.direction = direction
-        # The name of the handling entity.
+        # The name of the entity to be disposed.
         self.entity_name = entity_name
-        # The type of the handling entity. Valid values:
+        # The type of the entity to be disposed. Valid values:
         # 
-        # *   **ip**.
-        # *   **file**.
-        # *   **process**.
+        # - **ip**: IP address entity.
+        # - **file**: File entity.
+        # - **process**: Process entity.
         self.entity_type = entity_type
-        # The UUID of the handling entity.
+        # The UUID of the entity.
         self.entity_uuid = entity_uuid
         # The UUID of the event.
         self.event_uuid = event_uuid
-        # The field that you use to sort the result.
+        self.execute_uuid = execute_uuid
+        # The field used to sort the results.
         # 
-        # >  You can obtain the field from the response result.
+        # > You can obtain the sort field from the response of this operation.
         self.order_field = order_field
-        # The page number. Default value: 1. Pages start from page 1.
+        # The page number of the page to return. Default value: 1, which indicates the first page.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. If you do not specify the PageSize parameter, 10 entries are returned by default.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page for paging queries. Default value: 20. If the PageSize parameter is left empty, 10 entries are returned by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The handling entity, handling scenario, or handling parameter that is used for fuzzy match.
+        # The fuzzy match content. This parameter queries the entity, disposal scene, and disposal parameter fields.
         self.param_content = param_content
-        # The end of the time range for a handling task. The value is a 13-digit timestamp.
+        # The end time of the query range for the disposal time. Format: 13-digit timestamp.
         self.process_action_end = process_action_end
-        # The beginning of the time range for a handling task. The value is a 13-digit timestamp.
+        # The start time of the query range for the disposal time. Format: 13-digit timestamp.
         self.process_action_start = process_action_start
-        # The end of the time range for an unblocking task. The value is a 13-digit timestamp.
+        # The end time of the query range for the unblocking time. Format: 13-digit timestamp.
         self.process_remove_end = process_remove_end
-        # The beginning of the time range for an unblocking task. The value is a 13-digit timestamp.
+        # The start time of the query range for the unblocking time. Format: 13-digit timestamp.
         self.process_remove_start = process_remove_start
-        # The UUID of the handling policy.
-        # 
-        # >  You can call the [ListDisposeStrategy](https://help.aliyun.com/document_detail/2584440.html) operation to query the UUID of the handling policy.
+        # The UUID of the disposal strategy.
+        # >You can call the [ListDisposeStrategy](https://help.aliyun.com/document_detail/2584440.html) operation to obtain this parameter.
         self.process_strategy_uuid = process_strategy_uuid
+        # The trigger ID of the playbook.
         self.req_uuid = req_uuid
-        # The scenario code of the handling task.
-        # 
-        # >  You can call the [DescribeEnumItems](~~DescribeEnumItems~~) operation to query the scenario code of the handling task. This parameter is available when you set **EnumType** to **process**.
+        self.response_rule_id = response_rule_id
+        # The scene code of the disposal task.
+        # >You can call the [DescribeEnumItems](~~DescribeEnumItems~~) operation to obtain this parameter.
         self.scene_code = scene_code
-        # The ID of the Alibaba Cloud account that is specified in the handling task.
+        # The Alibaba Cloud account ID for the disposal.
         self.scope = scope
-        # The triggering source of the handling task. The value is a string array. Valid values:
+        # The trigger source of the disposal task, in array string format. Valid values:
         # 
-        # *   **system**: triggered when you manually handle an event.
-        # *   **custom**: triggered by an event based on an automatic response rule.
-        # *   **custom_alert**: triggered by an alert based on an automatic response rule.
-        # *   **soar-manual**: triggered when you use SOAR to manually run a playbook.
-        # *   **soar-mdr**: triggered by Managed Security Service.
+        # - **system**: Triggered by manual event disposal.
+        # - **custom**: Triggered by an automatic response rule based on an event.
+        # - **custom_alert**: Triggered by an automatic response rule based on an alert.
+        # - **soar-manual**: Triggered by manually invoking a SOAR playbook.
+        # - **soar-mdr**: Triggered by the Managed Security Service.
         self.source = source
-        # The unique identifier of the handling task.
+        # The unique identifier of the disposal task.
         # 
-        # >  This parameter is used to query a specific task. You can obtain the value from the response result.
+        # > This parameter is used to query a specific task. You can obtain the value from the response of this operation.
         self.task_id = task_id
-        # The status of the handling task. The value is a string. Valid values:
+        # The status list of the disposal task, in data string format. Valid values:
         # 
-        # *   **11**: being handled.
-        # *   **21**: being blocked.
-        # *   **22**: being quarantined.
-        # *   **23**: completed.
-        # *   **24**: added to the whitelist.
-        # *   **20**: successful.
-        # *   **90**: failed.
-        # *   **91**: unblocking failed.
-        # *   **92**: restoring quarantined files failed
+        # - **11**: Disposing.
+        # - **21**: Blocking.
+        # - **22**: Isolating.
+        # - **23**: Ended.
+        # - **24**: Whitelisted.
+        # - **20**: Succeeded.
+        # - **90**: Failed.
+        # - **91**: Unblocking failed.
+        # - **92**: Unisolation failed.
         self.task_status = task_status
-        # The triggering source of the handling task. Valid values:
+        # The trigger source of the disposal task. Valid values:
         # 
-        # *   **system**: triggered when you manually handle an event.
-        # *   **custom**: triggered by an event based on an automatic response rule.
-        # *   **custom_alert**: triggered by an alert based on an automatic response rule.
-        # *   **soar-manual**: triggered when you use SOAR to manually run a playbook.
-        # *   **soar-mdr**: triggered by Managed Security Service.
+        # - **system**: Triggered by manual event disposal.
+        # - **custom**: Triggered by an automatic response rule based on an event.
+        # - **custom_alert**: Triggered by an automatic response rule based on an alert.
+        # - **soar-manual**: Triggered by manually invoking a SOAR playbook.
+        # - **soar-mdr**: Triggered by the Managed Security Service.
         self.trigger_source = trigger_source
-        # The cloud service that is associated with the handling task. The value is a string. Valid values:
+        # The cloud product associated with the disposal task, in data string format. Valid values:
         # 
-        # *   **WAF**: Web Application Firewall (WAF).
-        # *   **CFW**: Cloud Firewall.
-        # *   **Aegis**: Security Center.
+        # - **WAF**: Web Application Firewall.
+        # - **CFW**: Cloud Firewall.
+        # - **Aegis**: Security Center.
         self.yun_code = yun_code
 
     def validate(self):
@@ -125,6 +129,9 @@ class DescribeProcessTasksRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.alert_id is not None:
+            result['AlertId'] = self.alert_id
+
         if self.direction is not None:
             result['Direction'] = self.direction
 
@@ -139,6 +146,9 @@ class DescribeProcessTasksRequest(DaraModel):
 
         if self.event_uuid is not None:
             result['EventUuid'] = self.event_uuid
+
+        if self.execute_uuid is not None:
+            result['ExecuteUuid'] = self.execute_uuid
 
         if self.order_field is not None:
             result['OrderField'] = self.order_field
@@ -170,6 +180,9 @@ class DescribeProcessTasksRequest(DaraModel):
         if self.req_uuid is not None:
             result['ReqUuid'] = self.req_uuid
 
+        if self.response_rule_id is not None:
+            result['ResponseRuleId'] = self.response_rule_id
+
         if self.scene_code is not None:
             result['SceneCode'] = self.scene_code
 
@@ -195,6 +208,9 @@ class DescribeProcessTasksRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlertId') is not None:
+            self.alert_id = m.get('AlertId')
+
         if m.get('Direction') is not None:
             self.direction = m.get('Direction')
 
@@ -209,6 +225,9 @@ class DescribeProcessTasksRequest(DaraModel):
 
         if m.get('EventUuid') is not None:
             self.event_uuid = m.get('EventUuid')
+
+        if m.get('ExecuteUuid') is not None:
+            self.execute_uuid = m.get('ExecuteUuid')
 
         if m.get('OrderField') is not None:
             self.order_field = m.get('OrderField')
@@ -239,6 +258,9 @@ class DescribeProcessTasksRequest(DaraModel):
 
         if m.get('ReqUuid') is not None:
             self.req_uuid = m.get('ReqUuid')
+
+        if m.get('ResponseRuleId') is not None:
+            self.response_rule_id = m.get('ResponseRuleId')
 
         if m.get('SceneCode') is not None:
             self.scene_code = m.get('SceneCode')

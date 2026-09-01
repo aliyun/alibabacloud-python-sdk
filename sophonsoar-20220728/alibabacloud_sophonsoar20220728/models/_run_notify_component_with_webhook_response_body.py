@@ -16,7 +16,7 @@ class RunNotifyComponentWithWebhookResponseBody(DaraModel):
         self.data = data
         # The pagination information.
         self.page = page
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,11 +60,11 @@ class RunNotifyComponentWithWebhookResponseBodyPage(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries returned. This parameter is available only for paged queries.
         self.total_count = total_count
 
     def validate(self):

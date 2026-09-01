@@ -13,29 +13,37 @@ class DescribeExecutePlaybooksRequest(DaraModel):
         playbook_name: str = None,
         uuid: str = None,
     ):
-        # The entity type of the script input parameter. When you want to query multiple entity types, separate them with commas.
+        # The entity type of the input parameter for the playbook. To query multiple entity types, separate them with commas.
+        # 
         # - **ip**: IP entity.
+        # 
         # - **file**: file entity.
+        # 
         # - **process**: process entity.
-        # - **incident**: incident entity.
+        # 
+        # - **incident**: event entity.
         self.input_mode = input_mode
-        # The language of the content within the request and the response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The input parameter type of the playbook.
+        # The type of the input parameter for the playbook.
         # 
-        # *   **template-ip**
-        # *   **template-file**
-        # *   **template-process**
-        # *   **custom**
+        # - **template-ip**: IP request template.
+        # 
+        # - **template-file**: file request template.
+        # 
+        # - **template-process**: process request template.
+        # 
+        # - **custom**: custom parameter.
         self.param_type = param_type
-        # The playbook name. Fuzzy search is supported.
+        # The name of the playbook. Fuzzy search is supported.
         self.playbook_name = playbook_name
-        # The playbook UUID.
+        # The UUID of the playbook.
         # 
-        # >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+        # > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
         self.uuid = uuid
 
     def validate(self):

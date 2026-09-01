@@ -13,9 +13,9 @@ class DescribeComponentPlaybookResponseBody(DaraModel):
         playbooks: List[main_models.DescribeComponentPlaybookResponseBodyPlaybooks] = None,
         request_id: str = None,
     ):
-        # The information about the predefined components.
+        # The list of component playbooks.
         self.playbooks = playbooks
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,14 +60,20 @@ class DescribeComponentPlaybookResponseBodyPlaybooks(DaraModel):
         input_params: str = None,
         param_type: str = None,
     ):
-        # The description of the predefined component.
+        # The description of the component playbook.
         self.description = description
-        # The name of the predefined component.
+        # The name of the component playbook.
         self.display_name = display_name
-        # The input parameter configuration of the playbook. The value is a JSON array.
+        # The input parameter configurations of the component playbook. The value is a JSON array.
         # 
-        # >  For more information, see [DescribePlaybookInputOutput](~~DescribePlaybookInputOutput~~).
+        # > For more information about the format, see [DescribePlaybookInputOutput](~~DescribePlaybookInputOutput~~).
         self.input_params = input_params
+        # The input parameter type of the component playbook.
+        # 
+        # template-ip: IP request template.
+        # template-file: file request template.
+        # template-process: process request template.
+        # custom: custom parameters.
         self.param_type = param_type
 
     def validate(self):

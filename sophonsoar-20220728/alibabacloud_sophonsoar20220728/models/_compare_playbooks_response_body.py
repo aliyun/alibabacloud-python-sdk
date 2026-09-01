@@ -11,9 +11,9 @@ class ComparePlaybooksResponseBody(DaraModel):
         compare_result: main_models.ComparePlaybooksResponseBodyCompareResult = None,
         request_id: str = None,
     ):
-        # The comparison result.
+        # The result of the comparison.
         self.compare_result = compare_result
-        # The request ID.
+        # The unique ID of the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -55,15 +55,17 @@ class ComparePlaybooksResponseBodyCompareResult(DaraModel):
     ):
         # The description of the comparison result.
         self.description = description
-        # Indicates whether the second version provides more information than the first version. Valid values:
+        # Indicates whether the second version used for comparison is a new version.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The version is new.
+        # 
+        # - **false**: The version is not new.
         self.new = new
-        # Indicates whether the configurations of the two versions are the same. Valid values:
+        # Indicates whether the two versions are identical.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Identical.
+        # 
+        # - **false**: Not identical.
         self.same = same
 
     def validate(self):

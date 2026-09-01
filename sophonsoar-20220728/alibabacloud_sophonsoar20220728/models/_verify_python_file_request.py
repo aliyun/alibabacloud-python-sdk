@@ -9,7 +9,7 @@ class VerifyPythonFileRequest(DaraModel):
         self,
         content: str = None,
     ):
-        # The Python code snippet.
+        # The Python code snippet to verify.
         # 
         # This parameter is required.
         self.content = content

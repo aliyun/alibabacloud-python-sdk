@@ -13,9 +13,9 @@ class VerifyPythonFileResponseBody(DaraModel):
         request_id: str = None,
         syntax: List[main_models.VerifyPythonFileResponseBodySyntax] = None,
     ):
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The verification result. If the parameter is left empty, the syntax of the code snippet is correct.
+        # The result set of the Python code verification. If this parameter is empty, the code syntax is correct.
         self.syntax = syntax
 
     def validate(self):
@@ -62,20 +62,21 @@ class VerifyPythonFileResponseBodySyntax(DaraModel):
         start_column: int = None,
         start_line_number: int = None,
     ):
-        # The number that indicates the end column of the error code.
+        # The ending column number of the code that contains an error.
         self.end_column = end_column
-        # The number that indicates the end line of the error code.
+        # The ending line number of the code that contains an error.
         self.end_line_number = end_line_number
-        # The error message for the error code.
+        # The error message for the code.
         self.message = message
-        # The severity level of the error code. Valid values:
+        # The error level of the code.
         # 
-        # *   4: moderate
-        # *   8: serious
+        # - 4: General error
+        # 
+        # - 8: Critical error
         self.severity = severity
-        # The number that indicates the start column of the error code.
+        # The starting column number of the code that contains an error.
         self.start_column = start_column
-        # The number that indicates the start line of the error code.
+        # The starting line number of the code that contains an error.
         self.start_line_number = start_line_number
 
     def validate(self):

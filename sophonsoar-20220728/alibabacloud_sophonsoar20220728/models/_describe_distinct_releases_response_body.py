@@ -13,9 +13,9 @@ class DescribeDistinctReleasesResponseBody(DaraModel):
         records: List[main_models.DescribeDistinctReleasesResponseBodyRecords] = None,
         request_id: str = None,
     ):
-        # The information about versions.
+        # The version records.
         self.records = records
-        # The request ID.
+        # The ID of the request. This ID is unique to each request and is used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -59,14 +59,15 @@ class DescribeDistinctReleasesResponseBodyRecords(DaraModel):
         taskflow_md_5: str = None,
         taskflow_type: str = None,
     ):
-        # The version description.
+        # The description of the version.
         self.description = description
-        # The MD5 value of the version XML configuration.
+        # The MD5 value of the version\\"s XML configuration.
         self.taskflow_md_5 = taskflow_md_5
-        # The format of the playbook. Valid values:
+        # The configuration format of the playbook.
         # 
-        # *   **xml**: XML format.
-        # *   **x6**: JSON format.
+        # - **xml**: XML format.
+        # 
+        # - **x6**: JSON format.
         self.taskflow_type = taskflow_type
 
     def validate(self):

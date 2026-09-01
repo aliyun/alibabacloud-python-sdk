@@ -13,9 +13,9 @@ class DescribeNodeParamTagsResponseBody(DaraModel):
         param_referred_paths: List[main_models.DescribeNodeParamTagsResponseBodyParamReferredPaths] = None,
         request_id: str = None,
     ):
-        # The configuration of the recommended path.
+        # The recommended path configurations.
         self.param_referred_paths = param_referred_paths
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeNodeParamTagsResponseBodyParamReferredPaths(DaraModel):
         param_name: str = None,
         referred_path: List[str] = None,
     ):
-        # The name of the upstream node.
+        # The name of the ancestor node.
         self.param_name = param_name
-        # The paths.
+        # An array of paths.
         self.referred_path = referred_path
 
     def validate(self):

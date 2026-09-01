@@ -11,9 +11,9 @@ class DescribePlaybookInputOutputResponseBody(DaraModel):
         config: main_models.DescribePlaybookInputOutputResponseBodyConfig = None,
         request_id: str = None,
     ):
-        # The configurations.
+        # The configuration information.
         self.config = config
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -53,18 +53,21 @@ class DescribePlaybookInputOutputResponseBodyConfig(DaraModel):
         param_type: str = None,
         playbook_uuid: str = None,
     ):
-        # The execution method of the playbook is in JSONObject format.
+        # The execution method of the playbook. The value is in the JSONObject format.
         self.exe_config = exe_config
-        # The input parameter configuration of the playbook. The value is a JSON array.
+        # The input parameter configurations of the playbook. The value is in the JSONArray format.
         self.input_params = input_params
-        # The output parameter configuration. This parameter is unavailable and is always left empty.
+        # Playbooks do not support output parameter configurations. This parameter is empty.
         self.output_params = output_params
-        # The input parameter type of the playbook. Valid values:
+        # The type of the input parameters for the playbook.
         # 
-        # *   **template-ip**
-        # *   **template-file**
-        # *   **template-process**
-        # *   **custom**
+        # - **template-ip**: IP request template.
+        # 
+        # - **template-file**: file request template.
+        # 
+        # - **template-process**: process request template.
+        # 
+        # - **custom**: custom parameters.
         self.param_type = param_type
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
