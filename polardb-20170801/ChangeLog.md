@@ -1,3 +1,15 @@
+2026-09-01 Version: 8.2.1
+- Update API CreateKBSyncLink: add request parameters McpEndpoint.
+- Update API CreateKBSyncLink: add request parameters SheetMcpEndpoint.
+- Update API CreateKBSyncLink: add request parameters UserId.
+- Update API UpdateKBSyncLink: add request parameters ClientId.
+- Update API UpdateKBSyncLink: add request parameters ClientSecret.
+- Update API UpdateKBSyncLink: add request parameters McpEndpoint.
+- Update API UpdateKBSyncLink: add request parameters SheetMcpEndpoint.
+- Update API UpdateKBSyncLink: add request parameters SyncEnabled.
+- Update API UpdateKBSyncLink: add request parameters UserId.
+
+
 2026-09-01 Version: 8.2.0
 - Support API AnswerKnowledgeBase.
 - Support API CreateKBSyncLink.

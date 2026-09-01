@@ -20,7 +20,7 @@ class ModifyDBClusterAccessWhitelistRequest(DaraModel):
         security_ips: str = None,
         white_list_type: str = None,
     ):
-        # The attribute of the IP whitelist group. If this parameter is set to **hidden**, the group is not displayed in the console.
+        # The attribute of the IP whitelist group. If you set this parameter to **hidden**, the group is not displayed in the console.
         # 
         # > - IP whitelist groups that are already displayed in the console cannot be hidden.
         # > - This parameter takes effect only when **WhiteListType** is set to **IP**.
@@ -31,7 +31,7 @@ class ModifyDBClusterAccessWhitelistRequest(DaraModel):
         # - If the specified whitelist group name already exists, the whitelist group is modified.
         # - If this parameter is not specified, the default group is modified. 
         # 
-        # > - A maximum of 50 IP whitelist groups are supported for a cluster.
+        # > - A cluster supports up to 50 IP whitelist groups.
         # > - This parameter takes effect only when **WhiteListType** is set to **IP**.
         self.dbcluster_iparray_name = dbcluster_iparray_name
         # The cluster ID.
@@ -39,26 +39,27 @@ class ModifyDBClusterAccessWhitelistRequest(DaraModel):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The method used to modify the IP whitelist. Valid values:
-        # - **Cover**: overwrites the original IP whitelist (default value).
-        # - **Append**: appends IP addresses to the whitelist.
-        # - **Delete**: removes IP addresses from the whitelist.
+        # - **Cover**: overwrites the original IP whitelist. This is the default value.
+        # - **Append**: appends IP addresses to the IP whitelist.
+        # - **Delete**: removes IP addresses from the IP whitelist.
         # 
         # > This parameter takes effect only when **WhiteListType** is set to **IP**.
         self.modify_mode = modify_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The file system instance ID.
         self.pfs_instance_id = pfs_instance_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The security group IDs. Separate multiple security group IDs with commas (,).
         # 
-        # > - A maximum of 3 security groups are supported for a cluster.
+        # > - A cluster supports up to 3 security groups.
         # > - This parameter takes effect only when **WhiteListType** is set to **SecurityGroup**.
         self.security_group_ids = security_group_ids
-        # The IP addresses or CIDR blocks in the IP whitelist group. A maximum of 1,000 IP addresses or CIDR blocks can be added to all IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported: 
+        # The IP addresses or CIDR blocks in the IP whitelist group. You can add up to 1,000 IP addresses or CIDR blocks across all IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported: 
         # 
         # - IP address format, such as 10.23.12.24.
-        # - CIDR format, such as 10.23.12.24/24, where 24 indicates the prefix length of the CIDR block. The prefix length ranges from 1 to 32.
+        # - CIDR format, such as 10.23.12.24/24, where 24 indicates the length of the prefix in the IP address. The prefix length ranges from 1 to 32.
         # 
         # > This parameter takes effect only when **WhiteListType** is set to **IP**.
         self.security_ips = security_ips

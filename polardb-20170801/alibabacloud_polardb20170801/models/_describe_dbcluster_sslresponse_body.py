@@ -84,7 +84,7 @@ class DescribeDBClusterSSLResponseBodyItems(DaraModel):
         # 
         # - **Disable**: Disabled.
         # 
-        # > This parameter is supported only when the database engine is PostgreSQL-compatible or Oracle-syntax-compatible.
+        # > This parameter is supported only when the database engine is PostgreSQL-compatible or Oracle syntax-compatible.
         self.sslauto_rotate = sslauto_rotate
         # The SSL connection address.
         self.sslconnection_string = sslconnection_string

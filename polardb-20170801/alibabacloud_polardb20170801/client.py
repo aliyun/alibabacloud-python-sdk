@@ -7238,8 +7238,12 @@ class Client(OpenApiClient):
             query['KnowledgeBaseId'] = request.knowledge_base_id
         if not DaraCore.is_null(request.link_name):
             query['LinkName'] = request.link_name
+        if not DaraCore.is_null(request.mcp_endpoint):
+            query['McpEndpoint'] = request.mcp_endpoint
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sheet_mcp_endpoint):
+            query['SheetMcpEndpoint'] = request.sheet_mcp_endpoint
         if not DaraCore.is_null(request.source_dir):
             query['SourceDir'] = request.source_dir
         if not DaraCore.is_null(request.source_type):
@@ -7248,6 +7252,8 @@ class Client(OpenApiClient):
             query['SyncIntervalMinutes'] = request.sync_interval_minutes
         if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7284,8 +7290,12 @@ class Client(OpenApiClient):
             query['KnowledgeBaseId'] = request.knowledge_base_id
         if not DaraCore.is_null(request.link_name):
             query['LinkName'] = request.link_name
+        if not DaraCore.is_null(request.mcp_endpoint):
+            query['McpEndpoint'] = request.mcp_endpoint
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sheet_mcp_endpoint):
+            query['SheetMcpEndpoint'] = request.sheet_mcp_endpoint
         if not DaraCore.is_null(request.source_dir):
             query['SourceDir'] = request.source_dir
         if not DaraCore.is_null(request.source_type):
@@ -7294,6 +7304,8 @@ class Client(OpenApiClient):
             query['SyncIntervalMinutes'] = request.sync_interval_minutes
         if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -43678,14 +43690,26 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateKBSyncLinkResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_id):
+            query['ClientId'] = request.client_id
+        if not DaraCore.is_null(request.client_secret):
+            query['ClientSecret'] = request.client_secret
         if not DaraCore.is_null(request.knowledge_base_id):
             query['KnowledgeBaseId'] = request.knowledge_base_id
         if not DaraCore.is_null(request.link_id):
             query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.mcp_endpoint):
+            query['McpEndpoint'] = request.mcp_endpoint
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sheet_mcp_endpoint):
+            query['SheetMcpEndpoint'] = request.sheet_mcp_endpoint
+        if not DaraCore.is_null(request.sync_enabled):
+            query['SyncEnabled'] = request.sync_enabled
         if not DaraCore.is_null(request.sync_interval_minutes):
             query['SyncIntervalMinutes'] = request.sync_interval_minutes
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -43712,14 +43736,26 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateKBSyncLinkResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_id):
+            query['ClientId'] = request.client_id
+        if not DaraCore.is_null(request.client_secret):
+            query['ClientSecret'] = request.client_secret
         if not DaraCore.is_null(request.knowledge_base_id):
             query['KnowledgeBaseId'] = request.knowledge_base_id
         if not DaraCore.is_null(request.link_id):
             query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.mcp_endpoint):
+            query['McpEndpoint'] = request.mcp_endpoint
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sheet_mcp_endpoint):
+            query['SheetMcpEndpoint'] = request.sheet_mcp_endpoint
+        if not DaraCore.is_null(request.sync_enabled):
+            query['SyncEnabled'] = request.sync_enabled
         if not DaraCore.is_null(request.sync_interval_minutes):
             query['SyncIntervalMinutes'] = request.sync_interval_minutes
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

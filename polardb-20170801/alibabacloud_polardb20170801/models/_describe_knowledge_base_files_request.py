@@ -16,15 +16,25 @@ class DescribeKnowledgeBaseFilesRequest(DaraModel):
         region_id: str = None,
         source_type: str = None,
     ):
+        # The list of file IDs, separated by commas (,).
         self.file_ids = file_ids
+        # The keyword used to filter file names.
         self.keyword = keyword
+        # The unique ID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The unique ID of the synchronization link.
         self.link_id = link_id
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The source type.
         self.source_type = source_type
 
     def validate(self):

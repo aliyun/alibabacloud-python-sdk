@@ -13,12 +13,25 @@ class UpdateKnowledgeBaseRequest(DaraModel):
         region_id: str = None,
         search_mode: str = None,
     ):
+        # The description of the knowledge base.
         self.description = description
+        # The unique ID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The name of the knowledge base.
         self.name = name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The search mode. Valid values:
+        # 
+        # * balanced (default): balanced mode.
+        # * precise: precise mode.
+        # * semantic: semantic mode.
+        # * knn: KNN mode.
+        # * rrf: reciprocal rank fusion (RRF) mode.
         self.search_mode = search_mode
 
     def validate(self):

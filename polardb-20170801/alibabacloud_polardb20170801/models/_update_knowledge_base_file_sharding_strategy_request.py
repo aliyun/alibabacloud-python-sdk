@@ -16,13 +16,21 @@ class UpdateKnowledgeBaseFileShardingStrategyRequest(DaraModel):
         region_id: str = None,
         sharding_strategy_config: main_models.UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfig = None,
     ):
+        # The unique ID of the knowledge base file.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # Specifies whether to restore inheritance of the chunking strategy from the knowledge space. When this parameter is set to true, ShardingStrategyConfig cannot be specified at the same time.
         self.inherit_space_strategy = inherit_space_strategy
+        # The unique ID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The ID of the region where the knowledge base resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The file-level chunking strategy configuration. This parameter is required when InheritSpaceStrategy is not set to true.
         self.sharding_strategy_config = sharding_strategy_config
 
     def validate(self):
@@ -77,8 +85,11 @@ class UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfig(DaraM
         default_strategy: main_models.UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDefaultStrategy = None,
         rules: List[main_models.UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRules] = None,
     ):
+        # The default chunking strategy. This strategy is used when no rule is matched.
+        # 
         # This parameter is required.
         self.default_strategy = default_strategy
+        # The list of override rules that are matched in order. Currently, a maximum of one exact-match rule with ContentType set to table is supported.
         self.rules = rules
 
     def validate(self):
@@ -124,8 +135,12 @@ class UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRules(
         match: main_models.UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesMatch = None,
         strategy: main_models.UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesStrategy = None,
     ):
+        # The rule match condition. Currently, only exact matching by content type for table content is supported.
+        # 
         # This parameter is required.
         self.match = match
+        # The chunking strategy to use when the rule is matched.
+        # 
         # This parameter is required.
         self.strategy = strategy
 
@@ -166,7 +181,12 @@ class UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesS
         parameters: main_models.UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesStrategyParameters = None,
         type: str = None,
     ):
+        # The chunking strategy parameters of the override rule. MaxTokens takes effect only when Type is set to hybrid. MarkdownTables supports auto, on, or off.
         self.parameters = parameters
+        # The chunking strategy type of the override rule. Valid values:
+        # - hybrid
+        # - hierarchical
+        # 
         # This parameter is required.
         self.type = type
 
@@ -204,7 +224,12 @@ class UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesS
         markdown_tables: str = None,
         max_tokens: int = None,
     ):
+        # The Markdown table processing mode. Valid values:
+        # - auto: Automatically determines the processing mode.
+        # - on: Forcefully enables Markdown table processing.
+        # - off: Disables Markdown table processing.
         self.markdown_tables = markdown_tables
+        # The maximum number of tokens per chunk for matched content. The value must be a positive integer. This parameter takes effect only when Type is set to hybrid.
         self.max_tokens = max_tokens
 
     def validate(self):
@@ -238,6 +263,7 @@ class UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesM
         self,
         content_type: str = None,
     ):
+        # The content type. Currently, only table is supported, which matches content that is parsed as tables.
         self.content_type = content_type
 
     def validate(self):
@@ -266,7 +292,12 @@ class UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDefaul
         parameters: main_models.UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDefaultStrategyParameters = None,
         type: str = None,
     ):
+        # The parameters of the default chunking strategy. MaxTokens and MergePeers are supported only when Type is set to hybrid.
         self.parameters = parameters
+        # The type of the default chunking strategy. Valid values:
+        # - hybrid: Splits by document structure and limits the token count.
+        # - hierarchical: Splits only by document structure.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -304,7 +335,9 @@ class UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDefaul
         max_tokens: int = None,
         merge_peers: bool = None,
     ):
+        # The maximum number of tokens per chunk. The value must be a positive integer. This parameter takes effect only when Type is set to hybrid.
         self.max_tokens = max_tokens
+        # Specifies whether to merge adjacent small chunks under the same heading. This parameter takes effect only when Type is set to hybrid.
         self.merge_peers = merge_peers
 
     def validate(self):

@@ -20,10 +20,16 @@ class DisableDBClusterServerlessRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to immediately run the task or run it during a scheduled time window. Valid values:
+        # 
+        # - false (default): The task is run during a scheduled time window.
+        # - true: The task is immediately run.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest time to start running the scheduled task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format (UTC).
         self.planned_end_time = planned_end_time
+        # The earliest time to start running the scheduled task (that is, the task is run within the specified time range). Specify the time in the YYYY-MM-DDThh:mm:ssZ format (UTC).
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

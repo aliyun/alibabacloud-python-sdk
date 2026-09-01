@@ -17,11 +17,17 @@ class DescribeKnowledgeBaseFileShardsResponseBody(DaraModel):
         shards: List[main_models.DescribeKnowledgeBaseFileShardsResponseBodyShards] = None,
         total_record_count: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The number of entries per page in a paged query.
         self.page_size = page_size
+        # Id of the request
         self.request_id = request_id
+        # The shard information.
         self.shards = shards
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -90,9 +96,13 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
         shard_content: str = None,
         shard_index: int = None,
     ):
+        # The chain of section headings to which the shard belongs.
         self.headings = headings
+        # The list of page numbers to which the shard belongs.
         self.page_numbers = page_numbers
+        # The text content of the shard.
         self.shard_content = shard_content
+        # The shard index.
         self.shard_index = shard_index
 
     def validate(self):

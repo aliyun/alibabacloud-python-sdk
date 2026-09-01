@@ -17,11 +17,19 @@ class DescribeKnowledgeBaseFilesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of files.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The number of records per page. Valid values: **30**, **50**, and **100**.
+        #                               
+        # Default value: **30**.
         self.page_size = page_size
+        # Id of the request
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -102,21 +110,37 @@ class DescribeKnowledgeBaseFilesResponseBodyItems(DaraModel):
         updated_at: str = None,
         upload_time: str = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The file ID.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The file size, in bytes.
         self.file_size = file_size
+        # The file type.
         self.file_type = file_type
+        # Indicates whether the chunking strategy is inherited from the knowledge space.
         self.inherit_space_strategy = inherit_space_strategy
+        # The knowledge base ID.
         self.knowledge_base_id = knowledge_base_id
+        # The knowledge space ID.
         self.knowledge_space_id = knowledge_space_id
+        # The document metadata.
         self.metadata = metadata
+        # The OSS file path.
         self.osspath = osspath
+        # The number of shards.
         self.shard_count = shard_count
+        # The chunking strategy configuration currently in effect for the document. This value may be empty if the complete configuration was not saved for existing objects.
         self.sharding_strategy_config = sharding_strategy_config
+        # The source type.
         self.source_type = source_type
+        # The status.
         self.status = status
+        # The update time.
         self.updated_at = updated_at
+        # The upload time.
         self.upload_time = upload_time
 
     def validate(self):
@@ -237,7 +261,9 @@ class DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfig(DaraMode
         default_strategy: main_models.DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaultStrategy = None,
         rules: List[main_models.DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRules] = None,
     ):
+        # The default chunking strategy type. Valid values: hybrid and hierarchical.
         self.default_strategy = default_strategy
+        # The list of override rules matched in order.
         self.rules = rules
 
     def validate(self):
@@ -283,7 +309,9 @@ class DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRules(Dar
         match: main_models.DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesMatch = None,
         strategy: main_models.DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStrategy = None,
     ):
+        # The content type. Currently, table is supported.
         self.match = match
+        # The chunking strategy.
         self.strategy = strategy
 
     def validate(self):
@@ -323,7 +351,9 @@ class DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStra
         parameters: main_models.DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStrategyParameters = None,
         type: str = None,
     ):
+        # The parameter list.
         self.parameters = parameters
+        # The chunking strategy type applied after a rule is matched.
         self.type = type
 
     def validate(self):
@@ -360,7 +390,9 @@ class DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStra
         markdown_tables: str = None,
         max_tokens: int = None,
     ):
+        # The Markdown table processing mode. Valid values: auto, on, and off.
         self.markdown_tables = markdown_tables
+        # The maximum number of tokens per shard for matched content.
         self.max_tokens = max_tokens
 
     def validate(self):
@@ -394,6 +426,7 @@ class DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesMatc
         self,
         content_type: str = None,
     ):
+        # The content type. Currently, table is supported.
         self.content_type = content_type
 
     def validate(self):
@@ -422,7 +455,9 @@ class DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaultSt
         parameters: main_models.DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaultStrategyParameters = None,
         type: str = None,
     ):
+        # The parameter list.
         self.parameters = parameters
+        # The default chunking strategy type. Valid values: hybrid and hierarchical.
         self.type = type
 
     def validate(self):
@@ -459,7 +494,9 @@ class DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaultSt
         max_tokens: int = None,
         merge_peers: bool = None,
     ):
+        # The maximum number of tokens per shard.
         self.max_tokens = max_tokens
+        # Specifies whether to merge adjacent small shards under the same heading.
         self.merge_peers = merge_peers
 
     def validate(self):

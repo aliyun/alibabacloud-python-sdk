@@ -15,14 +15,23 @@ class UpdateKnowledgeSpaceShrinkRequest(DaraModel):
         rerank_model: str = None,
         sharding_strategy_config_shrink: str = None,
     ):
+        # The description of the knowledge space. The description can be up to 512 characters in length.
         self.description = description
+        # The unique identifier of the knowledge space.
+        # 
         # This parameter is required.
         self.knowledge_space_id = knowledge_space_id
+        # The name of the large language model.
         self.llmmodel = llmmodel
+        # The name of the knowledge space. The name must be 1 to 128 characters in length.
         self.name = name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the reranking model.
         self.rerank_model = rerank_model
+        # The default chunking strategy configuration for the knowledge space. Both simple strategies and composite strategies that match by content type are supported.
         self.sharding_strategy_config_shrink = sharding_strategy_config_shrink
 
     def validate(self):

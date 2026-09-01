@@ -10,8 +10,12 @@ class DescribeKnowledgeSpaceAttributeRequest(DaraModel):
         knowledge_space_id: str = None,
         region_id: str = None,
     ):
+        # The unique identifier of the knowledge space.
+        # 
         # This parameter is required.
         self.knowledge_space_id = knowledge_space_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

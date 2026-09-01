@@ -11,8 +11,11 @@ class UpdateKnowledgeSpaceResponseBody(DaraModel):
         request_id: str = None,
         task_id: int = None,
     ):
+        # The unique identifier of the knowledge space.
         self.knowledge_space_id = knowledge_space_id
+        # Id of the request
         self.request_id = request_id
+        # The ID of the asynchronous workflow task. This value is empty if no actual model change occurs.
         self.task_id = task_id
 
     def validate(self):

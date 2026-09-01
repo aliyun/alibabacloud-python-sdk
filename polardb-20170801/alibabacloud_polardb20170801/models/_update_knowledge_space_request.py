@@ -18,14 +18,23 @@ class UpdateKnowledgeSpaceRequest(DaraModel):
         rerank_model: str = None,
         sharding_strategy_config: main_models.UpdateKnowledgeSpaceRequestShardingStrategyConfig = None,
     ):
+        # The description of the knowledge space. The description can be up to 512 characters in length.
         self.description = description
+        # The unique identifier of the knowledge space.
+        # 
         # This parameter is required.
         self.knowledge_space_id = knowledge_space_id
+        # The name of the large language model.
         self.llmmodel = llmmodel
+        # The name of the knowledge space. The name must be 1 to 128 characters in length.
         self.name = name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the reranking model.
         self.rerank_model = rerank_model
+        # The default chunking strategy configuration for the knowledge space. Both simple strategies and composite strategies that match by content type are supported.
         self.sharding_strategy_config = sharding_strategy_config
 
     def validate(self):
@@ -92,7 +101,9 @@ class UpdateKnowledgeSpaceRequestShardingStrategyConfig(DaraModel):
         default_strategy: main_models.UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategy = None,
         rules: List[main_models.UpdateKnowledgeSpaceRequestShardingStrategyConfigRules] = None,
     ):
+        # The default chunking strategy. This strategy is used when no rule is matched.
         self.default_strategy = default_strategy
+        # The list of override rules that are matched in order. Currently, a maximum of one exact-match rule with ContentType set to table is supported.
         self.rules = rules
 
     def validate(self):
@@ -138,7 +149,9 @@ class UpdateKnowledgeSpaceRequestShardingStrategyConfigRules(DaraModel):
         match: main_models.UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesMatch = None,
         strategy: main_models.UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategy = None,
     ):
+        # The match condition of the rule. Currently, only exact matching of table content by content type is supported.
         self.match = match
+        # The chunking strategy to use when the rule is matched.
         self.strategy = strategy
 
     def validate(self):
@@ -178,7 +191,9 @@ class UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategy(DaraModel):
         parameters: main_models.UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategyParameters = None,
         type: str = None,
     ):
+        # The chunking strategy parameters for the override rule. MaxTokens takes effect only when Type is set to hybrid. MarkdownTables supports auto, on, or off.
         self.parameters = parameters
+        # The type of the chunking strategy to use when the rule is matched. Valid values: hybrid or hierarchical.
         self.type = type
 
     def validate(self):
@@ -215,7 +230,9 @@ class UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategyParameters(D
         markdown_tables: str = None,
         max_tokens: int = None,
     ):
+        # The processing mode for Markdown tables. Valid values: auto, on, or off.
         self.markdown_tables = markdown_tables
+        # The maximum number of tokens per chunk for matched content. The value must be a positive integer.
         self.max_tokens = max_tokens
 
     def validate(self):
@@ -249,6 +266,7 @@ class UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesMatch(DaraModel):
         self,
         content_type: str = None,
     ):
+        # The content type. Currently, only table is supported.
         self.content_type = content_type
 
     def validate(self):
@@ -277,7 +295,9 @@ class UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategy(DaraModel
         parameters: main_models.UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategyParameters = None,
         type: str = None,
     ):
+        # The parameters of the default chunking strategy. MaxTokens and MergePeers take effect only when Type is set to hybrid.
         self.parameters = parameters
+        # The type of the default chunking strategy. Valid values: hybrid or hierarchical.
         self.type = type
 
     def validate(self):
@@ -314,7 +334,9 @@ class UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategyParameters
         max_tokens: int = None,
         merge_peers: bool = None,
     ):
+        # The maximum number of tokens per chunk. The value must be a positive integer.
         self.max_tokens = max_tokens
+        # Specifies whether to merge adjacent small chunks under the same heading.
         self.merge_peers = merge_peers
 
     def validate(self):

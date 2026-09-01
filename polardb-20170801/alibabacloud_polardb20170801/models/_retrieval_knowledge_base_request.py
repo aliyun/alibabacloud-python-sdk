@@ -14,14 +14,23 @@ class RetrievalKnowledgeBaseRequest(DaraModel):
         score_threshold: float = None,
         top_k: int = None,
     ):
+        # The unique ID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The query text.
+        # 
         # This parameter is required.
         self.query_text = query_text
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Specifies whether to enable reranking. Default value: true.
         self.rerank_enabled = rerank_enabled
+        # The similarity score threshold.
         self.score_threshold = score_threshold
+        # The number of results to return.
         self.top_k = top_k
 
     def validate(self):

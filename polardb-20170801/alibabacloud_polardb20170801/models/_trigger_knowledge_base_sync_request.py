@@ -11,9 +11,14 @@ class TriggerKnowledgeBaseSyncRequest(DaraModel):
         link_id: str = None,
         region_id: str = None,
     ):
+        # The unique identifier of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The synchronization link ID.
         self.link_id = link_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

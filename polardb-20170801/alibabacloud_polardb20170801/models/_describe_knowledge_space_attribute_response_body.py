@@ -32,26 +32,51 @@ class DescribeKnowledgeSpaceAttributeResponseBody(DaraModel):
         total_docs: int = None,
         total_size_bytes: int = None,
     ):
+        # The access control list (ACL) mode of the knowledge space. Valid values:
+        # - DISABLED
+        # - ENFORCED
         self.aclmode = aclmode
+        # The time when the knowledge space was created.
         self.creation_time = creation_time
+        # The ID of the PolarDB instance.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
         self.dbname = dbname
+        # The type of the database engine. Valid values:
+        # * MySQL
+        # * PostgreSQL
         self.dbtype = dbtype
+        # The description of the knowledge space.
         self.description = description
+        # The vector dimensions.
         self.embedding_dimension = embedding_dimension
+        # The embedding model.
         self.embedding_model = embedding_model
+        # The total number of knowledge bases.
         self.knowledge_base_count = knowledge_base_count
+        # The unique identifier of the knowledge space.
         self.knowledge_space_id = knowledge_space_id
+        # The large language model.
         self.llmmodel = llmmodel
+        # The name of the knowledge space.
         self.name = name
+        # OSS Bucket
         self.ossbucket = ossbucket
+        # Id of the request
         self.request_id = request_id
+        # The reranking model.
         self.rerank_model = rerank_model
+        # The chunk size in tokens.
         self.shard_size = shard_size
+        # The default chunking strategy configuration of the knowledge space. This parameter may be empty if existing instances do not have the complete configuration saved.
         self.sharding_strategy_config = sharding_strategy_config
+        # The instance status.
         self.status = status
+        # The chunking strategy.
         self.strategy = strategy
+        # The total number of documents.
         self.total_docs = total_docs
+        # The total size in bytes.
         self.total_size_bytes = total_size_bytes
 
     def validate(self):
@@ -202,7 +227,9 @@ class DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfig(DaraMode
         default_strategy: main_models.DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaultStrategy = None,
         rules: List[main_models.DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRules] = None,
     ):
+        # The default chunking strategy. This strategy is used when no rule is matched.
         self.default_strategy = default_strategy
+        # The list of override rules that are matched in order.
         self.rules = rules
 
     def validate(self):
@@ -248,7 +275,9 @@ class DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRules(Dar
         match: main_models.DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesMatch = None,
         strategy: main_models.DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStrategy = None,
     ):
+        # The content type. Currently, table is supported.
         self.match = match
+        # The chunking strategy.
         self.strategy = strategy
 
     def validate(self):
@@ -288,7 +317,9 @@ class DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStra
         parameters: main_models.DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStrategyParameters = None,
         type: str = None,
     ):
+        # The parameter details.
         self.parameters = parameters
+        # The chunking strategy type used when a rule is matched.
         self.type = type
 
     def validate(self):
@@ -325,7 +356,9 @@ class DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStra
         markdown_tables: str = None,
         max_tokens: int = None,
     ):
+        # The Markdown table processing mode. Valid values: auto, on, or off.
         self.markdown_tables = markdown_tables
+        # The maximum number of tokens in a single chunk for matched content.
         self.max_tokens = max_tokens
 
     def validate(self):
@@ -359,6 +392,7 @@ class DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesMatc
         self,
         content_type: str = None,
     ):
+        # The content type. Currently, table is supported.
         self.content_type = content_type
 
     def validate(self):
@@ -387,7 +421,9 @@ class DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaultSt
         parameters: main_models.DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaultStrategyParameters = None,
         type: str = None,
     ):
+        # The parameter details.
         self.parameters = parameters
+        # The type of the default chunking strategy. Valid values: hybrid or hierarchical.
         self.type = type
 
     def validate(self):
@@ -424,7 +460,9 @@ class DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaultSt
         max_tokens: int = None,
         merge_peers: bool = None,
     ):
+        # The maximum number of tokens in a single chunk.
         self.max_tokens = max_tokens
+        # Specifies whether to merge adjacent small chunks under the same heading.
         self.merge_peers = merge_peers
 
     def validate(self):

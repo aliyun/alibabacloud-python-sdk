@@ -10,7 +10,9 @@ class UpdateKnowledgeBaseResponseBody(DaraModel):
         knowledge_base_id: str = None,
         request_id: str = None,
     ):
+        # The unique ID of the knowledge base.
         self.knowledge_base_id = knowledge_base_id
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

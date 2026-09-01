@@ -13,13 +13,21 @@ class UpdateKnowledgeBaseFileShardingStrategyShrinkRequest(DaraModel):
         region_id: str = None,
         sharding_strategy_config_shrink: str = None,
     ):
+        # The unique ID of the knowledge base file.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # Specifies whether to restore inheritance of the chunking strategy from the knowledge space. When this parameter is set to true, ShardingStrategyConfig cannot be specified at the same time.
         self.inherit_space_strategy = inherit_space_strategy
+        # The unique ID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The ID of the region where the knowledge base resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The file-level chunking strategy configuration. This parameter is required when InheritSpaceStrategy is not set to true.
         self.sharding_strategy_config_shrink = sharding_strategy_config_shrink
 
     def validate(self):

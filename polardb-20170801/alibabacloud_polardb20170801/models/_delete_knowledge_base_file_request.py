@@ -11,10 +11,16 @@ class DeleteKnowledgeBaseFileRequest(DaraModel):
         knowledge_base_id: str = None,
         region_id: str = None,
     ):
+        # The file ID. To delete multiple files at a time, separate the file IDs with commas (,). A maximum of 500 file IDs are supported.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The unique ID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

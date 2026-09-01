@@ -13,12 +13,20 @@ class DescribeKnowledgeBaseFileShardsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The file ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The unique ID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -12,11 +12,14 @@ class CreateKBSyncLinkRequest(DaraModel):
         description: str = None,
         knowledge_base_id: str = None,
         link_name: str = None,
+        mcp_endpoint: str = None,
         region_id: str = None,
+        sheet_mcp_endpoint: str = None,
         source_dir: str = None,
         source_type: str = None,
         sync_interval_minutes: int = None,
         tenant_id: str = None,
+        user_id: str = None,
     ):
         # This parameter is required.
         self.client_id = client_id
@@ -27,14 +30,17 @@ class CreateKBSyncLinkRequest(DaraModel):
         self.knowledge_base_id = knowledge_base_id
         # This parameter is required.
         self.link_name = link_name
+        self.mcp_endpoint = mcp_endpoint
         # This parameter is required.
         self.region_id = region_id
+        self.sheet_mcp_endpoint = sheet_mcp_endpoint
         # This parameter is required.
         self.source_dir = source_dir
         # This parameter is required.
         self.source_type = source_type
         self.sync_interval_minutes = sync_interval_minutes
         self.tenant_id = tenant_id
+        self.user_id = user_id
 
     def validate(self):
         pass
@@ -59,8 +65,14 @@ class CreateKBSyncLinkRequest(DaraModel):
         if self.link_name is not None:
             result['LinkName'] = self.link_name
 
+        if self.mcp_endpoint is not None:
+            result['McpEndpoint'] = self.mcp_endpoint
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.sheet_mcp_endpoint is not None:
+            result['SheetMcpEndpoint'] = self.sheet_mcp_endpoint
 
         if self.source_dir is not None:
             result['SourceDir'] = self.source_dir
@@ -73,6 +85,9 @@ class CreateKBSyncLinkRequest(DaraModel):
 
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
 
         return result
 
@@ -93,8 +108,14 @@ class CreateKBSyncLinkRequest(DaraModel):
         if m.get('LinkName') is not None:
             self.link_name = m.get('LinkName')
 
+        if m.get('McpEndpoint') is not None:
+            self.mcp_endpoint = m.get('McpEndpoint')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('SheetMcpEndpoint') is not None:
+            self.sheet_mcp_endpoint = m.get('SheetMcpEndpoint')
 
         if m.get('SourceDir') is not None:
             self.source_dir = m.get('SourceDir')
@@ -107,6 +128,9 @@ class CreateKBSyncLinkRequest(DaraModel):
 
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
 
         return self
 

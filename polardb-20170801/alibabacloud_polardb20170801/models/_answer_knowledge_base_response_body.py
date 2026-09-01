@@ -11,8 +11,11 @@ class AnswerKnowledgeBaseResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The unique ID of the Q&A task.
         self.query_id = query_id
+        # Id of the request
         self.request_id = request_id
+        # The status of the Q&A task.
         self.status = status
 
     def validate(self):

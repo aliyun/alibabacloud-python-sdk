@@ -26,10 +26,16 @@ class EnableDBClusterServerlessRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to immediately execute or schedule the parameter modification and restart. Valid values:
+        # 
+        # - false (default): Schedule the execution.
+        # - true: Immediately execute.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The latest time to start executing the target scheduled task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format (UTC).
         self.planned_end_time = planned_end_time
+        # The earliest time to start executing the scheduled task (that is, the task is executed within the target time period). Specify the time in the YYYY-MM-DDThh:mm:ssZ format (UTC).
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

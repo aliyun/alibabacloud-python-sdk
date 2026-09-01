@@ -15,9 +15,13 @@ class RetrievalKnowledgeBaseResponseBody(DaraModel):
         result_count: int = None,
         results: List[main_models.RetrievalKnowledgeBaseResponseBodyResults] = None,
     ):
+        # The query text.
         self.query_text = query_text
+        # Id of the request
         self.request_id = request_id
+        # The number of results.
         self.result_count = result_count
+        # The search results.
         self.results = results
 
     def validate(self):
@@ -78,13 +82,21 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
         shard_index: int = None,
         similarity_score: float = None,
     ):
+        # The unique ID of the file.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The chain of section headings to which the shard belongs.
         self.headings = headings
+        # The metadata.
         self.metadata = metadata
+        # The list of page numbers to which the shard belongs.
         self.page_numbers = page_numbers
+        # The text content of the shard.
         self.shard_content = shard_content
+        # The shard index.
         self.shard_index = shard_index
+        # The similarity score.
         self.similarity_score = similarity_score
 
     def validate(self):

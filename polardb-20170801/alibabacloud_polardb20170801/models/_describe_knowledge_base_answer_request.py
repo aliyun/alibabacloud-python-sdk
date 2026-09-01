@@ -11,10 +11,16 @@ class DescribeKnowledgeBaseAnswerRequest(DaraModel):
         query_id: str = None,
         region_id: str = None,
     ):
+        # The unique ID of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The unique ID of the Q&A task.
+        # 
         # This parameter is required.
         self.query_id = query_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
