@@ -461,6 +461,9 @@ from ._get_alert_rule_response import GetAlertRuleResponse
 from ._get_application_contents_request import GetApplicationContentsRequest
 from ._get_application_contents_response_body import GetApplicationContentsResponseBody
 from ._get_application_contents_response import GetApplicationContentsResponse
+from ._get_batch_change_table_owner_status_request import GetBatchChangeTableOwnerStatusRequest
+from ._get_batch_change_table_owner_status_response_body import GetBatchChangeTableOwnerStatusResponseBody
+from ._get_batch_change_table_owner_status_response import GetBatchChangeTableOwnerStatusResponse
 from ._get_business_request import GetBusinessRequest
 from ._get_business_response_body import GetBusinessResponseBody
 from ._get_business_response import GetBusinessResponse
@@ -1100,6 +1103,10 @@ from ._stop_workflow_instances_request import StopWorkflowInstancesRequest
 from ._stop_workflow_instances_shrink_request import StopWorkflowInstancesShrinkRequest
 from ._stop_workflow_instances_response_body import StopWorkflowInstancesResponseBody
 from ._stop_workflow_instances_response import StopWorkflowInstancesResponse
+from ._submit_batch_change_table_owner_request import SubmitBatchChangeTableOwnerRequest
+from ._submit_batch_change_table_owner_shrink_request import SubmitBatchChangeTableOwnerShrinkRequest
+from ._submit_batch_change_table_owner_response_body import SubmitBatchChangeTableOwnerResponseBody
+from ._submit_batch_change_table_owner_response import SubmitBatchChangeTableOwnerResponse
 from ._submit_file_request import SubmitFileRequest
 from ._submit_file_response_body import SubmitFileResponseBody
 from ._submit_file_response import SubmitFileResponse
@@ -1515,6 +1522,8 @@ from ._get_application_contents_response_body import GetApplicationContentsRespo
 from ._get_application_contents_response_body import GetApplicationContentsResponseBodyDataContentsResource
 from ._get_application_contents_response_body import GetApplicationContentsResponseBodyDataContents
 from ._get_application_contents_response_body import GetApplicationContentsResponseBodyData
+from ._get_batch_change_table_owner_status_response_body import GetBatchChangeTableOwnerStatusResponseBodyDataDetails
+from ._get_batch_change_table_owner_status_response_body import GetBatchChangeTableOwnerStatusResponseBodyData
 from ._get_business_response_body import GetBusinessResponseBodyData
 from ._get_certificate_response_body import GetCertificateResponseBodyCertificate
 from ._get_component_response_body import GetComponentResponseBodyComponent
@@ -2115,6 +2124,7 @@ from ._run_image_test_response_body import RunImageTestResponseBodyData
 from ._run_semantic_job_response_body import RunSemanticJobResponseBodyData
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettingsFailoverSettings
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettings
+from ._submit_batch_change_table_owner_response_body import SubmitBatchChangeTableOwnerResponseBodyData
 from ._tag_data_assets_request import TagDataAssetsRequestTags
 from ._test_data_source_connectivity_response_body import TestDataSourceConnectivityResponseBodyConnectivityDetailLogs
 from ._test_data_source_connectivity_response_body import TestDataSourceConnectivityResponseBodyConnectivity
@@ -2699,6 +2709,9 @@ __all__ = [
     GetApplicationContentsRequest,
     GetApplicationContentsResponseBody,
     GetApplicationContentsResponse,
+    GetBatchChangeTableOwnerStatusRequest,
+    GetBatchChangeTableOwnerStatusResponseBody,
+    GetBatchChangeTableOwnerStatusResponse,
     GetBusinessRequest,
     GetBusinessResponseBody,
     GetBusinessResponse,
@@ -3338,6 +3351,10 @@ __all__ = [
     StopWorkflowInstancesShrinkRequest,
     StopWorkflowInstancesResponseBody,
     StopWorkflowInstancesResponse,
+    SubmitBatchChangeTableOwnerRequest,
+    SubmitBatchChangeTableOwnerShrinkRequest,
+    SubmitBatchChangeTableOwnerResponseBody,
+    SubmitBatchChangeTableOwnerResponse,
     SubmitFileRequest,
     SubmitFileResponseBody,
     SubmitFileResponse,
@@ -3753,6 +3770,8 @@ __all__ = [
     GetApplicationContentsResponseBodyDataContentsResource,
     GetApplicationContentsResponseBodyDataContents,
     GetApplicationContentsResponseBodyData,
+    GetBatchChangeTableOwnerStatusResponseBodyDataDetails,
+    GetBatchChangeTableOwnerStatusResponseBodyData,
     GetBusinessResponseBodyData,
     GetCertificateResponseBodyCertificate,
     GetComponentResponseBodyComponent,
@@ -4353,6 +4372,7 @@ __all__ = [
     RunSemanticJobResponseBodyData,
     StartDIJobRequestRealtimeStartSettingsFailoverSettings,
     StartDIJobRequestRealtimeStartSettings,
+    SubmitBatchChangeTableOwnerResponseBodyData,
     TagDataAssetsRequestTags,
     TestDataSourceConnectivityResponseBodyConnectivityDetailLogs,
     TestDataSourceConnectivityResponseBodyConnectivity,

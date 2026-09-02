@@ -11662,6 +11662,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_application_contents_with_options_async(request, runtime)
 
+    def get_batch_change_table_owner_status_with_options(
+        self,
+        request: main_models.GetBatchChangeTableOwnerStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBatchChangeTableOwnerStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.batch_id):
+            query['BatchId'] = request.batch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBatchChangeTableOwnerStatus',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBatchChangeTableOwnerStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_batch_change_table_owner_status_with_options_async(
+        self,
+        request: main_models.GetBatchChangeTableOwnerStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBatchChangeTableOwnerStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.batch_id):
+            query['BatchId'] = request.batch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBatchChangeTableOwnerStatus',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBatchChangeTableOwnerStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_batch_change_table_owner_status(
+        self,
+        request: main_models.GetBatchChangeTableOwnerStatusRequest,
+    ) -> main_models.GetBatchChangeTableOwnerStatusResponse:
+        runtime = RuntimeOptions()
+        return self.get_batch_change_table_owner_status_with_options(request, runtime)
+
+    async def get_batch_change_table_owner_status_async(
+        self,
+        request: main_models.GetBatchChangeTableOwnerStatusRequest,
+    ) -> main_models.GetBatchChangeTableOwnerStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.get_batch_change_table_owner_status_with_options_async(request, runtime)
+
     def get_business_with_options(
         self,
         request: main_models.GetBusinessRequest,
@@ -27553,6 +27623,92 @@ class Client(OpenApiClient):
     ) -> main_models.StopWorkflowInstancesResponse:
         runtime = RuntimeOptions()
         return await self.stop_workflow_instances_with_options_async(request, runtime)
+
+    def submit_batch_change_table_owner_with_options(
+        self,
+        tmp_req: main_models.SubmitBatchChangeTableOwnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitBatchChangeTableOwnerResponse:
+        tmp_req.validate()
+        request = main_models.SubmitBatchChangeTableOwnerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.table_meta_entity_ids):
+            request.table_meta_entity_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.table_meta_entity_ids, 'TableMetaEntityIds', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.enable_cross_tenant):
+            body['EnableCrossTenant'] = request.enable_cross_tenant
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.table_meta_entity_ids_shrink):
+            body['TableMetaEntityIds'] = request.table_meta_entity_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitBatchChangeTableOwner',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitBatchChangeTableOwnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_batch_change_table_owner_with_options_async(
+        self,
+        tmp_req: main_models.SubmitBatchChangeTableOwnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitBatchChangeTableOwnerResponse:
+        tmp_req.validate()
+        request = main_models.SubmitBatchChangeTableOwnerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.table_meta_entity_ids):
+            request.table_meta_entity_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.table_meta_entity_ids, 'TableMetaEntityIds', 'simple')
+        body = {}
+        if not DaraCore.is_null(request.enable_cross_tenant):
+            body['EnableCrossTenant'] = request.enable_cross_tenant
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.table_meta_entity_ids_shrink):
+            body['TableMetaEntityIds'] = request.table_meta_entity_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitBatchChangeTableOwner',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitBatchChangeTableOwnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_batch_change_table_owner(
+        self,
+        request: main_models.SubmitBatchChangeTableOwnerRequest,
+    ) -> main_models.SubmitBatchChangeTableOwnerResponse:
+        runtime = RuntimeOptions()
+        return self.submit_batch_change_table_owner_with_options(request, runtime)
+
+    async def submit_batch_change_table_owner_async(
+        self,
+        request: main_models.SubmitBatchChangeTableOwnerRequest,
+    ) -> main_models.SubmitBatchChangeTableOwnerResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_batch_change_table_owner_with_options_async(request, runtime)
 
     def submit_file_with_options(
         self,
