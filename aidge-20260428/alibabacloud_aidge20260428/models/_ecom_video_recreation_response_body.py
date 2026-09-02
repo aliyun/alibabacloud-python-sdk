@@ -2,29 +2,27 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
-
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
 
-class VideoGenerationResponseBody(DaraModel):
+class EcomVideoRecreationResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.VideoGenerationResponseBodyData = None,
+        data: main_models.EcomVideoRecreationResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of success indicates a successful call, and a value of failed indicates a failed call.
+        # The result code. `success` indicates success. An error code is returned upon failure.
         self.code = code
-        # The response struct.
+        # The asynchronous task submit status.
         self.data = data
-        # The response message. An error message is returned if the call fails.
+        # The response message. An error description is returned upon failure.
         self.message = message
-        # The request ID, which uniquely identifies a single API call.
+        # The request ID, used to identify a unique call.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+        # Indicates whether the submission is successful.
         self.success = success
 
     def validate(self):
@@ -59,7 +57,7 @@ class VideoGenerationResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.VideoGenerationResponseBodyData()
+            temp_model = main_models.EcomVideoRecreationResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -73,16 +71,13 @@ class VideoGenerationResponseBody(DaraModel):
 
         return self
 
-class VideoGenerationResponseBodyData(DaraModel):
+class EcomVideoRecreationResponseBodyData(DaraModel):
     def __init__(
         self,
         task_id: str = None,
-        usage_map: Dict[str, int] = None,
     ):
-        # The downstream task ID.
+        # The asynchronous task ID for QueryAsyncTaskResult queries.
         self.task_id = task_id
-        # The metering usage information.
-        self.usage_map = usage_map
 
     def validate(self):
         pass
@@ -95,18 +90,12 @@ class VideoGenerationResponseBodyData(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
-        if self.usage_map is not None:
-            result['UsageMap'] = self.usage_map
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
-
-        if m.get('UsageMap') is not None:
-            self.usage_map = m.get('UsageMap')
 
         return self
 

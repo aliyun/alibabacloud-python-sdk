@@ -23,6 +23,10 @@ from ._didui_area_deduction_response import DiduiAreaDeductionResponse
 from ._document_translate_request import DocumentTranslateRequest
 from ._document_translate_response_body import DocumentTranslateResponseBody
 from ._document_translate_response import DocumentTranslateResponse
+from ._ecom_video_recreation_request import EcomVideoRecreationRequest
+from ._ecom_video_recreation_shrink_request import EcomVideoRecreationShrinkRequest
+from ._ecom_video_recreation_response_body import EcomVideoRecreationResponseBody
+from ._ecom_video_recreation_response import EcomVideoRecreationResponse
 from ._image_cropping_request import ImageCroppingRequest
 from ._image_cropping_response_body import ImageCroppingResponseBody
 from ._image_cropping_response import ImageCroppingResponse
@@ -110,6 +114,10 @@ from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyD
 from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyDataResult
 from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyData
 from ._document_translate_response_body import DocumentTranslateResponseBodyData
+from ._ecom_video_recreation_request import EcomVideoRecreationRequestInputProductInfo
+from ._ecom_video_recreation_request import EcomVideoRecreationRequestInput
+from ._ecom_video_recreation_request import EcomVideoRecreationRequestOutput
+from ._ecom_video_recreation_response_body import EcomVideoRecreationResponseBodyData
 from ._image_cropping_response_body import ImageCroppingResponseBodyData
 from ._image_matting_response_body import ImageMattingResponseBodyData
 from ._image_recognition_response_body import ImageRecognitionResponseBodyData
@@ -183,6 +191,10 @@ __all__ = [
     DocumentTranslateRequest,
     DocumentTranslateResponseBody,
     DocumentTranslateResponse,
+    EcomVideoRecreationRequest,
+    EcomVideoRecreationShrinkRequest,
+    EcomVideoRecreationResponseBody,
+    EcomVideoRecreationResponse,
     ImageCroppingRequest,
     ImageCroppingResponseBody,
     ImageCroppingResponse,
@@ -270,6 +282,10 @@ __all__ = [
     DiduiAreaDeductionResponseBodyDataResult,
     DiduiAreaDeductionResponseBodyData,
     DocumentTranslateResponseBodyData,
+    EcomVideoRecreationRequestInputProductInfo,
+    EcomVideoRecreationRequestInput,
+    EcomVideoRecreationRequestOutput,
+    EcomVideoRecreationResponseBodyData,
     ImageCroppingResponseBodyData,
     ImageMattingResponseBodyData,
     ImageRecognitionResponseBodyData,

@@ -10,7 +10,7 @@ class LanguageDetectRequest(DaraModel):
         scene: str = None,
         source_text: str = None,
     ):
-        # Optional. Set this parameter to query (case-insensitive) to use the new model. If this parameter is not specified or an invalid value is passed, the default value common (general language detection) is used.
+        # The detection scenario. Default value: common. If you are using a search phrase scenario, set this parameter to query. If an incorrect value is passed or the parameter is not specified, the common general identification is used. Note: pass query in lowercase.
         self.scene = scene
         # The source text to be identified. This parameter is required.
         # 

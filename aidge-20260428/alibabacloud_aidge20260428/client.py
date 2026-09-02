@@ -21,9 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-beijing': 'aidge.cn-beijing.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aidge', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -638,6 +635,92 @@ class Client(OpenApiClient):
     ) -> main_models.DocumentTranslateResponse:
         runtime = RuntimeOptions()
         return await self.document_translate_with_options_async(request, runtime)
+
+    def ecom_video_recreation_with_options(
+        self,
+        tmp_req: main_models.EcomVideoRecreationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EcomVideoRecreationResponse:
+        tmp_req.validate()
+        request = main_models.EcomVideoRecreationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.input):
+            request.input_shrink = Utils.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not DaraCore.is_null(tmp_req.output):
+            request.output_shrink = Utils.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not DaraCore.is_null(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not DaraCore.is_null(request.output_shrink):
+            query['Output'] = request.output_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EcomVideoRecreation',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EcomVideoRecreationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ecom_video_recreation_with_options_async(
+        self,
+        tmp_req: main_models.EcomVideoRecreationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EcomVideoRecreationResponse:
+        tmp_req.validate()
+        request = main_models.EcomVideoRecreationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.input):
+            request.input_shrink = Utils.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        if not DaraCore.is_null(tmp_req.output):
+            request.output_shrink = Utils.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
+        query = {}
+        if not DaraCore.is_null(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not DaraCore.is_null(request.output_shrink):
+            query['Output'] = request.output_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EcomVideoRecreation',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EcomVideoRecreationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ecom_video_recreation(
+        self,
+        request: main_models.EcomVideoRecreationRequest,
+    ) -> main_models.EcomVideoRecreationResponse:
+        runtime = RuntimeOptions()
+        return self.ecom_video_recreation_with_options(request, runtime)
+
+    async def ecom_video_recreation_async(
+        self,
+        request: main_models.EcomVideoRecreationRequest,
+    ) -> main_models.EcomVideoRecreationResponse:
+        runtime = RuntimeOptions()
+        return await self.ecom_video_recreation_with_options_async(request, runtime)
 
     def image_cropping_with_options(
         self,

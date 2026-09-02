@@ -1,3 +1,7 @@
+2026-09-02 Version: 5.4.0
+- Support API EcomVideoRecreation.
+
+
 2026-08-28 Version: 5.3.2
 - Update API LanguageDetect: add request parameters Scene.
 

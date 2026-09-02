@@ -124,9 +124,15 @@ class VideoGenerationRequestIntent(DaraModel):
     ):
         # The distribution channel.
         self.channel = channel
-        # The business goal.
+        # The business goal. Valid values:
+        # 
+        # camera_motion: Camera movement mode. Generates video based on fixed 360° camera movement logic.
+        # 
+        # scripted_video: Scripted mode. Provides a script or prompt, and the system generates video based on the script.
+        # 
+        # auto_video: Unscripted mode. No script is provided. The system automatically plans the script and then generates the video.
         self.goal = goal
-        # Required when goal is set to scripted_video.
+        # The script or prompt.
         self.script = script
 
     def validate(self):
@@ -169,7 +175,7 @@ class VideoGenerationRequestInput(DaraModel):
         images: List[str] = None,
         title: str = None,
     ):
-        # Specifies the purpose and description of images by asset index.
+        # The asset binding list.
         self.asset_bindings = asset_bindings
         # The extended information.
         self.extra = extra
@@ -237,11 +243,9 @@ class VideoGenerationRequestInputAssetBindings(DaraModel):
     ):
         # The asset index.
         self.asset_index = asset_index
-        # The natural language description of the asset.
+        # The asset description.
         self.description = description
-        # Valid values:
-        # - look_reference: appearance reference.
-        # - scene_reference: scene reference.
+        # The asset usage.
         self.slot = slot
 
     def validate(self):
