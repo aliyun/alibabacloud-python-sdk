@@ -60,6 +60,7 @@ class DescribeVersionConfigResponseBody(DaraModel):
         sas_edr_version: str = None,
         sas_log: int = None,
         sas_screen: int = None,
+        sdk_ai_post_paid_gray: int = None,
         sdk_capacity: int = None,
         sls_capacity: int = None,
         threat_analysis_capacity: int = None,
@@ -238,6 +239,7 @@ class DescribeVersionConfigResponseBody(DaraModel):
         # - **0**: Not purchased.
         # - **1**: Purchased.
         self.sas_screen = sas_screen
+        self.sdk_ai_post_paid_gray = sdk_ai_post_paid_gray
         # The number of malicious file detection SDK authorizations.
         self.sdk_capacity = sdk_capacity
         # The purchased log storage capacity. Unit: GB. Valid values: 0 to 200000.
@@ -436,6 +438,9 @@ class DescribeVersionConfigResponseBody(DaraModel):
         if self.sas_screen is not None:
             result['SasScreen'] = self.sas_screen
 
+        if self.sdk_ai_post_paid_gray is not None:
+            result['SdkAiPostPaidGray'] = self.sdk_ai_post_paid_gray
+
         if self.sdk_capacity is not None:
             result['SdkCapacity'] = self.sdk_capacity
 
@@ -627,6 +632,9 @@ class DescribeVersionConfigResponseBody(DaraModel):
 
         if m.get('SasScreen') is not None:
             self.sas_screen = m.get('SasScreen')
+
+        if m.get('SdkAiPostPaidGray') is not None:
+            self.sdk_ai_post_paid_gray = m.get('SdkAiPostPaidGray')
 
         if m.get('SdkCapacity') is not None:
             self.sdk_capacity = m.get('SdkCapacity')

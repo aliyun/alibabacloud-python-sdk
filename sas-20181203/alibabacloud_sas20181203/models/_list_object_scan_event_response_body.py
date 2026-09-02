@@ -113,6 +113,7 @@ class ListObjectScanEventResponseBodyPageInfo(DaraModel):
 class ListObjectScanEventResponseBodyData(DaraModel):
     def __init__(
         self,
+        ai_detect: bool = None,
         bucket_name: str = None,
         details: List[main_models.ListObjectScanEventResponseBodyDataDetails] = None,
         display_sandbox_result: str = None,
@@ -134,6 +135,7 @@ class ListObjectScanEventResponseBodyData(DaraModel):
         source: str = None,
         status: int = None,
     ):
+        self.ai_detect = ai_detect
         # The bucket name.
         self.bucket_name = bucket_name
         # The detailed information of the check item.
@@ -203,6 +205,9 @@ class ListObjectScanEventResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ai_detect is not None:
+            result['AiDetect'] = self.ai_detect
+
         if self.bucket_name is not None:
             result['BucketName'] = self.bucket_name
 
@@ -269,6 +274,9 @@ class ListObjectScanEventResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiDetect') is not None:
+            self.ai_detect = m.get('AiDetect')
+
         if m.get('BucketName') is not None:
             self.bucket_name = m.get('BucketName')
 

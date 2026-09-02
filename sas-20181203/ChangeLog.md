@@ -1,3 +1,10 @@
+2026-09-02 Version: 10.1.0
+- Support API DescribeUuidVulNumClassifyStatistic.
+- Update API DescribeVersionConfig: add response parameters Body.SdkAiPostPaidGray.
+- Update API ListObjectScanEvent: add request parameters AiDetect.
+- Update API ListObjectScanEvent: add response parameters Body.Data.$.AiDetect.
+
+
 2026-09-01 Version: 10.0.2
 - Generated python 2018-12-03 for Sas.
 

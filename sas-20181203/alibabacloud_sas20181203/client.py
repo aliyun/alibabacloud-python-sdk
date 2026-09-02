@@ -35501,6 +35501,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_user_setting_with_options_async(request, runtime)
 
+    def describe_uuid_vul_num_classify_statistic_with_options(
+        self,
+        request: main_models.DescribeUuidVulNumClassifyStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUuidVulNumClassifyStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_vul):
+            query['ImageVul'] = request.image_vul
+        if not DaraCore.is_null(request.uuids):
+            query['Uuids'] = request.uuids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUuidVulNumClassifyStatistic',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUuidVulNumClassifyStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_uuid_vul_num_classify_statistic_with_options_async(
+        self,
+        request: main_models.DescribeUuidVulNumClassifyStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUuidVulNumClassifyStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_vul):
+            query['ImageVul'] = request.image_vul
+        if not DaraCore.is_null(request.uuids):
+            query['Uuids'] = request.uuids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUuidVulNumClassifyStatistic',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUuidVulNumClassifyStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_uuid_vul_num_classify_statistic(
+        self,
+        request: main_models.DescribeUuidVulNumClassifyStatisticRequest,
+    ) -> main_models.DescribeUuidVulNumClassifyStatisticResponse:
+        runtime = RuntimeOptions()
+        return self.describe_uuid_vul_num_classify_statistic_with_options(request, runtime)
+
+    async def describe_uuid_vul_num_classify_statistic_async(
+        self,
+        request: main_models.DescribeUuidVulNumClassifyStatisticRequest,
+    ) -> main_models.DescribeUuidVulNumClassifyStatisticResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_uuid_vul_num_classify_statistic_with_options_async(request, runtime)
+
     def describe_uuids_by_vul_names_with_options(
         self,
         request: main_models.DescribeUuidsByVulNamesRequest,
@@ -57770,6 +57844,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListObjectScanEventResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ai_detect):
+            query['AiDetect'] = request.ai_detect
         if not DaraCore.is_null(request.batch_type):
             query['BatchType'] = request.batch_type
         if not DaraCore.is_null(request.bucket_name):
@@ -57826,6 +57902,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListObjectScanEventResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ai_detect):
+            query['AiDetect'] = request.ai_detect
         if not DaraCore.is_null(request.batch_type):
             query['BatchType'] = request.batch_type
         if not DaraCore.is_null(request.bucket_name):

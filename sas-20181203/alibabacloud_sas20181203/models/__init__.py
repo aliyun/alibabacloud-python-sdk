@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from ._query_incident_tracing_sub_nodes_count_request import QueryIncidentTracingSubNodesCountRequest
+from ._data_value import DataValue
 from ._add_asset_selection_criteria_request import AddAssetSelectionCriteriaRequest
 from ._add_asset_selection_criteria_response_body import AddAssetSelectionCriteriaResponseBody
 from ._add_asset_selection_criteria_response import AddAssetSelectionCriteriaResponse
@@ -1279,6 +1280,9 @@ from ._describe_user_baseline_authorization_response import DescribeUserBaseline
 from ._describe_user_setting_request import DescribeUserSettingRequest
 from ._describe_user_setting_response_body import DescribeUserSettingResponseBody
 from ._describe_user_setting_response import DescribeUserSettingResponse
+from ._describe_uuid_vul_num_classify_statistic_request import DescribeUuidVulNumClassifyStatisticRequest
+from ._describe_uuid_vul_num_classify_statistic_response_body import DescribeUuidVulNumClassifyStatisticResponseBody
+from ._describe_uuid_vul_num_classify_statistic_response import DescribeUuidVulNumClassifyStatisticResponse
 from ._describe_uuids_by_vul_names_request import DescribeUuidsByVulNamesRequest
 from ._describe_uuids_by_vul_names_response_body import DescribeUuidsByVulNamesResponseBody
 from ._describe_uuids_by_vul_names_response import DescribeUuidsByVulNamesResponse
@@ -3947,6 +3951,7 @@ from ._verify_check_result_response_body import VerifyCheckResultResponseBodyDat
 
 __all__ = [
     QueryIncidentTracingSubNodesCountRequest,
+    DataValue,
     AddAssetSelectionCriteriaRequest,
     AddAssetSelectionCriteriaResponseBody,
     AddAssetSelectionCriteriaResponse,
@@ -5223,6 +5228,9 @@ __all__ = [
     DescribeUserSettingRequest,
     DescribeUserSettingResponseBody,
     DescribeUserSettingResponse,
+    DescribeUuidVulNumClassifyStatisticRequest,
+    DescribeUuidVulNumClassifyStatisticResponseBody,
+    DescribeUuidVulNumClassifyStatisticResponse,
     DescribeUuidsByVulNamesRequest,
     DescribeUuidsByVulNamesResponseBody,
     DescribeUuidsByVulNamesResponse,

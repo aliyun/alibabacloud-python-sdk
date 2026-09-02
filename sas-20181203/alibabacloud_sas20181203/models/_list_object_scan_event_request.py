@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListObjectScanEventRequest(DaraModel):
     def __init__(
         self,
+        ai_detect: bool = None,
         batch_type: str = None,
         bucket_name: str = None,
         current_page: int = None,
@@ -23,6 +24,7 @@ class ListObjectScanEventRequest(DaraModel):
         time_end: int = None,
         time_start: int = None,
     ):
+        self.ai_detect = ai_detect
         # The batch operation type. Valid values:
         # 
         # - **sha256**: same file content
@@ -91,6 +93,9 @@ class ListObjectScanEventRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ai_detect is not None:
+            result['AiDetect'] = self.ai_detect
+
         if self.batch_type is not None:
             result['BatchType'] = self.batch_type
 
@@ -140,6 +145,9 @@ class ListObjectScanEventRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiDetect') is not None:
+            self.ai_detect = m.get('AiDetect')
+
         if m.get('BatchType') is not None:
             self.batch_type = m.get('BatchType')
 
