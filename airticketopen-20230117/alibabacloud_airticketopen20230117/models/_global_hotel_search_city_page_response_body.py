@@ -148,15 +148,15 @@ class GlobalHotelSearchCityPageResponseBodyDataCities(DaraModel):
         parent_code: int = None,
         region: int = None,
     ):
-        # The Chinese name.
+        # The Chinese name of the city.
         self.cn_name = cn_name
         # The city code.
         self.code = code
         # The country code.
         self.country = country
-        # The country code (ISO 3166-1 alpha-2).
+        # The country code in ISO 3166-1 alpha-2 format.
         self.country_code = country_code
-        # The English name.
+        # The English name of the city.
         self.en_name = en_name
         # The administrative level.
         self.level = level

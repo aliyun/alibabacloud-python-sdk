@@ -1,3 +1,10 @@
+2026-09-02 Version: 9.0.0
+- Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.Facilities.$.SubItems.
+- Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.RoomTypes.$.BedGroups.
+- Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.RoomTypes.$.Facilities.
+- Update API globalHotelBatchGetHotelDetail: delete response parameters Body.Data.Hotels.$.RoomTypes.$.BedType.
+
+
 2026-08-21 Version: 8.1.1
 - Generated python 2023-01-17 for airticketOpen.
 

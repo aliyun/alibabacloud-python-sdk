@@ -14,11 +14,11 @@ class GlobalHotelBatchGetHotelDetailRequest(DaraModel):
         standard_hotel_ids: List[str] = None,
         tracer_id: str = None,
     ):
-        # The distributor account ID.
+        # The ID of the distributor account.
         # 
         # This parameter is required.
         self.account_no = account_no
-        # The language (such as en or zh).
+        # The language for the response, such as en or zh.
         self.language = language
         # The list of standard hotel IDs. A maximum of 100 IDs are supported.
         # 

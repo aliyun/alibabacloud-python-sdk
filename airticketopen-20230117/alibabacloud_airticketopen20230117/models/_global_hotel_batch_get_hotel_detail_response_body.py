@@ -23,7 +23,7 @@ class GlobalHotelBatchGetHotelDetailResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # The unique request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -147,55 +147,55 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotels(DaraModel):
         tel: str = None,
         timezone: str = None,
     ):
-        # The address.
+        # The address of the hotel.
         self.address = address
-        # The default check-in time.
+        # The default check-in time in HH:mm format, based on the hotel\\"s local time zone.
         self.check_in_time = check_in_time
-        # The default check-out time.
+        # The default check-out time in HH:mm format, based on the hotel\\"s local time zone.
         self.check_out_time = check_out_time
         # The city name.
         self.city_name = city_name
         # The country name.
         self.country_name = country_name
-        # The hotel description.
+        # The description of the hotel.
         self.description = description
         # The error code for the individual hotel.
         self.error_code = error_code
-        # The error message for the individual hotel.
+        # The error description for the individual hotel.
         self.error_message = error_message
         # The list of facilities.
         self.facilities = facilities
         # The hotel name.
         self.hotel_name = hotel_name
-        # The Chinese hotel name.
+        # The Chinese hotel name. This value is always in Chinese regardless of the language setting.
         self.hotel_name_cn = hotel_name_cn
         # The hotel type (LUXURY/DELUXE/COMFORT).
         self.hotel_type = hotel_type
-        # The latitude.
+        # The latitude of the hotel.
         self.latitude = latitude
-        # The longitude.
+        # The longitude of the hotel.
         self.longitude = longitude
-        # The opening year.
+        # The year the hotel opened.
         self.opening_time = opening_time
         # The list of pictures.
         self.pictures = pictures
         # The hotel policy information.
         self.policies = policies
-        # The source of the coordinates.
+        # The source of the latitude and longitude coordinates.
         self.position_type = position_type
-        # The renovation year.
+        # The year the hotel was last renovated.
         self.renovation_time = renovation_time
         # The list of room types.
         self.room_types = room_types
         # The platform standard hotel ID.
         self.standard_hotel_id = standard_hotel_id
-        # The star rating.
+        # The star rating of the hotel.
         self.star = star
         # The hotel status (ONLINE/OFFLINE).
         self.status = status
-        # The phone number.
+        # The phone number of the hotel.
         self.tel = tel
-        # The hotel time zone (IANA ID).
+        # The time zone of the hotel in IANA ID format.
         self.timezone = timezone
 
     def validate(self):
@@ -400,7 +400,8 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotels(DaraModel):
 class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes(DaraModel):
     def __init__(
         self,
-        bed_type: List[main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType] = None,
+        bed_groups: List[main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups] = None,
+        facilities: List[main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities] = None,
         pictures: List[main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures] = None,
         room_name: str = None,
         room_name_cn: str = None,
@@ -410,39 +411,45 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes(DaraModel):
         window_type: str = None,
         window_type_defect: str = None,
     ):
-        # The list of bed types.
-        self.bed_type = bed_type
+        # The list of bed type groups. This has the same structure as bedInfoJson. Groups are in an OR relationship, and items within a group are in an AND relationship.
+        self.bed_groups = bed_groups
+        # The list of room type facilities.
+        self.facilities = facilities
         # The list of room type pictures.
         self.pictures = pictures
         # The room type name.
         self.room_name = room_name
-        # The Chinese room type name (always in Chinese, regardless of the language parameter).
+        # The Chinese room type name. This value is always in Chinese regardless of the language parameter.
         self.room_name_cn = room_name_cn
-        # The room area (passed through as-is, may be a range value).
+        # The room size. The value is passed through as-is and may be a range.
         self.room_size = room_size
-        # The area unit. Valid values: SQM (square meters) and SQFT (square feet). Default value: SQM.
+        # The unit of the room size. Valid values: SQM (square meters) and SQFT (square feet). Default value: SQM.
         self.room_size_unit = room_size_unit
         # The platform standard room type ID.
         self.standard_room_id = standard_room_id
         # The window type. Valid values:
-        # - 0: no window
-        # - 1: with window
-        # - 2: partially with window
-        # - 3: opaque window
-        # - 4: partially opaque window
-        # - 5: floor-to-ceiling window
+        # - 0: no window.
+        # - 1: with window.
+        # - 2: partially with window.
+        # - 3: frosted or opaque window.
+        # - 4: partially frosted or opaque window.
+        # - 5: floor-to-ceiling window.
         self.window_type = window_type
         # The window defect code. Valid values:
-        # - 0: window cannot be opened for ventilation
-        # - 1: view is obstructed outside the window
-        # - 2: window faces the interior of the hotel
-        # - 3: window is located in a corridor or hallway
-        # - 4: window can be opened for ventilation and faces an outdoor open environment
+        # - 0: The window cannot be opened for ventilation.
+        # - 1: The view from the window is obstructed.
+        # - 2: The window faces an interior hotel view.
+        # - 3: The window is located along a corridor or hallway.
+        # - 4: The window can be opened for ventilation and faces an outdoor open environment.
         self.window_type_defect = window_type_defect
 
     def validate(self):
-        if self.bed_type:
-            for v1 in self.bed_type:
+        if self.bed_groups:
+            for v1 in self.bed_groups:
+                 if v1:
+                    v1.validate()
+        if self.facilities:
+            for v1 in self.facilities:
                  if v1:
                     v1.validate()
         if self.pictures:
@@ -455,10 +462,15 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['BedType'] = []
-        if self.bed_type is not None:
-            for k1 in self.bed_type:
-                result['BedType'].append(k1.to_map() if k1 else None)
+        result['BedGroups'] = []
+        if self.bed_groups is not None:
+            for k1 in self.bed_groups:
+                result['BedGroups'].append(k1.to_map() if k1 else None)
+
+        result['Facilities'] = []
+        if self.facilities is not None:
+            for k1 in self.facilities:
+                result['Facilities'].append(k1.to_map() if k1 else None)
 
         result['Pictures'] = []
         if self.pictures is not None:
@@ -490,11 +502,17 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.bed_type = []
-        if m.get('BedType') is not None:
-            for k1 in m.get('BedType'):
-                temp_model = main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType()
-                self.bed_type.append(temp_model.from_map(k1))
+        self.bed_groups = []
+        if m.get('BedGroups') is not None:
+            for k1 in m.get('BedGroups'):
+                temp_model = main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups()
+                self.bed_groups.append(temp_model.from_map(k1))
+
+        self.facilities = []
+        if m.get('Facilities') is not None:
+            for k1 in m.get('Facilities'):
+                temp_model = main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities()
+                self.facilities.append(temp_model.from_map(k1))
 
         self.pictures = []
         if m.get('Pictures') is not None:
@@ -537,7 +555,7 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures(Dara
         second_category_name: str = None,
         url: str = None,
     ):
-        # The picture description.
+        # The description of the picture.
         self.description = description
         # The first-level category code.
         self.first_category_code = first_category_code
@@ -545,13 +563,13 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures(Dara
         self.first_category_name = first_category_name
         # Indicates whether the picture is the cover image.
         self.is_head_pic = is_head_pic
-        # The picture ID (subject to the URL).
+        # The picture ID. The URL takes precedence.
         self.picture_id = picture_id
         # The second-level category code.
         self.second_category_code = second_category_code
         # The second-level category name.
         self.second_category_name = second_category_name
-        # The picture URL.
+        # The URL of the picture.
         self.url = url
 
     def validate(self):
@@ -616,18 +634,115 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures(Dara
 
         return self
 
-class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType(DaraModel):
+class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        sub_items: List[Any] = None,
+        type: str = None,
+    ):
+        # The facility description.
+        self.description = description
+        # The name of the facility.
+        self.name = name
+        # The list of sub-facilities.
+        self.sub_items = sub_items
+        # The type of the facility.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.sub_items is not None:
+            result['SubItems'] = self.sub_items
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('SubItems') is not None:
+            self.sub_items = m.get('SubItems')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        return self
+
+class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups(DaraModel):
+    def __init__(
+        self,
+        bed_infos: List[main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos] = None,
+    ):
+        # The list of bed types within a group. Items are in an AND relationship.
+        self.bed_infos = bed_infos
+
+    def validate(self):
+        if self.bed_infos:
+            for v1 in self.bed_infos:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['BedInfos'] = []
+        if self.bed_infos is not None:
+            for k1 in self.bed_infos:
+                result['BedInfos'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bed_infos = []
+        if m.get('BedInfos') is not None:
+            for k1 in m.get('BedInfos'):
+                temp_model = main_models.GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos()
+                self.bed_infos.append(temp_model.from_map(k1))
+
+        return self
+
+class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos(DaraModel):
     def __init__(
         self,
         bed_count: int = None,
+        bed_name_cn: str = None,
+        bed_name_en: str = None,
         bed_size: str = None,
         bed_type: str = None,
     ):
         # The number of beds.
         self.bed_count = bed_count
+        # The Chinese name of the bed type.
+        self.bed_name_cn = bed_name_cn
+        # The English name of the bed type.
+        self.bed_name_en = bed_name_en
         # The bed width in meters.
         self.bed_size = bed_size
-        # The bed type name.
+        # The bed type code. This is the original channel code passed through directly. For the meaning of code values, refer to the API documentation.
         self.bed_type = bed_type
 
     def validate(self):
@@ -641,6 +756,12 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType(DaraM
         if self.bed_count is not None:
             result['BedCount'] = self.bed_count
 
+        if self.bed_name_cn is not None:
+            result['BedNameCn'] = self.bed_name_cn
+
+        if self.bed_name_en is not None:
+            result['BedNameEn'] = self.bed_name_en
+
         if self.bed_size is not None:
             result['BedSize'] = self.bed_size
 
@@ -653,6 +774,12 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType(DaraM
         m = m or dict()
         if m.get('BedCount') is not None:
             self.bed_count = m.get('BedCount')
+
+        if m.get('BedNameCn') is not None:
+            self.bed_name_cn = m.get('BedNameCn')
+
+        if m.get('BedNameEn') is not None:
+            self.bed_name_en = m.get('BedNameEn')
 
         if m.get('BedSize') is not None:
             self.bed_size = m.get('BedSize')
@@ -724,7 +851,7 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems(DaraMode
         item_type_id: str = None,
         value: str = None,
     ):
-        # The list of sub-items.
+        # The list of subkeys.
         self.children = children
         # The item name.
         self.item_name = item_name
@@ -783,7 +910,7 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures(DaraModel):
         second_category_name: str = None,
         url: str = None,
     ):
-        # The picture description.
+        # The description of the picture.
         self.description = description
         # The first-level category code.
         self.first_category_code = first_category_code
@@ -791,13 +918,13 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures(DaraModel):
         self.first_category_name = first_category_name
         # Indicates whether the picture is the cover image.
         self.is_head_pic = is_head_pic
-        # The picture ID (subject to the URL).
+        # The picture ID. The URL takes precedence.
         self.picture_id = picture_id
         # The second-level category code.
         self.second_category_code = second_category_code
         # The second-level category name.
         self.second_category_name = second_category_name
-        # The picture URL.
+        # The URL of the picture.
         self.url = url
 
     def validate(self):
@@ -867,13 +994,16 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities(DaraModel):
         self,
         description: str = None,
         name: str = None,
+        sub_items: List[Any] = None,
         type: str = None,
     ):
         # The facility description.
         self.description = description
-        # The facility name.
+        # The name of the facility.
         self.name = name
-        # The facility type.
+        # The list of sub-facilities.
+        self.sub_items = sub_items
+        # The type of the facility.
         self.type = type
 
     def validate(self):
@@ -890,6 +1020,9 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.sub_items is not None:
+            result['SubItems'] = self.sub_items
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -902,6 +1035,9 @@ class GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SubItems') is not None:
+            self.sub_items = m.get('SubItems')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

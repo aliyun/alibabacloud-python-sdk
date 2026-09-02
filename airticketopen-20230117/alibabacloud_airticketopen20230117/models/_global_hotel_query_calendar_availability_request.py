@@ -19,7 +19,7 @@ class GlobalHotelQueryCalendarAvailabilityRequest(DaraModel):
         standard_hotel_ids: List[str] = None,
         tracer_id: str = None,
     ):
-        # The account ID of the distributor.
+        # The distributor account ID.
         # 
         # This parameter is required.
         self.account_no = account_no
@@ -27,17 +27,17 @@ class GlobalHotelQueryCalendarAvailabilityRequest(DaraModel):
         # 
         # This parameter is required.
         self.adult_count = adult_count
-        # The end date of the check-in period to query, in the format of yyyy-MM-dd. The date cannot be earlier than the start date. The date range includes both the start and end dates, with a maximum span of 30 days.
+        # The end date of the check-in date range to query, in the yyyy-MM-dd format. The date cannot be earlier than the start date. The date range is inclusive and supports a maximum of 30 days.
         # 
         # This parameter is required.
         self.check_in_date_end = check_in_date_end
-        # The start date of the check-in period to query, in the format of yyyy-MM-dd. The date cannot be earlier than the current day.
+        # The start date of the check-in date range to query, in the yyyy-MM-dd format. The date cannot be earlier than the current day.
         # 
         # This parameter is required.
         self.check_in_date_start = check_in_date_start
         # The number of children.
         self.child_count = child_count
-        # The list of children\\"s ages.
+        # The list of children ages.
         self.children_ages = children_ages
         # The number of rooms.
         # 

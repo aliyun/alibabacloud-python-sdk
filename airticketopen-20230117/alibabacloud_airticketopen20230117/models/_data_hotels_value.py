@@ -102,7 +102,7 @@ class DataHotelsValueOffers(DaraModel):
         max_occupancy: int = None,
         confirm_type: str = None,
     ):
-        # The item offer key used for price verification. Pass through this value as-is.
+        # The item offer key, which is a price verification key. Pass this value through as-is.
         self.item_offer_key = item_offer_key
         # The rate plan name.
         self.rate_plan_name = rate_plan_name
@@ -415,15 +415,15 @@ class DataHotelsValueOffersCancelPolicyPenalties(DaraModel):
         currency: str = None,
         tracer_id: str = None,
     ):
-        # The effective start time as a UTC millisecond timestamp.
+        # The effective start time, in UTC millisecond timestamp format.
         self.start = start
-        # The effective end time as a UTC millisecond timestamp.
+        # The effective end time, in UTC millisecond timestamp format.
         self.end = end
         # The penalty type (PERCENTAGE/AMOUNT/NIGHTS).
         self.penalty_type = penalty_type
-        # The penalty value (percentage/amount/nights).
+        # The penalty value (percentage, amount, or number of nights).
         self.penalty_value = penalty_value
-        # The currency code. This field is present only when the penalty type is AMOUNT.
+        # The currency code. This field has a value only when the penalty type is AMOUNT.
         self.currency = currency
         # TraceId
         self.tracer_id = tracer_id
@@ -868,9 +868,9 @@ class DataHotelsValueRoomsOffersCancelPolicyPenalties(DaraModel):
         self.end = end
         # The penalty type (PERCENTAGE/AMOUNT/NIGHTS).
         self.penalty_type = penalty_type
-        # The penalty value (percentage/amount/nights).
+        # The penalty value (percentage/amount/number of nights).
         self.penalty_value = penalty_value
-        # The currency code (present only when the penalty type is AMOUNT).
+        # The currency code (present only when the type is AMOUNT).
         self.currency = currency
         # traceId
         self.tracer_id = tracer_id

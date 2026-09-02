@@ -21,9 +21,9 @@ class GlobalHotelSearchCityPageRequest(DaraModel):
         # 
         # This parameter is required.
         self.count = count
-        # The country code (ISO 3166-1 alpha-2).
+        # The country code in ISO 3166-1 alpha-2 format.
         self.country_code = country_code
-        # The pagination offset (starts from 0).
+        # The pagination offset. Starts from 0.
         self.start = start
         # TraceId
         self.tracer_id = tracer_id

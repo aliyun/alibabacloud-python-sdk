@@ -25,7 +25,7 @@ class GlobalHotelSearchHotelListResponseBody(DaraModel):
         self.error_msg = error_msg
         # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # traceId
         self.tracer_id = tracer_id
@@ -144,7 +144,7 @@ class GlobalHotelSearchHotelListResponseBodyDataHotels(DaraModel):
         self.hotel_name = hotel_name
         # The platform standard hotel ID.
         self.standard_hotel_id = standard_hotel_id
-        # The hotel status (ONLINE/OFFLINE).
+        # The hotel status. Valid values: ONLINE and OFFLINE.
         self.status = status
 
     def validate(self):
