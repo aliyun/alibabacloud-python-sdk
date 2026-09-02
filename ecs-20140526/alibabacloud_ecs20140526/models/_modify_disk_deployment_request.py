@@ -17,33 +17,33 @@ class ModifyDiskDeploymentRequest(DaraModel):
         resource_owner_id: int = None,
         storage_cluster_id: str = None,
     ):
-        # The new disk type. This parameter takes effect only when you perform an Upgrade/Downgrade during migration between different dedicated block storage clusters. Currently, only cloud_essd (enterprise SSD) is supported.
+        # The new disk type. This parameter takes effect only when you migrate a disk between different dedicated block storage clusters. Currently, only cloud_essd (enterprise SSD) is supported.
         # 
-        # Default value: empty, which indicates that the disk type is not changed during the Upgrade/Downgrade.
+        # Default value: empty, which indicates that the disk type is not changed.
         self.disk_category = disk_category
         # The disk ID.
         # 
         # This parameter is required.
         self.disk_id = disk_id
         # Specifies whether to perform only a dry run. Valid values:
-        # - true: performs only a dry run. The system checks the required parameters, request format, business restrictions, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the error code DryRunOperation is returned.
-        # - false: performs a dry run and sends the request. If the check succeeds, a 2XX HTTP status code is returned and the disk is migrated.
+        # - true: performs only a dry run. The system checks whether your AccessKey pair is valid, whether RAM users are granted required permissions, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2XX HTTP status code is returned and the disk is migrated.
         # 
         # Default value: false.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The performance level of the enterprise SSD. This parameter takes effect only when you migrate a disk between different dedicated block storage clusters. Valid values:
-        # - PL0: a maximum of 10,000 random read/write IOPS per disk.
-        # - PL1: a maximum of 50,000 random read/write IOPS per disk.
+        # The performance level (PL) of the enterprise SSD. This parameter takes effect only when you migrate a disk between different dedicated block storage clusters. Valid values:
+        # - PL0: A maximum of 10,000 random read/write IOPS per disk.
+        # - PL1: A maximum of 50,000 random read/write IOPS per disk.
         # 
-        # Default value: empty, which indicates that the performance level is not changed.
+        # Default value: empty, which indicates that the performance level (PL) is not changed.
         self.performance_level = performance_level
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The dedicated block storage cluster ID.
-        # - To migrate a disk to a dedicated block storage cluster, you must specify `StorageClusterId`.
-        # - To migrate a disk to a public cloud block storage cluster, `StorageClusterId` must be empty.
+        # - To migrate a disk to a dedicated block storage cluster, you must specify StorageClusterId.
+        # - To migrate a disk to a public cloud block storage cluster, StorageClusterId must be empty.
         # 
         # Default value: empty, which indicates that the disk is migrated to a public cloud block storage cluster.
         self.storage_cluster_id = storage_cluster_id

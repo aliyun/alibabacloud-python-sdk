@@ -17,9 +17,9 @@ class ModifyDiskSpecResponseBody(DaraModel):
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The task ID for the disk type change.
+        # The task ID for the disk specification change.
         # 
-        # > This parameter is not returned if you only modified the performance level (PL) of an ESSD.
+        # > This parameter is not returned if you only modify the performance level (PL) of an ESSD.
         self.task_id = task_id
 
     def validate(self):

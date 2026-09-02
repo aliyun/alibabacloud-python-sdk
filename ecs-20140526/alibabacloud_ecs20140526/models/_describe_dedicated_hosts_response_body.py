@@ -18,7 +18,7 @@ class DescribeDedicatedHostsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.dedicated_hosts = dedicated_hosts
-        # The paging token returned in this call. When you use MaxResults and NextToken for paging query, an empty value indicates that no more data is available.
+        # The query token returned by this call. If this value is empty when you use MaxResults and NextToken for paging, no more data is returned.
         self.next_token = next_token
         # The page number of the dedicated host list.
         self.page_number = page_number
@@ -766,8 +766,10 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInf
     def __init__(
         self,
         serial_number: str = None,
+        vgpu_version: str = None,
     ):
         self.serial_number = serial_number
+        self.vgpu_version = vgpu_version
 
     def validate(self):
         pass
@@ -780,12 +782,18 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInf
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
 
+        if self.vgpu_version is not None:
+            result['VgpuVersion'] = self.vgpu_version
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
+
+        if m.get('VgpuVersion') is not None:
+            self.vgpu_version = m.get('VgpuVersion')
 
         return self
 

@@ -31,13 +31,13 @@ class CreateSnapshotRequest(DaraModel):
         # - Standard: standard snapshot.
         # - Flash: local snapshot.
         # 
-        # > This parameter will be deprecated. Standard snapshots for enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required. The snapshot is active immediately after creation.
+        # > This parameter will be deprecated. Standard snapshots for enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or costs are required.
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
-        # Default value: null.
+        # Default value: empty.
         self.description = description
         # The disk ID.
         # 
@@ -49,13 +49,13 @@ class CreateSnapshotRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # > This parameter is deprecated. Standard snapshots for enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required. The snapshot is active immediately after creation.
+        # > This parameter is deprecated. Standard snapshots for enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or costs are required.
         self.instant_access = instant_access
         # Settings for the retention period of the snapshot instant access feature. After the retention period expires, the snapshot is subject to automatic release. This parameter takes effect only when `InstantAccess=true`. Unit: days. Valid values: 1 to 65535.
         # 
         # The default value is the same as the value of the `RetentionDays` parameter.
         # 
-        # > This parameter is deprecated. Standard snapshots for enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required. The snapshot is active immediately after creation.
+        # > This parameter is deprecated. Standard snapshots for enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or costs are required.
         self.instant_access_retention_days = instant_access_retention_days
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -65,11 +65,11 @@ class CreateSnapshotRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Settings for the retention period of the snapshot. Unit: days. Valid values: 1 to 65536. The snapshot is subject to automatic release when the retention period expires.
         # 
-        # Default value: null, which indicates that the snapshot is not subject to automatic release.
+        # Default value: empty, which indicates that the snapshot is not subject to automatic release.
         self.retention_days = retention_days
         # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the letter category (including letters in English and Chinese), ASCII digits (0-9), colons (:), underscores (_), periods (.), and hyphens (-).
         # 
-        # > The name cannot start with `auto` to avoid conflicts with the names of automatic snapshots.
+        # > To prevent naming conflicts with automatic snapshots, the name cannot start with `auto`.
         self.snapshot_name = snapshot_name
         # > This parameter is not publicly available.
         self.storage_location_arn = storage_location_arn

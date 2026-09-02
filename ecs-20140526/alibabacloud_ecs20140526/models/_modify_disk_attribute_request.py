@@ -28,7 +28,7 @@ class ModifyDiskAttributeRequest(DaraModel):
         # - true: Enabled.
         # - false: Disabled.
         # 
-        # > If you specify this parameter for a disk that does not support the burst feature, an error is returned.
+        # > An error is returned if you specify any value for a disk that does not support the burst feature.
         self.bursting_enabled = bursting_enabled
         # Specifies whether to delete the automatic snapshots of the disk when the disk is deleted. Valid values:
         # 
@@ -38,24 +38,24 @@ class ModifyDiskAttributeRequest(DaraModel):
         # 
         # Default value: null, which indicates that the current value remains unchanged.
         self.delete_auto_snapshot = delete_auto_snapshot
-        # Specifies whether to release the disk along with the instance. Default value: null, which indicates that the current value remains unchanged.
+        # Specifies whether to release the disk when the associated instance is released. Default value: null, which indicates that the current value remains unchanged.
         # 
         # <props="china">Disks that have the multi-attach feature enabled do not support this parameter.
         # 
-        # Setting `DeleteWithInstance` to `false` returns an error in the following cases: 
+        # An error is returned if you set `DeleteWithInstance` to `false` in the following cases: 
         #          
-        # - The disk category is local disk (ephemeral).  
-        # - The disk category is basic disk (cloud) and the disk is not detachable (Portable=false).  
+        # - The category of the disk is local disk (ephemeral).  
+        # - The category of the disk is basic disk (cloud) and the disk is not detachable (Portable=false).  
         # 
-        # >Warning: If you set DeleteWithInstance to false, when the ECS instance to which the disk is attached is security-locked and the OperationLocks parameter contains "LockReason" : "security", the DeleteWithInstance attribute is ignored and the disk is released along with the instance.
+        # >Warning: If you set DeleteWithInstance to false and the ECS instance to which the disk is attached is security-locked with "LockReason" : "security" in OperationLocks, the DeleteWithInstance setting is ignored and the disk is released together with the instance.
         self.delete_with_instance = delete_with_instance
         # The description of the disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the disk whose attributes you want to modify.
-        # > The `DiskId` and `DiskIds.N` parameters cannot be specified at the same time. Specify one of them as needed.
+        # > The DiskId and DiskIds.N parameters cannot be specified at the same time. Specify one of them as needed.
         self.disk_id = disk_id
         # The IDs of the disks whose attributes you want to modify. Valid values of N: 0 to 100.
-        # > The `DiskId` and `DiskIds.N` parameters cannot be specified at the same time. Specify one of them as needed.
+        # > The DiskId and DiskIds.N parameters cannot be specified at the same time. Specify one of them as needed.
         self.disk_ids = disk_ids
         # The name of the disk. The name must be 2 to 128 characters in length and can contain letters, digits, and characters categorized as letter in Unicode, including Chinese characters. The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
         self.disk_name = disk_name
@@ -66,7 +66,7 @@ class ModifyDiskAttributeRequest(DaraModel):
         # 
         # Default value: null, which indicates that the current value remains unchanged.
         # 
-        # > This parameter is deprecated. The automatic snapshot policy is enabled by default for disks after creation. You only need to associate an automatic snapshot policy with the disk.
+        # > **[Deprecated]** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for disks after they are created. You only need to associate an automatic snapshot policy with the disk.
         self.enable_auto_snapshot = enable_auto_snapshot
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -1,3 +1,7 @@
+2026-09-02 Version: 7.11.1
+- Update API DescribeDedicatedHosts: add response parameters Body.DedicatedHosts.$.HostDetailInfo.VgpuVersion.
+
+
 2026-08-31 Version: 7.11.0
 - Support API ModifyInstanceSecurityOptions.
 

@@ -43,7 +43,7 @@ class DescribeDedicatedHostsRequest(DaraModel):
         # - financial: The dedicated host is locked due to an overdue payment.
         # - security: The dedicated host is locked for security reasons.
         self.lock_reason = lock_reason
-        # The maximum number of entries per page for a paging query. If you set this parameter, it indicates that you are using the MaxResults and NextToken paging method.
+        # The maximum number of entries per page for a paged query. If you set this parameter, the MaxResults and NextToken parameters are used together for paging.
         # 
         # Maximum value: 100.
         # 
@@ -53,9 +53,9 @@ class DescribeDedicatedHostsRequest(DaraModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter is about to go offline. Use NextToken and MaxResults to perform paging query operations.
+        # > This parameter will be offline soon. Use NextToken and MaxResults to perform paged query operations for paging.
         self.page_number = page_number
-        # > This parameter is about to go offline. Use NextToken and MaxResults to perform paging query operations.
+        # > This parameter will be offline soon. Use NextToken and MaxResults to perform paged query operations for paging.
         self.page_size = page_size
         self.query_inventory = query_inventory
         # The region ID of the dedicated host. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
@@ -68,24 +68,24 @@ class DescribeDedicatedHostsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to display socket-level capacity information. You can use socket-level capacity information to view remaining resources (vCPU, memory usage, remaining capacity, and total capacity) to determine whether an ECS instance of a specific instance type can be created. Valid values:
+        # Specifies whether to display socket-level capacity information. You can use socket-level capacity information to view remaining resources (vCPUs, memory usage, remaining capacity, and total capacity) to determine whether an ECS instance of a specific instance type can be created. Valid values:
         # 
-        # - true: Display socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
-        # - false: Do not display socket-level capacity information.
+        # - true: Displays socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
+        # - false: Does not display socket-level capacity information.
         # 
         # >Notice: 
         # 
         # Each dedicated host typically has two CPUs, numbered Socket 0 and Socket 1. On a dedicated host, ECS instances are not created across sockets to ensure maximum performance. An ECS instance is created based on a single socket only.
         # 
-        # - If the remaining computing resources of one socket are greater than or equal to the instance type to be created, the ECS instance is created.
-        # - If the remaining computing resources of each socket are less than the instance type to be created, the ECS instance fails to be created, even if the combined remaining resources of both sockets exceed the instance type requirements.
+        # - If the remaining computing resources of one socket are greater than or equal to the ECS instance type to be created, the ECS instance is created.
+        # - If the remaining computing resources of each socket are less than the ECS instance type to be created, the ECS instance fails to be created, even if the combined remaining resources of both sockets exceed the ECS instance type requirements.
         # </notice>
         self.socket_details = socket_details
         # The usage status of the dedicated host. Valid values:
         # 
-        # - Available: The dedicated host is running normally.
+        # - Available: The dedicated host is running as expected.
         # 
-        # - UnderAssessment: The physical machine is at risk. The physical machine is available but may cause issues for ECS instances on the dedicated host.
+        # - UnderAssessment: The physical machine has potential risks. The physical machine is available but may cause issues for ECS instances on the dedicated host.
         # 
         # - PermanentFailure: The dedicated host has a permanent failure and is unavailable.
         # 
@@ -95,7 +95,7 @@ class DescribeDedicatedHostsRequest(DaraModel):
         # 
         # Default value: Available.
         self.status = status
-        # The list of tags. Valid values of N: 0 to 20.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
         # The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the most recent zone list.
         self.zone_id = zone_id

@@ -21,7 +21,7 @@ class ModifyDiskChargeTypeRequest(DaraModel):
         # Specifies whether to enable automatic payment. Valid values: 
         #          
         # - true (default): Automatic payment is enabled. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated, and you can only void the order. 
-        # - false: Only an order is generated without payment. If your account balance is insufficient, a normal unpaid order is generated. You can log on to the Alibaba Cloud **Expenses and Costs** console and pay for the order on the <props="china"><ph>[My Orders](https://usercenter2.aliyun.com/order/list)</ph><props="intl"><ph>[Orders](https://usercenter2-intl.aliyun.com/order/list)</ph> page.
+        # - false: An order is generated but payment is not automatically completed. If your account balance is insufficient, an unpaid order is generated. You can log on to the Alibaba Cloud **Expenses and Costs** console and go to the <props="china"><ph>[Orders](https://usercenter2.aliyun.com/order/list)</ph><props="intl"><ph>[Orders](https://usercenter2-intl.aliyun.com/order/list)</ph> page to complete the payment.
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
@@ -30,13 +30,13 @@ class ModifyDiskChargeTypeRequest(DaraModel):
         # - PrePaid (default): Converts pay-as-you-go data disks to subscription data disks. 
         # - PostPaid: Converts subscription data disks to pay-as-you-go data disks.
         # 
-        # > When you convert a pay-as-you-go disk to subscription, the billing cycle of the disk capacity fee is automatically synchronized with the associated ECS instance.
+        # > When you convert pay-as-you-go disks to subscription, the billing cycle of the capacity fee is automatically synchronized with the associated ECS instance.
         self.disk_charge_type = disk_charge_type
-        # The list of disk IDs. The value is a JSON array that contains up to 16 IDs separated by commas (,).
+        # The list of disk IDs. The value is a JSON array that contains up to 16 disk IDs. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.disk_ids = disk_ids
-        # The instance ID of the instance to which the disk is attached.
+        # The instance ID of the instance to which the disks are attached.
         # 
         # This parameter is required.
         self.instance_id = instance_id
