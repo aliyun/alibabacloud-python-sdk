@@ -74,6 +74,7 @@ class ListAgentsResponseBodyList(DaraModel):
         agent_name: str = None,
         agent_scene: str = None,
         character_age_stage: str = None,
+        character_gender: str = None,
         character_name: str = None,
         characters_description: str = None,
         enable_interaction: int = None,
@@ -90,6 +91,7 @@ class ListAgentsResponseBodyList(DaraModel):
         self.agent_name = agent_name
         self.agent_scene = agent_scene
         self.character_age_stage = character_age_stage
+        self.character_gender = character_gender
         self.character_name = character_name
         self.characters_description = characters_description
         self.enable_interaction = enable_interaction
@@ -123,6 +125,9 @@ class ListAgentsResponseBodyList(DaraModel):
 
         if self.character_age_stage is not None:
             result['characterAgeStage'] = self.character_age_stage
+
+        if self.character_gender is not None:
+            result['characterGender'] = self.character_gender
 
         if self.character_name is not None:
             result['characterName'] = self.character_name
@@ -172,6 +177,9 @@ class ListAgentsResponseBodyList(DaraModel):
 
         if m.get('characterAgeStage') is not None:
             self.character_age_stage = m.get('characterAgeStage')
+
+        if m.get('characterGender') is not None:
+            self.character_gender = m.get('characterGender')
 
         if m.get('characterName') is not None:
             self.character_name = m.get('characterName')
