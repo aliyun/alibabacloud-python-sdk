@@ -10,7 +10,7 @@ class ListJobHistoryResponseBody(DaraModel):
         self,
         job_history_list: main_models.ListJobHistoryResp = None,
     ):
-        # The running history of the migration task.
+        # The list of task run history entries.
         self.job_history_list = job_history_list
 
     def validate(self):

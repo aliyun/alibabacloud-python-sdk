@@ -11,14 +11,11 @@ class ListJobHistoryRequest(DaraModel):
         marker: str = None,
         runtime_id: int = None,
     ):
-        # Specifies the number of running records of the migration task to be returned.\\
-        # Valid values: 0 - 1000.\\
-        # Default value: 1000.
+        # The maximum number of history entries to return.<br> Valid values: 1 to 1000.<br> Default value: 1000.<br><br>
         self.count = count
-        # The marker after which the running history of the task is listed.\\
-        # By default, this parameter is left empty.
+        # The pagination token. Set this parameter to the marker value returned in the previous response to retrieve the next page of results. If not specified, results are returned from the beginning.
         self.marker = marker
-        # The execution ID of the task. If you specify an execution ID, only the running history related to the execution ID is listed.
+        # The execution ID of a specific run. Specify this parameter to retrieve the run history for only that execution.
         self.runtime_id = runtime_id
 
     def validate(self):

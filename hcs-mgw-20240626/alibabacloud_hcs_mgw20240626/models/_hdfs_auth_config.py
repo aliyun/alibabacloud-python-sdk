@@ -10,7 +10,9 @@ class HdfsAuthConfig(DaraModel):
         auth_type: str = None,
         user_name: str = None,
     ):
+        # The authentication type for HDFS.
         self.auth_type = auth_type
+        # The username for HDFS authentication.
         self.user_name = user_name
 
     def validate(self):

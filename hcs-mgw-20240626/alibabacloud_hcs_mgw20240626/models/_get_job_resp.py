@@ -33,67 +33,73 @@ class GetJobResp(DaraModel):
         with_last_modify_time: bool = None,
         with_storage_class: bool = None,
     ):
+        # Specifies whether to migrate appendable files as normal or multipart files. The default value is false.
         self.appendable_to_normal = appendable_to_normal
         # The audit method.
         self.audit = audit
-        # Indicates whether the Target attribute value of the symbolic links at the source data address is converted.
+        # Indicates whether to convert the target of the symbolic link.
         self.convert_symlink_target = convert_symlink_target
-        # Indicates whether a migration report is created.
+        # Indicates whether to generate a migration report.
         self.create_report = create_report
-        # The time when the task was created.
+        # The time when the job was created.
         self.create_time = create_time
         # The name of the destination data address.
         self.dest_address = dest_address
-        # Indicates whether multi-version migration is enabled.
+        # Indicates whether multi-versioning is enabled.
         self.enable_multi_versioning = enable_multi_versioning
-        # The filtering rule.
+        # The filter rule.
         self.filter_rule = filter_rule
-        # The throttling settings of the task.
+        # The rate limiting rule for the job.
         self.import_qos = import_qos
-        # The time when the task was modified.
+        # The time when the job was last modified.
         self.modify_time = modify_time
-        # The task name.
+        # The name of the job.
         self.name = name
-        # The file overwriting mode.
+        # The file overwrite mode.
         self.overwrite_mode = overwrite_mode
-        # The task owner.
+        # The owner.
         self.owner = owner
-        # The name of the parent task.
+        # The name of the parent job.
         self.parent_name = parent_name
-        # The ID of the parent task.
+        # The ID of the parent job.
         self.parent_version = parent_version
         # The scheduling rule.
         self.schedule_rule = schedule_rule
         # The name of the source data address.
         self.src_address = src_address
-        # The task state. Valid values:
+        # The status of the job.
         # 
-        # IMPORT_JOB_BEGIN: The task is created.
+        # IMPORT_JOB_BEGIN: The job is created.
         # 
-        # IMPORT_JOB_LAUNCHING: The task is being started.
+        # IMPORT_JOB_LAUNCHING: The job is starting.
         # 
-        # IMPORT_JOB_PREPARING: The system is preparing for the task.
+        # IMPORT_JOB_PREPARING: The job is preparing.
         # 
-        # IMPORT_JOB_DOING: The task is running.
+        # IMPORT_JOB_DOING: The job is running.
         # 
-        # IMPORT_JOB_SUSPEND: The task is paused.
+        # IMPORT_JOB_SUSPEND: The job is paused.
         # 
-        # IMPORT_JOB_CLOSING: The task is being closed.
+        # IMPORT_JOB_CLOSING: The job is shutting down.
         # 
-        # IMPORT_JOB_FINISHED: The task is complete.
+        # IMPORT_JOB_FINISHED: The job is finished.
         # 
-        # IMPORT_JOB_INTERRUPTED: The task is abnormally interrupted.
+        # IMPORT_JOB_INTERRUPTED: The job is abnormally interrupted.
         # 
-        # IMPORT_JOB_CONFIRMED: The task is complete and the user has confirmed the data integrity and consistency.
+        # IMPORT_JOB_CONFIRMED: The migration is complete, and the user has confirmed data integrity and consistency.
+        # 
+        # IMPORT_JOB_DELETING: The job is being deleted.
         self.status = status
         # The tags.
         self.tags = tags
+        # Specifies the StorageClass of the destination file. The destination address must be an OSS address. Valid values: Standard, IA, Archive, ColdArchive, and DeepColdArchive.
         self.target_storage_class = target_storage_class
         # The file transfer mode.
         self.transfer_mode = transfer_mode
-        # The task ID.
+        # The ID of the job.
         self.version = version
+        # Specifies whether to retain the lastModifyTime property. The default value is true.
         self.with_last_modify_time = with_last_modify_time
+        # Specifies whether to migrate the StorageClass property. This is allowed only for migrations from OSS to OSS.
         self.with_storage_class = with_storage_class
 
     def validate(self):

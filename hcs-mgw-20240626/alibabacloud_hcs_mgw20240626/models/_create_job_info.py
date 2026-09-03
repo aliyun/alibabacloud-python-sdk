@@ -27,10 +27,11 @@ class CreateJobInfo(DaraModel):
         with_last_modify_time: bool = None,
         with_storage_class: bool = None,
     ):
+        # Specifies whether to migrate appendable files as normal or multipart files. Default value: false.
         self.appendable_to_normal = appendable_to_normal
         # The audit method.
         self.audit = audit
-        # Indicates whether the Target attribute value of the symbolic links at the source data address is converted. You can convert the Target attribute value of the symbolic links at the source data address in one of the following scenarios: The source data address is an Object Storage Service (OSS) data address and the destination data address is a local data address. The source data address is a local data address and the destination data address is an OSS data address. The source data address is a local data address and the destination data address is another local data address. This ensures that the symbolic links at the destination data address can point to their objects as expected.
+        # Specifies whether to transform the target of a symbolic link. When migrating data from OSS to a local server, from a local server to OSS, or between two local servers, set this parameter to \\`true\\` to ensure that symbolic links can be accessed after migration.
         self.convert_symlink_target = convert_symlink_target
         # Specifies whether to create a migration report.
         self.create_report = create_report
@@ -38,23 +39,23 @@ class CreateJobInfo(DaraModel):
         # 
         # This parameter is required.
         self.dest_address = dest_address
-        # Specifies whether to enable multi-version migration. Multi-version migration is not supported.
+        # Specifies whether to migrate multiple object versions. Multi-version migration is not supported.
         self.enable_multi_versioning = enable_multi_versioning
-        # The filtering rule.
+        # The filter rule.
         self.filter_rule = filter_rule
-        # The throttling settings of the task.
+        # The task throttling settings.
         self.import_qos = import_qos
-        # The task name.\\
-        # The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name must be 3 to 63 characters in length. The name is case-sensitive and encoded in UTF-8. The name cannot start with a hyphen (-) or an underscore (_). You must specify a name.
+        # The task name.<br>
+        # The name must be 3 to 63 characters in length and can contain lowercase letters, digits, hyphens (-), and underscores (_). The name is case-sensitive and must be UTF-8 encoded. It cannot start with a hyphen (-) or an underscore (_). This parameter cannot be empty.<br>
         # 
         # This parameter is required.
         self.name = name
-        # The file overwriting mode.\\
-        # Valid values: never and always.
+        # The file overwrite mode.<br>
+        # Valid values: \\`never\\` and \\`always\\`. \\`never\\`: Does not overwrite existing files. \\`always\\`: Overwrites existing files.<br>
         # 
         # This parameter is required.
         self.overwrite_mode = overwrite_mode
-        # The ID of the parent task. When you create a subtask to migrate a file that failed to be migrated, you can specify the ID of the parent task.
+        # The parent task ID. Specify this ID when you create a subtask to retry failed file transfers.
         self.parent_version = parent_version
         # The scheduling rule.
         self.schedule_rule = schedule_rule
@@ -62,21 +63,26 @@ class CreateJobInfo(DaraModel):
         # 
         # This parameter is required.
         self.src_address = src_address
-        # The tags in the key:value format.\\
-        # The value can contain letters, digits, hyphens (-), underscores (_), and commas (,). The value can be up to 1,024 characters in length.
+        # The tags, in key-value format.<br>
+        # Allowed characters include uppercase and lowercase letters, digits, hyphens (-), and underscores (_). The maximum length is 1024 characters.<br>
         self.tags = tags
+        # Specifies the StorageClass for destination files. The destination address can only be OSS. Valid values: Standard, IA, Archive, ColdArchive, DeepColdArchive.
         self.target_storage_class = target_storage_class
-        # The file transfer mode.\\
-        # Valid values: all and lastmodified. all: transfers the full data of files. lastmodified: transfers the incremental data of files.\\
-        # Valid values if OverwriteMode and TransferMode are used together:
+        # The file transfer mode.<br>
+        # Valid values: \\`all\\` (full transfer) and \\`lastmodified\\` (incremental transfer).<br>
+        # \\`OverwriteMode\\` and \\`TransferMode\\` are used together:<br><br>
         # 
-        # *   A combination of always and all indicates that all files are forcefully overwritten.
-        # *   A combination of always and lastmodified indicates that files are overwritten based on the last modification time.
-        # *   A combination of never and all indicates that the files with the same name are not overwritten.
+        # - \\`always\\` and \\`all\\`: Forces a full overwrite.
+        # 
+        # - \\`always\\` and \\`lastmodified\\`: Overwrites files based on their last modified time.
+        # 
+        # - \\`never\\` and an empty value for \\`TransferMode\\`: Does not overwrite files with the same name.
         # 
         # This parameter is required.
         self.transfer_mode = transfer_mode
+        # Specifies whether to preserve the lastModifyTime. Default value: true.
         self.with_last_modify_time = with_last_modify_time
+        # Specifies whether to migrate the StorageClass property. This is allowed only for OSS-to-OSS migration.
         self.with_storage_class = with_storage_class
 
     def validate(self):

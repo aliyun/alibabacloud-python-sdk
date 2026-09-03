@@ -10,11 +10,11 @@ class ListAddressRequest(DaraModel):
         count: int = None,
         marker: str = None,
     ):
-        # Specifies the number of migration addresses to be returned.\\
-        # Valid values: 0 - 1000 (excluding 0).\\
+        # Specifies the number of migration addresses to be returned.<br>
+        # Valid values: 0 - 1000 (excluding 0).<br>
         # Default value: 1000.
         self.count = count
-        # The marker after which the migration addresses are listed.\\
+        # The marker after which the migration addresses are listed.<br>
         # By default, this parameter is left empty.
         self.marker = marker
 

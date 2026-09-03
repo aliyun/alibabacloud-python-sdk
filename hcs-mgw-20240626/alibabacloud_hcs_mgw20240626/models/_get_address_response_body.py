@@ -14,7 +14,7 @@ class GetAddressResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   1:1
+        # - 1:1
         self.import_address = import_address
 
     def validate(self):

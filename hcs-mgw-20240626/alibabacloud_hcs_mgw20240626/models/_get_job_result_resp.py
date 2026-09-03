@@ -25,38 +25,39 @@ class GetJobResultResp(DaraModel):
         total_object_size: int = None,
         version: str = None,
     ):
-        # The type of the data address created based on the files that failed to be migrated. This parameter is required if you create a data address.
+        # The data address type for the retry job. This value indicates that the data address is constructed from a failed file inventory. Use this value as the AddressType parameter when you create a data address for a retry job.
         self.address_type = address_type
-        # The number of files that are migrated. The number includes the number of files that are successfully migrated and the number of files that are skipped.
+        # The number of objects that were processed successfully. This value includes both migrated objects and skipped objects.
         self.copied_object_count = copied_object_count
-        # The data size of files that are migrated.
+        # The total size of objects that were processed successfully. Unit: bytes.
         self.copied_object_size = copied_object_size
-        # The number of files that failed to be migrated.
+        # The number of objects that failed to migrate.
         self.failed_object_count = failed_object_count
-        # The AccessKey ID that is used to access the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+        # The AccessKey ID that is used to access the bucket where the failed file list is stored. Use this value as the InvAccessId parameter when you create a data address for a retry job.
         self.inv_access_id = inv_access_id
-        # The AccessKey secret that is used to access the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+        # The AccessKey secret that is used to access the bucket where the failed file list is stored. Use this value as the InvAccessSecret parameter when you create a data address for a retry job.
         self.inv_access_secret = inv_access_secret
-        # The name of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+        # The name of the bucket that stores the failed file list. Use this value as the InvBucket parameter when you create a data address for a retry job.
         self.inv_bucket = inv_bucket
-        # The domain name of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+        # The endpoint of the bucket that stores the failed file list. Use this value as the InvDomain parameter when you create a data address for a retry job.
         self.inv_domain = inv_domain
-        # The type of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+        # The storage type of the bucket that stores the failed file list, such as oss. Use this value as the InvLocation parameter when you create a data address for a retry job.
         self.inv_location = inv_location
-        # The inventory list of files that failed to be migrated. This parameter is required if you create a data address.
+        # The path to the manifest file that lists the failed files. Use this value as the InvPath parameter when you create a data address for a retry job.
         self.inv_path = inv_path
-        # The region ID of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+        # The region ID of the bucket that stores the failed file list. Use this value as the InvRegionId parameter when you create a data address for a retry job.
         self.inv_region_id = inv_region_id
-        # Indicates whether the files that failed to be migrated can be migrated again.\\
-        # Valid values: NoNeed, Ready, and NotReady.
+        # The retry readiness status for failed files. Valid values: NoNeed indicates that all files were migrated successfully and no retry is required. Ready indicates that the failed file list has been generated and is available for retry. NotReady indicates that the failed file list is being generated.<br><br>
         self.ready_retry = ready_retry
+        # The number of objects that were skipped during migration. Objects are skipped when they already exist at the destination and meet the configured skip conditions.
         self.skipped_object_count = skipped_object_count
+        # The total size of objects that were skipped during migration. Unit: bytes.
         self.skipped_object_size = skipped_object_size
-        # The total number of files.
+        # The total number of objects in the source data address.
         self.total_object_count = total_object_count
-        # The total data size of files.
+        # The total size of all objects in the source data address. Unit: bytes.
         self.total_object_size = total_object_size
-        # The task ID.
+        # The unique identifier of the migration job.
         self.version = version
 
     def validate(self):

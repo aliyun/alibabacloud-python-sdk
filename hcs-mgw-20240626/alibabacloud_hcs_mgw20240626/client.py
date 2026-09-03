@@ -24,7 +24,21 @@ class Client(OpenApiClient):
         self._product_id = 'hcs-mgw'
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'cn-beijing.mgw.aliyuncs.com',
+            'cn-wulanchabu': 'cn-wulanchabu.mgw.aliyuncs.com',
+            'cn-hangzhou': 'cn-hangzhou.mgw.aliyuncs.com',
+            'cn-shanghai': 'cn-shanghai.mgw.aliyuncs.com',
+            'cn-shenzhen': 'cn-shenzhen.mgw.aliyuncs.com',
+            'cn-chengdu': 'cn-chengdu.mgw.aliyuncs.com',
+            'cn-hongkong': 'cn-hongkong.mgw.aliyuncs.com',
+            'ap-northeast-1': 'ap-northeast-1.mgw.aliyuncs.com',
+            'ap-southeast-1': 'ap-southeast-1.mgw.aliyuncs.com',
+            'eu-central-1': 'eu-central-1.mgw.aliyuncs.com',
+            'us-east-1': 'us-east-1.mgw.aliyuncs.com',
+            'us-west-1': 'us-west-1.mgw.aliyuncs.com'
+        }
 
     def create_address_with_options(
         self,
