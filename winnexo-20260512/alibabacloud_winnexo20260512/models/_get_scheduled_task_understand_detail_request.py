@@ -16,9 +16,9 @@ class GetScheduledTaskUnderstandDetailRequest(DaraModel):
         tenant_id: str = None,
         user_input: str = None,
     ):
-        # The ID of the collaboration group to which the task belongs (such as cg_101). If this parameter is specified, a group space task is created (the caller must be a valid group member). If this parameter is left empty, a personal task is created.
+        # The ID of the collaboration group (such as cg_101). If this parameter is specified, a group space task is created (the caller must be a valid group member). If this parameter is left empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
-        # The name of the current effective digital employee. This parameter is empty if not configured.
+        # The name of the current effective digital employee. This value is empty if not configured.
         # 
         # This parameter is required.
         self.digital_employee_name = digital_employee_name
@@ -98,7 +98,7 @@ class GetScheduledTaskUnderstandDetailRequestSegments(DaraModel):
         self.enabled = enabled
         # The name.
         self.name = name
-        # The ID of the recommended item, which can be a **feedId** or a mini-app ID.
+        # The ID of the recommended item, which can be a **feedId** or a micro-application ID.
         self.object_id = object_id
         # The object type, such as customer. This parameter has a value when type is set to mention.
         self.object_type = object_type

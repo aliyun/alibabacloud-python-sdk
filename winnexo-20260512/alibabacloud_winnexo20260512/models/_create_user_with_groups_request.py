@@ -16,21 +16,21 @@ class CreateUserWithGroupsRequest(DaraModel):
         user_group_ids: List[str] = None,
         wn_account_id: str = None,
     ):
-        # The display name of the user (unique within the tenant, required, up to 100 characters).
+        # The display name of the user. The name must be unique within the tenant and cannot exceed 100 characters in length.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The Base64-encoded password ciphertext encrypted by RSA-OAEP-SHA256 (required).
+        # The Base64-encoded password ciphertext encrypted by using the RSA-OAEP-SHA256 algorithm.
         # 
         # This parameter is required.
         self.password_encrypted = password_encrypted
-        # The list of system role codes. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER. Default value: APPLICATION_USER.
+        # The list of initial system role codes. If this parameter is not specified, the `APPLICATION_USER` role is assigned by default.
         self.role_codes = role_codes
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this parameter explicitly by using `--tenant-id`.
         self.tenant_id = tenant_id
-        # The list of initial user group IDs. This parameter is optional. All user groups must belong to the current tenant.
+        # The list of initial user group IDs. A maximum of 100 user group IDs can be specified. All user groups must belong to the current tenant.
         self.user_group_ids = user_group_ids
-        # The WINNEXO logon account (unique identifier, required).
+        # The WINNEXO logon account. This parameter is a unique identifier and cannot be empty.
         # 
         # This parameter is required.
         self.wn_account_id = wn_account_id

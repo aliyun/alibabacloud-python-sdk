@@ -17,17 +17,17 @@ class CreateUserWithGroupsResponseBody(DaraModel):
     ):
         # The WINNEXO logon account.
         self.account_id = account_id
-        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* or InvalidParameter.*).
+        # The error code.
         self.code = code
         # The display name of the user.
         self.display_name = display_name
-        # Indicates whether the user is newly created. A value of false indicates that an existing user joined the tenant.
+        # Indicates whether the user is newly created.
         self.is_new_user = is_new_user
-        # The error description. This parameter is empty when the request succeeds.
+        # The status code description.
         self.message = message
-        # The request trace ID.
+        # The request ID.
         self.request_id = request_id
-        # The WINNEXO platform user ID.
+        # The platform user ID.
         self.wn_user_id = wn_user_id
 
     def validate(self):

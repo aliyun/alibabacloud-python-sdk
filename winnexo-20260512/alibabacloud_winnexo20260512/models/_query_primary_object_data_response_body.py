@@ -21,7 +21,7 @@ class QueryPrimaryObjectDataResponseBody(DaraModel):
         self.code = code
         # The incremental information list.
         self.items = items
-        # The error description. This value is empty when the request succeeds.
+        # The error description. This parameter is empty when the request succeeds.
         self.message = message
         # The current page number.
         self.page = page

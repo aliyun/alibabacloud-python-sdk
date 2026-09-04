@@ -60,7 +60,7 @@ class GetSourceResponseBody(DaraModel):
         self.message = message
         # The username.
         self.name = name
-        # The meeting notes content (optional), which participates in auxiliary analysis.
+        # The meeting notes content (optional). The notes are used for auxiliary analysis.
         self.notes = notes
         # The object bindings.
         self.object_bindings = object_bindings
@@ -74,13 +74,13 @@ class GetSourceResponseBody(DaraModel):
         self.request_id = request_id
         # The task scope.
         self.scope = scope
-        # The user profile card settings.
+        # The user profile settings.
         self.settings = settings
         # The skill output ID (carried when the output is saved as a resource).
         self.skill_output_id = skill_output_id
         # The data source ID.
         self.source_id = source_id
-        # The knowledge base affiliation type. Valid values:
+        # The knowledge base (KB) ownership type. Valid values:
         # - aliding_kb_doc: DingTalk knowledge base document.
         # - normal: common knowledge.
         self.source_kind = source_kind
@@ -90,7 +90,7 @@ class GetSourceResponseBody(DaraModel):
         self.source_type = source_type
         # The final status of the message.
         self.status = status
-        # structuredTables
+        # The list of structured tables.
         self.structured_tables = structured_tables
         # The unstructured documents.
         self.unstructured_docs = unstructured_docs

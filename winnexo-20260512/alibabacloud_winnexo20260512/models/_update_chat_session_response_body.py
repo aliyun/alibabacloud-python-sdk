@@ -15,7 +15,7 @@ class UpdateChatSessionResponseBody(DaraModel):
         request_id: str = None,
         session: main_models.UpdateChatSessionResponseBodySession = None,
     ):
-        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
+        # The business status code. A value of 200 indicates success. A non-200 value indicates a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
         # The error description. This is empty when the request is successful.
         self.message = message

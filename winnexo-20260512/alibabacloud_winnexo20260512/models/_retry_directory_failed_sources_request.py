@@ -10,7 +10,7 @@ class RetryDirectoryFailedSourcesRequest(DaraModel):
         directory_id: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the enterprise knowledge base folder. Failed resources in the folder and its subfolders are included recursively.
+        # The ID of the enterprise knowledge base folder. Failed resources in subfolders are recursively included.
         # 
         # This parameter is required.
         self.directory_id = directory_id

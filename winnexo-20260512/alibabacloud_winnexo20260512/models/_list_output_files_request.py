@@ -17,15 +17,15 @@ class ListOutputFilesRequest(DaraModel):
     ):
         # The type of the output item. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
         self.item_type = item_type
-        # The keyword for searching. Matches output titles or item names.
+        # The keyword for searching. Matches the output title or item name.
         self.keyword = keyword
         # The name of the digital employee (operating object). Used to filter results by name.
         self.operating_object_name = operating_object_name
         # The page number, starting from 1.
         self.page = page
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of items per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # Specifies whether to display only outputs and output items that have sharing enabled.
+        # Specifies whether to display only outputs and output items with sharing enabled.
         self.shared_only = shared_only
         # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
         self.tenant_id = tenant_id

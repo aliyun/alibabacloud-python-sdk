@@ -33,11 +33,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'winnexo.cn-shanghai.aliyuncs.com',
-            'cn-zhangjiakou': 'winnexo.cn-zhangjiakou.aliyuncs.com',
-            'cn-hangzhou': 'winnexo.cn-hangzhou.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('winnexo', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -309,6 +304,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_user_group_members_with_options_async(request, headers, runtime)
 
+    def batch_remove_operating_object_favorites_with_options(
+        self,
+        tmp_req: main_models.BatchRemoveOperatingObjectFavoritesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchRemoveOperatingObjectFavoritesResponse:
+        tmp_req.validate()
+        request = main_models.BatchRemoveOperatingObjectFavoritesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_ids):
+            request.object_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_ids, 'objectIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.object_ids_shrink):
+            body['objectIds'] = request.object_ids_shrink
+        if not DaraCore.is_null(request.object_type):
+            body['objectType'] = request.object_type
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchRemoveOperatingObjectFavorites',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/batchRemoveOperatingObjectFavorites',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchRemoveOperatingObjectFavoritesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_remove_operating_object_favorites_with_options_async(
+        self,
+        tmp_req: main_models.BatchRemoveOperatingObjectFavoritesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchRemoveOperatingObjectFavoritesResponse:
+        tmp_req.validate()
+        request = main_models.BatchRemoveOperatingObjectFavoritesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_ids):
+            request.object_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_ids, 'objectIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.object_ids_shrink):
+            body['objectIds'] = request.object_ids_shrink
+        if not DaraCore.is_null(request.object_type):
+            body['objectType'] = request.object_type
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchRemoveOperatingObjectFavorites',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/batchRemoveOperatingObjectFavorites',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchRemoveOperatingObjectFavoritesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_remove_operating_object_favorites(
+        self,
+        request: main_models.BatchRemoveOperatingObjectFavoritesRequest,
+    ) -> main_models.BatchRemoveOperatingObjectFavoritesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_remove_operating_object_favorites_with_options(request, headers, runtime)
+
+    async def batch_remove_operating_object_favorites_async(
+        self,
+        request: main_models.BatchRemoveOperatingObjectFavoritesRequest,
+    ) -> main_models.BatchRemoveOperatingObjectFavoritesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_remove_operating_object_favorites_with_options_async(request, headers, runtime)
+
     def check_health_with_options(
         self,
         request: main_models.CheckHealthRequest,
@@ -384,6 +483,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.check_health_with_options_async(request, headers, runtime)
+
+    def clear_operating_object_favorites_with_options(
+        self,
+        request: main_models.ClearOperatingObjectFavoritesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearOperatingObjectFavoritesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.object_type):
+            body['objectType'] = request.object_type
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearOperatingObjectFavorites',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/clearOperatingObjectFavorites',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearOperatingObjectFavoritesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_operating_object_favorites_with_options_async(
+        self,
+        request: main_models.ClearOperatingObjectFavoritesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearOperatingObjectFavoritesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.object_type):
+            body['objectType'] = request.object_type
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearOperatingObjectFavorites',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/clearOperatingObjectFavorites',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearOperatingObjectFavoritesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_operating_object_favorites(
+        self,
+        request: main_models.ClearOperatingObjectFavoritesRequest,
+    ) -> main_models.ClearOperatingObjectFavoritesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.clear_operating_object_favorites_with_options(request, headers, runtime)
+
+    async def clear_operating_object_favorites_async(
+        self,
+        request: main_models.ClearOperatingObjectFavoritesRequest,
+    ) -> main_models.ClearOperatingObjectFavoritesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.clear_operating_object_favorites_with_options_async(request, headers, runtime)
 
     def create_announcement_with_options(
         self,
@@ -3484,6 +3675,8 @@ class Client(OpenApiClient):
             body['passwordEncrypted'] = request.password_encrypted
         if not DaraCore.is_null(request.role_codes_shrink):
             body['roleCodes'] = request.role_codes_shrink
+        if not DaraCore.is_null(request.sso_provider):
+            body['ssoProvider'] = request.sso_provider
         if not DaraCore.is_null(request.wn_account_id):
             body['wnAccountId'] = request.wn_account_id
         req = open_api_util_models.OpenApiRequest(
@@ -3528,6 +3721,8 @@ class Client(OpenApiClient):
             body['passwordEncrypted'] = request.password_encrypted
         if not DaraCore.is_null(request.role_codes_shrink):
             body['roleCodes'] = request.role_codes_shrink
+        if not DaraCore.is_null(request.sso_provider):
+            body['ssoProvider'] = request.sso_provider
         if not DaraCore.is_null(request.wn_account_id):
             body['wnAccountId'] = request.wn_account_id
         req = open_api_util_models.OpenApiRequest(
@@ -6786,6 +6981,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_knowledge_base_directories_with_options_async(request, headers, runtime)
+
+    def list_operating_object_favorites_with_options(
+        self,
+        request: main_models.ListOperatingObjectFavoritesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOperatingObjectFavoritesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.object_type):
+            body['objectType'] = request.object_type
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOperatingObjectFavorites',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listOperatingObjectFavorites',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOperatingObjectFavoritesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operating_object_favorites_with_options_async(
+        self,
+        request: main_models.ListOperatingObjectFavoritesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOperatingObjectFavoritesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.object_type):
+            body['objectType'] = request.object_type
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOperatingObjectFavorites',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listOperatingObjectFavorites',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOperatingObjectFavoritesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operating_object_favorites(
+        self,
+        request: main_models.ListOperatingObjectFavoritesRequest,
+    ) -> main_models.ListOperatingObjectFavoritesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_operating_object_favorites_with_options(request, headers, runtime)
+
+    async def list_operating_object_favorites_async(
+        self,
+        request: main_models.ListOperatingObjectFavoritesRequest,
+    ) -> main_models.ListOperatingObjectFavoritesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_operating_object_favorites_with_options_async(request, headers, runtime)
 
     def list_output_files_with_options(
         self,

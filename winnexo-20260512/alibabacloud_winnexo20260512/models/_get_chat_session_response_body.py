@@ -24,7 +24,7 @@ class GetChatSessionResponseBody(DaraModel):
         self.messages = messages
         # The request ID.
         self.request_id = request_id
-        # The session ID.
+        # The session information.
         self.session = session
 
     def validate(self):
@@ -100,7 +100,7 @@ class GetChatSessionResponseBodySession(DaraModel):
         self.created_at = created_at
         # The message ID.
         self.id = id
-        # Indicates whether the creation time exceeds 30 days.
+        # Indicates whether the creation time is older than 30 days.
         self.is_expired = is_expired
         # The session metadata.
         self.metadata = metadata
@@ -221,7 +221,7 @@ class GetChatSessionResponseBodyMessages(DaraModel):
         self.object = object
         # The role.
         self.role = role
-        # The username of the sharing source. This parameter has a value only when from_share=True.
+        # The username of the user who shared the message. This parameter has a value only when from_share is set to True.
         self.share_user_name = share_user_name
         # The message status.
         self.status = status

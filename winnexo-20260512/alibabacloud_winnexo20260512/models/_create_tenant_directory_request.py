@@ -23,7 +23,7 @@ class CreateTenantDirectoryRequest(DaraModel):
         self.parent_id = parent_id
         # The path of the node.
         self.path = path
-        # The ID of the effective tenant.
+        # The ID of the tenant for which the operation takes effect.
         self.tenant_id = tenant_id
 
     def validate(self):

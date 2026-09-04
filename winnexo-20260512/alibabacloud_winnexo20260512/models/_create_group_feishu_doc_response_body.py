@@ -21,7 +21,7 @@ class CreateGroupFeishuDocResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
         # The document URL.
         self.doc_url = doc_url
@@ -33,7 +33,7 @@ class CreateGroupFeishuDocResponseBody(DaraModel):
         self.message = message
         # The image name.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The permission scope.
         self.scope = scope

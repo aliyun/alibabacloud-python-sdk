@@ -16,15 +16,15 @@ class CheckHealthResponseBody(DaraModel):
         tenant_id: int = None,
         user_id: int = None,
     ):
-        # The authentication source: bearer / aliyun_gateway.
+        # The authentication source. Valid values: bearer and aliyun_gateway.
         self.auth_source = auth_source
-        # The caller type: user / aliyun_main / aliyun_ram / service.
+        # The caller type. Valid values: user, aliyun_main, aliyun_ram, and service.
         self.caller_type = caller_type
         # The response status code.
         self.code = code
         # The name of the currently effective digital employee. This value is empty if not configured.
         self.digital_employee_name = digital_employee_name
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id

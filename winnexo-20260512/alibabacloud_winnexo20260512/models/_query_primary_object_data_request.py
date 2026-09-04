@@ -14,19 +14,19 @@ class QueryPrimaryObjectDataRequest(DaraModel):
         page_size: int = None,
         tenant_id: str = None,
     ):
-        # The keyword for search. The keyword is matched against the name field. If the schema defines a description field, the keyword is also matched against the description field.
+        # The keyword for searching. The keyword is matched against the name field by default. If the schema defines a description field, the keyword is also matched against the description field.
         self.keyword = keyword
-        # Specifies whether to return only favorited primary objects. If this parameter is set to false or not specified, all objects are returned with the isFavorited flag.
+        # Specifies whether to return only favorited primary objects. If this parameter is set to false or not specified, all objects are returned, including the isFavorited flag.
         self.only_favorites = only_favorites
-        # The operating object name (such as customer_1).
+        # The operating object name, such as customer_1.
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # The page number (starting from 1).
+        # The page number. Pages start from 1.
         self.page = page
         # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
+        # The tenant ID. This is a common parameter. You can explicitly pass it in winnexo-cli by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

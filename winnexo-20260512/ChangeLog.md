@@ -1,3 +1,12 @@
+2026-09-04 Version: 1.3.0
+- Support API BatchRemoveOperatingObjectFavorites.
+- Support API ClearOperatingObjectFavorites.
+- Support API ListOperatingObjectFavorites.
+- Update API CreateUser: add request parameters ssoProvider.
+- Update API StreamChatMessage: add response parameters Body.content.
+- Update API StreamChatMessage: add response parameters Body.type.
+
+
 2026-08-27 Version: 1.2.0
 - Support API AddUserGroupMembers.
 - Support API CreateAnnouncement.

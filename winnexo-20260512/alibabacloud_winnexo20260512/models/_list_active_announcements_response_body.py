@@ -112,7 +112,7 @@ class ListActiveAnnouncementsResponseBodyItems(DaraModel):
         status: str = None,
         title: str = None,
     ):
-        # The business ID of the notice.
+        # The business ID of the announcement.
         self.announcement_id = announcement_id
         # The returned content.
         self.content = content
@@ -124,11 +124,11 @@ class ListActiveAnnouncementsResponseBodyItems(DaraModel):
         self.display_type = display_type
         # The custom effective end time.
         self.effective_end = effective_end
-        # The effective start time in ISO 8601 format with time zone. If this parameter is not specified, the notice takes effect immediately.
+        # The effective start time in ISO 8601 format with time zone. If not specified, the announcement takes effect immediately.
         self.effective_start = effective_start
         # The priority of the free task.
         # 
-        # - Uses the default priority of the project, as shown in the following figure. The default priority values are as follows:
+        # - Uses the default priority of the project, as shown in the following figure. The default priorities are as follows:
         # 
         #      - **-10**: Low. This is the default value.
         # 
@@ -140,15 +140,15 @@ class ListActiveAnnouncementsResponseBodyItems(DaraModel):
         # 
         # ![](https://img.alicdn.com/imgextra/i1/O1CN01hNuSPz25juCzgxhmW_!!6000000007563-2-tps-2682-1304.png)
         # 
-        # - Custom priority defined by the user, as shown in the following figure, with an additional "Generally urgent" level.
+        # - Custom priority, as shown in the following figure, with an additional "Moderately urgent" level.
         # 
-        # The value of this parameter is subject to the actual response of the API call. A higher priority corresponds to a larger value.
+        # The value of this parameter is subject to the actual response of the API. A higher priority corresponds to a larger value.
         # 
         # ![](https://img.alicdn.com/imgextra/i1/O1CN01V67b3i1mkNvJiW8D1_!!6000000004992-2-tps-2128-1126.png)
         self.priority = priority
         # The publish time in ISO 8601 format.
         self.published_at = published_at
-        # The task status. The value Running is returned upon submission.
+        # The task status. Running is returned upon submission.
         self.status = status
         # The title of the scheduled meeting.
         self.title = title

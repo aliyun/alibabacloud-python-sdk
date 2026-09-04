@@ -28,7 +28,7 @@ class OfflineAnnouncementResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The datasource status after re-parsing.
+        # The data source status after re-parsing.
         self.status = status
         # The user who performed the update.
         self.updated_by = updated_by

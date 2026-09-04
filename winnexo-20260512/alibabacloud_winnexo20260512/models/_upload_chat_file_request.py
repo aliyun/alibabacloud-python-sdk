@@ -15,28 +15,28 @@ class UploadChatFileRequest(DaraModel):
     ):
         # The content type of the file. Valid values:
         # 
-        # - **image**: image
-        # - **document**: general document
-        # - **alidoc**: Alibaba document
-        # - **text**: text
-        # - **video**: video
-        # - **audio**: audio
-        # - **archive**: archive
-        # - **app**: application
-        # - **link**: shortcut
-        # - **other**: other
+        # - **image**: Image.
+        # - **document**: General document.
+        # - **alidoc**: Alibaba document.
+        # - **text**: Text.
+        # - **video**: Video.
+        # - **audio**: Audio.
+        # - **archive**: Archive.
+        # - **app**: Application.
+        # - **link**: Shortcut.
+        # - **other**: Other.
         self.content_type = content_type
         # The full path name of the file.
         # 
         # This parameter is required.
         self.file_name = file_name
-        # The attachment address.
+        # The Yida attachment address.
         # 
         # This parameter is required.
         self.file_url = file_url
-        # The name of the digital employee (operating object name, optional).
+        # The name of the digital employee (operating object name). This parameter is optional.
         self.operating_object_name = operating_object_name
-        # The tenant ID.
+        # The tenant ID that takes effect.
         self.tenant_id = tenant_id
 
     def validate(self):

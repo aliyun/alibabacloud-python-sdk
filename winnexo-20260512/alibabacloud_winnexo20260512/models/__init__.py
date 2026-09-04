@@ -6,9 +6,16 @@ from ._add_user_group_members_request import AddUserGroupMembersRequest
 from ._add_user_group_members_shrink_request import AddUserGroupMembersShrinkRequest
 from ._add_user_group_members_response_body import AddUserGroupMembersResponseBody
 from ._add_user_group_members_response import AddUserGroupMembersResponse
+from ._batch_remove_operating_object_favorites_request import BatchRemoveOperatingObjectFavoritesRequest
+from ._batch_remove_operating_object_favorites_shrink_request import BatchRemoveOperatingObjectFavoritesShrinkRequest
+from ._batch_remove_operating_object_favorites_response_body import BatchRemoveOperatingObjectFavoritesResponseBody
+from ._batch_remove_operating_object_favorites_response import BatchRemoveOperatingObjectFavoritesResponse
 from ._check_health_request import CheckHealthRequest
 from ._check_health_response_body import CheckHealthResponseBody
 from ._check_health_response import CheckHealthResponse
+from ._clear_operating_object_favorites_request import ClearOperatingObjectFavoritesRequest
+from ._clear_operating_object_favorites_response_body import ClearOperatingObjectFavoritesResponseBody
+from ._clear_operating_object_favorites_response import ClearOperatingObjectFavoritesResponse
 from ._create_announcement_request import CreateAnnouncementRequest
 from ._create_announcement_shrink_request import CreateAnnouncementShrinkRequest
 from ._create_announcement_response_body import CreateAnnouncementResponseBody
@@ -219,6 +226,9 @@ from ._list_graphs_response import ListGraphsResponse
 from ._list_knowledge_base_directories_request import ListKnowledgeBaseDirectoriesRequest
 from ._list_knowledge_base_directories_response_body import ListKnowledgeBaseDirectoriesResponseBody
 from ._list_knowledge_base_directories_response import ListKnowledgeBaseDirectoriesResponse
+from ._list_operating_object_favorites_request import ListOperatingObjectFavoritesRequest
+from ._list_operating_object_favorites_response_body import ListOperatingObjectFavoritesResponseBody
+from ._list_operating_object_favorites_response import ListOperatingObjectFavoritesResponse
 from ._list_output_files_request import ListOutputFilesRequest
 from ._list_output_files_response_body import ListOutputFilesResponseBody
 from ._list_output_files_response import ListOutputFilesResponse
@@ -411,6 +421,7 @@ from ._upload_chat_file_request import UploadChatFileRequest
 from ._upload_chat_file_advance_request import UploadChatFileAdvanceRequest
 from ._upload_chat_file_response_body import UploadChatFileResponseBody
 from ._upload_chat_file_response import UploadChatFileResponse
+from ._batch_remove_operating_object_favorites_response_body import BatchRemoveOperatingObjectFavoritesResponseBodyResults
 from ._create_group_ali_ding_chat_request import CreateGroupAliDingChatRequestUpdateFrequency
 from ._create_group_dingtalk_chat_request import CreateGroupDingtalkChatRequestUpdateFrequency
 from ._create_group_feishu_doc_request import CreateGroupFeishuDocRequestObjectBindings
@@ -458,6 +469,7 @@ from ._list_authorized_users_response_body import ListAuthorizedUsersResponseBod
 from ._list_available_configs_response_body import ListAvailableConfigsResponseBodyConfigs
 from ._list_billing_response_body import ListBillingResponseBodyList
 from ._list_graphs_response_body import ListGraphsResponseBodyItems
+from ._list_operating_object_favorites_response_body import ListOperatingObjectFavoritesResponseBodyItems
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOutputItemsEmailInfo
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOutputItemsFileInfo
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo
@@ -510,9 +522,16 @@ __all__ = [
     AddUserGroupMembersShrinkRequest,
     AddUserGroupMembersResponseBody,
     AddUserGroupMembersResponse,
+    BatchRemoveOperatingObjectFavoritesRequest,
+    BatchRemoveOperatingObjectFavoritesShrinkRequest,
+    BatchRemoveOperatingObjectFavoritesResponseBody,
+    BatchRemoveOperatingObjectFavoritesResponse,
     CheckHealthRequest,
     CheckHealthResponseBody,
     CheckHealthResponse,
+    ClearOperatingObjectFavoritesRequest,
+    ClearOperatingObjectFavoritesResponseBody,
+    ClearOperatingObjectFavoritesResponse,
     CreateAnnouncementRequest,
     CreateAnnouncementShrinkRequest,
     CreateAnnouncementResponseBody,
@@ -723,6 +742,9 @@ __all__ = [
     ListKnowledgeBaseDirectoriesRequest,
     ListKnowledgeBaseDirectoriesResponseBody,
     ListKnowledgeBaseDirectoriesResponse,
+    ListOperatingObjectFavoritesRequest,
+    ListOperatingObjectFavoritesResponseBody,
+    ListOperatingObjectFavoritesResponse,
     ListOutputFilesRequest,
     ListOutputFilesResponseBody,
     ListOutputFilesResponse,
@@ -915,6 +937,7 @@ __all__ = [
     UploadChatFileAdvanceRequest,
     UploadChatFileResponseBody,
     UploadChatFileResponse,
+    BatchRemoveOperatingObjectFavoritesResponseBodyResults,
     CreateGroupAliDingChatRequestUpdateFrequency,
     CreateGroupDingtalkChatRequestUpdateFrequency,
     CreateGroupFeishuDocRequestObjectBindings,
@@ -962,6 +985,7 @@ __all__ = [
     ListAvailableConfigsResponseBodyConfigs,
     ListBillingResponseBodyList,
     ListGraphsResponseBodyItems,
+    ListOperatingObjectFavoritesResponseBodyItems,
     ListOutputFilesResponseBodyItemsOutputItemsEmailInfo,
     ListOutputFilesResponseBodyItemsOutputItemsFileInfo,
     ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo,

@@ -14,7 +14,7 @@ class OfflineAnnouncementRequest(DaraModel):
         # 
         # This parameter is required.
         self.announcement_id = announcement_id
-        # The tenant ID. This is a common parameter. In winnexo-cli, pass this explicitly with --tenant-id.
+        # The tenant ID. This is a common parameter. Pass it explicitly in winnexo-cli by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

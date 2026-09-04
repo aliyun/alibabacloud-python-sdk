@@ -13,7 +13,7 @@ class GetChatSessionRequest(DaraModel):
     ):
         # The maximum number of resources to return. If not specified, the default value is 20. The maximum value is 100. The actual number of returned results may be less than the specified value but will not exceed it.
         self.limit = limit
-        # The SessionId value to filter by. If specified, all Active/Expired status information associated with this session is returned.
+        # The session ID to filter by. If specified, all Active/Expired status information associated with this session is returned.
         # 
         # This parameter is required.
         self.session_id = session_id

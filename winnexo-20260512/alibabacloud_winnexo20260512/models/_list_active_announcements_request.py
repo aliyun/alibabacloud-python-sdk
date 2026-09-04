@@ -11,11 +11,11 @@ class ListActiveAnnouncementsRequest(DaraModel):
         page_size: int = None,
         tenant_id: str = None,
     ):
-        # The page number for pagination.
+        # The page number for paginated queries.
         self.page_number = page_number
-        # The number of entries per page for pagination. Default value: 100. Maximum value: 500.
+        # The number of entries per page. Default value: 100. Maximum value: 500.
         self.page_size = page_size
-        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

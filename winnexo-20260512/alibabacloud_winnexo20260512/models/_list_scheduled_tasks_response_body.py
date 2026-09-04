@@ -29,7 +29,7 @@ class ListScheduledTasksResponseBody(DaraModel):
         self.has_more = has_more
         # The list of skill cards.
         self.items = items
-        # The maximum number of entries returned in this request.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
         # The status code description.
         self.message = message
@@ -152,7 +152,7 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         visibility: str = None,
         visible_member_user_ids: List[str] = None,
     ):
-        # The reason for the abnormality. This field has a value only when status is abnormal.
+        # The reason for the exception. This field has a value only when status is abnormal.
         self.abnormal_reason = abnormal_reason
         # Indicates whether the current caller can delete the task (only the task creator and group owner can do so). Always returns true for personal tasks.
         self.can_delete = can_delete
@@ -174,7 +174,7 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         self.description = description
         # The list of digital employee names.
         self.digital_employee_name = digital_employee_name
-        # The cumulative number of executions.
+        # The total number of executions.
         self.execution_count = execution_count
         # The creation time.
         self.gmt_create = gmt_create
@@ -192,14 +192,14 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         self.task_id = task_id
         # The trigger type.
         self.trigger_type = trigger_type
-        # The visibility of the group task. Valid values:
+        # The visibility scope of the group task. Valid values:
         # - PRIVATE: visible only to the creator and group owner.
         # - COLLABORATIVE: visible to specified collaborators.
         # - PUBLIC: visible to all group members.
         # 
-        # If not specified for a group task, the default value is PRIVATE. This field is ignored for personal tasks.
+        # For group tasks, the default value is PRIVATE if not specified. This field is ignored for personal tasks.
         self.visibility = visibility
-        # The list of collaborator user IDs (excluding the task creator and group creator, who are covered by the authentication layer). This field is returned only for group tasks. An empty list is returned for PRIVATE or PUBLIC visibility.
+        # The list of collaborators (excluding the task creator and group creator, who are covered by the authentication layer). This field is returned only for group tasks. An empty list is returned for PRIVATE or PUBLIC visibility.
         self.visible_member_user_ids = visible_member_user_ids
 
     def validate(self):

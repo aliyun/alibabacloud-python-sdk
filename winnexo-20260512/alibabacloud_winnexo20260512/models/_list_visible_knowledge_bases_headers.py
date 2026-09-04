@@ -13,7 +13,7 @@ class ListVisibleKnowledgeBasesHeaders(DaraModel):
         request_id: str = None,
     ):
         self.common_headers = common_headers
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

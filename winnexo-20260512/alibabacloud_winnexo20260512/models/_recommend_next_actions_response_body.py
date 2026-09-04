@@ -16,7 +16,7 @@ class RecommendNextActionsResponseBody(DaraModel):
         request_id: str = None,
         title: str = None,
     ):
-        # The business status code. 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
         # The status code description.
         self.message = message

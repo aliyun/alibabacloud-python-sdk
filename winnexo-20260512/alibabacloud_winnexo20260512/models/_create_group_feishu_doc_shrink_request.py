@@ -21,7 +21,7 @@ class CreateGroupFeishuDocShrinkRequest(DaraModel):
     ):
         # The description of the AI assistant.
         self.description = description
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
         # The document URL.
         # 

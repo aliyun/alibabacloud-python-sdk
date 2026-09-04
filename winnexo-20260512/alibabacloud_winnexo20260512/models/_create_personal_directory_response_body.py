@@ -36,13 +36,13 @@ class CreatePersonalDirectoryResponseBody(DaraModel):
         self.message = message
         # The name of the worksheet.
         self.name = name
-        # The name of the digital human (operating object name, optional).
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
         # The folder ID.
         self.parent_directory_id = parent_directory_id
         # The path.
         self.path = path
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

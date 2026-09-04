@@ -27,7 +27,7 @@ class SendAsyncChatMessageResponseBody(DaraModel):
         self.session_created = session_created
         # The session ID. For continued sessions, this matches the input value. For new sessions, this is a server-generated value.
         self.session_id = session_id
-        # The user message ID. Use this ID to establish a pairing relationship with the assistant message in this turn.
+        # The user message ID.
         self.user_message_id = user_message_id
 
     def validate(self):

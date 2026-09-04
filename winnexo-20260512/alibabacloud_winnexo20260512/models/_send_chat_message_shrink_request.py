@@ -27,9 +27,9 @@ class SendChatMessageShrinkRequest(DaraModel):
         self.content_type = content_type
         # The list of digital employee names. A single string can be passed for backward compatibility with the legacy format.
         self.digital_employee_name_shrink = digital_employee_name_shrink
-        # Specifies whether to enable direct connection mode. When set to true, the regular scenario routing is skipped and the direct conversation scenario is entered directly.
+        # Specifies whether to enable direct connection mode. If set to true, the regular scenario routing is skipped and the direct conversation scenario is entered.
         self.direct_chat = direct_chat
-        # The list of file references. Each item is an object, and fileId is required (returned by uploadChatFile).
+        # The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
         self.files_shrink = files_shrink
         # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain the current session tier.
         self.model = model

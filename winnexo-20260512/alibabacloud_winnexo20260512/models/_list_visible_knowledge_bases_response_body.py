@@ -22,7 +22,7 @@ class ListVisibleKnowledgeBasesResponseBody(DaraModel):
         self.items = items
         # The description of the status code.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The total number of records.
         self.total = total
@@ -99,7 +99,7 @@ class ListVisibleKnowledgeBasesResponseBodyItems(DaraModel):
         self.description = description
         # The directory ID. You can obtain this value by calling the API operation for retrieving the knowledge base directory.
         self.directory_id = directory_id
-        # The creation time. This value is a timestamp in milliseconds.
+        # The creation time. The value is a timestamp in milliseconds.
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
@@ -107,11 +107,11 @@ class ListVisibleKnowledgeBasesResponseBodyItems(DaraModel):
         self.name = name
         # The file directory information.
         self.path = path
-        # The number of resources in the FAILED state. This parameter is returned only when listing top-level knowledge base directories.
+        # The number of resources in the FAILED state. This parameter is returned only when the top-level knowledge base directory list is queried.
         self.source_failed_count = source_failed_count
-        # The number of resources in the READY state. This parameter is returned only when listing top-level knowledge base directories.
+        # The number of resources in the READY state. This parameter is returned only when the top-level knowledge base directory list is queried.
         self.source_ready_count = source_ready_count
-        # The total number of resources in the directory and its subdirectories. This parameter is returned only when listing top-level knowledge base directories.
+        # The total number of resources in the directory and its subdirectories. This parameter is returned only when the top-level knowledge base directory list is queried.
         self.source_total_count = source_total_count
 
     def validate(self):

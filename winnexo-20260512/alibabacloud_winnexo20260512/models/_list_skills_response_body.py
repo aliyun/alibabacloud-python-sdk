@@ -130,11 +130,11 @@ class ListSkillsResponseBodyItems(DaraModel):
         self.skill_code = skill_code
         # The skill definition ID.
         self.skill_hub_definition_id = skill_hub_definition_id
-        # The data source type. Fixed value: FILE.
+        # The skill source type.
         self.source_type = source_type
-        # The task status. Returns Running upon submission.
+        # The task status. Running is returned upon submission.
         self.status = status
-        # The keys.
+        # The key.
         self.tags = tags
         # The update timestamp, in milliseconds.
         self.updated_time = updated_time

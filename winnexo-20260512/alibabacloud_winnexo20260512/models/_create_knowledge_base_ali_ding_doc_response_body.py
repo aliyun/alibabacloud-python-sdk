@@ -30,7 +30,7 @@ class CreateKnowledgeBaseAliDingDocResponseBody(DaraModel):
         self.message = message
         # The name.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The permission scope.
         self.scope = scope

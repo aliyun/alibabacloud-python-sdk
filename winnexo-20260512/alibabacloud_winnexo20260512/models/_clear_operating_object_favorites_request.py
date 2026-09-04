@@ -4,26 +4,27 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreatePersonalDirectoryRequest(DaraModel):
+class ClearOperatingObjectFavoritesRequest(DaraModel):
     def __init__(
         self,
-        description: str = None,
-        name: str = None,
+        graph_name: str = None,
+        object_type: str = None,
         operating_object_name: str = None,
-        parent_directory_id: str = None,
         tenant_id: str = None,
     ):
-        # The workspace description.
-        self.description = description
-        # The name of the digital employee.
+        # The graph name. You can call listGraphs to obtain the value.
         # 
         # This parameter is required.
-        self.name = name
-        # The name of the digital employee (operating object name, optional).
+        self.graph_name = graph_name
+        # The object type, such as customer. This parameter has a value when type is set to mention.
+        # 
+        # This parameter is required.
+        self.object_type = object_type
+        # The operating object name, such as customer_1.
+        # 
+        # This parameter is required.
         self.operating_object_name = operating_object_name
-        # The folder ID.
-        self.parent_directory_id = parent_directory_id
-        # The tenant ID.
+        # The tenant ID to take effect.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -34,17 +35,14 @@ class CreatePersonalDirectoryRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.description is not None:
-            result['description'] = self.description
+        if self.graph_name is not None:
+            result['graphName'] = self.graph_name
 
-        if self.name is not None:
-            result['name'] = self.name
+        if self.object_type is not None:
+            result['objectType'] = self.object_type
 
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
-
-        if self.parent_directory_id is not None:
-            result['parentDirectoryId'] = self.parent_directory_id
 
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
@@ -53,17 +51,14 @@ class CreatePersonalDirectoryRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('description') is not None:
-            self.description = m.get('description')
+        if m.get('graphName') is not None:
+            self.graph_name = m.get('graphName')
 
-        if m.get('name') is not None:
-            self.name = m.get('name')
+        if m.get('objectType') is not None:
+            self.object_type = m.get('objectType')
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
-
-        if m.get('parentDirectoryId') is not None:
-            self.parent_directory_id = m.get('parentDirectoryId')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')

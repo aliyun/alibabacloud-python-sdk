@@ -20,11 +20,11 @@ class CreateGroupDingtalkChatRequest(DaraModel):
         tenant_id: str = None,
         update_frequency: main_models.CreateGroupDingtalkChatRequestUpdateFrequency = None,
     ):
-        # The conversation ID, typically used for JSSDK.
+        # The session ID, typically used for JSSDK.
         # 
         # This parameter is required.
         self.chat_id = chat_id
-        # The chat name.
+        # The group chat name.
         self.chat_name = chat_name
         # The description of the AI assistant.
         self.description = description
@@ -44,7 +44,7 @@ class CreateGroupDingtalkChatRequest(DaraModel):
         self.operating_object_name = operating_object_name
         # The source tags.
         self.source_tags = source_tags
-        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this explicitly with --tenant-id.
         self.tenant_id = tenant_id
         # The feature update frequency.
         self.update_frequency = update_frequency

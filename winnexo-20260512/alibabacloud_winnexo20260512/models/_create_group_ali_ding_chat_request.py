@@ -131,8 +131,6 @@ class CreateGroupAliDingChatRequest(DaraModel):
 
         return self
 
-
-
 class CreateGroupAliDingChatRequestUpdateFrequency(DaraModel):
     def __init__(
         self,

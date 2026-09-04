@@ -26,7 +26,7 @@ class RetryKnowledgeBaseFailedSourcesResponseBody(DaraModel):
         self.directory_id = directory_id
         # The number of resources successfully enqueued for retry.
         self.enqueued_count = enqueued_count
-        # enqueuedIds。
+        # The list of knowledge base source IDs that have been re-enqueued.
         self.enqueued_ids = enqueued_ids
         # The total number of failed resources under the directory.
         self.failed_count = failed_count
@@ -36,7 +36,7 @@ class RetryKnowledgeBaseFailedSourcesResponseBody(DaraModel):
         self.message = message
         # The request trace ID.
         self.request_id = request_id
-        # The number of resources skipped because they are not in FAILED status.
+        # The number of resources skipped (not in FAILED status).
         self.skipped_count = skipped_count
 
     def validate(self):

@@ -23,9 +23,9 @@ class ListScheduledTasksRequest(DaraModel):
         self.collaboration_group_id = collaboration_group_id
         # Specifies whether to return only tasks created by the caller. This parameter takes effect only in the group dimension (in the personal dimension, only the caller\\"s own tasks are returned). If not specified, no filtering is applied.
         self.creator_only = creator_only
-        # The keyword of the rule name, used for fuzzy match.
+        # The keyword of the rule name for fuzzy match.
         self.keyword = keyword
-        # The maximum number of entries returned in this request.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token

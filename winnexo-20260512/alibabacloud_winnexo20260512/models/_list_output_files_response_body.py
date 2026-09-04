@@ -264,7 +264,7 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
         self.output_item_id = output_item_id
         # Indicates whether sharing is enabled.
         self.share_enabled = share_enabled
-        # The share token, which is present when sharing is enabled. You can use this token to access the public share preview API.
+        # The share token that is present when sharing is enabled. You can use this token to access the public share preview API.
         self.share_token = share_token
         # The skill output ID.
         self.skill_output_id = skill_output_id
@@ -395,7 +395,7 @@ class ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo(DaraModel):
     ):
         # The number of completed slides.
         self.completed_slides = completed_slides
-        # PPT ID
+        # The PPT file ID.
         self.ppt_id = ppt_id
         # The PPT name.
         self.ppt_name = ppt_name

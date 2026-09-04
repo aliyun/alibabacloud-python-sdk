@@ -129,7 +129,7 @@ class GetScheduledTaskUnderstandDetailResponseBodyRelatedSkills(DaraModel):
         self.name = name
         # The skill code.
         self.skill_code = skill_code
-        # sourceIds
+        # The list of source IDs for related skills.
         self.source_ids = source_ids
 
     def validate(self):

@@ -22,24 +22,24 @@ class UploadChatFileResponseBody(DaraModel):
         self.code = code
         # The content type of the file. Valid values:
         # 
-        # - **image**: image
-        # - **document**: general document
-        # - **alidoc**: Alibaba document
-        # - **text**: text
-        # - **video**: video
-        # - **audio**: audio
-        # - **archive**: archive
-        # - **app**: application
-        # - **link**: shortcut
-        # - **other**: other
+        # - **image**: Image.
+        # - **document**: General document.
+        # - **alidoc**: Alibaba document.
+        # - **text**: Text.
+        # - **video**: Video.
+        # - **audio**: Audio.
+        # - **archive**: Archive.
+        # - **app**: Application.
+        # - **link**: Shortcut.
+        # - **other**: Other.
         self.content_type = content_type
         # The full path name of the file.
         self.file_name = file_name
-        # The publicly accessible URL of the online document.
+        # The publicly accessible URL of the AliDing online document.
         self.file_public_url = file_public_url
-        # The file record ID (optional, corresponding to settings.file_record_id).
+        # The file record ID. This parameter is optional and corresponds to settings.file_record_id.
         self.file_record_id = file_record_id
-        # The attachment address.
+        # The Yida attachment address.
         self.file_url = file_url
         # The description of the status code.
         self.message = message

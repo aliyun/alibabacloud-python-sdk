@@ -23,7 +23,7 @@ class RecommendNextActionsRequest(DaraModel):
         # 
         # This parameter is required.
         self.session_id = session_id
-        # The tenant ID. This is a common parameter. In winnexo-cli, pass this explicitly with --tenant-id.
+        # The tenant ID. This is a common parameter. Pass it explicitly through winnexo-cli using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

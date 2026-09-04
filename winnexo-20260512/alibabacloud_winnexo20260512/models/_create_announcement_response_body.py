@@ -22,7 +22,7 @@ class CreateAnnouncementResponseBody(DaraModel):
         self.code = code
         # The creator.
         self.created_by = created_by
-        # The response message.
+        # The prompt message.
         self.message = message
         # The publish time in ISO 8601 format. This field is empty for drafts.
         self.published_at = published_at
@@ -30,8 +30,8 @@ class CreateAnnouncementResponseBody(DaraModel):
         self.request_id = request_id
         # The source type of the dictionary file. Valid values: OSS: Object Storage Service (OSS). ORIGIN: retains the previously uploaded dictionary.
         self.source_type = source_type
-        # The refund status. You must query this field to confirm the refund status during processing. Valid values:
-        # - SUCCESS: All refunds succeeded.
+        # The refund status. You need to query and confirm the refund status during the refund process. Valid values:
+        # - SUCCESS: All succeeded.
         # - FAIL: Failed.
         # - WAIT_PAY: Waiting for refund.
         # - EXPIRE: Expired.

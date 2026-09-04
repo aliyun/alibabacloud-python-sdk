@@ -26,7 +26,7 @@ class CreateTenantDirectoryResponseBody(DaraModel):
         self.code = code
         # The description of the to-do card type.
         self.description = description
-        # The directory ID.
+        # The folder ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
@@ -34,7 +34,7 @@ class CreateTenantDirectoryResponseBody(DaraModel):
         self.gmt_create = gmt_create
         # The last modification time.
         self.gmt_modified = gmt_modified
-        # Id of the request
+        # The tenant folder ID.
         # 
         # This parameter is required.
         self.id = id
@@ -54,7 +54,7 @@ class CreateTenantDirectoryResponseBody(DaraModel):
         self.path = path
         # The request ID.
         self.request_id = request_id
-        # The ID of the effective tenant.
+        # The ID of the tenant for which the operation takes effect.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

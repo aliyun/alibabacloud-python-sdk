@@ -19,7 +19,7 @@ class CreateGroupDingtalkChatResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # The conversation ID, typically used for JSSDK.
+        # The session ID, typically used for JSSDK.
         self.chat_id = chat_id
         # The status code.
         self.code = code
@@ -33,11 +33,11 @@ class CreateGroupDingtalkChatResponseBody(DaraModel):
         self.message = message
         # The image name.
         self.name = name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The permission scope.
         self.scope = scope
-        # The data source ID, which is unique within the tenant.
+        # The data source ID (unique within the tenant).
         self.source_id = source_id
         # The signing status. Valid values:
         # - CREATED: Created but not signed.

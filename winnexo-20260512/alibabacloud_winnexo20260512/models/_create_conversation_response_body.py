@@ -19,13 +19,13 @@ class CreateConversationResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # Id of the request
+        # The session ID.
         self.conversation_id = conversation_id
         # The time when the share was created.
         self.created_at = created_at
-        # The status code description.
+        # The description of the status code.
         self.message = message
-        # A reserved field for extension use.
+        # A reserved field for extension purposes.
         self.metadata = metadata
         # The request ID.
         self.request_id = request_id

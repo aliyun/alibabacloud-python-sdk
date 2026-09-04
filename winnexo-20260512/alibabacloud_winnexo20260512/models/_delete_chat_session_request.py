@@ -10,11 +10,11 @@ class DeleteChatSessionRequest(DaraModel):
         session_id: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the session to delete.
+        # The ID of the session to be deleted.
         # 
         # This parameter is required.
         self.session_id = session_id
-        # The ID of the effective tenant.
+        # The tenant ID that takes effect.
         self.tenant_id = tenant_id
 
     def validate(self):

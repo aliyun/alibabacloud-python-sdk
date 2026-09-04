@@ -22,11 +22,11 @@ class RetryDirectoryFailedSourcesResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The ID of the enterprise knowledge base folder. Failed resources in the folder and its subfolders are included recursively.
+        # The ID of the enterprise knowledge base folder. Failed resources in subfolders are recursively included.
         self.directory_id = directory_id
         # The number of resources successfully enqueued for retry.
         self.enqueued_count = enqueued_count
-        # enqueuedIds。
+        # The list of source IDs that have been re-enqueued.
         self.enqueued_ids = enqueued_ids
         # The total number of failed resources in the folder.
         self.failed_count = failed_count
