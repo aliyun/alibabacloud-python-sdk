@@ -19,7 +19,6 @@ class ListCollectionPoliciesResponseBody(DaraModel):
         self.current_count = current_count
         # The collection rules that are returned on the current page.
         self.data = data
-        # Statistics returned based on the query conditions.
         self.statistics = statistics
         # The total number of collection rules.
         self.total_count = total_count
@@ -85,9 +84,7 @@ class ListCollectionPoliciesResponseBodyStatistics(DaraModel):
         policy_source_list: List[main_models.ListCollectionPoliciesResponseBodyStatisticsPolicySourceList] = None,
         product_code: str = None,
     ):
-        # The list of collection rule sources.
         self.policy_source_list = policy_source_list
-        # The code of the Alibaba Cloud service.
         self.product_code = product_code
 
     def validate(self):
@@ -130,9 +127,7 @@ class ListCollectionPoliciesResponseBodyStatisticsPolicySourceList(DaraModel):
         policy_name: str = None,
         policy_uid: str = None,
     ):
-        # The name of the collection rule.
         self.policy_name = policy_name
-        # The ID of the Alibaba Cloud account that owns the collection rule. If a resource directory administrator or delegated administrator creates the rule, this is the ID of that administrator\\"s account.
         self.policy_uid = policy_uid
 
     def validate(self):
@@ -182,21 +177,17 @@ class ListCollectionPoliciesResponseBodyData(DaraModel):
         self.centralize_enabled = centralize_enabled
         # The code of the log type.
         self.data_code = data_code
-        # Configurations for global log types, such as sls. This parameter is empty for other log types.
         self.data_config = data_config
         # Indicates whether the collection rule is enabled.
         self.enabled = enabled
-        # Indicates whether the policy is a built-in policy. Built-in policies cannot be modified or deleted.
         self.internal_policy = internal_policy
         # The configuration of the collection rule.
         self.policy_config = policy_config
         # The name of the collection rule.
         self.policy_name = policy_name
-        # The ID of the Alibaba Cloud account that owns the collection rule. If a resource directory administrator or delegated administrator creates the rule, this is the ID of that administrator\\"s account.
         self.policy_uid = policy_uid
         # The code of the Alibaba Cloud service.
         self.product_code = product_code
-        # The configuration of the resource directory. This parameter is empty if no configuration is available.
         self.resource_directory = resource_directory
 
     def validate(self):
@@ -296,9 +287,7 @@ class ListCollectionPoliciesResponseBodyDataResourceDirectory(DaraModel):
         account_group_type: str = None,
         members: List[str] = None,
     ):
-        # The mode for selecting accounts in the resource directory. Valid values: all and custom.
         self.account_group_type = account_group_type
-        # The list of member accounts. This parameter is returned only if accountGroupType is set to custom.
         self.members = members
 
     def validate(self):
@@ -388,9 +377,7 @@ class ListCollectionPoliciesResponseBodyDataDataConfig(DaraModel):
         data_project: str = None,
         data_region: str = None,
     ):
-        # The project for global logs. This parameter is used only for global log types, such as sls. If this parameter is empty, logs are collected to the default project of the account in the region specified by dataRegion.
         self.data_project = data_project
-        # The region where global logs are first collected. This parameter is used only for global log types, such as sls.
         self.data_region = data_region
 
     def validate(self):

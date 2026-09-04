@@ -12,13 +12,13 @@ class UpdateETLRequest(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
-        # The detailed configuration of the data transformation task.
+        # The detailed configuration of the data transformation job.
         # 
         # This parameter is required.
         self.configuration = configuration
-        # The description of the data transformation task.
+        # The description of the data transformation job.
         self.description = description
-        # The display name of the data transformation task.
+        # The display name of the data transformation job.
         # 
         # This parameter is required.
         self.display_name = display_name

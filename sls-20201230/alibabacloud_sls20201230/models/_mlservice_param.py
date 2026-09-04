@@ -16,12 +16,19 @@ class MLServiceParam(DaraModel):
         status: str = None,
         update_timestamp: int = None,
     ):
+        # The microservice description.
         self.description = description
+        # The model configuration that the microservice depends on.
         self.model = model
+        # The microservice name.
         self.name = name
+        # The microservice EPS resource configuration.
         self.resource = resource
+        # The microservice type.
         self.service_type = service_type
+        # The microservice status.
         self.status = status
+        # The microservice update time.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -93,9 +100,13 @@ class MLServiceParamResource(DaraModel):
         memory_limit: int = None,
         replica: int = None,
     ):
+        # The maximum CPU resource limit.
         self.cpu_limit = cpu_limit
+        # The required GPU memory size.
         self.gpu = gpu
+        # The maximum memory resources limit.
         self.memory_limit = memory_limit
+        # The number of microservice replicas.
         self.replica = replica
 
     def validate(self):
@@ -142,7 +153,9 @@ class MLServiceParamModel(DaraModel):
         model_resource_id: str = None,
         model_resource_type: str = None,
     ):
+        # The model resource ID.
         self.model_resource_id = model_resource_id
+        # The model resource type.
         self.model_resource_type = model_resource_type
 
     def validate(self):

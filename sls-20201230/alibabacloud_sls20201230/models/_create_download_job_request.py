@@ -23,15 +23,12 @@ class CreateDownloadJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The name of the job. The name must meet the following requirements:
+        # The job name. The naming rules are as follows:
         # 
-        # The job name must be unique within a project.
-        # 
-        # - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
-        # 
-        # - It must start and end with a lowercase letter or a digit.
-        # 
-        # - The name must be 2 to 64 characters in length.
+        # Job names must be unique within the same project.
+        # * The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # * The name must start and end with a lowercase letter or digit.
+        # * The name must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.name = name
@@ -87,11 +84,11 @@ class CreateDownloadJobRequestConfiguration(DaraModel):
         sink: main_models.CreateDownloadJobRequestConfigurationSink = None,
         to_time: int = None,
     ):
-        # Specifies whether to allow the download of incomplete results. Valid values: \\`true\\` and \\`false\\`.
+        # Specifies whether to allow downloading imprecise results. Valid values: true, false.
         # 
         # This parameter is required.
         self.allow_in_complete = allow_in_complete
-        # The start time. This is a UNIX timestamp that is accurate to the second.
+        # The start timestamp, in seconds.
         # 
         # This parameter is required.
         self.from_time = from_time
@@ -99,9 +96,9 @@ class CreateDownloadJobRequestConfiguration(DaraModel):
         # 
         # This parameter is required.
         self.logstore = logstore
-        # Specifies whether to enable PowerSQL. Valid values: \\`true\\` and \\`false\\`.
+        # Specifies whether to enable PowerSQL. Valid values: true, false.
         self.power_sql = power_sql
-        # The search statement.
+        # The query statement.
         # 
         # This parameter is required.
         self.query = query
@@ -109,7 +106,7 @@ class CreateDownloadJobRequestConfiguration(DaraModel):
         # 
         # This parameter is required.
         self.sink = sink
-        # The end time. This is a UNIX timestamp that is accurate to the second.
+        # The end timestamp, in seconds.
         # 
         # This parameter is required.
         self.to_time = to_time
@@ -182,21 +179,21 @@ class CreateDownloadJobRequestConfigurationSink(DaraModel):
         role_arn: str = None,
         type: str = None,
     ):
-        # The destination Object Storage Service (OSS) bucket.
+        # The OSS bucket.
         self.bucket = bucket
-        # The compression format of the file. Valid values: \\`zstd\\`, \\`lz4\\`, \\`gzip\\`, and \\`none\\`.
+        # The compression format. Valid values: zstd, lz4, gzip, none.
         # 
         # This parameter is required.
         self.compression_type = compression_type
-        # The format of the downloaded file. Valid values: \\`csv\\` and \\`json\\`.
+        # The download file format. Valid values: csv, json.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The prefix of the path in the destination OSS bucket.
+        # The path prefix for downloading data to the user\\"s OSS bucket.
         self.prefix = prefix
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role to use for the download.
+        # The ARN of the RAM role used for the download.
         self.role_arn = role_arn
-        # The type of the destination. Set the value to \\`AliyunOSS\\`.
+        # Fixed value: AliyunOSS.
         # 
         # This parameter is required.
         self.type = type

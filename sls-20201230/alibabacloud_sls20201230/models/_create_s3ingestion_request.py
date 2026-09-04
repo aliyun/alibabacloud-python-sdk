@@ -16,24 +16,22 @@ class CreateS3IngestionRequest(DaraModel):
     ):
         # The configuration.
         self.configuration = configuration
-        # The description of the job.
+        # The task description.
         self.description = description
         # The display name.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The name of the job. Follow these naming rules:
+        # The job name. The naming rules are as follows:
         # 
-        # Each job in the same project must have a unique name.
-        # 
-        # - Use only lowercase letters, digits, hyphens (-), and underscores (_).
-        # 
-        # - Start and end with a lowercase letter or digit.
-        # 
-        # - Be 2 to 64 characters long.
+        # Job names must be unique within the same project.
+        # * Can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # * Must start and end with a lowercase letter or digit.
+        # * Must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.name = name
+        # The scheduling structure.
         self.schedule = schedule
 
     def validate(self):

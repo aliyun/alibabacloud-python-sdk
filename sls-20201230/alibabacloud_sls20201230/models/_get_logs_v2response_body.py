@@ -90,24 +90,24 @@ class GetLogsV2ResponseBodyMeta(DaraModel):
         self.is_accurate = is_accurate
         # All keys in the query results.
         self.keys = keys
-        # The limit on the number of rows. Returned when an SQL statement does not include a LIMIT clause.
+        # The limit on the number of rows. Returned when the SQL statement does not contain a LIMIT clause.
         self.limited = limited
         # The query mode. Valid values:
-        # 0: standard query (including SQL)
-        # 1: phrase query
-        # 2: SCAN
-        # 3: SCAN SQL.
+        # - 0: standard query (including SQL)
+        # - 1: phrase query
+        # - 2: SCAN
+        # - 3: SCAN SQL
         self.mode = mode
         # The phrase query information.
         self.phrase_query_info = phrase_query_info
-        # The volume of logs processed by the query.
+        # The volume of logs processed by the query, in bytes.
         self.processed_bytes = processed_bytes
         # The number of rows processed in this query.
         self.processed_rows = processed_rows
         # Indicates whether the query results are complete. Valid values:
         # 
         # - Complete: The query is complete and the results are complete.
-        # - Incomplete: The query is complete but the results are incomplete. Resend the request to obtain complete results.
+        # - Incomplete: The query is complete but the results are incomplete. Repeat the request to obtain complete results.
         self.progress = progress
         # The amount of data scanned during the scan, in bytes.
         self.scan_bytes = scan_bytes

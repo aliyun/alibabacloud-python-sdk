@@ -18,18 +18,31 @@ class KafkaIngestion(DaraModel):
         schedule_id: str = None,
         status: str = None,
     ):
+        # The Kafka import configuration.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The creation time.
         self.create_time = create_time
+        # job description
         self.description = description
+        # job displayName
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The last modified time.
         self.last_modified_time = last_modified_time
+        # The import task name.
+        # 
         # This parameter is required.
         self.name = name
+        # The scheduling configuration.
+        # 
         # This parameter is required.
         self.schedule = schedule
+        # The task ID.
         self.schedule_id = schedule_id
+        # The import status.
         self.status = status
 
     def validate(self):

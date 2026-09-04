@@ -28,16 +28,17 @@ class ScheduledSQLConfiguration(DaraModel):
         sql_type: str = None,
         to_time: int = None,
         to_time_expr: str = None,
+        using_exactly_once: bool = None,
     ):
-        # The data format. Valid values: log2log, log2metric, and metric2metric.
+        # The write mode. Three configurations are supported: log2log, log2metric, and metric2metric.
         # 
         # This parameter is required.
         self.data_format = data_format
-        # The endpoint.
+        # The destination endpoint.
         # 
         # This parameter is required.
         self.dest_endpoint = dest_endpoint
-        # The destination Logstore.
+        # The destination logstore.
         # 
         # This parameter is required.
         self.dest_logstore = dest_logstore
@@ -45,60 +46,64 @@ class ScheduledSQLConfiguration(DaraModel):
         # 
         # This parameter is required.
         self.dest_project = dest_project
-        # The ARN of the RAM role that is assumed to write data to the destination Logstore.
+        # The ARN of the role used to write data to the destination.
         # 
         # This parameter is required.
         self.dest_role_arn = dest_role_arn
+        # Specifies whether to ensure accurate computation results.
         self.force_complete = force_complete
-        # The start time. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+        # The start time. For more information, see [From Logstore to MetricStore](https://help.aliyun.com/document_detail/286459.html).
         # 
         # This parameter is required.
         self.from_time = from_time
-        # The start time of the SQL time window.
+        # The start of the SQL time window.
         # 
         # This parameter is required.
         self.from_time_expr = from_time_expr
+        # The concurrency.
         self.max_concurrency = max_concurrency
-        # The maximum number of SQL timeouts allowed. Valid values: 1 to 100.
+        # The maximum number of retries upon SQL timeout. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.max_retries = max_retries
-        # The maximum timeout period of SQL analysis. Unit: seconds. Valid values: 60 to 1800.
+        # The maximum timeout period for SQL execution. Unit: seconds. Valid values: 60 to 1800.
         # 
         # This parameter is required.
         self.max_run_time_in_seconds = max_run_time_in_seconds
-        # The SQL configurations. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+        # The SQL configuration. For more information, see [From Logstore to MetricStore](https://help.aliyun.com/document_detail/286459.html).
         # 
         # This parameter is required.
         self.parameters = parameters
-        # The type of the resource pool. The value enhanced specifies an enhanced resource pool.
+        # The resource pool type. A value of enhanced indicates the enhanced resource pool.
         # 
         # This parameter is required.
         self.resource_pool = resource_pool
-        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is assigned to the Scheduled SQL job.
+        # The Alibaba Cloud Resource Name (ARN) of the role used to execute the SQL statement.
         # 
         # This parameter is required.
         self.role_arn = role_arn
-        # The query statement of the Scheduled SQL job.
+        # The analytic statement of the scheduled query.
         # 
         # This parameter is required.
         self.script = script
-        # The source Logstore.
+        # The source logstore.
         # 
         # This parameter is required.
         self.source_logstore = source_logstore
-        # The type of the query statement.
+        # The SQL type.
         # 
         # This parameter is required.
         self.sql_type = sql_type
-        # The end time. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+        # The end time. For more information, see [From Logstore to MetricStore](https://help.aliyun.com/document_detail/286459.html).
         # 
         # This parameter is required.
         self.to_time = to_time
-        # The end time of the SQL time window.
+        # The end of the SQL time window.
         # 
         # This parameter is required.
         self.to_time_expr = to_time_expr
+        # Specifies whether to use the Exactly-Once write protocol.
+        self.using_exactly_once = using_exactly_once
 
     def validate(self):
         pass
@@ -165,6 +170,9 @@ class ScheduledSQLConfiguration(DaraModel):
         if self.to_time_expr is not None:
             result['toTimeExpr'] = self.to_time_expr
 
+        if self.using_exactly_once is not None:
+            result['usingExactlyOnce'] = self.using_exactly_once
+
         return result
 
     def from_map(self, m: dict = None):
@@ -225,6 +233,9 @@ class ScheduledSQLConfiguration(DaraModel):
 
         if m.get('toTimeExpr') is not None:
             self.to_time_expr = m.get('toTimeExpr')
+
+        if m.get('usingExactlyOnce') is not None:
+            self.using_exactly_once = m.get('usingExactlyOnce')
 
         return self
 

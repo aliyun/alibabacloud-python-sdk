@@ -61,7 +61,6 @@ class ListDashboardResponseBodyDashboardItems(DaraModel):
     ):
         # The dashboard ID. The ID must be unique within a project. Fuzzy queries are supported. For example, if you enter da, all dashboards whose names start with da are returned.
         self.dashboard_name = dashboard_name
-        # The description.
         self.description = description
         # The display name of the dashboard.
         self.display_name = display_name

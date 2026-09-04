@@ -16,9 +16,9 @@ class ListAgentInstanceConfigsResponseBody(DaraModel):
     ):
         # The process-level configurations.
         self.configs = configs
-        # The number of data entries.
+        # The number of entries returned.
         self.size = size
-        # The total number of data entries that meet the query conditions.
+        # The total number of entries that match the query conditions.
         self.total = total
 
     def validate(self):

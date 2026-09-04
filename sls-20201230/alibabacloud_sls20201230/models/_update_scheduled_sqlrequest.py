@@ -13,7 +13,7 @@ class UpdateScheduledSQLRequest(DaraModel):
         display_name: str = None,
         schedule: main_models.Schedule = None,
     ):
-        # The configuration of the task.
+        # The task configuration.
         # 
         # This parameter is required.
         self.configuration = configuration

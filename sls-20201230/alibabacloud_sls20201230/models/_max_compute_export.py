@@ -35,7 +35,6 @@ class MaxComputeExport(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the MaxCompute data shipping job.
         self.schedule_id = schedule_id
         # The status of the MaxCompute data shipping job.
         self.status = status

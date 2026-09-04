@@ -24,19 +24,11 @@ class MaxComputeExportConfigurationSink(DaraModel):
         time_format_type: str = None,
         time_zone: str = None,
     ):
-        # Specifies the minimum time granularity between two data shipping jobs. Unit: seconds. Valid values:
-        # 
-        # *   1800 (default)
-        # *   3600
         self.buffer_interval = buffer_interval
         # The fields that you want to ship.
         # 
         # This parameter is required.
         self.fields = fields
-        # Specifies whether to filter the invalid content.
-        # 
-        # *   true (default)
-        # *   false
         self.filter_invalid = filter_invalid
         # The AccessKey ID used to write data to MaxCompute.
         self.odps_access_key_id = odps_access_key_id
@@ -72,10 +64,6 @@ class MaxComputeExportConfigurationSink(DaraModel):
         # 
         # This parameter is required.
         self.partition_time_format = partition_time_format
-        # The time partition type. Valid values:
-        # 
-        # *   StrfTimeFormat (default)
-        # *   JavaSimpleDateFormat
         self.time_format_type = time_format_type
         # The time zone.
         # 

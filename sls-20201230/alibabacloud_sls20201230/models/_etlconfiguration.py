@@ -29,7 +29,6 @@ class ETLConfiguration(DaraModel):
         # 
         # This parameter is required.
         self.from_time = from_time
-        # The language of the data transformation script.
         self.lang = lang
         # The name of the source Logstore.
         # 

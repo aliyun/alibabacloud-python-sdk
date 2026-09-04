@@ -18,29 +18,29 @@ class S3Ingestion(DaraModel):
         schedule_id: str = None,
         status: str = None,
     ):
-        # S3 import configuration
+        # The S3 import configuration.
         self.configuration = configuration
-        # Creation Time
+        # The creation time.
         self.create_time = create_time
-        # Job description
+        # job description
         self.description = description
-        # Job display name
+        # job displayName
         # 
         # This parameter is required.
         self.display_name = display_name
-        # Updated At
+        # The last modified time.
         self.last_modified_time = last_modified_time
-        # Task Name
+        # The import task name.
         # 
         # This parameter is required.
         self.name = name
-        # Scan Configuration
+        # The scheduling configuration.
         # 
         # This parameter is required.
         self.schedule = schedule
-        # Job ID
+        # The task ID.
         self.schedule_id = schedule_id
-        # Import Status
+        # The import status.
         self.status = status
 
     def validate(self):

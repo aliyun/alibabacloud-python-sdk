@@ -4,24 +4,28 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_sls20201230 import models as main_models
 from darabonba.model import DaraModel
 
-class ListMaterializedViewResponseBody(DaraModel):
+class ListJobInstancesResponseBody(DaraModel):
     def __init__(
         self,
-        count: int = None,
-        materialized_views: List[str] = None,
+        count: str = None,
+        results: List[main_models.JobInstance] = None,
         total: int = None,
     ):
-        # The number of materialized views returned on the current page.
+        # The number of jobs returned on the current page.
         self.count = count
-        # A list of materialized views.
-        self.materialized_views = materialized_views
-        # The total number of materialized views that match the query.
+        # The job configuration details.
+        self.results = results
+        # The total number of records.
         self.total = total
 
     def validate(self):
-        pass
+        if self.results:
+            for v1 in self.results:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -31,8 +35,10 @@ class ListMaterializedViewResponseBody(DaraModel):
         if self.count is not None:
             result['count'] = self.count
 
-        if self.materialized_views is not None:
-            result['materializedViews'] = self.materialized_views
+        result['results'] = []
+        if self.results is not None:
+            for k1 in self.results:
+                result['results'].append(k1.to_map() if k1 else None)
 
         if self.total is not None:
             result['total'] = self.total
@@ -44,8 +50,11 @@ class ListMaterializedViewResponseBody(DaraModel):
         if m.get('count') is not None:
             self.count = m.get('count')
 
-        if m.get('materializedViews') is not None:
-            self.materialized_views = m.get('materializedViews')
+        self.results = []
+        if m.get('results') is not None:
+            for k1 in m.get('results'):
+                temp_model = main_models.JobInstance()
+                self.results.append(temp_model.from_map(k1))
 
         if m.get('total') is not None:
             self.total = m.get('total')

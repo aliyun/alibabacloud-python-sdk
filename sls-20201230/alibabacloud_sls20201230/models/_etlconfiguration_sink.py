@@ -22,7 +22,6 @@ class ETLConfigurationSink(DaraModel):
         self.access_key_id = access_key_id
         # The AccessKey Secret used to write to the destination Logstore.
         self.access_key_secret = access_key_secret
-        # The datasets to write to the sink.
         self.datasets = datasets
         # The endpoint of the destination Project\\"s region.
         self.endpoint = endpoint

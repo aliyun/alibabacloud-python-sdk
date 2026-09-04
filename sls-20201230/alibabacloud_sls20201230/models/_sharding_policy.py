@@ -10,13 +10,14 @@ from darabonba.model import DaraModel
 class ShardingPolicy(DaraModel):
     def __init__(
         self,
+        enabled: bool = None,
         query_active_time: int = None,
         shard_group: main_models.ShardingPolicyShardGroup = None,
         shard_hash: main_models.ShardingPolicyShardHash = None,
     ):
+        self.enabled = enabled
         self.query_active_time = query_active_time
         self.shard_group = shard_group
-        # This parameter is required.
         self.shard_hash = shard_hash
 
     def validate(self):
@@ -30,6 +31,9 @@ class ShardingPolicy(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
         if self.query_active_time is not None:
             result['queryActiveTime'] = self.query_active_time
 
@@ -43,6 +47,9 @@ class ShardingPolicy(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
         if m.get('queryActiveTime') is not None:
             self.query_active_time = m.get('queryActiveTime')
 

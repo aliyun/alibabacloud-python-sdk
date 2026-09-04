@@ -20,17 +20,29 @@ class Ticket(DaraModel):
         used_number: int = None,
         valid: bool = None,
     ):
+        # The UID of the caller when the ticket was created.
         self.caller_uid = caller_uid
+        # The time when the ticket was created.
         self.create_date = create_date
+        # The expiration time of the ticket, in seconds.
         self.expiration_time = expiration_time
+        # The expiration time of the ticket.
         self.expire_date = expire_date
+        # The extension field.
         self.extra = extra
+        # The name.
         self.name = name
+        # The maximum number of times the ticket can be used.
         self.number = number
+        # The target to which the ticket is shared.
         self.sharing_to = sharing_to
+        # ticket
         self.ticket = ticket
+        # The unique ID of the ticket.
         self.ticket_id = ticket_id
+        # The number of times the ticket has been used.
         self.used_number = used_number
+        # Indicates whether the ticket is disabled.
         self.valid = valid
 
     def validate(self):

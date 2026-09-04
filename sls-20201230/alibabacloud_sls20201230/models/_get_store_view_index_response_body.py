@@ -12,7 +12,7 @@ class GetStoreViewIndexResponseBody(DaraModel):
         self,
         indexes: List[main_models.GetStoreViewIndexResponseBodyIndexes] = None,
     ):
-        # The index configurations.
+        # The list of index configurations.
         self.indexes = indexes
 
     def validate(self):
@@ -50,7 +50,7 @@ class GetStoreViewIndexResponseBodyIndexes(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
-        # The index configurations of the Logstore.
+        # The index configuration of the Logstore.
         self.index = index
         # The name of the Logstore.
         self.logstore = logstore

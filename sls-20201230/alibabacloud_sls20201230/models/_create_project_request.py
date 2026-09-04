@@ -35,13 +35,6 @@ class CreateProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_name = project_name
-        # Specifies whether to enable the recycle bin feature.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
         self.recycle_bin_enabled = recycle_bin_enabled
         # The ID of the resource group.
         self.resource_group_id = resource_group_id

@@ -28,7 +28,6 @@ class UpsertCollectionPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_code = data_code
-        # The data configurations. The configuration is returned only for global logs. For example, if productCode is set to sls, the configuration is returned.
         self.data_config = data_config
         # Specifies whether to enable the policy.
         # 
@@ -52,7 +51,6 @@ class UpsertCollectionPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The configurations of the resource directory. The account must have activated the resource directory and be a management account or a delegated administrator of the resource directory.
         self.resource_directory = resource_directory
 
     def validate(self):
@@ -140,9 +138,7 @@ class UpsertCollectionPolicyRequestResourceDirectory(DaraModel):
         account_group_type: str = None,
         members: List[str] = None,
     ):
-        # The mode of the resource directory. Valid values: all and custom.
         self.account_group_type = account_group_type
-        # The members. If accountGroupType is set to custom, the members are returned.
         self.members = members
 
     def validate(self):
@@ -233,7 +229,6 @@ class UpsertCollectionPolicyRequestDataConfig(DaraModel):
         self,
         data_region: str = None,
     ):
-        # The region for storing the global logs that are collected for the first time.
         self.data_region = data_region
 
     def validate(self):

@@ -135,7 +135,6 @@ class LogtailConfigOutputDetail(DaraModel):
         self.logstore_name = logstore_name
         # The ID of the region.
         self.region = region
-        # The type of observable data in the Logstore.
         self.telemetry_type = telemetry_type
 
     def validate(self):

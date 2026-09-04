@@ -9,6 +9,7 @@ class GetMaterializedViewRequest(DaraModel):
         self,
         return_status: bool = None,
     ):
+        # Specifies whether to return the materialized view status information.
         self.return_status = return_status
 
     def validate(self):

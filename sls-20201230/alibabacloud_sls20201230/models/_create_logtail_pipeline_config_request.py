@@ -60,7 +60,6 @@ class CreateLogtailPipelineConfigRequest(DaraModel):
         # >
         # >   - After the first processing plugin, you can add only one time parsing processing plugin, one filter plugin, and multiple data masking plugins.
         self.processors = processors
-        # The task configuration.
         self.task = task
 
     def validate(self):

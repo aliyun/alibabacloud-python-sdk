@@ -13,27 +13,9 @@ class GetStoreViewResponseBody(DaraModel):
         store_type: str = None,
         stores: List[main_models.StoreViewStore] = None,
     ):
-        # The type of the dataset.
-        # 
-        # Valid values:
-        # 
-        # - metricstore
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - logstore
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # The type of the storeview.
         self.store_type = store_type
-        # The Logstores or Metricstores.
+        # The list of Logstores or Metricstores.
         self.stores = stores
 
     def validate(self):

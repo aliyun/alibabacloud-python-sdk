@@ -11,20 +11,17 @@ class CreateMaterializedViewRequest(DaraModel):
         logstore: str = None,
         name: str = None,
         original_sql: str = None,
+        shard_count: int = None,
         start_time: int = None,
         ttl: int = None,
     ):
-        # The aggregation interval in minutes. The system creates aggregation tasks based on this interval.
         self.agg_interval_mins = agg_interval_mins
-        # The destination Logstore for the aggregated data from the materialized view.
         self.logstore = logstore
-        # The name of the materialized view. The name must be unique within the project, 2 to 63 characters long, and contain only lowercase letters, digits, hyphens (-), and underscores (_). It must also start and end with a lowercase letter or a digit.
         self.name = name
-        # The query statement that defines the materialized view.
         self.original_sql = original_sql
-        # The time when the materialized view starts to aggregate data. Specify the time as a UNIX timestamp in seconds.
+        # The number of shards.
+        self.shard_count = shard_count
         self.start_time = start_time
-        # The time-to-live (TTL) of the data in the materialized view, in days. After this period, the data expires and is automatically deleted.
         self.ttl = ttl
 
     def validate(self):
@@ -47,6 +44,9 @@ class CreateMaterializedViewRequest(DaraModel):
         if self.original_sql is not None:
             result['originalSql'] = self.original_sql
 
+        if self.shard_count is not None:
+            result['shardCount'] = self.shard_count
+
         if self.start_time is not None:
             result['startTime'] = self.start_time
 
@@ -68,6 +68,9 @@ class CreateMaterializedViewRequest(DaraModel):
 
         if m.get('originalSql') is not None:
             self.original_sql = m.get('originalSql')
+
+        if m.get('shardCount') is not None:
+            self.shard_count = m.get('shardCount')
 
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')

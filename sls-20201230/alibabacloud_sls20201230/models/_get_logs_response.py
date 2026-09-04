@@ -2,8 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, List, Any
+from typing import Dict
 
+from alibabacloud_sls20201230 import models as main_models
 from darabonba.model import DaraModel
 
 class GetLogsResponse(DaraModel):
@@ -11,14 +12,15 @@ class GetLogsResponse(DaraModel):
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: List[Dict[str, Any]] = None,
+        body: main_models.GetLogsResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
         self.body = body
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         result = dict()
@@ -32,7 +34,7 @@ class GetLogsResponse(DaraModel):
             result['statusCode'] = self.status_code
 
         if self.body is not None:
-            result['body'] = self.body
+            result['body'] = self.body.to_map()
 
         return result
 
@@ -45,7 +47,8 @@ class GetLogsResponse(DaraModel):
             self.status_code = m.get('statusCode')
 
         if m.get('body') is not None:
-            self.body = m.get('body')
+            temp_model = main_models.GetLogsResponseBody()
+            self.body = temp_model.from_map(m.get('body'))
 
         return self
 

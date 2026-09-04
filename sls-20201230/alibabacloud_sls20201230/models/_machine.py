@@ -13,7 +13,6 @@ class Machine(DaraModel):
         machine_uniqueid: str = None,
         userdefined_id: str = None,
     ):
-        # The host ID of the machine.
         self.host_id = host_id
         # The IP address of the machine.
         self.ip = ip

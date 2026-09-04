@@ -12,31 +12,13 @@ class ListStoreViewsRequest(DaraModel):
         size: int = None,
         store_type: str = None,
     ):
-        # The dataset name that is used for fuzzy match.
+        # The storeview name used for fuzzy match.
         self.name = name
-        # The offset of the datasets to return. Default value: 0.
+        # The offset of the returned results in the total list of storeviews. Default value: 0.
         self.offset = offset
-        # The number of datasets to return. Default value: 100.
+        # The number of storeviews to return. Default value: 100.
         self.size = size
-        # The type of the datasets to return. By default, datasets are not filtered by type.
-        # 
-        # Valid values:
-        # 
-        # - metricstore
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - logstore
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # The storeview type. By default, results are not filtered by type.
         self.store_type = store_type
 
     def validate(self):

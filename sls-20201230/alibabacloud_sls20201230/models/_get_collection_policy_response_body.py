@@ -58,21 +58,17 @@ class GetCollectionPolicyResponseBodyCollectionPolicy(DaraModel):
         self.centralize_enabled = centralize_enabled
         # The code for the log type.
         self.data_code = data_code
-        # The configuration that is supported only for global log types, such as when \\`productCode\\` is \\`sls\\`. Otherwise, this parameter is empty.
         self.data_config = data_config
         # Indicates whether the rule is enabled.
         self.enabled = enabled
-        # Indicates whether the rule is a built-in rule. Built-in rules cannot be modified or deleted.
         self.internal_policy = internal_policy
         # The configuration of the collection rule.
         self.policy_config = policy_config
         # The name of the rule.
         self.policy_name = policy_name
-        # The ID of the Alibaba Cloud account to which the rule belongs. If the rule is created by a resource directory administrator or a delegated administrator, this parameter specifies the ID of the administrator\\"s Alibaba Cloud account.
         self.policy_uid = policy_uid
         # The code of the product.
         self.product_code = product_code
-        # The configuration of the resource directory. This parameter is empty if no configuration is specified.
         self.resource_directory = resource_directory
 
     def validate(self):
@@ -172,9 +168,7 @@ class GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory(DaraModel
         account_group_type: str = None,
         members: List[str] = None,
     ):
-        # The mode for selecting accounts in the resource directory. Valid values: \\`all\\` and \\`custom\\`.
         self.account_group_type = account_group_type
-        # The member accounts. This parameter is returned only when \\`accountGroupType\\` is set to \\`custom\\`.
         self.members = members
 
     def validate(self):
@@ -264,9 +258,7 @@ class GetCollectionPolicyResponseBodyCollectionPolicyDataConfig(DaraModel):
         data_project: str = None,
         data_region: str = None,
     ):
-        # This parameter is valid only for global log types, such as when \\`productCode\\` is \\`sls\\`. If this parameter is left empty, logs are collected to the default project of the account in the specified \\`dataRegion\\`.
         self.data_project = data_project
-        # This parameter is supported only for global log types, such as when \\`productCode\\` is \\`sls\\`. This parameter specifies the region to which global logs are collected during the initial configuration.
         self.data_region = data_region
 
     def validate(self):

@@ -18,7 +18,6 @@ class GetMLServiceResultsRequest(DaraModel):
         self.allow_builtin = allow_builtin
         # The request struct.
         self.body = body
-        # The version number of the algorithm. Different versions correspond to different algorithms.
         self.version = version
 
     def validate(self):

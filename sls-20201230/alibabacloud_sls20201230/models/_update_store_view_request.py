@@ -13,29 +13,11 @@ class UpdateStoreViewRequest(DaraModel):
         store_type: str = None,
         stores: List[main_models.StoreViewStore] = None,
     ):
-        # The type of the dataset.
-        # 
-        # Valid values:
-        # 
-        # - metricstore
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - logstore
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # The type of the storeview.
         # 
         # This parameter is required.
         self.store_type = store_type
-        # The Logstores or Metricstores.
+        # The list of Logstores or Metricstores.
         # 
         # This parameter is required.
         self.stores = stores

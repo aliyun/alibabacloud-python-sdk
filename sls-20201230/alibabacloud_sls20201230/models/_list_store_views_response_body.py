@@ -13,11 +13,11 @@ class ListStoreViewsResponseBody(DaraModel):
         storeviews: List[str] = None,
         total: int = None,
     ):
-        # The number of returned datasets.
+        # The number of storeviews returned.
         self.count = count
-        # The dataset names.
+        # The list of storeview names.
         self.storeviews = storeviews
-        # The total number of datasets in the project.
+        # The total number of storeviews in the project.
         self.total = total
 
     def validate(self):

@@ -15,8 +15,6 @@ class LogGroup(DaraModel):
         source: str = None,
         topic: str = None,
     ):
-        # A list of logs.
-        # 
         # This parameter is required.
         self.log_items = log_items
         # The list of tags for the log.

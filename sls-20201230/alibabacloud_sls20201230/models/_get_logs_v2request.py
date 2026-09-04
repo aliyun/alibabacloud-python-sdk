@@ -33,24 +33,24 @@ class GetLogsV2Request(DaraModel):
         self.highlight = highlight
         # Specifies whether to enable nanosecond-precision ordering.
         self.is_accurate = is_accurate
-        # The maximum number of logs to return in the request. This parameter is valid only when the query parameter is a query statement (not an analytic statement). Minimum value: 0. Maximum value: 100. Default value: 100.
+        # The maximum number of logs to return. This parameter is valid only when the query parameter is a query statement (not an analytic statement). Minimum value: 0. Maximum value: 100. Default value: 100.
         self.line = line
-        # The start row of the query. This parameter is valid only when the query parameter is a query statement (not an analytic statement). The value starts from 0. Default value: 0.
+        # The row from which the query starts. This parameter is valid only when the query parameter is a query statement (not an analytic statement). The value starts from 0. Default value: 0.
         self.offset = offset
         # Specifies whether to enable Dedicated SQL. Disabled by default.
         self.power_sql = power_sql
-        # The query statement or analytic statement. For more information, see [Query overview](https://help.aliyun.com/document_detail/43772.html) and [Analysis overview](https://help.aliyun.com/document_detail/53608.html).
+        # The query statement or analytic statement. For more information, see [query overview](https://help.aliyun.com/document_detail/43772.html) and [analysis overview](https://help.aliyun.com/document_detail/53608.html).
         # 
         # Add set session parallel_sql=true; to the analytic statement in the query parameter to use Dedicated SQL. Example: * | set session parallel_sql=true; select count(*) as pv.
         # 
         # Note: When the query parameter contains an analytic statement (SQL statement), the line and offset parameters of this API are invalid. Set them to 0. Use the LIMIT syntax in the SQL statement for pagination. For more information, see Display query and analysis results by page.
         self.query = query
-        # Specifies whether to return logs in descending order of log timestamps, accurate to the minute level. This parameter is valid only when the query parameter is a query statement (not an analytic statement).
+        # Specifies whether to return logs in reverse chronological order of log timestamps, accurate to the minute level. This parameter is valid only when the query parameter is a query statement (not an analytic statement).
         # 
         # - true: Returns logs in descending order of log timestamps.
         # - false (default): Returns logs in ascending order of log timestamps.
         # 
-        # To sort results in an analytic statement, use the ORDER BY syntax. If ORDER BY is set to asc (default), the results are sorted in ascending order. If ORDER BY is set to desc, the results are sorted in descending order.
+        # To sort results in an analytic statement, use the ORDER BY syntax. If ORDER BY is set to asc (default), logs are returned in ascending order. If ORDER BY is set to desc, logs are returned in descending order.
         self.reverse = reverse
         # The query parameter.
         self.session = session

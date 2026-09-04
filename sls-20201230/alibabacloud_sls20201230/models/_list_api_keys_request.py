@@ -4,18 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListMaterializedViewRequest(DaraModel):
+class ListApiKeysRequest(DaraModel):
     def __init__(
         self,
-        name: str = None,
+        allowed_store: str = None,
         offset: int = None,
         size: int = None,
     ):
-        # The name of the materialized view. Use this to query for a specific materialized view.
-        self.name = name
-        # The number of entries to skip before returning results. This parameter is used for pagination. Default value: 0.
+        self.allowed_store = allowed_store
         self.offset = offset
-        # The maximum number of materialized views to return per page. Default value: 100. Maximum value: 500.
         self.size = size
 
     def validate(self):
@@ -26,8 +23,8 @@ class ListMaterializedViewRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.name is not None:
-            result['name'] = self.name
+        if self.allowed_store is not None:
+            result['allowedStore'] = self.allowed_store
 
         if self.offset is not None:
             result['offset'] = self.offset
@@ -39,8 +36,8 @@ class ListMaterializedViewRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
+        if m.get('allowedStore') is not None:
+            self.allowed_store = m.get('allowedStore')
 
         if m.get('offset') is not None:
             self.offset = m.get('offset')

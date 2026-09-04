@@ -26,43 +26,41 @@ class Client(OpenApiClient):
         self._product_id = 'Sls'
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
-        self._endpoint_rule = 'regional'
+        self._endpoint_rule = 'central'
         self._endpoint_map = {
-            'us-west-1': 'us-west-1.log.aliyuncs.com',
-            'us-southeast-1': 'us-southeast-1.log.aliyuncs.com',
+            'cn-qingdao': 'cn-qingdao.log.aliyuncs.com',
+            'cn-beijing': 'cn-beijing.log.aliyuncs.com',
+            'cn-zhangjiakou': 'cn-zhangjiakou.log.aliyuncs.com',
+            'cn-huhehaote': 'cn-huhehaote.log.aliyuncs.com',
+            'cn-wulanchabu': 'cn-wulanchabu.log.aliyuncs.com',
+            'cn-hangzhou': 'cn-hangzhou.log.aliyuncs.com',
+            'cn-shanghai': 'cn-shanghai.log.aliyuncs.com',
+            'cn-nanjing': 'cn-nanjing.log.aliyuncs.com',
+            'cn-fuzhou': 'cn-fuzhou.log.aliyuncs.com',
+            'cn-shenzhen': 'cn-shenzhen.log.aliyuncs.com',
+            'cn-heyuan': 'cn-heyuan.log.aliyuncs.com',
+            'cn-guangzhou': 'cn-guangzhou.log.aliyuncs.com',
+            'cn-chengdu': 'cn-chengdu.log.aliyuncs.com',
+            'cn-hongkong': 'cn-hongkong.log.aliyuncs.com',
+            'ap-northeast-1': 'ap-northeast-1.log.aliyuncs.com',
+            'ap-northeast-2': 'ap-northeast-2.log.aliyuncs.com',
+            'ap-southeast-1': 'ap-southeast-1.log.aliyuncs.com',
+            'ap-southeast-3': 'ap-southeast-3.log.aliyuncs.com',
+            'ap-southeast-5': 'ap-southeast-5.log.aliyuncs.com',
+            'ap-southeast-6': 'ap-southeast-6.log.aliyuncs.com',
+            'ap-southeast-7': 'ap-southeast-7.log.aliyuncs.com',
             'us-east-1': 'us-east-1.log.aliyuncs.com',
-            'me-east-1': 'me-east-1.log.aliyuncs.com',
-            'me-central-1': 'me-central-1.log.aliyuncs.com',
+            'us-west-1': 'us-west-1.log.aliyuncs.com',
             'eu-west-1': 'eu-west-1.log.aliyuncs.com',
             'eu-central-1': 'eu-central-1.log.aliyuncs.com',
-            'cn-zhangjiakou': 'cn-zhangjiakou.log.aliyuncs.com',
-            'cn-wulanchabu': 'cn-wulanchabu.log.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cn-shenzhen-finance-1.log.aliyuncs.com',
-            'cn-shenzhen': 'cn-shenzhen.log.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cn-shanghai-finance-1.log.aliyuncs.com',
-            'cn-shanghai': 'cn-shanghai.log.aliyuncs.com',
-            'cn-qingdao': 'cn-qingdao.log.aliyuncs.com',
-            'cn-nanjing': 'cn-nanjing.log.aliyuncs.com',
-            'cn-huhehaote': 'cn-huhehaote.log.aliyuncs.com',
-            'cn-hongkong': 'cn-hongkong.log.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'cn-heyuan-acdr-1-intranet.log.aliyuncs.com',
-            'cn-heyuan': 'cn-heyuan.log.aliyuncs.com',
+            'us-southeast-1': 'us-southeast-1.log.aliyuncs.com',
+            'me-east-1': 'me-east-1.log.aliyuncs.com',
+            'me-central-1': 'me-central-1.log.aliyuncs.com',
             'cn-hangzhou-finance': 'cn-hangzhou-finance.log.aliyuncs.com',
-            'cn-hangzhou': 'cn-hangzhou.log.aliyuncs.com',
-            'cn-guangzhou': 'cn-guangzhou.log.aliyuncs.com',
-            'cn-fuzhou': 'cn-fuzhou.log.aliyuncs.com',
-            'cn-chengdu': 'cn-chengdu.log.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cn-shanghai-finance-1.log.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cn-shenzhen-finance-1.log.aliyuncs.com',
             'cn-beijing-finance-1': 'cn-beijing-finance-1.log.aliyuncs.com',
-            'cn-beijing': 'cn-beijing.log.aliyuncs.com',
-            'ap-southeast-7': 'ap-southeast-7.log.aliyuncs.com',
-            'ap-southeast-6': 'ap-southeast-6.log.aliyuncs.com',
-            'ap-southeast-5': 'ap-southeast-5.log.aliyuncs.com',
-            'ap-southeast-3': 'ap-southeast-3.log.aliyuncs.com',
-            'ap-southeast-2': 'ap-southeast-2.log.aliyuncs.com',
-            'ap-southeast-1': 'ap-southeast-1.log.aliyuncs.com',
-            'ap-south-1': 'ap-south-1.log.aliyuncs.com',
-            'ap-northeast-2': 'ap-northeast-2.log.aliyuncs.com',
-            'ap-northeast-1': 'ap-northeast-1.log.aliyuncs.com'
+            'cn-heyuan-acdr-1': 'cn-heyuan-acdr-1-intranet.log.aliyuncs.com'
         }
 
     def apply_config_to_machine_group_with_options(
@@ -866,6 +864,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_annotation_label_with_options_async(request, headers, runtime)
+
+    def create_api_key_with_options(
+        self,
+        project: str,
+        request: main_models.CreateApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.allowed_stores):
+            body['allowedStores'] = request.allowed_stores
+        if not DaraCore.is_null(request.api_key_name):
+            body['apiKeyName'] = request.api_key_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApiKeyResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_api_key_with_options_async(
+        self,
+        project: str,
+        request: main_models.CreateApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.allowed_stores):
+            body['allowedStores'] = request.allowed_stores
+        if not DaraCore.is_null(request.api_key_name):
+            body['apiKeyName'] = request.api_key_name
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApiKeyResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_api_key(
+        self,
+        project: str,
+        request: main_models.CreateApiKeyRequest,
+    ) -> main_models.CreateApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_api_key_with_options(project, request, headers, runtime)
+
+    async def create_api_key_async(
+        self,
+        project: str,
+        request: main_models.CreateApiKeyRequest,
+    ) -> main_models.CreateApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_api_key_with_options_async(project, request, headers, runtime)
 
     def create_azure_blob_ingestion_with_options(
         self,
@@ -2264,6 +2356,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.original_sql):
             body['originalSql'] = request.original_sql
+        if not DaraCore.is_null(request.shard_count):
+            body['shardCount'] = request.shard_count
         if not DaraCore.is_null(request.start_time):
             body['startTime'] = request.start_time
         if not DaraCore.is_null(request.ttl):
@@ -2308,6 +2402,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.original_sql):
             body['originalSql'] = request.original_sql
+        if not DaraCore.is_null(request.shard_count):
+            body['shardCount'] = request.shard_count
         if not DaraCore.is_null(request.start_time):
             body['startTime'] = request.start_time
         if not DaraCore.is_null(request.ttl):
@@ -2964,6 +3060,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_project_with_options_async(request, headers, runtime)
+
+    def create_resource_record_with_options(
+        self,
+        resource_name: str,
+        request: main_models.CreateResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResourceRecordResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateResourceRecordResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_resource_record_with_options_async(
+        self,
+        resource_name: str,
+        request: main_models.CreateResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResourceRecordResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateResourceRecordResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_resource_record(
+        self,
+        resource_name: str,
+        request: main_models.CreateResourceRecordRequest,
+    ) -> main_models.CreateResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_resource_record_with_options(resource_name, request, headers, runtime)
+
+    async def create_resource_record_async(
+        self,
+        resource_name: str,
+        request: main_models.CreateResourceRecordRequest,
+    ) -> main_models.CreateResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_resource_record_with_options_async(resource_name, request, headers, runtime)
 
     def create_s3ingestion_with_options(
         self,
@@ -3900,6 +4070,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_annotation_label_with_options_async(label_id, headers, runtime)
+
+    def delete_api_key_with_options(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.DeleteApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApiKeyResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_api_key_with_options_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.DeleteApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApiKeyResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_api_key(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.DeleteApiKeyRequest,
+    ) -> main_models.DeleteApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_api_key_with_options(project, api_key_name, request, headers, runtime)
+
+    async def delete_api_key_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.DeleteApiKeyRequest,
+    ) -> main_models.DeleteApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_api_key_with_options_async(project, api_key_name, request, headers, runtime)
 
     def delete_azure_blob_ingestion_with_options(
         self,
@@ -5841,6 +6093,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_project_policy_with_options_async(project, headers, runtime)
 
+    def delete_resource_record_with_options(
+        self,
+        resource_name: str,
+        request: main_models.DeleteResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResourceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ids):
+            query['ids'] = request.ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteResourceRecordResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_resource_record_with_options_async(
+        self,
+        resource_name: str,
+        request: main_models.DeleteResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResourceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ids):
+            query['ids'] = request.ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteResourceRecordResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_resource_record(
+        self,
+        resource_name: str,
+        request: main_models.DeleteResourceRecordRequest,
+    ) -> main_models.DeleteResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_resource_record_with_options(resource_name, request, headers, runtime)
+
+    async def delete_resource_record_async(
+        self,
+        resource_name: str,
+        request: main_models.DeleteResourceRecordRequest,
+    ) -> main_models.DeleteResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_resource_record_with_options_async(resource_name, request, headers, runtime)
+
     def delete_s3ingestion_with_options(
         self,
         project: str,
@@ -6297,6 +6629,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.disable_alert_with_options_async(project, alert_name, headers, runtime)
 
+    def disable_api_key_with_options(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.DisableApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}/disable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DisableApiKeyResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def disable_api_key_with_options_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.DisableApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}/disable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DisableApiKeyResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def disable_api_key(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.DisableApiKeyRequest,
+    ) -> main_models.DisableApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_api_key_with_options(project, api_key_name, request, headers, runtime)
+
+    async def disable_api_key_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.DisableApiKeyRequest,
+    ) -> main_models.DisableApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_api_key_with_options_async(project, api_key_name, request, headers, runtime)
+
     def disable_scheduled_sqlwith_options(
         self,
         project: str,
@@ -6448,6 +6862,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.enable_alert_with_options_async(project, alert_name, headers, runtime)
+
+    def enable_api_key_with_options(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.EnableApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}/enable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.EnableApiKeyResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def enable_api_key_with_options_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.EnableApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}/enable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.EnableApiKeyResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def enable_api_key(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.EnableApiKeyRequest,
+    ) -> main_models.EnableApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_api_key_with_options(project, api_key_name, request, headers, runtime)
+
+    async def enable_api_key_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.EnableApiKeyRequest,
+    ) -> main_models.EnableApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_api_key_with_options_async(project, api_key_name, request, headers, runtime)
 
     def enable_scheduled_sqlwith_options(
         self,
@@ -6890,6 +7386,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_annotation_label_with_options_async(label_id, headers, runtime)
+
+    def get_api_key_with_options(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.GetApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetApiKeyResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_api_key_with_options_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.GetApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetApiKeyResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_api_key(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.GetApiKeyRequest,
+    ) -> main_models.GetApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_api_key_with_options(project, api_key_name, request, headers, runtime)
+
+    async def get_api_key_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.GetApiKeyRequest,
+    ) -> main_models.GetApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_api_key_with_options_async(project, api_key_name, request, headers, runtime)
 
     def get_applied_configs_with_options(
         self,
@@ -8467,6 +9045,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_ingest_processor_with_options_async(project, processor_name, headers, runtime)
 
+    def get_job_instance_with_options(
+        self,
+        project: str,
+        job_name: str,
+        instance_id: str,
+        request: main_models.GetJobInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobInstanceResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.caller_owner):
+            query['callerOwner'] = request.caller_owner
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetJobInstance',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/jobs/{job_name}/jobinstances/{instance_id}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetJobInstanceResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_job_instance_with_options_async(
+        self,
+        project: str,
+        job_name: str,
+        instance_id: str,
+        request: main_models.GetJobInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetJobInstanceResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.caller_owner):
+            query['callerOwner'] = request.caller_owner
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetJobInstance',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/jobs/{job_name}/jobinstances/{instance_id}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetJobInstanceResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_job_instance(
+        self,
+        project: str,
+        job_name: str,
+        instance_id: str,
+        request: main_models.GetJobInstanceRequest,
+    ) -> main_models.GetJobInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_job_instance_with_options(project, job_name, instance_id, request, headers, runtime)
+
+    async def get_job_instance_async(
+        self,
+        project: str,
+        job_name: str,
+        instance_id: str,
+        request: main_models.GetJobInstanceRequest,
+    ) -> main_models.GetJobInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_job_instance_with_options_async(project, job_name, instance_id, request, headers, runtime)
+
     def get_log_store_with_options(
         self,
         project: str,
@@ -8772,44 +9444,57 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
         request: main_models.GetLogsRequest,
-        headers: Dict[str, str],
+        headers: main_models.GetLogsHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetLogsResponse:
         request.validate()
         host_map = {}
         host_map['project'] = project
-        query = {}
+        body = {}
+        if not DaraCore.is_null(request.forward):
+            body['forward'] = request.forward
         if not DaraCore.is_null(request.from_):
-            query['from'] = request.from_
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.highlight):
+            body['highlight'] = request.highlight
+        if not DaraCore.is_null(request.is_accurate):
+            body['isAccurate'] = request.is_accurate
         if not DaraCore.is_null(request.line):
-            query['line'] = request.line
+            body['line'] = request.line
         if not DaraCore.is_null(request.offset):
-            query['offset'] = request.offset
+            body['offset'] = request.offset
         if not DaraCore.is_null(request.power_sql):
-            query['powerSql'] = request.power_sql
+            body['powerSql'] = request.power_sql
         if not DaraCore.is_null(request.query):
-            query['query'] = request.query
+            body['query'] = request.query
         if not DaraCore.is_null(request.reverse):
-            query['reverse'] = request.reverse
+            body['reverse'] = request.reverse
+        if not DaraCore.is_null(request.session):
+            body['session'] = request.session
         if not DaraCore.is_null(request.to):
-            query['to'] = request.to
+            body['to'] = request.to
         if not DaraCore.is_null(request.topic):
-            query['topic'] = request.topic
+            body['topic'] = request.topic
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.accept_encoding):
+            real_headers['Accept-Encoding'] = str(headers.accept_encoding)
         req = open_api_util_models.OpenApiRequest(
             host_map = host_map,
-            headers = headers,
-            query = Utils.query(query)
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'GetLogs',
             version = '2020-12-30',
             protocol = 'HTTPS',
-            pathname = f'/logstores/{logstore}?type=log',
-            method = 'GET',
+            pathname = f'/logstores/{logstore}/logs',
+            method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
             req_body_type = 'json',
-            body_type = 'array'
+            body_type = 'json'
         )
         return DaraCore.from_map(
             main_models.GetLogsResponse(),
@@ -8821,44 +9506,57 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
         request: main_models.GetLogsRequest,
-        headers: Dict[str, str],
+        headers: main_models.GetLogsHeaders,
         runtime: RuntimeOptions,
     ) -> main_models.GetLogsResponse:
         request.validate()
         host_map = {}
         host_map['project'] = project
-        query = {}
+        body = {}
+        if not DaraCore.is_null(request.forward):
+            body['forward'] = request.forward
         if not DaraCore.is_null(request.from_):
-            query['from'] = request.from_
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.highlight):
+            body['highlight'] = request.highlight
+        if not DaraCore.is_null(request.is_accurate):
+            body['isAccurate'] = request.is_accurate
         if not DaraCore.is_null(request.line):
-            query['line'] = request.line
+            body['line'] = request.line
         if not DaraCore.is_null(request.offset):
-            query['offset'] = request.offset
+            body['offset'] = request.offset
         if not DaraCore.is_null(request.power_sql):
-            query['powerSql'] = request.power_sql
+            body['powerSql'] = request.power_sql
         if not DaraCore.is_null(request.query):
-            query['query'] = request.query
+            body['query'] = request.query
         if not DaraCore.is_null(request.reverse):
-            query['reverse'] = request.reverse
+            body['reverse'] = request.reverse
+        if not DaraCore.is_null(request.session):
+            body['session'] = request.session
         if not DaraCore.is_null(request.to):
-            query['to'] = request.to
+            body['to'] = request.to
         if not DaraCore.is_null(request.topic):
-            query['topic'] = request.topic
+            body['topic'] = request.topic
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.accept_encoding):
+            real_headers['Accept-Encoding'] = str(headers.accept_encoding)
         req = open_api_util_models.OpenApiRequest(
             host_map = host_map,
-            headers = headers,
-            query = Utils.query(query)
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'GetLogs',
             version = '2020-12-30',
             protocol = 'HTTPS',
-            pathname = f'/logstores/{logstore}?type=log',
-            method = 'GET',
+            pathname = f'/logstores/{logstore}/logs',
+            method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
             req_body_type = 'json',
-            body_type = 'array'
+            body_type = 'json'
         )
         return DaraCore.from_map(
             main_models.GetLogsResponse(),
@@ -8872,7 +9570,7 @@ class Client(OpenApiClient):
         request: main_models.GetLogsRequest,
     ) -> main_models.GetLogsResponse:
         runtime = RuntimeOptions()
-        headers = {}
+        headers = main_models.GetLogsHeaders()
         return self.get_logs_with_options(project, logstore, request, headers, runtime)
 
     async def get_logs_async(
@@ -8882,7 +9580,7 @@ class Client(OpenApiClient):
         request: main_models.GetLogsRequest,
     ) -> main_models.GetLogsResponse:
         runtime = RuntimeOptions()
-        headers = {}
+        headers = main_models.GetLogsHeaders()
         return await self.get_logs_with_options_async(project, logstore, request, headers, runtime)
 
     def get_logs_v2with_options(
@@ -10071,6 +10769,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_project_policy_with_options_async(project, headers, runtime)
 
+    def get_resource_record_with_options(
+        self,
+        resource_name: str,
+        record_id: str,
+        request: main_models.GetResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.include_system_records):
+            query['includeSystemRecords'] = request.include_system_records
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records/{record_id}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetResourceRecordResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_resource_record_with_options_async(
+        self,
+        resource_name: str,
+        record_id: str,
+        request: main_models.GetResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.include_system_records):
+            query['includeSystemRecords'] = request.include_system_records
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records/{record_id}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetResourceRecordResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_resource_record(
+        self,
+        resource_name: str,
+        record_id: str,
+        request: main_models.GetResourceRecordRequest,
+    ) -> main_models.GetResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_resource_record_with_options(resource_name, record_id, request, headers, runtime)
+
+    async def get_resource_record_async(
+        self,
+        resource_name: str,
+        record_id: str,
+        request: main_models.GetResourceRecordRequest,
+    ) -> main_models.GetResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_resource_record_with_options_async(resource_name, record_id, request, headers, runtime)
+
     def get_s3ingestion_with_options(
         self,
         project: str,
@@ -11060,6 +11842,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_annotation_labels_with_options_async(request, headers, runtime)
+
+    def list_api_keys_with_options(
+        self,
+        project: str,
+        request: main_models.ListApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiKeysResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.allowed_store):
+            query['allowedStore'] = request.allowed_store
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiKeys',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiKeysResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_api_keys_with_options_async(
+        self,
+        project: str,
+        request: main_models.ListApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiKeysResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.allowed_store):
+            query['allowedStore'] = request.allowed_store
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiKeys',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiKeysResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_api_keys(
+        self,
+        project: str,
+        request: main_models.ListApiKeysRequest,
+    ) -> main_models.ListApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_api_keys_with_options(project, request, headers, runtime)
+
+    async def list_api_keys_async(
+        self,
+        project: str,
+        request: main_models.ListApiKeysRequest,
+    ) -> main_models.ListApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_api_keys_with_options_async(project, request, headers, runtime)
 
     def list_azure_blob_ingestion_with_options(
         self,
@@ -12205,6 +13081,116 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_ingest_processors_with_options_async(project, request, headers, runtime)
 
+    def list_job_instances_with_options(
+        self,
+        project: str,
+        job_name: str,
+        request: main_models.ListJobInstancesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListJobInstancesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.caller_owner):
+            query['callerOwner'] = request.caller_owner
+        if not DaraCore.is_null(request.end):
+            query['end'] = request.end
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.start):
+            query['start'] = request.start
+        if not DaraCore.is_null(request.state):
+            query['state'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListJobInstances',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/jobs/{job_name}/jobinstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListJobInstancesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_job_instances_with_options_async(
+        self,
+        project: str,
+        job_name: str,
+        request: main_models.ListJobInstancesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListJobInstancesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.caller_owner):
+            query['callerOwner'] = request.caller_owner
+        if not DaraCore.is_null(request.end):
+            query['end'] = request.end
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.start):
+            query['start'] = request.start
+        if not DaraCore.is_null(request.state):
+            query['state'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListJobInstances',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/jobs/{job_name}/jobinstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListJobInstancesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_job_instances(
+        self,
+        project: str,
+        job_name: str,
+        request: main_models.ListJobInstancesRequest,
+    ) -> main_models.ListJobInstancesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_job_instances_with_options(project, job_name, request, headers, runtime)
+
+    async def list_job_instances_async(
+        self,
+        project: str,
+        job_name: str,
+        request: main_models.ListJobInstancesRequest,
+    ) -> main_models.ListJobInstancesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_job_instances_with_options_async(project, job_name, request, headers, runtime)
+
     def list_log_stores_with_options(
         self,
         project: str,
@@ -12597,100 +13583,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_machines_with_options_async(project, machine_group, request, headers, runtime)
 
-    def list_materialized_view_with_options(
-        self,
-        project: str,
-        request: main_models.ListMaterializedViewRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.ListMaterializedViewResponse:
-        request.validate()
-        host_map = {}
-        host_map['project'] = project
-        query = {}
-        if not DaraCore.is_null(request.name):
-            query['name'] = request.name
-        if not DaraCore.is_null(request.offset):
-            query['offset'] = request.offset
-        if not DaraCore.is_null(request.size):
-            query['size'] = request.size
-        req = open_api_util_models.OpenApiRequest(
-            host_map = host_map,
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ListMaterializedView',
-            version = '2020-12-30',
-            protocol = 'HTTPS',
-            pathname = f'/materializedviews',
-            method = 'GET',
-            auth_type = 'AK',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ListMaterializedViewResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def list_materialized_view_with_options_async(
-        self,
-        project: str,
-        request: main_models.ListMaterializedViewRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.ListMaterializedViewResponse:
-        request.validate()
-        host_map = {}
-        host_map['project'] = project
-        query = {}
-        if not DaraCore.is_null(request.name):
-            query['name'] = request.name
-        if not DaraCore.is_null(request.offset):
-            query['offset'] = request.offset
-        if not DaraCore.is_null(request.size):
-            query['size'] = request.size
-        req = open_api_util_models.OpenApiRequest(
-            host_map = host_map,
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ListMaterializedView',
-            version = '2020-12-30',
-            protocol = 'HTTPS',
-            pathname = f'/materializedviews',
-            method = 'GET',
-            auth_type = 'AK',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ListMaterializedViewResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def list_materialized_view(
-        self,
-        project: str,
-        request: main_models.ListMaterializedViewRequest,
-    ) -> main_models.ListMaterializedViewResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.list_materialized_view_with_options(project, request, headers, runtime)
-
-    async def list_materialized_view_async(
-        self,
-        project: str,
-        request: main_models.ListMaterializedViewRequest,
-    ) -> main_models.ListMaterializedViewResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.list_materialized_view_with_options_async(project, request, headers, runtime)
-
     def list_materialized_views_with_options(
         self,
         project: str,
@@ -12976,6 +13868,126 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_metric_stores_with_options_async(project, request, headers, runtime)
+
+    def list_next_resource_record_with_options(
+        self,
+        resource_name: str,
+        request: main_models.ListNextResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNextResourceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ids):
+            query['ids'] = request.ids
+        if not DaraCore.is_null(request.include_system_records):
+            query['includeSystemRecords'] = request.include_system_records
+        if not DaraCore.is_null(request.json_filter_acc):
+            query['jsonFilterAcc'] = request.json_filter_acc
+        if not DaraCore.is_null(request.json_path):
+            query['jsonPath'] = request.json_path
+        if not DaraCore.is_null(request.json_path_value):
+            query['jsonPathValue'] = request.json_path_value
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.reverse):
+            query['reverse'] = request.reverse
+        if not DaraCore.is_null(request.search):
+            query['search'] = request.search
+        if not DaraCore.is_null(request.sjson):
+            query['sjson'] = request.sjson
+        if not DaraCore.is_null(request.tag):
+            query['tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNextResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/next_records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNextResourceRecordResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_next_resource_record_with_options_async(
+        self,
+        resource_name: str,
+        request: main_models.ListNextResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNextResourceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ids):
+            query['ids'] = request.ids
+        if not DaraCore.is_null(request.include_system_records):
+            query['includeSystemRecords'] = request.include_system_records
+        if not DaraCore.is_null(request.json_filter_acc):
+            query['jsonFilterAcc'] = request.json_filter_acc
+        if not DaraCore.is_null(request.json_path):
+            query['jsonPath'] = request.json_path
+        if not DaraCore.is_null(request.json_path_value):
+            query['jsonPathValue'] = request.json_path_value
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.reverse):
+            query['reverse'] = request.reverse
+        if not DaraCore.is_null(request.search):
+            query['search'] = request.search
+        if not DaraCore.is_null(request.sjson):
+            query['sjson'] = request.sjson
+        if not DaraCore.is_null(request.tag):
+            query['tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNextResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/next_records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNextResourceRecordResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_next_resource_record(
+        self,
+        resource_name: str,
+        request: main_models.ListNextResourceRecordRequest,
+    ) -> main_models.ListNextResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_next_resource_record_with_options(resource_name, request, headers, runtime)
+
+    async def list_next_resource_record_async(
+        self,
+        resource_name: str,
+        request: main_models.ListNextResourceRecordRequest,
+    ) -> main_models.ListNextResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_next_resource_record_with_options_async(resource_name, request, headers, runtime)
 
     def list_ossexports_with_options(
         self,
@@ -13354,6 +14366,122 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_project_with_options_async(request, headers, runtime)
+
+    def list_resource_record_with_options(
+        self,
+        resource_name: str,
+        request: main_models.ListResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ids):
+            query['ids'] = request.ids
+        if not DaraCore.is_null(request.include_system_records):
+            query['includeSystemRecords'] = request.include_system_records
+        if not DaraCore.is_null(request.json_filter_acc):
+            query['jsonFilterAcc'] = request.json_filter_acc
+        if not DaraCore.is_null(request.json_path):
+            query['jsonPath'] = request.json_path
+        if not DaraCore.is_null(request.json_path_value):
+            query['jsonPathValue'] = request.json_path_value
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.search):
+            query['search'] = request.search
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.sjson):
+            query['sjson'] = request.sjson
+        if not DaraCore.is_null(request.tag):
+            query['tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResourceRecordResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_resource_record_with_options_async(
+        self,
+        resource_name: str,
+        request: main_models.ListResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ids):
+            query['ids'] = request.ids
+        if not DaraCore.is_null(request.include_system_records):
+            query['includeSystemRecords'] = request.include_system_records
+        if not DaraCore.is_null(request.json_filter_acc):
+            query['jsonFilterAcc'] = request.json_filter_acc
+        if not DaraCore.is_null(request.json_path):
+            query['jsonPath'] = request.json_path
+        if not DaraCore.is_null(request.json_path_value):
+            query['jsonPathValue'] = request.json_path_value
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.search):
+            query['search'] = request.search
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        if not DaraCore.is_null(request.sjson):
+            query['sjson'] = request.sjson
+        if not DaraCore.is_null(request.tag):
+            query['tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResourceRecordResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_resource_record(
+        self,
+        resource_name: str,
+        request: main_models.ListResourceRecordRequest,
+    ) -> main_models.ListResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_resource_record_with_options(resource_name, request, headers, runtime)
+
+    async def list_resource_record_async(
+        self,
+        resource_name: str,
+        request: main_models.ListResourceRecordRequest,
+    ) -> main_models.ListResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_resource_record_with_options_async(resource_name, request, headers, runtime)
 
     def list_s3ingestions_with_options(
         self,
@@ -17059,6 +18187,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_annotation_label_with_options_async(request, headers, runtime)
 
+    def update_api_key_with_options(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.UpdateApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.allowed_stores):
+            body['allowedStores'] = request.allowed_stores
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApiKeyResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_api_key_with_options_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.UpdateApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApiKeyResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.allowed_stores):
+            body['allowedStores'] = request.allowed_stores
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApiKey',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/apikeys/{api_key_name}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApiKeyResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_api_key(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.UpdateApiKeyRequest,
+    ) -> main_models.UpdateApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_api_key_with_options(project, api_key_name, request, headers, runtime)
+
+    async def update_api_key_async(
+        self,
+        project: str,
+        api_key_name: str,
+        request: main_models.UpdateApiKeyRequest,
+    ) -> main_models.UpdateApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_api_key_with_options_async(project, api_key_name, request, headers, runtime)
+
     def update_azure_blob_ingestion_with_options(
         self,
         project: str,
@@ -19649,6 +20871,84 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_project_with_options_async(project, request, headers, runtime)
 
+    def update_resource_record_with_options(
+        self,
+        resource_name: str,
+        record_id: str,
+        request: main_models.UpdateResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResourceRecordResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records/{record_id}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateResourceRecordResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_resource_record_with_options_async(
+        self,
+        resource_name: str,
+        record_id: str,
+        request: main_models.UpdateResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResourceRecordResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records/{record_id}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateResourceRecordResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_resource_record(
+        self,
+        resource_name: str,
+        record_id: str,
+        request: main_models.UpdateResourceRecordRequest,
+    ) -> main_models.UpdateResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_resource_record_with_options(resource_name, record_id, request, headers, runtime)
+
+    async def update_resource_record_async(
+        self,
+        resource_name: str,
+        record_id: str,
+        request: main_models.UpdateResourceRecordRequest,
+    ) -> main_models.UpdateResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_resource_record_with_options_async(resource_name, record_id, request, headers, runtime)
+
     def update_saved_search_with_options(
         self,
         project: str,
@@ -20148,3 +21448,83 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.upsert_collection_policy_with_options_async(request, headers, runtime)
+
+    def upsert_resource_record_with_options(
+        self,
+        resource_name: str,
+        request: main_models.UpsertResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpsertResourceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.records):
+            body['records'] = request.records
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpsertResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpsertResourceRecordResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def upsert_resource_record_with_options_async(
+        self,
+        resource_name: str,
+        request: main_models.UpsertResourceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpsertResourceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.records):
+            body['records'] = request.records
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpsertResourceRecord',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/resources/{resource_name}/records',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpsertResourceRecordResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def upsert_resource_record(
+        self,
+        resource_name: str,
+        request: main_models.UpsertResourceRecordRequest,
+    ) -> main_models.UpsertResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.upsert_resource_record_with_options(resource_name, request, headers, runtime)
+
+    async def upsert_resource_record_async(
+        self,
+        resource_name: str,
+        request: main_models.UpsertResourceRecordRequest,
+    ) -> main_models.UpsertResourceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.upsert_resource_record_with_options_async(resource_name, request, headers, runtime)

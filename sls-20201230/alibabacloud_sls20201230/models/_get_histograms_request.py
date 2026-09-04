@@ -12,17 +12,17 @@ class GetHistogramsRequest(DaraModel):
         to: int = None,
         topic: str = None,
     ):
-        # The beginning of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
+        # The start time of the subinterval. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.from_ = from_
-        # The search statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax of search statements, see [Search syntax](https://help.aliyun.com/document_detail/43772.html).
+        # The query statement. Only query statements are supported. Analytic statements are not supported. For more information about the query syntax, see [Query syntax](https://help.aliyun.com/document_detail/43772.html).
         self.query = query
-        # The end of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
+        # The end time of the subinterval. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.to = to
-        # The topic of the log.
+        # The topic of the logs.
         self.topic = topic
 
     def validate(self):

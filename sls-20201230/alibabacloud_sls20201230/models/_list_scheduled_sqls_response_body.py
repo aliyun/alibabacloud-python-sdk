@@ -14,11 +14,11 @@ class ListScheduledSQLsResponseBody(DaraModel):
         results: List[main_models.ScheduledSQL] = None,
         total: int = None,
     ):
-        # The number of Scheduled SQL jobs returned.
+        # The number of scheduled query jobs returned in the current response.
         self.count = count
-        # The list of Scheduled SQL jobs.
+        # The list of scheduled query jobs.
         self.results = results
-        # The total number of Scheduled SQL jobs in the project.
+        # The total number of scheduled query jobs in the project.
         self.total = total
 
     def validate(self):

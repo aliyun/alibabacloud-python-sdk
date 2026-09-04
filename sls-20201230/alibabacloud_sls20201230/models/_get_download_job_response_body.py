@@ -18,9 +18,9 @@ class GetDownloadJobResponseBody(DaraModel):
     ):
         # The download configuration.
         self.configuration = configuration
-        # The time when the task was created.
+        # The creation time.
         self.create_time = create_time
-        # The description of the task.
+        # The description.
         self.description = description
         # The display name.
         self.display_name = display_name
@@ -106,17 +106,17 @@ class GetDownloadJobResponseBodyExecutionDetails(DaraModel):
     ):
         # The ETag of the file.
         self.check_sum = check_sum
-        # The error message if the download fails.
+        # The error message of the download.
         self.error_message = error_message
-        # The duration of the download task in seconds.
+        # The execution time of the download.
         self.execute_time = execute_time
-        # The URL of the download result.
+        # The download result link.
         self.file_path = file_path
-        # The size of the downloaded file in bytes.
+        # The size of the downloaded file.
         self.file_size = file_size
         # The number of downloaded log entries.
         self.log_count = log_count
-        # Notification text.
+        # The notification text.
         self.notice = notice
         # The download progress.
         self.progress = progress
@@ -196,17 +196,17 @@ class GetDownloadJobResponseBodyConfiguration(DaraModel):
     ):
         # Specifies whether to allow downloading incomplete data.
         self.allow_in_complete = allow_in_complete
-        # The start time of the download task. The value is a UNIX timestamp in seconds.
+        # The start timestamp, in seconds.
         self.from_time = from_time
         # The source Logstore.
         self.logstore = logstore
         # Specifies whether to enable PowerSQL.
         self.power_sql = power_sql
-        # The search statement.
+        # The query statement.
         self.query = query
         # The export configuration.
         self.sink = sink
-        # The end time of the download task. The value is a UNIX timestamp in seconds.
+        # The end timestamp, in seconds.
         self.to_time = to_time
 
     def validate(self):
@@ -277,17 +277,17 @@ class GetDownloadJobResponseBodyConfigurationSink(DaraModel):
         role_arn: str = None,
         type: str = None,
     ):
-        # The Object Storage Service (OSS) bucket.
+        # The OSS bucket.
         self.bucket = bucket
         # The compression format.
         self.compression_type = compression_type
-        # The file format.
+        # The format of the downloaded file.
         self.content_type = content_type
-        # The prefix of the file that is saved to the bucket.
+        # The file prefix used when downloading logs to the user\\"s bucket.
         self.prefix = prefix
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used for the download.
+        # The ARN of the RAM role used for the download.
         self.role_arn = role_arn
-        # The value is fixed to AliyunOSS.
+        # Fixed value: AliyunOSS.
         self.type = type
 
     def validate(self):

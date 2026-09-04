@@ -13,9 +13,9 @@ class ListAgentInstanceConfigsRequest(DaraModel):
     ):
         # The type of the process-level configuration.
         self.config_type = config_type
-        # The number of entries to skip. The default value is 0.
+        # The start row of the query. Default value: 0.
         self.offset = offset
-        # The number of entries to return. The default value is 500.
+        # The number of entries to return. Default value: 500.
         self.size = size
 
     def validate(self):

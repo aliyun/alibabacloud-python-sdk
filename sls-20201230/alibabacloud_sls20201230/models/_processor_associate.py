@@ -9,6 +9,8 @@ class ProcessorAssociate(DaraModel):
         self,
         processor_id: str = None,
     ):
+        # Processor ID
+        # 
         # This parameter is required.
         self.processor_id = processor_id
 
