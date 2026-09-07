@@ -1030,6 +1030,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_remake_script_job_with_options_async(request, runtime)
 
+    def get_video_detext_job_with_options(
+        self,
+        request: main_models.GetVideoDetextJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoDetextJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoDetextJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoDetextJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_detext_job_with_options_async(
+        self,
+        request: main_models.GetVideoDetextJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoDetextJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoDetextJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoDetextJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_detext_job(
+        self,
+        request: main_models.GetVideoDetextJobRequest,
+    ) -> main_models.GetVideoDetextJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_video_detext_job_with_options(request, runtime)
+
+    async def get_video_detext_job_async(
+        self,
+        request: main_models.GetVideoDetextJobRequest,
+    ) -> main_models.GetVideoDetextJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_video_detext_job_with_options_async(request, runtime)
+
     def get_video_generation_job_with_options(
         self,
         request: main_models.GetVideoGenerationJobRequest,
@@ -2027,6 +2097,92 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitRemakeScriptJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_remake_script_job_with_options_async(request, runtime)
+
+    def submit_video_detext_job_with_options(
+        self,
+        request: main_models.SubmitVideoDetextJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoDetextJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.input):
+            body['Input'] = request.input
+        if not DaraCore.is_null(request.job_parameters):
+            body['JobParameters'] = request.job_parameters
+        if not DaraCore.is_null(request.output):
+            body['Output'] = request.output
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoDetextJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoDetextJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_detext_job_with_options_async(
+        self,
+        request: main_models.SubmitVideoDetextJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoDetextJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.input):
+            body['Input'] = request.input
+        if not DaraCore.is_null(request.job_parameters):
+            body['JobParameters'] = request.job_parameters
+        if not DaraCore.is_null(request.output):
+            body['Output'] = request.output
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoDetextJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoDetextJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_detext_job(
+        self,
+        request: main_models.SubmitVideoDetextJobRequest,
+    ) -> main_models.SubmitVideoDetextJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_video_detext_job_with_options(request, runtime)
+
+    async def submit_video_detext_job_async(
+        self,
+        request: main_models.SubmitVideoDetextJobRequest,
+    ) -> main_models.SubmitVideoDetextJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_video_detext_job_with_options_async(request, runtime)
 
     def submit_video_generation_job_with_options(
         self,

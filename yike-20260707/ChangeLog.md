@@ -1,3 +1,8 @@
+2026-09-07 Version: 2.4.0
+- Support API GetVideoDetextJob.
+- Support API SubmitVideoDetextJob.
+
+
 2026-09-07 Version: 2.3.3
 - Update API BatchGetMedias: add request parameters BizConfig.
 - Update API BatchGetMedias: add request parameters ReturnDynamicMeta.
