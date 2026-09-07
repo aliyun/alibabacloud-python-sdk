@@ -10,9 +10,9 @@ class SubmitVideoTranslationJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # `data.JobId`
+        # The video translation job ID, used to call GetVideoTranslationJob to query the job.
         self.job_id = job_id
-        # `requestId`
+        # The request ID, used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
 
     def validate(self):

@@ -465,9 +465,9 @@ class BatchGetMediasResponseBodyMediaInfosFileInfoListVideoStreamInfoList(DaraMo
         self.avg_fps = avg_fps
         # The bitrate of the file.
         self.bitrate = bitrate
-        # The long name of the codec.
+        # The long name of the codec format.
         self.codec_long_name = codec_long_name
-        # The short name of the codec.
+        # The short name of the codec format.
         self.codec_name = codec_name
         # The codec tag.
         self.codec_tag = codec_tag
@@ -682,9 +682,9 @@ class BatchGetMediasResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList(Dar
         start_time: str = None,
         timebase: str = None,
     ):
-        # The long name of the codec.
+        # The long name of the codec format.
         self.codec_long_name = codec_long_name
-        # The short name of the codec.
+        # The short name of the codec format.
         self.codec_name = codec_name
         # The codec tag.
         self.codec_tag = codec_tag
@@ -925,9 +925,9 @@ class BatchGetMediasResponseBodyMediaInfosFileInfoListAudioStreamInfoList(DaraMo
         self.channel_layout = channel_layout
         # The number of audio channels.
         self.channels = channels
-        # The long name of the codec.
+        # The long name of the codec format.
         self.codec_long_name = codec_long_name
-        # The short name of the codec.
+        # The short name of the codec format.
         self.codec_name = codec_name
         # The codec tag.
         self.codec_tag = codec_tag

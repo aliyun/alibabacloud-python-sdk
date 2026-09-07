@@ -63,7 +63,7 @@ class GetImageGenerationJobResponseBodyImageGenerationJob(DaraModel):
     ):
         # The video aspect ratio.
         self.aspect_ratio = aspect_ratio
-        # The error message. This parameter is of the String type and is returned when the task is in the Failed state.
+        # The error message. This parameter is returned only when the task is in the Failed state.
         self.error_message = error_message
         # The task input.
         self.input = input

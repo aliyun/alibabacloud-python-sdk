@@ -1,3 +1,14 @@
+2026-09-07 Version: 2.3.3
+- Update API BatchGetMedias: add request parameters BizConfig.
+- Update API BatchGetMedias: add request parameters ReturnDynamicMeta.
+- Update API DeleteMedias: add request parameters BizConfig.
+- Update API GetMedia: add request parameters BizConfig.
+- Update API ImportMedia: add request parameters BizConfig.
+- Update API ImportMedia: add request parameters YikeAssetConfig.
+- Update API SearchMedia: add request parameters BizConfig.
+- Update API UpdateMedia: add request parameters BizConfig.
+
+
 2026-08-11 Version: 2.3.2
 - Update API ListInfiniteCanvases: add request parameters ProductionId.
 - Update API ListInfiniteCanvases: add request parameters WorkspaceId.

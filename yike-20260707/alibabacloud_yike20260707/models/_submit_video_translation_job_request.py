@@ -16,34 +16,27 @@ class SubmitVideoTranslationJobRequest(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
-        # The user-level idempotency key.
+        # The user-level idempotency token, up to 40 characters. If the same user submits a request with the same token, the original job is returned.
         self.client_token = client_token
-        # The job description.
+        # The job description, used to record business purposes or processing requirements.
         self.description = description
-        # The input configuration JSON string:
-        # - Video
-        # - Audio
-        # - Subtitle
-        # 
-        # <notice>Currently, only OSS addresses under the calling account are supported as input.</notice>
+        # The input configuration JSON string. You must specify either Video or VideoMediaId, but not both. You can specify at most one of Audio or AudioMediaId. Subtitle is optional.
         # 
         # This parameter is required.
         self.input = input
-        # The job parameters JSON string.
+        # The job parameters JSON string. It must contain at least SourceLanguage and TargetLanguage. You can also configure main subtitle erasure, voice translation, on-screen text translation, and final editing.
         # 
         # This parameter is required.
         self.job_parameters = job_parameters
-        # The job type. Valid values:
-        # - SubtitleTranslate
-        # - VoiceTranslate
+        # The job type. SubtitleTranslate indicates subtitle translation. VoiceTranslate indicates voice translation.
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The output configuration JSON string. The OssUri value must be a folder.
+        # The output configuration JSON string. OssUri is an optional customer OSS output directory. If not specified, a signed URL of the service-owned artifact is returned.
         self.output = output
-        # If not specified, the service generates a default title.
+        # The job title. If not specified, the service generates a default title.
         self.title = title
-        # The custom user data JSON string.
+        # The custom user data JSON string. It can contain the asynchronous notification address NotifyAddress.
         self.user_data = user_data
 
     def validate(self):

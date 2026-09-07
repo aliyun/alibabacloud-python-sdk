@@ -9,7 +9,7 @@ class GetVideoTranslationJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The task ID returned by `SubmitVideoTranslationJob`.
+        # The video translation job ID returned by SubmitVideoTranslationJob.
         # 
         # This parameter is required.
         self.job_id = job_id

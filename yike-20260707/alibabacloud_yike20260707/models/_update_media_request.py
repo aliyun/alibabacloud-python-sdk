@@ -8,6 +8,7 @@ class UpdateMediaRequest(DaraModel):
     def __init__(
         self,
         append_tags: bool = None,
+        biz_config: str = None,
         category_id: int = None,
         cover_url: str = None,
         description: str = None,
@@ -20,6 +21,7 @@ class UpdateMediaRequest(DaraModel):
     ):
         # Specifies whether to update the Tags field in append mode.
         self.append_tags = append_tags
+        self.biz_config = biz_config
         self.category_id = category_id
         # The cover image URL. This parameter is valid only for video media assets.
         self.cover_url = cover_url
@@ -31,11 +33,11 @@ class UpdateMediaRequest(DaraModel):
         self.input_url = input_url
         # The media asset ID.
         self.media_id = media_id
-        # The tags. Separate multiple tags with commas.
+        # The tags. Separate multiple tags with commas (,).
         self.media_tags = media_tags
         # The title.
         self.title = title
-        # The user data. The maximum length is 1024 bytes.
+        # The user data. Maximum length: 1024 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -48,6 +50,9 @@ class UpdateMediaRequest(DaraModel):
             result = _map
         if self.append_tags is not None:
             result['AppendTags'] = self.append_tags
+
+        if self.biz_config is not None:
+            result['BizConfig'] = self.biz_config
 
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
@@ -82,6 +87,9 @@ class UpdateMediaRequest(DaraModel):
         m = m or dict()
         if m.get('AppendTags') is not None:
             self.append_tags = m.get('AppendTags')
+
+        if m.get('BizConfig') is not None:
+            self.biz_config = m.get('BizConfig')
 
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')

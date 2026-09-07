@@ -80,15 +80,15 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         self.model = model
         # The number of generated videos.
         self.n = n
-        # The generation result. The value is a JSON string that contains the following fields:
+        # The generation result in JsonString format, which contains:
         # 
-        # Medias: a list of media information (Media objects). The Media object contains the following fields:
+        # Medias: a list of media information (Media objects). Fields of a Media object:
         # MediaId: String. The media asset ID.
         # OutputUrl: String. The media URL (with authentication string).
         self.output = output
         # The resolution.
         self.resolution = resolution
-        # The scene type. Currently, only general is supported.
+        # The scene type. Currently only general is supported.
         self.scene = scene
         # The task status. Valid values:
         # 

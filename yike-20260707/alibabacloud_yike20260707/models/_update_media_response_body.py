@@ -10,7 +10,7 @@ class UpdateMediaResponseBody(DaraModel):
         media_id: str = None,
         request_id: str = None,
     ):
-        # The ICE media asset ID.
+        # The Intelligent Cloud Editing (ICE) media asset ID.
         self.media_id = media_id
         # The request ID.
         self.request_id = request_id

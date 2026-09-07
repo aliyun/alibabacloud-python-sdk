@@ -11,9 +11,9 @@ class GetVideoTranslationJobResponseBody(DaraModel):
         job: main_models.GetVideoTranslationJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The video translation task.
+        # The video translation job.
         self.job = job
-        # The request ID.
+        # The request ID, used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -58,25 +58,25 @@ class GetVideoTranslationJobResponseBodyJob(DaraModel):
         output: str = None,
         status: str = None,
     ):
-        # The duration of the input video, in seconds.
+        # The input video duration, in seconds.
         self.duration = duration
-        # The editing project ID.
+        # The editing project ID for a single-target-language job. For multi-target-language results, retrieve the ID from Output.AiResult.ResultMap.
         self.editing_project_id = editing_project_id
-        # Optional. The error code returned when the task ultimately fails.
+        # The business error code returned when the job fails. This field is typically not returned for non-failed states.
         self.error_code = error_code
-        # Optional. The error message returned when the task ultimately fails.
+        # The business error message returned when the job fails. This field is typically not returned for non-failed states.
         self.error_message = error_message
-        # The normalized Input JSON.
+        # The normalized input configuration JSON string saved at submission time.
         self.input = input
-        # The task ID.
+        # The video translation job ID.
         self.job_id = job_id
-        # The normalized JobParameters JSON, including default values.
+        # The normalized job parameters JSON string, including default values supplemented by the service.
         self.job_parameters = job_parameters
-        # The normalized task type.
+        # The normalized job type.
         self.job_type = job_type
-        # The JSON string of the final task result.
+        # The job output JSON string. When the job succeeds, AiResult.ResultMap organizes the final video, subtitle, and audio outputs by target language.
         self.output = output
-        # The task status. Valid values: Created, Queuing, Executing, Finished, and Failed.
+        # The job status. Valid values: Created, Queuing, Executing, Finished, or Failed.
         self.status = status
 
     def validate(self):

@@ -21,10 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'yike.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'yike.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('yike', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -53,8 +49,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auth_timeout):
             query['AuthTimeout'] = request.auth_timeout
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.media_ids):
             query['MediaIds'] = request.media_ids
+        if not DaraCore.is_null(request.return_dynamic_meta):
+            query['ReturnDynamicMeta'] = request.return_dynamic_meta
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -83,8 +83,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auth_timeout):
             query['AuthTimeout'] = request.auth_timeout
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.media_ids):
             query['MediaIds'] = request.media_ids
+        if not DaraCore.is_null(request.return_dynamic_meta):
+            query['ReturnDynamicMeta'] = request.return_dynamic_meta
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -421,6 +425,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMediasResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.delete_physical_files):
             query['DeletePhysicalFiles'] = request.delete_physical_files
         if not DaraCore.is_null(request.input_urls):
@@ -453,6 +459,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMediasResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.delete_physical_files):
             query['DeletePhysicalFiles'] = request.delete_physical_files
         if not DaraCore.is_null(request.input_urls):
@@ -809,6 +817,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auth_timeout):
             query['AuthTimeout'] = request.auth_timeout
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.input_url):
             query['InputURL'] = request.input_url
         if not DaraCore.is_null(request.media_id):
@@ -841,6 +851,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auth_timeout):
             query['AuthTimeout'] = request.auth_timeout
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.input_url):
             query['InputURL'] = request.input_url
         if not DaraCore.is_null(request.media_id):
@@ -1369,6 +1381,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImportMediaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.cover_url):
@@ -1395,6 +1409,8 @@ class Client(OpenApiClient):
             query['Title'] = request.title
         if not DaraCore.is_null(request.user_data):
             query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.yike_asset_config):
+            query['YikeAssetConfig'] = request.yike_asset_config
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1421,6 +1437,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImportMediaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.cover_url):
@@ -1447,6 +1465,8 @@ class Client(OpenApiClient):
             query['Title'] = request.title
         if not DaraCore.is_null(request.user_data):
             query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.yike_asset_config):
+            query['YikeAssetConfig'] = request.yike_asset_config
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1655,6 +1675,8 @@ class Client(OpenApiClient):
     ) -> main_models.SearchMediaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.match):
@@ -1693,6 +1715,8 @@ class Client(OpenApiClient):
     ) -> main_models.SearchMediaResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.match):
@@ -2455,6 +2479,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.append_tags):
             query['AppendTags'] = request.append_tags
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.cover_url):
@@ -2501,6 +2527,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.append_tags):
             query['AppendTags'] = request.append_tags
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
         if not DaraCore.is_null(request.category_id):
             query['CategoryId'] = request.category_id
         if not DaraCore.is_null(request.cover_url):

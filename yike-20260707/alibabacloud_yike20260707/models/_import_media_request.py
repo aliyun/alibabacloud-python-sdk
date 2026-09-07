@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ImportMediaRequest(DaraModel):
     def __init__(
         self,
+        biz_config: str = None,
         category_id: int = None,
         cover_url: str = None,
         description: str = None,
@@ -20,7 +21,9 @@ class ImportMediaRequest(DaraModel):
         register_config: str = None,
         title: str = None,
         user_data: str = None,
+        yike_asset_config: str = None,
     ):
+        self.biz_config = biz_config
         self.category_id = category_id
         # The cover image URL. This parameter is valid only for video media assets.
         self.cover_url = cover_url
@@ -34,7 +37,7 @@ class ImportMediaRequest(DaraModel):
         self.import_source = import_source
         # The URL of the media asset.
         self.input_url = input_url
-        # The tags of the media asset. Separate multiple tags with commas.
+        # The tags of the media asset. Separate multiple tags with commas (,).
         self.media_tags = media_tags
         # The type of the media asset.
         self.media_type = media_type
@@ -44,8 +47,9 @@ class ImportMediaRequest(DaraModel):
         self.register_config = register_config
         # The title of the media asset.
         self.title = title
-        # The user data. The maximum size is 1024 bytes.
+        # The user data. Maximum length: 1024 bytes.
         self.user_data = user_data
+        self.yike_asset_config = yike_asset_config
 
     def validate(self):
         pass
@@ -55,6 +59,9 @@ class ImportMediaRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_config is not None:
+            result['BizConfig'] = self.biz_config
+
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
 
@@ -94,10 +101,16 @@ class ImportMediaRequest(DaraModel):
         if self.user_data is not None:
             result['UserData'] = self.user_data
 
+        if self.yike_asset_config is not None:
+            result['YikeAssetConfig'] = self.yike_asset_config
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizConfig') is not None:
+            self.biz_config = m.get('BizConfig')
+
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
 
@@ -136,6 +149,9 @@ class ImportMediaRequest(DaraModel):
 
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+
+        if m.get('YikeAssetConfig') is not None:
+            self.yike_asset_config = m.get('YikeAssetConfig')
 
         return self
 

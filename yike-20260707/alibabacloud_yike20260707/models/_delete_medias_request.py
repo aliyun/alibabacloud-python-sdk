@@ -7,15 +7,17 @@ from darabonba.model import DaraModel
 class DeleteMediasRequest(DaraModel):
     def __init__(
         self,
+        biz_config: str = None,
         delete_physical_files: bool = None,
         input_urls: str = None,
         media_ids: str = None,
     ):
+        self.biz_config = biz_config
         # Specifies whether to delete the physical files at the same time.
         self.delete_physical_files = delete_physical_files
         # Not supported.
         self.input_urls = input_urls
-        # The media asset IDs, separated by commas. Invalid IDs are added to the IgnoredList.
+        # The media asset IDs, separated by commas. Invalid IDs are added to IgnoredList.
         self.media_ids = media_ids
 
     def validate(self):
@@ -26,6 +28,9 @@ class DeleteMediasRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_config is not None:
+            result['BizConfig'] = self.biz_config
+
         if self.delete_physical_files is not None:
             result['DeletePhysicalFiles'] = self.delete_physical_files
 
@@ -39,6 +44,9 @@ class DeleteMediasRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizConfig') is not None:
+            self.biz_config = m.get('BizConfig')
+
         if m.get('DeletePhysicalFiles') is not None:
             self.delete_physical_files = m.get('DeletePhysicalFiles')
 

@@ -17,7 +17,7 @@ class SearchMediaResponseBody(DaraModel):
         success: str = None,
         total: int = None,
     ):
-        # The return code.
+        # The response code.
         self.code = code
         # The collection of media assets that meet the specified criteria.
         self.media_info_list = media_info_list
@@ -256,7 +256,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(DaraModel):
         self.category_name = category_name
         # The cover URL.
         self.cover_url = cover_url
-        # The time when the media asset was created.
+        # The creation time of the media asset.
         self.create_time = create_time
         # The content description.
         self.description = description
@@ -270,7 +270,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(DaraModel):
         self.media_tags = media_tags
         # The media type of the media asset.
         self.media_type = media_type
-        # The time when the media asset was last modified.
+        # The modification time of the media asset.
         self.modified_time = modified_time
         # The snapshots.
         self.snapshots = snapshots
@@ -495,7 +495,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(DaraModel):
         self.images_input = images_input
         # The modification time.
         self.modified_time = modified_time
-        # The storage region of the file.
+        # The file storage region.
         self.region = region
         # The width.
         self.width = width
