@@ -129,6 +129,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         disabled: int = None,
         gmt_create: int = None,
         workspace_id: str = None,
+        workspace_name: str = None,
     ):
         # API Key ID。
         self.api_key_id = api_key_id
@@ -149,6 +150,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         self.gmt_create = gmt_create
         # The workspace ID.
         self.workspace_id = workspace_id
+        self.workspace_name = workspace_name
 
     def validate(self):
         if self.auth:
@@ -183,6 +185,9 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
 
+        if self.workspace_name is not None:
+            result['workspaceName'] = self.workspace_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -211,6 +216,9 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        if m.get('workspaceName') is not None:
+            self.workspace_name = m.get('workspaceName')
 
         return self
 

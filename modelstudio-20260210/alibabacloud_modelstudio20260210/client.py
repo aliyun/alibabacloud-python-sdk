@@ -22,13 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-beijing': 'modelstudio.cn-beijing.aliyuncs.com',
-            'cn-hongkong': 'modelstudio.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'modelstudio.ap-southeast-1.aliyuncs.com',
-            'us-east-1': 'modelstudio.us-east-1.aliyuncs.com',
-            'eu-central-1': 'modelstudio.eu-central-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('modelstudio', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

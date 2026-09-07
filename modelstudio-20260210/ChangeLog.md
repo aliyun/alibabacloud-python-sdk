@@ -1,3 +1,8 @@
+2026-09-07 Version: 2.2.2
+- Update API GetApiKey: add response parameters Body.apiKey.workspaceName.
+- Update API ListApiKeys: add response parameters Body.apiKeys.$.workspaceName.
+
+
 2026-08-28 Version: 2.2.1
 - Update API ListOrganizationMembers: add response parameters Body.Data.$.PackLimitInfo.
 - Update API ListOrganizationMembers: add response parameters Body.Data.$.SubscriptionInfo.
