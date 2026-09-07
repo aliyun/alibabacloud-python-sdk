@@ -10,8 +10,12 @@ class ShareCertificateRequest(DaraModel):
         certificate_id: int = None,
         target_user_id: int = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.certificate_id = certificate_id
+        # The UID of the user with whom the certificate is shared.
+        # 
         # This parameter is required.
         self.target_user_id = target_user_id
 

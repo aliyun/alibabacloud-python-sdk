@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListInstancesRequest(DaraModel):
     def __init__(
         self,
+        auto_reissue_flag: int = None,
         brand: str = None,
         certificate_status: str = None,
         certificate_type: str = None,
@@ -14,9 +15,14 @@ class ListInstancesRequest(DaraModel):
         instance_type: str = None,
         keyword: str = None,
         resource_group_id: str = None,
+        server_deploy_flag: int = None,
         show_size: int = None,
         status: str = None,
     ):
+        # Specifies whether the instance is managed. Valid values:
+        # - 1: Managed.
+        # - 0: Not managed.
+        self.auto_reissue_flag = auto_reissue_flag
         # The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
         # The status of the certificate. Valid values:
@@ -30,23 +36,27 @@ class ListInstancesRequest(DaraModel):
         # The page number of the current page in a paged query. Default value: **1**.
         self.current_page = current_page
         # The instance type. Valid values:
-        # - BUY: official certificate.
+        # - BUY: formal certificate.
         # - TEST: test certificate.
         self.instance_type = instance_type
         # The keyword for fuzzy search. Matches domain names, instance names, or corresponding resource IDs.
         self.keyword = keyword
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # Specifies whether to return only instances that meet server deployment conditions. Valid values:
+        # - 1: Yes.
+        # - 0: No.
+        self.server_deploy_flag = server_deploy_flag
         # The number of instances to display per page in a paged query. Default value: **10**. Maximum value: **100**.
         self.show_size = show_size
         # The instance status. Valid values:
         # - **inactive**: Pending use.
         # - **pending**: Under review. The latest certificate is being reviewed.
-        # - **willExpire**: About to expire.
-        # - **expired**: Expired.
+        # - **willExpire**: The instance is about to expire.
+        # - **expired**: The instance has expired.
         # - **refund**: Refunded.
         # - **normal**: Normal.
-        # - **closed**: Closed and unavailable.
+        # - **closed**: Closed. The instance is unavailable.
         self.status = status
 
     def validate(self):
@@ -57,6 +67,9 @@ class ListInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_reissue_flag is not None:
+            result['AutoReissueFlag'] = self.auto_reissue_flag
+
         if self.brand is not None:
             result['Brand'] = self.brand
 
@@ -78,6 +91,9 @@ class ListInstancesRequest(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.server_deploy_flag is not None:
+            result['ServerDeployFlag'] = self.server_deploy_flag
+
         if self.show_size is not None:
             result['ShowSize'] = self.show_size
 
@@ -88,6 +104,9 @@ class ListInstancesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoReissueFlag') is not None:
+            self.auto_reissue_flag = m.get('AutoReissueFlag')
+
         if m.get('Brand') is not None:
             self.brand = m.get('Brand')
 
@@ -108,6 +127,9 @@ class ListInstancesRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('ServerDeployFlag') is not None:
+            self.server_deploy_flag = m.get('ServerDeployFlag')
 
         if m.get('ShowSize') is not None:
             self.show_size = m.get('ShowSize')

@@ -1,3 +1,19 @@
+2026-09-07 Version: 3.9.1
+- Update API GetInstanceDetail: add response parameters Body.AutoReissueFlag.
+- Update API GetInstanceDetail: add response parameters Body.DeploymentResourceCount.
+- Update API GetInstanceDetail: add response parameters Body.DeploymentUseCount.
+- Update API GetInstanceDetail: add response parameters Body.MonitorExpandFlag.
+- Update API GetInstanceDetail: add response parameters Body.MonitorUseCount.
+- Update API GetInstanceDetail: add response parameters Body.TotalDeploymentCount.
+- Update API GetInstanceDetail: add response parameters Body.TotalMonitorCount.
+- Update API GetInstanceDetail: add response parameters Body.VersionType.
+- Update API ListInstances: add request parameters AutoReissueFlag.
+- Update API ListInstances: add request parameters ServerDeployFlag.
+- Update API ListInstances: add response parameters Body.DisableReissueCount.
+- Update API ListInstances: add response parameters Body.EnableReissueCount.
+- Update API ListInstances: add response parameters Body.InstanceList.$.VersionType.
+
+
 2026-08-28 Version: 3.9.0
 - Support API CreateRollbackTask.
 - Support API ShareCertificate.

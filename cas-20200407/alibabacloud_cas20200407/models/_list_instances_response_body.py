@@ -11,13 +11,19 @@ class ListInstancesResponseBody(DaraModel):
     def __init__(
         self,
         current_page: int = None,
+        disable_reissue_count: int = None,
+        enable_reissue_count: int = None,
         instance_list: List[main_models.ListInstancesResponseBodyInstanceList] = None,
         request_id: str = None,
         show_size: int = None,
         total_count: int = None,
     ):
-        # The current page number in the paged query.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
+        # The number of instances for which managed renewal is not enabled.
+        self.disable_reissue_count = disable_reissue_count
+        # The number of instances for which managed renewal is enabled.
+        self.enable_reissue_count = enable_reissue_count
         # The list of instances.
         self.instance_list = instance_list
         # The request ID.
@@ -41,6 +47,12 @@ class ListInstancesResponseBody(DaraModel):
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
+        if self.disable_reissue_count is not None:
+            result['DisableReissueCount'] = self.disable_reissue_count
+
+        if self.enable_reissue_count is not None:
+            result['EnableReissueCount'] = self.enable_reissue_count
+
         result['InstanceList'] = []
         if self.instance_list is not None:
             for k1 in self.instance_list:
@@ -61,6 +73,12 @@ class ListInstancesResponseBody(DaraModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+
+        if m.get('DisableReissueCount') is not None:
+            self.disable_reissue_count = m.get('DisableReissueCount')
+
+        if m.get('EnableReissueCount') is not None:
+            self.enable_reissue_count = m.get('EnableReissueCount')
 
         self.instance_list = []
         if m.get('InstanceList') is not None:
@@ -107,19 +125,20 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         spec: str = None,
         status: str = None,
         using_product_list: List[str] = None,
+        version_type: str = None,
         wildcard_domain_count: int = None,
     ):
         # Indicates whether automatic managed renewal is enabled. Valid values:
-        # - enable: enabled.
-        # - disable: disabled.
+        # - enable: Enabled.
+        # - disable: Not enabled.
         self.auto_reissue = auto_reissue
         # The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
-        # The global certificate ID in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
-        # - For the China site: certificate ID + "-cn-hangzhou"
-        # - For the China site: certificate ID + "-ap-southeast-1"
+        # The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+        # - China site: certificate ID + "-cn-hangzhou"
+        # - International site: certificate ID + "-ap-southeast-1"
         # 
-        # For example, if the certificate ID is 123, the CertIdentifier for the China site is "123-cn-hangzhou", and the CertIdentifier for the International site is "123-ap-southeast-1".
+        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the international site is "123-ap-southeast-1".
         self.cert_identifier = cert_identifier
         # The domain name of the latest issued certificate.
         self.certificate_domain = certificate_domain
@@ -127,11 +146,11 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.certificate_id = certificate_id
         # The certificate name.
         self.certificate_name = certificate_name
-        # The end time of the latest certificate. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
+        # The end time of the latest certificate. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
         self.certificate_not_after = certificate_not_after
-        # The start time of the latest certificate. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
+        # The start time of the latest certificate. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
         self.certificate_not_before = certificate_not_before
-        # The revocation time of the latest certificate. The value is a UNIX timestamp accurate to seconds.
+        # The revocation time of the latest certificate. The value is a UNIX timestamp in seconds.
         self.certificate_revoke_time = certificate_revoke_time
         # The status of the certificate. Valid values:
         # - **issued**: Issued.
@@ -145,14 +164,14 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         self.domain = domain
         # The number of exact-match domain names.
         self.full_domain_count = full_domain_count
-        # The expiration time of the instance. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
+        # The expiration time of the instance. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
         self.instance_end_time = instance_end_time
         # The instance ID.
         self.instance_id = instance_id
-        # The start time of the instance. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
+        # The start time of the instance. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
         self.instance_start_time = instance_start_time
         # The instance type. Valid values:
-        # - BUY: official certificate.
+        # - BUY: formal certificate.
         # - TEST: test certificate.
         self.instance_type = instance_type
         # The certificate algorithm. Default value: RSA_2048. Valid values:
@@ -162,9 +181,9 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         # - **ECC_256**
         # - **SM2**
         self.key_algorithm = key_algorithm
-        # The end time of the instance purchase. The value is a UNIX timestamp accurate to seconds. Used to determine the purchase duration of the instance.
+        # The end time when the instance was purchased. The value is a UNIX timestamp in seconds. This value is used to determine the purchase duration of the instance.
         self.order_end_time = order_end_time
-        # The start time of the instance purchase. The value is a UNIX timestamp accurate to seconds. Used to determine the refund time limit.
+        # The start time when the instance was purchased. The value is a UNIX timestamp in seconds. This value is used to determine the refund time limit.
         self.order_start_time = order_start_time
         # The result returned by the CA during the last certificate operation.
         self.pending_result = pending_result
@@ -175,14 +194,20 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         # The instance status. Valid values:
         # - **inactive**: Pending use.
         # - **pending**: Under review. The latest certificate is being reviewed.
-        # - **willExpire**: About to expire.
-        # - **expired**: Expired.
+        # - **willExpire**: The instance is about to expire.
+        # - **expired**: The instance has expired.
         # - **refund**: Refunded.
         # - **normal**: Normal.
-        # - **closed**: Closed and unavailable.
+        # - **closed**: Closed. The instance is unavailable.
         self.status = status
         # The list of cloud services to which the latest certificate is deployed.
         self.using_product_list = using_product_list
+        # The version type. Valid values:
+        # - basic: Basic Edition.
+        # - standard: Standard Edition.
+        # - professional: Professional Edition.
+        # - ultimate: Ultimate Edition.
+        self.version_type = version_type
         # The number of wildcard domain names.
         self.wildcard_domain_count = wildcard_domain_count
 
@@ -269,6 +294,9 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
         if self.using_product_list is not None:
             result['UsingProductList'] = self.using_product_list
 
+        if self.version_type is not None:
+            result['VersionType'] = self.version_type
+
         if self.wildcard_domain_count is not None:
             result['WildcardDomainCount'] = self.wildcard_domain_count
 
@@ -350,6 +378,9 @@ class ListInstancesResponseBodyInstanceList(DaraModel):
 
         if m.get('UsingProductList') is not None:
             self.using_product_list = m.get('UsingProductList')
+
+        if m.get('VersionType') is not None:
+            self.version_type = m.get('VersionType')
 
         if m.get('WildcardDomainCount') is not None:
             self.wildcard_domain_count = m.get('WildcardDomainCount')

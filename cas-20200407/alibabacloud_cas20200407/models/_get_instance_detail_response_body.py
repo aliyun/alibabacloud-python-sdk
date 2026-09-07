@@ -11,6 +11,7 @@ class GetInstanceDetailResponseBody(DaraModel):
     def __init__(
         self,
         auto_reissue: str = None,
+        auto_reissue_flag: int = None,
         average_waiting_time: str = None,
         brand: str = None,
         cert_identifier: str = None,
@@ -26,6 +27,8 @@ class GetInstanceDetailResponseBody(DaraModel):
         contact_id_list: List[int] = None,
         country_code: str = None,
         csr: str = None,
+        deployment_resource_count: int = None,
+        deployment_use_count: int = None,
         ding_group_list: List[main_models.GetInstanceDetailResponseBodyDingGroupList] = None,
         domain: str = None,
         domain_validation_list: List[main_models.GetInstanceDetailResponseBodyDomainValidationList] = None,
@@ -36,6 +39,8 @@ class GetInstanceDetailResponseBody(DaraModel):
         instance_start_time: int = None,
         instance_type: str = None,
         key_algorithm: str = None,
+        monitor_expand_flag: int = None,
+        monitor_use_count: int = None,
         order_end_time: int = None,
         order_start_time: int = None,
         pending_result: str = None,
@@ -45,26 +50,34 @@ class GetInstanceDetailResponseBody(DaraModel):
         spec: str = None,
         status: str = None,
         tags: List[main_models.GetInstanceDetailResponseBodyTags] = None,
+        total_deployment_count: int = None,
+        total_monitor_count: int = None,
         upgrade_status: str = None,
         validation_method: str = None,
+        version_type: str = None,
         wildcard_domain_count: int = None,
     ):
-        # Indicates whether automatic managed renewal is enabled. Valid values:
+        # Indicates whether automatic hosting is enabled. Valid values:
         # - enable: Enabled.
-        # - disable: Disabled.
+        # - disable: Not enabled.
         self.auto_reissue = auto_reissue
+        # Indicates whether the current version includes automatic hosting. Valid values:
+        # - 1: Included.
+        # - 0: Not included.
+        self.auto_reissue_flag = auto_reissue_flag
         # The average waiting time for issuing a certificate of this specification. Unit: seconds.
         self.average_waiting_time = average_waiting_time
         # The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
         # The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
-        #   --For the China site, the format is certificate ID + "-cn-hangzhou".
-        # For the China site, the format is certificate ID + "-ap-southeast-1".
-        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
+        # - China site: certificate ID + "-cn-hangzhou"
+        # - International site: certificate ID + "-ap-southeast-1"
+        # 
+        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the International site is "123-ap-southeast-1".
         self.cert_identifier = cert_identifier
         # The certificate ID.
         self.certificate_id = certificate_id
-        # The name of the instance. When a certificate is issued, this name is used as the default certificate name.
+        # The name of the instance. When a certificate is issued, this name is used as the default name of the certificate.
         self.certificate_name = certificate_name
         # The end time of the latest certificate, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
         self.certificate_not_after = certificate_not_after
@@ -73,10 +86,10 @@ class GetInstanceDetailResponseBody(DaraModel):
         # The revocation time of the latest certificate, in UNIX timestamp format. The value is accurate to the second.
         self.certificate_revoke_time = certificate_revoke_time
         # The status of the certificate. Valid values:
-        # - **issued**: issued.
-        # - **revoked**: revoked.
-        # - **willExpire**: about to expire.
-        # - **expired**: expired.
+        # - **issued**: Issued.
+        # - **revoked**: Revoked.
+        # - **willExpire**: About to expire.
+        # - **expired**: Expired.
         self.certificate_status = certificate_status
         # The type of the certificate. Valid values: DV, OV, and EV.
         self.certificate_type = certificate_type
@@ -90,17 +103,21 @@ class GetInstanceDetailResponseBody(DaraModel):
         self.country_code = country_code
         # The certificate signing request in PEM format.
         self.csr = csr
+        # The number of cloud resources to which the certificate has been deployed.
+        self.deployment_resource_count = deployment_resource_count
+        # The used quota for cloud server deployment.
+        self.deployment_use_count = deployment_use_count
         # The list of associated expert service DingTalk groups.
         self.ding_group_list = ding_group_list
         # The domain name bound to the certificate.
         self.domain = domain
-        # The list of domain validations.
+        # The list of domain names to be validated.
         self.domain_validation_list = domain_validation_list
         # The number of exact-match domain names.
         self.full_domain_count = full_domain_count
-        # The CSR generation method. Valid values:
-        # - online: system-generated. The Csr field is ignored.
-        # - upload: user-uploaded. The Csr field is required.
+        # The method used to generate the certificate signing request. Valid values:
+        # - online: System-generated. The Csr field is ignored.
+        # - upload: User-uploaded. The Csr field is required.
         self.generate_csr_method = generate_csr_method
         # The expiration time of the instance, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
         self.instance_end_time = instance_end_time
@@ -109,8 +126,8 @@ class GetInstanceDetailResponseBody(DaraModel):
         # The start time of the instance, in UNIX timestamp format. This value is empty if no certificate has been issued. The value is accurate to the second.
         self.instance_start_time = instance_start_time
         # The instance type. Valid values:
-        # - **BUY**: formal certificate.
-        # - **TEST**: test certificate.
+        # - BUY: official certificate
+        # - TEST: test certificate
         self.instance_type = instance_type
         # The certificate algorithm. Valid values:
         # - **RSA_2048**
@@ -119,43 +136,55 @@ class GetInstanceDetailResponseBody(DaraModel):
         # - **ECC_256**
         # - **SM2**
         self.key_algorithm = key_algorithm
-        # The end time of the instance purchase, in UNIX timestamp format. This value is used to determine the purchase duration of the instance.
+        # Indicates whether the domain name monitoring quota can be expanded. Valid values:
+        # - 1: Yes.
+        # - 0: No.
+        self.monitor_expand_flag = monitor_expand_flag
+        # The used quota for domain name monitoring.
+        self.monitor_use_count = monitor_use_count
+        # The end time of the instance at the time of purchase, in UNIX timestamp format. This value is used to determine the purchase duration of the instance.
         self.order_end_time = order_end_time
-        # The start time of the instance purchase, in UNIX timestamp format. This value is used to determine the refund time limit. The value is accurate to the second.
+        # The start time of the instance at the time of purchase, in UNIX timestamp format. This value is used to determine the refund time limit. The value is accurate to the second.
         self.order_start_time = order_start_time
-        # The result returned by the certification authority (CA) during the last certificate operation.
+        # The result returned by the CA during the last certificate operation.
         self.pending_result = pending_result
         # The province or region where the company is located. This field is required when generating a certificate signing request. Default value: Beijing.
         self.province = province
-        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The purchased instance specification.
         self.spec = spec
         # The instance status. Valid values:
-        # - **inactive**: pending use.
-        # - **pending**: under review. The latest certificate is being reviewed.
-        # - **willExpire**: the instance is about to expire.
-        # - **expired**: the instance has expired.
-        # - **refund**: refunded.
-        # - **normal**: normal.
-        # - **closed**: closed and unavailable.
+        # - **inactive**: Pending use.
+        # - **pending**: Under review. The latest certificate is being reviewed.
+        # - **willExpire**: The instance is about to expire.
+        # - **expired**: The instance has expired.
+        # - **refund**: Refunded.
+        # - **normal**: Normal.
+        # - **closed**: Closed. The instance cannot be used.
         self.status = status
         # The list of tags.
         self.tags = tags
+        # The total quota for cloud server deployment.
+        self.total_deployment_count = total_deployment_count
+        # The total quota for domain name monitoring.
+        self.total_monitor_count = total_monitor_count
         # The upgrade status of the instance. Valid values:
         # 
-        # - none: the instance has not been upgraded.
+        # - none: The instance has not been upgraded.
         # 
-        # - payed: the instance upgrade has been paid.
+        # - payed: The instance upgrade has been paid.
         # 
-        # - issued: the latest certificate has been issued after the instance upgrade.
+        # - issued: The latest certificate has been issued for the instance upgrade.
         self.upgrade_status = upgrade_status
-        # The certificate validation method. Valid values:
-        # - DNS: DNS validation, using TXT or CNAME.
-        # - HTTP: file-based validation.
+        # The validation method for the certificate application. Valid values:
+        # - DNS: DNS validation, using TXT or CNAME records.
+        # - HTTP: File-based validation.
         self.validation_method = validation_method
+        # The version type. Valid values: FOTA: system upgrade. APP: application upgrade.
+        self.version_type = version_type
         # The number of wildcard domain names.
         self.wildcard_domain_count = wildcard_domain_count
 
@@ -180,6 +209,9 @@ class GetInstanceDetailResponseBody(DaraModel):
             result = _map
         if self.auto_reissue is not None:
             result['AutoReissue'] = self.auto_reissue
+
+        if self.auto_reissue_flag is not None:
+            result['AutoReissueFlag'] = self.auto_reissue_flag
 
         if self.average_waiting_time is not None:
             result['AverageWaitingTime'] = self.average_waiting_time
@@ -226,6 +258,12 @@ class GetInstanceDetailResponseBody(DaraModel):
         if self.csr is not None:
             result['Csr'] = self.csr
 
+        if self.deployment_resource_count is not None:
+            result['DeploymentResourceCount'] = self.deployment_resource_count
+
+        if self.deployment_use_count is not None:
+            result['DeploymentUseCount'] = self.deployment_use_count
+
         result['DingGroupList'] = []
         if self.ding_group_list is not None:
             for k1 in self.ding_group_list:
@@ -260,6 +298,12 @@ class GetInstanceDetailResponseBody(DaraModel):
         if self.key_algorithm is not None:
             result['KeyAlgorithm'] = self.key_algorithm
 
+        if self.monitor_expand_flag is not None:
+            result['MonitorExpandFlag'] = self.monitor_expand_flag
+
+        if self.monitor_use_count is not None:
+            result['MonitorUseCount'] = self.monitor_use_count
+
         if self.order_end_time is not None:
             result['OrderEndTime'] = self.order_end_time
 
@@ -289,11 +333,20 @@ class GetInstanceDetailResponseBody(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.total_deployment_count is not None:
+            result['TotalDeploymentCount'] = self.total_deployment_count
+
+        if self.total_monitor_count is not None:
+            result['TotalMonitorCount'] = self.total_monitor_count
+
         if self.upgrade_status is not None:
             result['UpgradeStatus'] = self.upgrade_status
 
         if self.validation_method is not None:
             result['ValidationMethod'] = self.validation_method
+
+        if self.version_type is not None:
+            result['VersionType'] = self.version_type
 
         if self.wildcard_domain_count is not None:
             result['WildcardDomainCount'] = self.wildcard_domain_count
@@ -304,6 +357,9 @@ class GetInstanceDetailResponseBody(DaraModel):
         m = m or dict()
         if m.get('AutoReissue') is not None:
             self.auto_reissue = m.get('AutoReissue')
+
+        if m.get('AutoReissueFlag') is not None:
+            self.auto_reissue_flag = m.get('AutoReissueFlag')
 
         if m.get('AverageWaitingTime') is not None:
             self.average_waiting_time = m.get('AverageWaitingTime')
@@ -350,6 +406,12 @@ class GetInstanceDetailResponseBody(DaraModel):
         if m.get('Csr') is not None:
             self.csr = m.get('Csr')
 
+        if m.get('DeploymentResourceCount') is not None:
+            self.deployment_resource_count = m.get('DeploymentResourceCount')
+
+        if m.get('DeploymentUseCount') is not None:
+            self.deployment_use_count = m.get('DeploymentUseCount')
+
         self.ding_group_list = []
         if m.get('DingGroupList') is not None:
             for k1 in m.get('DingGroupList'):
@@ -386,6 +448,12 @@ class GetInstanceDetailResponseBody(DaraModel):
         if m.get('KeyAlgorithm') is not None:
             self.key_algorithm = m.get('KeyAlgorithm')
 
+        if m.get('MonitorExpandFlag') is not None:
+            self.monitor_expand_flag = m.get('MonitorExpandFlag')
+
+        if m.get('MonitorUseCount') is not None:
+            self.monitor_use_count = m.get('MonitorUseCount')
+
         if m.get('OrderEndTime') is not None:
             self.order_end_time = m.get('OrderEndTime')
 
@@ -416,11 +484,20 @@ class GetInstanceDetailResponseBody(DaraModel):
                 temp_model = main_models.GetInstanceDetailResponseBodyTags()
                 self.tags.append(temp_model.from_map(k1))
 
+        if m.get('TotalDeploymentCount') is not None:
+            self.total_deployment_count = m.get('TotalDeploymentCount')
+
+        if m.get('TotalMonitorCount') is not None:
+            self.total_monitor_count = m.get('TotalMonitorCount')
+
         if m.get('UpgradeStatus') is not None:
             self.upgrade_status = m.get('UpgradeStatus')
 
         if m.get('ValidationMethod') is not None:
             self.validation_method = m.get('ValidationMethod')
+
+        if m.get('VersionType') is not None:
+            self.version_type = m.get('VersionType')
 
         if m.get('WildcardDomainCount') is not None:
             self.wildcard_domain_count = m.get('WildcardDomainCount')
@@ -487,7 +564,7 @@ class GetInstanceDetailResponseBodyDomainValidationList(DaraModel):
         self.validation_key = validation_key
         # The validation type. Valid values: TXT, HTTP, and CNAME.
         self.validation_type = validation_type
-        # The validation host record value.
+        # The host record value for validation.
         self.validation_value = validation_value
 
     def validate(self):
@@ -559,8 +636,8 @@ class GetInstanceDetailResponseBodyDingGroupList(DaraModel):
         # The name of the expert service DingTalk group.
         self.ding_group_name = ding_group_name
         # The type of the expert service DingTalk group. Valid values:
-        # - expedite: application assistance.
-        # - remote: offline deployment.
+        # - expedite: application assistance
+        # - remote: offline deployment
         self.ding_group_type = ding_group_type
         # The URL for joining the expert service DingTalk group.
         self.ding_group_url = ding_group_url
