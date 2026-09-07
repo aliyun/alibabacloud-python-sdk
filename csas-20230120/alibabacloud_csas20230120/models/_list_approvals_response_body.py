@@ -92,6 +92,11 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         self.approval_id = approval_id
         # The list of approval progress nodes.
         self.approval_progresses = approval_progresses
+        # The approval type. Valid values:
+        # * 0: built-in approval.
+        # * 1: DingTalk approval.
+        # * 2: WeCom approval.
+        # * 3: Lark approval.
         self.approval_type = approval_type
         # The time when the approval instance was created.
         self.create_time = create_time
@@ -103,17 +108,24 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         self.creator_user_id = creator_user_id
         # The username of the approval instance creator.
         self.creator_username = creator_username
-        # The effective status of the report. Enabled indicates that the report is effective. Expired indicates that the report has expired.
+        # The filing effective status. An empty string is returned when the approval status is not Approved. Valid values:
+        # * Enabled: effective.
+        # * Expired: expired or reached the expiration date.
         self.effect_status = effect_status
-        # The expiration time of the approval instance. The value is a UNIX timestamp in seconds.
+        # The filing deadline. The value is a UNIX timestamp in seconds. The value 0 is returned when ValidityType is set to Permanent.
         self.end_timestamp = end_timestamp
-        # The type of the policy associated with the approval instance. Valid values:
-        # - **DomainBlacklist**: domain name blacklist.
-        # - **DomainWhitelist**: domain name whitelist.
-        # - **SoftwareBlock**: software blocking.
-        # - **AppUninstall**: terminal uninstallation.
-        # - **DlpSend**: file outgoing.
-        # - **PeripheralBlock**: peripheral control.
+        # The policy type associated with the approval instance. Valid values:
+        # - **DomainBlacklist**: Domain name blacklist.
+        # - **DomainWhitelist**: Domain name whitelist.
+        # - **SoftwareBlock**: Software blocking.
+        # - **DeviceRegistration**: Excess registration.
+        # - **AppUninstall**: Endpoint uninstallation.
+        # - **DlpSend**: File outbound transfer.
+        # - **PeripheralBlock**: Peripheral control.
+        # - **EndpointHardening**: Endpoint hardening.
+        # - **oftwareHardening**: Software hardening.
+        # - **AiAgentBlock**: AI Agent control.
+        # - **PrivateAccessBlock**: Internal network access.
         self.policy_type = policy_type
         # The ID of the process associated with the approval instance.
         self.process_id = process_id
@@ -121,7 +133,9 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         self.process_name = process_name
         # The reason for creating the approval instance.
         self.reason = reason
-        # The report type. ApprovalReport indicates an approval report. BackendReport indicates a backend report.
+        # The filing type. Valid values:
+        # * ApprovalReport: approval filing.
+        # * BackendReport: backend filing.
         self.report_type = report_type
         # The content of the template associated with the approval instance.
         self.schema_content = schema_content
@@ -129,9 +143,15 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         self.schema_id = schema_id
         # The name of the template associated with the approval instance.
         self.schema_name = schema_name
-        # The approval instance status. Valid values:
+        # The instance status of the approval. Valid values:
+        # - **Pending**: Pending approval.
+        # - **Approved**: Approved.
+        # - **Rejected**: Denied.
+        # - **Revoked**: Revoked.
+        # - **Expired**: Expired.
+        # - **Deleted**: Deleted.
         self.status = status
-        # The validity duration type. When the value is Permanent, EndTimestamp returns 0.
+        # The validity duration type. Valid values: FixedTime, Permanent.
         self.validity_type = validity_type
 
     def validate(self):
@@ -305,8 +325,12 @@ class ListApprovalsResponseBodyApprovalsApprovalProgresses(DaraModel):
         # The list of operators for the approval progress node.
         self.operators = operators
         # The status of the approval progress node. Valid values:
+        # - **Pending**: Pending approval.
+        # - **Approved**: Approved.
+        # - **Rejected**: Rejected.
+        # - **Revoked**: Revoked.
         self.status = status
-        # The time when the action was performed on the approval progress node. The value is a UNIX timestamp in seconds.
+        # The time when the approval progress node was executed. The value is a UNIX timestamp in seconds.
         self.timestamp = timestamp
 
     def validate(self):

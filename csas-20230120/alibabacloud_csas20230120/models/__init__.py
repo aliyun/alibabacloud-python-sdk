@@ -76,6 +76,9 @@ from ._create_approval_process_request import CreateApprovalProcessRequest
 from ._create_approval_process_shrink_request import CreateApprovalProcessShrinkRequest
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBody
 from ._create_approval_process_response import CreateApprovalProcessResponse
+from ._create_backend_report_request import CreateBackendReportRequest
+from ._create_backend_report_response_body import CreateBackendReportResponseBody
+from ._create_backend_report_response import CreateBackendReportResponse
 from ._create_client_user_request import CreateClientUserRequest
 from ._create_client_user_response_body import CreateClientUserResponseBody
 from ._create_client_user_response import CreateClientUserResponse
@@ -366,6 +369,9 @@ from ._get_wm_extract_task_response import GetWmExtractTaskResponse
 from ._import_enterprise_accelerate_targets_request import ImportEnterpriseAccelerateTargetsRequest
 from ._import_enterprise_accelerate_targets_response_body import ImportEnterpriseAccelerateTargetsResponseBody
 from ._import_enterprise_accelerate_targets_response import ImportEnterpriseAccelerateTargetsResponse
+from ._invalidate_approval_request import InvalidateApprovalRequest
+from ._invalidate_approval_response_body import InvalidateApprovalResponseBody
+from ._invalidate_approval_response import InvalidateApprovalResponse
 from ._list_applications_for_private_access_policy_request import ListApplicationsForPrivateAccessPolicyRequest
 from ._list_applications_for_private_access_policy_response_body import ListApplicationsForPrivateAccessPolicyResponseBody
 from ._list_applications_for_private_access_policy_response import ListApplicationsForPrivateAccessPolicyResponse
@@ -446,6 +452,9 @@ from ._list_idp_departments_response import ListIdpDepartmentsResponse
 from ._list_nac_user_cert_request import ListNacUserCertRequest
 from ._list_nac_user_cert_response_body import ListNacUserCertResponseBody
 from ._list_nac_user_cert_response import ListNacUserCertResponse
+from ._list_net_bandwidth_request import ListNetBandwidthRequest
+from ._list_net_bandwidth_response_body import ListNetBandwidthResponseBody
+from ._list_net_bandwidth_response import ListNetBandwidthResponse
 from ._list_operation_audit_logs_request import ListOperationAuditLogsRequest
 from ._list_operation_audit_logs_response_body import ListOperationAuditLogsResponseBody
 from ._list_operation_audit_logs_response import ListOperationAuditLogsResponse
@@ -741,6 +750,10 @@ from ._create_approval_process_response_body import CreateApprovalProcessRespons
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcess
+from ._create_backend_report_request import CreateBackendReportRequestReportObjects
+from ._create_backend_report_request import CreateBackendReportRequestTargets
+from ._create_backend_report_response_body import CreateBackendReportResponseBodyItemsTarget
+from ._create_backend_report_response_body import CreateBackendReportResponseBodyItems
 from ._create_connector_response_body import CreateConnectorResponseBodyConnectorUpgradeTime
 from ._create_connector_response_body import CreateConnectorResponseBodyConnector
 from ._create_forward_strategy_response_body import CreateForwardStrategyResponseBodyForwardStrategy
@@ -945,6 +958,7 @@ from ._list_idp_configs_response_body import ListIdpConfigsResponseBodyData
 from ._list_idp_departments_response_body import ListIdpDepartmentsResponseBodyDataDataList
 from ._list_idp_departments_response_body import ListIdpDepartmentsResponseBodyData
 from ._list_nac_user_cert_response_body import ListNacUserCertResponseBodyDataList
+from ._list_net_bandwidth_response_body import ListNetBandwidthResponseBodyNetBandwidthList
 from ._list_operation_audit_logs_response_body import ListOperationAuditLogsResponseBodyLogs
 from ._list_polices_for_private_access_application_response_body import ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes
 from ._list_polices_for_private_access_application_response_body import ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies
@@ -1202,6 +1216,9 @@ __all__ = [
     CreateApprovalProcessShrinkRequest,
     CreateApprovalProcessResponseBody,
     CreateApprovalProcessResponse,
+    CreateBackendReportRequest,
+    CreateBackendReportResponseBody,
+    CreateBackendReportResponse,
     CreateClientUserRequest,
     CreateClientUserResponseBody,
     CreateClientUserResponse,
@@ -1492,6 +1509,9 @@ __all__ = [
     ImportEnterpriseAccelerateTargetsRequest,
     ImportEnterpriseAccelerateTargetsResponseBody,
     ImportEnterpriseAccelerateTargetsResponse,
+    InvalidateApprovalRequest,
+    InvalidateApprovalResponseBody,
+    InvalidateApprovalResponse,
     ListApplicationsForPrivateAccessPolicyRequest,
     ListApplicationsForPrivateAccessPolicyResponseBody,
     ListApplicationsForPrivateAccessPolicyResponse,
@@ -1572,6 +1592,9 @@ __all__ = [
     ListNacUserCertRequest,
     ListNacUserCertResponseBody,
     ListNacUserCertResponse,
+    ListNetBandwidthRequest,
+    ListNetBandwidthResponseBody,
+    ListNetBandwidthResponse,
     ListOperationAuditLogsRequest,
     ListOperationAuditLogsResponseBody,
     ListOperationAuditLogsResponse,
@@ -1867,6 +1890,10 @@ __all__ = [
     CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies,
     CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies,
     CreateApprovalProcessResponseBodyProcess,
+    CreateBackendReportRequestReportObjects,
+    CreateBackendReportRequestTargets,
+    CreateBackendReportResponseBodyItemsTarget,
+    CreateBackendReportResponseBodyItems,
     CreateConnectorResponseBodyConnectorUpgradeTime,
     CreateConnectorResponseBodyConnector,
     CreateForwardStrategyResponseBodyForwardStrategy,
@@ -2071,6 +2098,7 @@ __all__ = [
     ListIdpDepartmentsResponseBodyDataDataList,
     ListIdpDepartmentsResponseBodyData,
     ListNacUserCertResponseBodyDataList,
+    ListNetBandwidthResponseBodyNetBandwidthList,
     ListOperationAuditLogsResponseBodyLogs,
     ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCustomUserAttributes,
     ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPolicies,

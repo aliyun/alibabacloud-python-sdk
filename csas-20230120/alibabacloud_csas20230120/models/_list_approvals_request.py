@@ -31,9 +31,9 @@ class ListApprovalsRequest(DaraModel):
     ):
         # The collection of approval instance IDs.
         self.approval_ids = approval_ids
-        # The end time for approval instance creation, in seconds-level timestamp.
+        # The end time for querying approval instance creation, in seconds-level timestamp.
         self.create_end_time = create_end_time
-        # The start time for approval instance creation, in seconds-level timestamp.
+        # The start time for querying approval instance creation, in seconds-level timestamp.
         self.create_start_time = create_start_time
         # The department of the approval instance creator.
         self.creator_department = creator_department
@@ -47,7 +47,9 @@ class ListApprovalsRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The list of report effective statuses. Valid values: Enabled, Expired.
+        # The list of report effective statuses, serialized in Flat format. Duplicate values are not allowed. Only records with an approval status of Approved are matched. Valid values:
+        # * Enabled: effective.
+        # * Expired: expired or invalidated.
         self.effect_statuses = effect_statuses
         # The ID of the approval instance operator.
         self.operator_user_id = operator_user_id
@@ -58,12 +60,21 @@ class ListApprovalsRequest(DaraModel):
         # This parameter is required.
         self.page_size = page_size
         # The adaptation policy type. Valid values:
+        # - **DomainBlacklist**: Domain name blacklist.
+        # - **DomainWhitelist**: Domain name whitelist.
+        # - **SoftwareBlock**: Software blocking.
+        # - **AppUninstall**: Agent uninstallation.
+        # - **DlpSend**: File outbound transfer.
+        # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
         # The associated approval process ID.
         self.process_id = process_id
         # The associated approval process name.
         self.process_name = process_name
-        # The list of report types. If not specified, only ApprovalReport is queried.
+        # The list of report types, serialized in Flat format. Duplicate values are not allowed. Valid values:
+        # * ApprovalReport: approval report.
+        # * BackendReport: backend report.
+        # If not specified, only ApprovalReport is queried by default.
         self.report_types = report_types
         # The associated approval template ID.
         self.schema_id = schema_id

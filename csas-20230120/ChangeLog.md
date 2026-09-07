@@ -1,3 +1,8 @@
+2026-09-07 Version: 1.24.0
+- Support API CreateBackendReport.
+- Support API InvalidateApproval.
+
+
 2026-08-30 Version: 1.22.0
 - Support API BindSaseUserTag.
 - Support API CreateSaseUserTag.

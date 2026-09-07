@@ -993,6 +993,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_approval_process_with_options_async(request, runtime)
 
+    def create_backend_report_with_options(
+        self,
+        request: main_models.CreateBackendReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBackendReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_timestamp):
+            body['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not DaraCore.is_null(request.reason):
+            body['Reason'] = request.reason
+        body_flat = {}
+        if not DaraCore.is_null(request.report_objects):
+            body_flat['ReportObjects'] = request.report_objects
+        if not DaraCore.is_null(request.targets):
+            body_flat['Targets'] = request.targets
+        if not DaraCore.is_null(request.validity_type):
+            body['ValidityType'] = request.validity_type
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBackendReport',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBackendReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_backend_report_with_options_async(
+        self,
+        request: main_models.CreateBackendReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBackendReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_timestamp):
+            body['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        if not DaraCore.is_null(request.reason):
+            body['Reason'] = request.reason
+        body_flat = {}
+        if not DaraCore.is_null(request.report_objects):
+            body_flat['ReportObjects'] = request.report_objects
+        if not DaraCore.is_null(request.targets):
+            body_flat['Targets'] = request.targets
+        if not DaraCore.is_null(request.validity_type):
+            body['ValidityType'] = request.validity_type
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBackendReport',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBackendReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_backend_report(
+        self,
+        request: main_models.CreateBackendReportRequest,
+    ) -> main_models.CreateBackendReportResponse:
+        runtime = RuntimeOptions()
+        return self.create_backend_report_with_options(request, runtime)
+
+    async def create_backend_report_async(
+        self,
+        request: main_models.CreateBackendReportRequest,
+    ) -> main_models.CreateBackendReportResponse:
+        runtime = RuntimeOptions()
+        return await self.create_backend_report_with_options_async(request, runtime)
+
     def create_client_user_with_options(
         self,
         request: main_models.CreateClientUserRequest,
@@ -8657,6 +8751,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.import_enterprise_accelerate_targets_with_options_async(request, runtime)
 
+    def invalidate_approval_with_options(
+        self,
+        request: main_models.InvalidateApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InvalidateApprovalResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.approval_id):
+            body['ApprovalId'] = request.approval_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvalidateApproval',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvalidateApprovalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invalidate_approval_with_options_async(
+        self,
+        request: main_models.InvalidateApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InvalidateApprovalResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.approval_id):
+            body['ApprovalId'] = request.approval_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvalidateApproval',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvalidateApprovalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invalidate_approval(
+        self,
+        request: main_models.InvalidateApprovalRequest,
+    ) -> main_models.InvalidateApprovalResponse:
+        runtime = RuntimeOptions()
+        return self.invalidate_approval_with_options(request, runtime)
+
+    async def invalidate_approval_async(
+        self,
+        request: main_models.InvalidateApprovalRequest,
+    ) -> main_models.InvalidateApprovalResponse:
+        runtime = RuntimeOptions()
+        return await self.invalidate_approval_with_options_async(request, runtime)
+
     def list_applications_for_private_access_policy_with_options(
         self,
         request: main_models.ListApplicationsForPrivateAccessPolicyRequest,
@@ -10546,6 +10710,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListNacUserCertResponse:
         runtime = RuntimeOptions()
         return await self.list_nac_user_cert_with_options_async(request, runtime)
+
+    def list_net_bandwidth_with_options(
+        self,
+        request: main_models.ListNetBandwidthRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNetBandwidthResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.net_type):
+            query['NetType'] = request.net_type
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNetBandwidth',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNetBandwidthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_net_bandwidth_with_options_async(
+        self,
+        request: main_models.ListNetBandwidthRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNetBandwidthResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.net_type):
+            query['NetType'] = request.net_type
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNetBandwidth',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNetBandwidthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_net_bandwidth(
+        self,
+        request: main_models.ListNetBandwidthRequest,
+    ) -> main_models.ListNetBandwidthResponse:
+        runtime = RuntimeOptions()
+        return self.list_net_bandwidth_with_options(request, runtime)
+
+    async def list_net_bandwidth_async(
+        self,
+        request: main_models.ListNetBandwidthRequest,
+    ) -> main_models.ListNetBandwidthResponse:
+        runtime = RuntimeOptions()
+        return await self.list_net_bandwidth_with_options_async(request, runtime)
 
     def list_operation_audit_logs_with_options(
         self,

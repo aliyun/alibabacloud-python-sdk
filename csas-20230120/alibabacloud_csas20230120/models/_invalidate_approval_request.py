@@ -4,14 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetApprovalRequest(DaraModel):
+class InvalidateApprovalRequest(DaraModel):
     def __init__(
         self,
         approval_id: str = None,
     ):
-        # The approval instance ID. You can obtain the value from the following operations:
-        # - [ListApprovals](~~ListApprovals~~): Lists approval instances.
-        # - [GetApproval](~~GetApproval~~): Queries the details of an approval instance.
+        # The ID of the approval instance to immediately invalidate. You can call ListApprovals to query approval instance IDs. Only one approval instance ID under the current Alibaba Cloud account can be specified per request.
         # 
         # This parameter is required.
         self.approval_id = approval_id

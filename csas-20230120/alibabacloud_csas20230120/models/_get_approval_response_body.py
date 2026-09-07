@@ -13,7 +13,7 @@ class GetApprovalResponseBody(DaraModel):
         approval: List[main_models.GetApprovalResponseBodyApproval] = None,
         request_id: str = None,
     ):
-        # The approval instance.
+        # The approval details list, which typically contains one record.
         self.approval = approval
         # The request ID.
         self.request_id = request_id
@@ -83,23 +83,31 @@ class GetApprovalResponseBodyApproval(DaraModel):
         self.approval_detail = approval_detail
         # The approval instance ID.
         self.approval_id = approval_id
-        # The list of approval progress nodes.
+        # The approval progress list. For backend reports without approval nodes, an empty array is returned.
         self.approval_progresses = approval_progresses
+        # The approval type. Valid values:
+        # * 0: built-in approval.
+        # * 1: DingTalk approval.
+        # * 2: WeCom approval.
+        # * 3: Lark approval.
         self.approval_type = approval_type
-        # The backend report details. This parameter is returned only when ReportType is set to BackendReport.
+        # The backend report details. This value is returned only when ReportType is set to BackendReport.
         self.backend_report_detail = backend_report_detail
-        # The time when the approval instance was created.
+        # The creation time in the yyyy-MM-dd HH:mm:ss format.
         self.create_time = create_time
+        # The creation time as a UNIX timestamp in seconds.
         self.create_time_unix = create_time_unix
-        # The department of the user who created the approval instance.
+        # The department path of the report initiator.
         self.creator_department = creator_department
         # The device ID of the terminal that created the approval instance.
         self.creator_dev_tag = creator_dev_tag
-        # The ID of the user who created the approval instance.
+        # The ID of the user who created the approval instance. For backend reports, this is the actual effective user, not the administrator.
         self.creator_user_id = creator_user_id
         # The username of the user who created the approval instance.
         self.creator_username = creator_username
-        # The effective status of the report. Enabled indicates that the report is active, and Expired indicates that the report has expired.
+        # The effective status of the report. This value is an empty string when the approval status is not Approved. Valid values:
+        # * Enabled: valid.
+        # * Expired: expired.
         self.effect_status = effect_status
         # The expiration time of the approval instance. The value is a UNIX timestamp in seconds.
         self.end_timestamp = end_timestamp
@@ -107,9 +115,14 @@ class GetApprovalResponseBodyApproval(DaraModel):
         # - **DomainBlacklist**: Domain name blacklist.
         # - **DomainWhitelist**: Domain name whitelist.
         # - **SoftwareBlock**: Software blocking.
-        # - **AppUninstall**: Agent uninstallation.
+        # - **DeviceRegistration**: Excess registration.
+        # - **AppUninstall**: Client uninstallation.
         # - **DlpSend**: File outbound transfer.
-        # - **PeripheralBlock**: Peripheral device control.
+        # - **PeripheralBlock**: Peripheral control.
+        # - **EndpointHardening**: Endpoint hardening.
+        # - **oftwareHardening**: Software hardening.
+        # - **AiAgentBlock**: AI Agent control.
+        # - **PrivateAccessBlock**: Private access.
         self.policy_type = policy_type
         # The ID of the process associated with the approval instance.
         self.process_id = process_id
@@ -117,7 +130,9 @@ class GetApprovalResponseBodyApproval(DaraModel):
         self.process_name = process_name
         # The reason for creating the approval instance.
         self.reason = reason
-        # The report type. ApprovalReport indicates an approval report, and BackendReport indicates a backend report.
+        # The report type. Valid values:
+        # * ApprovalReport: approval report.
+        # * BackendReport: backend report.
         self.report_type = report_type
         # The content of the template associated with the approval instance.
         self.schema_content = schema_content
@@ -131,8 +146,11 @@ class GetApprovalResponseBodyApproval(DaraModel):
         # - **Rejected**: Denied.
         # - **Revoked**: Revoked.
         # - **Expired**: Expired.
+        # - **Deleted**: Deleted.
         self.status = status
-        # The validity duration type. When the value is Permanent, EndTimestamp returns 0.
+        # The validity duration type. Valid values:
+        # - **FixedTime**: Expires at a specified time.
+        # - **Permanent**: Permanently valid.
         self.validity_type = validity_type
 
     def validate(self):
@@ -307,10 +325,15 @@ class GetApprovalResponseBodyApprovalBackendReportDetail(DaraModel):
         report_object: Any = None,
         target_user: main_models.GetApprovalResponseBodyApprovalBackendReportDetailTargetUser = None,
     ):
+        # The associated policy name.
         self.associated_policy_name = associated_policy_name
+        # The associated policy type, which is the same as PolicyType.
         self.associated_policy_type = associated_policy_type
+        # The remark for the backend report, which is the same as the report reason.
         self.remark = remark
+        # The report object. The fields vary based on PolicyType. Fields within the object use camelCase naming.
         self.report_object = report_object
+        # The actual effective user of the backend report.
         self.target_user = target_user
 
     def validate(self):
@@ -365,7 +388,9 @@ class GetApprovalResponseBodyApprovalBackendReportDetailTargetUser(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
+        # The SASE user ID of the actual effective user.
         self.user_id = user_id
+        # The username of the actual effective user.
         self.username = username
 
     def validate(self):
@@ -422,7 +447,7 @@ class GetApprovalResponseBodyApprovalApprovalProgresses(DaraModel):
         # - **Rejected**: Rejected.
         # - **Revoked**: Revoked.
         self.status = status
-        # The time when the action was performed on the approval progress node. The value is a UNIX timestamp in seconds.
+        # The execution time of the approval progress node. The value is a UNIX timestamp in seconds.
         self.timestamp = timestamp
 
     def validate(self):
