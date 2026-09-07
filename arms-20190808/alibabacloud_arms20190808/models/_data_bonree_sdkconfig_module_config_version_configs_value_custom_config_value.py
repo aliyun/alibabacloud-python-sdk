@@ -9,7 +9,7 @@ class DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue(DaraMo
         self,
         enable: bool = None,
     ):
-        # Indicates whether the configuration is enabled.
+        # The switch.
         self.enable = enable
 
     def validate(self):

@@ -15,20 +15,20 @@ class UpdateRumAppResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The details of the returned results.
+        # The details of the response.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # The error message returned if the call failed.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the update was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: Successful.
+        # - `false`: Failed.
         self.success = success
 
     def validate(self):
@@ -91,13 +91,15 @@ class UpdateRumAppResponseBodyData(DaraModel):
         limited: bool = None,
         usage: int = None,
     ):
-        # The user configurations. This is a reserved parameter.
+        # The user configuration. This is a reserved field.
         self.config = config
-        # The QPS limit. Unit: bytes.
+        # The quota limit, in bytes.
         self.limit = limit
-        # Indicates whether the request is throttled due to the QPS limit. Valid values: true and false.
+        # Indicates whether the quota is exceeded. Valid values:
+        # - true: Exceeded.
+        # - false: Not exceeded.
         self.limited = limited
-        # The usage. Unit: bytes.
+        # The usage, in bytes.
         self.usage = usage
 
     def validate(self):

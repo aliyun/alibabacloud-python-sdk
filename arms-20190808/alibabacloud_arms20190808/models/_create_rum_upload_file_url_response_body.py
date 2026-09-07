@@ -14,20 +14,21 @@ class CreateRumUploadFileUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The file upload URL.
+        # The file upload link.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message that is returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: The operation was successful.
+        # 
+        # - `false`: The operation failed.
         self.success = success
 
     def validate(self):

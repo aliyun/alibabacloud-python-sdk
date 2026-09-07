@@ -13,19 +13,21 @@ class InitEnvironmentRequest(DaraModel):
         managed_type: str = None,
         region_id: str = None,
     ):
-        # The language. Valid values: zh and en. Default value: zh.
+        # The language. Valid values: zh and en. Default: zh.
         self.aliyun_lang = aliyun_lang
-        # Specifies whether to create a token to improve data security.
+        # Whether to create an authentication token for enhanced data security.
         self.create_auth_token = create_auth_token
         # The ID of the environment instance.
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # Whether agents or exporters are managed. Valid values:
+        # The agent management mode. Valid values:
         # 
-        # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
-        # *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
-        # *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
+        # - none: unmanaged. Default for ACK clusters.
+        # 
+        # - agent: managed agents only. Default for ASK, ACS, and ACK One clusters.
+        # 
+        # - agent-exproter: managed agents and exporters. Default for cloud services.
         self.managed_type = managed_type
         # The region ID.
         # 

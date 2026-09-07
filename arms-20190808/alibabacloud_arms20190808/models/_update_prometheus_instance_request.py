@@ -19,31 +19,33 @@ class UpdatePrometheusInstanceRequest(DaraModel):
         resource_group_id: str = None,
         storage_duration: int = None,
     ):
-        # The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
+        # The number of days for automatic archiving after storage expires. Valid values: 60, 90, 180, and 365. A value of 0 indicates no archiving.
         self.archive_duration = archive_duration
-        # The IP addresses or CIDR blocks for which password-free read is enabled. Separate multiple IP addresses with line breaks.
+        # The list of IP addresses for authentication-free read. CIDR notation is supported. Separate multiple IP addresses with line feeds.
         self.auth_free_read_policy = auth_free_read_policy
-        # The IP addresses or CIDR blocks for which password-free write is enabled. Separate multiple IP addresses with line breaks.
+        # The list of IP addresses for authentication-free write. CIDR notation is supported. Separate multiple IP addresses with line feeds.
         self.auth_free_write_policy = auth_free_write_policy
-        # The ID of the Prometheus instance.
+        # The Prometheus instance ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Specifies whether to enable password-free read.
+        # Specifies whether to enable authentication-free read.
         self.enable_auth_free_read = enable_auth_free_read
-        # Specifies whether to enable password-free write.
+        # Specifies whether to enable authentication-free write.
         self.enable_auth_free_write = enable_auth_free_write
         # Specifies whether to enable access token authentication.
         self.enable_auth_token = enable_auth_token
-        # The billing mode. Valid values: POSTPAY: charges fees based on the amount of reported metric data. POSTPAY_GB: charges fees based on the amount of written metric data.
+        # The billing method. Valid values:
+        # - POSTPAY: Pay-as-you-go based on metric reporting volume.
+        # - POSTPAY_GB: Pay-as-you-go based on metric write volume.
         self.payment_type = payment_type
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the Prometheus resource group.
+        # The resource group ID of the Prometheus instance.
         self.resource_group_id = resource_group_id
-        # The data storage duration. Unit: days.
+        # The data retention period, in days.
         self.storage_duration = storage_duration
 
     def validate(self):

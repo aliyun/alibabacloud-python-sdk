@@ -74,8 +74,9 @@ class UpdatePrometheusGlobalViewResponseBodyData(DaraModel):
         self.failed_instances = failed_instances
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`
+        # 
+        # - `false`
         self.success = success
 
     def validate(self):

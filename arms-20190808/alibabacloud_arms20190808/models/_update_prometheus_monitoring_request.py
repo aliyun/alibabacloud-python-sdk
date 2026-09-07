@@ -29,8 +29,8 @@ class UpdatePrometheusMonitoringRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The type of the monitoring configuration. 
-        # Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe. 
+        # The type of the monitoring configuration.
+        # Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe.
         # Valid values for a Prometheus instance for ECS: customJob and probe.
         # 
         # This parameter is required.

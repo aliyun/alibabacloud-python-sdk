@@ -10,7 +10,9 @@ class DeleteCmsExporterResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Return Result information.
         self.data = data
+        # The unique ID of this request. If a fault occurs, you can use this ID to troubleshoot the issue.
         self.request_id = request_id
 
     def validate(self):

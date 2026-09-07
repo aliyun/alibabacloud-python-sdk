@@ -166,16 +166,19 @@ class ListEnvironmentsResponseBodyDataEnvironments(DaraModel):
         self.environment_name = environment_name
         # The type of the environment instance. Valid values:
         # 
-        # *   CS: Container Service
-        # *   ECS: Elastic Compute Service
-        # *   Cloud: cloud service
+        # - CS: Container Service
+        # 
+        # - ECS: Elastic Compute Service
+        # 
+        # - Cloud: cloud service
         self.environment_type = environment_type
         # The parameters of the feature.
         self.features = features
         # The payable resource plan.
         # 
-        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro.
-        # *   Otherwise, leave the parameter empty.
+        # - If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro.
+        # 
+        # - Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The unique ID of the Grafana data source.
         self.grafana_datasource_uid = grafana_datasource_uid
@@ -187,9 +190,11 @@ class ListEnvironmentsResponseBodyDataEnvironments(DaraModel):
         self.latest_release_create_time = latest_release_create_time
         # Indicates whether agents or exporters are managed. Valid values:
         # 
-        # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
-        # *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
-        # *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
+        # - none: No. By default, no managed agents or exporters are provided for ACK clusters.
+        # 
+        # - agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+        # 
+        # - agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
         self.managed_type = managed_type
         # The Prometheus ID.
         self.prometheus_id = prometheus_id

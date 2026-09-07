@@ -12,13 +12,22 @@ class CreatePrometheusInstanceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The HTTP status code. Valid values:
+        # 
+        # - 2XX: success.
+        # - 3XX: redirection.
+        # - 4XX: request error.
+        # - 5XX: server error.
         self.code = code
-        # The ID of the created Prometheus instance.
+        # The instance ID returned after the instance is created.
+        # 
+        # - For aliyun-cs instances, the Prometheus instance ID is the Container Service cluster ID.
+        # 
+        # - For ecs instances, the Prometheus instance ID is the VPC ID.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

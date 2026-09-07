@@ -10,8 +10,11 @@ class ListEnvironmentAddonsRequest(DaraModel):
         environment_id: str = None,
         region_id: str = None,
     ):
+        # The environment ID.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

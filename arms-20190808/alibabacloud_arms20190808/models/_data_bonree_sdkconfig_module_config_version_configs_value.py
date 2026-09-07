@@ -15,13 +15,13 @@ class DataBonreeSDKConfigModuleConfigVersionConfigsValue(DaraModel):
         description: str = None,
         update_time: int = None,
     ):
-        # Indicates whether the custom configuration is used.
+        # Indicates whether to use a custom configuration.
         self.use_custom = use_custom
-        # The custom configuration.
+        # The custom configuration items.
         self.custom_config = custom_config
         # The description of the version configuration.
         self.description = description
-        # The time when the version configuration was updated.
+        # The update time of the version configuration.
         self.update_time = update_time
 
     def validate(self):

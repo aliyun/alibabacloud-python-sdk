@@ -25,17 +25,44 @@ class CreateGrafanaWorkspaceRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.CreateGrafanaWorkspaceRequestTags] = None,
     ):
+        # Account quantity.  
+        # 
+        # **Value description:**  
+        # - If GrafanaWorkspaceEdition is **standard**, this parameter is invalid.  
+        # - If GrafanaWorkspaceEdition is **personal_edition**, this parameter is invalid. Default Value: 1.  
+        # - If GrafanaWorkspaceEdition is **experts_edition**, valid values are 10, 30, or 50. Default Value: 10.  
+        # - If GrafanaWorkspaceEdition is **advanced_edition**, this parameter is invalid. Default Value: 100.
         self.account_number = account_number
         # The language. Default value: zh. Valid values:
         # 
         # *   zh
         # *   en
         self.aliyun_lang = aliyun_lang
+        # Whether auto-renewal is enabled. Valid values:  
+        # - true: Auto-renewal is enabled.  
+        # - false: Auto-renewal is disabled.  
+        # 
+        # Default Value: true.
         self.auto_renew = auto_renew
+        # Additional custom account quantity for the User.  
+        # 
+        # **Value description:**  
+        # - If GrafanaWorkspaceEdition is **standard**, this parameter is invalid.  
+        # - If GrafanaWorkspaceEdition is **personal_edition**, this parameter is invalid.  
+        # - If GrafanaWorkspaceEdition is **experts_edition**, this parameter is invalid.  
+        # - If GrafanaWorkspaceEdition is **advanced_edition**, the value range is 0 to 2000 and must be a multiple of 10. Default Value: 0.
         self.custom_account_number = custom_account_number
         # The description of the workspace
         self.description = description
+        # Subscription duration of the instance. Valid values:  
+        # 
+        # - If PricingCycle is **Month**, indicating monthly billing, the value range is **1** to **9**.  
+        # - If PricingCycle is **Year**, indicating yearly billing, the value range is **1** to **3**.  
+        # 
+        # Default Value: 1.
         self.duration = duration
+        # Grafana version.
+        # 
         # This parameter is required.
         self.grafana_version = grafana_version
         # The edition.

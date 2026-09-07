@@ -13,16 +13,25 @@ class ListPrometheusInstancesRequest(DaraModel):
     ):
         # The cluster type. If you do not specify this parameter, all cluster types are queried. Valid values:
         # 
-        # *   cloud-product-prometheus: Prometheus instance for cloud services
-        # *   ManagedKubernetes: ACK managed cluster
-        # *   satellite: Prometheus instance for ARMS OpenTelemetry
-        # *   Ask: ACK Serverless cluster
-        # *   remote-write-prometheus: general-purpose Prometheus instance
-        # *   cloud-monitor-cmee: Hybrid Cloud Monitoring
-        # *   ExternalKubernetes: external Kubernetes cluster registered in ACK
-        # *   vpc-prometheus: Prometheus instance for ECS
-        # *   cloud-monitor-direct: cloud service self-monitoring
-        # *   Edge Kubernetes: ACK Edge cluster
+        # - cloud-product-prometheus: Prometheus instance for cloud services
+        # 
+        # - ManagedKubernetes: ACK managed cluster
+        # 
+        # - satellite: Prometheus instance for ARMS OpenTelemetry
+        # 
+        # - Ask: ACK Serverless cluster
+        # 
+        # - remote-write-prometheus: general-purpose Prometheus instance
+        # 
+        # - cloud-monitor-cmee: Hybrid Cloud Monitoring
+        # 
+        # - ExternalKubernetes: external Kubernetes cluster registered in ACK
+        # 
+        # - vpc-prometheus: Prometheus instance for ECS
+        # 
+        # - cloud-monitor-direct: cloud service self-monitoring
+        # 
+        # - Edge Kubernetes: ACK Edge cluster
         self.cluster_type = cluster_type
         # The region ID.
         # 
@@ -30,8 +39,9 @@ class ListPrometheusInstancesRequest(DaraModel):
         self.region_id = region_id
         # Specifies whether to obtain global aggregation instances. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # This parameter is required.
         self.show_global_view = show_global_view

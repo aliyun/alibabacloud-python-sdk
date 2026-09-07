@@ -13,13 +13,13 @@ class AddPrometheusGlobalViewResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 状态码。说明 200表示成功。
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The information about the array object.
+        # The response struct.
         self.data = data
-        # 返回结果的提示信息。
+        # The message returned for the result.
         self.message = message
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,12 +71,12 @@ class AddPrometheusGlobalViewResponseBodyData(DaraModel):
     ):
         # The Info-level information.
         self.info = info
-        # The additional information.
+        # The additional description.
         self.msg = msg
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the query was successful.
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: Successful.
+        # - `false`: Failed.
         self.success = success
 
     def validate(self):
@@ -122,7 +122,7 @@ class AddPrometheusGlobalViewResponseBodyDataInfo(DaraModel):
     ):
         # The list of instances that failed to be added.
         self.failed_instances = failed_instances
-        # The ID of the global aggregation instance.
+        # The aggregation instance ID.
         self.global_view_cluster_id = global_view_cluster_id
         # The region ID.
         self.region_id = region_id

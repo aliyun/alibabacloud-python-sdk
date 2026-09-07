@@ -13,7 +13,7 @@ class CreateOrUpdateAlertRuleResponseBody(DaraModel):
         alert_rule: main_models.CreateOrUpdateAlertRuleResponseBodyAlertRule = None,
         request_id: str = None,
     ):
-        # The details of the alert rule.
+        # The alert rule object.
         self.alert_rule = alert_rule
         # The request ID.
         self.request_id = request_id
@@ -76,83 +76,95 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRule(DaraModel):
         updated_time: int = None,
         user_id: str = None,
     ):
-        # The alert check type of the Prometheus alert rule. Valid values:
+        # The check type of the Prometheus alert rule.
         # 
-        # *   STATIC: a static threshold value.
-        # *   CUSTOM: a custom PromQL statement.
+        # - `STATIC`: The alert is triggered based on a static threshold.
+        # 
+        # - `CUSTOM`: The alert is triggered based on a custom PromQL expression.
         self.alert_check_type = alert_check_type
-        # The alert contact group ID of the Prometheus alert rule. Valid values:
+        # The alert group for the Prometheus alert rule.
         # 
-        # *   \\-1: custom PromQL
-        # *   1: Kubernetes load
-        # *   15: Kubernetes node
+        # - `-1`: Custom PromQL
+        # 
+        # - `1`: Kubernetes Workloads
+        # 
+        # - `15`: Kubernetes Nodes
         self.alert_group = alert_group
-        # The alert rule ID.
+        # The ID of the alert rule.
         self.alert_id = alert_id
         # The name of the alert rule.
         self.alert_name = alert_name
-        # The content of the Application Monitoring or Browser Monitoring alert rule.
+        # The content of the alert rule. This applies to application monitoring and browser monitoring.
         self.alert_rule_content = alert_rule_content
-        # The status of the alert rule. Valid values:
+        # The status of the alert rule.
         # 
-        # *   RUNNING
-        # *   STOPPED
-        # *   PAUSED
+        # - `RUNNING`: The alert rule is running.
         # 
-        # > The PAUSED status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
+        # - `STOPPED`: The alert rule is stopped.
+        # 
+        # - `PAUSED`: The alert rule is paused.
+        # 
+        # > The `PAUSED` status indicates that the system has automatically suspended the alert rule due to an abnormality. This can happen if the alert rule generates too many distinct time series or its associated cluster is deleted.
         self.alert_status = alert_status
         # The type of the alert rule. Valid values:
         # 
-        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
-        # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
-        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
+        # - `APPLICATION_MONITORING_ALERT_RULE`: an alert rule for application monitoring.
+        # 
+        # - `BROWSER_MONITORING_ALERT_RULE`: an alert rule for browser monitoring.
+        # 
+        # - `PROMETHEUS_MONITORING_ALERT_RULE`: an alert rule for Prometheus monitoring.
         self.alert_type = alert_type
         # The annotations of the Prometheus alert rule.
         self.annotations = annotations
-        # Indicates whether the alert rule was applied to new applications that were created in Application Monitoring or Browser Monitoring. Valid values:
+        # Indicates whether newly created applications are automatically added to the alert rule. This applies to application monitoring and browser monitoring rules.
         # 
-        # *   `true`: enables the health check feature.
-        # *   `false`: disables the automatic backup feature.
+        # - `true`: Enabled
+        # 
+        # - `false`: Disabled
         self.auto_add_new_application = auto_add_new_application
-        # The ID of the monitored cluster.
+        # The ID of the cluster that is associated with the Prometheus alert rule.
         self.cluster_id = cluster_id
-        # The timestamp generated when the alert rule was created. Unit: seconds.
+        # The UNIX timestamp, in milliseconds, when the alert rule was created.
         self.created_time = created_time
-        # The duration of the Prometheus alert rule. Unit: minutes.
+        # The duration, in minutes, for which a condition must be true before an alert is triggered. This applies only to Prometheus alert rules.
         self.duration = duration
-        # The extended fields.
+        # The extended fields, returned as a JSON string.
         self.extend = extend
-        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
+        # The filters of the alert rule. This applies to application monitoring or browser monitoring.
         self.filters = filters
-        # The tags of the Prometheus alert rule.
+        # The labels of the Prometheus alert rule.
         self.labels = labels
         # The severity level of the Prometheus alert rule.
         # 
-        # *   P1: Alert notifications are sent for major issues that affect the availability of core business, have a huge impact, and may lead to serious consequences.
-        # *   P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
-        # *   P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
-        # *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
-        # *   Default: Alert notifications are sent regardless of alert levels.
+        # - `P1`: Critical. Indicates major issues that affect core business availability and can have severe consequences.
+        # 
+        # - `P2`: Warning. Indicates issues that impact system availability but have a limited scope.
+        # 
+        # - `P3`: Info. Indicates potential issues or alerts from less critical services.
+        # 
+        # - `P4`: Low priority. Indicates informational alerts that do not affect services.
+        # 
+        # - `Default`: The default level used when no specific severity is required.
         self.level = level
-        # The alert message of the Prometheus alert rule.
+        # The message of the Prometheus alert rule.
         self.message = message
-        # The metric type of the Application Monitoring or Browser Monitoring alert rule.
+        # The metric type of the alert rule. This applies to application monitoring and browser monitoring.
         self.metrics_type = metrics_type
-        # Notification Mode.
+        # The notification mode.
         self.notify_mode = notify_mode
-        # The name of the notification policy.
+        # The notification policy.
         self.notify_strategy = notify_strategy
-        # The process ID (PID) that was associated with the Application Monitoring or Browser Monitoring alert rule.
+        # The PIDs of the applications associated with the alert rule. This applies to application monitoring and browser monitoring rules.
         self.pids = pids
-        # The PromQL statement of the Prometheus alert rule.
+        # The PromQL expression for the Prometheus alert rule.
         self.prom_ql = prom_ql
         # The region ID.
         self.region_id = region_id
-        # The list of tags.
+        # The tags that are added to the alert rule.
         self.tags = tags
-        # The timestamp generated when the alert rule was updated. Unit: seconds.
+        # The UNIX timestamp, in milliseconds, when the alert rule was last updated.
         self.updated_time = updated_time
-        # The ID of the Alibaba Cloud account.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -400,9 +412,9 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleLabels(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The label key.
         self.name = name
-        # The tag value.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -439,13 +451,13 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters(DaraModel):
         custom_slswheres: List[str] = None,
         dim_filters: List[main_models.CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersDimFilters] = None,
     ):
-        # The custom filter condition of the Browser Monitoring alert rule.
+        # The custom filter conditions for the browser monitoring alert rule.
         self.custom_slsfilters = custom_slsfilters
-        # The information of the aggregation dimension.
+        # The aggregation dimensions.
         self.custom_slsgroup_by_dimensions = custom_slsgroup_by_dimensions
-        # The details of the custom filter condition.
+        # The configured filter conditions.
         self.custom_slswheres = custom_slswheres
-        # The information about each filter condition of the Application Monitoring or Browser Monitoring alert rule.
+        # The filter conditions of the alert rule. This applies to application monitoring or browser monitoring.
         self.dim_filters = dim_filters
 
     def validate(self):
@@ -512,9 +524,9 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersDimFilters(DaraModel):
     ):
         # The key of the filter condition.
         self.filter_key = filter_key
-        # The logical operator of the filter condition.
+        # The operator for the filter condition.
         self.filter_opt = filter_opt
-        # The details of the filter condition.
+        # The values for the filter condition.
         self.filter_values = filter_values
 
     def validate(self):
@@ -560,16 +572,17 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersCustomSLSFilters(DaraMo
     ):
         # The key of the filter condition.
         self.key = key
-        # The logical operator of the filter condition. Valid values:
+        # The operator for the filter condition.
         # 
-        # *   \\=: equal to
-        # *   not: not equal to
+        # - `=`: equals
+        # 
+        # - `not`: not equal to
         self.opt = opt
-        # Indicates whether this filter condition was displayed on the frontend.
+        # Indicates whether the filter condition is displayed on the console.
         self.show = show
-        # The log type of Browser Monitoring. This field was not included in other filter conditions.
+        # Used exclusively to distinguish between log types in browser monitoring. This parameter does not apply to other filter conditions.
         self.t = t
-        # The value of the filter condition.
+        # The value for the filter condition.
         self.value = value
 
     def validate(self):
@@ -622,9 +635,9 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The key of the annotation.
+        # The annotation key.
         self.name = name
-        # The value of the annotation.
+        # The annotation value.
         self.value = value
 
     def validate(self):
@@ -659,12 +672,13 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent(DaraModel):
         alert_rule_items: List[main_models.CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems] = None,
         condition: str = None,
     ):
-        # The trigger conditions of the Application Monitoring or Browser Monitoring alert rule.
+        # The alert conditions. This applies to application monitoring and browser monitoring alert rules.
         self.alert_rule_items = alert_rule_items
-        # The relationship between multiple alert conditions that were specified for the Application Monitoring or Browser Monitoring alert rule. Valid values:
+        # The logical operator for combining multiple alert conditions. This applies to application monitoring and browser monitoring.
         # 
-        # *   OR: meets any of the specified conditions.
-        # *   AND: meets all the specified conditions.
+        # - `OR`: The alert is triggered if any condition is met.
+        # 
+        # - `AND`: The alert is triggered only if all conditions are met.
         self.condition = condition
 
     def validate(self):
@@ -710,29 +724,39 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems
         operator: str = None,
         value: str = None,
     ):
-        # The aggregation method of the alert condition. Valid values:
+        # The aggregation method for the alert condition.
         # 
-        # *   AVG: calculates the average value
-        # *   SUM: calculates the total value
-        # *   MAX: selects the maximum value
-        # *   MIN: selects the minimum value
+        # - `AVG`: average
+        # 
+        # - `SUM`: sum
+        # 
+        # - `MAX`: maximum
+        # 
+        # - `MIN`: minimum
         self.aggregate = aggregate
-        # The metric of the alert condition.
+        # The metric that is evaluated by the alert condition.
         self.metric_key = metric_key
-        # Indicates the last N minutes.
+        # The duration of the time window, in minutes, for evaluating the alert condition.
         self.n = n
-        # The comparison operator that was used to compare the metric value with the threshold. Valid values:
+        # The operator used to compare the aggregated metric value with the threshold.
         # 
-        # *   CURRENT_GTE: greater than or equal to
-        # *   CURRENT_LTE: less than or equal to
-        # *   PREVIOUS_UP: the increase percentage compared with the last period
-        # *   PREVIOUS_DOWN: the decrease percentage compared with the last period
-        # *   HOH_UP: the increase percentage compared with the last hour
-        # *   HOH_DOWN: the decrease percentage compared with the last hour
-        # *   DOD_UP: the increase percentage compared with the last day
-        # *   DOD_DOWN: the decrease percentage compared with the last day
+        # - `CURRENT_GTE`: greater than or equal to
+        # 
+        # - `CURRENT_LTE`: less than or equal to
+        # 
+        # - `PREVIOUS_UP`: period-over-period increase percentage
+        # 
+        # - `PREVIOUS_DOWN`: period-over-period decrease percentage
+        # 
+        # - `HOH_UP`: hour-over-hour increase percentage
+        # 
+        # - `HOH_DOWN`: hour-over-hour decrease percentage
+        # 
+        # - `DOD_UP`: day-over-day increase percentage
+        # 
+        # - `DOD_DOWN`: day-over-day decrease percentage
         self.operator = operator
-        # The threshold of the alert condition.
+        # The threshold for the alert condition.
         self.value = value
 
     def validate(self):

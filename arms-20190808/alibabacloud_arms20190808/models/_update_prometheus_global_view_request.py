@@ -16,7 +16,9 @@ class UpdatePrometheusGlobalViewRequest(DaraModel):
         sub_clusters_json: str = None,
     ):
         # To edit a GlobalView aggregated instance, do you require all passed child instances to be verified successfully before creating a GlobalView instance (optional, default to false):
+        # 
         # - true
+        # 
         # - false
         self.all_sub_clusters_success = all_sub_clusters_success
         # The ID of the Prometheus instance.

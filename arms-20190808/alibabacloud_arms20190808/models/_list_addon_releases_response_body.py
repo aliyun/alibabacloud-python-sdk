@@ -16,15 +16,17 @@ class ListAddonReleasesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The result returned.
+        # The returned data.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the query was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -81,7 +83,7 @@ class ListAddonReleasesResponseBodyData(DaraModel):
         total: int = None,
     ):
         self.contains_v2addon = contains_v2addon
-        # The queried add-ons.
+        # The collection of addon releases.
         self.releases = releases
         # The total number of entries.
         self.total = total
@@ -151,29 +153,29 @@ class ListAddonReleasesResponseBodyDataReleases(DaraModel):
         user_id: str = None,
         version: str = None,
     ):
-        # The name of the add-on.
+        # The component name.
         self.addon_name = addon_name
-        # The number of alert rules.
+        # The number of alert groups.
         self.alert_rule_count = alert_rule_count
-        # The installation phase.
+        # The installation phases.
         self.conditions = conditions
-        # The configuration information of the add-on release.
+        # The configuration of the addon release.
         self.config = config
-        # The time when the add-on was created.
+        # The creation time.
         self.create_time = create_time
         # The number of dashboards.
         self.dashboard_count = dashboard_count
         # The environment ID.
         self.environment_id = environment_id
-        # The number of exporters.
+        # The number of plug-ins.
         self.exporter_count = exporter_count
-        # Indicates whether the configuration is available.
+        # Indicates whether the addon has configurations.
         self.have_config = have_config
-        # The user ID.
+        # The user ID of the installer.
         self.install_user_id = install_user_id
         # The language.
         self.language = language
-        # Indicates whether the component is fully managed.
+        # Indicates whether the component is managed.
         self.managed = managed
         # The latest version.
         self.next_version = next_version
@@ -183,15 +185,15 @@ class ListAddonReleasesResponseBodyDataReleases(DaraModel):
         self.release_id = release_id
         # The name of the release.
         self.release_name = release_name
-        # The scenario.
+        # The identified scenario.
         self.scene = scene
         # The status.
         self.status = status
-        # The time when the add-on was updated.
+        # The update time.
         self.update_time = update_time
         # The user ID.
         self.user_id = user_id
-        # The version of the add-on.
+        # The addon version.
         self.version = version
 
     def validate(self):
@@ -352,17 +354,17 @@ class ListAddonReleasesResponseBodyDataReleasesConditions(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The first transition time.
+        # The time of the first transition.
         self.first_transition_time = first_transition_time
-        # The last transition time.
+        # The time of the last transition.
         self.last_transition_time = last_transition_time
         # The detailed information.
         self.message = message
-        # The reason for the failure.
+        # The failure reason.
         self.reason = reason
-        # The status of the phase.
+        # The phase status.
         self.status = status
-        # The type of the phase.
+        # The phase type.
         self.type = type
 
     def validate(self):

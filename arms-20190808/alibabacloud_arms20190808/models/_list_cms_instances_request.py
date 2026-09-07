@@ -11,14 +11,19 @@ class ListCmsInstancesRequest(DaraModel):
         region_id: str = None,
         type_filter: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
-        # The type of the cloud service integration. Valid values:
+        # The type of integrated cloud service. Valid values:
         # 
-        # *   direct: self-monitoring
-        # *   cms: Hybrid Cloud Monitoring
+        # - `direct`: An integration for cloud products that are monitored by the product itself.
+        # 
+        # - `cms`: An integration with CloudMonitor.
         self.type_filter = type_filter
 
     def validate(self):

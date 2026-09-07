@@ -14,6 +14,7 @@ class ListActivatedAlertsResponseBody(DaraModel):
         page: main_models.ListActivatedAlertsResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The error message returned when the invocation fails.
         self.message = message
         # The struct returned.
         self.page = page

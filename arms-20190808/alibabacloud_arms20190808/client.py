@@ -2483,6 +2483,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_grafana_workspace_with_options_async(request, runtime)
 
+    def create_grafana_workspace_account_with_options(
+        self,
+        request: main_models.CreateGrafanaWorkspaceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGrafanaWorkspaceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_notes):
+            query['AccountNotes'] = request.account_notes
+        if not DaraCore.is_null(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.aliyun_uid):
+            query['AliyunUid'] = request.aliyun_uid
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGrafanaWorkspaceAccount',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGrafanaWorkspaceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_grafana_workspace_account_with_options_async(
+        self,
+        request: main_models.CreateGrafanaWorkspaceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGrafanaWorkspaceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_notes):
+            query['AccountNotes'] = request.account_notes
+        if not DaraCore.is_null(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.aliyun_uid):
+            query['AliyunUid'] = request.aliyun_uid
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGrafanaWorkspaceAccount',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGrafanaWorkspaceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_grafana_workspace_account(
+        self,
+        request: main_models.CreateGrafanaWorkspaceAccountRequest,
+    ) -> main_models.CreateGrafanaWorkspaceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.create_grafana_workspace_account_with_options(request, runtime)
+
+    async def create_grafana_workspace_account_async(
+        self,
+        request: main_models.CreateGrafanaWorkspaceAccountRequest,
+    ) -> main_models.CreateGrafanaWorkspaceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.create_grafana_workspace_account_with_options_async(request, runtime)
+
     def create_integration_with_options(
         self,
         request: main_models.CreateIntegrationRequest,
@@ -5960,6 +6058,166 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteGrafanaWorkspaceResponse:
         runtime = RuntimeOptions()
         return await self.delete_grafana_workspace_with_options_async(request, runtime)
+
+    def delete_grafana_workspace_account_with_options(
+        self,
+        request: main_models.DeleteGrafanaWorkspaceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGrafanaWorkspaceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGrafanaWorkspaceAccount',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGrafanaWorkspaceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_grafana_workspace_account_with_options_async(
+        self,
+        request: main_models.DeleteGrafanaWorkspaceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGrafanaWorkspaceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGrafanaWorkspaceAccount',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGrafanaWorkspaceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_grafana_workspace_account(
+        self,
+        request: main_models.DeleteGrafanaWorkspaceAccountRequest,
+    ) -> main_models.DeleteGrafanaWorkspaceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.delete_grafana_workspace_account_with_options(request, runtime)
+
+    async def delete_grafana_workspace_account_async(
+        self,
+        request: main_models.DeleteGrafanaWorkspaceAccountRequest,
+    ) -> main_models.DeleteGrafanaWorkspaceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_grafana_workspace_account_with_options_async(request, runtime)
+
+    def delete_grafana_workspace_account_role_with_options(
+        self,
+        request: main_models.DeleteGrafanaWorkspaceAccountRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGrafanaWorkspaceAccountRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGrafanaWorkspaceAccountRole',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGrafanaWorkspaceAccountRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_grafana_workspace_account_role_with_options_async(
+        self,
+        request: main_models.DeleteGrafanaWorkspaceAccountRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGrafanaWorkspaceAccountRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGrafanaWorkspaceAccountRole',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGrafanaWorkspaceAccountRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_grafana_workspace_account_role(
+        self,
+        request: main_models.DeleteGrafanaWorkspaceAccountRoleRequest,
+    ) -> main_models.DeleteGrafanaWorkspaceAccountRoleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_grafana_workspace_account_role_with_options(request, runtime)
+
+    async def delete_grafana_workspace_account_role_async(
+        self,
+        request: main_models.DeleteGrafanaWorkspaceAccountRoleRequest,
+    ) -> main_models.DeleteGrafanaWorkspaceAccountRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_grafana_workspace_account_role_with_options_async(request, runtime)
 
     def delete_imrobot_with_options(
         self,
@@ -12029,6 +12287,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_trace_app_config_with_options_async(request, runtime)
 
+    def grafana_workspace_http_api_proxy_with_options(
+        self,
+        request: main_models.GrafanaWorkspaceHttpApiProxyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GrafanaWorkspaceHttpApiProxyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.body_str):
+            body['BodyStr'] = request.body_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GrafanaWorkspaceHttpApiProxy',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GrafanaWorkspaceHttpApiProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grafana_workspace_http_api_proxy_with_options_async(
+        self,
+        request: main_models.GrafanaWorkspaceHttpApiProxyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GrafanaWorkspaceHttpApiProxyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.body_str):
+            body['BodyStr'] = request.body_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GrafanaWorkspaceHttpApiProxy',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GrafanaWorkspaceHttpApiProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grafana_workspace_http_api_proxy(
+        self,
+        request: main_models.GrafanaWorkspaceHttpApiProxyRequest,
+    ) -> main_models.GrafanaWorkspaceHttpApiProxyResponse:
+        runtime = RuntimeOptions()
+        return self.grafana_workspace_http_api_proxy_with_options(request, runtime)
+
+    async def grafana_workspace_http_api_proxy_async(
+        self,
+        request: main_models.GrafanaWorkspaceHttpApiProxyRequest,
+    ) -> main_models.GrafanaWorkspaceHttpApiProxyResponse:
+        runtime = RuntimeOptions()
+        return await self.grafana_workspace_http_api_proxy_with_options_async(request, runtime)
+
     def import_app_alert_rules_with_options(
         self,
         request: main_models.ImportAppAlertRulesRequest,
@@ -14526,6 +14870,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListGrafanaWorkspaceResponse:
         runtime = RuntimeOptions()
         return await self.list_grafana_workspace_with_options_async(request, runtime)
+
+    def list_grafana_workspace_account_with_options(
+        self,
+        request: main_models.ListGrafanaWorkspaceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGrafanaWorkspaceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGrafanaWorkspaceAccount',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGrafanaWorkspaceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_grafana_workspace_account_with_options_async(
+        self,
+        request: main_models.ListGrafanaWorkspaceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGrafanaWorkspaceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGrafanaWorkspaceAccount',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGrafanaWorkspaceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_grafana_workspace_account(
+        self,
+        request: main_models.ListGrafanaWorkspaceAccountRequest,
+    ) -> main_models.ListGrafanaWorkspaceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.list_grafana_workspace_account_with_options(request, runtime)
+
+    async def list_grafana_workspace_account_async(
+        self,
+        request: main_models.ListGrafanaWorkspaceAccountRequest,
+    ) -> main_models.ListGrafanaWorkspaceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.list_grafana_workspace_account_with_options_async(request, runtime)
 
     def list_insights_events_with_options(
         self,
@@ -19888,6 +20310,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateGrafanaWorkspaceResponse:
         runtime = RuntimeOptions()
         return await self.update_grafana_workspace_with_options_async(request, runtime)
+
+    def update_grafana_workspace_account_role_with_options(
+        self,
+        request: main_models.UpdateGrafanaWorkspaceAccountRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGrafanaWorkspaceAccountRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGrafanaWorkspaceAccountRole',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGrafanaWorkspaceAccountRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_grafana_workspace_account_role_with_options_async(
+        self,
+        request: main_models.UpdateGrafanaWorkspaceAccountRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGrafanaWorkspaceAccountRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_id):
+            query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGrafanaWorkspaceAccountRole',
+            version = '2019-08-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGrafanaWorkspaceAccountRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_grafana_workspace_account_role(
+        self,
+        request: main_models.UpdateGrafanaWorkspaceAccountRoleRequest,
+    ) -> main_models.UpdateGrafanaWorkspaceAccountRoleResponse:
+        runtime = RuntimeOptions()
+        return self.update_grafana_workspace_account_role_with_options(request, runtime)
+
+    async def update_grafana_workspace_account_role_async(
+        self,
+        request: main_models.UpdateGrafanaWorkspaceAccountRoleRequest,
+    ) -> main_models.UpdateGrafanaWorkspaceAccountRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_grafana_workspace_account_role_with_options_async(request, runtime)
 
     def update_grafana_workspace_version_with_options(
         self,

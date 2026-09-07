@@ -13,7 +13,9 @@ class ListCmsInstancesResponseBody(DaraModel):
         data: main_models.ListCmsInstancesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class ListCmsInstancesResponseBodyData(DaraModel):
         enable_tag: bool = None,
         products: List[main_models.ListCmsInstancesResponseBodyDataProducts] = None,
     ):
+        # Indicates whether tag collection for the cloud product is enabled.
         self.enable_tag = enable_tag
+        # The list of cloud products.
         self.products = products
 
     def validate(self):
@@ -101,15 +105,29 @@ class ListCmsInstancesResponseBodyDataProducts(DaraModel):
         type: str = None,
         url: str = None,
     ):
+        # The product description.
         self.descr = descr
+        # The instance ID.
         self.id = id
+        # The instance name.
         self.instance = instance
+        # The name of the integrated cloud product.
         self.name = name
+        # The product code.
         self.prod = prod
+        # The event source.
         self.source = source
+        # The integration status of the product.
+        # 
+        # - `true`: Integrated.
+        # 
+        # - `false`: Not integrated.
         self.state = state
+        # The creation timestamp of the Grafana dashboard.
         self.time = time
+        # The product type.
         self.type = type
+        # The complete URL of the Grafana dashboard.
         self.url = url
 
     def validate(self):

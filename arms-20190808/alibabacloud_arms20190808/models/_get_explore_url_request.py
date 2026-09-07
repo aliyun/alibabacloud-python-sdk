@@ -16,11 +16,11 @@ class GetExploreUrlRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The query statement that corresponds to the data source.
+        # The query statement for the data source.
         self.expression = expression
         # The region ID.
         self.region_id = region_id
-        # The type of the Grafana data source.
+        # The Grafana data source type.
         # 
         # This parameter is required.
         self.type = type

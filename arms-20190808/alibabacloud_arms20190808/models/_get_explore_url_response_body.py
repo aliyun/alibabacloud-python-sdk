@@ -13,17 +13,17 @@ class GetExploreUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code. 200 means success, other status codes are exceptions.
+        # The HTTP status code. A value of 200 indicates success. Other values indicate errors.
         self.code = code
-        # Response parameters
+        # The returned data.
         self.data = data
-        # The prompt information of the returned result.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Whether the operation was successful:
-        # - true: the operation was successful
-        # - false: the operation failed
+        # Indicates whether the operation was successful. Valid values:
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

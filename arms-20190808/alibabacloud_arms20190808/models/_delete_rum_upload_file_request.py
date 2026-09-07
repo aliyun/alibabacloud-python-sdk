@@ -16,9 +16,9 @@ class DeleteRumUploadFileRequest(DaraModel):
         version_id: str = None,
         workspace: str = None,
     ):
-        # Information of files to be deleted in JSON array format. If a single file needs to be deleted, this field should be left empty. If multiple files need to be deleted, just fill in this field.
+        # The batch deletion parameters in JSON array format. Leave this parameter empty if you want to delete a single file. If you want to delete multiple files in a batch, specify only this parameter.
         self.batch_items = batch_items
-        # The file name, with the extension.
+        # The file name, including the file name extension.
         self.file_name = file_name
         # The application ID.
         self.pid = pid
@@ -27,9 +27,9 @@ class DeleteRumUploadFileRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.service_id = service_id
-        # The file ID.
+        # The unique ID of the file.
         self.uuid = uuid
-        # The version number of the file.
+        # The file version number.
         self.version_id = version_id
         self.workspace = workspace
 

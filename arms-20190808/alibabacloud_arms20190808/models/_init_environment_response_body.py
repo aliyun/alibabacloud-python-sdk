@@ -12,11 +12,11 @@ class InitEnvironmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The HTTP status code. 200 indicates success.
         self.code = code
-        # The result of the operation.
+        # The operation result.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

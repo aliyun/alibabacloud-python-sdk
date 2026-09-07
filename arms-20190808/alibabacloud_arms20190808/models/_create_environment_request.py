@@ -27,8 +27,10 @@ class CreateEnvironmentRequest(DaraModel):
         # The language. Default value: zh.
         # 
         # Valid values:
-        # *   en: English
-        # *   zh: Chinese
+        # 
+        # - en: English
+        # 
+        # - zh: Chinese
         self.aliyun_lang = aliyun_lang
         # The ID of the resource bound to the environment, such as the container ID or VPC ID. For a Cloud environment, specify the region ID.
         # 
@@ -40,24 +42,29 @@ class CreateEnvironmentRequest(DaraModel):
         self.environment_name = environment_name
         # The subtype of the environment. Valid values:
         # 
-        # *   CS: Container Service for Kubernetes (ACK) or Distributed Cloud Container Platform for Kubernetes (ACK One)
-        # *   ECS: ECS
-        # *   Cloud: cloud service
+        # - CS: Container Service for Kubernetes (ACK) or Distributed Cloud Container Platform for Kubernetes (ACK One)
+        # 
+        # - ECS: ECS
+        # 
+        # - Cloud: cloud service
         # 
         # This parameter is required.
         self.environment_sub_type = environment_sub_type
         # The type of the environment. Valid values:
         # 
-        # *   CS: Container Service
-        # *   ECS: Elastic Compute Service
-        # *   Cloud: cloud service
+        # - CS: Container Service
+        # 
+        # - ECS: Elastic Compute Service
+        # 
+        # - Cloud: cloud service
         # 
         # This parameter is required.
         self.environment_type = environment_type
         # The payable resource plan.
         # 
-        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
-        # *   Otherwise, leave the parameter empty.
+        # - If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # 
+        # - Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The ID of the Grafana workspace associated with the environment. If this parameter is left empty, the default shared Grafana workspace is used.
         self.grafana_workspace_id = grafana_workspace_id
@@ -65,9 +72,11 @@ class CreateEnvironmentRequest(DaraModel):
         self.init_environment = init_environment
         # Specifies whether agents or exporters are managed. Valid values:
         # 
-        # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
-        # *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
-        # *   agent-exporter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
+        # - none: No. By default, no managed agents or exporters are provided for ACK clusters.
+        # 
+        # - agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+        # 
+        # - agent-exporter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
         self.managed_type = managed_type
         # The ID of the Prometheus instance. If no Prometheus instance is created, call the InitEnvironment operation.
         self.prometheus_instance_id = prometheus_instance_id

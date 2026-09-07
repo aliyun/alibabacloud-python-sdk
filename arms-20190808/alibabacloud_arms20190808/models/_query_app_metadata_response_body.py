@@ -15,23 +15,27 @@ class QueryAppMetadataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned for the request. Valid values:
+        # The API call status.
         # 
-        # *   2XX: The request is successful.
-        # *   3XX: A redirection message is returned.
-        # *   4XX: The request is invalid.
-        # *   5XX: A server error occurs.
+        # - 2xx: The request was successful.
+        # 
+        # - 3xx: The request was redirected.
+        # 
+        # - 4xx: A client-side error occurred.
+        # 
+        # - 5xx: A server-side error occurred.
         self.code = code
-        # The returned struct.
+        # The returned object.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the query was successful.
         # 
-        # *   `true`: The call was successful.
-        # *   `false`: The call failed.
+        # - `true`: The query was successful.
+        # 
+        # - `false`: The query failed.
         self.success = success
 
     def validate(self):

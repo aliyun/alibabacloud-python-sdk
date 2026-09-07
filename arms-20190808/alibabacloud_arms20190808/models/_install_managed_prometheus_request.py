@@ -40,6 +40,7 @@ class InstallManagedPrometheusRequest(DaraModel):
         self.kube_config = kube_config
         # The region ID.
         self.region_id = region_id
+        # Resource group ID of the Prometheus instance.
         self.resource_group_id = resource_group_id
         # The ID of the security group to which the cluster belongs.
         # 
@@ -49,6 +50,7 @@ class InstallManagedPrometheusRequest(DaraModel):
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # Extension information for the Flink VC cluster.
         self.vc_extra_info = vc_extra_info
         # The virtual private cloud (VPC) where the cluster resides.
         # 

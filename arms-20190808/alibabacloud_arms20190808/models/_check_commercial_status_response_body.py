@@ -10,9 +10,9 @@ class CheckCommercialStatusResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The returned struct.
+        # The response struct.
         self.data = data
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

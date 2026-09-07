@@ -13,48 +13,46 @@ class DoInsightsActionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # Status code. 200 indicates success; other status codes indicate exceptions.
         self.code = code
-        # The response parameters vary with the value of module.
+        # The return parameter type is related to the module value passed in.
         # 
-        # *   QueryTopo
+        # - QueryTopo
+        #    ```
+        #   {
+        # 	"nodes": [Object] #Node collection. See the Node definition in the supplementary description of return parameters.
+        # 	"edges": [Object] #Edge collection. See the Edge definition in the supplementary description of return parameters.
+        #   }
+        #   ```
+        # - QueryTopoRed
         # 
-        #         {
-        #         "nodes": [Object] # The nodes. For more information, see node details in the supplementary notes of response parameters.
-        #         "edges": [Object] # The edges. For more information, see edge details in the supplementary notes of response parameters.
-        #         }
-        # 
-        # *   QueryTopoRed
-        # 
-        #         {
-        #           "nodeRed": {
-        #           	"nodeId": {
-        #           		"count": double, # The total number of requests in the specified time range.
-        #           		"error": double, # The total number of errors in the specified time range.
-        #           		"rt": double, # The average response time in the specified time range. Unit: milliseconds.
-        #           	}
-        #           },
-        #           "edgeRed": {
-        #           	"edgeId": {
-        #           	    "count": double, # The total number of requests in the specified time range.
-        #           		"error": double, # The total number of errors in the specified time range.
-        #           		"rt": double, # The average response time in the specified time range. Unit: milliseconds.
-        #           	}
-        #           }
-        # 
+        #   ```
+        #   {
+        # 	"nodeRed": {
+        # 		"nodeId": {
+        # 			"count": double, #Total number of requests during the query period
+        # 			"error": double, #Total number of errors during the query period
+        # 			"rt": double, #Average latency during the query period, in milliseconds
+        # 		}
+        # 	},
+        # 	"edgeRed": {
+        # 		"edgeId": {
+        # 		    "count": double, #Total number of requests during the query period
+        # 			"error": double, #Total number of errors during the query period
+        # 			"rt": double, #Average latency during the query period, in milliseconds
+        # 		}
+        # 	}
         # }
-        # 
-        # ```
-        # ```
+        #   ```
         self.data = data
-        # The error message.
+        # The message returned when the call fails.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Whether the query is successful:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: Successful.
+        # - `false`: Failed.
         self.success = success
 
     def validate(self):

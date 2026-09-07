@@ -15,11 +15,11 @@ class GetPrometheusInstanceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+        # The status code. A value of 200 indicates success. Other values indicate errors.
         self.code = code
-        # The response parameters.
+        # The returned information.
         self.data = data
-        # The message returned.
+        # The message returned for the result.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -107,89 +107,93 @@ class GetPrometheusInstanceResponseBodyData(DaraModel):
         version: str = None,
         vpc_id: str = None,
     ):
-        # The permission type. Valid values: readWrite, readOnly, and httpReadOnly
+        # The permission type. Valid values:
+        # 
+        # - readWrite
+        # - readOnly
+        # - httpReadOnly.
         self.access_type = access_type
-        # The number of days for which data is automatically archived after the storage duration expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
+        # The number of days that data is automatically archived after the storage period expires. Valid values: 60, 90, 180, and 365. A value of 0 indicates that data is not archived.
         self.archive_duration = archive_duration
-        # The whitelist of IP addresses for which password-free read is enabled.
+        # The whitelist policy for authentication-free read access.
         self.auth_free_read_policy = auth_free_read_policy
-        # The whitelist of IP addresses for which password-free write is enabled.
+        # The whitelist policy for authentication-free write access.
         self.auth_free_write_policy = auth_free_write_policy
-        # The authorization token.
+        # The authorization token string.
         self.auth_token = auth_token
-        # The ID of the Prometheus instance.
+        # The Prometheus instance ID.
         self.cluster_id = cluster_id
-        # The name of the monitoring object.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # *   remote-write: general-purpose Prometheus instance
-        # *   ecs: Prometheus instances for ECS
-        # *   cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
-        # *   cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
-        # *   global-view: global aggregation instance
-        # *   aliyun-cs: Prometheus instance for Container Service
+        # - remote-write (Prometheus for Remote Write)
+        # - ecs (Prometheus for ECS)
+        # - cloud-monitor (Prometheus for Cloud Service in the Chinese mainland)
+        # - cloud-product (Prometheus for Cloud Service outside the Chinese mainland)
+        # - global-view (Prometheus for GlobalView)
+        # - aliyun-cs (Prometheus for Container Service).
         self.cluster_type = cluster_type
-        # The data storage status at the backend.
+        # The status of the backend data storage.
         self.db_instance_status = db_instance_status
-        # Indicates whether password-free read is enabled.
+        # Indicates whether authentication-free read access is enabled.
         self.enable_auth_free_read = enable_auth_free_read
-        # Indicates whether password-free write is enabled.
+        # Indicates whether authentication-free write access is enabled.
         self.enable_auth_free_write = enable_auth_free_write
         # Indicates whether access token authentication is enabled.
         self.enable_auth_token = enable_auth_token
-        # The extra information. This parameter is returned only for console requests.
+        # The extended information. This parameter is returned only for console requests.
         self.extra_info = extra_info
-        # The ID of the Grafana workspace.
+        # The Grafana workspace ID.
         self.grafana_instance_id = grafana_instance_id
-        # The public URL for the HTTP API.
+        # The public endpoint for HTTP API.
         self.http_api_inter_url = http_api_inter_url
-        # The internal URL for the HTTP API.
+        # The internal endpoint for HTTP API.
         self.http_api_intra_url = http_api_intra_url
         self.open_telemetry_inter_url = open_telemetry_inter_url
         self.open_telemetry_intra_url = open_telemetry_intra_url
         # The billing method. Valid values:
         # 
-        # *   PREPAY: subscription
-        # *   POSTPAY: pay-as-you-go
+        # - PREPAY: subscription.
+        # - POSTPAY: pay-as-you-go.
         self.payment_type = payment_type
-        # The time when the billing method was modified.
+        # The time when the billing method of the instance was last modified.
         self.payment_type_update_time = payment_type_update_time
-        # The product to which the Prometheus instance belongs. Valid values: arms and cms.
+        # The product to which the Prometheus instance belongs (arms or cms).
         self.product = product
-        # The public URL for Pushgateway.
+        # The public endpoint for push gateway.
         self.push_gateway_inter_url = push_gateway_inter_url
-        # The internal URL for Pushgateway.
+        # The internal endpoint for push gateway.
         self.push_gateway_intra_url = push_gateway_intra_url
         # The region ID.
         self.region_id = region_id
-        # The public URL for remote read.
+        # The public endpoint for remote read.
         self.remote_read_inter_url = remote_read_inter_url
-        # The internal URL for remote read.
+        # The internal endpoint for remote read.
         self.remote_read_intra_url = remote_read_intra_url
-        # The public URL for remote write.
+        # The public endpoint for remote write.
         self.remote_write_inter_url = remote_write_inter_url
-        # The internal URL for remote write.
+        # The internal endpoint for remote write.
         self.remote_write_intra_url = remote_write_intra_url
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The type of the resource. Set the value to PROMETHEUS.
+        # The fixed value: PROMETHEUS.
         self.resource_type = resource_type
-        # The ID of the security group. This parameter is returned only for Prometheus instances for ECS.
+        # The security group ID. This parameter is returned only for Prometheus for ECS instances.
         self.security_group_id = security_group_id
-        # The data storage duration. Unit: days.
+        # The storage duration, in days.
         self.storage_duration = storage_duration
-        # The child instances of the global aggregation instance. The value is a JSON string.
+        # The JSON string of sub-instances for the GlobalView instance.
         self.sub_clusters_json = sub_clusters_json
         # The supported authentication types.
         self.support_auth_types = support_auth_types
-        # The tags of the instance.
+        # The tags bound to the instance.
         self.tags = tags
         # The user ID.
         self.user_id = user_id
-        # The vSwitch ID. This parameter is returned only for Prometheus instances for ECS.
+        # The vSwitch ID. This parameter is returned only for Prometheus for ECS instances.
         self.v_switch_id = v_switch_id
-        # Version
+        # The version.
         self.version = version
-        # The VPC ID. This parameter is returned only for Prometheus instances for ECS.
+        # The VPC associated with the cluster. This parameter is returned only for Prometheus for ECS instances.
         self.vpc_id = vpc_id
 
     def validate(self):

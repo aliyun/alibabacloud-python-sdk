@@ -140,14 +140,17 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(DaraModel):
     ):
         # The alert check type of the Prometheus alert rule.
         # 
-        # *   STATIC: static threshold
-        # *   CUSTOM: custom PromQL
+        # - STATIC: static threshold
+        # 
+        # - CUSTOM: custom PromQL
         self.alert_check_type = alert_check_type
         # The alert contact group ID of the Prometheus alert rule.
         # 
-        # *   \\-1: custom PromQL
-        # *   1: Kubernetes load
-        # *   15: Kubernetes node
+        # - -1: custom PromQL
+        # 
+        # - 1: Kubernetes load
+        # 
+        # - 15: Kubernetes node
         self.alert_group = alert_group
         # The alert rule ID.
         self.alert_id = alert_id
@@ -157,24 +160,29 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(DaraModel):
         self.alert_rule_content = alert_rule_content
         # The status of the alert rule. Valid values:
         # 
-        # *   RUNNING
-        # *   STOPPED
-        # *   PAUSED
+        # - RUNNING
         # 
-        # >  The PAUSED state indicates that the alert rule is abnormal and has been suspended. This may be because the specified threshold value is excessively large, or the associated cluster has been deleted.
+        # - STOPPED
+        # 
+        # - PAUSED
+        # 
+        # > The PAUSED state indicates that the alert rule is abnormal and has been suspended. This may be because the specified threshold value is excessively large, or the associated cluster has been deleted.
         self.alert_status = alert_status
         # The type of the alert rule. Valid values:
         # 
-        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
-        # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
-        # *   PROMETHEUS_MONITORING_ALERT_RULE: Prometheus alert rule
+        # - APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+        # 
+        # - BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+        # 
+        # - PROMETHEUS_MONITORING_ALERT_RULE: Prometheus alert rule
         self.alert_type = alert_type
         # The annotations of the Prometheus alert rule.
         self.annotations = annotations
         # Indicates whether the alert rule is applied to new applications that are created in Application Monitoring or Browser Monitoring. Valid values:
         # 
-        # *   `true`: yes
-        # *   `false`: no
+        # - `true`: yes
+        # 
+        # - `false`: no
         self.auto_add_new_application = auto_add_new_application
         # The cluster ID of the Prometheus alert rule.
         self.cluster_id = cluster_id
@@ -184,7 +192,7 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(DaraModel):
         self.duration = duration
         # The extended fields.
         # 
-        # >  For existing Application Monitoring alert rules, the fields contain information such as contacts, alert template, and notification content.
+        # > For existing Application Monitoring alert rules, the fields contain information such as contacts, alert template, and notification content.
         self.extend = extend
         # The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
         self.filters = filters
@@ -192,11 +200,15 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(DaraModel):
         self.labels = labels
         # The severity level of the Prometheus alert rule.
         # 
-        # *   P1: Alert notifications are sent for major issues that affect the availability of core business, have a huge impact, and may lead to serious consequences.
-        # *   P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
-        # *   P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
-        # *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
-        # *   Default: Alert notifications are sent regardless of alert levels.
+        # - P1: Alert notifications are sent for major issues that affect the availability of core business, have a huge impact, and may lead to serious consequences.
+        # 
+        # - P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
+        # 
+        # - P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
+        # 
+        # - P4: Alert notifications are sent for low-priority issues that do not affect your business.
+        # 
+        # - Default: Alert notifications are sent regardless of alert levels.
         self.level = level
         # The alert message of the Prometheus alert rule.
         self.message = message
@@ -618,8 +630,9 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters(DaraMod
         self.key = key
         # The logical operator of the filter condition. Valid values:
         # 
-        # *   \\=: equal to
-        # *   not: not equal to
+        # - \\=: equal to
+        # 
+        # - not: not equal to
         self.opt = opt
         # Indicates whether this filter condition is displayed on the frontend.
         self.show = show
@@ -719,8 +732,9 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent(DaraModel):
         self.alert_rule_items = alert_rule_items
         # The relationship between multiple alert conditions specified for the Application Monitoring or Browser Monitoring alert rule. Valid values:
         # 
-        # *   OR: The alert rule is triggered if one of the conditions is met.
-        # *   AND: The alert rule is triggered if all the conditions are met.
+        # - OR: The alert rule is triggered if one of the conditions is met.
+        # 
+        # - AND: The alert rule is triggered if all the conditions are met.
         self.condition = condition
 
     def validate(self):
@@ -768,10 +782,13 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems(
     ):
         # The aggregation method of the alert condition. Valid values:
         # 
-        # *   AVG: calculates the average value
-        # *   SUM: calculates the total value
-        # *   MAX: selects the maximum value
-        # *   MIN: selects the minimum value
+        # - AVG: calculates the average value
+        # 
+        # - SUM: calculates the total value
+        # 
+        # - MAX: selects the maximum value
+        # 
+        # - MIN: selects the minimum value
         self.aggregate = aggregate
         # The metric of the alert condition.
         self.metric_key = metric_key
@@ -779,14 +796,21 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems(
         self.n = n
         # The operator that is used to compare the metric value with the threshold. Valid values:
         # 
-        # *   CURRENT_GTE: greater than or equal to
-        # *   CURRENT_LTE: less than or equal to
-        # *   PREVIOUS_UP: increase in percentage compared with the previous period
-        # *   PREVIOUS_DOWN: decrease in percentage compared with the previous period
-        # *   HOH_UP: increase in percentage compared with the same period in the previous hour
-        # *   HOH_DOWN: decrease in percentage compared with the same period in the previous hour
-        # *   DOD_UP: increase in percentage compared with the same period in the previous day
-        # *   DOD_DOWN: decrease in percentage compared with the same period in the previous day
+        # - CURRENT_GTE: greater than or equal to
+        # 
+        # - CURRENT_LTE: less than or equal to
+        # 
+        # - PREVIOUS_UP: increase in percentage compared with the previous period
+        # 
+        # - PREVIOUS_DOWN: decrease in percentage compared with the previous period
+        # 
+        # - HOH_UP: increase in percentage compared with the same period in the previous hour
+        # 
+        # - HOH_DOWN: decrease in percentage compared with the same period in the previous hour
+        # 
+        # - DOD_UP: increase in percentage compared with the same period in the previous day
+        # 
+        # - DOD_DOWN: decrease in percentage compared with the same period in the previous day
         self.operator = operator
         # The threshold of the alert condition.
         self.value = value

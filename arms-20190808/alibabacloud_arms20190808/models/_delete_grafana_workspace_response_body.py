@@ -14,23 +14,22 @@ class DeleteGrafanaWorkspaceResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # The status code. A value of 200 indicates success. Other values indicate errors.
         self.code = code
-        # Indicates whether the workspace was deleted. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the Grafana workspace was deleted. Valid values:
+        # - true: The workspace was deleted.
+        # - false: The workspace failed to be deleted.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: The operation was successful.
+        # - `false`: The operation failed.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID, which is used to query the details of the call.
         self.trace_id = trace_id
 
     def validate(self):

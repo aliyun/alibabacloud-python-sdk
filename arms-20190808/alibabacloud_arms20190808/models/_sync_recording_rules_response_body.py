@@ -12,13 +12,13 @@ class SyncRecordingRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 状态码。200表示成功。
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The struct returned.
+        # The response struct.
         self.data = data
-        # 返回结果的提示信息。
+        # The message returned with the result.
         self.message = message
-        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

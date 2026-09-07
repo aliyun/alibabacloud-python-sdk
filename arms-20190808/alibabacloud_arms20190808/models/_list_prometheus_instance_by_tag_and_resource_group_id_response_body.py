@@ -135,12 +135,17 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusIns
         self.cluster_name = cluster_name
         # The instance type. Valid values:
         # 
-        # *   remote-write: Prometheus instance for Remote Write
-        # *   ecs: Prometheus instances for ECS
-        # *   cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
-        # *   cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
-        # *   global-view: global aggregation instance
-        # *   aliyun-cs: Prometheus instance for Container Service
+        # - remote-write: Prometheus instance for Remote Write
+        # 
+        # - ecs: Prometheus instances for ECS
+        # 
+        # - cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
+        # 
+        # - cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
+        # 
+        # - global-view: global aggregation instance
+        # 
+        # - aliyun-cs: Prometheus instance for Container Service
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
@@ -150,8 +155,9 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusIns
         self.http_api_intra_url = http_api_intra_url
         # The billing method. Valid values:
         # 
-        # *   PREPAY: subscription
-        # *   POSTPAY: pay-as-you-go
+        # - PREPAY: subscription
+        # 
+        # - POSTPAY: pay-as-you-go
         self.payment_type = payment_type
         # The public URL for Pushgateway.
         self.push_gateway_inter_url = push_gateway_inter_url

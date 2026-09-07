@@ -16,12 +16,15 @@ class ListEnvironmentAddonsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
-        # The result of the operation.
+        # The returned data.
         self.data = data
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values are `true` if the operation succeeded and `false` if it failed.
         self.success = success
 
     def validate(self):
@@ -77,9 +80,11 @@ class ListEnvironmentAddonsResponseBodyData(DaraModel):
         contains_v2addon: bool = None,
         total: int = None,
     ):
-        # The queried add-ons.
+        # The list of addons.
         self.addons = addons
+        # Indicates whether the list contains V2 addons.
         self.contains_v2addon = contains_v2addon
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -140,33 +145,33 @@ class ListEnvironmentAddonsResponseBodyDataAddons(DaraModel):
         version: str = None,
         weight: str = None,
     ):
-        # The alias of the add-on.
+        # The alias of the addon.
         self.alias = alias
-        # The tags of the add-on.
+        # The list of addon tags.
         self.categories = categories
-        # The dashboards.
+        # The list of dashboards.
         self.dashboards = dashboards
-        # The description of the add-on.
+        # The description of the addon.
         self.description = description
-        # The supported environments.
+        # The list of supported environments.
         self.environments = environments
-        # The URL of the icon.
+        # The URL of the addon icon.
         self.icon = icon
-        # The collection of keywords.
+        # The keywords for the addon.
         self.keywords = keywords
-        # The language.
+        # The language of the addon metadata.
         self.language = language
-        # The time when the instance was last created.
+        # The creation time of the latest release of the addon.
         self.latest_release_create_time = latest_release_create_time
-        # The name of the add-on.
+        # The name of the addon.
         self.name = name
-        # Indicates whether the add-on can be installed only once.
+        # Indicates whether the addon can be installed only once per environment.
         self.once = once
-        # The scenario.
+        # The application scenario of the addon.
         self.scene = scene
-        # The version of the agent.
+        # The addon version.
         self.version = version
-        # The weight.
+        # The weight of the addon, which is used for sorting in the UI.
         self.weight = weight
 
     def validate(self):
@@ -294,17 +299,17 @@ class ListEnvironmentAddonsResponseBodyDataAddonsEnvironments(DaraModel):
         name: str = None,
         policies: main_models.ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies = None,
     ):
-        # The dependencies of the environment.
+        # The dependencies of the addon within the environment.
         self.dependencies = dependencies
         # The description of the environment.
         self.description = description
-        # Indicates whether the feature is enabled.
+        # Indicates whether the addon is supported in this environment.
         self.enable = enable
-        # The tag of the environment.
+        # The label of the environment.
         self.label = label
         # The name of the environment.
         self.name = name
-        # The control policies in the environment.
+        # The policies related to the addon in this environment.
         self.policies = policies
 
     def validate(self):
@@ -373,19 +378,19 @@ class ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies(DaraModel)
         protocols: List[main_models.ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # The default alert status.
+        # The default status of the alert.
         self.alert_default_status = alert_default_status
-        # The default installation status.
+        # Indicates whether the addon is installed by default in the environment.
         self.default_install = default_install
-        # Indicates whether a service account is enabled.
+        # Indicates whether a service account is enabled for the addon.
         self.enable_service_account = enable_service_account
-        # The metric check rule.
+        # The rules for checking metric status.
         self.metric_check_rule = metric_check_rule
-        # Indicates whether a restart is required after the installation.
+        # Indicates whether a restart is required after the addon is installed.
         self.need_restart_after_integration = need_restart_after_integration
-        # The supported protocols.
+        # The list of supported protocols.
         self.protocols = protocols
-        # The target name of the add-on.
+        # The target name of the addon.
         self.target_addon_name = target_addon_name
 
     def validate(self):
@@ -467,7 +472,7 @@ class ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols(D
         self.description = description
         # The URL of the protocol icon.
         self.icon = icon
-        # The tag of the protocol.
+        # The label of the protocol.
         self.label = label
         # The name of the protocol.
         self.name = name
@@ -515,7 +520,7 @@ class ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheck
         self,
         prom_ql: List[str] = None,
     ):
-        # The PromQL statements.
+        # The PromQL query statements.
         self.prom_ql = prom_ql
 
     def validate(self):
@@ -545,11 +550,11 @@ class ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies(DaraMo
         features: Dict[str, bool] = None,
         services: List[str] = None,
     ):
-        # The cluster type.
+        # The required cluster types.
         self.cluster_types = cluster_types
-        # The feature that can be installed in the environment.
+        # The features available for installation in the environment.
         self.features = features
-        # The services.
+        # The dependent services.
         self.services = services
 
     def validate(self):

@@ -23,8 +23,9 @@ class UpdateEnvironmentRequest(DaraModel):
         self.environment_name = environment_name
         # The payable resource plan. Valid values:
         # 
-        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
-        # *   Otherwise, leave the parameter empty.
+        # - If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # 
+        # - Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The region ID.
         # 

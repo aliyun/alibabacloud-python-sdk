@@ -17,20 +17,21 @@ class GetRumAppInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The HTTP status code. A `200` status code indicates a successful request.
         self.code = code
-        # The application details.
+        # The details of the application.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message returned for a failed request.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -112,49 +113,49 @@ class GetRumAppInfoResponseBodyData(DaraModel):
         type: str = None,
         web_sdkconfig_json: str = None,
     ):
-        # The application configurations in the JSON format. This parameter is deprecated.
+        # This parameter is deprecated. The legacy application configuration in the JSON format.
         self.app_config = app_config
-        # The group to which the application belongs.
+        # The application group.
         self.app_group = app_group
-        # The application type. Valid values: web, miniapp, ios, and android.
+        # The application type. Valid values: `web`, `miniapp`, `ios`, and `android`. `web` indicates Web and H5 applications, `miniapp` indicates mini programs.
         self.app_type = app_type
-        # The region where the backend is deployed.
+        # The region where the back-end application is deployed. This parameter is used for end-to-end tracing.
         self.backend_service_trace_region = backend_service_trace_region
-        # The collection configurations.
+        # The data collection configurations for mobile applications.
         self.bonree_sdkconfig = bonree_sdkconfig
-        # The domain name of the SDK.
+        # The SDK domain name.
         self.cdn_domain = cdn_domain
-        # The time when the application was created. The value is a timestamp. Unit: milliseconds.
+        # The creation time of the application. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description of the application.
         self.description = description
-        # The endpoint that is used to report application data.
+        # The endpoint for reporting application data.
         self.endpoint = endpoint
-        # Indicates whether the application is subscribed. Valid values: true and false.
+        # Indicates whether the application is bookmarked. Valid values: `true` and `false`.
         self.is_subscription = is_subscription
         # The application name.
         self.name = name
         # The alias of the application.
         self.nick_name = nick_name
-        # The name of the application package.
+        # The application package name.
         self.package_name = package_name
         # The application ID.
         self.pid = pid
         # The region ID.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of service domain configurations. Only mobile applications are supported.
+        # The list of service domain name configurations. This parameter is supported only for mobile applications.
         self.service_domain_configs = service_domain_configs
-        # The name of the Simple Log Service Logstore that stores application data.
+        # The name of the Log Service Logstore that is used to store application data.
         self.sls_logstore = sls_logstore
-        # The name of the Simple Log Service project that stores application data.
+        # The name of the Log Service project that is used to store application data.
         self.sls_project = sls_project
-        # The status of the application. Valid values: created, running, and stopped.
+        # The application status. Valid values: `created`, `running`, and `stopped`. `stopped` indicates that data reporting is stopped.
         self.status = status
         # The tags.
         self.tags = tags
-        # The type of the application. Valid value: RUM.
+        # The application type. This parameter is a constant of `RUM`.
         self.type = type
         self.web_sdkconfig_json = web_sdkconfig_json
 
@@ -336,9 +337,9 @@ class GetRumAppInfoResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -380,14 +381,15 @@ class GetRumAppInfoResponseBodyDataServiceDomainConfigs(DaraModel):
         self.description = description
         # The domain name or IP address.
         self.domain = domain
-        # The trace propagation protocols. This parameter is required if the tracing analysis feature is enabled.
+        # The list of trace pass-through protocols. This parameter is required when trace tracking is enabled.
         self.propagator_types = propagator_types
-        # The sampling rate of a trace. Valid values: (0, 100].
+        # The trace sampling rate. Valid values: (0, 100].
         self.sampling_rate = sampling_rate
-        # Indicates whether the tracing analysis feature is enabled. To enable the tracing analysis feature, you must activate Managed Service for OpenTelemetry. Valid values:
+        # Indicates whether to enable trace tracking. You must activate Application Real-Time Monitoring Service (ARMS) OpenTelemetry Edition to use this feature. Valid values:
         # 
-        # *   `true`: enables the tracing analysis feature. If you enable the tracing analysis feature, related headers are inserted into requests for the domain name.
-        # *   `false`: disables the tracing analysis feature.
+        # - `true`: enables trace tracking. If you set this parameter to true, a related header is inserted into the request for this domain name.
+        # 
+        # - `false`: does not enable trace tracking.
         self.tracing = tracing
 
     def validate(self):
@@ -440,9 +442,9 @@ class GetRumAppInfoResponseBodyDataBonreeSDKConfig(DaraModel):
         module_config: main_models.GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig = None,
         sampling_config: main_models.GetRumAppInfoResponseBodyDataBonreeSDKConfigSamplingConfig = None,
     ):
-        # The module configuration.
+        # The feature switches for modules.
         self.module_config = module_config
-        # Sampling configuration.
+        # The sampling configuration.
         self.sampling_config = sampling_config
 
     def validate(self):
@@ -482,9 +484,9 @@ class GetRumAppInfoResponseBodyDataBonreeSDKConfigSamplingConfig(DaraModel):
         sampling_rate: int = None,
         sampling_type: int = None,
     ):
-        # Sampling rate: between (0, 1000], a thousandth.
+        # The sampling rate, in parts per thousand. The value must be greater than 0 and less than or equal to 1,000.
         self.sampling_rate = sampling_rate
-        # Sampling type, currently only session random sampling is supported, that is, fixed transmission: 1.
+        # The sampling type. Only random session sampling is supported. You must set this parameter to `1`.
         self.sampling_type = sampling_type
 
     def validate(self):
@@ -522,9 +524,9 @@ class GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig(DaraModel):
     ):
         # The default configuration of the application.
         self.default_config = default_config
-        # Indicates whether the configuration is enabled.
+        # The master switch.
         self.enable = enable
-        # The version configurations of the application.
+        # The application version configurations.
         self.version_configs = version_configs
 
     def validate(self):

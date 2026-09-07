@@ -32,7 +32,6 @@ class UploadRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # We recommend that you do not specify this parameter.
         self.version = version
 
     def validate(self):

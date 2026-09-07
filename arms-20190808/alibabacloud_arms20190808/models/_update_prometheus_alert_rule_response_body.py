@@ -26,8 +26,9 @@ class UpdatePrometheusAlertRuleResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`
+        # 
+        # - `false`
         self.success = success
 
     def validate(self):
@@ -112,12 +113,14 @@ class UpdatePrometheusAlertRuleResponseBodyPrometheusAlertRule(DaraModel):
         self.message = message
         # The method of that is used to send alert notifications. Valid values:
         # 
-        # *   `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
-        # *   `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
+        # - `ALERT_MANAGER`: Alert notifications are sent by Operation Center.
+        # 
+        # - `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
         # Indicates whether the alert rule is enabled. Valid values:
         # 
         # - `1`: The alert rule is enabled.
+        # 
         # - `0`: The alert rule is disabled.
         self.status = status
         # The type of the alert rule.

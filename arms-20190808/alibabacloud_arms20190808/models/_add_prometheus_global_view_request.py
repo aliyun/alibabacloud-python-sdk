@@ -16,7 +16,7 @@ class AddPrometheusGlobalViewRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.AddPrometheusGlobalViewRequestTag] = None,
     ):
-        # The queried global aggregation instances. The value is a JSON string.
+        # The list of aggregation instances. The value is a JSON string.
         # 
         # This parameter is required.
         self.clusters = clusters

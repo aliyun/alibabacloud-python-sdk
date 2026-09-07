@@ -14,20 +14,20 @@ class DeleteRumUploadFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The status code. 200 indicates success.
         self.code = code
-        # Indicates whether the file is deleted. If the file is deleted, "success" is returned.
+        # Indicates whether the deletion was successful. The value success is returned if the deletion was successful.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: The operation was successful.
+        # - `false`: The operation failed.
         self.success = success
 
     def validate(self):

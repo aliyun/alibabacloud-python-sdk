@@ -22,17 +22,21 @@ class UpdateRumAppRequest(DaraModel):
         stop: bool = None,
         web_sdkconfig_json: str = None,
     ):
-        # The application configurations in the JSON format. This parameter is deprecated.
+        # The legacy application configuration in JSON format. This parameter is deprecated.
         self.app_config = app_config
-        # Specifies whether to restart the application the next day. Valid values: true and false.
+        # Specifies whether to restart the application the next day. Valid values:
+        # - true: Restart.
+        # - false: Do not restart.
         self.auto_restart = auto_restart
         # The region where the backend application is deployed. This parameter is used in end-to-end tracing scenarios.
         self.backend_service_trace_region = backend_service_trace_region
-        # The collection configurations of the mobile SDK. You can enable or disable collection configurations based on the app version.
+        # The mobile SDK collection configuration. You can enable or disable collection items by app version.
         self.bonree_sdkconfig_json = bonree_sdkconfig_json
         # The description of the application.
         self.description = description
-        # Specifies whether you want to subscribe to the application. Valid values: true and false.
+        # Specifies whether to add the application to favorites. Valid values:
+        # - true: Add to favorites.
+        # - false: Do not add to favorites.
         self.is_subscribe = is_subscribe
         # The alias of the application.
         self.nickname = nickname
@@ -40,17 +44,21 @@ class UpdateRumAppRequest(DaraModel):
         # 
         # This parameter is required.
         self.pid = pid
-        # The region where the application resides. You can leave this parameter empty or set it to China East 2 Finance.
+        # The region where the application is actually connected. This parameter is used only in the China (Shanghai) Finance Cloud scenario.
         self.real_region_id = real_region_id
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to restart the application. Valid values: true and false.
+        # Specifies whether to restart the application. Valid values:
+        # - true: Restart.
+        # - false: Do not restart.
         self.restart = restart
-        # The service domain name of the application. You can create, modify, and delete service domain name configurations.
+        # The service domain name settings for the application. You can create, update, or delete service domain name configurations.
         self.service_domain_operation_json = service_domain_operation_json
-        # Specifies whether to stop the application. Valid values: true and false.
+        # Specifies whether to stop the application. Valid values:
+        # - true: Stop.
+        # - false: Do not stop.
         self.stop = stop
         self.web_sdkconfig_json = web_sdkconfig_json
 

@@ -11,9 +11,9 @@ class GetRumAppInfoRequest(DaraModel):
         pid: str = None,
         region_id: str = None,
     ):
-        # The group to which the application belongs.
+        # The application group.
         self.app_group = app_group
-        # The process ID (PID) of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.pid = pid

@@ -12,13 +12,13 @@ class UpdatePrometheusInstanceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # The status code. A value of 200 indicates success. Other values indicate errors.
         self.code = code
-        # The result of the operation.
+        # The description of the operation result.
         self.data = data
-        # The message returned.
+        # The message returned for the request.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

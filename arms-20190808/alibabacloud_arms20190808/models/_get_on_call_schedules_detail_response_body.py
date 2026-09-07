@@ -13,7 +13,7 @@ class GetOnCallSchedulesDetailResponseBody(DaraModel):
         data: main_models.GetOnCallSchedulesDetailResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the scheduling policy.
+        # The details of the on-call schedule.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -58,21 +58,21 @@ class GetOnCallSchedulesDetailResponseBodyData(DaraModel):
         rendered_substitude_entries: List[main_models.GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries] = None,
         schedule_layers: List[main_models.GetOnCallSchedulesDetailResponseBodyDataScheduleLayers] = None,
     ):
-        # The URL of the DingTalk chatbot, which is used to receive notifications about shift changes.
+        # The webhook URL of the DingTalk bot for rotation notifications.
         self.alert_robot_id = alert_robot_id
-        # The description of the scheduling policy.
+        # The description of the on-call schedule.
         self.description = description
-        # The ID of the scheduling policy.
+        # The ID of the on-call schedule.
         self.id = id
-        # The name of the scheduling policy.
+        # The name of the on-call schedule.
         self.name = name
-        # The information about the final user on duty.
+        # The final list of on-call contacts, after accounting for all rotations and substitutions.
         self.rendered_finnal_entries = rendered_finnal_entries
-        # The scheduled users on duty within a time range.
+        # A list of contacts on duty within the specified time range, as defined by the schedule layers.
         self.rendered_layer_entries = rendered_layer_entries
-        # The information about the substitutes within a time range.
+        # A list of substitutes scheduled within the specified time range.
         self.rendered_substitude_entries = rendered_substitude_entries
-        # The information about the shift.
+        # A list of schedule layers.
         self.schedule_layers = schedule_layers
 
     def validate(self):
@@ -188,19 +188,21 @@ class GetOnCallSchedulesDetailResponseBodyDataScheduleLayers(DaraModel):
         shift_length: int = None,
         start_time: str = None,
     ):
-        # The ID list of users on duty.
+        # A list of contact IDs for the schedule layer.
         self.contact_ids = contact_ids
-        # The limit on the time of the shift.
+        # A list of restrictions for the schedule layer.
         self.restrictions = restrictions
-        # The type of the shift. Valid values:
+        # The rotation type. Valid values:
         # 
-        # *   DAY
-        # *   WEEK
-        # *   CUSTOM
+        # - `DAY`: Rotates every day.
+        # 
+        # - `WEEK`: Rotates every week.
+        # 
+        # - `CUSTOM`: Rotates based on a custom schedule.
         self.rotation_type = rotation_type
-        # The shift cycle. Unit: hours.
+        # The shift length for the rotation, in hours.
         self.shift_length = shift_length
-        # The date on which the shift change took effect.
+        # The start time for the rotation.
         self.start_time = start_time
 
     def validate(self):
@@ -262,14 +264,15 @@ class GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions(DaraMod
         restriction_type: str = None,
         start_time_of_day: str = None,
     ):
-        # The end time of the shift per day.
+        # The end time for on-call duty each day.
         self.end_time_of_day = end_time_of_day
-        # The type of the limit. Valid values:
+        # The type of restriction. Valid values:
         # 
-        # *   daily_restriction
-        # *   weekly_restriction
+        # - `daily_restriction`: A daily time-based restriction.
+        # 
+        # - `weekly_restriction`: A weekly time-based restriction.
         self.restriction_type = restriction_type
-        # The start time of the shift per day.
+        # The start time for on-call duty each day.
         self.start_time_of_day = start_time_of_day
 
     def validate(self):
@@ -311,11 +314,11 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries(DaraMode
         simple_contact: main_models.GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact = None,
         start: str = None,
     ):
-        # The date on which the substitute was supposed to complete shift work.
+        # The end time of the on-call duty for the substitute.
         self.end = end
-        # The information about the substitute.
+        # Details of the substitute.
         self.simple_contact = simple_contact
-        # The date from which the substitute was supposed to start shift work.
+        # The start time of the on-call duty for the substitute.
         self.start = start
 
     def validate(self):
@@ -358,9 +361,9 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleCon
         id: int = None,
         name: str = None,
     ):
-        # The ID of the substitute.
+        # The substitute ID.
         self.id = id
-        # The name of the substitute.
+        # The substitute name.
         self.name = name
 
     def validate(self):
@@ -396,11 +399,11 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries(DaraModel):
         end: str = None,
         simple_contact: main_models.GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact = None,
     ):
-        # The date from which the scheduled user was supposed to start shift work.
+        # The start time of the on-call duty for the contact.
         self.start = start
-        # The date on which the scheduled user was supposed to complete shift work.
+        # The end time of the on-call duty for the contact.
         self.end = end
-        # The information about the scheduled user.
+        # Details of the on-duty contact.
         self.simple_contact = simple_contact
 
     def validate(self):
@@ -443,9 +446,9 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact(
         id: int = None,
         name: str = None,
     ):
-        # The ID of the scheduled user.
+        # The contact ID.
         self.id = id
-        # The name of the scheduled user.
+        # The contact name.
         self.name = name
 
     def validate(self):
@@ -481,11 +484,11 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries(DaraModel):
         simple_contact: main_models.GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact = None,
         start: str = None,
     ):
-        # The date on which the user completed shift work.
+        # The end time of the on-call duty for the contact.
         self.end = end
-        # The information about the user on duty.
+        # Details of the final on-call contact.
         self.simple_contact = simple_contact
-        # The date from which the user started shift work.
+        # The start time of the on-call duty for the contact.
         self.start = start
 
     def validate(self):
@@ -528,9 +531,9 @@ class GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact
         id: int = None,
         name: str = None,
     ):
-        # The ID of the user on duty.
+        # The contact ID.
         self.id = id
-        # The name of the user on duty.
+        # The contact name.
         self.name = name
 
     def validate(self):

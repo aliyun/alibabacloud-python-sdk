@@ -141,15 +141,17 @@ class SearchTraceAppByPageResponseBodyPageBeanTraceApps(DaraModel):
         self.resource_group_id = resource_group_id
         # Indicates whether the application is displayed in the Application Real-Time Monitoring Service (ARMS) console. Valid values:
         # 
-        # *   `true`: yes
-        # *   `false`: no
+        # - `true`: yes
+        # 
+        # - `false`: no
         self.show = show
         # A list of tags.
         self.tags = tags
         # The type of the monitoring task. Valid values:
         # 
-        # *   `TRACE`: Application Monitoring
-        # *   `RETCODE`: Browser Monitoring
+        # - `TRACE`: Application Monitoring
+        # 
+        # - `RETCODE`: Browser Monitoring
         self.type = type
         # The timestamp generated when the task information was updated.
         self.update_time = update_time

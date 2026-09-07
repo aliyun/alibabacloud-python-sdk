@@ -11,7 +11,7 @@ class ListAddonReleasesRequest(DaraModel):
         environment_id: str = None,
         region_id: str = None,
     ):
-        # The name of the add-on.
+        # The name of the addon.
         self.addon_name = addon_name
         # The environment ID.
         # 

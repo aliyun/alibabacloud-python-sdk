@@ -17,19 +17,23 @@ class GetRumUploadFilesRequest(DaraModel):
         version_id: str = None,
         workspace: str = None,
     ):
-        # The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
+        # The file type. Valid values:
+        # 
+        # - source-map: SourceMap file.
+        # - mapping: Android symbol table file.
+        # - dsym: iOS dSYM file.
         self.app_type = app_type
         self.file_name = file_name
         self.next_token = next_token
         self.page_size = page_size
-        # The process ID (PID) of the application.
+        # The application ID.
         self.pid = pid
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.service_id = service_id
-        # The version number of the files. If you do not specify this parameter, all versions of the files are returned by default.
+        # The file version number. If this parameter is not specified, files of all versions are returned by default.
         self.version_id = version_id
         self.workspace = workspace
 

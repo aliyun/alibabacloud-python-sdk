@@ -10,11 +10,11 @@ class DeleteGrafanaWorkspaceRequest(DaraModel):
         grafana_workspace_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the workspace.
+        # The Managed Service for Grafana workspace ID.
         # 
         # This parameter is required.
         self.grafana_workspace_id = grafana_workspace_id
-        # The region ID. Default value: cn-hangzhou.
+        # The region ID. Default value: ap-southeast-1.
         # 
         # This parameter is required.
         self.region_id = region_id

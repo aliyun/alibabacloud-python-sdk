@@ -27,51 +27,53 @@ class ListEnvironmentsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   CS
+        # - CS
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     Container Service for Kubernetes (ACK)
+        #   Container Service for Kubernetes (ACK)
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   ECS
+        # - ECS
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     Elastic Compute Service (ECS)
+        #   Elastic Compute Service (ECS)
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Cloud
+        # - Cloud
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     :
+        #   :
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     cloud service
+        #   cloud service
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.environment_type = environment_type
         # The payable resource plan.
         # 
-        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
-        # *   Otherwise, leave the parameter empty.
+        # - If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # 
+        # - Otherwise, leave the parameter empty.
         # 
         # Valid values:
         # 
-        # *   CS_Pro: Container Monitoring Pro
-        # *   CS_Basic: Container Monitoring Basic
+        # - CS_Pro: Container Monitoring Pro
+        # 
+        # - CS_Basic: Container Monitoring Basic
         self.fee_package = fee_package
         # The region IDs to be queried.
         self.filter_region_ids = filter_region_ids

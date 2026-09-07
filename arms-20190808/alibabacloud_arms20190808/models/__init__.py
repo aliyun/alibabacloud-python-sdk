@@ -119,6 +119,9 @@ from ._create_grafana_workspace_request import CreateGrafanaWorkspaceRequest
 from ._create_grafana_workspace_shrink_request import CreateGrafanaWorkspaceShrinkRequest
 from ._create_grafana_workspace_response_body import CreateGrafanaWorkspaceResponseBody
 from ._create_grafana_workspace_response import CreateGrafanaWorkspaceResponse
+from ._create_grafana_workspace_account_request import CreateGrafanaWorkspaceAccountRequest
+from ._create_grafana_workspace_account_response_body import CreateGrafanaWorkspaceAccountResponseBody
+from ._create_grafana_workspace_account_response import CreateGrafanaWorkspaceAccountResponse
 from ._create_integration_request import CreateIntegrationRequest
 from ._create_integration_response_body import CreateIntegrationResponseBody
 from ._create_integration_response import CreateIntegrationResponse
@@ -233,6 +236,12 @@ from ._delete_grafana_resource_response import DeleteGrafanaResourceResponse
 from ._delete_grafana_workspace_request import DeleteGrafanaWorkspaceRequest
 from ._delete_grafana_workspace_response_body import DeleteGrafanaWorkspaceResponseBody
 from ._delete_grafana_workspace_response import DeleteGrafanaWorkspaceResponse
+from ._delete_grafana_workspace_account_request import DeleteGrafanaWorkspaceAccountRequest
+from ._delete_grafana_workspace_account_response_body import DeleteGrafanaWorkspaceAccountResponseBody
+from ._delete_grafana_workspace_account_response import DeleteGrafanaWorkspaceAccountResponse
+from ._delete_grafana_workspace_account_role_request import DeleteGrafanaWorkspaceAccountRoleRequest
+from ._delete_grafana_workspace_account_role_response_body import DeleteGrafanaWorkspaceAccountRoleResponseBody
+from ._delete_grafana_workspace_account_role_response import DeleteGrafanaWorkspaceAccountRoleResponse
 from ._delete_imrobot_request import DeleteIMRobotRequest
 from ._delete_imrobot_response_body import DeleteIMRobotResponseBody
 from ._delete_imrobot_response import DeleteIMRobotResponse
@@ -466,6 +475,9 @@ from ._get_trace_app_response import GetTraceAppResponse
 from ._get_trace_app_config_request import GetTraceAppConfigRequest
 from ._get_trace_app_config_response_body import GetTraceAppConfigResponseBody
 from ._get_trace_app_config_response import GetTraceAppConfigResponse
+from ._grafana_workspace_http_api_proxy_request import GrafanaWorkspaceHttpApiProxyRequest
+from ._grafana_workspace_http_api_proxy_response_body import GrafanaWorkspaceHttpApiProxyResponseBody
+from ._grafana_workspace_http_api_proxy_response import GrafanaWorkspaceHttpApiProxyResponse
 from ._import_app_alert_rules_request import ImportAppAlertRulesRequest
 from ._import_app_alert_rules_response_body import ImportAppAlertRulesResponseBody
 from ._import_app_alert_rules_response import ImportAppAlertRulesResponse
@@ -556,6 +568,9 @@ from ._list_grafana_workspace_request import ListGrafanaWorkspaceRequest
 from ._list_grafana_workspace_shrink_request import ListGrafanaWorkspaceShrinkRequest
 from ._list_grafana_workspace_response_body import ListGrafanaWorkspaceResponseBody
 from ._list_grafana_workspace_response import ListGrafanaWorkspaceResponse
+from ._list_grafana_workspace_account_request import ListGrafanaWorkspaceAccountRequest
+from ._list_grafana_workspace_account_response_body import ListGrafanaWorkspaceAccountResponseBody
+from ._list_grafana_workspace_account_response import ListGrafanaWorkspaceAccountResponse
 from ._list_insights_events_request import ListInsightsEventsRequest
 from ._list_insights_events_response_body import ListInsightsEventsResponseBody
 from ._list_insights_events_response import ListInsightsEventsResponse
@@ -750,6 +765,9 @@ from ._update_environment_response import UpdateEnvironmentResponse
 from ._update_grafana_workspace_request import UpdateGrafanaWorkspaceRequest
 from ._update_grafana_workspace_response_body import UpdateGrafanaWorkspaceResponseBody
 from ._update_grafana_workspace_response import UpdateGrafanaWorkspaceResponse
+from ._update_grafana_workspace_account_role_request import UpdateGrafanaWorkspaceAccountRoleRequest
+from ._update_grafana_workspace_account_role_response_body import UpdateGrafanaWorkspaceAccountRoleResponseBody
+from ._update_grafana_workspace_account_role_response import UpdateGrafanaWorkspaceAccountRoleResponse
 from ._update_grafana_workspace_version_request import UpdateGrafanaWorkspaceVersionRequest
 from ._update_grafana_workspace_version_response_body import UpdateGrafanaWorkspaceVersionResponseBody
 from ._update_grafana_workspace_version_response import UpdateGrafanaWorkspaceVersionResponse
@@ -1341,6 +1359,9 @@ __all__ = [
     CreateGrafanaWorkspaceShrinkRequest,
     CreateGrafanaWorkspaceResponseBody,
     CreateGrafanaWorkspaceResponse,
+    CreateGrafanaWorkspaceAccountRequest,
+    CreateGrafanaWorkspaceAccountResponseBody,
+    CreateGrafanaWorkspaceAccountResponse,
     CreateIntegrationRequest,
     CreateIntegrationResponseBody,
     CreateIntegrationResponse,
@@ -1455,6 +1476,12 @@ __all__ = [
     DeleteGrafanaWorkspaceRequest,
     DeleteGrafanaWorkspaceResponseBody,
     DeleteGrafanaWorkspaceResponse,
+    DeleteGrafanaWorkspaceAccountRequest,
+    DeleteGrafanaWorkspaceAccountResponseBody,
+    DeleteGrafanaWorkspaceAccountResponse,
+    DeleteGrafanaWorkspaceAccountRoleRequest,
+    DeleteGrafanaWorkspaceAccountRoleResponseBody,
+    DeleteGrafanaWorkspaceAccountRoleResponse,
     DeleteIMRobotRequest,
     DeleteIMRobotResponseBody,
     DeleteIMRobotResponse,
@@ -1688,6 +1715,9 @@ __all__ = [
     GetTraceAppConfigRequest,
     GetTraceAppConfigResponseBody,
     GetTraceAppConfigResponse,
+    GrafanaWorkspaceHttpApiProxyRequest,
+    GrafanaWorkspaceHttpApiProxyResponseBody,
+    GrafanaWorkspaceHttpApiProxyResponse,
     ImportAppAlertRulesRequest,
     ImportAppAlertRulesResponseBody,
     ImportAppAlertRulesResponse,
@@ -1778,6 +1808,9 @@ __all__ = [
     ListGrafanaWorkspaceShrinkRequest,
     ListGrafanaWorkspaceResponseBody,
     ListGrafanaWorkspaceResponse,
+    ListGrafanaWorkspaceAccountRequest,
+    ListGrafanaWorkspaceAccountResponseBody,
+    ListGrafanaWorkspaceAccountResponse,
     ListInsightsEventsRequest,
     ListInsightsEventsResponseBody,
     ListInsightsEventsResponse,
@@ -1972,6 +2005,9 @@ __all__ = [
     UpdateGrafanaWorkspaceRequest,
     UpdateGrafanaWorkspaceResponseBody,
     UpdateGrafanaWorkspaceResponse,
+    UpdateGrafanaWorkspaceAccountRoleRequest,
+    UpdateGrafanaWorkspaceAccountRoleResponseBody,
+    UpdateGrafanaWorkspaceAccountRoleResponse,
     UpdateGrafanaWorkspaceVersionRequest,
     UpdateGrafanaWorkspaceVersionResponseBody,
     UpdateGrafanaWorkspaceVersionResponse,

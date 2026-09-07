@@ -1,3 +1,12 @@
+2026-09-07 Version: 10.1.0
+- Support API CreateGrafanaWorkspaceAccount.
+- Support API DeleteGrafanaWorkspaceAccount.
+- Support API DeleteGrafanaWorkspaceAccountRole.
+- Support API GrafanaWorkspaceHttpApiProxy.
+- Support API ListGrafanaWorkspaceAccount.
+- Support API UpdateGrafanaWorkspaceAccountRole.
+
+
 2026-04-01 Version: 10.0.6
 - Update API ListEnvironmentAddons: add response parameters Body.Data.ContainsV2Addon.
 

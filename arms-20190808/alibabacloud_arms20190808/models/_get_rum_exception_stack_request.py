@@ -17,13 +17,13 @@ class GetRumExceptionStackRequest(DaraModel):
         sourcemap_type: str = None,
         workspace: str = None,
     ):
-        # The binary images, which represent all executable files loaded into the process address space when a crash occurs.
+        # The binary images, which represent all executable files loaded into the process address space at the time of the crash.
         self.exception_binary_images = exception_binary_images
-        # The exception stack information. Set the value to a JSON string. call_stack.info represents the stack information, call_stack.thread.name represents the thread name, and call_stack.thread.id represents the thread ID. This parameter is exactly the same as the exception.stack parameter in the logstore-rum Logstore of Simple Log Service.
+        # The error stack information in JSON list format. Each list element contains three fields: call_stack.info, call_stack.thread.name, and call_stack.thread.id, which represent the stack information, thread name, and thread ID, respectively. This is identical to the exception.stack field in the Simple Log Service logstore-rum.
         self.exception_stack = exception_stack
-        # The ID of the exception thread.
+        # The exception thread ID.
         self.exception_thread_id = exception_thread_id
-        # Extra information about iOS symbol tables. You can leave this parameter empty.
+        # The additional system symbol table information for iOS parsing. This parameter is optional.
         self.extra_info = extra_info
         # The application ID.
         self.pid = pid
@@ -31,12 +31,11 @@ class GetRumExceptionStackRequest(DaraModel):
         self.region_id = region_id
         self.service_id = service_id
         # The parsing type. Valid values:
-        # 
-        # *   js: Parses JavaScript errors.
-        # *   sym: Parses PC errors.
-        # *   har: Parses HarmonyOS errors.
-        # *   dSYM: Parses iOS errors.
-        # *   so: Parses Android errors.
+        # - js: JavaScript error parsing
+        # - sym: PC parsing
+        # - har: HarmonyOS parsing
+        # - dSYM: iOS parsing
+        # - so: Android parsing.
         self.sourcemap_type = sourcemap_type
         self.workspace = workspace
 

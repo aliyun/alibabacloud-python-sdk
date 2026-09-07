@@ -15,20 +15,21 @@ class QueryAppMetadataRequest(DaraModel):
         start_time_ms: int = None,
     ):
         self.end_time_ms = end_time_ms
-        # The metadata IDs. Separate multiple IDs with commas (,).
+        # The metadata IDs. Use a comma (,) to separate multiple IDs.
         # 
-        # You can obtain the exception ID on the **Exception Analysis** page of your application in the ARMS console.
+        # You can obtain the exception ID on the **exception analysis** page of the target application in the ARMS console.
         # 
         # This parameter is required.
         self.meta_ids = meta_ids
-        # The metadata type. Valid values:
+        # The type of the metadata. Valid values:
         # 
-        # *   sql: obtains an SQL statement based on sqlId.
-        # *   exception: obtains the exception stack based on exceptionId.
+        # - sql: Retrieves the SQL statement by sqlId.
+        # 
+        # - exception: Retrieves the exception stack by exceptionId.
         # 
         # This parameter is required.
         self.meta_type = meta_type
-        # The process identifier (PID) of the application. You can obtain the PID of an application by calling the **ListTraceApps** operation.
+        # The application ID. To obtain the ID, call the **ListTraceApps** operation.
         # 
         # This parameter is required.
         self.pid = pid

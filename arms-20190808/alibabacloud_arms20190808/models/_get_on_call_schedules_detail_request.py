@@ -11,13 +11,13 @@ class GetOnCallSchedulesDetailRequest(DaraModel):
         id: int = None,
         start_time: str = None,
     ):
-        # The date on which the shift ends. Format: `yyyy-MM-dd`.
+        # The end date of the query range in `yyyy-MM-dd` format.
         self.end_time = end_time
-        # The ID of the scheduling policy.
+        # The ID of the on-call schedule.
         # 
         # This parameter is required.
         self.id = id
-        # The date from which the shift starts. Format: `yyyy-MM-dd`.
+        # The start date of the query range in `yyyy-MM-dd` format.
         self.start_time = start_time
 
     def validate(self):

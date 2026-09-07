@@ -10,7 +10,7 @@ class GetPrometheusInstanceRequest(DaraModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Prometheus instance.
+        # The Prometheus instance ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id

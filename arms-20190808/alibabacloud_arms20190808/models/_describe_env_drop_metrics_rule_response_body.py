@@ -13,13 +13,13 @@ class DescribeEnvDropMetricsRuleResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The returned struct.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,9 +68,9 @@ class DescribeEnvDropMetricsRuleResponseBodyData(DaraModel):
         drop_metrics: str = None,
         rule_name: str = None,
     ):
-        # The list of discarded metrics. Separate multiple metrics with line feeds.
+        # The metrics to be dropped. Metrics are separated by line breaks.
         self.drop_metrics = drop_metrics
-        # The name of the discarded metric rule.
+        # The name of the metric drop rule.
         self.rule_name = rule_name
 
     def validate(self):

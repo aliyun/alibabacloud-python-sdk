@@ -17,20 +17,20 @@ class GetRumExceptionStackResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The responses code. The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The response message.
+        # The response data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # The message returned when the call fails.
         self.message = message
-        # Id of the request.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: The request was successful.
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -97,21 +97,21 @@ class GetRumExceptionStackResponseBodyData(DaraModel):
         thread_info_list: List[main_models.GetRumExceptionStackResponseBodyDataThreadInfoList] = None,
         uuid: str = None,
     ):
-        # The name and UUID of the symbol table required for parsing the exception stack. This parameter is exposed during the parsing of PC errors.
+        # The names and UUIDs of the system symbol tables required for exception stack parsing. This field is returned only for PC parsing.
         self.binary_images = binary_images
-        # The crash address. This parameter is exposed during the parsing of PC errors.
+        # The crash address. This field is returned only for PC parsing.
         self.crash_address = crash_address
-        # The cause of the exception. This parameter is exposed during the parsing of PC errors.
+        # The exception reason. This field is returned only for PC parsing.
         self.crash_reason = crash_reason
-        # The list of stacks.
+        # The stack list.
         self.lines = lines
-        # The name of the crash parsing module. This parameter is exposed during the parsing of PC errors.
+        # The name of the crash parsing module. This field is returned only for PC parsing.
         self.module_name = module_name
         # The thread ID.
         self.thread_id = thread_id
-        # The thread stack information captured during PC crashes.
+        # The thread stack details captured during a PC crash.
         self.thread_info_list = thread_info_list
-        # The UUID of the symbol table required for parsing the stack. This parameter is exposed during the parsing of PC errors.
+        # The UUID of the symbol table required for stack parsing. This field is returned only for PC parsing.
         self.uuid = uuid
 
     def validate(self):
@@ -190,9 +190,9 @@ class GetRumExceptionStackResponseBodyDataThreadInfoList(DaraModel):
         thread_detail: str = None,
         thread_tag: str = None,
     ):
-        # Thread stack details.
+        # The detailed thread stack.
         self.thread_detail = thread_detail
-        # The thread tag, including the thread number and name.
+        # The thread tag, which includes the thread number and thread name.
         self.thread_tag = thread_tag
 
     def validate(self):

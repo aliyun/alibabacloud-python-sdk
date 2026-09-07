@@ -10,8 +10,12 @@ class DeleteCmsExporterRequest(DaraModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
