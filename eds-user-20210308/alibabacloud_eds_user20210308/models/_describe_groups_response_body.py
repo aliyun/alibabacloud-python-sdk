@@ -14,9 +14,9 @@ class DescribeGroupsResponseBody(DaraModel):
         groups: List[main_models.DescribeGroupsResponseBodyGroups] = None,
         request_id: str = None,
     ):
-        # The total number of entries returned.
+        # The number of entries returned in the query result.
         self.count = count
-        # A list of user groups.
+        # The list of user groups.
         self.groups = groups
         # The request ID.
         self.request_id = request_id
@@ -68,25 +68,30 @@ class DescribeGroupsResponseBodyGroups(DaraModel):
         authed_resources: Dict[str, str] = None,
         create_time: str = None,
         description: str = None,
+        download_need_approval: bool = None,
         group_id: str = None,
         group_name: str = None,
         transfer_file_need_approval: bool = None,
+        upload_need_approval: bool = None,
         user_count: int = None,
     ):
-        # The logon policy attached to the user group.
         self.attached_login_policy = attached_login_policy
-        # A list of authorized resources.
+        # The list of assigned resources.
         self.authed_resources = authed_resources
-        # The time when the user group was created.
+        # The creation time.
         self.create_time = create_time
         # The description of the user group.
         self.description = description
-        # The ID of the user group.
+        # Indicates whether download requires approval.
+        self.download_need_approval = download_need_approval
+        # The user group ID.
         self.group_id = group_id
-        # The name of the user group.
+        # The user group name.
         self.group_name = group_name
-        # Indicates whether file transfer approval is enabled.
+        # Indicates whether file approval is enabled.
         self.transfer_file_need_approval = transfer_file_need_approval
+        # Indicates whether upload requires approval.
+        self.upload_need_approval = upload_need_approval
         # The number of members in the user group.
         self.user_count = user_count
 
@@ -111,6 +116,9 @@ class DescribeGroupsResponseBodyGroups(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.download_need_approval is not None:
+            result['DownloadNeedApproval'] = self.download_need_approval
+
         if self.group_id is not None:
             result['GroupId'] = self.group_id
 
@@ -119,6 +127,9 @@ class DescribeGroupsResponseBodyGroups(DaraModel):
 
         if self.transfer_file_need_approval is not None:
             result['TransferFileNeedApproval'] = self.transfer_file_need_approval
+
+        if self.upload_need_approval is not None:
+            result['UploadNeedApproval'] = self.upload_need_approval
 
         if self.user_count is not None:
             result['UserCount'] = self.user_count
@@ -140,6 +151,9 @@ class DescribeGroupsResponseBodyGroups(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('DownloadNeedApproval') is not None:
+            self.download_need_approval = m.get('DownloadNeedApproval')
+
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
 
@@ -148,6 +162,9 @@ class DescribeGroupsResponseBodyGroups(DaraModel):
 
         if m.get('TransferFileNeedApproval') is not None:
             self.transfer_file_need_approval = m.get('TransferFileNeedApproval')
+
+        if m.get('UploadNeedApproval') is not None:
+            self.upload_need_approval = m.get('UploadNeedApproval')
 
         if m.get('UserCount') is not None:
             self.user_count = m.get('UserCount')
@@ -160,9 +177,7 @@ class DescribeGroupsResponseBodyGroupsAttachedLoginPolicy(DaraModel):
         name: str = None,
         policy_id: str = None,
     ):
-        # The name of the logon policy.
         self.name = name
-        # The ID of the logon policy.
         self.policy_id = policy_id
 
     def validate(self):

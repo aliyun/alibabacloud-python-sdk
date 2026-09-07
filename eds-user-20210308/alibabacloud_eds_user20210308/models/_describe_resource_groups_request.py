@@ -21,7 +21,7 @@ class DescribeResourceGroupsRequest(DaraModel):
         resource_group_name: str = None,
     ):
         self.agent_type = agent_type
-        # The cloud platform resource group ID.
+        # The Alibaba Cloud resource group ID.
         self.aliyun_resource_group_ids = aliyun_resource_group_ids
         # The channel tag.
         self.business_channel = business_channel
@@ -34,10 +34,11 @@ class DescribeResourceGroupsRequest(DaraModel):
         # > Fixed value: AliyunConsole.
         # > - For Elastic Desktop Service Enterprise Edition, set this parameter to AliyunConsole. Other platforms are not publicly available.
         self.platform = platform
+        # The resource classification within the resource group.
         self.resource_classification = resource_classification
         # The list of resource group IDs.
         self.resource_group_ids = resource_group_ids
-        # The name of the resource group.
+        # The resource group name.
         self.resource_group_name = resource_group_name
 
     def validate(self):

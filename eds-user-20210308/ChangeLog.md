@@ -1,3 +1,10 @@
+2026-09-07 Version: 2.2.0
+- Support API GetAdUsersCount.
+- Support API GetUsersCount.
+- Update API DescribeGroups: add response parameters Body.Groups.$.DownloadNeedApproval.
+- Update API DescribeGroups: add response parameters Body.Groups.$.UploadNeedApproval.
+
+
 2026-06-26 Version: 2.1.1
 - Update API CreateResourceGroup: add request parameters AgentType.
 - Update API DescribeResourceGroups: add request parameters AgentType.

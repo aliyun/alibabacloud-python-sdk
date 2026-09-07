@@ -16,7 +16,7 @@ class DescribeResourceGroupsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of resource groups.
+        # The list of resource group information.
         self.resource_group = resource_group
         # The total number of resource groups.
         self.total_count = total_count
@@ -84,17 +84,17 @@ class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
         # The creation time.
         self.create_time = create_time
         # > The policies associated with the resource group.
-        # > - Associated policies take effect on cloud desktops in the resource group. If multiple policies are associated, they take effect based on policy priority.
-        # > - If a cloud desktop in the resource group already has other policies specified, the policies associated with the resource group take precedence.
+        # > - Associated policies take effect on cloud computers in the resource group. If multiple policies are associated, they take effect based on policy priority.
+        # > - If a cloud computer in the resource group already has other policies specified, the policies associated with the resource group take effect first.
         self.policies = policies
         # The resource count in the resource group.
         self.resource_count = resource_count
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The name of the resource group.
+        # The resource group name.
         self.resource_group_name = resource_group_name
         # > The associated scheduled tasks.
-        # > - Associated scheduled tasks take effect on cloud desktops in the resource group. If a cloud desktop in the resource group already has other scheduled tasks associated, the tasks associated with the resource group take precedence.
+        # > - Associated scheduled tasks take effect on cloud computers in the resource group. If a cloud computer in the resource group already has other scheduled tasks associated, the tasks associated with the resource group take effect first.
         self.timers = timers
 
     def validate(self):
@@ -204,6 +204,7 @@ class DescribeResourceGroupsResponseBodyResourceGroupTimers(DaraModel):
         id: str = None,
         name: str = None,
         timer_status: str = None,
+        type: str = None,
     ):
         self.bind_status = bind_status
         # The scheduled task ID.
@@ -211,6 +212,7 @@ class DescribeResourceGroupsResponseBodyResourceGroupTimers(DaraModel):
         # The scheduled task name.
         self.name = name
         self.timer_status = timer_status
+        self.type = type
 
     def validate(self):
         pass
@@ -232,6 +234,9 @@ class DescribeResourceGroupsResponseBodyResourceGroupTimers(DaraModel):
         if self.timer_status is not None:
             result['TimerStatus'] = self.timer_status
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -247,6 +252,9 @@ class DescribeResourceGroupsResponseBodyResourceGroupTimers(DaraModel):
 
         if m.get('TimerStatus') is not None:
             self.timer_status = m.get('TimerStatus')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

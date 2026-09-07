@@ -28,39 +28,36 @@ class DescribeUsersShrinkRequest(DaraModel):
         status: int = None,
     ):
         self.biz_type = biz_type
-        # Status
+        # The channel.
         self.business_channel = business_channel
-        # The list of usernames (EndUserId) that you want to exactly match.
+        # The list of usernames (EndUserId) for exact match.
         self.end_user_ids = end_user_ids
-        # The list of usernames (EndUserId) that you want to exactly exclude.
+        # The list of usernames (EndUserId) to exclude exactly.
         self.exclude_end_user_ids = exclude_end_user_ids
-        # The ID of the user group to exclude. If specified, the query returns users who are not in this user group.
         self.exclude_group_id = exclude_group_id
-        # The filter for a fuzzy search. The filter matches usernames (EndUserId) and email addresses (Email). This parameter supports the wildcard character (\\*). For example, if you set this parameter to `a*m`, all results whose usernames or email addresses start with `a` and end with `m` are returned.
+        # The fuzzy search string that supports matching by username (EndUserId) and email (Email). This field supports wildcards (*). For example, if you set this field to `a*m`, all results whose username or email starts with `a` and ends with `m` are returned.
         self.filter = filter
         self.filter_map_shrink = filter_map_shrink
-        # Filters users by whether a cloud resource is assigned.
         self.filter_with_assigned_resource_shrink = filter_with_assigned_resource_shrink
-        # > This parameter is not available to the public.
+        # Filters users based on whether cloud resources are assigned.
         self.filter_with_assigned_resources_shrink = filter_with_assigned_resources_shrink
-        # Performs an exact match by user group ID to query the list of accounts that belong to the user group.
+        # Performs an exact match by user group ID and queries the list of accounts that belong to the specified user group.
         self.group_id = group_id
-        # Queries extended information about the user.
+        # Specifies whether to query users in sub-organizations.
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
-        # The number of entries to return on each page.
+        # The number of entries per page for a paged query.  
         # 
-        # - Valid values: 1 to 500.
-        # 
+        # - Valid values: 1 to 500.  
         # - Default value: 200.
         self.max_results = max_results
-        # The token that is used to start the next query. If the number of entries returned exceeds the value of MaxResults, a token is returned. You can use this token in the next query to continue the query.
+        # The pagination token for the next query. You do not need to set this parameter for the first request. If not all results are returned in a single query, a non-empty NextToken is returned. You can pass the returned NextToken in subsequent requests to continue the query.
         self.next_token = next_token
-        # Performs an exact match by organization ID to query the list of accounts that belong to the organization.
+        # Performs an exact match by organization ID and queries the list of accounts that belong to the specified organization.
         self.org_id = org_id
-        # > This parameter is not available to the public.
+        # Queries extended user information.
         self.show_extras_shrink = show_extras_shrink
         self.solution_id = solution_id
-        # Specifies whether to query users in suborganizations.
+        # The status.
         self.status = status
 
     def validate(self):

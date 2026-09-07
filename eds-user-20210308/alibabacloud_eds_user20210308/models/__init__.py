@@ -68,9 +68,15 @@ from ._filter_users_request import FilterUsersRequest
 from ._filter_users_shrink_request import FilterUsersShrinkRequest
 from ._filter_users_response_body import FilterUsersResponseBody
 from ._filter_users_response import FilterUsersResponse
+from ._get_ad_users_count_request import GetAdUsersCountRequest
+from ._get_ad_users_count_response_body import GetAdUsersCountResponseBody
+from ._get_ad_users_count_response import GetAdUsersCountResponse
 from ._get_manager_info_by_auth_code_request import GetManagerInfoByAuthCodeRequest
 from ._get_manager_info_by_auth_code_response_body import GetManagerInfoByAuthCodeResponseBody
 from ._get_manager_info_by_auth_code_response import GetManagerInfoByAuthCodeResponse
+from ._get_users_count_request import GetUsersCountRequest
+from ._get_users_count_response_body import GetUsersCountResponseBody
+from ._get_users_count_response import GetUsersCountResponse
 from ._init_tenant_alias_request import InitTenantAliasRequest
 from ._init_tenant_alias_response_body import InitTenantAliasResponseBody
 from ._init_tenant_alias_response import InitTenantAliasResponse
@@ -282,9 +288,15 @@ __all__ = [
     FilterUsersShrinkRequest,
     FilterUsersResponseBody,
     FilterUsersResponse,
+    GetAdUsersCountRequest,
+    GetAdUsersCountResponseBody,
+    GetAdUsersCountResponse,
     GetManagerInfoByAuthCodeRequest,
     GetManagerInfoByAuthCodeResponseBody,
     GetManagerInfoByAuthCodeResponse,
+    GetUsersCountRequest,
+    GetUsersCountResponseBody,
+    GetUsersCountResponse,
     InitTenantAliasRequest,
     InitTenantAliasResponseBody,
     InitTenantAliasResponse,

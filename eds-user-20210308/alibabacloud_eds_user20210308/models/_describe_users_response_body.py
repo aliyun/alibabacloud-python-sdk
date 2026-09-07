@@ -10,15 +10,18 @@ from darabonba.model import DaraModel
 class DescribeUsersResponseBody(DaraModel):
     def __init__(
         self,
+        count: int = None,
         next_token: str = None,
         request_id: str = None,
         users: List[main_models.DescribeUsersResponseBodyUsers] = None,
     ):
-        # The token to start the next query. If this parameter is empty, all results have been returned.
+        # The total number of users that meet the query conditions
+        self.count = count
+        # The pagination token for the next query. An empty NextToken indicates that no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The details of the convenience accounts.
+        # The collection of convenience account information.
         self.users = users
 
     def validate(self):
@@ -32,6 +35,9 @@ class DescribeUsersResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.count is not None:
+            result['Count'] = self.count
+
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
@@ -47,6 +53,9 @@ class DescribeUsersResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
 
@@ -90,60 +99,54 @@ class DescribeUsersResponseBodyUsers(DaraModel):
     ):
         # The work address of the user.
         self.address = address
-        # The URL of the user\\"s avatar.
+        # The URL of the user\\"s profile picture.
         self.avatar = avatar
         # The email address.
         self.email = email
-        # Indicates whether administrator access is enabled.
+        # Indicates whether administrator access permissions are enabled.
         self.enable_admin_access = enable_admin_access
-        # The end user ID.
+        # The username.
         self.end_user_id = end_user_id
-        # The name of the user imported from an external system.
+        # The username imported from an external source.
         # 
-        # > This parameter is for internal use only.
+        # > This field is not publicly available.
         self.external_name = external_name
-        # The extended properties of the user.
+        # The extended user information.
         self.extras = extras
-        # The user groups to which the convenience account belongs.
+        # The collection of user groups to which the convenience account belongs.
         self.groups = groups
-        # The ID of the convenience account.
+        # The convenience account ID.
         self.id = id
-        # Indicates whether the user is a tenant manager. When you create a convenience account of the `CreateFromManager` type, you must specify a tenant manager. Notifications, such as password resets initiated by an end user from a client, are sent to the tenant manager\\"s email or mobile phone. For more information, see [Create a convenience account](https://help.aliyun.com/document_detail/214472.html).
+        # Indicates whether the user is a user administrator. If the convenience account is of the administrator-activated type, a user administrator must be specified. Notifications such as password resets initiated by end users through the client are sent to the user administrator\\"s email or phone. For more information, see [Create a convenience account](https://help.aliyun.com/document_detail/214472.html).
         self.is_tenant_manager = is_tenant_manager
-        # The employee ID.
+        # The employee ID of the user.
         self.job_number = job_number
-        # The nickname of the user.<br>
-        # The value is determined from the following parameters, in order of priority:<br>
-        # 
-        # - `RealNickName`
-        # 
-        # - `Remark`
-        # 
-        # - `EndUserId`
+        # The nickname of the user. The value is determined in the following order:
+        # - RealNickName
+        # - Remark
+        # - EndUserId
         self.nick_name = nick_name
-        # The ID of the organization to which the convenience account belongs.
-        # 
-        # > This parameter is deprecated and may be removed in a future release.
+        # The department ID to which the convenience account belongs.
+        # > This parameter will be deprecated soon.
         self.org_id = org_id
-        # The organizations to which the convenience account belongs.
+        # The collection of departments to which the convenience account belongs.
         self.orgs = orgs
-        # The type of the convenience account. The account can be activated in one of the following ways:
+        # The convenience account type, which includes:
         # 
-        # - Tenant manager-activated: The tenant manager sets the username and password. Notifications such as password resets are sent to the tenant manager\\"s email address or mobile phone.
-        # 
-        # - End user-activated: The tenant manager sets the username and the end user\\"s email address or mobile phone. Notifications for the end user, such as the initial password for the cloud desktop, are sent to the end user\\"s email address or mobile phone.
+        # * Administrator-activated type: The administrator sets the username and password. User notifications such as password resets are sent to the administrator\\"s email or phone.
+        # * User-activated type: The administrator sets the username and the user\\"s email or phone for receiving notifications. User notifications such as cloud computer provisioning notifications (including the initial password) are sent to the user\\"s email or phone.
         self.owner_type = owner_type
         self.password_expire_days = password_expire_days
         self.password_expire_rest_days = password_expire_rest_days
-        # The phone number. This parameter is returned only if a phone number is set.
+        # The phone number. This parameter is not returned if it is not set.
         self.phone = phone
-        # A list of custom properties for the user.
+        # The user properties.
         self.properties = properties
         # The display name of the user.
         self.real_nick_name = real_nick_name
-        # The note about the convenience account.
+        # The remark of the convenience account.
         self.remark = remark
-        # The status of the convenience account.
+        # The status.
         self.status = status
         # The globally unique ID of the convenience account.
         self.wy_id = wy_id
@@ -335,7 +338,7 @@ class DescribeUsersResponseBodyUsersProperties(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The property key.
+        # The property name.
         self.key = key
         # The property value.
         self.value = value
@@ -373,9 +376,9 @@ class DescribeUsersResponseBodyUsersOrgs(DaraModel):
         org_name: str = None,
         org_name_path: str = None,
     ):
-        # The ID of the organization.
+        # The department ID.
         self.org_id = org_id
-        # The name of the organization.
+        # The department name.
         self.org_name = org_name
         self.org_name_path = org_name_path
 
@@ -417,9 +420,9 @@ class DescribeUsersResponseBodyUsersGroups(DaraModel):
         group_id: str = None,
         group_name: str = None,
     ):
-        # The ID of the user group.
+        # The user group ID.
         self.group_id = group_id
-        # The name of the user group.
+        # The user group name.
         self.group_name = group_name
 
     def validate(self):

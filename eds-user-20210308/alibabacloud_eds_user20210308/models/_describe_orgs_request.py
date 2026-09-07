@@ -11,6 +11,7 @@ class DescribeOrgsRequest(DaraModel):
         self,
         business_channel: str = None,
         include_org_ids: List[str] = None,
+        is_query_all_sub_orgs: bool = None,
         max_results: int = None,
         next_token: str = None,
         org_name: str = None,
@@ -20,10 +21,12 @@ class DescribeOrgsRequest(DaraModel):
         # The channel.
         self.business_channel = business_channel
         self.include_org_ids = include_org_ids
-        # The maximum number of entries to return. Valid values: 1 to 100.<br>
-        # Default value: 100.<br>
+        # Specifies whether to query all subordinate organizations when a parent organization is specified.
+        self.is_query_all_sub_orgs = is_query_all_sub_orgs
+        # The maximum number of results to return. Valid values: 1 to 100.    
+        # Default value: 100.
         self.max_results = max_results
-        # The pagination token. To retrieve the next page of results, set this parameter to the `NextToken` value that was returned from a previous request.
+        # The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
         self.next_token = next_token
         # The organization name.
         self.org_name = org_name
@@ -44,6 +47,9 @@ class DescribeOrgsRequest(DaraModel):
 
         if self.include_org_ids is not None:
             result['IncludeOrgIds'] = self.include_org_ids
+
+        if self.is_query_all_sub_orgs is not None:
+            result['IsQueryAllSubOrgs'] = self.is_query_all_sub_orgs
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
@@ -69,6 +75,9 @@ class DescribeOrgsRequest(DaraModel):
 
         if m.get('IncludeOrgIds') is not None:
             self.include_org_ids = m.get('IncludeOrgIds')
+
+        if m.get('IsQueryAllSubOrgs') is not None:
+            self.is_query_all_sub_orgs = m.get('IsQueryAllSubOrgs')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

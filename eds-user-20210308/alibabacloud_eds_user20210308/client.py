@@ -21,10 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'eds-user.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'eds-user.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eds-user', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1337,6 +1333,8 @@ class Client(OpenApiClient):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.include_org_ids):
             query['IncludeOrgIds'] = request.include_org_ids
+        if not DaraCore.is_null(request.is_query_all_sub_orgs):
+            query['IsQueryAllSubOrgs'] = request.is_query_all_sub_orgs
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -1381,6 +1379,8 @@ class Client(OpenApiClient):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.include_org_ids):
             query['IncludeOrgIds'] = request.include_org_ids
+        if not DaraCore.is_null(request.is_query_all_sub_orgs):
+            query['IsQueryAllSubOrgs'] = request.is_query_all_sub_orgs
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -1920,6 +1920,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.filter_users_with_options_async(request, runtime)
 
+    def get_ad_users_count_with_options(
+        self,
+        request: main_models.GetAdUsersCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAdUsersCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        body = {}
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.solution_id):
+            body['SolutionId'] = request.solution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAdUsersCount',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAdUsersCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ad_users_count_with_options_async(
+        self,
+        request: main_models.GetAdUsersCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAdUsersCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        body = {}
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.solution_id):
+            body['SolutionId'] = request.solution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAdUsersCount',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAdUsersCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ad_users_count(
+        self,
+        request: main_models.GetAdUsersCountRequest,
+    ) -> main_models.GetAdUsersCountResponse:
+        runtime = RuntimeOptions()
+        return self.get_ad_users_count_with_options(request, runtime)
+
+    async def get_ad_users_count_async(
+        self,
+        request: main_models.GetAdUsersCountRequest,
+    ) -> main_models.GetAdUsersCountResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ad_users_count_with_options_async(request, runtime)
+
     def get_manager_info_by_auth_code_with_options(
         self,
         request: main_models.GetManagerInfoByAuthCodeRequest,
@@ -1989,6 +2071,88 @@ class Client(OpenApiClient):
     ) -> main_models.GetManagerInfoByAuthCodeResponse:
         runtime = RuntimeOptions()
         return await self.get_manager_info_by_auth_code_with_options_async(request, runtime)
+
+    def get_users_count_with_options(
+        self,
+        request: main_models.GetUsersCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUsersCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        body = {}
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.solution_id):
+            body['SolutionId'] = request.solution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUsersCount',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUsersCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_users_count_with_options_async(
+        self,
+        request: main_models.GetUsersCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUsersCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        body = {}
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.solution_id):
+            body['SolutionId'] = request.solution_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUsersCount',
+            version = '2021-03-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUsersCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_users_count(
+        self,
+        request: main_models.GetUsersCountRequest,
+    ) -> main_models.GetUsersCountResponse:
+        runtime = RuntimeOptions()
+        return self.get_users_count_with_options(request, runtime)
+
+    async def get_users_count_async(
+        self,
+        request: main_models.GetUsersCountRequest,
+    ) -> main_models.GetUsersCountResponse:
+        runtime = RuntimeOptions()
+        return await self.get_users_count_with_options_async(request, runtime)
 
     def init_tenant_alias_with_options(
         self,

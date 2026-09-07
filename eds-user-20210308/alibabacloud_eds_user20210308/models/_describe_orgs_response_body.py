@@ -14,9 +14,9 @@ class DescribeOrgsResponseBody(DaraModel):
         orgs: List[main_models.DescribeOrgsResponseBodyOrgs] = None,
         request_id: str = None,
     ):
-        # The token used to retrieve the next page of results. If this parameter is not empty, more results are available. To retrieve the next page, pass this value in the `NextToken` parameter of a subsequent request.
+        # The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
         self.next_token = next_token
-        # The organization list.
+        # The list of organizations.
         self.orgs = orgs
         # The request ID.
         self.request_id = request_id
@@ -64,12 +64,17 @@ class DescribeOrgsResponseBody(DaraModel):
 class DescribeOrgsResponseBodyOrgs(DaraModel):
     def __init__(
         self,
+        access_type: str = None,
         org_id: str = None,
         org_name: str = None,
         org_name_path: str = None,
         parent_org_id: str = None,
         resource_policy_list: List[main_models.DescribeOrgsResponseBodyOrgsResourcePolicyList] = None,
     ):
+        # The access type of the organization node. Valid values:
+        # - MANAGEABLE: indicates a manageable node.
+        # - PATH_ONLY: indicates a node used only to display the full path to the root organization.
+        self.access_type = access_type
         # The organization ID.
         self.org_id = org_id
         # The organization name.
@@ -90,6 +95,9 @@ class DescribeOrgsResponseBodyOrgs(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
+
         if self.org_id is not None:
             result['OrgId'] = self.org_id
 
@@ -111,6 +119,9 @@ class DescribeOrgsResponseBodyOrgs(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
+
         if m.get('OrgId') is not None:
             self.org_id = m.get('OrgId')
 
