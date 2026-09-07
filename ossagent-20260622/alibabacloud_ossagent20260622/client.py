@@ -389,6 +389,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.confirm_with_options_async(request, headers, runtime)
 
+    def get_session_content_with_options(
+        self,
+        request: main_models.GetSessionContentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSessionContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSessionContent',
+            version = '2026-06-22',
+            protocol = 'HTTPS',
+            pathname = f'/api/oss/agent/get_session_content.json',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSessionContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_session_content_with_options_async(
+        self,
+        request: main_models.GetSessionContentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSessionContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSessionContent',
+            version = '2026-06-22',
+            protocol = 'HTTPS',
+            pathname = f'/api/oss/agent/get_session_content.json',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSessionContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_session_content(
+        self,
+        request: main_models.GetSessionContentRequest,
+    ) -> main_models.GetSessionContentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_session_content_with_options(request, headers, runtime)
+
+    async def get_session_content_async(
+        self,
+        request: main_models.GetSessionContentRequest,
+    ) -> main_models.GetSessionContentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_session_content_with_options_async(request, headers, runtime)
+
     def interrupt_with_options(
         self,
         session_id: str,
