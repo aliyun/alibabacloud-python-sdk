@@ -16,25 +16,23 @@ class DescribeDesktopsInGroupRequest(DaraModel):
         pay_type: str = None,
         region_id: str = None,
     ):
+        # The end time of the custom time range.
         self.custom_end_time_period = custom_end_time_period
+        # The start time of the custom time range.
         self.custom_start_time_period = custom_start_time_period
-        # The ID of the desktop group.
+        # The ID of the shared cloud desktop.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # Specifies whether to return deleted desktops.
+        # Specifies whether to ignore the deletion flag.
         self.ignore_deleted = ignore_deleted
-        # The maximum number of entries to return on a single page.
-        # 
-        # - Maximum value: 100.
-        # 
-        # - Default value: 10.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # The token that is used to start the next query. If this parameter is empty, all results are returned.
+        # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
         # The billing method.
         self.pay_type = pay_type
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

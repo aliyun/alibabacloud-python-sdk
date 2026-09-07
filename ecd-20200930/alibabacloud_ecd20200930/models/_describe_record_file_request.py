@@ -21,50 +21,46 @@ class DescribeRecordFileRequest(DaraModel):
         start_time: str = None,
         status: int = None,
     ):
-        # The ID of the cloud desktop.
+        # The Cloud Desktop ID.
         self.desktop_id = desktop_id
-        # The end of the time range to query.
+        # The end time of the query. Format: yyyyMMddHHmmss.
         self.end_time = end_time
         # The ID of the end user.
         self.end_user_id = end_user_id
         # The name of the recording file.
         self.file_name = file_name
-        # The sorting basis. If you do not specify this parameter, the results are sorted by screen recording start time in descending order. Valid value:
+        # The field used for sorting. If this parameter is not specified, the results are sorted by recording start time in descending order. Valid values:
         # 
-        # - `startTime`: the start time of a screen recording.
+        # - startTime: recording start time.
         self.order_by = order_by
-        # The sorting order. Valid values:
+        # The sort order. Valid values:
         # 
-        # - `asc`: ascending
-        # 
-        # - `desc`: descending
+        # - asc: ascending order.
+        # - desc: descending order.
         self.order_sort = order_sort
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of rows per page in a paging query.
         self.page_size = page_size
-        # The type of the screen recording. Valid values:
+        # The type of the screen recording file. Valid values:
         # 
-        # - `alltime`: full-time recording
-        # 
-        # - `period`: recording at intervals
-        # 
-        # - `event`: event-triggered recording
-        # 
-        # - `session`: session-based recording
+        # - alltime: full-time recording.
+        # - period: interval recording.
+        # - event: event-based recording.
+        # - session: session recording.
         self.record_type = record_type
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that are supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource type.
         self.resource_type = resource_type
-        # The beginning of the time range to query.
+        # The start time of the query. Format: yyyyMMddHHmmss.
         self.start_time = start_time
         # The status of the screen recording file. Valid values:
         # 
-        # - `0`: The file is uploaded.
-        # 
-        # - `1`: The file is being uploaded.
+        # - 0: uploaded.
+        # - 1: uploading.
         self.status = status
 
     def validate(self):

@@ -17,9 +17,12 @@ class CreateEcdReportTaskRequest(DaraModel):
         sub_type: str = None,
         task_type: str = None,
     ):
+        # The business channel. Valid values:
+        # Enterprise: Enterprise Edition.
+        # Business: Business Edition.
         self.business_channel = business_channel
         # The list of filter conditions for query results. The filter condition objects have a logical AND (&) relationship.
-        # Each filter condition contains FilterKey and FilterValues, which represent the filter condition name and specific values.
+        # Each filter condition contains FilterKey and FilterValues, which specify the filter condition name and its values.
         self.filter_list = filter_list
         # The report language type. This is an enumerated value.
         self.lang_type = lang_type
@@ -101,7 +104,7 @@ class CreateEcdReportTaskRequestFilterList(DaraModel):
     ):
         # The report query filter condition. The valid values vary based on the SubType value:
         # 1. Cloud computer report
-        # - KeyWord: automatic keyword recognition for cloud computers.
+        # - KeyWord: automatically identifies the cloud computer keyword.
         # - RegionId: the region ID.
         # - DesktopId: the cloud computer ID.
         # - DesktopName: the cloud computer name (fuzzy match).
@@ -112,7 +115,7 @@ class CreateEcdReportTaskRequestFilterList(DaraModel):
         # - DesktopIP: the cloud computer IP address.
         # - SubPayType: the billing method.
         # - EndUserId: the username (fuzzy match).
-        # - ExpireTime: the expiration time in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
+        # - ExpireTime: the expiration time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
         # - IncludeAssignedUser: specifies whether users are assigned.
         # - ResourceGroupId: the resource group ID.
         # - PolicyId: the policy ID.

@@ -13,7 +13,7 @@ class DescribeQosRulesResponseBody(DaraModel):
         qos_rules: List[main_models.DescribeQosRulesResponseBodyQosRules] = None,
         request_id: str = None,
     ):
-        # A list of QoS rules.
+        # The list of QoS rules.
         self.qos_rules = qos_rules
         # The request ID.
         self.request_id = request_id
@@ -63,18 +63,19 @@ class DescribeQosRulesResponseBodyQosRules(DaraModel):
         qos_rule_name: str = None,
         upload: str = None,
     ):
-        # The number of associated cloud desktops.
+        # The number of cloud computers in the pool.
         self.desktop_count = desktop_count
+        # The number of cloud computer pools associated with the policy.
         self.desktop_group_count = desktop_group_count
-        # The download bandwidth.
+        # The downstream bandwidth.
         self.download = download
-        # The network package ID.
+        # The premium Internet bandwidth ID.
         self.network_package_id = network_package_id
         # The QoS rule ID.
         self.qos_rule_id = qos_rule_id
-        # The QoS rule name.
+        # The name of the QoS rule.
         self.qos_rule_name = qos_rule_name
-        # The upload bandwidth.
+        # The upstream bandwidth.
         self.upload = upload
 
     def validate(self):

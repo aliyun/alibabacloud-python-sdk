@@ -10,7 +10,7 @@ class CreateCenterPolicyResponseBody(DaraModel):
         policy_group_id: str = None,
         request_id: str = None,
     ):
-        # The Cloud Desktop policy ID.
+        # The cloud desktop policy ID.
         self.policy_group_id = policy_group_id
         # The request ID.
         self.request_id = request_id

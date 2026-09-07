@@ -23,35 +23,47 @@ class ModifyDesktopSpecRequest(DaraModel):
         user_disk_size_gib: int = None,
     ):
         # Specifies whether to enable automatic payment.
+        # 
+        # Default value: true. Valid values:
+        # 
+        # - true: Automatic payment is enabled. Make sure that your Alibaba Cloud account balance is sufficient. Otherwise, abnormal orders may be generated.
+        # - false: Only an order is generated. Automatic payment is not enabled.
         self.auto_pay = auto_pay
-        # The ID of the cloud desktop.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The new desktop type. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the supported desktop types.
+        # The target instance type. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the instance types supported by cloud computers.
         # 
         # This parameter is required.
         self.desktop_type = desktop_type
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to obtain a list of regions that Elastic Desktop Service supports.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The user ID of the resource ownership in the reseller pattern. This parameter is not required in the non-reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
-        # A list of resource specification templates.
+        # The resource specification templates.
         self.resource_specs = resource_specs
         # The resource type.
         # 
-        # > This parameter is required only for cloud desktops that use the subscription billing method.
+        # > This parameter is not required for non-subscription cloud computers.
         self.resource_type = resource_type
-        # The new size of the system disk, in GiB. The value must be a multiple of 10 in the range of 80 to 500.
+        # The system cloud disk size after the change. Unit: GiB. Valid values: 80 to 500. The value must be a multiple of 10.
         self.root_disk_size_gib = root_disk_size_gib
-        # The performance level of the data disk.
+        # The performance level (PL) of the data cloud disk. Default value: PL0.
+        # 
+        # Valid values:
+        # 
+        # - PL0
+        # - PL1
+        # - PL2
+        # - PL3
         self.user_disk_performance_level = user_disk_performance_level
-        # The new size of the data disk, in GiB.
+        # The data cloud disk size after the change. Unit: GiB.
         # 
-        # - For non-graphics-accelerated desktop types, the value must be a multiple of 10 in the range of 20 to 1,020.
-        # 
-        # - For graphics-accelerated desktop types, the value must be a multiple of 10 in the range of 40 to 1,020.
+        # - For non-graphics cloud computers, valid values: 20 to 1020. The value must be a multiple of 10.
+        # - For graphics cloud computers, valid values: 40 to 1020. The value must be a multiple of 10.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
@@ -149,11 +161,11 @@ class ModifyDesktopSpecRequestResourceSpecs(DaraModel):
         root_disk_size_gib: int = None,
         user_disk_size_gib: int = None,
     ):
-        # The ID of the cloud desktop.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The new size of the system disk, in GiB. The value must be a multiple of 10 in the range of 80 to 500.
+        # The target system cloud disk size. Valid values: 80 to 500 GiB. The value must be a multiple of 10.
         self.root_disk_size_gib = root_disk_size_gib
-        # The new size of the data disk, in GiB. The value must be a multiple of 10 in the range of 20 to 2,040.
+        # The target data cloud disk size. Valid values: 80 to 500 GiB. The value must be a multiple of 10.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):

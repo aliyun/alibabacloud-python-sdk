@@ -11,11 +11,11 @@ class AddDevicesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The execution result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        # The execution result. The value `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # The returned error message. This parameter is not returned if the value of Code is `success`.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

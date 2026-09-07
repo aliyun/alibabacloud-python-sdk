@@ -10,7 +10,7 @@ class SetIdpMetadataResponseBody(DaraModel):
         idp_entity_id: str = None,
         request_id: str = None,
     ):
-        # The entity ID obtained after the IdP metadata file is parsed.
+        # The entityID value obtained after parsing the IdP metadata file.
         self.idp_entity_id = idp_entity_id
         # The request ID.
         self.request_id = request_id

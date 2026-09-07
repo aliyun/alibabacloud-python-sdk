@@ -12,7 +12,7 @@ class RenewDesktopGroupResponseBody(DaraModel):
         order_id: List[str] = None,
         request_id: str = None,
     ):
-        # The order IDs.
+        # The list of order IDs.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

@@ -17,7 +17,7 @@ class CopyCdsFileRequest(DaraModel):
         parent_folder_id: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to automatically rename the file when a file with the same name exists in the destination folder.
+        # Specifies whether to automatically rename the file when a file with the same name already exists in the destination folder.
         self.auto_rename = auto_rename
         # The enterprise cloud drive ID.
         # 
@@ -29,14 +29,14 @@ class CopyCdsFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The ID of the personal drive (which can be obtained from the `UserId` response parameter of the [DescribeCloudDriveUsers](https://help.aliyun.com/document_detail/2357237.html) operation) or the team space ID (which can be obtained from the `GroupId` response parameter of the [DescribeCloudDriveGroups](https://help.aliyun.com/document_detail/609896.html) operation) at the copy destination.
-        # > If both `FileReceiverId` and `FileReceiverType` are empty, the file is copied to the personal drive where the file currently resides by default.
+        # The ID of the personal drive (which can be obtained from the UserId response parameter of the [DescribeCloudDriveUsers](https://help.aliyun.com/document_detail/2357237.html) operation) or the team space ID (which can be obtained from the GroupId response parameter of the [DescribeCloudDriveGroups](https://help.aliyun.com/document_detail/609896.html) operation) at the destination.
+        # > If both FileReceiverId and FileReceiverType are empty, the file is copied to the personal drive where the file currently resides by default.
         self.file_receiver_id = file_receiver_id
-        # The type of space to which the file belongs.
+        # The type of the space to which the file belongs.
         self.file_receiver_type = file_receiver_type
         # The team space ID.
         self.group_id = group_id
-        # The ID of the parent folder at the copy destination. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the folder. Set this parameter to `root` if you want to copy the file to the root directory.
+        # The ID of the parent folder at the destination. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the folder. Set this parameter to `root` if you want to copy the file or folder to the root directory.
         # 
         # This parameter is required.
         self.parent_folder_id = parent_folder_id

@@ -13,9 +13,9 @@ class DescribeDesktopInfoResponseBody(DaraModel):
         desktops: List[main_models.DescribeDesktopInfoResponseBodyDesktops] = None,
         request_id: str = None,
     ):
-        # Basic desktop information.
+        # The basic information of cloud computers.
         self.desktops = desktops
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,25 +66,25 @@ class DescribeDesktopInfoResponseBodyDesktops(DaraModel):
         release_note: str = None,
         start_time: str = None,
     ):
-        # User connection status.
+        # The connection status of the user.
         self.connection_status = connection_status
-        # Desktop image version number.
+        # The image version number of the cloud computer.
         self.current_app_version = current_app_version
-        # Desktop group ID.
+        # The cloud computer pool ID.
         self.desktop_group_id = desktop_group_id
-        # Desktop ID.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The status of the cloud desktop.
+        # The status of the cloud computer.
         self.desktop_status = desktop_status
-        # The management flag.
+        # The management flags.
         self.management_flag = management_flag
-        # Upgrade package size, in KB.
+        # The size of the upgrade package, in KB.
         self.new_app_size = new_app_size
-        # Desktop upgradable image version number.
+        # The image version number to which the cloud computer can be upgraded.
         self.new_app_version = new_app_version
-        # Description of the upgradable image version.
+        # The description of the image version to which the cloud computer can be upgraded.
         self.release_note = release_note
-        # Desktop first startup time.
+        # The time when the cloud computer was first started. The time is in the ISO 8601 standard (UTC).
         self.start_time = start_time
 
     def validate(self):

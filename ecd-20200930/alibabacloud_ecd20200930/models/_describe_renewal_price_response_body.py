@@ -54,7 +54,7 @@ class DescribeRenewalPriceResponseBodyPriceInfo(DaraModel):
     ):
         # The price.
         self.price = price
-        # The promotion rules.
+        # The promotion rule information.
         self.rules = rules
 
     def validate(self):
@@ -141,18 +141,18 @@ class DescribeRenewalPriceResponseBodyPriceInfoPrice(DaraModel):
         promotions: List[main_models.DescribeRenewalPriceResponseBodyPriceInfoPricePromotions] = None,
         trade_price: float = None,
     ):
-        # <props="china">The unit of currency. The value is CNY.
-        # <props="intl">The unit of currency. The value is USD.
+        # <props="china">The currency unit (CNY).
+        # <props="intl">The currency unit (USD).
         self.currency = currency
-        # The discount.
+        # The discount amount.
         self.discount_price = discount_price
-        # The order details.
+        # The order information.
         self.order_lines = order_lines
         # The original price.
         self.original_price = original_price
-        # The promotion details.
+        # The promotion information.
         self.promotions = promotions
-        # The final price. This is the value of `OriginalPrice` minus `DiscountPrice`.
+        # The actual payment price. The value is the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):

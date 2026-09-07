@@ -16,19 +16,21 @@ class StopDesktopsRequest(DaraModel):
         region_id: str = None,
         stopped_mode: str = None,
     ):
+        # Specifies whether to create a snapshot.
         self.create_snapshot = create_snapshot
-        # An array of 1 to 100 cloud desktop IDs.
+        # The cloud computer IDs. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # Specifies whether to apply pending patch updates.
+        # Specifies whether to perform a patch update when an update is ready. A value of true indicates that the patch update is performed.
         self.os_update = os_update
+        # The patch ID.
         self.patch_id = patch_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to get a list of regions that Elastic Desktop Service supports.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies the billing mode for the cloud desktops after they are stopped.
+        # The billing mode after the cloud computers are stopped.
         self.stopped_mode = stopped_mode
 
     def validate(self):

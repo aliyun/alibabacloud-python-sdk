@@ -14,9 +14,9 @@ class DisconnectDesktopSessionsRequest(DaraModel):
         region_id: str = None,
         sessions: List[main_models.DisconnectDesktopSessionsRequestSessions] = None,
     ):
-        # Specifies whether to perform precheck. If you perform precheck, the system does not disconnect from desktop sessions. Only the sessions that do not meet specific conditions are returned.
+        # Specifies whether to perform a dry run. If a dry run is performed, the disconnect operation is not actually executed. Only the sessions that do not meet the execution conditions are returned.
         self.pre_check = pre_check
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -71,9 +71,9 @@ class DisconnectDesktopSessionsRequestSessions(DaraModel):
         desktop_id: str = None,
         end_user_id: str = None,
     ):
-        # The cloud desktop ID.
+        # The ID of the cloud computer to which the end user is connected.
         self.desktop_id = desktop_id
-        # The end user ID.
+        # The ID of the end user who is connected to the session.
         self.end_user_id = end_user_id
 
     def validate(self):

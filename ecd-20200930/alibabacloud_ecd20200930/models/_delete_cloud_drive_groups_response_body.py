@@ -13,15 +13,15 @@ class DeleteCloudDriveGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result of the operation. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+        # The operation result. The value `success` indicates success. Otherwise, an error message is returned.
         self.code = code
         # The data information.
         self.data = data
-        # The error message returned. This parameter is not returned if the value of Code is `success`.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true: The request is successful. false: The request fails.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

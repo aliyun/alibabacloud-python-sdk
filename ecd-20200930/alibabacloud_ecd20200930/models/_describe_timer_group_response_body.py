@@ -67,19 +67,19 @@ class DescribeTimerGroupResponseBodyData(DaraModel):
         self.bind_count = bind_count
         # The quantity information of resources bound to the configuration.
         self.bind_count_map = bind_count_map
-        # The configuration information of scheduled tasks, in list format.
+        # The configuration information of scheduled tasks. This is a list structure.
         self.config_timers = config_timers
         # The description of the configuration group.
         self.description = description
         # The configuration group ID.
         self.group_id = group_id
-        # The mapping code for the system scheduled task description, used for frontend display.
+        # The code of the system scheduled task description, used for frontend display.
         self.inner_timer_desc = inner_timer_desc
-        # The mapping code for the system scheduled task name, used for frontend display.
+        # The mapping code of the system scheduled task name, used for frontend display.
         self.inner_timer_name = inner_timer_name
-        # Used for system scheduled task checks. The current scheduled task does not support unbinding or binding.
+        # Used for system scheduled task check. The current scheduled task does not support unbinding or binding.
         self.is_bind = is_bind
-        # Used for system scheduled task checks. The current scheduled task does not support modification.
+        # Used for system scheduled task check. The current scheduled task does not support modification.
         self.is_update = is_update
         # The name of the configuration group.
         self.name = name
@@ -211,8 +211,9 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(DaraModel):
         self.cron_expression = cron_expression
         # Specifies whether to forcefully execute the task. A value of true indicates that the desktop and connection status checks are ignored and the scheduled task is forcefully executed.
         self.enforce = enforce
-        # The time interval, in minutes.
+        # The time interval. Unit: minutes.
         self.interval = interval
+        # The advance notification time before the scheduled task is executed. Unit: seconds.
         self.notification_time = notification_time
         # The type of the disconnect scheduled task.
         self.operation_type = operation_type
@@ -220,6 +221,7 @@ class DescribeTimerGroupResponseBodyDataConfigTimers(DaraModel):
         self.process_whitelist = process_whitelist
         # The reset type of the reset scheduled task.
         self.reset_type = reset_type
+        # The list of segment timer configurations.
         self.segment_timers = segment_timers
         # The type of the scheduled task.
         self.timer_type = timer_type
@@ -337,27 +339,43 @@ class DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers(DaraModel):
         verification_notification_time: int = None,
         verification_time: int = None,
     ):
-        # The specified time point for the fixed-time scheduled task. After this parameter is specified, the scheduled task is executed at the specified time point.
+        # The appointment timer used for executing scheduled tasks at specified time points. After this parameter is specified, the scheduled task is executed at the specified time points.
         self.appointment_timer = appointment_timer
+        # Specifies whether to create a snapshot.
         self.create_snapshot = create_snapshot
+        # The cron expression for the end time of the scheduled task.
         self.end_cron_expression = end_cron_expression
+        # Specifies whether to forcefully execute the task. A value of true indicates that the desktop and connection status checks are ignored and the scheduled task is forcefully executed.
         self.enforce = enforce
         # The image ID specified for the image change scheduled task.
         self.image_id = image_id
+        # The time interval. Unit: minutes.
         self.interval = interval
+        # The list of effective IP CIDR blocks.
         self.ip_segments = ip_segments
-        # The lock screen time point for the no-operation lock screen feature. This feature cannot be used for non-AD desktops.
+        # The duration of inactivity before the screen is locked, used by the no-operation lock screen feature. Unit: minutes. Only AD-joined cloud desktops are supported.
         self.lock_screen_time = lock_screen_time
+        # The advance notification time before the scheduled task is executed. Unit: seconds.
         self.notification_time = notification_time
+        # The operation type of the scheduled task. Currently, only disconnect scheduled tasks are supported.
         self.operation_type = operation_type
+        # The patch ID.
         self.patch_id = patch_id
+        # The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
         self.process_whitelist = process_whitelist
+        # The reset type, which determines whether to reset and the scope of cloud disks to reset.
         self.reset_type = reset_type
+        # The cron expression for the start time of the scheduled task.
         self.start_cron_expression = start_cron_expression
+        # The execution order number of the timer.
         self.timer_order = timer_order
+        # The time zone used by the scheduled task.
         self.timezone = timezone
+        # The trigger configuration type of the no-operation scheduled task.
         self.trigger_type = trigger_type
+        # The advance notification time before verification is executed. Unit: seconds.
         self.verification_notification_time = verification_notification_time
+        # The verification wait duration. Unit: seconds.
         self.verification_time = verification_time
 
     def validate(self):

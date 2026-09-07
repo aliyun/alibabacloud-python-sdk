@@ -10,7 +10,7 @@ class CreateOfficeSiteAcceleratorResponseBody(DaraModel):
         accelerator_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The GA instance ID.
         self.accelerator_id = accelerator_id
         # The request ID.
         self.request_id = request_id

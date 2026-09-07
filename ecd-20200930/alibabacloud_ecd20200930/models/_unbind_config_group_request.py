@@ -14,17 +14,13 @@ class UnbindConfigGroupRequest(DaraModel):
         resource_infos: List[main_models.UnbindConfigGroupRequestResourceInfos] = None,
         type: str = None,
     ):
-        # The ID of the region. Set the value to `cn-shanghai`.
+        # The region ID. This operation is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
-        # The resources from which you want to unbind the configuration group.
+        # The information about the resources to unbind.
         # 
         # This parameter is required.
         self.resource_infos = resource_infos
-        # The type of the configuration group.
-        # 
-        # Valid value:
-        # 
-        # *   Timer: the scheduled task type.
+        # The type of the configuration group to unbind.
         # 
         # This parameter is required.
         self.type = type
@@ -77,22 +73,13 @@ class UnbindConfigGroupRequestResourceInfos(DaraModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # The service type of the resource.
-        # 
-        # Valid value:
-        # 
-        # *   CLOUD_DESKTOP: the cloud computer service.
+        # The product type to which the resource belongs.
         self.product_type = product_type
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
         # The region ID of the resource.
         self.resource_region_id = resource_region_id
-        # The type of the resource.
-        # 
-        # Valid values:
-        # 
-        # *   RESOURCE_GROUP: the resource group.
-        # *   CLOUD_DESKTOP: the cloud computer service.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

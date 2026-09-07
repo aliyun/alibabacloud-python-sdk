@@ -76,9 +76,9 @@ class DescribeOfficeSiteBridgeInfoResponseBodyBridge(DaraModel):
         self.default_password = default_password
         # The default account for the administrator page.
         self.default_user = default_user
-        # The deployment time of the virtual bridge.
+        # The deployment time of the virtual bridge. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.deploy_time = deploy_time
-        # The expiration time of the virtual bridge.
+        # The expiration time of the virtual bridge. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expire_time = expire_time
         # The public network address.
         self.internet_url = internet_url
@@ -88,7 +88,7 @@ class DescribeOfficeSiteBridgeInfoResponseBodyBridge(DaraModel):
         self.office_site_id = office_site_id
         # The office network name. The name must be 2 to 255 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter or Chinese character and cannot start with `http://` or `https://`.
         self.office_site_name = office_site_name
-        # The start time of the virtual bridge.
+        # The start time of the virtual bridge. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

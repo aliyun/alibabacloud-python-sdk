@@ -20,7 +20,7 @@ class AddFilePermissionShrinkRequest(DaraModel):
         self.cds_id = cds_id
         # The ID of the user who uses the cloud disk.
         self.end_user_id = end_user_id
-        # The file ID. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the file.
+        # The file ID. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the file ID.
         # 
         # This parameter is required.
         self.file_id = file_id

@@ -17,104 +17,25 @@ class DescribeDirectoriesRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # Details of directory IDs. You can specify one or more directory IDs.
+        # The directory IDs. You can specify one or more directory IDs.
         self.directory_id = directory_id
-        # The directory status. This parameter is equivalent to `Status`.
+        # The directory status. This parameter is the same as Status.
         self.directory_status = directory_status
         # The directory type.
-        # 
-        # Valid value:
-        # 
-        # *   SIMPLE: the convenience directory.
-        # *   AD_CONNECTOR: the Active Directory (AD) directory.
         self.directory_type = directory_type
-        # The number of entries to return on each page.
+        # The number of entries per page in a paged query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The token that determines the start point of the next query. If this parameter is empty, all results are returned.
+        # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The directory status.
-        # 
-        # Valid values:
-        # 
-        # *   REGISTERING: The directory is being registered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DEREGISTERING: The directory is being deregistered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   REGISTERED: The directory is registered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NEEDCONFIGTRUST: A trust relationship needs to be configured for the directory.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CONFIGTRUSTFAILED: A trust relationship fails to be configured for the directory.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DEREGISTERED: The directory is deregistered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   ERROR: One or more configurations of the directory are invalid.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CONFIGTRUSTING: A trust relationship is being configured.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NEEDCONFIGUSER: Users need to be configured for the directory.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
 
     def validate(self):

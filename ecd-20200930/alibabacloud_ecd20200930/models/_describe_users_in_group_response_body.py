@@ -18,17 +18,19 @@ class DescribeUsersInGroupResponseBody(DaraModel):
         user_ou_path: str = None,
         users_count: int = None,
     ):
-        # A list of authorized user information.
+        # The list of authorized user information.
         self.end_users = end_users
-        # The token to start the next query.
+        # The pagination token for the next query.
         self.next_token = next_token
-        # The total number of authorized users in the cloud desktop group who meet the query conditions and are connected to a cloud desktop.
+        # The total number of authorized users of the shared cloud computer that match the query conditions and are currently connected to a cloud computer.
         self.online_users_count = online_users_count
         # The request ID.
         self.request_id = request_id
+        # The name of the user group.
         self.user_group_name = user_group_name
+        # The organizational unit path of the user.
         self.user_ou_path = user_ou_path
-        # The total number of authorized users in the cloud desktop group who meet the query conditions.
+        # The total number of authorized users of the shared cloud computer that match the query conditions.
         self.users_count = users_count
 
     def validate(self):
@@ -116,12 +118,13 @@ class DescribeUsersInGroupResponseBodyEndUsers(DaraModel):
     ):
         # The connection status.
         self.connection_status = connection_status
-        # The ID of the cloud desktop.
+        # The ID of the cloud computer.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
         # The display name of the enterprise AD account.
         self.display_name = display_name
+        # The new display name of the user.
         self.display_name_new = display_name_new
         # The email address of the authorized user.
         self.end_user_email = end_user_email
@@ -131,16 +134,17 @@ class DescribeUsersInGroupResponseBodyEndUsers(DaraModel):
         self.end_user_name = end_user_name
         # The phone number of the authorized user.
         self.end_user_phone = end_user_phone
-        # The user remarks.
+        # The remarks of the user.
         self.end_user_remark = end_user_remark
-        # The user account type.
+        # The type of the user account system.
         self.end_user_type = end_user_type
-        # Additional information.
+        # The additional information.
         self.external_info = external_info
-        # The ID of the virtual cloud desktop assigned to the user.
+        # The ID of the virtual cloud computer that corresponds to the user.
         self.user_desktop_id = user_desktop_id
+        # The user principal name (UPN).
         self.user_principal_name = user_principal_name
-        # A list of user seat information.
+        # The list of user seat information.
         self.user_set_properties_models = user_set_properties_models
 
     def validate(self):
@@ -274,7 +278,7 @@ class DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels(DaraModel)
         self.property_key = property_key
         # The property type.
         self.property_type = property_type
-        # An array of property values.
+        # The array of property values.
         self.property_values = property_values
         # The user ID.
         self.user_id = user_id

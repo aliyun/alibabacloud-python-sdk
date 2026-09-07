@@ -13,7 +13,7 @@ class RebuildDesktopsResponseBody(DaraModel):
         rebuild_results: List[main_models.RebuildDesktopsResponseBodyRebuildResults] = None,
         request_id: str = None,
     ):
-        # The rebuild results.
+        # The collection of rebuild results.
         self.rebuild_results = rebuild_results
         # The request ID.
         self.request_id = request_id
@@ -59,11 +59,11 @@ class RebuildDesktopsResponseBodyRebuildResults(DaraModel):
         desktop_id: str = None,
         message: str = None,
     ):
-        # The operation result. A value of `Success` indicates the rebuild was initiated. Otherwise, an error code is returned.
+        # The rebuild result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # The desktop ID.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The error message. This parameter is returned only if the value of `Code` is not `Success`.
+        # The error message. This parameter is not returned when `Code` is `success`.
         self.message = message
 
     def validate(self):

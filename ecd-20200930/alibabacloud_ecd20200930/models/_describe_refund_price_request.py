@@ -24,6 +24,7 @@ class DescribeRefundPriceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The user ID of the resource ownership in resale pattern. You do not need to specify this parameter if you are not using resale pattern.
         self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):

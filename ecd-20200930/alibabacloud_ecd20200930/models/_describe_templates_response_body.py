@@ -30,11 +30,11 @@ class DescribeTemplatesResponseBody(DaraModel):
         self.message = message
         # The current page number.
         self.page_number = page_number
-        # The number of rows per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -146,8 +146,11 @@ class DescribeTemplatesResponseBodyData(DaraModel):
         timer_group_id: str = None,
         user_duration: str = None,
     ):
+        # Indicates whether automatic payment is enabled for subscription orders.
         self.auto_pay = auto_pay
+        # Indicates whether auto-renewal is enabled for the subscription shared cloud computer.
         self.auto_renew = auto_renew
+        # The billing type of the cloud computer.
         self.charge_type = charge_type
         # The size and specification configurations of data cloud disks.
         self.data_disk_list = data_disk_list
@@ -157,20 +160,23 @@ class DescribeTemplatesResponseBodyData(DaraModel):
         self.description = description
         # The creation time of the template (UTC).
         self.gmt_create = gmt_create
-        # The last modification time of the template (UTC).
+        # The update time of the template (UTC).
         self.gmt_modified = gmt_modified
         # The image ID.
         self.image_id = image_id
         # The image type.
         self.image_type = image_type
+        # The subscription duration of the subscription shared cloud computer. This parameter takes effect only when ChargeType is set to PrePaid, and is required in that case. The unit is specified by PeriodUnit.
         self.period = period
+        # The unit of the subscription billing duration. Billable methods use this parameter to specify the time unit.
         self.period_unit = period_unit
         # The policy group ID.
         self.policy_group_id = policy_group_id
+        # Indicates whether the cloud computer automatically switches to pay-as-you-go billing after the duration plan is exhausted.
         self.post_paid_after_used_up = post_paid_after_used_up
         # The product type.
         self.product_type = product_type
-        # The region-specific configuration parameters.
+        # The region-related configuration parameters.
         self.region_config_list = region_config_list
         # The request ID.
         self.request_id = request_id
@@ -192,6 +198,7 @@ class DescribeTemplatesResponseBodyData(DaraModel):
         self.template_type = template_type
         # The scheduled task group ID.
         self.timer_group_id = timer_group_id
+        # The per-user usage duration plan.
         self.user_duration = user_duration
 
     def validate(self):
@@ -493,9 +500,9 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The number of vCPUs included in the cloud computer instance type.
+        # The number of vCPUs included in the cloud computer specification.
         self.cpu_count = cpu_count
-        # The GPU memory information. This field is displayed only when the instance type is a graphics-accelerated type.
+        # The GPU memory information. This field is displayed only when the specification is a graphics-accelerated type.
         self.gpu_spec = gpu_spec
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
@@ -503,7 +510,7 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         self.office_site_id = office_site_id
         # The region ID.
         self.region_id = region_id
-        # The cloud computer instance type ID.
+        # The cloud computer specification ID.
         self.resource_instance_type = resource_instance_type
         # The snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id

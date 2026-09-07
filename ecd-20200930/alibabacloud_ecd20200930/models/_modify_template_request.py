@@ -32,36 +32,55 @@ class ModifyTemplateRequest(DaraModel):
         timer_group_id: str = None,
         user_duration: int = None,
     ):
+        # Specifies whether automatic payment is enabled for the subscription order.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal for the subscription cloud computer.
         self.auto_renew = auto_renew
+        # The billing method of the cloud computer.
         self.charge_type = charge_type
+        # The system cloud disk performance level.
         self.data_disk_list = data_disk_list
         # The default language that is set when the cloud computer starts. This parameter takes effect only when a system image is used to create the cloud computer.
         self.default_language = default_language
         # The description of the template. The description must meet the following requirements:
         # 
-        # - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # - The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         # - The description can contain Chinese characters, letters, digits, spaces, and special characters. Line breaks are supported.
         self.description = description
-        # The ID of the cloud computer image. You can query the ID on the image management page. System images and custom images are supported.
+        # The ID of the cloud computer image. You can query the ID on the Image Management page. System images and custom images are supported.
         self.image_id = image_id
+        # The subscription duration of the subscription cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
+        # - If `PeriodUnit` is set to `Month`, valid values:
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 6
+        # - If `PeriodUnit` is set to `Year`, valid values:
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 4
+        #     - 5
         self.period = period
+        # The unit of the subscription duration for the subscription billing method.
         self.period_unit = period_unit
         # The ID of the global policy.
         self.policy_group_id = policy_group_id
+        # Specifies whether to automatically switch to pay-as-you-go billing after the duration plan is used up.
         self.post_paid_after_used_up = post_paid_after_used_up
-        # The region-specific template configurations. Multiple configurations are supported. The configuration that matches the specific region is used.
+        # The region-specific template configurations. You can specify multiple configurations. The configuration that matches the specific region is used.
         # 
-        # > A maximum of 20 region configurations are supported.
+        # > You can specify configurations for up to 20 regions.
         self.region_config_list = region_config_list
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags of the cloud computer in key-value format. A maximum of 20 tags can be specified.
+        # The tags of the cloud computer in key-value format. You can specify up to 20 tags.
         self.resource_tag_list = resource_tag_list
+        # The site configuration management.
         self.site_config_list = site_config_list
         # The type of the system cloud disk.
         # 
-        # > Only high-frequency and GPU-accelerated cloud computer specifications support ESSD cloud disks.
+        # > Only high frequency and graphics cloud computer specifications support ESSD cloud disks.
         self.system_disk_performance_level = system_disk_performance_level
         # The size of the system cloud disk. Unit: GiB. Valid values: 40 to 500. The value must be a multiple of 10.
         # 
@@ -73,12 +92,13 @@ class ModifyTemplateRequest(DaraModel):
         self.template_id = template_id
         # The name of the template. The name must meet the following requirements:
         # 
-        # - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
-        # - The name must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`.
+        # - The name must be 2 to 126 characters in length.
+        # - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         # - The name can contain letters, digits, Chinese characters, colons (:), underscores (_), or hyphens (-). Periods (.) are not supported.
         self.template_name = template_name
         # The configuration group ID.
         self.timer_group_id = timer_group_id
+        # The per-user usage duration plan.
         self.user_duration = user_duration
 
     def validate(self):
@@ -262,7 +282,9 @@ class ModifyTemplateRequestSiteConfigList(DaraModel):
         app_rule_id: str = None,
         site_id: str = None,
     ):
+        # The application control policy ID.
         self.app_rule_id = app_rule_id
+        # The site name.
         self.site_id = site_id
 
     def validate(self):
@@ -341,7 +363,7 @@ class ModifyTemplateRequestRegionConfigList(DaraModel):
     ):
         # The office network ID.
         self.office_site_id = office_site_id
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
         self.region_id = region_id
         # The cloud computer specification ID.
         self.resource_instance_type = resource_instance_type
@@ -349,9 +371,9 @@ class ModifyTemplateRequestRegionConfigList(DaraModel):
         self.snapshot_policy_id = snapshot_policy_id
         # The subnet ID.
         self.subnet_id = subnet_id
-        # Specifies whether to enable cloud disk encryption.
+        # Specifies whether to enable disk encryption.
         self.volume_encryption_enable = volume_encryption_enable
-        # The ID of the KMS key used when cloud disk encryption is enabled.
+        # The ID of the KMS key used when disk encryption is enabled.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):

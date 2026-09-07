@@ -21,7 +21,7 @@ class CloneCenterPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the target cloud computer policy to clone.
+        # The ID of the cloud computer policy to clone.
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id

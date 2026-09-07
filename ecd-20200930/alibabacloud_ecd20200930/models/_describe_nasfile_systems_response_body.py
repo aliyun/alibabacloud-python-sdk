@@ -91,7 +91,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         support_acl: bool = None,
         zone_id: str = None,
     ):
-        # > This field is not publicly available.
+        # Indicates whether operations on user directories (adding users, deleting data) are supported.
         self.allow_operate_user_drive = allow_operate_user_drive
         # The list of cloud application delivery group objects bound to the UPM-supported NAS file system.
         self.app_instance_groups = app_instance_groups
@@ -102,7 +102,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.capacity = capacity
         # The time when the NAS file system was created.
         self.create_time = create_time
-        # The NAS file system description.
+        # The description of the NAS file system.
         self.description = description
         # The list of shared cloud computer objects bound to the UPM-supported NAS file system.
         self.desktop_groups = desktop_groups
@@ -110,9 +110,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.encryption_enabled = encryption_enabled
         # The NAS file system ID.
         self.file_system_id = file_system_id
-        # The NAS file system name.
+        # The name of the NAS file system.
         self.file_system_name = file_system_name
-        # The NAS file system status.
+        # The status of the NAS file system.
         self.file_system_status = file_system_status
         # The type of the NAS file system. Currently, only the general-purpose type is supported, which is `standard`.
         self.file_system_type = file_system_type
@@ -122,15 +122,19 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.mount_target_domain = mount_target_domain
         # The mount target status.
         self.mount_target_status = mount_target_status
-        # The office network ID.
+        # The office network ID (deprecated).
         self.office_site_id = office_site_id
-        # The office network name.
+        # The office network name (deprecated).
         self.office_site_name = office_site_name
         # The list of office networks.
         self.office_sites = office_sites
         self.product_type = product_type
         # Indicates whether the User Profile Management (UPM) feature is supported.
         self.profile_compatible = profile_compatible
+        # The protocol type of the file system. Valid values:
+        # 
+        # - NFS: NFS file protocol.
+        # - SMB: SMB file protocol.
         self.protocol_type = protocol_type
         # The region ID.
         self.region_id = region_id
@@ -141,7 +145,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.storage_type = storage_type
         # Indicates whether the SMB ACL feature is supported.
         self.support_acl = support_acl
-        # The zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

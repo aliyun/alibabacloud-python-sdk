@@ -14,31 +14,19 @@ class ModifyAclEntriesRequest(DaraModel):
         source_id: List[str] = None,
         source_type: str = None,
     ):
-        # The Internet access control policy.
-        # 
-        # Valid values:
-        # 
-        # - allow: allows access to the Internet.
-        # 
-        # - disable: forbids access to the Internet.
+        # The public network access control policy.
         # 
         # This parameter is required.
         self.policy = policy
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The instance IDs (office network IDs or cloud computer IDs) to which the Internet access control policy is applicable.
+        # The list of instance IDs for public network access control, which are office network IDs or cloud computer IDs.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # The granularity to which the Internet access control policy is applicable.
-        # 
-        # Valid values:
-        # 
-        # - desktop: cloud computer granularity.
-        # 
-        # - vpc: office network granularity.
+        # The granularity of the public network access control policy.
         # 
         # This parameter is required.
         self.source_type = source_type

@@ -19,7 +19,7 @@ class RevokeCoordinatePrivilegeRequest(DaraModel):
         self.co_id = co_id
         # The username of the end user.
         self.end_user_id = end_user_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -12,9 +12,9 @@ class UnbindConfigGroupResponseBody(DaraModel):
         group_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the configuration groups.
+        # The list of unbound configuration group IDs.
         self.group_ids = group_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

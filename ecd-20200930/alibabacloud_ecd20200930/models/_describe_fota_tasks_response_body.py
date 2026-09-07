@@ -16,13 +16,13 @@ class DescribeFotaTasksResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
+        # The result of the operation. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
         # The image upgrade task information.
         self.fota_tasks = fota_tasks
-        # The error message. This parameter is not returned if Code is `success`.
+        # The error message. This parameter is not returned when Code is `success`.
         self.message = message
-        # The pagination token for the next query. An empty value indicates that no more results exist.
+        # The pagination token for the next query. An empty value indicates that there are no more results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -100,11 +100,11 @@ class DescribeFotaTasksResponseBodyFotaTasks(DaraModel):
         self.pending_custom_image_count = pending_custom_image_count
         # The number of cloud desktops that can be upgraded to this version.
         self.pending_desktop_count = pending_desktop_count
-        # The publish time of the upgrade version.
+        # The release time of the upgrade version. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.publish_time = publish_time
         # The upgrade version description.
         self.release_note = release_note
-        # The size of the upgrade package. Unit: KB.
+        # The size of the upgrade package, in KB.
         self.size = size
         # Indicates whether the image upgrade task is automatically pushed.
         self.status = status

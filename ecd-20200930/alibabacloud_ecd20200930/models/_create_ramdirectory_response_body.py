@@ -10,7 +10,7 @@ class CreateRAMDirectoryResponseBody(DaraModel):
         directory_id: str = None,
         request_id: str = None,
     ):
-        # The RAM directory ID.
+        # The ID of the RAM-type directory.
         self.directory_id = directory_id
         # The request ID.
         self.request_id = request_id

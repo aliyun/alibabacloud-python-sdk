@@ -14,12 +14,13 @@ class ModifyDesktopChargeTypeResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The IDs of the cloud desktops.
+        # The cloud desktop IDs. If multiple cloud desktops are created in a single call, multiple cloud desktop IDs are returned.
         self.desktop_id = desktop_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
+        # The file transfer task ID.
         self.task_id = task_id
 
     def validate(self):

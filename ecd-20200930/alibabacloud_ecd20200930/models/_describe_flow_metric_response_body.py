@@ -10,7 +10,7 @@ class DescribeFlowMetricResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # Metric data.
+        # The metric data.
         self.data = data
         # The request ID.
         self.request_id = request_id

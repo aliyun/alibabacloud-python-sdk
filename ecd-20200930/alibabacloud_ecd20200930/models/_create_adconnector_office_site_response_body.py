@@ -10,9 +10,9 @@ class CreateADConnectorOfficeSiteResponseBody(DaraModel):
         office_site_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the office network.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

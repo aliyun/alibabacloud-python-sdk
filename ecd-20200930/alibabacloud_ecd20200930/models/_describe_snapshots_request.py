@@ -29,7 +29,7 @@ class DescribeSnapshotsRequest(DaraModel):
         # The cloud computer name.
         self.desktop_name = desktop_name
         self.desktop_scenario = desktop_scenario
-        # The end of the time range during which the snapshot was created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
+        # The end of the time range during which the snapshots were created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
         self.end_time = end_time
         # The number of entries per page for paging.    
         # 
@@ -46,15 +46,15 @@ class DescribeSnapshotsRequest(DaraModel):
         self.region_id = region_id
         # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter or Chinese character. The name cannot start with `auto` to avoid conflicts with automatic snapshot names.
+        # The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter. The name cannot start with `auto` to avoid conflicts with automatic snapshot names.
         self.snapshot_name = snapshot_name
         # The snapshot type.
         self.snapshot_type = snapshot_type
-        # The type of the cloud disk for which to create the snapshot.
+        # The type of the cloud disk from which the snapshot is created.
         # 
         # > The value is case-insensitive.
         self.source_disk_type = source_disk_type
-        # The beginning of the time range during which the snapshot was created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
+        # The beginning of the time range during which the snapshots were created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

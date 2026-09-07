@@ -17,27 +17,26 @@ class ListDirectoryUsersRequest(DaraModel):
         region_id: str = None,
         sort_type: str = None,
     ):
-        # > This parameter is not publicly available. You can only set this parameter to `1` or leave it empty.
+        # > This field is not available for use. You can only pass in `1` or leave it empty.
         self.assigned_info = assigned_info
         # The AD directory ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # The string for a fuzzy search. The operation returns all results that contain this string.
+        # The fuzzy search string. All results that contain this string are matched.
         self.filter = filter
-        # Specifies whether to return only users who are assigned cloud desktops.
+        # Specifies whether to return only users who have been assigned cloud computers.
         self.include_assigned_user = include_assigned_user
-        # The number of entries to return on each page.
+        # The number of entries per page for a paginated query.    
         # 
-        # - Maximum value: 100.
-        # 
+        # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The token used to start the next query. If this value is empty, no more results are available.
+        # The token for the next query. If this parameter is empty, no more results are available.
         self.next_token = next_token
-        # The path of the organizational unit (OU) in the AD domain. You can call [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain the OU path.
+        # The organizational unit (OU) in the AD domain to which the user belongs. You can call [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain this value.
         self.oupath = oupath
-        # The region ID. To get a list of regions that WUYING Workspace supports, call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html).
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

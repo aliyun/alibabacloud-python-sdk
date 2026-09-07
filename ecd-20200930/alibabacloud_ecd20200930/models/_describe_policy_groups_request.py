@@ -19,22 +19,27 @@ class DescribePolicyGroupsRequest(DaraModel):
         region_id: str = None,
         scope: str = None,
     ):
+        # The business channel. Valid values:
+        # - Enterprise: Enterprise Edition.
+        # - Business: Business Edition.
         self.business_channel = business_channel
         # The list of cloud computer policy IDs to exclude from the query results.
         self.external_policy_group_ids = external_policy_group_ids
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
-        # - Maximum value: 100
-        # 
-        # - Default value: 10
+        # - Maximum value: 100.
+        # - Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous response. Do not set this parameter for the first request.
+        # The pagination token. Set this parameter to the value of NextToken that was returned from the last call to this operation. You do not need to set this parameter for the first request.
         self.next_token = next_token
+        # The page number of the current page for a paged query.
         self.page_number = page_number
+        # The maximum number of entries per page for a paged query.    
+        # Default value: 20.
         self.page_size = page_size
         # The list of cloud computer policy IDs.
         self.policy_group_id = policy_group_id
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

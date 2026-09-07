@@ -13,7 +13,7 @@ class DownloadCdsFileRequest(DaraModel):
         group_id: str = None,
         region_id: str = None,
     ):
-        # The enterprise cloud drive ID.
+        # The enterprise cloud disk ID.
         self.cds_id = cds_id
         # The user ID.
         self.end_user_id = end_user_id

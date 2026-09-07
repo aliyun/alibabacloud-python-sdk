@@ -10,9 +10,9 @@ class CreateSimpleOfficeSiteResponseBody(DaraModel):
         office_site_id: str = None,
         request_id: str = None,
     ):
-        # The office site ID.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

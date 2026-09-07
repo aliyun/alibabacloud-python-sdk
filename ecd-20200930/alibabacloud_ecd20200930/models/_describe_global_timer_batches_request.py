@@ -21,22 +21,23 @@ class DescribeGlobalTimerBatchesRequest(DaraModel):
         self.group_id = group_id
         # The maximum number of entries to return.
         self.max_results = max_results
-        # The pagination token for the next query. An empty value indicates that there are no more results.
+        # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
         # The region ID.
         # - Shanghai
         # - Singapore
         self.region_id = region_id
+        # The list of resource types.
         self.resource_types = resource_types
-        # The region ID used for searching. Filters cloud desktop information for the specified region.
+        # The region ID used to filter cloud desktop information for a specific region.
         self.search_region_id = search_region_id
-        # The type of task to query. Only scheduled tasks have batch information available.
+        # The type of the task to query. Only scheduled tasks have batch information.
         # 
         # - TimerBoot: scheduled startup
         # - TimerShutdown: scheduled shutdown
         # - TimerReboot: scheduled restart
         # - TimerReset: scheduled reset
-        # - TimerMaintenance: scheduled maintenance
+        # - TimerMaintenance: scheduled maintenance mode
         # - TimerHibernate: scheduled hibernation
         self.timer_type = timer_type
 

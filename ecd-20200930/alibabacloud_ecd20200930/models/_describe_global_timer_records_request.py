@@ -38,6 +38,7 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         self.next_token = next_token
         # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Wuying Workspace.
         self.region_id = region_id
+        # The list of resource types. If empty, all resource types are queried.
         self.resource_types = resource_types
         # Filters results by execution result.
         self.result_category = result_category
@@ -49,6 +50,7 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         self.timer_result = timer_result
         # The list of scheduled tasks.
         self.timer_types = timer_types
+        # The list of Wuying server IDs.
         self.wuying_server_ids = wuying_server_ids
 
     def validate(self):

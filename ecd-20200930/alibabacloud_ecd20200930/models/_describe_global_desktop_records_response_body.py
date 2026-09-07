@@ -96,6 +96,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self.connection_status = connection_status
         # The number of vCPUs.
         self.cpu = cpu
+        # The creation time of the cloud desktop. The time is in the ISO 8601 standard (UTC).
         self.creation_time = creation_time
         # The shared cloud desktop ID.
         self.desktop_group_id = desktop_group_id
@@ -130,20 +131,20 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self.os_type = os_type
         # The specific operating system model.
         self.platform = platform
-        # The protocol type.
+        # The protocol type. Valid values:
         # 
         # - HDX
         # - ASP
         self.protocol_type = protocol_type
         # The region ID.
         self.region_id = region_id
-        # The enterprise resource group name.
+        # The enterprise resource group names.
         self.resource_groups = resource_groups
         # The session idle duration. Unit: minutes.
         self.session_idle_time = session_idle_time
         # The session details.
         self.sessions = sessions
-        # The time when the cloud desktop status changed.
+        # The UNIX timestamp of the cloud desktop status change. Unit: milliseconds.
         self.status_change_time = status_change_time
         # The billing method of the cloud desktop. Valid values:
         # 
@@ -357,7 +358,8 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsSessions(DaraModel):
     ):
         # The end user ID.
         self.end_user_id = end_user_id
-        # The time when the session was created.
+        # The session creation time.
+        # The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.establishment_time = establishment_time
 
     def validate(self):

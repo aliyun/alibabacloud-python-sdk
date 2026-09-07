@@ -15,13 +15,13 @@ class DescribeOfficeSitesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The token used to retrieve the next page of results. If this parameter is empty, all results have been returned.
+        # The token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
-        # A list of office networks.
+        # The collection of office network information.
         self.office_sites = office_sites
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -82,6 +82,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         backup_dchostname: str = None,
         backup_dns: str = None,
         bandwidth: int = None,
+        basic_internet_type: str = None,
         cen_attach_status: str = None,
         cen_id: str = None,
         cidr_block: str = None,
@@ -141,49 +142,56 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         vpc_type: str = None,
         vpl_version: str = None,
     ):
-        # A list of AD connectors.
+        # The collection of AD Connector information.
         self.adconnectors = adconnectors
         # The ID of the Global Accelerator (GA) instance.
         self.accelerator_id = accelerator_id
+        # The access attribute of the office network (workspace).
         self.access_attribute = access_attribute
+        # The account type.
         self.account_type = account_type
-        # The hostname of the domain controller.
-        # The hostname must comply with the Windows hostname naming conventions.
+        # The hostname of the domain controller. The hostname must comply with Windows host naming conventions.
         self.ad_hostname = ad_hostname
+        # The authority URL of the identity authentication service.
         self.authority_host = authority_host
         # The hostname of the backup domain controller.
         self.backup_dchostname = backup_dchostname
         # The DNS address of the backup domain controller.
         self.backup_dns = backup_dns
-        # The peak public bandwidth, in Mbit/s. Valid values: 0 to 1000. <br>A value of 0 indicates that internet access is disabled.<br>
+        # The peak public bandwidth. Valid values: 0 to 1000 Mbps.    
+        # If the value is empty or 0, Internet access is not enabled.
         self.bandwidth = bandwidth
-        # The attachment status of the Cloud Enterprise Network (CEN) instance.
+        # The basic bandwidth type.
+        self.basic_internet_type = basic_internet_type
+        # The status of the CEN instance.
         self.cen_attach_status = cen_attach_status
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The IPv4 CIDR block of the office network\\"s Virtual Private Cloud (VPC).
+        # The IPv4 CIDR block of the office network VPC.
         self.cidr_block = cidr_block
+        # The client ID registered with the identity provider application.
         self.client_id = client_id
+        # The client secret registered with the identity provider application.
         self.client_secret = client_secret
-        # Specifies whether the office network is a CloudBox-based office network.
+        # Indicates whether the office network is a CloudBox office network.
         self.cloud_box_office_site = cloud_box_office_site
-        # The time when the office network was created.
+        # The time when the office network was created. The time is in the ISO 8601 standard format (UTC).
         self.creation_time = creation_time
-        # The address of the custom access gateway.
+        # The custom access gateway address.
         self.custom_access_point = custom_access_point
-        # The custom DNS addresses.
+        # The array of custom DNS addresses.
         self.custom_dns_address = custom_dns_address
         # The security group ID.
         self.custom_security_group_id = custom_security_group_id
-        # The method for connecting to cloud computers from an Elastic Desktop Service client.
+        # The access method allowed for connecting to cloud computers.
         # 
-        # > Connections over a VPC use Alibaba Cloud PrivateLink, which is provided free of charge. The PrivateLink service is enabled when this parameter is returned as `VPC` or `Any`.
+        # > The VPC connection method depends on the Alibaba Cloud PrivateLink service, which is free of charge. When this parameter is set to `VPC` or `Any`, the system automatically activates the PrivateLink service for you.
         self.desktop_access_type = desktop_access_type
-        # The number of individually provisioned cloud computers.
+        # The number of cloud computers that have been created.
         self.desktop_count = desktop_count
-        # The endpoint used to connect to cloud computers over a VPC.
+        # The endpoint used for VPC connections to cloud computers.
         self.desktop_vpc_endpoint = desktop_vpc_endpoint
-        # The DNS addresses of the AD domain.
+        # The array of DNS addresses corresponding to the AD domain.
         self.dns_address = dns_address
         # The DNS username.
         self.dns_user_name = dns_user_name
@@ -193,79 +201,85 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         self.domain_password = domain_password
         # The username of the domain administrator.
         self.domain_user_name = domain_user_name
+        # The enterprise ID (EID).
         self.eid = eid
-        # Specifies whether to grant local administrator permissions to users of cloud computers in the office network.
+        # Indicates whether local administrator permissions are granted to users of cloud computers.
         self.enable_admin_access = enable_admin_access
-        # Specifies whether cloud computers in the office network can access each other.
+        # Indicates whether cross-cloud-computer access within the office network is enabled. After this feature is enabled, cloud computers within the same office network can access each other over the network.
         self.enable_cross_desktop_access = enable_cross_desktop_access
-        # Indicates whether internet access is enabled.
+        # Indicates whether public network access is enabled.
         self.enable_internet_access = enable_internet_access
-        # Specifies whether to enable access control for cloud service routing.
+        # Indicates whether cloud service route access control is enabled.
         self.enable_service_route = enable_service_route
+        # The environment type. This parameter is not publicly available.
         self.env_type = env_type
-        # The IDs of Apsara File Storage for NAS file systems.
+        # The array of NAS file system IDs.
         self.file_system_ids = file_system_ids
+        # Indicates whether the directory is an LDAP directory.
         self.is_ldap = is_ldap
+        # The access URL of the LDAP service.
         self.ldap_url = ldap_url
-        # The registration logs.
+        # The registration log information.
         self.logs = logs
         # Indicates whether multi-factor authentication (MFA) is enabled.
         self.mfa_enabled = mfa_enabled
-        # The name of the office network. The name must be unique within the same region.
+        # The name of the office network. The name is unique within a region.
         self.name = name
-        # Indicates whether risk-based verification is enabled for user logon. This feature applies only to office networks that use convenience accounts. If enabled, the system checks for security risks during logon. If a risk is detected, the user must enter a verification code sent to their email address to complete the logon process.
+        # Applicable only to convenience account office networks. Indicates whether secondary verification is required during logon. If logon secondary verification is enabled, the system checks whether the logon account has security risks when a convenience user logs on to the client. If a risk is detected, the system sends a verification code to the email address associated with the account. The convenience user can log on to the client only after passing the verification code check.
         self.need_verify_login_risk = need_verify_login_risk
-        # Specifies whether to enable trusted device verification.
+        # Indicates whether trusted device verification is enabled.
         self.need_verify_zero_device = need_verify_zero_device
-        # The ID of the premium bandwidth plan.
+        # The Internet access package ID.
         self.network_package_id = network_package_id
-        # The network version. The new version supports products such as App Streaming.
+        # The network version. The new version supports products such as Wuying Cloud Application.
         self.nm_version = nm_version
         # The office network ID.
         self.office_site_id = office_site_id
-        # The account type of the office network.
+        # The account system type of the office network.
         self.office_site_type = office_site_type
-        # The organizational unit (OU) in the Active Directory (AD) domain.
+        # The organizational unit (OU) in the AD domain.
         self.ou_name = ou_name
-        # The streaming protocol.
+        # The protocol type.
         self.protocol_type = protocol_type
-        # The IP address of the RDS license server.
+        # The IP address of the RDS license.
         self.rds_license_address = rds_license_address
-        # The domain name of the RDS license server.
+        # The domain name where the RDS license resides.
         self.rds_license_domain_name = rds_license_domain_name
-        # The status of the Remote Desktop Services (RDS) license.
+        # The status of the RDS license.
         self.rds_license_status = rds_license_status
-        # A list of resource quantities.
+        # The list of resource quantities.
         self.resource_amounts = resource_amounts
-        # The security protection configuration for the office network.
+        # The security protection configuration of the office network.
         self.security_protection = security_protection
-        # Specifies whether to enable single sign-on (SSO).
+        # Indicates whether Single Sign-On (SSO) is enabled.
         self.sso_enabled = sso_enabled
-        # The single sign-on (SSO) type.
+        # The SSO type.
         self.sso_type = sso_type
-        # The status of the office network.
+        # The office network status.
         self.status = status
-        # The DNS addresses of the AD subdomains.
+        # The array of DNS addresses for the AD subdomain.
         self.sub_dns_address = sub_dns_address
-        # The name of the Active Directory (AD) subdomain.
+        # The username of the AD subdomain DNS.
         self.sub_domain_name = sub_domain_name
         # The subnet mode of the office network.
         self.subnet_mode = subnet_mode
+        # The tenant ID of the identity provider.
         self.tenant_id = tenant_id
-        # The total number of cloud computers in the office network, including individual and shared computers.
+        # The number of cloud computers.
         self.total_eds_count = total_eds_count
-        # The number of shared cloud computers.
+        # The number of cloud computers in shared cloud computer pools.
         self.total_eds_count_for_group = total_eds_count_for_group
-        # The total number of resources, including cloud computers and shared cloud computers.
+        # The total number of network interface controllers (NICs).
         self.total_resource_amount = total_resource_amount
-        # > This parameter is not available.
+        # > This parameter is not yet available.
         self.trust_password = trust_password
-        # The vSwitch IDs.
+        # The array of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The ID of the office network\\"s Virtual Private Cloud (VPC).
+        # The VPC ID of the secure office network.
         self.vpc_id = vpc_id
-        # The VPC type.
+        # The usage type of the VPC.
         self.vpc_type = vpc_type
+        # The version of the workspace network component (VPL).
         self.vpl_version = vpl_version
 
     def validate(self):
@@ -315,6 +329,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
 
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
+
+        if self.basic_internet_type is not None:
+            result['BasicInternetType'] = self.basic_internet_type
 
         if self.cen_attach_status is not None:
             result['CenAttachStatus'] = self.cen_attach_status
@@ -528,6 +545,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
 
+        if m.get('BasicInternetType') is not None:
+            self.basic_internet_type = m.get('BasicInternetType')
+
         if m.get('CenAttachStatus') is not None:
             self.cen_attach_status = m.get('CenAttachStatus')
 
@@ -716,7 +736,7 @@ class DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts(DaraModel):
         amount: int = None,
         resource_type: str = None,
     ):
-        # The number of resources of this type.
+        # The number of resources.
         self.amount = amount
         # The resource type.
         self.resource_type = resource_type
@@ -757,11 +777,11 @@ class DescribeOfficeSitesResponseBodyOfficeSitesLogs(DaraModel):
     ):
         # The log level.
         self.level = level
-        # The log message.
+        # The detailed log information.
         self.message = message
-        # The registration step.
+        # The step associated with the log entry.
         self.step = step
-        # The timestamp of the log entry.
+        # The time when the log was generated. The time is in the ISO 8601 standard format (UTC).
         self.time_stamp = time_stamp
 
     def validate(self):
@@ -812,17 +832,17 @@ class DescribeOfficeSitesResponseBodyOfficeSitesADConnectors(DaraModel):
         trust_key: str = None,
         v_switch_id: str = None,
     ):
-        # The connection address of the AD connector.
+        # The connection address of the AD Connector.
         self.adconnector_address = adconnector_address
-        # The status of the AD connector.
+        # The status of the AD Connector.
         self.connector_status = connector_status
-        # The ID of the elastic network interface (ENI) to which the AD connector is attached.
+        # The ID of the elastic network interface (ENI) attached to the AD Connector.
         self.network_interface_id = network_interface_id
-        # The specification of the AD connector.
+        # The specification of the AD Connector.
         self.specification = specification
-        # The trust password that is configured when you set up an AD trust relationship.
+        # The trust password specified when configuring the AD trust relationship.
         self.trust_key = trust_key
-        # The ID of the vSwitch that corresponds to the network of the AD connector.
+        # The vSwitch ID of the network where the AD Connector resides.
         self.v_switch_id = v_switch_id
 
     def validate(self):

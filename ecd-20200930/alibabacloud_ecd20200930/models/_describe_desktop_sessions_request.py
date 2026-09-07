@@ -33,12 +33,14 @@ class DescribeDesktopSessionsRequest(DaraModel):
         self.desktop_id = desktop_id
         # The cloud computer name.
         self.desktop_name = desktop_name
-        # The end time of the query.
+        # The end of the time range to query.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
         # The end user ID.
         self.end_user_id = end_user_id
         # The end user ID. This parameter is the same as EndUserId. You only need to specify one of them.
         self.end_user_id_filter = end_user_id_filter
+        # The list of end user IDs.
         self.end_user_ids = end_user_ids
         # Specifies whether to include terminal information in the response.
         self.fill_hardware_info = fill_hardware_info
@@ -54,10 +56,12 @@ class DescribeDesktopSessionsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The session connection status.
         self.session_status = session_status
-        # The start time of the query.
+        # The beginning of the time range to query.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
         # The purchase method of the cloud computer.
         self.sub_pay_type = sub_pay_type

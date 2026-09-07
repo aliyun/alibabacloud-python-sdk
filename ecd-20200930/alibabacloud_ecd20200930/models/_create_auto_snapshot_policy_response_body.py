@@ -10,7 +10,7 @@ class CreateAutoSnapshotPolicyResponseBody(DaraModel):
         policy_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the automatic snapshot policy.
+        # The automatic snapshot policy ID.
         self.policy_id = policy_id
         # The request ID.
         self.request_id = request_id

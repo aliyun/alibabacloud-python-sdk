@@ -23,32 +23,38 @@ class ModifyOfficeSiteAttributeRequest(DaraModel):
         tenant_id: str = None,
         v_switch_id: List[str] = None,
     ):
+        # The Authority URL of the identity authentication service.
         self.authority_host = authority_host
+        # The client ID registered with the identity provider application.
         self.client_id = client_id
+        # The client secret registered with the identity provider application.
         self.client_secret = client_secret
-        # The method for connecting to cloud computers.
+        # The access method allowed when connecting to cloud computers.
         # 
-        # > VPC connections use Alibaba Cloud PrivateLink, a free service. If you set this parameter to VPC or Any, PrivateLink is automatically activated.
+        # > The VPC connection method depends on the Alibaba Cloud PrivateLink service, which is free of charge. If this parameter is set to `VPC` or `Any`, the system automatically activates the PrivateLink service for you.
         self.desktop_access_type = desktop_access_type
+        # The domain name of the enterprise AD.
         self.domain_name = domain_name
-        # Specifies whether to grant cloud computer users local administrative permissions.
+        # Specifies whether to grant local administrator permissions to cloud computer users.
         self.enable_admin_access = enable_admin_access
-        # Specifies whether to enable two-factor authentication. This parameter is applicable to only office sites that use convenience accounts. If enabled, the system performs a security check during logon. If the system detects a risk, it sends a verification code to the email address that is associated with the account. The user must enter the correct verification code to log on.
+        # This parameter applies only to convenience account-based office networks. Specifies whether secondary authentication is required during logon. If logon secondary authentication is enabled, the system checks whether the logon account has security risks when a convenience user logs on to the client. If a risk is detected, the system sends a verification code to the email address associated with the account. The convenience user can log on to the client only after passing the verification code check.
         self.need_verify_login_risk = need_verify_login_risk
-        # Specifies whether to enable device verification. This feature is available only for office sites that use convenience accounts.
+        # This parameter applies only to convenience account-based office networks. Specifies whether to enable device verification. For AD-based office networks, this parameter is empty.
         self.need_verify_zero_device = need_verify_zero_device
-        # The ID of the office site.
+        # The office network ID.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The name of the office site. The name must be 2 to 255 characters long. The name must start with a letter or a Chinese character, and cannot start with http\\:// or https\\://. It can contain digits, colons (:), underscores (_), and hyphens (-).<br>
-        # This parameter is optional.<br>
+        # The office network name. The name must be 2 to 255 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).    
+        # Default value: empty.
         self.office_site_name = office_site_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions where Elastic Desktop Service is available.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The tenant ID of the identity provider.
         self.tenant_id = tenant_id
+        # The vSwitch ID. Only one vSwitch is supported.
         self.v_switch_id = v_switch_id
 
     def validate(self):

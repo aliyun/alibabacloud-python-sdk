@@ -18,24 +18,19 @@ class ListCdsFilesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response parameters. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        # The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # The total number of file list entries.
+        # The total number of entries in the file list.
         self.count = count
-        # The files.
+        # The file list.
         self.file_models = file_models
-        # Error message. This parameter is not returned if the value of Code is `success`.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
-        # The token used to start the next query. If the `NextToken` is empty, the next query does not exist.
+        # The pagination token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
-        # 
-        # Valid value:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -127,52 +122,47 @@ class ListCdsFilesResponseBodyFileModels(DaraModel):
         size: int = None,
         thumbnail: str = None,
     ):
-        # File type classification. The network disk will classify files according to their suffix and MIME Type. The main categories are `doc`, `image`, `audio` and `video`.
+        # The file category. The cloud drive categorizes files based on file name extensions and MIME types. The main categories include `doc`, `image`, `audio`, and `video`.
         self.category = category
         # The content type of the file.
         self.content_type = content_type
-        # The time when the file was created.
+        # The creation time. The time follows the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The file creator.
+        # The creator of the file.
         self.creator = creator
         # The file description.
         self.description = description
-        # The download link. The default validity period is 15 minutes.
+        # The download URL. The URL is valid for 15 minutes by default.
         self.download_url = download_url
-        # The filename extension.
+        # The file name extension.
         self.file_extension = file_extension
         # The file ID.
         self.file_id = file_id
         # The file path.
         self.file_path = file_path
         # The file type.
-        # 
-        # Valid value:
-        # 
-        # *   file
-        # *   folder
         self.file_type = file_type
-        # The MD5 hash of the object.
+        # The MD5 hash value of the file.
         self.md_5 = md_5
-        # The time when the file was last modified.
+        # The time when the file was last modified. The time follows the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.modified_time = modified_time
-        # Modifier.
+        # The modifier of the file.
         self.modifier = modifier
-        # The name of the file.
+        # The file name.
         self.name = name
-        # The time when the file was last opened.
+        # The time when the file was last opened. The time follows the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.open_time = open_time
-        # The timestamp that indicates the time when the file was last opened.
+        # The timestamp of the last time the file was opened.
         self.open_time_stamp = open_time_stamp
-        # The ID of the parent folder.
+        # The parent folder ID.
         self.parent_id = parent_id
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to obtain the list of regions supported by cloud computers.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         self.region_id = region_id
-        # The SHA1 hash of the data file.
+        # The SHA1 hash value of the data file.
         self.sha_1 = sha_1
-        # The size of the file. Unit: bytes.
+        # The file size. Unit: bytes.
         self.size = size
-        # The URL of the thumbnail.
+        # The thumbnail URL.
         self.thumbnail = thumbnail
 
     def validate(self):

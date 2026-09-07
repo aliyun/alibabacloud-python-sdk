@@ -21,6 +21,7 @@ class UploadImageRequest(DaraModel):
         region_id: str = None,
         system_disk_size: str = None,
     ):
+        # The boot mode of the image.
         self.boot_mode = boot_mode
         # The data cloud disk size. Valid values: 80 to 500. Unit: GiB.
         self.data_disk_size = data_disk_size
@@ -28,7 +29,7 @@ class UploadImageRequest(DaraModel):
         self.description = description
         # Specifies whether to enable security check.
         self.enable_security_check = enable_security_check
-        # Specifies whether the image is a GPU image.
+        # Specifies whether the image is a GPU-type image.
         self.gpu_category = gpu_category
         # The type of the pre-installed GPU driver.
         self.gpu_driver_type = gpu_driver_type
@@ -40,11 +41,11 @@ class UploadImageRequest(DaraModel):
         # 
         # - Auto: Alibaba Cloud detects the source operating system and assigns a license. In automatic mode, the system first checks whether an Alibaba Cloud official license is available for the `Platform` you specified and assigns it to the imported image. If no such license is available, the system switches to BYOL (Bring Your Own License) mode.
         # - Aliyun: Uses an Alibaba Cloud official license based on the `Platform` you specified.
-        # - BYOL: Uses the license that comes with the source operating system. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
+        # - BYOL: Uses the license that comes with the source operating system. When using BYOL, ensure that your license key supports use on Alibaba Cloud.
         # 
-        # Default value: Auto.
+        # Default value: Auto
         # 
-        # > Systems such as Windows 10 cannot be activated through Alibaba Cloud. Set `LicenseType` to BYOL for custom activation.
+        # > Systems such as Windows 10 cannot be activated through Alibaba Cloud. Set `LicenseType` to custom activation (BYOL).
         self.license_type = license_type
         # The operating system type.
         self.os_type = os_type
@@ -60,7 +61,7 @@ class UploadImageRequest(DaraModel):
         self.region_id = region_id
         # The system cloud disk size. Unit: GiB.
         # 
-        # > The system cloud disk size cannot be smaller than the image file size.
+        # > The system cloud disk size cannot be smaller than the image file.
         self.system_disk_size = system_disk_size
 
     def validate(self):

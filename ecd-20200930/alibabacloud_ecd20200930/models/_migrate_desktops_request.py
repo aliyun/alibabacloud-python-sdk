@@ -15,21 +15,21 @@ class MigrateDesktopsRequest(DaraModel):
         target_office_site_id: str = None,
         target_subnet_id: str = None,
     ):
-        # The IDs of the cloud computers to migrate. You can specify 1 to 100 IDs.
+        # The IDs of cloud computers. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. To get a list of supported regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # This parameter is not publicly available.
+        # The member IP address of the destination node for migration.
         self.target_member_ip = target_member_ip
-        # The ID of the target office network.
+        # The ID of the destination office network.
         # 
         # This parameter is required.
         self.target_office_site_id = target_office_site_id
-        # This parameter is not publicly available.
+        # > This parameter is not yet available for use.
         self.target_subnet_id = target_subnet_id
 
     def validate(self):

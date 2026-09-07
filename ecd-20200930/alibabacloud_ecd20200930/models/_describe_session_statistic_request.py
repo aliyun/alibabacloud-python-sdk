@@ -14,20 +14,20 @@ class DescribeSessionStatisticRequest(DaraModel):
         search_region_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query.
+        # The end time of the query. UNIX timestamp, in milliseconds.
         self.end_time = end_time
         # The workspace ID.
         self.office_site_id = office_site_id
-        # The query interval. Unit: seconds. Valid values:
+        # The query interval, in seconds. Valid values:
         # 
         # - 60
         # - 120
         self.period = period
         # The region ID.
         self.region_id = region_id
-        # The region ID used to filter desktop information for a specified region.
+        # The region ID used to filter desktop information in a specified region.
         self.search_region_id = search_region_id
-        # The beginning of the time range to query.
+        # The start time of the query. UNIX timestamp, in milliseconds.
         self.start_time = start_time
 
     def validate(self):

@@ -15,7 +15,7 @@ class DescribeZonesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the zones.
+        # The collection of zone information.
         self.zones = zones
 
     def validate(self):

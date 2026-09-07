@@ -14,9 +14,9 @@ class CreateDesktopGroupResponseBody(DaraModel):
         order_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The ID of the desktop group.
+        # The ID of the shared cloud computer.
         self.desktop_group_id = desktop_group_id
-        # The desktop group IDs.
+        # The list of shared cloud computer IDs.
         self.desktop_group_ids = desktop_group_ids
         # The order IDs.
         self.order_ids = order_ids

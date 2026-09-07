@@ -14,32 +14,27 @@ class ModifyBundleRequest(DaraModel):
         language: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud computer template that you want to modify.
+        # The cloud computer template ID.
         # 
         # This parameter is required.
         self.bundle_id = bundle_id
-        # The name of the new cloud computer template.
+        # The new cloud computer template name.
         self.bundle_name = bundle_name
-        # The description of the new cloud computer template.
+        # The new cloud computer template description.
         self.description = description
         # The new image ID. The new image must meet the following conditions:
         # 
-        # *   The new image must be in the Available state.
-        # *   The operating system of the new image must be the same as that of the original image.
-        # *   The required disk size for the new image cannot be greater than that for the original image.
-        # *   The GPU type of the new image must be the same as that of the original image.
+        # - The new image must be in the Available state.
+        # 
+        # - The new image must have the same operating system as the original image.
+        # 
+        # - The disk size required by the new image cannot be larger than that of the original image.
+        # 
+        # - The GPU type of the new image must be the same as that of the original image.
         self.image_id = image_id
-        # The OS language. This parameter is available only for system images.
-        # 
-        # Valid values:
-        # 
-        # *   en-US: American English
-        # *   zh-HK: Traditional Chinese (Hong Kong)
-        # *   zh-CN: Simplified Chinese.
-        # 
-        # *   ja-JP: Japanese
+        # The operating system language. Currently, only system images are supported.
         self.language = language
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

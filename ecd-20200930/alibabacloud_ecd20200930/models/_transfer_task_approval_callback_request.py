@@ -18,7 +18,7 @@ class TransferTaskApprovalCallbackRequest(DaraModel):
         self.oss_bucket_region_id = oss_bucket_region_id
         # The approval result.
         self.result = result
-        # The ID of the transfer task.
+        # The ID of the file transfer task.
         self.task_id = task_id
 
     def validate(self):

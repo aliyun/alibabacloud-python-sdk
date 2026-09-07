@@ -17,15 +17,14 @@ class DescribeCloudDiskGroupDrivesRequest(DaraModel):
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The team drive name.
+        # The team space name.
         self.group_name = group_name
-        # The number of entries per page for paged queries.
+        # The number of entries per page for a paged query.
         # 
-        # - Maximum: 100
-        # 
-        # - Default: 20
+        # - Maximum value: 100
+        # - Default value: 20
         self.max_results = max_results
-        # The token that marks the start of the next query. An empty NextToken means no more results.
+        # The token for the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # The region ID.
         # 

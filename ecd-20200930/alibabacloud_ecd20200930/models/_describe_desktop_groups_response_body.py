@@ -14,9 +14,9 @@ class DescribeDesktopGroupsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details of the shared cloud desktop groups.
+        # The list of shared cloud computers.
         self.desktop_groups = desktop_groups
-        # The token used to retrieve the next page of results. If this parameter is not returned, it indicates that all results have been returned.
+        # The token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -126,123 +126,133 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(DaraModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
+        # The account type.
         self.account_type = account_type
-        # The number of concurrent sessions allowed per cloud desktop in a multi-session shared cloud desktop group.
+        # The number of concurrent sessions allowed per cloud computer in a multi-session shared cloud computer group with multiple instances.
         self.bind_amount = bind_amount
-        # The number of cloud desktops that you purchase. This parameter applies only to subscription shared cloud desktop groups. Valid values: 0 to 200.
+        # This parameter applies only to subscription shared cloud computers and indicates the initial number of cloud computers purchased. Valid values: 0 to 200.
         self.buy_desktops_count = buy_desktops_count
-        # The comments on the shared cloud desktop group.
+        # The remarks.
         self.comments = comments
-        # The maximum session duration, in milliseconds. When this duration is reached, the session is automatically disconnected.
+        # The maximum duration that a session can remain in the connected state. The session is automatically disconnected when this duration is reached. Unit: milliseconds.
         self.connect_duration = connect_duration
-        # The number of cloud desktops in each status.
+        # The list of cloud computer counts by status.
         self.count_per_status = count_per_status
-        # The number of vCPU cores.
+        # The number of vCPUs.
         self.cpu = cpu
-        # The time when the shared cloud desktop group was created.
+        # The creation time.
+        # 
+        # The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The ID of the Alibaba Cloud account that created the shared cloud desktop group.
+        # The Alibaba Cloud account ID of the creator.
         self.creator = creator
-        # The type of the data disk.
+        # The user disk type.
         self.data_disk_category = data_disk_category
-        # The data disk size in GiB.
+        # The user disk capacity. Unit: GiB.
         self.data_disk_size = data_disk_size
-        # The number of cloud desktops created.
+        # The number of cloud computers that have been created.
         self.desktop_count = desktop_count
-        # The ID of the shared cloud desktop group.
+        # The ID of the shared cloud computer.
         self.desktop_group_id = desktop_group_id
-        # The name of the shared cloud desktop group.
+        # The name of the shared cloud computer.
         self.desktop_group_name = desktop_group_name
-        # The desktop type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the desktop types supported by WUYING Workspace.
+        # The cloud computer specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by Wuying Cloud Computer.
         self.desktop_type = desktop_type
-        # The number of authorized users of the shared cloud desktop group.
+        # The number of authorized users for the shared cloud computer.
         self.end_user_count = end_user_count
+        # The domain name of Microsoft Entra ID.
         self.entra_domain_name = entra_domain_name
+        # The environment ID. This parameter is not publicly available.
         self.env_id = env_id
+        # The environment type. This parameter is not publicly available.
         self.env_type = env_type
-        # The time when the subscription shared cloud desktop group expires.
+        # The expiration time of the subscription shared cloud computer.
+        # 
+        # The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.expired_time = expired_time
+        # The list of expiration times.
         self.expired_times = expired_times
-        # The number of vGPU cores.
+        # The number of GPU cores.
         self.gpu_count = gpu_count
         # The GPU driver version.
         self.gpu_driver_version = gpu_driver_version
-        # The GPU memory size.
+        # The GPU memory.
         self.gpu_spec = gpu_spec
-        # The amount of time, in milliseconds, that a session can remain idle. If a session remains idle for longer than this duration, it is automatically disconnected. A session is considered idle if there is no keyboard or mouse activity.
+        # The maximum idle duration after a user session is established. If no keyboard or mouse operations are performed within this duration, the session is disconnected. Unit: milliseconds.
         self.idle_disconnect_duration = idle_disconnect_duration
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
+        # Indicates whether the directory is an LDAP directory.
         self.is_ldap = is_ldap
-        # The duration, in milliseconds, to retain a disconnected session. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session is always retained.
-        # 
-        # When a session disconnects, the user can reconnect within this period to resume their work. If the user fails to reconnect in time, the session is terminated and unsaved data is lost.
+        # The retention period after a session is disconnected. Unit: milliseconds. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session is always retained.
         self.keep_duration = keep_duration
-        # The load balancing policy for the multi-session shared cloud desktop group.
+        # The load balancing policy for multi-session shared cloud computers with multiple instances.
         self.load_policy = load_policy
-        # - For a pay-as-you-go shared cloud desktop group, this parameter specifies the maximum number of cloud desktops that the group can contain.
-        # 
-        # - For a subscription shared cloud desktop group, this parameter specifies the total number of cloud desktops, which is the sum of the initially purchased desktops (indicated by the `BuyDesktopsCount` parameter) and the desktops that can be automatically created.
+        # - For pay-as-you-go shared cloud computers, this parameter indicates the maximum number of cloud computers that can be created.
         self.max_desktops_count = max_desktops_count
-        # The memory size in MiB.
+        # The memory size. Unit: MiB.
         self.memory = memory
-        # - For a pay-as-you-go shared cloud desktop group, this specifies the minimum number of cloud desktops to maintain in the group.
-        # 
-        # - For a subscription shared cloud desktop group, this parameter has the same value as `BuyDesktopsCount` and specifies the number of cloud desktops that you initially purchase.
+        # - For pay-as-you-go shared cloud computers, this parameter indicates the minimum number of cloud computers that can be created.
         self.min_desktops_count = min_desktops_count
-        # The ID of the office network.
+        # The name of the office network to which the shared cloud computer belongs.
         self.office_site_id = office_site_id
-        # The name of the office network.
+        # The ID of the office network to which the shared cloud computers belong.
         self.office_site_name = office_site_name
-        # The account type of the office network.
+        # The account system type of the office network.
         self.office_site_type = office_site_type
+        # The organization ID of the team.
         self.org_id = org_id
-        # The OS.
+        # The operating system type.
         self.os_type = os_type
-        # The ID of the cloud desktop template.
+        # The cloud computer template ID.
         self.own_bundle_id = own_bundle_id
-        # The name of the cloud desktop template.
+        # The name of the cloud computer template.
         self.own_bundle_name = own_bundle_name
-        # The type of the shared cloud desktop group.
+        # The type of the shared cloud computer.
         self.own_type = own_type
         # The billing method.
         self.pay_type = pay_type
-        # The ID of the policy associated with the shared cloud desktop group.
+        # The ID of the policy associated with the shared cloud computer.
         self.policy_group_id = policy_group_id
+        # The list of cloud computer policy IDs.
         self.policy_group_id_list = policy_group_id_list
-        # The name of the policy associated with the shared cloud desktop group.
+        # The policy name associated with the shared cloud computer.
         self.policy_group_name = policy_group_name
+        # The list of cloud computer policy names.
         self.policy_group_name_list = policy_group_name_list
         # The protocol type.
         self.protocol_type = protocol_type
+        # The ID of the QoS rule.
         self.qos_rule_id = qos_rule_id
-        # The session utilization threshold that triggers auto scaling for a multi-session shared cloud desktop group. Session utilization is calculated by using the following formula:
+        # The session occupancy threshold used as the auto scaling trigger condition for multi-session shared cloud computers. The session occupancy is calculated by using the following formula:
         # 
-        # `Session utilization = Number of active sessions / (Total number of cloud desktops × Maximum number of sessions per cloud desktop) × 100%`
+        # ```Session occupancy = Number of bound sessions / (Total number of cloud computers × Maximum number of sessions supported by each cloud computer) × 100%```
         # 
-        # When the session utilization exceeds this threshold, the system scales out by creating new cloud desktops. When the utilization falls below this threshold, the system scales in by removing idle cloud desktops.
+        # When the session occupancy reaches this threshold, new cloud computers are created. When the session occupancy is below this threshold, excess cloud computers are deleted.
         self.ratio_threshold = ratio_threshold
-        # The reset type of the shared cloud desktop group.
+        # The reset type of the shared cloud computer.
         self.reset_type = reset_type
+        # The convenience user group ID.
         self.simple_user_group_id = simple_user_group_id
-        # The status of the shared cloud desktop group.
+        # The status of the shared cloud computer.
         self.status = status
-        # The period of inactivity, in milliseconds, after which an idle cloud desktop is automatically stopped. If a user tries to connect to a stopped desktop, the desktop is automatically started.
+        # The idle shutdown duration. When the cloud computer has been idle for this duration, it is automatically shut down. If a user connects after shutdown, the cloud computer automatically starts. Unit: milliseconds.
         self.stop_duration = stop_duration
-        # The ID of the subnet.
+        # The subnet ID.
         self.subnet_id = subnet_id
-        # The type of the system disk.
+        # The system cloud disk type.
         self.system_disk_category = system_disk_category
-        # The system disk size in GiB.
+        # The system cloud disk capacity. Unit: GiB.
         self.system_disk_size = system_disk_size
-        # The tags attached to the shared cloud desktop group.
+        # The list of tags.
         self.tags = tags
+        # The user group name.
         self.user_group_name = user_group_name
-        # The path of the organizational unit (OU).
+        # The organizational unit (OU) path of the user.
         self.user_ou_path = user_ou_path
-        # The version number of the shared cloud desktop group.
+        # The version number of the shared cloud computer.
         self.version = version
-        # Indicates whether disk encryption is enabled.
+        # Indicates whether encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
         # The ID of the KMS key used for disk encryption.
         self.volume_encryption_key = volume_encryption_key
@@ -687,9 +697,9 @@ class DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus(DaraModel):
         count: int = None,
         status: str = None,
     ):
-        # The number of cloud desktops in the specified status.
+        # The number of cloud computers.
         self.count = count
-        # The status of the cloud desktop.
+        # The cloud computer status.
         self.status = status
 
     def validate(self):

@@ -16,7 +16,7 @@ class CreateOfficeSiteAcceleratorRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # A list of regions where access points provide acceleration.
+        # The list of acceleration region information for the access points.
         # 
         # This parameter is required.
         self.accelerate_region = accelerate_region
@@ -97,19 +97,18 @@ class CreateOfficeSiteAcceleratorRequestAccelerateRegion(DaraModel):
         # 
         # This parameter is required.
         self.accelerate_region_id = accelerate_region_id
-        # The bandwidth allocated to the acceleration region. Unit: Mbps.
+        # The bandwidth allocated to the acceleration region. Unit: Mbit/s.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
-        # The IP protocol version used to access the GA instance.
+        # The IP address protocol used to connect to the GA service.
         # 
-        # > Only standard pay-as-you-go GA instances support `DUAL_STACK`.
+        # > The `DUAL_STACK` type is supported only by standard pay-as-you-go GA instances.
         self.ip_version = ip_version
-        # The line type.
+        # The public network line type of the acceleration region.
         # 
-        # > - This parameter is required for pay-by-data-transfer GA instances.
-        # >
-        # > - The supported line types vary by acceleration region.
+        # > - Configure this parameter for GA instances that use the **pay-by-data-transfer** billing method.
+        # > - The supported public network line types vary by acceleration region.
         # 
         # This parameter is required.
         self.isp_type = isp_type

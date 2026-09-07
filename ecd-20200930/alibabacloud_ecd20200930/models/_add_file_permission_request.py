@@ -23,7 +23,7 @@ class AddFilePermissionRequest(DaraModel):
         self.cds_id = cds_id
         # The ID of the user who uses the cloud disk.
         self.end_user_id = end_user_id
-        # The file ID. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the file.
+        # The file ID. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the file ID.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -110,9 +110,9 @@ class AddFilePermissionRequestMemberList(DaraModel):
         self.cds_identity = cds_identity
         # Specifies whether sub-user groups inherit the permissions.
         self.disinherit_sub_group = disinherit_sub_group
-        # The time when the authorization expires. The value is the number of milliseconds from January 1, 1970, 00:00:00 to the target time. To set permanent validity, specify a predefined system value, such as 4775500800000.
+        # The time when the authorization expires. The value is the number of milliseconds from January 1, 1970, 00:00:00 to the target time. To set the authorization to never expire, specify a predefined value such as 4775500800000.
         self.expire_time = expire_time
-        # Two methods are supported for setting permissions: specifying a role or customizing operation permissions. This parameter specifies a role for permission settings and is mutually exclusive with ActionList. If both parameters are specified, this parameter takes precedence.
+        # Two methods are supported for setting permissions: specifying a role or customizing operation permissions. This parameter specifies a role for permission settings and is mutually exclusive with ActionList. If both parameters are set, this parameter takes precedence.
         # 
         # This parameter is required.
         self.role_id = role_id

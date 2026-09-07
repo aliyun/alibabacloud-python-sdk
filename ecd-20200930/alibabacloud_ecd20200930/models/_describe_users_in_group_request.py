@@ -20,31 +20,30 @@ class DescribeUsersInGroupRequest(DaraModel):
         query_user_detail: bool = None,
         region_id: str = None,
     ):
-        # The connection status of the user.
+        # The connection state of the user.
         self.connect_state = connect_state
-        # The shared cloud desktop ID.
+        # The ID of the shared cloud computer.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # The ID of the authorized user.
         self.end_user_id = end_user_id
-        # A list of authorized user IDs.
+        # The list of authorized user IDs.
         self.end_user_ids = end_user_ids
-        # The string for a partial match query. Results that contain this string are returned.
+        # The fuzzy query string. All results that contain this character string are returned.
         self.filter = filter
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
         # - Maximum value: 100.
-        # 
         # - Default value: 10.
         self.max_results = max_results
-        # The token to start the next query. An empty value indicates that all results have been returned.
+        # The pagination token for the next query. An empty value indicates that there is no next page.
         self.next_token = next_token
         # The ID of the organization to which the user belongs.
         self.org_id = org_id
         # Specifies whether to query user details.
         self.query_user_detail = query_user_detail
-        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where WUYING Workspace is available.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

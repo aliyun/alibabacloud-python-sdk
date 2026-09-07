@@ -23,15 +23,15 @@ class ExportDesktopGroupInfoRequest(DaraModel):
         region_id: str = None,
         tag: List[main_models.ExportDesktopGroupInfoRequestTag] = None,
     ):
-        # The billing method of the shared cloud desktops.
+        # The billing method of the shared cloud computer.
         self.charge_type = charge_type
-        # The list of shared cloud desktop IDs.
+        # The list of shared cloud computer IDs.
         self.desktop_group_id = desktop_group_id
-        # The name of the shared cloud desktop.
+        # The name of the shared cloud computer.
         self.desktop_group_name = desktop_group_name
-        # The list of authorized user IDs for the shared cloud desktops.
+        # The list of authorized user IDs for the shared cloud computer.
         self.end_user_id = end_user_id
-        # The expiration time of the subscription shared cloud desktops.
+        # The expiration time of the subscription shared cloud computer. The time is in the ISO 8601 standard (UTC).
         self.expired_time = expired_time
         # The language type.
         self.lang_type = lang_type
@@ -42,11 +42,11 @@ class ExportDesktopGroupInfoRequest(DaraModel):
         self.max_results = max_results
         # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
-        # The ID of the office network to which the shared cloud desktops belong.
+        # The ID of the office network to which the shared cloud computer belongs.
         self.office_site_id = office_site_id
-        # The ID of the policy associated with the shared cloud desktops.
+        # The ID of the policy associated with the shared cloud computer.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -153,9 +153,9 @@ class ExportDesktopGroupInfoRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. This parameter cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key. This parameter cannot be an empty string if specified. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value. The tag value can be an empty string and can be up to 128 characters in length. It cannot start with `acs:` or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

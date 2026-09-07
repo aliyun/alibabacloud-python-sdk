@@ -32,71 +32,53 @@ class DescribeDesktopGroupsRequest(DaraModel):
         status: int = None,
         tag: List[main_models.DescribeDesktopGroupsRequestTag] = None,
     ):
-        # The cloud computer template IDs.
+        # The list of cloud computer template IDs.
         self.bundle_id = bundle_id
-        # The ID of the cloud computer pool.
+        # The ID of the shared cloud computer.
         self.desktop_group_id = desktop_group_id
-        # The IDs of cloud computer pools.
+        # The list of shared cloud computer IDs.
         self.desktop_group_ids = desktop_group_ids
-        # The name of the cloud computer pool. Fuzzy search is supported.
+        # The name of the shared cloud computer to query. Fuzzy match is supported.
         self.desktop_group_name = desktop_group_name
+        # The cloud computer specifications. You can call [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the supported specification IDs.
         self.desktop_type = desktop_type
-        # The IDs of the authorized users of the cloud computer pool.
+        # The list of authorized user IDs for the shared cloud computer.
         self.end_user_ids = end_user_ids
-        # The IDs of the users that you want to exclude from the authorized user list.
+        # The list of authorized users to exclude.
         self.excluded_end_user_ids = excluded_end_user_ids
-        # The image IDs.
+        # The list of image IDs.
         self.image_id = image_id
-        # The number of entries to return on each page.<br>Maximum value: 100.<br>Default value: 10.<br><br>
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # Specifies whether to query multi-desktop cloud computer pools.
+        # Specifies whether the shared cloud computer is a multi-host type.
+        # 
+        # Valid values:
+        # - true: Multi-host shared cloud computer.
+        # - false: Single-host shared cloud computer.
         self.multi_resource = multi_resource
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If NextToken is empty, no next page exists.
+        # The token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
-        # The office network ID.
+        # The ID of the office network to which the shared cloud computers belong.
         self.office_site_id = office_site_id
-        # The type of the cloud computer pool.
-        # 
-        # > This parameter is not publicly available.
+        # The type of the shared cloud computer.
         self.own_type = own_type
-        # The subscription duration of the subscription cloud computer pool. The unit is specified by the `PeriodUnit` parameter.
-        # 
-        # - Valid values when `PeriodUnit` is set to `Month`:
-        # 
-        #   - 1
-        # 
-        #   - 2
-        # 
-        #   - 3
-        # 
-        #   - 6
-        # 
-        # - Valid values when `PeriodUnit` is set to `Year`:
-        # 
-        #   - 1
-        # 
-        #   - 2
-        # 
-        #   - 3
-        # 
-        #   - 4
-        # 
-        #   - 5
+        # The subscription duration of the shared cloud computer. The unit is specified by `PeriodUnit`.
         self.period = period
-        # The unit of the subscription duration.
+        # The unit of the duration for the subscription billing method.
         self.period_unit = period_unit
-        # The ID of the policy that is associated with the cloud computer pool.
+        # The ID of the policy associated with the shared cloud computer.
         self.policy_group_id = policy_group_id
         # The protocol type.
         self.protocol_type = protocol_type
+        # The ID of the QoS rule.
         self.qos_rule_id = qos_rule_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The status of the cloud computer pool.
+        # The status of the shared cloud computer.
         self.status = status
-        # The tags. You can specify up to 20 tags.
+        # The list of tags. You can specify 1 to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -253,9 +235,9 @@ class DescribeDesktopGroupsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. The key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. The value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -26,7 +26,7 @@ class ListVirtualBridgesRequest(DaraModel):
         # 
         # > The `DirectoryId` parameter will be deprecated. Use this parameter instead.
         self.office_site_id = office_site_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Wuying Workspace.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

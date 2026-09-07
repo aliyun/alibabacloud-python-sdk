@@ -17,11 +17,11 @@ class ApplyCoordinationForMonitoringRequest(DaraModel):
         resource_candidates: List[main_models.ApplyCoordinationForMonitoringRequestResourceCandidates] = None,
         uuid: str = None,
     ):
-        # The access policy during the remote assistance procedure.
+        # The access policy for the remote assistance procedure.
         # 
         # This parameter is required.
         self.coordinate_policy_type = coordinate_policy_type
-        # The ID of the end user who initiates the coordination flow. This parameter is not required if the request is initiated by an administrator.
+        # The ID of the end user who initiates the streaming collaboration. This parameter is not required if the administrator initiates the request.
         self.end_user_id = end_user_id
         # The initiator type.
         self.initiator_type = initiator_type
@@ -113,7 +113,7 @@ class ApplyCoordinationForMonitoringRequestResourceCandidates(DaraModel):
         self.owner_ali_uid = owner_ali_uid
         # The username of the current user of the cloud computer.
         # 
-        # > This field is required.
+        # > This parameter is required.
         self.owner_end_user_id = owner_end_user_id
         # The cloud computer ID.
         # 
@@ -123,7 +123,7 @@ class ApplyCoordinationForMonitoringRequestResourceCandidates(DaraModel):
         # 
         # This parameter is required.
         self.resource_name = resource_name
-        # The properties of the cloud computer.
+        # The cloud computer properties.
         self.resource_properties = resource_properties
         # The region where the resource resides.
         # 

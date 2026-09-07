@@ -68,38 +68,44 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
         instance_type_family: str = None,
         max_session_count: int = None,
         memory_size: str = None,
+        sale_types: List[str] = None,
         scopes: List[str] = None,
         stock_state: str = None,
         system_disk_size: str = None,
     ):
         # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The size of the data disk, in GiB.
+        # The data cloud disk size. Unit: GiB.
         self.data_disk_size = data_disk_size
+        # The description of the NAS file system.
         self.description = description
         # The specification ID.
         self.desktop_type_id = desktop_type_id
-        # The availability of the specification. A value of `SUFFICIENT` indicates that the specification is in stock.
+        # The specification status. A value of `SUFFICIENT` indicates that the specification resources are sufficient.
         self.desktop_type_status = desktop_type_status
+        # The environment ID. This parameter is not publicly available.
         self.env_id = env_id
+        # The environment type. This parameter is not publicly available.
         self.env_type = env_type
         # The number of GPU cores.
         self.gpu_count = gpu_count
-        # The GPU memory size in MiB. This parameter is valid only for GPU-accelerated cloud desktops.
+        # The GPU memory size. This parameter is meaningful only for GPU-accelerated cloud computers. Unit: MB.
         self.gpu_memory = gpu_memory
-        # The GPU memory size.
+        # The GPU memory.
         self.gpu_spec = gpu_spec
-        # The instance type family.
+        # The instance family.
         self.instance_type_family = instance_type_family
-        # The maximum number of concurrent sessions that is supported by the cloud desktop specification.
+        # The number of multi-sessions supported by the current specification.
         self.max_session_count = max_session_count
-        # The memory size, in MiB.
+        # The memory size. Unit: MiB.
         self.memory_size = memory_size
-        # The purchase options for the specification.
+        # The supported desktop type sale categories.
+        self.sale_types = sale_types
+        # The list of billing methods for the specification.
         self.scopes = scopes
-        # The inventory status.
+        # The stock status.
         self.stock_state = stock_state
-        # The size of the system disk, in GiB.
+        # The system cloud disk size. Unit: GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -148,6 +154,9 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
 
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+
+        if self.sale_types is not None:
+            result['SaleTypes'] = self.sale_types
 
         if self.scopes is not None:
             result['Scopes'] = self.scopes
@@ -200,6 +209,9 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
 
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+
+        if m.get('SaleTypes') is not None:
+            self.sale_types = m.get('SaleTypes')
 
         if m.get('Scopes') is not None:
             self.scopes = m.get('Scopes')

@@ -14,9 +14,9 @@ class DescribeRecordingsResponseBody(DaraModel):
         recordings: List[main_models.DescribeRecordingsResponseBodyRecordings] = None,
         request_id: str = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
-        # The screen recording files.
+        # The collection of cloud computer screen recording information.
         self.recordings = recordings
         # The request ID.
         self.request_id = request_id
@@ -79,30 +79,21 @@ class DescribeRecordingsResponseBodyRecordings(DaraModel):
         self.desktop_id = desktop_id
         # The cloud computer name.
         self.desktop_name = desktop_name
-        # The end time of the recording.
+        # The end time of the recording. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
-        # The end user IDs.
+        # The list of end user IDs.
         self.end_user_ids = end_user_ids
         # The file path.
         self.file_path = file_path
         # The policy ID.
         self.policy_group_id = policy_group_id
-        # The size of the screen recording file. Unit: bytes.
+        # The size of the recording file. Unit: bytes.
         self.recording_size = recording_size
-        # The type of event that triggers the recording.
-        # 
-        # Valid values:
-        # 
-        # *   byaction_cmd_ft: triggered by copy-paste or file transfer events.
-        # *   period: triggered at scheduled intervals.
-        # *   session: triggered by session lifecycle monitoring.
-        # *   byaction_commands: triggered by copy-paste only.
-        # *   alltime: continuous recording.
-        # *   byaction_file_transfer: triggered by file transfer only.
+        # The recording type.
         self.recording_type = recording_type
         # The download URL of the screen recording file.
         self.signed_url = signed_url
-        # The start time of the recording.
+        # The start time of the recording. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

@@ -15,13 +15,13 @@ class DescribeImageModifiedRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Collection of image modification records.
+        # The image change records.
         self.image_modified_records = image_modified_records
-        # Token for the next page of results. An empty NextToken means no more results.
+        # The pagination token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of image modification records.
+        # The total number of image change records.
         self.total_count = total_count
 
     def validate(self):
@@ -81,18 +81,19 @@ class DescribeImageModifiedRecordsResponseBodyImageModifiedRecords(DaraModel):
         status: int = None,
         update_time: str = None,
     ):
-        # ID of the original image before modification.
+        # The image ID before the change.
         self.image_id = image_id
-        # Name of the original image before modification.
+        # The image name before the change.
         self.image_name = image_name
-        # ID of the new image after modification.
+        # The ID of the new image after the change.
         self.new_image_id = new_image_id
-        # Name of the new image after modification.
+        # The name of the new image after the change.
         self.new_image_name = new_image_name
+        # The reason for ignoring the vulnerability. This parameter is required only when you perform the ignore vulnerability operation, that is, when `OperateType` is set to `vul_ignore`.
         self.reason = reason
-        # Status of the image modification.
+        # The status of the image change.
         self.status = status
-        # Time when the image was last modified.
+        # The time when the image was last changed. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ss.SSSZ.
         self.update_time = update_time
 
     def validate(self):

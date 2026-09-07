@@ -13,7 +13,7 @@ class ApplyCoordinationForMonitoringResponseBody(DaraModel):
         coordinate_flow_models: List[main_models.ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels] = None,
         request_id: str = None,
     ):
-        # The list of coordination flow data.
+        # The list of collaboration flow data.
         self.coordinate_flow_models = coordinate_flow_models
         # The request ID.
         self.request_id = request_id
@@ -63,13 +63,13 @@ class ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels(DaraModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
-        # The coordination flow ID.
+        # The collaboration flow ID.
         self.co_id = co_id
-        # The current coordination status.
-        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.COORDINATING  ]coordinating
-        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATING  ] terminating
-        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATED ]terminated
-        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.PENDING ]pending acceptance
+        # The current collaboration status.
+        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.COORDINATING  ]Collaborating.
+        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATING  ]Terminating.
+        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATED ]Terminated.
+        # [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.PENDING ]Pending acceptance.
         self.coordinate_status = coordinate_status
         # The ticket used by ASP to establish a connection.
         self.coordinate_ticket = coordinate_ticket

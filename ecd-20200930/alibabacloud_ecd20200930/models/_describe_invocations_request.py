@@ -26,7 +26,7 @@ class DescribeInvocationsRequest(DaraModel):
         self.command_type = command_type
         # The encoding method of the returned data.
         self.content_encoding = content_encoding
-        # The cloud desktop ID. If you specify a cloud desktop, all script execution records for that cloud desktop are queried.
+        # The cloud desktop ID. If you specify a cloud desktop, all script execution records of the cloud desktop are queried.
         self.desktop_id = desktop_id
         # The list of cloud desktop IDs.
         # 
@@ -34,11 +34,11 @@ class DescribeInvocationsRequest(DaraModel):
         self.desktop_ids = desktop_ids
         # The user ID.
         self.end_user_id = end_user_id
-        # Specifies whether to return the execution results of all cloud desktops when a remote command is run on multiple cloud desktops.
+        # Specifies whether to return the execution results of all cloud desktops when the remote command is executed on multiple cloud desktops.
         self.include_invoke_desktops = include_invoke_desktops
-        # Specifies whether to return the output of the script execution in the results.
+        # Specifies whether to return the output information of the script execution in the results.
         self.include_output = include_output
-        # The script execution ID. Obtained from the response of [RunCommand](~~RunCommand~~).
+        # The execution ID of the script process. Obtained from the response of [RunCommand](~~RunCommand~~).
         self.invoke_id = invoke_id
         # The overall execution status of the script. The overall execution status depends on the combined execution status of one or more cloud desktops in the execution.
         self.invoke_status = invoke_status
@@ -49,7 +49,7 @@ class DescribeInvocationsRequest(DaraModel):
         self.max_results = max_results
         # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

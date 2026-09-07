@@ -19,28 +19,30 @@ class DescribeOfficeSitesRequest(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The account type.
         self.account_type = account_type
-        # The number of entries to return on each page.
+        # The number of entries per page for a paginated query.    
         # 
-        # - Maximum value: 100.
-        # 
+        # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The token used to retrieve the next page of results.
+        # The token for the next query.
         self.next_token = next_token
-        # The office network IDs. You can specify 1 to 100 office network IDs.
+        # The office network ID. You can specify 1 to 100 IDs.
         self.office_site_id = office_site_id
-        # The type of account for the office network.
+        # The account system type of the office network.
         self.office_site_type = office_site_type
         # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The security protection setting for the office network.
+        # The security protection configuration of the office network.
         self.security_protection = security_protection
         # The office network status.
         self.status = status
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID of the office network for shared cloud computers.
+        # 
+        # > This parameter is not yet available for use.
         self.vpc_id = vpc_id
 
     def validate(self):

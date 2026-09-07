@@ -22,32 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'ecd.us-west-1.aliyuncs.com',
-            'us-east-1': 'ecd.us-east-1.aliyuncs.com',
-            'me-east-1': 'ecd.me-east-1.aliyuncs.com',
-            'me-central-1': 'ecd.me-central-1.aliyuncs.com',
-            'eu-west-1': 'ecd.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'ecd.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'ecd.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'ecd.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'ecd.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'ecd.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'ecd.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'ecd.cn-qingdao.aliyuncs.com',
-            'cn-nanjing': 'ecd.cn-nanjing.aliyuncs.com',
-            'cn-hongkong': 'ecd.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou-finance': 'ecd.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'ecd.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'ecd.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'ecd.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'ecd.cn-beijing.aliyuncs.com',
-            'ap-southeast-7': 'ecd.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'ecd.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'ecd.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-1': 'ecd.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'ecd.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecd', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -3574,6 +3548,12 @@ class Client(OpenApiClient):
             query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
         if not DaraCore.is_null(request.port_proxy):
             query['PortProxy'] = request.port_proxy
+        if not DaraCore.is_null(request.printer_alert):
+            query['PrinterAlert'] = request.printer_alert
+        if not DaraCore.is_null(request.printer_alert_content):
+            query['PrinterAlertContent'] = request.printer_alert_content
+        if not DaraCore.is_null(request.printer_alert_title):
+            query['PrinterAlertTitle'] = request.printer_alert_title
         if not DaraCore.is_null(request.printer_redirect):
             query['PrinterRedirect'] = request.printer_redirect
         if not DaraCore.is_null(request.quality_enhancement):
@@ -3644,6 +3624,8 @@ class Client(OpenApiClient):
             query['TargetFps'] = request.target_fps
         if not DaraCore.is_null(request.taskbar):
             query['Taskbar'] = request.taskbar
+        if not DaraCore.is_null(request.three_screen):
+            query['ThreeScreen'] = request.three_screen
         if not DaraCore.is_null(request.usb_redirect):
             query['UsbRedirect'] = request.usb_redirect
         if not DaraCore.is_null(request.usb_supply_redirect_rule):
@@ -3876,6 +3858,12 @@ class Client(OpenApiClient):
             query['NoOperationDisconnectTime'] = request.no_operation_disconnect_time
         if not DaraCore.is_null(request.port_proxy):
             query['PortProxy'] = request.port_proxy
+        if not DaraCore.is_null(request.printer_alert):
+            query['PrinterAlert'] = request.printer_alert
+        if not DaraCore.is_null(request.printer_alert_content):
+            query['PrinterAlertContent'] = request.printer_alert_content
+        if not DaraCore.is_null(request.printer_alert_title):
+            query['PrinterAlertTitle'] = request.printer_alert_title
         if not DaraCore.is_null(request.printer_redirect):
             query['PrinterRedirect'] = request.printer_redirect
         if not DaraCore.is_null(request.quality_enhancement):
@@ -3946,6 +3934,8 @@ class Client(OpenApiClient):
             query['TargetFps'] = request.target_fps
         if not DaraCore.is_null(request.taskbar):
             query['Taskbar'] = request.taskbar
+        if not DaraCore.is_null(request.three_screen):
+            query['ThreeScreen'] = request.three_screen
         if not DaraCore.is_null(request.usb_redirect):
             query['UsbRedirect'] = request.usb_redirect
         if not DaraCore.is_null(request.usb_supply_redirect_rule):
@@ -4877,6 +4867,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.desktop_attachment):
             request.desktop_attachment_shrink = Utils.array_to_string_with_specified_style(tmp_req.desktop_attachment, 'DesktopAttachment', 'json')
+        if not DaraCore.is_null(tmp_req.desktop_name_model):
+            request.desktop_name_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.desktop_name_model, 'DesktopNameModel', 'json')
         if not DaraCore.is_null(tmp_req.purchase_options):
             request.purchase_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.purchase_options, 'PurchaseOptions', 'json')
         query = {}
@@ -4902,6 +4894,8 @@ class Client(OpenApiClient):
             query['DesktopMemberIp'] = request.desktop_member_ip
         if not DaraCore.is_null(request.desktop_name):
             query['DesktopName'] = request.desktop_name
+        if not DaraCore.is_null(request.desktop_name_model_shrink):
+            query['DesktopNameModel'] = request.desktop_name_model_shrink
         if not DaraCore.is_null(request.desktop_name_suffix):
             query['DesktopNameSuffix'] = request.desktop_name_suffix
         if not DaraCore.is_null(request.desktop_timers):
@@ -4993,6 +4987,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.desktop_attachment):
             request.desktop_attachment_shrink = Utils.array_to_string_with_specified_style(tmp_req.desktop_attachment, 'DesktopAttachment', 'json')
+        if not DaraCore.is_null(tmp_req.desktop_name_model):
+            request.desktop_name_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.desktop_name_model, 'DesktopNameModel', 'json')
         if not DaraCore.is_null(tmp_req.purchase_options):
             request.purchase_options_shrink = Utils.array_to_string_with_specified_style(tmp_req.purchase_options, 'PurchaseOptions', 'json')
         query = {}
@@ -5018,6 +5014,8 @@ class Client(OpenApiClient):
             query['DesktopMemberIp'] = request.desktop_member_ip
         if not DaraCore.is_null(request.desktop_name):
             query['DesktopName'] = request.desktop_name
+        if not DaraCore.is_null(request.desktop_name_model_shrink):
+            query['DesktopNameModel'] = request.desktop_name_model_shrink
         if not DaraCore.is_null(request.desktop_name_suffix):
             query['DesktopNameSuffix'] = request.desktop_name_suffix
         if not DaraCore.is_null(request.desktop_timers):
@@ -12004,6 +12002,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.multi_resource):
             query['MultiResource'] = request.multi_resource
+        if not DaraCore.is_null(request.network_interface_ip):
+            query['NetworkInterfaceIp'] = request.network_interface_ip
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.office_site_id):
@@ -12022,6 +12022,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.protocol_type):
             query['ProtocolType'] = request.protocol_type
+        if not DaraCore.is_null(request.public_ip):
+            query['PublicIp'] = request.public_ip
         if not DaraCore.is_null(request.qos_rule_id):
             query['QosRuleId'] = request.qos_rule_id
         if not DaraCore.is_null(request.query_fota_update):
@@ -12106,6 +12108,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.multi_resource):
             query['MultiResource'] = request.multi_resource
+        if not DaraCore.is_null(request.network_interface_ip):
+            query['NetworkInterfaceIp'] = request.network_interface_ip
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.office_site_id):
@@ -12124,6 +12128,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.protocol_type):
             query['ProtocolType'] = request.protocol_type
+        if not DaraCore.is_null(request.public_ip):
+            query['PublicIp'] = request.public_ip
         if not DaraCore.is_null(request.qos_rule_id):
             query['QosRuleId'] = request.qos_rule_id
         if not DaraCore.is_null(request.query_fota_update):
@@ -14657,6 +14663,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_online_user_count_with_options_async(request, runtime)
 
+    def describe_peripheral_drivers_with_options(
+        self,
+        request: main_models.DescribePeripheralDriversRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePeripheralDriversResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.brand):
+            query['Brand'] = request.brand
+        if not DaraCore.is_null(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not DaraCore.is_null(request.driver_ids):
+            query['DriverIds'] = request.driver_ids
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_type):
+            query['OwnerType'] = request.owner_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePeripheralDrivers',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePeripheralDriversResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_peripheral_drivers_with_options_async(
+        self,
+        request: main_models.DescribePeripheralDriversRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePeripheralDriversResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.brand):
+            query['Brand'] = request.brand
+        if not DaraCore.is_null(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not DaraCore.is_null(request.driver_ids):
+            query['DriverIds'] = request.driver_ids
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_type):
+            query['OwnerType'] = request.owner_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePeripheralDrivers',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePeripheralDriversResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_peripheral_drivers(
+        self,
+        request: main_models.DescribePeripheralDriversRequest,
+    ) -> main_models.DescribePeripheralDriversResponse:
+        runtime = RuntimeOptions()
+        return self.describe_peripheral_drivers_with_options(request, runtime)
+
+    async def describe_peripheral_drivers_async(
+        self,
+        request: main_models.DescribePeripheralDriversRequest,
+    ) -> main_models.DescribePeripheralDriversResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_peripheral_drivers_with_options_async(request, runtime)
+
     def describe_policy_groups_with_options(
         self,
         request: main_models.DescribePolicyGroupsRequest,
@@ -15150,6 +15258,120 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePriceForRenewDesktopOversoldGroupResponse:
         runtime = RuntimeOptions()
         return await self.describe_price_for_renew_desktop_oversold_group_with_options_async(request, runtime)
+
+    def describe_printer_events_with_options(
+        self,
+        request: main_models.DescribePrinterEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrinterEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_name):
+            query['DesktopName'] = request.desktop_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.printer_driver):
+            query['PrinterDriver'] = request.printer_driver
+        if not DaraCore.is_null(request.printer_name):
+            query['PrinterName'] = request.printer_name
+        if not DaraCore.is_null(request.printer_redir_type):
+            query['PrinterRedirType'] = request.printer_redir_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrinterEvents',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrinterEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_printer_events_with_options_async(
+        self,
+        request: main_models.DescribePrinterEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrinterEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_name):
+            query['DesktopName'] = request.desktop_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.printer_driver):
+            query['PrinterDriver'] = request.printer_driver
+        if not DaraCore.is_null(request.printer_name):
+            query['PrinterName'] = request.printer_name
+        if not DaraCore.is_null(request.printer_redir_type):
+            query['PrinterRedirType'] = request.printer_redir_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrinterEvents',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrinterEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_printer_events(
+        self,
+        request: main_models.DescribePrinterEventsRequest,
+    ) -> main_models.DescribePrinterEventsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_printer_events_with_options(request, runtime)
+
+    async def describe_printer_events_async(
+        self,
+        request: main_models.DescribePrinterEventsRequest,
+    ) -> main_models.DescribePrinterEventsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_printer_events_with_options_async(request, runtime)
 
     def describe_qos_rules_with_options(
         self,
@@ -17178,6 +17400,230 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeVirtualMFADevicesResponse:
         runtime = RuntimeOptions()
         return await self.describe_virtual_mfadevices_with_options_async(request, runtime)
+
+    def describe_vul_desktops_with_options(
+        self,
+        request: main_models.DescribeVulDesktopsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVulDesktopsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cve_id):
+            query['CveId'] = request.cve_id
+        if not DaraCore.is_null(request.desktop_id_list):
+            query['DesktopIdList'] = request.desktop_id_list
+        if not DaraCore.is_null(request.include_fix_result):
+            query['IncludeFixResult'] = request.include_fix_result
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.only_current_month_fix_attempted):
+            query['OnlyCurrentMonthFixAttempted'] = request.only_current_month_fix_attempted
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.patch_id):
+            query['PatchId'] = request.patch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        if not DaraCore.is_null(request.status_list):
+            query['StatusList'] = request.status_list
+        if not DaraCore.is_null(request.vul_level):
+            query['VulLevel'] = request.vul_level
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVulDesktops',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVulDesktopsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vul_desktops_with_options_async(
+        self,
+        request: main_models.DescribeVulDesktopsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVulDesktopsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cve_id):
+            query['CveId'] = request.cve_id
+        if not DaraCore.is_null(request.desktop_id_list):
+            query['DesktopIdList'] = request.desktop_id_list
+        if not DaraCore.is_null(request.include_fix_result):
+            query['IncludeFixResult'] = request.include_fix_result
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.only_current_month_fix_attempted):
+            query['OnlyCurrentMonthFixAttempted'] = request.only_current_month_fix_attempted
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.patch_id):
+            query['PatchId'] = request.patch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        if not DaraCore.is_null(request.status_list):
+            query['StatusList'] = request.status_list
+        if not DaraCore.is_null(request.vul_level):
+            query['VulLevel'] = request.vul_level
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVulDesktops',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVulDesktopsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vul_desktops(
+        self,
+        request: main_models.DescribeVulDesktopsRequest,
+    ) -> main_models.DescribeVulDesktopsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_vul_desktops_with_options(request, runtime)
+
+    async def describe_vul_desktops_async(
+        self,
+        request: main_models.DescribeVulDesktopsRequest,
+    ) -> main_models.DescribeVulDesktopsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_vul_desktops_with_options_async(request, runtime)
+
+    def describe_vulnerability_with_options(
+        self,
+        request: main_models.DescribeVulnerabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVulnerabilityResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cve_id):
+            query['CveId'] = request.cve_id
+        if not DaraCore.is_null(request.include_desktop):
+            query['IncludeDesktop'] = request.include_desktop
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.patch_id):
+            query['PatchId'] = request.patch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVulnerability',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVulnerabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vulnerability_with_options_async(
+        self,
+        request: main_models.DescribeVulnerabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVulnerabilityResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cve_id):
+            query['CveId'] = request.cve_id
+        if not DaraCore.is_null(request.include_desktop):
+            query['IncludeDesktop'] = request.include_desktop
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.patch_id):
+            query['PatchId'] = request.patch_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVulnerability',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVulnerabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vulnerability(
+        self,
+        request: main_models.DescribeVulnerabilityRequest,
+    ) -> main_models.DescribeVulnerabilityResponse:
+        runtime = RuntimeOptions()
+        return self.describe_vulnerability_with_options(request, runtime)
+
+    async def describe_vulnerability_async(
+        self,
+        request: main_models.DescribeVulnerabilityRequest,
+    ) -> main_models.DescribeVulnerabilityResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_vulnerability_with_options_async(request, runtime)
 
     def describe_zones_with_options(
         self,
@@ -20846,6 +21292,12 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.port_proxy):
             query['PortProxy'] = request.port_proxy
+        if not DaraCore.is_null(request.printer_alert):
+            query['PrinterAlert'] = request.printer_alert
+        if not DaraCore.is_null(request.printer_alert_content):
+            query['PrinterAlertContent'] = request.printer_alert_content
+        if not DaraCore.is_null(request.printer_alert_title):
+            query['PrinterAlertTitle'] = request.printer_alert_title
         if not DaraCore.is_null(request.printer_redirect):
             query['PrinterRedirect'] = request.printer_redirect
         if not DaraCore.is_null(request.quality_enhancement):
@@ -20920,6 +21372,8 @@ class Client(OpenApiClient):
             query['TargetFps'] = request.target_fps
         if not DaraCore.is_null(request.taskbar):
             query['Taskbar'] = request.taskbar
+        if not DaraCore.is_null(request.three_screen):
+            query['ThreeScreen'] = request.three_screen
         if not DaraCore.is_null(request.usb_redirect):
             query['UsbRedirect'] = request.usb_redirect
         if not DaraCore.is_null(request.usb_supply_redirect_rule):
@@ -21152,6 +21606,12 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not DaraCore.is_null(request.port_proxy):
             query['PortProxy'] = request.port_proxy
+        if not DaraCore.is_null(request.printer_alert):
+            query['PrinterAlert'] = request.printer_alert
+        if not DaraCore.is_null(request.printer_alert_content):
+            query['PrinterAlertContent'] = request.printer_alert_content
+        if not DaraCore.is_null(request.printer_alert_title):
+            query['PrinterAlertTitle'] = request.printer_alert_title
         if not DaraCore.is_null(request.printer_redirect):
             query['PrinterRedirect'] = request.printer_redirect
         if not DaraCore.is_null(request.quality_enhancement):
@@ -21226,6 +21686,8 @@ class Client(OpenApiClient):
             query['TargetFps'] = request.target_fps
         if not DaraCore.is_null(request.taskbar):
             query['Taskbar'] = request.taskbar
+        if not DaraCore.is_null(request.three_screen):
+            query['ThreeScreen'] = request.three_screen
         if not DaraCore.is_null(request.usb_redirect):
             query['UsbRedirect'] = request.usb_redirect
         if not DaraCore.is_null(request.usb_supply_redirect_rule):
@@ -25245,6 +25707,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.move_cds_file_with_options_async(request, runtime)
 
+    def query_active_user_statistic_with_options(
+        self,
+        request: main_models.QueryActiveUserStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryActiveUserStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryActiveUserStatistic',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryActiveUserStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_active_user_statistic_with_options_async(
+        self,
+        request: main_models.QueryActiveUserStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryActiveUserStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryActiveUserStatistic',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryActiveUserStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_active_user_statistic(
+        self,
+        request: main_models.QueryActiveUserStatisticRequest,
+    ) -> main_models.QueryActiveUserStatisticResponse:
+        runtime = RuntimeOptions()
+        return self.query_active_user_statistic_with_options(request, runtime)
+
+    async def query_active_user_statistic_async(
+        self,
+        request: main_models.QueryActiveUserStatisticRequest,
+    ) -> main_models.QueryActiveUserStatisticResponse:
+        runtime = RuntimeOptions()
+        return await self.query_active_user_statistic_with_options_async(request, runtime)
+
+    def query_end_user_history_usage_with_options(
+        self,
+        request: main_models.QueryEndUserHistoryUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryEndUserHistoryUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.is_ad_user):
+            query['IsAdUser'] = request.is_ad_user
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryEndUserHistoryUsage',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryEndUserHistoryUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_end_user_history_usage_with_options_async(
+        self,
+        request: main_models.QueryEndUserHistoryUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryEndUserHistoryUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.is_ad_user):
+            query['IsAdUser'] = request.is_ad_user
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryEndUserHistoryUsage',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryEndUserHistoryUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_end_user_history_usage(
+        self,
+        request: main_models.QueryEndUserHistoryUsageRequest,
+    ) -> main_models.QueryEndUserHistoryUsageResponse:
+        runtime = RuntimeOptions()
+        return self.query_end_user_history_usage_with_options(request, runtime)
+
+    async def query_end_user_history_usage_async(
+        self,
+        request: main_models.QueryEndUserHistoryUsageRequest,
+    ) -> main_models.QueryEndUserHistoryUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.query_end_user_history_usage_with_options_async(request, runtime)
+
     def query_history_active_user_count_with_options(
         self,
         request: main_models.QueryHistoryActiveUserCountRequest,
@@ -25314,6 +25948,96 @@ class Client(OpenApiClient):
     ) -> main_models.QueryHistoryActiveUserCountResponse:
         runtime = RuntimeOptions()
         return await self.query_history_active_user_count_with_options_async(request, runtime)
+
+    def query_history_active_user_statistic_with_options(
+        self,
+        request: main_models.QueryHistoryActiveUserStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryActiveUserStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryActiveUserStatistic',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryActiveUserStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_history_active_user_statistic_with_options_async(
+        self,
+        request: main_models.QueryHistoryActiveUserStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryActiveUserStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryActiveUserStatistic',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryActiveUserStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_history_active_user_statistic(
+        self,
+        request: main_models.QueryHistoryActiveUserStatisticRequest,
+    ) -> main_models.QueryHistoryActiveUserStatisticResponse:
+        runtime = RuntimeOptions()
+        return self.query_history_active_user_statistic_with_options(request, runtime)
+
+    async def query_history_active_user_statistic_async(
+        self,
+        request: main_models.QueryHistoryActiveUserStatisticRequest,
+    ) -> main_models.QueryHistoryActiveUserStatisticResponse:
+        runtime = RuntimeOptions()
+        return await self.query_history_active_user_statistic_with_options_async(request, runtime)
 
     def query_history_avg_metric_list_with_options(
         self,

@@ -14,11 +14,11 @@ class DescribeImagesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details of the images.
+        # The collection of image information.
         self.images = images
-        # The token that determines the start point of the next query. If this parameter is empty, all results are returned.
+        # The pagination token for the next query. An empty value indicates that there is no next page.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -86,161 +86,47 @@ class DescribeImagesResponseBodyImages(DaraModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The version of the image.
+        # The image version.
         self.app_version = app_version
-        # The time when the image was created.
+        # The time when the image was created. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.creation_time = creation_time
-        # The size of the data disk. Unit: GiB.
+        # The data cloud disk size. Unit: GiB.
         self.data_disk_size = data_disk_size
-        # The description of the image.
+        # The image description.
         self.description = description
-        # Indicates whether the image is a GPU-accelerated image.
+        # Specifies whether the image is a GPU image.
         self.gpu_category = gpu_category
-        # The version number of the GPU driver.
+        # The GPU driver version.
         self.gpu_driver_version = gpu_driver_version
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The type of the image.
-        # 
-        # Valid values:
-        # 
-        # - SYSTEM
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - CUSTOM
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # The image type.
         self.image_type = image_type
-        # The name of the image.
+        # The image name.
         self.name = name
-        # The type of the operating system.
+        # The operating system type.
         self.os_type = os_type
         # The operating system type of the image.
-        # 
-        # Valid values:
-        # 
-        # - Ubuntu
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - Windows Server 2022
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - UOS
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - CentOS
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - Windows Server 2019
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - SQL Server 2016
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - Windows 10
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
         self.platform = platform
-        # The creation progress of the image. Unit: %.
+        # The progress of image creation. Unit: %.
         self.progress = progress
         # The protocol type.
-        # 
-        # Valid values:
-        # 
-        # - HDX: High-definition Experience (HDX) protocol
-        # 
-        # - ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
         self.protocol_type = protocol_type
-        # The type of the image session.
-        # 
-        # Valid values:
-        # 
-        # - SINGLE_SESSION: single-session image.
-        # 
-        # - MULTIPLE_SESSION: multi-session image.
+        # The session type of the image.
         self.session_type = session_type
         # The number of shared images.
         self.shared_count = shared_count
-        # The size of the image. Unit: GiB.
+        # The image size. Unit: GiB.
         self.size = size
-        # The status of the image.
-        # 
-        # Valid values:
-        # 
-        # - Creating
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - Available
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - CreateFailed
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # The image status.
         self.status = status
-        # The languages of the operating system.
+        # The operating system language.
         self.supported_languages = supported_languages
-        # The time when the image was last modified.
+        # The time when the image was last modified. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.update_time = update_time
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
+        # The ID of the KMS key used for disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):

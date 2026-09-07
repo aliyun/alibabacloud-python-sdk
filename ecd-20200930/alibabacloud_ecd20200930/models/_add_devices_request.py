@@ -13,20 +13,15 @@ class AddDevicesRequest(DaraModel):
         device_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The type of the client.
-        # 
-        # Valid values:
-        # 
-        # *   1: hardware client.
-        # *   2: software client.
+        # The device type.
         # 
         # This parameter is required.
         self.client_type = client_type
-        # The IDs of the devices. You can specify up to 200 IDs.
+        # The list of device IDs. You can specify 1 to 200 device IDs.
         # 
         # This parameter is required.
         self.device_ids = device_ids
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         self.region_id = region_id
 
     def validate(self):

@@ -16,7 +16,7 @@ class DescribeNetworkPackagesResponseBody(DaraModel):
     ):
         # The list of premium Internet bandwidth plans.
         self.network_packages = network_packages
-        # The token for the next query. If NextToken is empty, no more results exist.
+        # The pagination token for the next query. If NextToken is empty, no more pages exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -85,7 +85,7 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         self.bandwidth = bandwidth
         # The business status.
         self.business_status = business_status
-        # The creation time.
+        # The time when the plan was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.create_time = create_time
         # The public egress IP address of the premium Internet bandwidth plan.
         self.eip_addresses = eip_addresses
@@ -93,14 +93,16 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         # 
         # - If the plan uses the subscription billing method, the actual expiration time is returned.
         # - If the plan uses the pay-as-you-go billing method, `2099-12-31T15:59:59Z` is returned.
+        # 
+        # The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.expired_time = expired_time
         # The billing method of the premium Internet bandwidth plan.
         # 
-        # - If the parameter `PayType` is set to `PrePaid`, valid values:
-        #     - PayByBandwidth: pay-by-bandwidth.
-        # - If the parameter `PayType` is set to `PostPaid`, valid values:
-        #     - PayByTraffic: pay-by-data-transfer.
-        #     - PayByBandwidth: pay-by-bandwidth.
+        # - If the parameter `PayType` is set to `PrePaid`, the valid value is:
+        #     - PayByBandwidth: billing by fixed bandwidth.
+        # - If the parameter `PayType` is set to `PostPaid`, valid values are:
+        #     - PayByTraffic: billing by data transfer.
+        #     - PayByBandwidth: billing by fixed bandwidth.
         self.internet_charge_type = internet_charge_type
         # The ID of the premium Internet bandwidth plan.
         self.network_package_id = network_package_id
@@ -114,12 +116,13 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         self.office_site_vpc_type = office_site_vpc_type
         # The billing method.
         self.pay_type = pay_type
-        # The effective period of the reserved network bandwidth.
+        # The effective period of the reserved network bandwidth. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.reservation_active_time = reservation_active_time
         # The peak reserved network bandwidth. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
         # The billing method of the reserved network bandwidth.
         self.reservation_internet_charge_type = reservation_internet_charge_type
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -246,7 +249,9 @@ class DescribeNetworkPackagesResponseBodyNetworkPackagesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

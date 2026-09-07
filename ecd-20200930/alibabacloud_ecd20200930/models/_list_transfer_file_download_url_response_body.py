@@ -15,7 +15,7 @@ class ListTransferFileDownloadUrlResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of download URL information for the files.
+        # The list of file download URL information.
         self.urls = urls
 
     def validate(self):
@@ -62,11 +62,11 @@ class ListTransferFileDownloadUrlResponseBodyUrls(DaraModel):
     ):
         # The file ID.
         self.file_id = file_id
-        # The name of the file.
+        # The file name.
         self.file_name = file_name
-        # The status of the file.
+        # The file status.
         self.status = status
-        # The download URL of the file.
+        # The file download URL.
         self.url = url
 
     def validate(self):

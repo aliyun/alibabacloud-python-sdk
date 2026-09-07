@@ -13,41 +13,15 @@ class GetCoordinateTicketResponseBody(DaraModel):
         task_status: str = None,
         ticket: str = None,
     ):
-        # The ID of the stream collaboration.
+        # The coordination flow ID.
         self.co_id = co_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the cloud computer connection task.
+        # The cloud computer connection task ID.
         self.task_id = task_id
         # The task status.
-        # 
-        # Possible values:
-        # 
-        # - Finished
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - Failed
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - Running
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
         self.task_status = task_status
-        # The credentials of the stream collaboration.
+        # The coordination flow ticket.
         self.ticket = ticket
 
     def validate(self):

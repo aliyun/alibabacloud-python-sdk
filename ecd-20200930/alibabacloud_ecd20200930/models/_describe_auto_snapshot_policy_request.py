@@ -13,19 +13,18 @@ class DescribeAutoSnapshotPolicyRequest(DaraModel):
         policy_name: str = None,
         region_id: str = None,
     ):
-        # The maximum number of entries to return per page.
+        # The maximum number of entries per page for a paged query.
         # 
         # - Maximum value: 50
-        # 
         # - Default value: 50
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The ID of the automatic snapshot policy.
         self.policy_id = policy_id
         # The name of the automatic snapshot policy.
         self.policy_name = policy_name
-        # The region ID. To query the regions supported by Elastic Desktop Service, call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

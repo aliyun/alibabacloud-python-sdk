@@ -15,7 +15,7 @@ class AssociateNetworkPackageRequest(DaraModel):
         # 
         # This parameter is required.
         self.network_package_id = network_package_id
-        # The ID of the office network. You can call [DescribeNetworkPackages](https://help.aliyun.com/document_detail/216079.html) to obtain the ID of the office network associated with the premium Internet bandwidth plan.
+        # The ID of the office network. You can call [DescribeNetworkPackages](https://help.aliyun.com/document_detail/216079.html) to query the ID of the office network associated with the premium Internet bandwidth plan.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id

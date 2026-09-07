@@ -19,30 +19,29 @@ class ModifyDesktopChargeTypeRequest(DaraModel):
         reseller_owner_uid: int = None,
         use_duration: int = None,
     ):
-        # Specifies whether to enable automatic payment.
+        # Specifies whether to automatically pay for the order when you convert the billing method to subscription.
         self.auto_pay = auto_pay
-        # The new billing method.
+        # The target billing method to which you want to convert.
         self.charge_type = charge_type
-        # The IDs of the cloud desktops. You can specify 1 to 20 IDs.
+        # The cloud desktop IDs. You can specify 1 to 20 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The subscription duration. This parameter is required only when you set the `ChargeType` parameter to `PrePaid`. The unit of the duration is specified by the `PeriodUnit` parameter.
+        # The subscription duration of the cloud desktop when you convert the billing method to subscription. The unit is specified by PeriodUnit. This parameter takes effect and is required only when ChargeType is set to PrePaid.
         # 
-        # - If you set the `PeriodUnit` parameter to `Week`, you can set this parameter only to 1.
-        # 
-        # - If you set the `PeriodUnit` parameter to `Month`, you can set this parameter to 1, 2, 3, or 6.
-        # 
-        # - If you set the `PeriodUnit` parameter to `Year`, you can set this parameter to 1, 2, 3, 4, or 5.
+        # - If PeriodUnit is set to Week, the valid value of this parameter is 1.
+        # - If PeriodUnit is set to Month, valid values of this parameter are 1, 2, 3, and 6.
+        # - If PeriodUnit is set to Year, valid values of this parameter are 1, 2, 3, 4, and 5.
         self.period = period
-        # The unit of the subscription duration.
+        # The unit of the subscription duration when you convert the billing method to subscription.
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource ownership user in reseller pattern. You do not need to specify this parameter if you are not using reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
         # > This parameter is in invitational preview and is not publicly available.
         self.use_duration = use_duration

@@ -13,9 +13,9 @@ class GetDesktopGroupDetailResponseBody(DaraModel):
         desktops: main_models.GetDesktopGroupDetailResponseBodyDesktops = None,
         request_id: str = None,
     ):
-        # Information about the cloud computer share.
+        # The information about shared cloud computers.
         self.desktops = desktops
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -105,124 +105,122 @@ class GetDesktopGroupDetailResponseBodyDesktops(DaraModel):
         timing_strategy_info: str = None,
         version: int = None,
     ):
-        # Whether to allow automatic creation of subscription cloud computers.
+        # Indicates whether automatic creation of cloud computers is allowed for subscription shared cloud computers.
         self.allow_auto_setup = allow_auto_setup
-        # Number of pre-started, idle cloud computers reserved for immediate connection. Applies only to pay-as-you-go cloud computers. Valid values:
-        # 
-        # - 0: No reservation
-        # 
-        # - N: Reserve N cloud computer(s) (1 ≤ N ≤ 100)
+        # This parameter applies only to pay-as-you-go shared cloud computers. It specifies the number of cloud computers that are always reserved in the powered-on and idle state, ready for connections. Valid values:
         self.allow_buffer_count = allow_buffer_count
-        # Maximum concurrent sessions per cloud computer in multi-session, multi-cloud computer deployments.
+        # The number of concurrent sessions allowed per cloud computer in multi-session shared cloud computers with multiple instances.
         self.bind_amount = bind_amount
-        # Initial purchase count for subscription cloud computers. Valid values: 0 to 200.
+        # The initial number of cloud computers purchased. This parameter applies only to subscription shared cloud computers. Valid values: 0 to 200.
         self.buy_desktops_count = buy_desktops_count
-        # Remarks.
+        # The remarks.
         self.comments = comments
-        # Maximum time a session remains connected. The session disconnects automatically when this duration is reached. Unit: milliseconds.
+        # The maximum duration that a session can remain in the connected state. The session is automatically disconnected when this duration is reached. Unit: milliseconds.
         self.connect_duration = connect_duration
-        # vCPU count.
+        # The number of vCPUs.
         self.cpu = cpu
-        # Creation time.
+        # The creation time. The time is in the ISO 8601 standard in UTC.
         self.creation_time = creation_time
-        # Alibaba Cloud account ID of the creator.
+        # The Alibaba Cloud account ID of the creator.
         self.creator = creator
-        # User disk type.
+        # The user disk type.
         self.data_disk_category = data_disk_category
-        # User disk capacity in GiB.
+        # The user disk capacity. Unit: GiB.
         self.data_disk_size = data_disk_size
-        # Cloud computer share ID.
+        # The ID of the shared cloud computer.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer share that you want to query.
+        # The name of the shared cloud computer to query.
         self.desktop_group_name = desktop_group_name
-        # Directory ID (office network ID).
+        # The directory ID (office network ID).
         self.directory_id = directory_id
-        # Directory type.
+        # The directory type.
         self.directory_type = directory_type
+        # The environment ID. This parameter is not publicly available.
         self.env_id = env_id
+        # The environment type. This parameter is not publicly available.
         self.env_type = env_type
-        # Expiration time for subscription cloud computers.
+        # The expiration time of the subscription shared cloud computers. The time follows the ISO 8601 standard in UTC.
         self.expired_time = expired_time
+        # The list of expiration times.
         self.expired_times = expired_times
-        # Number of GPU cores.
+        # The number of GPU cores.
         self.gpu_count = gpu_count
-        # GPU specification.
+        # The GPU specifications.
         self.gpu_spec = gpu_spec
-        # Time after which an idle session disconnects. If no keyboard or mouse activity occurs during this period, the session disconnects. Unit: milliseconds.
+        # The maximum idle duration after a user session is connected. If no keyboard or mouse operation is performed within this duration, the session is disconnected. Unit: milliseconds.
         self.idle_disconnect_duration = idle_disconnect_duration
-        # Image ID.
+        # The image ID.
         self.image_id = image_id
-        # Time to keep a disconnected session active. Unit: milliseconds. Valid range: 180000 (3 minutes) to 345600000 (4 days). A value of 0 means keep indefinitely.
+        # The duration for which a session is retained after disconnection. Unit: milliseconds. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session is retained indefinitely.
         # 
-        # If a session disconnects due to user action or other reasons, the timer starts at disconnection. If no reconnection occurs within this duration, the session logs off and unsaved data is destroyed. If the user reconnects successfully within this duration, they resume the original session and access all previously saved data.
+        # When a session is disconnected because the user actively disconnects or because of unexpected factors, the retention period starts from the moment of disconnection. If the user does not reconnect to the session within the retention period, the session is logged off and all unsaved data is destroyed. If the user successfully reconnects within the retention period, the user can still access the original session and the data that existed before the disconnection.
         self.keep_duration = keep_duration
-        # Traffic steering policy for multi-session, multi-cloud computer deployments.
+        # The load balancing policy for multi-session shared cloud computers with multiple instances.
         self.load_policy = load_policy
-        # - For pay-as-you-go cloud computers, this is the maximum number of cloud computers that can be created.
-        # 
-        # - For subscription cloud computers, this is the sum of the initial purchase count (`BuyDesktopsCount`) and the number of cloud computers allowed for automatic creation.
+        # - For pay-as-you-go shared cloud computers, this parameter specifies the maximum number of cloud computers that can be created.
         self.max_desktops_count = max_desktops_count
-        # Memory size in MiB.
+        # The memory size. Unit: MiB.
         self.memory = memory
-        # - For pay-as-you-go cloud computers, this is the minimum number of cloud computers to create.
-        # 
-        # - For subscription cloud computers, this equals `BuyDesktopsCount`, the initial purchase count.
+        # - For pay-as-you-go shared cloud computers, this parameter indicates the minimum number of cloud computers to create.
+        # - For subscription shared cloud computers, this parameter is equivalent to BuyDesktopsCount, indicating the number of cloud computers initially purchased.
         self.min_desktops_count = min_desktops_count
-        # NAS file system ID used for user profile roaming.
+        # The ID of the NAS file system used for user data roaming.
         self.nas_file_system_id = nas_file_system_id
-        # NAS file system name used for user profile roaming.
+        # The name of the NAS file system used for user data roaming.
         self.nas_file_system_name = nas_file_system_name
-        # Office network ID.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # Name of the office network where the cloud computer share resides.
+        # The name of the office network to which the shared cloud computer belongs.
         self.office_site_name = office_site_name
-        # Account system type of the office network.
+        # The account system type of the office network.
         self.office_site_type = office_site_type
+        # The operating system type of the cloud computers.
         self.os_type = os_type
-        # Cloud computer template ID.
+        # The cloud computer template ID.
         self.own_bundle_id = own_bundle_id
-        # Cloud computer template name.
+        # The cloud computer template name.
         self.own_bundle_name = own_bundle_name
-        # Cloud computer share type.
+        # The type of the shared cloud computer.
         self.own_type = own_type
-        # Billing method.
+        # The billing method.
         self.pay_type = pay_type
-        # ID of the policy associated with the cloud computer share.
+        # The ID of the policy associated with the shared cloud computer.
         self.policy_group_id = policy_group_id
-        # The IDs of the policies that are associated with the cloud computer share.
+        # The list of policy IDs associated with the shared cloud computers.
         self.policy_group_ids = policy_group_ids
-        # The name of the policy that is associated with the cloud computer share.
+        # The Policy Name associated with the shared cloud computer.
         self.policy_group_name = policy_group_name
-        # A list of policy names associated with cloud computer share.
+        # The list of policy names associated with the shared cloud computers.
         self.policy_group_names = policy_group_names
-        # Whether to enable user profile roaming.
+        # Indicates whether user data roaming is enabled.
         self.profile_follow_switch = profile_follow_switch
+        # The protocol type.
         self.protocol_type = protocol_type
-        # Session occupancy threshold used to trigger auto scaling for multi-session, multi-cloud computer deployments. Session occupancy is calculated as:
+        # The session occupancy threshold, used as the auto scaling trigger condition for multi-session shared cloud computers. The session occupancy is calculated by using the following formula:
         # 
-        # `Session occupancy = (Bound sessions / (Total cloud computers × Max sessions per cloud computer)) × 100%`
+        # ```Session occupancy = Number of bound sessions / (Total number of cloud computer resources × Maximum number of sessions supported per cloud computer) × 100%```
         # 
-        # When occupancy reaches this threshold, new cloud computers are created. When occupancy falls below this threshold, excess cloud computers are deleted.
+        # When the session occupancy reaches this threshold, new cloud computers are created. When the session occupancy is below this threshold, excess cloud computers are deleted.
         self.ratio_threshold = ratio_threshold
-        # Resource type. Only Elastic Compute Service (ECS) is supported.
+        # The resource type. Currently, only ECS is supported.
         self.res_type = res_type
-        # Cloud computer reset type.
+        # The reset type of the cloud computer.
         self.reset_type = reset_type
-        # Scheduled scaling task information.
+        # The scheduled task information.
         self.scale_timer_infos = scale_timer_infos
-        # Cloud computer share status.
+        # The status of the shared cloud computer.
         self.status = status
-        # Idle shutdown time. The cloud computer shuts down automatically after being idle for this duration. If a user connects after shutdown, the cloud computer starts automatically. Unit: milliseconds.
+        # The idle shutdown duration. When the cloud computer has been idle for this duration, it is automatically shut down. If a user connects after shutdown, the cloud computer is automatically started. Unit: milliseconds.
         self.stop_duration = stop_duration
-        # System disk type.
+        # The system cloud disk type.
         self.system_disk_category = system_disk_category
-        # System disk capacity in GiB.
+        # The system cloud disk capacity. Unit: GiB.
         self.system_disk_size = system_disk_size
-        # List of scheduled tasks.
+        # The list of scheduled times.
         self.timer_infos = timer_infos
-        # Scheduled application information.
+        # The scheduled application information.
         self.timing_strategy_info = timing_strategy_info
-        # The version number of the cloud computer share.
+        # The version number of the shared cloud computer.
         self.version = version
 
     def validate(self):
@@ -594,13 +592,13 @@ class GetDesktopGroupDetailResponseBodyDesktopsTimerInfos(DaraModel):
         status: int = None,
         timer_type: int = None,
     ):
-        # Cron expression.
+        # The cron expression.
         self.cron_expression = cron_expression
-        # Whether to force execute this scheduled task.
+        # Indicates whether the scheduled task is forcibly executed.
         self.forced = forced
-        # Status.
+        # The status.
         self.status = status
-        # Scheduled task type.
+        # The type of the scheduled task.
         self.timer_type = timer_type
 
     def validate(self):
@@ -653,27 +651,27 @@ class GetDesktopGroupDetailResponseBodyDesktopsScaleTimerInfos(DaraModel):
         ratio_threshold: float = None,
         type: str = None,
     ):
-        # Scaling parameter: Number of cloud computers to buy. Valid values: 0 to 200.
+        # The number of cloud computers to purchase, which is one of the scaling policy parameters. Valid values: 0 to 200.
         self.buy_res_amount = buy_res_amount
-        # Cron expression for the scheduled scaling task.
+        # The cron expression of the scheduled task.
         self.cron = cron
-        # Time to keep a disconnected session active. Unit: milliseconds. Valid range: 180000 (3 minutes) to 345600000 (4 days). A value of 0 means keep indefinitely.
+        # The duration for which a session is retained after disconnection. Unit: milliseconds. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session is always retained.
         # 
-        # If a session disconnects due to user action or other reasons, the timer starts at disconnection. If no reconnection occurs within this duration, the session logs off and unsaved data is destroyed. If the user reconnects successfully within this duration, they resume the original session and access all previously saved data.
+        # When a session is disconnected because the user actively disconnects or because of other unexpected factors, the retention period starts from the moment of disconnection. If the user does not reconnect to the session within the retention period, the session is logged off and all unsaved data is destroyed. If the user successfully reconnects within the retention period, the user can still access the original session and the data that existed before the disconnection.
         self.keep_duration = keep_duration
-        # Traffic steering policy for multi-session, multi-cloud computer deployments.
+        # The load balancing policy for multi-session shared cloud computers with multiple instances.
         self.load_policy = load_policy
-        # Scaling parameter: Maximum number of cloud computers. Valid values: 0 to 200.
+        # The maximum number of cloud computers, which is one of the scaling policy parameters. Valid values: 0 to 200.
         self.max_res_amount = max_res_amount
-        # Scaling parameter: Minimum number of cloud computers. Valid values: 0 to 200.
+        # The minimum number of cloud computers, which is one of the scaling policy parameters. Valid values: 0 to 200.
         self.min_res_amount = min_res_amount
-        # Session occupancy threshold used to trigger auto scaling for multi-session, multi-cloud computer deployments. Session occupancy is calculated as:
+        # The session occupancy threshold used as the trigger condition for auto scaling of multi-session shared cloud computers. The session occupancy is calculated by using the following formula:
         # 
-        # `Session occupancy = (Bound sessions / (Total cloud computers × Max sessions per cloud computer)) × 100%`
+        # ```Session occupancy = Number of bound sessions / (Total number of cloud computer resources × Maximum number of sessions supported per cloud computer) × 100%```
         # 
-        # When occupancy reaches this threshold, new cloud computers are created. When occupancy falls below this threshold, excess cloud computers are deleted.
+        # When the session occupancy reaches this threshold, new cloud computers are created. When the session occupancy is below this threshold, excess cloud computers are deleted.
         self.ratio_threshold = ratio_threshold
-        # Scheduled scaling task type.
+        # The type of the scheduled task.
         self.type = type
 
     def validate(self):

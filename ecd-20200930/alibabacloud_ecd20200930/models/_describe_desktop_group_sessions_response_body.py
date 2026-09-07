@@ -15,13 +15,13 @@ class DescribeDesktopGroupSessionsResponseBody(DaraModel):
         sessions: List[main_models.DescribeDesktopGroupSessionsResponseBodySessions] = None,
         total_count: int = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the start of the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The sessions.
+        # The list of session data.
         self.sessions = sessions
-        # The total number of sessions.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -98,47 +98,47 @@ class DescribeDesktopGroupSessionsResponseBodySessions(DaraModel):
     ):
         # The account type.
         self.account_type = account_type
-        # The IP address of the client.
+        # The client IP address.
         self.client_ip = client_ip
         # The operating system of the client.
         self.client_os = client_os
-        # The version of the client.
+        # The client version.
         self.client_version = client_version
         # The ID of the shared cloud computer.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer share.
+        # The name of the shared cloud computer.
         self.desktop_group_name = desktop_group_name
-        # If the session status is Connected, it indicates the ID of the cloud computer that is currently connected. If the session status is Disconnected, it indicates the ID of the cloud computer that was last connected.
+        # The cloud computer ID. If the session status is Connected, this value indicates the ID of the currently connected cloud computer. If the session status is Disconnected, this value indicates the ID of the most recently connected cloud computer.
         self.desktop_id = desktop_id
         # The office network type.
         self.directory_type = directory_type
-        # The point in time when the end user applies for administrator assistance.
+        # The point in time when the user requested administrator assistance. This value is a UNIX timestamp. Unit: milliseconds.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
-        # The user ID of the terminal that connects to the session.
+        # The ID of the end user connected to the session.
         self.end_user_id = end_user_id
-        # The end time of the most recent connection.
+        # The end time of the most recent connection. Time format: yyyy-MM-dd HH:mm:ss.
         self.last_session_end_time = last_session_end_time
-        # The start time of the most recent connection.
+        # The start time of the most recent connection. Time format: yyyy-MM-dd HH:mm:ss.
         self.last_session_start_time = last_session_start_time
-        # The duration of the most recent session. Unit: seconds.
+        # The duration of the most recent connection. Unit: seconds.
         self.latest_connection_time = latest_connection_time
-        # The office network ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The office network name.
+        # The name of the office network.
         self.office_site_name = office_site_name
         # The operating system type of the cloud computer.
         self.os_type = os_type
-        # The type of the session.
+        # The session type.
         self.own_type = own_type
-        # The protocol type supported by the rule.
+        # The protocol type.
         self.protocol_type = protocol_type
         # The idle duration of the cloud computer. Unit: seconds.
         self.session_idle_time = session_idle_time
-        # The state of the session.
+        # The session connection status.
         self.session_status = session_status
-        # Terminal Info
+        # The terminal information.
         self.terminal_info = terminal_info
-        # The total duration of the sessions. Unit: seconds.
+        # The total connection duration. Unit: seconds.
         self.total_connection_duration = total_connection_duration
 
     def validate(self):
@@ -297,13 +297,13 @@ class DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo(DaraModel):
         serial_number: str = None,
         uuid: str = None,
     ):
-        # The type of the terminal.
+        # The terminal device model.
         self.model = model
         # The terminal type.
         self.product_name = product_name
-        # Terminal Serial Number
+        # The terminal serial number.
         self.serial_number = serial_number
-        # The terminal UUID.
+        # The UUID of the terminal device.
         self.uuid = uuid
 
     def validate(self):

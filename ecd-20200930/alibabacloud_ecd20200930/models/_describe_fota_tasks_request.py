@@ -26,7 +26,7 @@ class DescribeFotaTasksRequest(DaraModel):
         # - Maximum value: 100.
         # - Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next query. An empty value indicates that no more results exist.
+        # The pagination token for the next query. An empty value indicates that there are no more results.
         self.next_token = next_token
         # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 

@@ -17,8 +17,7 @@ class ListVirtualBridgesResponseBody(DaraModel):
     ):
         # The virtual bridge information.
         self.bridges = bridges
-        # The maximum number of entries returned. Valid values: 1 to 100. If this parameter is not specified, the default value 100 is used.
-        # The number of returned entries can be less than the specified value but cannot exceed it.
+        # The maximum number of entries returned. Valid values: 1 to 100. If this parameter is not specified, the default value 100 is used. The number of returned entries can be less than but cannot be greater than the specified number.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
@@ -94,7 +93,7 @@ class ListVirtualBridgesResponseBodyBridges(DaraModel):
         self.bridge_status = bridge_status
         # The third-party plugin type of the virtual bridge.
         self.bridge_type = bridge_type
-        # The expiration time.
+        # The expiration time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.expire_time = expire_time
         # The internal network address.
         self.intranet_url = intranet_url

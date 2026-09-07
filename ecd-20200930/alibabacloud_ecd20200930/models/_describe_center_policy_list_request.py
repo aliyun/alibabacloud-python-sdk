@@ -19,25 +19,34 @@ class DescribeCenterPolicyListRequest(DaraModel):
         resource_type: str = None,
         scope: str = None,
     ):
+        # Specifies whether to enable the academic proxy feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.academic_proxy = academic_proxy
         # The business type.
         # 
         # This parameter is required.
         self.business_type = business_type
+        # Specifies whether to enable the model library feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.model_library = model_library
-        # The page number of the current page in a paging query.    
+        # The page number of the current page in a paged query. This parameter implements paging.    
         # Default value: 1.
         self.page_number = page_number
-        # The maximum number of entries per page in a paging query.
+        # The maximum number of rows per page in a paged query. This parameter implements paging.
         self.page_size = page_size
-        # The list of cloud desktop policy IDs.
+        # The list of Cloud Desktop policy IDs.
         self.policy_group_id = policy_group_id
+        # Specifies whether to enable the port proxy feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.port_proxy = port_proxy
         # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The effective scope of the cloud desktop policy.
+        # The effective scope of the Cloud Desktop policy.
         self.scope = scope
 
     def validate(self):

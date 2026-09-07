@@ -11,23 +11,17 @@ class SendVerifyCodeRequest(DaraModel):
         region_id: str = None,
         verify_code_action: str = None,
     ):
-        # The information that is required to send the verification code, in JSON format. When you verify the CEN instance of another Alibaba Cloud account, you must provide the ID of the CEN instance and the ID of the Alibaba Cloud account to which the instance belongs.
+        # The information required to send the verification code, in JSON format. When verifying a CEN instance, provide the CEN instance ID and the Alibaba Cloud account ID to which the CEN instance belongs.
+        # - CenId: the CEN instance ID. 
+        # - CenOwnerId: the Alibaba Cloud account ID to which the CEN instance belongs. 
         # 
-        # - CenId: the ID of the CEN instance.
-        # 
-        # - CenOwnerId: the ID of the Alibaba Cloud account to which the CEN instance belongs.
-        # 
-        # > If you own the CEN instance, skip this parameter. If you do not own the CEN instance, specify the ID of the Alibaba Cloud account that owns the CEN instance.
+        # > If the specified CenId belongs to the current Alibaba Cloud account, this parameter is not required. If the specified CenId belongs to a different Alibaba Cloud account, specify the Alibaba Cloud account ID of the owner.
         self.extra_info = extra_info
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The action that you want to perform by using the verification code.
-        # 
-        # Valid value:
-        # 
-        # - eds_cenID_securityverification: Use the verification code to verify the CEN instance.
+        # The action associated with the verification code.
         # 
         # This parameter is required.
         self.verify_code_action = verify_code_action

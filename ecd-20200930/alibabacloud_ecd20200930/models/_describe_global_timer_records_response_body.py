@@ -96,23 +96,26 @@ class DescribeGlobalTimerRecordsResponseBodyResults(DaraModel):
         # The record information during the execution of the scheduled task.
         self.context = context
         # The time when the record was created.
+        # The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
         # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
         # The display result name.
         self.display_result_name = display_result_name
         # The time when the task ended.
+        # The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.finish_time = finish_time
         # The region ID.
         self.region_id = region_id
+        # The ID of the resource parent.
         self.resource_parent_id = resource_parent_id
         # Specifies whether the task can be retried.
         self.retryable = retryable
         # The ID of the scheduled task group.
         self.timer_group_id = timer_group_id
-        # The timer record ID.
+        # The ID of the scheduled record.
         self.timer_record_id = timer_record_id
         # The execution result of the scheduled task.
         self.timer_result = timer_result

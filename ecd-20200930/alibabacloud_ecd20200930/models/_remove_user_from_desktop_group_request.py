@@ -18,19 +18,23 @@ class RemoveUserFromDesktopGroupRequest(DaraModel):
         user_group_name: str = None,
         user_ou_path: str = None,
     ):
-        # The ID of the shared cloud desktop from which you revoke the user’s permission.
+        # The ID of the shared cloud computer from which to remove authorized users.
         self.desktop_group_id = desktop_group_id
-        # A list of shared desktop group IDs.
+        # The list of shared cloud computer IDs.
         self.desktop_group_ids = desktop_group_ids
         # The list of authorized users to remove.
         self.end_user_ids = end_user_ids
+        # The organization ID of the team.
         self.org_id = org_id
-        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where WUYING Workspace is available.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The convenience user group ID.
         self.simple_user_group_id = simple_user_group_id
+        # The user group name.
         self.user_group_name = user_group_name
+        # The organizational unit (OU) path of the user.
         self.user_ou_path = user_ou_path
 
     def validate(self):

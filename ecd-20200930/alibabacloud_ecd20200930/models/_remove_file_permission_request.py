@@ -17,23 +17,23 @@ class RemoveFilePermissionRequest(DaraModel):
         member_list: List[main_models.RemoveFilePermissionRequestMemberList] = None,
         region_id: str = None,
     ):
-        # The ID of the enterprise drive.
+        # The enterprise cloud disk ID.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The ID of the end user.
+        # The user ID.
         self.end_user_id = end_user_id
-        # The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
+        # The file ID. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The ID of the team space.
+        # The team space ID.
         self.group_id = group_id
-        # The users that you want to authorize to use the cloud disk.
+        # The list of authorized users.
         # 
         # This parameter is required.
         self.member_list = member_list
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -106,23 +106,7 @@ class RemoveFilePermissionRequestMemberList(DaraModel):
         # 
         # This parameter is required.
         self.cds_identity = cds_identity
-        # You can set permissions by specifying roles or by customizing operation permissions. This field is used to set permissions by specifying roles. This field is mutually exclusive with `ActionList`.
-        # 
-        # Valid values:
-        # 
-        # *   SystemFileEditorWithoutShareLink: the role that has the permissions to edit files but cannot share files.
-        # *   SystemFileUploaderAndDownloaderWithShareLink: the role that has the permissions to upload, download, and share files.
-        # *   SystemFileDownloader: the role that has the permissions to download files.
-        # *   SystemFileEditorWithoutDelete: the role that has the permissions to edit files but cannot delete files.
-        # *   SystemFileOwner: the role that has the permissions to collaborate with others.
-        # *   SystemFileDownloaderWithShareLink: the role that has the permissions to download and share files
-        # *   SystemFileUploaderAndViewer: the role that has the permissions to preview or upload files.
-        # *   SystemFileViewer: the role that has the permissions to preview files.
-        # *   SystemFileEditor: the role that has the permissions to edit files
-        # *   SystemFileUploaderWithShareLink: the role that has the permissions to upload or share files.
-        # *   SystemFileUploader: the role that has the permission to upload files.
-        # *   SystemFileUploaderAndDownloader: the role that has the permissions to upload or download files.
-        # *   SystemFileMetaViewer: the role that has the permissions to view files
+        # Two methods are supported for setting permissions: specifying a role or customizing operation permissions. This parameter specifies the role-based permission and is mutually exclusive with `ActionList`. If both parameters are specified, this parameter takes precedence.
         # 
         # This parameter is required.
         self.role_id = role_id
@@ -166,11 +150,6 @@ class RemoveFilePermissionRequestMemberListCdsIdentity(DaraModel):
         # This parameter is required.
         self.id = id
         # The object type.
-        # 
-        # Valid values:
-        # 
-        # *   IT_Group: group.
-        # *   IT_User: user.
         # 
         # This parameter is required.
         self.type = type

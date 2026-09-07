@@ -14,15 +14,15 @@ class ModifyUserEntitlementRequest(DaraModel):
         region_id: str = None,
         revoke_desktop_id: List[str] = None,
     ):
-        # The IDs of the cloud computers to which you want to add end users.
+        # The list of cloud computer IDs for which to add authorized users.
         self.authorize_desktop_id = authorize_desktop_id
-        # The ID of the users.
+        # The list of user IDs (usernames).
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the cloud computers whose end users you want to remove.
+        # The list of cloud computer IDs for which to remove authorized users.
         self.revoke_desktop_id = revoke_desktop_id
 
     def validate(self):

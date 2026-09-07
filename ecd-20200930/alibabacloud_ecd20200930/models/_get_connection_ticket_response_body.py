@@ -19,7 +19,7 @@ class GetConnectionTicketResponseBody(DaraModel):
         self.desktop_id = desktop_id
         # The request ID.
         self.request_id = request_id
-        # The ticket used to connect to the user instance. Before using the ticket, decode its content with Base64 and save it as an xxx.ica file, then open the file. Python code example:
+        # The ticket used to connect to the user instance. Before you use the ticket, Base64-decode its content and save it as an xxx.ica file, and then open the file. The following Python code provides an example:
         # 
         # ```
         # import base64

@@ -21,6 +21,7 @@ class DescribeClientEventsResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -129,7 +130,7 @@ class DescribeClientEventsResponseBodyEvents(DaraModel):
         self.end_user_id = end_user_id
         # The event ID.
         self.event_id = event_id
-        # The time when the event occurred.
+        # The time when the event occurred. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.event_time = event_time
         # The event type.
         self.event_type = event_type
@@ -143,8 +144,9 @@ class DescribeClientEventsResponseBodyEvents(DaraModel):
         self.region_id = region_id
         # The status of the event action. This field typically appears in `DESKTOP_DISCONNECT` and `GET_CONNECTION_TICKET` events. Valid values:
         # - 200: success.
-        # - A failure message is returned, such as FailedToGetConnectionTicket.
+        # - A failure message, such as FailedToGetConnectionTicket.
         self.status = status
+        # The terminal information.
         self.terminal_info = terminal_info
 
     def validate(self):
@@ -314,8 +316,11 @@ class DescribeClientEventsResponseBodyEventsTerminalInfo(DaraModel):
         product_name: str = None,
         serial_number: str = None,
     ):
+        # The terminal device model.
         self.model = model
+        # The terminal type.
         self.product_name = product_name
+        # The terminal serial number.
         self.serial_number = serial_number
 
     def validate(self):

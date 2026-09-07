@@ -14,7 +14,7 @@ class CompleteCdsFileRequest(DaraModel):
         region_id: str = None,
         upload_id: str = None,
     ):
-        # The ID of the enterprise drive.
+        # The enterprise network disk ID.
         # 
         # This parameter is required.
         self.cds_id = cds_id
@@ -24,13 +24,13 @@ class CompleteCdsFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The ID of the team space. You must specify at least one of `EndUserId` and `GroupId`.
+        # The team workspace ID. You must specify at least one of `EndUserId` and `GroupId`.
         self.group_id = group_id
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the file upload task. Callable interface [CreateCdsFile](https://help.aliyun.com/document_detail/2247619.html).
+        # The ID of the file upload task. You can call [CreateCdsFile](https://help.aliyun.com/document_detail/2247619.html) to obtain the ID.
         # 
         # This parameter is required.
         self.upload_id = upload_id

@@ -16,15 +16,15 @@ class DescribeCloudDiskGroupDrivesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of cloud disk team drives.
+        # The list of cloud disk team spaces.
         self.cloud_drive_groups = cloud_drive_groups
-        # The total number of results.
+        # The total number of entries.
         self.count = count
-        # The token that marks the start of the next query. An empty NextToken means no more results.
+        # The token for the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation succeeded.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -92,23 +92,23 @@ class DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups(DaraModel):
         total_size: int = None,
         used_size: str = None,
     ):
-        # The time the drive was created.
+        # The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
         # The office network ID.
         self.directory_id = directory_id
-        # The drive ID.
+        # The space ID.
         self.drive_id = drive_id
-        # The team drive ID.
+        # The team space ID.
         self.group_id = group_id
-        # The team drive name.
+        # The team space name.
         self.group_name = group_name
         # The organization ID of the team.
         self.org_id = org_id
-        # The status of the team drive.
+        # The team space status.
         self.status = status
-        # The total capacity of the cloud disk team drive.
+        # The total capacity of the cloud disk team space.
         self.total_size = total_size
-        # The used space size, in bytes.
+        # The used space size. Unit: bytes.
         self.used_size = used_size
 
     def validate(self):

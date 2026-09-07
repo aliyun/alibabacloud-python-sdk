@@ -31,51 +31,47 @@ class DescribeBundlesRequest(DaraModel):
         support_multi_session: bool = None,
         volume_encryption_enabled: bool = None,
     ):
-        # The IDs of the cloud computer templates. You can specify 1 to 100 IDs.
+        # The list of cloud computer template IDs. You can specify 1 to 100 IDs.
         self.bundle_id = bundle_id
-        # The type of the cloud computer template.
+        # The cloud computer templatetype.
         self.bundle_type = bundle_type
-        # Specifies whether to query the inventory status of the cloud computer instance type.
+        # Specifies whether to query the stock status of the cloud computer instance type.
         self.check_stock = check_stock
-        # The number of vCPUs contained in the cloud computer instance type.
+        # The number of vCPUs included in the cloud computer instance type.
         self.cpu_count = cpu_count
-        # The instance family of the cloud computers.
+        # The cloud computer instance family.
         self.desktop_type_family = desktop_type_family
-        # > This parameter is not available for public use.
+        # > This parameter is not publicly available.
         self.fota_channel = fota_channel
-        # Specifies whether the cloud computers in the template belong to a cloud computer pool.
+        # Specifies whether the template belongs to a cloud computer pool.
         self.from_desktop_group = from_desktop_group
-        # The number of GPUs contained in the cloud computer instance type.
+        # The number of GPUs included in the cloud computer instance type.
         self.gpu_count = gpu_count
         # The GPU driver type.
         self.gpu_driver_type = gpu_driver_type
-        # The image IDs.
+        # The list of image IDs.
         self.image_id = image_id
-        # The number of entries to return on each page.
-        # 
-        # Maximum value: 100.
-        # 
-        # Default value: 10.
+        # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # The memory size of the cloud computer instance type. Unit: GiB.
+        # The memory size included in the cloud computer instance type. Unit: GiB.
         self.memory_size = memory_size
-        # The token that is used to start the next query.
+        # The token for the next query.
         self.next_token = next_token
-        # The type of the OS.
+        # The operating system type.
         self.os_type = os_type
         # The protocol type.
         self.protocol_type = protocol_type
-        # The region ID. You can call the [](t2167755.xdita#)operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The scenario to use the image.
+        # Scenarios.
         self.scope = scope
-        # The desktop template that is selected based on specific criteria.
+        # The selected template.
         self.selected_bundle = selected_bundle
-        # The type of the session.
+        # The session type.
         self.session_type = session_type
-        # Specifies whether to return multi-session cloud computer templates. Default value: false.
+        # Specifies whether to return multi-session cloud computer templates when querying the cloud computer list. Multi-session templates are not returned by default.
         self.support_multi_session = support_multi_session
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled

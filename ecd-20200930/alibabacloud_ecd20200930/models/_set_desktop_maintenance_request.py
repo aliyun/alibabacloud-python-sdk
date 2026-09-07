@@ -13,20 +13,15 @@ class SetDesktopMaintenanceRequest(DaraModel):
         mode: str = None,
         region_id: str = None,
     ):
-        # A list of cloud computer IDs for which you want to set maintenance mode. A maximum of 100 cloud computer IDs are supported.
+        # The IDs of the cloud computers for which you want to set the maintenance mode. You can specify up to 100 cloud computer IDs.
         # 
         # This parameter is required.
         self.desktop_ids = desktop_ids
-        # Enter or exit cloud computer maintenance mode.
-        # 
-        # Enumerated values:
-        # 
-        # *   ENTER: The enters the maintenance mode.
-        # *   EXIT: The exits the maintenance mode.
+        # Specifies whether to enter or exit maintenance mode for the cloud computer.
         # 
         # This parameter is required.
         self.mode = mode
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

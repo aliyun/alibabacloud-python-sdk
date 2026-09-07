@@ -15,11 +15,11 @@ class CreateADConnectorDirectoryResponseBody(DaraModel):
         request_id: str = None,
         trust_password: str = None,
     ):
-        # The details of AD connectors.
+        # The information about AD Connectors.
         self.ad_connectors = ad_connectors
         # The ID of the AD directory.
         self.directory_id = directory_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The AD trust password.
         self.trust_password = trust_password
@@ -75,7 +75,7 @@ class CreateADConnectorDirectoryResponseBodyAdConnectors(DaraModel):
         self,
         address: str = None,
     ):
-        # The connection address.
+        # The endpoint.
         self.address = address
 
     def validate(self):

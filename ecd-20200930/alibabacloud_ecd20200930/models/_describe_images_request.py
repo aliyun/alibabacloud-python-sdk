@@ -25,79 +25,36 @@ class DescribeImagesRequest(DaraModel):
         region_id: str = None,
         session_type: str = None,
     ):
-        # The instance type of the cloud computer. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/436816.html) operation to obtain the parameter value.
+        # The cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/436816.html) to obtain this parameter.
         self.desktop_instance_type = desktop_instance_type
-        # The image version.
+        # The image version information.
         self.fota_version = fota_version
-        # Specifies whether the images are GPU-accelerated images.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - false
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # Specifies whether the image is a GPU image.
         self.gpu_category = gpu_category
-        # The version of the GPU driver.
+        # The GPU driver version.
         self.gpu_driver_version = gpu_driver_version
-        # The IDs of the images. You can specify one or more image IDs.
+        # The image ID. You can specify one or more image IDs.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The state of the image.
+        # The image status.
         self.image_status = image_status
-        # The type of the image.
+        # The image type.
         self.image_type = image_type
-        # The language of the OS.
+        # The operating system language.
         self.language_type = language_type
-        # The maximum number of entries to return on each page.
+        # The number of entries per page for a paged query.
         # 
-        # - Maximum value: 100.
-        # 
-        # - Default value: 10.
+        # - Maximum value: 100
+        # - Default value: 10
         self.max_results = max_results
-        # The token that determines the start point of the next query. If you do not specify this parameter, all results are returned.
+        # The pagination token for the next query. An empty value indicates that there is no next page.
         self.next_token = next_token
-        # The type of the operating system of the images. Default value: `null`.
-        # 
-        # Valid values:
-        # 
-        # - Linux
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - Windows
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
+        # The operating system type. Default value: `null`.
         self.os_type = os_type
         # The protocol type.
-        # 
-        # Valid values:
-        # 
-        # - HDX: High-definition Experience (HDX) protocol
-        # 
-        # - ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

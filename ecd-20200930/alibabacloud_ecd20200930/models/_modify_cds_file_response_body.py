@@ -15,7 +15,7 @@ class ModifyCdsFileResponseBody(DaraModel):
     ):
         # The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # Indicates whether data is returned successfully.
+        # Indicates whether the data is returned successfully.
         # [_single.resp.200.props.Data.enum. false]Failed to return data.
         self.data = data
         # The error message. This parameter is not returned when Code is `success`.

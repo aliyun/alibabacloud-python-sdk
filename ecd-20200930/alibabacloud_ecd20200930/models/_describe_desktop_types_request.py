@@ -32,48 +32,55 @@ class DescribeDesktopTypesRequest(DaraModel):
         support_min_session_count: int = None,
         zone_id: str = None,
     ):
-        # The scope of the instance types to query. Default value: `Public`.
+        # The applicable scope of the specification. Default value: `Public`.
         self.applied_scope = applied_scope
+        # The business channel. Valid values:
+        # Enterprise: Enterprise Edition.
+        # Business: Business Edition.
         self.business_channel = business_channel
         # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The ID of the desktop group to reconfigure. If you specify this parameter, the response returns only the instance types that are compatible with the specified group.
+        # The ID of the shared cloud computer for which you want to change the specification. If this parameter is specified, the response includes compatibility information between the specification and the shared cloud computer.
         self.desktop_group_id_for_modify = desktop_group_id_for_modify
-        # The ID of the WUYING Workspace to reconfigure. If you specify this parameter, the response returns only the instance types that are compatible with the specified workspace.
+        # The ID of the cloud computer for which you want to change the specification. If this parameter is specified, the response includes compatibility information between the specification and the cloud computer.
         self.desktop_id_for_modify = desktop_id_for_modify
+        # The scenarios of the cloud computer.
         self.desktop_scenario = desktop_scenario
-        # The ID of the instance type.
+        # The specification ID.
         # 
-        # > If you omit both the `InstanceTypeFamily` and `DesktopTypeId` parameters, the operation returns all available WUYING Workspace instance types.
+        # > If both `InstanceTypeFamily` and `DesktopTypeId` are left empty, information about all cloud computer specifications is returned.
         self.desktop_type_id = desktop_type_id
-        # An array of instance type IDs.
+        # The list of specification IDs.
         self.desktop_type_id_list = desktop_type_id_list
-        # The number of vGPUs.
+        # The number of GPU cores.
         self.gpu_count = gpu_count
         # The GPU driver type.
         self.gpu_driver_type = gpu_driver_type
+        # The GPU memory size. This parameter is meaningful only for GPU-accelerated cloud computers. Unit: MB.
         self.gpu_memory = gpu_memory
-        # The instance type family.
+        # The instance family name.
         # 
-        # > If you omit both the `InstanceTypeFamily` and `DesktopTypeId` parameters, the operation returns all available WUYING Workspace instance types.
+        # > If both `InstanceTypeFamily` and `DesktopTypeId` are left empty, information about all cloud computer specifications is returned.
         self.instance_type_family = instance_type_family
-        # The memory size, in MiB.
+        # The memory size. Unit: MiB.
         self.memory_size = memory_size
+        # The ID of the office network to which the shared cloud computer belongs.
         self.office_site_id = office_site_id
-        # The property by which to sort the results. If you omit this parameter, the results are sorted by creation time in descending order.
+        # The field by which to sort the results. If this parameter is not specified, results are sorted by creation time in descending order.
         self.order_by = order_by
         # The order type.
         self.order_type = order_type
-        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that Elastic Desktop Service supports.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The billing method of the instance types.
+        # The billing method of the specification.
         self.scope = scope
+        # The list of applicable scopes.
         self.scope_set = scope_set
         # The sort order.
         self.sort_type = sort_type
-        # Filters for instance types that support at least the specified number of concurrent sessions. This parameter applies only to multi-session instance types.
+        # The minimum number of multi-sessions supported by the specification.
         self.support_min_session_count = support_min_session_count
         # > This parameter is not publicly available.
         self.zone_id = zone_id

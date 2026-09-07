@@ -17,6 +17,9 @@ class DescribeEcdReportTasksRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The business channel. Valid values:
+        # - Enterprise: Enterprise Edition.
+        # - Business: Business Edition.
         self.business_channel = business_channel
         # The page number. Default value: 1.
         self.page_num = page_num

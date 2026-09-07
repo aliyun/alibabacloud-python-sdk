@@ -18,7 +18,7 @@ class BindConfigGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The region ID. This operation is not region-specific. Set this parameter to `cn-shanghai`.
+        # The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
         # The resource information to associate.
         # 

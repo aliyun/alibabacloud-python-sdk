@@ -13,15 +13,15 @@ class DisableDesktopsInGroupRequest(DaraModel):
         desktop_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The ID of the cloud computer share.
+        # The ID of the shared cloud computer group.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The IDs of the cloud computers.
+        # The list of cloud computer IDs.
         # 
         # This parameter is required.
         self.desktop_ids = desktop_ids
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

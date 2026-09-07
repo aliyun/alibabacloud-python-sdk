@@ -25,13 +25,13 @@ class DescribeModificationPriceRequest(DaraModel):
     ):
         # The peak Internet bandwidth. Unit: Mbit/s.
         # 
-        # > If you use the pay-by-bandwidth billing method, the valid values range from 10 to 1000.
+        # > If you use the pay-by-fixed-bandwidth billing method, valid values are 10 to 1000.
         self.bandwidth = bandwidth
-        # The instance ID. The value can be the ID of a monthly-subscribed (unlimited-duration) cloud computer or the ID of a premium Internet bandwidth instance.
+        # The instance ID. The value can be the ID of a monthly subscription (unlimited duration) cloud computer or the ID of a premium Internet bandwidth instance.
         self.instance_id = instance_id
         # The resource specification.
         # 
-        # - If `ResourceType` is set to `Desktop`, valid values include:
+        # - If ResourceType is set to Desktop, valid values include:
         #     - ecd.basic.small
         #     - ecd.basic.large
         #     - ecd.advanced.large
@@ -51,30 +51,30 @@ class DescribeModificationPriceRequest(DaraModel):
         #     - eds.general.8c32g
         #     - eds.general.16c32g
         # 
-        # - If `ResourceType` is set to `NetworkPackage`, you do not need to specify this parameter.
+        # - If ResourceType is set to NetworkPackage, you do not need to specify this parameter.
         self.instance_type = instance_type
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter in non-reseller pattern.
+        # The resource ownership user ID in the reseller pattern. You do not need to specify this parameter in non-reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
         # The list of resource specification templates.
         self.resource_specs = resource_specs
-        # The resource type. The required parameters vary based on the resource type for which you want to query the specification change price:
+        # The resource type. The required parameters vary based on the resource type for which you want to query the upgrade/downgrade price:
         # 
-        # - If `ResourceType` is set to `Desktop`, you must specify the `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib` parameters.
-        # - If `ResourceType` is set to `NetworkPackage`, you must specify the `Bandwidth` parameter.
+        # - If ResourceType is set to Desktop, you must specify the InstanceType, RootDiskSizeGib, and UserDiskSizeGib parameters.
+        # - If ResourceType is set to NetworkPackage, you must specify the Bandwidth parameter.
         self.resource_type = resource_type
-        # The performance level of the system cloud disk. You can configure the disk performance level in Settings when the cloud computer specification is set to graphics-accelerated or high frequency. For more information about the differences between performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD does not support performance level configuration.
+        # The performance level (PL) of the system cloud disk. You can set the disk performance level when the cloud computer specification in Settings is Graphics or High Frequency. For more information about the differences between disk performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD and ESSD have different performance levels.
         self.root_disk_performance_level = root_disk_performance_level
-        # The system cloud disk size. Unit: GiB.
+        # The size of the system cloud disk. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
-        # The performance level of the data cloud disk. You can configure the disk performance level in Settings when the cloud computer specification is set to graphics-accelerated or high frequency. For more information about the differences between performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD does not support performance level configuration.
+        # The performance level (PL) of the data cloud disk. You can set the disk performance level when the cloud computer specification in Settings is Graphics or High Frequency. For more information about the differences between disk performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD and ESSD have different performance levels.
         self.user_disk_performance_level = user_disk_performance_level
-        # The data cloud disk size. Unit: GiB.
+        # The size of the data cloud disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
@@ -180,9 +180,9 @@ class DescribeModificationPriceRequestResourceSpecs(DaraModel):
     ):
         # The cloud computer ID.
         self.desktop_id = desktop_id
-        # The system cloud disk size. Unit: GiB.
+        # The size of the system cloud disk. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
-        # The data cloud disk size. Unit: GiB.
+        # The size of the data cloud disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):

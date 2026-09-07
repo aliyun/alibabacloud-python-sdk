@@ -30,46 +30,46 @@ class CreateCloudDriveServiceRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. This parameter applies only when `CdsChargeType` is set to `PrePaid`.
+        # Specifies whether to enable auto-renewal. This parameter takes effect and is optional only when CdsChargeType is set to `PrePaid`.
         self.auto_renew = auto_renew
         # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # The billing method of the cloud drive.
+        # The billing method of the NAS drive.
         self.cds_charge_type = cds_charge_type
-        # The ID of the Cloud Enterprise Network (CEN) instance. This parameter is required when `OfficeSiteType` is set to `AD_CONNECTOR` and you do not specify `OfficeSiteId`.
+        # The instance ID of the Cloud Enterprise Network (CEN) associated with the AD office network. This parameter takes effect only when `OfficeSiteType` is set to `AD_CONNECTOR`. If `OfficeSiteId` is specified, you do not need to specify this parameter.
         self.cen_id = cen_id
-        # The name of the domain controller. This parameter is required when `OfficeSiteType` is set to `AD_CONNECTOR` and you do not specify `OfficeSiteId`.
+        # The domain controller name of the AD office network. This parameter takes effect only when `OfficeSiteType` is set to `AD_CONNECTOR`. If `OfficeSiteId` is specified, you do not need to specify this parameter.
         self.domain_name = domain_name
-        # A list of user IDs.
+        # The list of user IDs.
         self.end_user_id = end_user_id
-        # The total capacity of the cloud drive.
+        # The Peak Volume of the NAS drive storage space.
         # 
-        # - For pay-as-you-go cloud drives, the unit is bytes.
-        # 
-        # - For subscription cloud drives, the unit is GiB. For example, set the value to 500 for 500 GiB, or to 2048 for 2 TiB.
+        # - When you create a pay-as-you-go NAS drive, the unit is bytes.
+        # - When you create an upfront NAS drive, the unit is GiB. For example, to create a 500 GiB upfront NAS drive, set this parameter to 500. To create a 2 TiB upfront NAS drive, set this parameter to 2048.
         # 
         # This parameter is required.
         self.max_size = max_size
-        # The name of the cloud drive.
+        # The name of the enterprise NAS drive.
         self.name = name
-        # The ID of the office site. This parameter applies only when `OfficeSiteType` is set to `AD_CONNECTOR`.
+        # The ID of the office network. This parameter takes effect only when the network type is set to `AD_CONNECTOR`.
         self.office_site_id = office_site_id
-        # The type of the office site.
+        # The network type of the office network.
         self.office_site_type = office_site_type
-        # The subscription duration. The unit is specified by `PeriodUnit`. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
+        # The subscription duration. The unit is specified by `PeriodUnit`. This parameter takes effect and is required only when `CdsChargeType` is set to `PrePaid`.
         self.period = period
-        # The unit of the subscription duration. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
+        # The unit of the subscription duration for the subscription NAS drive. This parameter takes effect and is required only when `CdsChargeType` is set to `PrePaid`.
         self.period_unit = period_unit
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The user ID for resource ownership in reseller pattern. You do not need to specify this parameter if you are not in reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
         # > This parameter is not publicly available.
         self.solution_id = solution_id
-        # The maximum number of users for a subscription cloud drive. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
+        # The maximum number of users for the subscription NAS drive. This parameter takes effect and is required only when `CdsChargeType` is set to `PrePaid`.
         self.user_count = user_count
-        # The maximum size of the personal disk for each user, in bytes.
+        # The maximum storage capacity of a personal drive when you assign a personal drive to a user. Unit: bytes.
         self.user_max_size = user_max_size
 
     def validate(self):

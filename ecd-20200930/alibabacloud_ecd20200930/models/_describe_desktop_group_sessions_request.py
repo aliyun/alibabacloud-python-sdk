@@ -22,29 +22,29 @@ class DescribeDesktopGroupSessionsRequest(DaraModel):
         session_status: str = None,
         start_time: str = None,
     ):
-        # The IDs of shared desktop groups.
+        # The list of shared desktop group IDs.
         self.desktop_group_ids = desktop_group_ids
         # The name of the shared desktop.
         self.desktop_group_name = desktop_group_name
-        # The end of the time range to query.
+        # The end time of the query. The time is in the ISO 8601 standard (UTC).
         self.end_time = end_time
-        # The user ID of the terminal that connects to the session.
+        # The ID of the end user connected to the session.
         self.end_user_id = end_user_id
-        # Whether to supplement terminal information.
+        # Specifies whether to include terminal information.
         self.fill_terminal_info = fill_terminal_info
-        # The language of the response.
+        # The language type of the returned information.
         self.language = language
-        # The number of entries per page.
+        # The maximum number of entries per page.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next page.
         self.next_token = next_token
-        # The type of the session.
+        # The session type.
         self.own_type = own_type
-        # The ID of the region. You can call the [](t2167755.xdita#)operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         self.region_id = region_id
-        # The status of the session.
+        # The connection status.
         self.session_status = session_status
-        # The beginning of the time range to query.
+        # The start time of the query. The time is in the ISO 8601 standard (UTC).
         self.start_time = start_time
 
     def validate(self):

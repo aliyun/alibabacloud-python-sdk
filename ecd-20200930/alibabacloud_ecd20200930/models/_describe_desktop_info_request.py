@@ -14,11 +14,15 @@ class DescribeDesktopInfoRequest(DaraModel):
         need_extra_info: bool = None,
         region_id: str = None,
     ):
+        # The business channel. Valid values:
+        # - Enterprise: Enterprise Edition.
+        # - Business: Business Edition.
         self.business_channel = business_channel
-        # Desktop ID. Set 1 to 100.
+        # The cloud computer ID. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
+        # Specifies whether to return the extended information of the cloud computer.
         self.need_extra_info = need_extra_info
-        # Region ID. Call [](t2167755.xdita#)to get a list of regions supported by WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

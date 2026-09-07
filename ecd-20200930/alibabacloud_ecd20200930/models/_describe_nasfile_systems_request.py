@@ -25,7 +25,7 @@ class DescribeNASFileSystemsRequest(DaraModel):
         # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of NextToken returned in the previous API call.
+        # The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
         self.next_token = next_token
         # The office network ID.
         self.office_site_id = office_site_id

@@ -24,7 +24,7 @@ class ModifyTimerGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The configuration group name.
+        # The name of the configuration group.
         self.name = name
         # The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
@@ -102,10 +102,11 @@ class ModifyTimerGroupRequestConfigTimers(DaraModel):
         # 
         # > Specify the time in UTC. For example, to schedule a task at 00:00 (UTC+8) every day, set this parameter to 0 0 16 ? * 1,2,3,4,5,6,7.
         self.cron_expression = cron_expression
-        # Specifies whether to forcefully execute the task. If set to true, the scheduled task is forcefully executed regardless of the desktop and connection status.
+        # Specifies whether to forcefully execute the task. If this parameter is set to true, the scheduled task is forcefully executed regardless of the cloud desktop and connection status.
         self.enforce = enforce
-        # The time interval, in minutes.
+        # The time interval. Unit: minutes.
         self.interval = interval
+        # The advance notification time before the scheduled task is executed. Unit: seconds.
         self.notification_time = notification_time
         # The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
         self.operation_type = operation_type
@@ -113,8 +114,9 @@ class ModifyTimerGroupRequestConfigTimers(DaraModel):
         self.process_whitelist = process_whitelist
         # The reset type, which determines whether to reset and the scope of cloud disks to reset.
         self.reset_type = reset_type
+        # The list of segment timer configurations.
         self.segment_timers = segment_timers
-        # The scheduled task type.
+        # The type of the scheduled task.
         self.timer_type = timer_type
         # The trigger configuration type for no-operation scheduled tasks.
         self.trigger_type = trigger_type
@@ -211,6 +213,7 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
     def __init__(
         self,
         appointment_timer: int = None,
+        create_snapshot: bool = None,
         end_cron_expression: str = None,
         enforce: bool = None,
         image_id: str = None,
@@ -228,25 +231,41 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
         verification_notification_time: int = None,
         verification_time: int = None,
     ):
-        # The specified time point for fixed-time scheduled task execution. After this parameter is specified, the scheduled task is executed at the specified time point.
+        # The appointment timer for executing scheduled tasks at specified time points.
         self.appointment_timer = appointment_timer
+        # Specifies whether to create a snapshot.
+        self.create_snapshot = create_snapshot
+        # The cron expression for the end time of the scheduled task.
         self.end_cron_expression = end_cron_expression
+        # Specifies whether to forcefully execute the task. If this parameter is set to true, the scheduled task is forcefully executed regardless of the cloud desktop and connection status.
         self.enforce = enforce
-        # The image ID to change to. This parameter is used for image change scheduled tasks.
+        # The image ID.
         self.image_id = image_id
+        # The time interval. Unit: minutes.
         self.interval = interval
+        # The list of IP CIDR blocks that take effect.
         self.ip_segments = ip_segments
-        # The lock screen time point for the no-operation lock screen feature. This parameter is not supported for non-AD desktops.
+        # The duration of inactivity before the screen is locked for the no-operation lock screen feature. Unit: minutes. Only AD-joined cloud desktops are supported.
         self.lock_screen_time = lock_screen_time
+        # The advance notification time before the scheduled task is executed. Unit: seconds.
         self.notification_time = notification_time
+        # The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
         self.operation_type = operation_type
+        # The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
         self.process_whitelist = process_whitelist
+        # The reset type, which determines whether to reset and the scope of cloud disks to reset.
         self.reset_type = reset_type
+        # The cron expression for the start time of the scheduled task.
         self.start_cron_expression = start_cron_expression
+        # The execution order number of the timer.
         self.timer_order = timer_order
+        # The time zone used by the scheduled task.
         self.timezone = timezone
+        # The trigger configuration type for no-operation scheduled tasks.
         self.trigger_type = trigger_type
+        # The advance notification time before verification is executed. Unit: seconds.
         self.verification_notification_time = verification_notification_time
+        # The verification wait duration. Unit: seconds.
         self.verification_time = verification_time
 
     def validate(self):
@@ -259,6 +278,9 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
             result = _map
         if self.appointment_timer is not None:
             result['AppointmentTimer'] = self.appointment_timer
+
+        if self.create_snapshot is not None:
+            result['CreateSnapshot'] = self.create_snapshot
 
         if self.end_cron_expression is not None:
             result['EndCronExpression'] = self.end_cron_expression
@@ -314,6 +336,9 @@ class ModifyTimerGroupRequestConfigTimersSegmentTimers(DaraModel):
         m = m or dict()
         if m.get('AppointmentTimer') is not None:
             self.appointment_timer = m.get('AppointmentTimer')
+
+        if m.get('CreateSnapshot') is not None:
+            self.create_snapshot = m.get('CreateSnapshot')
 
         if m.get('EndCronExpression') is not None:
             self.end_cron_expression = m.get('EndCronExpression')

@@ -12,19 +12,18 @@ class DescribeImageModifiedRecordsRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The cloud desktop ID.
+        # The cloud computer ID.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # Number of entries per page for paged queries.
+        # The number of entries per page for a paged query.    
         # 
-        # - Maximum: 100.
-        # 
-        # - Default: 10.
+        # - Maximum value: 100.    
+        # - Default value: 10.
         self.max_results = max_results
-        # Pagination token. Set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # Region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to list regions that support WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

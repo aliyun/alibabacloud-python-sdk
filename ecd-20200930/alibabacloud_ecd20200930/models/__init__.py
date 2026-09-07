@@ -442,6 +442,9 @@ from ._describe_office_sites_response import DescribeOfficeSitesResponse
 from ._describe_online_user_count_request import DescribeOnlineUserCountRequest
 from ._describe_online_user_count_response_body import DescribeOnlineUserCountResponseBody
 from ._describe_online_user_count_response import DescribeOnlineUserCountResponse
+from ._describe_peripheral_drivers_request import DescribePeripheralDriversRequest
+from ._describe_peripheral_drivers_response_body import DescribePeripheralDriversResponseBody
+from ._describe_peripheral_drivers_response import DescribePeripheralDriversResponse
 from ._describe_policy_groups_request import DescribePolicyGroupsRequest
 from ._describe_policy_groups_response_body import DescribePolicyGroupsResponseBody
 from ._describe_policy_groups_response import DescribePolicyGroupsResponse
@@ -457,6 +460,9 @@ from ._describe_price_for_modify_desktop_oversold_group_sale_response import Des
 from ._describe_price_for_renew_desktop_oversold_group_request import DescribePriceForRenewDesktopOversoldGroupRequest
 from ._describe_price_for_renew_desktop_oversold_group_response_body import DescribePriceForRenewDesktopOversoldGroupResponseBody
 from ._describe_price_for_renew_desktop_oversold_group_response import DescribePriceForRenewDesktopOversoldGroupResponse
+from ._describe_printer_events_request import DescribePrinterEventsRequest
+from ._describe_printer_events_response_body import DescribePrinterEventsResponseBody
+from ._describe_printer_events_response import DescribePrinterEventsResponse
 from ._describe_qos_rules_request import DescribeQosRulesRequest
 from ._describe_qos_rules_response_body import DescribeQosRulesResponseBody
 from ._describe_qos_rules_response import DescribeQosRulesResponse
@@ -523,6 +529,12 @@ from ._describe_users_password_response import DescribeUsersPasswordResponse
 from ._describe_virtual_mfadevices_request import DescribeVirtualMFADevicesRequest
 from ._describe_virtual_mfadevices_response_body import DescribeVirtualMFADevicesResponseBody
 from ._describe_virtual_mfadevices_response import DescribeVirtualMFADevicesResponse
+from ._describe_vul_desktops_request import DescribeVulDesktopsRequest
+from ._describe_vul_desktops_response_body import DescribeVulDesktopsResponseBody
+from ._describe_vul_desktops_response import DescribeVulDesktopsResponse
+from ._describe_vulnerability_request import DescribeVulnerabilityRequest
+from ._describe_vulnerability_response_body import DescribeVulnerabilityResponseBody
+from ._describe_vulnerability_response import DescribeVulnerabilityResponse
 from ._describe_zones_request import DescribeZonesRequest
 from ._describe_zones_response_body import DescribeZonesResponseBody
 from ._describe_zones_response import DescribeZonesResponse
@@ -767,9 +779,18 @@ from ._modify_virtual_bridge_status_response import ModifyVirtualBridgeStatusRes
 from ._move_cds_file_request import MoveCdsFileRequest
 from ._move_cds_file_response_body import MoveCdsFileResponseBody
 from ._move_cds_file_response import MoveCdsFileResponse
+from ._query_active_user_statistic_request import QueryActiveUserStatisticRequest
+from ._query_active_user_statistic_response_body import QueryActiveUserStatisticResponseBody
+from ._query_active_user_statistic_response import QueryActiveUserStatisticResponse
+from ._query_end_user_history_usage_request import QueryEndUserHistoryUsageRequest
+from ._query_end_user_history_usage_response_body import QueryEndUserHistoryUsageResponseBody
+from ._query_end_user_history_usage_response import QueryEndUserHistoryUsageResponse
 from ._query_history_active_user_count_request import QueryHistoryActiveUserCountRequest
 from ._query_history_active_user_count_response_body import QueryHistoryActiveUserCountResponseBody
 from ._query_history_active_user_count_response import QueryHistoryActiveUserCountResponse
+from ._query_history_active_user_statistic_request import QueryHistoryActiveUserStatisticRequest
+from ._query_history_active_user_statistic_response_body import QueryHistoryActiveUserStatisticResponseBody
+from ._query_history_active_user_statistic_response import QueryHistoryActiveUserStatisticResponse
 from ._query_history_avg_metric_list_request import QueryHistoryAvgMetricListRequest
 from ._query_history_avg_metric_list_shrink_request import QueryHistoryAvgMetricListShrinkRequest
 from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricListResponseBody
@@ -928,6 +949,7 @@ from ._create_desktop_group_request import CreateDesktopGroupRequestTag
 from ._create_desktop_oversold_group_response_body import CreateDesktopOversoldGroupResponseBodyData
 from ._create_desktops_request import CreateDesktopsRequestBundleModels
 from ._create_desktops_request import CreateDesktopsRequestDesktopAttachment
+from ._create_desktops_request import CreateDesktopsRequestDesktopNameModel
 from ._create_desktops_request import CreateDesktopsRequestDesktopTimers
 from ._create_desktops_request import CreateDesktopsRequestMonthDesktopSetting
 from ._create_desktops_request import CreateDesktopsRequestPurchaseOptions
@@ -1051,6 +1073,7 @@ from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBod
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSitesLogs
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSites
+from ._describe_peripheral_drivers_response_body import DescribePeripheralDriversResponseBodyDriverInfos
 from ._describe_policy_groups_response_body import DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules
 from ._describe_policy_groups_response_body import DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules
 from ._describe_policy_groups_response_body import DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes
@@ -1068,6 +1091,7 @@ from ._describe_price_response_body import DescribePriceResponseBodyPriceInfo
 from ._describe_price_for_create_desktop_oversold_group_response_body import DescribePriceForCreateDesktopOversoldGroupResponseBodyData
 from ._describe_price_for_modify_desktop_oversold_group_sale_response_body import DescribePriceForModifyDesktopOversoldGroupSaleResponseBodyData
 from ._describe_price_for_renew_desktop_oversold_group_response_body import DescribePriceForRenewDesktopOversoldGroupResponseBodyData
+from ._describe_printer_events_response_body import DescribePrinterEventsResponseBodyEvents
 from ._describe_qos_rules_response_body import DescribeQosRulesResponseBodyQosRules
 from ._describe_record_file_response_body import DescribeRecordFileResponseBodyRecordFilesEventDetails
 from ._describe_record_file_response_body import DescribeRecordFileResponseBodyRecordFiles
@@ -1108,6 +1132,12 @@ from ._describe_users_in_group_response_body import DescribeUsersInGroupResponse
 from ._describe_users_password_response_body import DescribeUsersPasswordResponseBodyDesktopUsers
 from ._describe_virtual_mfadevices_response_body import DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser
 from ._describe_virtual_mfadevices_response_body import DescribeVirtualMFADevicesResponseBodyVirtualMFADevices
+from ._describe_vul_desktops_response_body import DescribeVulDesktopsResponseBodyVulDesktopsCves
+from ._describe_vul_desktops_response_body import DescribeVulDesktopsResponseBodyVulDesktopsFixRecords
+from ._describe_vul_desktops_response_body import DescribeVulDesktopsResponseBodyVulDesktops
+from ._describe_vulnerability_response_body import DescribeVulnerabilityResponseBodyVulnerabilityPatchesCves
+from ._describe_vulnerability_response_body import DescribeVulnerabilityResponseBodyVulnerabilityPatches
+from ._describe_vulnerability_response_body import DescribeVulnerabilityResponseBodyVulnerability
 from ._describe_zones_response_body import DescribeZonesResponseBodyZones
 from ._disconnect_desktop_sessions_request import DisconnectDesktopSessionsRequestSessions
 from ._disconnect_desktop_sessions_response_body import DisconnectDesktopSessionsResponseBodyInvalidSessions
@@ -1170,7 +1200,12 @@ from ._modify_template_request import ModifyTemplateRequestSiteConfigList
 from ._modify_timer_group_request import ModifyTimerGroupRequestConfigTimersSegmentTimers
 from ._modify_timer_group_request import ModifyTimerGroupRequestConfigTimers
 from ._move_cds_file_response_body import MoveCdsFileResponseBodyMoveCdsFileModel
+from ._query_active_user_statistic_response_body import QueryActiveUserStatisticResponseBodyUserStatisticList
+from ._query_end_user_history_usage_response_body import QueryEndUserHistoryUsageResponseBodyUserUsageInfoListDesktopUsageList
+from ._query_end_user_history_usage_response_body import QueryEndUserHistoryUsageResponseBodyUserUsageInfoListUserGroupList
+from ._query_end_user_history_usage_response_body import QueryEndUserHistoryUsageResponseBodyUserUsageInfoList
 from ._query_history_active_user_count_response_body import QueryHistoryActiveUserCountResponseBodyActiveUserCount
+from ._query_history_active_user_statistic_response_body import QueryHistoryActiveUserStatisticResponseBodyUserStatisticList
 from ._query_history_avg_metric_list_request import QueryHistoryAvgMetricListRequestRange
 from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricListResponseBodyAvgMetricListSessions
 from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricListResponseBodyAvgMetricList
@@ -1630,6 +1665,9 @@ __all__ = [
     DescribeOnlineUserCountRequest,
     DescribeOnlineUserCountResponseBody,
     DescribeOnlineUserCountResponse,
+    DescribePeripheralDriversRequest,
+    DescribePeripheralDriversResponseBody,
+    DescribePeripheralDriversResponse,
     DescribePolicyGroupsRequest,
     DescribePolicyGroupsResponseBody,
     DescribePolicyGroupsResponse,
@@ -1645,6 +1683,9 @@ __all__ = [
     DescribePriceForRenewDesktopOversoldGroupRequest,
     DescribePriceForRenewDesktopOversoldGroupResponseBody,
     DescribePriceForRenewDesktopOversoldGroupResponse,
+    DescribePrinterEventsRequest,
+    DescribePrinterEventsResponseBody,
+    DescribePrinterEventsResponse,
     DescribeQosRulesRequest,
     DescribeQosRulesResponseBody,
     DescribeQosRulesResponse,
@@ -1711,6 +1752,12 @@ __all__ = [
     DescribeVirtualMFADevicesRequest,
     DescribeVirtualMFADevicesResponseBody,
     DescribeVirtualMFADevicesResponse,
+    DescribeVulDesktopsRequest,
+    DescribeVulDesktopsResponseBody,
+    DescribeVulDesktopsResponse,
+    DescribeVulnerabilityRequest,
+    DescribeVulnerabilityResponseBody,
+    DescribeVulnerabilityResponse,
     DescribeZonesRequest,
     DescribeZonesResponseBody,
     DescribeZonesResponse,
@@ -1955,9 +2002,18 @@ __all__ = [
     MoveCdsFileRequest,
     MoveCdsFileResponseBody,
     MoveCdsFileResponse,
+    QueryActiveUserStatisticRequest,
+    QueryActiveUserStatisticResponseBody,
+    QueryActiveUserStatisticResponse,
+    QueryEndUserHistoryUsageRequest,
+    QueryEndUserHistoryUsageResponseBody,
+    QueryEndUserHistoryUsageResponse,
     QueryHistoryActiveUserCountRequest,
     QueryHistoryActiveUserCountResponseBody,
     QueryHistoryActiveUserCountResponse,
+    QueryHistoryActiveUserStatisticRequest,
+    QueryHistoryActiveUserStatisticResponseBody,
+    QueryHistoryActiveUserStatisticResponse,
     QueryHistoryAvgMetricListRequest,
     QueryHistoryAvgMetricListShrinkRequest,
     QueryHistoryAvgMetricListResponseBody,
@@ -2116,6 +2172,7 @@ __all__ = [
     CreateDesktopOversoldGroupResponseBodyData,
     CreateDesktopsRequestBundleModels,
     CreateDesktopsRequestDesktopAttachment,
+    CreateDesktopsRequestDesktopNameModel,
     CreateDesktopsRequestDesktopTimers,
     CreateDesktopsRequestMonthDesktopSetting,
     CreateDesktopsRequestPurchaseOptions,
@@ -2239,6 +2296,7 @@ __all__ = [
     DescribeOfficeSitesResponseBodyOfficeSitesLogs,
     DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts,
     DescribeOfficeSitesResponseBodyOfficeSites,
+    DescribePeripheralDriversResponseBodyDriverInfos,
     DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules,
     DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules,
     DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes,
@@ -2256,6 +2314,7 @@ __all__ = [
     DescribePriceForCreateDesktopOversoldGroupResponseBodyData,
     DescribePriceForModifyDesktopOversoldGroupSaleResponseBodyData,
     DescribePriceForRenewDesktopOversoldGroupResponseBodyData,
+    DescribePrinterEventsResponseBodyEvents,
     DescribeQosRulesResponseBodyQosRules,
     DescribeRecordFileResponseBodyRecordFilesEventDetails,
     DescribeRecordFileResponseBodyRecordFiles,
@@ -2296,6 +2355,12 @@ __all__ = [
     DescribeUsersPasswordResponseBodyDesktopUsers,
     DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser,
     DescribeVirtualMFADevicesResponseBodyVirtualMFADevices,
+    DescribeVulDesktopsResponseBodyVulDesktopsCves,
+    DescribeVulDesktopsResponseBodyVulDesktopsFixRecords,
+    DescribeVulDesktopsResponseBodyVulDesktops,
+    DescribeVulnerabilityResponseBodyVulnerabilityPatchesCves,
+    DescribeVulnerabilityResponseBodyVulnerabilityPatches,
+    DescribeVulnerabilityResponseBodyVulnerability,
     DescribeZonesResponseBodyZones,
     DisconnectDesktopSessionsRequestSessions,
     DisconnectDesktopSessionsResponseBodyInvalidSessions,
@@ -2358,7 +2423,12 @@ __all__ = [
     ModifyTimerGroupRequestConfigTimersSegmentTimers,
     ModifyTimerGroupRequestConfigTimers,
     MoveCdsFileResponseBodyMoveCdsFileModel,
+    QueryActiveUserStatisticResponseBodyUserStatisticList,
+    QueryEndUserHistoryUsageResponseBodyUserUsageInfoListDesktopUsageList,
+    QueryEndUserHistoryUsageResponseBodyUserUsageInfoListUserGroupList,
+    QueryEndUserHistoryUsageResponseBodyUserUsageInfoList,
     QueryHistoryActiveUserCountResponseBodyActiveUserCount,
+    QueryHistoryActiveUserStatisticResponseBodyUserStatisticList,
     QueryHistoryAvgMetricListRequestRange,
     QueryHistoryAvgMetricListResponseBodyAvgMetricListSessions,
     QueryHistoryAvgMetricListResponseBodyAvgMetricList,

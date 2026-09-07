@@ -13,7 +13,7 @@ class ModifyTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The execution result. The value `success` indicates success. Otherwise, an error message is returned.
+        # The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code

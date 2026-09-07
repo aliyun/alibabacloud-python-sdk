@@ -154,6 +154,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         policy_group_type: str = None,
         policy_status: str = None,
         port_proxy: str = None,
+        printer_alert: str = None,
+        printer_alert_content: str = None,
+        printer_alert_title: str = None,
         printer_redirection: str = None,
         quality_enhancement: str = None,
         record_content: str = None,
@@ -186,6 +189,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         streaming_mode: str = None,
         target_fps: int = None,
         taskbar: str = None,
+        three_screen: str = None,
         usb_redirect: str = None,
         usb_supply_redirect_rule: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule] = None,
         use_time: str = None,
@@ -212,13 +216,25 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         wuying_keeper: str = None,
         wy_assistant: str = None,
     ):
+        # Specifies whether to enable the academic proxy feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.academic_proxy = academic_proxy
         # Indicates whether the user has administrator permissions after connecting to the cloud desktop.
         # 
         # > This feature is in invitational preview and is not publicly available.
         self.admin_access = admin_access
+        # Specifies whether to enable administrator keyboard control in full-screen mode. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.admin_keyboard_on_full_screen = admin_keyboard_on_full_screen
+        # Specifies whether to enable administrator keyboard control within the Windows system. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.admin_keyboard_on_windows = admin_keyboard_on_windows
+        # Specifies whether to enable administrator monitoring. Valid values:
+        # - 1: Enabled.
+        # - 0: Disabled.
         self.admin_monitor = admin_monitor
         # Indicates whether the screenshot prevention feature is enabled.
         self.app_content_protection = app_content_protection
@@ -226,27 +242,49 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.authorize_access_policy_rules = authorize_access_policy_rules
         # The list of security group rules.
         self.authorize_security_policy_rules = authorize_security_policy_rules
+        # Specifies whether to enable automatic reconnection on the client.
         self.auto_reconnect = auto_reconnect
         # Indicates whether local camera redirection is enabled.
         self.camera_redirect = camera_redirect
+        # The client control menu display switch. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_control_menu = client_control_menu
+        # Specifies whether to enable the custom snapshot creation feature on the client. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_create_snapshot = client_create_snapshot
+        # Specifies whether to enable the hibernate option in the client menu. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_hibernate = client_hibernate
+        # Specifies whether to enable the restart option in the client menu. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_restart = client_restart
+        # Specifies whether to enable the shutdown option in the client menu. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_shutdown = client_shutdown
         # The logon method control rules.
         self.client_types = client_types
         # The clipboard permission.
         self.clipboard = clipboard
-        # Indicates whether color enhancement is enabled. Common scenarios: design and 3D applications.
+        # Specifies whether color enhancement is enabled for design and 3D common scenarios.
         self.color_enhancement = color_enhancement
+        # The local drive clipboard feature switch. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.cpd_drive_clipboard = cpd_drive_clipboard
-        # The CPU throttling duration. Valid values: 30 to 120. Unit: seconds.
+        # The CPU downgrade duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
+        # Specifies whether to enable CPU overload protection. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.cpu_overload = cpu_overload
         # The process name.
         self.cpu_processors = cpu_processors
-        # The CPU protection mode switch.
+        # The CPU spike protection mode switch.
         self.cpu_protected_mode = cpu_protected_mode
         # The overall CPU usage percentage. Valid values: 70 to 90.
         self.cpu_rate_limit = cpu_rate_limit
@@ -254,50 +292,81 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.cpu_sample_duration = cpu_sample_duration
         # The single-core CPU usage percentage. Valid values: 70 to 100.
         self.cpu_single_rate_limit = cpu_single_rate_limit
-        # The number of cloud desktops associated with this policy.
+        # The number of cloud desktops associated with the policy.
         self.desktop_count = desktop_count
-        # The number of cloud desktop pools associated with this policy.
+        # The number of cloud desktop pools associated with the policy.
         self.desktop_group_count = desktop_group_count
+        # The peripheral connection notification control.
         self.device_connect_hint = device_connect_hint
         # The device redirection rules.
         self.device_redirects = device_redirects
         # The custom peripheral device rules.
         self.device_rules = device_rules
-        # The session retention on disconnect setting.
-        # > Applicable only to cloud application policies.
+        # Specifies whether to retain the session after disconnection.
+        # > This applies only to cloud application policies.
         self.disconnect_keep_session = disconnect_keep_session
-        # The session retention duration on disconnect. Unit: seconds.
-        # > Applicable only to cloud application policies.
+        # The session retention duration after disconnection. Unit: seconds.
+        # > This applies only to cloud application policies.
         self.disconnect_keep_session_time = disconnect_keep_session_time
+        # Specifies whether to enable disk overload protection. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.disk_overload = disk_overload
         # The display mode.
         self.display_mode = display_mode
-        # The effective field for domain name resolution.
+        # The domain name resolution effective field.
         self.domain_register_value = domain_register_value
-        # The domain name resolution policy details.
+        # The details of the domain name resolution policy.
         self.domain_resolve_rule = domain_resolve_rule
         # The domain name resolution policy switch.
         self.domain_resolve_rule_type = domain_resolve_rule_type
-        # Indicates whether users can request administrator assistance.
+        # Indicates whether end users can request administrator assistance.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
+        # The number of associated end users.
         self.end_user_count = end_user_count
         # Indicates whether users within the same office network can share cloud desktops.
         self.end_user_group_coordinate = end_user_group_coordinate
+        # Specifies whether to enable the use of external storage devices. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.external_drive = external_drive
+        # The file migration setting.
         self.file_migrate = file_migrate
+        # The service address for the file transfer feature.
         self.file_transfer_address = file_transfer_address
+        # The file size limit for a single transfer to the cloud desktop. This parameter must be used together with the inbound unit parameter.
         self.file_transfer_in_size = file_transfer_in_size
+        # The unit for the file size limit of a single transfer to the cloud desktop.
         self.file_transfer_in_unit = file_transfer_in_unit
+        # The file size limit for a single transfer from the cloud desktop. This parameter must be used together with the outbound unit parameter.
         self.file_transfer_out_size = file_transfer_out_size
+        # The unit for the file size limit of a single transfer from the cloud desktop.
         self.file_transfer_out_unit = file_transfer_out_unit
+        # Specifies whether to enable the file transfer size limit. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.file_transfer_size_limit = file_transfer_size_limit
+        # The file transfer speed level.
         self.file_transfer_speed = file_transfer_speed
+        # The location where the file transfer speed configured on the client takes effect.
         self.file_transfer_speed_location = file_transfer_speed_location
         # Indicates whether the image quality policy is enabled for GPU-accelerated cloud desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
         self.gpu_acceleration = gpu_acceleration
+        # Specifies whether to enable the configuration message notification on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hover_config_msg = hover_config_msg
+        # Specifies whether to enable the hibernate button on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hover_hibernate = hover_hibernate
+        # Specifies whether to enable the restart button on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hover_restart = hover_restart
+        # Specifies whether to enable the shutdown button on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hover_shutdown = hover_shutdown
         # The web client access policy.
         self.html_5access = html_5access
@@ -305,16 +374,29 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.html_5file_transfer = html_5file_transfer
         # The network communication protocol.
         self.internet_communication_protocol = internet_communication_protocol
+        # The network printer feature switch. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.internet_printer = internet_printer
+        # Specifies whether to enable keyboard control on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.keyboard_control = keyboard_control
+        # Specifies whether to enable the KMS server. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.kms_server = kms_server
+        # The KMS server configuration in the format of address:port.
         self.kms_server_config = kms_server_config
-        # The local drive mapping permission.
+        # The local disk mapping permission.
         self.local_drive = local_drive
-        # The maximum reconnection retry time when the cloud desktop is disconnected due to objective reasons. Valid values: 30 to 7200. Unit: seconds.
+        # The maximum reconnection retry time when the cloud desktop is disconnected due to external reasons. Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
-        # The memory throttling duration of a single process. Valid values: 30 to 120. Unit: seconds.
+        # The memory downgrade duration of a single process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
+        # Specifies whether to enable memory overload protection. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.memory_overload = memory_overload
         # The process name.
         self.memory_processors = memory_processors
@@ -326,18 +408,27 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.memory_sample_duration = memory_sample_duration
         # The memory usage percentage of a single process. Valid values: 30 to 60.
         self.memory_single_rate_limit = memory_single_rate_limit
-        # Indicates whether the restart button is provided in the cloud desktop floating ball when connecting through mobile clients (Android client<props="china"> and iOS client).
+        # Specifies whether the restart button is provided in the cloud desktop floating ball when connecting to the cloud desktop from a mobile client (Android client<props="china"> and iOS client).
         # 
-        # > Applicable only to mobile clients V7.4 or later.
+        # > This applies only to mobile clients of V7.4 or later.
         self.mobile_restart = mobile_restart
+        # Specifies whether to enable the Windows security control on mobile clients.
         self.mobile_safe_menu = mobile_safe_menu
-        # Indicates whether the shutdown button is provided in the cloud desktop floating ball when connecting through mobile clients (Android client<props="china"> and iOS client).
+        # Specifies whether the shutdown button is provided in the cloud desktop floating ball when connecting to the cloud desktop from a mobile client (Android client<props="china"> and iOS client).
         # 
-        # > Applicable only to mobile clients V7.4 or later.
+        # > This applies only to mobile clients of V7.4 or later.
         self.mobile_shutdown = mobile_shutdown
+        # Specifies whether to enable WUYING Keeper on mobile clients.
         self.mobile_wuying_keeper = mobile_wuying_keeper
+        # Specifies whether to enable the WUYING Assistant on mobile clients.
         self.mobile_wy_assistant = mobile_wy_assistant
+        # Specifies whether to enable the model library feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.model_library = model_library
+        # Specifies whether to enable the multi-screen display feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.multi_screen = multi_screen
         # The policy name.
         self.name = name
@@ -345,33 +436,49 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # 
         # > This feature is in invitational preview and is not publicly available.
         self.net_redirect = net_redirect
-        # The network redirection policy details.
+        # The details of the network redirection policy.
         # 
         # > This feature is in invitational preview and is not publicly available.
         # >
         self.net_redirect_rule = net_redirect_rule
+        # The network printer feature switch. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.network_printer = network_printer
-        # The no-operation disconnect setting.
-        # > Applicable only to cloud application policies.
+        # Specifies whether to disconnect the session when no operation is performed.
+        # > This applies only to cloud application policies.
         self.no_operation_disconnect = no_operation_disconnect
-        # The no-operation disconnect duration. Unit: seconds.
-        # > Applicable only to cloud application policies.
+        # The idle disconnection duration. Unit: seconds.
+        # > This applies only to cloud application policies.
         self.no_operation_disconnect_time = no_operation_disconnect_time
+        # The number of associated organizations.
         self.organization_count = organization_count
         # The policy ID.
         self.policy_group_id = policy_group_id
         # The policy type.
         self.policy_group_type = policy_group_type
-        # The cloud desktop policy status.
+        # The status of the cloud desktop policy.
         self.policy_status = policy_status
+        # Specifies whether to enable the port proxy feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.port_proxy = port_proxy
+        # The printer alert dialog setting. Valid values:
+        # - default: Default.
+        # - off: Disabled.
+        # - custom: Custom.
+        self.printer_alert = printer_alert
+        # The content of the printer alert dialog.
+        self.printer_alert_content = printer_alert_content
+        # The title of the printer alert dialog.
+        self.printer_alert_title = printer_alert_title
         # The printer redirection policy.
         self.printer_redirection = printer_redirection
-        # Indicates whether image quality enhancement is enabled. Common scenarios: design and 3D applications.
+        # Specifies whether image quality enhancement is enabled for design and 3D common scenarios.
         self.quality_enhancement = quality_enhancement
         # Indicates whether custom screen recording is enabled.
         self.record_content = record_content
-        # The expiration time of custom screen recording files. Default value: 30 days.
+        # The expiration period of custom screen recording files. Default value: 30. Unit: days.
         self.record_content_expires = record_content_expires
         # The screen recording duration after an event is detected in screen recording audit. Unit: minutes. Valid values: 10 to 60.
         self.record_event_duration = record_event_duration
@@ -383,23 +490,25 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.recording = recording
         # The option for recording cloud desktop audio.
         self.recording_audio = recording_audio
-        # The duration of screen recording files. Unit: minutes. Recording files are automatically split and uploaded to the storage space based on the specified duration. Files are rolled over when they reach 300 MB.
+        # The duration of screen recording files, in minutes. Recording files are automatically split and uploaded to the storage space based on the specified duration. Files are rolled over when they reach 300 MB.
         self.recording_duration = recording_duration
-        # The screen recording end time in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
+        # The end time of screen recording, in the format of HH:MM:SS. This response value is meaningful only when Recording is set to period.
         self.recording_end_time = recording_end_time
         # The retention period of screen recording files. Valid values: 1 to 180. Unit: days.
         self.recording_expires = recording_expires
-        # The screen recording frame rate. Unit: FPS (frames per second).
+        # The frame rate of screen recording. Unit: FPS (frames per second).
         self.recording_fps = recording_fps
-        # The screen recording start time in the format of HH:MM:SS. This value is meaningful only when Recording is set to period.
+        # The start time of screen recording, in the format of HH:MM:SS. This response value is meaningful only when Recording is set to period.
         self.recording_start_time = recording_start_time
         # Indicates whether end users are notified that screen recording is enabled.
         self.recording_user_notify = recording_user_notify
-        # The notification message displayed to end users about screen recording being enabled.
+        # The notification message displayed to end users when screen recording is enabled.
         self.recording_user_notify_message = recording_user_notify_message
         # The keyboard and mouse control permission for remote assistance.
         self.remote_coordinate = remote_coordinate
+        # The setting for resetting the cloud desktop.
         self.reset_desktop = reset_desktop
+        # The DPI value of the screen resolution.
         self.resolution_dpi = resolution_dpi
         # The resolution height. Unit: pixels.
         self.resolution_height = resolution_height
@@ -407,33 +516,44 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.resolution_model = resolution_model
         # The resolution width. Unit: pixels.
         self.resolution_width = resolution_width
-        # The number of resource groups associated with this policy.
+        # The number of resource groups associated with the policy.
         self.resource_group_count = resource_group_count
+        # The security center shortcut key switch. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.safe_menu = safe_menu
-        # The effective scope of the policy.
+        # The scope of the policy.
         self.scope = scope
-        # The effective CIDR block.
+        # The CIDR block that the policy applies to.
         self.scope_value = scope_value
+        # The screen display mode.
         self.screen_display_mode = screen_display_mode
-        # Indicates whether smoothness enhancement is enabled for daily office scenarios.
+        # Specifies whether smoothness enhancement is enabled for daily office scenarios.
         self.smooth_enhancement = smooth_enhancement
-        # Indicates whether the status monitoring entry is provided in the cloud desktop floating ball.
+        # Specifies whether the status monitoring entry is provided in the cloud desktop floating ball.
         self.status_monitor = status_monitor
         # The streaming mode adaptation scenario.
         self.streaming_mode = streaming_mode
         # The target frame rate. Valid values: 10 to 60.
         self.target_fps = target_fps
         # The application taskbar.
-        # > Applicable only to cloud application policies.
+        # > This applies only to cloud application policies.
         self.taskbar = taskbar
+        # Specifies whether to enable the three-screen feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
+        self.three_screen = three_screen
         # The USB redirection setting.
         self.usb_redirect = usb_redirect
         # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        # Specifies whether to display the usage duration on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.use_time = use_time
         # The average bitrate for video encoding. Unit: Kbps. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
-        # The maximum QP for video encoding, which represents the lowest image quality. Valid values: 0 to 51.
+        # The maximum QP for video encoding, which represents the lowest quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
         # The minimum QP for video encoding, which represents the highest quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
@@ -447,11 +567,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.visual_quality = visual_quality
         # The watermark setting.
         self.watermark = watermark
-        # The invisible watermark anti-photography feature.
+        # The invisible watermark anti-camera capture feature.
         self.watermark_anti_cam = watermark_anti_cam
         # The watermark font color. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
-        # If the WatermarkType parameter is set to `custom`, you must also specify the custom text content by using the WatermarkCustomText parameter.
+        # If the `WatermarkType` parameter is set to `custom`, you must also specify the custom text content by using the `WatermarkCustomText` parameter.
         self.watermark_custom_text = watermark_custom_text
         # The watermark tilt angle. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
@@ -463,15 +583,19 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.watermark_power = watermark_power
         # The number of watermark rows.
         self.watermark_row_amount = watermark_row_amount
-        # The invisible watermark security priority rule.
+        # The invisible watermark security-first rule.
         self.watermark_security = watermark_security
+        # Specifies whether to enable the watermark shadow effect. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.watermark_shadow = watermark_shadow
         # The watermark transparency. A larger value indicates lower transparency. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
         # The watermark type.
         self.watermark_type = watermark_type
+        # Specifies whether to enable WUYING Keeper.
         self.wuying_keeper = wuying_keeper
-        # Indicates whether the WUYING AI Assistant entry is provided in the cloud desktop floating ball.
+        # Specifies whether the WUYING AI Assistant entry is provided in the cloud desktop floating ball.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -797,6 +921,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.port_proxy is not None:
             result['PortProxy'] = self.port_proxy
 
+        if self.printer_alert is not None:
+            result['PrinterAlert'] = self.printer_alert
+
+        if self.printer_alert_content is not None:
+            result['PrinterAlertContent'] = self.printer_alert_content
+
+        if self.printer_alert_title is not None:
+            result['PrinterAlertTitle'] = self.printer_alert_title
+
         if self.printer_redirection is not None:
             result['PrinterRedirection'] = self.printer_redirection
 
@@ -892,6 +1025,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.taskbar is not None:
             result['Taskbar'] = self.taskbar
+
+        if self.three_screen is not None:
+            result['ThreeScreen'] = self.three_screen
 
         if self.usb_redirect is not None:
             result['UsbRedirect'] = self.usb_redirect
@@ -1265,6 +1401,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('PortProxy') is not None:
             self.port_proxy = m.get('PortProxy')
 
+        if m.get('PrinterAlert') is not None:
+            self.printer_alert = m.get('PrinterAlert')
+
+        if m.get('PrinterAlertContent') is not None:
+            self.printer_alert_content = m.get('PrinterAlertContent')
+
+        if m.get('PrinterAlertTitle') is not None:
+            self.printer_alert_title = m.get('PrinterAlertTitle')
+
         if m.get('PrinterRedirection') is not None:
             self.printer_redirection = m.get('PrinterRedirection')
 
@@ -1360,6 +1505,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('Taskbar') is not None:
             self.taskbar = m.get('Taskbar')
+
+        if m.get('ThreeScreen') is not None:
+            self.three_screen = m.get('ThreeScreen')
 
         if m.get('UsbRedirect') is not None:
             self.usb_redirect = m.get('UsbRedirect')
@@ -1616,8 +1764,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules(DaraMo
         self.device_type = device_type
         # The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
-        # The link optimization instruction.
+        # The link optimization command.
         self.opt_command = opt_command
+        # The platform types to which the device rule applies.
         self.platforms = platforms
         # The redirection type.
         self.redirect_type = redirect_type
@@ -1840,7 +1989,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPol
         cidr_ip: str = None,
         description: str = None,
     ):
-        # The client access IP CIDR block in IPv4 CIDR format.
+        # The client access IP CIDR block, in IPv4 CIDR notation.
         self.cidr_ip = cidr_ip
         # The description of the client access IP CIDR block.
         self.description = description

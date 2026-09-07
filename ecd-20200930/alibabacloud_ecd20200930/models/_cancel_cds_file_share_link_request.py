@@ -10,7 +10,7 @@ class CancelCdsFileShareLinkRequest(DaraModel):
         cds_id: str = None,
         share_id: str = None,
     ):
-        # The enterprise drive ID.
+        # The ID of the enterprise network disk.
         # 
         # This parameter is required.
         self.cds_id = cds_id

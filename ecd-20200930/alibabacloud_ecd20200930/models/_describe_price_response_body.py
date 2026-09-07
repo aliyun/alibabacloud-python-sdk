@@ -54,13 +54,13 @@ class DescribePriceResponseBodyPriceInfo(DaraModel):
         price: main_models.DescribePriceResponseBodyPriceInfoPrice = None,
         rules: List[main_models.DescribePriceResponseBodyPriceInfoRules] = None,
     ):
-        # Indicates whether a free enterprise drive is available.
+        # Indicates whether a free enterprise cloud disk is available.
         self.free_cds_quota = free_cds_quota
-        # The free capacity provided by the enterprise drive. Unit: GiB.
+        # The free capacity of the enterprise cloud disk. Unit: GiB.
         self.free_cds_size = free_cds_size
-        # The price.
+        # The price information.
         self.price = price
-        # The details of the promotion rules.
+        # The promotion rule information.
         self.rules = rules
 
     def validate(self):
@@ -118,7 +118,7 @@ class DescribePriceResponseBodyPriceInfoRules(DaraModel):
         description: str = None,
         rule_id: int = None,
     ):
-        # The description of the rule.
+        # The rule description.
         self.description = description
         # The rule ID.
         self.rule_id = rule_id
@@ -160,19 +160,20 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
         sp_price: int = None,
         trade_price: float = None,
     ):
-        # The unit of currency (USD).
+        # <props="china">The currency unit (CNY).
+        # <props="intl">The currency unit (USD).
         self.currency = currency
-        # The discounted amount.
+        # The discount amount.
         self.discount_price = discount_price
-        # The orders.
+        # The order information.
         self.order_lines = order_lines
         # The original price.
         self.original_price = original_price
-        # The promotions.
+        # The promotion information.
         self.promotions = promotions
-        # The price under an effective savings plan.
+        # The price under the savings plan.
         self.sp_price = sp_price
-        # The actual price. The original price minus the discounted amount equals the actual price.
+        # The actual payment price. The value is the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -248,15 +249,15 @@ class DescribePriceResponseBodyPriceInfoPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
-        # The description of the promotion rule.
+        # The promotion rule description.
         self.option_code = option_code
-        # The description of the promotion.
+        # The promotion description.
         self.promotion_desc = promotion_desc
         # The promotion ID.
         self.promotion_id = promotion_id
         # The promotion name.
         self.promotion_name = promotion_name
-        # Indicates whether an item is selected.
+        # Indicates whether the promotion is selected.
         self.selected = selected
 
     def validate(self):

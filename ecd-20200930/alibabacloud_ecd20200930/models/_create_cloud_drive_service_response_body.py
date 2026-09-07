@@ -21,25 +21,25 @@ class CreateCloudDriveServiceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the enterprise network disk.
+        # The ID of the enterprise NAS drive.
         self.cds_id = cds_id
-        # The name of the cloud storage service.
+        # The service name of the cloud storage.
         self.cds_name = cds_name
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The instance ID of the Cloud Enterprise Network (CEN).
         # 
-        # > If you want to connect to a cloud desktop through a VPC, you can add the office network to a CEN instance. This CEN instance connects to your on-premises network through a VPN or a dedicated line.
+        # > To connect to cloud desktops over a VPC, you can add the office network to a CEN instance. This CEN instance is the one to which the on-premises network is connected by using a VPN or Express Connect circuit.
         self.cen_id = cen_id
-        # The existing enterprise network disks or orders for enterprise network disks that conflict with the enterprise network disk that you want to create.
+        # The existing NAS drive or NAS drive order that conflicts with the NAS drive to be created.
         self.conflict_cds_and_order = conflict_cds_and_order
-        # The name of the Active Directory (AD) domain corresponding to the AD office network.
+        # The AD domain name of the AD office network.
         self.domain_name = domain_name
         # The error code.
         self.error_code = error_code
-        # The maximum storage usage of the enterprise network disk. Unit: bytes.
+        # The maximum storage capacity of the enterprise NAS drive. Unit: bytes.
         self.max_size = max_size
-        # The office network type.
+        # The network type of the office network.
         self.office_site_type = office_site_type
-        # The order ID. You can obtain the order ID on the Order Management page in the Alibaba Cloud User Center.
+        # The order ID. You can obtain the order ID on the Orders page in the Alibaba Cloud User Center.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
@@ -126,9 +126,9 @@ class CreateCloudDriveServiceResponseBodyConflictCdsAndOrder(DaraModel):
         conflict_cds: List[main_models.CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds] = None,
         conflict_order: List[main_models.CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictOrder] = None,
     ):
-        # The information of conflicting enterprise network disks.
+        # The information about the conflicting NAS drive.
         self.conflict_cds = conflict_cds
-        # The information of conflicting unpaid orders for enterprise network disks (orders for subscription enterprise network disks).
+        # The information about the conflicting unpaid NAS drive order (subscription NAS drive order).
         self.conflict_order = conflict_order
 
     def validate(self):
@@ -181,9 +181,9 @@ class CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictOrder(DaraMo
         order_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the enterprise network disk (The order is not paid, and the enterprise network disk cannot be used).
+        # The ID of the enterprise NAS drive. The order is not paid, and the NAS drive is unavailable.
         self.cds_id = cds_id
-        # The order ID. You can obtain the order ID on the **Order Management** page in the Alibaba Cloud User Center.
+        # The order ID. You can obtain the order ID on the **Orders** page in the Alibaba Cloud User Center.
         self.order_id = order_id
         # The region ID.
         self.region_id = region_id
@@ -226,9 +226,9 @@ class CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds(DaraMode
         cds_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the enterprise network disk.
+        # The ID of the enterprise NAS drive.
         self.cds_id = cds_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions that are supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         self.region_id = region_id
 
     def validate(self):

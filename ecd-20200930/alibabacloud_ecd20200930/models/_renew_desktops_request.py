@@ -23,28 +23,29 @@ class RenewDesktopsRequest(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # A list of WUYING Workspace instance IDs. You can renew only instances purchased on a monthly basis.
+        # The list of cloud computer IDs. Only monthly subscription cloud computers can be renewed.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The renewal duration. Valid values depend on the value of `PeriodUnit`.
+        # The renewal duration. Valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
         # 
-        # - If `PeriodUnit` is `Month`, valid values are 1, 2, 3, and 6.
+        # - If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, and 6.
         # 
-        # - If `PeriodUnit` is `Year`, valid values are 1 to 5.
+        # - If `PeriodUnit` is set to `Year`, valid values are 1 to 5.
         # 
         # Default value: 1.
         self.period = period
-        # The unit for the renewal duration, which applies to the `Period` parameter.
+        # The unit of the renewal duration, which is the unit of the `Period` parameter.
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to list the regions where WUYING Workspace is available.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The user ID for resource ownership in the reselling pattern. You do not need to specify this parameter if you are not using the reselling pattern.
         self.reseller_owner_uid = reseller_owner_uid
-        # > This field is not available for public use.
+        # > This parameter is not publicly available.
         self.resource_type = resource_type
 
     def validate(self):

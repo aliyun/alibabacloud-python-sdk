@@ -13,13 +13,13 @@ class DeleteCloudDriveGroupsRequest(DaraModel):
         group_id: List[str] = None,
         region_id: str = None,
     ):
-        # The ID of the cloud disk in Cloud Drive Service.
+        # The enterprise network drive ID.
         # 
         # This parameter is required.
         self.cds_id = cds_id
-        # The IDs of the teams that you want to delete. You can delete multiple teams at a time.
+        # The list of team space IDs.
         self.group_id = group_id
-        # The region ID.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

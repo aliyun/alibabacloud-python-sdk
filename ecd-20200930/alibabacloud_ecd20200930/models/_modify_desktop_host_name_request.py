@@ -14,18 +14,18 @@ class ModifyDesktopHostNameRequest(DaraModel):
         new_host_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud desktop.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
+        # The list of cloud desktop IDs.
         self.desktop_ids = desktop_ids
         # The new hostname of the cloud desktop. The hostname must meet the following requirements:
         # 
         # - The hostname must be 2 to 15 characters in length.
-        # 
-        # - The hostname can contain letters, digits, and hyphens (-). It cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
+        # - The hostname can contain uppercase letters, lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot contain only digits.
         # 
         # This parameter is required.
         self.new_host_name = new_host_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the available regions for Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

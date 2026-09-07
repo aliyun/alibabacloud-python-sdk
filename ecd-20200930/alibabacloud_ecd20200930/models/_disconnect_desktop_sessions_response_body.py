@@ -58,7 +58,7 @@ class DisconnectDesktopSessionsResponseBodyInvalidSessions(DaraModel):
         desktop_id: str = None,
         end_user_id: str = None,
     ):
-        # The cloud desktop ID.
+        # The cloud computer ID.
         self.desktop_id = desktop_id
         # The end user ID.
         self.end_user_id = end_user_id

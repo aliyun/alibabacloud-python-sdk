@@ -20,19 +20,19 @@ class DescribeTemplatesRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The region filter condition for the template query. 
+        # The region filter condition for template queries.
         # 
-        # > If this parameter is specified, region-specific configurations that do not match are excluded from the query results.
+        # > If this parameter is specified, the query results exclude configurations for regions that do not match.
         self.biz_region_id = biz_region_id
         # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # The cloud computer image ID. You can obtain the ID from the image management page. System images, custom images, and other image types are supported.
+        # The cloud computer image ID. You can obtain the ID from the image management page. System images and custom images are supported.
         self.image_id = image_id
         # The keyword. Fuzzy match is supported for the template ID and template name fields.
         self.keyword = keyword
-        # The page number of the current page in a paged query. This parameter is used for paging.
+        # The page number of the current page in a paged query. Paging starts from page 1.
         self.page_number = page_number
-        # The maximum number of rows per page in a paged query. This parameter is used for paging.
+        # The maximum number of rows per page in a paged query. Paging is used to return results in batches.
         self.page_size = page_size
         # The product type. Set this parameter to `CloudDesktop`.
         self.product_type = product_type

@@ -16,15 +16,15 @@ class DescribeCloudDriveGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of team spaces.
+        # The list of cloud drive team spaces.
         self.cloud_drive_groups = cloud_drive_groups
-        # The total number of entries returned.
+        # The total number of entries.
         self.count = count
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The token for the next query. If `NextToken` is empty, no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -95,35 +95,29 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(DaraModel):
         total_size: int = None,
         used_size: str = None,
     ):
-        # List of group administrators.
+        # The list of team administrators.
         self.admin_user_ids = admin_user_ids
-        # Administrator information for the group space.
+        # The team storage management administrator information.
         self.admin_user_infos = admin_user_infos
-        # The time when the team space was created.
+        # The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The workspace ID.
+        # The office network ID.
         self.directory_id = directory_id
-        # The team space ID.
+        # The space ID.
         self.drive_id = drive_id
-        # The team ID.
+        # The team space ID.
         self.group_id = group_id
-        # The name of the team space.
+        # The team space name.
         self.group_name = group_name
-        # Organization ID of the team.
+        # The organization ID of the team.
         self.org_id = org_id
-        # Size of the recycle bin for the team space. Unit: Byte.
+        # The size of the team space recycle bin. Unit: bytes.
         self.recycle_bin_size = recycle_bin_size
-        # The team space status. Valid values:
-        # 
-        # - enabled
-        # 
-        # - disabled
-        # 
-        # Default value: enabled.
+        # The team space status.
         self.status = status
-        # The total capacity of the team space.
+        # The total capacity of the cloud drive team space.
         self.total_size = total_size
-        # The capacity of the used space. Unit: bytes.
+        # The used space size. Unit: bytes.
         self.used_size = used_size
 
     def validate(self):
@@ -231,19 +225,19 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos(DaraMod
         real_nick_name: str = None,
         remark: str = None,
     ):
-        # Mailbox.
+        # The email address.
         self.email = email
-        # Administrator username (may be unreadable when imported from a third party).
+        # The administrator username. This value may not be readable when imported from a third party.
         self.end_user_id = end_user_id
-        # Job number (DingTalk)
+        # The employee ID (DingTalk).
         self.job_number = job_number
-        # Administrator nickname.
+        # The administrator nickname.
         self.nick_name = nick_name
-        # Phone number.
+        # The phone number.
         self.phone = phone
-        # Administrator nickname.
+        # The administrator nickname.
         self.real_nick_name = real_nick_name
-        # Remark.
+        # The remarks.
         self.remark = remark
 
     def validate(self):

@@ -17,28 +17,30 @@ class ListOfficeSiteUsersRequest(DaraModel):
         region_id: str = None,
         sort_type: str = None,
     ):
+        # > This parameter is not publicly available. You can only pass in `1` or leave it empty.
         self.assigned_info = assigned_info
-        # The query string for fuzzy matching.
+        # The fuzzy query character string.
         self.filter = filter
+        # Specifies whether to return only users who are assigned cloud computers.
         self.include_assigned_user = include_assigned_user
-        # The number of entries to return on each page.
+        # The number of entries per page for a paged query.    
         # 
-        # - Maximum value: 100.
-        # 
+        # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The token for the next page of results. Leave this empty for the first query. For subsequent queries, use the NextToken value from the previous response.
+        # The pagination token. Leave this parameter empty for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The path of the organizational unit (OU) in the AD domain.
+        # The specified AD domain organizational unit (OU).
         self.oupath = oupath
-        # The office network ID. Only office networks that use enterprise AD accounts are supported.
+        # The office network ID. Only office networks based on enterprise AD accounts are supported.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions where WUYING Workspace is available.
+        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The sorting method.
         self.sort_type = sort_type
 
     def validate(self):

@@ -111,7 +111,7 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         self.jvs_id = jvs_id
         # The operating system type.
         self.os_type = os_type
-        # The snapshot creation progress. Unit: percent.
+        # The snapshot creation progress, in percentage.
         self.progress = progress
         # The protocol type.
         self.protocol_type = protocol_type

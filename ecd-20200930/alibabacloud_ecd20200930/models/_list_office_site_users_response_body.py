@@ -14,12 +14,11 @@ class ListOfficeSiteUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.ListOfficeSiteUsersResponseBodyUsers] = None,
     ):
-        # The token to start the next query. If this parameter is empty, all results have been returned.
+        # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # An array that consists of the AD accounts.<br>
-        # If the enterprise AD contains only the Administrator and Guest users, an empty Users array is returned.<br>
+        # The array of AD account usernames. If the enterprise AD contains only the Administrator and Guest users and no other users, an empty Users array is returned.
         self.users = users
 
     def validate(self):
@@ -73,14 +72,19 @@ class ListOfficeSiteUsersResponseBodyUsers(DaraModel):
         phone: str = None,
         user_principal_name: str = None,
     ):
+        # The number of assigned cloud computers.
         self.assigned_desktop_number = assigned_desktop_number
         # The display name of the AD account.
         self.display_name = display_name
+        # The new display name of the user.
         self.display_name_new = display_name_new
+        # The email address.
         self.email = email
         # The username of the AD account.
         self.end_user = end_user
+        # The mobile phone number.
         self.phone = phone
+        # The user principal name (UPN).
         self.user_principal_name = user_principal_name
 
     def validate(self):

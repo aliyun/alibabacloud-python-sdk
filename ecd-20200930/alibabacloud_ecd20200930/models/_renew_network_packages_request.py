@@ -18,31 +18,31 @@ class RenewNetworkPackagesRequest(DaraModel):
         region_id: str = None,
         reseller_owner_uid: int = None,
     ):
-        # Whether to enable automatic payment.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal for subscription shared cloud desktops.
         self.auto_renew = auto_renew
-        # A list of premium public bandwidth IDs. You can specify 1 to 100 IDs.
+        # The IDs of premium Internet bandwidth plans. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.network_package_id = network_package_id
-        # The renewal duration. Valid values depend on the value of `PeriodUnit`.
+        # The renewal duration. Valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
         # 
-        # - If `PeriodUnit` is `Week`, valid values are: 1.
-        # 
-        # - If `PeriodUnit` is `Month`, valid values are: 1, 2, 3, or 6.
-        # 
-        # - If `PeriodUnit` is `Year`, valid values are: 1, 2, or 3.
+        # - If `PeriodUnit` is set to `Week`, the valid value is 1.
+        # - If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, and 6.
+        # - If `PeriodUnit` is set to `Year`, valid values are 1, 2, and 3.
         # 
         # Default value: 1.
         self.period = period
-        # The unit for the renewal duration.
+        # The unit of the renewal duration.
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to list regions that support WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter if you are not using the reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):

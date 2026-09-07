@@ -33,50 +33,67 @@ class CreateTemplateRequest(DaraModel):
         timer_group_id: str = None,
         user_duration: int = None,
     ):
+        # Indicates whether automatic payment is enabled for the subscription order.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal for the subscription cloud computer.
         self.auto_renew = auto_renew
         # > This parameter is not publicly available.
         self.biz_type = biz_type
+        # The billing method of the cloud computer.
         self.charge_type = charge_type
-        # The data disk size and specification configurations.
+        # The size and specification configurations of data disks.
         self.data_disk_list = data_disk_list
         # The default language set when the cloud computer starts. This parameter takes effect only when a system image is used to create the cloud computer.
         self.default_language = default_language
         # The description of the template. The description must meet the following requirements:
         # 
-        # - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # - The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         # - The description can contain Chinese characters, letters, digits, spaces, and special characters. Line breaks are supported.
         self.description = description
-        # The cloud computer image ID. You can query this value on the image management page. System images and custom images are supported.
+        # The ID of the cloud computer image. You can query the ID on the image management page. System images and custom images are supported.
         self.image_id = image_id
+        # The subscription duration of the subscription cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
+        # - If `PeriodUnit` is set to `Month`, valid values:
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 6
+        # - If `PeriodUnit` is set to `Year`, valid values:
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 4
+        #     - 5
         self.period = period
+        # The unit of the subscription billable methods duration.
         self.period_unit = period_unit
         # The ID of the global policy.
         self.policy_group_id = policy_group_id
+        # Specifies whether to automatically switch to pay-as-you-go billing after the duration plan is used up.
         self.post_paid_after_used_up = post_paid_after_used_up
         # The product type. Set the value to `CloudDesktop`.
         self.product_type = product_type
-        # The region-specific template configurations. Multiple configurations are supported. The configuration that matches the specific region is used.
+        # The region-specific template configurations. You can specify multiple configurations. The configuration that matches the specific region is used.
         # 
-        # > You can configure up to 20 regions.
+        # > You can specify configurations for up to 20 regions.
         self.region_config_list = region_config_list
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The cloud computer tags in key-value format. You can specify up to 20 tags.
+        # The tags of the cloud computer in key-value format. You can specify up to 20 tags.
         self.resource_tag_list = resource_tag_list
         # The site configuration management.
         self.site_config_list = site_config_list
-        # The system disk type.
+        # The type of the system disk.
         # 
-        # > Only high frequency and graphics cloud computer specifications support ESSD disks.
+        # > Only high-frequency and GPU-accelerated cloud computer specifications support ESSD disks.
         self.system_disk_performance_level = system_disk_performance_level
-        # The system disk size. Unit: GiB. Valid values: 40 to 500, in increments of 10 GiB.
+        # The size of the system disk. Unit: GiB. Valid values: 40 to 500. The value must be a multiple of 10.
         # 
         # > The system disk size cannot be smaller than the image size.
         self.system_disk_size = system_disk_size
         # The name of the template. The name must meet the following requirements:
         # 
-        # - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
+        # - The name must be 2 to 126 characters in length.
         # - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         # - The name can contain letters, digits, Chinese characters, colons (:), underscores (_), or hyphens (-). Periods (.) are not supported.
         # 
@@ -84,6 +101,7 @@ class CreateTemplateRequest(DaraModel):
         self.template_name = template_name
         # The configuration group ID.
         self.timer_group_id = timer_group_id
+        # The usage duration plan per user.
         self.user_duration = user_duration
 
     def validate(self):
@@ -358,13 +376,13 @@ class CreateTemplateRequestRegionConfigList(DaraModel):
         self.region_id = region_id
         # The cloud computer specification ID.
         self.resource_instance_type = resource_instance_type
-        # The automatic snapshot policy ID.
+        # The ID of the automatic snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
         # The subnet ID.
         self.subnet_id = subnet_id
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enable = volume_encryption_enable
-        # The KMS key ID used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+        # The ID of the KMS key used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -429,11 +447,11 @@ class CreateTemplateRequestDataDiskList(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The data disk performance level. Default value: `AutoPL`.
+        # The performance level of the data disk. Default value: `AutoPL`.
         self.performance_level = performance_level
-        # The data cloud disk size. Unit: GiB. Valid values: 40 to 2040, in increments of 10 GiB.
+        # The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040. The value must be a multiple of 10.
         # 
-        # >Notice: The larger the standard SSD or ESSD cloud disk capacity, the higher the performance level (PL) available (for example, PL2 is available for capacities above 460 GiB). Higher performance levels incur higher costs. Select the ESSD cloud disk performance level (PL) based on your requirements.
+        # >Notice: The larger the ESSD cloud disk capacity, the higher the performance level (PL) available (for example, PL2 is available for capacities of 460 GiB or more). Higher performance levels (PLs) incur higher costs. Select the ESSD cloud disk performance level (PL) based on your requirements. Note: Only standard SSD and ESSD cloud disks are supported.
         self.size = size
 
     def validate(self):

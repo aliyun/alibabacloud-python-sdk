@@ -22,7 +22,7 @@ class ConfigADConnectorTrustRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The trust password. This password is the one that you specified when you configured the trust relationship (that is, established a trust relationship with ecd.acs) in the AD domain.
+        # The trust password. This password is the one that you set when configuring the trust relationship (establishing a trust relationship with the Elastic Desktop Service ecd.acs domain) in the AD domain.
         # 
         # This parameter is required.
         self.trust_key = trust_key

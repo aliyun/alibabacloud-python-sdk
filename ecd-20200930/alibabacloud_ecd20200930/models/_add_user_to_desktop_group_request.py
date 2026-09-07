@@ -19,21 +19,25 @@ class AddUserToDesktopGroupRequest(DaraModel):
         user_group_name: str = None,
         user_ou_path: str = None,
     ):
-        # A client token that ensures the idempotence of a request. Generate a unique value for this parameter from your client. The token can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The ID of the shared cloud desktop to which to add an authorized user.
+        # The ID of the shared cloud computer to which you want to add authorized users.
         self.desktop_group_id = desktop_group_id
-        # A list of shared cloud desktop group IDs.
+        # The list of shared cloud computer IDs.
         self.desktop_group_ids = desktop_group_ids
-        # A list of users to authorize.
+        # The list of users to authorize.
         self.end_user_ids = end_user_ids
+        # The organization ID of the team.
         self.org_id = org_id
-        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain a list of regions where WUYING Workspace is available.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The convenience user group ID.
         self.simple_user_group_id = simple_user_group_id
+        # The user group name.
         self.user_group_name = user_group_name
+        # The organizational unit (OU) path of the user.
         self.user_ou_path = user_ou_path
 
     def validate(self):

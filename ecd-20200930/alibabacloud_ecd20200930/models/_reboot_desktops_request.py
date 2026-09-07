@@ -15,15 +15,17 @@ class RebootDesktopsRequest(DaraModel):
         patch_id: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to create a snapshot.
         self.create_snapshot = create_snapshot
-        # An array of 1 to 100 desktop IDs.
+        # The cloud computer ID. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
         # Specifies whether to install system patches.
         self.os_update = os_update
+        # The patch ID.
         self.patch_id = patch_id
-        # The ID of the region. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions where Elastic Desktop Service is available.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

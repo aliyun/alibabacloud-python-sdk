@@ -10,13 +10,11 @@ class LockVirtualMFADeviceRequest(DaraModel):
         region_id: str = None,
         serial_number: str = None,
     ):
-        # The region ID.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The serial number of the virtual MFA device, which is a unique identifier.
-        # 
-        # You can call the [DescribeVirtualMFADevices](https://help.aliyun.com/document_detail/206210.html) operation to query the serial number of the virtual MFA device bound to AD users.
+        # The serial number of the virtual MFA device, which is also its unique identifier. You can call [DescribeVirtualMFADevices](~~DescribeVirtualMFADevices~~) to query the serial number of the virtual MFA device bound to an AD account.
         # 
         # This parameter is required.
         self.serial_number = serial_number

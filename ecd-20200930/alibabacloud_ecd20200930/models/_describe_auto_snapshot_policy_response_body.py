@@ -14,9 +14,9 @@ class DescribeAutoSnapshotPolicyResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The automatic snapshot policies.
+        # The list of automatic snapshot policies.
         self.auto_snapshot_policies = auto_snapshot_policies
-        # The pagination token that is used in the next request to retrieve a new page of results. If the return value is empty, no more results are returned.
+        # The pagination token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -75,33 +75,27 @@ class DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies(DaraModel):
         status: str = None,
         time_points: str = None,
     ):
-        # The time when the policy was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+        # The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The cron expression that is used to create snapshots.
+        # The cron expression that specifies the snapshot creation time.
         self.cron_expression = cron_expression
-        # The number of cloud computers to which the automatic snapshot policy is applied.
+        # The number of cloud computers to which the snapshot policy is attached.
         self.desktop_num = desktop_num
-        # The disk type for which the automatic snapshot policy is created.
-        # 
-        # Valid values:
-        # 
-        # - SYSTEM: system disk
-        # 
-        # - DATA: data disk
+        # The cloud disk type.
         self.disk_type = disk_type
         # The ID of the automatic snapshot policy.
         self.policy_id = policy_id
-        # The name of the automatic snapshot policy.
+        # The Policy Name of the automatic snapshot policy.
         self.policy_name = policy_name
-        # The ID of the region where the automatic snapshot policy resides.
+        # The region ID of the automatic snapshot policy.
         self.region_id = region_id
-        # The retention period of automatic snapshots. Unit: days. Valid values: 1 to 180.
+        # The retention period of automatic snapshots, in days. Valid values: 1 to 180.
         self.retention_days = retention_days
         # The status of the automatic snapshot policy.
         self.status = status
-        # The points in time when automatic snapshots are created.
+        # The points in time at which automatic snapshots are created.
         # 
-        # The value is a JSON array of integers. Example: `["0", "1", ... "23"]`. A maximum of 24 points in time can be specified.
+        # The parameter value is a JSON array in the format of `["0", "1", ... "23"]`, with a maximum of 24 time points separated by commas (,).
         self.time_points = time_points
 
     def validate(self):

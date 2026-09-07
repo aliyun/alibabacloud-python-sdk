@@ -14,7 +14,7 @@ class DescribeDesktopMetadataResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details of the cloud desktops.
+        # The cloud desktop details.
         self.desktops = desktops
         # The token for the next query. An empty value indicates that there are no more results.
         self.next_token = next_token
@@ -84,39 +84,39 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         resource_group_name: str = None,
         start_time: str = None,
     ):
-        # The agents supported by the current cloud desktop.
+        # The agents supported by the current cloud computer.
         self.agent_provider_list = agent_provider_list
         # The billing type of the cloud desktop. Valid values:
         # - PostPaid: pay-as-you-go.
         # - PrePaid: subscription.
         self.charge_type = charge_type
-        # The time when the cloud desktop was created.
+        # The time when the cloud desktop was created. The time is in the ISO 8601 standard (UTC).
         self.creation_time = creation_time
-        # The shared cloud desktop ID.
+        # The shared cloud computer ID.
         self.desktop_group_id = desktop_group_id
         # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The name of the cloud desktop.
+        # The cloud desktop name.
         self.desktop_name = desktop_name
-        # The status of the cloud desktop. Valid values:
-        # - Stopped
-        # - Starting
-        # - Rebuilding
-        # - Running
-        # - Stopping
-        # - Expired
-        # - Deleted
-        # - Pending
+        # The cloud desktop status. Valid values:
+        # - Stopped: stopped.
+        # - Starting: starting.
+        # - Rebuilding: rebuilding.
+        # - Running: running.
+        # - Stopping: stopping.
+        # - Expired: expired.
+        # - Deleted: deleted.
+        # - Pending: pending.
         self.desktop_status = desktop_status
         # The cloud desktop specifications.
         self.desktop_type = desktop_type
-        # The time when the cloud desktop expires. This value is returned only for cloud desktops that use the subscription billable method.
+        # The time when the cloud desktop expires. This value is returned only for cloud desktops that use the subscription billable method. The time format follows the ISO 8601 standard (UTC).
         self.expired_time = expired_time
         # The image ID.
         self.image_id = image_id
-        # The local name of the region where the cloud desktop resides.
+        # The local name of the region to which the cloud desktop belongs.
         self.local_name = local_name
-        # The management status of the cloud desktop.
+        # The management status of the cloud computer.
         self.management_flags = management_flags
         # The IP address of the member elastic network interface (ENI) of the instance.
         self.member_eni_ip = member_eni_ip
@@ -130,7 +130,7 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         self.resource_group_id = resource_group_id
         # The resource group name.
         self.resource_group_name = resource_group_name
-        # The time when the cloud desktop was started.
+        # The time when the cloud desktop was started. The time is in the ISO 8601 standard (UTC).
         self.start_time = start_time
 
     def validate(self):

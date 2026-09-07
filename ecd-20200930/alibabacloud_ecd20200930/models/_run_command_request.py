@@ -18,35 +18,36 @@ class RunCommandRequest(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The script content in plaintext or Base64-encoded format.<br>
-        # The Base64-encoded script content cannot exceed 16 KB.<br>
+        # The plaintext or Base64-encoded content of the script.  
+        # The Base64-encoded script content cannot exceed 16 KB.
         # 
-        # > If the script content is Base64-encoded, you must set the `ContentEncoding` parameter to `Base64`.
+        # > If the script content is Base64-encoded, set the ContentEncoding parameter to Base64.
         # 
         # This parameter is required.
         self.command_content = command_content
+        # The role used when the command is executed on the cloud computer.
         self.command_role = command_role
-        # The encoding mode of the script content.
+        # The encoding method of the script content.
         # 
-        # > If you specify a value that is not a valid enumeration member, the system defaults to `PlainText`.
+        # > If the specified value is not within the valid values, the value is treated as `PlainText`.
         self.content_encoding = content_encoding
-        # The IDs of the cloud computers on which to run the script. You can specify up to 50 IDs.<br>
-        # The API call is considered successful if the script runs on at least one of the specified cloud computers. The call fails only if the script fails on all of them.<br>
+        # The list of cloud computer IDs. Valid values of N: 1 to 50.  
+        # If multiple cloud computers are specified, the API call succeeds as long as the script is successfully executed on at least one cloud computer. If the script fails to execute on all specified cloud computers, reset this parameter.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # If you specify this parameter, the command runs with the permissions of the specified end user.
+        # The ID of the end user. If this parameter is specified, the command is executed with the permissions of the end user.
         # 
-        # > This user must have a session history on the cloud computer. This means the user must have logged in after the cloud computer started and their session was not taken over by another user. This parameter is not supported for Linux cloud computers.
+        # > The user must have a session record on the cloud computer (the user has logged on and connected to the cloud computer after it was started, and the session was not preempted by another user). This parameter is not supported for Linux cloud computers.
         self.end_user_id = end_user_id
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The script execution timeout, in seconds. Default value: 300.<br>
-        # A command times out if the script cannot be run due to issues such as process conflicts, missing modules, or an unavailable Cloud Assistant client. When a command times out, the system forcibly terminates the script process.<br>
+        # The timeout period for executing the script. Unit: seconds. Default value: 300.  
+        # A timeout may occur when the script cannot run because of process issues, missing modules, or a missing Cloud Assistant client. After a timeout, the script process is forcefully terminated.
         self.timeout = timeout
-        # The type of the script.
+        # The language type of the O&M script.
         # 
         # This parameter is required.
         self.type = type

@@ -16,7 +16,7 @@ class CopyCdsFileResponseBody(DaraModel):
     ):
         # The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # The result of copying the file.
+        # The result of the file copy operation.
         self.copy_cds_file_model = copy_cds_file_model
         # The error message. This parameter is not returned if Code is `success`.
         self.message = message

@@ -14,11 +14,11 @@ class DescribeBundlesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The cloud computer templates.
+        # The list of cloud computer templates.
         self.bundles = bundles
-        # The token that is used for the next query. If this parameter is empty, all results have been returned.
+        # The token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87,49 +87,49 @@ class DescribeBundlesResponseBodyBundles(DaraModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The ID of the cloud computer template.
+        # The cloud computer template ID.
         self.bundle_id = bundle_id
         # The name of the cloud computer template.
         self.bundle_name = bundle_name
-        # The type of the cloud computer template.
+        # The cloud computer templatetype.
         self.bundle_type = bundle_type
-        # The time when the cloud computer template was created.
+        # The time when the cloud computer template was created. The time is in the ISO 8601 standard in UTC.
         self.creation_time = creation_time
-        # The category of the data disk.
+        # The data cloud disk type.
         self.data_disk_category = data_disk_category
         # The description of the cloud computer template.
         self.description = description
-        # The instance type of the cloud computer.
+        # The cloud computer specifications.
         self.desktop_type = desktop_type
-        # The details of the cloud computer instance type.
+        # The details of the cloud computer specifications.
         self.desktop_type_attribute = desktop_type_attribute
-        # The instance family of the cloud computer.
+        # The cloud computer instance family.
         self.desktop_type_family = desktop_type_family
-        # Details of the disks.
+        # The disk information.
         self.disks = disks
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The status of the image.
+        # The image status.
         self.image_status = image_status
-        # The OS language of the image.
+        # The language of the image operating system.
         self.language = language
-        # The type of the OS.
+        # The operating system type.
         self.os_type = os_type
-        # The OS.
+        # The operating system platform information.
         self.platform = platform
         # The protocol type.
         self.protocol_type = protocol_type
         # The session type.
         self.session_type = session_type
-        # The inventory status of the cloud computer instance type. This parameter is returned only if you set the `CheckStock` parameter to `true`.
+        # The stock status. This parameter is returned when `CheckStock` is set to `True`.
         self.stock_state = stock_state
-        # The category of the system disk.
+        # The system cloud disk type.
         self.system_disk_category = system_disk_category
-        # Indicates whether disk encryption is enabled.
+        # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled.
+        # The ID of the KMS key used when disk encryption is enabled.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -296,11 +296,11 @@ class DescribeBundlesResponseBodyBundlesDisks(DaraModel):
         disk_size: int = None,
         disk_type: str = None,
     ):
-        # The PL of the disk.
+        # The disk performance level.
         self.disk_performance_level = disk_performance_level
-        # The size of the disk. Unit: GiB.
+        # The disk size. Unit: GiB.
         self.disk_size = disk_size
-        # The type of the disk.
+        # The disk type.
         self.disk_type = disk_type
 
     def validate(self):

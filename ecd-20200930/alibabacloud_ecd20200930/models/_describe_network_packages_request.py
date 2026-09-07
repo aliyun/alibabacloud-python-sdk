@@ -24,14 +24,15 @@ class DescribeNetworkPackagesRequest(DaraModel):
         # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The IDs of the premium Internet bandwidth plans. You can specify 1 to 100 IDs.
+        # The IDs of premium Internet bandwidth plans. You can specify 1 to 100 IDs.
         self.network_package_id = network_package_id
-        # The token for the next query.
+        # The pagination token for the next query.
         self.next_token = next_token
         # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The tags. A maximum of 20 tags are supported.
         self.tag = tag
 
     def validate(self):
@@ -98,7 +99,9 @@ class DescribeNetworkPackagesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

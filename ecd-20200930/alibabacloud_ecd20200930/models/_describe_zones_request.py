@@ -11,12 +11,13 @@ class DescribeZonesRequest(DaraModel):
         vpc_access_zone: bool = None,
         zone_type: str = None,
     ):
-        # The region ID. Call [](t2167755.xdita#)to get the list of regions supported by EDS.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to retrieve the list of regions supported by Alibaba Cloud Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # Specifies whether the zone supports VPC access.
         self.vpc_access_zone = vpc_access_zone
-        # The zone type to query. Default value: `AvailabilityZone`. This queries standard cloud zones.
+        # The type of zone to query. Default value: `AvailabilityZone`, which indicates a standard cloud zone.
         self.zone_type = zone_type
 
     def validate(self):

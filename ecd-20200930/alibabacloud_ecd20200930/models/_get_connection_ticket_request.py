@@ -18,12 +18,12 @@ class GetConnectionTicketRequest(DaraModel):
         task_id: str = None,
         uuid: str = None,
     ):
-        # Specifies a custom user-mode application that is automatically launched after the credential is obtained.
+        # Specifies a custom user-mode application that is automatically started after the credential is obtained.
         # 
-        # - appPath: String. The path of the application startup file. Example: `"C:\\Program Files (x86)\\000\\000.exe"`. Use double backslashes (\\\\) as path separators.
-        # - appParameter: String. The application startup parameters. Example: `"meetingid 000 meetingname aaa"`. Separate parameters with spaces.
+        # - appPath: a value of the String type that specifies the application startup file path, such as `"C:\\Program Files (x86)\\000\\000.exe"`. Use double backslashes (\\\\) as path separators.
+        # - appParameter: a value of the String type that specifies the application startup parameters, such as `"meetingid 000 meetingname aaa"`. Separate parameters with spaces.
         self.command_content = command_content
-        # The ID of the cloud computer for which you want to generate a connection credential. This parameter is required to generate the credential.
+        # The ID of the cloud computer for which to generate a connection credential. This parameter is required to generate the credential.
         self.desktop_id = desktop_id
         # The username of the authorized user of the cloud computer. You must specify an existing authorized user of the cloud computer to generate the credential.
         self.end_user_id = end_user_id
@@ -38,7 +38,7 @@ class GetConnectionTicketRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the cloud computer connection task.
         self.task_id = task_id
-        # The unique identifier of the client. If you use the Apsara Uni-manager client, you can view this parameter in the **About** dialog box on the client logon page.
+        # The unique identifier of the client. If you use the Wuying client, you can view this parameter in the **About** dialog box on the client logon page.
         self.uuid = uuid
 
     def validate(self):

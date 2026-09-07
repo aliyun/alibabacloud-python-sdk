@@ -15,34 +15,25 @@ class AttachEndUserRequest(DaraModel):
         region_id: str = None,
         user_type: str = None,
     ):
-        # The address of the Active Directory (AD) office network.
+        # The address of the AD workspace.
         self.ad_domain = ad_domain
-        # The type of the client.
-        # 
-        # Valid values:
-        # 
-        # *   1: hardware client.
+        # The device type.
         # 
         # This parameter is required.
         self.client_type = client_type
-        # The serial number (SN) of the hardware client.
+        # The serial number (SN) of the WUYING hardware terminal.
         # 
         # This parameter is required.
         self.device_id = device_id
-        # The ID of the convenient office network.
+        # The ID of the convenience workspace.
         self.directory_id = directory_id
-        # The ID of the user that you want to bind to the hardware client.
+        # The ID of the bound user to add to the WUYING hardware terminal.
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
         self.region_id = region_id
-        # The account type of the user.
-        # 
-        # Valid values:
-        # 
-        # *   AD: enterprise AD account.
-        # *   SIMPLE: convenience account
+        # The user account type.
         self.user_type = user_type
 
     def validate(self):

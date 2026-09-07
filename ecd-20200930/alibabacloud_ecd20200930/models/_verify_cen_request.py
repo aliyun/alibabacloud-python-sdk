@@ -13,24 +13,25 @@ class VerifyCenRequest(DaraModel):
         region_id: str = None,
         verify_code: str = None,
     ):
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The Alibaba Cloud account to which the CEN instance belongs.
+        # The Alibaba Cloud account ID to which the CEN instance belongs.
         # 
-        # *   If you own the CEN instance, you can skip this parameter.
-        # *   If you do not own the CEN instance, you must specify the ID of the account that owns the CEN instance.
+        # - If the specified CenId belongs to your Alibaba Cloud account, you do not need to configure this parameter.
+        # 
+        # - If the specified CenId belongs to another Alibaba Cloud account, specify the ID of that Alibaba Cloud account.
         self.cen_owner_id = cen_owner_id
-        # The IPv4 CIDR block of the associated office network.
+        # The IPv4 CIDR block of the office network.
         # 
         # This parameter is required.
         self.cidr_block = cidr_block
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The verification code. If you do not own the CEN instance, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain a verification code.
+        # The verification code. If the specified CenId belongs to another Alibaba Cloud account, you must first call [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) to obtain the verification code.
         self.verify_code = verify_code
 
     def validate(self):

@@ -17,7 +17,7 @@ class ModifyTemplateBaseInfoResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message. This parameter is not returned when Code is `success`.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id

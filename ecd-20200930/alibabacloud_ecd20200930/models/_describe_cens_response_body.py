@@ -16,9 +16,9 @@ class DescribeCensResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the CEN instances.
+        # The details of the CEN instances.
         self.cens = cens
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -92,9 +92,9 @@ class DescribeCensResponseBodyCens(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeCensResponseBodyCensTags] = None,
     ):
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         self.cen_id = cen_id
-        # The time when the CEN instance was created.
+        # The time when the CEN instance was created. The time is in the ISO 8601 standard (UTC).
         self.creation_time = creation_time
         # The description of the CEN instance.
         self.description = description
@@ -104,23 +104,11 @@ class DescribeCensResponseBodyCens(DaraModel):
         self.ipv_6level = ipv_6level
         # The name of the CEN instance.
         self.name = name
-        # The bandwidth plans that are bound to the CEN instance.
+        # The list of bandwidth packages bound to the CEN instance.
         self.package_ids = package_ids
-        # The tolerated level of CIDR block conflict.
-        # 
-        # Valid value:
-        # 
-        # - REDUCED: CIDR block conflicts are allowed, but the conflicting CIDR blocks cannot be identical.
+        # The level of CIDR block overlap conflicts.
         self.protection_level = protection_level
         # The status of the CEN instance.
-        # 
-        # Valid values:
-        # 
-        # - Creating
-        # 
-        # - Active
-        # 
-        # - Deleting
         self.status = status
         # The tags of the CEN instance.
         self.tags = tags
@@ -216,9 +204,9 @@ class DescribeCensResponseBodyCensTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -252,7 +240,7 @@ class DescribeCensResponseBodyCensPackageIds(DaraModel):
         self,
         package_id: str = None,
     ):
-        # The ID of the bandwidth plan that is bound to the CEN instance.
+        # The ID of the bandwidth package bound to the CEN instance.
         self.package_id = package_id
 
     def validate(self):

@@ -10,7 +10,7 @@ class DescribeRegionsRequest(DaraModel):
         accept_language: str = None,
         region_id: str = None,
     ):
-        # The display name of the region, which varies based on the current language.
+        # The display language of the business location. Default value: Chinese.
         self.accept_language = accept_language
         # The region ID.
         # 

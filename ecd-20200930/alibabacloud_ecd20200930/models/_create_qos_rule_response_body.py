@@ -10,7 +10,7 @@ class CreateQosRuleResponseBody(DaraModel):
         qos_rule_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the created QoS rule.
+        # The rate limiting rule ID.
         self.qos_rule_id = qos_rule_id
         # The request ID.
         self.request_id = request_id

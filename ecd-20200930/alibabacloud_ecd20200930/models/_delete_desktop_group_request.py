@@ -11,14 +11,15 @@ class DeleteDesktopGroupRequest(DaraModel):
         region_id: str = None,
         reseller_owner_uid: int = None,
     ):
-        # Shared desktop group ID.
+        # The ID of the shared Cloud Desktop.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # Region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource ownership user in the reseller pattern. This parameter is not required in the non-reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):

@@ -110,7 +110,7 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
         self.latest_connection_time = latest_connection_time
         # The office network ID.
         self.office_site_id = office_site_id
-        # The office network name.
+        # The name of the office network.
         self.office_site_name = office_site_name
         # Specifies whether to check the session status within the cloud computer.
         self.os_session_status = os_session_status
@@ -121,10 +121,12 @@ class DescribeDesktopSessionsResponseBodySessions(DaraModel):
         # The resource group information.
         self.resource_groups = resource_groups
         # The end time of the session.
+        # The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
         self.session_end_time = session_end_time
         # The session idle duration. Unit: seconds.
         self.session_idle_time = session_idle_time
         # The start time of the session.
+        # The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
         self.session_start_time = session_start_time
         # The session connection status.
         self.session_status = session_status

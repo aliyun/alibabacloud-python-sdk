@@ -12,11 +12,11 @@ class HibernateDesktopsRequest(DaraModel):
         desktop_id: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the cloud desktops. You can specify 1 to 20 cloud desktop IDs.
+        # The cloud computer IDs. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

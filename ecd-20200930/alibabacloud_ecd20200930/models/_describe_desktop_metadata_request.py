@@ -25,20 +25,20 @@ class DescribeDesktopMetadataRequest(DaraModel):
         region_id: str = None,
         search_region_id: str = None,
     ):
-        # The time when the cloud desktop was created. The time is in UTC format:
+        # The time when the cloud computer was created. The time is in UTC and follows the format:
         # `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
         self.creation_time_start = creation_time_start
-        # The list of cloud desktop IDs.
+        # The list of cloud computer IDs.
         self.desktop_ids = desktop_ids
         # The end user ID.
         self.end_user_id = end_user_id
-        # The shared cloud desktop ID.
+        # The shared cloud computer ID.
         self.group_id = group_id
         # The hostname.
         self.host_name = host_name
         # The image ID.
         self.image_id = image_id
-        # Specifies whether the response includes cloud desktops in shared cloud desktop groups.
+        # Specifies whether the response includes cloud computers in shared cloud computer groups.
         self.include_desktop_group = include_desktop_group
         # >This parameter is not yet available for use.
         self.keyword = keyword
@@ -50,7 +50,7 @@ class DescribeDesktopMetadataRequest(DaraModel):
         self.next_token = next_token
         # The workspace ID.
         self.office_site_id = office_site_id
-        # The start time of the operation performed on the cloud desktop. The time is in UTC format:
+        # The start time of operations performed on the cloud computer. The time is in UTC and follows the format:
         # `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
         self.operation_time_start = operation_time_start
         # The region ID.

@@ -15,7 +15,7 @@ class ModifyDesktopSpecResponseBody(DaraModel):
     ):
         # The order ID.
         self.order_id = order_id
-        # A list of order IDs.
+        # The order IDs.
         self.order_ids = order_ids
         # The request ID.
         self.request_id = request_id

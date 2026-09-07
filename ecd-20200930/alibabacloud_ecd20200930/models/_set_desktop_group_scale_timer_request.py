@@ -77,19 +77,19 @@ class SetDesktopGroupScaleTimerRequestScaleTimerInfos(DaraModel):
         ratio_threshold: float = None,
         type: str = None,
     ):
-        # The number of cloud computers to purchase. This is one of the scaling policy parameters. Valid values: 0 to 200.
+        # The number of cloud computers to purchase, which is one of the scaling policy parameters. Valid values: 0 to 200.
         self.buy_res_amount = buy_res_amount
         # The cron expression for the trigger time.
         self.cron = cron
         # The duration for which a session is retained after disconnection. Unit: milliseconds. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session is always retained.
         # 
-        # When a session is disconnected because the user actively disconnects or because of other unexpected factors, the retention period starts from the time of disconnection. If the user does not reconnect to the session within the retention period, the session is logged off and all unsaved data is destroyed. If the user reconnects within the retention period, the user can still access the original session and the data that existed before the disconnection.
+        # When a session is disconnected because the user actively disconnects or because of other unexpected factors, the timer starts from the moment of disconnection. If the user does not reconnect to the session within this retention duration, the session is logged off and all unsaved data is destroyed. If the user successfully reconnects within this retention duration, the user can still access the original session and the data that existed before the disconnection.
         self.keep_duration = keep_duration
         # The load balancing policy for the multi-session cloud computer pool.
         self.load_policy = load_policy
-        # The maximum number of cloud computers. This is one of the scaling policy parameters. Valid values: 0 to 200.
+        # The maximum number of cloud computers, which is one of the scaling policy parameters. Valid values: 0 to 200.
         self.max_res_amount = max_res_amount
-        # The minimum number of cloud computers. This is one of the scaling policy parameters. Valid values: 0 to 200.
+        # The minimum number of cloud computers, which is one of the scaling policy parameters. Valid values: 0 to 200.
         self.min_res_amount = min_res_amount
         # The session occupancy threshold, which is used as the trigger condition for automatic scaling of the multi-session cloud computer pool. The session occupancy is calculated by using the following formula:
         # 

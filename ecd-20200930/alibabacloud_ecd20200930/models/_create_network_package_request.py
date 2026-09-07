@@ -31,17 +31,18 @@ class CreateNetworkPackageRequest(DaraModel):
         # The bandwidth of the premium bandwidth plan. Unit: Mbit/s.    
         # 
         # - If the premium bandwidth plan uses the subscription billing method, the valid values are 2 to 1000.
-        # - If the premium bandwidth plan uses the pay-as-you-go billing method and the billing type is pay-by-data-transfer (PayByTraffic), the valid values are 2 to 200.
-        # - If the premium bandwidth plan uses the pay-as-you-go billing method and the billing type is pay-by-bandwidth (PayByBandwidth), the valid values are 2 to 1000.
+        # - If the premium bandwidth plan uses the pay-as-you-go billing method and the metering method is pay-by-data-transfer (PayByTraffic), the valid values are 2 to 200.
+        # - If the premium bandwidth plan uses the pay-as-you-go billing method and the metering method is pay-by-bandwidth (PayByBandwidth), the valid values are 2 to 1000.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
+        # > This field is not publicly available.
         self.channel_cookie = channel_cookie
         # The billable methods of the premium bandwidth plan.
         # 
-        # - If the parameter `PayType` is set to `PrePaid`, valid values:
+        # - When the parameter `PayType` is set to `PrePaid`, the valid value is:
         #     - PayByBandwidth: billing by fixed bandwidth.
-        # - If the parameter `PayType` is set to `PostPaid`, valid values:
+        # - When the parameter `PayType` is set to `PostPaid`, the valid values are:
         #     - PayByTraffic: billing by data transfer.
         #     - PayByBandwidth: billing by fixed bandwidth.
         self.internet_charge_type = internet_charge_type
@@ -52,20 +53,22 @@ class CreateNetworkPackageRequest(DaraModel):
         # The subscription duration of the premium bandwidth plan. This parameter takes effect and is required only when PayType is set to PrePaid. Valid values are determined by the PeriodUnit parameter.
         # 
         # - If PeriodUnit is set to Week, the valid value is 1.
-        # - If PeriodUnit is set to Month, valid values are 1, 2, 3, and 6.
-        # - If PeriodUnit is set to Year, valid values are 1, 2, and 3.
+        # - If PeriodUnit is set to Month, the valid values are 1, 2, 3, and 6.
+        # - If PeriodUnit is set to Year, the valid values are 1, 2, and 3.
         # 
         # Default value: 1.
         self.period = period
         # The unit of the subscription duration for the premium bandwidth plan. This parameter takes effect and is required only when PayType is set to PrePaid.
         self.period_unit = period_unit
-        # The promotion ID.
+        # The promotion activity ID.
         self.promotion_id = promotion_id
         # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The user ID of resource ownership in the reseller pattern. You do not need to specify this parameter if you are not using the reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
+        # The tags. A maximum of 20 tags are supported.
         self.tag = tag
 
     def validate(self):
@@ -174,7 +177,9 @@ class CreateNetworkPackageRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

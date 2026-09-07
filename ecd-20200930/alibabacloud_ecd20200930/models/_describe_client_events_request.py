@@ -27,30 +27,33 @@ class DescribeClientEventsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The cloud computer ID. If you do not specify this parameter, all cloud computers in the region are queried.
+        # The cloud computer ID. If this parameter is not specified, all cloud computers in the region are queried.
         self.desktop_id = desktop_id
-        # The IP address of the cloud computer. If you do not specify this parameter, events of all cloud computers in the region are queried.
+        # The IP address of the cloud computer. If this parameter is not specified, events of all cloud computers in the region are queried.
         self.desktop_ip = desktop_ip
         # The name of the cloud computer.
         self.desktop_name = desktop_name
         # > This parameter is not publicly available.
         self.directory_id = directory_id
-        # The end time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, the current time is used.
+        # The end time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If this parameter is not specified, the current time is used.
         self.end_time = end_time
-        # The logon user information, which is a Resource Access Management (RAM) user ID or AD username. If you do not specify this parameter, events of all users in the region are queried.
+        # The logon user information, which is a Resource Access Management (RAM) user ID or AD username. If this parameter is not specified, events of all users in the region are queried.
         self.end_user_id = end_user_id
+        # The list of end user IDs.
         self.end_user_ids = end_user_ids
         # The event type to query. If EventTypes is not empty, the EventTypes combination is used as the query filter condition. If both EventTypes and EventType are empty, all events are queried.
         self.event_type = event_type
-        # The combination of event types to query. You can specify multiple event types. The query results include events of all specified types.
+        # The combination of event types to query. You can specify multiple event types. The query results include all events of the specified types.
         self.event_types = event_types
+        # Specifies whether to include terminal information in the response.
         self.fill_hardware_info = fill_hardware_info
+        # The language type of the returned information.
         self.language = language
         # The number of entries per page for a paged query. Default value: 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of NextToken returned in the previous API call.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The ID of the office network to which the cloud computer belongs. If you do not specify this parameter, user events in all office networks in the region are queried.
+        # The ID of the office network to which the cloud computer belongs. If this parameter is not specified, user events in all office networks in the region are queried.
         self.office_site_id = office_site_id
         # The name of the office network.
         self.office_site_name = office_site_name
@@ -58,7 +61,7 @@ class DescribeClientEventsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, events are queried backward from the time specified by `EndTime`.
+        # The start time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If this parameter is not specified, events are queried backward from the time specified by `EndTime`.
         self.start_time = start_time
 
     def validate(self):

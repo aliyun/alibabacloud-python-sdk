@@ -12,15 +12,15 @@ class SetIdpMetadataRequest(DaraModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The workspace ID. This parameter is the same as `OfficeSiteId`. We recommend that you use `OfficeSiteId` to replace `DirectoryId`. You can specify only `DirectoryId` or `OfficeSiteId`.
+        # The office network ID, which has the same meaning as `OfficeSiteId`. We recommend that you stop using `DirectoryId` and use `OfficeSiteId` instead. You can specify only one of `DirectoryId` and `OfficeSiteId`, not both.
         self.directory_id = directory_id
-        # The metadata of the IdP.
+        # The metadata of the identity provider (IdP).
         # 
         # This parameter is required.
         self.idp_metadata = idp_metadata
-        # The workspace ID.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The region ID.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

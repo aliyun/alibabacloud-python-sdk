@@ -13,9 +13,9 @@ class DescribeUsersPasswordResponseBody(DaraModel):
         desktop_users: List[main_models.DescribeUsersPasswordResponseBodyDesktopUsers] = None,
         request_id: str = None,
     ):
-        # The authorized users of the cloud computer.
+        # The list of accounts in the cloud computer image.
         self.desktop_users = desktop_users
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeUsersPasswordResponseBodyDesktopUsers(DaraModel):
         end_user_id: str = None,
         password: str = None,
     ):
-        # The display name of the end user.
+        # The display name of the account in the cloud computer image.
         self.display_name = display_name
-        # The ID of the end user.
+        # The end user ID.
         self.end_user_id = end_user_id
-        # The password of the end user.
+        # The password of the account in the cloud computer image.
         self.password = password
 
     def validate(self):

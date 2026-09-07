@@ -38,7 +38,7 @@ class ExportDesktopListInfoRequest(DaraModel):
         # 
         # > Only one user can connect to and use the cloud desktop at a time.
         self.end_user_id = end_user_id
-        # The expiration time of the subscription cloud desktop.
+        # The expiration time of the subscription cloud desktop. The time follows the ISO 8601 standard in UTC.
         self.expired_time = expired_time
         # The ID of the cloud desktop pool to which the cloud desktop belongs.
         self.group_id = group_id
@@ -60,7 +60,7 @@ class ExportDesktopListInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud desktops for easier searching and batch operations. For more information, see [Use tags to manage cloud desktops](https://help.aliyun.com/document_detail/203781.html).
+        # The list of tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud desktops for easy searching and batch operations. For more information, see [Use tags to manage cloud desktops](https://help.aliyun.com/document_detail/203781.html).
         self.tag = tag
         # The username of the user who is currently using the cloud desktop.
         self.user_name = user_name

@@ -9,7 +9,7 @@ class CreateDiskEncryptionServiceRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

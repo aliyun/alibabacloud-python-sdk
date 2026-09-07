@@ -16,16 +16,17 @@ class DescribeVirtualMFADevicesRequest(DaraModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
-        # The list of Active Directory (AD) account usernames.
+        # The list of AD account usernames.
         self.end_user_id = end_user_id
+        # The fuzzy match query string character.
         self.filter = filter
         # The maximum number of entries to return. Valid values: 1 to 500. Default value: 100.
         self.max_results = max_results
-        # The pagination token. If a response is truncated, use the returned `NextToken` to retrieve the next page of results.
+        # The pagination token. Set this parameter to the value of NextToken that was returned from the last call to this operation.
         self.next_token = next_token
         # The office network ID.
         self.office_site_id = office_site_id
-        # The region ID. Call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
