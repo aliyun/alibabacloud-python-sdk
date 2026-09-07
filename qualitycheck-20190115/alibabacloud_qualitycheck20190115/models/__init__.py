@@ -135,6 +135,9 @@ from ._generate_label_response import GenerateLabelResponse
 from ._get_agent_request import GetAgentRequest
 from ._get_agent_response_body import GetAgentResponseBody
 from ._get_agent_response import GetAgentResponse
+from ._get_agent_mjob_info_request import GetAgentMJobInfoRequest
+from ._get_agent_mjob_info_response_body import GetAgentMJobInfoResponseBody
+from ._get_agent_mjob_info_response import GetAgentMJobInfoResponse
 from ._get_agent_task_result_request import GetAgentTaskResultRequest
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBody
 from ._get_agent_task_result_response import GetAgentTaskResultResponse
@@ -207,6 +210,9 @@ from ._handle_complaint_response import HandleComplaintResponse
 from ._invalid_rule_request import InvalidRuleRequest
 from ._invalid_rule_response_body import InvalidRuleResponseBody
 from ._invalid_rule_response import InvalidRuleResponse
+from ._list_agent_mjob_info_request import ListAgentMJobInfoRequest
+from ._list_agent_mjob_info_response_body import ListAgentMJobInfoResponseBody
+from ._list_agent_mjob_info_response import ListAgentMJobInfoResponse
 from ._list_asr_vocab_request import ListAsrVocabRequest
 from ._list_asr_vocab_response_body import ListAsrVocabResponseBody
 from ._list_asr_vocab_response import ListAsrVocabResponse
@@ -388,6 +394,9 @@ from ._delete_rule_response_body import DeleteRuleResponseBodyMessages
 from ._delete_rule_v4response_body import DeleteRuleV4ResponseBodyMessages
 from ._delete_scheme_task_config_response_body import DeleteSchemeTaskConfigResponseBodyMessages
 from ._execute_agent_response_body import ExecuteAgentResponseBodyData
+from ._get_agent_mjob_info_response_body import GetAgentMJobInfoResponseBodyDataAgentMDetailResponseSummaryUrls
+from ._get_agent_mjob_info_response_body import GetAgentMJobInfoResponseBodyDataAgentMDetailResponse
+from ._get_agent_mjob_info_response_body import GetAgentMJobInfoResponseBodyData
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataDialogues
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse
 from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList
@@ -554,6 +563,7 @@ from ._get_warning_strategy_config_response_body import GetWarningStrategyConfig
 from ._get_warning_strategy_config_response_body import GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyList
 from ._get_warning_strategy_config_response_body import GetWarningStrategyConfigResponseBodyDataWarningStrategyList
 from ._get_warning_strategy_config_response_body import GetWarningStrategyConfigResponseBodyData
+from ._list_agent_mjob_info_response_body import ListAgentMJobInfoResponseBodyData
 from ._list_asr_vocab_response_body import ListAsrVocabResponseBodyDataAsrVocab
 from ._list_asr_vocab_response_body import ListAsrVocabResponseBodyData
 from ._list_data_set_response_body import ListDataSetResponseBodyDataData
@@ -806,6 +816,9 @@ __all__ = [
     GetAgentRequest,
     GetAgentResponseBody,
     GetAgentResponse,
+    GetAgentMJobInfoRequest,
+    GetAgentMJobInfoResponseBody,
+    GetAgentMJobInfoResponse,
     GetAgentTaskResultRequest,
     GetAgentTaskResultResponseBody,
     GetAgentTaskResultResponse,
@@ -878,6 +891,9 @@ __all__ = [
     InvalidRuleRequest,
     InvalidRuleResponseBody,
     InvalidRuleResponse,
+    ListAgentMJobInfoRequest,
+    ListAgentMJobInfoResponseBody,
+    ListAgentMJobInfoResponse,
     ListAsrVocabRequest,
     ListAsrVocabResponseBody,
     ListAsrVocabResponse,
@@ -1059,6 +1075,9 @@ __all__ = [
     DeleteRuleV4ResponseBodyMessages,
     DeleteSchemeTaskConfigResponseBodyMessages,
     ExecuteAgentResponseBodyData,
+    GetAgentMJobInfoResponseBodyDataAgentMDetailResponseSummaryUrls,
+    GetAgentMJobInfoResponseBodyDataAgentMDetailResponse,
+    GetAgentMJobInfoResponseBodyData,
     GetAgentTaskResultResponseBodyDataDialogues,
     GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse,
     GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList,
@@ -1225,6 +1244,7 @@ __all__ = [
     GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyList,
     GetWarningStrategyConfigResponseBodyDataWarningStrategyList,
     GetWarningStrategyConfigResponseBodyData,
+    ListAgentMJobInfoResponseBodyData,
     ListAsrVocabResponseBodyDataAsrVocab,
     ListAsrVocabResponseBodyData,
     ListDataSetResponseBodyDataData,

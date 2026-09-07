@@ -23,9 +23,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-hangzhou': 'qualitycheck.cn-hangzhou.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('qualitycheck', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -3135,6 +3132,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_agent_with_options_async(request, runtime)
 
+    def get_agent_mjob_info_with_options(
+        self,
+        request: main_models.GetAgentMJobInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentMJobInfoResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentMJobInfo',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentMJobInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_mjob_info_with_options_async(
+        self,
+        request: main_models.GetAgentMJobInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentMJobInfoResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentMJobInfo',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentMJobInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_mjob_info(
+        self,
+        request: main_models.GetAgentMJobInfoRequest,
+    ) -> main_models.GetAgentMJobInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_mjob_info_with_options(request, runtime)
+
+    async def get_agent_mjob_info_async(
+        self,
+        request: main_models.GetAgentMJobInfoRequest,
+    ) -> main_models.GetAgentMJobInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_mjob_info_with_options_async(request, runtime)
+
     def get_agent_task_result_with_options(
         self,
         request: main_models.GetAgentTaskResultRequest,
@@ -5010,6 +5081,80 @@ class Client(OpenApiClient):
     ) -> main_models.InvalidRuleResponse:
         runtime = RuntimeOptions()
         return await self.invalid_rule_with_options_async(request, runtime)
+
+    def list_agent_mjob_info_with_options(
+        self,
+        request: main_models.ListAgentMJobInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentMJobInfoResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentMJobInfo',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentMJobInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agent_mjob_info_with_options_async(
+        self,
+        request: main_models.ListAgentMJobInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentMJobInfoResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentMJobInfo',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentMJobInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agent_mjob_info(
+        self,
+        request: main_models.ListAgentMJobInfoRequest,
+    ) -> main_models.ListAgentMJobInfoResponse:
+        runtime = RuntimeOptions()
+        return self.list_agent_mjob_info_with_options(request, runtime)
+
+    async def list_agent_mjob_info_async(
+        self,
+        request: main_models.ListAgentMJobInfoRequest,
+    ) -> main_models.ListAgentMJobInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agent_mjob_info_with_options_async(request, runtime)
 
     def list_asr_vocab_with_options(
         self,

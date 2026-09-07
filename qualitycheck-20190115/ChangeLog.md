@@ -1,3 +1,8 @@
+2026-09-07 Version: 10.1.0
+- Support API GetAgentMJobInfo.
+- Support API ListAgentMJobInfo.
+
+
 2026-08-25 Version: 10.0.4
 - Generated python 2019-01-15 for Qualitycheck.
 

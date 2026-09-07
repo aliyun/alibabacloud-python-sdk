@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetAgentTaskResultRequest(DaraModel):
+class ListAgentMJobInfoRequest(DaraModel):
     def __init__(
         self,
-        base_me_agent_id: str = None,
+        base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # The ID of the workspace.
+        # The business space ID.
         self.base_me_agent_id = base_me_agent_id
-        # The complete JSON string. For more information, see the following details.
+        # The complete JSON string. For more information, see the following detailed information.
         self.json_str = json_str
 
     def validate(self):

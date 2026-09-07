@@ -10,7 +10,7 @@ class CreateAgentTaskRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # The ID of the business space.
+        # The ID of the business workspace.
         self.base_me_agent_id = base_me_agent_id
         # The complete **JSON string** information. For details, see the following sections.
         self.json_str = json_str

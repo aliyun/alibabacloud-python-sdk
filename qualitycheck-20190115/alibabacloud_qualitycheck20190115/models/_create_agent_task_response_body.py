@@ -14,7 +14,7 @@ class CreateAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result code. A value of **200** indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. You can use this field to determine the cause of failure.
         self.code = code
         # The returned result.
         self.data = data
