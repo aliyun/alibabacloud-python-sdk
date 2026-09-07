@@ -14,6 +14,7 @@ class ListSkillsRequest(DaraModel):
         skill_channel: str = None,
         skill_ids: List[str] = None,
         supplier_type: str = None,
+        tag_codes: List[str] = None,
     ):
         # The page number of the current page in a paged query.
         self.page_number = page_number
@@ -27,6 +28,8 @@ class ListSkillsRequest(DaraModel):
         self.skill_ids = skill_ids
         # The supply type.
         self.supplier_type = supplier_type
+        # TagCodes
+        self.tag_codes = tag_codes
 
     def validate(self):
         pass
@@ -51,6 +54,9 @@ class ListSkillsRequest(DaraModel):
         if self.supplier_type is not None:
             result['SupplierType'] = self.supplier_type
 
+        if self.tag_codes is not None:
+            result['TagCodes'] = self.tag_codes
+
         return result
 
     def from_map(self, m: dict = None):
@@ -69,6 +75,9 @@ class ListSkillsRequest(DaraModel):
 
         if m.get('SupplierType') is not None:
             self.supplier_type = m.get('SupplierType')
+
+        if m.get('TagCodes') is not None:
+            self.tag_codes = m.get('TagCodes')
 
         return self
 

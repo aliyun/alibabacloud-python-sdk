@@ -105,7 +105,7 @@ class ListSkillsResponseBodySkills(DaraModel):
         # The name in the SKILL.md file.
         self.skill_name = skill_name
         self.skill_versions = skill_versions
-        # The skill slug identifier, which is user-defined and unique within the tenant.
+        # The skill slug identifier, which is user-defined and unique within the tenant dimension.
         self.slug = slug
         # The source marketplace code.
         self.source_market = source_market

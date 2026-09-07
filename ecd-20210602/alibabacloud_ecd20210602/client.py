@@ -21,32 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'ecd.us-west-1.aliyuncs.com',
-            'us-east-1': 'ecd.us-east-1.aliyuncs.com',
-            'me-east-1': 'ecd.me-east-1.aliyuncs.com',
-            'me-central-1': 'ecd.me-central-1.aliyuncs.com',
-            'eu-west-1': 'ecd.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'ecd.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'ecd.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'ecd.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'ecd.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'ecd.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'ecd.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'ecd.cn-qingdao.aliyuncs.com',
-            'cn-nanjing': 'ecd.cn-nanjing.aliyuncs.com',
-            'cn-hongkong': 'ecd.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou-finance': 'ecd.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'ecd.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'ecd.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'ecd.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'ecd.cn-beijing.aliyuncs.com',
-            'ap-southeast-7': 'ecd.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'ecd.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'ecd.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-1': 'ecd.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'ecd.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecd', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -571,6 +545,8 @@ class Client(OpenApiClient):
             query['SkillIds'] = request.skill_ids
         if not DaraCore.is_null(request.supplier_type):
             query['SupplierType'] = request.supplier_type
+        if not DaraCore.is_null(request.tag_codes):
+            query['TagCodes'] = request.tag_codes
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -607,6 +583,8 @@ class Client(OpenApiClient):
             query['SkillIds'] = request.skill_ids
         if not DaraCore.is_null(request.supplier_type):
             query['SupplierType'] = request.supplier_type
+        if not DaraCore.is_null(request.tag_codes):
+            query['TagCodes'] = request.tag_codes
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -639,6 +617,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListSkillsResponse:
         runtime = RuntimeOptions()
         return await self.list_skills_with_options_async(request, runtime)
+
+    def list_tenant_app_with_options(
+        self,
+        request: main_models.ListTenantAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTenantAppResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTenantApp',
+            version = '2021-06-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTenantAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tenant_app_with_options_async(
+        self,
+        request: main_models.ListTenantAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTenantAppResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTenantApp',
+            version = '2021-06-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTenantAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tenant_app(
+        self,
+        request: main_models.ListTenantAppRequest,
+    ) -> main_models.ListTenantAppResponse:
+        runtime = RuntimeOptions()
+        return self.list_tenant_app_with_options(request, runtime)
+
+    async def list_tenant_app_async(
+        self,
+        request: main_models.ListTenantAppRequest,
+    ) -> main_models.ListTenantAppResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tenant_app_with_options_async(request, runtime)
 
     def parse_skill_package_with_options(
         self,

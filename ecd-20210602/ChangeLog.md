@@ -1,3 +1,8 @@
+2026-09-07 Version: 1.1.0
+- Support API ListTenantApp.
+- Update API ListSkills: add request parameters TagCodes.
+
+
 2026-07-31 Version: 1.0.1
 - Update API ListSkills: add response parameters Body.Skills.$.SupportAgentList.
 
