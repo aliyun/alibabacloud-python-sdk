@@ -22,7 +22,7 @@ class GetTableResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The table details.
+        # The detailed table information.
         self.table = table
 
     def validate(self):

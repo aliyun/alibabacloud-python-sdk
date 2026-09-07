@@ -1,3 +1,12 @@
+2026-09-07 Version: 4.2.0
+- Support API AddKnowledgeTags.
+- Support API AddKnowledgeUploadUser.
+- Support API DeleteKnowledgeFile.
+- Support API ListKnowledgeTags.
+- Support API ListKnowledgeUploadUser.
+- Support API RemoveKnowledgeTags.
+
+
 2026-08-25 Version: 4.1.2
 - Update API CreateDBResourceGroup: add request parameters RayConfig.StorageMounts.
 - Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.StorageMounts.$.StorageName.

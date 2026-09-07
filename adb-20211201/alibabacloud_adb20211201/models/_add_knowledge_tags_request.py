@@ -1,0 +1,56 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class AddKnowledgeTagsRequest(DaraModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        file_location: str = None,
+        tags: str = None,
+    ):
+        # The database cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The location of the knowledge base document.
+        # 
+        # This parameter is required.
+        self.file_location = file_location
+        # The JSON string of the tag array. Each tag must be in the following format: {"tag_key":"key_name","tag_value":"value"}.
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+
+        if self.file_location is not None:
+            result['FileLocation'] = self.file_location
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('FileLocation') is not None:
+            self.file_location = m.get('FileLocation')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+
+        return self
+

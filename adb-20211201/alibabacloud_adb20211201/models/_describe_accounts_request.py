@@ -11,9 +11,9 @@ class DescribeAccountsRequest(DaraModel):
         dbcluster_id: str = None,
         engine: str = None,
         owner_id: str = None,
+        resource_group_name: str = None,
     ):
         # The database account.
-        # 
         # > If you do not specify this parameter, information about all database accounts is returned.
         self.account_name = account_name
         # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
@@ -23,11 +23,12 @@ class DescribeAccountsRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The database engine. Valid values:
         # 
-        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine
-        # 
-        # - **Clickhouse**: the LindormTable engine
+        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # - **Clickhouse**: the wide table engine.
         self.engine = engine
         self.owner_id = owner_id
+        # The name of the resource group.
+        self.resource_group_name = resource_group_name
 
     def validate(self):
         pass
@@ -49,6 +50,9 @@ class DescribeAccountsRequest(DaraModel):
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -64,6 +68,9 @@ class DescribeAccountsRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
 
         return self
 

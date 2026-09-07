@@ -34,7 +34,7 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
     ):
         # The PromQL resource group configuration.
         self.atm_config_shrink = atm_config_shrink
-        # The automatic stop interval, in minutes (m).
+        # The auto-stop interval, in minutes (m).
         self.auto_stop_interval = auto_stop_interval
         # The classification of the resource group. Valid values:
         # - SQL
@@ -51,8 +51,8 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
-        # - **True**: enables the spot instance feature.
-        # - **False**: disables the spot instance feature.
+        # - **True**: Enables the spot instance feature.
+        # - **False**: Disables the spot instance feature.
         self.enable_spot = enable_spot
         # The database engine. Valid values:
         # 
@@ -61,7 +61,7 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
         self.engine = engine
         # The engine configuration.
         self.engine_params_shrink = engine_params_shrink
-        # The GPU time-sharing elastic plan.
+        # The GPU time-based elastic plan.
         self.gpu_elastic_plan_shrink = gpu_elastic_plan_shrink
         # The name of the resource group.
         # - The name can be up to 255 characters in length.
@@ -73,23 +73,23 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
         # The type of the resource group. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about resource groups of the Data Lakehouse Edition, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, see [Introduction to resource groups (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
         # A reserved parameter (not applicable).
         self.max_cluster_count = max_cluster_count
         # The maximum reserved computing resources, in ACUs.
-        # - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, with a step size of 16 ACUs.
-        # - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, with a step size of 8 ACUs.
+        # - If the resource group type is Interactive, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 16 ACUs.
+        # - If the resource group type is Job, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 8 ACUs.
         self.max_compute_resource = max_compute_resource
         # The maximum number of GPUs.
         self.max_gpu_quantity = max_gpu_quantity
         # A reserved parameter (not applicable).
         self.min_cluster_count = min_cluster_count
         # The minimum reserved computing resources, in ACUs.
-        # - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
-        # - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
+        # - If the resource group type is Interactive, the minimum reserved computing resources are 16 ACUs.
+        # - If the resource group type is Job, the minimum reserved computing resources are 0 ACUs.
         self.min_compute_resource = min_compute_resource
         # The minimum number of GPUs.
         self.min_gpu_quantity = min_gpu_quantity
@@ -103,13 +103,13 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
         # The job routing rules.
         self.rules_shrink = rules_shrink
         # The scaling policy of the resource group. Valid values:
-        # - AutoScaling: enables the AutoScaling automatic scaling policy.
-        # - Disable: disables automatic scaling.
-        # - MultiCluster: enables the MultiCluster automatic scaling policy.
+        # - AutoScaling: enables the AutoScaling auto-scaling policy.
+        # - Disable: disables auto-scaling.
+        # - MultiCluster: enables the MultiCluster auto-scaling policy.
         self.scale_policy = scale_policy
         # The specification name.
         self.spec_name = spec_name
-        # The name of the target resource group.
+        # The name of the destination resource group.
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):

@@ -2,15 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict, Any
-
 from alibabacloud_adb20211201 import models as main_models
 from darabonba.model import DaraModel
 
-class GetKnowledgeRecallResponseBody(DaraModel):
+class RemoveKnowledgeTagsResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.GetKnowledgeRecallResponseBodyData = None,
+        data: main_models.RemoveKnowledgeTagsResponseBodyData = None,
         request_id: str = None,
     ):
         # The returned data.
@@ -38,7 +36,7 @@ class GetKnowledgeRecallResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
-            temp_model = main_models.GetKnowledgeRecallResponseBodyData()
+            temp_model = main_models.RemoveKnowledgeTagsResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('RequestId') is not None:
@@ -46,22 +44,25 @@ class GetKnowledgeRecallResponseBody(DaraModel):
 
         return self
 
-class GetKnowledgeRecallResponseBodyData(DaraModel):
+class RemoveKnowledgeTagsResponseBodyData(DaraModel):
     def __init__(
         self,
-        count: int = None,
+        file_location: str = None,
         message: str = None,
-        results: List[Dict[str, Any]] = None,
-        trace_id: str = None,
+        removed: int = None,
+        success: bool = None,
     ):
-        # The total number of records.
-        self.count = count
-        # The prompt message.
+        # The location of the knowledge base file.
+        self.file_location = file_location
+        # The message returned by the operation.
         self.message = message
-        # The recall results.
-        self.results = results
-        # The Tracing Analysis ID.
-        self.trace_id = trace_id
+        # The number of tags that were successfully deleted.
+        self.removed = removed
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
+        self.success = success
 
     def validate(self):
         pass
@@ -71,33 +72,33 @@ class GetKnowledgeRecallResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.count is not None:
-            result['Count'] = self.count
+        if self.file_location is not None:
+            result['FileLocation'] = self.file_location
 
         if self.message is not None:
             result['Message'] = self.message
 
-        if self.results is not None:
-            result['Results'] = self.results
+        if self.removed is not None:
+            result['Removed'] = self.removed
 
-        if self.trace_id is not None:
-            result['TraceId'] = self.trace_id
+        if self.success is not None:
+            result['Success'] = self.success
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
+        if m.get('FileLocation') is not None:
+            self.file_location = m.get('FileLocation')
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
 
-        if m.get('Results') is not None:
-            self.results = m.get('Results')
+        if m.get('Removed') is not None:
+            self.removed = m.get('Removed')
 
-        if m.get('TraceId') is not None:
-            self.trace_id = m.get('TraceId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
 
         return self
 

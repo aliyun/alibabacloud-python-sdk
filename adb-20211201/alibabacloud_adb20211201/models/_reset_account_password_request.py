@@ -12,35 +12,35 @@ class ResetAccountPasswordRequest(DaraModel):
         account_password: str = None,
         dbcluster_id: str = None,
         engine: str = None,
+        resource_group_name: str = None,
     ):
-        # The description of the database account.
-        # 
-        # *   The description cannot start with `http://` or `https://`.
-        # *   The description must be 2 to 256 characters in length.
+        # The description of the account.
+        # - The description cannot start with `http://` or `https://`.
+        # - The description must be 2 to 256 characters in length.
         self.account_description = account_description
-        # The name of the database account.
-        # 
-        # >  You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the information about database accounts of an AnalyticDB for MySQL cluster, including database account names.
+        # The database account.
+        # > You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the database account information of a specified cluster, including the database account.
         # 
         # This parameter is required.
         self.account_name = account_name
         # The password of the database account.
-        # 
-        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
-        # *   The password must be 8 to 32 characters in length.
+        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - The following special characters are supported: `!@#$%^&*()_+-=`
+        # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the cluster. The cluster can be an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database engine of the cluster. Valid values:
+        # The database engine. Valid values:
         # 
-        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # *   **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # - **Clickhouse**: the wide table engine.
         self.engine = engine
+        self.resource_group_name = resource_group_name
 
     def validate(self):
         pass
@@ -65,6 +65,9 @@ class ResetAccountPasswordRequest(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -83,6 +86,9 @@ class ResetAccountPasswordRequest(DaraModel):
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
 
         return self
 

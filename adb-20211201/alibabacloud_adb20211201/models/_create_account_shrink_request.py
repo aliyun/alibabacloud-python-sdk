@@ -13,7 +13,11 @@ class CreateAccountShrinkRequest(DaraModel):
         account_type: str = None,
         dbcluster_id: str = None,
         engine: str = None,
+        promql_insert_privileges_shrink: str = None,
+        promql_select_node_percentage: float = None,
+        promql_select_privileges_shrink: str = None,
         ram_user_list_shrink: str = None,
+        resource_group_name: str = None,
     ):
         # The description of the account.
         # - Cannot start with `http://` or `https://`.
@@ -45,11 +49,15 @@ class CreateAccountShrinkRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The database engine. Valid values:
         # 
-        # - **AnalyticDB** (default): AnalyticDB for MySQL engine.
-        # - **Clickhouse**: wide table engine.
+        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # - **Clickhouse**: the wide table engine.
         self.engine = engine
-        # The list of Alibaba Cloud Resource Access Management (RAM) user IDs to attach. Currently, only one RAM user can be attached.
+        self.promql_insert_privileges_shrink = promql_insert_privileges_shrink
+        self.promql_select_node_percentage = promql_select_node_percentage
+        self.promql_select_privileges_shrink = promql_select_privileges_shrink
+        # The list of Alibaba Cloud RAM user IDs to bind. Currently, only one RAM user can be bound.
         self.ram_user_list_shrink = ram_user_list_shrink
+        self.resource_group_name = resource_group_name
 
     def validate(self):
         pass
@@ -77,8 +85,20 @@ class CreateAccountShrinkRequest(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.promql_insert_privileges_shrink is not None:
+            result['PromqlInsertPrivileges'] = self.promql_insert_privileges_shrink
+
+        if self.promql_select_node_percentage is not None:
+            result['PromqlSelectNodePercentage'] = self.promql_select_node_percentage
+
+        if self.promql_select_privileges_shrink is not None:
+            result['PromqlSelectPrivileges'] = self.promql_select_privileges_shrink
+
         if self.ram_user_list_shrink is not None:
             result['RamUserList'] = self.ram_user_list_shrink
+
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
 
         return result
 
@@ -102,8 +122,20 @@ class CreateAccountShrinkRequest(DaraModel):
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
 
+        if m.get('PromqlInsertPrivileges') is not None:
+            self.promql_insert_privileges_shrink = m.get('PromqlInsertPrivileges')
+
+        if m.get('PromqlSelectNodePercentage') is not None:
+            self.promql_select_node_percentage = m.get('PromqlSelectNodePercentage')
+
+        if m.get('PromqlSelectPrivileges') is not None:
+            self.promql_select_privileges_shrink = m.get('PromqlSelectPrivileges')
+
         if m.get('RamUserList') is not None:
             self.ram_user_list_shrink = m.get('RamUserList')
+
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
 
         return self
 

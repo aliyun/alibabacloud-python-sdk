@@ -18,42 +18,38 @@ class ModifyBackupPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The number of days for which to retain full backup files. Valid values: 7 to 730.
-        # 
-        # >  If you do not specify this parameter, the default value 7 is used.
+        # The number of days for which full backups are retained. Valid values: 7 to 730.
+        # > If you do not specify this parameter, the default value is 7.
         self.backup_retention_period = backup_retention_period
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable log backup. Valid values:
-        # 
-        # *   **Enable**
-        # *   **Disable**
-        # 
-        # >  If you do not specify this parameter, the default value Enable is used.
+        # Specifies whether to enable log (real-time) backup. Valid values:
+        # - **Enable**: Enabled.
+        # - **Disable**: Disabled.
+        # > If you do not specify this parameter, log backup is enabled by default.
         self.enable_backup_log = enable_backup_log
-        # The number of days for which to retain log backup files. Valid values: 7 to 730.
-        # 
-        # >  If you do not specify this parameter, the default value 7 is used.
+        # The number of days for which log (real-time) backups are retained. Valid values: 7 to 730.
+        # > If you do not specify this parameter, the default value is 7.
         self.log_backup_retention_period = log_backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The days of the week on which to perform a full backup. Separate multiple values with commas (,). Valid values:
+        # The full backup cycle. Separate multiple values with commas (,). Valid values:
+        # - **Monday**: Monday.
+        # - **Tuesday**: Tuesday.
+        # - **Wednesday**: Wednesday.
+        # - **Thursday**: Thursday.
+        # - **Friday**: Friday.
+        # - **Saturday**: Saturday.
+        # - **Sunday**: Sunday.
         # 
-        # *   **Monday**
-        # *   **Tuesday**
-        # *   **Wednesday**
-        # *   **Thursday**
-        # *   **Friday**
-        # *   **Saturday**
-        # *   **Sunday**
-        # 
-        # >  To ensure data security, we recommend that you specify at least two values.
+        # > To ensure data security, select at least two days.
         self.preferred_backup_period = preferred_backup_period
-        # The start time to perform a full backup. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in UTC.
+        # The start time of the full backup. Specify the time in the HH:mmZ-HH:mmZ format (UTC).
         # 
-        # >  The time range must be 1 hour.
+        # > The time range is limited to 1 hour.
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time

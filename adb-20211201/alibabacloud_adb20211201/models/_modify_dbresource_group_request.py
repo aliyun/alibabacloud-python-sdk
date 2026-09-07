@@ -35,18 +35,18 @@ class ModifyDBResourceGroupRequest(DaraModel):
     ):
         # The PromQL resource group configuration.
         self.atm_config = atm_config
-        # The automatic stop interval.
+        # The auto-stop interval.
         self.auto_stop_interval = auto_stop_interval
-        # A reserved parameter (not applicable).
+        # Reserved parameter (not applicable).
         self.cluster_mode = cluster_mode
-        # A reserved parameter (not applicable).
+        # Reserved parameter (not applicable).
         self.cluster_size_resource = cluster_size_resource
         # <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
         # <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
+        # Specifies whether to enable the spot instance feature for the resource group. After spot instances are enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
         # - **True**: Enables the spot instance feature.
         # - **False**: Disables the spot instance feature.
         self.enable_spot = enable_spot
@@ -62,25 +62,25 @@ class ModifyDBResourceGroupRequest(DaraModel):
         # The resource group type. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about Data Lakehouse Edition resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, refer to [Resource group introduction](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
-        # A reserved parameter (not applicable).
+        # Reserved parameter (not applicable).
         self.max_cluster_count = max_cluster_count
         # The maximum reserved computing resources.
-        # - If the resource group type is Interactive, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 16 ACUs.
-        # - If the resource group type is Job, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 8 ACUs.
+        # - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 16 ACUs.
+        # - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 8 ACUs.
         self.max_compute_resource = max_compute_resource
-        # A reserved parameter (not applicable).
+        # Reserved parameter (not applicable).
         self.max_gpu_quantity = max_gpu_quantity
-        # A reserved parameter (not applicable).
+        # Reserved parameter (not applicable).
         self.min_cluster_count = min_cluster_count
         # The minimum reserved computing resources.
-        # - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
-        # - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
+        # - If the resource group type is Interactive, the minimum reserved computing resources are 16 ACUs.
+        # - If the resource group type is Job, the minimum reserved computing resources are 0 ACUs.
         self.min_compute_resource = min_compute_resource
-        # A reserved parameter (not applicable).
+        # Reserved parameter (not applicable).
         self.min_gpu_quantity = min_gpu_quantity
         # The Ray configuration. This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
         self.ray_config = ray_config
@@ -89,11 +89,11 @@ class ModifyDBResourceGroupRequest(DaraModel):
         self.region_id = region_id
         # The job routing rules.
         self.rules = rules
-        # A reserved parameter (not applicable).
+        # Reserved parameter (not applicable).
         self.spec_name = spec_name
         # The resource group status. **starting** indicates that the resource group is being started. **stopping** indicates that the resource group is being stopped.
         self.status = status
-        # A reserved parameter (not applicable).
+        # Reserved parameter (not applicable).
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
@@ -323,9 +323,9 @@ class ModifyDBResourceGroupRequestRayConfig(DaraModel):
         self.app_config = app_config
         # The Ray cluster type. Valid values:
         # 
-        # - BASIC: basic type, non-high-availability
+        # - BASIC: basic type, non-high availability
         # 
-        # - HIGH_AVAILABILITY: high-availability type
+        # - HIGH_AVAILABILITY: high availability type
         self.category = category
         # Specifies whether to enable ENI.
         self.enable_user_eni = enable_user_eni
@@ -333,7 +333,7 @@ class ModifyDBResourceGroupRequestRayConfig(DaraModel):
         self.head_allocate_unit = head_allocate_unit
         # The disk size of the head node.
         self.head_disk_capacity = head_disk_capacity
-        # The node specifications of the head node.
+        # The specification of the head node.
         self.head_spec = head_spec
         # The resource type of the head node.
         self.head_spec_type = head_spec_type
@@ -458,7 +458,7 @@ class ModifyDBResourceGroupRequestRayConfigWorkerGroups(DaraModel):
         self.min_worker_quantity = min_worker_quantity
         # The disk size of the worker node.
         self.worker_disk_capacity = worker_disk_capacity
-        # The node specifications of the worker node.
+        # The specification of the worker node.
         self.worker_spec_name = worker_spec_name
         # The resource type of the worker node.
         self.worker_spec_type = worker_spec_type
@@ -665,8 +665,8 @@ class ModifyDBResourceGroupRequestGpuElasticPlan(DaraModel):
         rules: List[main_models.ModifyDBResourceGroupRequestGpuElasticPlanRules] = None,
     ):
         # Specifies whether to enable the elastic plan immediately after creation. Valid values:
-        # - **true**: Enables the elastic plan immediately.
-        # - **false**: Does not enable the elastic plan.
+        # - **true**: Enables the plan immediately.
+        # - **false**: Does not enable the plan.
         self.enabled = enabled
         # The list of rules.
         self.rules = rules
@@ -759,25 +759,25 @@ class ModifyDBResourceGroupRequestAtmConfig(DaraModel):
     ):
         # The number of authentication nodes.
         self.auth_node_num = auth_node_num
-        # The authentication node specifications in ACU ([0-9+]ACU).
+        # The authentication node specification in [0-9+]ACU.
         self.auth_node_spec = auth_node_spec
         # The number of insert nodes.
         self.insert_node_num = insert_node_num
-        # The insert node specifications in ACU ([0-9+]ACU).
+        # The insert node specification in [0-9+]ACU.
         self.insert_node_spec = insert_node_spec
         # The query node cache size in GB.
         self.select_node_cache_size = select_node_cache_size
         # The number of query nodes.
         self.select_node_num = select_node_num
-        # The query node specifications ([0-9+]ACU).
+        # The query node specification ([0-9+]ACU).
         self.select_node_spec = select_node_spec
-        # The disk size of storage nodes.
+        # The storage node disk size.
         self.storage_node_disk_size = storage_node_disk_size
-        # The disk type of storage nodes (essd_pl1, essd_pl2).
+        # The storage node disk type (essd_pl1, essd_pl2).
         self.storage_node_disk_type = storage_node_disk_type
         # The number of storage nodes.
         self.storage_node_num = storage_node_num
-        # The storage node specifications in ACU ([0-9+]ACU).
+        # The storage node specification in [0-9+]ACU.
         self.storage_node_spec = storage_node_spec
 
     def validate(self):

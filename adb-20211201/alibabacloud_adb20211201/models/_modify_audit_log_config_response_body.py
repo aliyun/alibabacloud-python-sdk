@@ -12,10 +12,9 @@ class ModifyAuditLogConfigResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the status of SQL audit is updated. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the SQL audit logging status is updated. Valid values:
+        # - **true**: The status is updated.
+        # - **false**: The status failed to be updated.
         self.update_succeed = update_succeed
 
     def validate(self):

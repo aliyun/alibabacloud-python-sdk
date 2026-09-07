@@ -11,6 +11,7 @@ class AddKnowledgeFileRequest(DaraModel):
         file_location: str = None,
         file_type: str = None,
         is_dir: bool = None,
+        priority: str = None,
         tags: str = None,
         upload_user: str = None,
     ):
@@ -18,14 +19,16 @@ class AddKnowledgeFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The file address. Currently, only OSS paths are supported.
+        # The file location. Currently, only OSS paths are supported.
         # 
         # This parameter is required.
         self.file_location = file_location
         # The file type.
         self.file_type = file_type
-        # Specifies whether the file is a folder.
+        # Specifies whether the path is a directory.
         self.is_dir = is_dir
+        # The confidence level or weight of the file.
+        self.priority = priority
         # The file tags in JSON format.
         self.tags = tags
         # The user who uploads the knowledge base file.
@@ -51,6 +54,9 @@ class AddKnowledgeFileRequest(DaraModel):
         if self.is_dir is not None:
             result['IsDir'] = self.is_dir
 
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
         if self.tags is not None:
             result['Tags'] = self.tags
 
@@ -72,6 +78,9 @@ class AddKnowledgeFileRequest(DaraModel):
 
         if m.get('IsDir') is not None:
             self.is_dir = m.get('IsDir')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')

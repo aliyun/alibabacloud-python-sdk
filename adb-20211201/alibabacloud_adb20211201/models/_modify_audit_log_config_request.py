@@ -16,31 +16,29 @@ class ModifyAuditLogConfigRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The status to which you want to change the SQL audit feature. Valid values:
+        # The status of SQL audit logging. Valid values:
+        # - **on**: Enables SQL audit logging.
+        # - **off**: Disables SQL audit logging.
         # 
-        # *   **on**
-        # *   **off**
-        # 
-        # >  After you disable the SQL audit feature, all SQL audit logs are deleted. You must query and export SQL audit logs before you disable SQL audit. For more information, see [DescribeAuditLogRecords](https://help.aliyun.com/document_detail/612426.html). When you re-enable SQL audit, audit logs that are generated from the time when SQL audit was last enabled are available for queries.
+        # > After SQL audit logging is disabled, all SQL audit logs are deleted. Query and export the SQL audit logs before disabling SQL audit logging. For more information, see [DescribeAuditLogRecords](https://help.aliyun.com/document_detail/612426.html). When SQL audit logging is enabled again, audit logs are displayed starting from the most recent time that audit logging was enabled.
         # 
         # This parameter is required.
         self.audit_log_status = audit_log_status
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
+        # > You can call [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) to query the IDs of all clusters in a specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The type of the compute engine. Valid values:
         # 
-        # *   XIHE (**default**)
-        # *   SPARK
+        # - XIHE (**default**): Xihe compute engine.
+        # - SPARK: Spark compute engine.
         self.engine_type = engine_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+        # The region ID.
+        # > You can call [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) to query the region ID of a specified cluster.
         # 
         # This parameter is required.
         self.region_id = region_id

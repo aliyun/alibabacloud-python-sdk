@@ -13,24 +13,31 @@ class ModifyAccountPrivilegesRequest(DaraModel):
         account_name: str = None,
         account_privileges: List[main_models.ModifyAccountPrivilegesRequestAccountPrivileges] = None,
         dbcluster_id: str = None,
+        promql_insert_privileges: List[str] = None,
+        promql_select_node_percentage: float = None,
+        promql_select_privileges: List[str] = None,
         region_id: str = None,
+        resource_group_name: str = None,
     ):
         # The name of the database account.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The permissions that you want to grant to the database account.
-        # 
-        # This parameter is required.
+        # The list of granted permissions.
         self.account_privileges = account_privileges
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.promql_insert_privileges = promql_insert_privileges
+        self.promql_select_node_percentage = promql_select_node_percentage
+        self.promql_select_privileges = promql_select_privileges
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_group_name = resource_group_name
 
     def validate(self):
         if self.account_privileges:
@@ -54,8 +61,20 @@ class ModifyAccountPrivilegesRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.promql_insert_privileges is not None:
+            result['PromqlInsertPrivileges'] = self.promql_insert_privileges
+
+        if self.promql_select_node_percentage is not None:
+            result['PromqlSelectNodePercentage'] = self.promql_select_node_percentage
+
+        if self.promql_select_privileges is not None:
+            result['PromqlSelectPrivileges'] = self.promql_select_privileges
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
 
         return result
 
@@ -73,8 +92,20 @@ class ModifyAccountPrivilegesRequest(DaraModel):
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 
+        if m.get('PromqlInsertPrivileges') is not None:
+            self.promql_insert_privileges = m.get('PromqlInsertPrivileges')
+
+        if m.get('PromqlSelectNodePercentage') is not None:
+            self.promql_select_node_percentage = m.get('PromqlSelectNodePercentage')
+
+        if m.get('PromqlSelectPrivileges') is not None:
+            self.promql_select_privileges = m.get('PromqlSelectPrivileges')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
 
         return self
 
@@ -85,11 +116,11 @@ class ModifyAccountPrivilegesRequestAccountPrivileges(DaraModel):
         privilege_type: str = None,
         privileges: List[str] = None,
     ):
-        # The objects on which you want to grant permissions, including databases, tables, and columns.
+        # The privilege object, which is a tuple of database, table, and column.
         self.privilege_object = privilege_object
-        # The permission level that you want to assign to the database account. You can call the `DescribeEnabledPrivileges` operation to query the permission level that can be assigned to the database account.
+        # The privilege level, obtained from the `DescribeEnabledPrivileges` operation.
         self.privilege_type = privilege_type
-        # The permissions that you want to grant to the database account.
+        # The list of granted permissions.
         self.privileges = privileges
 
     def validate(self):
@@ -133,11 +164,11 @@ class ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject(DaraModel):
         database: str = None,
         table: str = None,
     ):
-        # The columns on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Column.
+        # The column to which permissions are granted. This parameter is required when the privilege level is column.
         self.column = column
-        # The databases on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Database, Table, or Column.
+        # The database to which permissions are granted. This parameter is required when the privilege level is database, table, or column.
         self.database = database
-        # The tables on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Table or Column.
+        # The table to which permissions are granted. This parameter is required when the privilege level is table or column.
         self.table = table
 
     def validate(self):

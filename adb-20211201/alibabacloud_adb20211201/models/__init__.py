@@ -37,6 +37,12 @@ from ._open_struct_refresh_job_model import OpenStructRefreshJobModel
 from ._add_knowledge_file_request import AddKnowledgeFileRequest
 from ._add_knowledge_file_response_body import AddKnowledgeFileResponseBody
 from ._add_knowledge_file_response import AddKnowledgeFileResponse
+from ._add_knowledge_tags_request import AddKnowledgeTagsRequest
+from ._add_knowledge_tags_response_body import AddKnowledgeTagsResponseBody
+from ._add_knowledge_tags_response import AddKnowledgeTagsResponse
+from ._add_knowledge_upload_user_request import AddKnowledgeUploadUserRequest
+from ._add_knowledge_upload_user_response_body import AddKnowledgeUploadUserResponseBody
+from ._add_knowledge_upload_user_response import AddKnowledgeUploadUserResponse
 from ._allocate_cluster_public_connection_request import AllocateClusterPublicConnectionRequest
 from ._allocate_cluster_public_connection_response_body import AllocateClusterPublicConnectionResponseBody
 from ._allocate_cluster_public_connection_response import AllocateClusterPublicConnectionResponse
@@ -170,6 +176,9 @@ from ._delete_elastic_plan_response import DeleteElasticPlanResponse
 from ._delete_formation_crawler_request import DeleteFormationCrawlerRequest
 from ._delete_formation_crawler_response_body import DeleteFormationCrawlerResponseBody
 from ._delete_formation_crawler_response import DeleteFormationCrawlerResponse
+from ._delete_knowledge_file_request import DeleteKnowledgeFileRequest
+from ._delete_knowledge_file_response_body import DeleteKnowledgeFileResponseBody
+from ._delete_knowledge_file_response import DeleteKnowledgeFileResponse
 from ._delete_lake_storage_request import DeleteLakeStorageRequest
 from ._delete_lake_storage_response_body import DeleteLakeStorageResponseBody
 from ._delete_lake_storage_response import DeleteLakeStorageResponse
@@ -618,6 +627,12 @@ from ._kill_spark_sqlengine_response import KillSparkSQLEngineResponse
 from ._list_aps_webhook_request import ListApsWebhookRequest
 from ._list_aps_webhook_response_body import ListApsWebhookResponseBody
 from ._list_aps_webhook_response import ListApsWebhookResponse
+from ._list_knowledge_tags_request import ListKnowledgeTagsRequest
+from ._list_knowledge_tags_response_body import ListKnowledgeTagsResponseBody
+from ._list_knowledge_tags_response import ListKnowledgeTagsResponse
+from ._list_knowledge_upload_user_request import ListKnowledgeUploadUserRequest
+from ._list_knowledge_upload_user_response_body import ListKnowledgeUploadUserResponseBody
+from ._list_knowledge_upload_user_response import ListKnowledgeUploadUserResponse
 from ._list_lake_storages_request import ListLakeStoragesRequest
 from ._list_lake_storages_response_body import ListLakeStoragesResponseBody
 from ._list_lake_storages_response import ListLakeStoragesResponse
@@ -753,6 +768,9 @@ from ._query_formation_tasks_by_type_response import QueryFormationTasksByTypeRe
 from ._release_cluster_public_connection_request import ReleaseClusterPublicConnectionRequest
 from ._release_cluster_public_connection_response_body import ReleaseClusterPublicConnectionResponseBody
 from ._release_cluster_public_connection_response import ReleaseClusterPublicConnectionResponse
+from ._remove_knowledge_tags_request import RemoveKnowledgeTagsRequest
+from ._remove_knowledge_tags_response_body import RemoveKnowledgeTagsResponseBody
+from ._remove_knowledge_tags_response import RemoveKnowledgeTagsResponse
 from ._rename_semantic_view_request import RenameSemanticViewRequest
 from ._rename_semantic_view_response_body import RenameSemanticViewResponseBody
 from ._rename_semantic_view_response import RenameSemanticViewResponse
@@ -832,6 +850,10 @@ from ._filters import FiltersSubmitTimeRange
 from ._filters import FiltersTermiatedTimeRange
 from ._operator_node import OperatorNodeStats
 from ._open_struct_mv_detail_model import OpenStructMvDetailModelBaseTableInfos
+from ._add_knowledge_tags_response_body import AddKnowledgeTagsResponseBodyDataSkipped
+from ._add_knowledge_tags_response_body import AddKnowledgeTagsResponseBodyData
+from ._add_knowledge_upload_user_response_body import AddKnowledgeUploadUserResponseBodyDataSkipped
+from ._add_knowledge_upload_user_response_body import AddKnowledgeUploadUserResponseBodyData
 from ._cancel_spark_repl_statement_response_body import CancelSparkReplStatementResponseBodyData
 from ._configure_result_export_request import ConfigureResultExportRequestOssInfo
 from ._configure_result_export_request import ConfigureResultExportRequestSlsInfo
@@ -863,6 +885,7 @@ from ._create_performance_view_request import CreatePerformanceViewRequestViewDe
 from ._create_performance_view_request import CreatePerformanceViewRequestViewDetailCategories
 from ._create_performance_view_request import CreatePerformanceViewRequestViewDetail
 from ._create_spark_template_response_body import CreateSparkTemplateResponseBodyData
+from ._delete_knowledge_file_response_body import DeleteKnowledgeFileResponseBodyData
 from ._delete_spark_template_response_body import DeleteSparkTemplateResponseBodyData
 from ._delete_spark_template_file_response_body import DeleteSparkTemplateFileResponseBodyData
 from ._describe_apsadbinstances_response_body import DescribeAPSADBInstancesResponseBodyItems
@@ -874,6 +897,9 @@ from ._describe_account_all_privileges_response_body import DescribeAccountAllPr
 from ._describe_account_privilege_objects_response_body import DescribeAccountPrivilegeObjectsResponseBodyData
 from ._describe_account_privileges_response_body import DescribeAccountPrivilegesResponseBodyDataPrivilegeObject
 from ._describe_account_privileges_response_body import DescribeAccountPrivilegesResponseBodyData
+from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges
+from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes
+from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountListDBAccountRamUserList
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountListDBAccount
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountList
@@ -1068,6 +1094,9 @@ from ._get_table_objects_response_body import GetTableObjectsResponseBodyData
 from ._get_view_objects_response_body import GetViewObjectsResponseBodyData
 from ._kill_spark_app_response_body import KillSparkAppResponseBodyData
 from ._list_aps_webhook_response_body import ListApsWebhookResponseBodyWebhook
+from ._list_knowledge_tags_response_body import ListKnowledgeTagsResponseBodyDataTags
+from ._list_knowledge_tags_response_body import ListKnowledgeTagsResponseBodyData
+from ._list_knowledge_upload_user_response_body import ListKnowledgeUploadUserResponseBodyData
 from ._list_lake_storages_response_body import ListLakeStoragesResponseBodyItemsPermissions
 from ._list_lake_storages_response_body import ListLakeStoragesResponseBodyItems
 from ._list_result_export_job_history_request import ListResultExportJobHistoryRequestOrder
@@ -1105,6 +1134,7 @@ from ._preload_spark_app_metrics_response_body import PreloadSparkAppMetricsResp
 from ._preload_spark_app_metrics_response_body import PreloadSparkAppMetricsResponseBodyData
 from ._query_formation_insts_by_task_idresponse_body import QueryFormationInstsByTaskIDResponseBodyData
 from ._query_formation_tasks_by_type_response_body import QueryFormationTasksByTypeResponseBodyData
+from ._remove_knowledge_tags_response_body import RemoveKnowledgeTagsResponseBodyData
 from ._set_spark_app_log_root_path_response_body import SetSparkAppLogRootPathResponseBodyData
 from ._start_spark_repl_session_response_body import StartSparkReplSessionResponseBodyData
 from ._start_spark_sqlengine_response_body import StartSparkSQLEngineResponseBodyData
@@ -1151,6 +1181,12 @@ __all__ = [
     AddKnowledgeFileRequest,
     AddKnowledgeFileResponseBody,
     AddKnowledgeFileResponse,
+    AddKnowledgeTagsRequest,
+    AddKnowledgeTagsResponseBody,
+    AddKnowledgeTagsResponse,
+    AddKnowledgeUploadUserRequest,
+    AddKnowledgeUploadUserResponseBody,
+    AddKnowledgeUploadUserResponse,
     AllocateClusterPublicConnectionRequest,
     AllocateClusterPublicConnectionResponseBody,
     AllocateClusterPublicConnectionResponse,
@@ -1284,6 +1320,9 @@ __all__ = [
     DeleteFormationCrawlerRequest,
     DeleteFormationCrawlerResponseBody,
     DeleteFormationCrawlerResponse,
+    DeleteKnowledgeFileRequest,
+    DeleteKnowledgeFileResponseBody,
+    DeleteKnowledgeFileResponse,
     DeleteLakeStorageRequest,
     DeleteLakeStorageResponseBody,
     DeleteLakeStorageResponse,
@@ -1732,6 +1771,12 @@ __all__ = [
     ListApsWebhookRequest,
     ListApsWebhookResponseBody,
     ListApsWebhookResponse,
+    ListKnowledgeTagsRequest,
+    ListKnowledgeTagsResponseBody,
+    ListKnowledgeTagsResponse,
+    ListKnowledgeUploadUserRequest,
+    ListKnowledgeUploadUserResponseBody,
+    ListKnowledgeUploadUserResponse,
     ListLakeStoragesRequest,
     ListLakeStoragesResponseBody,
     ListLakeStoragesResponse,
@@ -1867,6 +1912,9 @@ __all__ = [
     ReleaseClusterPublicConnectionRequest,
     ReleaseClusterPublicConnectionResponseBody,
     ReleaseClusterPublicConnectionResponse,
+    RemoveKnowledgeTagsRequest,
+    RemoveKnowledgeTagsResponseBody,
+    RemoveKnowledgeTagsResponse,
     RenameSemanticViewRequest,
     RenameSemanticViewResponseBody,
     RenameSemanticViewResponse,
@@ -1946,6 +1994,10 @@ __all__ = [
     FiltersTermiatedTimeRange,
     OperatorNodeStats,
     OpenStructMvDetailModelBaseTableInfos,
+    AddKnowledgeTagsResponseBodyDataSkipped,
+    AddKnowledgeTagsResponseBodyData,
+    AddKnowledgeUploadUserResponseBodyDataSkipped,
+    AddKnowledgeUploadUserResponseBodyData,
     CancelSparkReplStatementResponseBodyData,
     ConfigureResultExportRequestOssInfo,
     ConfigureResultExportRequestSlsInfo,
@@ -1977,6 +2029,7 @@ __all__ = [
     CreatePerformanceViewRequestViewDetailCategories,
     CreatePerformanceViewRequestViewDetail,
     CreateSparkTemplateResponseBodyData,
+    DeleteKnowledgeFileResponseBodyData,
     DeleteSparkTemplateResponseBodyData,
     DeleteSparkTemplateFileResponseBodyData,
     DescribeAPSADBInstancesResponseBodyItems,
@@ -1988,6 +2041,9 @@ __all__ = [
     DescribeAccountPrivilegeObjectsResponseBodyData,
     DescribeAccountPrivilegesResponseBodyDataPrivilegeObject,
     DescribeAccountPrivilegesResponseBodyData,
+    DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges,
+    DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes,
+    DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges,
     DescribeAccountsResponseBodyAccountListDBAccountRamUserList,
     DescribeAccountsResponseBodyAccountListDBAccount,
     DescribeAccountsResponseBodyAccountList,
@@ -2182,6 +2238,9 @@ __all__ = [
     GetViewObjectsResponseBodyData,
     KillSparkAppResponseBodyData,
     ListApsWebhookResponseBodyWebhook,
+    ListKnowledgeTagsResponseBodyDataTags,
+    ListKnowledgeTagsResponseBodyData,
+    ListKnowledgeUploadUserResponseBodyData,
     ListLakeStoragesResponseBodyItemsPermissions,
     ListLakeStoragesResponseBodyItems,
     ListResultExportJobHistoryRequestOrder,
@@ -2219,6 +2278,7 @@ __all__ = [
     PreloadSparkAppMetricsResponseBodyData,
     QueryFormationInstsByTaskIDResponseBodyData,
     QueryFormationTasksByTypeResponseBodyData,
+    RemoveKnowledgeTagsResponseBodyData,
     SetSparkAppLogRootPathResponseBodyData,
     StartSparkReplSessionResponseBodyData,
     StartSparkSQLEngineResponseBodyData,

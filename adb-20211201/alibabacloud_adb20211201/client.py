@@ -65,22 +65,7 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'adb.aliyuncs.com',
             'eu-west-1-oxs': 'adb.ap-northeast-1.aliyuncs.com',
             'me-east-1': 'adb.ap-northeast-1.aliyuncs.com',
-            'rus-west-1-pop': 'adb.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'adb.cn-chengdu.aliyuncs.com',
-            'cn-wulanchabu': 'adb.cn-wulanchabu.aliyuncs.com',
-            'cn-zhangjiakou': 'adb.cn-zhangjiakou.aliyuncs.com',
-            'ap-northeast-2': 'adb.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'adb.ap-northeast-1.aliyuncs.com',
-            'cn-guangzhou': 'adb.cn-guangzhou.aliyuncs.com',
-            'ap-southeast-3': 'adb.ap-southeast-3.aliyuncs.com',
-            'cn-huhehaote': 'adb.cn-huhehaote.aliyuncs.com',
-            'ap-southeast-5': 'adb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-6': 'adb.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-7': 'adb.ap-southeast-7.aliyuncs.com',
-            'eu-west-1': 'adb.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'adb.eu-central-1.aliyuncs.com',
-            'na-south-1': 'adb.na-south-1.aliyuncs.com',
-            'me-central-1': 'adb.me-central-1.aliyuncs.com'
+            'rus-west-1-pop': 'adb.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('adb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -116,6 +101,8 @@ class Client(OpenApiClient):
             query['FileType'] = request.file_type
         if not DaraCore.is_null(request.is_dir):
             query['IsDir'] = request.is_dir
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         if not DaraCore.is_null(request.upload_user):
@@ -154,6 +141,8 @@ class Client(OpenApiClient):
             query['FileType'] = request.file_type
         if not DaraCore.is_null(request.is_dir):
             query['IsDir'] = request.is_dir
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         if not DaraCore.is_null(request.upload_user):
@@ -190,6 +179,162 @@ class Client(OpenApiClient):
     ) -> main_models.AddKnowledgeFileResponse:
         runtime = RuntimeOptions()
         return await self.add_knowledge_file_with_options_async(request, runtime)
+
+    def add_knowledge_tags_with_options(
+        self,
+        request: main_models.AddKnowledgeTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddKnowledgeTagsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddKnowledgeTags',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddKnowledgeTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_knowledge_tags_with_options_async(
+        self,
+        request: main_models.AddKnowledgeTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddKnowledgeTagsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddKnowledgeTags',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddKnowledgeTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_knowledge_tags(
+        self,
+        request: main_models.AddKnowledgeTagsRequest,
+    ) -> main_models.AddKnowledgeTagsResponse:
+        runtime = RuntimeOptions()
+        return self.add_knowledge_tags_with_options(request, runtime)
+
+    async def add_knowledge_tags_async(
+        self,
+        request: main_models.AddKnowledgeTagsRequest,
+    ) -> main_models.AddKnowledgeTagsResponse:
+        runtime = RuntimeOptions()
+        return await self.add_knowledge_tags_with_options_async(request, runtime)
+
+    def add_knowledge_upload_user_with_options(
+        self,
+        request: main_models.AddKnowledgeUploadUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddKnowledgeUploadUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        if not DaraCore.is_null(request.users):
+            query['Users'] = request.users
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddKnowledgeUploadUser',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddKnowledgeUploadUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_knowledge_upload_user_with_options_async(
+        self,
+        request: main_models.AddKnowledgeUploadUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddKnowledgeUploadUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        if not DaraCore.is_null(request.users):
+            query['Users'] = request.users
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddKnowledgeUploadUser',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddKnowledgeUploadUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_knowledge_upload_user(
+        self,
+        request: main_models.AddKnowledgeUploadUserRequest,
+    ) -> main_models.AddKnowledgeUploadUserResponse:
+        runtime = RuntimeOptions()
+        return self.add_knowledge_upload_user_with_options(request, runtime)
+
+    async def add_knowledge_upload_user_async(
+        self,
+        request: main_models.AddKnowledgeUploadUserRequest,
+    ) -> main_models.AddKnowledgeUploadUserResponse:
+        runtime = RuntimeOptions()
+        return await self.add_knowledge_upload_user_with_options_async(request, runtime)
 
     def allocate_cluster_public_connection_with_options(
         self,
@@ -1371,6 +1516,10 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateAccountShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.promql_insert_privileges):
+            request.promql_insert_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.promql_insert_privileges, 'PromqlInsertPrivileges', 'json')
+        if not DaraCore.is_null(tmp_req.promql_select_privileges):
+            request.promql_select_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.promql_select_privileges, 'PromqlSelectPrivileges', 'json')
         if not DaraCore.is_null(tmp_req.ram_user_list):
             request.ram_user_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.ram_user_list, 'RamUserList', 'json')
         query = {}
@@ -1386,8 +1535,16 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.promql_insert_privileges_shrink):
+            query['PromqlInsertPrivileges'] = request.promql_insert_privileges_shrink
+        if not DaraCore.is_null(request.promql_select_node_percentage):
+            query['PromqlSelectNodePercentage'] = request.promql_select_node_percentage
+        if not DaraCore.is_null(request.promql_select_privileges_shrink):
+            query['PromqlSelectPrivileges'] = request.promql_select_privileges_shrink
         if not DaraCore.is_null(request.ram_user_list_shrink):
             query['RamUserList'] = request.ram_user_list_shrink
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1415,6 +1572,10 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateAccountShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.promql_insert_privileges):
+            request.promql_insert_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.promql_insert_privileges, 'PromqlInsertPrivileges', 'json')
+        if not DaraCore.is_null(tmp_req.promql_select_privileges):
+            request.promql_select_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.promql_select_privileges, 'PromqlSelectPrivileges', 'json')
         if not DaraCore.is_null(tmp_req.ram_user_list):
             request.ram_user_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.ram_user_list, 'RamUserList', 'json')
         query = {}
@@ -1430,8 +1591,16 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.promql_insert_privileges_shrink):
+            query['PromqlInsertPrivileges'] = request.promql_insert_privileges_shrink
+        if not DaraCore.is_null(request.promql_select_node_percentage):
+            query['PromqlSelectNodePercentage'] = request.promql_select_node_percentage
+        if not DaraCore.is_null(request.promql_select_privileges_shrink):
+            query['PromqlSelectPrivileges'] = request.promql_select_privileges_shrink
         if not DaraCore.is_null(request.ram_user_list_shrink):
             query['RamUserList'] = request.ram_user_list_shrink
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3564,6 +3733,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3596,6 +3767,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4252,6 +4425,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteFormationCrawlerResponse:
         runtime = RuntimeOptions()
         return await self.delete_formation_crawler_with_options_async(request, runtime)
+
+    def delete_knowledge_file_with_options(
+        self,
+        request: main_models.DeleteKnowledgeFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeFile',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_knowledge_file_with_options_async(
+        self,
+        request: main_models.DeleteKnowledgeFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeFile',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_knowledge_file(
+        self,
+        request: main_models.DeleteKnowledgeFileRequest,
+    ) -> main_models.DeleteKnowledgeFileResponse:
+        runtime = RuntimeOptions()
+        return self.delete_knowledge_file_with_options(request, runtime)
+
+    async def delete_knowledge_file_async(
+        self,
+        request: main_models.DeleteKnowledgeFileRequest,
+    ) -> main_models.DeleteKnowledgeFileResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_knowledge_file_with_options_async(request, runtime)
 
     def delete_lake_storage_with_options(
         self,
@@ -5218,6 +5465,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5252,6 +5501,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17199,6 +17450,154 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_aps_webhook_with_options_async(request, runtime)
 
+    def list_knowledge_tags_with_options(
+        self,
+        request: main_models.ListKnowledgeTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeTagsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeTags',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_knowledge_tags_with_options_async(
+        self,
+        request: main_models.ListKnowledgeTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeTagsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeTags',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_knowledge_tags(
+        self,
+        request: main_models.ListKnowledgeTagsRequest,
+    ) -> main_models.ListKnowledgeTagsResponse:
+        runtime = RuntimeOptions()
+        return self.list_knowledge_tags_with_options(request, runtime)
+
+    async def list_knowledge_tags_async(
+        self,
+        request: main_models.ListKnowledgeTagsRequest,
+    ) -> main_models.ListKnowledgeTagsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_knowledge_tags_with_options_async(request, runtime)
+
+    def list_knowledge_upload_user_with_options(
+        self,
+        request: main_models.ListKnowledgeUploadUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeUploadUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeUploadUser',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeUploadUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_knowledge_upload_user_with_options_async(
+        self,
+        request: main_models.ListKnowledgeUploadUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeUploadUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeUploadUser',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeUploadUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_knowledge_upload_user(
+        self,
+        request: main_models.ListKnowledgeUploadUserRequest,
+    ) -> main_models.ListKnowledgeUploadUserResponse:
+        runtime = RuntimeOptions()
+        return self.list_knowledge_upload_user_with_options(request, runtime)
+
+    async def list_knowledge_upload_user_async(
+        self,
+        request: main_models.ListKnowledgeUploadUserRequest,
+    ) -> main_models.ListKnowledgeUploadUserResponse:
+        runtime = RuntimeOptions()
+        return await self.list_knowledge_upload_user_with_options_async(request, runtime)
+
     def list_lake_storages_with_options(
         self,
         request: main_models.ListLakeStoragesRequest,
@@ -18042,6 +18441,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18076,6 +18477,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18119,6 +18522,10 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.account_privileges):
             request.account_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.account_privileges, 'AccountPrivileges', 'json')
+        if not DaraCore.is_null(tmp_req.promql_insert_privileges):
+            request.promql_insert_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.promql_insert_privileges, 'PromqlInsertPrivileges', 'json')
+        if not DaraCore.is_null(tmp_req.promql_select_privileges):
+            request.promql_select_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.promql_select_privileges, 'PromqlSelectPrivileges', 'json')
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
@@ -18126,8 +18533,16 @@ class Client(OpenApiClient):
             query['AccountPrivileges'] = request.account_privileges_shrink
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.promql_insert_privileges_shrink):
+            query['PromqlInsertPrivileges'] = request.promql_insert_privileges_shrink
+        if not DaraCore.is_null(request.promql_select_node_percentage):
+            query['PromqlSelectNodePercentage'] = request.promql_select_node_percentage
+        if not DaraCore.is_null(request.promql_select_privileges_shrink):
+            query['PromqlSelectPrivileges'] = request.promql_select_privileges_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18157,6 +18572,10 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.account_privileges):
             request.account_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.account_privileges, 'AccountPrivileges', 'json')
+        if not DaraCore.is_null(tmp_req.promql_insert_privileges):
+            request.promql_insert_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.promql_insert_privileges, 'PromqlInsertPrivileges', 'json')
+        if not DaraCore.is_null(tmp_req.promql_select_privileges):
+            request.promql_select_privileges_shrink = Utils.array_to_string_with_specified_style(tmp_req.promql_select_privileges, 'PromqlSelectPrivileges', 'json')
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
@@ -18164,8 +18583,16 @@ class Client(OpenApiClient):
             query['AccountPrivileges'] = request.account_privileges_shrink
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.promql_insert_privileges_shrink):
+            query['PromqlInsertPrivileges'] = request.promql_insert_privileges_shrink
+        if not DaraCore.is_null(request.promql_select_node_percentage):
+            query['PromqlSelectNodePercentage'] = request.promql_select_node_percentage
+        if not DaraCore.is_null(request.promql_select_privileges_shrink):
+            query['PromqlSelectPrivileges'] = request.promql_select_privileges_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21109,6 +21536,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.release_cluster_public_connection_with_options_async(request, runtime)
 
+    def remove_knowledge_tags_with_options(
+        self,
+        request: main_models.RemoveKnowledgeTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveKnowledgeTagsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveKnowledgeTags',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveKnowledgeTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_knowledge_tags_with_options_async(
+        self,
+        request: main_models.RemoveKnowledgeTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveKnowledgeTagsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_location):
+            query['FileLocation'] = request.file_location
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveKnowledgeTags',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveKnowledgeTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_knowledge_tags(
+        self,
+        request: main_models.RemoveKnowledgeTagsRequest,
+    ) -> main_models.RemoveKnowledgeTagsResponse:
+        runtime = RuntimeOptions()
+        return self.remove_knowledge_tags_with_options(request, runtime)
+
+    async def remove_knowledge_tags_async(
+        self,
+        request: main_models.RemoveKnowledgeTagsRequest,
+    ) -> main_models.RemoveKnowledgeTagsResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_knowledge_tags_with_options_async(request, runtime)
+
     def rename_semantic_view_with_options(
         self,
         request: main_models.RenameSemanticViewRequest,
@@ -21294,6 +21799,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21330,6 +21837,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

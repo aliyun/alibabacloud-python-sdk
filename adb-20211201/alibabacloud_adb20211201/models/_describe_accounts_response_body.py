@@ -88,18 +88,32 @@ class DescribeAccountsResponseBodyAccountListDBAccount(DaraModel):
         account_status: str = None,
         account_type: str = None,
         engine: str = None,
+        promql_insert_privileges: main_models.DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges = None,
+        promql_select_nodes: main_models.DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes = None,
+        promql_select_privileges: main_models.DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges = None,
         ram_user_list: main_models.DescribeAccountsResponseBodyAccountListDBAccountRamUserList = None,
         ram_users: str = None,
+        promql_select_node_percentage: float = None,
     ):
         self.account_description = account_description
         self.account_name = account_name
         self.account_status = account_status
         self.account_type = account_type
         self.engine = engine
+        self.promql_insert_privileges = promql_insert_privileges
+        self.promql_select_nodes = promql_select_nodes
+        self.promql_select_privileges = promql_select_privileges
         self.ram_user_list = ram_user_list
         self.ram_users = ram_users
+        self.promql_select_node_percentage = promql_select_node_percentage
 
     def validate(self):
+        if self.promql_insert_privileges:
+            self.promql_insert_privileges.validate()
+        if self.promql_select_nodes:
+            self.promql_select_nodes.validate()
+        if self.promql_select_privileges:
+            self.promql_select_privileges.validate()
         if self.ram_user_list:
             self.ram_user_list.validate()
 
@@ -123,11 +137,23 @@ class DescribeAccountsResponseBodyAccountListDBAccount(DaraModel):
         if self.engine is not None:
             result['Engine'] = self.engine
 
+        if self.promql_insert_privileges is not None:
+            result['PromqlInsertPrivileges'] = self.promql_insert_privileges.to_map()
+
+        if self.promql_select_nodes is not None:
+            result['PromqlSelectNodes'] = self.promql_select_nodes.to_map()
+
+        if self.promql_select_privileges is not None:
+            result['PromqlSelectPrivileges'] = self.promql_select_privileges.to_map()
+
         if self.ram_user_list is not None:
             result['RamUserList'] = self.ram_user_list.to_map()
 
         if self.ram_users is not None:
             result['RamUsers'] = self.ram_users
+
+        if self.promql_select_node_percentage is not None:
+            result['promqlSelectNodePercentage'] = self.promql_select_node_percentage
 
         return result
 
@@ -148,12 +174,27 @@ class DescribeAccountsResponseBodyAccountListDBAccount(DaraModel):
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
 
+        if m.get('PromqlInsertPrivileges') is not None:
+            temp_model = main_models.DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges()
+            self.promql_insert_privileges = temp_model.from_map(m.get('PromqlInsertPrivileges'))
+
+        if m.get('PromqlSelectNodes') is not None:
+            temp_model = main_models.DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes()
+            self.promql_select_nodes = temp_model.from_map(m.get('PromqlSelectNodes'))
+
+        if m.get('PromqlSelectPrivileges') is not None:
+            temp_model = main_models.DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges()
+            self.promql_select_privileges = temp_model.from_map(m.get('PromqlSelectPrivileges'))
+
         if m.get('RamUserList') is not None:
             temp_model = main_models.DescribeAccountsResponseBodyAccountListDBAccountRamUserList()
             self.ram_user_list = temp_model.from_map(m.get('RamUserList'))
 
         if m.get('RamUsers') is not None:
             self.ram_users = m.get('RamUsers')
+
+        if m.get('promqlSelectNodePercentage') is not None:
+            self.promql_select_node_percentage = m.get('promqlSelectNodePercentage')
 
         return self
 
@@ -181,6 +222,87 @@ class DescribeAccountsResponseBodyAccountListDBAccountRamUserList(DaraModel):
         m = m or dict()
         if m.get('RamUserList') is not None:
             self.ram_user_list = m.get('RamUserList')
+
+        return self
+
+class DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges(DaraModel):
+    def __init__(
+        self,
+        promql_select_privileges: List[str] = None,
+    ):
+        self.promql_select_privileges = promql_select_privileges
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.promql_select_privileges is not None:
+            result['PromqlSelectPrivileges'] = self.promql_select_privileges
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PromqlSelectPrivileges') is not None:
+            self.promql_select_privileges = m.get('PromqlSelectPrivileges')
+
+        return self
+
+class DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes(DaraModel):
+    def __init__(
+        self,
+        promql_select_nodes: List[str] = None,
+    ):
+        self.promql_select_nodes = promql_select_nodes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.promql_select_nodes is not None:
+            result['PromqlSelectNodes'] = self.promql_select_nodes
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PromqlSelectNodes') is not None:
+            self.promql_select_nodes = m.get('PromqlSelectNodes')
+
+        return self
+
+class DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges(DaraModel):
+    def __init__(
+        self,
+        promql_insert_privileges: List[str] = None,
+    ):
+        self.promql_insert_privileges = promql_insert_privileges
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.promql_insert_privileges is not None:
+            result['PromqlInsertPrivileges'] = self.promql_insert_privileges
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PromqlInsertPrivileges') is not None:
+            self.promql_insert_privileges = m.get('PromqlInsertPrivileges')
 
         return self
 
