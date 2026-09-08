@@ -19,24 +19,25 @@ class UpdateTransitRouterVpnAttachmentAttributeRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
     ):
-        # Specifies whether to allow the Enterprise Edition transit router to automatically publish routes to the IPsec-VPN connection. Valid values:
+        # Specifies whether to allow the forward routing instance to automatically publish route entries to the IPsec connection. Valid values:
         # 
-        # - **true**: The Enterprise Edition transit router automatically publishes routes to the IPsec-VPN connection.
-        # 
-        # - **false**: The Enterprise Edition transit router does not automatically publish routes to the IPsec-VPN connection.
+        # - **true**: Allowed.
+        # - **false**: Not allowed.
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # A client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - **true**: Performs a dry run to check the request without modifying the attributes of the VPN connection. The system checks the required parameters, request format, and service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # 
-        # - **false** (Default): Sends a normal request. If the request passes the check, the system modifies the attributes of the VPN connection.
+        # - **true**: performs a dry run without modifying the VPN connection configurations. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and then modifies the VPN connection configurations after the request passes the check.
         self.dry_run = dry_run
+        # The payer of the network instance. Valid values:
+        # 
+        # - **PayByCenOwner**: The connection fee and data transfer fee of the VPN connection are paid by the account that owns the transit router instance.
+        # - **PayByResourceOwner**: The connection fee and data transfer fee of the VPN connection are paid by the account that owns the VPN gateway instance.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -44,15 +45,15 @@ class UpdateTransitRouterVpnAttachmentAttributeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new description of the VPN connection.
         # 
-        # The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The ID of the VPN connection.
+        # The VPN connection ID.
         # 
         # This parameter is required.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The new name of the VPN connection.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.transit_router_attachment_name = transit_router_attachment_name
 
     def validate(self):

@@ -18,9 +18,9 @@ class DescribeRouteConflictResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page during paging.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.route_conflicts = route_conflicts
         # The total number of entries.

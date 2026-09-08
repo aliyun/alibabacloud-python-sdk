@@ -16,19 +16,18 @@ class ListCenInterRegionTrafficQosPoliciesResponseBody(DaraModel):
         total_count: int = None,
         traffic_qos_policies: List[main_models.ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         # 
-        # - If **NextToken** is empty, no next page exists.
-        # 
-        # - If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
-        # The list of QoS policies.
+        # The list of traffic scheduling policies.
         self.traffic_qos_policies = traffic_qos_policies
 
     def validate(self):
@@ -95,33 +94,28 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies(DaraMod
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The bandwidth guarantee type.
-        # 
-        # - **byBandwidth**: The QoS queues are configured based on an absolute bandwidth value.
-        # 
-        # - **byBandwidthPercent**: The QoS queues are configured based on a bandwidth percentage.
+        # The bandwidth guarantee type. Valid values:
+        # - **byBandwidth**: configures QoS queues by absolute bandwidth value.
+        # - **byBandwidthPercent**: configures QoS queues by bandwidth percentage.
         self.bandwidth_guarantee_mode = bandwidth_guarantee_mode
-        # The description of the QoS policy.
+        # The description of the traffic scheduling policy.
         self.traffic_qos_policy_description = traffic_qos_policy_description
-        # The ID of the QoS policy.
+        # The ID of the traffic scheduling policy.
         self.traffic_qos_policy_id = traffic_qos_policy_id
-        # The name of the QoS policy.
+        # The name of the traffic scheduling policy.
         self.traffic_qos_policy_name = traffic_qos_policy_name
-        # The status of the QoS policy.
+        # The status of the traffic scheduling policy.
         # 
-        # - **Creating**: The policy is being created.
-        # 
-        # - **Active**: The policy is active.
-        # 
-        # - **Modifying**: The policy is being modified.
-        # 
-        # - **Deleting**: The policy is being deleted.
+        # - **Creating**: being created.
+        # - **Active**: active.
+        # - **Modifying**: being modified.
+        # - **Deleting**: being deleted.
         self.traffic_qos_policy_status = traffic_qos_policy_status
         # The list of queues.
         self.traffic_qos_queues = traffic_qos_queues
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the TransitRouter instance.
+        # The transit router instance ID.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -205,11 +199,11 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQ
         qos_queue_name: str = None,
         remain_bandwidth_percent: int = None,
     ):
-        # The bandwidth value allocated to the queue of the inter-region connection. This parameter is returned when the bandwidth guarantee type is byBandwidth.
+        # The inter-region bandwidth allocated to the current queue when the bandwidth guarantee type is set to the absolute value mode.
         self.bandwidth = bandwidth
-        # The Differentiated Services Code Point (DSCP) values of the traffic messages that are matched by the queue.
+        # The DSCP values of the traffic packets to be matched by the current queue.
         self.dscps = dscps
-        # The actual bandwidth of the queue.
+        # The actual effective bandwidth of the current queue.
         self.effective_bandwidth = effective_bandwidth
         # The description of the queue.
         self.qos_queue_description = qos_queue_description
@@ -217,7 +211,7 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQ
         self.qos_queue_id = qos_queue_id
         # The name of the queue.
         self.qos_queue_name = qos_queue_name
-        # The percentage of the inter-region connection bandwidth that is used by the queue. This parameter is returned when the bandwidth guarantee type is byBandwidthPercent.
+        # The percentage of inter-region bandwidth occupied by the current queue when the bandwidth guarantee type is set to the percentage mode.
         self.remain_bandwidth_percent = remain_bandwidth_percent
 
     def validate(self):

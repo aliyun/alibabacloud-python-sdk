@@ -19,35 +19,33 @@ class DeleteTransitRouterRouteEntryRequest(DaraModel):
         transit_router_route_entry_next_hop_type: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # A client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # The token must be unique for each request and can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. A dry run checks for potential issues, such as missing parameter values, incorrect request syntax, and service limits. Valid values:
+        # Specifies whether to perform a dry run, including permission and instance status validation. Valid values:
         # 
-        # - **false** (default): Sends the request. If the request passes the check, the route entry is deleted.
-        # 
-        # - **true**: Performs only a dry run. The system checks the request for potential issues. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - **false** (default): Sends a normal request and directly deletes the route entry after the request passes the validation.
+        # - **true**: Sends a check request. Only the validation is performed. The route entry is not deleted. The system checks required parameters, request format, and other conditions. If the check fails, the corresponding error is returned. If the check succeeds, the corresponding request ID is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The destination CIDR block of the route.
+        # The destination CIDR block.
         self.transit_router_route_entry_destination_cidr_block = transit_router_route_entry_destination_cidr_block
         # The ID of the route entry.
         self.transit_router_route_entry_id = transit_router_route_entry_id
-        # The ID of the network instance connection that serves as the next hop.
+        # The ID of the network instance connection associated with the next hop of the route entry.
         self.transit_router_route_entry_next_hop_id = transit_router_route_entry_next_hop_id
-        # The type of the next hop. Valid values:
+        # The next hop type of the route entry. Valid values:
         # 
-        # - **BlackHole**: The route is a blackhole route. You do not need to specify a next hop.
-        # 
-        # - **Attachment**: The next hop is a network instance connection. You must specify the ID of the network instance connection.
+        # - **BlackHole**: The route entry is a blackhole route. You do not need to specify the next-hop information.
+        # - **Attachment**: The next hop of the route entry is a network instance connection. You must also specify the ID of the network instance connection as the next hop.
         self.transit_router_route_entry_next_hop_type = transit_router_route_entry_next_hop_type
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         self.transit_router_route_table_id = transit_router_route_table_id
 
     def validate(self):

@@ -22,15 +22,14 @@ class CreateTransitRouterRouteEntryRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
         # 
-        # - **false** (default): sends a normal request. The route entry is created after the request passes the check.
-        # 
-        # - **true**: sends a dry run request to check the request. The route entry is not created. The system checks the required parameters, request format, and service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request and creates the route entry after the request passes the verification.
+        # - **true**: Sends a check request. Only the verification is performed. No route entry is created. The system checks whether the required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -38,23 +37,22 @@ class CreateTransitRouterRouteEntryRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The description of the route entry.
         # 
-        # The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.transit_router_route_entry_description = transit_router_route_entry_description
-        # The destination CIDR block of the route entry. IPv4 and IPv6 CIDR blocks are supported.
+        # The destination CIDR block of the route entry. Both IPv4 and IPv6 addresses are supported.
         # 
         # This parameter is required.
         self.transit_router_route_entry_destination_cidr_block = transit_router_route_entry_destination_cidr_block
         # The name of the route entry.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.transit_router_route_entry_name = transit_router_route_entry_name
-        # The ID of the network instance connection that is associated with the next hop.
+        # The ID of the network instance connection associated with the next hop of the route entry.
         self.transit_router_route_entry_next_hop_id = transit_router_route_entry_next_hop_id
         # The next hop type. Valid values:
         # 
-        # - **BlackHole**: The route is a blackhole route. All packets to the destination CIDR block are dropped. You do not need to specify a next hop.
-        # 
-        # - **Attachment**: The next hop of the route is a network instance connection. You must specify the ID of the network instance connection. All packets to the destination CIDR block are forwarded to the specified network instance connection.
+        # - **BlackHole**: specifies the route entry as a blackhole route. All packets destined for the destination CIDR block are dropped. You do not need to specify next hop information.
+        # - **Attachment**: specifies the next hop of the route entry as a network instance connection. You must also specify the network instance connection ID. All packets destined for the destination CIDR block are forwarded to the specified network instance connection.
         # 
         # This parameter is required.
         self.transit_router_route_entry_next_hop_type = transit_router_route_entry_next_hop_type

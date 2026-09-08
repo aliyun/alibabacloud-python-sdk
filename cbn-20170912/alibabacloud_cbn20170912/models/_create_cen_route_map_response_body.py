@@ -10,7 +10,7 @@ class CreateCenRouteMapResponseBody(DaraModel):
         request_id: str = None,
         route_map_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the routing policy.
         self.route_map_id = route_map_id

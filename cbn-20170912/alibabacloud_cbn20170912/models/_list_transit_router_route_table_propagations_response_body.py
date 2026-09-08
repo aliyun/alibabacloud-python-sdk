@@ -16,15 +16,15 @@ class ListTransitRouterRouteTablePropagationsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_propagations: List[main_models.ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagations] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results.
+        # The token for the next query in a paged query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
-        # A list of the route propagations.
+        # The list of route learning relationships.
         self.transit_router_propagations = transit_router_propagations
 
     def validate(self):
@@ -88,29 +88,24 @@ class ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagatio
         transit_router_attachment_id: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # The ID of the network instance.
+        # The network instance ID.
         self.resource_id = resource_id
-        # The type of the network instance.
+        # The network instance type. Valid values:
         # 
-        # - **VPC**: a VPC.
-        # 
-        # - **VBR**: a VBR.
-        # 
-        # - **TR**: a transit router.
-        # 
-        # - **VPN**: a VPN connection.
+        # - **VPC**: virtual private cloud (VPC) instance.
+        # - **VBR**: virtual border router (VBR) instance.
+        # - **TR**: transit router instance.
+        # - **VPN**: VPN connection.
         self.resource_type = resource_type
-        # The status of the route propagation.
+        # The status of the route learning relationship. Valid values:
         # 
-        # - **Enabling**: The propagation is being enabled.
-        # 
-        # - **Disabling**: The propagation is being disabled.
-        # 
-        # - **Active**: The propagation is active.
+        # - **Enabling**: being enabled.
+        # - **Disabling**: being disabled.
+        # - **Active**: active.
         self.status = status
-        # The ID of the network instance connection.
+        # The network instance connection ID.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         self.transit_router_route_table_id = transit_router_route_table_id
 
     def validate(self):

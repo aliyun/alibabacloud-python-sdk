@@ -10,7 +10,7 @@ class CreateTrafficMarkingPolicyResponseBody(DaraModel):
         request_id: str = None,
         traffic_marking_policy_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the traffic marking policy.
         self.traffic_marking_policy_id = traffic_marking_policy_id

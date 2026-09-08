@@ -18,23 +18,23 @@ class DescribePublishedRouteEntriesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the network instance.
+        # The network instance ID.
         # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
-        # The ID of the region where the network instance is deployed.
+        # The region ID of the network instance.
         # 
-        # For more information, see [](t2264556.xdita#).
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
-        # The ID of the route table of the network instance.
+        # The route table ID of the network instance.
         self.child_instance_route_table_id = child_instance_route_table_id
-        # The type of the network instance. Valid values:
+        # The type of the network instance. Valid values: 
         # 
         # - **VPC**: virtual private cloud.
         # 
@@ -44,11 +44,11 @@ class DescribePublishedRouteEntriesRequest(DaraModel):
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
-        # The destination CIDR block of the route that you want to query.
+        # The destination CIDR block of the route entry to query.
         self.destination_cidr_block = destination_cidr_block
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**. Valid values: **1** to **500**.
+        # The number of entries per page in a paged query. Default value: **10**. Valid values: **1** to **500**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -22,35 +22,34 @@ class ListCenInterRegionTrafficQosQueuesRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # Filters the results by the actual bandwidth. Only positive integers are supported. Unit: Mbit/s.
+        # Filters results by the actual effective bandwidth value. Only positive integers are allowed. Unit: Mbit/s.
         self.effective_bandwidth_filter = effective_bandwidth_filter
-        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token. It is used in the next request to retrieve a new page of results.
+        # The token that determines the start point of the next query. Valid values:
         # 
-        # - If **NextToken** is empty, no more results are returned.
-        # 
-        # - If NextToken is not empty, the value of **NextToken** is used for the next query.
+        # - If **NextToken** is empty, no next query exists.
+        # - If a value is returned for **NextToken**, the value indicates the token that is used for the next query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the QoS policy.
+        # The ID of the traffic scheduling policy.
         self.traffic_qos_policy_id = traffic_qos_policy_id
-        # The description of the queue in the QoS policy.
+        # The description of the traffic scheduling policy queue.
         # 
-        # The description can be empty or 1 to 256 characters in length. It cannot start with \\`http\\://\\` or \\`https\\://\\`.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.traffic_qos_queue_description = traffic_qos_queue_description
-        # The ID of the queue in the QoS policy.
+        # The ID of the traffic scheduling policy queue.
         self.traffic_qos_queue_id = traffic_qos_queue_id
-        # The name of the queue in the QoS policy.
+        # The name of the traffic scheduling policy queue.
         # 
-        # The name can be empty or 1 to 128 characters in length. It cannot start with \\`http\\://\\` or \\`https\\://\\`.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.traffic_qos_queue_name = traffic_qos_queue_name
         # The ID of the inter-region connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the transit router.
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -153,9 +152,9 @@ class ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter(DaraMode
         gte: int = None,
         lte: int = None,
     ):
-        # The actual bandwidth is greater than or equal to the specified value.
+        # The actual effective bandwidth is greater than or equal to the specified bandwidth value.
         self.gte = gte
-        # The actual bandwidth is less than or equal to the specified value.
+        # The actual effective bandwidth is less than or equal to the specified bandwidth value.
         self.lte = lte
 
     def validate(self):

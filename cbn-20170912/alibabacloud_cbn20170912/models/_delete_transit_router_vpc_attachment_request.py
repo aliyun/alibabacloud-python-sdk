@@ -18,19 +18,18 @@ class DeleteTransitRouterVpcAttachmentRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Default values:
+        # Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
         # 
-        # - **false** (default): performs a dry run and sends the request.
-        # - **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+        # - **false** (default): Sends a normal request. If the request passes the check, the VPC connection is deleted.
+        # - **true**: Sends a check request. Only the check is performed. The VPC connection is not deleted. The system checks required parameters, request format, and other conditions. If the check fails, the corresponding error is returned. If the check succeeds, the corresponding request ID is returned.
         self.dry_run = dry_run
-        # Specifies whether to forcefully delete the VPC connection. Valid values:
-        # 
-        # - **false** (default): checks resources such as associated forwarding correlations and route learning policies that are related to the VPC connection before it is deleted. If such a resource exists, the VPC connection is not deleted and an error message is returned.
-        # - **true**: deletes the VPC connection and all resources that are related to the VPC connection.
+        # Specifies whether to force delete the VPC connection. Valid values:
+        # - **false** (default): Before the VPC connection is deleted, the system checks whether related resource dependencies exist, such as associated forwarding and routing learning. If related dependencies exist, the VPC connection is not deleted and the corresponding error is returned.
+        # - **true**: When the VPC connection is deleted, all related dependencies are also deleted.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id

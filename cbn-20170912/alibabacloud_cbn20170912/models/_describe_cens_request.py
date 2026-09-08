@@ -22,21 +22,21 @@ class DescribeCensRequest(DaraModel):
     ):
         # The filter conditions.
         # 
-        # You can specify up to five filter conditions.
+        # You can specify up to 5 filter conditions at a time.
         self.filter = filter
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number to query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the resource group to which the CEN instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The tag information.
         # 
-        # You can specify up to 20 tags.
+        # You can specify up to 20 tags at a time.
         self.tag = tag
 
     def validate(self):
@@ -134,13 +134,13 @@ class DescribeCensRequestTag(DaraModel):
         # 
         # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify up to 20 tag keys.
+        # You can specify up to 20 tag keys at a time.
         self.key = key
         # The tag value of the resource.
         # 
-        # The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # Each tag key must have a corresponding tag value. You can specify up to 20 tag values.
+        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -175,21 +175,20 @@ class DescribeCensRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter key. Valid values:
+        # The filter condition. Valid values:
         # 
-        # - **CenId**: The ID of the CEN instance.
+        # - **CenId**: the CEN instance ID.
+        # - **Name**: the CEN instance name.
         # 
-        # - **Name**: The name of the CEN instance.
+        # The relationship between multiple filter conditions is **AND**, which means that a record must match all filter conditions to be returned.
         # 
-        # The logical relationship among multiple filter conditions is **AND**. All filter conditions must be met.
-        # 
-        # You can specify up to five filter conditions.
+        # You can specify up to 5 filter conditions at a time.
         self.key = key
-        # The filter value.
+        # The value of the filter condition.
         # 
-        # Specify the filter value based on the **Key**. You can specify multiple values for a key. The logical relationship among the values is **OR**. A resource is a match if it meets any of the specified values.
+        # Specify filter values based on the **Key** parameter. You can specify multiple filter values for a single **Key**. The relationship between multiple filter values is **OR**, which means that a record is returned if it matches any of the filter values.
         # 
-        # You can specify up to five filter values for a filter condition.
+        # You can specify up to 5 filter values for each filter condition.
         self.value = value
 
     def validate(self):

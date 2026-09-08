@@ -16,19 +16,18 @@ class ListTransitRouterPeerAttachmentsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_attachments: List[main_models.ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The token that determines the start point of the next query. Valid values:
         # 
-        # - If this parameter is empty, no more data is returned.
-        # 
-        # - If a value is returned for this parameter, the value is the token that is used for the next query.
+        # - If **NextToken** is empty, no subsequent query is to be sent.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # A list of inter-region connections.
+        # The list of inter-region connections.
         self.transit_router_attachments = transit_router_attachments
 
     def validate(self):
@@ -106,77 +105,68 @@ class ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments(DaraM
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
     ):
-        # Indicates whether the Enterprise Edition transit router automatically advertises routes to the peer region.
+        # Indicates whether the Enterprise Edition transit router instance automatically advertises routes of the inter-region connection to the peer region.
         # 
         # - **false** (default): No.
-        # 
         # - **true**: Yes.
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # The bandwidth of the inter-region connection. Unit: Mbit/s.
+        # The bandwidth value of the inter-region connection. Unit: Mbit/s.
         # 
-        # - If **BandwidthType** is set to **BandwidthPackage**, this parameter indicates the bandwidth that is allocated to the inter-region connection.
-        # 
-        # - If **BandwidthType** is set to **DataTransfer**, this parameter indicates the maximum bandwidth of the inter-region connection.
+        # - If **BandwidthType** is set to **BandwidthPackage**, this parameter indicates the bandwidth that the inter-region connection can use.
+        # - If **BandwidthType** is set to **DataTransfer**, this parameter indicates the bandwidth limit of the inter-region connection.
         self.bandwidth = bandwidth
         # The bandwidth allocation method. Valid values:
         # 
-        # - **BandwidthPackage**: Bandwidth is allocated from a bandwidth plan.
+        # - **BandwidthPackage**: Bandwidth is allocated from a bandwidth package.
         # 
-        # - **DataTransfer**: The inter-region connection is not allocated a specific bandwidth and is billed on a pay-by-traffic basis.
+        # - **DataTransfer**: No bandwidth is allocated to the inter-region connection. Data transfer is pay-as-you-go.
         self.bandwidth_type = bandwidth_type
-        # The ID of the bandwidth plan that is associated with the inter-region connection.
+        # The ID of the bandwidth package associated with the inter-region connection.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         self.cen_id = cen_id
         # The time when the inter-region connection was created.
         # 
-        # The time is displayed in the ISO 8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
+        # The time is displayed in the ISO 8601 standard in UTC. Format: `YYYY-MM-DDThh:mmZ`.
         self.creation_time = creation_time
         # The default link type.
         # 
-        # - **Gold** (default): Gold.
-        # 
+        # - **Gold** (default): gold.
         # - **Platinum**: Platinum.
         self.default_link_type = default_link_type
-        # The connected areas of the bandwidth plan.
+        # The connected areas of the bandwidth package.
         self.geographic_span_id = geographic_span_id
-        # The ID of the peer transit router.
+        # The instance ID of the peer transit routing router.
         self.peer_transit_router_id = peer_transit_router_id
-        # The ID of the Alibaba Cloud account to which the peer transit router belongs.
+        # The ID of the account to which the peer transit router instance belongs.
         self.peer_transit_router_owner_id = peer_transit_router_owner_id
-        # The ID of the region where the peer transit router is deployed.
+        # The region ID of the peer transit router instance.
         self.peer_transit_router_region_id = peer_transit_router_region_id
-        # The ID of the region where the Enterprise Edition transit router is deployed.
+        # The region ID of the Enterprise Edition transit router.
         self.region_id = region_id
-        # The type of resource that is associated with the connection.
+        # The type of resource associated with the connection.
         # 
-        # - **VPC**: virtual private cloud (VPC).
-        # 
-        # - **CCN**: Cloud Connect Network (CCN) instance.
-        # 
-        # - **VBR**: virtual border router (VBR).
-        # 
-        # - **TR**: transit router.
+        # - **VPC**: virtual private cloud (VPC) instance.
+        # - **CCN**: Cloud Connect Network instance.
+        # - **VBR**: virtual border router (VBR) instance.
+        # - **TR**: transit router instance.
         self.resource_type = resource_type
         # The status of the inter-region connection.
         # 
-        # - **Attached**: The connection is attached.
-        # 
-        # - **Attaching**: The connection is being attached.
-        # 
-        # - **Detaching**: The connection is being detached.
-        # 
-        # - **Detached**: The connection is detached.
+        # - **Attached**: attached.
+        # - **Attaching**: being attached.
+        # - **Detaching**: being detached.
+        # - **Detached**: detached.
         self.status = status
-        # The list of tags.
+        # The tag list.
         self.tags = tags
         # The description of the inter-region connection.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The ID of the inter-region connection.
+        # The inter-region connection ID.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The name of the inter-region connection.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The ID of the Enterprise Edition transit router.
+        # The Enterprise Edition transit router instance ID.
         self.transit_router_id = transit_router_id
 
     def validate(self):

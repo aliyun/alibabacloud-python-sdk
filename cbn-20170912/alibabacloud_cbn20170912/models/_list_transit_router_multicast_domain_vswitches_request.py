@@ -19,16 +19,15 @@ class ListTransitRouterMulticastDomainVSwitchesRequest(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # The ID of the Cloud Enterprise Network instance.
+        # The instance ID of the Cloud Enterprise Network (CEN).
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The number of entries to return on each page. Minimum value: **0**. Default value: **20**.
+        # The number of entries per page for a paged query. Minimum value: **0**. Default value: **20**.
         self.max_results = max_results
-        # The token for the next query. Valid values:
-        # 
-        # - You do not need to specify this parameter for the first query or if there is no next query.
-        # - If there is a next query, set the value to the **NextToken** value that is returned from the previous API call.
+        # The pagination token. Valid values:
+        # - You do not need to specify this parameter for the first request or if no subsequent query exists.
+        # - If a subsequent query exists, set the value to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -36,7 +35,7 @@ class ListTransitRouterMulticastDomainVSwitchesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The ID of the VPC instance.
+        # The ID of the VPC-connected instance.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

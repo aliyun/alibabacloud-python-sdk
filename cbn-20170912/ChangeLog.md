@@ -1,3 +1,6 @@
+2026-09-08 Version: 1.3.11
+- Generated python 2017-09-12 for Cbn.
+
 2026-06-30 Version: 1.3.10
 - Update API CreateTransitRouterMulticastDomain: add request parameters Options.StrictSourceControl.
 - Update API ListTransitRouterMulticastDomains: add response parameters Body.TransitRouterMulticastDomains.$.Options.StrictSourceControl.

@@ -25,31 +25,28 @@ class ListTransitRouterPrefixListAssociationRequest(DaraModel):
     ):
         # The ID of the next hop connection.
         # 
-        # > If you want to query information about the prefix list that is used to generate blackhole routes, set this parameter to **BlackHole**.
+        # > To query information about a prefix list that generates blackhole routes, set this parameter to **BlackHole**.
         self.next_hop = next_hop
-        # The ID of the network instance that is associated with the next hop connection.
+        # The network instance ID associated with the next hop connection.
         self.next_hop_instance_id = next_hop_instance_id
         # The next hop type. Valid values:
         # 
-        # - **BlackHole**: queries the prefix lists that generate blackhole routes.
-        # 
-        # - **VPC**: queries the prefix lists whose next hop is a Virtual Private Cloud (VPC) connection.
-        # 
-        # - **VBR**: queries the prefix lists whose next hop is a virtual border router (VBR) connection.
-        # 
-        # - **TR**: queries the prefix lists whose next hop is an inter-region connection.
+        # - **BlackHole**: queries information about prefix lists that generate blackhole routes.
+        # - **VPC**: queries information about prefix lists whose next hop is a Virtual Private Cloud (VPC) connection.
+        # - **VBR**: queries information about prefix lists whose next hop is a Virtual Border Router (VBR) connection.
+        # - **TR**: queries information about prefix lists whose next hop is an inter-region connection.
         self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the Alibaba Cloud account to which the prefix list belongs.
         self.owner_uid = owner_uid
-        # The number of the page to return. Default value: **1**.
+        # The page number of the list to query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
         # The ID of the prefix list.
         self.prefix_list_id = prefix_list_id
-        # The region ID of the transit router.
+        # The region ID of the transit router instance.
         # 
         # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
         # 
@@ -59,15 +56,14 @@ class ListTransitRouterPrefixListAssociationRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The status of the prefix list.
         # 
-        # - **Active**: The prefix list is active.
-        # 
-        # - **Updating**: The prefix list is being updated.
+        # - **Active**: active.
+        # - **Updating**: being updated.
         self.status = status
-        # The ID of the transit router.
+        # The transit router instance ID.
         # 
         # This parameter is required.
         self.transit_router_id = transit_router_id
-        # The ID of the route table of the transit router.
+        # The ID of the transit router route table.
         self.transit_router_table_id = transit_router_table_id
 
     def validate(self):

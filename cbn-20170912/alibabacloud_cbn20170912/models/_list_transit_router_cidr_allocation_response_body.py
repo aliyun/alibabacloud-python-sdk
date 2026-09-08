@@ -16,23 +16,20 @@ class ListTransitRouterCidrAllocationResponseBody(DaraModel):
         total_count: int = None,
         transit_router_cidr_allocations: List[main_models.ListTransitRouterCidrAllocationResponseBodyTransitRouterCidrAllocations] = None,
     ):
-        # The number of entries returned on each page.
+        # The number of entries per page.
         # 
-        # - If you did not set the **MaxResults** parameter in the request, this parameter indicates the total number of entries.
-        # 
-        # - If you set the **MaxResults** parameter in the request, this parameter indicates the number of entries on the current page.
+        # - If you did not specify the **MaxResults** request parameter, it indicates that you did not need to query results by page. The value of **MaxResults** in the response indicates the total number of entries.
+        # - If you specified the **MaxResults** request parameter, it indicates that you needed to query results by page. The value of **MaxResults** in the response indicates the number of entries on the current page.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # - If **NextToken** is empty, no next page exists.
-        # 
-        # - If **NextToken** is not empty, the value of this parameter indicates the token that is used for the next query.
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - If **NextToken** is empty, no subsequent request exists.
+        # - If **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # A list of CIDR block allocations.
+        # The allocation details of the transit router CIDR block.
         self.transit_router_cidr_allocations = transit_router_cidr_allocations
 
     def validate(self):
@@ -96,15 +93,15 @@ class ListTransitRouterCidrAllocationResponseBodyTransitRouterCidrAllocations(Da
         cidr: str = None,
         transit_router_cidr_id: str = None,
     ):
-        # The allocated CIDR block.
+        # The allocated CIDR block under the transit router CIDR block.
         self.allocated_cidr_block = allocated_cidr_block
         # The ID of the network instance connection.
         self.attachment_id = attachment_id
         # The name of the network instance connection.
         self.attachment_name = attachment_name
-        # The CIDR block of the transit router.
+        # The transit router CIDR block.
         self.cidr = cidr
-        # The ID of the CIDR block of the transit router.
+        # The ID of the transit router CIDR block.
         self.transit_router_cidr_id = transit_router_cidr_id
 
     def validate(self):

@@ -18,35 +18,34 @@ class UpdateTransitRouterEcrAttachmentAttributeRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
     ):
-        # The client token that ensures the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can generate a token from your client, but you must ensure that it is unique across requests. The `ClientToken` can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run to check for potential issues, including permissions and instance status. Valid values:
+        # Specifies whether to perform a dry run for this modification request, including permission and instance status checks. Valid values:
         # 
-        # - **false** (default): Sends a normal request. The system modifies the ECR attachment attributes if the request passes the check.
-        # 
-        # - **true**: Sends a check request only. The system validates the request but does not modify the ECR attachment attributes. If the check fails, an error is returned. If the check passes, the system returns the request ID.
+        # - **false** (default): Sends a normal request. If the request passes the check, the transit router instance information is directly modified.
+        # - **true**: Sends a check request. Only the validation is performed, and the transit router instance information is not modified. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the corresponding request ID is returned.
         self.dry_run = dry_run
-        # The payer for the network instance. This operation does not support changing the payer for an ECR attachment.
+        # The payer of the network instance. The payer of the ECR connection cannot be modified.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The new description of the ECR attachment.
+        # The new description of the ECR connection.
         # 
-        # The description can be empty or 1 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The ID of the ECR attachment.
+        # The ID of the ECR connection.
         # 
         # This parameter is required.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The new name of the ECR attachment.
+        # The new name of the ECR connection.
         # 
-        # The name can be empty or 1 to 128 characters in length. It cannot start with `http://` or `https://`.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.transit_router_attachment_name = transit_router_attachment_name
 
     def validate(self):

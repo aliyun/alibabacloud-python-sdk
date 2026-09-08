@@ -17,21 +17,21 @@ class SetCenInterRegionBandwidthLimitRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The inter-region bandwidth between the two regions. Unit: Mbps.
+        # The inter-region bandwidth between the two regions. Unit: Mbit/s.
         # 
         # This parameter is required.
         self.bandwidth_limit = bandwidth_limit
-        # The method used to allocate bandwidth. Valid value:
+        # The bandwidth allocation method. Valid values:
         # 
-        # - **BandwidthPackage** (default): allocates bandwidth from a bandwidth plan.
+        # - **BandwidthPackage** (default): Bandwidth is allocated from the bandwidth package.
         self.bandwidth_type = bandwidth_type
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
         # The ID of the local region.
         # 
-        # Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the regions where network instances can be attached to a CEN instance.
+        # You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query the regions of the network instances that can be attached to a CEN instance.
         # 
         # This parameter is required.
         self.local_region_id = local_region_id

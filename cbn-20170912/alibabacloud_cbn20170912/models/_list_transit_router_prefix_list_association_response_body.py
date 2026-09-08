@@ -16,15 +16,15 @@ class ListTransitRouterPrefixListAssociationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
         # The information about the prefix lists.
         self.prefix_lists = prefix_lists
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -93,19 +93,16 @@ class ListTransitRouterPrefixListAssociationResponseBodyPrefixLists(DaraModel):
     ):
         # The ID of the next hop connection.
         # 
-        # > If **BlackHole** is returned, it indicates that all CIDR blocks in the prefix list are blackhole routes. All traffic destined for the CIDR blocks in the prefix list is dropped.
+        # > If the value is **BlackHole**, all CIDR blocks in the prefix list are blackhole routes, and all traffic destined for the CIDR blocks in the prefix list is dropped.
         self.next_hop = next_hop
-        # The ID of the network instance that is associated with the next hop connection.
+        # The network instance ID associated with the next hop connection.
         self.next_hop_instance_id = next_hop_instance_id
         # The next hop type.
         # 
-        # - **BlackHole**: The routes are blackhole routes. All traffic destined for the CIDR blocks in the prefix list is dropped.
-        # 
-        # - **VPC**: The next hop is a Virtual Private Cloud (VPC) connection.
-        # 
-        # - **VBR**: The next hop is a virtual border router (VBR) connection.
-        # 
-        # - **TR**: The next hop is an inter-region connection.
+        # - **BlackHole**: the CIDR blocks in the prefix list are blackhole routes, and all traffic destined for the CIDR blocks in the prefix list is dropped.
+        # - **VPC**: the next hop of the CIDR blocks in the prefix list is a Virtual Private Cloud (VPC) connection.
+        # - **VBR**: the next hop of the CIDR blocks in the prefix list is a Virtual Border Router (VBR) connection.
+        # - **TR**: the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         self.next_hop_type = next_hop_type
         # The ID of the Alibaba Cloud account to which the prefix list belongs.
         self.owner_uid = owner_uid
@@ -113,13 +110,12 @@ class ListTransitRouterPrefixListAssociationResponseBodyPrefixLists(DaraModel):
         self.prefix_list_id = prefix_list_id
         # The status of the prefix list.
         # 
-        # - **Active**: The prefix list is active.
-        # 
-        # - **Updating**: The prefix list is being updated.
+        # - **Active**: active.
+        # - **Updating**: being updated.
         self.status = status
-        # The ID of the transit router.
+        # The transit router instance ID.
         self.transit_router_id = transit_router_id
-        # The ID of the route table of the transit router.
+        # The ID of the transit router route table.
         self.transit_router_table_id = transit_router_table_id
 
     def validate(self):

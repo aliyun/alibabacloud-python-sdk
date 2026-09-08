@@ -30,64 +30,63 @@ class CreateTransitRouterVpcAttachmentRequest(DaraModel):
         vpc_owner_id: int = None,
         zone_mappings: List[main_models.CreateTransitRouterVpcAttachmentRequestZoneMappings] = None,
     ):
-        # Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VPC.
+        # Specifies whether to allow the Enterprise Edition transit router to automatically publish routing entries to the VPC instance.
         # 
-        # - **false** (default): Do not automatically advertise routes.
-        # 
-        # - **true**: Automatically advertise routes.
+        # - **false** (default): No.
+        # - **true**: Yes.
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # The ID of the CEN instance.
+        # The instance ID of the Cloud Enterprise Network (CEN).
         self.cen_id = cen_id
-        # The billing method. The default value is **POSTPAY** (pay-as-you-go).
+        # The billing method. Default value: **POSTPAY**, which indicates pay-as-you-go.
         self.charge_type = charge_type
-        # The client token used to ensure request idempotency.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You must generate a value on your client that is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the request ID as the client token, which is unique for each request.
+        # >If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run to check the validity of the request without creating the resource. The check includes permissions and instance status. Valid values:
+        # Specifies whether to execute a dry run, including permission and instance status verification. Valid values:
         # 
-        # - **false** (default): Sends a normal request. The system creates the VPC connection if the request is valid.
-        # 
-        # - **true**: Sends only a check request. The system checks required parameters, request format, and permissions. The VPC connection is not created. If the check fails, an error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request and creates the VPC connection after the request passes the check.
+        # - **true**: Sends a check request. Only the check is performed, and the VPC connection is not created. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
         self.dry_run = dry_run
+        # The collection of feature attributes.
         self.options = options
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the VPC is located.
+        # The region ID of the VPC-connected instance.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+        # You can invoke the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags to add to the VPC connection.
+        # The list of tags.
         # 
-        # You can add up to 20 tags.
+        # You can specify up to 20 tags at a time.
         self.tag = tag
         # The description of the VPC connection.
         # 
-        # The description can be empty or 1 to 256 characters long, and cannot start with `http://` or `https://`.
+        # The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
         self.transit_router_attachment_description = transit_router_attachment_description
         # The name of the VPC connection.
         # 
-        # The name can be empty or 1 to 128 characters long, and cannot start with `http://` or `https://`.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The ID of the Enterprise Edition transit router.
+        # The instance ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
-        # The properties of the VPC connection. This parameter is deprecated. We recommend that you use the `Options` parameter instead.
+        # The list of feature attributes for the VPC connection (to be deprecated, use the new parameter Options instead).
         self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
-        # The ID of the VPC.
+        # The instance ID of the VPC-connected instance.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The ID of the Alibaba Cloud account that owns the VPC. By default, this is the ID of the current Alibaba Cloud account.
+        # The Alibaba Cloud account ID to which the VPC-connected instance belongs. The default value is the Alibaba Cloud account ID of the current logon user.
         # 
-        # > This parameter is required if you want to attach a cross-account network instance.
+        # > This parameter is required if you want to load a cross-account network instance.
         self.vpc_owner_id = vpc_owner_id
-        # The zone mappings for the VPC connection. For each mapping, you must specify a vSwitch in a zone that is supported by the Enterprise Edition transit router.
+        # Select a vSwitch instance in a zone supported by the Enterprise Edition transit router.
         # 
-        # You can specify up to 10 zone mappings.
+        # You can add up to 10 entries at a time.
         # 
         # This parameter is required.
         self.zone_mappings = zone_mappings
@@ -246,13 +245,17 @@ class CreateTransitRouterVpcAttachmentRequestZoneMappings(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the vSwitch.
+        # The ID of the vSwitch instance in a zone supported by the Enterprise Edition transit router.
+        # 
+        # You can select vSwitch instances for up to 10 zones at a time.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The ID of the zone. The zone must be supported by the Enterprise Edition transit router.
+        # The ID of a zone supported by the Enterprise Edition transit router.
         # 
-        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query available zones.
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
+        # 
+        # You can select up to 10 zones at a time.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -289,13 +292,17 @@ class CreateTransitRouterVpcAttachmentRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key of the resource.
         # 
-        # The tag key cannot be an empty string. The key can be up to 64 characters long and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # 
+        # You can specify up to 20 tag keys at a time.
         self.key = key
-        # The value of the tag.
+        # The tag value of the resource.
         # 
-        # The tag value can be an empty string or a string up to 128 characters long. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # Once specified, the tag value cannot be empty. The tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
+        # 
+        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -330,7 +337,15 @@ class CreateTransitRouterVpcAttachmentRequestOptions(DaraModel):
         appliance_mode_support: str = None,
         ipv_6support: str = None,
     ):
+        # Specifies whether to enable the appliance mode.
+        # 
+        # - **disable** (default): No.
+        # - **enable**: Yes.
         self.appliance_mode_support = appliance_mode_support
+        # Specifies whether IPv6 is supported.
+        # 
+        # - **disable** (default): No.
+        # - **enable**: Yes.
         self.ipv_6support = ipv_6support
 
     def validate(self):

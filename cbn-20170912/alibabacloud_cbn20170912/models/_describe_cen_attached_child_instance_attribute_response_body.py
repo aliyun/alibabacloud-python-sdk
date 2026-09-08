@@ -22,15 +22,15 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         self.cen_id = cen_id
-        # The time when the network instance was attached to the CEN instance.
+        # The time when the network instance was attached.
         # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
+        # The time is displayed in UTC in the YYYY-MM-DDThh:mmZ format.
         self.child_instance_attach_time = child_instance_attach_time
-        # The details about the network instance.
+        # The details of the network instance.
         self.child_instance_attributes = child_instance_attributes
-        # The ID of the network instance.
+        # The network instance ID.
         self.child_instance_id = child_instance_id
         # The name of the network instance.
         self.child_instance_name = child_instance_name
@@ -38,21 +38,23 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(DaraModel):
         self.child_instance_owner_id = child_instance_owner_id
         # The region ID of the network instance.
         self.child_instance_region_id = child_instance_region_id
-        # The type of the network instance. Valid values:
+        # The type of the network instance.
         # 
-        # - **VPC**: VPC
-        # - **VBR**: VBR
-        # - **CCN**: CCN instance
+        # - **VPC**: virtual private cloud.
+        # 
+        # - **VBR**: virtual border router.
+        # 
+        # - **CCN**: Cloud Connect Network.
         self.child_instance_type = child_instance_type
-        # The cloud service that the network instance belongs to. Its standard code is only returned when the VPC is connected to the transit router. For self-managed VPCs, no code is returned.
+        # The cloud service to which the network instance belongs. This parameter is returned only when a VPC occupied by a cloud service is connected to a transit router. If the VPC is managed by you, this parameter is not returned.
         self.managed_service = managed_service
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the network instance is attached to the CEN instance.
+        # The attachment status of the network instance.
         # 
-        # - **Attaching**: The network instance is being attached to the CEN instance.
-        # - **Attached**: The network instance is attached to the CEN instance.
-        # - **Detaching**: The network instance is being detached from the CEN instance.
+        # - **Attaching**: being attached.
+        # - **Attached**: attached.
+        # - **Detaching**: being detached.
         self.status = status
 
     def validate(self):

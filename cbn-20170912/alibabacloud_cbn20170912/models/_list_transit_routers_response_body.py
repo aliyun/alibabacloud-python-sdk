@@ -18,13 +18,13 @@ class ListTransitRoutersResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query. For more information about paging, see the related parameter descriptions.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # A list of transit routers.
+        # The list of transit router instances.
         self.transit_routers = transit_routers
 
     def validate(self):
@@ -97,47 +97,41 @@ class ListTransitRoutersResponseBodyTransitRouters(DaraModel):
     ):
         # The ID of the Alibaba Cloud account to which the CEN instance belongs.
         self.ali_uid = ali_uid
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         self.cen_id = cen_id
-        # The time when the transit router was created.
+        # The time when the transit router instance was created.
         # 
-        # The time is displayed in the `YYYY-MM-DDThh:mmZ` format in UTC.
+        # The time is displayed in UTC in the `YYYY-MM-DDThh:mmZ` format.
         self.creation_time = creation_time
-        # The ID of the region where the transit router is deployed.
+        # The region ID of the transit router instance.
         self.region_id = region_id
-        # The status of the transit router.
+        # The status of the transit router instance. Valid values:
         # 
-        # - **Creating**: The transit router is being created.
-        # 
-        # - **Active**: The transit router is available.
-        # 
-        # - **Modifying**: The transit router is being modified.
-        # 
-        # - **Deleting**: The transit router is being deleted.
-        # 
-        # - **Upgrading**: The transit router is being upgraded.
+        # - **Creating**: being created.
+        # - **Active**: active.
+        # - **Modifying**: being modified.
+        # - **Deleting**: being deleted.
+        # - **Upgrading**: being upgraded.
         self.status = status
-        # Indicates whether the multicast feature is enabled for the transit router.
+        # Indicates whether the multicast feature is enabled for the transit router instance. Valid values:
         # 
         # - **true**: enabled.
-        # 
         # - **false**: disabled.
         self.support_multicast = support_multicast
-        # A list of tags.
+        # The list of tags.
         self.tags = tags
-        # A list of CIDR blocks of the transit router.
+        # The list of transit router CIDR blocks.
         self.transit_router_cidr_list = transit_router_cidr_list
-        # The description of the transit router.
+        # The description of the transit router instance.
         self.transit_router_description = transit_router_description
-        # The ID of the transit router.
+        # The transit router instance ID.
         self.transit_router_id = transit_router_id
-        # The name of the transit router.
+        # The name of the transit router instance.
         self.transit_router_name = transit_router_name
-        # The type of the transit router.
+        # The type of the transit router instance. Valid values:
         # 
-        # - **Enterprise**: Enterprise Edition.
-        # 
-        # - **Basic**: Basic Edition.
+        # - **Enterprise**: Enterprise Edition transit router.
+        # - **Basic**: Basic Edition transit router.
         self.type = type
 
     def validate(self):
@@ -252,25 +246,24 @@ class ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList(DaraMode
         publish_cidr_route: bool = None,
         transit_router_cidr_id: str = None,
     ):
-        # The CIDR block of the transit router.
+        # The transit router CIDR block.
         self.cidr = cidr
-        # The description of the CIDR block.
+        # The description of the transit router CIDR block.
         self.description = description
-        # The name of the CIDR block.
+        # The name of the transit router CIDR block.
         self.name = name
-        # Indicates whether the system automatically adds a route for the transit router CIDR block to the route table of the transit router.
+        # Indicates whether the system is allowed to automatically add a route for the transit router CIDR block to the transit router route table. Valid values:
         # 
-        # - **true**: Yes.
+        # - **true**: allowed.
         # 
-        #   If this parameter is set to **true**, after you create a VPN connection of the private gateway type and enable route learning for the VPN connection, the system automatically adds a blackhole route to the route table of the transit router that is in a route learning correlation with the VPN connection.
+        #      If the value is **true**, after you create a VPN connection of the private gateway type and create a route learning relationship for the VPN connection, the system automatically adds the following route entry to the transit router route table that has a route learning relationship with the VPN connection:
         # 
-        #   The destination CIDR block of the blackhole route is the CIDR block of the transit router. The CIDR block of the transit router is the CIDR block from which an IP address is allocated to the IPsec-VPN connection.
-        # 
-        #   This blackhole route is advertised only to the route tables of the virtual border routers (VBRs) that are connected to the transit router.
-        # 
-        # - **false**: No.
+        #   A blackhole route whose destination CIDR block is the transit router CIDR block from which a gateway IP address is allocated to the IPsec connection.
+        #       
+        #   The blackhole route is propagated only to the route tables of VBR instances under the transit router.
+        # - **false**: not allowed.
         self.publish_cidr_route = publish_cidr_route
-        # The ID of the CIDR block.
+        # The ID of the transit router CIDR block.
         self.transit_router_cidr_id = transit_router_cidr_id
 
     def validate(self):

@@ -16,23 +16,20 @@ class DeleteTransitRouterPeerAttachmentRequest(DaraModel):
         resource_owner_id: int = None,
         transit_router_attachment_id: str = None,
     ):
-        # A client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a token from your client to ensure that the token is unique among different requests. The ClientToken parameter can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the request as the **ClientToken**. The **RequestId** of each request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. A dry run checks permissions and the status of the instance. Valid values:
+        # Specifies whether to perform a dry run for this deletion request, including permission and instance status checks. Valid values:
         # 
-        # - **false** (default): sends the request. If the request passes the check, the inter-region connection is deleted.
-        # 
-        # - **true**: sends a check request. The system checks the required parameters and the request format. If the request fails the check, an error is returned. If the request passes the check, the corresponding request ID is returned. The inter-region connection is not deleted.
+        # - **false** (default): Sends a normal request. If the request passes the check, the inter-region connection is deleted.
+        # - **true**: Sends a check request. Only the check is performed without actually deleting the inter-region connection. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the corresponding request ID is returned.
         self.dry_run = dry_run
-        # Specifies whether to forcefully delete the inter-region connection. Valid values:
-        # 
-        # - **false** (default): checks for resource dependencies, such as associated forwarding and route learning, before deleting the inter-region connection. If dependencies exist, the deletion is not allowed and an error is returned.
-        # 
-        # - **true**: deletes all related dependencies when deleting the inter-region connection.
+        # Specifies whether to force delete the inter-region connection. Valid values:
+        # - **false** (default): Before deleting the inter-region connection, the system checks whether related resource dependencies exist, such as associated forwarding and route learning. If related dependencies exist, the deletion is not allowed and the corresponding error is returned.
+        # - **true**: When deleting the inter-region connection, all related dependencies are deleted by default.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id

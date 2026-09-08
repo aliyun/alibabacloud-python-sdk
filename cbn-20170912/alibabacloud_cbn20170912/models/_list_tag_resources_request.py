@@ -21,53 +21,53 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token that is used for the next query. Valid values:
+        # Specifies whether a next query token exists. Valid values:
         # 
-        # - If this is your first query or no next query is to be sent, you do not need to specify this parameter.
+        # - If this is the first query or no next query exists, you do not need to specify this parameter.
         # 
-        # - If a subsequent query is to be sent, set the value to the NextToken value that is returned from the last API call.
+        # - If a next query exists, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the resource is deployed.
+        # The region ID of the resource instance.
         # 
-        # This parameter is not required for the Cen and BandwidthPackage resource types. It is required for all other resource types.
+        # This parameter is not required when the resource type is Cen or BandwidthPackage. This parameter is required for all other resource types.
         self.region_id = region_id
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         # 
-        # You can enter a maximum of 20 CEN instance IDs.
+        # You can specify up to 20 CEN instance IDs at a time.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
         # 
-        # **Cen**: a CEN instance.
+        # **Cen**: CEN instance.
         # 
-        # **BandwidthPackage**: a bandwidth plan.
+        # **BandwidthPackage**: bandwidth package instance.
         # 
-        # **TransitRouter**: a transit router.
+        # **TransitRouter**: transit router instance.
         # 
-        # **TransitRouterVpcAttachment**: a VPC connection.
+        # **TransitRouterVpcAttachment**: VPC connection instance.
         # 
-        # **TransitRouterVbrAttachment**: a VBR connection.
+        # **TransitRouterVbrAttachment**: VBR connection instance.
         # 
-        # **TransitRouterPeerAttachment**: an inter-region connection.
+        # **TransitRouterPeerAttachment**: inter-region connection instance.
         # 
-        # **TransitRouterVpnAttachment**: a VPN connection.
+        # **TransitRouterVpnAttachment**: VPN connection instance.
         # 
-        # **TransitRouterRouteTable**: a route table.
+        # **TransitRouterRouteTable**: route table instance.
         # 
-        # **Flowlog**: a flow log.
+        # **Flowlog**: flow log instance.
         # 
-        # **TransitRouterMulticastDomain**: a multicast domain.
+        # **TransitRouterMulticastDomain**: multicast domain instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags of the CEN instance.
+        # The tag information of the CEN instance.
         # 
-        # You can query a maximum of 20 tags.
+        # You can query up to 20 tags at a time.
         self.tag = tag
 
     def validate(self):
@@ -160,15 +160,15 @@ class ListTagResourcesRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag key can contain up to 64 characters and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can enter a maximum of 20 tag keys.
+        # You can specify up to 20 tag keys at a time.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag value can contain up to 128 characters and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can enter a maximum of 20 tag values.
+        # You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

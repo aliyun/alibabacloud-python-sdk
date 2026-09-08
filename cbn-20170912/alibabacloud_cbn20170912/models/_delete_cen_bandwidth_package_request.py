@@ -13,7 +13,7 @@ class DeleteCenBandwidthPackageRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the bandwidth plan that you want to delete.
+        # The instance ID of the bandwidth plan to delete.
         # 
         # This parameter is required.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id

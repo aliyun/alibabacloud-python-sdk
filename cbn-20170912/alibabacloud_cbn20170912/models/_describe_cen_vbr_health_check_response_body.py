@@ -18,11 +18,11 @@ class DescribeCenVbrHealthCheckResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
         self.vbr_health_checks = vbr_health_checks
 

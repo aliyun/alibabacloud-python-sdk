@@ -13,7 +13,7 @@ class DeleteCenRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The CEN instance ID.
+        # The instance ID of the CEN instance.
         # 
         # This parameter is required.
         self.cen_id = cen_id

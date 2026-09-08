@@ -19,31 +19,33 @@ class ModifyFlowLogAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The unique, one-use client token that is used to ensure the idempotence of the request. It can contain only ASCII characters.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # > If you leave this parameter empty, the system automatically uses the **request ID** as the **client token**.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The new description of the flow log.
         # 
-        # The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # The ID of the flow log.
+        # The flow log ID.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
         # The new name of the flow log.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.flow_log_name = flow_log_name
-        # The duraton of the capture window. Unit: seconds. Valid values: **60** and **600**. Default value: **600**.
+        # The capture window duration for the flow log. Unit: seconds. Valid values: **60** or **600**. Default value: **600**.
         self.interval = interval
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the flow log is deployed.
+        # The region ID of the flow log.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

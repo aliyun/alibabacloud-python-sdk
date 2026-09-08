@@ -19,30 +19,30 @@ class UpdateTransitRouterRouteEntryRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** is different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Default values:
+        # Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
         # 
-        # - **false** (default): performs a dry run and sends the request.
-        # - **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request. If the request passes the check, the name and description of the route entry are modified.
+        # - **true**: Sends a check request. Only the validation is performed, and the name and description of the route entry are not modified. The system checks whether the required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The new description of the route.
+        # The new description of the route entry.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.transit_router_route_entry_description = transit_router_route_entry_description
-        # The ID of the route.
+        # The route entry ID.
         # 
         # This parameter is required.
         self.transit_router_route_entry_id = transit_router_route_entry_id
-        # The new name of the route.
+        # The new name of the route entry.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.transit_router_route_entry_name = transit_router_route_entry_name
 
     def validate(self):

@@ -16,7 +16,7 @@ class DisableCenVbrHealthCheckRequest(DaraModel):
         vbr_instance_owner_id: int = None,
         vbr_instance_region_id: str = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The CEN instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
@@ -24,17 +24,17 @@ class DisableCenVbrHealthCheckRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VBR.
+        # The VBR instance ID.
         # 
         # This parameter is required.
         self.vbr_instance_id = vbr_instance_id
-        # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # The ID of the Alibaba Cloud account that owns the VBR instance.
         # 
-        # > This parameter is required if the VBR and the CEN instance belong to different Alibaba Cloud accounts.
+        # > This parameter is required if the VBR instance and the CEN instance belong to different accounts.
         self.vbr_instance_owner_id = vbr_instance_owner_id
-        # The ID of the region where the VBR is deployed.
+        # The region ID of the VBR instance.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query region IDs.
         # 
         # This parameter is required.
         self.vbr_instance_region_id = vbr_instance_region_id

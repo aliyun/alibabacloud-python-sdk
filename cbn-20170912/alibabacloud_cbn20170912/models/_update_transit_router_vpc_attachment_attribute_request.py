@@ -24,45 +24,43 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(DaraModel):
         transit_router_attachment_name: str = None,
         transit_router_vpcattachment_options: Dict[str, str] = None,
     ):
-        # Specifies whether to allow the Enterprise Edition transit router to automatically advertise routes to the VPC.
+        # Specifies whether to allow the Enterprise Edition forward router to automatically publish route entry to the VPC-connected instance.
         # 
-        # - **false**: The transit router does not automatically advertise routes.
-        # 
-        # - **true**: The transit router automatically advertises routes.
+        # - **false**: no.
+        # - **true**: yes.
         self.auto_publish_route_enabled = auto_publish_route_enabled
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can generate the token from your client, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, which checks for issues such as permissions and instance status. Valid values:
+        # Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
         # 
-        # - **false** (default): sends a normal request. After the request passes the check, the system modifies the name and description of the VPC connection.
-        # 
-        # - **true**: sends a check request. The system validates the request without modifying the VPC connection. If the check passes, the system returns the ID of the request. Otherwise, the system returns an error.
+        # - **false** (default): Sends a normal request. If the request passes the check, the name and description of the VPC connection are modified.
+        # - **true**: Sends a check request. Only the verification is performed, and the name and description of the VPC connection are not modified. The system checks whether the required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check passes, the corresponding request ID is returned.
         self.dry_run = dry_run
-        # The billing method.
+        # The collection of feature attributes.
         self.options = options
-        # The billing method.
+        # The payer of the network instance.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The new description of the VPC connection.
+        # The description of the VPC connection.
         # 
-        # The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
         self.transit_router_attachment_description = transit_router_attachment_description
         # The ID of the VPC connection.
         # 
         # This parameter is required.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The new name of the VPC connection.
+        # The name of the VPC connection.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The feature properties of the VPC connection. This parameter is deprecated. We recommend that you use the `Options` parameter.
+        # The list of feature attributes of the VPC connection (to be deprecated. Use the new parameter Options instead).
         self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
 
     def validate(self):
@@ -165,7 +163,15 @@ class UpdateTransitRouterVpcAttachmentAttributeRequestOptions(DaraModel):
         appliance_mode_support: str = None,
         ipv_6support: str = None,
     ):
+        # Specifies whether to enable the appliance mode for traffic redirection.
+        # 
+        # - **disable** (default): no.
+        # - **enable**: yes.
         self.appliance_mode_support = appliance_mode_support
+        # Specifies whether IPv6 is supported.
+        # 
+        # - **disable** (default): no.
+        # - **enable**: yes.
         self.ipv_6support = ipv_6support
 
     def validate(self):

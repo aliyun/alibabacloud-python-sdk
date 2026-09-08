@@ -18,15 +18,14 @@ class ListTransitRouterMulticastDomainsResponseBody(DaraModel):
     ):
         # The number of entries per page.
         self.max_results = max_results
-        # The token for the next query.
+        # The token that determines the start point of the next query. Valid values:
         # 
-        # - If the value of **NextToken** is empty, it indicates that no next query is to be sent.
-        # 
-        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
         # The list of multicast domains.
         self.transit_router_multicast_domains = transit_router_multicast_domains
@@ -96,21 +95,23 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         transit_router_multicast_domain_id: str = None,
         transit_router_multicast_domain_name: str = None,
     ):
-        # The ID of the CEN instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The options of the multicast domain.
+        # The feature options of the multicast domain.
         self.options = options
-        # The ID of the region where the transit router is deployed.
+        # The region ID of the transit router.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         self.region_id = region_id
         # The status of the multicast domain.
         # 
-        # The value is **Active**, which indicates that the multicast domain is available.
+        # Valid values:
+        # - ``Active``: The multicast domain is available.
+        # - ``Modifying``: The multicast domain is being modified.
         self.status = status
         # The list of tags.
         self.tags = tags
-        # The ID of the transit router.
+        # The transit router instance ID.
         self.transit_router_id = transit_router_id
         # The description of the multicast domain.
         self.transit_router_multicast_domain_description = transit_router_multicast_domain_description
@@ -241,8 +242,9 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         igmpv_2support: str = None,
         strict_source_control: str = None,
     ):
-        # Indicates whether IGMPv2 is enabled for the multicast domain.
+        # Indicates whether IGMP is enabled for the multicast domain.
         self.igmpv_2support = igmpv_2support
+        # Indicates whether strict multicast source control is enabled for the multicast domain.
         self.strict_source_control = strict_source_control
 
     def validate(self):

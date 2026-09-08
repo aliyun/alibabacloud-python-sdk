@@ -15,20 +15,23 @@ class DescribeGeographicRegionMembershipRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the area that you want to query. Valid values:
+        # The ID of the area to query. Valid values: 
         # 
-        # - **china**: the Chinese mainland
-        # - **asia-pacific**: Asia Pacific
-        # - **europe**: Europe
-        # - **north-america**: North America
+        # - **china**: the Chinese mainland.
+        # 
+        # - **asia-pacific**: Asia-Pacific.
+        # 
+        # - **europe**: Europe.
+        # 
+        # - **north-america**: North America.
         # 
         # This parameter is required.
         self.geographic_region_id = geographic_region_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return per page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page in a paged query. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

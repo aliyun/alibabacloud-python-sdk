@@ -22,27 +22,25 @@ class ListCenChildInstanceRouteEntriesToAttachmentRequest(DaraModel):
         service_type: str = None,
         transit_router_attachment_id: str = None,
     ):
-        # The ID of the CEN instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The ID of the route table of the network instance.
+        # The route table ID of the network instance.
         # 
         # This parameter is required.
         self.child_instance_route_table_id = child_instance_route_table_id
-        # The number of entries to return on each page. The default value is **20**.
+        # The number of entries per page for a paged query. Default value: **20**.
         self.max_results = max_results
-        # The token for the next page of results.
-        # 
-        # - If this is your first query, leave this parameter empty.
-        # 
-        # - If a next query is required, set the value to the NextToken value returned from the last call.
+        # Specifies whether a next query token (Token) exists. Valid values:
+        # - You do not need to specify this parameter for the first query or if no next query exists.
+        # - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The filter for the destination CIDR block.
+        # The destination CIDR block filter.
         self.route_filter = route_filter
-        # The type of the managed routing service. If this parameter is empty, the route is not managed. Set the value to TR. This value indicates that the route is managed by a transit router.
+        # The type of route hosting. If this field is empty, the route is not hosted. Valid values: TR, which indicates that the hosting type is transit router.
         self.service_type = service_type
         # The ID of the network instance connection.
         # 
@@ -143,11 +141,10 @@ class ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The route matching mode.
-        # 
-        # - **prefix-exact-match**: exact match
+        # The route match mode.
+        # - **prefix-exact-match**: exact match.
         self.key = key
-        # A list of destination CIDR blocks.
+        # The list of destination CIDR blocks.
         self.value = value
 
     def validate(self):

@@ -21,41 +21,41 @@ class TagResourcesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the resource.
+        # The region ID of the resource instance.
         # 
-        # This parameter is not required for resources of the Cen and BandwidthPackage types. It is required for all other resource types.
+        # This parameter is not required when the resource type is Cen or BandwidthPackage. This parameter is required for all other resource types.
         self.region_id = region_id
-        # The list of resource IDs.
+        # The resources.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
+        # The resource type. Valid values:
         # 
-        # **Cen**: a CEN instance.
+        # **Cen**: CEN instance.
         # 
-        # **BandwidthPackage**: a bandwidth plan.
+        # **BandwidthPackage**: bandwidth package instance.
         # 
-        # **TransitRouter**: a transit router instance.
+        # **TransitRouter**: transit router instance.
         # 
-        # **TransitRouterVpcAttachment**: a VPC connection.
+        # **TransitRouterVpcAttachment**: VPC connection instance.
         # 
-        # **TransitRouterVbrAttachment**: a VBR connection.
+        # **TransitRouterVbrAttachment**: VBR connection instance.
         # 
-        # **TransitRouterPeerAttachment**: an inter-region connection.
+        # **TransitRouterPeerAttachment**: inter-region connection instance.
         # 
-        # **TransitRouterVpnAttachment**: a VPN connection.
+        # **TransitRouterVpnAttachment**: VPN connection instance.
         # 
-        # **TransitRouterRouteTable**: a route table.
+        # **TransitRouterRouteTable**: route table instance.
         # 
-        # **Flowlog**: a flow log.
+        # **Flowlog**: flow log instance.
         # 
-        # **TransitRouterMulticastDomain**: a multicast domain.
+        # **TransitRouterMulticastDomain**: multicast domain instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tags.
+        # The tag list.
         # 
         # This parameter is required.
         self.tag = tag
@@ -138,15 +138,15 @@ class TagResourcesRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # You can enter multiple tag keys. The value of **N** ranges from **1** to **20**.
+        # You can specify multiple tag keys. Valid values of **N**: **1** to **20**.
         # 
-        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         # 
-        # Each tag key must have a tag value. The value of **N** ranges from **1** to **20**.
+        # Each tag key corresponds to one tag value. Valid values of **N**: **1** to **20**.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

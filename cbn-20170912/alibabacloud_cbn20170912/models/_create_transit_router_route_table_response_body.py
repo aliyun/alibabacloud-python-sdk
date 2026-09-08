@@ -10,7 +10,7 @@ class CreateTransitRouterRouteTableResponseBody(DaraModel):
         request_id: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the custom route table.
         self.transit_router_route_table_id = transit_router_route_table_id

@@ -22,17 +22,17 @@ class ModifyCenAttributeRequest(DaraModel):
         self.cen_id = cen_id
         # The description of the CEN instance.
         # 
-        # The description can be empty or must be 1 to 256 characters in length. The description cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
         # The name of the CEN instance.
         # 
-        # The name can be empty or must be 1 to 128 characters in length. The name cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The level of CIDR block overlap.
+        # The level of CIDR block overlapping.
         # 
-        # Set the value to **REDUCED**. This is the default value. This value specifies that CIDR blocks can overlap but cannot be identical.
+        # Valid values: **REDUCED** (default), which indicates that CIDR blocks can overlap but cannot be identical.
         self.protection_level = protection_level
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

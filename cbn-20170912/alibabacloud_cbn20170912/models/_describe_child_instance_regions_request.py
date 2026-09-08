@@ -14,17 +14,17 @@ class DescribeChildInstanceRegionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The language of the response. Valid values:
+        # The supported language. Valid values: Chinese: zh-CN (default) English: en-US Japanese: ja.
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The type of the network instance. Valid values:
         # 
-        # - **VPC**: a virtual private cloud (VPC).
+        # - **VPC**: virtual private cloud (VPC) instance.
         # 
-        # - **VBR**: a virtual border router (VBR).
+        # - **VBR**: virtual border router (VBR) instance.
         # 
-        # - **CCN**: a Cloud Connect Network (CCN) instance.
+        # - **CCN**: Cloud Connect Network (CCN) instance.
         self.product_type = product_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

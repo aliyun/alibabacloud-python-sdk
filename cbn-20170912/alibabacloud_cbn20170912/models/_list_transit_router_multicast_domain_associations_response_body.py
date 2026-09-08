@@ -16,13 +16,12 @@ class ListTransitRouterMulticastDomainAssociationsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_multicast_associations: List[main_models.ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # The token for the next query. Valid values:
+        # The token that determines the start point of the query. Valid values:
         # 
-        # - If **NextToken** is empty, it indicates that no next query is to be sent.
-        # 
-        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+        # - If **NextToken** is empty, no subsequent query is to be sent.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -100,21 +99,19 @@ class ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulti
         self.resource_owner_id = resource_owner_id
         # The type of resource associated with the multicast domain.
         # 
-        # The value is **VPC**.
+        # Set the value to **VPC**.
         self.resource_type = resource_type
         # The association status.
         # 
-        # - **Associated**: The resource is associated with the multicast domain.
-        # 
-        # - **Associating**: The resource is being associated with the multicast domain.
-        # 
-        # - **Dissociating**: The resource is being dissociated from the multicast domain.
+        # - **Associated**: associated.
+        # - **Associating**: being associated.
+        # - **Dissociating**: being dissociated.
         self.status = status
-        # The ID of the network instance connection.
+        # The network instance connection ID.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the multicast domain.
+        # The multicast domain ID.
         self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):

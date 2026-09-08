@@ -16,14 +16,14 @@ class DescribeCenRouteMapsResponseBody(DaraModel):
         route_maps: main_models.DescribeCenRouteMapsResponseBodyRouteMaps = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page in a paged query. This parameter is used for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.route_maps = route_maps
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

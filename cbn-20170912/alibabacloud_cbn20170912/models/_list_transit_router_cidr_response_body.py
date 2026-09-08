@@ -13,9 +13,9 @@ class ListTransitRouterCidrResponseBody(DaraModel):
         cidr_lists: List[main_models.ListTransitRouterCidrResponseBodyCidrLists] = None,
         request_id: str = None,
     ):
-        # The information about the CIDR block.
+        # The list of transit router CIDR blocks.
         self.cidr_lists = cidr_lists
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,31 +63,30 @@ class ListTransitRouterCidrResponseBodyCidrLists(DaraModel):
         transit_router_cidr_id: str = None,
         transit_router_id: str = None,
     ):
-        # The CIDR block of the transit router.
+        # The transit router CIDR block.
         self.cidr = cidr
-        # The description of the CIDR block.
+        # The description of the transit router CIDR block.
         self.description = description
-        # The type of the CIDR block.
+        # The type of the transit router CIDR block.
         # 
-        # The value is **IPv4**, which indicates that the CIDR block is of the IPv4 type.
+        # The value is **IPv4** only, which indicates that the transit router CIDR block is of the IPv4 type.
         self.family = family
-        # The name of the CIDR block.
+        # The name of the transit router CIDR block.
         self.name = name
-        # Indicates whether the system is allowed to automatically add a route to the route table of the transit router. Valid values:
+        # Indicates whether the system is allowed to automatically add a route for the transit router CIDR block to the transit router route table.
         # 
-        # *   **true**
-        # 
-        #     A value of **true** indicates that after you create a private VPN connection and enable route learning for the connection, the system automatically adds a blackhole route to the route table of the transit router to which the VPN connection is attached.
-        # 
-        #     The destination CIDR block of the blackhole route is the CIDR block of the transit router. The CIDR block of the transit router refers to the CIDR block from which gateway IP addresses are allocated to IPsec-VPN connections.
-        # 
-        #     The blackhole route is advertised only to the route table of the virtual border router (VBR) that is connected to the transit router.
-        # 
-        # *   **false**
+        # - **true**: allowed.
+        #        
+        #     If the value of this parameter is **true**, after you create a VPN connection of the private gateway type and create a route learning relationship for the VPN connection, the system automatically adds a route entry to the transit router route table that has a route learning relationship with the VPN connection:
+        #    
+        #   The route entry is a blackhole route whose destination CIDR block is the transit router CIDR block from which gateway IP addresses have been allocated to the IPsec connection.
+        #         
+        #   The blackhole route is propagated only to the route tables of VBR instances associated with the transit router.
+        # - **false**: not allowed.
         self.publish_cidr_route = publish_cidr_route
         # The ID of the transit router CIDR block.
         self.transit_router_cidr_id = transit_router_cidr_id
-        # The transit router ID.
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):

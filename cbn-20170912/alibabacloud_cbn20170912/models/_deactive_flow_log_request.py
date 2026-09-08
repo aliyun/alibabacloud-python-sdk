@@ -16,13 +16,15 @@ class DeactiveFlowLogRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The unique, one-use client token that is used to ensure the idempotence of the request. It can contain only ASCII characters.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # > If you leave this parameter empty, the system automatically uses the **request ID** as the **client token**.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
-        # The ID of the flow log.
+        # The flow log ID.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
@@ -30,7 +32,7 @@ class DeactiveFlowLogRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the flow log.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

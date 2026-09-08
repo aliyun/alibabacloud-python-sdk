@@ -18,15 +18,14 @@ class DeleteTransitRouteTableAggregationRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # >If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Default values:
+        # Specifies whether to perform a dry run for this deletion request, including permission and instance status verification. Valid values:
         # 
-        # - **false** (default): performs only a dry run.
-        # 
-        # - **true**: performs a dry run and performs the actual request. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request. If the request passes the check, the aggregate route is deleted.
+        # - **true**: Sends a check request. Only verification is performed without actually deleting the aggregate route. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -34,15 +33,9 @@ class DeleteTransitRouteTableAggregationRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the aggregate route.
         # 
-        # > The following CIDR blocks are not supported:
-        # >
-        # > - CIDR blocks that start with 0 or 100.64.
-        # >
-        # > - Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
-        # 
         # This parameter is required.
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         # 
         # This parameter is required.
         self.transit_route_table_id = transit_route_table_id

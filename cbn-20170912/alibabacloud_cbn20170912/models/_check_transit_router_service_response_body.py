@@ -10,12 +10,12 @@ class CheckTransitRouterServiceResponseBody(DaraModel):
         enabled: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the transit router feature is activated.
+        # Indicates whether the transit router service is activated for the current Alibaba Cloud account.
         # 
-        # - **true**: activated
-        # - If this value is not returned, the system prompts that the current account does not have the transit router feature activated.
+        # - **true**: The service is activated.
+        # - If this parameter is not returned, the transit router service is not activated for the current Alibaba Cloud account, and the system returns a corresponding message.
         self.enabled = enabled
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

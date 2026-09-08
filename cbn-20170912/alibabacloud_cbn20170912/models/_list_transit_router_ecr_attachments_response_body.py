@@ -16,15 +16,15 @@ class ListTransitRouterEcrAttachmentsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_attachments: List[main_models.ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments] = None,
     ):
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next paged query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The information about the ECR connections.
+        # The list of ECR connection information.
         self.transit_router_attachments = transit_router_attachments
 
     def validate(self):
@@ -97,48 +97,48 @@ class ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         transit_router_id: str = None,
         transit_router_region_id: str = None,
     ):
-        # Indicates whether the Enterprise Edition transit router can automatically advertise routes to ECRs.
+        # Indicates whether the Enterprise Edition transit router automatically publishes route entries to the ECR instance.
         # 
-        # The value is **true**, which indicates that the Enterprise Edition transit router can automatically advertise routes to ECRs.
+        # The value is **true** only, which indicates that route entries are automatically published.
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         self.cen_id = cen_id
         # The time when the ECR connection was created.
         # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mmZ.
         self.creation_time = creation_time
-        # The ID of the ECR with which the ECR connection is associated.
+        # The instance ID of the associated Express Connect Router (ECR).
         self.ecr_id = ecr_id
-        # The ID of the Alibaba Cloud account to which the ECR connection belongs.
+        # The ID of the Alibaba Cloud account to which the ECR instance belongs.
         self.ecr_owner_id = ecr_owner_id
-        # The entity that pays the fees of the network instance. Valid values: Valid values:
+        # The payer of the network instance. Valid values:
         # 
-        # *   **PayByCenOwner**: The Alibaba Cloud account to which the transit router belongs pays the connection and data forwarding fees of the ECR.
-        # *   **PayByResourceOwner**: The Alibaba Cloud account to which the ECR belongs pays the connection and data forwarding fees of the ECR.
+        # - **PayByCenOwner**: The connection fee and data processing fee of the ECR instance are paid by the account that owns the transit router instance.
+        # - **PayByResourceOwner**: The connection fee and data processing fee of the ECR instance are paid by the account that owns the ECR instance.
         self.order_type = order_type
-        # The type of resource to which the transit router is connected. Valid values:
+        # The resource type of the connection.
         # 
-        # The value is **ECR**, which indicates ECR connections.
+        # The value is **ECR** only, which indicates an Express Connect Router (ECR) instance.
         self.resource_type = resource_type
-        # The status of the ECR connection. Valid values:
+        # The status of the ECR connection.
         # 
-        # *   **Attached**
-        # *   **Attaching**
-        # *   **Detaching**
+        # - **Attached**: attached.
+        # - **Attaching**: being attached.
+        # - **Detaching**: being detached.
         self.status = status
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The description of the ECR connection.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The ID of the ECR connection.
+        # The ECR connection ID.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The name of the ECR connection.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The ID of the Enterprise Edition transit router.
+        # The Enterprise Edition transit router instance ID.
         self.transit_router_id = transit_router_id
         # The region ID of the transit router.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region information corresponding to the region ID.
         self.transit_router_region_id = transit_router_region_id
 
     def validate(self):

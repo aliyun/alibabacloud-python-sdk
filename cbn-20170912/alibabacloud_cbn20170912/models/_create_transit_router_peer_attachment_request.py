@@ -30,47 +30,45 @@ class CreateTransitRouterPeerAttachmentRequest(DaraModel):
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
     ):
-        # Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
+        # Specifies whether to allow the Enterprise Edition transit router to automatically advertise routes of the inter-region connection to the peer region.
         # 
         # - **false** (default): no.
-        # 
         # - **true**: yes.
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # The bandwidth value of the inter-region connection. Unit: Mbps.
+        # The bandwidth value of the inter-region connection. Unit: Mbit/s.
         # 
-        # - When **BandwidthType** is set to **BandwidthPackage**, this parameter specifies the bandwidth value that the inter-region connection can use.
+        # - If **BandwidthType** is set to **BandwidthPackage**, this parameter specifies the bandwidth that can be used by the inter-region connection.
         # 
-        # - When **BandwidthType** is set to **DataTransfer**, this parameter specifies the maximum bandwidth value of the inter-region connection.
+        # - If **BandwidthType** is set to **DataTransfer**, this parameter specifies the bandwidth limit of the inter-region connection.
         self.bandwidth = bandwidth
-        # The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+        # The bandwidth allocation method of the inter-region connection. Valid values:
         # 
-        # - **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+        # - **BandwidthPackage**: allocates bandwidth from a bandwidth package.
         # 
-        # - **DataTransfer**: does not allocate bandwidth to the inter-region connection and charges based on pay-by-traffic.
+        # - **DataTransfer**: does not allocate bandwidth to the inter-region connection. The system charges you based on the actual traffic.
         self.bandwidth_type = bandwidth_type
-        # The ID of the bandwidth plan that you want to associate with the inter-region connection.
+        # The ID of the bandwidth package to be associated with the inter-region connection.
         # 
-        # > You do not need to configure this parameter when **BandwidthType** is set to **DataTransfer**.
+        # > If **BandwidthType** is set to **DataTransfer**, you do not need to configure this parameter.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The client token used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** is different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The default line type.
+        # The default link type.
         # 
         # Valid values: Platinum and Gold. Default value: Gold.
         # 
-        # You can set this parameter to Platinum only when the bandwidth allocation method is pay-by-traffic.
+        # The link type can be set to Platinum only when the bandwidth allocation method is pay-by-data-transfer.
         self.default_link_type = default_link_type
-        # Specifies whether to perform a dry run to check information such as the permissions and instance status. Valid values:
+        # Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
         # 
-        # - **false** (default): sends a normal request. After the request passes the check, the system creates an inter-region connection.
-        # 
-        # - **true**: sends a check request. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, a request ID is returned.
+        # - **false** (default): sends a normal request. If the request passes the verification, the inter-region connection is created.
+        # - **true**: sends a check request. Only the verification is performed. No inter-region connection is created. The system checks whether the required parameters are specified, and validates the request format. If the check fails, the corresponding error is returned. If the check succeeds, the corresponding request ID is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -78,25 +76,25 @@ class CreateTransitRouterPeerAttachmentRequest(DaraModel):
         # 
         # This parameter is required.
         self.peer_transit_router_id = peer_transit_router_id
-        # The ID of the region where the peer transit router instance is deployed.
+        # The region ID of the peer transit router instance.
         self.peer_transit_router_region_id = peer_transit_router_region_id
-        # The ID of the region where the local Enterprise Edition transit router instance is deployed.
+        # The region ID of the local Enterprise Edition transit router instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tag information.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can specify up to 20 tags at a time.
         self.tag = tag
         # The description of the inter-region connection.
         # 
-        # The description is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
         self.transit_router_attachment_description = transit_router_attachment_description
         # The name of the inter-region connection.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_router_attachment_name = transit_router_attachment_name
         # The ID of the local Enterprise Edition transit router instance.
         self.transit_router_id = transit_router_id
@@ -243,17 +241,17 @@ class CreateTransitRouterPeerAttachmentRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that you want to attach.
+        # The tag key of the resource.
         # 
-        # You cannot specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
+        # Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify at most 20 tag keys in each call.
+        # You can specify up to 20 tag keys at a time.
         self.key = key
-        # The value of the tag that you want to attach to the specified resource.
+        # The tag value of the resource.
         # 
-        # The tag value can be an empty string or a string of up to 128 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
+        # Once specified, the tag value cannot be empty. The tag value can be up to 128 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         # 
-        # Each key-value pair must be unique. You can specify at most 20 tag values in each call.
+        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

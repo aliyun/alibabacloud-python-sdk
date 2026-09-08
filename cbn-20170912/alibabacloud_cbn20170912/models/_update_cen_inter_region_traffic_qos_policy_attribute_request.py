@@ -23,25 +23,25 @@ class UpdateCenInterRegionTrafficQosPolicyAttributeRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
         # 
-        # - **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+        # - **false** (default): performs a dry run and sends the request. After the request passes the dry run, the name and description of the traffic scheduling policy are modified.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The new description of the QoS policy.
+        # The new description of the traffic scheduling policy.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.traffic_qos_policy_description = traffic_qos_policy_description
-        # The ID of the QoS policy.
+        # The ID of the traffic scheduling policy.
         # 
         # This parameter is required.
         self.traffic_qos_policy_id = traffic_qos_policy_id
-        # The new name of the QoS policy.
+        # The new name of the traffic scheduling policy.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.traffic_qos_policy_name = traffic_qos_policy_name
 
     def validate(self):

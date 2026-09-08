@@ -19,17 +19,16 @@ class DescribeTransitRouteTableAggregationRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a token from your client to ensure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the RequestId of the request as the ClientToken. The RequestId is different for each request.
+        # >If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The number of entries to return on each page. Default value: **20**.
+        # The number of entries per page for a paged query. Default value: **20**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # - You do not need to specify this parameter for the first request.
-        # 
-        # - You must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # - You do not need to specify this parameter for the first request or if no next query exists.
+        # - If a next query exists, set the value to the **NextToken** value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37,7 +36,7 @@ class DescribeTransitRouteTableAggregationRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the aggregate route.
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         # 
         # This parameter is required.
         self.transit_route_table_id = transit_route_table_id

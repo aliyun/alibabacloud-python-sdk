@@ -15,15 +15,15 @@ class DescribeCenGeographicSpansRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the geographic span.
+        # The ID of the connected areas.
         # 
-        # > If you do not specify this parameter, the system queries all geographic spans that are supported by Cloud Enterprise Network (CEN).
+        # > If you do not specify this parameter, the system queries information about all connected areas supported by CEN.
         self.geographic_span_id = geographic_span_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page in a paged query. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

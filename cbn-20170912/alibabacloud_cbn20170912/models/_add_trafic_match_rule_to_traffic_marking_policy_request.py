@@ -21,14 +21,14 @@ class AddTraficMatchRuleToTrafficMarkingPolicyRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId value as the client token. The RequestId value may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions without adding a traffic classification rule to the traffic marking policy. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs the actual request. After the check passes, a traffic classification rule is directly added to the traffic marking policy.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -38,9 +38,9 @@ class AddTraficMatchRuleToTrafficMarkingPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.traffic_marking_policy_id = traffic_marking_policy_id
-        # The information about the traffic classification rule.
+        # The list of traffic classification rules.
         # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.traffic_match_rules = traffic_match_rules
 
     def validate(self):
@@ -125,67 +125,63 @@ class AddTraficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules(DaraModel
         traffic_match_rule_description: str = None,
         traffic_match_rule_name: str = None,
     ):
-        # The destination CIDR block that is used to match packets.
+        # The destination CIDR block of the traffic packet.
         # 
-        # The traffic classification rule matches the packets whose destination IP addresses fall within the specified destination CIDR block. If you do not set this parameter, packets are considered a match regardless of the DSCP value.
+        # The traffic classification rule matches traffic whose destination IP address falls within the destination CIDR block. If you do not set this parameter, the traffic classification rule matches traffic with any destination IP address.
         # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.dst_cidr = dst_cidr
-        # The destination port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
+        # The destination port of the traffic packet. Valid values: **-1** and **1** to **65535**.
         # 
-        # The traffic classification rule matches the packets whose destination ports fall within the destination port range. If you do not set this parameter, packets are considered a match regardless of the DSCP value.
+        # The traffic classification rule matches traffic whose destination port number falls within the destination port range. If you do not set this parameter, the traffic classification rule matches traffic with any destination port number.
         # 
-        # You can specify at most two ports. Take note of the following rules:
+        # This parameter supports up to two port numbers. The input format is described as follows:
         # 
-        # *   If you enter only one port number such as 1, the system matches the packets whose destination port is port 1.
-        # *   If you enter two port numbers such as 1 and 200, the system matches the packets whose destination ports fall between 1 and 200.
-        # *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the destination port.
+        # - If you enter only one port number, such as 1, the system matches traffic whose destination port is 1 by default.
+        # - If you enter two port numbers, such as 1 and 200, the system matches traffic whose destination port falls within the range of 1 to 200 by default.
+        # - If you enter two port numbers and one of them is -1, the other port number must also be -1, which indicates that traffic with any destination port is matched.
         # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.dst_port_range = dst_port_range
-        # The differentiated services code point (DSCP) value that is used to match packets. Valid values: **0** to **63**.
+        # The Differentiated Services Code Point (DSCP) value of the traffic packet. Valid values: **0** to **63**.
         # 
-        # The traffic classification rule matches the packets that contain the specified DSCP value. If you do not set this parameter, packets are considered a match regardless of the DSCP value.
+        # The traffic classification rule matches traffic that contains the specified DSCP value. If you do not set this parameter, the traffic classification rule matches traffic with any DSCP value.
         # 
-        # >  The DSCP value that you specify for this parameter is the DSCP value that packets carry before they are transmitted over the inter-region connection.
+        # > The DSCP value refers to the DSCP value that the traffic packet already carries before entering the inter-region connection.
         # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.match_dscp = match_dscp
-        # The protocol that is used to match packets.
+        # The protocol type of the traffic packet.
         # 
-        # Valid values: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
+        # The traffic classification rule supports matching traffic of multiple protocol types, such as **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more protocol types, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
         # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.protocol = protocol
-        # The source CIDR block that is used to match packets.
+        # The source CIDR block of the traffic packet.
         # 
-        # The traffic classification rule matches the packets whose source IP addresses fall within the specified source CIDR block. If you do not set this parameter, packets are considered a match regardless of the source IP address.
+        # The traffic classification rule matches traffic whose source IP address falls within the source CIDR block. If you do not set this parameter, the traffic classification rule matches traffic with any source IP address.
         # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.src_cidr = src_cidr
-        # The source port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
+        # The source port of the traffic packet. Valid values: **-1** and **1** to **65535**.
         # 
-        # The traffic classification rule matches the packets whose source ports fall within the source port range. If you do not set this parameter, packets are considered a match regardless of the source port.
+        # The traffic classification rule matches traffic whose source port number falls within the source port range. If you do not set this parameter, the traffic classification rule matches traffic with any source port number.
         # 
-        # You can specify at most two ports. Take note of the following rules:
+        # This parameter supports up to two port numbers. The input format is described as follows:
         # 
-        # *   If you enter only one port number such as 1, the system matches the packets whose source port is 1.
-        # *   If you enter two port numbers such as 1 and 200, the system matches the packets whose source ports fall between 1 and 200.
-        # *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the source port.
+        # - If you enter only one port number, such as 1, the system matches traffic whose source port is 1 by default.
+        # - If you enter two port numbers, such as 1 and 200, the system matches traffic whose source port falls within the range of 1 to 200 by default.
+        # - If you enter two port numbers and one of them is -1, the other port number must also be -1, which indicates that traffic with any source port is matched.
         # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.src_port_range = src_port_range
         # The description of the traffic classification rule.
         # 
-        # The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
-        # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.traffic_match_rule_description = traffic_match_rule_description
         # The name of the traffic classification rule.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
-        # 
-        # You can specify at most 50 traffic classification rules.
+        # You can add up to 50 traffic classification rules at a time.
         self.traffic_match_rule_name = traffic_match_rule_name
 
     def validate(self):

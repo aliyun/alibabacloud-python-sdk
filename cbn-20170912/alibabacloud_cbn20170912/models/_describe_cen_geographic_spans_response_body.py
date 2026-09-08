@@ -17,9 +17,9 @@ class DescribeCenGeographicSpansResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.geographic_span_models = geographic_span_models
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

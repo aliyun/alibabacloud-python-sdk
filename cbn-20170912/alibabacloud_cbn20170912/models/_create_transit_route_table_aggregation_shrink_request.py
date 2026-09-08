@@ -22,15 +22,14 @@ class CreateTransitRouteTableAggregationShrinkRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a value from your client to make sure that the value is unique among different requests. The ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+        # >If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run for the request. A dry run checks permissions and instance status. Valid values:
+        # Specifies whether to perform a dry run. The dry run checks items such as permissions and instance status. Valid values:
         # 
-        # - **false** (default): sends a normal request. If the request passes the check, an aggregate route is created.
-        # 
-        # - **true**: sends a check request to verify the required parameters and the request format. The aggregate route is not created. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request and directly creates the aggregate route after the request passes the check.
+        # - **true**: sends a check request without creating the aggregate route. The check items include required parameters and request format. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -39,30 +38,27 @@ class CreateTransitRouteTableAggregationShrinkRequest(DaraModel):
         # The destination CIDR block of the aggregate route.
         # 
         # > The following CIDR blocks are not supported:
-        # 
-        # - CIDR blocks that start with 0 or 100.64
-        # 
+        # - CIDR blocks that start with "0" or "100.64"
         # - Multicast addresses (224.0.0.1 to 239.255.255.254)
         # 
         # This parameter is required.
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
         # The description of the aggregate route.
         # 
-        # The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.transit_route_table_aggregation_description = transit_route_table_aggregation_description
         # The name of the aggregate route.
         # 
-        # The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.transit_route_table_aggregation_name = transit_route_table_aggregation_name
         # The propagation scope of the aggregate route.
         # 
-        # The only valid value is **VPC**. This value indicates that the aggregate route is propagated to all VPC instances that are associated with the route table of the Enterprise Edition transit router and have route synchronization enabled.
+        # Set the value to **VPC**, which indicates that the aggregate route is propagated to all VPC-connected instances that have established an associated forwarding relationship with the current Enterprise Edition transit router route table and have the route synchronization feature enabled.
         self.transit_route_table_aggregation_scope = transit_route_table_aggregation_scope
-        # The list of propagation scopes for the aggregate route.
-        # 
-        # > You must specify either this parameter or TransitRouteTableAggregationScope. We recommend that you use this parameter. The elements in this list cannot be the same as the value of TransitRouteTableAggregationScope.
+        # The propagation scope list of the aggregate route.
+        # >You must specify at least one of the propagation scope and the propagation scope list. We recommend that you use the propagation scope list. The elements in the propagation scope list cannot duplicate the value of the propagation scope.
         self.transit_route_table_aggregation_scope_list_shrink = transit_route_table_aggregation_scope_list_shrink
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         # 
         # This parameter is required.
         self.transit_route_table_id = transit_route_table_id

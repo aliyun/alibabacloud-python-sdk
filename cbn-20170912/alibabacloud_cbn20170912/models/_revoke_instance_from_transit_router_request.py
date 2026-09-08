@@ -31,10 +31,10 @@ class RevokeInstanceFromTransitRouterRequest(DaraModel):
         self.instance_id = instance_id
         # The type of the network instance. Valid values:
         # 
-        # - **VPC**: VPC
-        # - **ExpressConnect**: VBR
-        # - **VPN**: IPsec-VPN connection
-        # - **ECR**: ECR
+        # - **VPC**: VPC instance.
+        # - **ExpressConnect**: VBR instance.
+        # - **VPN**: IPsec connection.
+        # - **ECR**: ECR instance.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -42,7 +42,7 @@ class RevokeInstanceFromTransitRouterRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the network instance.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

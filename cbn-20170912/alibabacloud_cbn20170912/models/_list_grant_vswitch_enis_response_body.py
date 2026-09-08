@@ -16,19 +16,16 @@ class ListGrantVSwitchEnisResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # A list of ENI information.
+        # The list of network interface controller (NIC) information.
         self.grant_vswitch_enis = grant_vswitch_enis
-        # The maximum number of entries returned.
+        # The maximum number of entries returned for this query.
         self.max_results = max_results
-        # The token that is used for the next query.
+        # The token returned for this query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
-        # 
-        # >Notice: 
-        # 
-        # This parameter is invalid if you use MaxResults and NextToken to perform a paged query.
+        # The total number of entries returned.
+        # >Notice: When you use the MaxResults and NextToken parameters for paging, the returned Total parameter value is meaningless.
         self.total_count = total_count
 
     def validate(self):
@@ -94,25 +91,24 @@ class ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The description of the ENI.
+        # The description of the elastic network interfaces (ENIs). This describes the network interface controller (NIC).
         self.description = description
-        # The ID of the ENI.
+        # The ID of the elastic network interfaces (ENIs). This is the network interface controller (NIC) identifier.
         self.network_interface_id = network_interface_id
-        # The name of the ENI.
+        # The name of the elastic network interfaces (ENIs). This is the network interface controller (NIC) name.
         self.network_interface_name = network_interface_name
-        # The primary private IPv4 address of the ENI.
+        # The primary private IP IPv4 address of the elastic network interfaces (ENIs). This is the network interface controller (NIC) primary private IP address.
         self.primary_ip_address = primary_ip_address
-        # Indicates whether the ENI is created by a transit router.
+        # Indicates whether the elastic network interface (ENI) is created by a transit router for routing and forwarding purposes.
         # 
         # - **true**: The ENI is created by a transit router.
-        # 
         # - **false**: The ENI is not created by a transit router.
         # 
-        # ENIs created by transit routers cannot be used as multicast sources or members.
+        # Elastic network interfaces (ENIs) created by transit routers cannot serve as multicast sources or multicast members.
         self.transit_router_flag = transit_router_flag
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The VPC-connected instance ID.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -22,31 +22,33 @@ class DescribeCenBandwidthPackagesRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeCenBandwidthPackagesRequestTag] = None,
     ):
-        # The filter configurations.
+        # The filter information.
         self.filter = filter
         # Specifies whether to include renewal data. Valid values:
         # 
-        # *   **true**
-        # *   **false**
-        self.include_reservation_data = include_reservation_data
-        # The logical operator between the filter conditions. Valid values:
+        # - **true**: Includes renewal data.
         # 
-        # *   **false** (default): **AND** Bandwidth plans that meet all filter conditions are returned.
-        # *   **true**: **OR** Bandwidth plans that meet one of the filter conditions are returned.
+        # - **false**: Does not include renewal data.
+        self.include_reservation_data = include_reservation_data
+        # The logical relationship between filter conditions. Valid values:
+        # 
+        # - **false** (default): The filter conditions have an **AND** relationship. A bandwidth package must match all filter conditions to be returned.
+        # 
+        # - **true**: The filter conditions have an **OR** relationship. A bandwidth package that matches any filter condition is returned.
         self.is_or_key = is_or_key
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The information about the tags.
+        # The tag information list.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can specify up to 20 tags at a time.
         self.tag = tag
 
     def validate(self):
@@ -152,17 +154,17 @@ class DescribeCenBandwidthPackagesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys.
+        # The tag key of the resource.
         # 
-        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify at most 20 tag keys.
+        # You can specify up to 20 tag keys at a time.
         self.key = key
-        # The tag values.
+        # The tag value of the resource.
         # 
-        # The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be empty or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # The tag value of each tag key must be unique. You can specify at most 20 tag values in each call.
+        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -197,20 +199,22 @@ class DescribeCenBandwidthPackagesRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter conditions. You can use filter conditions to filter the bandwidth plans that you want to query. The following filter conditions are supported:
+        # The filter condition.
+        # You can use filter conditions to filter the bandwidth package instances to query. The following filter conditions are supported:
         # 
-        # *   **CenId**: CEN instance ID
+        # - **CenId**: The ID of the Cloud Enterprise Network (CEN) instance.
         # 
-        # *   **Status**: bandwidth plan status. Valid values:
+        # - **Status**: The status of the bandwidth package instance. Valid values:
         # 
-        #     *   **Idle**: not associated with a CEN instance.
-        #     *   **InUse**: associated with a CEN instance.
+        #     - **Idle**: Not associated.
+        #     - **InUse**: Associated.
         # 
-        # *   **CenBandwidthPackageId**: bandwidth plan ID
+        # - **CenBandwidthPackageId**: The ID of the bandwidth package.
         # 
-        # *   **Name**: bandwidth plan name You can specify one or more filter conditions. The maximum value of **N** is **5**.
+        # - **Name**: The name of the bandwidth package.
+        # You can specify one or more filter conditions. The maximum value of **N** is **5**.
         self.key = key
-        # Specify a filter value based on the **Key** parameter. You can specify multiple filter values for each **Key**. The logical operator between filter values is **OR**. If one filter value is matched, the filter condition is matched.
+        # The filter values based on the specified **Key**. You can specify multiple filter values for a single **Key**. The filter values have an **OR** relationship, which means that a bandwidth package matching any of the filter values is considered a match for the filter condition.
         self.value = value
 
     def validate(self):

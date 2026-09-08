@@ -18,16 +18,17 @@ class DescribeFlowlogsResponseBody(DaraModel):
         total_count: str = None,
     ):
         self.flow_logs = flow_logs
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page for paging queries.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the current API call is successful.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: successful.
+        # 
+        # - **false**: failed.
         self.success = success
         # The total number of entries returned.
         self.total_count = total_count

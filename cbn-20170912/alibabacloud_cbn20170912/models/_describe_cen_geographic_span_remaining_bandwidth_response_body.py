@@ -10,7 +10,7 @@ class DescribeCenGeographicSpanRemainingBandwidthResponseBody(DaraModel):
         remaining_bandwidth: int = None,
         request_id: str = None,
     ):
-        # The remaining bandwidth of the bandwidth plan. Unit: Mbps.
+        # The remaining bandwidth of the bandwidth plan instance. Unit: Mbit/s.
         self.remaining_bandwidth = remaining_bandwidth
         # The request ID.
         self.request_id = request_id

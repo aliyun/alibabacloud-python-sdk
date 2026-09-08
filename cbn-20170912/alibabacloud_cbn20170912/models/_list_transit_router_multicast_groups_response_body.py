@@ -18,17 +18,16 @@ class ListTransitRouterMulticastGroupsResponseBody(DaraModel):
     ):
         # The number of entries per page.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # - If **NextToken** is empty, no next page exists.
-        # 
-        # - If a value is returned for **NextToken**, the value is the token for the next page.
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
-        # A list of multicast groups.
+        # The list of multicast group information.
         self.transit_router_multicast_groups = transit_router_multicast_groups
 
     def validate(self):
@@ -101,59 +100,54 @@ class ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups(D
         transit_router_multicast_domain_id: str = None,
         v_switch_id: str = None,
     ):
-        # The IP address of the multicast group.
+        # The IP address of the multicast group to which the multicast resource belongs.
         self.group_ip_address = group_ip_address
-        # Indicates whether the multicast resource is a multicast member.
+        # Indicates whether the current multicast resource is a multicast member. Valid values:
         # 
-        # - **true**: The resource is a multicast member.
-        # 
-        # - **false**: The resource is not a multicast member.
+        # - **true**: The multicast resource is a multicast member.
+        # - **false**: The multicast resource is not a multicast member.
         self.group_member = group_member
-        # Indicates whether the multicast resource is a multicast source.
+        # Indicates whether the current multicast resource is a multicast source. Valid values:
         # 
-        # - **true**: The resource is a multicast source.
-        # 
-        # - **false**: The resource is not a multicast source.
+        # - **true**: The multicast resource is a multicast source.
+        # - **false**: The multicast resource is not a multicast source.
         self.group_source = group_source
-        # The type of the multicast member.
+        # The type of the multicast member. Valid values:
         # 
         # - **Static**: The multicast member is manually specified.
         # 
-        # - **IGMPv2**: The multicast member dynamically joins the multicast group based on Internet Group Management Protocol Version 2 (IGMPv2).
+        # - **IGMPv2**: The multicast member dynamically joined the multicast group through the IGMP protocol.
         self.member_type = member_type
-        # The ID of the ENI. The ENI is the multicast resource.
+        # The elastic network interface (ENI) ID, which is the multicast resource ID.
         self.network_interface_id = network_interface_id
-        # The ID of the multicast domain that is associated with the cross-region multicast resource.
+        # The ID of the multicast domain associated with the cross-region multicast resource.
         self.peer_transit_router_multicast_domain_id = peer_transit_router_multicast_domain_id
-        # The ID of the resource associated with the multicast resource.
+        # The resource ID associated with the multicast resource.
         self.resource_id = resource_id
-        # The ID of the Alibaba Cloud account that owns the multicast resource.
+        # The ID of the Alibaba Cloud account to which the multicast resource belongs.
         self.resource_owner_id = resource_owner_id
-        # The type of the multicast resource.
+        # The type of the multicast resource. Valid values:
         # 
-        # - **VPC**: The multicast resource is in a VPC.
-        # 
+        # - **VPC**: The multicast resource is a resource in a VPC.
         # - **TR**: The multicast resource is a cross-region resource.
         self.resource_type = resource_type
-        # The type of the multicast source.
+        # The type of the multicast source. Valid values:
         # 
         # - **Static**: The multicast source is manually specified.
         # 
-        # - **IGMPv2**: The multicast source dynamically joins the multicast group based on IGMPv2.
+        # - **IGMPv2**: The multicast source dynamically joined the multicast group through the IGMP protocol.
         self.source_type = source_type
-        # The status of the multicast resource.
+        # The status of the multicast resource. Valid values:
         # 
-        # - **Registering**: The resource is being created.
-        # 
-        # - **Registered**: The resource is available.
-        # 
-        # - **Deregistering**: The resource is being deleted.
+        # - **Registering**: being created.
+        # - **Registered**: available.
+        # - **Deregistering**: being deleted.
         self.status = status
-        # The ID of the network instance connection.
+        # The network instance connection ID.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the multicast domain.
+        # The multicast domain ID.
         self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
-        # The ID of the vSwitch.
+        # The ID of the vSwitch to which the multicast resource belongs.
         self.v_switch_id = v_switch_id
 
     def validate(self):

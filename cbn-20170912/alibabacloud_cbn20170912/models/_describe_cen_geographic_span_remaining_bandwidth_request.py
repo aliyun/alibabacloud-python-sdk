@@ -17,39 +17,33 @@ class DescribeCenGeographicSpanRemainingBandwidthRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance to which the bandwidth plan is attached.
+        # The instance ID of the Cloud Enterprise Network (CEN) instance to which the bandwidth plan is attached.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of a connected area of the bandwidth plan. Valid values:
+        # The ID of one of the connected areas of the bandwidth plan instance. Valid values:
         # 
         # - **China**: the Chinese mainland.
-        # 
         # - **North-America**: North America.
-        # 
         # - **Asia-Pacific**: Asia Pacific.
-        # 
         # - **Europe**: Europe.
         # 
         # This parameter is required.
         self.geographic_region_aid = geographic_region_aid
-        # The ID of the other connected area of the bandwidth plan. Valid values:
+        # The ID of the other connected areas of the bandwidth plan instance. Valid values:
         # 
         # - **China**: the Chinese mainland.
-        # 
         # - **North-America**: North America.
-        # 
         # - **Asia-Pacific**: Asia Pacific.
-        # 
         # - **Europe**: Europe.
         # 
         # This parameter is required.
         self.geographic_region_bid = geographic_region_bid
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The default value is **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. The default value is **10**. Valid values: **1** to **50**.
+        # The number of entries per page when using paging. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

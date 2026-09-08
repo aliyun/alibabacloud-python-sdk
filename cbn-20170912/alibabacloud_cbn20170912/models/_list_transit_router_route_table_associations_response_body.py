@@ -16,19 +16,17 @@ class ListTransitRouterRouteTableAssociationsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_associations: List[main_models.ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociations] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # The token for the next query.
-        # 
-        # - If this parameter is not returned, it indicates that no more results are to be returned.
-        # 
-        # - If a value is returned for this parameter, the value is the token that is used for the next query.
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
-        # A list of forwarding associations.
+        # The list of route association relationships.
         self.transit_router_associations = transit_router_associations
 
     def validate(self):
@@ -94,29 +92,23 @@ class ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociatio
     ):
         # The ID of the next hop resource.
         self.resource_id = resource_id
-        # The type of the next hop resource.
+        # The type of the next hop resource. Valid values:
         # 
-        # - **VPC**: virtual private cloud (VPC).
-        # 
-        # - **VBR**: virtual border router (VBR).
-        # 
-        # - **TR**: transit router.
-        # 
+        # - **VPC**: virtual private cloud (VPC) instance.
+        # - **VBR**: virtual border router (VBR) instance.
+        # - **TR**: transit router instance.
         # - **VPN**: VPN connection.
         self.resource_type = resource_type
-        # The status of the association.
+        # The status of the route association. Valid values:
         # 
-        # - **Active**: The association is active.
-        # 
-        # - **Associating**: The association is being created.
-        # 
-        # - **Dissociating**: The association is being deleted.
-        # 
-        # - **Deleted**: The association is deleted.
+        # - **Active**: active.
+        # - **Associating**: being associated.
+        # - **Dissociating**: being dissociated.
+        # - **Deleted**: deleted.
         self.status = status
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         self.transit_router_route_table_id = transit_router_route_table_id
 
     def validate(self):

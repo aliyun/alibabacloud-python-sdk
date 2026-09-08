@@ -16,17 +16,16 @@ class ListTrafficMarkingPoliciesResponseBody(DaraModel):
         total_count: int = None,
         traffic_marking_policies: List[main_models.ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
-        # The token that is used for the next query.
+        # The pagination token.
         # 
-        # - If **NextToken** is empty, no next query is to be sent.
-        # 
-        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
         # The list of traffic marking policies.
         self.traffic_marking_policies = traffic_marking_policies
@@ -95,7 +94,7 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies(DaraModel):
         traffic_match_rules: List[main_models.ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules] = None,
         transit_router_id: str = None,
     ):
-        # The Differentiated Services Code Point (DSCP) value of the traffic marking policy.
+        # The DSCP value of the traffic marking policy.
         self.marking_dscp = marking_dscp
         # The priority of the traffic marking policy.
         # 
@@ -110,16 +109,13 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies(DaraModel):
         # The status of the traffic marking policy.
         # 
         # - **Creating**: The policy is being created.
-        # 
-        # - **Active**: The policy is available.
-        # 
+        # - **Active**: The policy is active.
         # - **Modifying**: The policy is being modified.
-        # 
         # - **Deleting**: The policy is being deleted.
         self.traffic_marking_policy_status = traffic_marking_policy_status
         # The list of traffic classification rules.
         self.traffic_match_rules = traffic_match_rules
-        # The ID of the TransitRouter instance.
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -207,21 +203,21 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRu
         traffic_match_rule_name: str = None,
         traffic_match_rule_status: str = None,
     ):
-        # The address type. Valid values are IPv4, IPv6, or empty.
+        # The address type. Valid values: IPv4, IPv6, or empty.
         self.address_family = address_family
-        # The destination CIDR block of the traffic message. IPv4 and IPv6 addresses are supported.
+        # The destination CIDR block of the traffic packet. IPv4 and IPv6 addresses are supported.
         self.dst_cidr = dst_cidr
         # The destination port range to be matched by the traffic classification rule.
         self.dst_port_range = dst_port_range
-        # The DSCP value of the traffic message.
+        # The DSCP value of the traffic packet.
         # 
-        # > If **MatchDscp** returns -1, it indicates that all DSCP values are matched.
+        # >If the **MatchDscp** value is -1, any DSCP value is matched.
         self.match_dscp = match_dscp
-        # The protocol type of the traffic message.
+        # The protocol type of the traffic packet.
         # 
-        # > A traffic marking policy supports matching multiple protocol types. For more information about the protocol types, see the relevant documentation.
+        # > The traffic marking policy supports matching multiple protocol types. For details about each protocol type, refer to the relevant documentation.
         self.protocol = protocol
-        # The source CIDR block of the traffic message. IPv6 and IPv4 addresses are supported.
+        # The source CIDR block of the traffic packet. IPv4 and IPv6 addresses are supported.
         self.src_cidr = src_cidr
         # The source port range to be matched by the traffic classification rule.
         self.src_port_range = src_port_range
@@ -234,9 +230,7 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRu
         # The status of the traffic classification rule.
         # 
         # - **Creating**: The rule is being created.
-        # 
-        # - **Active**: The rule is available.
-        # 
+        # - **Active**: The rule is active.
         # - **Deleting**: The rule is being deleted.
         self.traffic_match_rule_status = traffic_match_rule_status
 

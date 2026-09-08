@@ -19,27 +19,27 @@ class DescribeRouteServicesInCenRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the region where the cloud service is accessed.
+        # The region ID from which the cloud service is accessed.
         self.access_region_id = access_region_id
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The endpoint of the Alibaba Cloud service.
+        # The service address of the cloud service.
         # 
-        # The endpoint can be a domain name, an IP address, or a CIDR block.
+        # You can enter a domain name, an IP address, or a CIDR block.
         self.host = host
-        # The ID of the region where the Alibaba Cloud service is deployed.
+        # The region ID of the cloud service.
         # 
-        # Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         self.host_region_id = host_region_id
-        # The ID of the VPC that is associated with the Alibaba Cloud service.
+        # The instance ID of the VPC-connected instance associated with the cloud service.
         self.host_vpc_id = host_vpc_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The default value is **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. The default value is **10**. Valid values: **1** to **50**.
+        # The number of entries per page for paging. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

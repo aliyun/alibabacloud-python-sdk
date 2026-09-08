@@ -22,41 +22,38 @@ class ListGrantVSwitchEnisRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the CEN instance to which the VPC is connected.
+        # The ID of the CEN instance to which the VPC-connected instance is connected.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The maximum number of entries to return on each page. Valid values: 10 to 500.
+        # The maximum number of entries per page for a paged query. Valid values: 10 to 500.
         # 
         # Default value:
-        # 
-        # - If you do not specify this parameter, the default value is 20.
-        # 
-        # - If you specify a value greater than 500, the default value is 500.
+        # - If you do not set this parameter, the default value is 20.
+        # - If the value you set is greater than 500, the default value is 500.
         self.max_results = max_results
-        # The ID of the ENI.
+        # The IDs of network interface controllers (NICs).
         self.network_interface_id = network_interface_id
-        # The name of the ENI.
+        # The name of the elastic network interfaces (ENIs). You can use this parameter to filter network interface controllers (NICs) by name.
         self.network_interface_name = network_interface_name
-        # The token that is used for the next query. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # - If this is your first query, you do not need to specify this parameter.
-        # 
-        # - If a next query is to be sent, set the value to the NextToken value that was returned from the last call.
+        # - If this is the first query or no next query exists, leave this parameter empty.
+        # - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The primary private IPv4 address of the ENI.
+        # The primary private IP IPv4 address of the elastic network interfaces (ENIs). You can use this parameter to filter network interface controllers (NICs) by primary private IP address.
         self.primary_ip_address = primary_ip_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of a vSwitch in the VPC.
+        # The ID of a vSwitch in the VPC-connected instance.
         # 
-        # You can query information about the ENIs in only one vSwitch at a time.
+        # You can query network interface controller (NIC) information for only one vSwitch at a time.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The ID of the VPC-connected instance.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

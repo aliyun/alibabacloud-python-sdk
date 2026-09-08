@@ -22,27 +22,25 @@ class CreateCenInterRegionTrafficQosQueueRequest(DaraModel):
         resource_owner_id: int = None,
         traffic_qos_policy_id: str = None,
     ):
-        # The maximum absolute bandwidth value that can be allocated to the queue. Unit: Mbit/s.
+        # The maximum inter-region bandwidth that the queue can use when bandwidth is allocated by absolute value. Unit: Mbit/s.
         # 
-        # - The value specifies an absolute bandwidth. For example, a value of 20 specifies that the queue can consume at most 20 Mbit/s of bandwidth.
+        # - The bandwidth value is calculated as an absolute value. For example, if you enter 20, the queue can use up to 20 Mbit/s of inter-region bandwidth.
         # 
-        # - The sum of the bandwidth values specified for all queues that belong to the same inter-region connection cannot exceed the maximum bandwidth of the inter-region connection.
+        # - The sum of the bandwidth values of all queues under an inter-region connection cannot exceed the inter-region bandwidth value.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # >  If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value of each API request is different.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - **true**: performs a dry run. The system checks the required parameters, the request format, and the service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # 
-        # - **false** (default): performs a dry run and sends the request.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, the queue is created.
         self.dry_run = dry_run
-        # The differentiated services code point (DSCP) value that matches the current queue.
+        # The DSCP values to be matched by the queue.
         # 
-        # You can specify at most 20 DSCP values for a queue in each call. Separate DSCP values with commas (,).
+        # You can specify up to 20 DSCP values at a time. Separate multiple DSCP values with commas (,).
         # 
         # This parameter is required.
         self.dscps = dscps
@@ -50,21 +48,21 @@ class CreateCenInterRegionTrafficQosQueueRequest(DaraModel):
         self.owner_id = owner_id
         # The description of the queue.
         # 
-        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.qos_queue_description = qos_queue_description
         # The name of the queue.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.qos_queue_name = qos_queue_name
-        # The maximum percentage of inter-region bandwidth that can be allocated to the queue.
+        # The maximum inter-region bandwidth that the queue can use when bandwidth is allocated by percentage.
         # 
-        # - Unit: percentage. For example, a value of 20 specifies that the queue can consume at most 20% of inter-region bandwidth.
+        # - The bandwidth value is calculated as a percentage. For example, if you enter 20, the queue can use up to 20% of the inter-region bandwidth.
         # 
-        # - The sum of the percentage values specified for all queues that belong to the same inter-region connection cannot exceed 100%.
+        # - The sum of the bandwidth percentages of all queues under an inter-region connection cannot exceed 100%.
         self.remain_bandwidth_percent = remain_bandwidth_percent
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the QoS policy.
+        # The ID of the traffic scheduling policy.
         # 
         # This parameter is required.
         self.traffic_qos_policy_id = traffic_qos_policy_id

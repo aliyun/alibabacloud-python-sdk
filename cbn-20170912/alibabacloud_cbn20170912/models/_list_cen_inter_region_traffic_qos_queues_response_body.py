@@ -14,15 +14,14 @@ class ListCenInterRegionTrafficQosQueuesResponseBody(DaraModel):
         request_id: str = None,
         traffic_qos_queues: List[main_models.ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues] = None,
     ):
-        # A pagination token. It is used in the next request to retrieve a new page of results. Valid values:
+        # The token that determines the start point of the next query. Valid values:
         # 
-        # - If **NextToken** is empty, no more results are returned.
-        # 
-        # - If NextToken is not empty, the value of **NextToken** is used for the next query.
+        # - If **NextToken** is empty, no next query exists.
+        # - If a value is returned for **NextToken**, the value indicates the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about the queues of the QoS policy.
+        # The queue information of the traffic scheduling policy.
         self.traffic_qos_queues = traffic_qos_queues
 
     def validate(self):
@@ -80,37 +79,35 @@ class ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The bandwidth allocated to the queue. This parameter is returned only if you allocate bandwidth to the queue by absolute value.
+        # The inter-region bandwidth allocated to the current queue when the bandwidth guarantee type is set to absolute value mode.
         # 
-        # For example, a value of **1** indicates that traffic that matches the queue can use up to 1 Mbit/s of the inter-region connection bandwidth.
+        # For example, a value of **1** indicates that traffic packets matching the current queue can use up to 1 Mbit/s of inter-region bandwidth.
         self.bandwidth = bandwidth
-        # The Differentiated Services Code Point (DSCP) values that are matched by the queue.
+        # The DSCP values matched by the current queue.
         self.dscps = dscps
-        # The actual bandwidth of the queue.
+        # The actual effective bandwidth value of the current queue.
         self.effective_bandwidth = effective_bandwidth
-        # The percentage of the inter-region connection bandwidth that can be used by the queue. This parameter is returned only if you allocate bandwidth to the queue by percentage.
+        # The percentage of inter-region bandwidth that the current queue can use when the bandwidth guarantee type is set to percentage mode.
         # 
-        # For example, a value of **1** indicates that traffic that matches the queue can use up to 1% of the inter-region connection bandwidth.
+        # For example, a value of **1** indicates that traffic packets matching the current queue can use up to 1% of the inter-region bandwidth.
         self.remain_bandwidth_percent = remain_bandwidth_percent
-        # The status of the queue.
+        # The status of the queue. Valid values:
         # 
         # - **Creating**: The queue is being created.
-        # 
         # - **Active**: The queue is running.
-        # 
         # - **Deleting**: The queue is being deleted.
         self.status = status
-        # The ID of the QoS policy.
+        # The ID of the traffic scheduling policy.
         self.traffic_qos_policy_id = traffic_qos_policy_id
-        # The description of the queue in the QoS policy.
+        # The description of the traffic scheduling policy queue.
         self.traffic_qos_queue_description = traffic_qos_queue_description
-        # The ID of the queue in the QoS policy.
+        # The ID of the traffic scheduling policy queue.
         self.traffic_qos_queue_id = traffic_qos_queue_id
-        # The name of the queue in the QoS policy.
+        # The name of the traffic scheduling policy queue.
         self.traffic_qos_queue_name = traffic_qos_queue_name
         # The ID of the inter-region connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the transit router.
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):

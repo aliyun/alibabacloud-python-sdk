@@ -18,15 +18,14 @@ class AssociateTransitRouterAttachmentWithRouteTableRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run to check for potential issues, such as permissions and instance status. Valid values:
+        # Specifies whether to execute a dry run. The dry run checks parameter validity, instance status, and whether the network instance connection can be associated with the forward route table. Valid values:
         # 
-        # - **false** (default): sends a normal request. An association is created after the request passes the check.
-        # 
-        # - **true**: sends a check request to perform a dry run. The system checks the required parameters, request format, and other items. No association is created. If the check fails, an error message is returned. If the check passes, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a Normal request. If the request passes the check, the route table association is created.
+        # - **true**: sends a check request. No route table association is created after the request passes the check. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error message is returned. If the check succeeds, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -36,7 +35,7 @@ class AssociateTransitRouterAttachmentWithRouteTableRequest(DaraModel):
         # 
         # This parameter is required.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         # 
         # This parameter is required.
         self.transit_router_route_table_id = transit_router_route_table_id

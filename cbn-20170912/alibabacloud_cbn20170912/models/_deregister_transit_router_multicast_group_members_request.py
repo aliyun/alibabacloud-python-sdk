@@ -22,23 +22,22 @@ class DeregisterTransitRouterMulticastGroupMembersRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a unique value from your client for each request. The ClientToken parameter supports only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: Sends a check request without deleting the multicast member. The system checks required parameters, the request format, and service limits. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
-        # 
-        # - **false** (default): Sends a normal request. After the request passes the check, the multicast member is deleted.
+        # - **true**: performs a dry run without removing the multicast member. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and sends the request. After the check succeeds, the multicast member is removed.
         self.dry_run = dry_run
         # The IP address of the multicast group to which the multicast member belongs.
         # 
         # This parameter is required.
         self.group_ip_address = group_ip_address
-        # A list of Elastic Network Interface (ENI) IDs.
+        # The list of network interface controller (NIC) IDs.
         self.network_interface_ids = network_interface_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # A list of inter-region multicast domain IDs.
+        # The list of cross-region multicast domain IDs.
         self.peer_transit_router_multicast_domains = peer_transit_router_multicast_domains
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

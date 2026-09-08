@@ -18,13 +18,11 @@ class ListTrafficMarkingPoliciesRequest(DaraModel):
         traffic_marking_policy_name: str = None,
         transit_router_id: str = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
-        # 
-        # - You do not need to specify this parameter for the first query.
-        # 
-        # - If a next query is to be sent, set the value to the **NextToken** value returned from the last API call.
+        # The pagination token. Valid values:
+        # - You do not need to specify this parameter for the first request or if no subsequent query exists.
+        # - If a subsequent query exists, set the value to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -32,15 +30,15 @@ class ListTrafficMarkingPoliciesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The description of the traffic marking policy.
         # 
-        # The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.traffic_marking_policy_description = traffic_marking_policy_description
         # The ID of the traffic marking policy.
         self.traffic_marking_policy_id = traffic_marking_policy_id
         # The name of the traffic marking policy.
         # 
-        # The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.traffic_marking_policy_name = traffic_marking_policy_name
-        # The ID of the TransitRouter instance.
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):

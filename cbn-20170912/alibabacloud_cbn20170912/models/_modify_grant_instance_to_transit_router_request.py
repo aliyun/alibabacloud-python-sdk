@@ -16,21 +16,21 @@ class ModifyGrantInstanceToTransitRouterRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the CEN instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # A token used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can generate this token from your client, but you must ensure it is unique for each request. The client token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the request\\"s **RequestId** as the **ClientToken**. The **RequestId** is unique for each API request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The ID of the network instance.
+        # The network instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The payer for the network instance.
+        # The payer of the network instance.
         # 
         # This parameter is required.
         self.order_type = order_type

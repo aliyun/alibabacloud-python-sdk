@@ -24,27 +24,26 @@ class CreateTransitRouterShrinkRequest(DaraModel):
         transit_router_description: str = None,
         transit_router_name: str = None,
     ):
-        # The ID of the CEN instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a client token to make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. The dry run checks permissions and whether the required parameters are specified. Valid values:
+        # Specifies whether to execute a dry run, without performing the actual request. The dry run includes permission verification, instance status verification, and forwarding and routing checks. Valid values:
         # 
-        # - **false** (default): sends the request and creates the instance after the request passes the check.
-        # 
-        # - **true**: sends a dry run request to check the parameters without creating the instance. The system checks the required parameters, request format, and permissions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request and creates the Enterprise Edition transit router instance after the request passes the check.
+        # - **true**: sends a check request, without creating the Enterprise Edition transit router instance. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Enterprise Edition transit router is deployed.
+        # The region ID of the Enterprise Edition transit router instance.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -53,22 +52,21 @@ class CreateTransitRouterShrinkRequest(DaraModel):
         # Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         # 
         # - **false** (default): disables the multicast feature.
-        # 
         # - **true**: enables the multicast feature.
         # 
-        # The multicast feature is supported only in some regions. You can call the [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) operation to query the regions that support multicast.
+        # Only Enterprise Edition transit routers in some regions support the multicast feature. You can call the [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) operation to query the regions that support the multicast feature.
         self.support_multicast = support_multicast
-        # The tag.
+        # The tag information.
         self.tag = tag
-        # The CIDR blocks of the transit router.
+        # The list of transit router CIDR blocks.
         self.transit_router_cidr_list_shrink = transit_router_cidr_list_shrink
         # The description of the Enterprise Edition transit router instance.
         # 
-        # The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
         self.transit_router_description = transit_router_description
         # The name of the Enterprise Edition transit router instance.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_router_name = transit_router_name
 
     def validate(self):
@@ -177,17 +175,17 @@ class CreateTransitRouterShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
+        # Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
         # 
-        # You can specify at most 20 tag keys.
+        # You can specify up to 20 tag keys at a time.
         self.key = key
-        # The tag value.
+        # The tag value of the resource.
         # 
-        # The tag value can be empty or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https:// `.
+        # Once specified, the tag value cannot be empty. The tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
         # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values.
+        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

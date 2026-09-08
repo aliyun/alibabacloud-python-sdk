@@ -14,11 +14,11 @@ class ModifyCenBandwidthPackageSpecRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The new maximum bandwidth of the bandwidth plan. Unit: Mbps.
+        # The new peak bandwidth of the bandwidth plan instance. Unit: Mbit/s.
         # 
         # Valid values: **2** to **10000**.
         self.bandwidth = bandwidth
-        # The ID of the bandwidth plan.
+        # The instance ID of the bandwidth plan.
         # 
         # This parameter is required.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id

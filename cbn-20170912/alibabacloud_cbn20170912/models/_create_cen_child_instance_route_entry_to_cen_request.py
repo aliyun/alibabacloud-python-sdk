@@ -19,34 +19,34 @@ class CreateCenChildInstanceRouteEntryToCenRequest(DaraModel):
         resource_owner_id: int = None,
         route_table_id: str = None,
     ):
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the Alibaba Cloud account to which the network instance belongs.
+        # The Alibaba Cloud account ID to which the network instance belongs.
         # 
-        # > If the network instance belongs to another Alibaba Cloud account, this parameter is required.
+        # > This parameter is required if the network instance belongs to a different Alibaba Cloud account.
         self.child_instance_ali_uid = child_instance_ali_uid
-        # The ID of the network instance.
+        # The network instance ID.
         # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
-        # The ID of the region where the network instance is deployed.
+        # The region ID of the network instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: a virtual private cloud (VPC)
-        # *   **VBR**: a virtual border router (VBR)
+        # - **VPC**: a virtual private cloud (VPC) instance.
+        # - **VBR**: a virtual border router (VBR) instance.
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
-        # The destination CIDR block of the route.
+        # The destination CIDR block of the route entry.
         # 
-        # Specify the value of this parameter in CIDR notation. Example: 192.168.10.0/24.
+        # The destination CIDR block must be in CIDR format. Example: 192.168.10.0/24.
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
@@ -54,7 +54,7 @@ class CreateCenChildInstanceRouteEntryToCenRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table configured on the network instance.
+        # The ID of the route table of the network instance.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

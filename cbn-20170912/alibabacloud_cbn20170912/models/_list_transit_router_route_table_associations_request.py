@@ -19,41 +19,33 @@ class ListTransitRouterRouteTableAssociationsRequest(DaraModel):
         transit_router_attachment_resource_type: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # The number of entries to return on each page. Default value: **50**.
+        # The number of entries per page for a paged query. Default value: **50**.
         self.max_results = max_results
-        # The token for the next query.
-        # 
-        # - You do not need to specify this parameter for the first query.
-        # 
-        # - For a subsequent query, set this parameter to the **NextToken** value returned from the previous query.
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - You do not need to specify this parameter for the first request or if no subsequent query exists.
+        # - If a subsequent query exists, set the value to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the association.
-        # 
-        # - **Active**: The association is active.
-        # 
-        # - **Associating**: The association is being created.
-        # 
-        # - **Dissociating**: The association is being deleted.
+        # The status of the route association. Valid values:
+        # - **Active**: active.
+        # - **Associating**: being associated.
+        # - **Dissociating**: being dissociated.
         self.status = status
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The ID of the next hop resource.
         self.transit_router_attachment_resource_id = transit_router_attachment_resource_id
-        # The type of the next hop resource.
+        # The type of the next hop resource. Valid values:
         # 
-        # - **VPC**: virtual private cloud (VPC).
-        # 
-        # - **VBR**: virtual border router (VBR).
-        # 
-        # - **TR**: transit router.
-        # 
+        # - **VPC**: virtual private cloud (VPC) instance.
+        # - **VBR**: virtual border router (VBR) instance.
+        # - **TR**: transit router instance.
         # - **VPN**: VPN connection.
         self.transit_router_attachment_resource_type = transit_router_attachment_resource_type
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         self.transit_router_route_table_id = transit_router_route_table_id
 
     def validate(self):

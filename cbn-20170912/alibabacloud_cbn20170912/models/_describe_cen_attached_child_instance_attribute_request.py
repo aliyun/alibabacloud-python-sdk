@@ -16,25 +16,27 @@ class DescribeCenAttachedChildInstanceAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the network instance that is attached to the CEN instance.
+        # The instance ID of the network instance loaded to the CEN instance.
         # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
-        # The region ID of the network instance.
+        # The region ID of the network instance.                   
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # - **VPC**: virtual private cloud (VPC)
-        # - **VBR**: virtual border router (VBR)
-        # - **CCN**: Cloud Connect Network (CCN) instance
+        # - **VPC**: virtual private cloud.
+        # 
+        # - **VBR**: virtual border router.
+        # 
+        # - **CCN**: Cloud Connect Network.
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type

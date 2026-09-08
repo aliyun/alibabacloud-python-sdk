@@ -43,161 +43,157 @@ class ModifyCenRouteMapRequest(DaraModel):
         source_region_ids: List[str] = None,
         source_route_table_ids: List[str] = None,
     ):
-        # The match method that is used to match routes based on the AS path. Valid values:
+        # The match mode of the AS path list. Valid values:
         # 
-        # - **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path in the match conditions.
+        # - **Include**: fuzzy match. A match is successful if the AS path in the match condition overlaps with the AS path of the route to be matched. 
         # 
-        # - **Complete**: exact match. A route is a match only if the AS path of the route matches the AS path in the match conditions.
+        # - **Complete**: exact match. A match is successful only if the AS path in the match condition is the same as the AS path of the route to be matched.
         self.as_path_match_mode = as_path_match_mode
-        # The ID of the CEN instance.
+        # The instance ID of the Cloud Enterprise Network (CEN) instance.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the region in which the routing policy is applied.
+        # The ID of the region where the routing policy is applied.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.cen_region_id = cen_region_id
-        # The match method that is used to match routes against the prefix list. Valid values:
+        # The match mode of the prefix list. Valid values:
         # 
-        # - **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
+        # - **Include**: fuzzy match. A match is successful if the route prefix in the match condition contains the route prefix of the route to be matched.
         # 
-        # For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is applied, the route whose prefix is 10.10.1.0/24 meets the match condition.
+        #  For example, a policy that defines 10.10.0.0/16 can fuzzy match the route 10.10.1.0/24.
         # 
-        # - **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
+        # - **Complete**: exact match. A match is successful only if the route prefix in the match condition is the same as the route prefix of the route to be matched. 
         # 
-        # For example, if you set the match condition to 10.10.0.0/16 and exact match is applied, only the route whose prefix is 10.10.0.0/16 meets the match condition.
+        #  For example, a policy that defines 10.10.0.0/16 can exact match only the route 10.10.0.0/16.
         self.cidr_match_mode = cidr_match_mode
-        # The match method that is used to match routes based on the community. Valid values:
+        # The match mode of the Community. Valid values:
         # 
-        # - **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community in the match conditions.
+        # - **Include**: fuzzy match. A match is successful if the Community in the match condition overlaps with the Community of the route to be matched. 
         # 
-        # - **Complete**: exact match. A route is a match only if the community of the route matches the community in the match conditions.
+        # - **Complete**: exact match. A match is successful only if the Community in the match condition is the same as the Community of the route to be matched.
+        # 
+        # - **Contain**: contains match. A match is successful only if the Community of the route to be matched contains all the Communities specified in the match condition.
         self.community_match_mode = community_match_mode
-        # The action to be performed on the community. Valid values:
+        # The action to perform on the Community. Valid values:
         # 
-        # - **Additive**: adds the community to the route.
+        # - **Additive**: adds the Community to the route.
         # 
-        # - **Replace**: replaces the original community of the route.
+        # - **Replace**: replaces the original Community of the route.
         # 
-        # This parameter specifies the action to be performed when a route meets the match condition.
+        # This parameter specifies the action to perform on a route after the route matches the match conditions.
         self.community_operate_mode = community_operate_mode
         # The description of the routing policy.
         # 
-        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # The types of destination network instance to which the routes belong. The following types of network instances are supported:
+        # The list of destination instance types that the route must match. The following instance types are supported:
         # 
-        # - **VPC**: VPC
+        # - **VPC**: VPC instance.
         # 
-        # - **VBR**: VBR
+        # - **VBR**: VBR instance.
         # 
-        # - **CCN**: CCN instance
+        # - **CCN**: CCN instance.
         # 
-        # - **VPN**: IPsec connection
+        # - **VPN**: IPsec connection.
         # 
-        #   > This parameter does not take effect if the IPsec-VPN connection or SSL client is associated with a transit router through a VPN gateway and a VPC. This parameter takes effect only if the IPsec connection is directly connected to the transit router.
+        #     > If the IPsec connection or SSL server is bound to a VPN gateway instance and is connected to a transit router instance through the VPC associated with the VPN gateway instance, this parameter does not take effect. This parameter takes effect only when the IPsec connection is directly bound to a transit router instance.
         # 
-        # The destination network instance types are valid only if the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to network instances in the current region.
+        # The destination instance type list takes effect only when the direction of the routing policy is Export from Regional Gateway and the destination instance types are instance types in the local region.
         self.destination_child_instance_types = destination_child_instance_types
-        # The prefix list against which routes are matched.
+        # The prefix list that the route must match.
         # 
-        # You must specify the IP addresses in CIDR notation. You can enter at most 64 CIDR blocks.
+        # IP address ranges in the prefix list are in CIDR format. A maximum of 64 IP address ranges can be specified.
         self.destination_cidr_blocks = destination_cidr_blocks
-        # The IDs of the destination network instances to which the routes belong. The following network instance types are supported:
+        # The list of destination instance IDs that the route must match. The following types of instance IDs are supported:
         # 
-        # - VPC
+        # - Virtual Private Cloud (VPC) instance ID
+        # - Virtual Border Router (VBR) instance ID
+        # - Cloud Connect Network (CCN) instance ID
+        # - Smart Access Gateway instance ID
+        # - IPsec connection ID
         # 
-        # - VBR
+        # A maximum of 64 instance IDs can be specified.
         # 
-        # - CCN instance
-        # 
-        # - SAG instance
-        # 
-        # - The ID of the IPsec-VPN connection.
-        # 
-        # You can enter at most 64 IDs.
-        # 
-        # > The destination instance IDs take effect only when Direction is set to Export from Regional Gateway and the destination instances are deployed in the current region.
+        # > The destination instance ID list takes effect only when the direction of the routing policy is Export from Regional Gateway and the destination instance IDs are in the local region.
         self.destination_instance_ids = destination_instance_ids
-        # Specifies whether to exclude destination instance IDs. Valid values:
+        # Specifies whether to use the reverse match mode for the destination instance ID list. Valid values:
         # 
-        # - **false** (default): A route is a match if the destination instance ID is included in the list specified by **SourceInstanceIds.N**.
+        # - **false** (default): No. A match is successful if the destination instance ID of the route is in **DestinationInstanceIds.N**.
         # 
-        # - **true**: A route is a match if the destination network instance ID is not in the list specified by **SourceInstanceIds.N**.
+        # - **true**: Yes. A match is successful if the destination instance ID of the route is not in **DestinationInstanceIds.N**.
         self.destination_instance_ids_reverse_match = destination_instance_ids_reverse_match
-        # The destination region IDs of the route. You can specify at most 64 region IDs.
+        # The list of destination region IDs that the route must match. A maximum of 64 region IDs can be specified.
         self.destination_region_ids = destination_region_ids
-        # The IDs of the destination route tables to which the routes belong. You can enter at most 64 route table IDs.
+        # The list of destination route table IDs that the route must match. A maximum of 64 route table IDs can be specified.
         # 
-        # > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
+        # > The destination route table ID list takes effect only when the direction of the routing policy is Export from Regional Gateway and the destination route table IDs are route table IDs of network instances in the local region.
         self.destination_route_table_ids = destination_route_table_ids
-        # The action to be performed on a route that meets all the match conditions. Valid values:
+        # The action to perform on a route that matches all the match conditions. Valid values:
         # 
-        # - **Permit**: the route is permitted.
+        # - **Permit**: The route is permitted to pass.
         # 
-        # - **Deny**: the route is denied.
+        # - **Deny**: The route is denied from passing.
         # 
         # This parameter is required.
         self.map_result = map_result
-        # The type of IP address in the match condition. Valid values:
+        # The IP address type that the route must match. Valid values:
         # 
-        # - **IPv4**: IPv4 address
+        # - **IPv4**: matches only IPv4 routes.
+        # - **IPv6**: matches only IPv6 routes.
         # 
-        # - **IPv6**: IPv6 address
-        # 
-        # This parameter can be empty. If no value is specified, all types of IP address are a match.
+        # This parameter can be left empty, which indicates that all types of routes are matched.
         self.match_address_type = match_address_type
-        # The AS paths against which routes are matched.
+        # The AS path list that the route must match.
         # 
-        # > Only the AS-SEQUENCE parameter is supported. The AS-SET, AS-CONFED-SEQUENCE, and AS-CONFED-SET parameters are not supported. In other words, only the AS number list is supported. Sets and sub-lists are not supported.
+        # > Only AS SEQUENCE is supported. AS SET, AS CONFED SEQUENCE, and AS CONFED SET are not supported. Specifically, only AS number lists are supported. Sets and sublists are not supported.
         self.match_asns = match_asns
-        # The community against which routes are matched.
+        # The Community set that the route must match.
         # 
-        # Specify the community in the format of n:m. Valid values of n and m: **1** to **65535**. Each community must comply with the RFC 1997 standard. The RFC 8092 standard that defines BGP large communities is not supported.
+        # Each Community is in the n:m format, where the value ranges of n and m are **1** to **65535**. Communities must comply with RFC 1997. Large Communities (RFC 8092) are not supported.
         # 
-        # You can specify at most 64 communities.
+        # A maximum of 64 Communities can be specified.
         # 
-        # > If the configurations of the communities are incorrect, routes may fail to be advertised to your data center.
+        # > Incorrect Community configurations may cause routes to fail to be advertised to on-premises data centers.
         self.match_community_set = match_community_set
-        # The priority of the routing policy that you want to associate with the current one.
+        # Policy priority of the next associated routing policy.
         # 
-        # - This parameter takes effect only when the **MapResult** parameter is set to **Permit**. This way, the permitted route is matched against the next routing policy.
-        # 
-        # - The region and direction of the routing policy to be associated must be the same as those of the current routing policy.
-        # 
-        # - The priority of the routing policy to be associated must be lower than the priority of the current routing policy.
+        # - You can set policy priority of the next associated routing policy only when **MapResult** is set to **Permit**. Only routes that are permitted to pass continue to match the next associated routing policy.
+        # - The next associated routing policy must have the same region and direction as the current routing policy.
+        # - Policy priority of the next associated routing policy must be lower than (a number greater than) policy priority of the current routing policy.
         self.next_priority = next_priority
-        # The community set on which actions are performed.
+        # The Community set to be executed.
         # 
-        # Specify the community in the format of n:m. Valid values of n and m: **1** to **65535**. Each community must comply with RFC 1997. The RFC 8092 standard that defines BGP large communities is not supported.
+        # Each Community is in the n:m format, where the value ranges of n and m are **1** to **65535**. Communities must comply with RFC 1997. Large Communities (RFC 8092) are not supported.
         # 
-        # You can specify at most 32 communities.
+        # A maximum of 32 Communities can be specified.
         # 
-        # > If the configurations of the communities are incorrect, routes may fail to be advertised to your data center.
+        # > Incorrect Community configurations may cause routes to fail to be advertised to on-premises data centers.
         self.operate_community_set = operate_community_set
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The new priority of the route.
+        # The priority of the route to be modified.
         # 
-        # Valid values: **1** to **100**. The default priority is **50**. A smaller value indicates a higher priority.
+        # Valid values: **1** to **100**. The default priority of a route is **50**. A smaller value indicates a higher priority.
         # 
-        # This parameter specifies the action to be performed when a route meets the match condition.
+        # This parameter specifies the action to perform on a route after the route matches the match conditions.
         self.preference = preference
-        # The AS paths that are prepended by using an action statement when regional gateways receive or advertise routes.
+        # The AS path that is prepended when the regional gateway receives or publishes route entries.
         # 
-        # The AS paths vary based on the direction in which the routing policy is applied:
+        # The requirements for configuring the prepended AS path vary based on the direction of the routing policy:
         # 
-        # - If AS paths are prepended to a routing policy that is applied in the inbound direction, you must specify source network instance IDs and the source region in the match condition. In addition, the source region must be the same as the region where the routing policy is applied.
+        # - When configuring the prepended AS path for the Import to Regional Gateway direction, you must configure the source instance ID list and source region in the match conditions, and the source region must be the same as the region where the routing policy is applied.
         # 
-        # - If AS paths are prepended to a routing policy that is applied in the outbound direction, you must specify destination network instance IDs in the match condition.
+        # - When configuring the prepended AS path for the Export from Regional Gateway direction, you must configure the destination instance ID list in the match conditions.
         # 
-        # This parameter specifies the action to be performed when a route meets the match condition.
+        # 
+        # This parameter specifies the action to execute on a route after the route matches the match conditions.
         self.prepend_as_path = prepend_as_path
-        # The priority of the routing policy. Valid values: **1** to **100**. A smaller value indicates a higher priority.
+        # Policy priority of the routing policy. Valid values: **1** to **100**. A smaller value indicates a higher priority.
         # 
-        # > You cannot specify the same priority for routing policies that apply in the same region and direction. The system matches routes against the match conditions of routing policies in descending order of priority. A smaller value indicates a higher priority. You must set the priorities to proper values.
+        # > Policy priority of routing policies in the same region and with the same direction must be unique. When the system executes routing policies, it starts matching conditional statements from the routing policy with the smallest priority number. Specify policy priority based on the expected matching order.
         # 
         # This parameter is required.
         self.priority = priority
@@ -207,53 +203,48 @@ class ModifyCenRouteMapRequest(DaraModel):
         # 
         # This parameter is required.
         self.route_map_id = route_map_id
-        # The type of route to be matched against the match condition. The following route types are supported:
+        # The list of routing types that the route must match. The following routing types are supported:
         # 
         # - **System**: system routes that are automatically generated by the system.
         # 
-        # - **Custom**: custom routes that are manually added.
+        # - **Custom**: custom routes that are manually added by users.
         # 
-        # - **BGP**: routes that are advertised over BGP.
+        # - **BGP**: BGP routes that are propagated through the BGP routing protocol.
         self.route_types = route_types
-        # The types of source network instance to which the routes belong. The following types of network instances are supported:
+        # The list of source instance types that the route must match. The following instance types are supported:
         # 
-        # - **VPC**: VPC
+        # - **VPC**: VPC instance.
         # 
-        # - **VBR**: VBR
+        # - **VBR**: border router instance.
         # 
-        # - **CCN**: CCN instance
+        # - **CCN**: CCN instance.
         # 
-        # - **VPN** :VPN gateway or IPsec-VPN connection
-        # 
-        #   - If the IPsec-VPN connection or SSL client is associated with a VPN gateway, the VPC associated with the VPN gateway must be connected to a transit router, and the VPN gateway must use Border Gateway Protocol (BGP) dynamic routing. Otherwise, this parameter cannot take effect.
-        # 
-        #   - This parameter takes effect if the IPsec connection is directly connected to a transit router.
+        # - **VPN**: VPN gateway instance or IPsec connection.
+        #     
+        #     - If the IPsec connection or SSL server is attached to a VPN gateway instance, the VPC associated with the VPN gateway instance must be connected to a transit router instance, and the VPN gateway instance must run the BGP dynamic routing protocol for this parameter to take effect.
+        #     - If the IPsec connection is directly attached to a transit router instance, this parameter takes effect.
         self.source_child_instance_types = source_child_instance_types
-        # The IDs of the source network instances to which the routes belong. The following network instance types are supported:
+        # The list of source instance IDs that the route must match. The following types of instance IDs are supported:
         # 
-        # - Virtual private cloud (VPC)
+        # - Virtual Private Cloud (VPC) instance ID
+        # - Virtual Border Router (VBR) instance ID
+        # - Cloud Connect Network (CCN) instance ID
+        # - Smart Access Gateway instance ID
+        # - IPsec connection ID
         # 
-        # - Virtual border router (VBR)
-        # 
-        # - Cloud Connect Network (CCN) instance
-        # 
-        # - Smart Access Gateway (SAG) instance
-        # 
-        # - The ID of the IPsec-VPN connection.
-        # 
-        # You can enter at most 64 IDs.
+        # A maximum of 64 instance IDs can be specified.
         self.source_instance_ids = source_instance_ids
-        # Specifies whether to exclude source instance IDs. Valid values:
+        # Specifies whether to use the reverse match mode for the source instance ID list. Valid values:
         # 
-        # - **false** (default): A route is a match if the source instance ID is included in the list specified by **SourceInstanceIds.N**.
+        # - **false** (default): No. A match is successful if the source instance ID of the route is in **SourceInstanceIds.N**.
         # 
-        # - **true**: A route is a match if the source network instance ID is not in the list specified by **SourceInstanceIds.N**.
+        # - **true**: Yes. A match is successful if the source instance ID of the route is not in **SourceInstanceIds.N**.
         self.source_instance_ids_reverse_match = source_instance_ids_reverse_match
-        # The IDs of the source regions to which the routes belong. You can enter at most 64 region IDs.
+        # The list of source region IDs that the route must match. A maximum of 64 region IDs can be specified.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         self.source_region_ids = source_region_ids
-        # The IDs of the source route tables to which the routes belong. You can enter at most 64 route table IDs.
+        # The list of source route table IDs that the route must match. A maximum of 64 route table IDs can be specified.
         self.source_route_table_ids = source_route_table_ids
 
     def validate(self):

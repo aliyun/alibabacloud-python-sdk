@@ -17,25 +17,27 @@ class DescribeCenAttachedChildInstancesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the region where the network instance is deployed.
+        # The region ID of the network instance.                   
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # - **VPC**: virtual private cloud (VPC)
-        # - **VBR**: virtual border router (VBR)
-        # - **CCN**: Cloud Connect Network (CCN) instance
+        # - **VPC**: virtual private cloud.
+        # 
+        # - **VBR**: virtual border router.
+        # 
+        # - **CCN**: Cloud Connect Network.
         self.child_instance_type = child_instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page for paging query. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

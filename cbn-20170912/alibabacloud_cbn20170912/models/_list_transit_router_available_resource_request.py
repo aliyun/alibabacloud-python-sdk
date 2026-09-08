@@ -16,21 +16,20 @@ class ListTransitRouterAvailableResourceRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the Enterprise Edition transit router is deployed.
+        # The region ID of the Enterprise Edition transit router.
         # 
-        # Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain region IDs.
+        # You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to query only information about zones that support the multicast feature.
+        # Specifies whether to query only the multicast-enabled zones.
         # 
-        # - **true**: Yes.
+        # - **true**: queries only the multicast-enabled zones.
         # 
-        #   If you enable this feature and the **ListTransitRouterAvailableResource** operation returns an empty response, it indicates that Enterprise Edition transit routers in the current region do not support the multicast feature.
-        # 
-        # - **false** (default): No.
+        #     If the **ListTransitRouterAvailableResource** operation returns an empty result, the Enterprise Edition transit router in the current region does not support multicast.
+        # - **false** (default): does not query only the multicast-enabled zones.
         self.support_multicast = support_multicast
 
     def validate(self):

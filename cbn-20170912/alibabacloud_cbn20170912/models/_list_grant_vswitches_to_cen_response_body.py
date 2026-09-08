@@ -16,15 +16,15 @@ class ListGrantVSwitchesToCenResponseBody(DaraModel):
         total_count: int = None,
         v_switches: List[main_models.ListGrantVSwitchesToCenResponseBodyVSwitches] = None,
     ):
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
-        # A list of vSwitches.
+        # The list of vSwitch information.
         self.v_switches = v_switches
 
     def validate(self):
@@ -87,13 +87,13 @@ class ListGrantVSwitchesToCenResponseBodyVSwitches(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the vSwitch.
+        # The vSwitch instance ID.
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         self.v_switch_name = v_switch_name
-        # The ID of the VPC to which the vSwitch belongs.
+        # The VPC-connected instance ID to which the vSwitch belongs.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitch belongs.
+        # The zone ID of the vSwitch.
         self.zone_id = zone_id
 
     def validate(self):

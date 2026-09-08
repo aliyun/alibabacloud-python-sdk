@@ -19,31 +19,29 @@ class ListCenInterRegionTrafficQosPoliciesRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token for the next page of results. Valid values:
-        # 
-        # - If this is your first query or no next page exists, do not specify this parameter.
-        # 
-        # - If a next page exists, set the value to the **NextToken** value returned from the previous call.
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - You do not need to specify this parameter for the first request or if no next query exists.
+        # - If a next query exists, set the value to the **NextToken** value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The description of the QoS policy.
+        # The description of the traffic scheduling policy.
         # 
-        # The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.traffic_qos_policy_description = traffic_qos_policy_description
-        # The ID of the QoS policy.
+        # The ID of the traffic scheduling policy.
         self.traffic_qos_policy_id = traffic_qos_policy_id
-        # The name of the QoS policy.
+        # The name of the traffic scheduling policy.
         # 
-        # The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.traffic_qos_policy_name = traffic_qos_policy_name
         # The ID of the inter-region connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the TransitRouter instance.
+        # The transit router instance ID.
         self.transit_router_id = transit_router_id
 
     def validate(self):

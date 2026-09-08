@@ -15,17 +15,17 @@ class ModifyCenBandwidthPackageAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the bandwidth plan.
+        # The instance ID of the bandwidth plan.
         # 
         # This parameter is required.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
-        # The new description for the bandwidth plan.
+        # The new description of the bandwidth plan instance.  
         # 
-        # The description can be empty or 1 to 256 characters long. It cannot start with http\\:// or https\\://.
+        # The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # The new name for the bandwidth plan.
+        # The new name of the bandwidth plan instance.
         # 
-        # The name can be empty or 1 to 128 characters long. It cannot start with http\\:// or https\\://.
+        # The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id

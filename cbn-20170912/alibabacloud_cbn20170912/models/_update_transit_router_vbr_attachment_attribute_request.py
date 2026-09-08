@@ -19,24 +19,26 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
     ):
-        # Specifies whether to allow the Enterprise Edition transit router to automatically advertise routes to the VBR. Valid values:
+        # Specifies whether to allow the Enterprise Edition transit router to automatically forward routing entries to the VBR instance. Valid values:
         # 
-        # - **true**: Allows the Enterprise Edition transit router to automatically advertise routes to the VBR.
-        # 
-        # - **false**: Does not allow the Enterprise Edition transit router to automatically advertise routes to the VBR.
+        # - **true**: allowed.
+        # - **false**: not allowed.
         self.auto_publish_route_enabled = auto_publish_route_enabled
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use your client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
         # 
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # 
-        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an operation is performed.
+        # - **false** (default): sends a normal request. If the request passes the check, the name and description of the VBR connection are modified.
+        # - **true**: sends a check request. Only the check is performed. If the check passes, the error code `DryRunOperation` is returned. If the check fails, the corresponding error is returned.
         self.dry_run = dry_run
+        # The payer of the network instance. Valid values:
+        # 
+        # - **PayByCenOwner**: the connection fee and data transfer fee of the VBR instance are paid by the account to which the transit router instance belongs.
+        # - **PayByResourceOwner**: the connection fee and data transfer fee of the VBR instance are paid by the account to which the VBR instance belongs.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -44,7 +46,7 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new description of the VBR connection.
         # 
-        # The description can be empty or 1 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
         self.transit_router_attachment_description = transit_router_attachment_description
         # The ID of the VBR connection.
         # 
@@ -52,7 +54,7 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(DaraModel):
         self.transit_router_attachment_id = transit_router_attachment_id
         # The new name of the VBR connection.
         # 
-        # The name can be empty or 1 to 128 characters in length. It cannot start with `http://` or `https://`.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         self.transit_router_attachment_name = transit_router_attachment_name
 
     def validate(self):

@@ -14,15 +14,14 @@ class ListCenChildInstanceRouteEntriesToAttachmentResponseBody(DaraModel):
         request_id: str = None,
         route_entry: List[main_models.ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry] = None,
     ):
-        # The token that is used for the next query.
+        # Indicates whether a next query token (Token) exists. Valid values:
         # 
-        # - If **NextToken** is empty, no subsequent query is sent.
-        # 
-        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The details of the route.
+        # The details of the route entries.
         self.route_entry = route_entry
 
     def validate(self):
@@ -75,21 +74,18 @@ class ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry(DaraMod
         status: str = None,
         transit_router_attachment_id: str = None,
     ):
-        # The ID of the CEN instance.
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # The ID of the route table of the network instance.
+        # The route table ID of the network instance.
         self.child_instance_route_table_id = child_instance_route_table_id
-        # The destination CIDR block of the route.
+        # The destination CIDR block of the route entry.
         self.destination_cidr_block = destination_cidr_block
-        # The type of the managed routing service. If this parameter is empty, the route is not managed. The value TR indicates that the route is managed by a transit router.
+        # The type of route hosting. If this field is empty, the route is not hosted. Valid values: TR, which indicates that the hosting type is transit router.
         self.service_type = service_type
-        # The status of the route. Valid values:
-        # 
-        # - **Available**: The route is active.
-        # 
-        # - **Pending**: The route is being configured.
-        # 
-        # - **Modifying**: The route is being modified.
+        # The status of the route entry. Valid values:
+        # - **Available**: available.
+        # - **Pending**: being configured.
+        # - **Modifying**: being modified.
         self.status = status
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id

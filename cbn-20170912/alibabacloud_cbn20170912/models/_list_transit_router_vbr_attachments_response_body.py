@@ -18,17 +18,16 @@ class ListTransitRouterVbrAttachmentsResponseBody(DaraModel):
     ):
         # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token that is used for the next query.
+        # The token that determines the start point of the query. Valid values:
         # 
-        # - If this parameter is empty, no more data is returned.
-        # 
-        # - If a value is returned for this parameter, it is the token that you can use to retrieve the next page of results.
+        # - If this is the first query or no subsequent query is to be sent, you do not need to specify this parameter.
+        # - If a subsequent query is to be sent, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # A list of VBR connections.
+        # The list of VBR connections.
         self.transit_router_attachments = transit_router_attachments
 
     def validate(self):
@@ -102,36 +101,33 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         vbr_owner_id: int = None,
         vbr_region_id: str = None,
     ):
-        # Indicates whether the Enterprise Edition transit router automatically advertises routes to the VBR.
+        # Indicates whether the Enterprise Edition forward routing automatically publishes route entries to the VBR instance. Valid values:
         # 
-        # - **false**: no.
-        # 
-        # - **true**: yes.
+        # - **false**: The Enterprise Edition forward routing does not automatically publish route entries to the VBR instance.
+        # - **true**: The Enterprise Edition forward routing automatically publishes route entries to the VBR instance.
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # The ID of the CEN instance.
+        # The CEN instance ID.
         self.cen_id = cen_id
         # The time when the VBR connection was created.
         # 
-        # The time is displayed in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+        # The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mmZ.
         self.creation_time = creation_time
+        # The cloud service that manages the VBR connection. This parameter is returned only when the VBR connection is managed by a cloud service. The standard code of the cloud service is returned. If the VBR connection is managed by you, this parameter is not returned.
         self.managed_service = managed_service
-        # The payer for the network instance. Valid values:
+        # The payer of the network instance. Valid values:
         # 
-        # - **PayByCenOwner**: The connection fee and data transfer fee for the VBR are paid by the account that owns the transit router.
-        # 
-        # - **PayByResourceOwner**: The connection fee and data transfer fee for the VBR are paid by the account that owns the VBR.
+        # - **PayByCenOwner**: The connection fee and data processing fee of the VBR instance are paid by the account to which the transit router instance belongs.
+        # - **PayByResourceOwner**: The connection fee and data processing fee of the VBR instance are paid by the account to which the VBR instance belongs.
         self.order_type = order_type
-        # The resource type of the connection.
+        # The type of resource to which the connection belongs.
         # 
-        # The value is set to **VBR**, which indicates a VBR instance.
+        # The value is **VBR**, which indicates a virtual border router instance.
         self.resource_type = resource_type
-        # The status of the VBR connection.
+        # The status of the VBR connection. Valid values:
         # 
-        # - **Attached**: The connection is established.
-        # 
-        # - **Attaching**: The connection is being established.
-        # 
-        # - **Detaching**: The connection is being removed.
+        # - **Attached**: The VBR connection is attached.
+        # - **Attaching**: The VBR connection is being attached.
+        # - **Detaching**: The VBR connection is being detached.
         self.status = status
         # The list of tags.
         self.tags = tags
@@ -141,13 +137,13 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         self.transit_router_attachment_id = transit_router_attachment_id
         # The name of the VBR connection.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The ID of the Enterprise Edition transit router.
+        # The Enterprise Edition forward routing instance ID.
         self.transit_router_id = transit_router_id
-        # The VBR ID.
+        # The VBR instance ID.
         self.vbr_id = vbr_id
-        # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # The ID of the account to which the VBR instance belongs.
         self.vbr_owner_id = vbr_owner_id
-        # The ID of the region where the VBR is deployed.
+        # The region ID of the VBR instance.
         self.vbr_region_id = vbr_region_id
 
     def validate(self):

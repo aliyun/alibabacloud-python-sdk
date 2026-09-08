@@ -15,13 +15,13 @@ class DeleteCenRouteMapRequest(DaraModel):
         resource_owner_id: int = None,
         route_map_id: str = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The CEN instance ID.
         # 
         # This parameter is required.
         self.cen_id = cen_id
         # The ID of the region where the routing policy is applied.
         # 
-        # Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain region IDs.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.cen_region_id = cen_region_id

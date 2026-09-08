@@ -15,17 +15,19 @@ class TempUpgradeCenBandwidthPackageSpecRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The maximum temporary bandwidth. Unit: Mbps.
+        # The temporarily increased peak bandwidth. Unit: Mbit/s.
         # 
-        # Valid values: **2 to 10,000**
+        # Valid values: **2** to **10000**.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
-        # Bandwidth package ID.
+        # The instance ID of the bandwidth plan.
         # 
         # This parameter is required.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
-        # The expiration time of the temporary upgrade. It follows the ISO8601 standard and is displayed in UTC time, `YYYY-MM-DDThh:mm:ssZ`.
+        # The expiration time of the temporary bandwidth upgrade.
+        # 
+        # The time is expressed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
         # 
         # This parameter is required.
         self.end_time = end_time

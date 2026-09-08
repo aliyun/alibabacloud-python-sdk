@@ -31,69 +31,69 @@ class ListTransitRouterRouteEntriesRequest(DaraModel):
         transit_router_route_entry_type: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page when entries are returned in pages. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that determines the start point of the query. Valid values:
         # 
-        # - You do not need to specify this parameter for the first request.
-        # - You must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # - You do not need to specify this parameter for the first query or if no subsequent query is to be sent.
+        # - If a subsequent query is to be sent, set the value to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The prefix list ID.
+        # The ID of the prefix list.
         self.prefix_list_id = prefix_list_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The filter conditions.
+        # The filter conditions for route entry CIDR blocks.
         self.route_filter = route_filter
-        # The destination CIDR block of the route. **This parameter is to be deprecated. We recommend that you use the RouteFilter parameter**.
+        # The destination CIDR block of the route entry (**This parameter will be deprecated. Use the RouteFilter parameter instead**).
         self.transit_router_route_entry_destination_cidr_block = transit_router_route_entry_destination_cidr_block
-        # The route ID.
+        # The IDs of the route entries.
         self.transit_router_route_entry_ids = transit_router_route_entry_ids
-        # The route name.
+        # The names of the route entries.
         self.transit_router_route_entry_names = transit_router_route_entry_names
-        # The ID of the network instance connection that you want to specify as the next hop.
+        # The ID of the network instance connection associated with the next hop of the route entry.
         self.transit_router_route_entry_next_hop_id = transit_router_route_entry_next_hop_id
-        # The next hop ID.
+        # The instance ID of the next hop of the route entry.
         self.transit_router_route_entry_next_hop_resource_id = transit_router_route_entry_next_hop_resource_id
-        # The next hop type. Valid values:
+        # The type of the next hop instance of the route entry. Valid values:
         # 
-        # - **VPC**
-        # - **VBR**
-        # - **TR**
-        # - **VPN**
+        # - **VPC**: Virtual Private Cloud (VPC) instance.
+        # - **VBR**: Virtual Border Router (VBR) instance.
+        # - **TR**: transit router instance.
+        # - **VPN**: IPsec connection instance.
         self.transit_router_route_entry_next_hop_resource_type = transit_router_route_entry_next_hop_resource_type
         # The next hop type. Valid values:
         # 
-        # - **BlackHole**: routes network traffic to a black hole.
-        # - **Attachment**: routes network traffic to a network instance connection.
+        # - **BlackHole**: the route entry is a blackhole route.
+        # - **Attachment**: the next hop of the route entry is a network instance connection.
         self.transit_router_route_entry_next_hop_type = transit_router_route_entry_next_hop_type
-        # The source instance ID.
+        # The instance ID of the origin of the route entry.
         self.transit_router_route_entry_origin_resource_id = transit_router_route_entry_origin_resource_id
-        # The source instance type. Valid values:
+        # The type of the origin instance of the route entry. Valid values:
         # 
-        # - **VPC**
-        # - **VBR**
-        # - **TR**
-        # - **VPN**
+        # - **VPC**: Virtual Private Cloud (VPC) instance.
+        # - **VBR**: Virtual Border Router (VBR) instance.
+        # - **TR**: transit router instance.
+        # - **VPN**: IPsec connection instance.
         self.transit_router_route_entry_origin_resource_type = transit_router_route_entry_origin_resource_type
-        # The status of the route. Valid values:
+        # The status of the route entry. Valid values:
         # 
-        # - **All**
-        # - **Active** (default)
-        # - **Rejected**
-        # - **Prohibited**
-        # - **Standby**
-        # - **Candidate**
+        # - **All**: queries route entries in all states.
+        # - **Active (default)**: queries only route entries in the active state.
+        # - **Rejected**: queries only route entries that are rejected due to route conflicts.
+        # - **Prohibited**: queries only route entries that are prohibited because they match a routing policy.
+        # - **Standby**: queries only route entries that serve as standby routes.
+        # - **Candidate**: queries only route entries that serve as candidate routes.
         # 
-        # If you do not specify a value, routes in the active state are queried.
+        # If you do not specify this parameter, only route entries in the active state are queried.
         self.transit_router_route_entry_status = transit_router_route_entry_status
-        # The route type. Valid values:
+        # The type of the route entry. Valid values:
         # 
-        # - **Propagated**: automatically learned by the route table.
-        # - **Static**: static routes.
+        # - **Propagated**: generated by automatic learning on the current route table.
+        # - **Static**: generated by static configuration on the current route table.
         self.transit_router_route_entry_type = transit_router_route_entry_type
-        # The ID of the route table of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router route table.
         # 
         # This parameter is required.
         self.transit_router_route_table_id = transit_router_route_table_id
@@ -246,16 +246,16 @@ class ListTransitRouterRouteEntriesRequestRouteFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The match pattern for filtering CIDR blocks. Valid values:
+        # The filter condition. Valid values:
         # 
-        # - **PrefixExactMatchCidrs**: exact matching.
-        # - **LongestPrefixMatchCidrs**: longest prefix matching. You can specify IP addresses and CIDR blocks.
-        # - **SubnetOfMatchCidrs**: subnet matching. The subnets of the specified CIDR blocks, including the CIDR block, are matches against the match conditions.
-        # - **SupernetOfMatchCidrs**: supernet matching. The supernets of the CIDR block, including the CIDR block, are matched against the match conditions.
+        # - **PrefixExactMatchCidrs**: exact match.
+        # - **LongestPrefixMatchCidrs**: longest prefix match. IP addresses and CIDR blocks are supported.
+        # - **SubnetOfMatchCidrs**: subnet match. Matches subnets of the specified CIDR block, including the specified CIDR block itself.
+        # - **SupernetOfMatchCidrs**: supernet match. Matches supernets of the specified CIDR block, including the specified CIDR block itself.
         # 
-        # By default, the logical operator among filter conditions is **AND**. Information about a route entry is returned only if the route entry matches all filter conditions. Filter conditions must be unique.
+        # Multiple filter conditions have an **AND** relationship by default, which means that a route entry must meet all filter conditions to be considered a match. You cannot specify the same filter condition more than once.
         self.key = key
-        # The filter value.
+        # The list of filter condition values.
         self.value = value
 
     def validate(self):

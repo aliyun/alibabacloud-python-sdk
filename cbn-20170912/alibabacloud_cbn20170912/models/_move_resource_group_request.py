@@ -19,15 +19,13 @@ class MoveResourceGroupRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # The client generates this value. Make sure that the value is unique among different requests. The token can contain a maximum of 64 ASCII characters.
+        # The client generates the value of this parameter. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - **true**: performs a dry run. The system checks the required parameters, the request format, and business limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # 
-        # - **false** (default): sends a normal request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # - **true**: performs a dry run without modifying the resource group of the CEN instance or bandwidth plan instance. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the new resource group.
         # 
@@ -35,17 +33,16 @@ class MoveResourceGroupRequest(DaraModel):
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource.
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
+        # The resource type. Valid values:
         # 
-        # - **cen**: a CEN instance.
-        # 
-        # - **bandwidthpackage**: a bandwidth plan.
+        # - **cen**: CEN instance.
+        # - **bandwidthpackage**: bandwidth plan instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
