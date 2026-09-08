@@ -23,16 +23,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shenzhen': 'dms.cn-shenzhen.aliyuncs.com',
-            'cn-beijing': 'dms.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'dms.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'dms.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'dms.ap-southeast-1.aliyuncs.com',
-            'cn-hangzhou': 'dms.cn-hangzhou.aliyuncs.com',
-            'us-west-1': 'dms.us-west-1.aliyuncs.com',
-            'us-east-1': 'dms.us-east-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

@@ -16,15 +16,15 @@ class ListCustomAgentRequest(DaraModel):
     ):
         # The page number. Pages start from 1.
         self.page_number = page_number
-        # The page size. The default value is 20.
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
-        # Specifies whether to query all published custom agents. The default value is false.
+        # Specifies whether to query all custom agents in the published state. Default value: false.
         self.query_all_released = query_all_released
-        # A keyword for a fuzzy search on the names and descriptions of custom agents.
+        # The search keyword. Supports fuzzy search by custom agent name and description.
         self.search_key = search_key
         # The status of the custom agent.
         self.status = status
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

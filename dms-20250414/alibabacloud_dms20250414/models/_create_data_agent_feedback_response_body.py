@@ -16,12 +16,22 @@ class CreateDataAgentFeedbackResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The response struct.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request failed.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,12 +103,19 @@ class CreateDataAgentFeedbackResponseBodyData(DaraModel):
         target_id: str = None,
         target_type: str = None,
     ):
+        # The feedback content.
         self.feedback_content = feedback_content
+        # The feedback type.
         self.feedback_type = feedback_type
+        # The like value.
         self.like_value = like_value
+        # The region.
         self.region_id = region_id
+        # The agent session ID.
         self.session_id = session_id
+        # The feedback target ID.
         self.target_id = target_id
+        # The feedback target.
         self.target_type = target_type
 
     def validate(self):

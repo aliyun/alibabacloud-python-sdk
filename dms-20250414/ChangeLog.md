@@ -1,3 +1,9 @@
+2026-09-08 Version: 2.0.0
+- Update API SendChatMessage: update request parameters SessionConfig.EnableSearch' type has changed.
+- Update API SendChatMessage: update request parameters SessionConfig.KbUuidList' type has changed.
+- Update API SendChatMessage: update request parameters SessionConfig.McpServerIds' type has changed.
+
+
 2026-09-01 Version: 1.26.0
 - Support API CreateDataAgentFeedback.
 
