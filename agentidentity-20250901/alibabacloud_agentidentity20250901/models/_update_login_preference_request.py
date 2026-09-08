@@ -2,15 +2,19 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_agentidentity20250901 import models as main_models
 from darabonba.model import DaraModel
 
 class UpdateLoginPreferenceRequest(DaraModel):
     def __init__(
         self,
+        allowed_post_logout_redirect_uris: List[str] = None,
         login_preference: main_models.UpdateLoginPreferenceRequestLoginPreference = None,
         user_pool_name: str = None,
     ):
+        self.allowed_post_logout_redirect_uris = allowed_post_logout_redirect_uris
         self.login_preference = login_preference
         self.user_pool_name = user_pool_name
 
@@ -23,6 +27,9 @@ class UpdateLoginPreferenceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allowed_post_logout_redirect_uris is not None:
+            result['AllowedPostLogoutRedirectUris'] = self.allowed_post_logout_redirect_uris
+
         if self.login_preference is not None:
             result['LoginPreference'] = self.login_preference.to_map()
 
@@ -33,6 +40,9 @@ class UpdateLoginPreferenceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowedPostLogoutRedirectUris') is not None:
+            self.allowed_post_logout_redirect_uris = m.get('AllowedPostLogoutRedirectUris')
+
         if m.get('LoginPreference') is not None:
             temp_model = main_models.UpdateLoginPreferenceRequestLoginPreference()
             self.login_preference = temp_model.from_map(m.get('LoginPreference'))

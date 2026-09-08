@@ -1236,9 +1236,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateWorkloadIdentityShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.allowed_consent_callback_urls):
+            request.allowed_consent_callback_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_consent_callback_urls, 'AllowedConsentCallbackURLs', 'json')
         if not DaraCore.is_null(tmp_req.allowed_resource_oauth2_return_urls):
             request.allowed_resource_oauth2_return_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_resource_oauth2_return_urls, 'AllowedResourceOAuth2ReturnURLs', 'json')
         body = {}
+        if not DaraCore.is_null(request.allowed_consent_callback_urls_shrink):
+            body['AllowedConsentCallbackURLs'] = request.allowed_consent_callback_urls_shrink
         if not DaraCore.is_null(request.allowed_resource_oauth2_return_urls_shrink):
             body['AllowedResourceOAuth2ReturnURLs'] = request.allowed_resource_oauth2_return_urls_shrink
         if not DaraCore.is_null(request.create_ramrole):
@@ -1284,9 +1288,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateWorkloadIdentityShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.allowed_consent_callback_urls):
+            request.allowed_consent_callback_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_consent_callback_urls, 'AllowedConsentCallbackURLs', 'json')
         if not DaraCore.is_null(tmp_req.allowed_resource_oauth2_return_urls):
             request.allowed_resource_oauth2_return_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_resource_oauth2_return_urls, 'AllowedResourceOAuth2ReturnURLs', 'json')
         body = {}
+        if not DaraCore.is_null(request.allowed_consent_callback_urls_shrink):
+            body['AllowedConsentCallbackURLs'] = request.allowed_consent_callback_urls_shrink
         if not DaraCore.is_null(request.allowed_resource_oauth2_return_urls_shrink):
             body['AllowedResourceOAuth2ReturnURLs'] = request.allowed_resource_oauth2_return_urls_shrink
         if not DaraCore.is_null(request.create_ramrole):
@@ -5520,9 +5528,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateLoginPreferenceShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.allowed_post_logout_redirect_uris):
+            request.allowed_post_logout_redirect_uris_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_post_logout_redirect_uris, 'AllowedPostLogoutRedirectUris', 'json')
         if not DaraCore.is_null(tmp_req.login_preference):
             request.login_preference_shrink = Utils.array_to_string_with_specified_style(tmp_req.login_preference, 'LoginPreference', 'json')
         query = {}
+        if not DaraCore.is_null(request.allowed_post_logout_redirect_uris_shrink):
+            query['AllowedPostLogoutRedirectUris'] = request.allowed_post_logout_redirect_uris_shrink
         if not DaraCore.is_null(request.login_preference_shrink):
             query['LoginPreference'] = request.login_preference_shrink
         body = {}
@@ -5556,9 +5568,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateLoginPreferenceShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.allowed_post_logout_redirect_uris):
+            request.allowed_post_logout_redirect_uris_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_post_logout_redirect_uris, 'AllowedPostLogoutRedirectUris', 'json')
         if not DaraCore.is_null(tmp_req.login_preference):
             request.login_preference_shrink = Utils.array_to_string_with_specified_style(tmp_req.login_preference, 'LoginPreference', 'json')
         query = {}
+        if not DaraCore.is_null(request.allowed_post_logout_redirect_uris_shrink):
+            query['AllowedPostLogoutRedirectUris'] = request.allowed_post_logout_redirect_uris_shrink
         if not DaraCore.is_null(request.login_preference_shrink):
             query['LoginPreference'] = request.login_preference_shrink
         body = {}
@@ -6290,9 +6306,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateWorkloadIdentityShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.allowed_consent_callback_urls):
+            request.allowed_consent_callback_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_consent_callback_urls, 'AllowedConsentCallbackURLs', 'json')
         if not DaraCore.is_null(tmp_req.allowed_resource_oauth2_return_urls):
             request.allowed_resource_oauth2_return_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_resource_oauth2_return_urls, 'AllowedResourceOAuth2ReturnURLs', 'json')
         body = {}
+        if not DaraCore.is_null(request.allowed_consent_callback_urls_shrink):
+            body['AllowedConsentCallbackURLs'] = request.allowed_consent_callback_urls_shrink
         if not DaraCore.is_null(request.allowed_resource_oauth2_return_urls_shrink):
             body['AllowedResourceOAuth2ReturnURLs'] = request.allowed_resource_oauth2_return_urls_shrink
         if not DaraCore.is_null(request.description):
@@ -6332,9 +6352,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateWorkloadIdentityShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.allowed_consent_callback_urls):
+            request.allowed_consent_callback_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_consent_callback_urls, 'AllowedConsentCallbackURLs', 'json')
         if not DaraCore.is_null(tmp_req.allowed_resource_oauth2_return_urls):
             request.allowed_resource_oauth2_return_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.allowed_resource_oauth2_return_urls, 'AllowedResourceOAuth2ReturnURLs', 'json')
         body = {}
+        if not DaraCore.is_null(request.allowed_consent_callback_urls_shrink):
+            body['AllowedConsentCallbackURLs'] = request.allowed_consent_callback_urls_shrink
         if not DaraCore.is_null(request.allowed_resource_oauth2_return_urls_shrink):
             body['AllowedResourceOAuth2ReturnURLs'] = request.allowed_resource_oauth2_return_urls_shrink
         if not DaraCore.is_null(request.description):

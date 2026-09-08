@@ -50,9 +50,14 @@ class GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraModel)
         credential_provider_arn: str = None,
         credential_provider_vendor: str = None,
         description: str = None,
+        idaa_sinstance_id: str = None,
         oauth2_credential_provider_name: str = None,
         oauth2_provider_config: main_models.OAuth2ProviderConfig = None,
         oauth_type: str = None,
+        outbound_application_id: str = None,
+        outbound_audience: str = None,
+        outbound_client_id: str = None,
+        source_platform: str = None,
         token_vault_name: str = None,
         update_time: str = None,
     ):
@@ -61,9 +66,14 @@ class GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraModel)
         self.credential_provider_arn = credential_provider_arn
         self.credential_provider_vendor = credential_provider_vendor
         self.description = description
+        self.idaa_sinstance_id = idaa_sinstance_id
         self.oauth2_credential_provider_name = oauth2_credential_provider_name
         self.oauth2_provider_config = oauth2_provider_config
         self.oauth_type = oauth_type
+        self.outbound_application_id = outbound_application_id
+        self.outbound_audience = outbound_audience
+        self.outbound_client_id = outbound_client_id
+        self.source_platform = source_platform
         self.token_vault_name = token_vault_name
         self.update_time = update_time
 
@@ -91,6 +101,9 @@ class GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraModel)
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.idaa_sinstance_id is not None:
+            result['IDaaSInstanceId'] = self.idaa_sinstance_id
+
         if self.oauth2_credential_provider_name is not None:
             result['OAuth2CredentialProviderName'] = self.oauth2_credential_provider_name
 
@@ -99,6 +112,18 @@ class GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraModel)
 
         if self.oauth_type is not None:
             result['OAuthType'] = self.oauth_type
+
+        if self.outbound_application_id is not None:
+            result['OutboundApplicationId'] = self.outbound_application_id
+
+        if self.outbound_audience is not None:
+            result['OutboundAudience'] = self.outbound_audience
+
+        if self.outbound_client_id is not None:
+            result['OutboundClientId'] = self.outbound_client_id
+
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
 
         if self.token_vault_name is not None:
             result['TokenVaultName'] = self.token_vault_name
@@ -125,6 +150,9 @@ class GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraModel)
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('IDaaSInstanceId') is not None:
+            self.idaa_sinstance_id = m.get('IDaaSInstanceId')
+
         if m.get('OAuth2CredentialProviderName') is not None:
             self.oauth2_credential_provider_name = m.get('OAuth2CredentialProviderName')
 
@@ -134,6 +162,18 @@ class GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraModel)
 
         if m.get('OAuthType') is not None:
             self.oauth_type = m.get('OAuthType')
+
+        if m.get('OutboundApplicationId') is not None:
+            self.outbound_application_id = m.get('OutboundApplicationId')
+
+        if m.get('OutboundAudience') is not None:
+            self.outbound_audience = m.get('OutboundAudience')
+
+        if m.get('OutboundClientId') is not None:
+            self.outbound_client_id = m.get('OutboundClientId')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         if m.get('TokenVaultName') is not None:
             self.token_vault_name = m.get('TokenVaultName')

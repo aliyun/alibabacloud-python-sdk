@@ -79,6 +79,8 @@ class ListUserPoolsResponseBodyUserPools(DaraModel):
         self,
         create_time: str = None,
         description: str = None,
+        oidcdiscovery_url: str = None,
+        signin_base_url: str = None,
         source_platform: str = None,
         update_time: str = None,
         user_pool_id: str = None,
@@ -86,6 +88,8 @@ class ListUserPoolsResponseBodyUserPools(DaraModel):
     ):
         self.create_time = create_time
         self.description = description
+        self.oidcdiscovery_url = oidcdiscovery_url
+        self.signin_base_url = signin_base_url
         self.source_platform = source_platform
         self.update_time = update_time
         self.user_pool_id = user_pool_id
@@ -104,6 +108,12 @@ class ListUserPoolsResponseBodyUserPools(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.oidcdiscovery_url is not None:
+            result['OIDCDiscoveryURL'] = self.oidcdiscovery_url
+
+        if self.signin_base_url is not None:
+            result['SigninBaseURL'] = self.signin_base_url
 
         if self.source_platform is not None:
             result['SourcePlatform'] = self.source_platform
@@ -126,6 +136,12 @@ class ListUserPoolsResponseBodyUserPools(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('OIDCDiscoveryURL') is not None:
+            self.oidcdiscovery_url = m.get('OIDCDiscoveryURL')
+
+        if m.get('SigninBaseURL') is not None:
+            self.signin_base_url = m.get('SigninBaseURL')
 
         if m.get('SourcePlatform') is not None:
             self.source_platform = m.get('SourcePlatform')

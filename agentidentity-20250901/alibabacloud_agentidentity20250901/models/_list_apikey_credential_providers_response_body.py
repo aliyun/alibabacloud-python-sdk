@@ -81,6 +81,7 @@ class ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders(DaraMod
         create_time: str = None,
         credential_provider_arn: str = None,
         description: str = None,
+        source_platform: str = None,
         token_vault_name: str = None,
         update_time: str = None,
     ):
@@ -88,6 +89,7 @@ class ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders(DaraMod
         self.create_time = create_time
         self.credential_provider_arn = credential_provider_arn
         self.description = description
+        self.source_platform = source_platform
         self.token_vault_name = token_vault_name
         self.update_time = update_time
 
@@ -111,6 +113,9 @@ class ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders(DaraMod
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
+
         if self.token_vault_name is not None:
             result['TokenVaultName'] = self.token_vault_name
 
@@ -132,6 +137,9 @@ class ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders(DaraMod
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         if m.get('TokenVaultName') is not None:
             self.token_vault_name = m.get('TokenVaultName')

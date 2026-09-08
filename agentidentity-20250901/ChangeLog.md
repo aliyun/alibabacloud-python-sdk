@@ -1,3 +1,32 @@
+2026-09-08 Version: 1.2.2
+- Update API CreateAPIKeyCredentialProvider: add response parameters Body.APIKeyCredentialProvider.SourcePlatform.
+- Update API CreateOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.SourcePlatform.
+- Update API CreateUserPool: add response parameters Body.UserPool.OIDCDiscoveryURL.
+- Update API CreateUserPool: add response parameters Body.UserPool.SigninBaseURL.
+- Update API CreateWorkloadIdentity: add request parameters AllowedConsentCallbackURLs.
+- Update API CreateWorkloadIdentity: add response parameters Body.WorkloadIdentity.AllowedConsentCallbackURLs.
+- Update API GetAPIKeyCredentialProvider: add response parameters Body.APIKeyCredentialProvider.SourcePlatform.
+- Update API GetOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.IDaaSInstanceId.
+- Update API GetOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.OutboundApplicationId.
+- Update API GetOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.OutboundAudience.
+- Update API GetOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.OutboundClientId.
+- Update API GetOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.SourcePlatform.
+- Update API GetUserPool: add response parameters Body.UserPool.OIDCDiscoveryURL.
+- Update API GetUserPool: add response parameters Body.UserPool.SigninBaseURL.
+- Update API GetWorkloadIdentity: add response parameters Body.WorkloadIdentity.AllowedConsentCallbackURLs.
+- Update API ListAPIKeyCredentialProviders: add response parameters Body.APIKeyCredentialProviders.$.SourcePlatform.
+- Update API ListOAuth2CredentialProviders: add response parameters Body.OAuth2CredentialProviders.$.IDaaSInstanceId.
+- Update API ListOAuth2CredentialProviders: add response parameters Body.OAuth2CredentialProviders.$.OutboundApplicationId.
+- Update API ListOAuth2CredentialProviders: add response parameters Body.OAuth2CredentialProviders.$.OutboundAudience.
+- Update API ListOAuth2CredentialProviders: add response parameters Body.OAuth2CredentialProviders.$.OutboundClientId.
+- Update API ListOAuth2CredentialProviders: add response parameters Body.OAuth2CredentialProviders.$.SourcePlatform.
+- Update API ListUserPools: add response parameters Body.UserPools.$.OIDCDiscoveryURL.
+- Update API ListUserPools: add response parameters Body.UserPools.$.SigninBaseURL.
+- Update API ListWorkloadIdentities: add response parameters Body.WorkloadIdentities.$.AllowedConsentCallbackURLs.
+- Update API UpdateLoginPreference: add request parameters AllowedPostLogoutRedirectUris.
+- Update API UpdateWorkloadIdentity: add request parameters AllowedConsentCallbackURLs.
+
+
 2026-07-07 Version: 1.2.1
 - Update API CreateOAuth2CredentialProvider: add request parameters OAuthType.
 - Update API CreateOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.OAuthType.

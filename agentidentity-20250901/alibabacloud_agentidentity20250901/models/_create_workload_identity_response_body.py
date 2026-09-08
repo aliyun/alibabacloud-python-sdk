@@ -47,6 +47,7 @@ class CreateWorkloadIdentityResponseBody(DaraModel):
 class CreateWorkloadIdentityResponseBodyWorkloadIdentity(DaraModel):
     def __init__(
         self,
+        allowed_consent_callback_urls: List[str] = None,
         allowed_resource_oauth2_return_urls: List[str] = None,
         create_time: str = None,
         description: str = None,
@@ -59,6 +60,7 @@ class CreateWorkloadIdentityResponseBodyWorkloadIdentity(DaraModel):
         workload_identity_arn: str = None,
         workload_identity_name: str = None,
     ):
+        self.allowed_consent_callback_urls = allowed_consent_callback_urls
         self.allowed_resource_oauth2_return_urls = allowed_resource_oauth2_return_urls
         self.create_time = create_time
         self.description = description
@@ -79,6 +81,9 @@ class CreateWorkloadIdentityResponseBodyWorkloadIdentity(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allowed_consent_callback_urls is not None:
+            result['AllowedConsentCallbackURLs'] = self.allowed_consent_callback_urls
+
         if self.allowed_resource_oauth2_return_urls is not None:
             result['AllowedResourceOAuth2ReturnURLs'] = self.allowed_resource_oauth2_return_urls
 
@@ -116,6 +121,9 @@ class CreateWorkloadIdentityResponseBodyWorkloadIdentity(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowedConsentCallbackURLs') is not None:
+            self.allowed_consent_callback_urls = m.get('AllowedConsentCallbackURLs')
+
         if m.get('AllowedResourceOAuth2ReturnURLs') is not None:
             self.allowed_resource_oauth2_return_urls = m.get('AllowedResourceOAuth2ReturnURLs')
 

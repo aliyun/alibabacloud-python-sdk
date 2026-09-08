@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class UpdateWorkloadIdentityShrinkRequest(DaraModel):
     def __init__(
         self,
+        allowed_consent_callback_urls_shrink: str = None,
         allowed_resource_oauth2_return_urls_shrink: str = None,
         description: str = None,
         identity_provider_name: str = None,
@@ -14,6 +15,7 @@ class UpdateWorkloadIdentityShrinkRequest(DaraModel):
         session_binding_enabled: str = None,
         workload_identity_name: str = None,
     ):
+        self.allowed_consent_callback_urls_shrink = allowed_consent_callback_urls_shrink
         self.allowed_resource_oauth2_return_urls_shrink = allowed_resource_oauth2_return_urls_shrink
         self.description = description
         self.identity_provider_name = identity_provider_name
@@ -29,6 +31,9 @@ class UpdateWorkloadIdentityShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allowed_consent_callback_urls_shrink is not None:
+            result['AllowedConsentCallbackURLs'] = self.allowed_consent_callback_urls_shrink
+
         if self.allowed_resource_oauth2_return_urls_shrink is not None:
             result['AllowedResourceOAuth2ReturnURLs'] = self.allowed_resource_oauth2_return_urls_shrink
 
@@ -51,6 +56,9 @@ class UpdateWorkloadIdentityShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowedConsentCallbackURLs') is not None:
+            self.allowed_consent_callback_urls_shrink = m.get('AllowedConsentCallbackURLs')
+
         if m.get('AllowedResourceOAuth2ReturnURLs') is not None:
             self.allowed_resource_oauth2_return_urls_shrink = m.get('AllowedResourceOAuth2ReturnURLs')
 

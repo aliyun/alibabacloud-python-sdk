@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class UpdateWorkloadIdentityRequest(DaraModel):
     def __init__(
         self,
+        allowed_consent_callback_urls: List[str] = None,
         allowed_resource_oauth2_return_urls: List[str] = None,
         description: str = None,
         identity_provider_name: str = None,
@@ -16,6 +17,7 @@ class UpdateWorkloadIdentityRequest(DaraModel):
         session_binding_enabled: str = None,
         workload_identity_name: str = None,
     ):
+        self.allowed_consent_callback_urls = allowed_consent_callback_urls
         self.allowed_resource_oauth2_return_urls = allowed_resource_oauth2_return_urls
         self.description = description
         self.identity_provider_name = identity_provider_name
@@ -31,6 +33,9 @@ class UpdateWorkloadIdentityRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allowed_consent_callback_urls is not None:
+            result['AllowedConsentCallbackURLs'] = self.allowed_consent_callback_urls
+
         if self.allowed_resource_oauth2_return_urls is not None:
             result['AllowedResourceOAuth2ReturnURLs'] = self.allowed_resource_oauth2_return_urls
 
@@ -53,6 +58,9 @@ class UpdateWorkloadIdentityRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowedConsentCallbackURLs') is not None:
+            self.allowed_consent_callback_urls = m.get('AllowedConsentCallbackURLs')
+
         if m.get('AllowedResourceOAuth2ReturnURLs') is not None:
             self.allowed_resource_oauth2_return_urls = m.get('AllowedResourceOAuth2ReturnURLs')
 

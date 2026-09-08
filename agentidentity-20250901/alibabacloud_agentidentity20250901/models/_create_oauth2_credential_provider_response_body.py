@@ -53,6 +53,7 @@ class CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraMod
         oauth2_credential_provider_name: str = None,
         oauth2_provider_config: main_models.OAuth2ProviderConfig = None,
         oauth_type: str = None,
+        source_platform: str = None,
         token_vault_name: str = None,
         update_time: str = None,
     ):
@@ -64,6 +65,7 @@ class CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraMod
         self.oauth2_credential_provider_name = oauth2_credential_provider_name
         self.oauth2_provider_config = oauth2_provider_config
         self.oauth_type = oauth_type
+        self.source_platform = source_platform
         self.token_vault_name = token_vault_name
         self.update_time = update_time
 
@@ -100,6 +102,9 @@ class CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraMod
         if self.oauth_type is not None:
             result['OAuthType'] = self.oauth_type
 
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
+
         if self.token_vault_name is not None:
             result['TokenVaultName'] = self.token_vault_name
 
@@ -134,6 +139,9 @@ class CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraMod
 
         if m.get('OAuthType') is not None:
             self.oauth_type = m.get('OAuthType')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         if m.get('TokenVaultName') is not None:
             self.token_vault_name = m.get('TokenVaultName')
