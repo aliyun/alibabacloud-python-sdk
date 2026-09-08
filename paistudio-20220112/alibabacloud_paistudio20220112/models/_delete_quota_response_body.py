@@ -10,9 +10,9 @@ class DeleteQuotaResponseBody(DaraModel):
         quota_id: str = None,
         request_id: str = None,
     ):
-        # Quota ID.
+        # Quota ID。
         self.quota_id = quota_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

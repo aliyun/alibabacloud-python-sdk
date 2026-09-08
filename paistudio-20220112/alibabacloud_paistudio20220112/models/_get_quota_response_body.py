@@ -13,6 +13,7 @@ class GetQuotaResponseBody(DaraModel):
         allocate_strategy: str = None,
         creator_id: str = None,
         description: str = None,
+        gputype: str = None,
         gmt_created_time: str = None,
         gmt_modified_time: str = None,
         hyper_zones: List[str] = None,
@@ -36,61 +37,63 @@ class GetQuotaResponseBody(DaraModel):
         version: str = None,
         workspaces: List[main_models.WorkspaceIdName] = None,
     ):
-        # The resource allocation policy.
+        # The resource allocation strategy.
         self.allocate_strategy = allocate_strategy
-        # The ID of the user who created the resource quota.
+        # The ID of the quota creator.
         self.creator_id = creator_id
-        # The description of the resource quota.
+        # The description of the quota.
         self.description = description
-        # The time when the resource quota was created.
+        # The GPU type.
+        self.gputype = gputype
+        # The time when the quota was created.
         self.gmt_created_time = gmt_created_time
-        # The time when the resource quota was last modified.
+        # The time when the quota was last modified.
         self.gmt_modified_time = gmt_modified_time
-        # A list of high-performance network zones.
+        # The list of high-performance network zones.
         self.hyper_zones = hyper_zones
-        # The labels of the resource quota.
+        # The labels of the quota.
         self.labels = labels
-        # The ID of the most recent change to the resource quota.
+        # The ID of the latest quota operation.
         self.latest_operation_id = latest_operation_id
-        # The configuration of the minimum quota.
+        # The minimum quota configuration.
         self.min = min
-        # The ID of the parent resource quota.
+        # The ID of the parent quota.
         self.parent_quota_id = parent_quota_id
-        # The queuing policy for tasks in the resource quota.
+        # The queuing strategy for tasks in the quota.
         self.queue_strategy = queue_strategy
-        # The specifications and status of the cluster that is composed of resources within the quota.
+        # The cluster specifications and status composed of resources in the quota.
         self.quota_cluster = quota_cluster
-        # The configurations of the resource quota:
+        # The quota configuration:
         # 
         # - VPC information
         # 
-        # - Whether Remote Direct Memory Access (RDMA) is supported
+        # - Whether RDMA is supported
         # 
-        # - ACS configurations, which take effect if the resource type is ACS
+        # - ACS configuration (takes effect when the resource type is ACS)
         self.quota_config = quota_config
-        # The details of the resource quota.
+        # The details of the quota.
         self.quota_details = quota_details
-        # The ID of the resource quota.
+        # The resource quota ID.
         self.quota_id = quota_id
         # The name of the resource quota.
         self.quota_name = quota_name
         # The error code.
         self.reason_code = reason_code
-        # The cause of the error.
+        # The error reason.
         self.reason_message = reason_message
         # The request ID.
         self.request_id = request_id
-        # The resource groups that are associated with the resource quota.
+        # The resource group information associated with the resource quota.
         self.resource_group_ids = resource_group_ids
         # The resource type of the quota.
         self.resource_type = resource_type
-        # The status of the resource quota.
+        # The status of the quota.
         self.status = status
-        # A list of sub-quotas of the resource quota.
+        # The list of sub-quotas under the quota.
         self.sub_quotas = sub_quotas
-        # The version information. This parameter takes effect when ResourceType is set to ECS.
+        # The version information. Takes effect when the resource type is ECS.
         self.version = version
-        # The workspaces that are associated with the resource quota.
+        # The workspaces associated with the quota.
         self.workspaces = workspaces
 
     def validate(self):
@@ -128,6 +131,9 @@ class GetQuotaResponseBody(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
 
         if self.gmt_created_time is not None:
             result['GmtCreatedTime'] = self.gmt_created_time
@@ -213,6 +219,9 @@ class GetQuotaResponseBody(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
 
         if m.get('GmtCreatedTime') is not None:
             self.gmt_created_time = m.get('GmtCreatedTime')

@@ -29,6 +29,7 @@ from ._features import Features
 from ._forward_info import ForwardInfo
 from ._gpuinfo import GPUInfo
 from ._gpumetric import GPUMetric
+from ._global_spot_price_item import GlobalSpotPriceItem
 from ._hyper_parameter_definition import HyperParameterDefinition
 from ._hyper_parameter_range import HyperParameterRange
 from ._job_settings import JobSettings
@@ -70,6 +71,7 @@ from ._quota_node_view_metric import QuotaNodeViewMetric
 from ._quota_topo import QuotaTopo
 from ._quota_user import QuotaUser
 from ._quota_user_view_metric import QuotaUserViewMetric
+from ._resize_disk_parameters import ResizeDiskParameters
 from ._resource_amount import ResourceAmount
 from ._resource_diagnosis_detail import ResourceDiagnosisDetail
 from ._resource_group import ResourceGroup
@@ -370,6 +372,7 @@ __all__ = [
     ForwardInfo,
     GPUInfo,
     GPUMetric,
+    GlobalSpotPriceItem,
     HyperParameterDefinition,
     HyperParameterRange,
     JobSettings,
@@ -411,6 +414,7 @@ __all__ = [
     QuotaTopo,
     QuotaUser,
     QuotaUserViewMetric,
+    ResizeDiskParameters,
     ResourceAmount,
     ResourceDiagnosisDetail,
     ResourceGroup,

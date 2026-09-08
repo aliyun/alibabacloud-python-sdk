@@ -21,27 +21,30 @@ class QuotaDetails(DaraModel):
         system_reserved_quota: main_models.ResourceAmount = None,
         used_quota: main_models.ResourceAmount = None,
     ):
-        # Total MinQuota amount actually assigned
+        # The total MinQuota actually allocated. For example, if the user configured 10 nodes but only 8 nodes are actually bound, this value returns the total resources of the 8 nodes.
         self.actual_min_quota = actual_min_quota
-        # Quota amount assignable by the User
+        # The user-allocatable quota amount. For general computing resources, each node has system-reserved resources. This value represents the quota resources that user workloads can occupy.
+        # ActualMin = AllocatableQuota + SystemReservedQuota.
         self.allocatable_quota = allocatable_quota
-        # Total Quota usage information
+        # The total quota usage information, which is the total resources occupied by workloads after scheduling to nodes.
         self.allocated_quota = allocated_quota
-        # Quota usage information of ancestors
+        # The ancestor quota usage information, which is the total resources of workloads submitted using ancestor quotas after they are scheduled to nodes.
         self.ancestors_allocated_quota = ancestors_allocated_quota
-        # Quota usage information of descendants
+        # The descendant quota usage information, which is the total resources of workloads submitted using descendant quotas after they are scheduled to nodes.
         self.descendants_allocated_quota = descendants_allocated_quota
-        # Total MinQuota amount requested by the User
+        # The total MinQuota desired by the user.
         self.desired_min_quota = desired_min_quota
+        # The statistics information of nodes within the quota.
         self.node_statistics = node_statistics
-        # Quota request amount
+        # The quota requested amount, which is the total resources occupied by workloads after they are dequeued.
         self.requested_quota = requested_quota
-        # Quota usage information at the current level
+        # The current-level quota usage information, which is the total resources of workloads submitted using this quota after they are scheduled to nodes.
         self.self_allocated_quota = self_allocated_quota
+        # The amount submitted to this quota, which is the total resources of workloads submitted to this quota, including workloads that are queued.
         self.self_submitted_quota = self_submitted_quota
-        # System-reserved Quota amount
+        # The system-reserved quota amount.
         self.system_reserved_quota = system_reserved_quota
-        # Quota usage amount
+        # The quota used amount. This field is deprecating. Use AllocatedQuota instead.
         self.used_quota = used_quota
 
     def validate(self):

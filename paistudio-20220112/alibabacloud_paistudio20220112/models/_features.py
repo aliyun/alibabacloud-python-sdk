@@ -10,6 +10,7 @@ class Features(DaraModel):
         self,
         quota: main_models.FeaturesQuota = None,
     ):
+        # The Quota feature.
         self.quota = quota
 
     def validate(self):
@@ -39,6 +40,7 @@ class FeaturesQuota(DaraModel):
         self,
         is_enabled: bool = None,
     ):
+        # Indicates whether the feature is started.
         self.is_enabled = is_enabled
 
     def validate(self):

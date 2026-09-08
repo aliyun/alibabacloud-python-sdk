@@ -36,66 +36,60 @@ class Quota(DaraModel):
         version: str = None,
         workspaces: List[main_models.WorkspaceIdName] = None,
     ):
-        # The resource allocation strategy. Currently, only `ByNodeSpec` is supported.
+        # The resource allocation strategy. Currently, only ByNodeSpecs is supported.
         self.allocate_strategy = allocate_strategy
-        # The ID of the user who created the quota.
+        # The ID of the resource quota creator.
         self.creator_id = creator_id
-        # The quota description.
+        # The resource quota description.
         self.description = description
+        # The GPU type.
         self.gputype = gputype
-        # The time when the quota was created.
+        # The time when the resource quota was created.
         self.gmt_created_time = gmt_created_time
-        # The time when the quota was last modified.
+        # The time when the resource quota was last modified.
         self.gmt_modified_time = gmt_modified_time
         self.hyper_zones = hyper_zones
-        # The quota labels.
+        # The resource quota labels.
         self.labels = labels
-        # The ID of the most recent operation on the quota.
+        # The ID of the latest operation on the resource quota.
         self.latest_operation_id = latest_operation_id
         # The guaranteed resources.
         self.min = min
-        # The parent quota ID.
+        # The parent resource quota ID.
         self.parent_quota_id = parent_quota_id
-        # The queuing strategy. Valid values:
-        # 
-        # - `PaiStrategyIntelligent`: intelligent strategy.
-        # 
-        # - `PaiStrategyBalance`: balanced strategy.
-        # 
-        # - `PaiStrategyRoundRobin`: round-robin strategy.
-        # 
-        # - `PaiStrategyStrictFIFO`: FIFO strategy.
+        # The queue policy for the quota. Valid values:
+        # - PaiStrategyIntelligent: intelligent policies.
+        # - PaiStrategyBalance: balanced policy.
+        # - PaiStrategyRoundRobin: resource-priority policy.
+        # - PaiStrategyStrictFIFO: FIFO policy.
         self.queue_strategy = queue_strategy
         self.quota_cluster = quota_cluster
-        # The quota configuration.
+        # The resource quota configuration.
         self.quota_config = quota_config
-        # The quota details.
+        # The resource quota details.
         self.quota_details = quota_details
-        # The quota ID.
+        # The resource quota ID.
         self.quota_id = quota_id
-        # The quota name.
+        # The resource quota name.
         self.quota_name = quota_name
         # The error code.
         self.reason_code = reason_code
-        # The error message.
+        # The error reason.
         self.reason_message = reason_message
-        # A list of resource group IDs.
+        # The list of resource groups.
         self.resource_group_ids = resource_group_ids
         # The resource type. Valid values:
-        # 
-        # - `Lingjun`
-        # 
-        # - `ECS` (default)
-        # 
-        # - `ACS`
+        # - Lingjun
+        # - ECS (default)
+        # - ACS
         self.resource_type = resource_type
-        # The quota status.
+        # The resource quota status.
         self.status = status
-        # A list of sub-quotas.
+        # The list of sub-quotas under the resource quota.
         self.sub_quotas = sub_quotas
         # The version.
         self.version = version
-        # The workspaces that are associated with the quota.
+        # The workspaces associated with the resource quota.
         self.workspaces = workspaces
 
     def validate(self):

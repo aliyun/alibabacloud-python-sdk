@@ -42,11 +42,11 @@ class Client(OpenApiClient):
             'cn-shanghai-finance-1': 'pai.cn-shanghai-finance-1.aliyuncs.com',
             'cn-wulanchabu': 'pai.cn-wulanchabu.aliyuncs.com',
             'cn-zhangjiakou': 'pai.cn-zhangjiakou.aliyuncs.com',
-            'us-southeast-1': 'pai.us-southeast-1.aliyuncs.com',
             'cn-zhongwei': 'pai.cn-zhongwei.aliyuncs.com',
+            'ap-northeast-2': 'pai.ap-northeast-2.aliyuncs.com',
             'cn-guangzhou': 'pai.cn-guangzhou.aliyuncs.com',
             'ap-southeast-8': 'pai.ap-southeast-8.aliyuncs.com',
-            'ap-northeast-2': 'pai.ap-northeast-2.aliyuncs.com'
+            'us-southeast-1': 'pai.us-southeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('paistudio', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)

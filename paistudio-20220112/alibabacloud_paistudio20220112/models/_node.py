@@ -35,6 +35,8 @@ class Node(DaraModel):
         limit_memory: str = None,
         machine_group_id: str = None,
         memory: str = None,
+        node_gpumemory: str = None,
+        node_gpumemory_bytes: int = None,
         node_name: str = None,
         node_status: str = None,
         node_type: str = None,
@@ -54,54 +56,61 @@ class Node(DaraModel):
         users: List[main_models.UserInfo] = None,
         workload_num: int = None,
     ):
-        # The accelerator type of the resource node instance, such as CPU or GPU.
+        # The accelerator type of the resource node specifications (CPU/GPU).
         self.accelerator_type = accelerator_type
-        # The number of allocatable CPU cores.
+        # The number of CPU cores that can be allocated to users.
         self.allocatable_cpu = allocatable_cpu
-        # The amount of allocatable memory in GiB.
+        # The memory size that can be allocated to users.
         self.allocatable_memory = allocatable_memory
         self.ancestor_quota_workload_num = ancestor_quota_workload_num
+        # The zone.
         self.availability_zone = availability_zone
-        # The list of quotas that are bound to the node.
+        # The list of bound quotas.
         self.bound_quotas = bound_quotas
         # The number of CPU cores.
         self.cpu = cpu
-        # The ID of the user who created the resource node.
+        # The creator of the resource node.
         self.creator_id = creator_id
         self.descendant_quota_workload_num = descendant_quota_workload_num
         self.disk_capacity = disk_capacity
         self.disk_pl = disk_pl
         # The number of GPUs.
         self.gpu = gpu
-        # The GPU memory size in GiB.
+        # The GPU memory.
         self.gpumemory = gpumemory
         # The GPU model.
         self.gputype = gputype
-        # The time when the resource node was created.
+        # The creation time of the resource node.
         self.gmt_create_time = gmt_create_time
+        # The creation time of the resource node.
         self.gmt_created_time = gmt_created_time
-        # The time when the resource node expires.
+        # The expiration time of the resource node.
         self.gmt_expired_time = gmt_expired_time
-        # The time when the resource node was last modified.
+        # The update time of the resource node.
         self.gmt_modified_time = gmt_modified_time
+        # The high-speed interconnect zone.
         self.hyper_zone = hyper_zone
-        # Indicates whether the node is bound to a quota.
+        # Indicates whether the resource node is bound to a quota.
         self.is_bound = is_bound
         # The maximum number of CPU cores.
         self.limit_cpu = limit_cpu
         # The maximum number of GPUs.
         self.limit_gpu = limit_gpu
-        # The maximum memory size in GiB.
+        # The maximum memory size.
         self.limit_memory = limit_memory
         # The ID of the machine group to which the resource node belongs.
         self.machine_group_id = machine_group_id
-        # The memory size in GiB.
+        # The memory size.
         self.memory = memory
+        # The GPU memory of the node.
+        self.node_gpumemory = node_gpumemory
+        # The GPU memory of the node in bytes.
+        self.node_gpumemory_bytes = node_gpumemory_bytes
         # The name of the resource node.
         self.node_name = node_name
         # The status of the resource node.
         self.node_status = node_status
-        # The instance type of the resource node.
+        # The node specifications type of the resource node.
         self.node_type = node_type
         # The order status of the resource node.
         self.order_status = order_status
@@ -115,17 +124,18 @@ class Node(DaraModel):
         self.request_cpu = request_cpu
         # The number of requested GPUs.
         self.request_gpu = request_gpu
-        # The requested memory size in GiB.
+        # The requested memory size.
         self.request_memory = request_memory
         # The ID of the resource group to which the resource node belongs.
         self.resource_group_id = resource_group_id
         # The name of the resource group to which the resource node belongs.
         self.resource_group_name = resource_group_name
         self.self_quota_workload_num = self_quota_workload_num
+        # The names of the child nodes.
         self.sub_nodes = sub_nodes
-        # The number of CPU cores that are reserved for the system.
+        # The number of system-reserved CPU cores.
         self.system_reserved_cpu = system_reserved_cpu
-        # The amount of memory that is reserved for the system in GiB.
+        # The system-reserved memory size.
         self.system_reserved_memory = system_reserved_memory
         # The user information.
         self.users = users
@@ -223,6 +233,12 @@ class Node(DaraModel):
 
         if self.memory is not None:
             result['Memory'] = self.memory
+
+        if self.node_gpumemory is not None:
+            result['NodeGPUMemory'] = self.node_gpumemory
+
+        if self.node_gpumemory_bytes is not None:
+            result['NodeGPUMemoryBytes'] = self.node_gpumemory_bytes
 
         if self.node_name is not None:
             result['NodeName'] = self.node_name
@@ -361,6 +377,12 @@ class Node(DaraModel):
 
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+
+        if m.get('NodeGPUMemory') is not None:
+            self.node_gpumemory = m.get('NodeGPUMemory')
+
+        if m.get('NodeGPUMemoryBytes') is not None:
+            self.node_gpumemory_bytes = m.get('NodeGPUMemoryBytes')
 
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')

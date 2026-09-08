@@ -11,8 +11,11 @@ class NodeTypeStatistic(DaraModel):
         node_type: str = None,
         total_count: int = None,
     ):
+        # The number of resource nodes of the specification that can be bound.
         self.can_be_bound_count = can_be_bound_count
+        # The resource node specifications.
         self.node_type = node_type
+        # The total number of resource nodes of the specification.
         self.total_count = total_count
 
     def validate(self):

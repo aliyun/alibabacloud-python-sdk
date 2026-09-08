@@ -10,13 +10,16 @@ class NodeOperationParameters(DaraModel):
         self,
         cordon_parameters: main_models.NodeCordonParameters = None,
         drain_parameters: main_models.NodeDrainParameters = None,
+        resize_disk_parameters: main_models.ResizeDiskParameters = None,
         uncordon_parameters: main_models.NodeUncordonParameters = None,
     ):
-        # Node cordon parameter settings
+        # The parameter settings for disabling node scheduling.
         self.cordon_parameters = cordon_parameters
-        # Node drain task instance parameter settings
+        # The parameter settings for draining task instances from a node.
         self.drain_parameters = drain_parameters
-        # Node uncordon parameter settings
+        # The parameters for changing disk capacity.
+        self.resize_disk_parameters = resize_disk_parameters
+        # The parameter settings for enabling node scheduling.
         self.uncordon_parameters = uncordon_parameters
 
     def validate(self):
@@ -24,6 +27,8 @@ class NodeOperationParameters(DaraModel):
             self.cordon_parameters.validate()
         if self.drain_parameters:
             self.drain_parameters.validate()
+        if self.resize_disk_parameters:
+            self.resize_disk_parameters.validate()
         if self.uncordon_parameters:
             self.uncordon_parameters.validate()
 
@@ -37,6 +42,9 @@ class NodeOperationParameters(DaraModel):
 
         if self.drain_parameters is not None:
             result['DrainParameters'] = self.drain_parameters.to_map()
+
+        if self.resize_disk_parameters is not None:
+            result['ResizeDiskParameters'] = self.resize_disk_parameters.to_map()
 
         if self.uncordon_parameters is not None:
             result['UncordonParameters'] = self.uncordon_parameters.to_map()
@@ -52,6 +60,10 @@ class NodeOperationParameters(DaraModel):
         if m.get('DrainParameters') is not None:
             temp_model = main_models.NodeDrainParameters()
             self.drain_parameters = temp_model.from_map(m.get('DrainParameters'))
+
+        if m.get('ResizeDiskParameters') is not None:
+            temp_model = main_models.ResizeDiskParameters()
+            self.resize_disk_parameters = temp_model.from_map(m.get('ResizeDiskParameters'))
 
         if m.get('UncordonParameters') is not None:
             temp_model = main_models.NodeUncordonParameters()

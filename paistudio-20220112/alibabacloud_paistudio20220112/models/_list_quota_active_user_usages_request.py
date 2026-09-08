@@ -18,38 +18,28 @@ class ListQuotaActiveUserUsagesRequest(DaraModel):
         workspace_id: str = None,
     ):
         # The sort order. Valid values:
-        # 
-        # - `desc`: descending order.
-        # 
-        # - `asc`: ascending order.
+        # - desc: descending order.
+        # - asc: ascending order.
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # If true, retrieves resource usage from the current quota only.
+        # Specifies whether to view only the resource usage in the current quota.
         self.self_only = self_only
-        # The field to sort the results by. Valid values:
-        # 
+        # The field by which to sort the returned results. Valid values:
         # - QuotaId
-        # 
         # - SubmittedCPU
-        # 
         # - SubmittedMemory
-        # 
         # - SubmittedGPU
-        # 
         # - UsedCPU
-        # 
         # - UsedMemory
-        # 
         # - UsedGPU
-        # 
         # - WorkloadCount
         self.sort_by = sort_by
-        # Filters the results by user ID.
+        # The user ID for which to query resource usage.
         self.user_id = user_id
-        # Filters the results by username.
+        # The username for which to query resource usage.
         self.username = username
         self.workload_count = workload_count
         # The workspace ID.

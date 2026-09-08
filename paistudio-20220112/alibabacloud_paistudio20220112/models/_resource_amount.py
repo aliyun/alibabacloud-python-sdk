@@ -9,6 +9,8 @@ class ResourceAmount(DaraModel):
         self,
         cpu: str = None,
         gpu: str = None,
+        gpumemory: str = None,
+        gpumemory_bytes: int = None,
         gputype: str = None,
         memory: str = None,
     ):
@@ -16,6 +18,8 @@ class ResourceAmount(DaraModel):
         self.cpu = cpu
         # Total GPU cards
         self.gpu = gpu
+        self.gpumemory = gpumemory
+        self.gpumemory_bytes = gpumemory_bytes
         # GPU card type
         self.gputype = gputype
         # Total memory
@@ -35,6 +39,12 @@ class ResourceAmount(DaraModel):
         if self.gpu is not None:
             result['GPU'] = self.gpu
 
+        if self.gpumemory is not None:
+            result['GPUMemory'] = self.gpumemory
+
+        if self.gpumemory_bytes is not None:
+            result['GPUMemoryBytes'] = self.gpumemory_bytes
+
         if self.gputype is not None:
             result['GPUType'] = self.gputype
 
@@ -50,6 +60,12 @@ class ResourceAmount(DaraModel):
 
         if m.get('GPU') is not None:
             self.gpu = m.get('GPU')
+
+        if m.get('GPUMemory') is not None:
+            self.gpumemory = m.get('GPUMemory')
+
+        if m.get('GPUMemoryBytes') is not None:
+            self.gpumemory_bytes = m.get('GPUMemoryBytes')
 
         if m.get('GPUType') is not None:
             self.gputype = m.get('GPUType')

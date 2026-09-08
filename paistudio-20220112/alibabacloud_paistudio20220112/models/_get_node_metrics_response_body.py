@@ -14,11 +14,11 @@ class GetNodeMetricsResponseBody(DaraModel):
         nodes_metrics: List[main_models.NodeMetric] = None,
         resource_group_id: str = None,
     ):
-        # The name of the metric to query.
+        # The name of the queried metric.
         self.metric_type = metric_type
-        # The metric information of the nodes.
+        # The node metric information.
         self.nodes_metrics = nodes_metrics
-        # The resource group ID. Each resource group has a globally unique resource group ID. You can use the resource group ID to obtain information about the resource group.
+        # The resource group ID. Each resource group has a globally unique resource group ID. You can use the resource group ID to retrieve information about the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

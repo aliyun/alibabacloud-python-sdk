@@ -26,35 +26,35 @@ class ListQuotasRequest(DaraModel):
         workspace_ids: str = None,
         workspace_name: str = None,
     ):
-        # Filters the results by cluster type.
+        # The cluster type.
         self.cluster_type = cluster_type
         self.gputype = gputype
         self.has_resource = has_resource
-        # Filters the results by labels. Specify labels as key=value pairs, separated by commas (,).
+        # Filters by label key and value. Separate multiple labels with commas (,).
         self.labels = labels
-        # The layout mode. Valid values: Tree and List.
+        # The display mode. Valid values: tree or list.
         self.layout_mode = layout_mode
-        # The sort order. Valid values are desc and asc.
+        # The sort order. Valid values: desc or asc.
         self.order = order
-        # The page number of the results to return. The minimum value is 1.
+        # The page number to query. Minimum value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. The minimum value is 1.
+        # The number of entries per page. Minimum value: 1.
         self.page_size = page_size
-        # Filters the results by parent quota ID:
+        # Filters by ParentQuotaId:
         # 
-        # - If this parameter is not specified, all quotas within the tenant are returned, including both root and child quotas.
+        # - Not specified: lists all quotas under the tenant, including root quotas and child quotas.
         # 
-        # - If this parameter is set to an empty string, all root quotas are returned.
+        # - Empty string: lists all root quotas.
         # 
-        # - If a specific parent quota ID is provided, all child quotas of that parent are returned.
+        # - Non-empty string: lists all child quotas of the specified ParentQuotaId.
         self.parent_quota_id = parent_quota_id
-        # A comma-separated list of up to 100 quota IDs to filter the results. Only exact matching is supported.
+        # Comma-separated QuotaIds for filtering. Only exact match is supported. A maximum of 100 IDs can be specified at a time.
         self.quota_ids = quota_ids
-        # Filters the results by quota name. Fuzzy matching is supported.
+        # Filters by QuotaName. Fuzzy match is supported.
         self.quota_name = quota_name
-        # The resource type. Valid values are Lingjun, ECS, and ACS. The default value is ECS.
+        # The resource type of the quota (Lingjun/ECS/ACS). Default value: ECS.
         self.resource_type = resource_type
-        # The field to sort the results by. Valid values:
+        # The field by which to sort the results. Valid values:
         # 
         # - QuotaName
         # 
@@ -70,17 +70,15 @@ class ListQuotasRequest(DaraModel):
         # 
         # - GmtModifiedTime
         self.sort_by = sort_by
-        # A comma-separated list of quota statuses to filter the results. Only exact matching is supported.
+        # Comma-separated quota statuses for filtering. Only exact match is supported.
         self.statuses = statuses
-        # Specifies whether to return detailed information. Valid values:
-        # 
-        # - true: Returns detailed information.
-        # 
-        # - false: Does not return detailed information.
+        # Specifies whether to display details. Valid values:
+        # - true: Displays details.
+        # - false: Does not display details.
         self.verbose = verbose
-        # Filters the results by version.
+        # Filters by version information.
         self.versions = versions
-        # A comma-separated list of up to 10 workspace IDs to filter the results. Only exact matching is supported.
+        # Comma-separated WorkspaceIds for filtering. Only exact match is supported. A maximum of 10 IDs can be specified at a time.
         self.workspace_ids = workspace_ids
         # The name of the associated workspace.
         self.workspace_name = workspace_name

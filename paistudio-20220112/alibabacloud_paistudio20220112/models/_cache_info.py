@@ -10,7 +10,9 @@ class CacheInfo(DaraModel):
         mount_point: str = None,
         port: str = None,
     ):
+        # The mount point address of the datasource for service registration in the cache service, such as an OSS Bucket path or a CPFS path.
         self.mount_point = mount_point
+        # The port number that the cache service provides for external access to the datasource. The client must access cached data through this port.
         self.port = port
 
     def validate(self):

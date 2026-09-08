@@ -27,7 +27,7 @@ class GetUserViewMetricsRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The sorting criterion.
+        # The sorting field.
         self.sort_by = sort_by
         # The time step. Default value: 5m. Valid values for the time unit:
         # 
@@ -37,7 +37,7 @@ class GetUserViewMetricsRequest(DaraModel):
         # 
         # - s: seconds.
         # 
-        # If no unit is specified, the default unit s (seconds) is used.
+        # If no unit is specified, the default unit is s (seconds).
         self.time_step = time_step
         # The ID of the Alibaba Cloud account.
         self.user_id = user_id

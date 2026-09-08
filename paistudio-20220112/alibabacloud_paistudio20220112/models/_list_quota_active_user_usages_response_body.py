@@ -15,12 +15,13 @@ class ListQuotaActiveUserUsagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of user resource usage details.
+        # The list of user resource usage details.
         self.quota_user_usage = quota_user_usage
+        # The user usage information.
         self.quota_user_usages = quota_user_usages
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total number of entries that meet the filter criteria.
+        # The number of instances that match the filter conditions.
         self.total_count = total_count
 
     def validate(self):

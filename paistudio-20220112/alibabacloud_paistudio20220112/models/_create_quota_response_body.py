@@ -10,7 +10,7 @@ class CreateQuotaResponseBody(DaraModel):
         quota_id: str = None,
         request_id: str = None,
     ):
-        # The quota ID.
+        # The resource quota ID.
         self.quota_id = quota_id
         # The request ID.
         self.request_id = request_id

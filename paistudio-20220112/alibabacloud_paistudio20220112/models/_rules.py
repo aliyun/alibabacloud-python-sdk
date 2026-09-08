@@ -10,6 +10,7 @@ class Rules(DaraModel):
         self,
         scheduling: main_models.SchedulingRule = None,
     ):
+        # The node scheduling rule configuration.
         self.scheduling = scheduling
 
     def validate(self):

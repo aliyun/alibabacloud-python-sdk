@@ -1,3 +1,7 @@
+2026-09-08 Version: 2.6.2
+- Update API GetQuota: add response parameters Body.GPUType.
+
+
 2026-08-05 Version: 2.6.1
 - Generated python 2022-01-12 for PaiStudio.
 
