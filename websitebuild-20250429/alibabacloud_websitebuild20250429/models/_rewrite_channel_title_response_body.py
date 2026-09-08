@@ -24,14 +24,14 @@ class RewriteChannelTitleResponseBody(DaraModel):
     ):
         # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** return parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters returned.
         self.error_args = error_args
@@ -136,6 +136,7 @@ class RewriteChannelTitleResponseBodyModule(DaraModel):
         adapted_title: str = None,
         channel: str = None,
         channel_account: str = None,
+        channel_account_name: str = None,
         channel_name: str = None,
         channel_type: str = None,
         cover_images: List[main_models.RewriteChannelTitleResponseBodyModuleCoverImages] = None,
@@ -147,7 +148,7 @@ class RewriteChannelTitleResponseBodyModule(DaraModel):
         published_at: int = None,
         status: str = None,
     ):
-        # The AI adaptation status. Valid values: NONE, ADAPTING, DONE, FAILED.
+        # The AI adaptation status. Valid values: NONE, ADAPTING, DONE, and FAILED.
         self.adapt_status = adapt_status
         # The channel-adapted content.
         self.adapted_content = adapted_content
@@ -157,9 +158,10 @@ class RewriteChannelTitleResponseBodyModule(DaraModel):
         self.channel = channel
         # The publishing account snapshot.
         self.channel_account = channel_account
+        self.channel_account_name = channel_account_name
         # The channel display name.
         self.channel_name = channel_name
-        # The channel type. Valid values: DOMESTIC, OVERSEA, INTERNAL.
+        # The channel type. Valid values: DOMESTIC, OVERSEA, and INTERNAL.
         self.channel_type = channel_type
         # The list of channel cover images.
         self.cover_images = cover_images
@@ -171,11 +173,11 @@ class RewriteChannelTitleResponseBodyModule(DaraModel):
         self.external_url = external_url
         # The failure reason.
         self.fail_reason = fail_reason
-        # The channel-specific publish configuration in JSON format.
+        # The channel-specific publishing fields in JSON format.
         self.publish_config = publish_config
-        # The publish time in millisecond timestamp format.
+        # The publishing time, in millisecond-precision timestamp.
         self.published_at = published_at
-        # The status. Valid values: EDITING, PUBLISHING, SUCCESS, FAILED.
+        # The status. Valid values: EDITING, PUBLISHING, SUCCESS, and FAILED.
         self.status = status
 
     def validate(self):
@@ -203,6 +205,9 @@ class RewriteChannelTitleResponseBodyModule(DaraModel):
 
         if self.channel_account is not None:
             result['ChannelAccount'] = self.channel_account
+
+        if self.channel_account_name is not None:
+            result['ChannelAccountName'] = self.channel_account_name
 
         if self.channel_name is not None:
             result['ChannelName'] = self.channel_name
@@ -255,6 +260,9 @@ class RewriteChannelTitleResponseBodyModule(DaraModel):
         if m.get('ChannelAccount') is not None:
             self.channel_account = m.get('ChannelAccount')
 
+        if m.get('ChannelAccountName') is not None:
+            self.channel_account_name = m.get('ChannelAccountName')
+
         if m.get('ChannelName') is not None:
             self.channel_name = m.get('ChannelName')
 
@@ -301,7 +309,7 @@ class RewriteChannelTitleResponseBodyModuleCoverImages(DaraModel):
         self.material_file_id = material_file_id
         # The image CDN URL.
         self.oss_url = oss_url
-        # The sort order number.
+        # The sort order.
         self.sort_order = sort_order
 
     def validate(self):

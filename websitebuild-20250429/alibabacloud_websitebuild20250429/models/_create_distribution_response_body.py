@@ -24,9 +24,9 @@ class CreateDistributionResponseBody(DaraModel):
     ):
         # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Indicates whether a retry is allowed. Valid values:
+        # - false: Not allowed.
+        # - true: Allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -42,7 +42,7 @@ class CreateDistributionResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The root error message.
         self.root_error_msg = root_error_msg
         # Indicates whether the request is processed synchronously.
         self.synchro = synchro
@@ -141,7 +141,7 @@ class CreateDistributionResponseBodyModule(DaraModel):
         self.article_id = article_id
         # The distribution batch ID.
         self.batch_id = batch_id
-        # The creation time in millisecond timestamp.
+        # The creation time, in millisecond timestamp.
         self.create_time = create_time
         # The list of channel drafts within the batch.
         self.drafts = drafts
@@ -200,6 +200,7 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
         adapted_title: str = None,
         channel: str = None,
         channel_account: str = None,
+        channel_account_name: str = None,
         channel_name: str = None,
         channel_type: str = None,
         cover_images: List[main_models.CreateDistributionResponseBodyModuleDraftsCoverImages] = None,
@@ -211,9 +212,13 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
         published_at: int = None,
         status: str = None,
     ):
-        # The AI adaptation status. Valid values: NONE, ADAPTING, DONE, FAILED.
+        # The AI adaptation status. Valid values:
+        # - NONE
+        # - ADAPTING
+        # - DONE
+        # - FAILED
         self.adapt_status = adapt_status
-        # The channel-adapted content body.
+        # The channel-adapted body content.
         self.adapted_content = adapted_content
         # The channel-adapted title.
         self.adapted_title = adapted_title
@@ -221,9 +226,13 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
         self.channel = channel
         # The publishing account snapshot. For overseas channels, this is the OWLAIS socialAccountNo.
         self.channel_account = channel_account
+        self.channel_account_name = channel_account_name
         # The channel display name.
         self.channel_name = channel_name
-        # The channel type. Valid values: DOMESTIC, OVERSEA, INTERNAL.
+        # The channel type. Valid values:
+        # - DOMESTIC
+        # - OVERSEA
+        # - INTERNAL
         self.channel_type = channel_type
         # The list of channel cover images.
         self.cover_images = cover_images
@@ -237,9 +246,13 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
         self.fail_reason = fail_reason
         # The channel-specific publish configuration in JSON format.
         self.publish_config = publish_config
-        # The publish time in millisecond timestamp.
+        # The publish time, in millisecond timestamp.
         self.published_at = published_at
-        # The status. Valid values: EDITING, PUBLISHING, SUCCESS, FAILED.
+        # The status. Valid values:
+        # - EDITING
+        # - PUBLISHING
+        # - SUCCESS
+        # - FAILED
         self.status = status
 
     def validate(self):
@@ -267,6 +280,9 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
 
         if self.channel_account is not None:
             result['ChannelAccount'] = self.channel_account
+
+        if self.channel_account_name is not None:
+            result['ChannelAccountName'] = self.channel_account_name
 
         if self.channel_name is not None:
             result['ChannelName'] = self.channel_name
@@ -318,6 +334,9 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
 
         if m.get('ChannelAccount') is not None:
             self.channel_account = m.get('ChannelAccount')
+
+        if m.get('ChannelAccountName') is not None:
+            self.channel_account_name = m.get('ChannelAccountName')
 
         if m.get('ChannelName') is not None:
             self.channel_name = m.get('ChannelName')

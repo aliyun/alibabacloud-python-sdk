@@ -22,7 +22,7 @@ class ReportChannelPublishResultResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -30,7 +30,7 @@ class ReportChannelPublishResultResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message. This parameter is used to replace the %s variable in the ErrMessage error message.
+        # The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
         # The error parameters returned.
         self.error_args = error_args
@@ -138,7 +138,7 @@ class ReportChannelPublishResultResponseBodyModule(DaraModel):
         self.article_status = article_status
         # The channel draft ID.
         self.draft_id = draft_id
-        # The draft status: SUCCESS/FAILED.
+        # The draft status. Valid values: SUCCESS and FAILED.
         self.status = status
 
     def validate(self):

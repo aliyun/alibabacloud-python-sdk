@@ -12,19 +12,23 @@ class SaveChannelDraftRequest(DaraModel):
         self,
         adapted_content: str = None,
         adapted_title: str = None,
+        channel_account_name: str = None,
         cover_images: List[main_models.SaveChannelDraftRequestCoverImages] = None,
         draft_id: str = None,
+        website_nav_name: str = None,
     ):
-        # The channel content (overseas only).
+        # The channel content (international only).
         self.adapted_content = adapted_content
         # The channel title.
         self.adapted_title = adapted_title
+        self.channel_account_name = channel_account_name
         # The collection of channel cover images (full overwrite).
         self.cover_images = cover_images
         # The ID of the channel draft.
         # 
         # This parameter is required.
         self.draft_id = draft_id
+        self.website_nav_name = website_nav_name
 
     def validate(self):
         if self.cover_images:
@@ -43,6 +47,9 @@ class SaveChannelDraftRequest(DaraModel):
         if self.adapted_title is not None:
             result['AdaptedTitle'] = self.adapted_title
 
+        if self.channel_account_name is not None:
+            result['ChannelAccountName'] = self.channel_account_name
+
         result['CoverImages'] = []
         if self.cover_images is not None:
             for k1 in self.cover_images:
@@ -50,6 +57,9 @@ class SaveChannelDraftRequest(DaraModel):
 
         if self.draft_id is not None:
             result['DraftId'] = self.draft_id
+
+        if self.website_nav_name is not None:
+            result['WebsiteNavName'] = self.website_nav_name
 
         return result
 
@@ -61,6 +71,9 @@ class SaveChannelDraftRequest(DaraModel):
         if m.get('AdaptedTitle') is not None:
             self.adapted_title = m.get('AdaptedTitle')
 
+        if m.get('ChannelAccountName') is not None:
+            self.channel_account_name = m.get('ChannelAccountName')
+
         self.cover_images = []
         if m.get('CoverImages') is not None:
             for k1 in m.get('CoverImages'):
@@ -69,6 +82,9 @@ class SaveChannelDraftRequest(DaraModel):
 
         if m.get('DraftId') is not None:
             self.draft_id = m.get('DraftId')
+
+        if m.get('WebsiteNavName') is not None:
+            self.website_nav_name = m.get('WebsiteNavName')
 
         return self
 
@@ -79,7 +95,7 @@ class SaveChannelDraftRequestCoverImages(DaraModel):
         material_file_id: str = None,
         sort_order: int = None,
     ):
-        # The image URL.
+        # The URL of the image.
         # 
         # This parameter is required.
         self.image_url = image_url

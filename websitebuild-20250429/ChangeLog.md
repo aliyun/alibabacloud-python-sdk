@@ -1,3 +1,12 @@
+2026-09-08 Version: 2.38.1
+- Update API CreateDistribution: add response parameters Body.Module.Drafts.$.ChannelAccountName.
+- Update API ReportChannelPublishResult: add request parameters ChannelAccountName.
+- Update API RewriteChannelTitle: add response parameters Body.Module.ChannelAccountName.
+- Update API SaveChannelDraft: add request parameters ChannelAccountName.
+- Update API SaveChannelDraft: add request parameters WebsiteNavName.
+- Update API TranslateChannelDraft: add response parameters Body.Module.ChannelAccountName.
+
+
 2026-08-28 Version: 2.38.0
 - Support API CreateDistribution.
 - Support API DeleteAppSceneRecipient.

@@ -12642,6 +12642,8 @@ class Client(OpenApiClient):
     ) -> main_models.ReportChannelPublishResultResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.channel_account_name):
+            query['ChannelAccountName'] = request.channel_account_name
         if not DaraCore.is_null(request.draft_id):
             query['DraftId'] = request.draft_id
         if not DaraCore.is_null(request.external_id):
@@ -12678,6 +12680,8 @@ class Client(OpenApiClient):
     ) -> main_models.ReportChannelPublishResultResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.channel_account_name):
+            query['ChannelAccountName'] = request.channel_account_name
         if not DaraCore.is_null(request.draft_id):
             query['DraftId'] = request.draft_id
         if not DaraCore.is_null(request.external_id):
@@ -13336,10 +13340,14 @@ class Client(OpenApiClient):
             query['AdaptedContent'] = request.adapted_content
         if not DaraCore.is_null(request.adapted_title):
             query['AdaptedTitle'] = request.adapted_title
+        if not DaraCore.is_null(request.channel_account_name):
+            query['ChannelAccountName'] = request.channel_account_name
         if not DaraCore.is_null(request.cover_images_shrink):
             query['CoverImages'] = request.cover_images_shrink
         if not DaraCore.is_null(request.draft_id):
             query['DraftId'] = request.draft_id
+        if not DaraCore.is_null(request.website_nav_name):
+            query['WebsiteNavName'] = request.website_nav_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13374,10 +13382,14 @@ class Client(OpenApiClient):
             query['AdaptedContent'] = request.adapted_content
         if not DaraCore.is_null(request.adapted_title):
             query['AdaptedTitle'] = request.adapted_title
+        if not DaraCore.is_null(request.channel_account_name):
+            query['ChannelAccountName'] = request.channel_account_name
         if not DaraCore.is_null(request.cover_images_shrink):
             query['CoverImages'] = request.cover_images_shrink
         if not DaraCore.is_null(request.draft_id):
             query['DraftId'] = request.draft_id
+        if not DaraCore.is_null(request.website_nav_name):
+            query['WebsiteNavName'] = request.website_nav_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

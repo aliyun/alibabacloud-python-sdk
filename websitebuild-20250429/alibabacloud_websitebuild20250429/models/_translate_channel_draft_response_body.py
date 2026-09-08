@@ -43,7 +43,7 @@ class TranslateChannelDraftResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -136,6 +136,7 @@ class TranslateChannelDraftResponseBodyModule(DaraModel):
         adapted_title: str = None,
         channel: str = None,
         channel_account: str = None,
+        channel_account_name: str = None,
         channel_name: str = None,
         channel_type: str = None,
         cover_images: List[main_models.TranslateChannelDraftResponseBodyModuleCoverImages] = None,
@@ -147,7 +148,7 @@ class TranslateChannelDraftResponseBodyModule(DaraModel):
         published_at: int = None,
         status: str = None,
     ):
-        # The AI adaptation status. Valid values: NONE, ADAPTING, DONE, FAILED.
+        # The AI adaptation status. Valid values: NONE, ADAPTING, DONE, and FAILED.
         self.adapt_status = adapt_status
         # The channel-adapted content body.
         self.adapted_content = adapted_content
@@ -157,9 +158,10 @@ class TranslateChannelDraftResponseBodyModule(DaraModel):
         self.channel = channel
         # The snapshot of the publishing account.
         self.channel_account = channel_account
+        self.channel_account_name = channel_account_name
         # The display name of the channel.
         self.channel_name = channel_name
-        # The channel type. Valid values: DOMESTIC, OVERSEA, INTERNAL.
+        # The channel type. Valid values: DOMESTIC, OVERSEA, and INTERNAL.
         self.channel_type = channel_type
         # The list of channel cover images.
         self.cover_images = cover_images
@@ -175,7 +177,7 @@ class TranslateChannelDraftResponseBodyModule(DaraModel):
         self.publish_config = publish_config
         # The publishing time, in millisecond timestamp format.
         self.published_at = published_at
-        # The status. Valid values: EDITING, PUBLISHING, SUCCESS, FAILED.
+        # The status. Valid values: EDITING, PUBLISHING, SUCCESS, and FAILED.
         self.status = status
 
     def validate(self):
@@ -203,6 +205,9 @@ class TranslateChannelDraftResponseBodyModule(DaraModel):
 
         if self.channel_account is not None:
             result['ChannelAccount'] = self.channel_account
+
+        if self.channel_account_name is not None:
+            result['ChannelAccountName'] = self.channel_account_name
 
         if self.channel_name is not None:
             result['ChannelName'] = self.channel_name
@@ -254,6 +259,9 @@ class TranslateChannelDraftResponseBodyModule(DaraModel):
 
         if m.get('ChannelAccount') is not None:
             self.channel_account = m.get('ChannelAccount')
+
+        if m.get('ChannelAccountName') is not None:
+            self.channel_account_name = m.get('ChannelAccountName')
 
         if m.get('ChannelName') is not None:
             self.channel_name = m.get('ChannelName')

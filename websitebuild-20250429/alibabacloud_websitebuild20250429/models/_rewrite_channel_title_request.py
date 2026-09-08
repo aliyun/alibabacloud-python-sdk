@@ -14,7 +14,7 @@ class RewriteChannelTitleRequest(DaraModel):
         # 
         # This parameter is required.
         self.draft_id = draft_id
-        # The user personalization requirement in free text format. This parameter is optional.
+        # The user personalization requirement in free text. This parameter is optional.
         self.user_requirement = user_requirement
 
     def validate(self):
