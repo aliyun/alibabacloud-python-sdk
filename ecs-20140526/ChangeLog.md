@@ -1,3 +1,7 @@
+2026-09-08 Version: 7.11.2
+- Update API DescribeDedicatedHosts: add request parameters NeedHostDetail.
+
+
 2026-09-02 Version: 7.11.1
 - Update API DescribeDedicatedHosts: add response parameters Body.DedicatedHosts.$.HostDetailInfo.VgpuVersion.
 

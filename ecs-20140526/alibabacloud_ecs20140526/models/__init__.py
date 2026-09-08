@@ -1009,9 +1009,6 @@ from ._modify_vpc_attribute_response import ModifyVpcAttributeResponse
 from ._open_snapshot_service_request import OpenSnapshotServiceRequest
 from ._open_snapshot_service_response_body import OpenSnapshotServiceResponseBody
 from ._open_snapshot_service_response import OpenSnapshotServiceResponse
-from ._purchase_elasticity_assurance_request import PurchaseElasticityAssuranceRequest
-from ._purchase_elasticity_assurance_response_body import PurchaseElasticityAssuranceResponseBody
-from ._purchase_elasticity_assurance_response import PurchaseElasticityAssuranceResponse
 from ._purchase_reserved_instances_offering_request import PurchaseReservedInstancesOfferingRequest
 from ._purchase_reserved_instances_offering_response_body import PurchaseReservedInstancesOfferingResponseBody
 from ._purchase_reserved_instances_offering_response import PurchaseReservedInstancesOfferingResponse
@@ -2040,7 +2037,6 @@ from ._modify_prepay_instance_spec_request import ModifyPrepayInstanceSpecReques
 from ._modify_prepay_instance_spec_request import ModifyPrepayInstanceSpecRequestDisk
 from ._modify_reserved_instances_request import ModifyReservedInstancesRequestConfiguration
 from ._modify_reserved_instances_response_body import ModifyReservedInstancesResponseBodyReservedInstanceIdSets
-from ._purchase_elasticity_assurance_request import PurchaseElasticityAssuranceRequestPrivatePoolOptions
 from ._purchase_reserved_instances_offering_request import PurchaseReservedInstancesOfferingRequestTag
 from ._purchase_reserved_instances_offering_response_body import PurchaseReservedInstancesOfferingResponseBodyReservedInstanceIdSets
 from ._purchase_storage_capacity_unit_request import PurchaseStorageCapacityUnitRequestTag
@@ -3098,9 +3094,6 @@ __all__ = [
     OpenSnapshotServiceRequest,
     OpenSnapshotServiceResponseBody,
     OpenSnapshotServiceResponse,
-    PurchaseElasticityAssuranceRequest,
-    PurchaseElasticityAssuranceResponseBody,
-    PurchaseElasticityAssuranceResponse,
     PurchaseReservedInstancesOfferingRequest,
     PurchaseReservedInstancesOfferingResponseBody,
     PurchaseReservedInstancesOfferingResponse,
@@ -4129,7 +4122,6 @@ __all__ = [
     ModifyPrepayInstanceSpecRequestDisk,
     ModifyReservedInstancesRequestConfiguration,
     ModifyReservedInstancesResponseBodyReservedInstanceIdSets,
-    PurchaseElasticityAssuranceRequestPrivatePoolOptions,
     PurchaseReservedInstancesOfferingRequestTag,
     PurchaseReservedInstancesOfferingResponseBodyReservedInstanceIdSets,
     PurchaseStorageCapacityUnitRequestTag,

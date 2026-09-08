@@ -17,7 +17,7 @@ class AssignIpv6AddressesResponseBody(DaraModel):
     ):
         self.ipv_6prefix_sets = ipv_6prefix_sets
         self.ipv_6sets = ipv_6sets
-        # The ID of the network interface controller (NIC).
+        # The ID of the elastic network interface (ENI).
         self.network_interface_id = network_interface_id
         # The request ID.
         self.request_id = request_id

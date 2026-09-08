@@ -16,6 +16,7 @@ class DescribeDedicatedHostsRequest(DaraModel):
         dedicated_host_type: str = None,
         lock_reason: str = None,
         max_results: int = None,
+        need_host_detail: str = None,
         next_token: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -40,15 +41,17 @@ class DescribeDedicatedHostsRequest(DaraModel):
         # The type of the dedicated host. You can call [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) to query the most recent list of dedicated host types.
         self.dedicated_host_type = dedicated_host_type
         # The reason why the dedicated host is locked. Valid values:
-        # - financial: The dedicated host is locked due to an overdue payment.
+        # - financial: The dedicated host is locked due to overdue payments.
         # - security: The dedicated host is locked for security reasons.
         self.lock_reason = lock_reason
-        # The maximum number of entries per page for a paged query. If you set this parameter, the MaxResults and NextToken parameters are used together for paging.
+        # The maximum number of entries per page for a paged query. If you set this parameter, it indicates that the paging method using the MaxResults and NextToken parameters is used.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
+        # The detailed information of the dedicated host.
+        self.need_host_detail = need_host_detail
         # The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
         self.next_token = next_token
         self.owner_account = owner_account
@@ -70,8 +73,8 @@ class DescribeDedicatedHostsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to display socket-level capacity information. You can use socket-level capacity information to view remaining resources (vCPUs, memory usage, remaining capacity, and total capacity) to determine whether an ECS instance of a specific instance type can be created. Valid values:
         # 
-        # - true: Displays socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
-        # - false: Does not display socket-level capacity information.
+        # - true: Display socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
+        # - false: Do not display socket-level capacity information.
         # 
         # >Notice: 
         # 
@@ -95,7 +98,7 @@ class DescribeDedicatedHostsRequest(DaraModel):
         # 
         # Default value: Available.
         self.status = status
-        # The tags. You can specify up to 20 tags.
+        # The tags. Valid values of N: 0 to 20.
         self.tag = tag
         # The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the most recent zone list.
         self.zone_id = zone_id
@@ -128,6 +131,9 @@ class DescribeDedicatedHostsRequest(DaraModel):
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+
+        if self.need_host_detail is not None:
+            result['NeedHostDetail'] = self.need_host_detail
 
         if self.next_token is not None:
             result['NextToken'] = self.next_token
@@ -194,6 +200,9 @@ class DescribeDedicatedHostsRequest(DaraModel):
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+
+        if m.get('NeedHostDetail') is not None:
+            self.need_host_detail = m.get('NeedHostDetail')
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')

@@ -14898,6 +14898,8 @@ class Client(OpenApiClient):
             query['LockReason'] = request.lock_reason
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.need_host_detail):
+            query['NeedHostDetail'] = request.need_host_detail
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.owner_account):
@@ -14964,6 +14966,8 @@ class Client(OpenApiClient):
             query['LockReason'] = request.lock_reason
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.need_host_detail):
+            query['NeedHostDetail'] = request.need_host_detail
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.owner_account):
@@ -37130,112 +37134,6 @@ class Client(OpenApiClient):
     ) -> main_models.OpenSnapshotServiceResponse:
         runtime = RuntimeOptions()
         return await self.open_snapshot_service_with_options_async(request, runtime)
-
-    def purchase_elasticity_assurance_with_options(
-        self,
-        request: main_models.PurchaseElasticityAssuranceRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.PurchaseElasticityAssuranceResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.period):
-            query['Period'] = request.period
-        if not DaraCore.is_null(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not DaraCore.is_null(request.start_time):
-            query['StartTime'] = request.start_time
-        if not DaraCore.is_null(request.private_pool_options):
-            query['PrivatePoolOptions'] = request.private_pool_options
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'PurchaseElasticityAssurance',
-            version = '2014-05-26',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.PurchaseElasticityAssuranceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def purchase_elasticity_assurance_with_options_async(
-        self,
-        request: main_models.PurchaseElasticityAssuranceRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.PurchaseElasticityAssuranceResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.period):
-            query['Period'] = request.period
-        if not DaraCore.is_null(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not DaraCore.is_null(request.start_time):
-            query['StartTime'] = request.start_time
-        if not DaraCore.is_null(request.private_pool_options):
-            query['PrivatePoolOptions'] = request.private_pool_options
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'PurchaseElasticityAssurance',
-            version = '2014-05-26',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.PurchaseElasticityAssuranceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def purchase_elasticity_assurance(
-        self,
-        request: main_models.PurchaseElasticityAssuranceRequest,
-    ) -> main_models.PurchaseElasticityAssuranceResponse:
-        runtime = RuntimeOptions()
-        return self.purchase_elasticity_assurance_with_options(request, runtime)
-
-    async def purchase_elasticity_assurance_async(
-        self,
-        request: main_models.PurchaseElasticityAssuranceRequest,
-    ) -> main_models.PurchaseElasticityAssuranceResponse:
-        runtime = RuntimeOptions()
-        return await self.purchase_elasticity_assurance_with_options_async(request, runtime)
 
     def purchase_reserved_instances_offering_with_options(
         self,
