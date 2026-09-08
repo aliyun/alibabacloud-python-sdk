@@ -14,21 +14,21 @@ class UpdateConnectionShrinkRequest(DaraModel):
         parameters_shrink: str = None,
         type: str = None,
     ):
-        # The data structure of the authentication parameters.
+        # The authentication data structure.
         self.auth_parameters_shrink = auth_parameters_shrink
-        # The name of the connection to be updated. The maximum length is 127 characters. The minimum length is 2 characters.
+        # The name of the connection to update. Maximum length: 127 characters. Minimum length: 2 characters.
         # 
         # This parameter is required.
         self.connection_name = connection_name
-        # The description. The maximum length is 255 characters.
+        # The description. Maximum length: 255 characters.
         self.description = description
         # The data structure of the network configuration.
         # 
         # This parameter is required.
         self.network_parameters_shrink = network_parameters_shrink
-        # The data source connection parameters (JSON object). For specific field definitions, call the GetConnectionType API and refer to the ParamsSchema in the response.
+        # The data source connection parameters (JSON object). For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
         self.parameters_shrink = parameters_shrink
-        # The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, and Http.
+        # The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse, Http.
         self.type = type
 
     def validate(self):

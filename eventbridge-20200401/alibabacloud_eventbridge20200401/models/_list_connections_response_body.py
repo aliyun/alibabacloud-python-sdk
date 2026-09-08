@@ -17,11 +17,11 @@ class ListConnectionsResponseBody(DaraModel):
     ):
         # The API status or POP error code. Valid values: Success: The request was successful.
         self.code = code
-        # The list of returned connection configurations.
+        # The list of connection configurations.
         self.data = data
         # The returned message.
         self.message = message
-        # Common parameter. The ID of each request is unique and can be used for troubleshooting and issue locating.
+        # The common parameter. The ID of the request. Each request has a unique ID, which is active for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class ListConnectionsResponseBodyData(DaraModel):
         next_token: str = None,
         total: float = None,
     ):
-        # The list of returned connection configurations.
+        # The list of connection configurations.
         self.connections = connections
         # The page size.
         self.max_results = max_results
-        # If there are more results to fetch, NextToken is returned.
+        # The pagination token returned when additional results are available.
         self.next_token = next_token
         # The total number of entries.
         self.total = total
@@ -139,21 +139,21 @@ class ListConnectionsResponseBodyDataConnections(DaraModel):
         parameters: Any = None,
         type: str = None,
     ):
-        # The data structure of authentication parameters.
+        # The authentication data structure.
         self.auth_parameters = auth_parameters
         # The name of the connection configuration.
         self.connection_name = connection_name
         # The description of the connection configuration.
         self.description = description
-        # The timestamp when the data source was created.
+        # The timestamp when the datasource was created.
         self.gmt_create = gmt_create
         # The ID of the connection configuration.
         self.id = id
         # The data structure of the network configuration.
         self.network_parameters = network_parameters
-        # The data source connection parameters (JSON object). This field is only returned for data source type connections and is empty for Http type. For field definitions, refer to the ParamsSchema returned by GetConnectionType.
+        # The datasource connection parameters (JSON object). This field is returned only for datasource-type connections and is empty for Http type. For field definitions, refer to the ParamsSchema returned by GetConnectionType.
         self.parameters = parameters
-        # The connection type. Valid values: Http, MySQL, PostgreSQL, Elasticsearch.
+        # The connection type. Valid values: Http, MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, and lakehouse.
         self.type = type
 
     def validate(self):
@@ -288,9 +288,9 @@ class ListConnectionsResponseBodyDataConnectionsAuthParameters(DaraModel):
         basic_auth_parameters: main_models.ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParameters = None,
         oauth_parameters: main_models.ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters = None,
     ):
-        # The data structure of API key authentication parameters.
+        # The data structure of the API key.
         self.api_key_auth_parameters = api_key_auth_parameters
-        # The authentication type. Valid values:
+        # The authorization type:
         # 
         # - BASIC: BASIC_AUTH
         # 
@@ -298,7 +298,7 @@ class ListConnectionsResponseBodyDataConnectionsAuthParameters(DaraModel):
         # 
         # - OAUTH: OAUTH_AUTH
         self.authorization_type = authorization_type
-        # The data structure of basic authentication parameters.
+        # The data structure of basic authentication.
         self.basic_auth_parameters = basic_auth_parameters
         # The data structure of OAuth request parameters.
         self.oauth_parameters = oauth_parameters
@@ -361,13 +361,13 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParameters(Da
         self.authorization_endpoint = authorization_endpoint
         # The data structure of client parameters.
         self.client_parameters = client_parameters
-        # The HTTP method used for the request. Valid values:
+        # The HTTP method for the probe request. Valid values:
         # 
         # - GET
         # - POST
         # - HEAD
         self.http_method = http_method
-        # The request parameters used for OAuth authentication.
+        # The HTTP request parameters for OAuth authentication.
         self.oauth_http_parameters = oauth_http_parameters
 
     def validate(self):
@@ -420,11 +420,11 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAu
         header_parameters: List[main_models.ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters] = None,
         query_string_parameters: List[main_models.ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters] = None,
     ):
-        # The list of request parameter data structures.
+        # The list of body request parameter data structures.
         self.body_parameters = body_parameters
-        # The list of header parameters.
+        # The list of header parameter data structures.
         self.header_parameters = header_parameters
-        # The data structure of query string parameters.
+        # The data structure of the URI of the request path parameters.
         self.query_string_parameters = query_string_parameters
 
     def validate(self):
@@ -492,11 +492,11 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAu
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the value is used for authentication.
+        # Indicates whether the value is a secret.
         self.is_value_secret = is_value_secret
-        # The key of the query string parameter.
+        # The key of the URI of the request path parameter.
         self.key = key
-        # The value of the query string parameter.
+        # The value of the URI of the request path parameter.
         self.value = value
 
     def validate(self):
@@ -538,7 +538,7 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAu
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the value is used for authentication.
+        # Indicates whether the value is a secret.
         self.is_value_secret = is_value_secret
         # The key of the header parameter.
         self.key = key
@@ -584,7 +584,7 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersOAu
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the value is used for authentication.
+        # Indicates whether the value is a secret.
         self.is_value_secret = is_value_secret
         # The key of the body request parameter.
         self.key = key
@@ -666,9 +666,9 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParameter
         password: str = None,
         username: str = None,
     ):
-        # The password used for basic authentication.
+        # The password for basic authentication.
         self.password = password
-        # The username used for basic authentication.
+        # The username for basic authentication.
         self.username = username
 
     def validate(self):
@@ -703,7 +703,7 @@ class ListConnectionsResponseBodyDataConnectionsAuthParametersApiKeyAuthParamete
         api_key_name: str = None,
         api_key_value: str = None,
     ):
-        # The key of the API key.
+        # The key name of the API key.
         self.api_key_name = api_key_name
         # The value of the API key.
         self.api_key_value = api_key_value

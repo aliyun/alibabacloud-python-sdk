@@ -11,11 +11,11 @@ class UpdateConnectionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The API status code or POP error code. Description: 200 indicates success.
+        # The API status or POP error code. Valid values: 200: Success.
         self.code = code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

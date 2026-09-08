@@ -9,7 +9,7 @@ class GetConnectionRequest(DaraModel):
         self,
         connection_name: str = None,
     ):
-        # The name of the connection.
+        # The connection name.
         # 
         # This parameter is required.
         self.connection_name = connection_name

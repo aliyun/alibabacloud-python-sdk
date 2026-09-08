@@ -16,15 +16,15 @@ class ListCatalogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code, 200 indicates success
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # Response data
+        # The response data.
         self.data = data
-        # Response message
+        # The response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the operation was successful
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -80,11 +80,11 @@ class ListCatalogsResponseBodyData(DaraModel):
         next_token: str = None,
         total: int = None,
     ):
-        # Catalog list
+        # The list of catalogs.
         self.catalogs = catalogs
-        # Next page token
+        # The token for the next page.
         self.next_token = next_token
-        # Total count
+        # The total number of entries.
         self.total = total
 
     def validate(self):

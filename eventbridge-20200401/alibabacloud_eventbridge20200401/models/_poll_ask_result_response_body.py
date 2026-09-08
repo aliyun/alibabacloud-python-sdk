@@ -14,7 +14,7 @@ class PollAskResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Valid values:
+        # The API return code. Valid values:
         # - Success: The operation was successful.
         # - Other values: An error code was returned. For more information, see error codes.
         self.code = code

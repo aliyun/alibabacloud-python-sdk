@@ -13,7 +13,7 @@ class CreateConnectionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The API status or POP error code. Valid values: Success.
+        # The API status or POP error code. A value of Success indicates that the request is successful.
         self.code = code
         # The returned result.
         self.data = data

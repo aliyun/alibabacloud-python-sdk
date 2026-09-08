@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetEventStreamingRequest(DaraModel):
+class AgentDataSemanticsText(DaraModel):
     def __init__(
         self,
-        event_streaming_name: str = None,
+        content: str = None,
     ):
-        # The name of the event stream to retrieve.
+        # The content of the Markdown-formatted text knowledge.
         # 
         # This parameter is required.
-        self.event_streaming_name = event_streaming_name
+        self.content = content
 
     def validate(self):
         pass
@@ -22,15 +22,15 @@ class GetEventStreamingRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.event_streaming_name is not None:
-            result['EventStreamingName'] = self.event_streaming_name
+        if self.content is not None:
+            result['Content'] = self.content
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EventStreamingName') is not None:
-            self.event_streaming_name = m.get('EventStreamingName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
 
         return self
 

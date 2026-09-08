@@ -22,32 +22,32 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'us-west-1': 'eventbridge-console.us-west-1.aliyuncs.com',
-            'us-east-1': 'eventbridge-console.us-east-1.aliyuncs.com',
-            'eu-west-1': 'eventbridge-console.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'eventbridge-console.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'eventbridge-console.cn-zhangjiakou.aliyuncs.com',
             'cn-wulanchabu': 'eventbridge-console.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'eventbridge-console.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'eventbridge-console.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'eventbridge-console.cn-shanghai.aliyuncs.com',
+            'cn-beijing': 'eventbridge-console.cn-beijing.aliyuncs.com',
             'cn-qingdao': 'eventbridge-console.cn-qingdao.aliyuncs.com',
-            'cn-huhehaote': 'eventbridge-console.cn-huhehaote.aliyuncs.com',
+            'cn-shanghai': 'eventbridge-console.cn-shanghai.aliyuncs.com',
             'cn-hongkong': 'eventbridge-console.cn-hongkong.aliyuncs.com',
             'cn-heyuan': 'eventbridge-console.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou': 'eventbridge-console.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'eventbridge-console.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'eventbridge-console.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'eventbridge-console.cn-beijing-finance-1.aliyuncs.com',
-            'cn-beijing': 'eventbridge-console.cn-beijing.aliyuncs.com',
-            'ap-southeast-7': 'eventbridge-console.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'eventbridge-console.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'eventbridge-console.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'eventbridge-console.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'eventbridge-console.ap-southeast-1.aliyuncs.com',
+            'cn-zhangjiakou': 'eventbridge-console.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'eventbridge-console.cn-shenzhen.aliyuncs.com',
             'ap-northeast-2': 'eventbridge-console.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'eventbridge-console.ap-northeast-1.aliyuncs.com'
+            'ap-northeast-1': 'eventbridge-console.ap-northeast-1.aliyuncs.com',
+            'cn-chengdu': 'eventbridge-console.cn-chengdu.aliyuncs.com',
+            'cn-guangzhou': 'eventbridge-console.cn-guangzhou.aliyuncs.com',
+            'ap-southeast-1': 'eventbridge-console.ap-southeast-1.aliyuncs.com',
+            'ap-southeast-3': 'eventbridge-console.ap-southeast-3.aliyuncs.com',
+            'cn-huhehaote': 'eventbridge-console.cn-huhehaote.aliyuncs.com',
+            'ap-southeast-5': 'eventbridge-console.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-6': 'eventbridge-console.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-7': 'eventbridge-console.ap-southeast-7.aliyuncs.com',
+            'cn-hangzhou': 'eventbridge-console.cn-hangzhou.aliyuncs.com',
+            'us-east-1': 'eventbridge-console.us-east-1.aliyuncs.com',
+            'eu-west-1': 'eventbridge-console.eu-west-1.aliyuncs.com',
+            'us-west-1': 'eventbridge-console.us-west-1.aliyuncs.com',
+            'eu-central-1': 'eventbridge-console.eu-central-1.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-beijing-finance-1': 'eventbridge-console.cn-beijing-finance-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'eventbridge-console.cn-shanghai-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eventbridge', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1735,6 +1735,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.event_streaming_name):
             body['EventStreamingName'] = request.event_streaming_name
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1763,6 +1765,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.event_streaming_name):
             body['EventStreamingName'] = request.event_streaming_name
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -2444,6 +2448,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.event_center_query_events_with_options_async(request, runtime)
 
+    def generate_agent_data_semantics_with_options(
+        self,
+        request: main_models.GenerateAgentDataSemanticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateAgentDataSemanticsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateAgentDataSemantics',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateAgentDataSemanticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_agent_data_semantics_with_options_async(
+        self,
+        request: main_models.GenerateAgentDataSemanticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateAgentDataSemanticsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateAgentDataSemantics',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateAgentDataSemanticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_agent_data_semantics(
+        self,
+        request: main_models.GenerateAgentDataSemanticsRequest,
+    ) -> main_models.GenerateAgentDataSemanticsResponse:
+        runtime = RuntimeOptions()
+        return self.generate_agent_data_semantics_with_options(request, runtime)
+
+    async def generate_agent_data_semantics_async(
+        self,
+        request: main_models.GenerateAgentDataSemanticsRequest,
+    ) -> main_models.GenerateAgentDataSemanticsResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_agent_data_semantics_with_options_async(request, runtime)
+
     def get_agent_with_options(
         self,
         request: main_models.GetAgentRequest,
@@ -2513,6 +2587,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetAgentResponse:
         runtime = RuntimeOptions()
         return await self.get_agent_with_options_async(request, runtime)
+
+    def get_agent_data_semantics_with_options(
+        self,
+        request: main_models.GetAgentDataSemanticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentDataSemanticsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentDataSemantics',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentDataSemanticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_data_semantics_with_options_async(
+        self,
+        request: main_models.GetAgentDataSemanticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentDataSemanticsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentDataSemantics',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentDataSemanticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_data_semantics(
+        self,
+        request: main_models.GetAgentDataSemanticsRequest,
+    ) -> main_models.GetAgentDataSemanticsResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_data_semantics_with_options(request, runtime)
+
+    async def get_agent_data_semantics_async(
+        self,
+        request: main_models.GetAgentDataSemanticsRequest,
+    ) -> main_models.GetAgentDataSemanticsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_data_semantics_with_options_async(request, runtime)
 
     def get_api_destination_with_options(
         self,
@@ -2941,6 +3085,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetEventStreamingResponse:
         runtime = RuntimeOptions()
         return await self.get_event_streaming_with_options_async(request, runtime)
+
+    def get_generate_agent_data_semantics_progress_with_options(
+        self,
+        request: main_models.GetGenerateAgentDataSemanticsProgressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGenerateAgentDataSemanticsProgressResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGenerateAgentDataSemanticsProgress',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGenerateAgentDataSemanticsProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_generate_agent_data_semantics_progress_with_options_async(
+        self,
+        request: main_models.GetGenerateAgentDataSemanticsProgressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGenerateAgentDataSemanticsProgressResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGenerateAgentDataSemanticsProgress',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGenerateAgentDataSemanticsProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_generate_agent_data_semantics_progress(
+        self,
+        request: main_models.GetGenerateAgentDataSemanticsProgressRequest,
+    ) -> main_models.GetGenerateAgentDataSemanticsProgressResponse:
+        runtime = RuntimeOptions()
+        return self.get_generate_agent_data_semantics_progress_with_options(request, runtime)
+
+    async def get_generate_agent_data_semantics_progress_async(
+        self,
+        request: main_models.GetGenerateAgentDataSemanticsProgressRequest,
+    ) -> main_models.GetGenerateAgentDataSemanticsProgressResponse:
+        runtime = RuntimeOptions()
+        return await self.get_generate_agent_data_semantics_progress_with_options_async(request, runtime)
 
     def get_namespace_with_options(
         self,
@@ -4346,6 +4560,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.poll_ask_result_with_options_async(request, runtime)
 
+    def put_events_with_options(
+        self,
+        tmp_req: main_models.PutEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutEventsResponse:
+        tmp_req.validate()
+        request = main_models.PutEventsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.event_list):
+            request.event_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_list, 'EventList', 'json')
+        body = {}
+        if not DaraCore.is_null(request.event_bus_name):
+            body['EventBusName'] = request.event_bus_name
+        if not DaraCore.is_null(request.event_list_shrink):
+            body['EventList'] = request.event_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PutEvents',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PutEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_events_with_options_async(
+        self,
+        tmp_req: main_models.PutEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutEventsResponse:
+        tmp_req.validate()
+        request = main_models.PutEventsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.event_list):
+            request.event_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_list, 'EventList', 'json')
+        body = {}
+        if not DaraCore.is_null(request.event_bus_name):
+            body['EventBusName'] = request.event_bus_name
+        if not DaraCore.is_null(request.event_list_shrink):
+            body['EventList'] = request.event_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PutEvents',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PutEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_events(
+        self,
+        request: main_models.PutEventsRequest,
+    ) -> main_models.PutEventsResponse:
+        runtime = RuntimeOptions()
+        return self.put_events_with_options(request, runtime)
+
+    async def put_events_async(
+        self,
+        request: main_models.PutEventsRequest,
+    ) -> main_models.PutEventsResponse:
+        runtime = RuntimeOptions()
+        return await self.put_events_with_options_async(request, runtime)
+
     def put_targets_with_options(
         self,
         tmp_req: main_models.PutTargetsRequest,
@@ -4662,6 +4958,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_event_house_with_options_async(request, runtime)
 
+    def query_event_house_with_time_range_with_options(
+        self,
+        request: main_models.QueryEventHouseWithTimeRangeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryEventHouseWithTimeRangeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryEventHouseWithTimeRange',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryEventHouseWithTimeRangeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_event_house_with_time_range_with_options_async(
+        self,
+        request: main_models.QueryEventHouseWithTimeRangeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryEventHouseWithTimeRangeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryEventHouseWithTimeRange',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryEventHouseWithTimeRangeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_event_house_with_time_range(
+        self,
+        request: main_models.QueryEventHouseWithTimeRangeRequest,
+    ) -> main_models.QueryEventHouseWithTimeRangeResponse:
+        runtime = RuntimeOptions()
+        return self.query_event_house_with_time_range_with_options(request, runtime)
+
+    async def query_event_house_with_time_range_async(
+        self,
+        request: main_models.QueryEventHouseWithTimeRangeRequest,
+    ) -> main_models.QueryEventHouseWithTimeRangeResponse:
+        runtime = RuntimeOptions()
+        return await self.query_event_house_with_time_range_with_options_async(request, runtime)
+
     def query_event_traces_with_options(
         self,
         request: main_models.QueryEventTracesRequest,
@@ -4915,6 +5293,112 @@ class Client(OpenApiClient):
     ) -> main_models.QueryTracedEventsResponse:
         runtime = RuntimeOptions()
         return await self.query_traced_events_with_options_async(request, runtime)
+
+    def save_agent_data_semantics_with_options(
+        self,
+        tmp_req: main_models.SaveAgentDataSemanticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveAgentDataSemanticsResponse:
+        tmp_req.validate()
+        request = main_models.SaveAgentDataSemanticsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.examples):
+            request.examples_shrink = Utils.array_to_string_with_specified_style(tmp_req.examples, 'Examples', 'json')
+        if not DaraCore.is_null(tmp_req.joins):
+            request.joins_shrink = Utils.array_to_string_with_specified_style(tmp_req.joins, 'Joins', 'json')
+        if not DaraCore.is_null(tmp_req.metrics):
+            request.metrics_shrink = Utils.array_to_string_with_specified_style(tmp_req.metrics, 'Metrics', 'json')
+        if not DaraCore.is_null(tmp_req.text):
+            request.text_shrink = Utils.array_to_string_with_specified_style(tmp_req.text, 'Text', 'json')
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.examples_shrink):
+            body['Examples'] = request.examples_shrink
+        if not DaraCore.is_null(request.joins_shrink):
+            body['Joins'] = request.joins_shrink
+        if not DaraCore.is_null(request.metrics_shrink):
+            body['Metrics'] = request.metrics_shrink
+        if not DaraCore.is_null(request.text_shrink):
+            body['Text'] = request.text_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveAgentDataSemantics',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveAgentDataSemanticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_agent_data_semantics_with_options_async(
+        self,
+        tmp_req: main_models.SaveAgentDataSemanticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveAgentDataSemanticsResponse:
+        tmp_req.validate()
+        request = main_models.SaveAgentDataSemanticsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.examples):
+            request.examples_shrink = Utils.array_to_string_with_specified_style(tmp_req.examples, 'Examples', 'json')
+        if not DaraCore.is_null(tmp_req.joins):
+            request.joins_shrink = Utils.array_to_string_with_specified_style(tmp_req.joins, 'Joins', 'json')
+        if not DaraCore.is_null(tmp_req.metrics):
+            request.metrics_shrink = Utils.array_to_string_with_specified_style(tmp_req.metrics, 'Metrics', 'json')
+        if not DaraCore.is_null(tmp_req.text):
+            request.text_shrink = Utils.array_to_string_with_specified_style(tmp_req.text, 'Text', 'json')
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.examples_shrink):
+            body['Examples'] = request.examples_shrink
+        if not DaraCore.is_null(request.joins_shrink):
+            body['Joins'] = request.joins_shrink
+        if not DaraCore.is_null(request.metrics_shrink):
+            body['Metrics'] = request.metrics_shrink
+        if not DaraCore.is_null(request.text_shrink):
+            body['Text'] = request.text_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveAgentDataSemantics',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveAgentDataSemanticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_agent_data_semantics(
+        self,
+        request: main_models.SaveAgentDataSemanticsRequest,
+    ) -> main_models.SaveAgentDataSemanticsResponse:
+        runtime = RuntimeOptions()
+        return self.save_agent_data_semantics_with_options(request, runtime)
+
+    async def save_agent_data_semantics_async(
+        self,
+        request: main_models.SaveAgentDataSemanticsRequest,
+    ) -> main_models.SaveAgentDataSemanticsResponse:
+        runtime = RuntimeOptions()
+        return await self.save_agent_data_semantics_with_options_async(request, runtime)
 
     def start_event_streaming_with_options(
         self,

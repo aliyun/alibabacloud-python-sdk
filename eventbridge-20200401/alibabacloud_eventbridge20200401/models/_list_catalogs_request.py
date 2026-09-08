@@ -10,9 +10,9 @@ class ListCatalogsRequest(DaraModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # Items per page
+        # The number of entries per page.
         self.limit = limit
-        # Pagination token
+        # The pagination token.
         self.next_token = next_token
 
     def validate(self):

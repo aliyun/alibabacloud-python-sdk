@@ -17,7 +17,7 @@ class CreateConnectionRequest(DaraModel):
         parameters: Any = None,
         type: str = None,
     ):
-        # The authentication configuration.
+        # The authentication data structure.
         self.auth_parameters = auth_parameters
         # The connection configuration name. Maximum length: 127 characters. Minimum length: 2 characters.
         # 
@@ -25,13 +25,13 @@ class CreateConnectionRequest(DaraModel):
         self.connection_name = connection_name
         # The description of the connection configuration. Maximum length: 255 characters.
         self.description = description
-        # The network configuration.
+        # The network configuration data structure.
         # 
         # This parameter is required.
         self.network_parameters = network_parameters
-        # The data source connection parameters (JSON object). This parameter is required when Type is set to a data source type. This parameter is not required for the Http type. For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
+        # The data source connection parameters (JSON object). This parameter is required when Type is a data source type. It is not required for the Http type. For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
         self.parameters = parameters
-        # The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, and Http. This parameter is required for data source connections. If this parameter is not specified, the default value Http is used. The Http type is used for HTTP protocol targets such as API Destination. Data source types are used for data connections in the integration marketplace.
+        # The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse, and Http. This parameter is required for data source type connections. If this parameter is not specified, the default value Http is used. The Http type is used for API Destination and other HTTP protocol targets. Hive and Iceberg are used for the corresponding data lakehouse sources. lakehouse is used only for compatibility with existing connections. Other data source types are used for data connections in the integration marketplace.
         self.type = type
 
     def validate(self):
@@ -158,19 +158,19 @@ class CreateConnectionRequestAuthParameters(DaraModel):
         basic_auth_parameters: main_models.CreateConnectionRequestAuthParametersBasicAuthParameters = None,
         oauth_parameters: main_models.CreateConnectionRequestAuthParametersOAuthParameters = None,
     ):
-        # The API key authentication configuration.
+        # The data structure of the API key.
         self.api_key_auth_parameters = api_key_auth_parameters
         # The authentication type:
         # 
-        # - BASIC: BASIC_AUTH. This authorization method is a basic authorization method implemented by browsers in compliance with the HTTP protocol. During HTTP communication, the HTTP protocol defines a basic authentication method that allows an HTTP server to authenticate clients. Add `Authorization: Basic Base64Encoded(username:password)` in the fixed format to the request header. Username and Password are required.
+        # - BASIC: BASIC_AUTH. This authorization method is a basic authorization method implemented by browsers in compliance with the HTTP protocol. During HTTP communication, the HTTP protocol defines a basic authentication method that allows an HTTP server to authenticate clients. Add Authorization: Basic Base64-encoded(`username:password`) in the fixed format to the request header. Username and Password are required.
         # 
-        # - API KEY: API_KEY_AUTH. Add `Token: TokenValue` in the fixed format to the request header. ApiKeyName and ApiKeyValue are required.
+        # - API KEY: API_KEY_AUTH. Add Token: Token value in the fixed format to the request header. ApiKeyName and ApiKeyValue are required.
         # 
-        # - OAUTH: OAUTH_AUTH. OAuth 2.0 is an authorization mechanism. In a system that does not use an authorization mechanism such as OAuth 2.0, the client can directly access resources on the resource server. To ensure secure data access, an Access Token mechanism is added. The client must carry an Access Token to access protected resources. OAuth 2.0 prevents resources from being accessed by malicious clients, which improves system security. AuthorizationEndpoint, OAuthHttpParameters, and HttpMethod are required.
+        # - OAUTH: OAUTH_AUTH. OAuth 2.0 is an authorization mechanism. Normally, without an authorization mechanism such as OAuth 2.0, clients can directly access resources on the resource server. To ensure secure data access, an Access Token mechanism is added. Clients must carry an Access Token to access protected resources. OAuth 2.0 ensures that resources are not accessed by malicious clients, which improves system security. AuthorizationEndpoint, OAuthHttpParameters, and HttpMethod are required.
         self.authorization_type = authorization_type
-        # The basic authentication configuration.
+        # The data structure of basic authentication.
         self.basic_auth_parameters = basic_auth_parameters
-        # The OAuth authentication configuration.
+        # The data structure of OAuth authentication parameters.
         self.oauth_parameters = oauth_parameters
 
     def validate(self):
@@ -227,11 +227,11 @@ class CreateConnectionRequestAuthParametersOAuthParameters(DaraModel):
         http_method: str = None,
         oauth_http_parameters: main_models.CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters = None,
     ):
-        # The authorization endpoint URL. Maximum length: 127 characters.
+        # The authorization endpoint address. Maximum length: 127 characters.
         self.authorization_endpoint = authorization_endpoint
-        # The client parameter configuration.
+        # The client parameters data structure.
         self.client_parameters = client_parameters
-        # The HTTP method. Valid values:
+        # The HTTP method for the probe. Valid values:
         # 
         # - GET
         # - POST
@@ -240,7 +240,7 @@ class CreateConnectionRequestAuthParametersOAuthParameters(DaraModel):
         # - PUT
         # - PATCH
         self.http_method = http_method
-        # The OAuth authentication request parameters.
+        # The request parameters for OAuth authentication.
         self.oauth_http_parameters = oauth_http_parameters
 
     def validate(self):
@@ -293,11 +293,11 @@ class CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters(Da
         header_parameters: List[main_models.CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters] = None,
         query_string_parameters: List[main_models.CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters] = None,
     ):
-        # The list of body request parameter configurations.
+        # The list of body request parameter data structures.
         self.body_parameters = body_parameters
-        # The list of header parameter configurations.
+        # The list of header parameters.
         self.header_parameters = header_parameters
-        # The structure of the URI of the request path parameters.
+        # The data structure of the URI of the request path parameters.
         self.query_string_parameters = query_string_parameters
 
     def validate(self):
@@ -365,7 +365,7 @@ class CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersQue
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the value is a secret.
+        # Specifies whether the value is used for authentication.
         self.is_value_secret = is_value_secret
         # The key of the URI of the request path parameter.
         self.key = key
@@ -411,7 +411,7 @@ class CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersHea
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the value is a secret.
+        # Specifies whether the value is used for authentication.
         self.is_value_secret = is_value_secret
         # The key of the header parameter.
         self.key = key
@@ -457,7 +457,7 @@ class CreateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersBod
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the value is a secret.
+        # Specifies whether the value is used for authentication.
         self.is_value_secret = is_value_secret
         # The key of the body request parameter.
         self.key = key
@@ -576,7 +576,7 @@ class CreateConnectionRequestAuthParametersApiKeyAuthParameters(DaraModel):
         api_key_name: str = None,
         api_key_value: str = None,
     ):
-        # The key name of the API key.
+        # The key of the API key.
         self.api_key_name = api_key_name
         # The value of the API key.
         self.api_key_value = api_key_value

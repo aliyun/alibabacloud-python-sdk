@@ -2,27 +2,29 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_eventbridge20200401 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateEventStreamingResponseBody(DaraModel):
+class QueryEventHouseWithTimeRangeResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.CreateEventStreamingResponseBodyData = None,
+        data: main_models.QueryEventHouseWithTimeRangeResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code:
+        # The return code of the operation. Success indicates a successful call. Other values indicate specific error codes.
         self.code = code
-        # The returned data.
+        # The structured result data returned by the SQL query.
         self.data = data
-        # The error message.
+        # A success message if the call succeeds, or a specific error message if the call fails.
         self.message = message
-        # The request ID.
+        # The unique ID of the request. You can use this ID for troubleshooting.
         self.request_id = request_id
-        # Returns true if the operation is successful.
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -57,7 +59,7 @@ class CreateEventStreamingResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.CreateEventStreamingResponseBodyData()
+            temp_model = main_models.QueryEventHouseWithTimeRangeResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -71,31 +73,48 @@ class CreateEventStreamingResponseBody(DaraModel):
 
         return self
 
-class CreateEventStreamingResponseBodyData(DaraModel):
+class QueryEventHouseWithTimeRangeResponseBodyData(DaraModel):
     def __init__(
         self,
-        event_streaming_arn: str = None,
+        rows: List[main_models.Row] = None,
+        total: int = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the event stream.
-        self.event_streaming_arn = event_streaming_arn
+        # The list of result rows returned by the SQL query.
+        self.rows = rows
+        # The number of result rows actually returned by the query.
+        self.total = total
 
     def validate(self):
-        pass
+        if self.rows:
+            for v1 in self.rows:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.event_streaming_arn is not None:
-            result['EventStreamingARN'] = self.event_streaming_arn
+        result['Rows'] = []
+        if self.rows is not None:
+            for k1 in self.rows:
+                result['Rows'].append(k1.to_map() if k1 else None)
+
+        if self.total is not None:
+            result['Total'] = self.total
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EventStreamingARN') is not None:
-            self.event_streaming_arn = m.get('EventStreamingARN')
+        self.rows = []
+        if m.get('Rows') is not None:
+            for k1 in m.get('Rows'):
+                temp_model = main_models.Row()
+                self.rows.append(temp_model.from_map(k1))
+
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
 
         return self
 

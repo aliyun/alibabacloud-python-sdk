@@ -17,21 +17,21 @@ class UpdateConnectionRequest(DaraModel):
         parameters: Any = None,
         type: str = None,
     ):
-        # The data structure of the authentication parameters.
+        # The authentication data structure.
         self.auth_parameters = auth_parameters
-        # The name of the connection to be updated. The maximum length is 127 characters. The minimum length is 2 characters.
+        # The name of the connection to update. Maximum length: 127 characters. Minimum length: 2 characters.
         # 
         # This parameter is required.
         self.connection_name = connection_name
-        # The description. The maximum length is 255 characters.
+        # The description. Maximum length: 255 characters.
         self.description = description
         # The data structure of the network configuration.
         # 
         # This parameter is required.
         self.network_parameters = network_parameters
-        # The data source connection parameters (JSON object). For specific field definitions, call the GetConnectionType API and refer to the ParamsSchema in the response.
+        # The data source connection parameters (JSON object). For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
         self.parameters = parameters
-        # The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, and Http.
+        # The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse, Http.
         self.type = type
 
     def validate(self):
@@ -99,14 +99,14 @@ class UpdateConnectionRequestNetworkParameters(DaraModel):
     ):
         # - Public network: PublicNetwork
         # 
-        # - Virtual Private Cloud (VPC): PrivateNetwork
+        # - Virtual private cloud (VPC): PrivateNetwork
         # 
         # 
-        # > When you select PrivateNetwork, VpcId, VswitcheId, and SecurityGroupId are required.
+        # > If you select PrivateNetwork, VpcId, VswitcheId, and SecurityGroupId are required.
         # 
         # This parameter is required.
         self.network_type = network_type
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
         # The ID of the VPC.
         self.vpc_id = vpc_id
@@ -159,19 +159,19 @@ class UpdateConnectionRequestAuthParameters(DaraModel):
         basic_auth_parameters: main_models.UpdateConnectionRequestAuthParametersBasicAuthParameters = None,
         oauth_parameters: main_models.UpdateConnectionRequestAuthParametersOAuthParameters = None,
     ):
-        # The data structure of API Key authentication.
+        # The data structure for API Key authentication.
         self.api_key_auth_parameters = api_key_auth_parameters
-        # The authentication type. Valid values:
+        # The authentication type:
         # 
-        # - BASIC: BASIC_AUTH. This authorization method is the basic authentication method implemented by browsers in compliance with the HTTP protocol. During communication using the HTTP protocol, the HTTP protocol defines basic authentication that allows the HTTP server to authenticate the user identity of the client. Add Authorization: Basic followed by one space and the Base64-encoded value of `username:password` to the request header in a fixed format. Username and Password are required.
+        # - BASIC: BASIC_AUTH. This authorization method is a basic authorization method implemented by browsers in compliance with the HTTP protocol. During HTTP communication, the HTTP protocol defines a basic authentication method that allows HTTP servers to verify client identities. Add Authorization: Basic Base64-encoded(`username:password`) in the request header in a fixed format. Username and Password are required.
         # 
-        # - API KEY: API_KEY_AUTH. Add Token: TokenValue to the request header in a fixed format. ApiKeyName and ApiKeyValue are required.
+        # - API KEY: API_KEY_AUTH. Add Token: token value in the request header in a fixed format. ApiKeyName and ApiKeyValue are required.
         # 
-        # - OAUTH: OAUTH_AUTH. OAuth 2.0 is an authorization mechanism. In normal cases, in a system that does not use an authorization mechanism such as OAuth 2.0, the client can directly access resources on the resource server. To ensure secure data access for users, the Access Token mechanism is added between the client and the resource server. The client must carry an Access Token to access protected resources. Therefore, OAuth 2.0 prevents resources from being accessed by malicious clients, thereby improving the security of the system. AuthorizationEndpoint, OAuthHttpParameters, and HttpMethod are required.
+        # - OAUTH: OAUTH_AUTH. OAuth 2.0 is an authorization mechanism. Normally, without an authorization mechanism such as OAuth 2.0, clients can directly access resources on the resource server. To ensure secure data access, an Access Token mechanism is added. Clients must carry an Access Token to access protected resources. OAuth 2.0 prevents resources from being accessed by malicious clients, thereby improving system security. AuthorizationEndpoint, OAuthHttpParameters, and HttpMethod are required.
         self.authorization_type = authorization_type
-        # The data structure of Basic authentication.
+        # The data structure for Basic authentication.
         self.basic_auth_parameters = basic_auth_parameters
-        # The data structure of the OAuth authentication parameters.
+        # The data structure for OAuth authentication parameters.
         self.oauth_parameters = oauth_parameters
 
     def validate(self):
@@ -228,11 +228,11 @@ class UpdateConnectionRequestAuthParametersOAuthParameters(DaraModel):
         http_method: str = None,
         oauth_http_parameters: main_models.UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters = None,
     ):
-        # The request URL for obtaining the OAuth token. The maximum length is 127 characters.
+        # The request URL for obtaining the OAuth token. Maximum length: 127 characters.
         self.authorization_endpoint = authorization_endpoint
-        # The data structure of the client parameters.
+        # The data structure for client parameters.
         self.client_parameters = client_parameters
-        # The HTTP request method. Valid values:
+        # The HTTP method for the probe request. Valid values:
         # 
         # - GET
         # - POST
@@ -294,11 +294,11 @@ class UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters(Da
         header_parameters: List[main_models.UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters] = None,
         query_string_parameters: List[main_models.UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters] = None,
     ):
-        # The list of data structures for body request parameters.
+        # The list of body request parameter data structures.
         self.body_parameters = body_parameters
-        # The list of request header parameters.
+        # The list of header parameter data structures.
         self.header_parameters = header_parameters
-        # The data structure of request query parameters.
+        # The data structure of the URI of the request path parameters.
         self.query_string_parameters = query_string_parameters
 
     def validate(self):
@@ -366,11 +366,11 @@ class UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersQue
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the parameter is used for authentication.
+        # Specifies whether the value is used for authentication.
         self.is_value_secret = is_value_secret
-        # The key of the request query parameter.
+        # The key of the URI of the request path parameter.
         self.key = key
-        # The value of the request query parameter.
+        # The value of the URI of the request path parameter.
         self.value = value
 
     def validate(self):
@@ -412,11 +412,11 @@ class UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersHea
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the parameter is used for authentication.
+        # Specifies whether the value is used for authentication.
         self.is_value_secret = is_value_secret
-        # The key of the request header parameter.
+        # The key of the header parameter.
         self.key = key
-        # The value of the request header parameter.
+        # The value of the header parameter.
         self.value = value
 
     def validate(self):
@@ -458,7 +458,7 @@ class UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersBod
         key: str = None,
         value: str = None,
     ):
-        # Specifies whether the parameter is used for authentication.
+        # Specifies whether the value is used for authentication.
         self.is_value_secret = is_value_secret
         # The key of the body request parameter.
         self.key = key

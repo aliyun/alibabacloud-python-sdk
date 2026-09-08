@@ -1,3 +1,7 @@
+2026-09-08 Version: 8.5.0
+- Support API PutEvents.
+
+
 2026-07-23 Version: 8.3.0
 - Support API DeleteEventAnalysisJob.
 - Support API DeleteEventHouseRuntime.

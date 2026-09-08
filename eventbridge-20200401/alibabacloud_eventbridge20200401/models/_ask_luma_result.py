@@ -19,29 +19,32 @@ class AskLumaResult(DaraModel):
         message_id: str = None,
         status: str = None,
         storage_truncated: bool = None,
+        wiki_version: str = None,
     ):
-        # Whether clarification is needed
+        # Indicates whether clarification is needed.
         self.clarification_needed = clarification_needed
-        # Clarification question text
+        # The clarification question text.
         self.clarification_question = clarification_question
-        # Query constraints
+        # The query constraints.
         self.constraints = constraints
-        # Structured result body
+        # The structured result body.
         self.content = content
-        # Conversation identifier, used for multi-turn follow-up questions
+        # The conversation ID, used for multi-turn follow-up questions.
         self.conversation_id = conversation_id
-        # Error code
+        # The error code.
         self.error_code = error_code
-        # Error details
+        # The error details.
         self.error_message = error_message
-        # Whether it is an error. false = query succeeded or clarification (including empty result set); true = execution failed / timeout / rate limited / internal error
+        # Indicates whether an error occurred. A value of false indicates that the query succeeded or a clarification is needed (including empty result sets). A value of true indicates that the execution failed due to a timeout, throttling, or internal error.
         self.is_error = is_error
-        # Message identifier, used for PollAskResult polling
+        # The message ID, used for polling with PollAskResult.
         self.message_id = message_id
-        # Execution status
+        # The submit status.
         self.status = status
-        # Whether the result was truncated due to exceeding the storage limit. Only appears in large result set scenarios
+        # Indicates whether the result was truncated because it exceeded the storage limit. This field is returned only for large result sets.
         self.storage_truncated = storage_truncated
+        # The business Wiki version that was actually used for this response. This field is not returned if the agent does not have a Wiki configured.
+        self.wiki_version = wiki_version
 
     def validate(self):
         if self.constraints:
@@ -87,6 +90,9 @@ class AskLumaResult(DaraModel):
         if self.storage_truncated is not None:
             result['StorageTruncated'] = self.storage_truncated
 
+        if self.wiki_version is not None:
+            result['WikiVersion'] = self.wiki_version
+
         return result
 
     def from_map(self, m: dict = None):
@@ -125,6 +131,9 @@ class AskLumaResult(DaraModel):
 
         if m.get('StorageTruncated') is not None:
             self.storage_truncated = m.get('StorageTruncated')
+
+        if m.get('WikiVersion') is not None:
+            self.wiki_version = m.get('WikiVersion')
 
         return self
 

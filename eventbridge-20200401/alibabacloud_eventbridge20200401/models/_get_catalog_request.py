@@ -10,9 +10,9 @@ class GetCatalogRequest(DaraModel):
         client_token: str = None,
         name: str = None,
     ):
-        # Idempotency token
+        # The idempotency token.
         self.client_token = client_token
-        # Data catalog name
+        # The name of the data catalog.
         # 
         # This parameter is required.
         self.name = name

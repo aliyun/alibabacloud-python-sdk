@@ -2,36 +2,32 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_eventbridge20200401 import models as main_models
+from typing import Dict, Any
+
 from darabonba.model import DaraModel
 
-class QueryAskLumaLogResponseBody(DaraModel):
+class SaveAgentDataSemanticsResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.QueryAskLumaLogResult = None,
+        data: Dict[str, Any] = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Valid values:
-        # 
-        # 200: The request was successful.    
-        # 
-        # Other values: An error occurred. For more information, see error codes.
+        # The response code of the operation.
         self.code = code
-        # The returned result.
+        # The update result. If the save is successful, an empty object is returned with no additional business fields. If none of the four knowledge categories are specified, the target state is all four categories empty: if a non-empty current version exists, an all-empty version is published. If the current version is already all empty or no current version exists, the operation succeeds idempotently and the current round of pending generation results is finalized.
         self.data = data
-        # The error message.
+        # The response message. If the call fails, an error message is returned.
         self.message = message
         # The unique identifier that Alibaba Cloud generates for the request.
         self.request_id = request_id
-        # Returns true if the operation is successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
-        if self.data:
-            self.data.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -42,7 +38,7 @@ class QueryAskLumaLogResponseBody(DaraModel):
             result['Code'] = self.code
 
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            result['Data'] = self.data
 
         if self.message is not None:
             result['Message'] = self.message
@@ -61,8 +57,7 @@ class QueryAskLumaLogResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.QueryAskLumaLogResult()
-            self.data = temp_model.from_map(m.get('Data'))
+            self.data = m.get('Data')
 
         if m.get('Message') is not None:
             self.message = m.get('Message')

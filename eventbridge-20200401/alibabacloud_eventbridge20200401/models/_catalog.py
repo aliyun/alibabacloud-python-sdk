@@ -16,17 +16,17 @@ class Catalog(DaraModel):
         provider: str = None,
         type: str = None,
     ):
-        # The comment or description of the data catalog
+        # The comment or description of the data catalog.
         self.comment = comment
-        # The connection name associated with a mounted-type Catalog. Only has a value when Provider is MySQL/PostgreSQL/Elasticsearch
+        # The connection name associated with a mounted catalog. This parameter has a value only when Provider is set to MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, or Iceberg.
         self.connection_name = connection_name
-        # The unique identifier name of the data catalog
+        # The unique identifier name of the data catalog.
         self.name = name
-        # Extended properties (JSON object). The Elasticsearch type contains information such as IndexPattern
+        # The extended properties (JSON object). For the Elasticsearch type, this includes information such as IndexPattern.
         self.properties = properties
-        # The data source provider. EventHouse is the built-in storage; MySQL/PostgreSQL/Elasticsearch are externally mounted
+        # The data source provider. EventHouse indicates built-in storage. MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, and Iceberg indicate externally mounted sources.
         self.provider = provider
-        # The type of the data catalog, such as RELATIONAL
+        # The type of the data catalog, such as RELATIONAL.
         self.type = type
 
     def validate(self):

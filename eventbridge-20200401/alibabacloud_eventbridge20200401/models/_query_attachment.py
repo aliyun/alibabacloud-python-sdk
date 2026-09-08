@@ -9,11 +9,14 @@ class QueryAttachment(DaraModel):
     def __init__(
         self,
         query: str = None,
+        query_id: str = None,
         result: main_models.ExecutionResult = None,
     ):
-        # Query statement
+        # The query statement.
         self.query = query
-        # Query execution result
+        # The stable identifier for the actual SQL tool execution, used for result tracking and interpretation.
+        self.query_id = query_id
+        # The query execution result.
         self.result = result
 
     def validate(self):
@@ -28,6 +31,9 @@ class QueryAttachment(DaraModel):
         if self.query is not None:
             result['Query'] = self.query
 
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+
         if self.result is not None:
             result['Result'] = self.result.to_map()
 
@@ -37,6 +43,9 @@ class QueryAttachment(DaraModel):
         m = m or dict()
         if m.get('Query') is not None:
             self.query = m.get('Query')
+
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
 
         if m.get('Result') is not None:
             temp_model = main_models.ExecutionResult()
