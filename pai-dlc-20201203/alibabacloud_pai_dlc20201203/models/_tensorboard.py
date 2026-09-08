@@ -41,56 +41,56 @@ class Tensorboard(DaraModel):
         username: str = None,
         workspace_id: str = None,
     ):
-        # Visibility.
+        # The visibility.
         self.accessibility = accessibility
         self.cpu = cpu
-        # Data source ID.
+        # The data source ID.
         self.data_source_id = data_source_id
         self.data_source_type = data_source_type
-        # Display name.
+        # The display name.
         self.display_name = display_name
-        # Runtime duration (seconds).
+        # The duration in seconds.
         self.duration = duration
-        # Creation time (UTC).
+        # The creation time in UTC.
         self.gmt_create_time = gmt_create_time
-        # End time (UTC).
+        # The end time in UTC.
         self.gmt_finish_time = gmt_finish_time
-        # Modification time (UTC).
+        # The modification time in UTC.
         self.gmt_modify_time = gmt_modify_time
-        # Job ID.
+        # The job ID.
         self.job_id = job_id
         self.max_running_time_minutes = max_running_time_minutes
         self.memory = memory
         self.options = options
-        # Tensorboard Job priority.
+        # The priority of the TensorBoard job.
         self.priority = priority
-        # Resource group ID used by Tensorboard.
+        # The ID of the resource group used by TensorBoard.
         self.quota_id = quota_id
-        # Name of the resource quota used by Tensorboard.
+        # The name of the resource quota used by TensorBoard.
         self.quota_name = quota_name
-        # Status details code.
+        # The status detail code.
         self.reason_code = reason_code
-        # Status details.
+        # The status details.
         self.reason_message = reason_message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Status.
+        # The status.
         self.status = status
-        # File path.
+        # The file path.
         self.summary_path = summary_path
         self.summary_relative_path = summary_relative_path
-        # Datasets mounted by the Tensorboard Job.
+        # The datasets mounted to the TensorBoard job.
         self.tensorboard_data_sources = tensorboard_data_sources
-        # Tensorboard ID.
+        # Tensorboard ID。
         self.tensorboard_id = tensorboard_id
-        # Pay-as-you-go configuration for the Tensorboard Job.
+        # The pay-as-you-go configuration of the TensorBoard job.
         self.tensorboard_spec = tensorboard_spec
-        # Tensorboard URL.
+        # Tensorboard URL。
         self.tensorboard_url = tensorboard_url
         self.token = token
-        # Creator ID.
+        # The ID of the creator.
         self.user_id = user_id
-        # Creator username.
+        # The username of the creator.
         self.username = username
         self.workspace_id = workspace_id
 

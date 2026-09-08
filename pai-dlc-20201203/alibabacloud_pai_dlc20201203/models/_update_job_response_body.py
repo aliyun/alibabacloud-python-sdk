@@ -10,9 +10,9 @@ class UpdateJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the job.
+        # The job ID.
         self.job_id = job_id
-        # The request ID, used for diagnostics and support.
+        # The request ID, which is used for diagnostics and troubleshooting.
         self.request_id = request_id
 
     def validate(self):

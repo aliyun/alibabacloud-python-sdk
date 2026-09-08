@@ -14,20 +14,20 @@ class UpdateJobRequest(DaraModel):
         description: str = None,
         job_specs: List[main_models.JobSpec] = None,
         priority: int = None,
+        user_command: str = None,
     ):
-        # The job\\"s visibility. You can only increase, not decrease, the visibility. Valid value:
-        # 
-        # - `PUBLIC`: The job is visible to all users in the workspace.
+        # The visibility of the job. The visibility can only be expanded, not reduced. Valid values:
+        # - PUBLIC: visible to all users in the workspace.
         self.accessibility = accessibility
         self.description = description
-        # The job specifications.
+        # The job specification definition.
         self.job_specs = job_specs
-        # The priority of the job. Valid values range from 1 to 9:
-        # 
-        # - 1 indicates the lowest priority.
-        # 
-        # - 9 indicates the highest priority.
+        # The priority of the job. Valid values: 1 to 9.
+        # - 1: the lowest priority.
+        # - 9: the highest priority.
         self.priority = priority
+        # The user command.
+        self.user_command = user_command
 
     def validate(self):
         if self.job_specs:
@@ -54,6 +54,9 @@ class UpdateJobRequest(DaraModel):
         if self.priority is not None:
             result['Priority'] = self.priority
 
+        if self.user_command is not None:
+            result['UserCommand'] = self.user_command
+
         return result
 
     def from_map(self, m: dict = None):
@@ -72,6 +75,9 @@ class UpdateJobRequest(DaraModel):
 
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+
+        if m.get('UserCommand') is not None:
+            self.user_command = m.get('UserCommand')
 
         return self
 

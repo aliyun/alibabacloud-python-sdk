@@ -54,24 +54,24 @@ class ListJobsShrinkRequest(DaraModel):
         # The caller.
         self.caller = caller
         self.description = description
-        # The job name. Supports fuzzy match and is case-insensitive. Wildcards are not supported.
+        # The job name. Supports fuzzy search. Case-insensitive. Wildcards are not supported.
         # For example, entering test matches test-job1, job-test, job-test2, or job-Test, but does not match job-t1.
         # Default value: empty, which indicates all job names.
         self.display_name = display_name
-        # The search mode for DisplayName. Default value: wildcard match.
+        # The search mode for DisplayName. Default value: wildcard matching.
         self.display_name_search_mode = display_name_search_mode
-        # Filters jobs based on whether running on specified nodes is enabled.
+        # Filters jobs based on whether assigned-node execution is enabled.
         self.enable_assign_node = enable_assign_node
-        # The end time of the query range. The job creation time is used for filtering. Default value: the current time.
+        # The end time of the query range. Jobs are filtered by creation time. Default value: the current time.
         self.end_time = end_time
-        # Specifies whether to retrieve jobs across all workspaces. This parameter must be used together with `ShowOwn=true` to query jobs recently submitted by the current user.
+        # Specifies whether to retrieve jobs across all workspaces. Use this parameter together with `ShowOwn=true` to query the jobs recently submitted by the current user.
         self.from_all_workspaces = from_all_workspaces
-        # Uses full-text index to retrieve the images field. Supports Chinese and English tokenization.
+        # Performs a full-text search in the image (images) field. Supports Chinese and English word segmentation.
         self.image_search = image_search
-        # The job ID. Fuzzy match is not supported. Case-insensitive. Wildcards are not supported.
+        # The job ID. Fuzzy search is not supported. Case-insensitive. Wildcards are not supported.
         # Default value: empty, which indicates all job IDs.
         self.job_id = job_id
-        # A list of job IDs separated by commas. If both JobIds and JobId are specified, JobId takes precedence.
+        # The list of job IDs, separated by commas (,). If both JobIds and JobId are specified, JobId takes precedence.
         self.job_ids = job_ids
         # The job type. Default value: empty, which indicates all types. Valid values:
         # - TFJob
@@ -80,40 +80,40 @@ class ListJobsShrinkRequest(DaraModel):
         # - OneFlowJob
         # - ElasticBatchJob
         self.job_type = job_type
-        # The field name for numeric range filtering. Must be used together with NumericRangeMin or NumericRangeMax.
+        # The field name for numeric range filtering. Use this parameter together with NumericRangeMin/NumericRangeMax.
         self.numeric_range_field = numeric_range_field
-        # The maximum value (inclusive) for numeric range filtering. Must be used together with NumericRangeField.
+        # The maximum value (inclusive) for numeric range filtering. Use this parameter together with NumericRangeField.
         self.numeric_range_max = numeric_range_max
-        # The minimum value (inclusive) for numeric range filtering. Must be used together with NumericRangeField.
+        # The minimum value (inclusive) for numeric range filtering. Use this parameter together with NumericRangeField.
         self.numeric_range_min = numeric_range_min
         # The sort order. Valid values:
         # 
         # - desc: Descending order. This is the default value.
         # - asc: Ascending order.
         self.order = order
-        # The off-peak resource information. Valid values:
+        # The idle resource information. Valid values:
         # - ForbiddenQuotaOverSold
         # - ForceQuotaOverSold
-        # - AcceptQuotaOverSold-true (true indicates the job actually used off-peak resources)
+        # - AcceptQuotaOverSold-true (true indicates the job actually used idle resources)
         # - AcceptQuotaOverSold-false (false indicates the job actually used guaranteed resources)
         self.oversold_info = oversold_info
-        # The page number to return in a paged query. Minimum value: 1. Default value: 1. Paging starts from page 1.
+        # The page number to return. Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of jobs to return per page.
         self.page_size = page_size
         # The resource type. Valid values:
-        # - PrePaid: resource quota.
-        # - Spot: preemptible resources.
-        # - PostPaid: public resources.
+        # - PrePaid: Resource quota.
+        # - Spot: Spot resource.
+        # - PostPaid: Public resource.
         self.payment_type = payment_type
         # Filters jobs created by the specified pipeline ID.
         self.pipeline_id = pipeline_id
-        # Uses full-text index to retrieve the node failed reason field. Supports Chinese and English tokenization.
+        # Performs a full-text search in the job failure reason (reason) field. Supports Chinese and English word segmentation.
         self.reason_search = reason_search
         # The resource group ID. For information about how to obtain the dedicated resource group ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
         self.resource_ids = resource_ids
-        # The name of the resource quota, used to filter the job list. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by resource quota.
+        # The resource quota name, used to filter the job list. Supports fuzzy search. Wildcards are not supported. Default value: empty, which indicates no filtering by resource quota.
         self.resource_quota_name = resource_quota_name
         # Specifies whether to return only jobs submitted by the current user.
         self.show_own = show_own
@@ -125,7 +125,7 @@ class ListJobsShrinkRequest(DaraModel):
         # - GmtCreateTime
         # - GmtFinishTime
         self.sort_by = sort_by
-        # The start time of the query range. The job creation time is used for filtering. Default value: the current time minus 7 days. If neither StartTime nor EndTime is specified, jobs created in the last 7 days are returned by default.
+        # The start time of the query range. Jobs are filtered by creation time. Default value: the current time minus 7 days. If neither StartTime nor EndTime is specified, jobs created in the last 7 days are returned by default.
         self.start_time = start_time
         # The job status. Valid values:
         # - Creating
@@ -148,11 +148,11 @@ class ListJobsShrinkRequest(DaraModel):
         self.template_id = template_id
         # The time field used for StartTime/EndTime filtering. Default value: creation time.
         self.time_range_field = time_range_field
-        # Uses full-text index to retrieve the user_command field. Supports Chinese and English tokenization.
+        # Performs a full-text search in the user command (user_command) field. Supports Chinese and English word segmentation.
         self.user_command_search = user_command_search
         # The user ID of the job submitter, used to filter the job list.
         self.user_id_for_filter = user_id_for_filter
-        # The username of the job submitter, used to filter the job list. Supports fuzzy match. Wildcards are not supported. Default value: empty, which indicates no filtering by username.
+        # The username of the job submitter, used to filter the job list. Supports fuzzy search. Wildcards are not supported. Default value: empty, which indicates no filtering by username.
         self.username = username
         # The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id

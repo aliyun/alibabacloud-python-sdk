@@ -65,25 +65,7 @@ class Client(OpenApiClient):
             'eu-west-1': 'pai-dlc.aliyuncs.com',
             'eu-west-1-oxs': 'pai-dlc.aliyuncs.com',
             'me-east-1': 'pai-dlc.aliyuncs.com',
-            'rus-west-1-pop': 'pai-dlc.aliyuncs.com',
-            'cn-wulanchabu': 'pai-dlc.cn-wulanchabu.aliyuncs.com',
-            'cn-beijing': 'pai-dlc.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'pai-dlc.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'pai-dlc.cn-hongkong.aliyuncs.com',
-            'cn-shenzhen': 'pai-dlc.cn-shenzhen.aliyuncs.com',
-            'ap-northeast-1': 'pai-dlc.ap-northeast-1.aliyuncs.com',
-            'cn-guangzhou': 'pai-dlc.cn-guangzhou.aliyuncs.com',
-            'ap-southeast-1': 'pai-dlc.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'pai-dlc.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-5': 'pai-dlc.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-7': 'pai-dlc.ap-southeast-7.aliyuncs.com',
-            'cn-hangzhou': 'pai-dlc.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-8': 'pai-dlc.ap-southeast-8.aliyuncs.com',
-            'us-east-1': 'pai-dlc.us-east-1.aliyuncs.com',
-            'us-southeast-1': 'pai-dlc.us-southeast-1.aliyuncs.com',
-            'us-west-1': 'pai-dlc.us-west-1.aliyuncs.com',
-            'eu-central-1': 'pai-dlc.eu-central-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'pai-dlc.cn-shanghai-finance-1.aliyuncs.com'
+            'rus-west-1-pop': 'pai-dlc.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('pai-dlc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1736,6 +1718,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetPodLogsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.containers):
+            query['Containers'] = request.containers
         if not DaraCore.is_null(request.download_to_file):
             query['DownloadToFile'] = request.download_to_file
         if not DaraCore.is_null(request.end_time):
@@ -1776,6 +1760,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetPodLogsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.containers):
+            query['Containers'] = request.containers
         if not DaraCore.is_null(request.download_to_file):
             query['DownloadToFile'] = request.download_to_file
         if not DaraCore.is_null(request.end_time):
@@ -2248,6 +2234,8 @@ class Client(OpenApiClient):
             query['TargetId'] = request.target_id
         if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.token_settings):
+            query['TokenSettings'] = request.token_settings
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2282,6 +2270,8 @@ class Client(OpenApiClient):
             query['TargetId'] = request.target_id
         if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.token_settings):
+            query['TokenSettings'] = request.token_settings
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3965,6 +3955,8 @@ class Client(OpenApiClient):
             body['JobSpecs'] = request.job_specs
         if not DaraCore.is_null(request.priority):
             body['Priority'] = request.priority
+        if not DaraCore.is_null(request.user_command):
+            body['UserCommand'] = request.user_command
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -4002,6 +3994,8 @@ class Client(OpenApiClient):
             body['JobSpecs'] = request.job_specs
         if not DaraCore.is_null(request.priority):
             body['Priority'] = request.priority
+        if not DaraCore.is_null(request.user_command):
+            body['UserCommand'] = request.user_command
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

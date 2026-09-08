@@ -9,6 +9,7 @@ from ._assume_user_info import AssumeUserInfo
 from ._auto_scaling_spec import AutoScalingSpec
 from ._autoscaling_metric_spec import AutoscalingMetricSpec
 from ._code_source_item import CodeSourceItem
+from ._container_info import ContainerInfo
 from ._container_spec import ContainerSpec
 from ._credential_config import CredentialConfig
 from ._credential_config_item import CredentialConfigItem
@@ -54,6 +55,37 @@ from ._pod_network_interface import PodNetworkInterface
 from ._quota import Quota
 from ._quota_config import QuotaConfig
 from ._quota_detail import QuotaDetail
+from ._rlflow_funnel_stage import RLFlowFunnelStage
+from ._rlflow_milestone_count import RLFlowMilestoneCount
+from ._rlflow_sankey import RLFlowSankey
+from ._rlflow_sankey_column import RLFlowSankeyColumn
+from ._rlflow_sankey_exit import RLFlowSankeyExit
+from ._rlflow_slowest_item import RLFlowSlowestItem
+from ._rlflow_step import RLFlowStep
+from ._rlflow_stuck_item import RLFlowStuckItem
+from ._rlflow_totals import RLFlowTotals
+from ._rlflow_transition import RLFlowTransition
+from ._rlflow_turns import RLFlowTurns
+from ._rlflow_waste import RLFlowWaste
+from ._rllog_context_line import RLLogContextLine
+from ._rlprogress_buffer import RLProgressBuffer
+from ._rlprogress_buffer_detail import RLProgressBufferDetail
+from ._rlprogress_config import RLProgressConfig
+from ._rlprogress_eval import RLProgressEval
+from ._rlprogress_fatal import RLProgressFatal
+from ._rlprogress_micro import RLProgressMicro
+from ._rlprogress_processed import RLProgressProcessed
+from ._rlprogress_rollout import RLProgressRollout
+from ._rlprogress_slow import RLProgressSlow
+from ._rlprogress_slow_detail import RLProgressSlowDetail
+from ._rlprogress_stage import RLProgressStage
+from ._rlprogress_stages import RLProgressStages
+from ._rlprogress_step import RLProgressStep
+from ._rlprogress_sync import RLProgressSync
+from ._rlprogress_trainer import RLProgressTrainer
+from ._rlsample import RLSample
+from ._rlsample_event import RLSampleEvent
+from ._rltrajectory import RLTrajectory
 from ._resource_config import ResourceConfig
 from ._resource_limit import ResourceLimit
 from ._resource_requirements import ResourceRequirements
@@ -73,6 +105,7 @@ from ._system_disk import SystemDisk
 from ._tensorboard import Tensorboard
 from ._tensorboard_data_source_spec import TensorboardDataSourceSpec
 from ._tensorboard_spec import TensorboardSpec
+from ._token_settings import TokenSettings
 from ._workspace import Workspace
 from ._create_job_request import CreateJobRequest
 from ._create_job_response_body import CreateJobResponseBody
@@ -235,6 +268,7 @@ __all__ = [
     AutoScalingSpec,
     AutoscalingMetricSpec,
     CodeSourceItem,
+    ContainerInfo,
     ContainerSpec,
     CredentialConfig,
     CredentialConfigItem,
@@ -280,6 +314,37 @@ __all__ = [
     Quota,
     QuotaConfig,
     QuotaDetail,
+    RLFlowFunnelStage,
+    RLFlowMilestoneCount,
+    RLFlowSankey,
+    RLFlowSankeyColumn,
+    RLFlowSankeyExit,
+    RLFlowSlowestItem,
+    RLFlowStep,
+    RLFlowStuckItem,
+    RLFlowTotals,
+    RLFlowTransition,
+    RLFlowTurns,
+    RLFlowWaste,
+    RLLogContextLine,
+    RLProgressBuffer,
+    RLProgressBufferDetail,
+    RLProgressConfig,
+    RLProgressEval,
+    RLProgressFatal,
+    RLProgressMicro,
+    RLProgressProcessed,
+    RLProgressRollout,
+    RLProgressSlow,
+    RLProgressSlowDetail,
+    RLProgressStage,
+    RLProgressStages,
+    RLProgressStep,
+    RLProgressSync,
+    RLProgressTrainer,
+    RLSample,
+    RLSampleEvent,
+    RLTrajectory,
     ResourceConfig,
     ResourceLimit,
     ResourceRequirements,
@@ -299,6 +364,7 @@ __all__ = [
     Tensorboard,
     TensorboardDataSourceSpec,
     TensorboardSpec,
+    TokenSettings,
     Workspace,
     CreateJobRequest,
     CreateJobResponseBody,

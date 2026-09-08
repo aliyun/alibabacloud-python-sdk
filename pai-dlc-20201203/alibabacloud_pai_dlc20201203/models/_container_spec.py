@@ -25,9 +25,9 @@ class ContainerSpec(DaraModel):
         self.command = command
         # The environment variables.
         self.env = env
-        # The endpoint of the container image.
+        # The container image address.
         self.image = image
-        # The name of the container.
+        # The container name.
         self.name = name
         # The container resources.
         self.resources = resources

@@ -34,27 +34,28 @@ class JobSpec(DaraModel):
         system_disk: main_models.SystemDisk = None,
         type: str = None,
         use_spot_instance: bool = None,
+        user_command: str = None,
     ):
-        # The assigned scheduling node configuration.
+        # The node scheduling configuration.
         self.assign_node_spec = assign_node_spec
         # The auto scaling configuration.
         self.auto_scaling_spec = auto_scaling_spec
-        # Specifies whether this role is considered when determining job success. This parameter takes effect only when the success policy is set to Partial.
+        # Specifies whether to consider this role when determining job success. This parameter takes effect only when the success policy is set to Partial.
         self.consider_in_success_policy = consider_in_success_policy
         self.driver = driver
-        # The hardware specifications of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed list of specifications.>Notice: Prices vary depending on the specifications.
+        # The hardware specification of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed specification list.>Notice: Prices vary depending on the specification.
         self.ecs_spec = ecs_spec
         self.elastic_spot_specs = elastic_spot_specs
         # The extra pod configuration.
         self.extra_pod_spec = extra_pod_spec
         self.hyper_node_scheduling_config = hyper_node_scheduling_config
-        # The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain images provided by the PAI platform. You can also specify a third-party public image.
+        # The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to retrieve images provided by the PAI platform. You can also specify a third-party public image.
         self.image = image
         # The private image configuration.
         self.image_config = image_config
-        # Deprecated due to a spelling error.
+        # **[Deprecated]** This field is deprecated due to a spelling error.
         self.is_cheif = is_cheif
-        # Indicates whether this role is the Chief role. Only one Chief role is allowed.
+        # Specifies whether the role is the Chief role. Only one Chief role is allowed.
         self.is_chief = is_chief
         # The list of local mount configurations.
         self.local_mount_specs = local_mount_specs
@@ -73,7 +74,7 @@ class JobSpec(DaraModel):
         # The dependencies required before this role starts.
         self.startup_dependencies = startup_dependencies
         self.system_disk = system_disk
-        # Type is closely related to Job Type. Different job types support different worker types.
+        # The type, which is closely related to the job type. Different job types support different worker types.
         # 
         # - **TFJob**: Supports Chief, PS, Worker, Evaluator, and GraphLearn.
         # 
@@ -84,10 +85,12 @@ class JobSpec(DaraModel):
         # - **ElasticBatch**: Supports Worker and Master.
         # - **RayJob**: Supports Head, Worker, and Worker[-xxx].
         # 
-        # Master is optional in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch. If Master is not specified, the system automatically designates the first Worker node as Master.
+        # Master is optional in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch. If not specified, the system automatically designates the first Worker node as Master.
         self.type = type
         # Specifies whether to use spot instances.
         self.use_spot_instance = use_spot_instance
+        # The role-level startup command.
+        self.user_command = user_command
 
     def validate(self):
         if self.assign_node_spec:
@@ -204,6 +207,9 @@ class JobSpec(DaraModel):
         if self.use_spot_instance is not None:
             result['UseSpotInstance'] = self.use_spot_instance
 
+        if self.user_command is not None:
+            result['UserCommand'] = self.user_command
+
         return result
 
     def from_map(self, m: dict = None):
@@ -297,6 +303,9 @@ class JobSpec(DaraModel):
 
         if m.get('UseSpotInstance') is not None:
             self.use_spot_instance = m.get('UseSpotInstance')
+
+        if m.get('UserCommand') is not None:
+            self.user_command = m.get('UserCommand')
 
         return self
 

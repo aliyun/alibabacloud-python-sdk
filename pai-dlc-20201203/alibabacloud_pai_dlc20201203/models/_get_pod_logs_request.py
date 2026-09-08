@@ -7,22 +7,24 @@ from darabonba.model import DaraModel
 class GetPodLogsRequest(DaraModel):
     def __init__(
         self,
+        containers: str = None,
         download_to_file: bool = None,
         end_time: str = None,
         max_lines: int = None,
         pod_uid: str = None,
         start_time: str = None,
     ):
-        # Specifies whether to download the log file. Default value: false. Valid values:
-        # 
-        # *   false
-        # *   true
+        # Filters logs by specified containers. Separate multiple container names with commas (,).
+        self.containers = containers
+        # Specifies whether to download the log file. Valid values:
+        # - false (default): The log file is not downloaded.
+        # - true: The log file is downloaded.
         self.download_to_file = download_to_file
         # The end time of the query. Default value: current time.
         self.end_time = end_time
-        # The maximum number of log entries. Default value: 2000.
+        # The maximum number of log lines to return. Default value: 2000.
         self.max_lines = max_lines
-        # The node UID. For more information about how to obtain a node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
+        # The node UID. For information about how to obtain the node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
         self.pod_uid = pod_uid
         # The start time of the query. Default value: 7 days ago.
         self.start_time = start_time
@@ -35,6 +37,9 @@ class GetPodLogsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.containers is not None:
+            result['Containers'] = self.containers
+
         if self.download_to_file is not None:
             result['DownloadToFile'] = self.download_to_file
 
@@ -54,6 +59,9 @@ class GetPodLogsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Containers') is not None:
+            self.containers = m.get('Containers')
+
         if m.get('DownloadToFile') is not None:
             self.download_to_file = m.get('DownloadToFile')
 
