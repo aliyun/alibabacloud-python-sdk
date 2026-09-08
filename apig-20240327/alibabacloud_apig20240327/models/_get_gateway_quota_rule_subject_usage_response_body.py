@@ -68,32 +68,45 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
     def __init__(
         self,
         cached_amount: int = None,
+        cached_amount_decimal: float = None,
         details: main_models.GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails = None,
         input_amount: int = None,
+        input_amount_decimal: float = None,
         output_amount: int = None,
+        output_amount_decimal: float = None,
         over_limit: bool = None,
+        quota_dimension: str = None,
         subject_type: str = None,
         total_quota: int = None,
         used_amount: int = None,
+        used_amount_decimal: float = None,
     ):
         # The total cached token consumption.
         self.cached_amount = cached_amount
+        # The exact value of total cached consumption. Supports decimals in credit scenarios.
+        self.cached_amount_decimal = cached_amount_decimal
         # The paginated consumption details.
         self.details = details
         # The total input token consumption.
         self.input_amount = input_amount
+        # The exact value of total input consumption. Supports decimals in credit scenarios.
+        self.input_amount_decimal = input_amount_decimal
         # The total output token consumption.
         self.output_amount = output_amount
+        # The exact value of total output consumption. Supports decimals in credit scenarios.
+        self.output_amount_decimal = output_amount_decimal
         # Indicates whether the quota limit is exceeded.
         self.over_limit = over_limit
-        # The subject type. Valid values:
-        # - consumer
-        # - consumer_group
+        # The quota dimension. Valid values: token and credit.
+        self.quota_dimension = quota_dimension
+        # The subject type. Valid values: consumer and consumer_group.
         self.subject_type = subject_type
         # The total quota of the subject.
         self.total_quota = total_quota
         # The total used amount of the subject.
         self.used_amount = used_amount
+        # The exact value of the total used amount of the subject. Supports decimals in credit scenarios.
+        self.used_amount_decimal = used_amount_decimal
 
     def validate(self):
         if self.details:
@@ -107,17 +120,29 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         if self.cached_amount is not None:
             result['cachedAmount'] = self.cached_amount
 
+        if self.cached_amount_decimal is not None:
+            result['cachedAmountDecimal'] = self.cached_amount_decimal
+
         if self.details is not None:
             result['details'] = self.details.to_map()
 
         if self.input_amount is not None:
             result['inputAmount'] = self.input_amount
 
+        if self.input_amount_decimal is not None:
+            result['inputAmountDecimal'] = self.input_amount_decimal
+
         if self.output_amount is not None:
             result['outputAmount'] = self.output_amount
 
+        if self.output_amount_decimal is not None:
+            result['outputAmountDecimal'] = self.output_amount_decimal
+
         if self.over_limit is not None:
             result['overLimit'] = self.over_limit
+
+        if self.quota_dimension is not None:
+            result['quotaDimension'] = self.quota_dimension
 
         if self.subject_type is not None:
             result['subjectType'] = self.subject_type
@@ -128,12 +153,18 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         if self.used_amount is not None:
             result['usedAmount'] = self.used_amount
 
+        if self.used_amount_decimal is not None:
+            result['usedAmountDecimal'] = self.used_amount_decimal
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cachedAmount') is not None:
             self.cached_amount = m.get('cachedAmount')
+
+        if m.get('cachedAmountDecimal') is not None:
+            self.cached_amount_decimal = m.get('cachedAmountDecimal')
 
         if m.get('details') is not None:
             temp_model = main_models.GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails()
@@ -142,11 +173,20 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         if m.get('inputAmount') is not None:
             self.input_amount = m.get('inputAmount')
 
+        if m.get('inputAmountDecimal') is not None:
+            self.input_amount_decimal = m.get('inputAmountDecimal')
+
         if m.get('outputAmount') is not None:
             self.output_amount = m.get('outputAmount')
 
+        if m.get('outputAmountDecimal') is not None:
+            self.output_amount_decimal = m.get('outputAmountDecimal')
+
         if m.get('overLimit') is not None:
             self.over_limit = m.get('overLimit')
+
+        if m.get('quotaDimension') is not None:
+            self.quota_dimension = m.get('quotaDimension')
 
         if m.get('subjectType') is not None:
             self.subject_type = m.get('subjectType')
@@ -156,6 +196,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
 
         if m.get('usedAmount') is not None:
             self.used_amount = m.get('usedAmount')
+
+        if m.get('usedAmountDecimal') is not None:
+            self.used_amount_decimal = m.get('usedAmountDecimal')
 
         return self
 
@@ -173,7 +216,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails(DaraModel):
         self.page_number = page_number
         # The current page size.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -226,30 +269,42 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
     def __init__(
         self,
         cached_amount: int = None,
+        cached_amount_decimal: float = None,
         consumer: str = None,
         input_amount: int = None,
+        input_amount_decimal: float = None,
         model: str = None,
         output_amount: int = None,
+        output_amount_decimal: float = None,
         request_id: str = None,
         start_time: str = None,
         used_amount: int = None,
+        used_amount_decimal: float = None,
     ):
         # The cached token consumption.
         self.cached_amount = cached_amount
+        # The exact value of cached consumption. Supports decimals in credit scenarios.
+        self.cached_amount_decimal = cached_amount_decimal
         # The consumer name.
         self.consumer = consumer
         # The input token consumption.
         self.input_amount = input_amount
+        # The exact value of input consumption. Supports decimals in credit scenarios.
+        self.input_amount_decimal = input_amount_decimal
         # The model name.
         self.model = model
         # The output token consumption.
         self.output_amount = output_amount
+        # The exact value of output consumption. Supports decimals in credit scenarios.
+        self.output_amount_decimal = output_amount_decimal
         # The request ID.
         self.request_id = request_id
         # The consumption (request) time in the format of YYYY-MM-DD.
         self.start_time = start_time
         # The total consumption.
         self.used_amount = used_amount
+        # The exact value of total consumption. Supports decimals in credit scenarios.
+        self.used_amount_decimal = used_amount_decimal
 
     def validate(self):
         pass
@@ -262,17 +317,26 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         if self.cached_amount is not None:
             result['cachedAmount'] = self.cached_amount
 
+        if self.cached_amount_decimal is not None:
+            result['cachedAmountDecimal'] = self.cached_amount_decimal
+
         if self.consumer is not None:
             result['consumer'] = self.consumer
 
         if self.input_amount is not None:
             result['inputAmount'] = self.input_amount
 
+        if self.input_amount_decimal is not None:
+            result['inputAmountDecimal'] = self.input_amount_decimal
+
         if self.model is not None:
             result['model'] = self.model
 
         if self.output_amount is not None:
             result['outputAmount'] = self.output_amount
+
+        if self.output_amount_decimal is not None:
+            result['outputAmountDecimal'] = self.output_amount_decimal
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -283,6 +347,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         if self.used_amount is not None:
             result['usedAmount'] = self.used_amount
 
+        if self.used_amount_decimal is not None:
+            result['usedAmountDecimal'] = self.used_amount_decimal
+
         return result
 
     def from_map(self, m: dict = None):
@@ -290,17 +357,26 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         if m.get('cachedAmount') is not None:
             self.cached_amount = m.get('cachedAmount')
 
+        if m.get('cachedAmountDecimal') is not None:
+            self.cached_amount_decimal = m.get('cachedAmountDecimal')
+
         if m.get('consumer') is not None:
             self.consumer = m.get('consumer')
 
         if m.get('inputAmount') is not None:
             self.input_amount = m.get('inputAmount')
 
+        if m.get('inputAmountDecimal') is not None:
+            self.input_amount_decimal = m.get('inputAmountDecimal')
+
         if m.get('model') is not None:
             self.model = m.get('model')
 
         if m.get('outputAmount') is not None:
             self.output_amount = m.get('outputAmount')
+
+        if m.get('outputAmountDecimal') is not None:
+            self.output_amount_decimal = m.get('outputAmountDecimal')
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
@@ -310,6 +386,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
 
         if m.get('usedAmount') is not None:
             self.used_amount = m.get('usedAmount')
+
+        if m.get('usedAmountDecimal') is not None:
+            self.used_amount_decimal = m.get('usedAmountDecimal')
 
         return self
 

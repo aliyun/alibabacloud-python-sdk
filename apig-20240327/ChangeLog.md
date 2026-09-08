@@ -1,3 +1,17 @@
+2026-09-08 Version: 11.3.1
+- Update API GetGatewayQuotaRuleSubjectUsage: add request parameters endTime.
+- Update API GetGatewayQuotaRuleSubjectUsage: add request parameters startTime.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.cachedAmountDecimal.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.inputAmountDecimal.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.outputAmountDecimal.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.quotaDimension.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.usedAmountDecimal.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.details.items.$.cachedAmountDecimal.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.details.items.$.inputAmountDecimal.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.details.items.$.outputAmountDecimal.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.details.items.$.usedAmountDecimal.
+
+
 2026-09-01 Version: 11.3.0
 - Support API ListConsumerGroupQuotaRules.
 

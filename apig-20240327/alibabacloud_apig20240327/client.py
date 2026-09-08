@@ -24,33 +24,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'ap-southeast-2': 'apig.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-6': 'apig.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-7': 'apig.ap-southeast-7.aliyuncs.com',
-            'cn-guangzhou': 'apig.cn-guangzhou.aliyuncs.com',
-            'cn-heyuan': 'apig.cn-heyuan.aliyuncs.com',
-            'cn-shenzhen': 'apig.cn-shenzhen.aliyuncs.com',
-            'cn-wulanchabu': 'apig.cn-wulanchabu.aliyuncs.com',
-            'cn-beijing': 'apig.cn-beijing.aliyuncs.com',
-            'ap-northeast-2': 'apig.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'apig.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'apig.cn-chengdu.aliyuncs.com',
-            'cn-qingdao': 'apig.cn-qingdao.aliyuncs.com',
-            'cn-shanghai': 'apig.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'apig.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'apig.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'apig.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-5': 'apig.ap-southeast-5.aliyuncs.com',
-            'cn-zhangjiakou': 'apig.cn-zhangjiakou.aliyuncs.com',
-            'cn-hangzhou': 'apig.cn-hangzhou.aliyuncs.com',
-            'us-west-1': 'apig.us-west-1.aliyuncs.com',
-            'us-east-1': 'apig.us-east-1.aliyuncs.com',
-            'eu-central-1': 'apig.eu-central-1.aliyuncs.com',
-            'eu-west-1': 'apig.eu-west-1.aliyuncs.com',
-            'me-east-1': 'apig.me-east-1.aliyuncs.com',
-            'me-central-1': 'apig.me-central-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('apig', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -6515,12 +6488,16 @@ class Client(OpenApiClient):
     ) -> main_models.GetGatewayQuotaRuleSubjectUsageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
         if not DaraCore.is_null(request.filter_failed_requests):
             query['filterFailedRequests'] = request.filter_failed_requests
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6552,12 +6529,16 @@ class Client(OpenApiClient):
     ) -> main_models.GetGatewayQuotaRuleSubjectUsageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
         if not DaraCore.is_null(request.filter_failed_requests):
             query['filterFailedRequests'] = request.filter_failed_requests
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
