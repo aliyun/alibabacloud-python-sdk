@@ -11,9 +11,13 @@ class ListCategoriesRequest(DaraModel):
         instance_id: str = None,
         type: str = None,
     ):
+        # The ID of the ticket category. Specify this parameter to return information about the subcategories of the specified category. If you leave this parameter empty, information about all categories in the instance is returned.
         self.category_id = category_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The category type.
         self.type = type
 
     def validate(self):

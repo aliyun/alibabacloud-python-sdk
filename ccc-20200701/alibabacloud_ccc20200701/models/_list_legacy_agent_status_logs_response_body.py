@@ -17,11 +17,17 @@ class ListLegacyAgentStatusLogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListLegacyAgentStatusLogsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of agent status data.
         self.list = list
+        # Page number, ranging from 1 to 1000.
         self.page_number = page_number
+        # Page size, ranging from 1 to 1000.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -165,31 +175,57 @@ class ListLegacyAgentStatusLogsResponseBodyDataList(DaraModel):
         transfer_no: str = None,
         transfer_number: str = None,
     ):
+        # Indicates whether the agent hung up the call.
         self.agent_drop_call = agent_drop_call
+        # Agent ID.
         self.agent_no = agent_no
+        # Hang-up reason.
         self.ali_hangup_cause = ali_hangup_cause
+        # Call direction.
         self.call_dir = call_dir
+        # Call ID.
         self.call_id = call_id
+        # Call type.
         self.call_type = call_type
+        # The callee number.
         self.callee_id = callee_id
+        # Calling number.
         self.caller_id = caller_id
+        # Call channel ID.
         self.conn_id = conn_id
+        # Custom extension field.
         self.extend_1 = extend_1
+        # Custom extension field.
         self.extend_2 = extend_2
+        # Custom extension field.
         self.extend_3 = extend_3
+        # Custom extension field.
         self.extend_4 = extend_4
+        # Skill group ID.
         self.group_no = group_no
+        # The listener phone number.
         self.monited_agent_no = monited_agent_no
+        # The monitored agent phone number.
         self.monited_agent_phone_no = monited_agent_phone_no
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # Agent extension number.
         self.phone_no = phone_no
+        # The time when the statistics were collected.
         self.statistic_date = statistic_date
+        # Duration of the status, in seconds.
         self.statistic_time = statistic_time
+        # Agent status.
         self.status = status
+        # Skill group ID.
         self.target_request = target_request
+        # Skill group ID.
         self.target_select = target_select
+        # Tenant ID.
         self.tenant_id = tenant_id
+        # Transfer number.
         self.transfer_no = transfer_no
+        # Transfer number.
         self.transfer_number = transfer_number
 
     def validate(self):

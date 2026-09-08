@@ -13,13 +13,21 @@ class ListDoNotCallNumbersRequest(DaraModel):
         scope: str = None,
         search_pattern: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Scope of application, including SYSTEM and INSTANCE. SYSTEM corresponds to system-level Do Not Call configurations associated with the Alibaba Cloud account to which the instance belongs. INSTANCE corresponds to custom Do Not Call configurations specific to the current instance. This parameter is optional, with a default value of INSTANCE.
         self.scope = scope
+        # Fuzzy matching based on phone number or remark. This parameter is optional, with a default value of empty, meaning no filtering is applied when empty.
         self.search_pattern = search_pattern
 
     def validate(self):

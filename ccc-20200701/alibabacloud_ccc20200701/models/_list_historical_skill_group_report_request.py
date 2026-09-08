@@ -15,15 +15,25 @@ class ListHistoricalSkillGroupReportRequest(DaraModel):
         skill_group_id_list: str = None,
         start_time: int = None,
     ):
+        # End time of the historical data to retrieve, formatted as a UNIX timestamp in milliseconds. This parameter is optional. The default value is the current time. The time precision for statistics is hourly, rounded down to the previous hour, and uses an open interval. For example, if the start time is 11:12:20 and the end time is 11:45:50, the aligned input time range becomes [11:00:00, 12:00:00), meaning greater than or equal to 11:00:00 and less than 12:00:00.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Media type. The default value is Audio. Other valid values include Chat and Video.
         self.media_type = media_type
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # List of skill group IDs to query, provided as a JSON array string. Each array element is a skill group ID. This parameter is optional. The default value is empty, which means all skill groups in the current page are queried.
         self.skill_group_id_list = skill_group_id_list
+        # Start time of the historical data to retrieve, formatted as a UNIX timestamp in milliseconds. This parameter is optional. The default value is 00:00:00 of the current day. The earliest allowed value is 180 days before the current time. The time precision for statistics is hourly, rounded down to the previous hour, and uses a closed interval.
         self.start_time = start_time
 
     def validate(self):

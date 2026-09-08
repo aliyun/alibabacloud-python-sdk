@@ -12,10 +12,15 @@ class ListSkillGroupSummaryReportsSinceMidnightRequest(DaraModel):
         page_size: int = None,
         skill_groups: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number to return. The value must be in the range of 1 to 100.
         self.page_number = page_number
+        # The number of entries to return on each page. The value must be in the range of 1 to 100.
         self.page_size = page_size
+        # A JSON-formatted string that contains the IDs of the skill groups to query. If this parameter is omitted, the query includes all skill groups.
         self.skill_groups = skill_groups
 
     def validate(self):

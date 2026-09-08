@@ -17,11 +17,17 @@ class GetLoginDetailsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Logon information data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -101,26 +107,47 @@ class GetLoginDetailsResponseBodyData(DaraModel):
         user_key_2: str = None,
         work_mode: str = None,
     ):
+        # Agent data push server URL. After a successful connection, the server pushes agent status data to the agent Workbench.
         self.agent_server_url = agent_server_url
+        # Agent profile picture URL.
         self.avatar_url = avatar_url
+        # Chat session application ID.
         self.chat_app_id = chat_app_id
+        # Chat session application key.
         self.chat_app_key = chat_app_key
+        # Chat Device ID.
         self.chat_device_id = chat_device_id
+        # Chat session logon token.
         self.chat_login_token = chat_login_token
+        # Chat session server URL.
         self.chat_server_url = chat_server_url
+        # Chat session Device ID.
         self.chat_user_id = chat_user_id
+        # SIP device extension number. This field is required when using a SIP phone.
         self.device_ext = device_ext
+        # If the agent has registered an SIP phone, this parameter is the Device ID of the SIP phone device; otherwise, it is empty.
         self.device_id = device_id
+        # SIP device status.
         self.device_state = device_state
+        # Agent display name.
         self.display_name = display_name
+        # Agent extension number.
         self.extension = extension
+        # Agent nickname
         self.nickname = nickname
+        # Signature information generated using an asymmetric key encryption algorithm. This information is required for authentication when registering with the SIP server.
         self.signature = signature
+        # Signature information generated using an asymmetric key encryption algorithm. This information is required for authentication when registering with the SIP server.
         self.signature_2 = signature_2
+        # SIP registration server URL. The agent must register with the server as an SIP user to perform transactional processing (TP) operations.
         self.sip_server_url = sip_server_url
+        # Agent ID.
         self.user_id = user_id
+        # Signature data used to generate signature information. Because this signature mechanism does not support Chinese characters, UserKey2 is currently used for signing instead.
         self.user_key = user_key
+        # Signature data used to generate signature information. UserKey2 was added because UserKey does not support Chinese characters in signatures.
         self.user_key_2 = user_key_2
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):

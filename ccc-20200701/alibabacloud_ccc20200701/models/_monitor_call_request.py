@@ -13,12 +13,19 @@ class MonitorCallRequest(DaraModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the agent being monitored.
+        # 
         # This parameter is required.
         self.monitored_user_id = monitored_user_id
+        # The timeout period for the listening operation, in seconds. If the listening operation does not succeed within the specified time, it is canceled. Normally, the listening operation succeeds immediately. The timeout setting is provided to handle abnormal scenarios. This field is optional and defaults to 30 seconds.
         self.timeout_seconds = timeout_seconds
+        # Agent ID.
         self.user_id = user_id
 
     def validate(self):

@@ -16,11 +16,17 @@ class ModifyUserResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

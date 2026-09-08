@@ -16,12 +16,17 @@ class CreateSchemaRequest(DaraModel):
         properties: List[main_models.CreateSchemaRequestProperties] = None,
         request_id: str = None,
     ):
+        # The description.
         self.description = description
-        # schema id
+        # The schema ID.
         self.id = id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of fields.
         self.properties = properties
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -97,24 +102,43 @@ class CreateSchemaRequestProperties(DaraModel):
         read_only: bool = None,
         required: bool = None,
     ):
+        # Indicates whether the field is an array.
         self.array = array
+        # The extended properties.
         self.attributes = attributes
+        # The data type.
+        # 
         # This parameter is required.
         self.data_type = data_type
+        # The description of the version.
         self.description = description
+        # Indicates whether the field is disabled.
         self.disabled = disabled
+        # The display name for agents.
         self.display_name = display_name
+        # The display order in the list.
         self.display_order = display_order
+        # The editor type.
         self.editor_type = editor_type
+        # The maximum length.
         self.max_length = max_length
+        # The maximum value of the number.
         self.maximum = maximum
+        # The minimum length.
         self.min_length = min_length
+        # The minimum value of the number.
         self.minimum = minimum
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The regular expression that is used for validation.
         self.pattern = pattern
+        # The error message that is returned when the regular expression fails to match.
         self.pattern_error_message = pattern_error_message
+        # Indicates whether the field is read-only.
         self.read_only = read_only
+        # Indicates whether the field is required.
         self.required = required
 
     def validate(self):

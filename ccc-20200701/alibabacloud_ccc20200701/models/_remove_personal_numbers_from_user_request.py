@@ -11,10 +11,16 @@ class RemovePersonalNumbersFromUserRequest(DaraModel):
         number_list: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # List of personal outbound numbers to delete. You can obtain the current list of personal outbound numbers associated with the agent by invoking ListPersonalNumbersOfUser.
+        # 
         # This parameter is required.
         self.number_list = number_list
+        # Agent ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

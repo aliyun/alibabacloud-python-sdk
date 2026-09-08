@@ -14,15 +14,30 @@ class ListCasesRequest(DaraModel):
         phone_number: str = None,
         state: str = None,
     ):
+        # Predictive outbound dialing activity ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The paging ordinal number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Filters by phone number. Fuzzy Matching is not supported. This parameter is not Required and defaults to empty.
         self.phone_number = phone_number
+        # Pending (to be dialed)<br>
+        # Executing (dialing in progress)<br>
+        # Connected (contact succeeded)<br>
+        # Failed (contact failed)<br>
+        # Aborted (call stopped or canceled)<br>
+        # Forbidden (call prohibited by rule, such as blacklist)
         self.state = state
 
     def validate(self):

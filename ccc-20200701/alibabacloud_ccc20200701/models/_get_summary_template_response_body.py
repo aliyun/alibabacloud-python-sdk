@@ -17,11 +17,17 @@ class GetSummaryTemplateResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87,12 +93,23 @@ class GetSummaryTemplateResponseBodyData(DaraModel):
         state: str = None,
         template_id: str = None,
     ):
+        # The ID of the summary category.
         self.category_id = category_id
+        # The user who edited the template.
         self.editor = editor
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the template.
         self.name = name
+        # The list of template fields.
         self.property_list = property_list
+        # The status code.
+        # 
+        # - Enabled: The template is enabled.
+        # 
+        # - Disabled: The template is disabled.
         self.state = state
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -184,26 +201,47 @@ class GetSummaryTemplateResponseBodyDataPropertyList(DaraModel):
         system: bool = None,
         updated_time: int = None,
     ):
+        # Indicates whether the field is an array.
         self.array = array
+        # The extended properties.
         self.attributes = attributes
+        # The time when the field was created.
         self.created_time = created_time
+        # The user who created the field.
         self.creator = creator
+        # The data type.
         self.data_type = data_type
+        # The description of the field.
         self.description = description
+        # Indicates whether the field is disabled.
         self.disabled = disabled
+        # The display name.
         self.display_name = display_name
+        # The display order in the list.
         self.display_order = display_order
+        # The type of the editor.
         self.editor_type = editor_type
+        # The maximum length.
         self.max_length = max_length
+        # The maximum value of the number.
         self.maximum = maximum
+        # The minimum length.
         self.min_length = min_length
+        # The minimum value of the number.
         self.minimum = minimum
+        # The name of the field.
         self.name = name
+        # The validation rule that is specified by a regular expression.
         self.pattern = pattern
+        # The error message that is returned when the regular expression fails to pass the validation.
         self.pattern_error_message = pattern_error_message
+        # Indicates whether the field is read-only.
         self.read_only = read_only
+        # Indicates whether the field is required.
         self.required = required
+        # Indicates whether the field is a system field.
         self.system = system
+        # The time when the field was last updated.
         self.updated_time = updated_time
 
     def validate(self):

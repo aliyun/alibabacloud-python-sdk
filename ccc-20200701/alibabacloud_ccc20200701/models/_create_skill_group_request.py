@@ -13,12 +13,20 @@ class CreateSkillGroupRequest(DaraModel):
         media_type: str = None,
         name: str = None,
     ):
+        # Description of the skill group. This parameter is optional. If not specified, it defaults to empty.
         self.description = description
+        # Display name of the skill group. It must be 1 to 64 characters in length.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Media type. The default value is AUDIO. Other valid values include CHAT and VIDEO.
         self.media_type = media_type
+        # The skill group name. It must be 1 to 64 characters in length, can contain digits, letters, underscores (_), and hyphens (-), and must start with a letter.
+        # 
         # This parameter is required.
         self.name = name
 

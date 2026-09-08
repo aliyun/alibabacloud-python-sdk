@@ -10,8 +10,11 @@ class ListWaitingChatsRequest(DaraModel):
         instance_id: str = None,
         skill_group_id_list: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID list.
         self.skill_group_id_list = skill_group_id_list
 
     def validate(self):

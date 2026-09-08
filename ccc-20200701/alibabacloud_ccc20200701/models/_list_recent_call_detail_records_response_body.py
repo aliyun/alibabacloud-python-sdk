@@ -16,10 +16,15 @@ class ListRecentCallDetailRecordsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListRecentCallDetailRecordsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of call records.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count. The actual total is returned only when PageNumber is 1; otherwise, it is 0.
         self.total_count = total_count
 
     def validate(self):
@@ -142,16 +151,27 @@ class ListRecentCallDetailRecordsResponseBodyDataList(DaraModel):
         skill_group_ids: str = None,
         start_time: int = None,
     ):
+        # List of agent IDs. Multiple values are separated by commas.
         self.agent_ids = agent_ids
+        # Call duration in seconds.
         self.call_duration = call_duration
+        # Called number.
         self.called_number = called_number
+        # Calling number.
         self.calling_number = calling_number
+        # The reason the call ended.
         self.contact_disposition = contact_disposition
+        # Call ID.
         self.contact_id = contact_id
+        # Call type.
         self.contact_type = contact_type
+        # Call duration in seconds.
         self.duration = duration
+        # Instance ID.
         self.instance_id = instance_id
+        # Skill groups to which the agent participating in the call belongs. Multiple skill groups are separated by commas.
         self.skill_group_ids = skill_group_ids
+        # Call start time. For inbound calls, it starts when the call enters IVR. For outbound calls, it starts when the call is answered. The format is a Unix timestamp string in milliseconds.
         self.start_time = start_time
 
     def validate(self):

@@ -13,9 +13,13 @@ class AddSchemaPropertyRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Field
         self.property = property
+        # Request ID.
         self.request_id = request_id
         # schema id
         # 
@@ -83,24 +87,43 @@ class AddSchemaPropertyRequestProperty(DaraModel):
         read_only: bool = None,
         required: bool = None,
     ):
+        # Is array
         self.array = array
+        # Extension attributes
         self.attributes = attributes
+        # Data type
+        # 
         # This parameter is required.
         self.data_type = data_type
+        # Description.
         self.description = description
+        # Is disabled
         self.disabled = disabled
+        # Name
         self.display_name = display_name
+        # List display order
         self.display_order = display_order
+        # Editor type
         self.editor_type = editor_type
+        # Maximum length
         self.max_length = max_length
+        # Maximum numeric value
         self.maximum = maximum
+        # Minimum length
         self.min_length = min_length
+        # Minimum numeric value
         self.minimum = minimum
+        # Name
+        # 
         # This parameter is required.
         self.name = name
+        # Regular expression validation rule
         self.pattern = pattern
+        # Regular expression validation error message
         self.pattern_error_message = pattern_error_message
+        # Is read-only
         self.read_only = read_only
+        # Is required
         self.required = required
 
     def validate(self):

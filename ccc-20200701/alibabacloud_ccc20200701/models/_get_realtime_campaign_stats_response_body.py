@@ -14,10 +14,15 @@ class GetRealtimeCampaignStatsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,16 +86,27 @@ class GetRealtimeCampaignStatsResponseBodyData(DaraModel):
         total_agents: int = None,
         working_agents: int = None,
     ):
+        # Number of agents on break.
         self.breaking_agents = breaking_agents
+        # The number of concurrent calls per second. "Concurrent" means calls happening simultaneously.
         self.caps = caps
+        # Number of logged-in agents.
         self.logged_in_agents = logged_in_agents
+        # The number of agents in outbound-only mode who are on a break.
         self.outbound_scenario_breaking_agents = outbound_scenario_breaking_agents
+        # The number of agents in outbound-only mode who are idle.
         self.outbound_scenario_ready_agents = outbound_scenario_ready_agents
+        # Number of agents in a call under outbound-only mode.
         self.outbound_scenario_talking_agents = outbound_scenario_talking_agents
+        # Number of agents in post-processing status under outbound-only mode.
         self.outbound_scenario_working_agents = outbound_scenario_working_agents
+        # Number of idle agents.
         self.ready_agents = ready_agents
+        # Number of agents in a call.
         self.talking_agents = talking_agents
+        # Total number of agents.
         self.total_agents = total_agents
+        # Number of agents in post-processing.
         self.working_agents = working_agents
 
     def validate(self):

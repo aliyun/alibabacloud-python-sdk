@@ -14,15 +14,25 @@ class SendDtmfSignalingRequest(DaraModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # The channel ID of the call to which DTMF tones are to be sent.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # DTMF key information, which refers to the keys on a dial pad, including 0–9, \\*, and #.
+        # 
         # This parameter is required.
         self.dtmf = dtmf
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The agent ID that sends DTMF.
         self.user_id = user_id
 
     def validate(self):

@@ -11,10 +11,16 @@ class AddPersonalNumbersToUserRequest(DaraModel):
         number_list: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # List of numbers to be added. The numbers must be attachable to the agent corresponding to UserId. If you are unsure which numbers the agent can attach, refer to the ListPersonalNumbersOfUser API.
+        # 
         # This parameter is required.
         self.number_list = number_list
+        # Agent ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

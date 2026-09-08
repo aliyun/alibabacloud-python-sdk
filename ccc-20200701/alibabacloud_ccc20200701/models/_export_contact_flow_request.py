@@ -11,10 +11,15 @@ class ExportContactFlowRequest(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the IVR contact flow.
+        # 
         # This parameter is required.
         self.flow_id = flow_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

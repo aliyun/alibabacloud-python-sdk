@@ -16,10 +16,15 @@ class ListCallDetailRecordsV2ResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListCallDetailRecordsV2ResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of call records.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -130,6 +139,7 @@ class ListCallDetailRecordsV2ResponseBodyData(DaraModel):
 class ListCallDetailRecordsV2ResponseBodyDataList(DaraModel):
     def __init__(
         self,
+        access_channel_id: str = None,
         access_channel_name: str = None,
         access_channel_type: str = None,
         access_channel_user_id: str = None,
@@ -192,66 +202,140 @@ class ListCallDetailRecordsV2ResponseBodyDataList(DaraModel):
         voicebot_originator_number: str = None,
         wait_time: int = None,
     ):
+        # The channel ID.
+        self.access_channel_id = access_channel_id
+        # The channel name. This parameter has a value only when MediaType is CHAT.
         self.access_channel_name = access_channel_name
+        # The channel type. This parameter has a value only when MediaType is CHAT.
         self.access_channel_type = access_channel_type
+        # The visitor ID. This parameter has a value only when MediaType is CHAT.
         self.access_channel_user_id = access_channel_user_id
+        # The visitor name. This parameter has a value only when MediaType is CHAT.
         self.access_channel_user_name = access_channel_user_name
+        # The additional intermediate number, which may be used in dual-call scenarios.
         self.additional_broker = additional_broker
+        # The list of agent IDs. Multiple values are separated by commas.
         self.agent_ids = agent_ids
+        # The list of agent names involved in the call. Multiple agents are separated by commas.
         self.agent_names = agent_names
+        # The post-call analytics report.
         self.analytics_report = analytics_report
+        # Indicates whether the AI post-call analytics report is complete.
         self.analytics_report_ready = analytics_report_ready
+        # The intermediate number.
         self.broker = broker
+        # The call duration. For inbound calls, timing starts when the call enters the IVR. For outbound calls, timing starts when the call is connected. Unit: seconds.
         self.call_duration = call_duration
+        # The list of SIP CallIds.
         self.call_ids = call_ids
+        # The called number.
         self.called_number = called_number
+        # The location of the callee.
         self.callee_location = callee_location
+        # The location of the caller.
         self.caller_location = caller_location
+        # The calling number.
         self.calling_number = calling_number
+        # The visitor client application name. This parameter has a value only when MediaType is CHAT.
         self.client_app_name = client_app_name
+        # The visitor client IP address. This parameter has a value only when MediaType is CHAT.
         self.client_ip_address = client_ip_address
+        # The visitor client location. This parameter has a value only when MediaType is CHAT.
         self.client_location = client_location
+        # The visitor client user agent information. This parameter has a value only when MediaType is CHAT.
         self.client_user_agent = client_user_agent
+        # The call end reason. For the enumeration list, refer to the ContactDispositionList query parameter.
         self.contact_disposition = contact_disposition
+        # The call ID.
         self.contact_id = contact_id
+        # The call type. For the enumeration list, refer to the ContactTypeList query parameter.
         self.contact_type = contact_type
+        # The dialing duration. Unit: seconds.
         self.dialing_time = dialing_time
+        # The early media state.
         self.early_media_state = early_media_state
+        # The early media text.
         self.early_media_text = early_media_text
+        # The time when the call was established. If the call was not established, this value is empty. The value is a UNIX timestamp. Unit: milliseconds.
         self.established_time = established_time
+        # The time taken for the agent to first respond to the customer message. This parameter has a value only when MediaType is CHAT.
         self.first_response_time = first_response_time
+        # The hold time. Unit: seconds.
         self.held_time = held_time
+        # The call center instance ID.
         self.instance_id = instance_id
+        # The IVR duration, which is the time from when the call enters the IVR to when it starts entering the manual service queue (or the customer abandons the call). Unit: seconds.
         self.ivr_time = ivr_time
+        # The media type.
+        # 
+        # Valid values:
+        # 
+        # - AUDIO: Voice.
+        # - CHAT: Message.
+        # - VIDEO: Video.
         self.media_type = media_type
+        # The total number of messages. This parameter has a value only when MediaType is CHAT.
         self.messages_sent = messages_sent
+        # The total number of messages sent by the agent. This parameter has a value only when MediaType is CHAT.
         self.messages_sent_by_agent = messages_sent_by_agent
+        # The total number of messages sent by the customer. This parameter has a value only when MediaType is CHAT.
         self.messages_sent_by_customer = messages_sent_by_customer
+        # The list of off-site agent IDs involved in the call. Multiple agents are separated by commas.
         self.off_site_agent_ids = off_site_agent_ids
+        # The off-site agent number that is called when the assigned agent is an off-site agent.
         self.offsite_agent_destination_numbers = offsite_agent_destination_numbers
+        # The number that initiates the call to the off-site agent when the assigned agent is an off-site agent.
         self.offsite_agent_originator_numbers = offsite_agent_originator_numbers
+        # The hangup reason of the last assigned offsite agent.
         self.offsite_agent_release_reason = offsite_agent_release_reason
+        # The called number when the call is transferred to an outside line.
         self.outside_number_destination_number = outside_number_destination_number
+        # The hangup reason when the call is transferred to an outside line.
         self.outside_number_release_reason = outside_number_release_reason
+        # The queue duration, which is the time from when the call enters the manual service queue to when the agent starts ringing (or the customer abandons the call, the queue times out, or the queue overflows). Unit: seconds.
         self.queue_time = queue_time
+        # The recording duration. Unit: seconds.
         self.recording_duration = recording_duration
+        # Indicates whether the recording has been generated. If the call was not established, false is returned.
         self.recording_ready = recording_ready
+        # The party that hung up.
+        # 
+        # Valid values:
+        # 
+        # - agent: The agent.
+        # - customer: The customer.
         self.release_initiator = release_initiator
+        # The hangup reason of the call channel, indicating why the current call channel was hung up. The value is a response code defined in the SIP protocol. Refer to the SIP protocol to analyze the hangup reason.
         self.release_reason = release_reason
+        # The time when the call ended, in Unix timestamp format. Unit: milliseconds.
         self.release_time = release_time
+        # The ringing duration, which is the time from when the agent starts ringing to when the agent answers (or the customer abandons the call). Unit: seconds.
         self.ring_time = ring_time
+        # The satisfaction description, which corresponds to the configuration of the satisfaction module in the satisfaction IVR and is defined by the customer.
         self.satisfaction_description = satisfaction_description
+        # The satisfaction rating, which is the value of the satisfaction key digit (a single digit).
         self.satisfaction_index = satisfaction_index
+        # The satisfaction survey channel.
         self.satisfaction_survey_channel = satisfaction_survey_channel
+        # Indicates whether a satisfaction survey was sent.
         self.satisfaction_survey_offered = satisfaction_survey_offered
+        # The skill group IDs of the agents who participated in the call. Multiple skill groups are separated by commas.
         self.skill_group_ids = skill_group_ids
+        # The skill group names of the agents who participated in the call. Multiple skill groups are separated by commas.
         self.skill_group_names = skill_group_names
+        # The time when the call started. For inbound calls, this is counted from when the call enters the IVR. For outbound calls, this is counted from when dialing begins. The value is in Unix timestamp format. Unit: milliseconds.
         self.start_time = start_time
+        # The summary index.
         self.summary_index = summary_index
+        # The talk time. Unit: seconds.
         self.talk_time = talk_time
+        # The number of transfers.
         self.transfer_count = transfer_count
+        # The outbound called number carried when the call is transferred from an intelligent outbound call.
         self.voicebot_destination_number = voicebot_destination_number
+        # The outbound caller number carried when the call is transferred from an intelligent outbound call.
         self.voicebot_originator_number = voicebot_originator_number
+        # The customer wait time, which equals QueueTime + RingTime. If the customer abandons the call during the waiting period, the value is 0. Unit: seconds.
         self.wait_time = wait_time
 
     def validate(self):
@@ -265,6 +349,9 @@ class ListCallDetailRecordsV2ResponseBodyDataList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_channel_id is not None:
+            result['AccessChannelId'] = self.access_channel_id
+
         if self.access_channel_name is not None:
             result['AccessChannelName'] = self.access_channel_name
 
@@ -452,6 +539,9 @@ class ListCallDetailRecordsV2ResponseBodyDataList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessChannelId') is not None:
+            self.access_channel_id = m.get('AccessChannelId')
+
         if m.get('AccessChannelName') is not None:
             self.access_channel_name = m.get('AccessChannelName')
 
@@ -644,6 +734,7 @@ class ListCallDetailRecordsV2ResponseBodyDataListSummaryIndex(DaraModel):
         self,
         keywords: str = None,
     ):
+        # The keywords.
         self.keywords = keywords
 
     def validate(self):
@@ -674,9 +765,13 @@ class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport(DaraModel):
         satisfaction: main_models.ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction = None,
         todo_list: main_models.ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList = None,
     ):
+        # The emotion analysis.
         self.emotion = emotion
+        # The problem resolution status.
         self.problem_solving = problem_solving
+        # The satisfaction analysis.
         self.satisfaction = satisfaction
+        # The to-do list.
         self.todo_list = todo_list
 
     def validate(self):
@@ -735,8 +830,14 @@ class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList(DaraMod
         task_id: str = None,
         tasks: List[str] = None,
     ):
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
+        # The task ID.
         self.task_id = task_id
+        # The to-do items.
         self.tasks = tasks
 
     def validate(self):
@@ -779,9 +880,16 @@ class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction(Dar
         success: bool = None,
         task_id: str = None,
     ):
+        # The detailed remark of the satisfaction analysis.
         self.remark = remark
+        # The satisfaction description.
         self.satisfaction_description = satisfaction_description
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -831,10 +939,18 @@ class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving(D
         success: bool = None,
         task_id: str = None,
     ):
+        # The problem description.
         self.problem = problem
+        # The Solutions.
         self.solution = solution
+        # Indicates whether the problem is resolved.
         self.solved = solved
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -890,10 +1006,18 @@ class ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion(DaraMode
         task_id: str = None,
         type: str = None,
     ):
+        # The confidence level.
         self.confidence = confidence
+        # The detailed remark of the emotion analysis.
         self.remark = remark
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
+        # The task ID.
         self.task_id = task_id
+        # The emotion type.
         self.type = type
 
     def validate(self):

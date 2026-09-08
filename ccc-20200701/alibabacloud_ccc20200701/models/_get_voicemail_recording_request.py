@@ -10,8 +10,12 @@ class GetVoicemailRecordingRequest(DaraModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # Call ID. Ensure that this call ID has a voicemail message; otherwise, the return result will contain no data.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

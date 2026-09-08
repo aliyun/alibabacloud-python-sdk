@@ -15,12 +15,19 @@ class SaveWebRtcInfoResponseBody(DaraModel):
         success: bool = None,
         time_stamp: int = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The number of rows returned upon data storage, indicating how many records were successfully written. If this value is not 1, an abnormal condition may have occurred and requires attention.
         self.row_count = row_count
+        # Indicates whether the operation succeeded.
         self.success = success
+        # The time when the information was stored, formatted as a Unix timestamp in milliseconds.
         self.time_stamp = time_stamp
 
     def validate(self):

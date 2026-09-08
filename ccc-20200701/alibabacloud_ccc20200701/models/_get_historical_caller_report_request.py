@@ -12,12 +12,20 @@ class GetHistoricalCallerReportRequest(DaraModel):
         start_time: int = None,
         stop_time: int = None,
     ):
+        # Calling number.
+        # 
         # This parameter is required.
         self.calling_number = calling_number
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Start time of the query, formatted as a UNIX timestamp in milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # End time of the query, formatted as a UNIX timestamp in milliseconds.
+        # 
         # This parameter is required.
         self.stop_time = stop_time
 

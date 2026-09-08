@@ -12,10 +12,15 @@ class ImportDoNotCallNumbersRequest(DaraModel):
         number_list: str = None,
         remark: str = None,
     ):
+        # The key of the OSS file. You can obtain the key from the response of the GetDoNotCallFileUploadParameters API. This parameter is required only for file uploads.
         self.file_path = file_path
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A JSON string that represents an array of do-not-call numbers.
         self.number_list = number_list
+        # The remark for the do-not-call numbers.
         self.remark = remark
 
     def validate(self):

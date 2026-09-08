@@ -14,10 +14,15 @@ class GetTicketSummaryReportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,8 +78,11 @@ class GetTicketSummaryReportResponseBodyData(DaraModel):
         tickets_created: str = None,
         tickets_participated: str = None,
     ):
+        # Number of tickets pending processing.
         self.tickets_assigned = tickets_assigned
+        # Number of tickets created.
         self.tickets_created = tickets_created
+        # Number of tickets processed.
         self.tickets_participated = tickets_participated
 
     def validate(self):

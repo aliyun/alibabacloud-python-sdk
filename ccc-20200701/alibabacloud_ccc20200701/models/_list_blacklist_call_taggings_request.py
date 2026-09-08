@@ -10,8 +10,12 @@ class ListBlacklistCallTaggingsRequest(DaraModel):
         instance_id: str = None,
         number_list: str = None,
     ):
+        # The ID of the Cloud Contact Center instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A list of numbers to query for their blacklist tag status. The jobId field is required if a number is encrypted (contains \\*\\*\\*).
+        # 
         # This parameter is required.
         self.number_list = number_list
 

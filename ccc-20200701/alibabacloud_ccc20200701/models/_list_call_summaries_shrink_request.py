@@ -10,7 +10,10 @@ class ListCallSummariesShrinkRequest(DaraModel):
         contact_id_list_shrink: str = None,
         instance_id: str = None,
     ):
+        # List of call IDs.
         self.contact_id_list_shrink = contact_id_list_shrink
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

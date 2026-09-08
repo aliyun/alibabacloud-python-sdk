@@ -14,15 +14,26 @@ class ListUserLevelsOfSkillGroupRequest(DaraModel):
         search_pattern: str = None,
         skill_group_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Indicates whether to associate with the specified skill group. If the value is true, the operation retrieves the skill level list of agents associated with the skill group ID. If the value is false, the operation retrieves the list of agents that can be associated with but are not currently associated with the skill group ID. The default value is true.
+        # 
         # This parameter is required.
         self.is_member = is_member
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Perform fuzzy matching based on agent logon name or agent display name. This parameter is optional and defaults to empty, which means no filtering is applied.
         self.search_pattern = search_pattern
+        # Skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

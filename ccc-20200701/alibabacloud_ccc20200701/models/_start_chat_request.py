@@ -15,9 +15,14 @@ class StartChatRequest(DaraModel):
         token: str = None,
         user_list: List[main_models.StartChatRequestUserList] = None,
     ):
+        # The ID of the web service channel.
         self.access_channel_id = access_channel_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The channel token for the web service.
         self.token = token
+        # The information about chat members.
+        # 
         # This parameter is required.
         self.user_list = user_list
 
@@ -75,9 +80,17 @@ class StartChatRequestUserList(DaraModel):
         user_id: str = None,
         user_type: str = None,
     ):
+        # The URL of the member\\"s profile picture.
         self.avatar_url = avatar_url
+        # The nickname of the member.
         self.nickname = nickname
+        # The member ID.
         self.user_id = user_id
+        # The type of the member.
+        # 
+        # - AGENT: An agent.
+        # 
+        # - CUSTOMER: A visitor.
         self.user_type = user_type
 
     def validate(self):

@@ -12,9 +12,14 @@ class StartChatShrinkRequest(DaraModel):
         token: str = None,
         user_list_shrink: str = None,
     ):
+        # The ID of the web service channel.
         self.access_channel_id = access_channel_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The channel token for the web service.
         self.token = token
+        # The information about chat members.
+        # 
         # This parameter is required.
         self.user_list_shrink = user_list_shrink
 

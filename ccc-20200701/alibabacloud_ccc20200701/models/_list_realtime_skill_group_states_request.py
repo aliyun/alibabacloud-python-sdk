@@ -13,13 +13,31 @@ class ListRealtimeSkillGroupStatesRequest(DaraModel):
         page_size: int = None,
         skill_group_id_list: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Media type.
+        # 
+        # Enumeration values:
+        # 
+        # AUDIO: Voice.
+        # 
+        # VIDEO: Video.
+        # 
+        # CHAT: Message.
+        # 
+        # ALL: All.
         self.media_type = media_type
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # List of skill group IDs for which data is queried. If not specified, all skill groups under the current instance are queried. The format is a JSON array string, with each array element being a skill group ID.
         self.skill_group_id_list = skill_group_id_list
 
     def validate(self):

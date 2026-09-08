@@ -13,11 +13,22 @@ class ReleaseChatRequest(DaraModel):
         user_id: str = None,
         user_type: str = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Channel token for network services.
         self.token = token
+        # User ID. Visitor ID or agent ID.
         self.user_id = user_id
+        # User type.
+        # 
+        # - CUSTOMER: visitor
+        # 
+        # - AGENT: agent
+        # 
         # This parameter is required.
         self.user_type = user_type
 

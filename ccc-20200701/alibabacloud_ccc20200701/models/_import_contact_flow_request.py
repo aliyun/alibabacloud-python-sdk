@@ -11,10 +11,15 @@ class ImportContactFlowRequest(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # Data
+        # 
         # This parameter is required.
         self.flow_package_data = flow_package_data
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

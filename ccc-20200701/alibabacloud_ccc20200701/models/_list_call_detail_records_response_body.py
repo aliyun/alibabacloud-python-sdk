@@ -16,10 +16,15 @@ class ListCallDetailRecordsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListCallDetailRecordsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of call records.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count. A real numeric value is returned only when PageNumber is 1; otherwise, 0 is returned.
         self.total_count = total_count
 
     def validate(self):
@@ -166,40 +175,75 @@ class ListCallDetailRecordsResponseBodyDataList(DaraModel):
         talk_time: int = None,
         wait_time: int = None,
     ):
+        # An additional broker number, which may be used in double-call scenarios.
         self.additional_broker = additional_broker
+        # A list of agent IDs, with multiple values separated by commas.
         self.agent_ids = agent_ids
+        # List of agent names involved in the call, separated by commas.
         self.agent_names = agent_names
+        # The intermediary number.
         self.broker = broker
+        # Call duration. For inbound calls, timing starts when the call enters IVR. For outbound calls, timing starts when the call is connected. The unit is seconds.
         self.call_duration = call_duration
+        # The Call-Id field in the underlying SIP protocol. If you need to obtain the call ID from the number provider side, you can retrieve it from this field.
         self.call_ids = call_ids
+        # Called number.
         self.called_number = called_number
+        # The callee\\"s location.
         self.callee_location = callee_location
+        # Caller location.
         self.caller_location = caller_location
+        # Calling number.
         self.calling_number = calling_number
+        # Reason for call termination.
         self.contact_disposition = contact_disposition
+        # Call ID.
         self.contact_id = contact_id
+        # Call type.
         self.contact_type = contact_type
+        # Dial-up duration, in seconds.
         self.dialing_time = dialing_time
+        # Reason for failure to connect.
         self.early_media_state = early_media_state
+        # The time when the call was established. If the call was not established, this value is empty. The format is a Unix timestamp in milliseconds.
         self.established_time = established_time
+        # The hold duration, in seconds.
         self.held_time = held_time
+        # Instance ID.
         self.instance_id = instance_id
+        # IVR duration, in seconds. This is the time interval from when the IVR starts until the call enters the agent queue (or the customer hangs up).
         self.ivr_time = ivr_time
+        # The queue duration, in seconds, measured from when the customer entered the agent queue until the agent started ringing (or the customer abandoned the call, the queue timed out, or the queue overflowed).
         self.queue_time = queue_time
+        # Recording duration, in seconds.
         self.recording_duration = recording_duration
+        # Indicates whether the recording has been generated. Returns false if the call was not established.
         self.recording_ready = recording_ready
+        # The party that ended the call.
         self.release_initiator = release_initiator
+        # Hang-up reason for the channel, indicating why the current channel was disconnected. The value is derived from response codes defined in the SIP protocol. Customers should refer to the SIP protocol to analyze the hang-up reason.
         self.release_reason = release_reason
+        # The call end time, formatted as a Unix timestamp in milliseconds.
         self.release_time = release_time
+        # Ring duration, which is the time from when the agent\\"s phone starts ringing until the agent answers (or the customer hangs up), in seconds.
         self.ring_time = ring_time
+        # The satisfaction description, corresponding to the configuration of the satisfaction module in the satisfaction IVR. This is defined by the customer.
         self.satisfaction_description = satisfaction_description
+        # Satisfaction rating, represented as a single-digit numeric value entered by the customer.
         self.satisfaction_index = satisfaction_index
+        # The channel used for the satisfaction survey.
         self.satisfaction_survey_channel = satisfaction_survey_channel
+        # Indicates whether a satisfaction survey was initiated.
         self.satisfaction_survey_offered = satisfaction_survey_offered
+        # The IDs of the skill groups to which the agents participating in the call belong. Multiple skill group IDs are separated by commas.
         self.skill_group_ids = skill_group_ids
+        # The names of the skill groups to which the agents participating in the call belong. Multiple skill group names are separated by commas.
         self.skill_group_names = skill_group_names
+        # Call start time. For inbound calls, timing starts when the call enters IVR. For outbound calls, timing starts from dial-up. The format is a Unix string in milliseconds.
         self.start_time = start_time
+        # Talk time, in seconds.
         self.talk_time = talk_time
+        # The customer\\"s waiting duration, which equals QueueTime plus RingTime. If the customer abandons the call during waiting, the value is 0. The unit is seconds.
         self.wait_time = wait_time
 
     def validate(self):

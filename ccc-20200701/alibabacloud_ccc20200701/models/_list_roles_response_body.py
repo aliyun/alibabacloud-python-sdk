@@ -16,10 +16,15 @@ class ListRolesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # List of roles.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,7 +85,9 @@ class ListRolesResponseBodyData(DaraModel):
         name: str = None,
         role_id: str = None,
     ):
+        # Role name.
         self.name = name
+        # Role ID, in the format: role\\@instance ID.
         self.role_id = role_id
 
     def validate(self):

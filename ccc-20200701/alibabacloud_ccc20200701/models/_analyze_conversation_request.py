@@ -12,10 +12,25 @@ class AnalyzeConversationRequest(DaraModel):
         instance_id: str = None,
         task_list_json: str = None,
     ):
+        # Call ID.
         self.contact_id = contact_id
+        # When the TaskListJson parameter is set to "fields", this parameter specifies the field content to fetch.
         self.field_list_json = field_list_json
+        # Cloud Contact Center instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # List of Task Types for analysis. Valid values include:
+        # 
+        # - title: title
+        # 
+        # - summary: summary
+        # 
+        # - keywords: keywords
+        # 
+        # - fields: fields
+        # 
+        # Currently, only "summary" and "title" can be passed together. All other parameters must be passed individually.
         self.task_list_json = task_list_json
 
     def validate(self):

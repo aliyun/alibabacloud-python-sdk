@@ -15,13 +15,21 @@ class CreateTicketRequest(DaraModel):
         template_id: str = None,
         title: str = None,
     ):
+        # The ID of the call.
         self.contact_id = contact_id
+        # Ticket field information.
         self.context = context
+        # Customer ID, the customer ID in Cloud Contact Center customer profiles.
         self.customer_id = customer_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Ticket source.
         self.source = source
+        # Ticket template ID.
         self.template_id = template_id
+        # Ticket title.
         self.title = title
 
     def validate(self):

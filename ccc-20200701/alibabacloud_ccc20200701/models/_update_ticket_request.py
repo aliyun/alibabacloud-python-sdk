@@ -13,12 +13,19 @@ class UpdateTicketRequest(DaraModel):
         ticket_id: str = None,
         title: str = None,
     ):
+        # The ticket form information.
         self.context = context
+        # The user ID.
         self.customer_id = customer_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ticket ID.
+        # 
         # This parameter is required.
         self.ticket_id = ticket_id
+        # The ticket title.
         self.title = title
 
     def validate(self):

@@ -10,8 +10,11 @@ class GetRealtimeInstanceStatesRequest(DaraModel):
         instance_id: str = None,
         media_type: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Media type. The default is audio (AUDIO).
         self.media_type = media_type
 
     def validate(self):

@@ -16,10 +16,15 @@ class ImportAdminsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # A list of imported admins.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,10 +88,15 @@ class ImportAdminsResponseBodyData(DaraModel):
         role_id: str = None,
         user_id: str = None,
     ):
+        # The agent extension.
         self.extension = extension
+        # The instance ID.
         self.instance_id = instance_id
+        # The UID of the Alibaba Cloud RAM account.
         self.ram_id = ram_id
+        # The role ID.
         self.role_id = role_id
+        # The agent ID.
         self.user_id = user_id
 
     def validate(self):

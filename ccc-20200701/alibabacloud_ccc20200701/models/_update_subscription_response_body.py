@@ -17,11 +17,17 @@ class UpdateSubscriptionResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # Data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of invalid parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -88,13 +94,27 @@ class UpdateSubscriptionResponseBodyData(DaraModel):
         topic: str = None,
         username: str = None,
     ):
+        # The endpoint for MQ. The service endpoint for webhook.
         self.access_point = access_point
+        # The event checklist.
         self.event_list = event_list
+        # The instance ID.
         self.instance_id = instance_id
+        # The MQ instance ID. Specify this only when MqType is rocketmq4 or rocketmq5.
         self.mq_instance_id = mq_instance_id
+        # The message push type.
+        # 
+        # - rocketmq4
+        # 
+        # - rocketmq5
+        # 
+        # - webhook
         self.mq_type = mq_type
+        # For MQ, enter the Group ID. For webhook, enter PID_Webhook.
         self.producer_id = producer_id
+        # For MQ, enter the topic name. For webhook, enter Topic_Webhook.
         self.topic = topic
+        # The MQ username. Specify this only when MqType is rocketmq5.
         self.username = username
 
     def validate(self):
@@ -174,8 +194,11 @@ class UpdateSubscriptionResponseBodyDataEventList(DaraModel):
         name: str = None,
         topic: str = None,
     ):
+        # Indicates whether the push is disabled.
         self.disabled = disabled
+        # The event name.
         self.name = name
+        # The event topic.
         self.topic = topic
 
     def validate(self):

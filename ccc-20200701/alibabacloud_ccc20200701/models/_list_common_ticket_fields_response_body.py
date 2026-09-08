@@ -17,11 +17,17 @@ class ListCommonTicketFieldsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of error parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85,11 +91,15 @@ class ListCommonTicketFieldsResponseBodyData(DaraModel):
         properties: Dict[str, main_models.DataPropertiesValue] = None,
         updated_time: str = None,
     ):
+        # Creation time.
         self.created_time = created_time
-        # Schema ID。
+        # Schema ID.
         self.id = id
+        # Instance ID.
         self.instance_id = instance_id
+        # List of fields.
         self.properties = properties
+        # Last modification time.
         self.updated_time = updated_time
 
     def validate(self):

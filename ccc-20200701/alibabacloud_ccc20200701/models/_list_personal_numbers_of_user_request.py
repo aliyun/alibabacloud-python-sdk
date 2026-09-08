@@ -14,15 +14,26 @@ class ListPersonalNumbersOfUserRequest(DaraModel):
         search_pattern: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Indicates whether the phone numbers are associated with the agent. If true, the API queries the list of personal outbound phone numbers associated with the UserId. If false, it queries the list of personal outbound phone numbers that can be associated with but are not currently associated with the UserId. This parameter is typically used together with the AddPersonalNumbersToUser API.
+        # 
         # This parameter is required.
         self.is_member = is_member
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Fuzzy matching based on phone number. Optional. Default value is empty if not specified.
         self.search_pattern = search_pattern
+        # Agent ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

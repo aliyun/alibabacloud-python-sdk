@@ -20,20 +20,35 @@ class ListRealtimeAgentStatesRequest(DaraModel):
         state_list: str = None,
         work_mode_list: str = None,
     ):
+        # List of agent IDs, formatted as a JSON array string. The array can contain up to 20 elements. This parameter is optional and defaults to empty, which matches all agents under the current instance.
         self.agent_id_list = agent_id_list
+        # Perform fuzzy matching by agent name.
         self.agent_name = agent_name
+        # Filters by a list of call types. The value is a string in JSON array format, where each array element is a call type. This parameter is optional and defaults to empty, which matches all call types.
         self.call_type_list = call_type_list
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Media type. The default is Audio. Other options include Chat (text), Video, and ALL.
         self.media_type = media_type
+        # Filters agents who are in outbound-only mode. This parameter is optional and defaults to empty, which means no filtering by outbound-only mode is applied.
         self.outbound_scenario = outbound_scenario
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Performs fuzzy filtering based on the full or partial agent display name, agent ID, or agent extension number. This parameter is optional and defaults to empty, which means no filtering is applied.
         self.query = query
+        # Filter by skill group ID. This parameter is optional and defaults to empty, which means no filtering is applied.
         self.skill_group_id = skill_group_id
+        # Filters by a list of statuses. This parameter is optional and defaults to empty, which matches all statuses.
         self.state_list = state_list
+        # Filter by work mode list. This parameter is optional and defaults to empty, which means all work modes are matched.
         self.work_mode_list = work_mode_list
 
     def validate(self):

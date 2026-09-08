@@ -17,11 +17,17 @@ class ClaimChatResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,8 +89,11 @@ class ClaimChatResponseBodyData(DaraModel):
         context_id: int = None,
         user_context: main_models.ClaimChatResponseBodyDataUserContext = None,
     ):
+        # Session context.
         self.chat_contexts = chat_contexts
+        # System auto-increment ID. Customers do not need to be concerned.
         self.context_id = context_id
+        # Agent context.
         self.user_context = user_context
 
     def validate(self):
@@ -148,19 +157,55 @@ class ClaimChatResponseBodyDataUserContext(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # Break status code.
         self.break_code = break_code
+        # Device ID.
         self.device_id = device_id
+        # Device state.
         self.device_state = device_state
+        # Agent extension number.
         self.extension = extension
+        # Time of the agent\\"s last heartbeat, in Unix timestamp format, in milliseconds.
         self.heartbeat = heartbeat
+        # Instance ID.
         self.instance_id = instance_id
+        # Job ID.
         self.job_id = job_id
+        # Agent\\"s personal phone number. Not applicable for chat scenarios.
         self.mobile = mobile
+        # Outbound call scenario only. Not applicable for chat services.
         self.outbound_scenario = outbound_scenario
+        # Time when the agent was last reserved, in Unix timestamp format, in milliseconds.
         self.reserved = reserved
+        # List of skill group IDs the agent is signed into.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID.
         self.user_id = user_id
+        # Agent state.
+        # 
+        # Enumerated values:
+        # 
+        # - READY: Idle.
+        # 
+        # - WORKING: Post-call processing.
+        # 
+        # - BREAK: Break.
+        # 
+        # - OFFLINE: Offline.
+        # 
+        # - TALKING: Chatting.
+        # 
+        # - RINGING: Incoming chat.
         self.user_state = user_state
+        # Work mode. Not applicable for chat scenarios.
+        # 
+        # Enumerated values:
+        # 
+        # - ON_SITE: On-site mode.
+        # 
+        # - OFF_SITE: Off-site mode.
+        # 
+        # - OFFICE_PHONE: Office phone mode.
         self.work_mode = work_mode
 
     def validate(self):
@@ -273,13 +318,21 @@ class ClaimChatResponseBodyDataChatContexts(DaraModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # Network service channel ID.
         self.access_channel_id = access_channel_id
+        # Network service channel name.
         self.access_channel_name = access_channel_name
+        # Network service channel type.
         self.access_channel_type = access_channel_type
+        # Whether the session has been assigned to an agent.
         self.being_assigned = being_assigned
+        # Call variables.
         self.call_variables = call_variables
+        # Session type.
         self.chat_type = chat_type
+        # Instance ID.
         self.instance_id = instance_id
+        # Job ID.
         self.job_id = job_id
 
     def validate(self):

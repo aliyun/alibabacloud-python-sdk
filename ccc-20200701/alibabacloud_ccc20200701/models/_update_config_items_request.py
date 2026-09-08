@@ -12,12 +12,20 @@ class UpdateConfigItemsRequest(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
+        # A JSON-formatted string representing an array of configuration items. Each object in the array must contain a name to identify the configuration item and its value. You can use system-defined items (which have fixed names and customizable values, such as agent permissions to hang up or the ring no answer timeout) or create custom items.
+        # 
         # This parameter is required.
         self.config_items = config_items
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the object to be configured.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The type of the object to be configured.
+        # 
         # This parameter is required.
         self.object_type = object_type
 

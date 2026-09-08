@@ -11,9 +11,13 @@ class PollUserStatusRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # The Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The agent ID.
         self.user_id = user_id
 
     def validate(self):

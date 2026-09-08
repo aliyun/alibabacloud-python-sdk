@@ -17,11 +17,17 @@ class ListSmsMetadataResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of incorrect parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListSmsMetadataResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of SMS configurations.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -147,13 +157,21 @@ class ListSmsMetadataResponseBodyDataList(DaraModel):
         sms_metadata_id: str = None,
         template_code: str = None,
     ):
+        # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
+        # The description of the configuration.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the configuration.
         self.name = name
+        # The scenario type.
         self.scenario = scenario
+        # The name of the SMS signature.
         self.sign_name = sign_name
+        # The ID of the SMS configuration.
         self.sms_metadata_id = sms_metadata_id
+        # The template code.
         self.template_code = template_code
 
     def validate(self):

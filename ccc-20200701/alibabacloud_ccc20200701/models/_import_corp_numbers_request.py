@@ -14,13 +14,21 @@ class ImportCorpNumbersRequest(DaraModel):
         province: str = None,
         tag_list: str = None,
     ):
+        # The city.
         self.city = city
+        # The enterprise name.
         self.corp_name = corp_name
+        # The list of numbers.
+        # 
         # This parameter is required.
         self.number_list = number_list
+        # The line information.
+        # 
         # This parameter is required.
         self.provider = provider
+        # The province.
         self.province = province
+        # The business tags.
         self.tag_list = tag_list
 
     def validate(self):

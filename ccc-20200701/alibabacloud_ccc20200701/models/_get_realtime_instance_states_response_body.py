@@ -16,10 +16,15 @@ class GetRealtimeInstanceStatesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,16 +88,27 @@ class GetRealtimeInstanceStatesResponseBodyData(DaraModel):
         waiting_calls: int = None,
         working_agents: int = None,
     ):
+        # List of distributions of break code counts.
         self.break_code_detail_list = break_code_detail_list
+        # Number of agents on break.
         self.breaking_agents = breaking_agents
+        # Instance ID.
         self.instance_id = instance_id
+        # Number of calls interacting within IVR.
         self.interactive_calls = interactive_calls
+        # Number of logged-in agents (including agents in ready, on break, on call, or other non-unpublished statuses).
         self.logged_in_agents = logged_in_agents
+        # Maximum queue waiting time among currently queued incoming calls.
         self.longest_waiting_time = longest_waiting_time
+        # Number of agents in ready status.
         self.ready_agents = ready_agents
+        # Number of agents on calls.
         self.talking_agents = talking_agents
+        # Total number of agents.
         self.total_agents = total_agents
+        # Number of incoming calls currently queued.
         self.waiting_calls = waiting_calls
+        # Number of agents in post-processing status.
         self.working_agents = working_agents
 
     def validate(self):
@@ -189,7 +205,9 @@ class GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList(DaraModel):
         break_code: str = None,
         count: int = None,
     ):
+        # Break code.
         self.break_code = break_code
+        # Break count.
         self.count = count
 
     def validate(self):

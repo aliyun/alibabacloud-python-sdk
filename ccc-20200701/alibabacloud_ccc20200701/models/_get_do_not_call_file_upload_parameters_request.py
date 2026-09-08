@@ -10,8 +10,12 @@ class GetDoNotCallFileUploadParametersRequest(DaraModel):
         file_name: str = None,
         instance_id: str = None,
     ):
+        # Name of the file containing prohibited outbound call numbers.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

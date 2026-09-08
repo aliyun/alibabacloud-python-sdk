@@ -11,10 +11,15 @@ class EndConferenceRequest(DaraModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Agent ID to leave the meeting. Optional. If not specified, defaults to the agent mapped to the current RAM account.
         self.user_id = user_id
 
     def validate(self):

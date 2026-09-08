@@ -17,11 +17,17 @@ class ListDoNotCallNumbersResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListDoNotCallNumbersResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of prohibited outbound call numbers.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -145,11 +155,17 @@ class ListDoNotCallNumbersResponseBodyDataList(DaraModel):
         remark: str = None,
         scope: str = None,
     ):
+        # Creation time of the Do Not Call number configuration, in Unix timestamp format with millisecond precision. (Deprecated)
         self.create_time = create_time
+        # Creation time of the prohibited outbound call number configuration, in Unix timestamp format, in milliseconds.
         self.created_time = created_time
+        # Creator, which is the agent logon name of the agent who created this record.
         self.creator = creator
+        # Phone number.
         self.number = number
+        # Remark.
         self.remark = remark
+        # Scope of application.
         self.scope = scope
 
     def validate(self):

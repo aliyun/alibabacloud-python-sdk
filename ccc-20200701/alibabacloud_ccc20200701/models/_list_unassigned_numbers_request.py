@@ -11,10 +11,15 @@ class ListUnassignedNumbersRequest(DaraModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # Page number for paging, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Performs Fuzzy Matching based on the number. This parameter is optional and defaults to empty. An empty value indicates no filtering.
         self.search_pattern = search_pattern
 
     def validate(self):

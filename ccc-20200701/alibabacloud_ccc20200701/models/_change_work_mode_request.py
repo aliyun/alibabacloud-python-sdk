@@ -14,12 +14,20 @@ class ChangeWorkModeRequest(DaraModel):
         user_id: str = None,
         work_mode: str = None,
     ):
+        # Device ID, which is the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The agent\\"s personal phone number, which is used in off-site mode. The agent can use this number to answer calls in off-site mode.
         self.mobile = mobile
+        # List of skill groups to sign in to. When changing the work mode to off-site mode, you can use this parameter to specify the list of skill groups that the off-site agent needs to sign in to.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID. If not specified, the agent mapped to the current Resource Access Management (RAM) user is used by default.
         self.user_id = user_id
+        # Work mode.
+        # 
         # This parameter is required.
         self.work_mode = work_mode
 

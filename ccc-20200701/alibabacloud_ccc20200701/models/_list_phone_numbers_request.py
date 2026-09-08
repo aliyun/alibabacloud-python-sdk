@@ -14,14 +14,23 @@ class ListPhoneNumbersRequest(DaraModel):
         search_pattern: str = None,
         usage: str = None,
     ):
+        # Indicates whether the number is active. This parameter is optional. The default value is empty, which means no filtering is applied.
         self.active = active
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The paging ordinal number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Performs fuzzy matching based on the number. This parameter is optional and defaults to empty. An empty value indicates no filtering.
         self.search_pattern = search_pattern
+        # Usage of the number. This parameter is optional. The default value is empty, which means no filtering is applied.
         self.usage = usage
 
     def validate(self):

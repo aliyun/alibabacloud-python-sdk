@@ -12,11 +12,17 @@ class ListAgentStateLogsRequest(DaraModel):
         instance_id: str = None,
         start_time: int = None,
     ):
+        # Agent ID.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # End UNIX timestamp. The default value is the current time. The time difference between EndTime and StartTime must not exceed 7 days. The format is a Unix timestamp in milliseconds.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Start UNIX timestamp. The default value is the start time of the current day. The earliest allowed value is 180 days before the current date. The format is a Unix timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

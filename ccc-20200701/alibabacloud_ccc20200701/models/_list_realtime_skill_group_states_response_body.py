@@ -16,10 +16,15 @@ class ListRealtimeSkillGroupStatesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListRealtimeSkillGroupStatesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of real-time skill group status data.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -144,18 +153,31 @@ class ListRealtimeSkillGroupStatesResponseBodyDataList(DaraModel):
         waiting_calls: int = None,
         working_agents: int = None,
     ):
+        # Break statistics.
         self.break_code_detail_list = break_code_detail_list
+        # Number of agents currently on break.
         self.breaking_agents = breaking_agents
+        # Instance ID.
         self.instance_id = instance_id
+        # Number of agents currently logged in.
         self.logged_in_agents = logged_in_agents
+        # Current maximum queue waiting time, in seconds.
         self.longest_waiting_time = longest_waiting_time
+        # Number of agents in outbound-only mode and in an idle status.
         self.outbound_scenario_ready_agents = outbound_scenario_ready_agents
+        # Number of agents currently idle.
         self.ready_agents = ready_agents
+        # Skill group ID.
         self.skill_group_id = skill_group_id
+        # Skill group name.
         self.skill_group_name = skill_group_name
+        # Number of agents currently on a call.
         self.talking_agents = talking_agents
+        # Total number of agents.
         self.total_agents = total_agents
+        # Number of calls currently in the queue.
         self.waiting_calls = waiting_calls
+        # Number of agents currently in post-processing.
         self.working_agents = working_agents
 
     def validate(self):
@@ -264,7 +286,9 @@ class ListRealtimeSkillGroupStatesResponseBodyDataListBreakCodeDetailList(DaraMo
         break_code: str = None,
         count: int = None,
     ):
+        # Break status code
         self.break_code = break_code
+        # The number of times the break status occurred
         self.count = count
 
     def validate(self):

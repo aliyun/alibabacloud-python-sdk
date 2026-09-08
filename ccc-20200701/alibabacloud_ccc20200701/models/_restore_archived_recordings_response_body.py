@@ -16,10 +16,15 @@ class RestoreArchivedRecordingsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,9 +87,13 @@ class RestoreArchivedRecordingsResponseBodyData(DaraModel):
         status: str = None,
         storage_type: str = None,
     ):
+        # Contact ID.
         self.contact_id = contact_id
+        # Is the recording file existing?
         self.exists = exists
+        # The recording\\"s restored state. Values are Completed or Progressing.
         self.status = status
+        # Storage class of the recording file.
         self.storage_type = storage_type
 
     def validate(self):

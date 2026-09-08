@@ -14,14 +14,23 @@ class HoldCallRequest(DaraModel):
         music: str = None,
         user_id: str = None,
     ):
+        # Channel ID to be held.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # A unique ID provided by the agent endpoint to represent an agent workbench. An agent can have multiple workbenches of different types, such as browser, iOS, or Android, but only one can be active at a time.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Name of the hold music. This parameter is optional and defaults to empty.
         self.music = music
+        # Agent ID.
         self.user_id = user_id
 
     def validate(self):

@@ -11,9 +11,14 @@ class GetConversationDetailRequest(DaraModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # Agent ID.
         self.agent_id = agent_id
+        # The ID of the conversation.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

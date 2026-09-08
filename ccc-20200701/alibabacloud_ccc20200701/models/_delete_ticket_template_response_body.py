@@ -16,11 +16,17 @@ class DeleteTicketTemplateResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of incorrect parameters.
         self.params = params
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

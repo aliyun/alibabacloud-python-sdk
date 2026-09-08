@@ -12,12 +12,19 @@ class RegisterDevicesRequest(DaraModel):
         password: str = None,
         user_id_list_json: str = None,
     ):
+        # The device ID. Any string can be used, and there are no specific format requirements.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The device password. The SIP device uses this password for authentication during registration. Store this password securely.
+        # 
         # This parameter is required.
         self.password = password
+        # A JSON string that contains an array of agent IDs.
         self.user_id_list_json = user_id_list_json
 
     def validate(self):

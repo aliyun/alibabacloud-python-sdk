@@ -16,10 +16,15 @@ class ListRealtimeAgentStatesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListRealtimeAgentStatesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of real-time agent status data.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -147,21 +156,45 @@ class ListRealtimeAgentStatesResponseBodyDataList(DaraModel):
         state_time: int = None,
         work_mode: str = None,
     ):
+        # Agent ID.
         self.agent_id = agent_id
+        # Agent name.
         self.agent_name = agent_name
+        # Break code.
+        # 
+        # **Enumeration values:**
+        # 
+        # - RingingTimeout: Break caused by agent ringing timeout.
+        # 
+        # - RejectCall: Break caused by agent call rejection.
+        # 
+        # - Warm-up: Temporary break state after the agent is published and before becoming idle.
         self.break_code = break_code
+        # Call type.
         self.call_type = call_type
+        # Used in specific three-party scenarios, primarily for listener, coaching, and consultation. In three-party scenarios, it represents the third party—for example, the agent being monitored or coached in a listener or coaching scenario, or the agent or external number to which a call is transferred in a consultation scenario.
         self.counter_party = counter_party
+        # Duration of the current status, in seconds.
         self.duration = duration
+        # The agent\\"s extension number.
         self.extension = extension
+        # Instance ID.
         self.instance_id = instance_id
+        # The agent\\"s personal phone number.
         self.mobile = mobile
+        # Whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # List of skill group IDs that the agent has signed into.
         self.skill_group_id_list = skill_group_id_list
+        # List of skill group names that the agent has signed into.
         self.skill_group_name_list = skill_group_name_list
+        # Agent status.
         self.state = state
+        # Sub-status. In some scenarios, the agent\\"s status cannot be fully represented by the State field alone, so a sub-status is required for clarification. For example, when an agent is being monitored, State=Talking and StateCode=Monitoring.
         self.state_code = state_code
+        # Time when the status started.
         self.state_time = state_time
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):

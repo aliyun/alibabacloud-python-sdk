@@ -10,8 +10,12 @@ class GetCaseFileUploadUrlRequest(DaraModel):
         file_name: str = None,
         instance_id: str = None,
     ):
+        # The file name of the predictive outbound calling Activity list. The name must consist of uppercase and lowercase English letters, and the file format must be CSV.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

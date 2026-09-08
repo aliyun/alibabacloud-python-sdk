@@ -18,17 +18,30 @@ class ModifyUserRequest(DaraModel):
         user_id: str = None,
         work_mode: str = None,
     ):
+        # Agent profile picture URL.
         self.avatar_url = avatar_url
+        # Agent ID (employee ID).
         self.display_id = display_id
+        # User\\"s full name.
         self.display_name = display_name
+        # Whether to force the modification.
         self.force = force
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Agent\\"s personal phone number.
         self.mobile = mobile
+        # Agent nickname
         self.nickname = nickname
+        # Role ID, in the format: role\\@instance ID.
         self.role_id = role_id
+        # Agent ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # Work mode.
+        # 
         # This parameter is required.
         self.work_mode = work_mode
 

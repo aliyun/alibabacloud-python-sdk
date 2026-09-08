@@ -13,12 +13,19 @@ class MuteCallRequest(DaraModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the voice channel to be muted. This parameter is optional and defaults to empty. If it is empty, the voice channel of the agent corresponding to UserId will be muted.
         self.channel_id = channel_id
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The agent ID to be muted.
         self.user_id = user_id
 
     def validate(self):

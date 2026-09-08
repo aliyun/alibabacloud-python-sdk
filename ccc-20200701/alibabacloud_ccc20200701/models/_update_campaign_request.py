@@ -16,15 +16,25 @@ class UpdateCampaignRequest(DaraModel):
         start_time: str = None,
         strategy_parameters: str = None,
     ):
+        # Callable time, supports multiple time segments.
         self.callable_time = callable_time
+        # Predictive outbound campaign ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # Contact stream ID.
         self.contact_flow_id = contact_flow_id
+        # End time, in Unix timestamp format, in milliseconds.
         self.end_time = end_time
+        # Cloud Contact Center instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Predictive outbound campaign name.
         self.name = name
+        # Start time, in Unix timestamp format, in milliseconds.
         self.start_time = start_time
+        # Policy parameters.
         self.strategy_parameters = strategy_parameters
 
     def validate(self):

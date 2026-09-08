@@ -17,11 +17,17 @@ class GetDocumentUploadParametersResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Response parameters.
         self.params = params
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -86,12 +92,17 @@ class GetDocumentUploadParametersResponseBodyData(DaraModel):
         policy: str = None,
         signature: str = None,
     ):
+        # AccessKeyId used for signing
         self.access_key_id = access_key_id
+        # Expired At
         self.expire_time = expire_time
+        # OSS file path
         self.file_path = file_path
-        # oss host
+        # OSS host
         self.host = host
+        # Signature policy
         self.policy = policy
+        # Signature
         self.signature = signature
 
     def validate(self):

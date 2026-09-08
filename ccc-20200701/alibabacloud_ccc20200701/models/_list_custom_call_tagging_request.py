@@ -13,13 +13,21 @@ class ListCustomCallTaggingRequest(DaraModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # Filter by a list of number tag names. This parameter is optional and defaults to empty, which means no filtering is applied. The format is a JSON array string, where each array element is a number tag name.
         self.call_tag_name_list = call_tag_name_list
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Perform fuzzy matching based on number or description. This parameter is optional and defaults to empty. An empty value indicates no filtering.
         self.search_pattern = search_pattern
 
     def validate(self):

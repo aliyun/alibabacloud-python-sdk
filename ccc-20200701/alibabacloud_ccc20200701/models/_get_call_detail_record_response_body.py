@@ -16,10 +16,15 @@ class GetCallDetailRecordResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -102,35 +107,62 @@ class GetCallDetailRecordResponseBodyData(DaraModel):
         skill_group_names: str = None,
         start_time: int = None,
     ):
+        # The list of agent events.
         self.agent_events = agent_events
+        # The IDs of the agents who are involved in the call. Multiple IDs are separated by commas.
         self.agent_ids = agent_ids
+        # The names of the agents who are involved in the call. Multiple names are separated by commas.
         self.agent_names = agent_names
         self.analytics_report = analytics_report
         self.analytics_report_ready = analytics_report_ready
+        # The call duration, in seconds.
         self.call_duration = call_duration
+        # The called number.
         self.called_number = called_number
+        # The location of the called number.
         self.callee_location = callee_location
+        # The location of the calling number.
         self.caller_location = caller_location
+        # The calling number.
         self.calling_number = calling_number
+        # The reason why the call ended. Note: The \\`Voicemail\\`, \\`QueuingFailed\\`, \\`QueuingTimeout\\`, \\`QueuingOverflow\\`, and \\`IVRException\\` reasons are returned only if you configure the hang-up reason node. If you do not configure this node and the IVR flow does not include a module to transfer the call to an agent, the default reason is \\`AbandonedInIVR\\`.
         self.contact_disposition = contact_disposition
+        # The call ID.
         self.contact_id = contact_id
+        # The call type.
         self.contact_type = contact_type
+        # The list of customer events.
         self.customer_events = customer_events
+        # The state of the early media. An exception occurred during the early media phase, which is when the customer is being called. An exception at this stage can cause the call to fail. This parameter provides possible reasons for the connection failure based on an analysis of the early media state.
         self.early_media_state = early_media_state
+        # The time when the call was connected. This parameter is empty if the call was not connected. The value is a UNIX timestamp, in milliseconds.
         self.established_time = established_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The list of IVR events.
         self.ivr_events = ivr_events
         self.outside_number_release_reason = outside_number_release_reason
+        # The list of queue events.
         self.queue_events = queue_events
+        # Indicates whether the recording was generated. A value of \\`false\\` is returned if the call was not connected.
         self.recording_ready = recording_ready
+        # The release initiator.
         self.release_initiator = release_initiator
+        # The reason why the call ended. The value is usually the SIP code followed by a text description.
         self.release_reason = release_reason
+        # The time when the call ended. This is the time when the last party of the call hangs up. The value is a UNIX timestamp, in milliseconds.
         self.release_time = release_time
+        # The satisfaction score. The value and its meaning are defined by you.
         self.satisfaction = satisfaction
+        # The channel through which the satisfaction survey was initiated.
         self.satisfaction_survey_channel = satisfaction_survey_channel
+        # Indicates whether a satisfaction survey was initiated.
         self.satisfaction_survey_offered = satisfaction_survey_offered
+        # The IDs of the skill groups to which the agents involved in the call belong. Multiple IDs are separated by commas.
         self.skill_group_ids = skill_group_ids
+        # The names of the skill groups to which the agents involved in the call belong. Multiple names are separated by commas.
         self.skill_group_names = skill_group_names
+        # The time when the call started. For an inbound call, this is the time when the call enters the IVR. For an outbound call, this is the time when the call is initiated. The value is a UNIX timestamp, in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -374,10 +406,15 @@ class GetCallDetailRecordResponseBodyDataQueueEvents(DaraModel):
         queue_name: str = None,
         queue_type: int = None,
     ):
+        # The sequence of events.
         self.event_sequence = event_sequence
+        # The contact flow ID.
         self.flow_id = flow_id
+        # The queue ID. If the call is routed to a skill group, this is the skill group ID. If the call is routed to an agent, this is the agent ID.
         self.queue_id = queue_id
+        # The queue name.
         self.queue_name = queue_name
+        # The queue type.
         self.queue_type = queue_type
 
     def validate(self):
@@ -438,7 +475,9 @@ class GetCallDetailRecordResponseBodyDataQueueEventsEventSequence(DaraModel):
         event: str = None,
         event_time: int = None,
     ):
+        # The event type.
         self.event = event
+        # The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
         self.event_time = event_time
 
     def validate(self):
@@ -474,8 +513,11 @@ class GetCallDetailRecordResponseBodyDataIvrEvents(DaraModel):
         flow_id: str = None,
         flow_type: str = None,
     ):
+        # The sequence of events.
         self.event_sequence = event_sequence
+        # The ID of the IVR contact flow.
         self.flow_id = flow_id
+        # The type of the contact flow.
         self.flow_type = flow_type
 
     def validate(self):
@@ -524,7 +566,9 @@ class GetCallDetailRecordResponseBodyDataIvrEventsEventSequence(DaraModel):
         event: str = None,
         event_time: int = None,
     ):
+        # The event type.
         self.event = event
+        # The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
         self.event_time = event_time
 
     def validate(self):
@@ -559,7 +603,9 @@ class GetCallDetailRecordResponseBodyDataCustomerEvents(DaraModel):
         customer_id: str = None,
         event_sequence: List[main_models.GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence] = None,
     ):
+        # The customer ID. This is usually the customer\\"s phone number.
         self.customer_id = customer_id
+        # The sequence of events.
         self.event_sequence = event_sequence
 
     def validate(self):
@@ -602,7 +648,9 @@ class GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence(DaraModel):
         event: str = None,
         event_time: int = None,
     ):
+        # The event type.
         self.event = event
+        # The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
         self.event_time = event_time
 
     def validate(self):
@@ -913,9 +961,13 @@ class GetCallDetailRecordResponseBodyDataAgentEvents(DaraModel):
         event_sequence: List[main_models.GetCallDetailRecordResponseBodyDataAgentEventsEventSequence] = None,
         skill_group_id: str = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The agent name.
         self.agent_name = agent_name
+        # The sequence of events.
         self.event_sequence = event_sequence
+        # The skill group ID.
         self.skill_group_id = skill_group_id
 
     def validate(self):
@@ -971,8 +1023,11 @@ class GetCallDetailRecordResponseBodyDataAgentEventsEventSequence(DaraModel):
         event: str = None,
         event_time: int = None,
     ):
+        # The event duration, in seconds.
         self.duration = duration
+        # The event type.
         self.event = event
+        # The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
         self.event_time = event_time
 
     def validate(self):

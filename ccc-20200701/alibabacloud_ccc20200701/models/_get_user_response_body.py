@@ -17,11 +17,17 @@ class GetUserResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Extension parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -96,21 +102,37 @@ class GetUserResponseBodyData(DaraModel):
         user_id: str = None,
         work_mode: str = None,
     ):
+        # Agent profile picture URL.
         self.avatar_url = avatar_url
+        # SIP phone extension number. If the agent has registered a SIP phone, this parameter is the extension number of the SIP phone device.
         self.device_ext = device_ext
+        # Device ID, which is the identity of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # The status of the SIP phone device. If no SIP phone is registered, the status is UNREGISTERED (Unregistered). If a SIP phone was previously registered but is currently offline, the status is OFFLINE (Offline). If a SIP phone is registered and currently online, the status is ONLINE (Online).
         self.device_state = device_state
+        # Agent\\"s employee ID.
         self.display_id = display_id
+        # Agent display name.
         self.display_name = display_name
+        # Mailbox.
         self.email = email
+        # Agent extension number.
         self.extension = extension
+        # Instance ID.
         self.instance_id = instance_id
+        # Agent logon name.
         self.login_name = login_name
+        # Agent\\"s personal phone number.
         self.mobile = mobile
+        # Agent nickname
         self.nickname = nickname
+        # Role ID, in the format: role\\@instance ID.
         self.role_id = role_id
+        # Role name.
         self.role_name = role_name
+        # Agent ID.
         self.user_id = user_id
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):

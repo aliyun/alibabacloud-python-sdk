@@ -17,11 +17,17 @@ class ListFlashSmsSettingsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # A list of incorrect parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListFlashSmsSettingsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of configurations.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -143,9 +153,17 @@ class ListFlashSmsSettingsResponseBodyDataList(DaraModel):
         skill_group_id: str = None,
         skill_group_name: str = None,
     ):
+        # Indicates whether flash SMS is enabled for the skill group.
+        # 
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.enabled = enabled
+        # The instance ID.
         self.instance_id = instance_id
+        # The skill group ID.
         self.skill_group_id = skill_group_id
+        # The name of the skill group.
         self.skill_group_name = skill_group_name
 
     def validate(self):

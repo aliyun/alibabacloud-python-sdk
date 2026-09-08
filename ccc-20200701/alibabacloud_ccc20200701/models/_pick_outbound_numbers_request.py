@@ -12,11 +12,18 @@ class PickOutboundNumbersRequest(DaraModel):
         instance_id: str = None,
         skill_group_id_list: str = None,
     ):
+        # Called number.
+        # 
         # This parameter is required.
         self.called_number = called_number
+        # The desired quantity of selectable numbers to return. Default is 1.
         self.count = count
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A collection of skill group IDs, formatted as a JSON array string. Each array element is a skill group ID. Numbers are associated with skill groups, and this parameter specifies from which skill groups to select numbers.
+        # 
         # This parameter is required.
         self.skill_group_id_list = skill_group_id_list
 

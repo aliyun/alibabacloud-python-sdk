@@ -14,13 +14,21 @@ class ClaimCallRequest(DaraModel):
         tags: str = None,
         user_id: str = None,
     ):
+        # A JSON string that lists the agents and their corresponding skill groups eligible to claim the call.
         self.candidate_user_list_json = candidate_user_list_json
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the call.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The ID of the skill group that the call is assigned to.
         self.skill_group_id = skill_group_id
+        # A unique business identifier for scheduling purposes. Subsequent event notifications include this identifier.
         self.tags = tags
+        # The ID of the agent claiming the call.
         self.user_id = user_id
 
     def validate(self):

@@ -14,10 +14,15 @@ class GetUploadAudioDataParamsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID, which can be used for LogSearch of the API.
         self.request_id = request_id
 
     def validate(self):
@@ -71,6 +76,7 @@ class GetUploadAudioDataParamsResponseBodyData(DaraModel):
         self,
         params_str: str = None,
     ):
+        # Parameters related to offline quality inspection audio files.
         self.params_str = params_str
 
     def validate(self):

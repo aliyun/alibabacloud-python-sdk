@@ -17,11 +17,17 @@ class ListCampaignsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListCampaignsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of predictive dialing campaigns.
         self.list = list
+        # The page number. Valid values: 1 to 100.
         self.page_number = page_number
+        # The page size. Valid values: 1 to 100.
         self.page_size = page_size
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -159,25 +169,45 @@ class ListCampaignsResponseBodyDataList(DaraModel):
         strategy_type: str = None,
         total_cases: int = None,
     ):
+        # The actual end time of the predictive dialing campaign. The value is a UNIX timestamp in milliseconds.
         self.actual_end_time = actual_end_time
+        # The actual start time of the predictive dialing campaign. The value is a UNIX timestamp in milliseconds.
         self.actual_start_time = actual_start_time
+        # The ID of the predictive dialing campaign.
         self.campaign_id = campaign_id
+        # The number of aborted cases in the predictive dialing campaign. An aborted case indicates that the call to the contact was canceled.
         self.cases_aborted = cases_aborted
+        # The number of connected cases in the predictive dialing campaign.
         self.cases_connected = cases_connected
+        # The number of uncompleted cases in the predictive dialing campaign. An uncompleted case indicates that the call was not connected and the maximum number of retry attempts was not reached.
         self.cases_uncompleted = cases_uncompleted
+        # The completion rate. This parameter is deprecated. You can calculate the completion rate by using the formula (TotalCases - CasesUnCompleted) / TotalCases.
         self.completion_rate = completion_rate
+        # The ID of the IVR contact flow associated with the phone number.
         self.contact_flow_id = contact_flow_id
+        # The maximum number of attempts for the predictive dialing campaign. This value specifies the maximum number of redial attempts when a call to a number fails.
         self.max_attempt_count = max_attempt_count
+        # The minimum redial interval for the predictive dialing campaign. This value specifies the minimum interval between redial attempts after a failure. Unit: seconds.
         self.min_attempt_interval = min_attempt_interval
+        # The name of the predictive dialing campaign.
         self.name = name
+        # The planned end time of the predictive dialing campaign. The value is a UNIX timestamp in milliseconds.
         self.planed_end_time = planed_end_time
+        # The planned start time of the predictive dialing campaign. The value is a UNIX timestamp in milliseconds.
         self.planed_start_time = planed_start_time
+        # The ID of the associated skill group.
         self.queue_id = queue_id
+        # The name of the skill group.
         self.queue_name = queue_name
+        # Indicates whether the campaign is a simulated campaign.
         self.simulation = simulation
+        # The state of the predictive dialing campaign.
         self.state = state
+        # The strategy parameters of the predictive dialing campaign. Example for the PID strategy: {"abandonRate":"5","historicalConnectedRate":"35"}. Example for the PACING strategy: {"ratio":1}. abandonRate specifies the expected call abandon rate. historicalConnectedRate specifies the historical reference connection rate. ratio specifies the fixed dialing ratio.
         self.strategy_parameters = strategy_parameters
+        # The strategy mode of the predictive dialing campaign.
         self.strategy_type = strategy_type
+        # The total number of phone numbers.
         self.total_cases = total_cases
 
     def validate(self):

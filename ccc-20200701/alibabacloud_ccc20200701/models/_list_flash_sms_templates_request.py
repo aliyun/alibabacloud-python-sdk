@@ -11,9 +11,13 @@ class ListFlashSmsTemplatesRequest(DaraModel):
         instance_id: str = None,
         provider_id: str = None,
     ):
+        # Flash SMS configuration ID.
         self.application_id = application_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Flash SMS provider ID.
         self.provider_id = provider_id
 
     def validate(self):

@@ -12,10 +12,13 @@ class RemoveBlacklistCallTaggingResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):

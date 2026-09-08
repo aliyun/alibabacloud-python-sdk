@@ -10,8 +10,11 @@ class RemoveDoNotCallNumbersRequest(DaraModel):
         instance_id: str = None,
         number_list: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # List of Do Not Call numbers to be deleted, formatted as a JSON array string. The array length must be between 1 and 300.
         self.number_list = number_list
 
     def validate(self):

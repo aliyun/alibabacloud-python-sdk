@@ -17,11 +17,17 @@ class GetVisitorLoginDetailsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Returned data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Parameter information.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -86,11 +92,17 @@ class GetVisitorLoginDetailsResponseBodyData(DaraModel):
         chat_server_url: str = None,
         chat_user_id: str = None,
     ):
+        # Chat session application ID.
         self.chat_app_id = chat_app_id
+        # Chat session application key.
         self.chat_app_key = chat_app_key
+        # Chat device ID.
         self.chat_device_id = chat_device_id
+        # Chat session login token.
         self.chat_login_token = chat_login_token
+        # Chat session server address.
         self.chat_server_url = chat_server_url
+        # Visitor\\"s identity ID.
         self.chat_user_id = chat_user_id
 
     def validate(self):

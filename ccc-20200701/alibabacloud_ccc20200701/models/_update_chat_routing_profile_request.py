@@ -10,8 +10,12 @@ class UpdateChatRoutingProfileRequest(DaraModel):
         instance_id: str = None,
         routing_profiles: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The session assignment/transfer configuration.
+        # 
         # This parameter is required.
         self.routing_profiles = routing_profiles
 

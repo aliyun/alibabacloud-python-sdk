@@ -16,18 +16,31 @@ class ProcessCustomIMCallbackRequest(DaraModel):
         sender_id: str = None,
         sender_name: str = None,
     ):
+        # The channel ID.
+        # 
         # This parameter is required.
         self.access_channel_id = access_channel_id
+        # The session ID.
+        # 
         # This parameter is required.
         self.conversation_id = conversation_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The message content.
+        # 
         # This parameter is required.
         self.message_content = message_content
+        # The request ID.
         self.request_id = request_id
+        # The profile picture ID.
         self.sender_avatar_media_id = sender_avatar_media_id
+        # The user ID of the message sender.
+        # 
         # This parameter is required.
         self.sender_id = sender_id
+        # The name of the sender.
         self.sender_name = sender_name
 
     def validate(self):

@@ -14,14 +14,23 @@ class LaunchAuthenticationRequest(DaraModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # The contact flow ID for the IVR identity verification flow.
+        # 
         # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # Variables passed to the contact flow. This parameter is optional. The configured variables can be retrieved and used within the IVR flow. The format is a JSON string representing a collection of key-value pairs.
         self.contact_flow_variables = contact_flow_variables
+        # Device ID. This parameter is meaningless and can be filled in with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The agent ID that initiates identity verification.
         self.user_id = user_id
 
     def validate(self):

@@ -14,10 +14,15 @@ class StartChatResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +77,9 @@ class StartChatResponseBodyData(DaraModel):
         chat_conversation_id: str = None,
         job_id: str = None,
     ):
+        # The ID of the chat session.
         self.chat_conversation_id = chat_conversation_id
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):

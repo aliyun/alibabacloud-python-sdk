@@ -10,8 +10,12 @@ class GetTicketRequest(DaraModel):
         instance_id: str = None,
         ticket_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ticket ID.
+        # 
         # This parameter is required.
         self.ticket_id = ticket_id
 

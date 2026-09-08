@@ -12,10 +12,16 @@ class GetVisitorLoginDetailsRequest(DaraModel):
         token: str = None,
         visitor_id: str = None,
     ):
+        # Chat device ID.
+        # 
         # This parameter is required.
         self.chat_device_id = chat_device_id
+        # Instance ID.
         self.instance_id = instance_id
+        # Channel token for network services.
         self.token = token
+        # Visitor ID.
+        # 
         # This parameter is required.
         self.visitor_id = visitor_id
 

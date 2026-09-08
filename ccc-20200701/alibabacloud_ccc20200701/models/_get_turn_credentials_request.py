@@ -10,8 +10,11 @@ class GetTurnCredentialsRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the agent. This parameter is optional. If you do not specify this parameter, the agent mapped to the current RAM user is used by default.
         self.user_id = user_id
 
     def validate(self):

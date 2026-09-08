@@ -16,14 +16,23 @@ class RedialCallRequest(DaraModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # Callee number.
         self.callee = callee
+        # Caller number.
         self.caller = caller
+        # Unique ID provided by the agent endpoint to identify an agent Workbench.
         self.device_id = device_id
+        # Instance ID of the call center.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call job ID. The job ID of the previous call used for redialing.
         self.job_id = job_id
+        # Per-call data. It must not exceed 128 bytes and is primarily used for extension purposes. Ordinary customers do not need to pay attention to it.
         self.tags = tags
+        # Timeout. If the call is not answered within the time specified by this parameter, it is automatically disconnected.
         self.timeout_seconds = timeout_seconds
+        # User ID of the agent.
         self.user_id = user_id
 
     def validate(self):

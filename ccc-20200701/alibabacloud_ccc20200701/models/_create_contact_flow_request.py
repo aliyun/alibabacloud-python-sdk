@@ -13,14 +13,27 @@ class CreateContactFlowRequest(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # IVR content.
+        # 
         # This parameter is required.
         self.definition = definition
+        # Version description.
+        # 
         # This parameter is required.
         self.description = description
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Contact flow name.
+        # 
         # This parameter is required.
         self.name = name
+        # Flow type.<br>
+        # Main flow: MAIN_FLOW<br>
+        # Child flow: SUB_FLOW<br>
+        # Survey flow: SURVEY_FLOW<br><br><br>
+        # 
         # This parameter is required.
         self.type = type
 

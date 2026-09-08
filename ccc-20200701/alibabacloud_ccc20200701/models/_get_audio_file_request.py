@@ -10,8 +10,12 @@ class GetAudioFileRequest(DaraModel):
         audio_resource_id: str = None,
         instance_id: str = None,
     ):
+        # Audio resource ID, the UUID of the audio file.
+        # 
         # This parameter is required.
         self.audio_resource_id = audio_resource_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

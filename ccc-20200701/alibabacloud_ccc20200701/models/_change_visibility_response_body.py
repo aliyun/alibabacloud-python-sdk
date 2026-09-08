@@ -17,11 +17,17 @@ class ChangeVisibilityResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The response parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,15 +96,25 @@ class ChangeVisibilityResponseBodyData(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # The break code.
         self.break_code = break_code
+        # The device ID. This can be the ID of a browser-based WebRTC softphone or a physical phone. Only one device can be registered at a time.
         self.device_id = device_id
+        # The agent\\"s extension number.
         self.extension = extension
+        # The instance ID.
         self.instance_id = instance_id
+        # The call ID. If populated, this field indicates that the agent is in a call.
         self.job_id = job_id
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # The IDs of the skill groups to which the agent is signed in.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # The agent ID.
         self.user_id = user_id
+        # The agent state.
         self.user_state = user_state
+        # The work mode.
         self.work_mode = work_mode
 
     def validate(self):

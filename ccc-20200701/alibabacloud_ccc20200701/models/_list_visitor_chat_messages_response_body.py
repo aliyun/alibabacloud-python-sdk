@@ -16,11 +16,15 @@ class ListVisitorChatMessagesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code
         self.code = code
+        # Data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -75,7 +79,9 @@ class ListVisitorChatMessagesResponseBodyData(DaraModel):
         messages: List[main_models.ListVisitorChatMessagesResponseBodyDataMessages] = None,
         next_page_token: str = None,
     ):
+        # Message list
         self.messages = messages
+        # Token for the next page
         self.next_page_token = next_page_token
 
     def validate(self):
@@ -123,12 +129,27 @@ class ListVisitorChatMessagesResponseBodyDataMessages(DaraModel):
         sender_type: str = None,
         timestamp: int = None,
     ):
+        # Message content
         self.content = content
+        # Call ID
         self.job_id = job_id
+        # Sender profile picture URL
         self.sender_avatar_url = sender_avatar_url
+        # Sender user ID
         self.sender_id = sender_id
+        # Sender name
         self.sender_name = sender_name
+        # Sender type
+        # 
+        # Valid values:
+        # 
+        # - **ADMIN**: system
+        # 
+        # - **CUSTOMER**: visitor
+        # 
+        # - **AGENT**: agent
         self.sender_type = sender_type
+        # UNIX timestamp
         self.timestamp = timestamp
 
     def validate(self):

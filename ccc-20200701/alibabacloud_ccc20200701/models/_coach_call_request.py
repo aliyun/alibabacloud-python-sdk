@@ -14,14 +14,23 @@ class CoachCallRequest(DaraModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # Agent ID being coached.
+        # 
         # This parameter is required.
         self.coached_user_id = coached_user_id
+        # Device ID. This field is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Coaching timeout. If the coaching session is not established within the specified time, the coaching operation is canceled. This field is optional and defaults to 30 seconds.
         self.timeout_seconds = timeout_seconds
+        # Agent ID initiating the coaching.
         self.user_id = user_id
 
     def validate(self):

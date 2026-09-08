@@ -10,8 +10,12 @@ class DeleteCustomCallTaggingRequest(DaraModel):
         instance_id: str = None,
         number: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number associated with the inbound call tag.
+        # 
         # This parameter is required.
         self.number = number
 

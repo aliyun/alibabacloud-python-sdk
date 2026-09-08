@@ -21,23 +21,45 @@ class CreateUserRequest(DaraModel):
         skill_level_list: str = None,
         work_mode: str = None,
     ):
+        # The URL of the agent\\"s profile picture.
         self.avatar_url = avatar_url
+        # The agent\\"s ID number. Set this as needed.
         self.display_id = display_id
+        # The display name of the agent. It must be 1 to 128 characters in length.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The email address of the agent. After the agent is created, an email is sent to this address. The email contains the logon URL for Cloud Contact Center, and the username and password for the RAM account. Keep this information secure.
+        # 
         # This parameter is required.
         self.email = email
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The logon name of the agent. It must be 4 to 64 characters in length and can contain uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.login_name = login_name
+        # The personal phone number of the agent. This number is used in OFF_SITE mode. The agent can use this number to answer calls in OFF_SITE mode.
         self.mobile = mobile
+        # Specifies whether to send an email notification.
+        # 
+        # - true: Send
+        # 
+        # - false: Do not send
         self.need_email_notification = need_email_notification
+        # The agent\\"s nickname.
         self.nickname = nickname
+        # Specifies whether the agent must reset the password upon the first logon. If set to true, the agent is prompted to reset the password when they first log on to the RAM account. Otherwise, they are not prompted. The default value is false.
         self.reset_password = reset_password
+        # The role ID. The format is Role\\@InstanceID. The following roles are supported: Admin (administrator), Manager (skill group leader), and Agent (agent).
+        # 
         # This parameter is required.
         self.role_id = role_id
+        # A list of skill levels for skill groups. This is a string in the format of a JSON array. The array can contain up to 100 elements. Each element is an object that contains two fields: skillGroupId and skillLevel. For skillGroupId, enter the ID of the skill group to add. For skillLevel, enter the skill level to add. The value can range from 1 to 10. A smaller value indicates a higher skill level, meaning the agent can handle more calls per unit of time.
         self.skill_level_list = skill_level_list
+        # The work mode.
         self.work_mode = work_mode
 
     def validate(self):

@@ -14,10 +14,15 @@ class GetChatRoutingProfileResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,9 +79,35 @@ class GetChatRoutingProfileResponseBodyData(DaraModel):
         distribution_settings: str = None,
         routing_type: str = None,
     ):
+        # Agent session concurrent configuration.
+        # 
+        # - AllowExceedingLimitWhenTransferring: Allow exceeding the limit when transferring. When transferring sessions to other agents, exceeding the recipient\\"s limit is allowed, but the total cannot exceed 30.
+        # 
+        # - AllowExceedingLimitWhenClaiming: Allow exceeding the limit when claiming. When an agent actively claims sessions from the queue, exceeding the limit is allowed, but the total cannot exceed 30.
+        # 
+        # - ConcurrencyLimit: The number of network business sessions an agent can process simultaneously.
+        # 
+        # - Enabled: Enable this configuration.
         self.agent_concurrency_settings = agent_concurrency_settings
+        # Session configuration.
+        # 
+        # - IdleChatTimeoutSeconds: Automatic session end time. If no customer response is received within a specific period, the system ends the session. Unit: seconds.
         self.chat_settings = chat_settings
+        # Agent session allocation configuration.
+        # 
+        # - AgentRingTimeoutSeconds: Agent processing timeout limit.
+        # 
+        # - MaxNumberOfConversationsAgentCanMiss: The maximum number of consecutive unanswered sessions an agent can miss.
+        # 
+        # - PostAgentMissingConversionsAction: After an agent misses more than the set number of consecutive responses, the system sets the agent\\"s status, such as Break, Invisible, or Nothing (remain unchanged).
+        # 
+        # - Enabled: Enable.
         self.distribution_settings = distribution_settings
+        # Call distribution type.
+        # 
+        # - Automatic distribution (Automatic).
+        # 
+        # - Manual distribution (Manual).
         self.routing_type = routing_type
 
     def validate(self):

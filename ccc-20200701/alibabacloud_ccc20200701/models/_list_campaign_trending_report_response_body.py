@@ -16,10 +16,15 @@ class ListCampaignTrendingReportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # List of statistical data points.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -93,20 +98,35 @@ class ListCampaignTrendingReportResponseBodyData(DaraModel):
         work_agents: int = None,
         working_agents: int = None,
     ):
+        # Number of agents on break.
         self.break_agents = break_agents
+        # Number of agents in break status.
         self.breaking_agents = breaking_agents
+        # The concurrent call volume, which refers to the number of simultaneous outbound calls.
         self.concurrency = concurrency
+        # The timestamp for segmented statistics, formatted as a UNIX timestamp in milliseconds.
         self.datetime = datetime
+        # The number of published agents.
         self.logged_in_agents = logged_in_agents
+        # The number of agents in outbound-only mode who are on a break.
         self.outbound_scenario_breaking_agents = outbound_scenario_breaking_agents
+        # Number of agents in idle status under outbound-only mode.
         self.outbound_scenario_ready_agents = outbound_scenario_ready_agents
+        # The number of agents in outbound-only mode who are currently on a call.
         self.outbound_scenario_talking_agents = outbound_scenario_talking_agents
+        # Number of agents in post-processing status under outbound-only mode.
         self.outbound_scenario_working_agents = outbound_scenario_working_agents
+        # Number of idle agents.
         self.ready_agents = ready_agents
+        # Time of the statistical data point, formatted as a UNIX timestamp in milliseconds.
         self.stats_time = stats_time
+        # Deprecated. Refer to TalkAgents.
         self.talk_agents = talk_agents
+        # The number of agents in a call.
         self.talking_agents = talking_agents
+        # Deprecated. Refer to WorkingAgents.
         self.work_agents = work_agents
+        # Number of agents in post-processing status.
         self.working_agents = working_agents
 
     def validate(self):

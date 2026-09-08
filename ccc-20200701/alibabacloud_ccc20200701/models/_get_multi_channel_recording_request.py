@@ -10,8 +10,12 @@ class GetMultiChannelRecordingRequest(DaraModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # Call ID.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

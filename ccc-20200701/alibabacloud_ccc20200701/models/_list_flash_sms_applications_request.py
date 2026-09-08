@@ -13,11 +13,17 @@ class ListFlashSmsApplicationsRequest(DaraModel):
         page_size: int = None,
         provider_id: str = None,
     ):
+        # Cloud Contact Center instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Flash SMS configuration name.
         self.name = name
+        # Page number. Valid values: 1 to 100.
         self.page_number = page_number
+        # Page size. Valid values: 1 to 100.
         self.page_size = page_size
+        # Flash SMS provider ID.
         self.provider_id = provider_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class InterceptCallResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # 响应码。
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,7 +88,9 @@ class InterceptCallResponseBodyData(DaraModel):
         call_context: main_models.InterceptCallResponseBodyDataCallContext = None,
         user_context: main_models.InterceptCallResponseBodyDataUserContext = None,
     ):
+        # Call context environment.
         self.call_context = call_context
+        # Agent context environment.
         self.user_context = user_context
 
     def validate(self):
@@ -133,18 +141,31 @@ class InterceptCallResponseBodyDataUserContext(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break state after an agent is published and before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent call rejection). There are no restrictions on Custom-defined status codes, and customers can define them according to their business needs.
         self.break_code = break_code
+        # Device ID, which is the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # Agent extension number.
         self.extension = extension
+        # The time when the last heartbeat was received from the agent, formatted as a UNIX timestamp in milliseconds.
         self.heartbeat = heartbeat
+        # Instance ID.
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
+        # The agent\\"s personal phone number.
         self.mobile = mobile
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # The time when the agent was most recently reserved. Being reserved means an incoming call will be assigned to the agent shortly. The format is a UNIX timestamp in milliseconds.
         self.reserved = reserved
+        # List of skill group IDs that the agent has signed into.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID.
         self.user_id = user_id
+        # Agent status.
         self.user_state = user_state
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):
@@ -247,9 +268,13 @@ class InterceptCallResponseBodyDataCallContext(DaraModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # The call type of the channel.
         self.call_type = call_type
+        # The list of channels.
         self.channel_contexts = channel_contexts
+        # Instance ID.
         self.instance_id = instance_id
+        # The call ID.
         self.job_id = job_id
 
     def validate(self):
@@ -316,19 +341,33 @@ class InterceptCallResponseBodyDataCallContextChannelContexts(DaraModel):
         user_extension: str = None,
         user_id: str = None,
     ):
+        # The call type of the channel.
         self.call_type = call_type
+        # 话务通道标志。
         self.channel_flags = channel_flags
+        # 话务通道 ID。
         self.channel_id = channel_id
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_CallType_enumValueTitles_COACH]Coaching
         self.channel_state = channel_state
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_CallType_enumValueTitles_BARGE]Barge-in
         self.destination = destination
+        # An auto-incremented ID assigned by the system. Customers do not need to concern themselves with this value.
         self.index = index
+        # 通话 ID。
         self.job_id = job_id
+        # 话务通道的主叫方。
         self.originator = originator
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_CallType_type]string
         self.release_initiator = release_initiator
+        # 话务通道的挂断原因，表示当前话务通道为什么会被挂断，取值来自 SIP 协议中定义的响应码，请客户参考 SIP 协议分析挂断原因。
         self.release_reason = release_reason
+        # 话务通道关联的技能组 ID，呼入场景下，关联的技能组 ID 由 IVR 中转人工模块配置的技能组决定，呼出场景下，关联的技能组 ID 为座席签入的第一个技能组的 ID。
         self.skill_group_id = skill_group_id
+        # 话务通道最近一次状态变化的时间戳，格式是 Unix 时间戳，单位毫秒。
         self.timestamp = timestamp
+        # 话务通道关联的坐席的分机号。
         self.user_extension = user_extension
+        # 话务通道关联的坐席 ID，如果是客户的话务通道，该字段为空。
         self.user_id = user_id
 
     def validate(self):

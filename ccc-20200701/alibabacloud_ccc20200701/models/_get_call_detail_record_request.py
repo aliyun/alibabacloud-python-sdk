@@ -10,8 +10,12 @@ class GetCallDetailRecordRequest(DaraModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # The call ID.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

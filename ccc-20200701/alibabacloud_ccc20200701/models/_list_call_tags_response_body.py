@@ -16,10 +16,15 @@ class ListCallTagsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListCallTagsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of number tags.
         self.list = list
+        # The page number, ranging from 1 to 100.
         self.page_number = page_number
+        # The page size, ranging from 1 to 100.
         self.page_size = page_size
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -133,7 +142,9 @@ class ListCallTagsResponseBodyDataList(DaraModel):
         instance_id: str = None,
         tag_name: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the number tag.
         self.tag_name = tag_name
 
     def validate(self):

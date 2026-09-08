@@ -17,11 +17,17 @@ class ListCallSummariesResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # List of error parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -92,11 +98,17 @@ class ListCallSummariesResponseBodyData(DaraModel):
         editor: str = None,
         ticket_id: str = None,
     ):
+        # Call ID.
         self.contact_id = contact_id
+        # Summary information.
         self.context = context
+        # Creation time.
         self.created_time = created_time
+        # Creator.
         self.creator = creator
+        # Editor.
         self.editor = editor
+        # Summary ID.
         self.ticket_id = ticket_id
 
     def validate(self):

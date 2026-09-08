@@ -12,12 +12,20 @@ class StartPrivacyCallRequest(DaraModel):
         caller: str = None,
         instance_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The callee\\"s number.
+        # 
         # This parameter is required.
         self.callee = callee
+        # The caller\\"s number.
+        # 
         # This parameter is required.
         self.caller = caller
+        # The ID of the Cloud Contact Center (CCC) instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

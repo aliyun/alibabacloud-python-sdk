@@ -16,10 +16,15 @@ class ListGroupChatMessagesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code returned in the response. A value of 200 indicates a successful request.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,7 +79,9 @@ class ListGroupChatMessagesResponseBodyData(DaraModel):
         messages: List[main_models.ListGroupChatMessagesResponseBodyDataMessages] = None,
         next_page_token: str = None,
     ):
+        # Message list.
         self.messages = messages
+        # Token for the next page.
         self.next_page_token = next_page_token
 
     def validate(self):
@@ -123,13 +130,29 @@ class ListGroupChatMessagesResponseBodyDataMessages(DaraModel):
         sender_type: str = None,
         timestamp: int = None,
     ):
+        # Message content.
         self.content = content
+        # Call ID.
         self.job_id = job_id
+        # Indicates whether the message was revoked.
         self.recalled = recalled
+        # Sender profile picture URL.
         self.sender_avatar_url = sender_avatar_url
+        # User ID of the message sender.
         self.sender_id = sender_id
+        # Sender name.
         self.sender_name = sender_name
+        # Sender type.
+        # 
+        # Valid values:
+        # 
+        # - **ADMIN**: system
+        # 
+        # - **CUSTOMER**: visitor
+        # 
+        # - **AGENT**: agent
         self.sender_type = sender_type
+        # Message timestamp, in Unix timestamp format, measured in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

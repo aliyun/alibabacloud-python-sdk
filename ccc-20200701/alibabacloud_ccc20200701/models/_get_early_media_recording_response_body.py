@@ -14,10 +14,15 @@ class GetEarlyMediaRecordingResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +77,9 @@ class GetEarlyMediaRecordingResponseBodyData(DaraModel):
         file_name: str = None,
         file_url: str = None,
     ):
+        # Recording file name.
         self.file_name = file_name
+        # OSS download URL for the recording file. Note the expiration time. The URL is valid for one day.
         self.file_url = file_url
 
     def validate(self):

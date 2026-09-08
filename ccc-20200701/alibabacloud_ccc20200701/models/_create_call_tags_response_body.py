@@ -16,10 +16,15 @@ class CreateCallTagsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The list of call tags that failed to be created.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,7 +85,9 @@ class CreateCallTagsResponseBodyData(DaraModel):
         item: str = None,
         reason: str = None,
     ):
+        # The name of the call tag that failed to be created.
         self.item = item
+        # The reason why the call tag creation failed.
         self.reason = reason
 
     def validate(self):

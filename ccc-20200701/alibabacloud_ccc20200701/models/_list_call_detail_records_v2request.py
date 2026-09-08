@@ -35,35 +35,179 @@ class ListCallDetailRecordsV2Request(DaraModel):
         sort_order: str = None,
         start_time: int = None,
     ):
+        # The list of visitor channel types.
+        # 
+        # Valid values:
+        # 
+        # Web: web page.
+        # 
+        # DingTalkServiceWindow: DingTalk service window.
+        # 
+        # AliMe: chatbot.
+        # 
+        # DingTalkRobot: DingTalk chatbot.
         self.access_channel_type_list = access_channel_type_list
+        # The ID of the agent.
         self.agent_id = agent_id
+        # Indicates whether the AI post-call analytics report is ready.
         self.analytics_report_ready = analytics_report_ready
+        # The intermediate number. The number must be an available outbound number under the instance. In a back-to-back call, this number is used to call the caller and the callee sequentially.
         self.broker = broker
+        # The called number.
         self.called_number = called_number
+        # The calling number.
         self.calling_number = calling_number
+        # Filters results by hangup cause.
+        # 
+        # Valid values:
+        # 
+        # AbandonedInQueue: Abandoned while queuing.
+        # 
+        # NoAnswer: Customer did not answer.
+        # 
+        # QueuingTimeout: Queuing timed out.
+        # 
+        # Voicemail: Transferred to voice mail.
+        # 
+        # QueuingFailed: Transfer to agent failed.
+        # 
+        # QueuingOverflow: Queue overflow.
+        # 
+        # AbandonedInVoiceNavigator: Abandoned during intelligent navigation.
+        # 
+        # Success: Ended normally.
+        # 
+        # IVRException: IVR exception.
+        # 
+        # AbandonedInRing: Abandoned while ringing.
+        # 
+        # AbandonedInIVR: Abandoned in IVR.
+        # 
+        # Reject: Customer rejected the call.
+        # 
+        # ForwardToOutsideNumber: Forwarded to an external number.
         self.contact_disposition_list = contact_disposition_list
+        # The list of call IDs.
         self.contact_id_list = contact_id_list
+        # Filters results by call type.
+        # 
+        # Valid values:
+        # 
+        # OUTBOUND: outbound call.
+        # 
+        # BACK2BACK: back-to-back call.
+        # 
+        # PRIVACY_DIAL: encrypted call.
+        # 
+        # INTERNAL: internal call.
+        # 
+        # PREDICTIVE: predictive outbound call.
+        # 
+        # INBOUND: inbound call.
+        # 
+        # CONFERENCE: conference call.
         self.contact_type_list = contact_type_list
+        # Filters results by the reason for unanswered calls.
+        # 
+        # Valid values:
+        # 
+        # NoAnswer: No answer.
+        # 
+        # OutOfService: Out of service.
+        # 
+        # NotExist: Number does not exist.
+        # 
+        # Restricted: Call restricted.
+        # 
+        # Busy: Line busy.
+        # 
+        # NotConnected: Cannot be connected.
+        # 
+        # PowerOff: Phone powered off.
         self.early_media_state_list = early_media_state_list
+        # The end time of the historical data to retrieve. The default value is the current time. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The ID of the first agent who participated in the call.
         self.first_agent_id = first_agent_id
+        # The instance ID of the call center.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The media type.
+        # 
+        # Valid values:
+        # 
+        # AUDIO: voice call.
+        # 
+        # VIDEO: video call.
+        # 
+        # CHAT: message.
+        # 
+        # ALL: all types.
         self.media_type = media_type
+        # The phone number.
         self.number = number
+        # The field by which to sort the results. This parameter is optional. Default value: startTime (call start time).
+        # 
+        # Valid values:
+        # 
+        # startTime: call start time.
         self.order_by_field = order_by_field
+        # The page number. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The party that hung up.
         self.release_initiator_list = release_initiator_list
+        # The hangup reason.
         self.release_reason_list = release_reason_list
+        # Filters results by satisfaction description. The description content is defined by the customer.
         self.satisfaction_description_list = satisfaction_description_list
+        # Filters results by satisfaction rating. Separate multiple satisfaction ratings with commas (,).
+        # 
+        # Valid values:
+        # 
+        # -2: Not sent.
+        # 
+        # -1: Not rated.
+        # 
+        # Other positive numbers: custom satisfaction rating values.
         self.satisfaction_rate_list = satisfaction_rate_list
+        # The satisfaction survey channel.
+        # 
+        # Valid values:
+        # 
+        # IVR: voice-based satisfaction survey.
+        # 
+        # SMS: SMS-based satisfaction survey.
+        # 
+        # CHAT: message-based satisfaction survey.
         self.satisfaction_survey_channel = satisfaction_survey_channel
+        # The custom query text that follows the Lucene query syntax.
+        # 
+        # The following table describes the supported query fields and query types:
+        # 
+        # accessChannelUserId: the visitor ID. Supports exact match and fuzzy match.
+        # 
+        # accessChannelName: the channel name. Supports exact match and fuzzy match.
+        # 
+        # text: the session text. Supports fuzzy match.
         self.search_pattern = search_pattern
+        # The list of skill group IDs to which the agent belongs.
         self.skill_group_id_list = skill_group_id_list
+        # The sort order. Default value: DESC.
+        # 
+        # Valid values:
+        # 
+        # ASC: ascending order.
+        # 
+        # DESC: descending order.
         self.sort_order = sort_order
+        # The start time of the historical data to retrieve. The default value is 00:00 of the current day. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

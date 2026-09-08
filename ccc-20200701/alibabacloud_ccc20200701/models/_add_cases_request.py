@@ -14,9 +14,14 @@ class AddCasesRequest(DaraModel):
         case_list: List[main_models.AddCasesRequestCaseList] = None,
         instance_id: str = None,
     ):
+        # The predictive outbound call activity ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The list of outbound call cases.
         self.case_list = case_list
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -71,10 +76,15 @@ class AddCasesRequestCaseList(DaraModel):
         phone_number: str = None,
         reference_id: str = None,
     ):
+        # The caller number. If this field is specified, the corresponding contact will be called using this number instead of a randomly selected one.
         self.caller = caller
+        # Customer-defined custom variables in JSON object format. The object can contain up to 10 properties, and both the name and value of each property are defined by the customer.
         self.custom_variables = custom_variables
+        # The desensitized callee number. If this field is not empty, it indicates that the callee number must be desensitized. The desensitization rule is defined by the customer, and only the desensitized callee number needs to be provided here. Using a desensitized callee number means that in certain scenarios, the displayed callee number will be the desensitized version, and the real callee number cannot be viewed.
         self.masked_callee = masked_callee
+        # The contact\\"s phone number.
         self.phone_number = phone_number
+        # The business ID, which is an identifier from the customer\\"s operational system used in integration scenarios.
         self.reference_id = reference_id
 
     def validate(self):

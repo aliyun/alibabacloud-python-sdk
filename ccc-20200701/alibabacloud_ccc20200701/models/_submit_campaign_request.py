@@ -10,8 +10,12 @@ class SubmitCampaignRequest(DaraModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
+        # The predictive outbound calling activity ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

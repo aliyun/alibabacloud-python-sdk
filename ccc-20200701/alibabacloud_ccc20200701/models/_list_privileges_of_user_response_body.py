@@ -16,10 +16,15 @@ class ListPrivilegesOfUserResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,8 +86,11 @@ class ListPrivilegesOfUserResponseBodyData(DaraModel):
         name: str = None,
         scope: str = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Permission Name. Regular Customers do not need to understand specific permission names; this API is primarily invoked by the Workbench.
         self.name = name
+        # Permission Scope.
         self.scope = scope
 
     def validate(self):

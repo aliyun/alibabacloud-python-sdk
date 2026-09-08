@@ -11,10 +11,15 @@ class AppendCasesShrinkRequest(DaraModel):
         instance_id: str = None,
         body_shrink: str = None,
     ):
+        # The predictive campaign ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of cases to be added.
         self.body_shrink = body_shrink
 
     def validate(self):

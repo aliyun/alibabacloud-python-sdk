@@ -16,10 +16,15 @@ class ListIntervalAgentSkillGroupReportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # A list of interval-based statistical data for the agent in the skill group.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListIntervalAgentSkillGroupReportResponseBodyData(DaraModel):
         overall: main_models.ListIntervalAgentSkillGroupReportResponseBodyDataOverall = None,
         stats_time: int = None,
     ):
+        # Back-to-back call metrics.
         self.back_2back = back_2back
+        # Inbound metrics.
         self.inbound = inbound
+        # Internal call metrics.
         self.internal = internal
+        # Outbound metrics.
         self.outbound = outbound
+        # Overall metrics.
         self.overall = overall
+        # The start time of the time range. This is a UNIX timestamp in milliseconds.
         self.stats_time = stats_time
 
     def validate(self):
@@ -191,37 +202,69 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(DaraModel):
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # The average break duration, in seconds.
         self.average_break_time = average_break_time
+        # The average hold duration, in seconds. Formula: TotalHoldTime / (Inbound.CallsHold + Outbound.CallsHold).
         self.average_hold_time = average_hold_time
+        # The average ready duration, in seconds. Formula: TotalReadyTime / Number of times in Ready state. The number of times in the Ready state is not a statistical field of the API.
         self.average_ready_time = average_ready_time
+        # The average talk duration, in seconds. Formula: TotalTalkTime / (CallsAnswered + CallsHandled).
         self.average_talk_time = average_talk_time
+        # The average post-processing duration, in seconds. Formula: TotalWorkTime / TotalCalls.
         self.average_work_time = average_work_time
+        # The list of break details.
         self.break_code_detail_list = break_code_detail_list
+        # This parameter has a value only when Interval is set to Daily. It indicates the first up time of the day.
         self.first_check_in_time = first_check_in_time
+        # The last check-out time. This is a UNIX timestamp in milliseconds.
         self.last_check_out_time = last_check_out_time
+        # The last check-out time. This is a UNIX timestamp in milliseconds.
         self.last_checkout_time = last_checkout_time
+        # The maximum break duration, in seconds.
         self.max_break_time = max_break_time
+        # The maximum hold duration, in seconds.
         self.max_hold_time = max_hold_time
+        # The maximum ready duration, in seconds.
         self.max_ready_time = max_ready_time
+        # The maximum talk duration, in seconds.
         self.max_talk_time = max_talk_time
+        # The maximum post-processing duration, in seconds.
         self.max_work_time = max_work_time
+        # The agent occupancy rate.
         self.occupancy_rate = occupancy_rate
+        # The satisfaction index. This is the average value of the single-digit numbers pressed for satisfaction surveys.
         self.satisfaction_index = satisfaction_index
+        # The satisfaction rate. Formula: Number of satisfactory ratings / Number of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # The number of satisfaction surveys sent.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # The number of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # The total break duration, in seconds.
         self.total_break_time = total_break_time
+        # The total number of calls. Formula: CallsOffered + CallsDialed.
         self.total_calls = total_calls
+        # The total hold duration, in seconds.
         self.total_hold_time = total_hold_time
+        # The total logon duration, in seconds. *Note: This does not include offline and break durations.*
         self.total_logged_in_time = total_logged_in_time
+        # The total off-site online duration, in seconds.
         self.total_off_site_logged_in_time = total_off_site_logged_in_time
+        # The online duration of the office phone, in seconds.
         self.total_office_phone_logged_in_time = total_office_phone_logged_in_time
+        # The total on-site online duration, in seconds.
         self.total_on_site_logged_in_time = total_on_site_logged_in_time
+        # The total online duration in outbound-only scenarios, in seconds.
         self.total_outbound_scenario_logged_in_time = total_outbound_scenario_logged_in_time
+        # The total idle duration in outbound-only scenarios, in seconds.
         self.total_outbound_scenario_ready_time = total_outbound_scenario_ready_time
+        # The total duration of outbound-only scenarios, in seconds.
         self.total_outbound_scenario_time = total_outbound_scenario_time
+        # The total ready duration, in seconds.
         self.total_ready_time = total_ready_time
+        # The total talk duration, in seconds.
         self.total_talk_time = total_talk_time
+        # The total post-processing duration, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -445,8 +488,11 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailLis
         count: int = None,
         duration: int = None,
     ):
+        # The break code.
         self.break_code = break_code
+        # The number of times.
         self.count = count
+        # The duration, in seconds.
         self.duration = duration
 
     def validate(self):
@@ -513,33 +559,61 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOutbound(DaraModel):
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # The connection rate. Formula: CallsAnswered / CallsDialed. The result may exceed 100% because the connection event and the answer event may occur in different time ranges.
         self.answer_rate = answer_rate
+        # The average dialing duration, in seconds. Formula: TotalDialingTime / CallsDialed.
         self.average_dialing_time = average_dialing_time
+        # The average hold duration, in seconds. Formula: TotalHoldTime / CallsHold.
         self.average_hold_time = average_hold_time
+        # The average ring duration, in seconds.
         self.average_ring_time = average_ring_time
+        # The average talk duration, in seconds. Formula: TotalTalkTime / CallsAnswered.
         self.average_talk_time = average_talk_time
+        # The average post-processing duration, in seconds. Formula: TotalWorkTime / CallsDialed.
         self.average_work_time = average_work_time
+        # The number of connected calls.
         self.calls_answered = calls_answered
+        # The number of consulted transfers-in. If a call is transferred to the agent multiple times, each transfer is counted as one.
         self.calls_attended_transfer_in = calls_attended_transfer_in
+        # The number of consulted transfers-out. If a call is transferred to other agents multiple times, each transfer is counted as one.
         self.calls_attended_transfer_out = calls_attended_transfer_out
+        # The number of blind transfers-in. If a call is transferred to the agent multiple times, each transfer is counted as one.
         self.calls_blind_transfer_in = calls_blind_transfer_in
+        # The number of blind transfers-out. If a call is transferred to other agents multiple times, each transfer is counted as one.
         self.calls_blind_transfer_out = calls_blind_transfer_out
+        # The number of dialed calls.
         self.calls_dialed = calls_dialed
+        # The number of held calls. This is the number of times a call was put on hold.
         self.calls_hold = calls_hold
+        # The number of calls that rang for the agent.
         self.calls_ringed = calls_ringed
+        # The maximum dialing duration, in seconds.
         self.max_dialing_time = max_dialing_time
+        # The maximum hold duration, in seconds.
         self.max_hold_time = max_hold_time
+        # The maximum ring duration, in seconds.
         self.max_ring_time = max_ring_time
+        # The maximum talk duration, in seconds.
         self.max_talk_time = max_talk_time
+        # The maximum post-processing duration, in seconds.
         self.max_work_time = max_work_time
+        # The satisfaction index. This is the average value of the single-digit numbers pressed for satisfaction surveys.
         self.satisfaction_index = satisfaction_index
+        # The satisfaction rate. Formula: Number of satisfactory ratings / Number of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # The number of satisfaction surveys sent.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # The number of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # The total dialing duration, in seconds.
         self.total_dialing_time = total_dialing_time
+        # The total hold duration, in seconds.
         self.total_hold_time = total_hold_time
+        # The total ring duration, in seconds.
         self.total_ring_time = total_ring_time
+        # The total talk duration, in seconds.
         self.total_talk_time = total_talk_time
+        # The total post-processing duration, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -737,14 +811,23 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInternal(DaraModel):
         max_talk_time: int = None,
         total_talk_time: int = None,
     ):
+        # The average talk duration, in seconds.
         self.average_talk_time = average_talk_time
+        # The number of connected calls.
         self.calls_answered = calls_answered
+        # The number of dialed calls.
         self.calls_dialed = calls_dialed
+        # The number of answered calls. This is the number of times the agent answered a call. If a call enters a queue and is answered by multiple agents, it is counted as one.
         self.calls_handled = calls_handled
+        # The number of calls assigned to the agent. This includes calls that are blind transferred or consult transferred to the agent.
         self.calls_offered = calls_offered
+        # This parameter is deprecated. Use CallsTalked instead.
         self.calls_talk = calls_talk
+        # The number of calls participated in.
         self.calls_talked = calls_talked
+        # The maximum talk duration, in seconds.
         self.max_talk_time = max_talk_time
+        # The total talk duration, in seconds.
         self.total_talk_time = total_talk_time
 
     def validate(self):
@@ -849,35 +932,65 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInbound(DaraModel):
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # The average first response time for chat sessions, in seconds.
         self.average_first_response_time = average_first_response_time
+        # The average hold duration, in seconds. Formula: TotalHoldTime / CallsHold.
         self.average_hold_time = average_hold_time
+        # The average response time for chat sessions.
         self.average_response_time = average_response_time
+        # The average ring duration, in seconds.
         self.average_ring_time = average_ring_time
+        # The average talk duration, in seconds. Formula: TotalTalkTime / CallsHandled.
         self.average_talk_time = average_talk_time
+        # The average post-processing duration, in seconds. Formula: TotalWorkTime / CallsHandled.
         self.average_work_time = average_work_time
+        # The number of consulted transfers-in. If a call is transferred to the agent multiple times, each transfer is counted as one.
         self.calls_attended_transfer_in = calls_attended_transfer_in
+        # The number of consulted transfers-out. If a call is transferred to other agents multiple times, each transfer is counted as one.
         self.calls_attended_transfer_out = calls_attended_transfer_out
+        # The number of blind transfers-in. If a call is transferred to the agent multiple times, each transfer is counted as one.
         self.calls_blind_transfer_in = calls_blind_transfer_in
+        # The number of blind transfers-out. If a call is transferred to other agents multiple times, each transfer is counted as one.
         self.calls_blind_transfer_out = calls_blind_transfer_out
+        # The number of answered calls. This is the number of times the agent answered a call.
         self.calls_handled = calls_handled
+        # The number of held calls. This is the number of times a call was put on hold.
         self.calls_hold = calls_hold
+        # The number of calls assigned to the agent. This includes calls that are blind transferred or consult transferred to the agent.
         self.calls_offered = calls_offered
+        # The number of calls that rang for the agent.
         self.calls_ringed = calls_ringed
+        # The answer rate. Formula: CallsHandled / CallsOffered. The result may exceed 100% because the answer event and the assignment event may occur in different time ranges.
         self.handle_rate = handle_rate
+        # The maximum hold duration, in seconds.
         self.max_hold_time = max_hold_time
+        # The maximum ring duration, in seconds.
         self.max_ring_time = max_ring_time
+        # The maximum talk duration, in seconds.
         self.max_talk_time = max_talk_time
+        # The maximum post-processing duration, in seconds.
         self.max_work_time = max_work_time
+        # The satisfaction index. This is the average value of the single-digit numbers pressed for satisfaction surveys.
         self.satisfaction_index = satisfaction_index
+        # The satisfaction rate. Formula: Number of satisfactory ratings / Number of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # The number of satisfaction surveys sent.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # The number of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # The total hold duration, in seconds.
         self.total_hold_time = total_hold_time
+        # The total number of messages sent in chat sessions.
         self.total_messages_sent = total_messages_sent
+        # The total number of messages sent by the agent in chat sessions.
         self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        # The total number of messages sent by the customer in chat sessions.
         self.total_messages_sent_by_customer = total_messages_sent_by_customer
+        # The total ring duration, in seconds.
         self.total_ring_time = total_ring_time
+        # The total talk duration, in seconds.
         self.total_talk_time = total_talk_time
+        # The total post-processing duration, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -1097,24 +1210,43 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back(DaraModel):
         total_ring_time: int = None,
         total_talk_time: int = None,
     ):
+        # The answer rate on the agent side.
         self.agent_answer_rate = agent_answer_rate
+        # The agent answer rate.
         self.agent_handle_rate = agent_handle_rate
+        # The connection rate. Formula: CallsAnswered / CallsDialed. The result may exceed 100% because the connection event and the answer event may occur in different time ranges.
         self.answer_rate = answer_rate
+        # The average ring duration on the customer side, in seconds.
         self.average_customer_ring_time = average_customer_ring_time
+        # The average ring duration, in seconds.
         self.average_ring_time = average_ring_time
+        # The average talk duration, in seconds.
         self.average_talk_time = average_talk_time
+        # The number of calls answered by the agent.
         self.calls_agent_handled = calls_agent_handled
+        # The number of connected calls.
         self.calls_answered = calls_answered
+        # The number of calls answered by the customer.
         self.calls_customer_answered = calls_customer_answered
+        # The number of calls answered on the customer side.
         self.calls_customer_handled = calls_customer_handled
+        # The number of dialed calls.
         self.calls_dialed = calls_dialed
+        # The customer connection rate.
         self.customer_answer_rate = customer_answer_rate
+        # The answer rate on the customer side.
         self.customer_handle_rate = customer_handle_rate
+        # The maximum ring duration on the customer side, in seconds.
         self.max_customer_ring_time = max_customer_ring_time
+        # The maximum ring duration, in seconds.
         self.max_ring_time = max_ring_time
+        # The maximum talk duration, in seconds.
         self.max_talk_time = max_talk_time
+        # The total ring duration on the customer side, in seconds.
         self.total_customer_ring_time = total_customer_ring_time
+        # The total ring duration, in seconds.
         self.total_ring_time = total_ring_time
+        # The total talk duration, in seconds.
         self.total_talk_time = total_talk_time
 
     def validate(self):

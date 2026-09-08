@@ -16,10 +16,15 @@ class ListWaitingChatsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Returned data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87,14 +92,23 @@ class ListWaitingChatsResponseBodyData(DaraModel):
         skill_group_id: str = None,
         user_list: List[main_models.ListWaitingChatsResponseBodyDataUserList] = None,
     ):
+        # Access channel ID.
         self.access_channel_id = access_channel_id
+        # Access channel type.
         self.access_channel_type = access_channel_type
+        # Indicates whether the session has been assigned to an agent.
         self.being_assigned = being_assigned
+        # Chat session ID.
         self.chat_conversation_id = chat_conversation_id
+        # Enqueue time, in Unix timestamp format, in milliseconds.
         self.enqueue_time = enqueue_time
+        # Job ID.
         self.job_id = job_id
+        # Message list.
         self.messages = messages
+        # The skill group information.
         self.skill_group_id = skill_group_id
+        # User list.
         self.user_list = user_list
 
     def validate(self):
@@ -190,9 +204,13 @@ class ListWaitingChatsResponseBodyDataUserList(DaraModel):
         user_name: str = None,
         user_type: str = None,
     ):
+        # Profile picture URL.
         self.avatar_url = avatar_url
+        # User ID.
         self.user_id = user_id
+        # User name.
         self.user_name = user_name
+        # User type.
         self.user_type = user_type
 
     def validate(self):
@@ -240,8 +258,15 @@ class ListWaitingChatsResponseBodyDataMessages(DaraModel):
         sender_id: str = None,
         sender_type: str = None,
     ):
+        # Message content.
         self.content = content
+        # Message sender ID.
         self.sender_id = sender_id
+        # Sender type. Valid values:
+        # 
+        # - **CUSTOMER**: visitor
+        # 
+        # - **AGENT**: agent
         self.sender_type = sender_type
 
     def validate(self):

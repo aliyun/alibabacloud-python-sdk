@@ -29,26 +29,47 @@ class DataPropertiesValue(DaraModel):
         updated_time: int = None,
         creator: str = None,
     ):
+        # The display name.
         self.display_name = display_name
+        # The description.
         self.description = description
+        # The name.
         self.name = name
+        # The data type.
         self.data_type = data_type
+        # The regular expression that is used for validation.
         self.pattern = pattern
+        # The error message that is returned if the value does not match the regular expression.
         self.pattern_error_message = pattern_error_message
+        # The minimum length.
         self.min_length = min_length
+        # The maximum length.
         self.max_length = max_length
+        # The minimum value.
         self.minimum = minimum
+        # The maximum value.
         self.maximum = maximum
+        # Indicates whether the field is required.
         self.required = required
+        # Indicates whether the field is a system field.
         self.system = system
+        # Indicates whether the field is disabled.
         self.disabled = disabled
+        # Indicates whether the field is an array.
         self.array = array
+        # Indicates whether the field is read-only.
         self.read_only = read_only
+        # The type of the editor.
         self.editor_type = editor_type
+        # The extended properties.
         self.attributes = attributes
+        # The display order.
         self.display_order = display_order
+        # The time when the field was created.
         self.created_time = created_time
+        # The time when the field was last updated.
         self.updated_time = updated_time
+        # Creator
         self.creator = creator
 
     def validate(self):

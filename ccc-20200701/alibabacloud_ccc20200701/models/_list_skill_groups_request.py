@@ -13,13 +13,21 @@ class ListSkillGroupsRequest(DaraModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The media type. The default is AUDIO. Other options include CHAT and VIDEO.
         self.media_type = media_type
+        # The page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The paging size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Performs fuzzy matching based on the skill group name or display name. This parameter is optional and defaults to empty, which means no filtering is applied.
         self.search_pattern = search_pattern
 
     def validate(self):

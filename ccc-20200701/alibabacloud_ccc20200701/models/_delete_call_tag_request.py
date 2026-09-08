@@ -10,8 +10,12 @@ class DeleteCallTagRequest(DaraModel):
         instance_id: str = None,
         tag_name: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The phone number tag name. Ensure that the tag you specify has already been created.
+        # 
         # This parameter is required.
         self.tag_name = tag_name
 

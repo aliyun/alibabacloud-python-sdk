@@ -12,10 +12,15 @@ class EnableSchemaPropertyRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Field name
+        # 
         # This parameter is required.
         self.property_name = property_name
+        # Request ID
         self.request_id = request_id
         # schema id
         # 

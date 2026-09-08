@@ -14,12 +14,23 @@ class ListTicketTemplatesRequest(DaraModel):
         search_pattern: str = None,
         state: str = None,
     ):
+        # The ID of the ticket category.
         self.category_id = category_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number. The value must be between 1 and 100.
         self.page_number = page_number
+        # The number of entries per page. The value must be between 1 and 100.
         self.page_size = page_size
+        # The name of the template. Fuzzy search is supported.
         self.search_pattern = search_pattern
+        # The status of the template.
+        # 
+        # - Enabled: The template is published.
+        # 
+        # - Disabled: The template is unpublished.
         self.state = state
 
     def validate(self):

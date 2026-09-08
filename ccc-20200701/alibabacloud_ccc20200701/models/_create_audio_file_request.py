@@ -13,14 +13,23 @@ class CreateAudioFileRequest(DaraModel):
         oss_file_key: str = None,
         usage: str = None,
     ):
+        # Audio file name, containing 1 to 32 characters.
+        # 
         # This parameter is required.
         self.audio_file_name = audio_file_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Display name of the audio, containing 1 to 32 characters.
+        # 
         # This parameter is required.
         self.name = name
+        # Key of the OSS file, returned by the GetAudioFileUploadParameters API.
+        # 
         # This parameter is required.
         self.oss_file_key = oss_file_key
+        # Usage of the audio file. The default value is General (used in scenarios such as IVR). Other optional values include HoldMusic (hold music during a call).
         self.usage = usage
 
     def validate(self):

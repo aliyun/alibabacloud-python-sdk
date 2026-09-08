@@ -14,10 +14,15 @@ class GetCaseFileUploadUrlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +77,9 @@ class GetCaseFileUploadUrlResponseBodyData(DaraModel):
         case_file_key: str = None,
         url: str = None,
     ):
+        # The key of the OSS file.
         self.case_file_key = case_file_key
+        # A pre-signed OSS file upload URL for uploading the file. The validity period is one hour.
         self.url = url
 
     def validate(self):

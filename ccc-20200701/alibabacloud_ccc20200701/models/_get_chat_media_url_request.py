@@ -11,12 +11,15 @@ class GetChatMediaUrlRequest(DaraModel):
         media_id: str = None,
         request_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # media id
+        # Media ID.
         # 
         # This parameter is required.
         self.media_id = media_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

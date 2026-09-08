@@ -16,10 +16,15 @@ class ListTicketsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListTicketsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Tickets list.
         self.list = list
+        # Paging ordinal number. Range: 1-100.
         self.page_number = page_number
+        # Paging size. Range: 1-100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -156,30 +165,55 @@ class ListTicketsResponseBodyDataList(DaraModel):
         title: str = None,
         updated_time: str = None,
     ):
+        # Assignee ID.
         self.assignee = assignee
+        # Assignee name.
         self.assignee_name = assignee_name
+        # Ticket category ID.
         self.category_id = category_id
+        # Ticket category name.
         self.category_name = category_name
+        # Ticket close reason.
         self.close_code = close_code
+        # Comment.
         self.comment = comment
+        # Ticket form information.
         self.context = context
+        # Creation time.
         self.created_time = created_time
+        # Creator ID.
         self.creator = creator
+        # Creator name.
         self.creator_name = creator_name
+        # Current node ID.
         self.current_task_id = current_task_id
+        # Current node name.
         self.current_task_name = current_task_name
+        # Current node start time.
         self.current_task_start_time = current_task_start_time
+        # Customer ID.
         self.customer_id = customer_id
+        # Ticket end time.
         self.end_time = end_time
+        # Instance ID.
         self.instance_id = instance_id
+        # Job ID.
         self.job_id = job_id
+        # Ticket source.
         self.source = source
+        # Ticket start time.
         self.start_time = start_time
+        # State.
         self.state = state
+        # Template ID.
         self.template_id = template_id
+        # Template version.
         self.template_version = template_version
+        # Ticket ID.
         self.ticket_id = ticket_id
+        # Ticket title.
         self.title = title
+        # Update time.
         self.updated_time = updated_time
 
     def validate(self):

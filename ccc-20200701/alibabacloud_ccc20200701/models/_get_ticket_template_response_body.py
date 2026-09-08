@@ -17,11 +17,17 @@ class GetTicketTemplateResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of error parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89,14 +95,23 @@ class GetTicketTemplateResponseBodyData(DaraModel):
         ticket_fields: List[main_models.GetTicketTemplateResponseBodyDataTicketFields] = None,
         updated_time: int = None,
     ):
+        # Ticket category ID.
         self.category_id = category_id
+        # Template editor.
         self.editor = editor
+        # Instance ID.
         self.instance_id = instance_id
+        # Template name.
         self.name = name
+        # Workflow information.
         self.process_definition = process_definition
+        # Status code.
         self.state = state
+        # Template ID.
         self.template_id = template_id
+        # List of template fields.
         self.ticket_fields = ticket_fields
+        # Last modified time.
         self.updated_time = updated_time
 
     def validate(self):
@@ -200,26 +215,47 @@ class GetTicketTemplateResponseBodyDataTicketFields(DaraModel):
         system: bool = None,
         updated_time: int = None,
     ):
+        # Whether the field is an array.
         self.array = array
+        # Extension attributes.
         self.attributes = attributes
+        # Creation time.
         self.created_time = created_time
+        # Creator.
         self.creator = creator
+        # Data type.
         self.data_type = data_type
+        # Description.
         self.description = description
+        # Whether the field is disabled.
         self.disabled = disabled
+        # Display name.
         self.display_name = display_name
+        # Display order in lists.
         self.display_order = display_order
+        # Editor type.
         self.editor_type = editor_type
+        # Maximum length.
         self.max_length = max_length
+        # Numeric maximum value.
         self.maximum = maximum
+        # Minimum length.
         self.min_length = min_length
+        # Numeric minimum value.
         self.minimum = minimum
+        # Name.
         self.name = name
+        # Regular expression validation rule.
         self.pattern = pattern
+        # Error message for regular expression validation.
         self.pattern_error_message = pattern_error_message
+        # Whether the field is read-only.
         self.read_only = read_only
+        # Whether the field is required.
         self.required = required
+        # Whether the field is a system field.
         self.system = system
+        # Update time.
         self.updated_time = updated_time
 
     def validate(self):

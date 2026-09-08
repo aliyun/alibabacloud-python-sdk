@@ -14,10 +14,15 @@ class GetHistoricalCallerReportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +77,9 @@ class GetHistoricalCallerReportResponseBodyData(DaraModel):
         last_calling_time: int = None,
         total_calls: int = None,
     ):
+        # The UNIX timestamp (in milliseconds) of the most recent incoming call.
         self.last_calling_time = last_calling_time
+        # Total number of incoming calls from this number during the query time period.
         self.total_calls = total_calls
 
     def validate(self):

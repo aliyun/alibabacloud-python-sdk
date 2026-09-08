@@ -10,7 +10,10 @@ class RestoreArchivedRecordingsRequest(DaraModel):
         contact_ids: str = None,
         instance_id: str = None,
     ):
+        # List of contact IDs, in JSON format.
         self.contact_ids = contact_ids
+        # Cloud Contact Center instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

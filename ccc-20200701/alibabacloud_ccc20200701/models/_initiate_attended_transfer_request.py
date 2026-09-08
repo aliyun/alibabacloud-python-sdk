@@ -23,23 +23,41 @@ class InitiateAttendedTransferRequest(DaraModel):
         transferor: str = None,
         user_id: str = None,
     ):
+        # The queuing priority when transferring to a skill group queue. Valid values range from 0 to 9, where 0 is the highest priority and 9 is the lowest.
         self.call_priority = call_priority
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The queuing overflow threshold when the transfer target is a skill group queue. The default value is 0, which means no overflow occurs.
         self.queuing_overflow_threshold = queuing_overflow_threshold
+        # The queuing timeout period in seconds when the transfer target is a skill group queue.
         self.queuing_timeout_seconds = queuing_timeout_seconds
+        # The call assignment type. Valid values are Automatic or Manual. If this parameter is empty, the default value is Automatic, which is also the current system\\"s default behavior. When Manual is selected, you must invoke APIs such as ClaimCall to assign the call to a specific agent.
         self.routing_type = routing_type
+        # The policy name for agent assignment when transferring to a skill group queue.
         self.strategy_name = strategy_name
+        # The policy parameters for agent assignment when transferring to a skill group queue.
         self.strategy_params = strategy_params
+        # Ingest endpoint data, primarily used for extension requirements. Regular users do not need to concern themselves with this.
         self.tags = tags
+        # Timeout duration for the consultation transfer, in seconds. If the transferee does not answer within the specified time, the call is disconnected. This field is optional. Default value is 30 seconds.
         self.timeout_seconds = timeout_seconds
+        # The transferee, which can be an agent ID or a skill group ID.
+        # 
         # This parameter is required.
         self.transferee = transferee
+        # The destination type for the transfer. Valid values are AGENT, SKILL_GROUP, and EXTERNAL. If this parameter is not provided, the system determines the destination type based on the format of the target number. If inaccurate detection occurs, explicitly specify this parameter.
         self.transferee_type = transferee_type
+        # The party initiating the transfer. When transferring to an external number, this parameter specifies the caller number. This parameter is invalid when transferring to an internal agent or skill group; in such cases, the initiator is determined by the UserId parameter.
         self.transferor = transferor
+        # The agent ID initiating the consultation transfer.
         self.user_id = user_id
 
     def validate(self):

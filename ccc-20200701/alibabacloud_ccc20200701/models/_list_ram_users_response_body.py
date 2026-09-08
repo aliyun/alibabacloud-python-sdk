@@ -17,11 +17,17 @@ class ListRamUsersResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The response parameters.
         self.params = params
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListRamUsersResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of RAM users.
         self.list = list
+        # The returned page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -146,12 +156,19 @@ class ListRamUsersResponseBodyDataList(DaraModel):
         primary: bool = None,
         ram_id: str = None,
     ):
+        # The UID of the Alibaba Cloud account to which the RAM user belongs.
         self.aliyun_uid = aliyun_uid
+        # The display name of the RAM user.
         self.display_name = display_name
+        # The email address of the RAM user.
         self.email = email
+        # The logon name of the RAM user.
         self.login_name = login_name
+        # The mobile number of the RAM user.
         self.mobile = mobile
+        # Indicates whether the user is a primary account. A value of `false` indicates that the user is a RAM user.
         self.primary = primary
+        # The ID of the RAM user.
         self.ram_id = ram_id
 
     def validate(self):

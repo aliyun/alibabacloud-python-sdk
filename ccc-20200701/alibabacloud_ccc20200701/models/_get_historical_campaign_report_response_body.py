@@ -14,10 +14,15 @@ class GetHistoricalCampaignReportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,13 +83,21 @@ class GetHistoricalCampaignReportResponseBodyData(DaraModel):
         connected_rate: float = None,
         occupancy_rate: float = None,
     ):
+        # Abandon rate, calculated as: number of abandoned calls divided by total calls.
         self.abandon_rate = abandon_rate
+        # Deprecated. Refer to AbandonRate instead.
         self.abandoned_rate = abandoned_rate
+        # Answer rate, in %.
         self.answer_rate = answer_rate
+        # Number of abandoned calls.
         self.calls_abandoned = calls_abandoned
+        # Number of connected calls.
         self.calls_connected = calls_connected
+        # Number of calls dialed, including retries.
         self.calls_dialed = calls_dialed
+        # Deprecated. Refer to AnswerRate instead.
         self.connected_rate = connected_rate
+        # Agent occupancy rate, calculated as: (total talk duration + total post-processing duration) divided by total agent online duration. Total agent online duration refers to the sum of online durations of all agents in the skill group associated with this activity.
         self.occupancy_rate = occupancy_rate
 
     def validate(self):

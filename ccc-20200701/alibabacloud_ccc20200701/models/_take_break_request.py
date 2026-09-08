@@ -12,11 +12,17 @@ class TakeBreakRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # Break status code. Customers can define any custom break status.
+        # 
         # This parameter is required.
         self.code = code
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Agent ID. If not specified, the agent mapped to the current RAM account is used by default.
         self.user_id = user_id
 
     def validate(self):

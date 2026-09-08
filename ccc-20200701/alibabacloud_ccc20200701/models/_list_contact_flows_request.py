@@ -15,15 +15,29 @@ class ListContactFlowsRequest(DaraModel):
         sort_order: str = None,
         type: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The field by which to sort the results. Default value: updatedTime.
         self.order_by_field = order_by_field
+        # The page number. The value must be an integer that is greater than 0. Default value: 1.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # A keyword to search for in the names or descriptions of IVR flows.
         self.search_pattern = search_pattern
+        # The sort order. Valid values:
+        # 
+        # - `ASC`: The results are sorted in ascending order.
+        # 
+        # - `DESC`: The results are sorted in descending order. This is the default value.
         self.sort_order = sort_order
+        # Specifies the type of IVR flow to list. If you omit this parameter, IVR flows of all types are listed.
         self.type = type
 
     def validate(self):

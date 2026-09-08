@@ -14,10 +14,15 @@ class GetMultiChannelRecordingResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +77,9 @@ class GetMultiChannelRecordingResponseBodyData(DaraModel):
         file_name: str = None,
         file_url: str = None,
     ):
+        # Recording file name.
         self.file_name = file_name
+        # The OSS download URL of the recording file. Note that the download URL expires after a validity period of 1 day.
         self.file_url = file_url
 
     def validate(self):

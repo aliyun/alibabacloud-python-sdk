@@ -11,10 +11,16 @@ class DiscardEditingContactFlowRequest(DaraModel):
         draft_id: str = None,
         instance_id: str = None,
     ):
+        # Contact flow ID.
+        # 
         # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # Draft ID.
+        # 
         # This parameter is required.
         self.draft_id = draft_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

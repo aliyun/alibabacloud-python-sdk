@@ -17,11 +17,16 @@ class GetTurnCredentialsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,7 +87,9 @@ class GetTurnCredentialsResponseBodyData(DaraModel):
         password: str = None,
         user_name: str = None,
     ):
+        # The password.
         self.password = password
+        # The username.
         self.user_name = user_name
 
     def validate(self):

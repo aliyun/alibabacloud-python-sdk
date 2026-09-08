@@ -16,10 +16,15 @@ class ListAgentStateLogsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85,12 +90,19 @@ class ListAgentStateLogsResponseBodyData(DaraModel):
         state_code: str = None,
         work_mode: str = None,
     ):
+        # Break code.
         self.break_code = break_code
+        # Duration of the status, in seconds.
         self.duration = duration
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # Start Time of the status, in UNIX timestamp format, in milliseconds.
         self.start_time = start_time
+        # Status code.
         self.state = state
+        # Sub-status, which provides additional details for the status code. In certain scenarios, an agent\\"s status is jointly identified by State and StateCode. For example, in a monitoring scenario, the State is Talking and the StateCode is Monitoring.
         self.state_code = state_code
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):

@@ -14,11 +14,17 @@ class ModifyCampaignNumbersRequest(DaraModel):
         instance_id: str = None,
         number_list: List[str] = None,
     ):
+        # The campaign ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The ID of the number collection.
         self.inst_group_id = inst_group_id
+        # The ID of the Cloud Call Center (CCC) instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of numbers.
         self.number_list = number_list
 
     def validate(self):

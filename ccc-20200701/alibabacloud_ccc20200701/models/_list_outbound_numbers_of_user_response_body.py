@@ -16,10 +16,15 @@ class ListOutboundNumbersOfUserResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListOutboundNumbersOfUserResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of phone numbers.
         self.list = list
+        # The page number. Valid values: 1 to 100.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -139,13 +148,16 @@ class ListOutboundNumbersOfUserResponseBodyDataList(DaraModel):
         provider_type: str = None,
         province: str = None,
     ):
+        # The city where the phone number is located.
         self.city = city
+        # The phone number.
         self.number = number
         self.provider = provider
         self.provider_code = provider_code
         self.provider_display_name = provider_display_name
         self.provider_short_name = provider_short_name
         self.provider_type = provider_type
+        # The province where the phone number is located.
         self.province = province
 
     def validate(self):

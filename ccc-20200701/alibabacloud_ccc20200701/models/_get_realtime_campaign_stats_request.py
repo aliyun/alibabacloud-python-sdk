@@ -10,8 +10,12 @@ class GetRealtimeCampaignStatsRequest(DaraModel):
         instance_id: str = None,
         queue_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The predictive outbound dialing activity ID.
+        # 
         # This parameter is required.
         self.queue_id = queue_id
 

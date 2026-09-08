@@ -13,12 +13,19 @@ class ReleaseCallRequest(DaraModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # Channel ID of the call to hang up. This parameter is optional. If not specified, it defaults to the channel where the agent corresponding to the UserId is located.
         self.channel_id = channel_id
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Agent ID. If not specified, the agent mapped to the current Resource Access Management (RAM) user is used by default.
         self.user_id = user_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListTicketTasksResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # A list of error parameters.
         self.params = params
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -100,19 +106,33 @@ class ListTicketTasksResponseBodyData(DaraModel):
         task_name: str = None,
         ticket_id: str = None,
     ):
+        # The action performed on the node.
         self.action = action
+        # The ID of the assignee.
         self.assignee = assignee
+        # The name of the assignee.
         self.assignee_name = assignee_name
+        # The comment.
         self.comment = comment
+        # The end time.
         self.end_time = end_time
+        # A list of files.
         self.file_keys = file_keys
+        # A list of file access URLs.
         self.file_urls = file_urls
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The start time.
         self.start_time = start_time
+        # The ID of the ticket node in the process definition.
         self.task_definition_node_id = task_definition_node_id
+        # The type of the ticket node in the process definition.
         self.task_definition_node_type = task_definition_node_type
+        # The ID of the node.
         self.task_id = task_id
+        # The name of the node.
         self.task_name = task_name
+        # The ID of the ticket.
         self.ticket_id = ticket_id
 
     def validate(self):

@@ -16,10 +16,15 @@ class GetInstanceTrendingReportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -75,8 +80,11 @@ class GetInstanceTrendingReportResponseBodyData(DaraModel):
         outbound: List[main_models.GetInstanceTrendingReportResponseBodyDataOutbound] = None,
         overall: List[main_models.GetInstanceTrendingReportResponseBodyDataOverall] = None,
     ):
+        # Inbound metrics.
         self.inbound = inbound
+        # Outbound metrics.
         self.outbound = outbound
+        # Overall metrics.
         self.overall = overall
 
     def validate(self):
@@ -143,7 +151,9 @@ class GetInstanceTrendingReportResponseBodyDataOverall(DaraModel):
         max_logged_in_agents: int = None,
         stats_time: int = None,
     ):
+        # Maximum number of agents logged on simultaneously during this time range.
         self.max_logged_in_agents = max_logged_in_agents
+        # The start time of the segment statistics, in UNIX timestamp format, in milliseconds.
         self.stats_time = stats_time
 
     def validate(self):
@@ -179,8 +189,11 @@ class GetInstanceTrendingReportResponseBodyDataOutbound(DaraModel):
         stats_time: int = None,
         total_calls: int = None,
     ):
+        # Number of answered outbound calls.
         self.calls_answered = calls_answered
+        # Start time of the segment, in UNIX timestamp format, in milliseconds.
         self.stats_time = stats_time
+        # Total number of outbound calls.
         self.total_calls = total_calls
 
     def validate(self):
@@ -226,12 +239,19 @@ class GetInstanceTrendingReportResponseBodyDataInbound(DaraModel):
         stats_time: int = None,
         total_calls: int = None,
     ):
+        # Number of calls abandoned in the IVR, meaning calls that were abandoned during the IVR flow after entering it.
         self.calls_abandoned_in_ivr = calls_abandoned_in_ivr
+        # Number of calls abandoned in the queue, meaning calls that were abandoned while waiting in the skill group queue after entering it.
         self.calls_abandoned_in_queue = calls_abandoned_in_queue
+        # Number of calls abandoned during ringing.
         self.calls_abandoned_in_ring = calls_abandoned_in_ring
+        # Number of calls answered by agents. If a single call is distributed to multiple agents, it is counted as one call.
         self.calls_handled = calls_handled
+        # Number of calls that entered the queue. If a single call enters the queue multiple times, it is counted as one call.
         self.calls_queued = calls_queued
+        # The start time of the segment statistics, in UNIX timestamp format, in milliseconds.
         self.stats_time = stats_time
+        # Total number of incoming calls.
         self.total_calls = total_calls
 
     def validate(self):

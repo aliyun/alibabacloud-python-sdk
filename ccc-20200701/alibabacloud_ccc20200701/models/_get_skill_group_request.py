@@ -10,8 +10,12 @@ class GetSkillGroupRequest(DaraModel):
         instance_id: str = None,
         skill_group_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID, in the format: skill group name\\@instance ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

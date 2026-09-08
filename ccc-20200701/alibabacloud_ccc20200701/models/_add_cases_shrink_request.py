@@ -11,9 +11,14 @@ class AddCasesShrinkRequest(DaraModel):
         case_list_shrink: str = None,
         instance_id: str = None,
     ):
+        # The predictive outbound call activity ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The list of outbound call cases.
         self.case_list_shrink = case_list_shrink
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

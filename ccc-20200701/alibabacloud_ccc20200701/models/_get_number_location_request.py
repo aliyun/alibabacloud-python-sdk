@@ -10,8 +10,12 @@ class GetNumberLocationRequest(DaraModel):
         instance_id: str = None,
         number: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number to query.
+        # 
         # This parameter is required.
         self.number = number
 

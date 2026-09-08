@@ -16,10 +16,15 @@ class ListFeedbacksResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The returned dataset.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListFeedbacksResponseBodyData(DaraModel):
         user_rating: int = None,
         user_response: str = None,
     ):
+        # The call ID.
         self.contact_id = contact_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The task ID.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
+        # The user\\"s rating for the task.
         self.user_rating = user_rating
+        # The data from user feedback.
         self.user_response = user_response
 
     def validate(self):

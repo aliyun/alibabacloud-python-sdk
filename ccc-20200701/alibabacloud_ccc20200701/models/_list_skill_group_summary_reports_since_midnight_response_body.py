@@ -17,11 +17,17 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The returned data.
         self.paged_skill_group_summary_report = paged_skill_group_summary_report
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of skill group summary reports.
         self.list = list
+        # The page number. The valid range is 1 to 100.
         self.page_number = page_number
+        # The number of entries per page. The valid range is 1 to 100.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -146,12 +156,19 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         skill_group_name: str = None,
         timestamp: str = None,
     ):
+        # Inbound call metrics.
         self.inbound = inbound
+        # The instance ID.
         self.instance_id = instance_id
+        # Outbound call metrics.
         self.outbound = outbound
+        # Overall metrics.
         self.overall = overall
+        # The skill group ID.
         self.skill_group_id = skill_group_id
+        # The name of the skill group.
         self.skill_group_name = skill_group_name
+        # The timestamp when the metrics were collected.
         self.timestamp = timestamp
 
     def validate(self):
@@ -238,21 +255,37 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # The average ready time, in seconds.
         self.average_ready_time = average_ready_time
+        # The average talk time, in seconds.
         self.average_talk_time = average_talk_time
+        # The average after-call work time, in seconds.
         self.average_work_time = average_work_time
+        # The maximum ready time, in seconds.
         self.max_ready_time = max_ready_time
+        # The maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # The maximum after-call work time, in seconds.
         self.max_work_time = max_work_time
+        # The agent occupancy rate, expressed as a percentage (%).
         self.occupancy_rate = occupancy_rate
+        # The satisfaction index, calculated as the average of single-digit keypad inputs from satisfaction surveys.
         self.satisfaction_index = satisfaction_index
+        # The number of satisfaction surveys offered.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # The number of satisfaction surveys responded to.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # The total break time, in seconds.
         self.total_break_time = total_break_time
+        # The total number of calls (`CallsOffered` + `CallsDialed`).
         self.total_calls = total_calls
+        # The total logged-in time, in seconds.
         self.total_logged_in_time = total_logged_in_time
+        # The total ready time, in seconds.
         self.total_ready_time = total_ready_time
+        # The total talk time, in seconds.
         self.total_talk_time = total_talk_time
+        # The total after-call work time, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -396,13 +429,19 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         total_wait_time: int = None,
         total_work_time: int = None,
     ):
+        # The answer rate, expressed as a percentage (%).
         self.answer_rate = answer_rate
+        # The average dialing time, in seconds.
         self.average_dialing_time = average_dialing_time
+        # The average talk time, in seconds.
         self.average_talk_time = average_talk_time
+        # The average after-call work time, in seconds.
         self.average_work_time = average_work_time
         self.calls_abandoned = calls_abandoned
         self.calls_agent_handled = calls_agent_handled
+        # The number of answered outbound calls.
         self.calls_answered = calls_answered
+        # The number of outbound calls dialed.
         self.calls_dialed = calls_dialed
         self.calls_offered = calls_offered
         self.calls_queuing_cancelled = calls_queuing_cancelled
@@ -411,17 +450,27 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         self.calls_queuing_overflow = calls_queuing_overflow
         self.calls_queuing_rerouted = calls_queuing_rerouted
         self.calls_queuing_timeout = calls_queuing_timeout
+        # The number of calls answered by an agent within 30 seconds.
         self.calls_service_level_30 = calls_service_level_30
         self.calls_service_level_30v2 = calls_service_level_30v2
+        # The maximum dialing time, in seconds.
         self.max_dialing_time = max_dialing_time
+        # The maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # The maximum after-call work time, in seconds.
         self.max_work_time = max_work_time
+        # The satisfaction index, calculated as the average of single-digit keypad inputs from satisfaction surveys.
         self.satisfaction_index = satisfaction_index
+        # The number of satisfaction surveys offered.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # The number of satisfaction surveys responded to.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # The total dialing time, in seconds.
         self.total_dialing_time = total_dialing_time
+        # The total talk time for outbound calls, in seconds.
         self.total_talk_time = total_talk_time
         self.total_wait_time = total_wait_time
+        # The total after-call work time, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -641,42 +690,72 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # The number of calls abandoned while waiting in the skill group queue.
         self.abandoned_in_queue_of_queue_count = abandoned_in_queue_of_queue_count
+        # The number of calls routed to the skill group and answered by an agent.
         self.answered_by_agent_of_queue_count = answered_by_agent_of_queue_count
+        # The maximum queue wait time for a call answered by an agent.
         self.answered_by_agent_of_queue_max_wait_time_duration = answered_by_agent_of_queue_max_wait_time_duration
+        # The total queue wait time for calls answered by an agent, in seconds.
         self.answered_by_agent_of_queue_wait_time_duration = answered_by_agent_of_queue_wait_time_duration
+        # The average ring time, in seconds.
         self.average_ring_time = average_ring_time
+        # The average talk time, in seconds.
         self.average_talk_time = average_talk_time
+        # The average after-call work time, in seconds (`TotalWorkTime` / `CallsHandled`).
         self.average_work_time = average_work_time
         self.calls_abandoned = calls_abandoned
+        # The number of attended transfers initiated. If a call is transferred multiple times, each transfer is counted separately.
         self.calls_attended_transfer_out = calls_attended_transfer_out
+        # The number of blind transfers initiated. If a call is transferred multiple times, each transfer is counted separately.
         self.calls_blind_transfer_out = calls_blind_transfer_out
+        # The number of handled inbound calls. Each call is counted once per queue entry, regardless of how many agents answer it.
         self.calls_handled = calls_handled
+        # The number of calls offered to the skill group.
         self.calls_offered = calls_offered
         self.calls_overflow = calls_overflow
         self.calls_queuing_canceled = calls_queuing_canceled
         self.calls_queuing_failure = calls_queuing_failure
         self.calls_queuing_rerouted = calls_queuing_rerouted
         self.calls_queuing_timeout = calls_queuing_timeout
+        # The number of calls answered by an agent within 10 seconds.
         self.calls_service_level_10 = calls_service_level_10
+        # The number of calls answered by an agent within 20 seconds.
         self.calls_service_level_20 = calls_service_level_20
+        # The number of calls answered by an agent within 30 seconds.
         self.calls_service_level_30 = calls_service_level_30
         self.calls_timeout = calls_timeout
+        # The number of calls that were abandoned while an agent in the skill group was being alerted.
         self.give_up_by_agent_of_queue_count = give_up_by_agent_of_queue_count
+        # The handle rate (`CallsHandled` / `CallsOffered`). The value can exceed 100% because the handle and offer events might occur in different time windows.
         self.handle_rate = handle_rate
+        # The number of calls that entered the skill group queue.
         self.in_coming_queue_of_queue_count = in_coming_queue_of_queue_count
+        # The maximum ring time, in seconds.
         self.max_ring_time = max_ring_time
+        # The maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # The maximum after-call work time, in seconds.
         self.max_work_time = max_work_time
+        # The number of calls that overflowed from the skill group queue.
         self.over_flow_in_queue_of_queue_count = over_flow_in_queue_of_queue_count
+        # The maximum queue wait time, in seconds.
         self.queue_max_wait_time_duration = queue_max_wait_time_duration
+        # The queue wait time, in seconds.
         self.queue_wait_time_duration = queue_wait_time_duration
+        # The satisfaction index, calculated as the average of single-digit keypad inputs from satisfaction surveys.
         self.satisfaction_index = satisfaction_index
+        # The number of satisfaction surveys offered.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # The number of satisfaction surveys responded to.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # The percentage of calls answered within 20 seconds.
         self.service_level_20 = service_level_20
+        # The total ring time, in seconds.
         self.total_ring_time = total_ring_time
+        # The total talk time for inbound calls, in seconds.
         self.total_talk_time = total_talk_time
+        # The total after-call work time, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):

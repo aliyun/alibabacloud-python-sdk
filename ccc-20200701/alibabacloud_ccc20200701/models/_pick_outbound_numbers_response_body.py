@@ -16,10 +16,15 @@ class PickOutboundNumbersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,7 +85,9 @@ class PickOutboundNumbersResponseBodyData(DaraModel):
         callee: main_models.PickOutboundNumbersResponseBodyDataCallee = None,
         caller: main_models.PickOutboundNumbersResponseBodyDataCaller = None,
     ):
+        # Callee number.
         self.callee = callee
+        # Caller number.
         self.caller = caller
 
     def validate(self):
@@ -121,8 +128,11 @@ class PickOutboundNumbersResponseBodyDataCaller(DaraModel):
         number: str = None,
         province: str = None,
     ):
+        # City of number registration.
         self.city = city
+        # Number
         self.number = number
+        # Province of number registration.
         self.province = province
 
     def validate(self):
@@ -164,8 +174,11 @@ class PickOutboundNumbersResponseBodyDataCallee(DaraModel):
         number: str = None,
         province: str = None,
     ):
+        # City of number registration.
         self.city = city
+        # Number
         self.number = number
+        # Province of number registration.
         self.province = province
 
     def validate(self):

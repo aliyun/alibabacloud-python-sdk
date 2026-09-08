@@ -12,9 +12,14 @@ class CreateCallSummaryRequest(DaraModel):
         customer_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the session.
         self.contact_id = contact_id
+        # Summary information
         self.context = context
+        # Customer ID
         self.customer_id = customer_id
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

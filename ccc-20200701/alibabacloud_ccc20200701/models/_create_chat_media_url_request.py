@@ -11,12 +11,15 @@ class CreateChatMediaUrlRequest(DaraModel):
         mime_type: str = None,
         request_id: str = None,
     ):
+        # Cloud Contact Center instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # media id
+        # Media ID.
         # 
         # This parameter is required.
         self.mime_type = mime_type
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

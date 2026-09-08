@@ -11,9 +11,13 @@ class GetLoginDetailsRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # Chat Device ID.
         self.chat_device_id = chat_device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Agent ID. This parameter is optional. If not specified, the agent mapped to the current RAM account is used by default.
         self.user_id = user_id
 
     def validate(self):

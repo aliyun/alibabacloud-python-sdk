@@ -14,10 +14,15 @@ class GetAudioFileUploadParametersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,11 +81,17 @@ class GetAudioFileUploadParametersResponseBodyData(DaraModel):
         policy: str = None,
         signature: str = None,
     ):
+        # AccessKey ID used for signing.
         self.access_key_id = access_key_id
+        # Expiration time.
         self.expire_time = expire_time
+        # Key of the OSS file.
         self.file_path = file_path
+        # Endpoint domain name of OSS.
         self.host = host
+        # Signature policy.
         self.policy = policy
+        # Signature information of the temporary credential for file upload, used to authenticate the upload request.
         self.signature = signature
 
     def validate(self):

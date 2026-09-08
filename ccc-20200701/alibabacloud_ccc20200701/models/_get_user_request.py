@@ -11,9 +11,13 @@ class GetUserRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # Agent extension number. This parameter is optional. You must specify either UserId or Extension.
         self.extension = extension
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Agent ID. This parameter is optional. You must specify either UserId or Extension.
         self.user_id = user_id
 
     def validate(self):

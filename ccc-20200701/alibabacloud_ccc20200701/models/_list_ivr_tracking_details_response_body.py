@@ -16,10 +16,15 @@ class ListIvrTrackingDetailsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListIvrTrackingDetailsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of IVR tracking details.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -147,21 +156,37 @@ class ListIvrTrackingDetailsResponseBodyDataList(DaraModel):
         node_type: str = None,
         node_variables: Dict[str, Any] = None,
     ):
+        # Callee number.
         self.callee = callee
+        # The calling number.
         self.caller = caller
+        # Voice channel ID.
         self.channel_id = channel_id
+        # Channel-associated data.
         self.channel_variables = channel_variables
+        # Call ID.
         self.contact_id = contact_id
+        # The time when the call entered this IVR edge zone, in Unix timestamp format, in milliseconds.
         self.enter_time = enter_time
+        # Contact flow ID.
         self.flow_id = flow_id
+        # The name of the contact flow.
         self.flow_name = flow_name
+        # Instance ID.
         self.instance = instance
+        # Time when leaving this IVR node.
         self.leave_time = leave_time
+        # Status code of the edge zone.
         self.node_exit_code = node_exit_code
+        # Node ID.
         self.node_id = node_id
+        # Edge zone name.
         self.node_name = node_name
+        # A collection of properties of the edge zone.
         self.node_properties = node_properties
+        # File Type.
         self.node_type = node_type
+        # Node variables.
         self.node_variables = node_variables
 
     def validate(self):

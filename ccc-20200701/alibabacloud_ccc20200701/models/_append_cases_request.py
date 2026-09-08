@@ -14,10 +14,15 @@ class AppendCasesRequest(DaraModel):
         instance_id: str = None,
         body: List[main_models.AppendCasesRequestBody] = None,
     ):
+        # The predictive campaign ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of cases to be added.
         self.body = body
 
     def validate(self):
@@ -70,11 +75,17 @@ class AppendCasesRequestBody(DaraModel):
         phone_number: str = None,
         reference_id: str = None,
     ):
+        # The agent ID. If you specify this parameter, the system routes the call to the specified agent. If you leave this parameter empty, the system routes the call to an idle agent in the skill group.
         self.agent_id = agent_id
+        # The caller number. If you specify this parameter, the system preferentially uses the specified number to initiate a call. If you leave this parameter empty, the system automatically selects a number to initiate a call.
         self.caller = caller
+        # Custom variables in the format of a JSON object. The object can contain up to 10 properties, and the name and value of each property are custom.
         self.custom_variables = custom_variables
+        # The masked callee number. If this parameter is not empty, the callee number will be masked. You can define the masking rule and specify the masked callee number. In some cases, you can only view the masked callee number instead of the real one.
         self.masked_callee = masked_callee
+        # The phone number of the contact.
         self.phone_number = phone_number
+        # The business ID, which is a custom ID from your business system, used for integration purposes.
         self.reference_id = reference_id
 
     def validate(self):

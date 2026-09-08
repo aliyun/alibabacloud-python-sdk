@@ -14,16 +14,28 @@ class SaveRTCStatsV2Request(DaraModel):
         receiver_report: str = None,
         sender_report: str = None,
     ):
+        # Call ID.
+        # 
         # This parameter is required.
         self.call_id = call_id
+        # General information.
+        # 
         # This parameter is required.
         self.general_info = general_info
+        # Access point address.
+        # 
         # This parameter is required.
         self.goog_address = goog_address
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Content of the receiver report.
+        # 
         # This parameter is required.
         self.receiver_report = receiver_report
+        # Content of the sender report.
+        # 
         # This parameter is required.
         self.sender_report = sender_report
 

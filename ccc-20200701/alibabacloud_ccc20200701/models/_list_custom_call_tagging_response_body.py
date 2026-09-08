@@ -16,10 +16,15 @@ class ListCustomCallTaggingResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListCustomCallTaggingResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of inbound number marks.
         self.list = list
+        # The page number, ranging from 1 to 100.
         self.page_number = page_number
+        # The page size, ranging from 1 to 100.
         self.page_size = page_size
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -137,11 +146,17 @@ class ListCustomCallTaggingResponseBodyDataList(DaraModel):
         number: str = None,
         update_time: str = None,
     ):
+        # List of number tags.
         self.call_tag_list = call_tag_list
+        # Creator.
         self.creator = creator
+        # The description of the inbound number mark.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The number of the inbound number mark.
         self.number = number
+        # Last update time.
         self.update_time = update_time
 
     def validate(self):
@@ -208,7 +223,9 @@ class ListCustomCallTaggingResponseBodyDataListCallTagList(DaraModel):
         instance_id: str = None,
         tag_name: str = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Number tag name.
         self.tag_name = tag_name
 
     def validate(self):

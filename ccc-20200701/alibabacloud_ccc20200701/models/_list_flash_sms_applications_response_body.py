@@ -17,11 +17,17 @@ class ListFlashSmsApplicationsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of error parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListFlashSmsApplicationsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of flash SMS configurations.
         self.list = list
+        # Page number. Valid values: 1 to 100.
         self.page_number = page_number
+        # Page size. Valid values: 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -144,10 +154,15 @@ class ListFlashSmsApplicationsResponseBodyDataList(DaraModel):
         provider_id: str = None,
         value: str = None,
     ):
+        # Registration ID.
         self.application_id = application_id
+        # Instance ID.
         self.instance_id = instance_id
+        # Configuration name.
         self.name = name
+        # Flash SMS provider ID.
         self.provider_id = provider_id
+        # Configuration content.
         self.value = value
 
     def validate(self):

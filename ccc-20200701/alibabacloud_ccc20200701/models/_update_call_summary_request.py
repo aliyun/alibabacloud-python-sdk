@@ -11,9 +11,14 @@ class UpdateCallSummaryRequest(DaraModel):
         instance_id: str = None,
         ticket_id: str = None,
     ):
+        # Content to update.
         self.context = context
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Summary ID.
+        # 
         # This parameter is required.
         self.ticket_id = ticket_id
 

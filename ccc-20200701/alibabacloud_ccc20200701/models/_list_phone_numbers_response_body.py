@@ -16,10 +16,15 @@ class ListPhoneNumbersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListPhoneNumbersResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The phone number list.
         self.list = list
+        # The page number, ranging from 1 to 100.
         self.page_number = page_number
+        # The page size, ranging from 1 to 100.
         self.page_size = page_size
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -144,18 +153,31 @@ class ListPhoneNumbersResponseBodyDataList(DaraModel):
         usage: str = None,
         user_id: str = None,
     ):
+        # Indicates whether the number is active.
         self.active = active
+        # The city where the number is registered.
         self.city = city
+        # The IVR contact flow ID associated with the phone number.
         self.contact_flow_id = contact_flow_id
+        # Name of the IVR contact flow associated with the number.
         self.contact_flow_name = contact_flow_name
+        # The number creation time, which is the time when the number was associated with the instance, in Unix timestamp format with millisecond precision.
         self.create_time = create_time
+        # The instance ID.
         self.instance_id = instance_id
+        # Number.
         self.number = number
+        # Number provider name.
         self.provider = provider
+        # The province where the number is registered.
         self.province = province
+        # The list of skill groups associated with the number.
         self.skill_groups = skill_groups
+        # Business tags for the number, primarily used for labeling and extended business purposes. Ordinary customers do not need to concern themselves with this.
         self.tags = tags
+        # The usage of the phone number.
         self.usage = usage
+        # Agent ID. If this parameter is not empty, the number is dedicated to the agent.
         self.user_id = user_id
 
     def validate(self):
@@ -266,9 +288,13 @@ class ListPhoneNumbersResponseBodyDataListSkillGroups(DaraModel):
         name: str = None,
         skill_group_id: str = None,
     ):
+        # The display name of the skill group.
         self.display_name = display_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the skill group.
         self.name = name
+        # The skill group ID.
         self.skill_group_id = skill_group_id
 
     def validate(self):

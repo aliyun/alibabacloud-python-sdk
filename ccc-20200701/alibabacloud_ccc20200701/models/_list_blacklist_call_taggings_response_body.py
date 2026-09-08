@@ -16,9 +16,13 @@ class ListBlacklistCallTaggingsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -82,8 +86,11 @@ class ListBlacklistCallTaggingsResponseBodyData(DaraModel):
         job_id: str = None,
         number: str = None,
     ):
+        # Indicates whether the number has a blacklist tag.
         self.blacklisted = blacklisted
+        # The call ID.
         self.job_id = job_id
+        # The phone number.
         self.number = number
 
     def validate(self):

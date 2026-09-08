@@ -16,10 +16,15 @@ class ListMonoRecordingsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The list of recording information.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -87,14 +92,23 @@ class ListMonoRecordingsResponseBodyData(DaraModel):
         skill_group_id: str = None,
         start_time: str = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The agent name.
         self.agent_name = agent_name
+        # The call ID.
         self.contact_id = contact_id
+        # The duration of the recording in milliseconds.
         self.duration = duration
+        # The name of the recording file.
         self.file_name = file_name
+        # The Object Storage Service (OSS) download URL for the recording file. Note that the download URL is valid for one day.
         self.file_url = file_url
+        # The ID of the Resource Access Management (RAM) account that corresponds to the agent.
         self.ram_id = ram_id
+        # The skill group ID.
         self.skill_group_id = skill_group_id
+        # The start time of the recording. This is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

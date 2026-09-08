@@ -11,9 +11,14 @@ class RemovePhoneNumbersRequest(DaraModel):
         instance_id: str = None,
         number_list: str = None,
     ):
+        # Specifies whether to force the removal. If a number is associated with a skill group, contact flow, or agent, you must set this parameter to `true` to remove it. The default value is `false`.
         self.force = force
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of numbers to remove.
+        # 
         # This parameter is required.
         self.number_list = number_list
 

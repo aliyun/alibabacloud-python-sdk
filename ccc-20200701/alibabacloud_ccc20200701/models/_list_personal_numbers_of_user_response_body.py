@@ -16,10 +16,15 @@ class ListPersonalNumbersOfUserResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListPersonalNumbersOfUserResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of numbers.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -137,11 +146,17 @@ class ListPersonalNumbersOfUserResponseBodyDataList(DaraModel):
         number: str = None,
         province: str = None,
     ):
+        # Indicates whether the number is active.
         self.active = active
+        # The city where the phone number is registered.
         self.city = city
+        # ID of the IVR contact flow associated with this number.
         self.contact_flow_id = contact_flow_id
+        # Instance ID.
         self.instance_id = instance_id
+        # Number.
         self.number = number
+        # The province where the phone number is registered.
         self.province = province
 
     def validate(self):

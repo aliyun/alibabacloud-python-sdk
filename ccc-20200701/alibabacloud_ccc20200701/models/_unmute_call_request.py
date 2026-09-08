@@ -13,11 +13,17 @@ class UnmuteCallRequest(DaraModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # The channel ID to unmute. This parameter is optional and defaults to empty. If empty, the system unmutes the channel associated with the agent specified by UserId.
         self.channel_id = channel_id
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call ID.
         self.job_id = job_id
+        # The agent ID to unmute. If not specified, defaults to the agent mapped to the current RAM account.
         self.user_id = user_id
 
     def validate(self):

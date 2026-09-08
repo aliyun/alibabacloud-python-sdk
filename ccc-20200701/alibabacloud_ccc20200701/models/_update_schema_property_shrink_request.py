@@ -12,9 +12,13 @@ class UpdateSchemaPropertyShrinkRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Field
         self.property_shrink = property_shrink
+        # Request ID
         self.request_id = request_id
         # schema id
         # 

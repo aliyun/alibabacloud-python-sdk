@@ -15,13 +15,22 @@ class AssignUsersRequest(DaraModel):
         work_mode: str = None,
     ):
         self.async_ = async_
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A JSON array of RAM user IDs to import, formatted as a string.
+        # 
         # This parameter is required.
         self.ram_id_list = ram_id_list
+        # The ID of the role to assign to the users in the instance. After the RAM users are imported, they are assigned this role. Valid roles are Administrator, Teamleader, and Agent.
+        # 
         # This parameter is required.
         self.role_id = role_id
+        # A JSON array of skill objects, provided as a string. Each object specifies a skillGroupId and a skillLevel from 1 to 10. A lower skillLevel value indicates higher proficiency and greater call-handling capacity.
         self.skill_level_list = skill_level_list
+        # The work mode for the agents.
+        # 
         # This parameter is required.
         self.work_mode = work_mode
 

@@ -14,10 +14,15 @@ class GetSkillGroupResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,11 +81,17 @@ class GetSkillGroupResponseBodyData(DaraModel):
         name: str = None,
         skill_group_id: str = None,
     ):
+        # Description of the skill group.
         self.description = description
+        # Display name of the skill group.
         self.display_name = display_name
+        # Instance ID.
         self.instance_id = instance_id
+        # Media type. The default value is AUDIO. Other valid values include CHAT and VIDEO.
         self.media_type = media_type
+        # Name of the skill group.
         self.name = name
+        # Skill group ID, in the format: skill group name\\@instance ID.
         self.skill_group_id = skill_group_id
 
     def validate(self):

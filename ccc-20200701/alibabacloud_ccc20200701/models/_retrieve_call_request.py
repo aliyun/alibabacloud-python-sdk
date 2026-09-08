@@ -13,13 +13,21 @@ class RetrieveCallRequest(DaraModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # Channel ID of the call to retrieve.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Agent ID.
         self.user_id = user_id
 
     def validate(self):

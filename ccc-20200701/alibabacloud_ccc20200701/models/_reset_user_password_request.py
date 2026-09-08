@@ -11,10 +11,16 @@ class ResetUserPasswordRequest(DaraModel):
         password: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # New password.
+        # 
         # This parameter is required.
         self.password = password
+        # Agent ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

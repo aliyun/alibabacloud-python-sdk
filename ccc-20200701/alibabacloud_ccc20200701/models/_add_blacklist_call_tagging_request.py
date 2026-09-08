@@ -11,9 +11,14 @@ class AddBlacklistCallTaggingRequest(DaraModel):
         job_id: str = None,
         number: str = None,
     ):
+        # The ID of the Cloud Contact Center instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call ID. If the phone number is encrypted and contains asterisks (\\*), specify the JobId. This parameter is not required for unencrypted numbers.
         self.job_id = job_id
+        # The phone number.
+        # 
         # This parameter is required.
         self.number = number
 

@@ -16,10 +16,15 @@ class ListMultiChannelRecordingsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Recording list.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89,16 +94,27 @@ class ListMultiChannelRecordingsResponseBodyData(DaraModel):
         skill_group_id: str = None,
         start_time: int = None,
     ):
+        # Agent call channel ID.
         self.agent_channel_id = agent_channel_id
+        # Agent ID.
         self.agent_id = agent_id
+        # Agent name.
         self.agent_name = agent_name
+        # Call ID.
         self.contact_id = contact_id
+        # Recording duration, in milliseconds.
         self.duration = duration
+        # Recording file name.
         self.file_name = file_name
+        # OSS download URL for the recording file. Note the time-to-live (TTL) of the download URL. The download URL is valid for 1 day.
         self.file_url = file_url
+        # List of call hold time segments.
         self.hold_time_segments = hold_time_segments
+        # RAM account ID for the agent.
         self.ram_id = ram_id
+        # Skill group ID.
         self.skill_group_id = skill_group_id
+        # Recording start time, in UNIX timestamp format, in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -195,7 +211,9 @@ class ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The end time of the call hold, in milliseconds.
         self.end_time = end_time
+        # Call hold start time, in milliseconds.
         self.start_time = start_time
 
     def validate(self):

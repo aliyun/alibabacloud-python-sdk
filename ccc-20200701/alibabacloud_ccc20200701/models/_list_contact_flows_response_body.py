@@ -16,10 +16,15 @@ class ListContactFlowsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListContactFlowsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of contact flows.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -143,17 +152,29 @@ class ListContactFlowsResponseBodyDataList(DaraModel):
         type: str = None,
         updated_time: str = None,
     ):
+        # The ID of the IVR contact flow.
         self.contact_flow_id = contact_flow_id
+        # When the contact flow was created.
         self.created_time = created_time
+        # The JSON-formatted definition of the IVR contact flow. This parameter is for internal use and is parsed by the backend.
         self.definition = definition
+        # The description of the contact flow version.
         self.description = description
+        # The draft ID. This parameter is returned only when the contact flow is unpublished.
         self.draft_id = draft_id
+        # The login name of the agent currently editing this draft.
         self.editor = editor
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the IVR contact flow.
         self.name = name
+        # A list of phone numbers that are bound to the IVR contact flow.
         self.number_list = number_list
+        # Indicates whether the contact flow has been published.
         self.published = published
+        # The type of the IVR contact flow.
         self.type = type
+        # The last time the contact flow was updated.
         self.updated_time = updated_time
 
     def validate(self):

@@ -12,10 +12,16 @@ class AddNumbersToSkillGroupRequest(DaraModel):
         number_list: str = None,
         skill_group_id: str = None,
     ):
+        # The list of phone number group IDs.
         self.inst_number_group_id_list = inst_number_group_id_list
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of phone numbers. Ensure that the phone numbers already exist in the current instance.
         self.number_list = number_list
+        # The skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

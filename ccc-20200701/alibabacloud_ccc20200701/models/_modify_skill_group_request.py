@@ -12,10 +12,16 @@ class ModifySkillGroupRequest(DaraModel):
         instance_id: str = None,
         skill_group_id: str = None,
     ):
+        # Description of the skill group. This parameter is optional and defaults to empty.
         self.description = description
+        # Display name of the skill group, which must be 1 to 64 characters in length.
         self.display_name = display_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

@@ -10,8 +10,12 @@ class ListNotificationRecordsRequest(DaraModel):
         instance_id: str = None,
         notification_keys: str = None,
     ):
+        # The ID of the Cloud Contact Center instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A list of notification keys to query. For example, if you specify a call ID, the API returns all notifications for that call ID.
+        # 
         # This parameter is required.
         self.notification_keys = notification_keys
 

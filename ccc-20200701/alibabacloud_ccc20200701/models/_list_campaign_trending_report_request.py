@@ -12,11 +12,17 @@ class ListCampaignTrendingReportRequest(DaraModel):
         instance_id: str = None,
         start_time: int = None,
     ):
+        # The ID of the predictive outbound calling Activity.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The end time. This parameter is optional. The default value is the end time of the predictive outbound dialing activity.
         self.end_time = end_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Start Time. This parameter is optional. The default value is the Start Time of the predictive outbound calling Activity.
         self.start_time = start_time
 
     def validate(self):

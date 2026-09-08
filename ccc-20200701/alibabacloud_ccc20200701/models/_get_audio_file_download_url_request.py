@@ -10,8 +10,12 @@ class GetAudioFileDownloadUrlRequest(DaraModel):
         audio_resource_id: str = None,
         instance_id: str = None,
     ):
+        # Audio resource ID, which uniquely identifies an audio file.
+        # 
         # This parameter is required.
         self.audio_resource_id = audio_resource_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

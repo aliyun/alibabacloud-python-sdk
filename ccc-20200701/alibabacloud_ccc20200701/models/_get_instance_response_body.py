@@ -16,10 +16,15 @@ class GetInstanceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,16 +88,25 @@ class GetInstanceResponseBodyData(DaraModel):
         number_list: List[main_models.GetInstanceResponseBodyDataNumberList] = None,
         status: str = None,
     ):
+        # The list of administrators.
         self.admin_list = admin_list
         self.agent_type = agent_type
+        # The ID of the Alibaba Cloud account to which the instance belongs.
         self.aliyun_uid = aliyun_uid
         self.chatbot_business_unit = chatbot_business_unit
+        # The URL of the Cloud Contact Center instance homepage. This URL is formed by combining the base URL of Cloud Contact Center and the instance ID.
         self.console_url = console_url
+        # The description of the instance.
         self.description = description
+        # The domain name of the instance. It is globally unique.
         self.domain_name = domain_name
+        # The instance ID.
         self.id = id
+        # The instance name.
         self.name = name
+        # The list of numbers.
         self.number_list = number_list
+        # The instance status.
         self.status = status
 
     def validate(self):
@@ -208,14 +222,23 @@ class GetInstanceResponseBodyDataNumberList(DaraModel):
         usage: str = None,
         user_id: str = None,
     ):
+        # Indicates whether the number is active.
         self.active = active
+        # The city where the number is registered.
         self.city = city
+        # The ID of the contact flow (IVR) associated with the phone number.
         self.contact_flow_id = contact_flow_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The phone number.
         self.number = number
+        # The province where the number is registered.
         self.province = province
+        # The list of skill groups associated with the number.
         self.skill_groups = skill_groups
+        # The purpose of the number.
         self.usage = usage
+        # The agent ID. If this parameter is not empty, the number is a personal outbound number for the agent.
         self.user_id = user_id
 
     def validate(self):
@@ -305,12 +328,19 @@ class GetInstanceResponseBodyDataNumberListSkillGroups(DaraModel):
         skill_group_id: str = None,
         user_count: int = None,
     ):
+        # The description of the skill group.
         self.description = description
+        # The display name of the skill group.
         self.display_name = display_name
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the skill group.
         self.name = name
+        # The number of phone numbers associated with the skill group.
         self.phone_number_count = phone_number_count
+        # The skill group ID.
         self.skill_group_id = skill_group_id
+        # The number of agents associated with the skill group.
         self.user_count = user_count
 
     def validate(self):
@@ -418,15 +448,25 @@ class GetInstanceResponseBodyDataAdminList(DaraModel):
         user_id: str = None,
         work_mode: str = None,
     ):
+        # The name of the administrator.
         self.display_name = display_name
+        # The mailbox.
         self.email = email
+        # The agent\\"s extension number.
         self.extension = extension
+        # The instance ID.
         self.instance_id = instance_id
+        # The agent\\"s logon name.
         self.login_name = login_name
+        # The agent\\"s personal phone number.
         self.mobile = mobile
+        # The role ID. The format is: Role\\@Instance ID.
         self.role_id = role_id
+        # The role name.
         self.role_name = role_name
+        # The agent ID.
         self.user_id = user_id
+        # The work mode.
         self.work_mode = work_mode
 
     def validate(self):

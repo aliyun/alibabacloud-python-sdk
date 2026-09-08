@@ -11,10 +11,16 @@ class ListCallTagsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Paging ordinal number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

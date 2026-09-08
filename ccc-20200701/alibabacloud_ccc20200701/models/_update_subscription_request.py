@@ -18,18 +18,37 @@ class UpdateSubscriptionRequest(DaraModel):
         producer_id: str = None,
         username: str = None,
     ):
+        # The endpoint for MQ. The service endpoint for webhook.
+        # 
         # This parameter is required.
         self.access_point = access_point
+        # Leave blank.
         self.aliyun_uid = aliyun_uid
+        # For MQ, enter the topic name. For webhook, enter Topic_Webhook.
         self.default_topic = default_topic
+        # The message subscription checklist.
+        # 
         # This parameter is required.
         self.event_subscriptions_json = event_subscriptions_json
+        # The ID of the Cloud Contact Center instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The MQ instance ID. Specify this only when MqType is rocketmq4 or rocketmq5.
         self.mq_instance_id = mq_instance_id
+        # The message push type.
+        # 
+        # - rocketmq4
+        # 
+        # - rocketmq5
+        # 
+        # - webhook
         self.mq_type = mq_type
+        # The MQ password. Specify this only when MqType is rocketmq5.
         self.password = password
+        # For Message Queue (MQ), enter the Group ID. For webhook, enter PID_Webhook.
         self.producer_id = producer_id
+        # The MQ username. Specify this only when MqType is rocketmq5.
         self.username = username
 
     def validate(self):

@@ -13,11 +13,18 @@ class AddPhoneNumbersRequest(DaraModel):
         number_list: str = None,
         usage: str = None,
     ):
+        # ID of the IVR contact flow to attach. This parameter is valid only when the number usage includes inbound calls. It is optional and defaults to empty.
         self.contact_flow_id = contact_flow_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Number group ID. You can view number grouping information in the Cloud Contact Center console. This parameter is optional and defaults to empty.
         self.number_group_id = number_group_id
+        # List of phone numbers to add.
         self.number_list = number_list
+        # Usage of the phone number. Note: If the provided number is a 400 number, the usage must be set to Inbound.
+        # 
         # This parameter is required.
         self.usage = usage
 

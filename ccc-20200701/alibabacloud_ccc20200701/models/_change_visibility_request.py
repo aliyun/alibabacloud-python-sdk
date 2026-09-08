@@ -11,9 +11,13 @@ class ChangeVisibilityRequest(DaraModel):
         invisible: bool = None,
         user_id: str = None,
     ):
+        # The ID of the Cloud Connect Center instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to set the agent\\"s status to invisible.
         self.invisible = invisible
+        # The ID of the agent.
         self.user_id = user_id
 
     def validate(self):

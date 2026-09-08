@@ -12,11 +12,17 @@ class FinishTicketTaskRequest(DaraModel):
         task_id: str = None,
         ticket_id: str = None,
     ):
+        # Processing comments.
+        # 
         # This parameter is required.
         self.comment = comment
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Node ID.
         self.task_id = task_id
+        # Ticket ID.
         self.ticket_id = ticket_id
 
     def validate(self):

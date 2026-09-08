@@ -16,10 +16,15 @@ class ListUnassignedNumbersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListUnassignedNumbersResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of numbers.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -134,8 +143,11 @@ class ListUnassignedNumbersResponseBodyDataList(DaraModel):
         number: str = None,
         province: str = None,
     ):
+        # City where the number is registered.
         self.city = city
+        # Number.
         self.number = number
+        # Province where the number is registered.
         self.province = province
 
     def validate(self):

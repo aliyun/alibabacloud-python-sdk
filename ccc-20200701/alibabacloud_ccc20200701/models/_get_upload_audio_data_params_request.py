@@ -10,8 +10,11 @@ class GetUploadAudioDataParamsRequest(DaraModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # Call ID.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # Cloud Contact Center instance ID.
         self.instance_id = instance_id
 
     def validate(self):

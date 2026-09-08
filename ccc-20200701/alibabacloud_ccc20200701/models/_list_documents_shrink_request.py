@@ -15,16 +15,23 @@ class ListDocumentsShrinkRequest(DaraModel):
         search_pattern: str = None,
         sorts_shrink: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The token for the next page of results.
         self.next_page_token = next_page_token
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
-        # schema id
+        # The schema ID.
         # 
         # This parameter is required.
         self.schema_id = schema_id
+        # The search conditional expression.
         self.search_pattern = search_pattern
+        # The custom sorting value.
         self.sorts_shrink = sorts_shrink
 
     def validate(self):

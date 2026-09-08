@@ -12,12 +12,17 @@ class ImportDocumentsRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The key of the OSS file.
+        # 
         # This parameter is required.
         self.oss_file_key = oss_file_key
+        # The request ID.
         self.request_id = request_id
-        # schema id
+        # The schema ID.
         # 
         # This parameter is required.
         self.schema_id = schema_id

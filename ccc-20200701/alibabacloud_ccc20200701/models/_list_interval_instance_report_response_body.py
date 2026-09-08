@@ -16,10 +16,15 @@ class ListIntervalInstanceReportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # List of instance segment statistics data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,9 +87,13 @@ class ListIntervalInstanceReportResponseBodyData(DaraModel):
         overall: main_models.ListIntervalInstanceReportResponseBodyDataOverall = None,
         stats_time: int = None,
     ):
+        # Inbound metrics.
         self.inbound = inbound
+        # Outbound metrics.
         self.outbound = outbound
+        # Overall metrics.
         self.overall = overall
+        # Start Time, formatted as a UNIX timestamp in milliseconds.
         self.stats_time = stats_time
 
     def validate(self):
@@ -159,27 +168,49 @@ class ListIntervalInstanceReportResponseBodyDataOverall(DaraModel):
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # Average break time, in seconds. Calculation Formula: TotalBreakTime / Break Count. Break Count is not an API statistics field.
         self.average_break_time = average_break_time
+        # Average call hold time, in seconds. Calculation Formula: TotalHoldTime / (Inbound Calls on Hold + Outbound Calls on Hold).
         self.average_hold_time = average_hold_time
+        # Average ready time, in seconds. Calculation Formula: TotalReadyTime / Ready Count. Ready Count is not an API statistics field.
         self.average_ready_time = average_ready_time
+        # Average talk time, in seconds. Calculation Formula: TotalTalkTime / (CallsAnswered + CallsHandled).
         self.average_talk_time = average_talk_time
+        # Average post-processing time per call, in seconds. Calculation Formula: TotalWorkTime / TotalCalls.
         self.average_work_time = average_work_time
+        # Maximum break time, in seconds.
         self.max_break_time = max_break_time
+        # Maximum call hold time, in seconds.
         self.max_hold_time = max_hold_time
+        # Maximum ready time, in seconds.
         self.max_ready_time = max_ready_time
+        # Maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # Maximum post-processing time, in seconds.
         self.max_work_time = max_work_time
+        # Agent occupancy rate. Calculation Formula: (TotalWorkTime + TotalTalkTime) / TotalLoggedInTime.
         self.occupancy_rate = occupancy_rate
+        # Satisfaction index, which is the average value of the satisfaction keypress digits (single-digit numbers).
         self.satisfaction_index = satisfaction_index
+        # Satisfaction rate. Calculation Formula: Count of evaluations marked as satisfied / Count of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # Sending Count of satisfaction surveys.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # Response Count of satisfaction surveys.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Total break time in seconds.
         self.total_break_time = total_break_time
+        # Total call volume. Calculation Formula: CallsOffered + CallsDialed.
         self.total_calls = total_calls
+        # Total hold time, in seconds.
         self.total_hold_time = total_hold_time
+        # Total logon duration, in seconds. Exclude break time.
         self.total_logged_in_time = total_logged_in_time
+        # Total ready time in seconds.
         self.total_ready_time = total_ready_time
+        # Total talk time, in seconds.
         self.total_talk_time = total_talk_time
+        # Total post-processing time in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -358,31 +389,57 @@ class ListIntervalInstanceReportResponseBodyDataOutbound(DaraModel):
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # Answer rate. Calculation Formula: CallsAnswered / CallsDialed (because management events for answering and acknowledgement may fall into different Time Ranges, the Result may exceed 100% in certain cases).
         self.answer_rate = answer_rate
+        # Average dial-up duration, in seconds. Calculation Formula: TotalDialingTime / CallsDialed.
         self.average_dialing_time = average_dialing_time
+        # Average hold duration, in seconds. Calculation formula: TotalHoldTime / CallsHold.
         self.average_hold_time = average_hold_time
+        # Average ring time in seconds. Calculation Formula: TotalRingTime / CallsRinged.
         self.average_ring_time = average_ring_time
+        # Average talk time, in seconds. Calculation Formula: TotalTalkTime / CallsAnswered.
         self.average_talk_time = average_talk_time
+        # Average post-processing time in seconds. Calculation Formula: TotalWorkTime / CallsDialed.
         self.average_work_time = average_work_time
+        # Number of answered calls.
         self.calls_answered = calls_answered
+        # The number of calls transferred via consultation, which refers to the quantity of calls that underwent consultation-based transfer. If a single call was transferred multiple times, it is counted as one.
         self.calls_attended_transferred = calls_attended_transferred
+        # Quantity of blind transfers, which refers to the number of calls that were directly transferred. If a single call is transferred multiple times, it counts as one.
         self.calls_blind_transferred = calls_blind_transferred
+        # Number of dialed calls.
         self.calls_dialed = calls_dialed
+        # Number of calls placed on hold. If a single call is placed on hold multiple times, it is counted as one.
         self.calls_hold = calls_hold
+        # Number of calls that rang for agents. If a single call is assigned to multiple agents and rings for each, it is counted as one.
         self.calls_ringed = calls_ringed
+        # Maximum dial-up duration, in seconds.
         self.max_dialing_time = max_dialing_time
+        # Maximum hold time during calls, in seconds.
         self.max_hold_time = max_hold_time
+        # Maximum ring time, in seconds.
         self.max_ring_time = max_ring_time
+        # Maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # Maximum post-processing time in seconds.
         self.max_work_time = max_work_time
+        # Satisfaction index, which is the average value of the single-digit satisfaction key presses.
         self.satisfaction_index = satisfaction_index
+        # Satisfaction rate. Calculation Formula: Quantity of evaluations marked as satisfied / Count of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # Sending Count of satisfaction surveys.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # Count of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Total dial-up duration, in seconds.
         self.total_dialing_time = total_dialing_time
+        # Total hold duration, in seconds.
         self.total_hold_time = total_hold_time
+        # Total ring time, in seconds.
         self.total_ring_time = total_ring_time
+        # Total talk time, in seconds.
         self.total_talk_time = total_talk_time
+        # Total post-processing duration, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -619,65 +676,125 @@ class ListIntervalInstanceReportResponseBodyDataInbound(DaraModel):
         total_wait_time: int = None,
         total_work_time: int = None,
     ):
+        # Abandon rate. Calculation Formula: CallsAbandoned / CallsOffered (because management events related to abandonment and assignment may fall into different Time Ranges, the Result may exceed 100% in certain cases).
         self.abandon_rate = abandon_rate
+        # Deprecated. Refer to the AbandonRate field instead.
         self.abandoned_rate = abandoned_rate
+        # The average abandon time, in seconds. Calculation Formula: TotalAbandonTime / CallsAbandoned.
         self.average_abandon_time = average_abandon_time
+        # Average IVR abandonment time, in seconds. Calculation Formula: TotalAbandonedInIVRTime / CallsAbandonedInIVR.
         self.average_abandoned_in_ivrtime = average_abandoned_in_ivrtime
+        # Average queue abandonment duration, in seconds. Calculation Formula: TotalAbandonedInQueueTime / CallsAbandonedInQueue.
         self.average_abandoned_in_queue_time = average_abandoned_in_queue_time
+        # Average abandoned-in-ring time, in seconds. Calculation Formula: TotalAbandonedInRingTime / CallsAbandonedInRing.
         self.average_abandoned_in_ring_time = average_abandoned_in_ring_time
+        # Average first response time for chat sessions, in seconds.
         self.average_first_response_time = average_first_response_time
+        # Average call hold duration, in seconds. Calculation Formula: TotalHoldTime / CallsHold.
         self.average_hold_time = average_hold_time
+        # Average response time (RT) of chat sessions.
         self.average_response_time = average_response_time
+        # Average ring time, in seconds. Calculation Formula: TotalRingTime / CallsRinged.
         self.average_ring_time = average_ring_time
+        # Average talk time, in seconds. Calculation Formula: TotalTalkTime / CallsHandled.
         self.average_talk_time = average_talk_time
+        # Average wait time, which is the average duration callers wait before an agent answers a call. Calculation Formula: TotalWaitTime / CallsHandled.
         self.average_wait_time = average_wait_time
+        # Average post-processing time, in seconds. Calculation Formula: TotalWorkTime / CallsHandled.
         self.average_work_time = average_work_time
+        # Total abandoned calls. Calculation Formula: CallsAbandonedInIVR + CallsAbandonedInQueue + CallsAbandonedInRing.
         self.calls_abandoned = calls_abandoned
+        # Number of calls abandoned in IVR, which refers to the count of calls where the Customer hung up during the IVR flow after entering the IVR process.
         self.calls_abandoned_in_ivr = calls_abandoned_in_ivr
+        # The number of calls abandoned in the queue, which refers to calls where the customer hung up while waiting in the queue after entering it.
         self.calls_abandoned_in_queue = calls_abandoned_in_queue
+        # Number of calls abandoned during ringing, which refers to the Quantity of calls where the Customer hung up while the agent\\"s phone was ringing.
         self.calls_abandoned_in_ring = calls_abandoned_in_ring
+        # The number of calls abandoned in the Intelligent Navigation module.
         self.calls_abandoned_in_voice_navigator = calls_abandoned_in_voice_navigator
+        # Number of consult transfers, which refers to the Count of calls that involved a consult transfer. If a single call initiated multiple transfers, it is counted as one.
         self.calls_attended_transferred = calls_attended_transferred
+        # Quantity of blind transfers, which is the number of calls that were directly transferred. If a single call was transferred multiple times, it is counted as one.
         self.calls_blind_transferred = calls_blind_transferred
+        # Number of calls that caused IVR exceptions.
         self.calls_caused_ivrexception = calls_caused_ivrexception
+        # The number of calls forwarded to an external number.
         self.calls_forward_to_outside_number = calls_forward_to_outside_number
+        # The acknowledgement count, which refers to the number of calls answered by agents. If a single call is answered by multiple agents, it is counted as one.
         self.calls_handled = calls_handled
+        # Number of calls placed on hold. If a single call is placed on hold multiple times, it is counted as one.
         self.calls_hold = calls_hold
+        # The number of calls with IVR exceptions. A call is counted when the IVR enters a hang-up reason node and the hang-up reason configured for that node is "failed transfer to agent." In this case, the count increases by 1.
         self.calls_ivrexception = calls_ivrexception
+        # Number of calls offered to Cloud Contact Center.
         self.calls_offered = calls_offered
+        # Number of calls that entered the queue. If a single call entered the queue multiple times, it is counted as one.
         self.calls_queued = calls_queued
+        # Queue Failure quantity, which refers to the number of calls where the customer hung up during queuing after the call entered the queue.
         self.calls_queuing_failed = calls_queuing_failed
+        # Quantity of calls that overflowed from the queue, meaning calls that encountered queue overflow while waiting in the IVR queue.
         self.calls_queuing_overflow = calls_queuing_overflow
+        # Number of calls that timed out during the queuing phase.
         self.calls_queuing_timeout = calls_queuing_timeout
+        # Number of calls that rang to agents. If a single call was assigned to multiple agents and rang for each, it is counted as one.
         self.calls_ringed = calls_ringed
+        # Quantity of calls transferred to voicemail.
         self.calls_to_voicemail = calls_to_voicemail
+        # The number of calls directed to voicemail.
         self.calls_voicemail = calls_voicemail
+        # Acknowledgement rate. Calculation Formula: CallsHandled / CallsOffered (because acknowledgement events and assign events may fall into different time ranges, the result may exceed 100% in certain cases).
         self.handle_rate = handle_rate
+        # The maximum abandon time, in seconds.
         self.max_abandon_time = max_abandon_time
+        # Maximum IVR abandonment duration, in seconds.
         self.max_abandoned_in_ivrtime = max_abandoned_in_ivrtime
+        # Maximum abandoned-in-queue time, in seconds.
         self.max_abandoned_in_queue_time = max_abandoned_in_queue_time
+        # Maximum ring abandonment duration, in seconds.
         self.max_abandoned_in_ring_time = max_abandoned_in_ring_time
+        # Maximum hold time, in seconds.
         self.max_hold_time = max_hold_time
+        # Maximum ring duration, in seconds.
         self.max_ring_time = max_ring_time
+        # Maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # The maximum wait time, in seconds.
         self.max_wait_time = max_wait_time
+        # Maximum post-processing time, in seconds.
         self.max_work_time = max_work_time
+        # Satisfaction index, which is the average value of the satisfaction keypress digits (single-digit numbers).
         self.satisfaction_index = satisfaction_index
+        # Satisfaction rate. Calculation Formula: Number of evaluations marked as satisfied / Count of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # Sending Count of satisfaction surveys.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # The count of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Service level within 20 seconds, calculated as the number of calls with wait time less than or equal to 20 seconds divided by CallsQueued.
         self.service_level_20 = service_level_20
+        # Total abandon time, in seconds.
         self.total_abandon_time = total_abandon_time
+        # Total IVR abandonment duration, in seconds.
         self.total_abandoned_in_ivrtime = total_abandoned_in_ivrtime
+        # Total abandoned-in-queue time, in seconds.
         self.total_abandoned_in_queue_time = total_abandoned_in_queue_time
+        # Total abandoned-in-ring time, in seconds.
         self.total_abandoned_in_ring_time = total_abandoned_in_ring_time
+        # Total hold time during calls, in seconds.
         self.total_hold_time = total_hold_time
+        # Total number of messages sent in chat sessions.
         self.total_messages_sent = total_messages_sent
+        # Total number of messages sent by agents in chat sessions.
         self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        # Total number of messages sent by the Customer in chat sessions.
         self.total_messages_sent_by_customer = total_messages_sent_by_customer
+        # Total ring time, in seconds.
         self.total_ring_time = total_ring_time
+        # Total talk time, in seconds.
         self.total_talk_time = total_talk_time
+        # The total wait time, in seconds.
         self.total_wait_time = total_wait_time
+        # Total post-processing time, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):

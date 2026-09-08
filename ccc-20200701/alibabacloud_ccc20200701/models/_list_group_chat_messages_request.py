@@ -13,10 +13,21 @@ class ListGroupChatMessagesRequest(DaraModel):
         page_size: int = None,
         sort_order: str = None,
     ):
+        # Cloud Contact Center instance.
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
+        # Token for the next page. This is a 32-character UUID. Leave this parameter empty when requesting the first page. For subsequent pages, use the NextPageToken value from the previous response.
         self.next_page_token = next_page_token
+        # Page size. Valid values: 1 to 100.
         self.page_size = page_size
+        # Sorting order. Default is descending.
+        # 
+        # Valid values:
+        # 
+        # ASC: ascending.
+        # 
+        # DESC: descending.
         self.sort_order = sort_order
 
     def validate(self):

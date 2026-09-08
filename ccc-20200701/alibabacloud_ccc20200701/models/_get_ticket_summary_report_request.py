@@ -19,17 +19,41 @@ class GetTicketSummaryReportRequest(DaraModel):
         start_time: int = None,
         state: str = None,
     ):
+        # Assignee ID. This can be an agent ID or a skill group ID.
         self.assignee = assignee
+        # Assignee type.
+        # 
+        # - Agent
+        # 
+        # - SkillGroup
         self.assignee_type = assignee_type
+        # Ticket category ID.
         self.category_id = category_id
+        # Creator ID.
         self.creator = creator
+        # End time. Filter tickets by creation time.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number. Default value: 1.
         self.page_number = page_number
+        # Page size. Valid values: 1 to 100.
         self.page_size = page_size
+        # Participant ID.
         self.participant = participant
+        # Start time. Filter tickets by creation time.
         self.start_time = start_time
+        # Ticket state.
+        # 
+        # - Processing
+        # 
+        # - Withdrawal
+        # 
+        # - Rejected
+        # 
+        # - Closed
         self.state = state
 
     def validate(self):

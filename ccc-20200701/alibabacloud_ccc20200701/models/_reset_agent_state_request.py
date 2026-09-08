@@ -11,9 +11,13 @@ class ResetAgentStateRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # A string that identifies the device. The value is not processed by the system and can be any string.
         self.device_id = device_id
+        # The ID of the Cloud Call Center (CCC) instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the agent. This parameter is optional. If omitted, the agent mapped to the current RAM account is reset.
         self.user_id = user_id
 
     def validate(self):

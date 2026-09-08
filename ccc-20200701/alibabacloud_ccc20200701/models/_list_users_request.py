@@ -13,13 +13,21 @@ class ListUsersRequest(DaraModel):
         search_pattern: str = None,
         skill_group_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Fuzzy matching based on the agent logon name or agent display name. This parameter is optional and defaults to empty, which means no filtering is applied.
         self.search_pattern = search_pattern
+        # The skill group ID.
         self.skill_group_id = skill_group_id
 
     def validate(self):

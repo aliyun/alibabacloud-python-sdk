@@ -12,7 +12,10 @@ class ListCallSummariesRequest(DaraModel):
         contact_id_list: List[str] = None,
         instance_id: str = None,
     ):
+        # List of call IDs.
         self.contact_id_list = contact_id_list
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

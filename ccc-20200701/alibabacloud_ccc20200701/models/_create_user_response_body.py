@@ -17,11 +17,17 @@ class CreateUserResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The response parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89,14 +95,23 @@ class CreateUserResponseBodyData(DaraModel):
         user_id: str = None,
         work_mode: str = None,
     ):
+        # The URL of the agent\\"s profile picture.
         self.avatar_url = avatar_url
+        # The display name of the agent.
         self.display_name = display_name
+        # The email address.
         self.email = email
+        # The agent\\"s extension number.
         self.extension = extension
+        # The logon name of the agent.
         self.login_name = login_name
+        # The personal phone number of the agent.
         self.mobile = mobile
+        # The agent\\"s nickname.
         self.nickname = nickname
+        # The agent ID.
         self.user_id = user_id
+        # The work mode.
         self.work_mode = work_mode
 
     def validate(self):

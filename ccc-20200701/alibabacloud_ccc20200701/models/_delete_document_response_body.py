@@ -15,10 +15,15 @@ class DeleteDocumentResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The response parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

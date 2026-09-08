@@ -16,10 +16,15 @@ class ListHistoricalAgentSkillGroupReportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # List of historical agent skill group data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListHistoricalAgentSkillGroupReportResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of historical agent skill group data.
         self.list = list
+        # Page number. Valid values are 1 to 100.
         self.page_number = page_number
+        # Page size. Valid values are 1 to 100.
         self.page_size = page_size
+        # Total count. Data is available only when PageNumber is 1. Otherwise, the value is 0.
         self.total_count = total_count
 
     def validate(self):
@@ -141,15 +150,25 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataList(DaraModel):
         skill_group_id: str = None,
         skill_group_name: str = None,
     ):
+        # Agent ID.
         self.agent_id = agent_id
+        # Agent name.
         self.agent_name = agent_name
+        # Back-to-back call metrics.
         self.back_2back = back_2back
+        # Agent\\"s employee ID.
         self.display_id = display_id
+        # Inbound metrics.
         self.inbound = inbound
+        # Internal call metrics.
         self.internal = internal
+        # Outbound metrics.
         self.outbound = outbound
+        # Overall metrics.
         self.overall = overall
+        # Skill group ID.
         self.skill_group_id = skill_group_id
+        # Skill group name.
         self.skill_group_name = skill_group_name
 
     def validate(self):
@@ -275,36 +294,68 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall(DaraModel):
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # Average break time in seconds.
         self.average_break_time = average_break_time
+        # Average call hold time in seconds. Formula: TotalHoldTime/(Inbound CallsHold + Outbound CallsHold).
         self.average_hold_time = average_hold_time
+        # Average ready time in seconds. Formula: TotalReadyTime/Number of ready events. The number of ready events is not an API statistical field.
         self.average_ready_time = average_ready_time
+        # Average talk time in seconds. Formula: TotalTalkTime/(CallsAnswered+CallsHandled).
         self.average_talk_time = average_talk_time
+        # Average after-call work time in seconds. Formula: TotalWorkTime/TotalCalls.
         self.average_work_time = average_work_time
+        # List of break code details.
         self.break_code_detail_list = break_code_detail_list
+        # Earliest check-in time. Format is UNIX timestamp in milliseconds.
         self.first_check_in_time = first_check_in_time
+        # Latest check-out time. Format is UNIX timestamp in milliseconds.
         self.last_check_out_time = last_check_out_time
+        # Maximum break time in seconds.
         self.max_break_time = max_break_time
+        # Maximum call hold time in seconds.
         self.max_hold_time = max_hold_time
+        # Maximum ready time in seconds.
         self.max_ready_time = max_ready_time
+        # Maximum talk time in seconds.
         self.max_talk_time = max_talk_time
+        # Maximum after-call work time in seconds.
         self.max_work_time = max_work_time
+        # Agent occupancy rate.
         self.occupancy_rate = occupancy_rate
+        # Satisfaction index, which is the average value of the single-digit satisfaction key presses.
         self.satisfaction_index = satisfaction_index
+        # Satisfaction rate. Formula: Number of satisfied ratings/Number of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # Number of satisfaction surveys offered.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # Number of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Total break time in seconds.
         self.total_break_time = total_break_time
+        # Total number of calls. Formula: CallsOffered + CallsDialed.
         self.total_calls = total_calls
+        # Total hold time in seconds.
         self.total_hold_time = total_hold_time
+        # Total logged-in time in seconds.
+        # *Note: This does not include offline or break time.*
         self.total_logged_in_time = total_logged_in_time
+        # Total off-site logged-in time in seconds.
         self.total_off_site_lgged_in_time = total_off_site_lgged_in_time
+        # Total office phone logged-in time in seconds.
         self.total_office_phone_logged_in_time = total_office_phone_logged_in_time
+        # Total on-site logged-in time in seconds.
         self.total_on_site_logged_in_time = total_on_site_logged_in_time
+        # Total outbound-only logged-in time in seconds.
         self.total_outbound_scenario_logged_in_time = total_outbound_scenario_logged_in_time
+        # Total outbound-only idle time in seconds.
         self.total_outbound_scenario_ready_time = total_outbound_scenario_ready_time
+        # Total outbound-only online time in seconds.
         self.total_outbound_scenario_time = total_outbound_scenario_time
+        # Total ready time in seconds.
         self.total_ready_time = total_ready_time
+        # Total talk time in seconds.
         self.total_talk_time = total_talk_time
+        # Total after-call work time in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -522,8 +573,11 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDet
         count: int = None,
         duration: int = None,
     ):
+        # Break code.
         self.break_code = break_code
+        # Count.
         self.count = count
+        # Duration in seconds.
         self.duration = duration
 
     def validate(self):
@@ -590,33 +644,61 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound(DaraModel)
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # Answer rate. Formula: CallsAnswered/CallsDialed (Because answer events and offered events might fall into different time ranges, the result might sometimes exceed 100%).
         self.answer_rate = answer_rate
+        # Average dialing time in seconds. Formula: TotalDialingTime/CallsDialed.
         self.average_dialing_time = average_dialing_time
+        # Average call hold time in seconds. Formula: TotalHoldTime/CallsHold.
         self.average_hold_time = average_hold_time
+        # Average ring time in seconds.
         self.average_ring_time = average_ring_time
+        # Average talk time in seconds. Formula: TotalTalkTime/CallsAnswered.
         self.average_talk_time = average_talk_time
+        # Average after-call work time in seconds. Formula: TotalWorkTime/CallsDialed.
         self.average_work_time = average_work_time
+        # Number of calls answered.
         self.calls_answered = calls_answered
+        # Number of attended transfers in. If a call is transferred multiple times to this agent, each transfer counts as one.
         self.calls_attended_transfer_in = calls_attended_transfer_in
+        # Number of attended transfers out. If a call is transferred multiple times to other agents, each transfer counts as one.
         self.calls_attended_transfer_out = calls_attended_transfer_out
+        # Number of blind transfers in. If a call is transferred multiple times to this agent, each transfer counts as one.
         self.calls_blind_transfer_in = calls_blind_transfer_in
+        # Number of blind transfers out. If a call is transferred multiple times to other agents, each transfer counts as one.
         self.calls_blind_transfer_out = calls_blind_transfer_out
+        # Number of calls dialed.
         self.calls_dialed = calls_dialed
+        # Number of calls on hold, which is the number of times a call was put on hold.
         self.calls_hold = calls_hold
+        # Number of calls that rang for the agent.
         self.calls_ringed = calls_ringed
+        # Maximum dialing time in seconds.
         self.max_dialing_time = max_dialing_time
+        # Maximum call hold time in seconds.
         self.max_hold_time = max_hold_time
+        # Maximum ring time in seconds.
         self.max_ring_time = max_ring_time
+        # Maximum talk time in seconds.
         self.max_talk_time = max_talk_time
+        # Maximum after-call work time in seconds.
         self.max_work_time = max_work_time
+        # Satisfaction index, which is the average value of the single-digit satisfaction key presses.
         self.satisfaction_index = satisfaction_index
+        # Satisfaction rate. Formula: Number of satisfied ratings/Number of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # Number of satisfaction surveys offered.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # Number of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Total dialing time in seconds.
         self.total_dialing_time = total_dialing_time
+        # Total call hold time in seconds.
         self.total_hold_time = total_hold_time
+        # Total ring time in seconds.
         self.total_ring_time = total_ring_time
+        # Total talk time in seconds.
         self.total_talk_time = total_talk_time
+        # Total after-call work time in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -814,14 +896,23 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal(DaraModel)
         max_talk_time: int = None,
         total_talk_time: int = None,
     ):
+        # Average talk time in seconds.
         self.average_talk_time = average_talk_time
+        # Number of calls answered.
         self.calls_answered = calls_answered
+        # Number of calls dialed.
         self.calls_dialed = calls_dialed
+        # Number of calls handled.
         self.calls_handled = calls_handled
+        # Number of calls offered.
         self.calls_offered = calls_offered
+        # Number of calls the agent participated in.
         self.calls_talk = calls_talk
+        # Number of calls participated in.
         self.calls_talked = calls_talked
+        # Maximum talk time in seconds.
         self.max_talk_time = max_talk_time
+        # Total talk time in seconds.
         self.total_talk_time = total_talk_time
 
     def validate(self):
@@ -926,35 +1017,65 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound(DaraModel):
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # Average first response time in chat sessions, in seconds.
         self.average_first_response_time = average_first_response_time
+        # Average call hold time in seconds. Formula: TotalHoldTime/CallsHold.
         self.average_hold_time = average_hold_time
+        # Average response time in chat sessions.
         self.average_response_time = average_response_time
+        # Average ring time in seconds. Formula: TotalRingTime/CallsRinged.
         self.average_ring_time = average_ring_time
+        # Average talk time in seconds. Formula: TotalTalkTime/CallsHandled.
         self.average_talk_time = average_talk_time
+        # Average after-call work time in seconds. Formula: TotalWorkTime/CallsHandled.
         self.average_work_time = average_work_time
+        # Number of attended transfers in. If a call is transferred multiple times to this agent, each transfer counts as one.
         self.calls_attended_transfer_in = calls_attended_transfer_in
+        # Number of attended transfers out. If a call is transferred multiple times to other agents, each transfer counts as one.
         self.calls_attended_transfer_out = calls_attended_transfer_out
+        # Number of blind transfers in. If a call is transferred multiple times to this agent, each transfer counts as one.
         self.calls_blind_transfer_in = calls_blind_transfer_in
+        # Number of blind transfers out. If a call is transferred multiple times to other agents, each transfer counts as one.
         self.calls_blind_transfer_out = calls_blind_transfer_out
+        # Number of calls handled, which is the number of times an agent answered a call.
         self.calls_handled = calls_handled
+        # Number of calls on hold, which is the number of times a call was put on hold.
         self.calls_hold = calls_hold
+        # Number of calls offered, which is the number of times calls were assigned to this agent, including blind transfers and attended transfers from other agents.
         self.calls_offered = calls_offered
+        # Number of calls that rang for the agent.
         self.calls_ringed = calls_ringed
+        # Handle rate. Formula: CallsHandled/CallsOffered (Because answer events and offered events might fall into different time ranges, the result might sometimes exceed 100%).
         self.handle_rate = handle_rate
+        # Maximum call hold time in seconds.
         self.max_hold_time = max_hold_time
+        # Maximum ring time in seconds.
         self.max_ring_time = max_ring_time
+        # Maximum talk time in seconds.
         self.max_talk_time = max_talk_time
+        # Maximum after-call work time in seconds.
         self.max_work_time = max_work_time
+        # Satisfaction index, which is the average value of the single-digit satisfaction key presses.
         self.satisfaction_index = satisfaction_index
+        # Satisfaction rate. Formula: Number of satisfied ratings/Number of satisfaction survey responses.
         self.satisfaction_rate = satisfaction_rate
+        # Number of satisfaction surveys offered.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # Number of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Total call hold time in seconds.
         self.total_hold_time = total_hold_time
+        # Total messages sent in chat sessions.
         self.total_messages_sent = total_messages_sent
+        # Total messages sent by agents in chat sessions.
         self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        # Total messages sent by customers in chat sessions.
         self.total_messages_sent_by_customer = total_messages_sent_by_customer
+        # Total ring time in seconds.
         self.total_ring_time = total_ring_time
+        # Total talk time in seconds.
         self.total_talk_time = total_talk_time
+        # Total after-call work time in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -1174,24 +1295,43 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back(DaraModel
         total_ring_time: int = None,
         total_talk_time: int = None,
     ):
+        # Agent-side answer rate.
         self.agent_answer_rate = agent_answer_rate
+        # Agent handle rate.
         self.agent_handle_rate = agent_handle_rate
+        # Answer rate. Formula: CallsAnswered/CallsDialed (Because answer events and offered events might fall into different time ranges, the result might sometimes exceed 100%).
         self.answer_rate = answer_rate
+        # Average customer-side ring time in seconds.
         self.average_customer_ring_time = average_customer_ring_time
+        # Average ring time in seconds.
         self.average_ring_time = average_ring_time
+        # Average talk time in seconds.
         self.average_talk_time = average_talk_time
+        # Number of calls handled by agents.
         self.calls_agent_handled = calls_agent_handled
+        # Number of calls answered.
         self.calls_answered = calls_answered
+        # Number of calls answered by customers.
         self.calls_customer_answered = calls_customer_answered
+        # Number of customer-side pickups.
         self.calls_customer_handled = calls_customer_handled
+        # Number of calls dialed.
         self.calls_dialed = calls_dialed
+        # Customer answer rate.
         self.customer_answer_rate = customer_answer_rate
+        # Customer-side handle rate.
         self.customer_handle_rate = customer_handle_rate
+        # Maximum customer-side ring time in seconds.
         self.max_customer_ring_time = max_customer_ring_time
+        # Maximum ring time in seconds.
         self.max_ring_time = max_ring_time
+        # Maximum talk time in seconds.
         self.max_talk_time = max_talk_time
+        # Total customer-side ring time in seconds.
         self.total_customer_ring_time = total_customer_ring_time
+        # Total ring time in seconds.
         self.total_ring_time = total_ring_time
+        # Total talk time in seconds.
         self.total_talk_time = total_talk_time
 
     def validate(self):

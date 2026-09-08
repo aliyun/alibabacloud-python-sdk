@@ -25,25 +25,45 @@ class BlindTransferRequest(DaraModel):
         transferor: str = None,
         user_id: str = None,
     ):
+        # The queue priority when transferring to a skill group. Valid values are 0–9, where 0 is the highest priority and 9 is the lowest.
         self.call_priority = call_priority
+        # Variables passed to the contact flow. This field is optional. The variables configured here can be retrieved and used in the IVR flow. The format is a JSON string representing a set of key-value pairs.
         self.contact_flow_variables = contact_flow_variables
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The queuing overflow threshold when the transfer target is a skill group queue. The default value is 0, which means no overflow occurs.
         self.queuing_overflow_threshold = queuing_overflow_threshold
+        # The queuing timeout duration in seconds when the transfer target is a skill group queue.
         self.queuing_timeout_seconds = queuing_timeout_seconds
+        # The call routing type. Valid values are Automatic or Manual. If this parameter is empty, the system defaults to Automatic routing, which is also the current default behavior of the system. When Manual routing is selected, you must invoke APIs such as ClaimCall to assign the call to a specific agent.
         self.routing_type = routing_type
+        # Skill group ID.
         self.skill_group_id = skill_group_id
+        # The policy name for agent assignment when transferring to a skill group queue.
         self.strategy_name = strategy_name
+        # The parameters for the agent assignment policy when transferring to a skill group queue.
         self.strategy_params = strategy_params
+        # Ingest endpoint data, primarily used for extension purposes. Regular users do not need to concern themselves with this field.
         self.tags = tags
+        # Timeout duration for the direct transfer, in seconds. If the transferee does not answer within the specified time, the call is disconnected. This field is optional and defaults to 30 seconds.
         self.timeout_seconds = timeout_seconds
+        # The transfer recipient, which can be either an agent ID or a skill group ID.
+        # 
         # This parameter is required.
         self.transferee = transferee
+        # Destination type for the transfer. Valid values are AGENT, SKILL_GROUP, IVR, and EXTERNAL_NUMBER. If this parameter is not specified, the system determines the destination type based on the format of the target number. If the automatic detection is inaccurate, you must explicitly specify this parameter.
         self.transferee_type = transferee_type
+        # The transfer initiator. When the scenario involves directly transferring to an external number, the number specified by this parameter is used as the caller. This parameter is invalid when transferring to an internal agent or skill group; in such cases, the initiator is specified by the UserId parameter.
         self.transferor = transferor
+        # The agent ID that initiates a direct transfer.
         self.user_id = user_id
 
     def validate(self):

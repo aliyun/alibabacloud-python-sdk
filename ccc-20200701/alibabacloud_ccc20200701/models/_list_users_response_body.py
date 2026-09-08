@@ -17,11 +17,17 @@ class ListUsersResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListUsersResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Agent list.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -157,23 +167,41 @@ class ListUsersResponseBodyDataList(DaraModel):
         user_id: str = None,
         work_mode: str = None,
     ):
+        # SIP phone extension number. If the agent has registered a SIP phone, this parameter is the extension number of the SIP phone device.
         self.device_ext = device_ext
+        # Device ID, which is the identity of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # The status of the SIP phone device. If no SIP phone is registered, the status is UNREGISTERED (Unregistered). If a SIP phone is registered but offline, the status is OFFLINE (Offline). If a SIP phone is registered and online, the status is ONLINE (Online).
         self.device_state = device_state
+        # The agent\\"s employee ID.
         self.display_id = display_id
+        # Agent display name.
         self.display_name = display_name
+        # Mailbox.
         self.email = email
+        # The landline extension number.
         self.extension = extension
+        # Agent logon name.
         self.login_name = login_name
+        # The agent\\"s personal phone number.
         self.mobile = mobile
+        # List of personal outbound numbers for the agent.
         self.personal_outbound_number_list = personal_outbound_number_list
+        # Indicates whether the RAM account mapped to the agent is a RAM root account.
         self.primary = primary
+        # Indicates whether the RAM account mapped to the agent is a RAM primary account.
         self.primary_account = primary_account
+        # The UID of the Resource Access Management (RAM) user associated with the agent.
         self.ram_id = ram_id
+        # The role ID, in the format: role\\@instance ID.
         self.role_id = role_id
+        # The role name.
         self.role_name = role_name
+        # The list of skill group levels associated with the agent.
         self.skill_level_list = skill_level_list
+        # Agent ID.
         self.user_id = user_id
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):
@@ -322,8 +350,11 @@ class ListUsersResponseBodyDataListSkillLevelList(DaraModel):
         skill_group_name: str = None,
         skill_level: int = None,
     ):
+        # The ID of the skill group.
         self.skill_group_id = skill_group_id
+        # The name of the skill group.
         self.skill_group_name = skill_group_name
+        # The skill level.
         self.skill_level = skill_level
 
     def validate(self):
@@ -367,10 +398,15 @@ class ListUsersResponseBodyDataListPersonalOutboundNumberList(DaraModel):
         province: str = None,
         usage: str = None,
     ):
+        # Whether the number is active.
         self.active = active
+        # City where the number is registered.
         self.city = city
+        # Number.
         self.number = number
+        # The province of the phone number\\"s registration location.
         self.province = province
+        # Usage of the number.
         self.usage = usage
 
     def validate(self):

@@ -10,8 +10,12 @@ class GetCampaignRequest(DaraModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the campaign.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -14,14 +14,23 @@ class BargeInCallRequest(DaraModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # Agent ID whose call was barged in on.
+        # 
         # This parameter is required.
         self.barged_user_id = barged_user_id
+        # Device ID. This parameter is meaningless and can be filled in with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Timeout for force insert, in seconds. If the force insert operation does not succeed within the specified time, it is canceled. Normally, the force insert operation succeeds immediately. The timeout setting is provided to handle abnormal scenarios. This field is optional and defaults to 30 seconds.
         self.timeout_seconds = timeout_seconds
+        # Agent ID initiating the force insert.
         self.user_id = user_id
 
     def validate(self):

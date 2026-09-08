@@ -17,11 +17,17 @@ class ListAgentStatesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListAgentStatesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 300.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -148,14 +158,23 @@ class ListAgentStatesResponseBodyDataList(DaraModel):
         state: str = None,
         state_duration: str = None,
     ):
+        # Agent ID.
         self.agent_id = agent_id
+        # Agent name.
         self.agent_name = agent_name
+        # Break code.
         self.break_code = break_code
+        # Agent extension number.
         self.dn = dn
+        # Instance ID.
         self.instance_id = instance_id
+        # Agent logon name.
         self.login_name = login_name
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # Agent status.
         self.state = state
+        # Duration of the agent status.
         self.state_duration = state_duration
 
     def validate(self):

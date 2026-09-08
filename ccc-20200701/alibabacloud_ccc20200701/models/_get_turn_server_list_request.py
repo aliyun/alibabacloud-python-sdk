@@ -9,6 +9,8 @@ class GetTurnServerListRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

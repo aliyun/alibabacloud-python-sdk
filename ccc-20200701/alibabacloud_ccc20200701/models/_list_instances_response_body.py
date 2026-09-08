@@ -16,10 +16,15 @@ class ListInstancesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListInstancesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -141,15 +150,25 @@ class ListInstancesResponseBodyDataList(DaraModel):
         number_list: List[main_models.ListInstancesResponseBodyDataListNumberList] = None,
         status: str = None,
     ):
+        # Administrator list.
         self.admin_list = admin_list
+        # The Alibaba Cloud account ID to which the instance belongs.
         self.aliyun_uid = aliyun_uid
+        # The URL of the Cloud Contact Center instance, used to access the homepage of the Cloud Call Center instance. It is composed of the specific Cloud Call Center URL followed by the instance ID.
         self.console_url = console_url
+        # The creation time of the instance.
         self.create_time = create_time
+        # The instance description.
         self.description = description
+        # The domain name of the instance, which is globally unique.
         self.domain_name = domain_name
+        # The instance ID.
         self.id = id
+        # The instance name.
         self.name = name
+        # The list of numbers.
         self.number_list = number_list
+        # Instance status.
         self.status = status
 
     def validate(self):
@@ -248,6 +267,7 @@ class ListInstancesResponseBodyDataListNumberList(DaraModel):
         self,
         number: str = None,
     ):
+        # The number.
         self.number = number
 
     def validate(self):
@@ -284,15 +304,25 @@ class ListInstancesResponseBodyDataListAdminList(DaraModel):
         user_id: str = None,
         work_mode: str = None,
     ):
+        # The administrator\\"s name.
         self.display_name = display_name
+        # Mailbox.
         self.email = email
+        # Agent extension number.
         self.extension = extension
+        # Instance ID.
         self.instance_id = instance_id
+        # Agent logon name.
         self.login_name = login_name
+        # The agent\\"s personal phone number.
         self.mobile = mobile
+        # The role ID, in the format: role\\@instance ID.
         self.role_id = role_id
+        # Role name.
         self.role_name = role_name
+        # Agent ID.
         self.user_id = user_id
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):

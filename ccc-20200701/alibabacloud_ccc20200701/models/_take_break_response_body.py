@@ -17,11 +17,17 @@ class TakeBreakResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -93,18 +99,31 @@ class TakeBreakResponseBodyData(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break state after the agent is published but before becoming idle), RingingTimeout (break caused by ringing timeout), and RejectCall (break caused by the agent rejecting a call). There are no restrictions on Custom-defined status codes; customers can define them according to their business needs.
         self.break_code = break_code
+        # Device ID, which is the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # The agent\\"s extension number.
         self.extension = extension
+        # The time when the last heartbeat from the agent was received, formatted as a UNIX timestamp in milliseconds.
         self.heartbeat = heartbeat
+        # Instance ID.
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
+        # The agent\\"s personal phone number.
         self.mobile = mobile
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # The UNIX timestamp (in milliseconds) indicating when the agent was most recently reserved. Being reserved means an incoming call will be assigned to the agent shortly.
         self.reserved = reserved
+        # List of skill group IDs that the agent has signed into.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID.
         self.user_id = user_id
+        # Agent status.
         self.user_state = user_state
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):

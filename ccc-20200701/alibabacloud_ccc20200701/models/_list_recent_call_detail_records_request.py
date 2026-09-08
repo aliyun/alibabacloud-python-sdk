@@ -14,14 +14,23 @@ class ListRecentCallDetailRecordsRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # Fuzzy search criteria in JSON object format. The object contains three properties that can be combined arbitrarily: phoneNumber (fuzzy search by calling or called number), callingNumber (fuzzy search by calling number), and calledNumber (fuzzy search by called number).
         self.criteria = criteria
+        # End UNIX timestamp. The default value is the current time.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page ordinal number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Start UNIX timestamp. The default value is the start time of the current day. The earliest allowed time is 180 days before the current time.
         self.start_time = start_time
 
     def validate(self):

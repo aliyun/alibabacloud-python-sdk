@@ -17,11 +17,17 @@ class ListLegacyQueueEventLogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the invocation succeeded.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListLegacyQueueEventLogsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of queue event logs.
         self.list = list
+        # Page number, ranging from 1 to 1000.
         self.page_number = page_number
+        # Page size, ranging from 1 to 1000.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -150,16 +160,27 @@ class ListLegacyQueueEventLogsResponseBodyDataList(DaraModel):
         tenant_id: str = None,
         vq: str = None,
     ):
+        # Call ID.
         self.acid = acid
+        # Calling party
         self.ani = ani
+        # Agent ID.
         self.answer_phone = answer_phone
+        # Acknowledgement duration, in seconds.
         self.answer_time = answer_time
+        # Hang-up reason.
         self.cause = cause
+        # Dialed number.
         self.dnis = dnis
+        # Primary key
         self.id = id
+        # Queue duration, in seconds.
         self.queue_time = queue_time
+        # Statistics date.
         self.statistic_date = statistic_date
+        # Tenant ID.
         self.tenant_id = tenant_id
+        # Queue name.
         self.vq = vq
 
     def validate(self):

@@ -13,12 +13,19 @@ class StartConferenceRequest(DaraModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A JSON-formatted string representing an array of participants. Each array element represents a participant. For internal calls to agents, the participant is the target agent\\"s extension number. For external calls to customers, the participant is the customer\\"s phone number.
+        # 
         # This parameter is required.
         self.participant_list_json = participant_list_json
+        # Ingest endpoint data. It cannot exceed 128 bytes and is primarily used for extension requirements. Ordinary customers do not need to concern themselves with it.
         self.tags = tags
+        # Timeout period. If the call is not answered within the time specified by this parameter, it will be automatically disconnected. This parameter is optional. The default value is 30 seconds.
         self.timeout_seconds = timeout_seconds
+        # The agent ID initiating the conference call. This parameter is optional. If not specified, the agent mapped to the current RAM account is used by default.
         self.user_id = user_id
 
     def validate(self):

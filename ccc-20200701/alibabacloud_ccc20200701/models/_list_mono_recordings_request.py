@@ -12,10 +12,16 @@ class ListMonoRecordingsRequest(DaraModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # The channel ID of the agent conversation.
         self.agent_channel_id = agent_channel_id
+        # The agent ID.
         self.agent_id = agent_id
+        # The call ID.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -14,15 +14,26 @@ class ListLegacyQueueEventLogsRequest(DaraModel):
         skill_group_id: str = None,
         start_time: int = None,
     ):
+        # End time, in UNIX timestamp format, in milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number for paging, ranging from 1 to 1000.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Filter by skill group ID. This parameter is optional and defaults to empty. An empty value means no filtering is applied.
         self.skill_group_id = skill_group_id
+        # Start Time, in UNIX timestamp format, in milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

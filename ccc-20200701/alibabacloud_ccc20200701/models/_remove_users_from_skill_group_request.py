@@ -11,10 +11,16 @@ class RemoveUsersFromSkillGroupRequest(DaraModel):
         skill_group_id: str = None,
         user_id_list: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
+        # List of agent IDs.
+        # 
         # This parameter is required.
         self.user_id_list = user_id_list
 

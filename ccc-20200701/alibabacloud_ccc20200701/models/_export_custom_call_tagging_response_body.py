@@ -13,10 +13,15 @@ class ExportCustomCallTaggingResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data. The download link to the OSS object containing the export result. The link has a validity period of 24 hours.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

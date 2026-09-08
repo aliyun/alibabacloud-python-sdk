@@ -12,12 +12,27 @@ class ListSmsMetadataRequest(DaraModel):
         page_size: int = None,
         scenario_list_json: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number. The value ranges from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. The value ranges from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The type of the scenario. Valid values:
+        # 
+        # - SATISFACTION_SURVEY: satisfaction survey
+        # 
+        # - CONTACT_FLOW_NODE: Interactive Voice Response (IVR) flow node
+        # 
+        # - MISSED_CALL_NOTIFICATION: missed call notification
+        # 
+        # - FLASH_SMS: Alibaba Cloud flash SMS notification
         self.scenario_list_json = scenario_list_json
 
     def validate(self):

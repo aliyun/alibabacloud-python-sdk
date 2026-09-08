@@ -16,10 +16,15 @@ class ListUserLevelsOfSkillGroupResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListUserLevelsOfSkillGroupResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of skill levels.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -140,14 +149,23 @@ class ListUserLevelsOfSkillGroupResponseBodyDataList(DaraModel):
         skill_level: int = None,
         user_id: str = None,
     ):
+        # Agent display name.
         self.display_name = display_name
+        # Agent logon name.
         self.login_name = login_name
+        # The user\\"s Resource Access Management (RAM) account.
         self.ram_id = ram_id
+        # Role ID, in the format: role\\@instance ID.
         self.role_id = role_id
+        # Role name.
         self.role_name = role_name
+        # Skill group ID.
         self.skill_group_id = skill_group_id
+        # Skill group Name.
         self.skill_group_name = skill_group_name
+        # Agent skill Level.
         self.skill_level = skill_level
+        # Agent ID.
         self.user_id = user_id
 
     def validate(self):

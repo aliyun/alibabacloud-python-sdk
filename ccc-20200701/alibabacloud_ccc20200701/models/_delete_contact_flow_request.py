@@ -11,9 +11,13 @@ class DeleteContactFlowRequest(DaraModel):
         force: bool = None,
         instance_id: str = None,
     ):
+        # The ID of the contact flow.
+        # 
         # This parameter is required.
         self.contact_flow_id = contact_flow_id
         self.force = force
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

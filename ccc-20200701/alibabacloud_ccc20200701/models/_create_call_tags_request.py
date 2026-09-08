@@ -10,8 +10,12 @@ class CreateCallTagsRequest(DaraModel):
         call_tag_name_list: str = None,
         instance_id: str = None,
     ):
+        # A JSON-formatted string representing an array of call tag names. Each array element is a call tag name to be created. The length of each call tag name must be between 1 and 10 characters.
+        # 
         # This parameter is required.
         self.call_tag_name_list = call_tag_name_list
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

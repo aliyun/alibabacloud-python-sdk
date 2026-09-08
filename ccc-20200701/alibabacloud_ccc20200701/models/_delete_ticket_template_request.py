@@ -10,7 +10,9 @@ class DeleteTicketTemplateRequest(DaraModel):
         instance_id: str = None,
         template_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the ticket template.
         self.template_id = template_id
 
     def validate(self):

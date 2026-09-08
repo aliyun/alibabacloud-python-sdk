@@ -12,12 +12,19 @@ class RegisterDeviceRequest(DaraModel):
         password: str = None,
         user_id: str = None,
     ):
+        # The custom device ID. No specific format is required.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The password used to authenticate the SIP device during registration. Keep this password secure.
+        # 
         # This parameter is required.
         self.password = password
+        # The agent ID.
         self.user_id = user_id
 
     def validate(self):

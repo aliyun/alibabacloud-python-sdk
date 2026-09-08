@@ -17,11 +17,17 @@ class GetSchemaResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The response parameters.
         self.params = params
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -87,13 +93,19 @@ class GetSchemaResponseBodyData(DaraModel):
         properties: Dict[str, main_models.DataPropertiesValue] = None,
         updated_time: str = None,
     ):
+        # The time when the schema was created.
         self.created_time = created_time
+        # Indicates whether the schema is deleted.
         self.deleted = deleted
+        # The description.
         self.description = description
-        # schema id
+        # The ID of the schema.
         self.id = id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The list of fields.
         self.properties = properties
+        # The time when the schema was last modified.
         self.updated_time = updated_time
 
     def validate(self):

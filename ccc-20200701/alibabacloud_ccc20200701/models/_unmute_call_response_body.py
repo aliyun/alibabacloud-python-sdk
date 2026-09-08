@@ -17,11 +17,17 @@ class UnmuteCallResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # [responses_200_schema_properties_Data_properties_UserContext_properties_Heartbeat_description]The UNIX timestamp in milliseconds indicating when the last heartbeat was received from the agent.
         self.data = data
+        # [responses_200_schema_properties_Data_properties_UserContext_properties_UserId_type]string
         self.http_status_code = http_status_code
+        # [responses_200_schema_properties_Data_properties_UserContext_properties_InstanceId_type]string
         self.message = message
+        # [responses_200_schema_properties_Data_properties_UserContext_properties_BreakCode_enumValueTitles_RejectCall]Break caused by agent rejecting a call
         self.params = params
+        # [responses_200_schema_properties_Data_properties_UserContext_properties_DeviceId_type]string
         self.request_id = request_id
 
     def validate(self):
@@ -82,7 +88,9 @@ class UnmuteCallResponseBodyData(DaraModel):
         call_context: main_models.UnmuteCallResponseBodyDataCallContext = None,
         user_context: main_models.UnmuteCallResponseBodyDataUserContext = None,
     ):
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_ReleaseReason_type]string
         self.call_context = call_context
+        # [responses_200_schema_properties_Data_properties_UserContext_properties_OutboundScenario_description]Indicates whether the agent is in outbound-only mode.
         self.user_context = user_context
 
     def validate(self):
@@ -132,17 +140,29 @@ class UnmuteCallResponseBodyDataUserContext(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # Break status code, which can be either system-defined or customer-defined. System-defined break codes include: Warm-up (temporary break state after an agent goes online but before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent rejecting a call). Customer-defined status codes have no restrictions, and customers can define them according to their business needs.
         self.break_code = break_code
+        # Device ID, which is the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # [responses_200_schema_properties_Data_properties_UserContext_properties_Mobile_description]The agent\\"s personal phone number.
         self.extension = extension
+        # The UNIX timestamp in milliseconds indicating when the last heartbeat was received from the agent.
         self.heartbeat = heartbeat
+        # Instance ID.
         self.instance_id = instance_id
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_SkillGroupId_type]string
         self.job_id = job_id
+        # The agent\\"s personal phone number.
         self.mobile = mobile
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_ChannelId_type]string
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID.
         self.user_id = user_id
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_CallType_description]Call type.
         self.user_state = user_state
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_Index_type]integer
         self.work_mode = work_mode
 
     def validate(self):
@@ -239,9 +259,13 @@ class UnmuteCallResponseBodyDataCallContext(DaraModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # Call type.
         self.call_type = call_type
+        # List of call channels.
         self.channel_contexts = channel_contexts
+        # [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_ChannelFlags_enumValueTitles_MONITORING]Monitoring
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
 
     def validate(self):
@@ -308,19 +332,33 @@ class UnmuteCallResponseBodyDataCallContextChannelContexts(DaraModel):
         user_extension: str = None,
         user_id: str = None,
     ):
+        # The call type of the channel.
         self.call_type = call_type
+        # Channel flags.
         self.channel_flags = channel_flags
+        # The channel ID.
         self.channel_id = channel_id
+        # [parameters_JobId_schema_description]The call ID.
         self.channel_state = channel_state
+        # Called party of the call channel.
         self.destination = destination
+        # An auto-incremented ID assigned by the system. Customers do not need to concern themselves with this value.
         self.index = index
+        # The call ID.
         self.job_id = job_id
+        # The originator of the channel.
         self.originator = originator
+        # [parameters_JobId_in]query
         self.release_initiator = release_initiator
+        # The reason for releasing the channel. This indicates why the current channel was disconnected. The value corresponds to a response code defined in the SIP protocol. Customers should refer to the SIP protocol to analyze the disconnection reason.
         self.release_reason = release_reason
+        # The skill group associated with this call. In inbound scenarios, the skill group is specified by the queue routed through IVR. In outbound scenarios, the skill group is the first one the agent signs into.
         self.skill_group_id = skill_group_id
+        # The UNIX timestamp of the most recent status change of the channel, in milliseconds.
         self.timestamp = timestamp
+        # The extension number of the agent associated with the channel.
         self.user_extension = user_extension
+        # The agent ID associated with the channel. This field is empty if the channel belongs to a customer.
         self.user_id = user_id
 
     def validate(self):

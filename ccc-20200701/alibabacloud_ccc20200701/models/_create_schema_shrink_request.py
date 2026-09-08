@@ -13,12 +13,17 @@ class CreateSchemaShrinkRequest(DaraModel):
         properties_shrink: str = None,
         request_id: str = None,
     ):
+        # The description.
         self.description = description
-        # schema id
+        # The schema ID.
         self.id = id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of fields.
         self.properties_shrink = properties_shrink
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

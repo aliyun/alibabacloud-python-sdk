@@ -10,8 +10,12 @@ class GetSummaryTemplateRequest(DaraModel):
         instance_id: str = None,
         template_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

@@ -11,10 +11,16 @@ class ClaimChatRequest(DaraModel):
         job_id: str = None,
         skill_group_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the call.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Filter by skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

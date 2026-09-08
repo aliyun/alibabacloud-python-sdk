@@ -17,11 +17,17 @@ class SignInGroupResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -91,16 +97,27 @@ class SignInGroupResponseBodyData(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # Break status code, which can be either system-defined or customer-defined. System-defined break codes include: Warm-up (temporary break state after agent is published and before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent call rejection). There are no restrictions on customer-defined status codes; customers can define them as needed for their business.
         self.break_code = break_code
+        # Chat device ID.
         self.chat_device_id = chat_device_id
+        # Device ID, which is the identity of a browser Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # Agent extension number.
         self.extension = extension
+        # Instance ID.
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # List of skill group IDs that the agent has signed into.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID.
         self.user_id = user_id
+        # Agent status.
         self.user_state = user_state
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):

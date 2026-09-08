@@ -17,11 +17,17 @@ class HoldCallResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,7 +88,9 @@ class HoldCallResponseBodyData(DaraModel):
         call_context: main_models.HoldCallResponseBodyDataCallContext = None,
         user_context: main_models.HoldCallResponseBodyDataUserContext = None,
     ):
+        # Call context environment.
         self.call_context = call_context
+        # Agent context environment.
         self.user_context = user_context
 
     def validate(self):
@@ -133,18 +141,31 @@ class HoldCallResponseBodyDataUserContext(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break state after an agent is published and before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent call rejection). There are no restrictions on Custom-defined status codes; customers can define them according to their business needs.
         self.break_code = break_code
+        # Device ID, the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # The agent\\"s extension number.
         self.extension = extension
+        # The time when the last heartbeat was received from the agent, formatted as a UNIX timestamp in milliseconds.
         self.heartbeat = heartbeat
+        # Instance ID.
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
+        # The agent\\"s personal phone number.
         self.mobile = mobile
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # The time when the agent was most recently reserved. Being reserved means an incoming call will soon be assigned to this agent. The format is a UNIX timestamp in milliseconds.
         self.reserved = reserved
+        # List of skill group IDs that the agent has signed into.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID.
         self.user_id = user_id
+        # Agent status.
         self.user_state = user_state
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):
@@ -247,9 +268,13 @@ class HoldCallResponseBodyDataCallContext(DaraModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # Call type.
         self.call_type = call_type
+        # List of call channels.
         self.channel_contexts = channel_contexts
+        # Instance ID.
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
 
     def validate(self):
@@ -314,17 +339,29 @@ class HoldCallResponseBodyDataCallContextChannelContexts(DaraModel):
         user_extension: str = None,
         user_id: str = None,
     ):
+        # The call type of the channel.
         self.call_type = call_type
+        # The channel ID.
         self.channel_id = channel_id
+        # The status of the call channel.
         self.channel_state = channel_state
+        # Called party of the call channel.
         self.destination = destination
+        # The call ID.
         self.job_id = job_id
+        # The calling party of the voice channel.
         self.originator = originator
+        # The party that initiated the release of the call channel, indicating who first initiated the hang-up for this call channel.
         self.release_initiator = release_initiator
+        # The release reason of the call channel, indicating why the current call channel was released. The value comes from the response codes defined in the SIP protocol. Customers can refer to the SIP protocol to analyze the release reason.
         self.release_reason = release_reason
+        # The skill group ID associated with the channel. In inbound scenarios, the associated skill group ID is determined by the skill group configured in the IVR transfer-to-agent module. In outbound scenarios, the associated skill group ID is the ID of the first skill group the agent signed into.
         self.skill_group_id = skill_group_id
+        # The UNIX timestamp (in milliseconds) of the most recent status change of the channel.
         self.timestamp = timestamp
+        # The extension number of the agent associated with the channel.
         self.user_extension = user_extension
+        # The agent ID associated with the voice channel. This field is empty if the channel belongs to a Customer.
         self.user_id = user_id
 
     def validate(self):

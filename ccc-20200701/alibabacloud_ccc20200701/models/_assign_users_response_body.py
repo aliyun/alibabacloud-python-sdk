@@ -14,11 +14,17 @@ class AssignUsersResponseBody(DaraModel):
         request_id: str = None,
         workflow_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data, which is the same as the workflow ID.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):

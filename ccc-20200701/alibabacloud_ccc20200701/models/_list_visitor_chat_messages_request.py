@@ -17,14 +17,29 @@ class ListVisitorChatMessagesRequest(DaraModel):
         start_time: int = None,
         visitor_id: str = None,
     ):
+        # Web business channel ID.
         self.access_channel_id = access_channel_id
+        # Web business channel token.
         self.access_token = access_token
+        # End time, in UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
+        # Cloud Contact Center instance.
         self.instance_id = instance_id
+        # Token for the next page. Do not include this parameter in your first request. The service returns it in the response. Include it in subsequent requests.
         self.next_page_token = next_page_token
+        # Number of records per page.
         self.page_size = page_size
+        # Sorting order. Default is descending.
+        # 
+        # Valid values:
+        # 
+        # ASC: ascending.
+        # 
+        # DESC: descending.
         self.sort_order = sort_order
+        # Start time, in UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
+        # Visitor ID.
         self.visitor_id = visitor_id
 
     def validate(self):

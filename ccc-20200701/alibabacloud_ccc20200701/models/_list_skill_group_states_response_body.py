@@ -17,11 +17,17 @@ class ListSkillGroupStatesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListSkillGroupStatesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of skill group status data.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -156,22 +166,39 @@ class ListSkillGroupStatesResponseBodyDataList(DaraModel):
         waiting_calls_level_30: int = None,
         working_agents: int = None,
     ):
+        # The average waiting time, in seconds.
         self.average_waiting_time = average_waiting_time
+        # Number of agents in break status.
         self.breaking_agents = breaking_agents
+        # The number of agents on calls in the inbound scenario.
         self.inbound_talking_agents = inbound_talking_agents
+        # Instance ID.
         self.instance_id = instance_id
+        # Number of logged-in agents.
         self.logged_in_agents = logged_in_agents
+        # Maximum waiting duration.
         self.longest_call = longest_call
+        # The number of agents who are idle and in outbound-only status.
         self.outbound_scenario_ready_agents = outbound_scenario_ready_agents
+        # Number of agents on outbound calls.
         self.outbound_talking_agents = outbound_talking_agents
+        # The number of idle agents.
         self.ready_agents = ready_agents
+        # The skill group ID.
         self.skill_group_id = skill_group_id
+        # Skill group name.
         self.skill_group_name = skill_group_name
+        # The number of agents on calls.
         self.talking_agents = talking_agents
+        # Number of calls currently in the queue.
         self.waiting_calls = waiting_calls
+        # The number of calls with a waiting duration of less than 10 seconds.
         self.waiting_calls_level_10 = waiting_calls_level_10
+        # Number of calls with waiting duration less than 20 seconds.
         self.waiting_calls_level_20 = waiting_calls_level_20
+        # The number of calls with a waiting duration of less than 30 seconds.
         self.waiting_calls_level_30 = waiting_calls_level_30
+        # The number of agents in post-processing.
         self.working_agents = working_agents
 
     def validate(self):

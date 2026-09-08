@@ -17,11 +17,17 @@ class ResetAgentStateResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # Reserved for future use.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,15 +96,25 @@ class ResetAgentStateResponseBodyData(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # The reason code for the agent\\"s break. This can be a system-defined or a custom code. System-defined codes include:
         self.break_code = break_code
+        # The ID of the registered device, such as a browser-based WebRTC softphone or a physical phone. An agent can register only one device at a time.
         self.device_id = device_id
+        # The agent\\"s extension.
         self.extension = extension
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the call. This parameter is returned only if the agent is on a call.
         self.job_id = job_id
+        # Indicates whether the outbound-only mode is enabled for the agent.
         self.outbound_scenario = outbound_scenario
+        # The IDs of the skill groups that the agent is signed in to.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # The ID of the agent.
         self.user_id = user_id
+        # The current state of the agent.
         self.user_state = user_state
+        # The agent\\"s work mode.
         self.work_mode = work_mode
 
     def validate(self):

@@ -17,11 +17,17 @@ class GetTicketResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of incorrect parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -105,30 +111,73 @@ class GetTicketResponseBodyData(DaraModel):
         title: str = None,
         updated_time: int = None,
     ):
+        # The ID of the assignee.
         self.assignee = assignee
+        # The name of the assignee.
         self.assignee_name = assignee_name
+        # The ticket category ID.
         self.category_id = category_id
+        # The name of the ticket category.
         self.category_name = category_name
+        # The reason for closing the ticket.
+        # 
+        # - Completed
+        # 
+        # - Terminated
         self.close_code = close_code
+        # The comment.
         self.comment = comment
+        # The fields of the ticket.
         self.context = context
+        # The time when the ticket was created.
         self.created_time = created_time
+        # The ID of the creator.
         self.creator = creator
+        # The name of the creator.
         self.creator_name = creator_name
+        # The ID of the current node.
         self.current_task_id = current_task_id
+        # The name of the current node.
         self.current_task_name = current_task_name
+        # The time when the current node started.
         self.current_task_start_time = current_task_start_time
+        # The customer ID. This is the customer ID in the customer profile of Cloud Contact Center.
         self.customer_id = customer_id
+        # The time when the ticket processing was completed.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The call ID.
         self.job_id = job_id
+        # The source of the ticket.
+        # 
+        # - AUDIO: Voice service.
+        # 
+        # - CHAT: Web service.
+        # 
+        # - Console: Created in the ticket console.
         self.source = source
+        # The time when the ticket processing started.
         self.start_time = start_time
+        # The ticket status.
+        # 
+        # - Processing
+        # 
+        # - Withdrawal
+        # 
+        # - Rejected
+        # 
+        # - Closed
         self.state = state
+        # The ticket template ID.
         self.template_id = template_id
+        # The version of the ticket template.
         self.template_version = template_version
+        # The ticket ID.
         self.ticket_id = ticket_id
+        # The ticket title.
         self.title = title
+        # The time of the last update.
         self.updated_time = updated_time
 
     def validate(self):

@@ -15,10 +15,15 @@ class DisableSchemaPropertyResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Additional information
         self.message = message
+        # Parameter information
         self.params = params
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

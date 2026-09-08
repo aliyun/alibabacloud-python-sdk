@@ -10,8 +10,12 @@ class ListInstancesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The paging ordinal number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The paging size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

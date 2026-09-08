@@ -12,12 +12,19 @@ class ListRamUsersRequest(DaraModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number of the results to return. Valid values: 1 to 1,000.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The keyword to use for a fuzzy search based on the RAM user\\"s logon name or display name. This parameter is optional. If you leave this parameter empty, no filtering is applied.
         self.search_pattern = search_pattern
 
     def validate(self):

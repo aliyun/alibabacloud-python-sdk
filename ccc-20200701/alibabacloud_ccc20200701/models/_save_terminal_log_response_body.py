@@ -14,11 +14,17 @@ class SaveTerminalLogResponseBody(DaraModel):
         success: bool = None,
         time_stamp: int = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
+        # The time when the log was generated, in UNIX timestamp format, in milliseconds.
         self.time_stamp = time_stamp
 
     def validate(self):

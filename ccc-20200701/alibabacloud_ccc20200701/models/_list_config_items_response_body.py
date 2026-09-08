@@ -17,11 +17,17 @@ class ListConfigItemsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The list of config items.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of dynamic response parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -91,10 +97,15 @@ class ListConfigItemsResponseBodyData(DaraModel):
         object_type: str = None,
         value: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the config item. A name can be system-defined or custom. You can customize the value of a system-defined item. You can also create custom items with custom names and values.
         self.name = name
+        # The ID of the object to which the config item applies.
         self.object_id = object_id
+        # The type of the object to which the config item applies.
         self.object_type = object_type
+        # The value of the config item.
         self.value = value
 
     def validate(self):

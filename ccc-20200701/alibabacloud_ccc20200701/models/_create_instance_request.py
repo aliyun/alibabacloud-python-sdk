@@ -13,13 +13,21 @@ class CreateInstanceRequest(DaraModel):
         name: str = None,
         number_list: str = None,
     ):
+        # List of RAM IDs to be assigned as administrators of this Cloud Contact Center instance. After successful creation, the RAM IDs in this list will be automatically imported into the newly created instance with administrator privileges.
+        # 
         # This parameter is required.
         self.admin_ram_id_list = admin_ram_id_list
+        # Description of the instance. The length must not exceed 256 characters.
         self.description = description
+        # Second-level domain name of the Cloud Contact Center instance, which serves as the instance ID and is globally unique. It must be 4 to 48 characters long and can only contain uppercase and lowercase English letters, digits, underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Instance name. The length must be between 4 and 32 characters.
+        # 
         # This parameter is required.
         self.name = name
+        # List of phone numbers for the Cloud Contact Center instance to be created. The current account must have usage rights to these numbers, and the numbers must not be associated with any other instance.
         self.number_list = number_list
 
     def validate(self):

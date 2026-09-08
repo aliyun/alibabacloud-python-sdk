@@ -17,11 +17,17 @@ class ListDevicesResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Device list.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -94,13 +100,21 @@ class ListDevicesResponseBodyData(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # Call ID from the registration signaling initiated by the device.
         self.call_id = call_id
+        # Device address information.
         self.contact = contact
+        # Device ID, which is the identity ID of a browser Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # Device type.
         self.device_type = device_type
+        # Device registration expiration time, in UNIX timestamp format with millisecond precision. If the device does not re-register after expiration, it will go offline.
         self.expires = expires
+        # Agent extension number.
         self.extension = extension
+        # Instance ID.
         self.instance_id = instance_id
+        # Agent ID.
         self.user_id = user_id
 
     def validate(self):

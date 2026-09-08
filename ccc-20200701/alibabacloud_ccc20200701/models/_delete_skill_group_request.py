@@ -11,9 +11,14 @@ class DeleteSkillGroupRequest(DaraModel):
         instance_id: str = None,
         skill_group_id: str = None,
     ):
+        # Whether to force delete. If the skill group is associated with a number or agent, you must enable the force delete flag to successfully delete it.
         self.force = force
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

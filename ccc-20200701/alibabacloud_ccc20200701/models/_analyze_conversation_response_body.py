@@ -13,10 +13,15 @@ class AnalyzeConversationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Return Result. The content varies depending on the analysis job.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID, which can be used for LogSearch of this API.
         self.request_id = request_id
 
     def validate(self):

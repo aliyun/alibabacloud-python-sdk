@@ -10,8 +10,11 @@ class EnableTicketTemplateRequest(DaraModel):
         instance_id: str = None,
         template_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the ticket template.
         self.template_id = template_id
 
     def validate(self):

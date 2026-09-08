@@ -14,15 +14,30 @@ class AddTicketTaskRequest(DaraModel):
         task_id: str = None,
         ticket_id: str = None,
     ):
+        # The assignee for the signature.
+        # 
         # This parameter is required.
         self.assignee = assignee
+        # Comments.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The position to add the signature.
+        # 
+        # - Before: Before the current handler.
+        # 
+        # - After: After the current handler.
         self.position = position
+        # The ticket flow node ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The ticket ID.
+        # 
         # This parameter is required.
         self.ticket_id = ticket_id
 

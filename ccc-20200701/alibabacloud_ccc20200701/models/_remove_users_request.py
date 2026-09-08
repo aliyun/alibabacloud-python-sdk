@@ -13,11 +13,17 @@ class RemoveUsersRequest(DaraModel):
         notification_email: str = None,
         user_id_list: str = None,
     ):
+        # The ObjectKey of the OSS object containing the file with the list of users to delete.
         self.file_path = file_path
+        # Specifies whether to force delete.
         self.force = force
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Notification email address.
         self.notification_email = notification_email
+        # A JSON-formatted string representing an array of agent IDs. Each array element is an agent ID.
         self.user_id_list = user_id_list
 
     def validate(self):

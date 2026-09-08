@@ -17,11 +17,17 @@ class ListTicketTemplatesResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of invalid parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListTicketTemplatesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of templates.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -150,16 +160,27 @@ class ListTicketTemplatesResponseBodyDataList(DaraModel):
         ticket_fields: List[main_models.ListTicketTemplatesResponseBodyDataListTicketFields] = None,
         updated_time: int = None,
     ):
+        # The current working version.
         self.applied_version = applied_version
+        # The category ID.
         self.category_id = category_id
+        # The user who last edited the template.
         self.editor = editor
+        # The instance ID.
         self.instance_id = instance_id
+        # The draft version.
         self.latest_version = latest_version
+        # The name of the template.
         self.name = name
+        # The process information. This parameter is deprecated.
         self.process_definition = process_definition
+        # The status.
         self.state = state
+        # The template ID.
         self.template_id = template_id
+        # The list of fields in the template.
         self.ticket_fields = ticket_fields
+        # The time when the template was last updated.
         self.updated_time = updated_time
 
     def validate(self):
@@ -275,26 +296,47 @@ class ListTicketTemplatesResponseBodyDataListTicketFields(DaraModel):
         system: bool = None,
         updated_time: int = None,
     ):
+        # Indicates whether the field is an array.
         self.array = array
+        # The extended properties.
         self.attribute = attribute
+        # The time when the field was created.
         self.created_time = created_time
+        # The creator.
         self.creator = creator
+        # The data type.
         self.data_type = data_type
+        # The description.
         self.description = description
+        # Indicates whether the field is disabled.
         self.disabled = disabled
+        # The display name.
         self.display_name = display_name
+        # The display order in the list.
         self.display_order = display_order
+        # The type of the editor.
         self.editor_type = editor_type
+        # The maximum length.
         self.max_length = max_length
+        # The maximum value for a number.
         self.maximum = maximum
+        # The minimum length.
         self.min_length = min_length
+        # The minimum value for a number.
         self.minimum = minimum
+        # The name.
         self.name = name
+        # The regular expression that is used for validation.
         self.pattern = pattern
+        # The error message that is returned when the regular expression validation fails.
         self.pattern_error_message = pattern_error_message
+        # Indicates whether the field is read-only.
         self.read_only = read_only
+        # Indicates whether the field is required.
         self.required = required
+        # Indicates whether the field is a system field.
         self.system = system
+        # The time when the field was last updated.
         self.updated_time = updated_time
 
     def validate(self):

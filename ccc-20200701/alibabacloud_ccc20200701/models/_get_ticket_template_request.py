@@ -11,9 +11,13 @@ class GetTicketTemplateRequest(DaraModel):
         template_id: str = None,
         template_version: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Template ID.
         self.template_id = template_id
+        # Template version.
         self.template_version = template_version
 
     def validate(self):

@@ -12,11 +12,18 @@ class ModifyPhoneNumberRequest(DaraModel):
         number: str = None,
         usage: str = None,
     ):
+        # The IVR contact flow ID attached to the number. This field is valid only when the number usage is Inbound or Bidirection.
         self.contact_flow_id = contact_flow_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Phone number.
+        # 
         # This parameter is required.
         self.number = number
+        # Number usage.
+        # 
         # This parameter is required.
         self.usage = usage
 

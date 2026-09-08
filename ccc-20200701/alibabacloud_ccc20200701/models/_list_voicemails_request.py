@@ -16,16 +16,27 @@ class ListVoicemailsRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # The calling number.
         self.caller = caller
+        # The ID of the call. You can use this parameter to query the record of a specific call. You can obtain the contact ID from the softphone SDK during a call. If you specify this parameter, other query parameters are ignored.
         self.contact_id = contact_id
+        # The end time of the query range. This is a UNIX timestamp in milliseconds. The default value is the current time.
         self.end_time = end_time
+        # The ID of the Cloud Contact Center (CC) instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the voicemail.
         self.name = name
+        # The page number. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The start time of the query range. This is a UNIX timestamp in milliseconds. The default value is 00:00 on the current day.
         self.start_time = start_time
 
     def validate(self):

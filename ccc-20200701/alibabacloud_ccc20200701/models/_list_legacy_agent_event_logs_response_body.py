@@ -17,11 +17,17 @@ class ListLegacyAgentEventLogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListLegacyAgentEventLogsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of agent event logs.
         self.list = list
+        # Page number, ranging from 1 to 1000.
         self.page_number = page_number
+        # Page size, ranging from 1 to 1000.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -157,23 +167,41 @@ class ListLegacyAgentEventLogsResponseBodyDataList(DaraModel):
         tenant_id: str = None,
         transfer_number: str = None,
     ):
+        # Indicates whether the agent hung up the call.
         self.agent_drop_call = agent_drop_call
+        # Agent ID.
         self.agent_no = agent_no
+        # Call direction.
         self.call_dir = call_dir
+        # Call ID.
         self.call_id = call_id
+        # Call pattern.
         self.call_mode = call_mode
+        # Call type.
         self.call_type = call_type
+        # Callee number.
         self.callee_id = callee_id
+        # Calling number.
         self.caller_id = caller_id
+        # Call channel ID.
         self.conn_id = conn_id
+        # Type of management event.
         self.event = event
+        # List of skill group IDs that the agent signed in to. Separate multiple skill group IDs with commas.
         self.group_no = group_no
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # Agent extension number.
         self.phone_no = phone_no
+        # Statistics timestamp.
         self.statistic_date = statistic_date
+        # Skill group ID.
         self.target_request = target_request
+        # Skill group ID.
         self.target_select = target_select
+        # Tenant ID.
         self.tenant_id = tenant_id
+        # Transfer number.
         self.transfer_number = transfer_number
 
     def validate(self):

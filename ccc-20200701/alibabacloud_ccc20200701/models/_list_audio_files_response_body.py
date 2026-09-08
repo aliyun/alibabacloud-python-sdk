@@ -16,10 +16,15 @@ class ListAudioFilesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListAudioFilesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of audio files.
         self.list = list
+        # The page number, ranging from 1 to 100.
         self.page_number = page_number
+        # The paging size, ranging from 1 to 100.
         self.page_size = page_size
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -141,15 +150,25 @@ class ListAudioFilesResponseBodyDataList(DaraModel):
         updated_time: str = None,
         usage: str = None,
     ):
+        # Audio file name.
         self.audio_file_name = audio_file_name
+        # Audio resource ID, which is the UUID of the audio file.
         self.audio_resource_id = audio_resource_id
+        # Audio content threat review result.
         self.audit_result = audit_result
+        # The creation time of the audio resource.
         self.created_time = created_time
+        # Instance ID.
         self.instance_id = instance_id
+        # Display name of the audio resource.
         self.name = name
+        # The key of the audio resource file in OSS.
         self.oss_file_key = oss_file_key
+        # The status of the audio file.
         self.status = status
+        # Last modified time of the audio resource.
         self.updated_time = updated_time
+        # The usage of the audio file. The default value is General (used in scenarios such as IVR). Other optional values include HoldMusic (hold music during call waiting).
         self.usage = usage
 
     def validate(self):

@@ -17,11 +17,17 @@ class CreateChatMediaUrlResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,7 +88,9 @@ class CreateChatMediaUrlResponseBodyData(DaraModel):
         media_id: str = None,
         url: str = None,
     ):
+        # Media ID.
         self.media_id = media_id
+        # File URL.
         self.url = url
 
     def validate(self):

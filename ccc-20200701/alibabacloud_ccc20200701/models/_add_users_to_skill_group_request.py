@@ -11,10 +11,16 @@ class AddUsersToSkillGroupRequest(DaraModel):
         skill_group_id: str = None,
         user_skill_level_list: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
+        # A list of agent skill levels in the skill group, formatted as a JSON array string. Each array element is an object containing two fields: userId and skillLevel. The userId field specifies the ID of the agent to be added, and the skillLevel field specifies the agent\\"s skill level after joining the skill group. Skill levels range from 1 to 10; a lower value indicates stronger service capability and the ability to handle more calls per unit time.
+        # 
         # This parameter is required.
         self.user_skill_level_list = user_skill_level_list
 

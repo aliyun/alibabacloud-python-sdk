@@ -10,7 +10,9 @@ class ListFeedbacksRequest(DaraModel):
         instance_id: str = None,
         task_id_list: str = None,
     ):
+        # The ID of the CCC instance.
         self.instance_id = instance_id
+        # A list of task IDs.
         self.task_id_list = task_id_list
 
     def validate(self):

@@ -17,11 +17,17 @@ class ClaimCallResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,8 +89,11 @@ class ClaimCallResponseBodyData(DaraModel):
         context_id: int = None,
         user_context: main_models.ClaimCallResponseBodyDataUserContext = None,
     ):
+        # The call context.
         self.call_context = call_context
+        # The context ID.
         self.context_id = context_id
+        # The agent context.
         self.user_context = user_context
 
     def validate(self):
@@ -138,15 +147,25 @@ class ClaimCallResponseBodyDataUserContext(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # The break code.
         self.break_code = break_code
+        # The device ID.
         self.device_id = device_id
+        # The extension number.
         self.extension = extension
+        # The instance ID.
         self.instance_id = instance_id
+        # The call ID.
         self.job_id = job_id
+        # Indicates whether this is an outbound scenario.
         self.outbound_scenario = outbound_scenario
+        # The list of signed-in skill group IDs.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # The agent ID.
         self.user_id = user_id
+        # The agent state.
         self.user_state = user_state
+        # The work mode.
         self.work_mode = work_mode
 
     def validate(self):
@@ -230,8 +249,11 @@ class ClaimCallResponseBodyDataCallContext(DaraModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # The channel contexts.
         self.channel_contexts = channel_contexts
+        # The instance ID.
         self.instance_id = instance_id
+        # The call ID.
         self.job_id = job_id
 
     def validate(self):
@@ -290,17 +312,29 @@ class ClaimCallResponseBodyDataCallContextChannelContexts(DaraModel):
         user_extension: str = None,
         user_id: str = None,
     ):
+        # The call type of the channel.
         self.call_type = call_type
+        # The channel ID.
         self.channel_id = channel_id
+        # The state of the channel.
         self.channel_state = channel_state
+        # The channel variables.
         self.channel_variables = channel_variables
+        # The destination of the channel.
         self.destination = destination
+        # The call ID.
         self.job_id = job_id
+        # The originator of the channel.
         self.originator = originator
+        # The party who initiated the channel release.
         self.release_initiator = release_initiator
+        # The reason why the channel was released. This is a SIP response code. For more information, see the SIP protocol specification.
         self.release_reason = release_reason
+        # The Unix timestamp that indicates the last time the channel state changed. Unit: milliseconds.
         self.timestamp = timestamp
+        # The agent extension number.
         self.user_extension = user_extension
+        # The agent ID.
         self.user_id = user_id
 
     def validate(self):

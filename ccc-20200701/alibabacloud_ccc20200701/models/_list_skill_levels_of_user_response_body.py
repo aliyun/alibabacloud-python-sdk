@@ -16,10 +16,15 @@ class ListSkillLevelsOfUserResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListSkillLevelsOfUserResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of skill group levels.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -135,9 +144,13 @@ class ListSkillLevelsOfUserResponseBodyDataList(DaraModel):
         skill_group_name: str = None,
         skill_level: str = None,
     ):
+        # Media type. The default value is AUDIO. Other optional values include CHAT and VIDEO.
         self.media_type = media_type
+        # Skill group ID.
         self.skill_group_id = skill_group_id
+        # Skill group name.
         self.skill_group_name = skill_group_name
+        # Skill level, with values ranging from 1 to 10. A smaller numeric value indicates stronger business capability and the ability to handle more calls per unit time.
         self.skill_level = skill_level
 
     def validate(self):

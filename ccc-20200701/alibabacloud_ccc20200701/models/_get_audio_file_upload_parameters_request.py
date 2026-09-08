@@ -10,8 +10,12 @@ class GetAudioFileUploadParametersRequest(DaraModel):
         audio_file_name: str = None,
         instance_id: str = None,
     ):
+        # Audio file name.
+        # 
         # This parameter is required.
         self.audio_file_name = audio_file_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

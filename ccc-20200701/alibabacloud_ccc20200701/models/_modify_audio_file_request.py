@@ -14,16 +14,27 @@ class ModifyAudioFileRequest(DaraModel):
         oss_file_key: str = None,
         usage: str = None,
     ):
+        # Name of the audio file to be modified. You can specify new content for the audio file here.
+        # 
         # This parameter is required.
         self.audio_file_name = audio_file_name
+        # Audio resource ID, which uniquely identifies an audio file.
+        # 
         # This parameter is required.
         self.audio_resource_id = audio_resource_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Display name of the audio file. It must be 1 to 32 characters in length. The display name cannot be changed when modifying the audio file, so you must provide the original display name here.
+        # 
         # This parameter is required.
         self.name = name
+        # The OSS key of the audio file to be modified.
+        # 
         # This parameter is required.
         self.oss_file_key = oss_file_key
+        # Usage of the audio file. The default value is General (used in scenarios such as IVR). Other valid values include HoldMusic (hold music during call waiting).
         self.usage = usage
 
     def validate(self):

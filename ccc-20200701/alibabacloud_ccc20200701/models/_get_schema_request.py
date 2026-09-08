@@ -11,10 +11,13 @@ class GetSchemaRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the request.
         self.request_id = request_id
-        # schema id
+        # The ID of the schema.
         # 
         # This parameter is required.
         self.schema_id = schema_id

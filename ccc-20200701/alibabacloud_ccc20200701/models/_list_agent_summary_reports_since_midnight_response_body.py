@@ -17,11 +17,17 @@ class ListAgentSummaryReportsSinceMidnightResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Data.
         self.paged_agent_summary_report = paged_agent_summary_report
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport(Da
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of agent summary data.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -149,15 +159,25 @@ class ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportLis
         skill_group_names: str = None,
         timestamp: str = None,
     ):
+        # Agent ID.
         self.agent_id = agent_id
+        # Agent name.
         self.agent_name = agent_name
+        # Inbound metrics.
         self.inbound = inbound
+        # Instance ID.
         self.instance_id = instance_id
+        # Agent logon name.
         self.login_name = login_name
+        # Outbound metrics.
         self.outbound = outbound
+        # Overall metric.
         self.overall = overall
+        # List of skill group IDs to which the agent belongs, formatted as a JSON array string, where each array element is a skill group ID.
         self.skill_group_ids = skill_group_ids
+        # List of skill group names to which the agent belongs, formatted as a JSON array string, where each array element is a skill group name.
         self.skill_group_names = skill_group_names
+        # The timestamp of the statistics data point.
         self.timestamp = timestamp
 
     def validate(self):
@@ -263,22 +283,39 @@ class ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportLis
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # Average ready time. Calculation Formula: TotalReadyTime divided by the Count of ready events. The Count of ready events is a non-API statistical field, in seconds.
         self.average_ready_time = average_ready_time
+        # Average talk time. Calculation Formula: TotalTalkTime / (CallsAnswered + CallsHandled), in seconds.
         self.average_talk_time = average_talk_time
+        # Average post-processing time. Calculation Formula: TotalWorkTime divided by TotalCalls, in seconds.
         self.average_work_time = average_work_time
+        # Maximum ready time, in seconds.
         self.max_ready_time = max_ready_time
+        # Maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # Maximum post-processing time after a call, in seconds.
         self.max_work_time = max_work_time
+        # Agent occupancy rate. Calculation Formula: (TotalWorkTime + TotalTalkTime) / TotalLoggedInTime.
         self.occupancy_rate = occupancy_rate
+        # Quantity of directly transferred calls.
         self.one_transfer_calls = one_transfer_calls
+        # Satisfaction index, which is the average of the satisfaction rating digits (single-digit numbers).
         self.satisfaction_index = satisfaction_index
+        # Sending Count of satisfaction surveys.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # Count of satisfaction survey responses.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Total break time, in seconds.
         self.total_break_time = total_break_time
+        # Total call volume. Calculation Formula: CallsOffered + CallsDialed.
         self.total_calls = total_calls
+        # Total logon time, excluding break time, in seconds.
         self.total_logged_in_time = total_logged_in_time
+        # Total ready time, in seconds.
         self.total_ready_time = total_ready_time
+        # Total talk time, in seconds.
         self.total_talk_time = total_talk_time
+        # Total post-processing time, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -416,20 +453,35 @@ class ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportLis
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # Answer rate. Calculation Formula: CallsAnswered / CallsDialed. (Because management events for answering and acknowledgement may fall into different Time Ranges, the Result may exceed 100% in some cases.)
         self.answer_rate = answer_rate
+        # Average dial-up time, in seconds.
         self.average_dialing_time = average_dialing_time
+        # Average talk time, in seconds.
         self.average_talk_time = average_talk_time
+        # Average post-processing duration, in seconds.
         self.average_work_time = average_work_time
+        # Number of answered calls.
         self.calls_answered = calls_answered
+        # Number of dial-up calls.
         self.calls_dialed = calls_dialed
+        # Maximum dial-up duration, in seconds.
         self.max_dialing_time = max_dialing_time
+        # Maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # Maximum post-processing duration, in seconds.
         self.max_work_time = max_work_time
+        # Satisfaction index, which is the average value of the satisfaction rating digits (single-digit numbers).
         self.satisfaction_index = satisfaction_index
+        # Sending Count of satisfaction surveys.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # Response Count of satisfaction surveys.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Total dial-up time, in seconds.
         self.total_dialing_time = total_dialing_time
+        # Total talk time, in seconds.
         self.total_talk_time = total_talk_time
+        # Total post-processing time, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):
@@ -556,21 +608,37 @@ class ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportLis
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        # Average ring time, in seconds. Calculation Formula: TotalRingTime / CallsRinged.
         self.average_ring_time = average_ring_time
+        # Average talk time, in seconds.
         self.average_talk_time = average_talk_time
+        # Average post-processing time, in seconds.
         self.average_work_time = average_work_time
+        # Acknowledgement Count, which is the number of times the agent answered calls.
         self.calls_handled = calls_handled
+        # Assign Count, which is the number of calls assigned to this agent, including calls blindly transferred or consultation-transferred from other agents.
         self.calls_offered = calls_offered
+        # Acknowledgement rate. Calculation Formula: CallsHandled / CallsOffered (because acknowledgement events and assign events may fall into different Time Ranges, the Result may exceed 100% in certain cases).
         self.handle_rate = handle_rate
+        # Maximum ring time, in seconds.
         self.max_ring_time = max_ring_time
+        # Maximum talk time, in seconds.
         self.max_talk_time = max_talk_time
+        # Maximum post-processing time, in seconds.
         self.max_work_time = max_work_time
+        # Satisfaction Index, which is the average value of the single-digit satisfaction rating entered by customers.
         self.satisfaction_index = satisfaction_index
+        # Sending Count of satisfaction surveys.
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
+        # Response Count of satisfaction surveys.
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        # Answer rate within 20 seconds, in percent (%).
         self.service_level_20 = service_level_20
+        # Total ring time, in seconds.
         self.total_ring_time = total_ring_time
+        # Total talk time, in seconds.
         self.total_talk_time = total_talk_time
+        # Total post-processing time, in seconds.
         self.total_work_time = total_work_time
 
     def validate(self):

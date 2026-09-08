@@ -13,10 +13,15 @@ class GetIvrTrackingSummaryResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Returned data result.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

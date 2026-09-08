@@ -12,10 +12,15 @@ class ListSkillGroupStatesRequest(DaraModel):
         page_size: int = None,
         skill_group_ids: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # List of skill group IDs.
         self.skill_group_ids = skill_group_ids
 
     def validate(self):

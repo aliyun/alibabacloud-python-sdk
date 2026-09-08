@@ -10,8 +10,12 @@ class ImportAdminsRequest(DaraModel):
         instance_id: str = None,
         ram_id_list: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A list of UIDs for Alibaba Cloud RAM accounts. The value must be a string-encoded JSON array. The array supports up to 20 UIDs.
+        # 
         # This parameter is required.
         self.ram_id_list = ram_id_list
 

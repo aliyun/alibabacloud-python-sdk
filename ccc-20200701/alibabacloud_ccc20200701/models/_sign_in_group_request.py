@@ -14,14 +14,23 @@ class SignInGroupRequest(DaraModel):
         signed_skill_group_id_list: str = None,
         user_id: str = None,
     ):
+        # If an agent has already signed in to some skill groups, setting this parameter to true allows the agent to sign in to additional skill groups.
         self.additivity = additivity
+        # Chat device ID.
         self.chat_device_id = chat_device_id
+        # Voice device ID. When multiple voice devices are active, use this parameter to specify one of them, such as a browser Web Real-Time Communication (WebRTC) endpoint or a SIP phone.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # List of skill group IDs to sign in to, formatted as a JSON array string, where each array element is a skill group ID.
+        # 
         # This parameter is required.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID. If not specified, the agent mapped to the current Resource Access Management (RAM) user is used by default.
         self.user_id = user_id
 
     def validate(self):

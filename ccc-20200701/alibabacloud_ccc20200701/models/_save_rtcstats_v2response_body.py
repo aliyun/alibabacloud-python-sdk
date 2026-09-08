@@ -15,12 +15,19 @@ class SaveRTCStatsV2ResponseBody(DaraModel):
         success: bool = None,
         time_stamp: int = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Number of rows.
         self.row_count = row_count
+        # Indicates whether the operation succeeded.
         self.success = success
+        # Time when the record was generated, in Unix timestamp format, in milliseconds.
         self.time_stamp = time_stamp
 
     def validate(self):

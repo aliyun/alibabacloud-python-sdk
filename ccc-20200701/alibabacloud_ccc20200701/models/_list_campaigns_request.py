@@ -18,18 +18,31 @@ class ListCampaignsRequest(DaraModel):
         queue_id: str = None,
         state: str = None,
     ):
+        # The actual start time of the campaign. This parameter is optional. By default, all time ranges are queried.
         self.actual_start_time_from = actual_start_time_from
+        # The actual end time of the campaign. This parameter is optional. By default, all time ranges are queried.
         self.actual_start_time_to = actual_start_time_to
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Filters campaigns by predictive dialing campaign name. Fuzzy match is not supported. This parameter is optional and defaults to empty, which indicates no filtering.
         self.name = name
+        # The page number. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The page size. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The planned start time of the campaign. This parameter is optional. By default, all time ranges are queried.
         self.planed_start_time_from = planed_start_time_from
+        # The planned end time of the campaign. This parameter is optional. By default, all time ranges are queried.
         self.planed_start_time_to = planed_start_time_to
+        # Filters campaigns by skill group ID. This parameter is optional and defaults to empty, which indicates no filtering.
         self.queue_id = queue_id
+        # Filters campaigns by predictive dialing campaign state. This parameter is optional and defaults to empty.
         self.state = state
 
     def validate(self):

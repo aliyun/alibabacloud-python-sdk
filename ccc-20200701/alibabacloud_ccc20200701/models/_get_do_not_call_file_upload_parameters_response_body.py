@@ -15,11 +15,17 @@ class GetDoNotCallFileUploadParametersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):
@@ -84,11 +90,17 @@ class GetDoNotCallFileUploadParametersResponseBodyData(DaraModel):
         policy: str = None,
         signature: str = None,
     ):
+        # AccessKeyId used for signing.
         self.access_key_id = access_key_id
+        # Expiration time, formatted as a Unix timestamp in seconds.
         self.expire_time = expire_time
+        # Key of the OSS file.
         self.file_path = file_path
+        # Endpoint domain name of OSS.
         self.host = host
+        # Signature policy.
         self.policy = policy
+        # Signature information of the temporary credential for file upload, used to authenticate validity during upload.
         self.signature = signature
 
     def validate(self):

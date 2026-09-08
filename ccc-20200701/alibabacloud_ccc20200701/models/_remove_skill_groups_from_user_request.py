@@ -11,10 +11,16 @@ class RemoveSkillGroupsFromUserRequest(DaraModel):
         skill_group_id_list: str = None,
         user_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A list of skill group IDs to disassociate, formatted as a JSON array string, where each array element is a skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id_list = skill_group_id_list
+        # Agent ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

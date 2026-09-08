@@ -17,11 +17,17 @@ class ListNotificationRecordsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # Data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # A list of invalid parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,9 +96,13 @@ class ListNotificationRecordsResponseBodyData(DaraModel):
         notification_key: str = None,
         notification_type: str = None,
     ):
+        # The notification content.
         self.content = content
+        # The instance ID.
         self.instance_id = instance_id
+        # The notification key.
         self.notification_key = notification_key
+        # The message type.
         self.notification_type = notification_type
 
     def validate(self):

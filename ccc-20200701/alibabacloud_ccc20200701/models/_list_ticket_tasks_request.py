@@ -10,8 +10,11 @@ class ListTicketTasksRequest(DaraModel):
         instance_id: str = None,
         ticket_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the ticket.
         self.ticket_id = ticket_id
 
     def validate(self):

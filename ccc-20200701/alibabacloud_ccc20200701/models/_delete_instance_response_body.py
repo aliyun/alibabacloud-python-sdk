@@ -16,11 +16,17 @@ class DeleteInstanceResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The ID of the delete task.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The list of error parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

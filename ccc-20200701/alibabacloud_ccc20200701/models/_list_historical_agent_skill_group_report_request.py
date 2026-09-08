@@ -16,16 +16,27 @@ class ListHistoricalAgentSkillGroupReportRequest(DaraModel):
         skill_group_id_list: str = None,
         start_time: int = None,
     ):
+        # List of agent IDs. The list size is 0 to 100.
         self.agent_id_list = agent_id_list
+        # End time for historical data retrieval. Format is UNIX timestamp in milliseconds. Optional. Defaults to the current time. The statistical time granularity is hourly, rounded up to the nearest hour, in an open interval. For example, if the start time is 11:12:20 and the end time is 11:45:50, the aligned request parameter time range is [11:00:00, 12:00:00), meaning greater than or equal to 11:00 and less than 12:00.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Media type. Defaults to Audio. Other optional parameters include Chat and Video.
         self.media_type = media_type
+        # Page number. Valid values are 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size. Valid values are 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # List of skill group IDs. The list size is 0 to 100.
         self.skill_group_id_list = skill_group_id_list
+        # Start timestamp. Defaults to 00:00 on the current day. The statistical time granularity is hourly, rounded down to the nearest hour, in a closed interval.
         self.start_time = start_time
 
     def validate(self):

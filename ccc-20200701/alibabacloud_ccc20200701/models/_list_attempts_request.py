@@ -22,24 +22,43 @@ class ListAttemptsRequest(DaraModel):
         queue_id: str = None,
         start_time: int = None,
     ):
+        # Filter by agent ID. This parameter is optional and defaults to empty.
         self.agent_id = agent_id
+        # Call record ID, which has the same value as the call ID.
         self.attempt_id = attempt_id
+        # Filter by called number. Optional. Default is empty.
         self.callee = callee
+        # Filter by caller number. This parameter is optional and defaults to empty.
         self.caller = caller
+        # Predictive outbound dialing Activity ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # System-generated contact ID. Customers do not need to concern themselves with this value.
+        # 
         # This parameter is required.
         self.case_id = case_id
+        # Filter by call ID. This parameter is optional and defaults to empty.
         self.contact_id = contact_id
+        # Extended query conditions in JSON format. Currently supports caseIds for batch queries.
         self.criteria = criteria
+        # End Time. This parameter is optional. If not specified, it defaults to the End Time of the predictive outbound dialing Activity. The format is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number. The product of PageNumber and PageSize must not exceed 10 000.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size. The product of PageNumber and PageSize must not exceed 10 000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Filter by skill group ID. This parameter is optional and defaults to empty, which means no filtering is applied.
         self.queue_id = queue_id
+        # Start Time. This parameter is optional. If not specified, it defaults to the Start Time of the predictive outbound dialing Activity. The format is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

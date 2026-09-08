@@ -12,10 +12,15 @@ class ReadyForServiceRequest(DaraModel):
         outbound_scenario: bool = None,
         user_id: str = None,
     ):
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to enter outbound-only mode after being published. This parameter is optional and defaults to false.
         self.outbound_scenario = outbound_scenario
+        # Agent ID. If not specified, it defaults to the agent mapped to the current RAM account.
         self.user_id = user_id
 
     def validate(self):

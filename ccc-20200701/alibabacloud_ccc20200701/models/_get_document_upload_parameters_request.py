@@ -11,10 +11,15 @@ class GetDocumentUploadParametersRequest(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # File name.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

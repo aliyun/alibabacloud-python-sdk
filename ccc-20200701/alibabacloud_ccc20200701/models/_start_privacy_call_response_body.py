@@ -16,11 +16,17 @@ class StartPrivacyCallResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The returned result, which is the call ID.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The parameter information.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

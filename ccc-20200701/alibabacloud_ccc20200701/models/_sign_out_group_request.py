@@ -11,9 +11,13 @@ class SignOutGroupRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # Device ID. This parameter is meaningless and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Agent ID. If not specified, the agent mapped to the current Resource Access Management (RAM) user is used by default.
         self.user_id = user_id
 
     def validate(self):

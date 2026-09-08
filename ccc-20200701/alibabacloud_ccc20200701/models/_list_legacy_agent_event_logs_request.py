@@ -14,15 +14,26 @@ class ListLegacyAgentEventLogsRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # Filter by agent ID. This parameter is optional and defaults to empty. An empty value indicates no filtering.
         self.agent_id = agent_id
+        # End time, in Unix timestamp format, in milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number, ranging from 1 to 1000.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Start Time, in Unix timestamp format, in milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

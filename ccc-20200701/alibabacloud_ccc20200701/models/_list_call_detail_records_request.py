@@ -29,29 +29,53 @@ class ListCallDetailRecordsRequest(DaraModel):
         sort_order: str = None,
         start_time: int = None,
     ):
+        # Filter by agent ID.
         self.agent_id = agent_id
+        # Filter by called number.
         self.called_number = called_number
+        # Filter by calling number.
         self.calling_number = calling_number
+        # Filter by disposition type. Note: Disposition reasons such as voicemail, transfer to agent failed, queuing timeout, queuing overflow, and IVR abnormal are only displayed if the customer has configured a disposition reason node. If no such node is configured and there is no transfer-to-agent module in the IVR, the disposition reason defaults to "Abandoned in IVR".
         self.contact_disposition = contact_disposition
+        # Filter by hang-up reason list.
         self.contact_disposition_list = contact_disposition_list
+        # Query the record of a specific call by specifying a contactId. The contactId can be obtained from the softphone software development kit (SDK) during a call. If this parameter is provided, all other query parameters are automatically ignored.
         self.contact_id = contact_id
+        # Filter by call type.
         self.contact_type = contact_type
+        # Filter by contact type list.
         self.contact_type_list = contact_type_list
+        # Perform a fuzzy query based on the calling or called number. The value must be a JSON string containing only one field, phoneNumber, which can be the full number or a partial segment of either the calling or called number.
         self.criteria = criteria
+        # Filter by a list of reasons for failed connection.
         self.early_media_state_list = early_media_state_list
+        # End time of the historical data to retrieve. The default value is the current time, in UNIX timestamp format with millisecond precision.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Sorting field. Optional. Default value is startTime (call start time).
         self.order_by_field = order_by_field
+        # Page number for paging, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Filter by satisfaction description list. The description content is Custom by the Customer.
         self.satisfaction_description_list = satisfaction_description_list
+        # Filter by satisfaction List. Separate multiple satisfaction Results with commas.
         self.satisfaction_list = satisfaction_list
+        # Filter by satisfaction survey channel.
         self.satisfaction_survey_channel = satisfaction_survey_channel
+        # Filter by skill group ID.
         self.skill_group_id = skill_group_id
+        # Sorting order. This parameter is optional and defaults to descending.
         self.sort_order = sort_order
+        # Start time of the historical data to retrieve. The default value is 00:00:00 of the current day, in UNIX timestamp format with millisecond precision.
         self.start_time = start_time
 
     def validate(self):

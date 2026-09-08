@@ -17,11 +17,17 @@ class ListFlashSmsTemplatesResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of error parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,7 +96,9 @@ class ListFlashSmsTemplatesResponseBodyData(DaraModel):
         template_name: str = None,
     ):
         self.template_details = template_details
+        # Template ID.
         self.template_id = template_id
+        # Template name.
         self.template_name = template_name
 
     def validate(self):

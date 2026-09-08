@@ -11,10 +11,16 @@ class RemovePhoneNumbersFromSkillGroupRequest(DaraModel):
         number_list: str = None,
         skill_group_id: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # List of phone numbers.
+        # 
         # This parameter is required.
         self.number_list = number_list
+        # Skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

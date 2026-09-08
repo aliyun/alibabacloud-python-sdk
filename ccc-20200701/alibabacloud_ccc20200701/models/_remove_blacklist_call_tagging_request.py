@@ -11,9 +11,14 @@ class RemoveBlacklistCallTaggingRequest(DaraModel):
         job_id: str = None,
         number: str = None,
     ):
+        # ID of the Cloud Contact Center instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call ID. Provide this field only for masked numbers (containing \\*). Do not provide it for unmasked numbers.
         self.job_id = job_id
+        # Phone number.
+        # 
         # This parameter is required.
         self.number = number
 

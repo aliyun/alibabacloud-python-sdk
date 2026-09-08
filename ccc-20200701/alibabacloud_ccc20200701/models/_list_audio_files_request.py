@@ -13,13 +13,24 @@ class ListAudioFilesRequest(DaraModel):
         status: str = None,
         usage: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The paging ordinal number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Converting (transforming)<br>
+        # Completed (transformation completed)<br>
+        # Failed (transformation failed)<br>
+        # If this parameter is not specified, resources in all statuses are queried.
         self.status = status
+        # Purpose of the audio file. The default value is General (used in scenarios such as IVR). Other optional values include HoldMusic (hold music during calls).
         self.usage = usage
 
     def validate(self):

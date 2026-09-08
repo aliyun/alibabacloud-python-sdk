@@ -15,13 +15,21 @@ class ListAgentStatesRequest(DaraModel):
         skill_group_id: str = None,
         state: str = None,
     ):
+        # Filters by a list of agent IDs.
         self.agent_ids = agent_ids
+        # Filters out offline agents. This parameter is fixed to true and does not support false at present.
         self.exclude_offline_users = exclude_offline_users
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 300.
         self.page_size = page_size
+        # Filters by skill group ID.
         self.skill_group_id = skill_group_id
+        # Filters agents by status. Only a single status can be specified.
         self.state = state
 
     def validate(self):

@@ -13,11 +13,19 @@ class ListAgentSummaryReportsSinceMidnightRequest(DaraModel):
         page_size: int = None,
         skill_group_id: str = None,
     ):
+        # Filter by a list of agent IDs, with up to 100 IDs.
+        # 
+        # > If the agent ID list is not empty, the system directly queries based on the provided agent ID list. In this case, the pageSize and pageNumber parameters are invalid, and the data is returned directly. For example, if the request parameter is pageNumber = 3, the response parameter will also be pageNumber = 3.
         self.agent_ids = agent_ids
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number, ranging from 1 to 100. Optional. Default value: 1.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100. Optional. Default value: 10.
         self.page_size = page_size
+        # Filter by skill group ID.
         self.skill_group_id = skill_group_id
 
     def validate(self):

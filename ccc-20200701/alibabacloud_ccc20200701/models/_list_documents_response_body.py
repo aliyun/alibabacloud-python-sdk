@@ -17,11 +17,17 @@ class ListDocumentsResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The response parameters.
         self.params = params
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,10 +90,13 @@ class ListDocumentsResponseBodyData(DaraModel):
         schema: main_models.ListDocumentsResponseBodyDataSchema = None,
         total_count: int = None,
     ):
+        # The list of documents.
         self.documents = documents
+        # The token for the next page of results.
         self.next_page_token = next_page_token
-        # scheme
+        # The schema.
         self.schema = schema
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -141,13 +150,19 @@ class ListDocumentsResponseBodyDataSchema(DaraModel):
         properties: Dict[str, main_models.DataSchemaPropertiesValue] = None,
         updated_time: str = None,
     ):
+        # The time when the schema was created.
         self.created_time = created_time
+        # Indicates whether the schema is deleted.
         self.deleted = deleted
+        # The description.
         self.description = description
-        # schame id
+        # The schema ID.
         self.id = id
+        # The instance ID.
         self.instance_id = instance_id
+        # The list of fields.
         self.properties = properties
+        # The time when the schema was last updated.
         self.updated_time = updated_time
 
     def validate(self):

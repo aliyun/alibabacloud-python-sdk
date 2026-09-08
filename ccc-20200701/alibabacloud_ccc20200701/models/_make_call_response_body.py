@@ -17,11 +17,17 @@ class MakeCallResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of response parameters.
         self.params = params
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,8 +89,11 @@ class MakeCallResponseBodyData(DaraModel):
         context_id: int = None,
         user_context: main_models.MakeCallResponseBodyDataUserContext = None,
     ):
+        # Call context environment.
         self.call_context = call_context
+        # System auto-increment ID. Customers do not need to concern themselves with this.
         self.context_id = context_id
+        # Agent context environment.
         self.user_context = user_context
 
     def validate(self):
@@ -138,15 +147,25 @@ class MakeCallResponseBodyDataUserContext(DaraModel):
         user_state: str = None,
         work_mode: str = None,
     ):
+        # Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break state after agent is published and before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent call rejection). There are no restrictions on Custom-defined status codes, and Customers can define them according to their business needs.
         self.break_code = break_code
+        # Device ID, which is the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
         self.device_id = device_id
+        # Agent extension number.
         self.extension = extension
+        # Instance ID.
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
+        # Indicates whether the agent is in outbound-only mode.
         self.outbound_scenario = outbound_scenario
+        # List of skill group IDs that the agent has signed into.
         self.signed_skill_group_id_list = signed_skill_group_id_list
+        # Agent ID.
         self.user_id = user_id
+        # Agent status.
         self.user_state = user_state
+        # Work mode.
         self.work_mode = work_mode
 
     def validate(self):
@@ -232,10 +251,15 @@ class MakeCallResponseBodyDataCallContext(DaraModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # Call type.
         self.call_type = call_type
+        # Ingest endpoint data. Custom data passed through SIP signaling.
         self.call_variables = call_variables
+        # List of call channels.
         self.channel_contexts = channel_contexts
+        # Instance ID.
         self.instance_id = instance_id
+        # Call ID.
         self.job_id = job_id
 
     def validate(self):
@@ -307,18 +331,31 @@ class MakeCallResponseBodyDataCallContextChannelContexts(DaraModel):
         user_extension: str = None,
         user_id: str = None,
     ):
+        # The call type of the channel.
         self.call_type = call_type
+        # Channel flags.
         self.channel_flags = channel_flags
+        # The channel ID.
         self.channel_id = channel_id
+        # The status of the call channel.
         self.channel_state = channel_state
+        # Callee of the call channel.
         self.destination = destination
+        # Call ID.
         self.job_id = job_id
+        # Media type. The default value is AUDIO. Other valid values include VIDEO.
         self.media_type = media_type
+        # The originator of the channel.
         self.originator = originator
+        # The party that initiated the release of the call channel, indicating who hung up first.
         self.release_initiator = release_initiator
+        # The reason for releasing the channel. This value indicates why the current channel was disconnected and corresponds to a response code defined in the SIP protocol. Customers should refer to the SIP protocol to analyze the disconnection reason.
         self.release_reason = release_reason
+        # The UNIX timestamp indicating the most recent status change of the channel, in milliseconds.
         self.timestamp = timestamp
+        # The extension number of the agent associated with the channel.
         self.user_extension = user_extension
+        # The agent ID associated with the channel. This field is empty for customer channels.
         self.user_id = user_id
 
     def validate(self):

@@ -27,34 +27,64 @@ class CreateCampaignShrinkRequest(DaraModel):
         strategy_parameters: str = None,
         strategy_type: str = None,
     ):
+        # The callable time window for the predictive outbound dialing activity, formatted as a JSON object containing two properties: beginTime and endTime. Example: [{"beginTime":"00:00:00","endTime":"23:00:00"}].
+        # 
         # This parameter is required.
         self.callable_time = callable_time
+        # Predictive outbound dialing contact file, specified as the key of an OSS object. Obtain this key by calling the GetCaseFileUploadUrl API.
         self.case_file_key = case_file_key
+        # List of predictive outbound dialing contacts. This parameter cannot be used together with CaseFileKey (import from file). You must choose either file import or list import.
         self.case_list_shrink = case_list_shrink
+        # The contact flow ID associated with the predictive outbound dialing activity.
+        # 
         # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # The end time of the predictive outbound calling activity, formatted as a UNIX timestamp in milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Whether to keep the activity in the executing state until it expires. The default value is false. If false, the activity automatically transitions to the completed state after all contacts have been called. If true, the activity remains in the executing state even after all contacts have been called, allowing you to append additional contacts and continue dialing until the activity expires or is manually stopped.
         self.executing_until_timeout = executing_until_timeout
+        # Flash SMS parameters
         self.flash_sms_parameters = flash_sms_parameters
+        # Phone number collection ID
         self.inst_group_id = inst_group_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum number of attempts for the predictive outbound calling activity. This specifies how many times a number can be redialed if the initial call fails.
+        # 
         # This parameter is required.
         self.max_attempt_count = max_attempt_count
+        # The minimum redial interval for the predictive outbound calling activity, which specifies the minimum time interval between redial attempts after a failed call, in minutes.
+        # 
         # This parameter is required.
         self.min_attempt_interval = min_attempt_interval
+        # Name of the predictive outbound dialing activity.
+        # 
         # This parameter is required.
         self.name = name
+        # List of caller numbers
         self.number_list_shrink = number_list_shrink
+        # The skill group ID associated with the predictive outbound dialing activity.
+        # 
         # This parameter is required.
         self.queue_id = queue_id
+        # Indicates whether this is a simulation activity used for testing. Regular customers do not need to concern themselves with this.
         self.simulation = simulation
+        # Simulation parameters used for testing. Regular customers do not need to concern themselves with this.
         self.simulation_parameters = simulation_parameters
+        # The start time of the predictive outbound dialing activity, in Unix timestamp format with millisecond precision.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # Strategy parameters for the predictive outbound dialing activity. For PID strategy, an example format is: {"abandonRate":"5","historicalConnectedRate":"35"}. For PACING strategy, an example format is: {"ratio":1}. abandonRate represents the desired abandonment rate, historicalConnectedRate represents the historical reference connection rate, and ratio represents the fixed dialing ratio.
+        # 
         # This parameter is required.
         self.strategy_parameters = strategy_parameters
+        # The strategy pattern for the predictive outbound calling activity.
+        # 
         # This parameter is required.
         self.strategy_type = strategy_type
 

@@ -16,10 +16,15 @@ class ListCasesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListCasesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of contact list execution details.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -139,13 +148,27 @@ class ListCasesResponseBodyDataList(DaraModel):
         phone_number: str = None,
         state: str = None,
     ):
+        # Phase at which the call was abandoned.
+        # 
+        # - IVR (IVR interaction phase)
+        # 
+        # - Queuing (queuing phase)
+        # 
+        # - Ringing (agent ringing phase)
         self.abandon_phase = abandon_phase
+        # The type of call abandonment, that is, the reason why the call was not successfully connected.
         self.abandon_type = abandon_type
+        # Number of attempts, which is the total number of calls made to this contact.
         self.attempt_count = attempt_count
+        # System-generated contact ID. Customers do not need to concern themselves with this.
         self.case_id = case_id
+        # Custom variables defined by the customer, formatted as a JSON object. The object can contain up to 10 properties, each with a name and value defined by the customer. These can be configured when creating a predictive outbound dialing activity.
         self.custom_variables = custom_variables
+        # Reason for outbound call failure.
         self.failure_reason = failure_reason
+        # Phone number.
         self.phone_number = phone_number
+        # Status.
         self.state = state
 
     def validate(self):

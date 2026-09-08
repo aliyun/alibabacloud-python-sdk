@@ -11,9 +11,14 @@ class GetMonoRecordingRequest(DaraModel):
         expire_seconds: int = None,
         instance_id: str = None,
     ):
+        # Call ID.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # Expiration time, in seconds.
         self.expire_seconds = expire_seconds
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

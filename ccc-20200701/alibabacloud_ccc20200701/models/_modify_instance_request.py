@@ -10,7 +10,10 @@ class ModifyInstanceRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
+        # Description of the instance. The description can be up to 256 characters in length.
         self.description = description
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

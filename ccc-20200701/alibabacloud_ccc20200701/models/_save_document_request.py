@@ -13,11 +13,17 @@ class SaveDocumentRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
+        # Document ID
         self.document_id = document_id
+        # The document content to save. It must conform to the rules defined in the schema.
+        # 
         # This parameter is required.
         self.document_json = document_json
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Request ID
         self.request_id = request_id
         # schema id
         # 

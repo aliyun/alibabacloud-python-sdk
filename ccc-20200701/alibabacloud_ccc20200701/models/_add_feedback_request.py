@@ -13,11 +13,27 @@ class AddFeedbackRequest(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # The feedback provided by returning users.
         self.feedback = feedback
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Rating:
+        # 
+        # - thumbsDown: Thumbs down.
+        # 
+        # - thumbsUp: Thumbs up.
         self.rating = rating
+        # AI task ID.
         self.task_id = task_id
+        # Task type.
+        # 
+        # - Abstract:fields (Field extraction)
+        # 
+        # - Abstract:keywords (Hot keywords)
+        # 
+        # - Abstract:title_summary (Summary)
         self.task_name = task_name
 
     def validate(self):

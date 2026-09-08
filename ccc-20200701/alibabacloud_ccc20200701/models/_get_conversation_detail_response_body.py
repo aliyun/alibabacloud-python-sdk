@@ -16,10 +16,15 @@ class GetConversationDetailResponseBody(DaraModel):
         phrases: List[main_models.GetConversationDetailResponseBodyPhrases] = None,
         request_id: str = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # List of conversations.
         self.phrases = phrases
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,11 +89,17 @@ class GetConversationDetailResponseBodyPhrases(DaraModel):
         role: str = None,
         words: str = None,
     ):
+        # The offset of the sentence start time relative to the session start time, in milliseconds.
         self.begin = begin
+        # The offset of the sentence end time relative to the session start time, in milliseconds.
         self.end = end
+        # Is finished.
         self.finished = finished
+        # The ARN of the role. The system uses this identifier internally to identify the role. This parameter does not require management.
         self.identity = identity
+        # Role.
         self.role = role
+        # Conversation text content.
         self.words = words
 
     def validate(self):

@@ -23,23 +23,41 @@ class ListTicketsRequest(DaraModel):
         ticket_id: str = None,
         title: str = None,
     ):
+        # Assignee ID.
         self.assignee = assignee
+        # Assignee type.
         self.assignee_type = assignee_type
+        # Ticket category ID.
         self.category_id = category_id
+        # Creator.
         self.creator = creator
+        # Customer ID. The Cloud Contact Center customer profile ID.
         self.customer_id = customer_id
+        # End time. Filter by ticket creation time.
         self.end_time = end_time
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A list of contact IDs.
         self.job_id_list = job_id_list
+        # Paging ordinal number. Range: 1-100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Paging size. Range: 1-100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Participant ID.
         self.participant = participant
+        # Start time. Filter by ticket creation time.
         self.start_time = start_time
+        # Ticket state.
         self.state = state
+        # Ticket ID.
         self.ticket_id = ticket_id
+        # Ticket title.
         self.title = title
 
     def validate(self):

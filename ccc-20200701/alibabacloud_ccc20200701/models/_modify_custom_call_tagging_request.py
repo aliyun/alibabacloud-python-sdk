@@ -12,10 +12,16 @@ class ModifyCustomCallTaggingRequest(DaraModel):
         instance_id: str = None,
         number: str = None,
     ):
+        # A list of number tag names. You must provide the complete list of number tags to be modified, and ensure that these number tags have already been created.
         self.call_tag_name_list = call_tag_name_list
+        # The new description for the inbound number mark. This parameter is optional. The default value is empty, which indicates that the description will not be modified.
         self.description = description
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number associated with the inbound number mark. The system matches the inbound number mark to be modified based on this number.
+        # 
         # This parameter is required.
         self.number = number
 

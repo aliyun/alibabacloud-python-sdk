@@ -10,8 +10,12 @@ class GetIvrTrackingSummaryRequest(DaraModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # The call ID.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

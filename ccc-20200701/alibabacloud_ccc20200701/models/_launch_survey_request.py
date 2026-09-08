@@ -18,17 +18,29 @@ class LaunchSurveyRequest(DaraModel):
         survey_template_variables: str = None,
         user_id: str = None,
     ):
+        # The contact flow ID of the IVR satisfaction survey flow. Ensure that the specified contact flow ID corresponds to an active satisfaction survey flow.
         self.contact_flow_id = contact_flow_id
+        # Variables passed to the contact flow. The variables configured here can be retrieved and used in the IVR flow. The format is a JSON string containing a collection of key-value pairs. This parameter is optional and defaults to empty.
         self.contact_flow_variables = contact_flow_variables
+        # Device ID. This parameter has no effect and can be filled with any value.
         self.device_id = device_id
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The call ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The configuration ID for text message satisfaction. This parameter is required only when the collection channel is SMS. It is optional and defaults to empty.
         self.sms_metadata_id = sms_metadata_id
+        # The channel for collecting satisfaction feedback. This parameter is optional and defaults to Voice Satisfaction.
         self.survey_channel = survey_channel
+        # The ID of the satisfaction survey template.
         self.survey_template_id = survey_template_id
+        # Satisfaction survey configuration.
         self.survey_template_variables = survey_template_variables
+        # The agent ID that initiates the satisfaction survey.
         self.user_id = user_id
 
     def validate(self):

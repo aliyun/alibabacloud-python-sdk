@@ -12,9 +12,13 @@ class ImportCorpNumbersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

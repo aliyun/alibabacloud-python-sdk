@@ -13,13 +13,21 @@ class ListOutboundNumbersOfUserRequest(DaraModel):
         skill_group_id_list: str = None,
         user_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # A JSON-formatted list of skill group IDs. If specified, the operation returns outbound numbers for the specified skill groups. If omitted, it returns outbound numbers for all skill groups associated with the agent. Note: The agent must be a member of the specified skill groups.
         self.skill_group_id_list = skill_group_id_list
+        # The agent ID.
         self.user_id = user_id
 
     def validate(self):

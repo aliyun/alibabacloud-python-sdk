@@ -16,10 +16,15 @@ class ListVoicemailsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListVoicemailsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of voicemail records.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries. This parameter is returned only when \\`PageNumber\\` is set to 1. For other values of \\`PageNumber\\`, this parameter returns 0.
         self.total_count = total_count
 
     def validate(self):
@@ -140,14 +149,23 @@ class ListVoicemailsResponseBodyDataList(DaraModel):
         recording_duration: int = None,
         start_time: str = None,
     ):
+        # The called number.
         self.callee = callee
+        # The calling number.
         self.caller = caller
+        # The start time of the call.
         self.cdr_start_time = cdr_start_time
+        # The call ID.
         self.contact_id = contact_id
+        # The duration of the voicemail message in seconds.
         self.duration = duration
+        # The ID of the CC instance.
         self.instance_id = instance_id
+        # The name of the voicemail.
         self.name = name
+        # The duration of the voicemail message in seconds.
         self.recording_duration = recording_duration
+        # The start time of the voicemail.
         self.start_time = start_time
 
     def validate(self):

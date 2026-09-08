@@ -12,12 +12,20 @@ class ListIvrTrackingDetailsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The call ID.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

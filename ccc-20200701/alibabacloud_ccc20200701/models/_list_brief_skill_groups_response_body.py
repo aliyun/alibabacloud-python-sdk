@@ -16,10 +16,15 @@ class ListBriefSkillGroupsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # Data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +81,13 @@ class ListBriefSkillGroupsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of skill group summary information.
         self.list = list
+        # Page number, ranging from 1 to 100.
         self.page_number = page_number
+        # Page size, ranging from 1 to 100.
         self.page_size = page_size
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -139,13 +148,21 @@ class ListBriefSkillGroupsResponseBodyDataList(DaraModel):
         skill_group_name: str = None,
         user_count: int = None,
     ):
+        # Description of the skill group.
         self.description = description
+        # The display name of the skill group.
         self.display_name = display_name
+        # Instance ID.
         self.instance_id = instance_id
+        # The media type. The default value is AUDIO. Other valid values include CHAT and VIDEO.
         self.media_type = media_type
+        # Quantity of phone numbers associated with the skill group.
         self.phone_number_count = phone_number_count
+        # The skill group ID.
         self.skill_group_id = skill_group_id
+        # Name of the skill group.
         self.skill_group_name = skill_group_name
+        # The number of agents associated with the skill group.
         self.user_count = user_count
 
     def validate(self):

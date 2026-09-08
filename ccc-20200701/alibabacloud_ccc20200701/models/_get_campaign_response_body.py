@@ -13,9 +13,13 @@ class GetCampaignResponseBody(DaraModel):
         http_status_code: int = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85,28 +89,50 @@ class GetCampaignResponseBodyData(DaraModel):
         strategy_type: str = None,
         total_cases: int = None,
     ):
+        # The actual end time of the predictive outbound campaign. This is a Unix timestamp in milliseconds.
         self.actual_end_time = actual_end_time
+        # The actual start time of the predictive outbound campaign. This is a Unix timestamp in milliseconds.
         self.actual_start_time = actual_start_time
+        # The ID of the predictive outbound campaign.
         self.campaign_id = campaign_id
+        # The number of aborted contacts.
         self.cases_aborted = cases_aborted
+        # The number of connected contacts.
         self.cases_connected = cases_connected
+        # The number of uncompleted contacts.
         self.cases_uncompleted = cases_uncompleted
         self.cases_uncompleted_after_attempt = cases_uncompleted_after_attempt
+        # The number of attempted but unconnected contacts that are still eligible for redial.
         self.cases_uncompleted_after_attempted = cases_uncompleted_after_attempted
+        # The ratio of connected contacts to the total number of contacts.
         self.completion_rate = completion_rate
+        # The ID of the associated Contact Flow.
         self.contact_flow_id = contact_flow_id
+        # The maximum number of call attempts for each contact. If an attempt fails, the contact is redialed until this limit is reached.
         self.max_attempt_count = max_attempt_count
+        # The minimum interval, in seconds, to wait before redialing a failed call.
         self.min_attempt_interval = min_attempt_interval
+        # The name of the predictive outbound campaign.
         self.name = name
+        # The planned end time of the predictive outbound campaign. This is a Unix timestamp in milliseconds.
         self.planed_end_time = planed_end_time
+        # The planned start time of the predictive outbound campaign. This is a Unix timestamp in milliseconds.
         self.planed_start_time = planed_start_time
+        # The ID of the associated skill group.
         self.queue_id = queue_id
+        # The name of the associated skill group.
         self.queue_name = queue_name
+        # Indicates whether the campaign is a test simulation. This parameter is not intended for production use.
         self.simulation = simulation
+        # The parameters for a test simulation. This parameter is not intended for production use.
         self.simulation_parameters = simulation_parameters
+        # The state of the predictive outbound campaign.
         self.state = state
+        # The strategy parameters for the predictive outbound campaign, in JSON format. For a `PID` strategy, the format is `{"abandonRate":"5","historicalConnectedRate":"35"}`. For a `PACING` strategy, the format is `{"ratio":1}`. `abandonRate` specifies the target abandon rate, `historicalConnectedRate` specifies the historical connection rate for reference, and `ratio` specifies the fixed dialing ratio.
         self.strategy_parameters = strategy_parameters
+        # The dialing strategy for the predictive outbound campaign.
         self.strategy_type = strategy_type
+        # The total number of contacts.
         self.total_cases = total_cases
 
     def validate(self):

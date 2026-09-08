@@ -13,14 +13,24 @@ class CommitContactFlowRequest(DaraModel):
         draft_id: str = None,
         instance_id: str = None,
     ):
+        # The contact flow ID.
+        # 
         # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # The definition of the Interactive Voice Response (IVR).
+        # 
         # This parameter is required.
         self.definition = definition
+        # The version description.
+        # 
         # This parameter is required.
         self.description = description
+        # The draft ID. This is the ID of the draft version that corresponds to the current contact flow.
+        # 
         # This parameter is required.
         self.draft_id = draft_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
