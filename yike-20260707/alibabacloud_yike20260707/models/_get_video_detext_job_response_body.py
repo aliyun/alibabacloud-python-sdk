@@ -68,7 +68,7 @@ class GetVideoDetextJobResponseBodyJob(DaraModel):
         self.job_parameters = job_parameters
         # The task type. The value is fixed to VIDEO_DETEXT.
         self.job_type = job_type
-        # The task output JSON string. When the task succeeds, AiResult.DetextVideoURL contains the URL of the video with text erased.
+        # The task result JSON string. When Status is Finished, deserialize this field and read AiResult.DetextVideoURL to obtain the URL of the video after text erasure. The video URL is not guaranteed to be included when the task has not completed successfully. If Output.OssUri is specified at submission time, the result is stored in the specified OSS location. Otherwise, a signed URL is returned.
         self.output = output
         # The task status. Valid values: Created, Queuing, Executing, Finished, and Failed.
         self.status = status

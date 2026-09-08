@@ -1,3 +1,8 @@
+2026-09-08 Version: 2.5.0
+- Support API GetAgentJob.
+- Support API SubmitAgentJob.
+
+
 2026-09-07 Version: 2.4.0
 - Support API GetVideoDetextJob.
 - Support API SubmitVideoDetextJob.

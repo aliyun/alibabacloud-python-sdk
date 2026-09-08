@@ -598,6 +598,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.generate_yike_login_token_with_options_async(request, runtime)
 
+    def get_agent_job_with_options(
+        self,
+        request: main_models.GetAgentJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_job_with_options_async(
+        self,
+        request: main_models.GetAgentJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_job(
+        self,
+        request: main_models.GetAgentJobRequest,
+    ) -> main_models.GetAgentJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_job_with_options(request, runtime)
+
+    async def get_agent_job_async(
+        self,
+        request: main_models.GetAgentJobRequest,
+    ) -> main_models.GetAgentJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_job_with_options_async(request, runtime)
+
     def get_asset_category_with_options(
         self,
         request: main_models.GetAssetCategoryRequest,
@@ -1831,6 +1901,96 @@ class Client(OpenApiClient):
     ) -> main_models.SearchMediaResponse:
         runtime = RuntimeOptions()
         return await self.search_media_with_options_async(request, runtime)
+
+    def submit_agent_job_with_options(
+        self,
+        request: main_models.SubmitAgentJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAgentJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.skill):
+            query['Skill'] = request.skill
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAgentJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAgentJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_agent_job_with_options_async(
+        self,
+        request: main_models.SubmitAgentJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAgentJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.skill):
+            query['Skill'] = request.skill
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAgentJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAgentJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_agent_job(
+        self,
+        request: main_models.SubmitAgentJobRequest,
+    ) -> main_models.SubmitAgentJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_agent_job_with_options(request, runtime)
+
+    async def submit_agent_job_async(
+        self,
+        request: main_models.SubmitAgentJobRequest,
+    ) -> main_models.SubmitAgentJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_agent_job_with_options_async(request, runtime)
 
     def submit_image_generation_job_with_options(
         self,

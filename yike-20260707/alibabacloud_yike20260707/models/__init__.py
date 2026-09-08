@@ -23,6 +23,9 @@ from ._delete_medias_response import DeleteMediasResponse
 from ._generate_yike_login_token_request import GenerateYikeLoginTokenRequest
 from ._generate_yike_login_token_response_body import GenerateYikeLoginTokenResponseBody
 from ._generate_yike_login_token_response import GenerateYikeLoginTokenResponse
+from ._get_agent_job_request import GetAgentJobRequest
+from ._get_agent_job_response_body import GetAgentJobResponseBody
+from ._get_agent_job_response import GetAgentJobResponse
 from ._get_asset_category_request import GetAssetCategoryRequest
 from ._get_asset_category_response_body import GetAssetCategoryResponseBody
 from ._get_asset_category_response import GetAssetCategoryResponse
@@ -71,6 +74,9 @@ from ._list_infinite_canvases_response import ListInfiniteCanvasesResponse
 from ._search_media_request import SearchMediaRequest
 from ._search_media_response_body import SearchMediaResponseBody
 from ._search_media_response import SearchMediaResponse
+from ._submit_agent_job_request import SubmitAgentJobRequest
+from ._submit_agent_job_response_body import SubmitAgentJobResponseBody
+from ._submit_agent_job_response import SubmitAgentJobResponse
 from ._submit_image_generation_job_request import SubmitImageGenerationJobRequest
 from ._submit_image_generation_job_response_body import SubmitImageGenerationJobResponseBody
 from ._submit_image_generation_job_response import SubmitImageGenerationJobResponse
@@ -111,6 +117,7 @@ from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfo
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfosMediaDynamicInfo
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfos
 from ._create_asset_category_response_body import CreateAssetCategoryResponseBodyCategory
+from ._get_agent_job_response_body import GetAgentJobResponseBodyJob
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodyCategory
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodySubCategories
 from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBodyImageGenerationJob
@@ -164,6 +171,9 @@ __all__ = [
     GenerateYikeLoginTokenRequest,
     GenerateYikeLoginTokenResponseBody,
     GenerateYikeLoginTokenResponse,
+    GetAgentJobRequest,
+    GetAgentJobResponseBody,
+    GetAgentJobResponse,
     GetAssetCategoryRequest,
     GetAssetCategoryResponseBody,
     GetAssetCategoryResponse,
@@ -212,6 +222,9 @@ __all__ = [
     SearchMediaRequest,
     SearchMediaResponseBody,
     SearchMediaResponse,
+    SubmitAgentJobRequest,
+    SubmitAgentJobResponseBody,
+    SubmitAgentJobResponse,
     SubmitImageGenerationJobRequest,
     SubmitImageGenerationJobResponseBody,
     SubmitImageGenerationJobResponse,
@@ -252,6 +265,7 @@ __all__ = [
     BatchGetMediasResponseBodyMediaInfosMediaDynamicInfo,
     BatchGetMediasResponseBodyMediaInfos,
     CreateAssetCategoryResponseBodyCategory,
+    GetAgentJobResponseBodyJob,
     GetAssetCategoryResponseBodyCategory,
     GetAssetCategoryResponseBodySubCategories,
     GetImageGenerationJobResponseBodyImageGenerationJob,

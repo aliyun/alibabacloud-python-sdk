@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SubmitVideoDetextJobResponseBody(DaraModel):
+class SubmitAgentJobResponseBody(DaraModel):
     def __init__(
         self,
         job_id: str = None,
         request_id: str = None,
     ):
-        # The video text erasure job ID. Use this ID to call GetVideoDetextJob to query the job.
+        # The task ID.
         self.job_id = job_id
-        # The request ID, which is used for Tracing Analysis and troubleshooting.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
