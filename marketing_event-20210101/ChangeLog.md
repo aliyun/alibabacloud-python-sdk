@@ -1,3 +1,6 @@
+2026-09-08 Version: 1.2.2
+- Generated python 2021-01-01 for marketing_event.
+
 2026-08-25 Version: 1.2.1
 - Update API FindGuestTicketRecord: add response parameters Body.Data.$.FaceFeature.
 - Update API FindGuestTicketRecord: add response parameters Body.Data.$.FaceFeatureWriteTime.

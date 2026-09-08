@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_marketing_event20210101.
 
-Created on 25/08/2026
+Created on 08/09/2026
 
 @author: Alibaba Cloud SDK
 """
