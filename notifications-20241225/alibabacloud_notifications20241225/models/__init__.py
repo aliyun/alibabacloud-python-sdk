@@ -1,0 +1,243 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._create_webhook_contact_request import CreateWebhookContactRequest
+from ._create_webhook_contact_response_body import CreateWebhookContactResponseBody
+from ._create_webhook_contact_response import CreateWebhookContactResponse
+from ._del_message_request import DelMessageRequest
+from ._del_message_response_body import DelMessageResponseBody
+from ._del_message_response import DelMessageResponse
+from ._delete_all_message_request import DeleteAllMessageRequest
+from ._delete_all_message_response_body import DeleteAllMessageResponseBody
+from ._delete_all_message_response import DeleteAllMessageResponse
+from ._delete_webhook_contact_request import DeleteWebhookContactRequest
+from ._delete_webhook_contact_response_body import DeleteWebhookContactResponseBody
+from ._delete_webhook_contact_response import DeleteWebhookContactResponse
+from ._read_all_common_contacts_request import ReadAllCommonContactsRequest
+from ._read_all_common_contacts_response_body import ReadAllCommonContactsResponseBody
+from ._read_all_common_contacts_response import ReadAllCommonContactsResponse
+from ._read_all_marketing_preferences_request import ReadAllMarketingPreferencesRequest
+from ._read_all_marketing_preferences_response_body import ReadAllMarketingPreferencesResponseBody
+from ._read_all_marketing_preferences_response import ReadAllMarketingPreferencesResponse
+from ._read_all_message_request import ReadAllMessageRequest
+from ._read_all_message_response_body import ReadAllMessageResponseBody
+from ._read_all_message_response import ReadAllMessageResponse
+from ._read_all_webhook_contacts_request import ReadAllWebhookContactsRequest
+from ._read_all_webhook_contacts_response_body import ReadAllWebhookContactsResponseBody
+from ._read_all_webhook_contacts_response import ReadAllWebhookContactsResponse
+from ._read_category_group_list_request import ReadCategoryGroupListRequest
+from ._read_category_group_list_response_body import ReadCategoryGroupListResponseBody
+from ._read_category_group_list_response import ReadCategoryGroupListResponse
+from ._read_class_name_request import ReadClassNameRequest
+from ._read_class_name_response_body import ReadClassNameResponseBody
+from ._read_class_name_response import ReadClassNameResponse
+from ._read_common_contact_request import ReadCommonContactRequest
+from ._read_common_contact_response_body import ReadCommonContactResponseBody
+from ._read_common_contact_response import ReadCommonContactResponse
+from ._read_marketing_preference_request import ReadMarketingPreferenceRequest
+from ._read_marketing_preference_response_body import ReadMarketingPreferenceResponseBody
+from ._read_marketing_preference_response import ReadMarketingPreferenceResponse
+from ._read_message_request import ReadMessageRequest
+from ._read_message_response_body import ReadMessageResponseBody
+from ._read_message_response import ReadMessageResponse
+from ._read_message_content_request import ReadMessageContentRequest
+from ._read_message_content_response_body import ReadMessageContentResponseBody
+from ._read_message_content_response import ReadMessageContentResponse
+from ._read_message_language_request import ReadMessageLanguageRequest
+from ._read_message_language_response_body import ReadMessageLanguageResponseBody
+from ._read_message_language_response import ReadMessageLanguageResponse
+from ._read_message_list_request import ReadMessageListRequest
+from ._read_message_list_response_body import ReadMessageListResponseBody
+from ._read_message_list_response import ReadMessageListResponse
+from ._read_message_new_total_request import ReadMessageNewTotalRequest
+from ._read_message_new_total_response_body import ReadMessageNewTotalResponseBody
+from ._read_message_new_total_response import ReadMessageNewTotalResponse
+from ._read_meta_config_request import ReadMetaConfigRequest
+from ._read_meta_config_response_body import ReadMetaConfigResponseBody
+from ._read_meta_config_response import ReadMetaConfigResponse
+from ._read_num_group_by_class_request import ReadNumGroupByClassRequest
+from ._read_num_group_by_class_response_body import ReadNumGroupByClassResponseBody
+from ._read_num_group_by_class_response import ReadNumGroupByClassResponse
+from ._read_num_group_total_request import ReadNumGroupTotalRequest
+from ._read_num_group_total_response_body import ReadNumGroupTotalResponseBody
+from ._read_num_group_total_response import ReadNumGroupTotalResponse
+from ._read_revision_history_list_request import ReadRevisionHistoryListRequest
+from ._read_revision_history_list_shrink_request import ReadRevisionHistoryListShrinkRequest
+from ._read_revision_history_list_response_body import ReadRevisionHistoryListResponseBody
+from ._read_revision_history_list_response import ReadRevisionHistoryListResponse
+from ._read_user_subscription_list_request import ReadUserSubscriptionListRequest
+from ._read_user_subscription_list_response_body import ReadUserSubscriptionListResponseBody
+from ._read_user_subscription_list_response import ReadUserSubscriptionListResponse
+from ._read_webhook_contact_request import ReadWebhookContactRequest
+from ._read_webhook_contact_response_body import ReadWebhookContactResponseBody
+from ._read_webhook_contact_response import ReadWebhookContactResponse
+from ._read_webhook_contact_send_template_list_request import ReadWebhookContactSendTemplateListRequest
+from ._read_webhook_contact_send_template_list_response_body import ReadWebhookContactSendTemplateListResponseBody
+from ._read_webhook_contact_send_template_list_response import ReadWebhookContactSendTemplateListResponse
+from ._reset_user_subscription_request import ResetUserSubscriptionRequest
+from ._reset_user_subscription_shrink_request import ResetUserSubscriptionShrinkRequest
+from ._reset_user_subscription_response_body import ResetUserSubscriptionResponseBody
+from ._reset_user_subscription_response import ResetUserSubscriptionResponse
+from ._test_webhook_contact_request import TestWebhookContactRequest
+from ._test_webhook_contact_response_body import TestWebhookContactResponseBody
+from ._test_webhook_contact_response import TestWebhookContactResponse
+from ._update_marketing_preference_request import UpdateMarketingPreferenceRequest
+from ._update_marketing_preference_response_body import UpdateMarketingPreferenceResponseBody
+from ._update_marketing_preference_response import UpdateMarketingPreferenceResponse
+from ._update_message_language_request import UpdateMessageLanguageRequest
+from ._update_message_language_response_body import UpdateMessageLanguageResponseBody
+from ._update_message_language_response import UpdateMessageLanguageResponse
+from ._update_webhook_contact_request import UpdateWebhookContactRequest
+from ._update_webhook_contact_response_body import UpdateWebhookContactResponseBody
+from ._update_webhook_contact_response import UpdateWebhookContactResponse
+from ._read_all_common_contacts_response_body import ReadAllCommonContactsResponseBodyData
+from ._read_all_marketing_preferences_response_body import ReadAllMarketingPreferencesResponseBodyData
+from ._read_all_webhook_contacts_response_body import ReadAllWebhookContactsResponseBodyData
+from ._read_category_group_list_response_body import ReadCategoryGroupListResponseBodyData
+from ._read_class_name_response_body import ReadClassNameResponseBodyData
+from ._read_common_contact_response_body import ReadCommonContactResponseBodyData
+from ._read_marketing_preference_response_body import ReadMarketingPreferenceResponseBodyData
+from ._read_message_content_response_body import ReadMessageContentResponseBodyDataDatasItem
+from ._read_message_content_response_body import ReadMessageContentResponseBodyDataDatasLastItem
+from ._read_message_content_response_body import ReadMessageContentResponseBodyDataDatasNextItem
+from ._read_message_content_response_body import ReadMessageContentResponseBodyDataDatas
+from ._read_message_content_response_body import ReadMessageContentResponseBodyData
+from ._read_message_list_response_body import ReadMessageListResponseBodyDataRows
+from ._read_message_list_response_body import ReadMessageListResponseBodyData
+from ._read_num_group_by_class_response_body import ReadNumGroupByClassResponseBodyData
+from ._read_num_group_total_response_body import ReadNumGroupTotalResponseBodyData
+from ._read_revision_history_list_request import ReadRevisionHistoryListRequestPageInfo
+from ._read_revision_history_list_response_body import ReadRevisionHistoryListResponseBodyDataRowsPageSpec
+from ._read_revision_history_list_response_body import ReadRevisionHistoryListResponseBodyDataRows
+from ._read_revision_history_list_response_body import ReadRevisionHistoryListResponseBodyData
+from ._read_user_subscription_list_response_body import ReadUserSubscriptionListResponseBodyDataChannelConfigs
+from ._read_user_subscription_list_response_body import ReadUserSubscriptionListResponseBodyDataContactCommonContactsMessageSource
+from ._read_user_subscription_list_response_body import ReadUserSubscriptionListResponseBodyDataContactCommonContacts
+from ._read_user_subscription_list_response_body import ReadUserSubscriptionListResponseBodyDataContactWebhookContactsMessageSource
+from ._read_user_subscription_list_response_body import ReadUserSubscriptionListResponseBodyDataContactWebhookContacts
+from ._read_user_subscription_list_response_body import ReadUserSubscriptionListResponseBodyDataContact
+from ._read_user_subscription_list_response_body import ReadUserSubscriptionListResponseBodyData
+from ._read_webhook_contact_response_body import ReadWebhookContactResponseBodyData
+from ._read_webhook_contact_send_template_list_response_body import ReadWebhookContactSendTemplateListResponseBodyData
+
+__all__ = [
+    CreateWebhookContactRequest,
+    CreateWebhookContactResponseBody,
+    CreateWebhookContactResponse,
+    DelMessageRequest,
+    DelMessageResponseBody,
+    DelMessageResponse,
+    DeleteAllMessageRequest,
+    DeleteAllMessageResponseBody,
+    DeleteAllMessageResponse,
+    DeleteWebhookContactRequest,
+    DeleteWebhookContactResponseBody,
+    DeleteWebhookContactResponse,
+    ReadAllCommonContactsRequest,
+    ReadAllCommonContactsResponseBody,
+    ReadAllCommonContactsResponse,
+    ReadAllMarketingPreferencesRequest,
+    ReadAllMarketingPreferencesResponseBody,
+    ReadAllMarketingPreferencesResponse,
+    ReadAllMessageRequest,
+    ReadAllMessageResponseBody,
+    ReadAllMessageResponse,
+    ReadAllWebhookContactsRequest,
+    ReadAllWebhookContactsResponseBody,
+    ReadAllWebhookContactsResponse,
+    ReadCategoryGroupListRequest,
+    ReadCategoryGroupListResponseBody,
+    ReadCategoryGroupListResponse,
+    ReadClassNameRequest,
+    ReadClassNameResponseBody,
+    ReadClassNameResponse,
+    ReadCommonContactRequest,
+    ReadCommonContactResponseBody,
+    ReadCommonContactResponse,
+    ReadMarketingPreferenceRequest,
+    ReadMarketingPreferenceResponseBody,
+    ReadMarketingPreferenceResponse,
+    ReadMessageRequest,
+    ReadMessageResponseBody,
+    ReadMessageResponse,
+    ReadMessageContentRequest,
+    ReadMessageContentResponseBody,
+    ReadMessageContentResponse,
+    ReadMessageLanguageRequest,
+    ReadMessageLanguageResponseBody,
+    ReadMessageLanguageResponse,
+    ReadMessageListRequest,
+    ReadMessageListResponseBody,
+    ReadMessageListResponse,
+    ReadMessageNewTotalRequest,
+    ReadMessageNewTotalResponseBody,
+    ReadMessageNewTotalResponse,
+    ReadMetaConfigRequest,
+    ReadMetaConfigResponseBody,
+    ReadMetaConfigResponse,
+    ReadNumGroupByClassRequest,
+    ReadNumGroupByClassResponseBody,
+    ReadNumGroupByClassResponse,
+    ReadNumGroupTotalRequest,
+    ReadNumGroupTotalResponseBody,
+    ReadNumGroupTotalResponse,
+    ReadRevisionHistoryListRequest,
+    ReadRevisionHistoryListShrinkRequest,
+    ReadRevisionHistoryListResponseBody,
+    ReadRevisionHistoryListResponse,
+    ReadUserSubscriptionListRequest,
+    ReadUserSubscriptionListResponseBody,
+    ReadUserSubscriptionListResponse,
+    ReadWebhookContactRequest,
+    ReadWebhookContactResponseBody,
+    ReadWebhookContactResponse,
+    ReadWebhookContactSendTemplateListRequest,
+    ReadWebhookContactSendTemplateListResponseBody,
+    ReadWebhookContactSendTemplateListResponse,
+    ResetUserSubscriptionRequest,
+    ResetUserSubscriptionShrinkRequest,
+    ResetUserSubscriptionResponseBody,
+    ResetUserSubscriptionResponse,
+    TestWebhookContactRequest,
+    TestWebhookContactResponseBody,
+    TestWebhookContactResponse,
+    UpdateMarketingPreferenceRequest,
+    UpdateMarketingPreferenceResponseBody,
+    UpdateMarketingPreferenceResponse,
+    UpdateMessageLanguageRequest,
+    UpdateMessageLanguageResponseBody,
+    UpdateMessageLanguageResponse,
+    UpdateWebhookContactRequest,
+    UpdateWebhookContactResponseBody,
+    UpdateWebhookContactResponse,
+    ReadAllCommonContactsResponseBodyData,
+    ReadAllMarketingPreferencesResponseBodyData,
+    ReadAllWebhookContactsResponseBodyData,
+    ReadCategoryGroupListResponseBodyData,
+    ReadClassNameResponseBodyData,
+    ReadCommonContactResponseBodyData,
+    ReadMarketingPreferenceResponseBodyData,
+    ReadMessageContentResponseBodyDataDatasItem,
+    ReadMessageContentResponseBodyDataDatasLastItem,
+    ReadMessageContentResponseBodyDataDatasNextItem,
+    ReadMessageContentResponseBodyDataDatas,
+    ReadMessageContentResponseBodyData,
+    ReadMessageListResponseBodyDataRows,
+    ReadMessageListResponseBodyData,
+    ReadNumGroupByClassResponseBodyData,
+    ReadNumGroupTotalResponseBodyData,
+    ReadRevisionHistoryListRequestPageInfo,
+    ReadRevisionHistoryListResponseBodyDataRowsPageSpec,
+    ReadRevisionHistoryListResponseBodyDataRows,
+    ReadRevisionHistoryListResponseBodyData,
+    ReadUserSubscriptionListResponseBodyDataChannelConfigs,
+    ReadUserSubscriptionListResponseBodyDataContactCommonContactsMessageSource,
+    ReadUserSubscriptionListResponseBodyDataContactCommonContacts,
+    ReadUserSubscriptionListResponseBodyDataContactWebhookContactsMessageSource,
+    ReadUserSubscriptionListResponseBodyDataContactWebhookContacts,
+    ReadUserSubscriptionListResponseBodyDataContact,
+    ReadUserSubscriptionListResponseBodyData,
+    ReadWebhookContactResponseBodyData,
+    ReadWebhookContactSendTemplateListResponseBodyData
+]

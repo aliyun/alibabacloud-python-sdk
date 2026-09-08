@@ -1,3 +1,7 @@
+2026-09-08 Version: 1.2.0
+- Support API ReadMetaConfig.
+
+
 2025-09-18 Version: 1.0.2
 - Update API DeleteAllMessage: add request parameters GroupCode.
 - Update API ReadAllMessage: add request parameters GroupCode.
