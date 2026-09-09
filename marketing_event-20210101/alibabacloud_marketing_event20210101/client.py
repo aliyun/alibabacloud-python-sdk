@@ -40,6 +40,100 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_agenda_sum_record_flow_pop_with_options(
+        self,
+        request: main_models.AddAgendaSumRecordFlowPopRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAgendaSumRecordFlowPopResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active_num):
+            query['ActiveNum'] = request.active_num
+        if not DaraCore.is_null(request.agenda_id):
+            query['AgendaId'] = request.agenda_id
+        if not DaraCore.is_null(request.attendance_percent):
+            query['AttendancePercent'] = request.attendance_percent
+        if not DaraCore.is_null(request.flow_time):
+            query['FlowTime'] = request.flow_time
+        if not DaraCore.is_null(request.session_name):
+            query['SessionName'] = request.session_name
+        if not DaraCore.is_null(request.total_pv):
+            query['TotalPv'] = request.total_pv
+        if not DaraCore.is_null(request.total_uv):
+            query['TotalUv'] = request.total_uv
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAgendaSumRecordFlowPop',
+            version = '2021-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAgendaSumRecordFlowPopResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_agenda_sum_record_flow_pop_with_options_async(
+        self,
+        request: main_models.AddAgendaSumRecordFlowPopRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAgendaSumRecordFlowPopResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.active_num):
+            query['ActiveNum'] = request.active_num
+        if not DaraCore.is_null(request.agenda_id):
+            query['AgendaId'] = request.agenda_id
+        if not DaraCore.is_null(request.attendance_percent):
+            query['AttendancePercent'] = request.attendance_percent
+        if not DaraCore.is_null(request.flow_time):
+            query['FlowTime'] = request.flow_time
+        if not DaraCore.is_null(request.session_name):
+            query['SessionName'] = request.session_name
+        if not DaraCore.is_null(request.total_pv):
+            query['TotalPv'] = request.total_pv
+        if not DaraCore.is_null(request.total_uv):
+            query['TotalUv'] = request.total_uv
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAgendaSumRecordFlowPop',
+            version = '2021-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAgendaSumRecordFlowPopResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_agenda_sum_record_flow_pop(
+        self,
+        request: main_models.AddAgendaSumRecordFlowPopRequest,
+    ) -> main_models.AddAgendaSumRecordFlowPopResponse:
+        runtime = RuntimeOptions()
+        return self.add_agenda_sum_record_flow_pop_with_options(request, runtime)
+
+    async def add_agenda_sum_record_flow_pop_async(
+        self,
+        request: main_models.AddAgendaSumRecordFlowPopRequest,
+    ) -> main_models.AddAgendaSumRecordFlowPopResponse:
+        runtime = RuntimeOptions()
+        return await self.add_agenda_sum_record_flow_pop_with_options_async(request, runtime)
+
     def add_sum_record_flow_pop_with_options(
         self,
         request: main_models.AddSumRecordFlowPopRequest,

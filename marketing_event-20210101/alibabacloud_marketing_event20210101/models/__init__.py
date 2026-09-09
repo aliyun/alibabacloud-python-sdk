@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_agenda_sum_record_flow_pop_request import AddAgendaSumRecordFlowPopRequest
+from ._add_agenda_sum_record_flow_pop_response_body import AddAgendaSumRecordFlowPopResponseBody
+from ._add_agenda_sum_record_flow_pop_response import AddAgendaSumRecordFlowPopResponse
 from ._add_sum_record_flow_pop_request import AddSumRecordFlowPopRequest
 from ._add_sum_record_flow_pop_response_body import AddSumRecordFlowPopResponseBody
 from ._add_sum_record_flow_pop_response import AddSumRecordFlowPopResponse
@@ -77,6 +80,9 @@ from ._query_sign_in_record_pop_response_body import QuerySignInRecordPopRespons
 from ._query_single_activity_info_response_body import QuerySingleActivityInfoResponseBodyData
 
 __all__ = [
+    AddAgendaSumRecordFlowPopRequest,
+    AddAgendaSumRecordFlowPopResponseBody,
+    AddAgendaSumRecordFlowPopResponse,
     AddSumRecordFlowPopRequest,
     AddSumRecordFlowPopResponseBody,
     AddSumRecordFlowPopResponse,

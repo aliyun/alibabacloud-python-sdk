@@ -1,3 +1,7 @@
+2026-09-09 Version: 1.3.0
+- Support API AddAgendaSumRecordFlowPop.
+
+
 2026-09-08 Version: 1.2.2
 - Generated python 2021-01-01 for marketing_event.
 
