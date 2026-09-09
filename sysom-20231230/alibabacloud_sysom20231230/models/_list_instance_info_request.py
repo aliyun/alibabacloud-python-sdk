@@ -18,12 +18,19 @@ class ListInstanceInfoRequest(DaraModel):
         x_sysom_invoke_source: str = None,
     ):
         self.x_debug_id = x_debug_id
+        # The information type.
         self.info_type = info_type
+        # The instance type.
         self.instance_type = instance_type
+        # The managed type.
         self.managed_type = managed_type
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The plugin ID.
         self.plugin_id = plugin_id
+        # The region ID.
         self.region = region
         self.x_sysom_invoke_source = x_sysom_invoke_source
 

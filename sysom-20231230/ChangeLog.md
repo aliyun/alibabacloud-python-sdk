@@ -1,3 +1,8 @@
+2026-09-09 Version: 2.0.0
+- Update API InvokeDiagnosis: delete request parameters X-Debug-Id.
+- Update API InvokeDiagnosis: delete request parameters x-sysom-invoke-source.
+
+
 2026-08-21 Version: 1.21.0
 - Support API GetConfigByName.
 - Support API ListInstanceInfo.

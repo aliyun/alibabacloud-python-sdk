@@ -16,14 +16,14 @@ class GetDiagnosisResultResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization was successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - `code == Success`: The authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The response data.
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error information.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -99,10 +99,10 @@ class GetDiagnosisResultResponseBodyData(DaraModel):
         self.service_name = service_name
         # The execution status of the diagnostic task.
         # Valid values:
-        # - **Ready**: ready
-        # - **Running**: running
-        # - **Success**: succeeded
-        # - **Fail**: failed.
+        # - **Ready**: Ready.
+        # - **Running**: Running.
+        # - **Success**: Succeeded.
+        # - **Fail**: Failed.
         self.status = status
         # The task ID.
         self.task_id = task_id

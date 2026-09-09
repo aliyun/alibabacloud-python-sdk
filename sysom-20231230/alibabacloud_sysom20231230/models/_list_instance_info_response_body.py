@@ -17,10 +17,17 @@ class ListInstanceInfoResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The maximum number of entries returned per request.
         self.max_results = max_results
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # The pagination token for the next request.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -90,8 +97,11 @@ class ListInstanceInfoResponseBodyData(DaraModel):
         info_type: str = None,
         info_value: str = None,
     ):
+        # The information key.
         self.info_key = info_key
+        # The information type.
         self.info_type = info_type
+        # The information value.
         self.info_value = info_value
 
     def validate(self):

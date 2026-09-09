@@ -14,9 +14,9 @@ class GenerateCopilotStreamResponseResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The data returned by the LLM service. The data is of the string type. If it is a dict, convert and parse it yourself.
+        # The data returned by the LLM service in string format. If the data is a dict, convert and parse it yourself.
         self.data = data
-        # The error code description. This field is empty if no error occurs.
+        # The error message. This value is empty if no error occurs.
         self.message = message
         # Id of the request
         self.request_id = request_id

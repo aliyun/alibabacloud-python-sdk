@@ -12,7 +12,7 @@ class GenerateCopilotResponseRequest(DaraModel):
         x_sysom_invoke_source: str = None,
     ):
         self.x_debug_id = x_debug_id
-        # Input parameters for the copilot LLM service. Refer to the standard LLM API input parameter dict, which needs to be converted to a string and passed into llmParamString
+        # The input parameter for the Copilot LLM service. Refer to the standard LLM API input parameter dict, convert it to a string, and pass it to llmParamString.
         self.llm_param_string = llm_param_string
         self.x_sysom_invoke_source = x_sysom_invoke_source
 

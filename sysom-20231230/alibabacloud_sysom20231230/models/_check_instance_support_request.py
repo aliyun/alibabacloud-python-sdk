@@ -17,7 +17,7 @@ class CheckInstanceSupportRequest(DaraModel):
         self.x_debug_id = x_debug_id
         # The list of instance IDs to check.
         self.instances = instances
-        # The region to which the instances belong. All instance IDs specified in instances must belong to the same region.
+        # The region to which the instances belong. Ensure that all instance IDs passed in instances belong to the same region.
         self.region = region
         self.x_sysom_invoke_source = x_sysom_invoke_source
 

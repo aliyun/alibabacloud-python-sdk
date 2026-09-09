@@ -20,13 +20,13 @@ class ListAgentInstallRecordsRequest(DaraModel):
         self.x_debug_id = x_debug_id
         # The current page number. Pages start from page 1.
         self.current = current
-        # The ID of the instance. If you specify this parameter, only the Agent installation records for the specified instance are returned.
+        # Specifies the instance ID. If this parameter is specified, only the Agent installation records for the specified instance are returned.
         self.instance_id = instance_id
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the Agent. If you specify this parameter, only the installation records for the specified Agent are returned. You can use this parameter together with the plugin_version parameter.
+        # Specifies the Agent ID. If this parameter is specified, only the installation records for the specified Agent are returned. You can use this parameter together with the plugin_version parameter.
         self.plugin_id = plugin_id
-        # The version of the Agent. This parameter cannot be used alone. Use this parameter together with the plugin_id parameter to filter installation records for a specific version of the specified Agent.
+        # Specifies the Agent version. This parameter cannot be used alone and must be used together with the plugin_id parameter to filter the installation records for a specific version of the specified Agent.
         self.plugin_version = plugin_version
         # The region ID.
         self.region = region

@@ -23,9 +23,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-hangzhou': 'sysom.cn-hangzhou.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sysom', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4340,11 +4337,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InvokeDiagnosisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.channel):
             body['channel'] = request.channel
@@ -4354,7 +4346,6 @@ class Client(OpenApiClient):
             body['service_name'] = request.service_name
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4380,11 +4371,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InvokeDiagnosisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.channel):
             body['channel'] = request.channel
@@ -4394,7 +4380,6 @@ class Client(OpenApiClient):
             body['service_name'] = request.service_name
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
