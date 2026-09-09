@@ -200,7 +200,7 @@ class GetDownloadJobResponseBodyConfiguration(DaraModel):
         self.from_time = from_time
         # The source Logstore.
         self.logstore = logstore
-        # Specifies whether to enable PowerSQL.
+        # Indicates whether PowerSQL is enabled.
         self.power_sql = power_sql
         # The query statement.
         self.query = query
@@ -283,7 +283,7 @@ class GetDownloadJobResponseBodyConfigurationSink(DaraModel):
         self.compression_type = compression_type
         # The format of the downloaded file.
         self.content_type = content_type
-        # The file prefix used when downloading logs to the user\\"s bucket.
+        # The file prefix used when downloading logs to the user\\"s OSS bucket.
         self.prefix = prefix
         # The ARN of the RAM role used for the download.
         self.role_arn = role_arn

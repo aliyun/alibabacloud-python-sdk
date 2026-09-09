@@ -23,7 +23,7 @@ class CreateDownloadJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The job name. The naming rules are as follows:
+        # The job name. The following naming rules apply:
         # 
         # Job names must be unique within the same project.
         # * The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
@@ -84,7 +84,7 @@ class CreateDownloadJobRequestConfiguration(DaraModel):
         sink: main_models.CreateDownloadJobRequestConfigurationSink = None,
         to_time: int = None,
     ):
-        # Specifies whether to allow downloading imprecise results. Valid values: true, false.
+        # Specifies whether to allow downloading inexact results. Valid values: true, false.
         # 
         # This parameter is required.
         self.allow_in_complete = allow_in_complete
@@ -189,9 +189,9 @@ class CreateDownloadJobRequestConfigurationSink(DaraModel):
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The path prefix for downloading data to the user\\"s OSS bucket.
+        # The path prefix in the OSS bucket to which data is downloaded.
         self.prefix = prefix
-        # The ARN of the RAM role used for the download.
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role used for the download.
         self.role_arn = role_arn
         # Fixed value: AliyunOSS.
         # 

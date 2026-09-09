@@ -28,6 +28,7 @@ class Client(OpenApiClient):
         self._spi = gateway_client
         self._endpoint_rule = 'central'
         self._endpoint_map = {
+            'ap-southeast-8': 'ap-southeast-8.log.aliyuncs.com',
             'cn-qingdao': 'cn-qingdao.log.aliyuncs.com',
             'cn-beijing': 'cn-beijing.log.aliyuncs.com',
             'cn-zhangjiakou': 'cn-zhangjiakou.log.aliyuncs.com',
@@ -54,6 +55,7 @@ class Client(OpenApiClient):
             'eu-west-1': 'eu-west-1.log.aliyuncs.com',
             'eu-central-1': 'eu-central-1.log.aliyuncs.com',
             'us-southeast-1': 'us-southeast-1.log.aliyuncs.com',
+            'sa-east-1': 'sa-east-1.log.aliyuncs.com',
             'me-east-1': 'me-east-1.log.aliyuncs.com',
             'me-central-1': 'me-central-1.log.aliyuncs.com',
             'cn-hangzhou-finance': 'cn-hangzhou-finance.log.aliyuncs.com',

@@ -11,8 +11,11 @@ class ListApiKeysRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The Logstore that the API key is allowed to write to.
         self.allowed_store = allowed_store
+        # The number of the page to return.
         self.offset = offset
+        # The number of entries per page.
         self.size = size
 
     def validate(self):

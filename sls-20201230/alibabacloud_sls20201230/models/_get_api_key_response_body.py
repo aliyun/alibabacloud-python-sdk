@@ -17,12 +17,19 @@ class GetApiKeyResponseBody(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
+        # The list of Logstores that allow writes.
         self.allowed_stores = allowed_stores
+        # The API key in plaintext.
         self.api_key = api_key
+        # The API key name.
         self.api_key_name = api_key_name
+        # The creation time.
         self.create_time = create_time
+        # The description of the API key.
         self.description = description
+        # The status of the API key.
         self.status = status
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

@@ -12,7 +12,9 @@ class UpdateApiKeyRequest(DaraModel):
         allowed_stores: List[str] = None,
         description: str = None,
     ):
+        # The list of Logstores to which data can be written.
         self.allowed_stores = allowed_stores
+        # The description.
         self.description = description
 
     def validate(self):

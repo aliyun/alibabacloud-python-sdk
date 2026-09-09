@@ -14,8 +14,11 @@ class ListApiKeysResponseBody(DaraModel):
         count: int = None,
         total: int = None,
     ):
+        # The list of API keys.
         self.api_keys = api_keys
+        # The number of API keys on the current page.
         self.count = count
+        # The total number of API keys.
         self.total = total
 
     def validate(self):
@@ -69,12 +72,19 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
+        # The list of Logstores that the API key is allowed to write to.
         self.allowed_stores = allowed_stores
+        # The plaintext of the API key.
         self.api_key = api_key
+        # The name of the API key.
         self.api_key_name = api_key_name
+        # The time when the API key was created.
         self.create_time = create_time
+        # The description of the API key.
         self.description = description
+        # The status of the API key.
         self.status = status
+        # The time when the API key was last updated.
         self.update_time = update_time
 
     def validate(self):

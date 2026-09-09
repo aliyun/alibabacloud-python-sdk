@@ -13,8 +13,11 @@ class CreateApiKeyRequest(DaraModel):
         api_key_name: str = None,
         description: str = None,
     ):
+        # The list of Logstores that the API key is allowed to write to.
         self.allowed_stores = allowed_stores
+        # The API key name.
         self.api_key_name = api_key_name
+        # The description.
         self.description = description
 
     def validate(self):
