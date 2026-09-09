@@ -137,6 +137,9 @@ from ._invoke_plugin_response import InvokePluginResponse
 from ._preview_document_request import PreviewDocumentRequest
 from ._preview_document_response_body import PreviewDocumentResponseBody
 from ._preview_document_response import PreviewDocumentResponse
+from ._query_amount_request import QueryAmountRequest
+from ._query_amount_response_body import QueryAmountResponseBody
+from ._query_amount_response import QueryAmountResponse
 from ._query_api_keys_headers import QueryApiKeysHeaders
 from ._query_api_keys_request import QueryApiKeysRequest
 from ._query_api_keys_response_body import QueryApiKeysResponseBody
@@ -288,6 +291,9 @@ from ._get_video_creation_task_result_response_body import GetVideoCreationTaskR
 from ._get_video_creation_task_result_response_body import GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResult
 from ._get_video_creation_task_result_response_body import GetVideoCreationTaskResultResponseBodyData
 from ._preview_document_response_body import PreviewDocumentResponseBodyData
+from ._query_amount_response_body import QueryAmountResponseBodyDataItems
+from ._query_amount_response_body import QueryAmountResponseBodyDataTotal
+from ._query_amount_response_body import QueryAmountResponseBodyData
 from ._query_api_keys_response_body import QueryApiKeysResponseBodyData
 from ._query_redemption_records_response_body import QueryRedemptionRecordsResponseBodyDataItems
 from ._query_redemption_records_response_body import QueryRedemptionRecordsResponseBodyData
@@ -487,6 +493,9 @@ __all__ = [
     PreviewDocumentRequest,
     PreviewDocumentResponseBody,
     PreviewDocumentResponse,
+    QueryAmountRequest,
+    QueryAmountResponseBody,
+    QueryAmountResponse,
     QueryApiKeysHeaders,
     QueryApiKeysRequest,
     QueryApiKeysResponseBody,
@@ -638,6 +647,9 @@ __all__ = [
     GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResult,
     GetVideoCreationTaskResultResponseBodyData,
     PreviewDocumentResponseBodyData,
+    QueryAmountResponseBodyDataItems,
+    QueryAmountResponseBodyDataTotal,
+    QueryAmountResponseBodyData,
     QueryApiKeysResponseBodyData,
     QueryRedemptionRecordsResponseBodyDataItems,
     QueryRedemptionRecordsResponseBodyData,

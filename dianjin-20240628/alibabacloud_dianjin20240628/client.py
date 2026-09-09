@@ -34,9 +34,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-beijing': 'dianjin.cn-beijing.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dianjin', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4149,6 +4146,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.preview_document_with_options_async(workspace_id, request, headers, runtime)
+
+    def query_amount_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.QueryAmountRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAmountResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.aliyun_uid_list):
+            body['aliyunUidList'] = request.aliyun_uid_list
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAmount',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/aigcRevenue/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAmountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_amount_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.QueryAmountRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAmountResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.aliyun_uid_list):
+            body['aliyunUidList'] = request.aliyun_uid_list
+        if not DaraCore.is_null(request.end_date):
+            body['endDate'] = request.end_date
+        if not DaraCore.is_null(request.start_date):
+            body['startDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAmount',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/v1/aigcRevenue/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAmountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_amount(
+        self,
+        workspace_id: str,
+        request: main_models.QueryAmountRequest,
+    ) -> main_models.QueryAmountResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_amount_with_options(workspace_id, request, headers, runtime)
+
+    async def query_amount_async(
+        self,
+        workspace_id: str,
+        request: main_models.QueryAmountRequest,
+    ) -> main_models.QueryAmountResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_amount_with_options_async(workspace_id, request, headers, runtime)
 
     def query_api_keys_with_options(
         self,
