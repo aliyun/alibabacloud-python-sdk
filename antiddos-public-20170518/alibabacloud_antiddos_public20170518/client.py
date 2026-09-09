@@ -84,16 +84,17 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'antiddos.aliyuncs.com',
             'eu-west-1-oxs': 'antiddos.aliyuncs.com',
             'rus-west-1-pop': 'antiddos.aliyuncs.com',
-            'us-southeast-1': 'antiddos-openapi.us-southeast-1.aliyuncs.com',
-            'na-south-1': 'antiddos-openapi.na-south-1.aliyuncs.com',
-            'me-central-1': 'antiddos-openapi.me-central-1.aliyuncs.com',
-            'eu-west-2': 'antiddos-openapi.eu-west-2.aliyuncs.com',
-            'cn-zhongwei': 'antiddos-openapi.cn-zhongwei.aliyuncs.com',
-            'cn-zhengzhou-jva': 'antiddos-openapi.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-wuhan-lr': 'antiddos-openapi.cn-hangzhou-cloudstone.aliyuncs.com',
             'cn-fuzhou': 'antiddos-openapi.cn-hangzhou-cloudstone.aliyuncs.com',
+            'cn-wuhan-lr': 'antiddos-openapi.cn-hangzhou-cloudstone.aliyuncs.com',
+            'cn-zhengzhou-jva': 'antiddos-openapi.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhongwei': 'antiddos-openapi.cn-zhongwei.aliyuncs.com',
+            'ap-southeast-7': 'antiddos-openapi.ap-southeast-7.aliyuncs.com',
             'ap-southeast-8': 'antiddos-openapi.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'antiddos-openapi.ap-southeast-7.aliyuncs.com'
+            'us-southeast-1': 'antiddos-openapi.us-southeast-1.aliyuncs.com',
+            'sa-east-1': 'antiddos-openapi.sa-east-1.aliyuncs.com',
+            'eu-west-2': 'antiddos-openapi.eu-west-2.aliyuncs.com',
+            'na-south-1': 'antiddos-openapi.na-south-1.aliyuncs.com',
+            'me-central-1': 'antiddos-openapi.me-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('antiddos-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
